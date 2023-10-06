@@ -1,6 +1,11 @@
+import os
+
 from flask import Flask, abort, render_template, redirect, request, url_for
+from flask_wtf import FlaskForm
 import httpx
 import keyring
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
 
 from flickypedia.apis.wikimedia import get_userinfo
 
@@ -14,6 +19,13 @@ app.config["OAUTH2_PROVIDERS"] = {
         "client_secret": keyring.get_password("wiki_s", "client_secret"),
     }
 }
+
+
+class UploadForm(FlaskForm):
+    title = StringField("title", validators=[DataRequired()])
+    short_caption = StringField("short_caption", validators=[DataRequired()])
+    url = StringField("url", validators=[DataRequired()])
+    submit = SubmitField("Upload")
 
 
 @app.route("/")
@@ -64,11 +76,58 @@ def handle_oauth_callback():
     resp.raise_for_status()
 
     ACCESS_TOKEN["alex"] = resp.json()
-    ACCESS_TOKEN["user_info"] = get_userinfo(access_token=resp.json()['access_token'])
+    ACCESS_TOKEN["user_info"] = get_userinfo(access_token=resp.json()["access_token"])
 
     return redirect(url_for("upload_images"))
 
 
-@app.route("/upload_images")
+@app.route("/upload_images", methods=["GET", "POST"])
 def upload_images():
-    return render_template("upload_images.html", user_info=ACCESS_TOKEN["user_info"])
+    form = UploadForm()
+
+    if form.validate_on_submit():
+        print(form)
+
+        client = httpx.Client(
+            headers={"Authorization": f"Bearer {ACCESS_TOKEN['alex']['access_token']}"}
+        )
+
+        resp = client.get(
+            "https://commons.wikimedia.org/w/api.php",
+            params={"action": "query", "meta": "tokens", "format": "json"},
+        )
+
+        csrf_token = resp.json()["query"]["tokens"]["csrftoken"]
+
+        print(form.url.data)
+
+        FILE = {
+            "file": (
+                "SlovenianPlatformWarningSign.jpg",
+                open(
+                    "/Users/alexwlchan/Desktop/SlovenianPlatformWarningSign.jpg", "rb"
+                ),
+                "multipart/form-data",
+            )
+        }
+
+        resp = client.post(
+            "https://commons.wikimedia.org/w/api.php",
+            files=FILE,
+            data={
+                "action": "upload",
+                "filename": "SlovenianPlatformWarningSign.jpg",
+                "format": "json",
+                "token": csrf_token,
+                #     "ignorewarnings": 1
+            },
+        )
+        print(resp)
+        #
+        # R = S.post(URL, data=PARAMS_4))
+
+        from pprint import pprint
+
+        pprint(resp.json())
+
+    return render_template("upload_images.html", user_info={}, form=form)
