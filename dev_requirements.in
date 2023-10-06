@@ -12,4 +12,5 @@ vcrpy<5
 
 # Version pins for 3.7 for things we don't depend on directly, but are
 # dependencies of libraries we actually use.
+pluggy<1.3.0
 typing-extensions<4.8.0
