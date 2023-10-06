@@ -1,0 +1,15 @@
+-r requirements.txt
+
+pytest
+
+# These version pins are all to maintain Python 3.7 support, even though
+# Python 3.7 is EOL.
+#
+# See https://github.com/Flickr-Foundation/flinumeratr/issues/23
+black<23.7.0
+flake8<6
+vcrpy<5
+
+# Version pins for 3.7 for things we don't depend on directly, but are
+# dependencies of libraries we actually use.
+typing-extensions<4.8.0
