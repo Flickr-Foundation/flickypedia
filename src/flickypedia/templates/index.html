@@ -1,1 +1,15 @@
-Hello world!
+{#
+  This implements step 2 of the OAuth 2.0 authorization code flow: request
+  authorization from the user.  When the user clicks this link, they will
+  be meta.wikimedia.org, where they can log in with their Wikimedia account
+  and approve the request.
+  
+  See https://api.wikimedia.org/wiki/Authentication#2._Request_authorization
+  
+  TODO: Look at using PKCE for this request.  I'm skipping it for now because
+  I don't think it's necessary (the client secret isn't being sent to the user's
+  browser for them to intercept), but it would be a nice defence-in-depth feature.
+#}
+<a href="https://meta.wikimedia.org/w/rest.php/oauth2/authorize?client_id={{ client_id }}&response_type=code">
+  Log in to Wikimedia Commons
+</a>
