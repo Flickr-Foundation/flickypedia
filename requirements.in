@@ -1,0 +1,8 @@
+keyring
+
+# Version pins for 3.7 for things we don't depend on directly, but are
+# dependencies of libraries we actually use.
+importlib-metadata<4.3
+jaraco-classes<3.3.0
+more-itertools<10.0.0
+zipp<3.16.0
