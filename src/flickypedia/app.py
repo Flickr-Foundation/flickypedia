@@ -2,6 +2,8 @@ from flask import Flask, abort, render_template, redirect, request, url_for
 import httpx
 import keyring
 
+from flickypedia.apis.wikimedia import get_userinfo
+
 
 app = Flask(__name__)
 
@@ -19,6 +21,13 @@ def index():
     return render_template(
         "index.html", client_id=app.config["OAUTH2_PROVIDERS"]["wiki"]["client_id"]
     )
+
+
+# This is a global variable to hold user data.  For obvious reasons, this won't
+# be the final storage -- it only allows one logged-in user!
+#
+# But for early prototyping, it's enough.
+ACCESS_TOKEN = {"alex": None}
 
 
 @app.route("/callback")
@@ -54,6 +63,12 @@ def handle_oauth_callback():
     )
     resp.raise_for_status()
 
-    from pprint import pprint; pprint(resp.json())
-    
-    return redirect(url_for("index"))
+    ACCESS_TOKEN["alex"] = resp.json()
+    ACCESS_TOKEN["user_info"] = get_userinfo(access_token=resp.json()['access_token'])
+
+    return redirect(url_for("upload_images"))
+
+
+@app.route("/upload_images")
+def upload_images():
+    return render_template("upload_images.html", user_info=ACCESS_TOKEN["user_info"])

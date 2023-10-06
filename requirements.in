@@ -5,6 +5,7 @@ keyring
 #
 # See https://github.com/Flickr-Foundation/flinumeratr/issues/23
 flask<2.3.0
+flask-wtf<1.1.2
 httpx<0.25.0
 
 # Version pins for 3.7 for things we don't depend on directly, but are
