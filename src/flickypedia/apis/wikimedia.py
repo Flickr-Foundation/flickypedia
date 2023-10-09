@@ -8,8 +8,10 @@ def get_userinfo(access_token: str) -> str:
     client = httpx.Client(headers={"Authorization": f"Bearer {access_token}"})
 
     resp = client.get(
-        "https://commons.wikimedia.org/w/api.php",
+        "https://commons.wikimedia.beta.wmflabs.org/w/api.php",
         params={"action": "query", "meta": "userinfo", "format": "json"},
     )
+    from pprint import pprint; pprint(resp.json())
+    resp.raise_for_status()
 
     return resp.json()["query"]["userinfo"]

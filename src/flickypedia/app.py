@@ -15,8 +15,8 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = "top secret!"
 app.config["OAUTH2_PROVIDERS"] = {
     "wiki": {
-        "client_id": keyring.get_password("wiki_s", "client_id"),
-        "client_secret": keyring.get_password("wiki_s", "client_secret"),
+        "client_id": keyring.get_password("wiki_s_beta", "client_id"),
+        "client_secret": keyring.get_password("wiki_s_beta", "client_secret"),
     }
 }
 
@@ -65,7 +65,7 @@ def handle_oauth_callback():
     # TODO: Implement better error handling in this function
 
     resp = httpx.post(
-        "https://meta.wikimedia.org/w/rest.php/oauth2/access_token",
+        "https://meta.wikimedia.beta.wmflabs.org/w/rest.php/oauth2/access_token",
         data={
             "grant_type": "authorization_code",
             "code": authorization_code,
@@ -77,6 +77,8 @@ def handle_oauth_callback():
 
     ACCESS_TOKEN["alex"] = resp.json()
     ACCESS_TOKEN["user_info"] = get_userinfo(access_token=resp.json()["access_token"])
+    
+    from pprint import pprint; pprint(resp.json())
 
     return redirect(url_for("upload_images"))
 
@@ -93,7 +95,7 @@ def upload_images():
         )
 
         resp = client.get(
-            "https://commons.wikimedia.org/w/api.php",
+            "https://commons.wikimedia.beta.wmflabs.org/w/api.php",
             params={"action": "query", "meta": "tokens", "format": "json"},
         )
 
@@ -112,15 +114,17 @@ def upload_images():
         }
 
         resp = client.post(
-            "https://commons.wikimedia.org/w/api.php",
+            "https://commons.wikimedia.beta.wmflabs.org/w/api.php",
             files=FILE,
             data={
                 "action": "upload",
-                "filename": "SlovenianPlatformWarningSign.jpg",
+                "filename": "SlovenianPlatformWarningSign2.jpg",
                 "format": "json",
                 "token": csrf_token,
+                # "text": form.title.data,
                 #     "ignorewarnings": 1
             },
+            timeout=60
         )
         print(resp)
         #
