@@ -17,8 +17,10 @@ If you want to create new API keys (either to run your own instance of Flickyped
 
     In the list of applicable grants, select the following:
     
+    *   Edit existing pages
     *   Create, edit, and move pages
     *   Upload new files
+    *   Upload, replace, and move files
 
 You will get a client ID and client secret.
 Make sure you write these down -- you'll need them later!
