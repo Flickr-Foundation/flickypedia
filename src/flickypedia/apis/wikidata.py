@@ -12,10 +12,13 @@ class WikidataProperties:
     # https://www.wikidata.org/wiki/Property:<PROPERTY_ID>
     #
     # e.g. https://www.wikidata.org/wiki/Property:P2093
+    OPERATOR = "P137"
     CREATOR = "P170"
+    DESCRIBED_AT_URL = "P973"
     AUTHOR_NAME = "P2093"
     FLICKR_USER_ID = "P3267"
     URL = "P2699"
+    SOURCE_OF_FILE = "P7482"
     COPYRIGHT_STATUS = "P6216"
 
 
@@ -24,7 +27,13 @@ class WikidataEntities:
     Named constants for certain Wikidata entities.
     """
 
+    # To see documentation for a particular property, go to
+    # https://www.wikidata.org/wiki/<ENTITY_ID>
+    #
+    # e.g. https://www.wikidata.org/wiki/Q103204
     Copyrighted = "Q50423863"
+    FileAvailableOnInternet = "Q74228490"
+    Flickr = "Q103204"
 
 
 def lookup_flickr_user_in_wikidata(*, id, username):

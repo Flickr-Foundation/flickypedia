@@ -1,0 +1,52 @@
+{
+  "mainsnak": {
+    "snaktype": "value",
+    "property": "P7482",
+    "datavalue": {
+      "type": "wikibase-entityid",
+      "value": {
+        "id": "Q74228490"
+      }
+    }
+  },
+  "qualifiers": {
+    "P137": [
+      {
+        "datavalue": {
+          "type": "wikibase-entityid",
+          "value": {
+            "id": "Q103204"
+          }
+        },
+        "property": "P137",
+        "snaktype": "value"
+      }
+    ],
+    "P973": [
+      {
+        "datavalue": {
+          "type": "string",
+          "value": "https://www.flickr.com/photos/199246608@N02/53248015596/"
+        },
+        "property": "P973",
+        "snaktype": "value"
+      }
+    ],
+    "P2699": [
+      {
+        "datavalue": {
+          "type": "string",
+          "value": "https://live.staticflickr.com/65535/53248015596_c03f8123cf_o_d.jpg"
+        },
+        "property": "P2699",
+        "snaktype": "value"
+      }
+    ]
+  },
+  "qualifiers-order": [
+    "P973",
+    "P137",
+    "P2699"
+  ],
+  "type": "statement"
+}
