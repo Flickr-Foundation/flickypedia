@@ -24,16 +24,6 @@ def _wikibase_entity_value(*, property, wikidata_id):
     }
 
 
-def _qualifier_s(value):
-    return [
-        {
-            "datavalue": {"type": "string", "value": value},
-            "property": property_id,
-            "snaktype": "value",
-        }
-    ]
-
-
 def _create_qualifiers(qualifier_values):
     result = {}
 
