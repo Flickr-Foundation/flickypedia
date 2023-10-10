@@ -152,3 +152,21 @@ def create_source_data_for_photo(user_id, photo_id, jpeg_url):
         ],
         "type": "statement",
     }
+
+
+def create_license_statement(license_id):
+    """
+    Create a structured data statement for copyright license.
+    """
+    try:
+        wikidata_license_id = WikidataEntities.Licenses[license_id]
+    except KeyError:
+        raise ValueError(f"Unrecognised license ID: {license_id!r}")
+
+    return {
+        "mainsnak": _wikibase_entity_value(
+            property=WikidataProperties.CopyrightLicense,
+            wikidata_id=wikidata_license_id,
+        ),
+        "type": "statement",
+    }

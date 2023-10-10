@@ -19,6 +19,7 @@ class WikidataProperties:
     FLICKR_USER_ID = "P3267"
     URL = "P2699"
     SOURCE_OF_FILE = "P7482"
+    CopyrightLicense = "P275"
     COPYRIGHT_STATUS = "P6216"
 
 
@@ -34,6 +35,16 @@ class WikidataEntities:
     Copyrighted = "Q50423863"
     FileAvailableOnInternet = "Q74228490"
     Flickr = "Q103204"
+
+    Licenses = {
+        "cc-by-2.0": "Q19125117",
+        "cc-by-nc-2.0": "Q44128984",
+        "cc-by-nc-nd-2.0": "Q47008927",
+        "cc-by-nc-sa-2.0": "Q28050835",
+        "cc-by-nd-2.0": "Q35254645",
+        "cc-by-sa-2.0": "Q19068220",
+        "cc-0-1.0": "Q6938433",
+    }
 
 
 def lookup_flickr_user_in_wikidata(*, id, username):

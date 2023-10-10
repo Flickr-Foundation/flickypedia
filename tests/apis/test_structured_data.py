@@ -3,6 +3,7 @@ import json
 import pytest
 
 from flickypedia.apis.structured_data import (
+    create_license_statement,
     create_copyright_status_data,
     create_flickr_creator_data,
     create_source_data_for_photo,
@@ -64,3 +65,18 @@ def test_create_source_data_for_photo():
     expected = json.load(open("tests/fixtures/structured_data/photo_source_data.json"))
 
     assert result == expected
+
+
+@pytest.mark.parametrize(
+    ["license_id", "filename"], [("cc-by-2.0", "license_cc_by_2.0.json")]
+)
+def test_create_license_statement(license_id, filename):
+    actual = create_license_statement(license_id)
+    expected = json.load(open(f"tests/fixtures/structured_data/{filename}"))
+
+    assert actual == expected
+
+
+def test_create_license_statement_fails_if_unrecognised_license():
+    with pytest.raises(ValueError, match="Unrecognised license ID"):
+        create_license_statement(license_id="mystery")
