@@ -143,17 +143,22 @@ class WikimediaApi:
                 "url": photo_url,
                 "token": self.get_csrf_token(),
                 "text": """=={{int:license-header}}==
-{{self|%s}}""" % license,
+{{self|%s}}"""
+                % license,
             },
             # Note: this can fail with an httpx.ReadTimeout error with
             # the default timeout, so we increase it.
-            timeout=60
+            timeout=60,
         )
 
+        if (
+            upload_resp["upload"]["result"] == "Warning"
+            and upload_resp["upload"]["warnings"].get("exists") == filename
+        ):
+            raise DuplicatePhotoUploadException(filename)
+
         if upload_resp["upload"]["result"] != "Success":
-            raise RuntimeError(
-                f"Unexpected result from upload API: {upload_resp!r}"
-            )
+            raise RuntimeError(f"Unexpected result from upload API: {upload_resp!r}")
 
         # Add some structured data to the file, in particular the
         # "file caption" field.
@@ -182,12 +187,17 @@ class WikimediaApiException(Exception):
     pass
 
 
+<<<<<<< HEAD
 class UnknownWikimediaApiException(WikimediaApiException):
+=======
+class UnknownWikimediaApiException(Exception):
+>>>>>>> 9bced5a (Throw a nicer error message when you upload duplicate photos)
     def __init__(self, resp):
         error_info = resp.json()["error"]
 
         self.code = error_info.get("code")
         self.error_info = error_info
+<<<<<<< HEAD
         super().__init__(error_info["info"])
 
 
@@ -197,3 +207,11 @@ class InvalidAccessTokenException(WikimediaApiException):
     """
 
     pass
+=======
+        super().__init__(error_info.get("info"))
+
+
+class DuplicatePhotoUploadException(WikimediaApiException):
+    def __init__(self, name):
+        super().__init__(f"There is already a photo on Wikimedia Commons called {name}")
+>>>>>>> 9bced5a (Throw a nicer error message when you upload duplicate photos)

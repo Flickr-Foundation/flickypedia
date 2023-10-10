@@ -3,6 +3,7 @@ import pytest
 from flickypedia.apis.wikimedia import (
     WikimediaApi,
     InvalidAccessTokenException,
+    DuplicatePhotoUploadException,
     UnknownWikimediaApiException,
 )
 
@@ -86,11 +87,22 @@ class TestAddFileCaption:
 
 def test_fails_if_uploading_image_from_disallowed_domain(wikimedia_api):
     with pytest.raises(
-        WikimediaApiException, match="Uploads by URL are not allowed from this domain"
+        UnknownWikimediaApiException,
+        match="Uploads by URL are not allowed from this domain",
     ):
         wikimedia_api.upload_photo(
             photo_url="https://alexwlchan.net/images/example.jpg",
             filename="example.jpg",
             license="cc-by-2.0",
             short_caption="An image which doesn’t exist",
+        )
+
+
+def test_fails_if_uploading_image_which_is_duplicate(wikimedia_api):
+    with pytest.raises(DuplicatePhotoUploadException):
+        wikimedia_api.upload_photo(
+            photo_url="https://live.staticflickr.com/65535/53248279408_c23cba9eb8_o_d.jpg",
+            filename="RailwayMuseumClocks.jpg",
+            license="cc-by-2.0",
+            short_caption="A wall of railway pendulum clocks at the Slovenian Railway Museum in Ljubljana",
         )
