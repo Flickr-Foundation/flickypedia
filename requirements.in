@@ -1,1 +1,7 @@
 cryptography
+
+# Version pins for 3.7 for things we don't depend on directly, but are
+# dependencies of libraries we actually use.
+#
+# See https://github.com/Flickr-Foundation/flickypedia/issues/2
+cffi<1.16.0

@@ -1,14 +1,14 @@
 -r requirements.txt
 
-coverage
 pytest
 pytest-cov
 
 # These version pins are all to maintain Python 3.7 support, even though
 # Python 3.7 is EOL.
 #
-# See https://github.com/Flickr-Foundation/flinumeratr/issues/23
+# See https://github.com/Flickr-Foundation/flickypedia/issues/2
 black<23.7.0
+coverage<7.3.0
 flake8<6
 vcrpy<5
 
