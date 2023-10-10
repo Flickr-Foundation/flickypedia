@@ -24,6 +24,20 @@ class WikimediaApi:
 
         return resp.json()
 
+    def get_csrf_token(self) -> str:
+        """
+        Get a CSRF token from the Wikimedia API.
+
+        This is required for certain API actions that modify data in
+        Wikimedia.  External callers are never expected to use this,
+        but functions from this class will call it when they need a token.
+
+        See https://www.mediawiki.org/wiki/API:Tokens
+        """
+        resp = self._call(action="query", meta="tokens", type="csrf")
+
+        return resp["query"]["tokens"]["csrftoken"]
+
     def get_userinfo(self) -> str:
         """
         Returns the user ID and name for a Wikimedia Commons user.
