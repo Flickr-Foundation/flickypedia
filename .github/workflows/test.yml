@@ -38,4 +38,5 @@ jobs:
         flake8 --ignore=E501,W503
     - name: Run tests
       run: |
-        pytest
+        coverage run -m pytest tests
+        coverage report
