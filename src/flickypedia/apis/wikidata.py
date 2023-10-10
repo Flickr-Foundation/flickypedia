@@ -12,15 +12,15 @@ class WikidataProperties:
     # https://www.wikidata.org/wiki/Property:<PROPERTY_ID>
     #
     # e.g. https://www.wikidata.org/wiki/Property:P2093
-    OPERATOR = "P137"
-    CREATOR = "P170"
-    DESCRIBED_AT_URL = "P973"
-    AUTHOR_NAME = "P2093"
-    FLICKR_USER_ID = "P3267"
-    URL = "P2699"
-    SOURCE_OF_FILE = "P7482"
+    Operator = "P137"
+    Creator = "P170"
+    DescribedAtUrl = "P973"
+    AuthorName = "P2093"
+    FlickrUserId = "P3267"
+    Url = "P2699"
+    SourceOfFile = "P7482"
     CopyrightLicense = "P275"
-    COPYRIGHT_STATUS = "P6216"
+    CopyrightStatus = "P6216"
 
 
 class WikidataEntities:
@@ -73,7 +73,7 @@ def lookup_flickr_user_in_wikidata(*, id, username):
         SELECT ?item WHERE {
           { ?item wdt:%s "%s" . }
         }""" % (
-            WikidataProperties.FLICKR_USER_ID,
+            WikidataProperties.FlickrUserId,
             id,
         )
     else:
@@ -84,9 +84,9 @@ def lookup_flickr_user_in_wikidata(*, id, username):
           UNION
           { ?item wdt:%s "%s" . }
         }""" % (
-            WikidataProperties.FLICKR_USER_ID,
+            WikidataProperties.FlickrUserId,
             id,
-            WikidataProperties.FLICKR_USER_ID,
+            WikidataProperties.FlickrUserId,
             username,
         )
 
