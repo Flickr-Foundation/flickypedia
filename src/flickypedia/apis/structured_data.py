@@ -41,11 +41,13 @@ def create_flickr_creator_data(user_id, username, realname):
         ]
 
         qualifiers = {
-            property_id: [{
-                "datavalue": {"type": "string", "value": value},
-                "property": property_id,
-                "snaktype": "value",
-            }]
+            property_id: [
+                {
+                    "datavalue": {"type": "string", "value": value},
+                    "property": property_id,
+                    "snaktype": "value",
+                }
+            ]
             for property_id, value in qualifier_values
         }
 
