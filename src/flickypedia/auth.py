@@ -8,46 +8,36 @@ unit -- this is the most sensitive code in the app.
 
 == Design notes ==
 
-When we want to authenticate a user with Wikimedia, we sent them to
+We use Wikimedia's OAuth 2.0 user credentials flow.
+
+When we want to authenticate a user with Wikimedia, we send them to
 a URL on meta.wikimedia.org where they log in and approve our app.
 They then get redirected back to Flickypedia with an authorization code,
 which we can exchange for an access/refresh token.  We can then use the
 access token to authenticate requests with the Wikimedia API on behalf
 of the logged-in user.
 
-This leaves us with a design question: where do we store the OAuth tokens?
+This leaves us with a design question: where do we store the access tokens?
 
-Quoting the Auth0 docs:
+Quoting some advice from Auth0:
 
 > If your app needs to call APIs on behalf of the user, access tokens
 > and (optionally) refresh tokens are needed. These can be stored
-> server-side or in a session cookie. The cookie needs to be encrypted
-> and have a maximum size of 4 KB.
+> server-side or in a session cookie.
 
 In Flickypedia, we store the tokens server-side.
 
 Because these tokens can be used to perform actions on behalf of a user
 in the Wikimedia universe, we need to keep them secure.  When we get
-an access token for a session, we create a per-session encryption key
-using the ``cryptography`` library.
+an access token for a session, we create a unique encryption key using
+the ``cryptography`` library, and we use this to encrypt the tokens.
 
 *   The encryption key is stored in the user's client-side session
 *   The encrypted tokens are stored in our server-side database
 
-This means that somebody who gets access to the server-side database just
-can't read out all the user tokens, and somebody who gets access to the
-user's browser can't retrieve their token.
-
-
-We store the access token in a server-side, in-memory session.  Tokens can
-be stored server-side or in a session cookie; if the latter, the cookie
-needs to be encrypted.  Flask's session cookies aren't encrypted by
-default, and there's no reason for the user to have their access token,
-so we store it server-side instead.
-
-Storing it in-memory saves us having to encrypt it on disk, at the cost
-of sessions being dropped when the app restarts.  This is an acceptable
-compromise for an app which doesn't have continuous sessions.
+This means that somebody who gets access to the server-side database
+can't just read out all the user tokens, and somebody who gets access
+to the user's browser can't just retrieve their token.
 
 == Useful background reading ==
 
@@ -67,22 +57,27 @@ compromise for an app which doesn't have continuous sessions.
 
 import datetime
 import os
-import secrets
 from urllib.parse import urlencode
 import uuid
 
 from cryptography.fernet import Fernet
 from flask import abort, flash, redirect, request, session, url_for
-import flask_login
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager, UserMixin, current_user, login_required, login_user, logout_user
+from flask_login import (
+    LoginManager,
+    UserMixin,
+    current_user,
+    login_required,
+    login_user,
+    logout_user,
+)
 import httpx
 
 from flickypedia.app import app
 from flickypedia.apis.wikimedia import get_userinfo
 from flickypedia.utils import decrypt_string, encrypt_string
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite"
 app.config["OAUTH2_PROVIDERS"] = {
     # Implementation note: although these URLs are currently hard-coded,
     # there is a beta cluster we might use in the future.  It's currently
@@ -107,28 +102,29 @@ login.login_view = "index"
 class WikimediaUserSession(UserMixin, db.Model):
     """
     Represents a single session for a logged-in Wikimedia user.
-    
+
     This model is written to a SQLite database that lives on the server,
     so it shouldn't contain any secret information in plaintext.
     """
-    __tablename__ = 'wikimedia_user_sessions'
+
+    __tablename__ = "wikimedia_user_sessions"
     id = db.Column(db.String(64), primary_key=True)
     userid = db.Column(db.Integer, nullable=False)
     name = db.Column(db.String(64), nullable=False)
     encrypted_access_token = db.Column(db.LargeBinary, nullable=False)
     access_token_expires = db.Column(db.DateTime, nullable=False)
     encrypted_refresh_token = db.Column(db.LargeBinary, nullable=False)
-    
+
     def access_token(self, key):
         return decrypt_string(key, ciphertext=self.encrypted_access_token)
-    
+
     def refresh_token(self, key):
         return decrypt_string(key, ciphertext=self.encrypted_refresh_token)
 
 
 @login.user_loader
 def load_user(id):
-    return db.session.get(WikimediaUserSession, session['oauth_userid_wikimedia'])
+    return db.session.get(WikimediaUserSession, session["oauth_userid_wikimedia"])
 
 
 @app.route("/logout")
@@ -137,7 +133,9 @@ def logout():
     """
     A route to log out the user.
     """
-    db.session.query(WikimediaUserSession).filter(WikimediaUserSession.id==session['oauth_userid_wikimedia']).delete()
+    db.session.query(WikimediaUserSession).filter(
+        WikimediaUserSession.id == session["oauth_userid_wikimedia"]
+    ).delete()
     db.session.commit()
 
     logout_user()
@@ -238,39 +236,35 @@ def oauth2_callback_wikimedia():
 
     # Store the username in the session.  This isn't sensitive information
     # and is mostly used to render the username in the UI.
-    session['wikimedia_user'] = {
-        'id': userinfo['id'],
-        'name': userinfo['name']
-    }
-    
+    session["wikimedia_user"] = {"id": userinfo["id"], "name": userinfo["name"]}
+
     # Create a persistent ID for the session.
-    session['oauth_userid_wikimedia'] = str(uuid.uuid4())
-    
+    session["oauth_userid_wikimedia"] = str(uuid.uuid4())
+
     user = db.session.scalar(
-        db.select(WikimediaUserSession).where(WikimediaUserSession.id == session["oauth_userid_wikimedia"])
+        db.select(WikimediaUserSession).where(
+            WikimediaUserSession.id == session["oauth_userid_wikimedia"]
+        )
     )
     if user is None:
         key = Fernet.generate_key()
-        session['oauth_key_wikimedia'] = key
-        
+        session["oauth_key_wikimedia"] = key
+
         user = WikimediaUserSession(
-            id=session['oauth_userid_wikimedia'],
-            userid=userinfo['id'],
-            name=userinfo['name'],
-            encrypted_access_token=encrypt_string(
-                key, plaintext=access_token
-            ),
-            access_token_expires=datetime.datetime.now()+ datetime.timedelta(seconds=expires_in),
-            encrypted_refresh_token=encrypt_string(
-                key, plaintext=refresh_token
-            )
+            id=session["oauth_userid_wikimedia"],
+            userid=userinfo["id"],
+            name=userinfo["name"],
+            encrypted_access_token=encrypt_string(key, plaintext=access_token),
+            access_token_expires=datetime.datetime.now()
+            + datetime.timedelta(seconds=expires_in),
+            encrypted_refresh_token=encrypt_string(key, plaintext=refresh_token),
         )
         db.session.add(user)
         db.session.commit()
 
     # Log the user in
     login_user(user)
-    
+
     return redirect(url_for("index"))
 
 
