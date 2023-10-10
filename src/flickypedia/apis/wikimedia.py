@@ -177,8 +177,10 @@ class WikimediaApi:
                 "token": self.get_csrf_token(),
             },
         )
-        
-        from pprint import pprint; pprint(set_label_resp)
+
+        from pprint import pprint
+
+        pprint(set_label_resp)
 
 
 class WikimediaApiException(Exception):
