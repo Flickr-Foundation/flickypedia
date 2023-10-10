@@ -8,20 +8,29 @@ anyio==3.7.1
     # via
     #   -r requirements.in
     #   httpcore
+cachelib==0.10.2
+    # via flask-session
 certifi==2023.7.22
     # via
     #   httpcore
     #   httpx
+cffi==1.16.0
+    # via cryptography
 click==8.1.7
     # via flask
+cryptography==41.0.4
+    # via -r requirements.in
 exceptiongroup==1.1.3
     # via anyio
 flask==2.2.5
     # via
     #   -r requirements.in
     #   flask-login
+    #   flask-session
     #   flask-sqlalchemy
 flask-login==0.6.2
+    # via -r requirements.in
+flask-session==0.4.1
     # via -r requirements.in
 flask-sqlalchemy==3.0.5
     # via -r requirements.in
@@ -58,6 +67,8 @@ more-itertools==9.1.0
     # via
     #   -r requirements.in
     #   jaraco-classes
+pycparser==2.21
+    # via cffi
 sniffio==1.3.0
     # via
     #   anyio
