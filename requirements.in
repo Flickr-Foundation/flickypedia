@@ -1,7 +1,14 @@
 cryptography
 
-# Version pins for 3.7 for things we don't depend on directly, but are
-# dependencies of libraries we actually use.
+# These version pins are all to maintain Python 3.7 support, even though
+# Python 3.7 is EOL.
 #
 # See https://github.com/Flickr-Foundation/flickypedia/issues/2
+flask<2.3.0
+
+# Version pins for 3.7 for things we don't depend on directly, but are
+# dependencies of libraries we actually use.
 cffi<1.16.0
+importlib-metadata<4.3
+werkzeug<2.3.0
+zipp<3.16.0
