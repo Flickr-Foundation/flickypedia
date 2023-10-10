@@ -55,13 +55,16 @@ to the user's browser can't just retrieve their token.
 
 """
 
+import datetime
 from urllib.parse import urlencode
+import uuid
 
+from cryptography.fernet import Fernet
 from flask import current_user, flash, redirect, request, session, url_for
 from flask_login import LoginManager, UserMixin, login_required, logout_user
 
 from flickypedia import app, db
-from flickypedia.utils import decrypt_string
+from flickypedia.utils import decrypt_string, encrypt_string
 
 
 login = LoginManager(app)
@@ -74,6 +77,9 @@ login.login_view = "index"
 #
 # This is the name of the key that ID is stored under in their session.
 SESSION_ID_KEY = "oauth_userid_wikimedia"
+
+# This is the name of the encryption key which is stored in the user session.
+SESSION_ENCRYPTION_KEY = "oauth_key_wikimedia"
 
 
 class WikimediaUserSession(UserMixin, db.Model):
@@ -211,3 +217,35 @@ def oauth2_callback_wikimedia():
     except KeyError:
          flash("Malformed access token response from Wikimedia")
          abort(401)
+
+    # Get info about the logged in user
+    userinfo = get_userinfo(access_token=access_token)
+
+    # Add our persistent ID to the session object.
+    session[SESSION_ID_KEY] = str(uuid.uuid4())
+
+    # Now create a user and store it in the database.
+    #
+    # In Miguel Grinberg's code, he looks for an existing user.  We don't
+    # have to do that here, because we're creating per-session database
+    # entries.  We know there isn't an existing user.
+    key = Fernet.generate_key()
+
+    session[SESSION_ENCRYPTION_KEY] = key
+
+    user = WikimediaUserSession(
+        id=session[SESSION_ID_KEY],
+        userid=userinfo['id'],
+        name=userinfo['name'],
+        encrypted_access_token=encrypt_string(key, plaintext=access_token),
+         access_token_expires=datetime.datetime.now()
+         + datetime.timedelta(seconds=expires_in),
+         encrypted_refresh_token=encrypt_string(key, plaintext=refresh_token),
+    )
+    db.session.add(user)
+    db.session.commit()
+
+    # Log the user in
+    login_user(user)
+
+    return redirect(url_for("index"))

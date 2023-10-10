@@ -13,6 +13,9 @@ def main():
 
     args = parser.parse_args()
 
-    from flickypedia import app
+    from flickypedia import app, db
+
+    with app.app_context():
+        db.create_all()
 
     app.run(debug=args.debug, port=args.port, host=args.host)
