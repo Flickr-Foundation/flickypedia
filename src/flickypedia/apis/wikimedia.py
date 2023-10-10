@@ -147,10 +147,13 @@ class WikimediaApi:
                 "text": """=={{int:license-header}}==
 {{self|%s}}""",
             },
+            # Note: this can fail with an httpx.ReadTimeout error with
+            # the default timeout, so we increase it.
+            timeout=60
         )
 
         if upload_resp["upload"]["result"] != "Success":
-            raise RuntimeException(
+            raise RuntimeError(
                 f"Unexpected result from upload API: {upload_resp!r}"
             )
 
