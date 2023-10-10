@@ -20,7 +20,6 @@ def cassette_name(request):
         return f"{request.function.__name__}.yml"
 
 
-
 @pytest.fixture(scope="function")
 def vcr_cassette(cassette_name):
     """
@@ -35,7 +34,6 @@ def vcr_cassette(cassette_name):
         cassette_library_dir="tests/fixtures/cassettes",
     ):
         yield
-
 
 
 @pytest.fixture(scope="function")

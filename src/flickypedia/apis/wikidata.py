@@ -3,14 +3,14 @@ import re
 import httpx
 
 
-def lookup_flickr_user_in_wikidata(*, id, name):
+def lookup_flickr_user_in_wikidata(*, id, username):
     """
     Return the Wikidata entity for a Flickr user, if it exists.
 
-        >>> lookup_flickr_user_in_wikidata(id="1234567@N02", name="brandnew")
+        >>> lookup_flickr_user_in_wikidata(id="1234567@N02", username="brandnew")
         None
 
-        >>> lookup_flickr_user_in_wikidata(id="199246608@N02", name="ianemes")
+        >>> lookup_flickr_user_in_wikidata(id="199246608@N02", username="ianemes")
         "Q5981474"
 
     Note that Wikidata entities are inconsistent about using the user ID
@@ -28,12 +28,15 @@ def lookup_flickr_user_in_wikidata(*, id, name):
     #
     # I used https://stackoverflow.com/a/27212955/1558022 as the
     # starting point for these SPARQL queries.
-    if name is None:
-        query = """PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+    if username is None:
+        query = (
+            """PREFIX wdt: <http://www.wikidata.org/prop/direct/>
 
         SELECT ?item WHERE {
           { ?item wdt:P3267 "%s" . }
-        }""" % id
+        }"""
+            % id
+        )
     else:
         query = """PREFIX wdt: <http://www.wikidata.org/prop/direct/>
 
@@ -41,11 +44,13 @@ def lookup_flickr_user_in_wikidata(*, id, name):
           { ?item wdt:P3267 "%s" . }
           UNION
           { ?item wdt:P3267 "%s" . }
-        }""" % (id, name)
+        }""" % (
+            id,
+            username,
+        )
 
     resp = httpx.get(
-        "https://query.wikidata.org/sparql",
-        params={"format": "json", "query": query}
+        "https://query.wikidata.org/sparql", params={"format": "json", "query": query}
     )
 
     resp.raise_for_status()
@@ -66,13 +71,15 @@ def lookup_flickr_user_in_wikidata(*, id, name):
     #       }
     #     }
     #
-    results = resp.json()['results']['bindings']
+    results = resp.json()["results"]["bindings"]
 
     # The list of matched entities is returned as a list.  In theory
     # we could get two or more entities back, in which case it's unclear
     # where we should map it -- in this case, log a warning and then give up.
     if len(results) > 1:
-        print(f"Warning: ambiguous Wikidata entities found for Flickr user id={id} / name={name}")
+        print(
+            f"Warning: ambiguous Wikidata entities found for Flickr user id={id} / username={username}"
+        )
         return
 
     # Look for something that looks like a single Wikidata entity URL
@@ -81,13 +88,16 @@ def lookup_flickr_user_in_wikidata(*, id, name):
     # We're deliberately quite conservative here -- it's better to skip
     # linking an entity that exists that link an incorrect entity.
     try:
-        matched_item = results[0]['item']
+        matched_item = results[0]["item"]
 
         # e.g. http://www.wikidata.org/entity/Q5981474
-        uri_match = re.match(r'^http://www.wikidata.org/entity/(?P<wikidata_id>Q\d+)$', matched_item['value'])
+        uri_match = re.match(
+            r"^http://www.wikidata.org/entity/(?P<wikidata_id>Q\d+)$",
+            matched_item["value"],
+        )
 
-        if matched_item['type'] == 'uri' and uri_match is not None:
-            return uri_match.group('wikidata_id')
+        if matched_item["type"] == "uri" and uri_match is not None:
+            return uri_match.group("wikidata_id")
 
     except (IndexError, KeyError):
         pass
