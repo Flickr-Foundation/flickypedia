@@ -70,30 +70,30 @@ def create_flickr_creator_data(user_id, username, realname):
     if wikidata_id is not None:
         return {
             "mainsnak": _wikibase_entity_value(
-                property=WikidataProperties.CREATOR, wikidata_id=wikidata_id
+                property=WikidataProperties.Creator, wikidata_id=wikidata_id
             ),
             "type": "statement",
         }
     else:
         qualifier_values = [
-            {"property": WikidataProperties.AUTHOR_NAME, "value": realname or username},
+            {"property": WikidataProperties.AuthorName, "value": realname or username},
             {
-                "property": WikidataProperties.URL,
+                "property": WikidataProperties.Url,
                 "value": f"https://www.flickr.com/photos/{user_id}/",
             },
-            {"property": WikidataProperties.FLICKR_USER_ID, "value": user_id},
+            {"property": WikidataProperties.FlickrUserId, "value": user_id},
         ]
 
         return {
             "mainsnak": {
                 "snaktype": "somevalue",
-                "property": WikidataProperties.CREATOR,
+                "property": WikidataProperties.Creator,
             },
             "qualifiers": _create_qualifiers(qualifier_values),
             "qualifiers-order": [
-                WikidataProperties.FLICKR_USER_ID,
-                WikidataProperties.AUTHOR_NAME,
-                WikidataProperties.URL,
+                WikidataProperties.FlickrUserId,
+                WikidataProperties.AuthorName,
+                WikidataProperties.Url,
             ],
             "type": "statement",
         }
@@ -113,7 +113,7 @@ def create_copyright_status_data(status):
 
     return {
         "mainsnak": _wikibase_entity_value(
-            property=WikidataProperties.COPYRIGHT_STATUS,
+            property=WikidataProperties.CopyrightStatus,
             wikidata_id=WikidataEntities.Copyrighted,
         ),
         "type": "statement",
@@ -132,23 +132,41 @@ def create_source_data_for_photo(user_id, photo_id, jpeg_url):
     """
     qualifier_values = [
         {
-            "property": WikidataProperties.DESCRIBED_AT_URL,
+            "property": WikidataProperties.DescribedAtUrl,
             "value": f"https://www.flickr.com/photos/{user_id}/{photo_id}/",
         },
-        {"property": WikidataProperties.OPERATOR, "entity_id": WikidataEntities.Flickr},
-        {"property": WikidataProperties.URL, "value": jpeg_url},
+        {"property": WikidataProperties.Operator, "entity_id": WikidataEntities.Flickr},
+        {"property": WikidataProperties.Url, "value": jpeg_url},
     ]
 
     return {
         "mainsnak": _wikibase_entity_value(
-            property=WikidataProperties.SOURCE_OF_FILE,
+            property=WikidataProperties.SourceOfFile,
             wikidata_id=WikidataEntities.FileAvailableOnInternet,
         ),
         "qualifiers": _create_qualifiers(qualifier_values),
         "qualifiers-order": [
-            WikidataProperties.DESCRIBED_AT_URL,
-            WikidataProperties.OPERATOR,
-            WikidataProperties.URL,
+            WikidataProperties.DescribedAtUrl,
+            WikidataProperties.Operator,
+            WikidataProperties.Url,
         ],
+        "type": "statement",
+    }
+
+
+def create_license_statement(license_id):
+    """
+    Create a structured data statement for copyright license.
+    """
+    try:
+        wikidata_license_id = WikidataEntities.Licenses[license_id]
+    except KeyError:
+        raise ValueError(f"Unrecognised license ID: {license_id!r}")
+
+    return {
+        "mainsnak": _wikibase_entity_value(
+            property=WikidataProperties.CopyrightLicense,
+            wikidata_id=wikidata_license_id,
+        ),
         "type": "statement",
     }

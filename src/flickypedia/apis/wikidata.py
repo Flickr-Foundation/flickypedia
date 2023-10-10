@@ -12,14 +12,15 @@ class WikidataProperties:
     # https://www.wikidata.org/wiki/Property:<PROPERTY_ID>
     #
     # e.g. https://www.wikidata.org/wiki/Property:P2093
-    OPERATOR = "P137"
-    CREATOR = "P170"
-    DESCRIBED_AT_URL = "P973"
-    AUTHOR_NAME = "P2093"
-    FLICKR_USER_ID = "P3267"
-    URL = "P2699"
-    SOURCE_OF_FILE = "P7482"
-    COPYRIGHT_STATUS = "P6216"
+    Operator = "P137"
+    Creator = "P170"
+    DescribedAtUrl = "P973"
+    AuthorName = "P2093"
+    FlickrUserId = "P3267"
+    Url = "P2699"
+    SourceOfFile = "P7482"
+    CopyrightLicense = "P275"
+    CopyrightStatus = "P6216"
 
 
 class WikidataEntities:
@@ -34,6 +35,19 @@ class WikidataEntities:
     Copyrighted = "Q50423863"
     FileAvailableOnInternet = "Q74228490"
     Flickr = "Q103204"
+
+    Licenses = {
+        "cc-by-2.0": "Q19125117",
+        "cc-by-nc-2.0": "Q44128984",
+        "cc-by-nc-nd-2.0": "Q47008927",
+        "cc-by-nc-sa-2.0": "Q28050835",
+        "cc-by-nd-2.0": "Q35254645",
+        "cc-by-sa-2.0": "Q19068220",
+        "cc-0-1.0": "Q6938433",
+        # TODO: Flickr has a statement "US Government Work" which we
+        # might need to map here; if so, consider this entity:
+        # https://www.wikidata.org/wiki/Q60671452
+    }
 
 
 def lookup_flickr_user_in_wikidata(*, id, username):
@@ -62,7 +76,7 @@ def lookup_flickr_user_in_wikidata(*, id, username):
         SELECT ?item WHERE {
           { ?item wdt:%s "%s" . }
         }""" % (
-            WikidataProperties.FLICKR_USER_ID,
+            WikidataProperties.FlickrUserId,
             id,
         )
     else:
@@ -73,9 +87,9 @@ def lookup_flickr_user_in_wikidata(*, id, username):
           UNION
           { ?item wdt:%s "%s" . }
         }""" % (
-            WikidataProperties.FLICKR_USER_ID,
+            WikidataProperties.FlickrUserId,
             id,
-            WikidataProperties.FLICKR_USER_ID,
+            WikidataProperties.FlickrUserId,
             username,
         )
 
