@@ -1,10 +1,12 @@
 cryptography
+flask-login
 
 # These version pins are all to maintain Python 3.7 support, even though
 # Python 3.7 is EOL.
 #
 # See https://github.com/Flickr-Foundation/flickypedia/issues/2
 flask<2.3.0
+Flask-SQLAlchemy<3.1.0
 httpx<0.25.0
 
 # Version pins for 3.7 for things we don't depend on directly, but are
@@ -12,5 +14,6 @@ httpx<0.25.0
 anyio<4.0.0
 cffi<1.16.0
 importlib-metadata<4.3
+typing-extensions<4.8.0
 werkzeug<2.3.0
 zipp<3.16.0
