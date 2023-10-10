@@ -121,6 +121,48 @@ class WikimediaApi:
         else:  # pragma: no cover
             raise WikimediaApiException(f"Unexpected response: {resp}")
 
+    def upload_photo(self, *, photo_url, filename, license, short_caption) -> str:
+        """
+        Uploads a photo to Wikimedia Commons and adds some structured data.
+
+        See https://www.mediawiki.org/wiki/API:Upload
+        """
+        # Do the initial upload of the file to Wikimedia Commons.
+        #
+        # See https://www.mediawiki.org/wiki/API:Upload
+        upload_csrf_token = self.get_csrf_token()
+
+        upload_resp = self._call(
+            action="upload",
+            filename=filename,
+            url=photo_url,
+            token=upload_csrf_token,
+            text="""=={{int:license-header}}==
+{{self|%s}}"""
+        )
+
+        if upload_resp["upload"]["result"] != "Success":
+            raise RuntimeException(f"Unexpected result from upload API: {upload_resp!r}")
+
+        # Add some structured data to the file, in particular the
+        # "file caption" field.
+        #
+        # See https://www.wikidata.org/w/api.php?modules=wbsetlabel&action=help
+        # See https://www.mediawiki.org/wiki/Wikibase/API
+        set_label_csrf_token = self.get_csrf_token()
+
+        set_label_resp = self._call(
+            action="wbsetlabel",
+            title=f"File:{filename}",
+            site="commonswiki",
+            value=short_caption,
+            # TODO: Support non-English captions
+            language="en",
+            token=set_label_csrf_token
+        )
+
+        from pprint import pprint; pprint(set_label_resp.json())
+
 
 class WikimediaApiException(Exception):
     pass
