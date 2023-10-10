@@ -15,3 +15,11 @@ $ python3 -m venv .venv
 $ source .venv/bin/activate
 $ pip install -e .
 ```
+
+If you want to run tests, install the dev dependencies and run `coverage`:
+
+```console
+$ source .venv/bin/activate
+$ pip install -r dev_requirements.txt
+$ coverage run -m pytest tests; coverage report
+```
