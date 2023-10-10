@@ -17,6 +17,11 @@ class WikimediaApi:
         )
 
     def _request(self, *, method, **kwargs):
+        try:
+            kwargs["params"]["format"] = "json"
+        except KeyError:
+            kwargs["data"]["format"] = "json"
+
         resp = self.client.request(method, url="w/api.php", **kwargs)
 
         # When something goes wrong, we get an ``error`` key in the response.
@@ -132,36 +137,44 @@ class WikimediaApi:
         # See https://www.mediawiki.org/wiki/API:Upload
         upload_csrf_token = self.get_csrf_token()
 
-        upload_resp = self._call(
-            action="upload",
-            filename=filename,
-            url=photo_url,
-            token=upload_csrf_token,
-            text="""=={{int:license-header}}==
-{{self|%s}}"""
+        upload_resp = self._request(
+            "POST",
+            data={
+                "action": "upload",
+                "filename": filename,
+                "url": photo_url,
+                "token": self.get_csrf_token(),
+                "text": """=={{int:license-header}}==
+{{self|%s}}""",
+            },
         )
 
         if upload_resp["upload"]["result"] != "Success":
-            raise RuntimeException(f"Unexpected result from upload API: {upload_resp!r}")
+            raise RuntimeException(
+                f"Unexpected result from upload API: {upload_resp!r}"
+            )
 
         # Add some structured data to the file, in particular the
         # "file caption" field.
         #
         # See https://www.wikidata.org/w/api.php?modules=wbsetlabel&action=help
         # See https://www.mediawiki.org/wiki/Wikibase/API
-        set_label_csrf_token = self.get_csrf_token()
-
-        set_label_resp = self._call(
-            action="wbsetlabel",
-            title=f"File:{filename}",
-            site="commonswiki",
-            value=short_caption,
-            # TODO: Support non-English captions
-            language="en",
-            token=set_label_csrf_token
+        set_label_resp = self._request(
+            "POST",
+            data={
+                "action": "wbsetlabel",
+                "title": f"File:{filename}",
+                "site": "commonswiki",
+                "value": short_caption,
+                # TODO: Support non-English captions
+                "language": "en",
+                "token": self.get_csrf_token(),
+            },
         )
 
-        from pprint import pprint; pprint(set_label_resp.json())
+        from pprint import pprint
+
+        pprint(set_label_resp.json())
 
 
 class WikimediaApiException(Exception):
