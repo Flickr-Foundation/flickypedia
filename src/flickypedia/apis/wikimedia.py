@@ -14,6 +14,9 @@ def get_userinfo(access_token: str) -> str:
     """
     Returns the user ID and name for a Wikimedia Commons user.
 
+        >>> get_userinfo(access_token="…")
+        {"id": 829939, "name": "Alexwlchan"}
+
     See https://www.mediawiki.org/wiki/API:Userinfo
     """
     client = httpx.Client(headers={"Authorization": f"Bearer {access_token}"})
