@@ -68,8 +68,6 @@ def lookup_flickr_user_in_wikidata(*, id, name):
     #
     results = resp.json()['results']['bindings']
 
-    from pprint import pprint; pprint(resp.json())
-
     # The list of matched entities is returned as a list.  In theory
     # we could get two or more entities back, in which case it's unclear
     # where we should map it -- in this case, log a warning and then give up.
