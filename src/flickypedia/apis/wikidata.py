@@ -16,6 +16,15 @@ class WikidataProperties:
     AUTHOR_NAME = "P2093"
     FLICKR_USER_ID = "P3267"
     URL = "P2699"
+    COPYRIGHT_STATUS = "P6216"
+
+
+class WikidataEntities:
+    """
+    Named constants for certain Wikidata entities.
+    """
+
+    Copyrighted = "Q50423863"
 
 
 def lookup_flickr_user_in_wikidata(*, id, username):
