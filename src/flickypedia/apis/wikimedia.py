@@ -178,10 +178,6 @@ class WikimediaApi:
             },
         )
 
-        from pprint import pprint
-
-        pprint(set_label_resp.json())
-
 
 class WikimediaApiException(Exception):
     pass
