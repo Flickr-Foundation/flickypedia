@@ -37,8 +37,16 @@ exceptiongroup==1.1.3
     #   pytest
 flake8==5.0.4
     # via -r dev_requirements.in
-flask==2.2.5
+flask-sqlalchemy==3.0.5
     # via -r requirements.txt
+flask==2.2.5
+    # via
+    #   -r requirements.txt
+    #   flask-sqlalchemy
+greenlet==3.0.0
+    # via
+    #   -r requirements.txt
+    #   sqlalchemy
 h11==0.14.0
     # via
     #   -r requirements.txt
@@ -116,6 +124,10 @@ sniffio==1.3.0
     #   anyio
     #   httpcore
     #   httpx
+sqlalchemy==2.0.21
+    # via
+    #   -r requirements.txt
+    #   flask-sqlalchemy
 tomli==2.0.1
     # via
     #   black
@@ -124,7 +136,9 @@ tomli==2.0.1
 typing-extensions==4.7.1
     # via
     #   -r dev_requirements.in
+    #   -r requirements.txt
     #   black
+    #   sqlalchemy
 urllib3==1.26.17
     # via vcrpy
 vcrpy==4.4.0
