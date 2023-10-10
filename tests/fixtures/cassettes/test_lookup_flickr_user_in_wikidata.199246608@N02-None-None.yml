@@ -1,0 +1,61 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - query.wikidata.org
+      user-agent:
+      - python-httpx/0.24.1
+    method: GET
+    uri: https://query.wikidata.org/sparql?format=json&query=PREFIX%20wdt%3A%20%3Chttp%3A//www.wikidata.org/prop/direct/%3E%0A%0A%20%20%20%20%20%20%20%20SELECT%20%3Fitem%20WHERE%20%7B%0A%20%20%20%20%20%20%20%20%20%20%7B%20%3Fitem%20wdt%3AP3267%20%22199246608%40N02%22%20.%20%7D%0A%20%20%20%20%20%20%20%20%7D
+  response:
+    content: "{\n  \"head\" : {\n    \"vars\" : [ \"item\" ]\n  },\n  \"results\"
+      : {\n    \"bindings\" : [ ]\n  }\n}"
+    headers:
+      accept-ranges:
+      - bytes
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '207'
+      cache-control:
+      - public, max-age=300
+      content-length:
+      - '86'
+      content-type:
+      - application/sparql-results+json;charset=utf-8
+      date:
+      - Tue, 10 Oct 2023 15:13:42 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - nginx/1.18.0
+      server-timing:
+      - cache;desc="hit-local", host;desc="cp3068"
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept
+      x-cache:
+      - cp3068 hit, cp3068 pass
+      x-cache-status:
+      - hit-local
+      x-client-ip:
+      - 80.42.123.5
+      x-first-solution-millis:
+      - '1'
+      x-served-by:
+      - wdqs1006
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1
