@@ -3,6 +3,21 @@ import re
 import httpx
 
 
+class WikidataProperties:
+    """
+    Named constants for Wikidata property names.
+    """
+
+    # To see documentation for a particular property, go to
+    # https://www.wikidata.org/wiki/Property:<PROPERTY_ID>
+    #
+    # e.g. https://www.wikidata.org/wiki/Property:P2093
+    CREATOR = "P170"
+    AUTHOR_NAME = "P2093"
+    FLICKR_USER_ID = "P3267"
+    URL = "P2699"
+
+
 def lookup_flickr_user_in_wikidata(*, id, username):
     """
     Return the Wikidata entity for a Flickr user, if it exists.
@@ -19,33 +34,30 @@ def lookup_flickr_user_in_wikidata(*, id, username):
 
     """
     # These two queries are looking for Wikidata entities which have
-    # property P3267 with the given value (id and name).
-    #
-    # P3267 is the Wikidata property for Flickr user ID.
-    #
-    # See https://www.wikidata.org/wiki/Property:P3267 for an explanation
-    # of how this property is used in Wikidata.
+    # property P3267 (Flickr user ID) with the given value (id and name).
     #
     # I used https://stackoverflow.com/a/27212955/1558022 as the
     # starting point for these SPARQL queries.
     if username is None:
-        query = (
-            """PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+        query = """PREFIX wdt: <http://www.wikidata.org/prop/direct/>
 
         SELECT ?item WHERE {
-          { ?item wdt:P3267 "%s" . }
-        }"""
-            % id
+          { ?item wdt:%s "%s" . }
+        }""" % (
+            WikidataProperties.FLICKR_USER_ID,
+            id,
         )
     else:
         query = """PREFIX wdt: <http://www.wikidata.org/prop/direct/>
 
         SELECT ?item WHERE {
-          { ?item wdt:P3267 "%s" . }
+          { ?item wdt:%s "%s" . }
           UNION
-          { ?item wdt:P3267 "%s" . }
+          { ?item wdt:%s "%s" . }
         }""" % (
+            WikidataProperties.FLICKR_USER_ID,
             id,
+            WikidataProperties.FLICKR_USER_ID,
             username,
         )
 

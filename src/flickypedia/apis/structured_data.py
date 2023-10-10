@@ -6,16 +6,7 @@ The goal of this file is to create some helpers and templates to reduce
 the amount of repetition required when creating these entities.
 """
 
-from flickypedia.apis.wikidata import lookup_flickr_user_in_wikidata
-
-
-class WikidataProperties:
-    """
-    Named constants for Wikidata property names.
-    """
-
-    # https://www.wikidata.org/wiki/Property:P170
-    CREATOR = "P170"
+from flickypedia.apis.wikidata import lookup_flickr_user_in_wikidata, WikidataProperties
 
 
 def create_flickr_creator_data(user_id, username, realname):
@@ -40,5 +31,34 @@ def create_flickr_creator_data(user_id, username, realname):
                     "value": {"id": wikidata_id},
                 },
             },
+            "type": "statement",
+        }
+    else:
+        qualifier_values = [
+            (WikidataProperties.AUTHOR_NAME, realname or username),
+            (WikidataProperties.URL, f"https://www.flickr.com/photos/{user_id}/"),
+            (WikidataProperties.FLICKR_USER_ID, user_id),
+        ]
+
+        qualifiers = {
+            property_id: [{
+                "datavalue": {"type": "string", "value": value},
+                "property": property_id,
+                "snaktype": "value",
+            }]
+            for property_id, value in qualifier_values
+        }
+
+        return {
+            "mainsnak": {
+                "snaktype": "somevalue",
+                "property": WikidataProperties.CREATOR,
+            },
+            "qualifiers": qualifiers,
+            "qualifiers-order": [
+                WikidataProperties.FLICKR_USER_ID,
+                WikidataProperties.AUTHOR_NAME,
+                WikidataProperties.URL,
+            ],
             "type": "statement",
         }

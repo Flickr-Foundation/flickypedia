@@ -1,0 +1,44 @@
+{
+  "mainsnak": {
+    "snaktype": "somevalue",
+    "property": "P170"
+  },
+  "qualifiers": {
+    "P2093": [
+      {
+        "datavalue": {
+          "type": "string",
+          "value": "Alex Chan"
+        },
+        "property": "P2093",
+        "snaktype": "value"
+      }
+    ],
+    "P2699": [
+      {
+        "datavalue": {
+          "type": "string",
+          "value": "https://www.flickr.com/photos/199246608@N02/"
+        },
+        "property": "P2699",
+        "snaktype": "value"
+      }
+    ],
+    "P3267": [
+      {
+        "datavalue": {
+          "type": "string",
+          "value": "199246608@N02"
+        },
+        "property": "P3267",
+        "snaktype": "value"
+      }
+    ]
+  },
+  "qualifiers-order": [
+    "P3267",
+    "P2093",
+    "P2699"
+  ],
+  "type": "statement"
+}
