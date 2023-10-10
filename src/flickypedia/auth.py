@@ -105,6 +105,12 @@ login.login_view = "index"
 
 
 class WikimediaUserSession(UserMixin, db.Model):
+    """
+    Represents a single session for a logged-in Wikimedia user.
+    
+    This model is written to a SQLite database that lives on the server,
+    so it shouldn't contain any secret information in plaintext.
+    """
     __tablename__ = 'wikimedia_user_sessions'
     id = db.Column(db.String(64), primary_key=True)
     userid = db.Column(db.Integer, nullable=False)
@@ -122,7 +128,7 @@ class WikimediaUserSession(UserMixin, db.Model):
 
 @login.user_loader
 def load_user(id):
-    return db.session.get(WikimediaUserSession, session['_id'])
+    return db.session.get(WikimediaUserSession, session['oauth_userid_wikimedia'])
 
 
 @app.route("/logout")
@@ -131,6 +137,9 @@ def logout():
     """
     A route to log out the user.
     """
+    db.session.query(WikimediaUserSession).filter(WikimediaUserSession.id==session['oauth_userid_wikimedia']).delete()
+    db.session.commit()
+
     logout_user()
     flash("You have been logged out.")
     return redirect(url_for("index"))
@@ -193,6 +202,7 @@ def oauth2_callback_wikimedia():
     try:
         authorization_code = request.args["code"]
     except KeyError:
+        flash("No authorization code in callback")
         abort(401)
 
     # Exchange the authorization code for an access token
@@ -207,6 +217,7 @@ def oauth2_callback_wikimedia():
     )
 
     if resp.status_code != 200:
+        flash("Error while getting access token from Wikimedia")
         abort(401)
 
     # Extract the key values from the token response.
@@ -219,6 +230,7 @@ def oauth2_callback_wikimedia():
         refresh_token = resp.json()["refresh_token"]
         expires_in = resp.json()["expires_in"]
     except KeyError:
+        flash("Malformed access token response from Wikimedia")
         abort(401)
 
     # Get info about the logged in user
@@ -231,20 +243,18 @@ def oauth2_callback_wikimedia():
         'name': userinfo['name']
     }
     
-    # Create a persistent ID for the session.  This is the same ID which
-    # will be used for Flask-Login; we set it now so it's available before
-    # we call login_user.
-    session['_id'] = str(uuid.uuid4())
+    # Create a persistent ID for the session.
+    session['oauth_userid_wikimedia'] = str(uuid.uuid4())
     
     user = db.session.scalar(
-        db.select(WikimediaUserSession).where(WikimediaUserSession.id == session["_id"])
+        db.select(WikimediaUserSession).where(WikimediaUserSession.id == session["oauth_userid_wikimedia"])
     )
     if user is None:
         key = Fernet.generate_key()
         session['oauth_key_wikimedia'] = key
         
         user = WikimediaUserSession(
-            id=session['_id'],
+            id=session['oauth_userid_wikimedia'],
             userid=userinfo['id'],
             name=userinfo['name'],
             encrypted_access_token=encrypt_string(
