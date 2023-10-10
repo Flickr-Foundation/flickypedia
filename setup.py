@@ -33,7 +33,7 @@ setuptools.setup(
     python_requires=">=3.7",
     entry_points={
         "console_scripts": [
-            "flickypedia = flickypedia.app:main",
+            "flickypedia = flickypedia.cli:main",
         ]
     },
 )
