@@ -4,3 +4,9 @@
 #
 #    pip-compile
 #
+cffi==1.16.0
+    # via cryptography
+cryptography==41.0.4
+    # via -r requirements.in
+pycparser==2.21
+    # via cffi
