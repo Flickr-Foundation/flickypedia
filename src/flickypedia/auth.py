@@ -72,7 +72,7 @@ from flask_login import (
 import httpx
 
 from flickypedia import app, db
-from flickypedia.apis.wikimedia import get_userinfo
+from flickypedia.apis.wikimedia import WikimediaApi
 from flickypedia.utils import decrypt_string, encrypt_string
 
 
@@ -230,7 +230,8 @@ def oauth2_callback_wikimedia():
         abort(401)
 
     # Get info about the logged in user
-    userinfo = get_userinfo(access_token=access_token)
+    api = WikimediaApi(access_token=access_token)
+    userinfo = api.get_userinfo()
 
     # Add our persistent ID to the session object.
     session[SESSION_ID_KEY] = str(uuid.uuid4())
