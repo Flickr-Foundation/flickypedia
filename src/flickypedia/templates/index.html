@@ -1,1 +1,20 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
 <p>Welcome to Flickypedia!</p>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class="flashes">
+    {% for message in messages %}
+      <li>{{ message | safe }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+{% if not current_user.is_anonymous %}
+  You are logged in to Wikimedia as <strong>{{ current_user.name }}</strong>
+  <a href="{{ url_for('logout') }}">Log out</a>
+{% else %}
+  <a href="{{ url_for('oauth2_authorize_wikimedia') }}">Log in to Wikimedia</a>
+{% endif %}
