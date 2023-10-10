@@ -5,6 +5,7 @@ import pytest
 from flickypedia.apis.structured_data import (
     create_copyright_status_data,
     create_flickr_creator_data,
+    create_source_data_for_photo,
 )
 
 
@@ -50,5 +51,16 @@ def test_create_copyright_status_data_fails_for_unknown_value():
 def test_create_copyright_status_data(kwargs, filename):
     result = create_copyright_status_data(**kwargs)
     expected = json.load(open(f"tests/fixtures/structured_data/{filename}"))
+
+    assert result == expected
+
+
+def test_create_source_data_for_photo():
+    result = create_source_data_for_photo(
+        user_id="199246608@N02",
+        photo_id="53248015596",
+        jpeg_url="https://live.staticflickr.com/65535/53248015596_c03f8123cf_o_d.jpg",
+    )
+    expected = json.load(open("tests/fixtures/structured_data/photo_source_data.json"))
 
     assert result == expected
