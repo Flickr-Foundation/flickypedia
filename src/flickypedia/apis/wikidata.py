@@ -44,6 +44,9 @@ class WikidataEntities:
         "cc-by-nd-2.0": "Q35254645",
         "cc-by-sa-2.0": "Q19068220",
         "cc-0-1.0": "Q6938433",
+        # TODO: Flickr has a statement "US Government Work" which we
+        # might need to map here; if so, consider this entity:
+        # https://www.wikidata.org/wiki/Q60671452
     }
 
 
