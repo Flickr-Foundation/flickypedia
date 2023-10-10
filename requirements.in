@@ -6,6 +6,7 @@ flask-login
 #
 # See https://github.com/Flickr-Foundation/flickypedia/issues/2
 flask<2.3.0
+flask-wtf<1.1.2
 Flask-SQLAlchemy<3.1.0
 httpx<0.25.0
 
