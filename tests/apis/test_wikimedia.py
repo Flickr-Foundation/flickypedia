@@ -82,3 +82,15 @@ class TestAddFileCaption:
             )
 
         assert exc.value.code == "no-such-entity-link"
+
+
+def test_fails_if_uploading_image_from_disallowed_domain(wikimedia_api):
+    with pytest.raises(
+        WikimediaApiException, match="Uploads by URL are not allowed from this domain"
+    ):
+        wikimedia_api.upload_photo(
+            photo_url="https://alexwlchan.net/images/example.jpg",
+            filename="example.jpg",
+            license="cc-by-2.0",
+            short_caption="An image which doesn’t exist",
+        )

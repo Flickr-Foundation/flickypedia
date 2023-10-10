@@ -135,8 +135,6 @@ class WikimediaApi:
         # Do the initial upload of the file to Wikimedia Commons.
         #
         # See https://www.mediawiki.org/wiki/API:Upload
-        upload_csrf_token = self.get_csrf_token()
-
         upload_resp = self._request(
             "POST",
             data={
@@ -145,7 +143,7 @@ class WikimediaApi:
                 "url": photo_url,
                 "token": self.get_csrf_token(),
                 "text": """=={{int:license-header}}==
-{{self|%s}}""",
+{{self|%s}}""" % license,
             },
             # Note: this can fail with an httpx.ReadTimeout error with
             # the default timeout, so we increase it.
