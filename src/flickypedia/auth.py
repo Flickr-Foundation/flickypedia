@@ -60,10 +60,19 @@ from urllib.parse import urlencode
 import uuid
 
 from cryptography.fernet import Fernet
-from flask import current_user, flash, redirect, request, session, url_for
-from flask_login import LoginManager, UserMixin, login_required, logout_user
+from flask import abort, flash, redirect, request, session, url_for
+from flask_login import (
+    LoginManager,
+    UserMixin,
+    current_user,
+    login_required,
+    login_user,
+    logout_user,
+)
+import httpx
 
 from flickypedia import app, db
+from flickypedia.apis.wikimedia import get_userinfo
 from flickypedia.utils import decrypt_string, encrypt_string
 
 
@@ -177,46 +186,46 @@ def oauth2_callback_wikimedia():
     # It seems benign enough, but does the Wikimedia redirect ever
     # actually include this parameter?
     if "error" in request.args:
-         for k, v in request.args.items():
-             flash(f"{k}: {v}")
-         return redirect(url_for("index"))
+        for k, v in request.args.items():
+            flash(f"{k}: {v}")
+        return redirect(url_for("index"))
 
-     # Make sure the authorization code is present
+    # Make sure the authorization code is present
     try:
-         authorization_code = request.args["code"]
+        authorization_code = request.args["code"]
     except KeyError:
-         flash("No authorization code in callback")
-         abort(401)
+        flash("No authorization code in callback")
+        abort(401)
 
     # Exchange the authorization code for an access token
     provider_data = app.config["OAUTH2_PROVIDERS"]["wikimedia"]
 
     resp = httpx.post(
-         provider_data["token_url"],
-         data={
-             "grant_type": "authorization_code",
-             "code": authorization_code,
-             "client_id": provider_data["client_id"],
-             "client_secret": provider_data["client_secret"],
-         },
-     )
+        provider_data["token_url"],
+        data={
+            "grant_type": "authorization_code",
+            "code": authorization_code,
+            "client_id": provider_data["client_id"],
+            "client_secret": provider_data["client_secret"],
+        },
+    )
 
     if resp.status_code != 200:
-         flash("Error while getting access token from Wikimedia")
-         abort(401)
+        flash("Error while getting access token from Wikimedia")
+        abort(401)
 
     # Extract the key values from the token response.
-     #
-     # As well as the ``access_token`` and ``refresh_token`` fields
-     # described in their docs, Wikimedia also returns an ``expires``
-     # field which tells us how long the access token will last.
+    #
+    # As well as the ``access_token`` and ``refresh_token`` fields
+    # described in their docs, Wikimedia also returns an ``expires``
+    # field which tells us how long the access token will last.
     try:
-         access_token = resp.json()["access_token"]
-         refresh_token = resp.json()["refresh_token"]
-         expires_in = resp.json()["expires_in"]
+        access_token = resp.json()["access_token"]
+        refresh_token = resp.json()["refresh_token"]
+        expires_in = resp.json()["expires_in"]
     except KeyError:
-         flash("Malformed access token response from Wikimedia")
-         abort(401)
+        flash("Malformed access token response from Wikimedia")
+        abort(401)
 
     # Get info about the logged in user
     userinfo = get_userinfo(access_token=access_token)
@@ -235,12 +244,12 @@ def oauth2_callback_wikimedia():
 
     user = WikimediaUserSession(
         id=session[SESSION_ID_KEY],
-        userid=userinfo['id'],
-        name=userinfo['name'],
+        userid=userinfo["id"],
+        name=userinfo["name"],
         encrypted_access_token=encrypt_string(key, plaintext=access_token),
-         access_token_expires=datetime.datetime.now()
-         + datetime.timedelta(seconds=expires_in),
-         encrypted_refresh_token=encrypt_string(key, plaintext=refresh_token),
+        access_token_expires=datetime.datetime.now()
+        + datetime.timedelta(seconds=expires_in),
+        encrypted_refresh_token=encrypt_string(key, plaintext=refresh_token),
     )
     db.session.add(user)
     db.session.commit()
