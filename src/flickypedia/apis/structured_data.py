@@ -8,6 +8,15 @@ If you want to understand how we create our structured data, it might
 be helpful to look at the files in 'tests/fixtures/structured_data' --
 that folder contains examples of the JSON we'll send to the API.
 
+== Use in the rest of Flickypedia ==
+
+The primary function is ``create_sdc_claims_for_flickr_photo()``,
+which creates a list of statements which can be passed to the
+``wbeditentity`` API.
+
+This is the only function that should be used elsewhere; everything else
+is supporting that function.
+
 == Useful reading ==
 
 *   Commons:Flickypedia/Data Modeling
@@ -78,7 +87,7 @@ def _create_qualifiers(qualifier_values):
     return result
 
 
-def create_flickr_creator_data(user_id, username, realname):
+def create_flickr_creator_statement(user_id, username, realname):
     """
     Create a structured data statement for a user on Flickr.
 
@@ -122,7 +131,7 @@ def create_flickr_creator_data(user_id, username, realname):
         }
 
 
-def create_copyright_status_data(status):
+def create_copyright_status_statement(status):
     """
     Create a structured data statement for a copyright status.
 
@@ -195,14 +204,14 @@ def create_license_statement(license_id):
     }
 
 
-def create_uploaded_to_flickr_statement(uploaded_date: datetime.datetime):
+def create_posted_to_flickr_statement(posted_date: datetime.datetime):
     """
-    Create a structured data statement for date uploaded to Flickr.
+    Create a structured data statement for date posted to Flickr.
     """
     qualifier_values = [
         {
             "property": WikidataProperties.PublicationDate,
-            "date": uploaded_date,
+            "date": posted_date,
             "precision": "day",
         },
     ]
@@ -272,3 +281,53 @@ def create_date_taken_statement(date_taken: datetime.datetime, taken_granularity
             "qualifiers-order": [WikidataProperties.SourcingCircumstances],
             "type": "statement",
         }
+
+
+def create_sdc_claims_for_flickr_photo(
+    photo_id,
+    user_id,
+    username,
+    realname,
+    copyright_status,
+    jpeg_url,
+    license_id,
+    posted_date,
+    date_taken,
+    taken_unknown,
+    taken_granularity,
+):
+    """
+    Creates a complete structured data claim for a Flickr photo.
+
+    This is the main entry point into this file for the rest of Flickypedia.
+    """
+    creator_statement = create_flickr_creator_statement(
+        user_id=user_id, username=username, realname=realname
+    )
+
+    copyright_statement = create_copyright_status_statement(status=copyright_status)
+
+    source_statement = create_source_data_for_photo(
+        user_id=user_id, photo_id=photo_id, jpeg_url=jpeg_url
+    )
+
+    license_statement = create_license_statement(license_id=license_id)
+
+    posted_date_statement = create_posted_to_flickr_statement(posted_date=posted_date)
+
+    statements = [
+        creator_statement,
+        copyright_statement,
+        source_statement,
+        license_statement,
+        posted_date_statement,
+    ]
+
+    if not taken_unknown:
+        date_taken_statement = create_date_taken_statement(
+            date_taken=date_taken, taken_granularity=taken_granularity
+        )
+
+        statements.append(date_taken_statement)
+
+    return statements

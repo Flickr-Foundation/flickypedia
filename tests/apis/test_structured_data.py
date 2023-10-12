@@ -7,10 +7,11 @@ import pytest
 from flickypedia.apis.structured_data import (
     create_date_taken_statement,
     create_license_statement,
-    create_copyright_status_data,
-    create_flickr_creator_data,
+    create_copyright_status_statement,
+    create_flickr_creator_statement,
     create_source_data_for_photo,
-    create_uploaded_to_flickr_statement,
+    create_posted_to_flickr_statement,
+    create_sdc_claims_for_flickr_photo,
 )
 
 
@@ -40,16 +41,16 @@ def get_fixture(filename):
         ),
     ],
 )
-def test_create_flickr_creator_data(vcr_cassette, kwargs, filename):
-    result = create_flickr_creator_data(**kwargs)
+def test_create_flickr_creator_statement(vcr_cassette, kwargs, filename):
+    result = create_flickr_creator_statement(**kwargs)
     expected = get_fixture(filename)
 
     assert result == expected
 
 
-def test_create_copyright_status_data_fails_for_unknown_value():
+def test_create_copyright_status_statement_fails_for_unknown_value():
     with pytest.raises(ValueError, match="Unable to map a copyright status"):
-        create_copyright_status_data(status="No known copyright status")
+        create_copyright_status_statement(status="No known copyright status")
 
 
 @pytest.mark.parametrize(
@@ -58,8 +59,8 @@ def test_create_copyright_status_data_fails_for_unknown_value():
         ({"status": "copyrighted"}, "copyright_status_copyrighted.json"),
     ],
 )
-def test_create_copyright_status_data(kwargs, filename):
-    result = create_copyright_status_data(**kwargs)
+def test_create_copyright_status_statement(kwargs, filename):
+    result = create_copyright_status_statement(**kwargs)
     expected = get_fixture(filename)
 
     assert result == expected
@@ -91,11 +92,11 @@ def test_create_license_statement_fails_if_unrecognised_license():
         create_license_statement(license_id="mystery")
 
 
-def test_create_uploaded_to_flickr_statement():
-    actual = create_uploaded_to_flickr_statement(
-        uploaded_date=datetime.datetime(2023, 10, 12)
+def test_create_posted_to_flickr_statement():
+    actual = create_posted_to_flickr_statement(
+        posted_date=datetime.datetime(2023, 10, 12)
     )
-    expected = get_fixture("date_uploaded_to_flickr.json")
+    expected = get_fixture("date_posted_to_flickr.json")
 
     assert actual == expected
 
@@ -125,3 +126,45 @@ def test_create_date_taken_statement_fails_on_unrecognised_granularity():
         create_date_taken_statement(
             date_taken=datetime.datetime.now(), taken_granularity=-1
         )
+
+
+def test_create_sdc_claims_for_flickr_photo_without_date_taken(vcr_cassette):
+    # This test is based on
+    # https://www.flickr.com/photos/199246608@N02/53248015596/
+    actual = create_sdc_claims_for_flickr_photo(
+        photo_id="53248015596",
+        user_id="199246608@N02",
+        username="cefarrjf87",
+        realname="Alex Chan",
+        copyright_status="copyrighted",
+        jpeg_url="https://live.staticflickr.com/65535/53248015596_c03f8123cf_o_d.jpg",
+        license_id="cc-by-2.0",
+        posted_date=datetime.datetime.fromtimestamp(1696939706),
+        date_taken=datetime.datetime(2023, 10, 10, 5, 8, 21),
+        taken_unknown=True,
+        taken_granularity=0,
+    )
+    expected = get_fixture("photo_53248015596.json")
+
+    assert actual == expected
+
+
+def test_create_sdc_claims_for_flickr_photo_with_date_taken(vcr_cassette):
+    # This test is based on
+    # https://www.flickr.com/photos/mdgovpics/53234140350/
+    actual = create_sdc_claims_for_flickr_photo(
+        photo_id="53234140350",
+        user_id="64018555@N03",
+        username="MDGovpics",
+        realname="Maryland GovPics",
+        copyright_status="copyrighted",
+        jpeg_url="https://live.staticflickr.com/65535/53234140350_93579322a9_o_d.jpg",
+        license_id="cc-by-2.0",
+        posted_date=datetime.datetime.fromtimestamp(1696421915),
+        date_taken=datetime.datetime(2023, 10, 3, 5, 45, 0),
+        taken_unknown=False,
+        taken_granularity=0,
+    )
+    expected = get_fixture("photo_53234140350.json")
+
+    assert actual == expected
