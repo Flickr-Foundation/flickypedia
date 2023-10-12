@@ -20,22 +20,54 @@
 <form action="" method="post" novalidate>
     {{ form.hidden_tag() }}
     <p>
-        {{ form.photo_url.label }}<br>
-        {{ form.photo_url(size=32) }}
+        {{ form.photo_id.label }}<br>
+        {{ form.photo_id(size=32) }}
+    </p>
+    <p>
+        {{ form.user_id.label }}<br>
+        {{ form.user_id(size=32) }}
+    </p>
+    <p>
+        {{ form.username.label }}<br>
+        {{ form.username(size=32) }}
+    </p>
+    <p>
+        {{ form.realname.label }}<br>
+        {{ form.realname(size=32) }}
+    </p>
+    <p>
+        {{ form.jpeg_url.label }}<br>
+        {{ form.jpeg_url(size=32) }}
+    </p>
+    <p>
+        {{ form.license_id.label }}<br>
+        {{ form.license_id }}
     </p>
     <p>
         {{ form.filename.label }}<br>
-        {{ form.filename(size=32) }}
+        {{ form.filename }}
     </p>
-    <p>
-        {{ form.license.label }}<br>
-        {{ form.license }}
-    </p>
-    <h3>Structured data</h3>
     <p>
         {{ form.short_caption.label }}<br>
         {{ form.short_caption(size=32) }}
     </p>
+    <p>
+        {{ form.posted_date.label }}<br>
+        {{ form.posted_date(size=32) }}
+    </p>
+    <p>
+        {{ form.date_taken.label }}<br>
+        {{ form.date_taken(size=32) }}
+    </p>
+    <p>
+        {{ form.taken_unknown.label }}<br>
+        {{ form.taken_unknown }}
+    </p>
+    <p>
+        {{ form.taken_granularity.label }}<br>
+        {{ form.taken_granularity }}
+    </p>
+    
     <p>{{ form.submit() }}</p>
 </form>
 

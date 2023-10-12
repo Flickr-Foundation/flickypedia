@@ -126,7 +126,7 @@ class WikimediaApi:
         else:  # pragma: no cover
             raise WikimediaApiException(f"Unexpected response: {resp}")
 
-    def upload_photo(self, *, photo_url, filename, license, short_caption) -> str:
+    def upload_photo(self, *, jpeg_url, filename, license, short_caption, structured_data) -> str:
         """
         Uploads a photo to Wikimedia Commons and adds some structured data.
 
@@ -140,7 +140,7 @@ class WikimediaApi:
             data={
                 "action": "upload",
                 "filename": filename,
-                "url": photo_url,
+                "url": jpeg_url,
                 "token": self.get_csrf_token(),
                 "text": """=={{int:license-header}}==
 {{self|%s}}"""
@@ -178,26 +178,30 @@ class WikimediaApi:
             },
         )
 
-        from pprint import pprint
+        # Add more structured data
+        import json
 
-        pprint(set_label_resp)
+        self._request("POST", data={
+            "action": "wbeditentity",
+            "site": "commonswiki",
+            "title": f"File:{filename}",
+            "data": json.dumps({
+                "claims": structured_data
+            }),
+            "token": self.get_csrf_token()
+        })
 
 
 class WikimediaApiException(Exception):
     pass
 
 
-<<<<<<< HEAD
 class UnknownWikimediaApiException(WikimediaApiException):
-=======
-class UnknownWikimediaApiException(Exception):
->>>>>>> 9bced5a (Throw a nicer error message when you upload duplicate photos)
     def __init__(self, resp):
         error_info = resp.json()["error"]
 
         self.code = error_info.get("code")
         self.error_info = error_info
-<<<<<<< HEAD
         super().__init__(error_info["info"])
 
 
@@ -207,11 +211,8 @@ class InvalidAccessTokenException(WikimediaApiException):
     """
 
     pass
-=======
-        super().__init__(error_info.get("info"))
 
 
 class DuplicatePhotoUploadException(WikimediaApiException):
     def __init__(self, name):
         super().__init__(f"There is already a photo on Wikimedia Commons called {name}")
->>>>>>> 9bced5a (Throw a nicer error message when you upload duplicate photos)
