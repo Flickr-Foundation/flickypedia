@@ -1,8 +1,8 @@
 """
 Create structured data entities for display on Wikimedia Commons.
 
-This creates statements that will be passed in the list of claims
-sent to the ``wbeditentity`` API.
+This creates statements that will be passed in the list of statements
+sent in the ``data`` parameter of the ``wbeditentity`` API.
 
 If you want to understand how we create our structured data, it might
 be helpful to look at the files in 'tests/fixtures/structured_data' --
@@ -80,7 +80,7 @@ def _create_qualifiers(qualifier_values):
 
 def create_flickr_creator_data(user_id, username, realname):
     """
-    Create a structured data claim for a user on Flickr.
+    Create a structured data statement for a user on Flickr.
 
     This is either:
 
@@ -124,7 +124,7 @@ def create_flickr_creator_data(user_id, username, realname):
 
 def create_copyright_status_data(status):
     """
-    Create a structured data claim for a copyright status.
+    Create a structured data statement for a copyright status.
 
     Currently this only supports "Copyright status: copyrighted", but
     it might evolve in future if we e.g. support "no known copyright status".
@@ -145,7 +145,7 @@ def create_copyright_status_data(status):
 
 def create_source_data_for_photo(user_id, photo_id, jpeg_url):
     """
-    Create a structured data claim for a Flickr photo.
+    Create a structured data statement for a Flickr photo.
 
     TODO: The mapping document mentions adding Identifier -> Flickr Photo ID
 
