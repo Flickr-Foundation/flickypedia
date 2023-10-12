@@ -28,10 +28,12 @@ interactions:
       - public, max-age=300
       content-encoding:
       - gzip
+      content-length:
+      - '81'
       content-type:
       - application/sparql-results+json;charset=utf-8
       date:
-      - Tue, 10 Oct 2023 15:52:34 GMT
+      - Thu, 12 Oct 2023 10:59:07 GMT
       nel:
       - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
         0.0}'
@@ -41,19 +43,17 @@ interactions:
       server:
       - nginx/1.18.0
       server-timing:
-      - cache;desc="pass", host;desc="cp3068"
+      - cache;desc="pass", host;desc="cp3066"
       strict-transport-security:
       - max-age=106384710; includeSubDomains; preload
-      transfer-encoding:
-      - chunked
       vary:
       - Accept, Accept-Encoding
       x-cache:
-      - cp3068 miss, cp3068 pass
+      - cp3066 miss, cp3066 pass
       x-cache-status:
       - pass
       x-client-ip:
-      - 80.42.123.5
+      - 81.131.37.170
       x-first-solution-millis:
       - '2'
       x-served-by:

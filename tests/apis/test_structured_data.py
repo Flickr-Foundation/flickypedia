@@ -7,8 +7,8 @@ import pytest
 from flickypedia.apis.structured_data import (
     create_date_taken_statement,
     create_license_statement,
-    create_copyright_status_data,
-    create_flickr_creator_data,
+    create_copyright_status_statement,
+    create_flickr_creator_statement,
     create_source_data_for_photo,
     create_uploaded_to_flickr_statement,
 )
@@ -40,16 +40,16 @@ def get_fixture(filename):
         ),
     ],
 )
-def test_create_flickr_creator_data(vcr_cassette, kwargs, filename):
-    result = create_flickr_creator_data(**kwargs)
+def test_create_flickr_creator_statement(vcr_cassette, kwargs, filename):
+    result = create_flickr_creator_statement(**kwargs)
     expected = get_fixture(filename)
 
     assert result == expected
 
 
-def test_create_copyright_status_data_fails_for_unknown_value():
+def test_create_copyright_status_statement_fails_for_unknown_value():
     with pytest.raises(ValueError, match="Unable to map a copyright status"):
-        create_copyright_status_data(status="No known copyright status")
+        create_copyright_status_statement(status="No known copyright status")
 
 
 @pytest.mark.parametrize(
@@ -58,8 +58,8 @@ def test_create_copyright_status_data_fails_for_unknown_value():
         ({"status": "copyrighted"}, "copyright_status_copyrighted.json"),
     ],
 )
-def test_create_copyright_status_data(kwargs, filename):
-    result = create_copyright_status_data(**kwargs)
+def test_create_copyright_status_statement(kwargs, filename):
+    result = create_copyright_status_statement(**kwargs)
     expected = get_fixture(filename)
 
     assert result == expected
