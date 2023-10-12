@@ -10,7 +10,8 @@ from flickypedia.apis.structured_data import (
     create_copyright_status_statement,
     create_flickr_creator_statement,
     create_source_data_for_photo,
-    create_uploaded_to_flickr_statement,
+    create_posted_to_flickr_statement,
+    create_sdc_claims_for_flickr_photo,
 )
 
 
@@ -91,11 +92,11 @@ def test_create_license_statement_fails_if_unrecognised_license():
         create_license_statement(license_id="mystery")
 
 
-def test_create_uploaded_to_flickr_statement():
-    actual = create_uploaded_to_flickr_statement(
-        uploaded_date=datetime.datetime(2023, 10, 12)
+def test_create_posted_to_flickr_statement():
+    actual = create_posted_to_flickr_statement(
+        posted_date=datetime.datetime(2023, 10, 12)
     )
-    expected = get_fixture("date_uploaded_to_flickr.json")
+    expected = get_fixture("date_posted_to_flickr.json")
 
     assert actual == expected
 
@@ -125,3 +126,24 @@ def test_create_date_taken_statement_fails_on_unrecognised_granularity():
         create_date_taken_statement(
             date_taken=datetime.datetime.now(), taken_granularity=-1
         )
+
+
+def test_create_sdc_claims_for_flickr_photo_without_date_taken(vcr_cassette):
+    # This test is based on
+    # https://www.flickr.com/photos/199246608@N02/53248015596/
+    actual = create_sdc_claims_for_flickr_photo(
+        photo_id="53248015596",
+        user_id="199246608@N02",
+        username="cefarrjf87",
+        realname="Alex Chan",
+        copyright_status="copyrighted",
+        jpeg_url="https://live.staticflickr.com/65535/53248015596_c03f8123cf_o_d.jpg",
+        license_id="cc-by-2.0",
+        posted_date=datetime.datetime.fromtimestamp(1696939706),
+        date_taken=datetime.datetime(2023, 10, 10, 5, 8, 21),
+        taken_unknown=True,
+        taken_granularity=0
+    )
+    expected = get_fixture("photo_53248015596.json")
+
+    assert actual == expected

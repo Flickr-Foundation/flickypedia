@@ -10,7 +10,7 @@ that folder contains examples of the JSON we'll send to the API.
 
 == Use in the rest of Flickypedia ==
 
-The primary function is ``create_sdc_claim_for_flickr_photo()``,
+The primary function is ``create_sdc_claims_for_flickr_photo()``,
 which creates a list of statements which can be passed to the
 ``wbeditentity`` API.
 
@@ -204,14 +204,14 @@ def create_license_statement(license_id):
     }
 
 
-def create_uploaded_to_flickr_statement(uploaded_date: datetime.datetime):
+def create_posted_to_flickr_statement(posted_date: datetime.datetime):
     """
-    Create a structured data statement for date uploaded to Flickr.
+    Create a structured data statement for date posted to Flickr.
     """
     qualifier_values = [
         {
             "property": WikidataProperties.PublicationDate,
-            "date": uploaded_date,
+            "date": posted_date,
             "precision": "day",
         },
     ]
@@ -283,7 +283,7 @@ def create_date_taken_statement(date_taken: datetime.datetime, taken_granularity
         }
 
 
-def create_sdc_claim_for_flickr_photo(
+def create_sdc_claims_for_flickr_photo(
     photo_id,
     user_id,
     username,
@@ -291,8 +291,9 @@ def create_sdc_claim_for_flickr_photo(
     copyright_status,
     jpeg_url,
     license_id,
-    uploaded_date,
-    date_taken_statement,
+    posted_date,
+    date_taken,
+    taken_unknown,
     taken_granularity,
 ):
     """
@@ -312,19 +313,23 @@ def create_sdc_claim_for_flickr_photo(
 
     license_statement = create_license_statement(license_id=license_id)
 
-    uploaded_date_statement = create_uploaded_to_flickr_statement(
-        uploaded_date=uploaded_date
+    posted_date_statement = create_posted_to_flickr_statement(
+        posted_date=posted_date
     )
 
-    date_taken_statement = create_date_taken_statement(
-        date_taken=date_taken, taken_granularity=taken_granularity
-    )
-
-    return [
+    statements = [
         creator_statement,
         copyright_statement,
         source_statement,
         license_statement,
-        uploaded_date_statement,
-        date_taken_statement,
+        posted_date_statement,
     ]
+
+    if not taken_unknown:
+        date_taken_statement = create_date_taken_statement(
+            date_taken=date_taken, taken_granularity=taken_granularity
+        )
+
+        statements.append(date_taken_statement)
+
+    return statements
