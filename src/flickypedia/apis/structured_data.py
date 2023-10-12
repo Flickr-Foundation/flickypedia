@@ -1,9 +1,18 @@
 """
-Functions for creating structured data entities for use with the
-Wikimedia APIs.
+Create structured data entities for display on Wikimedia Commons.
 
-The goal of this file is to create some helpers and templates to reduce
-the amount of repetition required when creating these entities.
+This creates statements that will be passed in the list of statements
+sent in the ``data`` parameter of the ``wbeditentity`` API.
+
+If you want to understand how we create our structured data, it might
+be helpful to look at the files in 'tests/fixtures/structured_data' --
+that folder contains examples of the JSON we'll send to the API.
+
+== Useful reading ==
+
+*   Commons:Flickypedia/Data Modeling
+    https://commons.wikimedia.org/wiki/Commons:Flickypedia/Data_Modeling
+
 """
 
 import datetime
@@ -17,13 +26,13 @@ from flickypedia.apis.wikidata import (
 )
 
 
-def _wikibase_entity_value(*, property, wikidata_id):
+def _wikibase_entity_value(*, property_id, entity_id):
     return {
         "snaktype": "value",
-        "property": property,
+        "property": property_id,
         "datavalue": {
             "type": "wikibase-entityid",
-            "value": {"id": wikidata_id},
+            "value": {"id": entity_id},
         },
     }
 
@@ -44,14 +53,9 @@ def _create_qualifiers(qualifier_values):
             ]
         elif qualifier.keys() == {"property", "entity_id"}:
             result[property_id] = [
-                {
-                    "datavalue": {
-                        "type": "wikibase-entityid",
-                        "value": {"id": qualifier["entity_id"]},
-                    },
-                    "property": property_id,
-                    "snaktype": "value",
-                }
+                _wikibase_entity_value(
+                    property_id=property_id, entity_id=qualifier["entity_id"]
+                )
             ]
         elif qualifier.keys() == {"property", "date", "precision"}:
             result[property_id] = [
@@ -76,7 +80,7 @@ def _create_qualifiers(qualifier_values):
 
 def create_flickr_creator_data(user_id, username, realname):
     """
-    Create a structured data claim for a user on Flickr.
+    Create a structured data statement for a user on Flickr.
 
     This is either:
 
@@ -89,7 +93,7 @@ def create_flickr_creator_data(user_id, username, realname):
     if wikidata_id is not None:
         return {
             "mainsnak": _wikibase_entity_value(
-                property=WikidataProperties.Creator, wikidata_id=wikidata_id
+                property_id=WikidataProperties.Creator, entity_id=wikidata_id
             ),
             "type": "statement",
         }
@@ -120,7 +124,7 @@ def create_flickr_creator_data(user_id, username, realname):
 
 def create_copyright_status_data(status):
     """
-    Create a structured data claim for a copyright status.
+    Create a structured data statement for a copyright status.
 
     Currently this only supports "Copyright status: copyrighted", but
     it might evolve in future if we e.g. support "no known copyright status".
@@ -132,8 +136,8 @@ def create_copyright_status_data(status):
 
     return {
         "mainsnak": _wikibase_entity_value(
-            property=WikidataProperties.CopyrightStatus,
-            wikidata_id=WikidataEntities.Copyrighted,
+            property_id=WikidataProperties.CopyrightStatus,
+            entity_id=WikidataEntities.Copyrighted,
         ),
         "type": "statement",
     }
@@ -141,7 +145,7 @@ def create_copyright_status_data(status):
 
 def create_source_data_for_photo(user_id, photo_id, jpeg_url):
     """
-    Create a structured data claim for a Flickr photo.
+    Create a structured data statement for a Flickr photo.
 
     TODO: The mapping document mentions adding Identifier -> Flickr Photo ID
 
@@ -160,8 +164,8 @@ def create_source_data_for_photo(user_id, photo_id, jpeg_url):
 
     return {
         "mainsnak": _wikibase_entity_value(
-            property=WikidataProperties.SourceOfFile,
-            wikidata_id=WikidataEntities.FileAvailableOnInternet,
+            property_id=WikidataProperties.SourceOfFile,
+            entity_id=WikidataEntities.FileAvailableOnInternet,
         ),
         "qualifiers": _create_qualifiers(qualifier_values),
         "qualifiers-order": [
@@ -184,8 +188,8 @@ def create_license_statement(license_id):
 
     return {
         "mainsnak": _wikibase_entity_value(
-            property=WikidataProperties.CopyrightLicense,
-            wikidata_id=wikidata_license_id,
+            property_id=WikidataProperties.CopyrightLicense,
+            entity_id=wikidata_license_id,
         ),
         "type": "statement",
     }
@@ -205,7 +209,8 @@ def create_uploaded_to_flickr_statement(uploaded_date: datetime.datetime):
 
     return {
         "mainsnak": _wikibase_entity_value(
-            property=WikidataProperties.PublishedIn, wikidata_id=WikidataEntities.Flickr
+            property_id=WikidataProperties.PublishedIn,
+            entity_id=WikidataEntities.Flickr,
         ),
         "qualifiers": _create_qualifiers(qualifier_values),
         "qualifiers-order": [WikidataProperties.PublicationDate],
@@ -216,6 +221,10 @@ def create_uploaded_to_flickr_statement(uploaded_date: datetime.datetime):
 def create_date_taken_statement(date_taken: datetime.datetime, taken_granularity: int):
     """
     Create a structured data statement for date taken.
+
+    In most cases this is a single value with a precision attached, but
+    for dates which are marked as "circa" on Flickr, we add an additional
+    "circa" qualifier.
 
     Here ``granularity`` comes from the Flickr API: see "Photo Dates".
     https://www.flickr.com/services/api/misc.dates.html
