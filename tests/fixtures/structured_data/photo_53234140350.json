@@ -1,0 +1,146 @@
+[
+  {
+    "mainsnak": {
+      "snaktype": "value",
+      "property": "P170",
+      "datavalue": {
+        "value": {
+          "id": "Q693032"
+        },
+        "type": "wikibase-entityid"
+      }
+    },
+    "type": "statement"
+  },
+  {
+    "mainsnak": {
+      "snaktype": "value",
+      "property": "P6216",
+      "datavalue": {
+        "value": {
+          "id": "Q50423863"
+        },
+        "type": "wikibase-entityid"
+      }
+    },
+    "type": "statement"
+  },
+  {
+    "mainsnak": {
+      "snaktype": "value",
+      "property": "P7482",
+      "datavalue": {
+        "value": {
+          "id": "Q74228490"
+        },
+        "type": "wikibase-entityid"
+      }
+    },
+    "type": "statement",
+    "qualifiers": {
+      "P973": [
+        {
+          "snaktype": "value",
+          "property": "P973",
+          "datavalue": {
+            "value": "https://www.flickr.com/photos/64018555@N03/53234140350/",
+            "type": "string"
+          }
+        }
+      ],
+      "P137": [
+        {
+          "snaktype": "value",
+          "property": "P137",
+          "datavalue": {
+            "value": {
+              "id": "Q103204"
+            },
+            "type": "wikibase-entityid"
+          }
+        }
+      ],
+      "P2699": [
+        {
+          "snaktype": "value",
+          "property": "P2699",
+          "datavalue": {
+            "value": "https://live.staticflickr.com/65535/53234140350_93579322a9_o_d.jpg",
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "qualifiers-order": [
+      "P973",
+      "P137",
+      "P2699"
+    ]
+  },
+  {
+    "mainsnak": {
+      "snaktype": "value",
+      "property": "P275",
+      "datavalue": {
+        "value": {
+          "id": "Q19125117"
+        },
+        "type": "wikibase-entityid"
+      }
+    },
+    "type": "statement"
+  },
+  {
+    "mainsnak": {
+      "snaktype": "value",
+      "property": "P1433",
+      "datavalue": {
+        "value": {
+          "id": "Q103204"
+        },
+        "type": "wikibase-entityid"
+      }
+    },
+    "type": "statement",
+    "qualifiers": {
+      "P577": [
+        {
+          "snaktype": "value",
+          "property": "P577",
+          "datavalue": {
+            "value": {
+              "time": "+2023-10-04T00:00:00Z",
+              "timezone": 0,
+              "before": 0,
+              "after": 0,
+              "precision": 11,
+              "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+          }
+        }
+      ]
+    },
+    "qualifiers-order": [
+      "P577"
+    ]
+  },
+  {
+    "mainsnak": {
+      "snaktype": "value",
+      "property": "P571",
+      "datavalue": {
+        "value": {
+          "time": "+2023-10-03T00:00:00Z",
+          "timezone": 0,
+          "before": 0,
+          "after": 0,
+          "precision": 11,
+          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+        },
+        "type": "time"
+      }
+    },
+    "type": "statement"
+  }
+]

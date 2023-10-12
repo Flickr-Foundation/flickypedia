@@ -313,9 +313,7 @@ def create_sdc_claims_for_flickr_photo(
 
     license_statement = create_license_statement(license_id=license_id)
 
-    posted_date_statement = create_posted_to_flickr_statement(
-        posted_date=posted_date
-    )
+    posted_date_statement = create_posted_to_flickr_statement(posted_date=posted_date)
 
     statements = [
         creator_statement,

@@ -142,8 +142,29 @@ def test_create_sdc_claims_for_flickr_photo_without_date_taken(vcr_cassette):
         posted_date=datetime.datetime.fromtimestamp(1696939706),
         date_taken=datetime.datetime(2023, 10, 10, 5, 8, 21),
         taken_unknown=True,
-        taken_granularity=0
+        taken_granularity=0,
     )
     expected = get_fixture("photo_53248015596.json")
+
+    assert actual == expected
+
+
+def test_create_sdc_claims_for_flickr_photo_with_date_taken(vcr_cassette):
+    # This test is based on
+    # https://www.flickr.com/photos/mdgovpics/53234140350/
+    actual = create_sdc_claims_for_flickr_photo(
+        photo_id="53234140350",
+        user_id="64018555@N03",
+        username="MDGovpics",
+        realname="Maryland GovPics",
+        copyright_status="copyrighted",
+        jpeg_url="https://live.staticflickr.com/65535/53234140350_93579322a9_o_d.jpg",
+        license_id="cc-by-2.0",
+        posted_date=datetime.datetime.fromtimestamp(1696421915),
+        date_taken=datetime.datetime(2023, 10, 3, 5, 45, 0),
+        taken_unknown=False,
+        taken_granularity=0,
+    )
+    expected = get_fixture("photo_53234140350.json")
 
     assert actual == expected
