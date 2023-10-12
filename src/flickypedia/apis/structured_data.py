@@ -6,8 +6,11 @@ The goal of this file is to create some helpers and templates to reduce
 the amount of repetition required when creating these entities.
 """
 
+import datetime
+
 from flickypedia.apis.wikidata import (
     lookup_flickr_user_in_wikidata,
+    to_wikidata_date,
     WikidataEntities,
     WikidataProperties,
 )
@@ -45,6 +48,16 @@ def _create_qualifiers(qualifier_values):
                         "type": "wikibase-entityid",
                         "value": {"id": qualifier["entity_id"]},
                     },
+                    "property": property_id,
+                    "snaktype": "value",
+                }
+            ]
+        elif qualifier.keys() == {"property", "date", "precision"}:
+            result[property_id] = [
+                {
+                    "datavalue": to_wikidata_date(
+                        qualifier["date"], precision=qualifier["precision"]
+                    ),
                     "property": property_id,
                     "snaktype": "value",
                 }
@@ -173,5 +186,27 @@ def create_license_statement(license_id):
             property=WikidataProperties.CopyrightLicense,
             wikidata_id=wikidata_license_id,
         ),
+        "type": "statement",
+    }
+
+
+def create_uploaded_to_flickr_statement(uploaded_date: datetime.datetime):
+    """
+    Create a structured data statement for date uploaded to Flickr.
+    """
+    qualifier_values = [
+        {
+            "property": WikidataProperties.PublicationDate,
+            "date": uploaded_date,
+            "precision": "day",
+        },
+    ]
+
+    return {
+        "mainsnak": _wikibase_entity_value(
+            property=WikidataProperties.PublishedIn, wikidata_id=WikidataEntities.Flickr
+        ),
+        "qualifiers": _create_qualifiers(qualifier_values),
+        "qualifiers-order": [WikidataProperties.PublicationDate],
         "type": "statement",
     }

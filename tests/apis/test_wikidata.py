@@ -1,6 +1,8 @@
+import datetime
+
 import pytest
 
-from flickypedia.apis.wikidata import lookup_flickr_user_in_wikidata
+from flickypedia.apis.wikidata import lookup_flickr_user_in_wikidata, to_wikidata_date
 
 
 @pytest.mark.parametrize(
@@ -42,3 +44,59 @@ from flickypedia.apis.wikidata import lookup_flickr_user_in_wikidata
 )
 def test_lookup_flickr_user_in_wikidata(vcr_cassette, id, username, wikidata_id):
     assert lookup_flickr_user_in_wikidata(id=id, username=username) == wikidata_id
+
+
+@pytest.mark.parametrize(
+    ["kwargs", "expected"],
+    [
+        (
+            {"d": datetime.datetime(2023, 10, 12, 1, 2, 3), "precision": "day"},
+            {
+                "value": {
+                    "time": "+2023-10-12T00:00:00Z",
+                    "precision": 11,
+                    "timezone": 0,
+                    "before": 0,
+                    "after": 0,
+                    "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+                },
+                "type": "time",
+            },
+        ),
+        (
+            {"d": datetime.datetime(2023, 10, 12, 1, 2, 3), "precision": "month"},
+            {
+                "value": {
+                    "time": "+2023-10-00T00:00:00Z",
+                    "precision": 10,
+                    "timezone": 0,
+                    "before": 0,
+                    "after": 0,
+                    "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+                },
+                "type": "time",
+            },
+        ),
+        (
+            {"d": datetime.datetime(2023, 10, 12, 1, 2, 3), "precision": "year"},
+            {
+                "value": {
+                    "time": "+2023-00-00T00:00:00Z",
+                    "precision": 9,
+                    "timezone": 0,
+                    "before": 0,
+                    "after": 0,
+                    "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+                },
+                "type": "time",
+            },
+        ),
+    ],
+)
+def test_to_wikidata_date(kwargs, expected):
+    assert to_wikidata_date(**kwargs) == expected
+
+
+def test_to_wikidata_date_fails_with_unexpected_precision():
+    with pytest.raises(ValueError, match="Unrecognised precision"):
+        to_wikidata_date(d=datetime.datetime(2023, 10, 12), precision="second")
