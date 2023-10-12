@@ -22,6 +22,8 @@ class WikidataProperties:
     SourceOfFile = "P7482"
     CopyrightLicense = "P275"
     CopyrightStatus = "P6216"
+    PublicationDate = "P577"
+    PublishedIn = "P1433"
 
 
 class WikidataEntities:

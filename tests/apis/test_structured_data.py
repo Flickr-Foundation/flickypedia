@@ -1,3 +1,4 @@
+import datetime
 import json
 import os
 
@@ -8,6 +9,7 @@ from flickypedia.apis.structured_data import (
     create_copyright_status_data,
     create_flickr_creator_data,
     create_source_data_for_photo,
+    create_uploaded_to_flickr_statement,
 )
 
 
@@ -86,3 +88,12 @@ def test_create_license_statement(license_id, filename):
 def test_create_license_statement_fails_if_unrecognised_license():
     with pytest.raises(ValueError, match="Unrecognised license ID"):
         create_license_statement(license_id="mystery")
+
+
+def test_create_uploaded_to_flickr_statement():
+    actual = create_uploaded_to_flickr_statement(
+        uploaded_date=datetime.datetime(2023, 10, 12)
+    )
+    expected = get_fixture("uploaded_to_flickr.json")
+
+    assert actual == expected

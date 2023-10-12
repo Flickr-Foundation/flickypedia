@@ -6,8 +6,11 @@ The goal of this file is to create some helpers and templates to reduce
 the amount of repetition required when creating these entities.
 """
 
+import datetime
+
 from flickypedia.apis.wikidata import (
     lookup_flickr_user_in_wikidata,
+    to_wikidata_date,
     WikidataEntities,
     WikidataProperties,
 )
@@ -173,5 +176,27 @@ def create_license_statement(license_id):
             property=WikidataProperties.CopyrightLicense,
             wikidata_id=wikidata_license_id,
         ),
+        "type": "statement",
+    }
+
+
+def create_uploaded_to_flickr_statement(uploaded_date: datetime.datetime):
+    """
+    Create a structured data statement for date uploaded to Flickr.
+    """
+    return {
+        "mainsnak": _wikibase_entity_value(
+            property=WikidataProperties.PublishedIn, wikidata_id=WikidataEntities.Flickr
+        ),
+        "qualifiers": {
+            WikidataProperties.PublicationDate: [
+                {
+                    "snaktype": "value",
+                    "property": WikidataProperties.PublicationDate,
+                    "datavalue": to_wikidata_date(uploaded_date, precision="day"),
+                }
+            ]
+        },
+        "qualifiers-order": [WikidataProperties.PublicationDate],
         "type": "statement",
     }
