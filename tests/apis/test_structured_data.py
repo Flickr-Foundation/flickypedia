@@ -1,4 +1,5 @@
 import json
+import os
 
 import pytest
 
@@ -8,6 +9,11 @@ from flickypedia.apis.structured_data import (
     create_flickr_creator_data,
     create_source_data_for_photo,
 )
+
+
+def get_fixture(filename):
+    with open(os.path.join("tests/fixtures/structured_data", filename)) as f:
+        return json.load(f)
 
 
 @pytest.mark.parametrize(
@@ -33,7 +39,7 @@ from flickypedia.apis.structured_data import (
 )
 def test_create_flickr_creator_data(vcr_cassette, kwargs, filename):
     result = create_flickr_creator_data(**kwargs)
-    expected = json.load(open(f"tests/fixtures/structured_data/{filename}"))
+    expected = get_fixture(filename)
 
     assert result == expected
 
@@ -51,7 +57,7 @@ def test_create_copyright_status_data_fails_for_unknown_value():
 )
 def test_create_copyright_status_data(kwargs, filename):
     result = create_copyright_status_data(**kwargs)
-    expected = json.load(open(f"tests/fixtures/structured_data/{filename}"))
+    expected = get_fixture(filename)
 
     assert result == expected
 
@@ -62,7 +68,7 @@ def test_create_source_data_for_photo():
         photo_id="53248015596",
         jpeg_url="https://live.staticflickr.com/65535/53248015596_c03f8123cf_o_d.jpg",
     )
-    expected = json.load(open("tests/fixtures/structured_data/photo_source_data.json"))
+    expected = get_fixture("photo_source_data.json")
 
     assert result == expected
 
@@ -72,7 +78,7 @@ def test_create_source_data_for_photo():
 )
 def test_create_license_statement(license_id, filename):
     actual = create_license_statement(license_id)
-    expected = json.load(open(f"tests/fixtures/structured_data/{filename}"))
+    expected = get_fixture(filename)
 
     assert actual == expected
 
