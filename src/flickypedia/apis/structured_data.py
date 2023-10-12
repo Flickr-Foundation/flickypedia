@@ -52,6 +52,16 @@ def _create_qualifiers(qualifier_values):
                     "snaktype": "value",
                 }
             ]
+        elif qualifier.keys() == {"property", "date", "precision"}:
+            result[property_id] = [
+                {
+                    "datavalue": to_wikidata_date(
+                        qualifier["date"], precision=qualifier["precision"]
+                    ),
+                    "property": property_id,
+                    "snaktype": "value",
+                }
+            ]
         # This should never happen in practice, but we add an ``else:``
         # with a meaningful error message in case it ever occurs.
         #
@@ -184,19 +194,19 @@ def create_uploaded_to_flickr_statement(uploaded_date: datetime.datetime):
     """
     Create a structured data statement for date uploaded to Flickr.
     """
+    qualifier_values = [
+        {
+            "property": WikidataProperties.PublicationDate,
+            "date": uploaded_date,
+            "precision": "day",
+        },
+    ]
+
     return {
         "mainsnak": _wikibase_entity_value(
             property=WikidataProperties.PublishedIn, wikidata_id=WikidataEntities.Flickr
         ),
-        "qualifiers": {
-            WikidataProperties.PublicationDate: [
-                {
-                    "snaktype": "value",
-                    "property": WikidataProperties.PublicationDate,
-                    "datavalue": to_wikidata_date(uploaded_date, precision="day"),
-                }
-            ]
-        },
+        "qualifiers": _create_qualifiers(qualifier_values),
         "qualifiers-order": [WikidataProperties.PublicationDate],
         "type": "statement",
     }
