@@ -8,6 +8,7 @@ the amount of repetition required when creating these entities.
 
 import datetime
 
+from flickypedia.apis.flickr import TakenDateGranularity
 from flickypedia.apis.wikidata import (
     lookup_flickr_user_in_wikidata,
     to_wikidata_date,
@@ -210,3 +211,55 @@ def create_uploaded_to_flickr_statement(uploaded_date: datetime.datetime):
         "qualifiers-order": [WikidataProperties.PublicationDate],
         "type": "statement",
     }
+
+
+def create_date_taken_statement(date_taken: datetime.datetime, taken_granularity: int):
+    """
+    Create a structured data statement for date taken.
+
+    Here ``granularity`` comes from the Flickr API: see "Photo Dates".
+    https://www.flickr.com/services/api/misc.dates.html
+    """
+    try:
+        precision = {
+            TakenDateGranularity.Day: "day",
+            TakenDateGranularity.Month: "month",
+            TakenDateGranularity.Year: "year",
+            TakenDateGranularity.Circa: "year",
+        }[taken_granularity]
+    except KeyError:
+        raise ValueError(f"Unrecognised taken_granularity: {taken_granularity!r}")
+
+    if taken_granularity in {
+        TakenDateGranularity.Day,
+        TakenDateGranularity.Month,
+        TakenDateGranularity.Year,
+    }:
+        return {
+            "mainsnak": {
+                "datavalue": to_wikidata_date(date_taken, precision=precision),
+                "property": WikidataProperties.Inception,
+                "snaktype": "value",
+            },
+            "type": "statement",
+        }
+    else:
+        assert taken_granularity == TakenDateGranularity.Circa
+
+        qualifier_values = [
+            {
+                "property": WikidataProperties.SourcingCircumstances,
+                "entity_id": WikidataEntities.Circa,
+            },
+        ]
+
+        return {
+            "mainsnak": {
+                "datavalue": to_wikidata_date(date_taken, precision=precision),
+                "property": WikidataProperties.Inception,
+                "snaktype": "value",
+            },
+            "qualifiers": _create_qualifiers(qualifier_values),
+            "qualifiers-order": [WikidataProperties.SourcingCircumstances],
+            "type": "statement",
+        }

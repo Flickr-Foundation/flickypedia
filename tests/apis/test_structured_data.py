@@ -5,6 +5,7 @@ import os
 import pytest
 
 from flickypedia.apis.structured_data import (
+    create_date_taken_statement,
     create_license_statement,
     create_copyright_status_data,
     create_flickr_creator_data,
@@ -94,6 +95,33 @@ def test_create_uploaded_to_flickr_statement():
     actual = create_uploaded_to_flickr_statement(
         uploaded_date=datetime.datetime(2023, 10, 12)
     )
-    expected = get_fixture("uploaded_to_flickr.json")
+    expected = get_fixture("date_uploaded_to_flickr.json")
 
     assert actual == expected
+
+
+@pytest.mark.parametrize(
+    ["date_taken", "taken_granularity", "filename"],
+    [
+        # Based on https://www.flickr.com/photos/184374196@N07/53069446440
+        (datetime.datetime(2023, 2, 20, 23, 32, 31), 0, "date_taken_YYYY-MM-DD.json"),
+        # Based on https://www.flickr.com/photos/normko/361850789
+        (datetime.datetime(1970, 3, 1, 0, 0, 0), 4, "date_taken_YYYY-MM.json"),
+        # Based on https://www.flickr.com/photos/nationalarchives/5240741057
+        (datetime.datetime(1950, 1, 1, 0, 0, 0), 6, "date_taken_YYYY.json"),
+        # Based on https://www.flickr.com/photos/nlireland/6975991819
+        (datetime.datetime(1910, 1, 1, 0, 0, 0), 8, "date_taken_circa.json"),
+    ],
+)
+def test_create_date_taken_statement(date_taken, taken_granularity, filename):
+    actual = create_date_taken_statement(date_taken, taken_granularity)
+    expected = get_fixture(filename)
+
+    assert actual == expected
+
+
+def test_create_date_taken_statement_fails_on_unrecognised_granularity():
+    with pytest.raises(ValueError, match="Unrecognised taken_granularity"):
+        create_date_taken_statement(
+            date_taken=datetime.datetime.now(), taken_granularity=-1
+        )

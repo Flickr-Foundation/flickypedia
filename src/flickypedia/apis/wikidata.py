@@ -22,8 +22,10 @@ class WikidataProperties:
     SourceOfFile = "P7482"
     CopyrightLicense = "P275"
     CopyrightStatus = "P6216"
+    Inception = "P571"
     PublicationDate = "P577"
     PublishedIn = "P1433"
+    SourcingCircumstances = "P1480"
 
 
 class WikidataEntities:
@@ -35,6 +37,7 @@ class WikidataEntities:
     # https://www.wikidata.org/wiki/<ENTITY_ID>
     #
     # e.g. https://www.wikidata.org/wiki/Q103204
+    Circa = "Q5727902"
     Copyrighted = "Q50423863"
     FileAvailableOnInternet = "Q74228490"
     Flickr = "Q103204"
