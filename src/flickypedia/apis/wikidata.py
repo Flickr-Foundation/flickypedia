@@ -1,3 +1,4 @@
+import datetime
 import re
 
 import httpx
@@ -35,6 +36,7 @@ class WikidataEntities:
     Copyrighted = "Q50423863"
     FileAvailableOnInternet = "Q74228490"
     Flickr = "Q103204"
+    GregorianCalendar = "Q1985727"
 
     Licenses = {
         "cc-by-2.0": "Q19125117",
@@ -145,3 +147,70 @@ def lookup_flickr_user_in_wikidata(*, id, username):
 
     except (IndexError, KeyError):
         pass
+
+
+def to_wikidata_date(d: datetime.datetime, *, precision: str):
+    """
+    Convert a Python native-datetime to the Wikidata data model.
+
+    See https://www.wikidata.org/wiki/Help:Dates#Precision
+    """
+    if precision not in ("day", "month", "year"):
+        raise ValueError("Unrecognised precision: {precision}")
+
+    # This is the timestamp, e.g. ``+2023-10-11T00:00:00Z``.
+    #
+    # We zero the hour/minute/second even if we have that precision
+    # in our datetime because of a limitation in Wikidata.
+    # In particular, as of 12 October 2023:
+    #
+    #     "time" field can not be saved with precision higher
+    #     than a "day".
+    #
+    # If Wikidata ever relaxes this restriction, we could revisit
+    # this decision.
+    time_str = {
+        "day": d.strftime("+%Y-%m-%dT00:00:00Z"),
+        "month": d.strftime("+%Y-%m-00T00:00:00Z"),
+        "year": d.strftime("+%Y-00-00T00:00:00Z"),
+    }[precision]
+
+    # This is the numeric value of precsion used in the Wikidata model.
+    #
+    # See https://www.wikidata.org/wiki/Help:Dates#Precision
+    precision_value = {"day": 11, "month": 10, "year": 9}[precision]
+
+    # This is the numeric offset from UTC in minutes.  All the timestamps
+    # we get from Flickr are in UTC, so we can default this to 0.
+    timezone = 0
+
+    # These are qualifiers for how many units before/after the given time
+    # we could be, execpt they're not actually used by Wikidata.
+    # As of 12 October 2023:
+    #
+    #     We do not use before and after fields and use qualifiers
+    #     instead to indicate time period.
+    #
+    # But the API returns an error if you try to post a date without these,
+    # so we include default values.
+    before = after = 0
+
+    # This tells Wikidata which calendar we're using.
+    #
+    # Although this is the default, the API throws an error if you try
+    # to store a date without it, so we include it here.
+    calendarmodel = (
+        f"http://www.wikidata.org/entity/{WikidataEntities.GregorianCalendar}"
+    )
+
+    return {
+        "value": {
+            "time": time_str,
+            "precision": precision_value,
+            "timezone": timezone,
+            "before": before,
+            "after": after,
+            "calendarmodel": calendarmodel,
+        },
+        "type": "time",
+    }
