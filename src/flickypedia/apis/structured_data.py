@@ -49,7 +49,12 @@ def _create_qualifiers(qualifier_values):
                     "snaktype": "value",
                 }
             ]
-        else:
+        # This should never happen in practice, but we add an ``else:``
+        # with a meaningful error message in case it ever occurs.
+        #
+        # We don't need to test this branch because it's only a function
+        # used in this file, not externally.
+        else:  # pragma: no cover
             raise ValueError(f"Unrecognised qualifier value: {qualifier!r}")
 
     return result
