@@ -39,13 +39,14 @@ class WikimediaApi:
 
         return resp.json()
 
-    def _get(self, **params):
+    def _get(self, params):
         return self._request(method="GET", params={**params, "format": "json"})
 
-    def _post(self, **data):
+    def _post(self, data, **kwargs):
         return self._request(
             method="POST",
             data={**data, "format": "json", "token": self.get_csrf_token()},
+            **kwargs,
         )
 
     def get_csrf_token(self) -> str:
@@ -58,7 +59,7 @@ class WikimediaApi:
 
         See https://www.mediawiki.org/wiki/API:Tokens
         """
-        resp = self._get(action="query", meta="tokens", type="csrf")
+        resp = self._get(params={"action": "query", "meta": "tokens", "type": "csrf"})
 
         return resp["query"]["tokens"]["csrftoken"]
 
@@ -72,9 +73,37 @@ class WikimediaApi:
         See https://www.mediawiki.org/wiki/API:Userinfo
 
         """
-        resp = self._get(action="query", meta="userinfo")
+        resp = self._get(params={"action": "query", "meta": "userinfo"})
 
         return resp["query"]["userinfo"]
+
+    def upload_image(self, *, filename, jpeg_url, text):
+        """
+        Upload an image to Wikimedia Commons.
+
+        See https://www.mediawiki.org/wiki/API:Upload
+
+        """
+        upload_resp = self._post(
+            data={
+                "action": "upload",
+                "filename": filename,
+                "url": jpeg_url,
+                "text": text,
+            },
+            # Note: this can fail with an httpx.ReadTimeout error with
+            # the default timeout, so we increase it.
+            timeout=60,
+        )
+
+        if (
+            upload_resp["upload"]["result"] == "Warning"
+            and upload_resp["upload"]["warnings"].get("exists") == filename
+        ):
+            raise DuplicatePhotoUploadException(filename)
+
+        if upload_resp["upload"]["result"] != "Success":
+            raise RuntimeError(f"Unexpected result from upload API: {upload_resp!r}")
 
     def add_file_caption(self, *, filename, language, value):
         """
@@ -85,11 +114,13 @@ class WikimediaApi:
 
         """
         resp = self._post(
-            action="wbsetlabel",
-            site="commonswiki",
-            title=f"File:{filename}",
-            language=language,
-            value=value,
+            data={
+                "action": "wbsetlabel",
+                "site": "commonswiki",
+                "title": f"File:{filename}",
+                "language": language,
+                "value": value,
+            }
         )
 
         # A successful response from this API looks something like:
@@ -137,7 +168,11 @@ class WikimediaApi:
 
         """
         return self._get(
-            action="wbgetentities", sites="commonswiki", titles=f"File:{filename}"
+            params={
+                "action": "wbgetentities",
+                "sites": "commonswiki",
+                "titles": f"File:{filename}",
+            }
         )
 
     def add_structured_data(self, *, filename, data):
@@ -154,10 +189,12 @@ class WikimediaApi:
 
         """
         resp = self._post(
-            action="wbeditentity",
-            site="commonswiki",
-            title=f"File:{filename}",
-            data=json.dumps(data),
+            data={
+                "action": "wbeditentity",
+                "site": "commonswiki",
+                "title": f"File:{filename}",
+                "data": json.dumps(data),
+            }
         )
 
         if resp["success"] != 0:
@@ -185,3 +222,12 @@ class InvalidAccessTokenException(WikimediaApiException):
     """
 
     pass
+
+
+class DuplicatePhotoUploadException(WikimediaApiException):
+    """
+    Thrown when somebody tries to upload a duplicate photo.
+    """
+
+    def __init__(self, name):
+        super().__init__(f"There is already a photo on Wikimedia Commons called {name}")
