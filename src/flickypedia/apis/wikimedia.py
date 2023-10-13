@@ -23,11 +23,13 @@ class WikimediaApi:
         #
         # Detect this here and throw an exception, so callers can assume
         # there was no issue if this returns cleanly.
+        #
+        # See https://www.mediawiki.org/wiki/Wikibase/API#Response
         try:
             error = resp.json()["error"]
 
             if error["code"] == "mwoauth-invalid-authorization":
-                raise InvalidAccessTokenException(error.get("info"))
+                raise InvalidAccessTokenException(error["info"])
             else:
                 raise UnknownWikimediaApiException(resp)
         except KeyError:
@@ -130,7 +132,7 @@ class UnknownWikimediaApiException(WikimediaApiException):
 
         self.code = error_info.get("code")
         self.error_info = error_info
-        super().__init__(error_info.get("info"))
+        super().__init__(error_info["info"])
 
 
 class InvalidAccessTokenException(WikimediaApiException):
