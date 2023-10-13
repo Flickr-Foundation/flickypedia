@@ -162,25 +162,8 @@ class WikimediaApi:
         if upload_resp["upload"]["result"] != "Success":
             raise RuntimeError(f"Unexpected result from upload API: {upload_resp!r}")
 
-        # Add some structured data to the file, in particular the
-        # "file caption" field.
-        #
-        # See https://www.wikidata.org/w/api.php?modules=wbsetlabel&action=help
-        # See https://www.mediawiki.org/wiki/Wikibase/API
-        set_label_resp = self._request(
-            "POST",
-            data={
-                "action": "wbsetlabel",
-                "title": f"File:{filename}",
-                "site": "commonswiki",
-                "value": short_caption,
-                # TODO: Support non-English captions
-                "language": "en",
-                "token": self.get_csrf_token(),
-            },
-        )
-
-        from pprint import pprint; pprint(set_label_resp)
+        # TODO: Support non-English captions
+        self.add_file_caption(filename=filename, language="en", value=short_caption)
 
         # Add more structured data
         import json
