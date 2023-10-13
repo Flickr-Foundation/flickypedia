@@ -1,3 +1,5 @@
+import json
+
 import httpx
 
 
@@ -116,6 +118,48 @@ class WikimediaApi:
         #
         # See https://www.mediawiki.org/wiki/Wikibase/API#Response
         #
+        if resp["success"] != 0:
+            return
+        else:  # pragma: no cover
+            raise WikimediaApiException(f"Unexpected response: {resp}")
+
+    def get_structured_data(self, *, filename):
+        """
+        Retrieve the structured data for a file on Wikimedia Commons.
+
+        This isn't used by Flickypedia directly, but it's very useful for
+        debugging and development.  e.g. create some structured data in
+        the web interface and then retrieve it with this method to see
+        what the JSON looks like.
+
+        See https://commons.wikimedia.org/wiki/Commons:Structured_data
+        See https://www.wikidata.org/w/api.php?modules=wbgetentities&action=help
+
+        """
+        return self._get(
+            action="wbgetentities", sites="commonswiki", titles=f"File:{filename}"
+        )
+
+    def add_structured_data(self, *, filename, data):
+        """
+        Add some structured data to a file on Wikimedia Commons.
+
+        This is a relatively crude tool -- it will simply insert new
+        statements, and ignore what's already there.  It would be nice
+        if we could query the existing statements and not duplicate
+        information, but that's a problem for another time.
+
+        See https://commons.wikimedia.org/wiki/Commons:Structured_data
+        See https://www.wikidata.org/w/api.php?modules=wbeditentity&action=help
+
+        """
+        resp = self._post(
+            action="wbeditentity",
+            site="commonswiki",
+            title=f"File:{filename}",
+            data=json.dumps(data),
+        )
+
         if resp["success"] != 0:
             return
         else:  # pragma: no cover

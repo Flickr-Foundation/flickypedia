@@ -1,0 +1,260 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.24.1
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=wbgetentities&sites=commonswiki&titles=File%3APrintedLibraryOfCongressSubjectHeadings.jpg&format=json
+  response:
+    content: '{"entities":{"M138833893":{"pageid":138833893,"ns":6,"title":"File:PrintedLibraryOfCongressSubjectHeadings.jpg","lastrevid":811528914,"modified":"2023-10-13T13:47:22Z","type":"mediainfo","id":"M138833893","labels":{},"descriptions":{},"statements":[]}},"success":1}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '1'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-length:
+      - '265'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Fri, 13 Oct 2023 13:47:49 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1465.eqiad.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - WMF-Last-Access=13-Oct-2023;Path=/;HttpOnly;secure;Expires=Tue, 14 Nov 2023
+        12:00:00 GMT
+      - GeoIP=GB:ENG:Muswell_Hill:51.59:-0.15:v4; Path=/; secure; Domain=.wikimedia.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie
+      x-cache:
+      - cp3066 pass, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - GeoIP=GB:ENG:Muswell_Hill:51.59:-0.15:v4; NetworkProbeLimit=0.001; WMF-Last-Access=13-Oct-2023
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.24.1
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=query&meta=tokens&type=csrf&format=json
+  response:
+    content: '{"batchcomplete":"","query":{"tokens":{"csrftoken":"6ae96135d81b2cca787ef6b84d3cc83f65294a85+\\"}}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-length:
+      - '99'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Fri, 13 Oct 2023 13:47:49 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1450.eqiad.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3066 pass, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: action=wbeditentity&site=commonswiki&title=File%3APrintedLibraryOfCongressSubjectHeadings.jpg&data=%7B%22claims%22%3A+%5B%7B%22mainsnak%22%3A+%7B%22snaktype%22%3A+%22value%22%2C+%22property%22%3A+%22P275%22%2C+%22datavalue%22%3A+%7B%22type%22%3A+%22wikibase-entityid%22%2C+%22value%22%3A+%7B%22id%22%3A+%22Q19125117%22%7D%7D%7D%2C+%22type%22%3A+%22statement%22%7D%5D%7D&format=json&token=6ae96135d81b2cca787ef6b84d3cc83f65294a85%2B%5C
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '434'
+      content-type:
+      - application/x-www-form-urlencoded
+      cookie:
+      - GeoIP=GB:ENG:Muswell_Hill:51.59:-0.15:v4; NetworkProbeLimit=0.001; WMF-Last-Access=13-Oct-2023
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.24.1
+    method: POST
+    uri: https://commons.wikimedia.org/w/api.php
+  response:
+    content: '{"entity":{"type":"mediainfo","id":"M138833893","labels":{},"descriptions":{},"statements":{"P275":[{"mainsnak":{"snaktype":"value","property":"P275","hash":"82d5b402aa0a79040483a8c9264bd484c6c13f67","datavalue":{"value":{"entity-type":"item","numeric-id":19125117,"id":"Q19125117"},"type":"wikibase-entityid"}},"type":"statement","id":"M138833893$3EDD9F54-EFDF-4D25-A431-F4A03486265D","rank":"normal"}]},"lastrevid":811529103},"success":1}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, max-age=0, s-maxage=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-length:
+      - '440'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Fri, 13 Oct 2023 13:47:49 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw2297.codfw.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - cpPosIndex=1%401697204869%23433c42afb8bc6da7f47c22df55bd543c; expires=Fri,
+        13-Oct-2023 13:47:59 GMT; Max-Age=10; path=/; secure; HttpOnly
+      - UseDC=master; expires=Fri, 13-Oct-2023 13:47:59 GMT; Max-Age=10; path=/; secure;
+        HttpOnly
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3066 pass, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - GeoIP=GB:ENG:Muswell_Hill:51.59:-0.15:v4; NetworkProbeLimit=0.001; UseDC=master;
+        WMF-Last-Access=13-Oct-2023; cpPosIndex=1%401697204869%23433c42afb8bc6da7f47c22df55bd543c
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.24.1
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=wbgetentities&sites=commonswiki&titles=File%3APrintedLibraryOfCongressSubjectHeadings.jpg&format=json
+  response:
+    content: '{"entities":{"M138833893":{"pageid":138833893,"ns":6,"title":"File:PrintedLibraryOfCongressSubjectHeadings.jpg","lastrevid":811529103,"modified":"2023-10-13T13:47:49Z","type":"mediainfo","id":"M138833893","labels":{},"descriptions":{},"statements":{"P275":[{"mainsnak":{"snaktype":"value","property":"P275","hash":"82d5b402aa0a79040483a8c9264bd484c6c13f67","datavalue":{"value":{"entity-type":"item","numeric-id":19125117,"id":"Q19125117"},"type":"wikibase-entityid"}},"type":"statement","id":"M138833893$3EDD9F54-EFDF-4D25-A431-F4A03486265D","rank":"normal"}]}}},"success":1}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-length:
+      - '576'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Fri, 13 Oct 2023 13:47:49 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw2442.codfw.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie
+      x-cache:
+      - cp3066 pass, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1
