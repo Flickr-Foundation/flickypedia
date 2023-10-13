@@ -16,13 +16,33 @@ class WikimediaApi:
             headers={"Authorization": f"Bearer {access_token}"},
         )
 
-    def _call(self, **params):
-        resp = self.client.get(url="w/api.php", params={**params, "format": "json"})
+    def _request(self, *, method, **kwargs):
+        resp = self.client.request(method, url="w/api.php", **kwargs)
 
-        if "error" in resp.json():
-            raise WikimediaApiException(resp)
+        # When something goes wrong, we get an ``error`` key in the response.
+        #
+        # Detect this here and throw an exception, so callers can assume
+        # there was no issue if this returns cleanly.
+        try:
+            error = resp.json()["error"]
+
+            if error["code"] == "mwoauth-invalid-authorization":
+                raise InvalidAccessTokenException(error.get("info"))
+            else:
+                raise UnknownWikimediaApiException(resp)
+        except KeyError:
+            pass
 
         return resp.json()
+
+    def _get(self, **params):
+        return self._request(method="GET", params={**params, "format": "json"})
+
+    def _post(self, **data):
+        return self._request(
+            method="POST",
+            data={**data, "format": "json", "token": self.get_csrf_token()},
+        )
 
     def get_csrf_token(self) -> str:
         """
@@ -34,7 +54,7 @@ class WikimediaApi:
 
         See https://www.mediawiki.org/wiki/API:Tokens
         """
-        resp = self._call(action="query", meta="tokens", type="csrf")
+        resp = self._get(action="query", meta="tokens", type="csrf")
 
         return resp["query"]["tokens"]["csrftoken"]
 
@@ -48,15 +68,74 @@ class WikimediaApi:
         See https://www.mediawiki.org/wiki/API:Userinfo
 
         """
-        resp = self._call(action="query", meta="userinfo")
+        resp = self._get(action="query", meta="userinfo")
 
         return resp["query"]["userinfo"]
 
+    def add_file_caption(self, *, filename, language, value):
+        """
+        Add a file caption to an image on Wikimedia Commons.
+
+        See https://commons.wikimedia.org/wiki/File_captions
+        See https://www.wikidata.org/w/api.php?modules=wbsetlabel&action=help
+
+        """
+        resp = self._post(
+            action="wbsetlabel",
+            site="commonswiki",
+            title=f"File:{filename}",
+            language=language,
+            value=value,
+        )
+
+        # A successful response from this API looks something like:
+        #
+        #     {
+        #       'entity': {
+        #         'id': 'M138765501',
+        #         'labels': {
+        #           'en': {
+        #             'language': 'en',
+        #             'value': '…'
+        #           }
+        #         },
+        #         'lastrevid': 811496641,
+        #         'type': 'mediainfo'
+        #       },
+        #       'success': 1
+        #     }
+        #
+        # Reading the MediaWiki API docs, it sounds like any non-zero integer
+        # here is fine, so we don't inspect this response too closely --
+        # we trust the file caption was set correctly.
+        #
+        # If we ever see a success=0 response here that doesn't include
+        # an error parameter, we can add a test for this branch.
+        #
+        # See https://www.mediawiki.org/wiki/Wikibase/API#Response
+        #
+        if resp["success"] != 0:
+            return
+        else:  # pragma: no cover
+            raise WikimediaApiException(f"Unexpected response: {resp}")
+
 
 class WikimediaApiException(Exception):
+    pass
+
+
+class UnknownWikimediaApiException(WikimediaApiException):
     def __init__(self, resp):
         error_info = resp.json()["error"]
 
         self.code = error_info.get("code")
         self.error_info = error_info
         super().__init__(error_info.get("info"))
+
+
+class InvalidAccessTokenException(WikimediaApiException):
+    """
+    Thrown when we have invalid access credentials.
+    """
+
+    pass
