@@ -1,4 +1,5 @@
 import argparse
+import sys
 
 
 def main():
@@ -17,5 +18,11 @@ def main():
 
     with app.app_context():
         db.create_all()
+
+    if app.config["OAUTH2_PROVIDERS"]["wikimedia"]["client_id"] is None:
+        sys.exit("No Wikimedia client ID provided! Set WIKIMEDIA_CLIENT_ID.")
+
+    if app.config["OAUTH2_PROVIDERS"]["wikimedia"]["client_secret"] is None:
+        sys.exit("No Wikimedia client secret provided! Set WIKIMEDIA_CLIENT_SECRET.")
 
     app.run(debug=args.debug, port=args.port, host=args.host)
