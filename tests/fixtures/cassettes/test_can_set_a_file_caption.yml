@@ -1,0 +1,136 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.24.1
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=query&meta=tokens&type=csrf&format=json
+  response:
+    content: '{"batchcomplete":"","query":{"tokens":{"csrftoken":"db4e4aee7e120ec3dfb13966a730172b6529275d+\\"}}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-length:
+      - '99'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Fri, 13 Oct 2023 11:17:49 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1492.eqiad.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - WMF-Last-Access=13-Oct-2023;Path=/;HttpOnly;secure;Expires=Tue, 14 Nov 2023
+        00:00:00 GMT
+      - GeoIP=GB:ENG:Muswell_Hill:51.59:-0.15:v4; Path=/; secure; Domain=.wikimedia.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3066 pass, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: action=wbsetlabel&site=commonswiki&title=File%3AGwrFireBuckets.jpg&language=en&value=A+row+of+red+fire+buckets+on+a+heritage+railway+in+Gloucestershire&format=json&token=db4e4aee7e120ec3dfb13966a730172b6529275d%2B%5C
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '216'
+      content-type:
+      - application/x-www-form-urlencoded
+      cookie:
+      - GeoIP=GB:ENG:Muswell_Hill:51.59:-0.15:v4; NetworkProbeLimit=0.001; WMF-Last-Access=13-Oct-2023
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.24.1
+    method: POST
+    uri: https://commons.wikimedia.org/w/api.php
+  response:
+    content: '{"entity":{"labels":{"en":{"language":"en","value":"A row of red fire
+      buckets on a heritage railway in Gloucestershire"}},"id":"M138765501","type":"mediainfo","lastrevid":811496641},"success":1}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '2'
+      cache-control:
+      - private, max-age=0, s-maxage=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-length:
+      - '194'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Fri, 13 Oct 2023 11:17:49 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw2295.codfw.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - cpPosIndex=1%401697195870%23433c42afb8bc6da7f47c22df55bd543c; expires=Fri,
+        13-Oct-2023 11:18:00 GMT; Max-Age=10; path=/; secure; HttpOnly
+      - UseDC=master; expires=Fri, 13-Oct-2023 11:18:00 GMT; Max-Age=10; path=/; secure;
+        HttpOnly
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3066 pass, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1
