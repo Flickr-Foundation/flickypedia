@@ -20,7 +20,6 @@ def upload_photos():
     print(current_user.access_token())
 
     if form.validate_on_submit and form.photo_id.data:
-
         api = WikimediaApi(access_token=current_user.access_token())
 
         print(form.date_taken.data)
@@ -45,7 +44,7 @@ def upload_photos():
             filename=form.filename.data,
             license=form.license_id.data,
             short_caption=form.short_caption.data,
-            structured_data=structured_data
+            structured_data=structured_data,
         )
 
         print(api)

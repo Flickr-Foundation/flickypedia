@@ -126,7 +126,9 @@ class WikimediaApi:
         else:  # pragma: no cover
             raise WikimediaApiException(f"Unexpected response: {resp}")
 
-    def upload_photo(self, *, jpeg_url, filename, license, short_caption, structured_data) -> str:
+    def upload_photo(
+        self, *, jpeg_url, filename, license, short_caption, structured_data
+    ) -> str:
         """
         Uploads a photo to Wikimedia Commons and adds some structured data.
 
@@ -178,18 +180,21 @@ class WikimediaApi:
             },
         )
 
+        from pprint import pprint; pprint(set_label_resp)
+
         # Add more structured data
         import json
 
-        self._request("POST", data={
-            "action": "wbeditentity",
-            "site": "commonswiki",
-            "title": f"File:{filename}",
-            "data": json.dumps({
-                "claims": structured_data
-            }),
-            "token": self.get_csrf_token()
-        })
+        self._request(
+            "POST",
+            data={
+                "action": "wbeditentity",
+                "site": "commonswiki",
+                "title": f"File:{filename}",
+                "data": json.dumps({"claims": structured_data}),
+                "token": self.get_csrf_token(),
+            },
+        )
 
 
 class WikimediaApiException(Exception):
