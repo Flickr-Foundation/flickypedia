@@ -1,0 +1,135 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.24.1
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=query&meta=tokens&type=csrf&format=json
+  response:
+    content: '{"batchcomplete":"","query":{"tokens":{"csrftoken":"715d8ac54ea18a8565c27ce9c536ca45652958e7+\\"}}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '1'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-length:
+      - '99'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Fri, 13 Oct 2023 14:49:11 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1444.eqiad.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - WMF-Last-Access=13-Oct-2023;Path=/;HttpOnly;secure;Expires=Tue, 14 Nov 2023
+        12:00:00 GMT
+      - GeoIP=GB:ENG:Muswell_Hill:51.59:-0.15:v4; Path=/; secure; Domain=.wikimedia.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3066 pass, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: action=upload&filename=RailwayMuseumClocks.jpg&url=https%3A%2F%2Flive.staticflickr.com%2F65535%2F53248279408_c23cba9eb8_o_d.jpg&text=A+wall+of+railway+pendulum+clocks+at+the+Slovenian+Railway+Museum+in+Ljubljana&format=json&token=715d8ac54ea18a8565c27ce9c536ca45652958e7%2B%5C
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '276'
+      content-type:
+      - application/x-www-form-urlencoded
+      cookie:
+      - GeoIP=GB:ENG:Muswell_Hill:51.59:-0.15:v4; NetworkProbeLimit=0.001; WMF-Last-Access=13-Oct-2023
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.24.1
+    method: POST
+    uri: https://commons.wikimedia.org/w/api.php
+  response:
+    content: '{"upload":{"result":"Warning","warnings":{"exists":"RailwayMuseumClocks.jpg","nochange":{"timestamp":"2023-10-10T11:50:11Z"}},"filekey":"1af50sprx58s.xfatvo.829939.","sessionkey":"1af50sprx58s.xfatvo.829939."}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '12'
+      cache-control:
+      - private, max-age=0, s-maxage=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-length:
+      - '210'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Fri, 13 Oct 2023 14:49:11 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw2323.codfw.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - cpPosIndex=1%401697208557%23433c42afb8bc6da7f47c22df55bd543c; expires=Fri,
+        13-Oct-2023 14:49:27 GMT; Max-Age=10; path=/; secure; HttpOnly
+      - UseDC=master; expires=Fri, 13-Oct-2023 14:49:27 GMT; Max-Age=10; path=/; secure;
+        HttpOnly
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3066 pass, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

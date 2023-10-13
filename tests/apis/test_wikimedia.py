@@ -3,6 +3,7 @@ import pytest
 from flickypedia.apis.structured_data import create_license_statement
 from flickypedia.apis.wikimedia import (
     WikimediaApi,
+    DuplicatePhotoUploadException,
     InvalidAccessTokenException,
     UnknownWikimediaApiException,
 )
@@ -39,6 +40,38 @@ def test_can_get_a_csrf_token(wikimedia_api):
     assert (
         wikimedia_api.get_csrf_token() == "b06523b8444d39f30df59c8bdee0515b65253321+\\"
     )
+
+
+class TestUploadImage:
+    def test_fails_if_uploading_image_from_disallowed_domain(self, wikimedia_api):
+        with pytest.raises(
+            UnknownWikimediaApiException,
+            match="Uploads by URL are not allowed from this domain",
+        ):
+            wikimedia_api.upload_image(
+                filename="example.jpg",
+                jpeg_url="https://alexwlchan.net/images/example.jpg",
+                text="An image which doesn’t even exist",
+            )
+
+    def test_fails_if_uploading_non_existent_image(self, wikimedia_api):
+        with pytest.raises(
+            UnknownWikimediaApiException,
+            match="Uploads by URL are not allowed from this domain",
+        ):
+            wikimedia_api.upload_image(
+                filename="example.jpg",
+                jpeg_url="https://flickr.com/doesntexist.jpg",
+                text="An image which doesn’t even exist",
+            )
+
+    def test_fails_if_uploading_image_which_is_duplicate(self, wikimedia_api):
+        with pytest.raises(DuplicatePhotoUploadException):
+            wikimedia_api.upload_image(
+                filename="RailwayMuseumClocks.jpg",
+                jpeg_url="https://live.staticflickr.com/65535/53248279408_c23cba9eb8_o_d.jpg",
+                text="A wall of railway pendulum clocks at the Slovenian Railway Museum in Ljubljana",
+            )
 
 
 class TestAddFileCaption:
