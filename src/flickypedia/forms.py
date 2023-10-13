@@ -4,6 +4,7 @@ from wtforms.validators import DataRequired
 
 
 class UploadPhotoForm(FlaskForm):
+    photo_url = StringField("photo_url", validators=[Data])
     photo_id = StringField("photo_id", validators=[DataRequired()])
     user_id = StringField("user_id", validators=[DataRequired()])
     username = StringField("username", validators=[DataRequired()])
