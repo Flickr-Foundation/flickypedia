@@ -1,4 +1,5 @@
 cryptography
+Flask-Executor
 flask-login
 
 # These version pins are all to maintain Python 3.7 support, even though

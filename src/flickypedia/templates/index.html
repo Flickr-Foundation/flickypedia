@@ -13,8 +13,70 @@
 {% endwith %}
 
 {% if not current_user.is_anonymous %}
-  You are logged in to Wikimedia as <strong>{{ current_user.name }}</strong>
-  <a href="{{ url_for('logout') }}">Log out</a>
+  <p>
+    You are logged in to Wikimedia as <strong>{{ current_user.name }}</strong>
+    <a href="{{ url_for('logout') }}">Log out</a>
+  </p>
+
+  <p>
+    <a href="/upload_images">Begin upload!</a>
+  </p>
+
+  <style>
+    .started {
+      color: yellow;
+    }
+
+    .processing {
+      color: blue;
+    }
+
+    .done, .succeeded {
+      color: green;
+    }
+
+    .failed {
+      color: red;
+    }
+  </style>
+
+  <h3>Tasks</h3>
+
+  <ul id="taskInfo"></ul>
+
+  <script>
+    function getTasks() {
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", "/jobs");
+      xhr.send();
+      xhr.responseType = "json";
+      xhr.onload = () => {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          console.log('go!');
+          html = "";
+
+          const data = xhr.response;
+
+          for (var i = 0; i < data.length; i++) {
+            html += `<li>${data[i].id} / <span class="${data[i].state}">${data[i].state}</span></li>`;
+          }
+
+          document.querySelector("#taskInfo").innerHTML = html;
+        } else {
+          console.log(`Error: ${xhr.status}`);
+        }
+      };
+    }
+
+    window.addEventListener("load", (event) => {
+      getTasks();
+    });
+
+    setInterval(() => getTasks(), 1000);
+
+  </script>
 {% else %}
-  <a href="{{ url_for('oauth2_authorize_wikimedia') }}">Log in to Wikimedia</a>
+  <p>
+    <a href="{{ url_for('oauth2_authorize_wikimedia') }}">Log in to Wikimedia</a>
+  </p>
 {% endif %}
