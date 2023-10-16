@@ -3,6 +3,8 @@ from download_snapshot import find_links
 
 def test_find_links():
     html = """
+            <p>Hello world!</p>
+
             <a href="https://example.net">
             <a href="https://flickr.com/hello">
             <a href="./Cat.jpg">
