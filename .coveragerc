@@ -1,7 +1,10 @@
 [run]
 branch = True
-source = flickypedia
-# TODO: Capture coverage data for the 'tests' directory
+source =
+  flickypedia
+  tests
+  
+  duplicate_detection
 
 [report]
 show_missing = true

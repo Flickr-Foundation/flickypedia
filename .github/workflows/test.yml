@@ -38,5 +38,5 @@ jobs:
         flake8 --ignore=E501,W503
     - name: Run tests
       run: |
-        coverage run -m pytest tests
+        coverage run -m pytest tests duplicate_detection
         coverage report
