@@ -35,7 +35,11 @@ jobs:
         # W503 = line break before binary operator; this is something added
         # by black and I don't have a strong opinion on, so I'm going to trust
         # black and have flake8 ignore it.
-        flake8 --ignore=E501,W503
+        #
+        # E231 = an issue on Python 3.12 because we're running an old version
+        # of pycodestyle.  We can drop it when we can run pycodestyle 2.11.0
+        # or later.  See https://github.com/PyCQA/flake8/issues/1845
+        flake8 --ignore=E501,W503,E231
     - name: Run tests
       run: |
         coverage run -m pytest tests
