@@ -28,6 +28,16 @@ class Config(object):
             "data_folder_in": "tasks/queue",
             "data_folder_out": "tasks/queue",
             "processed_folder": "tasks/processed",
+            #
+            # This isn't a Celery config option, but it's used by
+            # Celery in our app for tracking in-progress work.
+            #
+            # We store it here for convenience.
+            "progress_folder": "tasks/in_progress_folder",
+            #
+            # The processed tasks include the original arguments passed
+            # to Celery, which has the user's OAuth credentials in
+            # plain text, so we don't want to keep them around.
             "store_processed": False,
         },
     }
