@@ -1,3 +1,13 @@
+"""
+Create Wikitext for display on Wikimedia Commons.
+
+== Useful reading ==
+
+*   Help:Wikitext
+    https://en.wikipedia.org/wiki/Help:Wikitext
+
+"""
+
 from flickypedia.apis.flickr import TakenDateGranularity
 
 

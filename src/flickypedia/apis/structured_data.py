@@ -1,5 +1,5 @@
 """
-Create structured data entities for display on Wikimedia Commons.
+Create structured data entities for use on Wikimedia Commons.
 
 This creates statements that will be passed in the list of statements
 sent in the ``data`` parameter of the ``wbeditentity`` API.
