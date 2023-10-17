@@ -69,7 +69,7 @@ def celery_init_app(app: Flask) -> Celery:
 
 class ProgressTracker:
     def __init__(self, task_id):
-        self.task_id
+        self.task_id = task_id
 
     @property
     def path(self):
@@ -89,12 +89,15 @@ class ProgressTracker:
         with open(self.path) as out_file:
             out_file.write(json.dumps(data))
 
-    def get_progress(self, data):
+    def get_progress(self):
         """
         Retrieves the state of an in-progress task.
         """
-        with open(self.path) as in_file:
-            return json.load(in_file)
+        try:
+            with open(self.path) as in_file:
+                return json.load(in_file)
+        except FileNotFoundError:
+            return
 
 
 def get_status(task_id):
