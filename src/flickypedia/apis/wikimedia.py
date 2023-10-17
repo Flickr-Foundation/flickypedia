@@ -102,7 +102,16 @@ class WikimediaApi:
         ):
             raise DuplicatePhotoUploadException(filename)
 
-        if upload_resp["upload"]["result"] != "Success":
+        # I've never actually seen an upload fail in this way -- it may
+        # be that 'Success' and 'Warning' are the only possible results.
+        # This branch is here as a defensive measure.
+        #
+        # If we encounter a case where we get a non-Success/Warning result,
+        # we should add a test for it.
+        #
+        # If we learn that no other result is possible, we should remove
+        # this branch and add a comment linking to a reference.
+        if upload_resp["upload"]["result"] != "Success":  # pragma: no cover
             raise RuntimeError(f"Unexpected result from upload API: {upload_resp!r}")
 
     def add_file_caption(self, *, filename, language, value):
