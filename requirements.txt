@@ -4,10 +4,16 @@
 #
 #    pip-compile requirements.in
 #
+amqp==5.1.1
+    # via kombu
 anyio==4.0.0
     # via httpcore
+billiard==4.1.0
+    # via celery
 blinker==1.6.3
     # via flask
+celery==5.3.4
+    # via -r requirements.in
 certifi==2023.7.22
     # via
     #   httpcore
@@ -15,7 +21,18 @@ certifi==2023.7.22
 cffi==1.16.0
     # via cryptography
 click==8.1.7
-    # via flask
+    # via
+    #   celery
+    #   click-didyoumean
+    #   click-plugins
+    #   click-repl
+    #   flask
+click-didyoumean==0.3.0
+    # via celery
+click-plugins==1.1.1
+    # via celery
+click-repl==0.3.0
+    # via celery
 cryptography==41.0.4
     # via -r requirements.in
 exceptiongroup==1.1.3
@@ -52,12 +69,20 @@ itsdangerous==2.1.2
     # via flask
 jinja2==3.1.2
     # via flask
+kombu==5.3.2
+    # via celery
 markupsafe==2.1.3
     # via
     #   jinja2
     #   werkzeug
+prompt-toolkit==3.0.39
+    # via click-repl
 pycparser==2.21
     # via cffi
+python-dateutil==2.8.2
+    # via celery
+six==1.16.0
+    # via python-dateutil
 sniffio==1.3.0
     # via
     #   anyio
@@ -66,7 +91,18 @@ sniffio==1.3.0
 sqlalchemy==2.0.22
     # via flask-sqlalchemy
 typing-extensions==4.8.0
-    # via sqlalchemy
+    # via
+    #   kombu
+    #   sqlalchemy
+tzdata==2023.3
+    # via celery
+vine==5.0.0
+    # via
+    #   amqp
+    #   celery
+    #   kombu
+wcwidth==0.2.8
+    # via prompt-toolkit
 werkzeug==2.3.7
     # via
     #   -r requirements.in
