@@ -239,8 +239,8 @@ def create_date_taken_statement(date_taken: datetime.datetime, taken_granularity
     https://www.flickr.com/services/api/misc.dates.html
     """
     try:
-        precision = {
-            TakenDateGranularity.Day: "day",
+        wikidata_precision = {
+            TakenDateGranularity.Second: "day",
             TakenDateGranularity.Month: "month",
             TakenDateGranularity.Year: "year",
             TakenDateGranularity.Circa: "year",
@@ -249,13 +249,13 @@ def create_date_taken_statement(date_taken: datetime.datetime, taken_granularity
         raise ValueError(f"Unrecognised taken_granularity: {taken_granularity!r}")
 
     if taken_granularity in {
-        TakenDateGranularity.Day,
+        TakenDateGranularity.Second,
         TakenDateGranularity.Month,
         TakenDateGranularity.Year,
     }:
         return {
             "mainsnak": {
-                "datavalue": to_wikidata_date(date_taken, precision=precision),
+                "datavalue": to_wikidata_date(date_taken, precision=wikidata_precision),
                 "property": WikidataProperties.Inception,
                 "snaktype": "value",
             },
@@ -273,7 +273,7 @@ def create_date_taken_statement(date_taken: datetime.datetime, taken_granularity
 
         return {
             "mainsnak": {
-                "datavalue": to_wikidata_date(date_taken, precision=precision),
+                "datavalue": to_wikidata_date(date_taken, precision=wikidata_precision),
                 "property": WikidataProperties.Inception,
                 "snaktype": "value",
             },

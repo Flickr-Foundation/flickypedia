@@ -5,7 +5,7 @@ class TakenDateGranularity:
     See https://www.flickr.com/services/api/misc.dates.html
     """
 
-    Day = 0
+    Second = 0
     Month = 4
     Year = 6
     Circa = 8
