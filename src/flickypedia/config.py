@@ -33,7 +33,7 @@ class Config(object):
             # Celery in our app for tracking in-progress work.
             #
             # We store it here for convenience.
-            "progress_folder": "tasks/in_progress_folder",
+            "in_progress_folder": "tasks/in_progress_folder",
             #
             # The processed tasks include the original arguments passed
             # to Celery, which has the user's OAuth credentials in

@@ -14,10 +14,17 @@ dependency if I can help it.
 
 """
 
+import json
 import os
+import random
+import time
 
-from celery import Celery, Task
+import celery
+from celery import Celery, Task, shared_task
+from celery.result import AsyncResult
 from flask import Flask
+
+from flickypedia.config import Config
 
 
 def celery_init_app(app: Flask) -> Celery:
@@ -52,3 +59,57 @@ def celery_init_app(app: Flask) -> Celery:
     celery_app.set_default()
     app.extensions["celery"] = celery_app
     return celery_app
+
+
+def get_progress(task_id):
+    config = Config().CELERY
+    in_progress_folder = config["broker_transport_options"]["in_progress_folder"]
+
+    with open(os.path.join(in_progress_folder, f"{task_id}.json")) as in_file:
+        return json.load(in_file)
+
+
+def write_progress(task_id, data):
+    config = Config().CELERY
+    in_progress_folder = config["broker_transport_options"]["in_progress_folder"]
+
+    with open(os.path.join(in_progress_folder, f"{task_id}.json"), "w") as out_file:
+        out_file.write(json.dumps(data))
+
+
+def get_status(task_id):
+    result = AsyncResult(task_id)
+
+    if result.ready():
+        return {
+            "ready": result.ready(),
+            "successful": result.successful(),
+            "value": result.result if result.ready() else None,
+        }
+    else:
+        return {"ready": False, "progress": get_progress(task_id)}
+
+
+@shared_task(ignore_result=False)
+def upload_images(count: int) -> int:
+    task_id = celery.current_task.request.id
+
+    write_progress(
+        task_id=task_id,
+        data={"waiting": list(range(count)), "success": [], "failure": []},
+    )
+
+    for i in range(count):
+        print(f"working on task {celery.current_task.request.id} / image {i}")
+
+        time.sleep(random.uniform(1, 5))
+
+        result = "success" if random.uniform(0, 1) > 0.15 else "failure"
+
+        data = get_progress(task_id)
+        data["waiting"].remove(i)
+        data[result].append(i)
+
+        write_progress(task_id=task_id, data=data)
+
+    return get_progress(task_id)
