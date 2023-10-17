@@ -7,6 +7,18 @@ those systems later if we need something with more throughput -- it
 depends on our deployment options, and I'd rather avoid an external
 dependency if I can help it.
 
+== Progress tracking ==
+
+If you use Celery out of the box, you just get a "success/fail" response
+when the entire task is done.
+
+To provide a better experience to users, we have two functions:
+
+*   set_progress()
+*   get_progress()
+
+which can be used to report progress updates as you're going along.
+
 == Useful background reading ==
 
 *   Background tasks with Celery
@@ -55,20 +67,50 @@ def celery_init_app(app: Flask) -> Celery:
     return celery_app
 
 
+class ProgressTracker:
+    def __init__(self, task_id):
+        self.task_id
+
+    @property
+    def path(self):
+        """
+        Returns the path to a file which can be used for tracking information
+        about an in-progress task.
+        """
+        config = Config().CELERY
+        in_progress_folder = config["broker_transport_options"]["in_progress_folder"]
+
+        return os.path.join(in_progress_folder, f"{task_id}.json")
+
+    def record_progress()
+
+
+
+def _progress_file(task_id):
+    """
+    Returns the path to a file which can be used for tracking information
+    about an in-progress task.
+    """
+    config = Config().CELERY
+    in_progress_folder = config["broker_transport_options"]["in_progress_folder"]
+
+    return os.path.join(in_progress_folder, f"{task_id}.json")
+
+
+def set_progress(task_id, data):
+    """"""
+    path = _progress_file(task_id)
+
+    with open(os.path.join(in_progress_folder, f"{task_id}.json"), "w") as out_file:
+        out_file.write(json.dumps(data))
+
+
 def get_progress(task_id):
     config = Config().CELERY
     in_progress_folder = config["broker_transport_options"]["in_progress_folder"]
 
     with open(os.path.join(in_progress_folder, f"{task_id}.json")) as in_file:
         return json.load(in_file)
-
-
-def write_progress(task_id, data):
-    config = Config().CELERY
-    in_progress_folder = config["broker_transport_options"]["in_progress_folder"]
-
-    with open(os.path.join(in_progress_folder, f"{task_id}.json"), "w") as out_file:
-        out_file.write(json.dumps(data))
 
 
 def get_status(task_id):
@@ -88,7 +130,7 @@ def get_status(task_id):
 def upload_images(count: int) -> int:
     task_id = celery.current_task.request.id
 
-    write_progress(
+    set_progress(
         task_id=task_id,
         data={"waiting": list(range(count)), "success": [], "failure": []},
     )
@@ -104,6 +146,6 @@ def upload_images(count: int) -> int:
         data["waiting"].remove(i)
         data[result].append(i)
 
-        write_progress(task_id=task_id, data=data)
+        set_progress(task_id=task_id, data=data)
 
     return get_progress(task_id)
