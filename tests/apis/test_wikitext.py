@@ -2,7 +2,7 @@ import datetime
 
 import pytest
 
-from flickypedia.apis.wikimedia import create_wikitext
+from flickypedia.apis.wikitext import create_wikitext
 
 
 def test_create_wikitext_for_regular_photo():
