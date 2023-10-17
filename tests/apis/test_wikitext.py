@@ -1,5 +1,7 @@
 import datetime
 
+import pytest
+
 from flickypedia.apis.wikimedia import create_wikitext
 
 
@@ -21,7 +23,7 @@ def test_create_wikitext_for_regular_photo():
     expected = """=={{int:filedesc}}==
 {{Information
 |Source=[https://www.flickr.com/photos/199246608@N02/53255367525/]
-|Date=2023-10-11 11:49
+|Date=2023-10-11 11:49:25
 |Author=[https://www.flickr.com/people/199246608@N02 Alex Chan]
 |Permission=
 |other_versions=
@@ -32,3 +34,59 @@ def test_create_wikitext_for_regular_photo():
 """
 
     assert actual == expected
+
+
+@pytest.mark.parametrize(
+    ["date_taken", "expected_date_text"],
+    [
+        (
+            {
+                "value": datetime.datetime(2001, 2, 3, 4, 5, 6),
+                "unknown": False,
+                "granularity": 0,  # Day
+            },
+            "|Date=2001-02-03 04:05:06\n",
+        ),
+        (
+            {
+                "value": datetime.datetime(2001, 2, 3, 4, 5, 6),
+                "unknown": False,
+                "granularity": 4,  # Month
+            },
+            "|Date=2001-02\n",
+        ),
+        (
+            {
+                "value": datetime.datetime(2001, 2, 3, 4, 5, 6),
+                "unknown": False,
+                "granularity": 6,  # Year
+            },
+            "|Date=2001\n",
+        ),
+        (
+            {
+                "value": datetime.datetime(2001, 2, 3, 4, 5, 6),
+                "unknown": False,
+                "granularity": 8,  # Circa
+            },
+            "|Date={{circa|2001}}\n",
+        ),
+        (
+            {
+                "value": datetime.datetime(2001, 2, 3, 4, 5, 6),
+                "unknown": True,
+                "granularity": 0,  # Circa
+            },
+            "|Date={{Other date|?}}\n",
+        ),
+    ],
+)
+def test_create_wikitext_with_date_granularity(date_taken, expected_date_text):
+    wikitext = create_wikitext(
+        photo_url="https://www.flickr.com/photos/example/1234",
+        date_taken=date_taken,
+        flickr_user={"id": "1234", "username": "example", "realname": "example"},
+        license_id="cc-by-2.0",
+    )
+
+    assert expected_date_text in wikitext
