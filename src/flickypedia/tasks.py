@@ -14,7 +14,7 @@ when the entire task is done.
 
 To provide a better experience to users, we have two functions:
 
-*   set_progress()
+*   record_progress()
 *   get_progress()
 
 which can be used to report progress updates as you're going along.
@@ -80,37 +80,21 @@ class ProgressTracker:
         config = Config().CELERY
         in_progress_folder = config["broker_transport_options"]["in_progress_folder"]
 
-        return os.path.join(in_progress_folder, f"{task_id}.json")
+        return os.path.join(in_progress_folder, f"{self.task_id}.json")
 
-    def record_progress()
+    def record_progress(self, data):
+        """
+        Records the state of an in-progress task.
+        """
+        with open(self.path) as out_file:
+            out_file.write(json.dumps(data))
 
-
-
-def _progress_file(task_id):
-    """
-    Returns the path to a file which can be used for tracking information
-    about an in-progress task.
-    """
-    config = Config().CELERY
-    in_progress_folder = config["broker_transport_options"]["in_progress_folder"]
-
-    return os.path.join(in_progress_folder, f"{task_id}.json")
-
-
-def set_progress(task_id, data):
-    """"""
-    path = _progress_file(task_id)
-
-    with open(os.path.join(in_progress_folder, f"{task_id}.json"), "w") as out_file:
-        out_file.write(json.dumps(data))
-
-
-def get_progress(task_id):
-    config = Config().CELERY
-    in_progress_folder = config["broker_transport_options"]["in_progress_folder"]
-
-    with open(os.path.join(in_progress_folder, f"{task_id}.json")) as in_file:
-        return json.load(in_file)
+    def get_progress(self, data):
+        """
+        Retrieves the state of an in-progress task.
+        """
+        with open(self.path) as in_file:
+            return json.load(in_file)
 
 
 def get_status(task_id):
@@ -123,15 +107,17 @@ def get_status(task_id):
             "value": result.result if result.ready() else None,
         }
     else:
-        return {"ready": False, "progress": get_progress(task_id)}
+        return {
+            "ready": False,
+            "progress": ProgressTracker(task_id=task_id).get_progress(),
+        }
 
 
 @shared_task(ignore_result=False)
 def upload_images(count: int) -> int:
-    task_id = celery.current_task.request.id
+    tracker = ProgressTracker(task_id=celery.current_task.request.id)
 
-    set_progress(
-        task_id=task_id,
+    tracker.record_progress(
         data={"waiting": list(range(count)), "success": [], "failure": []},
     )
 
@@ -142,10 +128,10 @@ def upload_images(count: int) -> int:
 
         result = "success" if random.uniform(0, 1) > 0.15 else "failure"
 
-        data = get_progress(task_id)
+        data = tracker.get()
         data["waiting"].remove(i)
         data[result].append(i)
 
-        set_progress(task_id=task_id, data=data)
+        tracker.record_progress(data=data)
 
-    return get_progress(task_id)
+    return tracker.get_progress()
