@@ -115,7 +115,6 @@ def load_user(session_id: str):
     return db.session.get(WikimediaUserSession, session[SESSION_ID_KEY])
 
 
-@app.route("/logout")
 @login_required
 def logout():
     """
@@ -136,7 +135,6 @@ def logout():
     return redirect(url_for("index"))
 
 
-@app.route("/authorize/wikimedia")
 def oauth2_authorize_wikimedia():
     """
     Authorize the user with the Wikimedia APIs.
@@ -170,7 +168,6 @@ def oauth2_authorize_wikimedia():
     return redirect(provider_data["authorize_url"] + "?" + qs)
 
 
-@app.route("/callback/wikimedia")
 def oauth2_callback_wikimedia():
     """
     Handle an authorization callback from Wikimedia.
