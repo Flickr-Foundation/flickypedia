@@ -86,7 +86,7 @@ class ProgressTracker:
         """
         Records the state of an in-progress task.
         """
-        with open(self.path) as out_file:
+        with open(self.path, "w") as out_file:
             out_file.write(json.dumps(data))
 
     def get_progress(self):
