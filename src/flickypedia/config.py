@@ -20,3 +20,17 @@ class Config(object):
             "token_url": "https://meta.wikimedia.org/w/rest.php/oauth2/access_token",
         }
     }
+
+    for folder in ['tasks/queue/in', 'tasks/queue/out', 'tasks/processed', 'tasks/results']:
+        os.makedirs(folder, exist_ok=True)
+
+    CELERY = {
+        'result_backend': 'file://tasks/results',
+        'broker_url': 'filesystem://',
+        'broker_transport_options': {
+            'data_folder_in': 'tasks/queue/out',
+            'data_folder_out': 'tasks/queue/out',
+            'processed_folder': 'tasks/processed',
+            'store_processed': True,
+        }
+    }

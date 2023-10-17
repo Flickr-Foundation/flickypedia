@@ -5,5 +5,10 @@
 
 *.sqlite
 
+# Files from the duplicate detection
 *.json.bz2
 flickr_ids_from_sdc.*
+
+# Files used by Celery
+tasks
+*.exchange
