@@ -131,7 +131,7 @@ def upload_images(count: int) -> int:
 
         result = "success" if random.uniform(0, 1) > 0.15 else "failure"
 
-        data = tracker.get()
+        data = tracker.get_progress()
         data["waiting"].remove(i)
         data[result].append(i)
 
