@@ -283,6 +283,6 @@ def create_wikitext(photo_url, date_taken, flickr_user, license_id):
         photo_url,
         date_string,
         flickr_user["id"],
-        flickr_user["realname"],
+        flickr_user["realname"] or flickr_user["username"],
         license_id,
     )

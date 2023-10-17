@@ -90,3 +90,39 @@ def test_create_wikitext_with_date_granularity(date_taken, expected_date_text):
     )
 
     assert expected_date_text in wikitext
+
+
+@pytest.mark.parametrize(
+    ["flickr_user", "expected_author_text"],
+    [
+        (
+            {
+                "id": "199246608@N02",
+                "username": "cefarrjf87",
+                "realname": "Alex Chan",
+            },
+            "|Author=[https://www.flickr.com/people/199246608@N02 Alex Chan]",
+        ),
+        (
+            {
+                "id": "35591378@N03",
+                "username": "Obama White House Archived",
+                "realname": None,
+            },
+            "|Author=[https://www.flickr.com/people/35591378@N03 Obama White House Archived]",
+        ),
+    ],
+)
+def test_create_wikitext_with_user_info(flickr_user, expected_author_text):
+    wikitext = create_wikitext(
+        photo_url="https://www.flickr.com/photos/example/1234",
+        date_taken={
+            "value": datetime.datetime(2001, 2, 3, 4, 5, 6),
+            "unknown": False,
+            "granularity": 0,
+        },
+        flickr_user=flickr_user,
+        license_id="cc-by-2.0",
+    )
+
+    assert expected_author_text in wikitext
