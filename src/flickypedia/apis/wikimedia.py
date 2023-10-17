@@ -240,3 +240,27 @@ class DuplicatePhotoUploadException(WikimediaApiException):
 
     def __init__(self, name):
         super().__init__(f"There is already a photo on Wikimedia Commons called {name}")
+
+
+def create_wikitext(photo_url, date_taken, flickr_user, license_id):
+    """
+    Creates the Wikitext for a Flickr photo being uploaded to Wiki Commons.
+    """
+    return """=={{int:filedesc}}==
+{{Information
+|Source=[%s]
+|Date=%s
+|Author=[https://www.flickr.com/people/%s %s]
+|Permission=
+|other_versions=
+}}
+
+=={{int:license-header}}==
+{{%s}}
+""" % (
+        photo_url,
+        date_taken["value"].strftime("%Y-%m-%d %H:%M"),
+        flickr_user["id"],
+        flickr_user["realname"],
+        license_id,
+    )
