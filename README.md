@@ -31,3 +31,9 @@ $ pip install -r dev_requirements.txt
 $ coverage run -m pytest tests
 $ coverage report
 ```
+
+## How to run the background worker
+
+```console
+$ celery --app flickypedia.celery_app worker --loglevel INFO
+```
