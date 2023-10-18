@@ -40,7 +40,7 @@ def create_wikitext(
 
     return """=={{int:filedesc}}==
 {{Information
-|Source=[%s]
+|Source=%s
 |Date=%s
 |Author=[https://www.flickr.com/people/%s %s]
 |Permission=
