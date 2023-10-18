@@ -146,12 +146,20 @@ def lookup_flickr_user_in_wikidata(user: FlickrUser):
 
         # e.g. http://www.wikidata.org/entity/Q5981474
         uri_match = re.match(
-            r"^http://www.wikidata.org/entity/(?P<wikidata_id>Q\d+)$",
+            r"^http://www\.wikidata\.org/entity/(?P<wikidata_id>Q\d+)$",
             matched_item["value"],
         )
 
         if matched_item["type"] == "uri" and uri_match is not None:
             return uri_match.group("wikidata_id")
+
+        # This branch is defensive -- I've yet to see a query where
+        # we got a non-Wikidata URI here, and I'm not sure that makes
+        # any sense, but we include a meaningful error message just in case.
+        else:  # pragma: no cover
+            raise RuntimeError(
+                f"Unexpected result from the Wikidata API: {matched_item}"
+            )
 
     except (IndexError, KeyError):
         pass

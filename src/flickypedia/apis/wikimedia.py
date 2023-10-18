@@ -79,7 +79,7 @@ class WikimediaApi:
 
     def upload_image(self, *, filename, jpeg_url, text):
         """
-        Upload an image to Wikimedia Commons.
+        Upload an image to Wikimedia Commons.  Returns the upload filename.
 
         See https://www.mediawiki.org/wiki/API:Upload
 
@@ -113,6 +113,8 @@ class WikimediaApi:
         # this branch and add a comment linking to a reference.
         if upload_resp["upload"]["result"] != "Success":  # pragma: no cover
             raise RuntimeError(f"Unexpected result from upload API: {upload_resp!r}")
+
+        return upload_resp["upload"]["filename"]
 
     def add_file_caption(self, *, filename, language, value):
         """

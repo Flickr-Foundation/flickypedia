@@ -1,0 +1,160 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.0
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=query&meta=tokens&type=csrf&format=json
+  response:
+    content: '{"batchcomplete":"","query":{"tokens":{"csrftoken":"9259b755e0401716925708666a90948d652ff65d+\\"}}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-length:
+      - '99'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Wed, 18 Oct 2023 15:14:37 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1465.eqiad.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - WMF-Last-Access=18-Oct-2023;Path=/;HttpOnly;secure;Expires=Sun, 19 Nov 2023
+        12:00:00 GMT
+      - GeoIP=GB:ENG:Newark_on_Trent:53.07:-0.82:v4; Path=/; secure; Domain=.wikimedia.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3066 pass, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: action=upload&filename=Silver+Blue+Fish+In+Boston+Aquarium.jpg&url=https%3A%2F%2Flive.staticflickr.com%2F8338%2F8273352482_50cb58a54f_o_d.jpg&text=%3D%3D%7B%7Bint%3Afiledesc%7D%7D%3D%3D%0A%7B%7BInformation%0A%7CSource%3Dhttps%3A%2F%2Fwww.flickr.com%2Fphotos%2Fpictureclara%2F8273352482%2F%0A%7CDate%3D2012-12-08+15%3A08%3A45%0A%7CAuthor%3D%5Bhttps%3A%2F%2Fwww.flickr.com%2Fpeople%2F13151547%40N06+Clara+S.%5D%0A%7CPermission%3D%0A%7Cother_versions%3D%0A%7D%7D%0A%0A%3D%3D%7B%7Bint%3Alicense-header%7D%7D%3D%3D%0A%7B%7Bcc-by-2.0%7D%7D%0A&format=json&token=9259b755e0401716925708666a90948d652ff65d%2B%5C
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '601'
+      content-type:
+      - application/x-www-form-urlencoded
+      cookie:
+      - GeoIP=GB:ENG:Newark_on_Trent:53.07:-0.82:v4; NetworkProbeLimit=0.001; WMF-Last-Access=18-Oct-2023
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.0
+    method: POST
+    uri: https://commons.wikimedia.org/w/api.php
+  response:
+    content: '{"upload":{"result":"Success","filename":"Silver_Blue_Fish_In_Boston_Aquarium.jpg","imageinfo":{"timestamp":"2023-10-18T15:14:44Z","user":"Alexwlchan","userid":829939,"size":10280530,"width":4928,"height":3264,"parsedcomment":"","comment":"","html":"<div>\n<figure
+      typeof=\"mw:Error mw:File/Thumb\"><a href=\"/w/index.php?title=Special:Upload&amp;wpDestFile=Silver_Blue_Fish_In_Boston_Aquarium.jpg\"
+      class=\"new\" title=\"File:Silver Blue Fish In Boston Aquarium.jpg\"><span class=\"mw-file-element
+      mw-broken-media\" data-width=\"100\">File:Silver Blue Fish In Boston Aquarium.jpg</span></a><figcaption>Existing
+      file</figcaption></figure>\n<p><span id=\"wpUploadWarningFileexists\">A file
+      with this name already exists; please check <b><a class=\"mw-selflink selflink\">the
+      existing file</a></b> if you are not sure whether you want to change it. Please
+      choose another filename, unless you are uploading a technically improved version
+      of the same file. <br />Do not overwrite an image with a different one of the
+      same topic (see <a href=\"/wiki/Commons:File_naming\" title=\"Commons:File naming\">file
+      naming</a>).</span>\n</p>\n<div style=\"clear:both;\"></div>\n</div>","canonicaltitle":"File:Silver
+      Blue Fish In Boston Aquarium.jpg","url":"https://upload.wikimedia.org/wikipedia/commons/b/b2/Silver_Blue_Fish_In_Boston_Aquarium.jpg","descriptionurl":"https://commons.wikimedia.org/wiki/File:Silver_Blue_Fish_In_Boston_Aquarium.jpg","sha1":"6c36ca956e93efd81c082429b73eeafdcc11fbe8","metadata":[{"name":"Make","value":"NIKON
+      CORPORATION"},{"name":"Model","value":"NIKON D7000"},{"name":"XResolution","value":"240/1"},{"name":"YResolution","value":"240/1"},{"name":"ResolutionUnit","value":2},{"name":"Software","value":"Adobe
+      Photoshop Lightroom 3.5 (Macintosh)"},{"name":"DateTime","value":"2012:12:14
+      14:47:45"},{"name":"ExposureTime","value":"1/100"},{"name":"FNumber","value":"35/10"},{"name":"ExposureProgram","value":1},{"name":"ISOSpeedRatings","value":1000},{"name":"ExifVersion","value":"0230"},{"name":"DateTimeOriginal","value":"2012:12:08
+      15:08:45"},{"name":"DateTimeDigitized","value":"2012:12:08 15:08:45"},{"name":"ShutterSpeedValue","value":"6643856/1000000"},{"name":"ApertureValue","value":"361471/100000"},{"name":"ExposureBiasValue","value":"4/6"},{"name":"MaxApertureValue","value":"16/10"},{"name":"SubjectDistance","value":"45/100"},{"name":"MeteringMode","value":3},{"name":"LightSource","value":0},{"name":"Flash","value":16},{"name":"FocalLength","value":"500/10"},{"name":"SubSecTimeOriginal","value":"90"},{"name":"SubSecTimeDigitized","value":"90"},{"name":"SensingMethod","value":2},{"name":"FileSource","value":3},{"name":"SceneType","value":1},{"name":"CustomRendered","value":0},{"name":"ExposureMode","value":1},{"name":"WhiteBalance","value":0},{"name":"DigitalZoomRatio","value":"1/1"},{"name":"FocalLengthIn35mmFilm","value":75},{"name":"SceneCaptureType","value":0},{"name":"GainControl","value":2},{"name":"Contrast","value":0},{"name":"Saturation","value":0},{"name":"Sharpness","value":0},{"name":"SubjectDistanceRange","value":0},{"name":"SerialNumber","value":"3273564"},{"name":"Lens","value":"50.0
+      mm f/1.8"},{"name":"DateTimeMetadata","value":"2012:12:14 09:47:45"},{"name":"iimVersion","value":4},{"name":"MEDIAWIKI_EXIF_VERSION","value":2}],"commonmetadata":[{"name":"Make","value":"NIKON
+      CORPORATION"},{"name":"Model","value":"NIKON D7000"},{"name":"XResolution","value":"240/1"},{"name":"YResolution","value":"240/1"},{"name":"ResolutionUnit","value":2},{"name":"Software","value":"Adobe
+      Photoshop Lightroom 3.5 (Macintosh)"},{"name":"DateTime","value":"2012:12:14
+      14:47:45"},{"name":"ExposureTime","value":"1/100"},{"name":"FNumber","value":"35/10"},{"name":"ExposureProgram","value":1},{"name":"ISOSpeedRatings","value":1000},{"name":"ExifVersion","value":"0230"},{"name":"DateTimeOriginal","value":"2012:12:08
+      15:08:45"},{"name":"DateTimeDigitized","value":"2012:12:08 15:08:45"},{"name":"ShutterSpeedValue","value":"6643856/1000000"},{"name":"ApertureValue","value":"361471/100000"},{"name":"ExposureBiasValue","value":"4/6"},{"name":"MaxApertureValue","value":"16/10"},{"name":"SubjectDistance","value":"45/100"},{"name":"MeteringMode","value":3},{"name":"LightSource","value":0},{"name":"Flash","value":16},{"name":"FocalLength","value":"500/10"},{"name":"SubSecTimeOriginal","value":"90"},{"name":"SubSecTimeDigitized","value":"90"},{"name":"SensingMethod","value":2},{"name":"FileSource","value":3},{"name":"SceneType","value":1},{"name":"CustomRendered","value":0},{"name":"ExposureMode","value":1},{"name":"WhiteBalance","value":0},{"name":"DigitalZoomRatio","value":"1/1"},{"name":"FocalLengthIn35mmFilm","value":75},{"name":"SceneCaptureType","value":0},{"name":"GainControl","value":2},{"name":"Contrast","value":0},{"name":"Saturation","value":0},{"name":"Sharpness","value":0},{"name":"SubjectDistanceRange","value":0},{"name":"SerialNumber","value":"3273564"},{"name":"Lens","value":"50.0
+      mm f/1.8"},{"name":"DateTimeMetadata","value":"2012:12:14 09:47:45"},{"name":"iimVersion","value":4}],"extmetadata":{"DateTime":{"value":"2023-10-18
+      15:14:44","source":"mediawiki-metadata","hidden":""},"ObjectName":{"value":"Silver
+      Blue Fish In Boston Aquarium","source":"mediawiki-metadata"},"CommonsMetadataExtension":{"value":1.2,"source":"extension","hidden":""},"Categories":{"value":"","source":"commons-categories","hidden":""},"Assessments":{"value":"","source":"commons-categories","hidden":""}},"mime":"image/jpeg","mediatype":"BITMAP","bitdepth":8}}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '16'
+      cache-control:
+      - private, max-age=0, s-maxage=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Wed, 18 Oct 2023 15:14:37 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw2352.codfw.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - cpPosIndex=2%401697642085%231b5e5eb9377d3c687f9858a14d1dcc33; expires=Wed,
+        18-Oct-2023 15:14:55 GMT; Max-Age=10; path=/; secure; HttpOnly
+      - UseDC=master; expires=Wed, 18-Oct-2023 15:14:55 GMT; Max-Age=10; path=/; secure;
+        HttpOnly
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3066 pass, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1
