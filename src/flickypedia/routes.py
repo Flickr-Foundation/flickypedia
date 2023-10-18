@@ -45,6 +45,7 @@ def upload_photos():
                 "jpeg_url": form.jpeg_url.data,
                 "photo_id": form.photo_id.data,
                 "photo_url": form.photo_url.data,
+                "posted_date": form.posted_date.data,
                 "date_taken": {
                     "value": form.date_taken.data,
                     "unknown": form.taken_unknown.data,
@@ -56,6 +57,7 @@ def upload_photos():
                     "username": form.username.data,
                 },
                 "short_caption": form.short_caption.data,
+                "license_id": form.license_id.data,
             }
             for i in range(1)
         ]
