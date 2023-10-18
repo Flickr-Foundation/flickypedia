@@ -42,12 +42,11 @@ flask==2.2.5
     #   -r requirements.txt
     #   flask-login
     #   flask-sqlalchemy
-    #   flickr-url-parser
 flask-login==0.6.2
     # via -r requirements.txt
 flask-sqlalchemy==3.0.5
     # via -r requirements.txt
-flickr-url-parser==1.0.0
+flickr-url-parser==1.1.0
     # via -r requirements.txt
 h11==0.14.0
     # via
@@ -58,10 +57,6 @@ httpcore==0.17.3
     #   -r requirements.txt
     #   httpx
 httpx==0.24.1
-    # via
-    #   -r requirements.txt
-    #   flickr-url-parser
-humanize==4.8.0
     # via
     #   -r requirements.txt
     #   flickr-url-parser
@@ -154,7 +149,7 @@ typing-extensions==4.7.1
     #   -r requirements.txt
     #   black
     #   sqlalchemy
-urllib3==1.26.17
+urllib3==1.26.18
     # via vcrpy
 vcrpy==4.4.0
     # via -r dev_requirements.in
