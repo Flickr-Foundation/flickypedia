@@ -46,6 +46,8 @@ flask-login==0.6.2
     # via -r requirements.txt
 flask-sqlalchemy==3.0.5
     # via -r requirements.txt
+flickr-url-parser==1.1.0
+    # via -r requirements.txt
 h11==0.14.0
     # via
     #   -r requirements.txt
@@ -55,12 +57,19 @@ httpcore==0.17.3
     #   -r requirements.txt
     #   httpx
 httpx==0.24.1
-    # via -r requirements.txt
+    # via
+    #   -r requirements.txt
+    #   flickr-url-parser
+hyperlink==21.0.0
+    # via
+    #   -r requirements.txt
+    #   flickr-url-parser
 idna==3.4
     # via
     #   -r requirements.txt
     #   anyio
     #   httpx
+    #   hyperlink
     #   yarl
 importlib-metadata==4.2.0
     # via
@@ -123,7 +132,7 @@ sniffio==1.3.0
     #   anyio
     #   httpcore
     #   httpx
-sqlalchemy==2.0.21
+sqlalchemy==2.0.22
     # via
     #   -r requirements.txt
     #   flask-sqlalchemy
@@ -132,13 +141,15 @@ tomli==2.0.1
     #   black
     #   coverage
     #   pytest
+tqdm==4.66.1
+    # via -r dev_requirements.in
 typing-extensions==4.7.1
     # via
     #   -r dev_requirements.in
     #   -r requirements.txt
     #   black
     #   sqlalchemy
-urllib3==1.26.17
+urllib3==1.26.18
     # via vcrpy
 vcrpy==4.4.0
     # via -r dev_requirements.in
