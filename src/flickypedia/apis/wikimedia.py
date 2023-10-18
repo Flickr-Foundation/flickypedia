@@ -96,11 +96,46 @@ class WikimediaApi:
             timeout=60,
         )
 
+        # Catch an error caused by a file with the same filename already
+        # existing on Wikimedia Commons.  Example response:
+        #
+        #     {
+        #       "upload": {
+        #         "filekey": "1af50sprx58s.xfatvo.829939.",
+        #         "result": "Warning",
+        #         "sessionkey": "1af50sprx58s.xfatvo.829939.",
+        #         "warnings": {
+        #           "exists": "RailwayMuseumClocks.jpg",
+        #           "nochange": {"timestamp": "2023-10-10T11:50:11Z"}
+        #         }
+        #       }
+        #     }
+        #
         if (
             upload_resp["upload"]["result"] == "Warning"
             and upload_resp["upload"]["warnings"].get("exists") == filename
         ):
-            raise DuplicatePhotoUploadException(filename)
+            raise DuplicateFilenameUploadException(filename)
+
+        # Catch an error caused by a file which is rejected as a duplicate
+        # of a file that already exists on Wikimedia Commons.
+        # Example response:
+        #
+        #     {
+        #       "upload": {
+        #         "filekey": "1afkfn1e1h2g.cg6fd3.829939.",
+        #         "result": "Warning",
+        #         "warnings": {"duplicate": ["Yellow_Fin_(6054362864).jpg"]}
+        #       }
+        #     }
+        #
+        if (
+            upload_resp["upload"]["result"] == "Warning"
+            and len(upload_resp["upload"]["warnings"].get("duplicate", [])) == 1
+        ):
+            raise DuplicatePhotoUploadException(
+                upload_resp["upload"]["warnings"]["duplicate"][0]
+            )
 
         # I've never actually seen an upload fail in this way -- it may
         # be that 'Success' and 'Warning' are the only possible results.
@@ -235,10 +270,27 @@ class InvalidAccessTokenException(WikimediaApiException):
     pass
 
 
-class DuplicatePhotoUploadException(WikimediaApiException):
+class DuplicateFilenameUploadException(WikimediaApiException):
     """
-    Thrown when somebody tries to upload a duplicate photo.
+    Thrown when somebody tries to upload a photo which has the same
+    file as a file already on Wikimedia Commons.
     """
 
-    def __init__(self, name):
-        super().__init__(f"There is already a photo on Wikimedia Commons called {name}")
+    def __init__(self, filename):
+        self.filename = filename
+        super().__init__(
+            f"There is already a photo on Wikimedia Commons called {filename}"
+        )
+
+
+class DuplicatePhotoUploadException(WikimediaApiException):
+    """
+    Thrown when somebody tries to upload a photo which is identical to
+    an existing photo.
+    """
+
+    def __init__(self, filename):
+        self.filename = filename
+        super().__init__(
+            f"There is already an identical photo on Wikimedia Commons ({filename})"
+        )

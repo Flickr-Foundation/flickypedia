@@ -5,6 +5,7 @@ import pytest
 from flickypedia.apis.structured_data import create_license_statement
 from flickypedia.apis.wikimedia import (
     WikimediaApi,
+    DuplicateFilenameUploadException,
     DuplicatePhotoUploadException,
     InvalidAccessTokenException,
     UnknownWikimediaApiException,
@@ -93,12 +94,24 @@ class TestUploadImage:
             )
 
     def test_fails_if_uploading_image_which_is_duplicate(self, wikimedia_api):
-        with pytest.raises(DuplicatePhotoUploadException):
+        with pytest.raises(DuplicateFilenameUploadException) as exc:
             wikimedia_api.upload_image(
                 filename="RailwayMuseumClocks.jpg",
                 jpeg_url="https://live.staticflickr.com/65535/53248279408_c23cba9eb8_o_d.jpg",
                 text="A wall of railway pendulum clocks at the Slovenian Railway Museum in Ljubljana",
             )
+
+        assert exc.value.filename == "RailwayMuseumClocks.jpg"
+
+    def test_fails_if_uploading_image_which_is_duplicate_hash(self, wikimedia_api):
+        with pytest.raises(DuplicatePhotoUploadException) as exc:
+            wikimedia_api.upload_image(
+                filename="Yellow fish at Houston Zoo aquarium.jpg",
+                jpeg_url="https://live.staticflickr.com/6192/6054362864_a8f52ef695_o_d.jpg",
+                text="A yellow fish",
+            )
+
+        assert exc.value.filename == "Yellow_Fin_(6054362864).jpg"
 
 
 class TestAddFileCaption:
