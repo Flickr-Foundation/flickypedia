@@ -6,3 +6,4 @@
 *.sqlite
 
 *.json.bz2
+flickr_ids_from_sdc.*

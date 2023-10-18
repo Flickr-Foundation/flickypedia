@@ -1,4 +1,4 @@
-# Duplicate detection
+# Finding duplicates in the structured data
 
 When somebody uses Flickypedia, we want to check for duplicate Flickr pictures which already exist on Wikimedia Commons, and prevent the same file being uploaded twice.
 
@@ -33,67 +33,39 @@ It produces a mapping Flickr ID ↔ Wikimedia Commons file.
     python3 find_flickr_ids_in_sdc_snapshot.py commons-20231009-mediainfo.json.bz2
     ```
     
-    This will create a spreadsheet of IDs (`flickr_ids_from_sdc.csv`).
-    Even on a fast computer, this may take an hour or so to complete.
+    This will create a spreadsheet of IDs (e.g. `flickr_ids_from_sdc.20231009.csv`).
+    
+    ```csv
+    flickr_photo_id,wikimedia_title,wikimedia_page_id
+    3176098,File:Crocodile grin-scubadive67.jpg,M63606
+    7267164,File:Rfid implant after.jpg,M87190
+    9494179,File:Madrid Metro Sign.jpg,M137548
+    ```
+    
+    Even on a fast computer, this may take several hours to complete.
 
-    This may also produce two other files:
+    If there are any anomalous URLs in the snapshot, these will be logged in two separate files:
     
     -   `sdc_errors.txt` – any URLs in the structured data which couldn't be recognised as Flickr URLs
     -   `sdc_warnings.txt` – any Flickr URLs in the structured data which weren't a URL that points to a single photo
 
----
+3.  Run the script that creates a SQLite database from the CSV:
 
-We use several approaches to detect duplicates in Flickypedia:
-
-1.  We compare the Flickr photo ID to a list of photo IDs which we already know are in Wikimedia Commons
-2.  We compute the SHA-1 checksum of 
-
-
----
-
-## Creating a Flickr ID ↔ Wikimedia Commons database
-
-Flickr URLs can appear on Wikimedia Commons in many forms, which makes it tricky to query Commons for Flickr files.
-(Pending our proposal for a Flickr Photo ID property in Wikidata, which should make this easier once backfilled.)
-
-Instead, we analyse the Wikimedia Commons snapshots to find Flickr URLs and create a SQLite database we can reuse.
-
-1.  Download a snapshot of Wikimedia Commons metadata.
-
-    ```console
-    $ curl https://dumps.wikimedia.org/commonswiki/20231001/commonswiki-20231001-pages-articles-multistream.xml.bz2 > commonswiki-20231001-pages-articles-multistream.xml.bz2
     ```
-
-2.  Run the "parse revisions" script.
-    This looks for anything that looks like a Flickr URL and adds it to a spreadsheet:
-
-    ```console
-    $ python3 parse_revisions_xml.py commonswiki-20231001-pages-articles-multistream.xml.bz2
+    python3 csv_to_sqlite.py flickr_ids_from_sdc.20231009.csv
     ```
-
-3.  aaaa
-
----
-
-1.  Download a snapshot of Wikimedia Commons structured data:
-
+    
+    This will create a SQLite database (e.g. `flickr_ids_from_sdc.20231009.sqlite`).
+    You should copy this database into the environment where Flickypedia will be running.
+    
+    You can query this database to find where a particular Flickr photo has been used in Wikimedia Commons:
+    
     ```console
-    $ curl https://dumps.wikimedia.org/other/wikibase/commonswiki/20231009/commons-20231009-mediainfo.json.bz2 > commons-20231009-mediainfo.json.bz2
+    $ sqlite3 flickr_ids_from_sdc.20231009.sqlite
+    SQLite version 3.39.5 2022-10-14 20:58:05
+    Enter ".help" for usage hints.
+    53230629852|File:2023.10.03 Womens Soccer Game -093.jpg|M138669374
+    sqlite> SELECT * FROM flickr_photos_on_wikimedia
+       ...> WHERE flickr_photo_id = 53230629852;
+    53230629852|File:2023.10.03 Womens Soccer Game -093.jpg|M138669374
     ```
-
-photo ID
-SHA-1 checksum
-
----
-
-Flickr URLs can appear on Wikimedia Commons in a number of forms, which means there's no easy way to query Commons for Flickr files.
-(Pending our proposal for a Flickr Photo ID property.)
-
-Instead, we use the [database dumps][downloads] to construct a local database of Flickr ID ↔ Wikimedia Commons file mapping.
-
-```console
-$ curl https://dumps.wikimedia.org/commonswiki/20231001/commonswiki-20231001-pages-articles-multistream.xml.bz2 > commonswiki-20231001-pages-articles-multistream.xml.bz2
-```
-
-
-[downloads]: https://dumps.wikimedia.org/backup-index.html

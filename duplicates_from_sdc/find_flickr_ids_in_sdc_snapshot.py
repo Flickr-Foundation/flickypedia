@@ -13,6 +13,7 @@ Wikimedia Commons.  It creates a spreadsheet like:
 import bz2
 import csv
 import json
+import re
 import sys
 
 from flickr_url_parser import parse_flickr_url, NotAFlickrUrl, UnrecognisedUrl
@@ -125,7 +126,22 @@ if __name__ == "__main__":
     except IndexError:
         sys.exit(f"Usage: {__file__} <PATH>")
 
-    with open("flickr_ids_from_sdc.csv", "w") as out_file:
+    # The name of the snapshot is something like:
+    #
+    #     commons-20231009-mediainfo.json.bz2
+    #
+    # If we can, extract the data and use it to label the spreadsheet we
+    # generate
+    date_match = re.search(r"\-(\d+)\-", path)
+    if date_match is None:
+        csv_path = "flickr_ids_from_sdc.csv"
+    else:
+        csv_path = f"flickr_ids_from_sdc.{date_match.group(1)}.csv"
+
+    # Note the deliberate use of file mode 'x' here: this spreadsheet takes
+    # a looooooong time to generate.  We don't want to overwrite it if it's
+    # already been created!  So 'exclusive creation' will stop you doing that.
+    with open(csv_path, "x") as out_file:
         writer = csv.DictWriter(
             out_file,
             fieldnames=["flickr_photo_id", "wikimedia_title", "wikimedia_page_id"],
@@ -142,3 +158,5 @@ if __name__ == "__main__":
                         "wikimedia_page_id": sdc_object["id"],
                     }
                 )
+
+    print(csv_path)
