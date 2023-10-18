@@ -146,7 +146,7 @@ def lookup_flickr_user_in_wikidata(user: FlickrUser):
 
         # e.g. http://www.wikidata.org/entity/Q5981474
         uri_match = re.match(
-            r"^http://www.wikidata.org/entity/(?P<wikidata_id>Q\d+)$",
+            r"^http://www\.wikidata\.org/entity/(?P<wikidata_id>Q\d+)$",
             matched_item["value"],
         )
 
