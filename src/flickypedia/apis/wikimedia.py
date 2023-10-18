@@ -230,10 +230,56 @@ class WikimediaApi:
         if we could query the existing statements and not duplicate
         information, but that's a problem for another time.
 
+        In Flickypedia, this expects to receive an object with
+        a single key "claims", e.g.
+
+            {
+              "claims": [
+                {
+                  "mainsnak": {
+                    "snaktype": "value",
+                    "property": "P56",
+                    "datavalue": {
+                      "value": "ExampleString",
+                      "type": "string"
+                    }
+                  },
+                  "type": "statement",
+                  "rank": "normal"
+                }
+              ]
+            }
+
         See https://commons.wikimedia.org/wiki/Commons:Structured_data
         See https://www.wikidata.org/w/api.php?modules=wbeditentity&action=help
 
         """
+        # Do some basic validation of the input format here -- if you
+        # pass the wrong data into the Wikimedia API, the error message
+        # is utterly unhelpful.
+        #
+        # e.g. when I passed in the list of claims as data=[…] instead of
+        # wrapping it in an object data={'claims': […]}, I got this error
+        # message from the API:
+        #
+        #     {
+        #       'code': 'not-recognized-string',
+        #       'info': 'A string was expected, but not recognized.',
+        #       'messages': [
+        #         {
+        #           'name': 'wikibase-api-not-recognized-string',
+        #           …
+        #         }
+        #       ]
+        #     }
+        #
+        if (
+            not isinstance(data, dict)
+            or data.keys() != {"claims"}
+            or not isinstance(data["claims"], list)
+        ):
+            raise TypeError
+
         resp = self._post(
             data={
                 "action": "wbeditentity",
