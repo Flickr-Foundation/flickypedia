@@ -1,3 +1,4 @@
+celery
 cryptography
 flask
 flask-login

@@ -4,6 +4,13 @@ This is a tool to copy Creative Commons-licensed photos from Flickr to Wikimedia
 
 It's in its initial stages, but check back soon for more info!
 
+## Key pieces
+
+*   Wikimedia OAuth 2.0
+*   Wikimedia APIs for upload
+*   Flickr APIs for download
+*   Celery for background processing
+
 ## Development
 
 You can set up a local development environment by cloning the repo and installing dependencies:
@@ -23,4 +30,10 @@ $ source .venv/bin/activate
 $ pip install -r dev_requirements.txt
 $ coverage run -m pytest tests
 $ coverage report
+```
+
+## How to run the background worker
+
+```console
+$ celery --app flickypedia.celery_app worker --loglevel INFO
 ```
