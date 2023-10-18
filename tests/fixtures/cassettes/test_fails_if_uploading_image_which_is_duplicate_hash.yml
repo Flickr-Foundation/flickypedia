@@ -1,0 +1,135 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.0
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=query&meta=tokens&type=csrf&format=json
+  response:
+    content: '{"batchcomplete":"","query":{"tokens":{"csrftoken":"983d4c710d793d24461853a5cfb801c3652ffb54+\\"}}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-length:
+      - '99'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Wed, 18 Oct 2023 15:35:48 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1471.eqiad.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - WMF-Last-Access=18-Oct-2023;Path=/;HttpOnly;secure;Expires=Sun, 19 Nov 2023
+        12:00:00 GMT
+      - GeoIP=GB:ENG:Newark_on_Trent:53.07:-0.82:v4; Path=/; secure; Domain=.wikimedia.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3066 pass, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: action=upload&filename=Yellow+fish+at+Houston+Zoo+aquarium.jpg&url=https%3A%2F%2Flive.staticflickr.com%2F6192%2F6054362864_a8f52ef695_o_d.jpg&text=A+yellow+fish&format=json&token=983d4c710d793d24461853a5cfb801c3652ffb54%2B%5C
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '225'
+      content-type:
+      - application/x-www-form-urlencoded
+      cookie:
+      - GeoIP=GB:ENG:Newark_on_Trent:53.07:-0.82:v4; NetworkProbeLimit=0.001; WMF-Last-Access=18-Oct-2023
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.0
+    method: POST
+    uri: https://commons.wikimedia.org/w/api.php
+  response:
+    content: '{"upload":{"result":"Warning","warnings":{"duplicate":["Yellow_Fin_(6054362864).jpg"]},"filekey":"1afkfn1e1h2g.cg6fd3.829939.","sessionkey":"1afkfn1e1h2g.cg6fd3.829939."}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '12'
+      cache-control:
+      - private, max-age=0, s-maxage=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-length:
+      - '171'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Wed, 18 Oct 2023 15:35:48 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw2321.codfw.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - cpPosIndex=1%401697643354%231b5e5eb9377d3c687f9858a14d1dcc33; expires=Wed,
+        18-Oct-2023 15:36:04 GMT; Max-Age=10; path=/; secure; HttpOnly
+      - UseDC=master; expires=Wed, 18-Oct-2023 15:36:04 GMT; Max-Age=10; path=/; secure;
+        HttpOnly
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3066 pass, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

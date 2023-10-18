@@ -13,7 +13,7 @@ def test_create_wikitext_for_regular_photo():
             "unknown": False,
             "granularity": 0,
         },
-        flickr_user={
+        user={
             "id": "199246608@N02",
             "username": "cefarrjf87",
             "realname": "Alex Chan",
@@ -85,7 +85,7 @@ def test_create_wikitext_with_date_granularity(date_taken, expected_date_text):
     wikitext = create_wikitext(
         photo_url="https://www.flickr.com/photos/example/1234",
         date_taken=date_taken,
-        flickr_user={"id": "1234", "username": "example", "realname": "example"},
+        user={"id": "1234", "username": "example", "realname": "example"},
         license_id="cc-by-2.0",
     )
 
@@ -93,7 +93,7 @@ def test_create_wikitext_with_date_granularity(date_taken, expected_date_text):
 
 
 @pytest.mark.parametrize(
-    ["flickr_user", "expected_author_text"],
+    ["user", "expected_author_text"],
     [
         (
             {
@@ -113,7 +113,7 @@ def test_create_wikitext_with_date_granularity(date_taken, expected_date_text):
         ),
     ],
 )
-def test_create_wikitext_with_user_info(flickr_user, expected_author_text):
+def test_create_wikitext_with_user_info(user, expected_author_text):
     wikitext = create_wikitext(
         photo_url="https://www.flickr.com/photos/example/1234",
         date_taken={
@@ -121,7 +121,7 @@ def test_create_wikitext_with_user_info(flickr_user, expected_author_text):
             "unknown": False,
             "granularity": 0,
         },
-        flickr_user=flickr_user,
+        user=user,
         license_id="cc-by-2.0",
     )
 
