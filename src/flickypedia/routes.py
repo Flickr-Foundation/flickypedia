@@ -25,6 +25,6 @@ def go():
     return f"Go! <a href='/result/{result.id}'>{result.id}</a>"
 
 
-@app.route("/result/<id>")
-def task_result(id: str) -> dict[str, object]:
-    return jsonify(get_status(task_id=id))
+@app.route("/result/<task_id>")
+def task_result(task_id: str):
+    return jsonify(get_status(task_id=task_id))
