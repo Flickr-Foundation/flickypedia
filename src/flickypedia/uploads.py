@@ -40,27 +40,25 @@ class UploadPhotoForm(FlaskForm):
     submit = SubmitField("Upload")
 
 
-
 @shared_task(ignore_result=False)
-def upload_batch_of_photos(oauth_info, photos):
+def upload_batch_of_photos(oauth_info, photos_to_upload):
     tracker = ProgressTracker(task_id=celery.current_task.request.id)
 
     tracker.record_progress(
         data=[
-            {'id': ph['id'], 'status': 'not_started'}
-            for ph in photos
+            {"photo_id": photo["photo_id"], "status": "not_started"}
+            for photo in photos_to_upload
         ]
     )
 
-    for i, ph in enumerate(photos):
+    for i, ph in enumerate(photos_to_upload):
         time.sleep(random.uniform(1, 5))
 
         result = "success" if random.uniform(0, 1) > 0.15 else "failure"
 
         data = tracker.get_progress()
-        data[i]['status'] = result
+        data[i]["status"] = result
 
         tracker.record_progress(data=data)
 
     return tracker.get_progress()
-

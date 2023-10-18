@@ -106,8 +106,15 @@ class WikimediaUserSession(UserMixin, db.Model):
     access_token_expires = db.Column(db.DateTime, nullable=False)
     encrypted_refresh_token = db.Column(db.LargeBinary, nullable=False)
 
-    def access_token(self, key):
-        return decrypt_string(key, ciphertext=self.encrypted_access_token)
+    def access_token(self):
+        return decrypt_string(
+            key=session[SESSION_ENCRYPTION_KEY], ciphertext=self.encrypted_access_token
+        )
+
+    def refresh_token(self):
+        return decrypt_string(
+            key=session[SESSION_ENCRYPTION_KEY], ciphertext=self.encrypted_refresh_token
+        )
 
 
 @login.user_loader

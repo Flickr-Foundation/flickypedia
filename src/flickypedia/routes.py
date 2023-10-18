@@ -1,5 +1,5 @@
 from flask import redirect, render_template, jsonify, url_for
-from flask_login import login_required
+from flask_login import current_user, login_required
 
 from flickypedia import app
 from flickypedia.auth import (
@@ -38,14 +38,35 @@ def upload_photos():
     form = UploadPhotoForm()
 
     if form.validate_on_submit and form.photo_id.data:
-        photos = [
-            {'id': f'{form.photo_id.data}-{i}'}
-            for i in range(10)
+        photos_to_upload = [
+            {
+                "id": f"{form.photo_id.data}-{i}",
+                "filename": form.filename.data,
+                "jpeg_url": form.jpeg_url.data,
+                "photo_id": form.photo_id.data,
+                "photo_url": form.photo_url.data,
+                "date_taken": {
+                    "value": form.date_taken.data,
+                    "unknown": form.taken_unknown.data,
+                    "granularity": form.taken_granularity.data,
+                },
+                "flickr_user": {
+                    "id": form.user_id.data,
+                    "realname": form.realname.data,
+                    "username": form.username.data,
+                },
+                "short_caption": form.short_caption.data,
+            }
+            for i in range(1)
         ]
 
         task_id = upload_batch_of_photos.delay(
-            oauth_info=None,
-            photos=photos
+            oauth_info={
+                "access_token": current_user.access_token(),
+                "access_token_expires": current_user.access_token_expires,
+                "refresh_token": current_user.refresh_token(),
+            },
+            photos_to_upload=photos_to_upload,
         )
 
         return redirect(url_for("progress", task_id=task_id))
