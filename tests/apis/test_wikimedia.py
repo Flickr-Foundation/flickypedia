@@ -205,3 +205,10 @@ class TestAddStructuredData:
             )
 
         assert exc.value.code == "no-such-entity-link"
+
+    def test_throws_error_for_bad_sdc_format(self, wikimedia_api):
+        with pytest.raises(TypeError):
+            wikimedia_api.add_structured_data(
+                filename="example.jpg",
+                data=[create_license_statement(license_id="cc-by-2.0")],
+            )
