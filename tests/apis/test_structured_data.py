@@ -102,7 +102,7 @@ def test_create_posted_to_flickr_statement():
 
 
 @pytest.mark.parametrize(
-    ["date_taken", "taken_granularity", "filename"],
+    ["date_taken", "granularity", "filename"],
     [
         # Based on https://www.flickr.com/photos/184374196@N07/53069446440
         (datetime.datetime(2023, 2, 20, 23, 32, 31), 0, "date_taken_YYYY-MM-DD.json"),
@@ -114,8 +114,10 @@ def test_create_posted_to_flickr_statement():
         (datetime.datetime(1910, 1, 1, 0, 0, 0), 8, "date_taken_circa.json"),
     ],
 )
-def test_create_date_taken_statement(date_taken, taken_granularity, filename):
-    actual = create_date_taken_statement(date_taken, taken_granularity)
+def test_create_date_taken_statement(date_taken, granularity, filename):
+    actual = create_date_taken_statement(
+        date_taken={"value": date_taken, "granularity": granularity, "unknown": False}
+    )
     expected = get_fixture(filename)
 
     assert actual == expected
@@ -124,7 +126,11 @@ def test_create_date_taken_statement(date_taken, taken_granularity, filename):
 def test_create_date_taken_statement_fails_on_unrecognised_granularity():
     with pytest.raises(ValueError, match="Unrecognised taken_granularity"):
         create_date_taken_statement(
-            date_taken=datetime.datetime.now(), taken_granularity=-1
+            date_taken={
+                "value": datetime.datetime.now(),
+                "granularity": -1,
+                "unknown": False,
+            }
         )
 
 
@@ -142,9 +148,11 @@ def test_create_sdc_claims_for_flickr_photo_without_date_taken(vcr_cassette):
         jpeg_url="https://live.staticflickr.com/65535/53248015596_c03f8123cf_o_d.jpg",
         license_id="cc-by-2.0",
         posted_date=datetime.datetime.fromtimestamp(1696939706),
-        date_taken=datetime.datetime(2023, 10, 10, 5, 8, 21),
-        taken_unknown=True,
-        taken_granularity=0,
+        date_taken={
+            "value": datetime.datetime(2023, 10, 10, 5, 8, 21),
+            "unknown": True,
+            "granularity": 0,
+        },
     )
     expected = get_fixture("photo_53248015596.json")
 
@@ -165,9 +173,11 @@ def test_create_sdc_claims_for_flickr_photo_with_date_taken(vcr_cassette):
         jpeg_url="https://live.staticflickr.com/65535/53234140350_93579322a9_o_d.jpg",
         license_id="cc-by-2.0",
         posted_date=datetime.datetime.fromtimestamp(1696421915),
-        date_taken=datetime.datetime(2023, 10, 3, 5, 45, 0),
-        taken_unknown=False,
-        taken_granularity=0,
+        date_taken={
+            "value": datetime.datetime(2023, 10, 3, 5, 45, 0),
+            "unknown": False,
+            "granularity": 0,
+        },
     )
     expected = get_fixture("photo_53234140350.json")
 
