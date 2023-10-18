@@ -39,7 +39,7 @@ def get_structured_data_records(path):
     # to load it all into memory.
     with bz2.open(path) as in_file:
         for line in in_file:
-            if line == b"[\n":
+            if line.strip() in {b"[", b"]"}:
                 continue
 
             yield json.loads(line.replace(b",\n", b""))
