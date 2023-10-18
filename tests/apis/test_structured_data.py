@@ -21,19 +21,19 @@ def get_fixture(filename):
 
 
 @pytest.mark.parametrize(
-    ["kwargs", "filename"],
+    ["user", "filename"],
     [
         (
-            {"user_id": "47397743@N05", "username": None, "realname": "WNDC"},
+            {"id": "47397743@N05", "username": None, "realname": "WNDC"},
             "creator_Q7986087.json",
         ),
         (
-            {"user_id": "199246608@N02", "username": "Alex Chan", "realname": None},
+            {"id": "199246608@N02", "username": "Alex Chan", "realname": None},
             "creator_AlexChan.json",
         ),
         (
             {
-                "user_id": "35591378@N03",
+                "id": "35591378@N03",
                 "username": "Obama White House Archived",
                 "realname": None,
             },
@@ -41,8 +41,8 @@ def get_fixture(filename):
         ),
     ],
 )
-def test_create_flickr_creator_statement(vcr_cassette, kwargs, filename):
-    result = create_flickr_creator_statement(**kwargs)
+def test_create_flickr_creator_statement(vcr_cassette, user, filename):
+    result = create_flickr_creator_statement(user)
     expected = get_fixture(filename)
 
     assert result == expected
@@ -133,9 +133,11 @@ def test_create_sdc_claims_for_flickr_photo_without_date_taken(vcr_cassette):
     # https://www.flickr.com/photos/199246608@N02/53248015596/
     actual = create_sdc_claims_for_flickr_photo(
         photo_id="53248015596",
-        user_id="199246608@N02",
-        username="cefarrjf87",
-        realname="Alex Chan",
+        user={
+            "id": "199246608@N02",
+            "username": "cefarrjf87",
+            "realname": "Alex Chan",
+        },
         copyright_status="copyrighted",
         jpeg_url="https://live.staticflickr.com/65535/53248015596_c03f8123cf_o_d.jpg",
         license_id="cc-by-2.0",
@@ -154,9 +156,11 @@ def test_create_sdc_claims_for_flickr_photo_with_date_taken(vcr_cassette):
     # https://www.flickr.com/photos/mdgovpics/53234140350/
     actual = create_sdc_claims_for_flickr_photo(
         photo_id="53234140350",
-        user_id="64018555@N03",
-        username="MDGovpics",
-        realname="Maryland GovPics",
+        user={
+            "id": "64018555@N03",
+            "username": "MDGovpics",
+            "realname": "Maryland GovPics",
+        },
         copyright_status="copyrighted",
         jpeg_url="https://live.staticflickr.com/65535/53234140350_93579322a9_o_d.jpg",
         license_id="cc-by-2.0",

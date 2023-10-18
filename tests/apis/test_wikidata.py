@@ -43,7 +43,11 @@ from flickypedia.apis.wikidata import lookup_flickr_user_in_wikidata, to_wikidat
     ],
 )
 def test_lookup_flickr_user_in_wikidata(vcr_cassette, id, username, wikidata_id):
-    assert lookup_flickr_user_in_wikidata(id=id, username=username) == wikidata_id
+    retrieved_wikidata_id = lookup_flickr_user_in_wikidata(
+        user={"id": id, "username": username}
+    )
+
+    assert retrieved_wikidata_id == wikidata_id
 
 
 @pytest.mark.parametrize(
