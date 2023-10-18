@@ -54,7 +54,7 @@ class TestUploadImage:
                 "granularity": 0,
                 "unknown": False,
             },
-            flickr_user={
+            user={
                 "id": "13151547@N06",
                 "username": "Clara S.",
                 "realname": None,
