@@ -11,7 +11,8 @@ One approach to spotting duplicates is to look for the Flickr photo URL in the s
 Unfortunately knowing exactly what value to query for is tricky, because there are a number of forms that a Flickr URL could take in the structured data (e.g. with/without trailing slash, with user slug or numeric ID).
 
 So instead, we use the [snapshots of Wikimedia Commons structured data](https://dumps.wikimedia.org/other/wikibase/commonswiki/).
-We download a snapshot, then run a script which looks for instances of this structured data field.
+We download a snapshot, then run a script which looks for instances of this structured data field -- and knows how to parse the many forms of Flickr URL.
+
 It produces a mapping Flickr ID ↔ Wikimedia Commons file.
 
 1.  Download the latest JSON snapshot from Wikimedia Commons.
