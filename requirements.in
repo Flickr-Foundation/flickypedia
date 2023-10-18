@@ -4,3 +4,10 @@ flask-login
 Flask-SQLAlchemy
 flickr-url-parser
 httpx
+
+# This pin is because of an ImportError in flask-login caused by
+# a newer version of Werkzeug.
+#
+# We should be able to remove this when flask-login next releases.
+# See https://stackoverflow.com/q/77215107/1558022
+werkzeug<3
