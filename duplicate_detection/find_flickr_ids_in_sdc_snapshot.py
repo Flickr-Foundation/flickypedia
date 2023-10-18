@@ -142,6 +142,3 @@ if __name__ == "__main__":
                         "wikimedia_page_id": sdc_object["id"],
                     }
                 )
-                # print(photo_id)
-                # print(repr(line))
-                # assert 0
