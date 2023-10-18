@@ -7,6 +7,8 @@ those systems later if we need something with more throughput -- it
 depends on our deployment options, and I'd rather avoid an external
 dependency if I can help it.
 
+This file has some generic utilities related to task management.
+
 == Progress tracking ==
 
 If you use Celery out of the box, you just get a "success/fail" response

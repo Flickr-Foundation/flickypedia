@@ -2,6 +2,7 @@ celery
 cryptography
 flask
 flask-login
+flask-wtf
 Flask-SQLAlchemy
 flickr-url-parser
 httpx

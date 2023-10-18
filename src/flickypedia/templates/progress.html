@@ -1,0 +1,54 @@
+<script>
+  function getTaskStatus() {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "/result/{{ task_id }}");
+    xhr.send();
+    xhr.responseType = "json";
+    xhr.onload = () => {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        const data = xhr.response;
+
+        if (!data.ready) {
+          progress = data.progress;
+        } else {
+          progress = data.value;
+        }
+
+        if (!Array.isArray(progress)) {
+          return;
+        }
+
+        document.querySelector("#tasks").innerHTML = progress.map(photo => `<li>${photo.id}</li>`).join("");
+
+        document.querySelector("#successes").innerHTML = progress.filter(photo => photo.status === 'success').map(photo => `<li>${photo.id}</li>`).join("");
+
+        document.querySelector("#failures").innerHTML = progress.filter(photo => photo.status === 'failure').map(photo => `<li>${photo.id}</li>`).join("");
+
+        console.log(data);
+      } else {
+        console.log(`Error: ${xhr.status}`);
+      }
+    };
+  }
+
+  window.onload = (event) => {
+    getTaskStatus();
+    console.log('setting interval');
+    setInterval(getTaskStatus, 1000);
+  };
+</script>
+
+<h3>Photos</h3>
+
+<ul id="tasks">
+</ul>
+
+<h3>Successes</h3>
+
+<ul id="successes"></ul>
+
+<h3>Failures</h3>
+
+<ul id="failures"></ul>
+
+{{ task_id }}
