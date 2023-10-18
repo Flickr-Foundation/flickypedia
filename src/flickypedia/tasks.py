@@ -101,6 +101,9 @@ class ProgressTracker:
 
 
 def get_status(task_id):
+    """
+    Retrieve the status of a Celery task.
+    """
     result = AsyncResult(task_id)
 
     if result.ready():
