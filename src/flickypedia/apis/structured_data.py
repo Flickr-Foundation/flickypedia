@@ -33,6 +33,7 @@ from flickypedia.apis.wikidata import (
     WikidataEntities,
     WikidataProperties,
 )
+from flickypedia.types import DateTaken, FlickrUser
 
 
 def _wikibase_entity_value(*, property_id, entity_id):
@@ -87,7 +88,7 @@ def _create_qualifiers(qualifier_values):
     return result
 
 
-def create_flickr_creator_statement(user_id, username, realname):
+def create_flickr_creator_statement(user: FlickrUser):
     """
     Create a structured data statement for a user on Flickr.
 
@@ -97,7 +98,7 @@ def create_flickr_creator_statement(user_id, username, realname):
     *   A collection of values that link to their profile page
 
     """
-    wikidata_id = lookup_flickr_user_in_wikidata(id=user_id, username=username)
+    wikidata_id = lookup_flickr_user_in_wikidata(user)
 
     if wikidata_id is not None:
         return {
@@ -108,12 +109,15 @@ def create_flickr_creator_statement(user_id, username, realname):
         }
     else:
         qualifier_values = [
-            {"property": WikidataProperties.AuthorName, "value": realname or username},
+            {
+                "property": WikidataProperties.AuthorName,
+                "value": user["realname"] or user["username"],
+            },
             {
                 "property": WikidataProperties.Url,
-                "value": f"https://www.flickr.com/photos/{user_id}/",
+                "value": f"https://www.flickr.com/photos/{user['id']}/",
             },
-            {"property": WikidataProperties.FlickrUserId, "value": user_id},
+            {"property": WikidataProperties.FlickrUserId, "value": user["id"]},
         ]
 
         return {
@@ -204,14 +208,14 @@ def create_license_statement(license_id):
     }
 
 
-def create_posted_to_flickr_statement(posted_date: datetime.datetime):
+def create_posted_to_flickr_statement(date_posted: datetime.datetime):
     """
     Create a structured data statement for date posted to Flickr.
     """
     qualifier_values = [
         {
             "property": WikidataProperties.PublicationDate,
-            "date": posted_date,
+            "date": date_posted,
             "precision": "day",
         },
     ]
@@ -227,7 +231,7 @@ def create_posted_to_flickr_statement(posted_date: datetime.datetime):
     }
 
 
-def create_date_taken_statement(date_taken: datetime.datetime, taken_granularity: int):
+def create_date_taken_statement(date_taken: DateTaken):
     """
     Create a structured data statement for date taken.
 
@@ -238,31 +242,37 @@ def create_date_taken_statement(date_taken: datetime.datetime, taken_granularity
     Here ``granularity`` comes from the Flickr API: see "Photo Dates".
     https://www.flickr.com/services/api/misc.dates.html
     """
+    assert not date_taken["unknown"]
+
+    granularity = date_taken["granularity"]
+
     try:
         wikidata_precision = {
             TakenDateGranularity.Second: "day",
             TakenDateGranularity.Month: "month",
             TakenDateGranularity.Year: "year",
             TakenDateGranularity.Circa: "year",
-        }[taken_granularity]
+        }[granularity]
     except KeyError:
-        raise ValueError(f"Unrecognised taken_granularity: {taken_granularity!r}")
+        raise ValueError(f"Unrecognised taken_granularity: {granularity!r}")
 
-    if taken_granularity in {
+    if granularity in {
         TakenDateGranularity.Second,
         TakenDateGranularity.Month,
         TakenDateGranularity.Year,
     }:
         return {
             "mainsnak": {
-                "datavalue": to_wikidata_date(date_taken, precision=wikidata_precision),
+                "datavalue": to_wikidata_date(
+                    date_taken["value"], precision=wikidata_precision
+                ),
                 "property": WikidataProperties.Inception,
                 "snaktype": "value",
             },
             "type": "statement",
         }
     else:
-        assert taken_granularity == TakenDateGranularity.Circa
+        assert granularity == TakenDateGranularity.Circa
 
         qualifier_values = [
             {
@@ -273,7 +283,9 @@ def create_date_taken_statement(date_taken: datetime.datetime, taken_granularity
 
         return {
             "mainsnak": {
-                "datavalue": to_wikidata_date(date_taken, precision=wikidata_precision),
+                "datavalue": to_wikidata_date(
+                    date_taken["value"], precision=wikidata_precision
+                ),
                 "property": WikidataProperties.Inception,
                 "snaktype": "value",
             },
@@ -284,50 +296,40 @@ def create_date_taken_statement(date_taken: datetime.datetime, taken_granularity
 
 
 def create_sdc_claims_for_flickr_photo(
-    photo_id,
-    user_id,
-    username,
-    realname,
-    copyright_status,
-    jpeg_url,
-    license_id,
-    posted_date,
-    date_taken,
-    taken_unknown,
-    taken_granularity,
+    photo_id: str,
+    user: FlickrUser,
+    copyright_status: str,
+    jpeg_url: str,
+    license_id: str,
+    date_posted: datetime.datetime,
+    date_taken: DateTaken,
 ):
     """
     Creates a complete structured data claim for a Flickr photo.
 
     This is the main entry point into this file for the rest of Flickypedia.
     """
-    creator_statement = create_flickr_creator_statement(
-        user_id=user_id, username=username, realname=realname
-    )
+    creator_statement = create_flickr_creator_statement(user)
 
     copyright_statement = create_copyright_status_statement(status=copyright_status)
 
     source_statement = create_source_data_for_photo(
-        user_id=user_id, photo_id=photo_id, jpeg_url=jpeg_url
+        user_id=user["id"], photo_id=photo_id, jpeg_url=jpeg_url
     )
 
     license_statement = create_license_statement(license_id=license_id)
 
-    posted_date_statement = create_posted_to_flickr_statement(posted_date=posted_date)
+    date_posted_statement = create_posted_to_flickr_statement(date_posted=date_posted)
 
     statements = [
         creator_statement,
         copyright_statement,
         source_statement,
         license_statement,
-        posted_date_statement,
+        date_posted_statement,
     ]
 
-    if not taken_unknown:
-        date_taken_statement = create_date_taken_statement(
-            date_taken=date_taken, taken_granularity=taken_granularity
-        )
-
-        statements.append(date_taken_statement)
+    if not date_taken["unknown"]:
+        statements.append(create_date_taken_statement(date_taken))
 
     return statements
