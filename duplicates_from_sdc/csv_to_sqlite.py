@@ -21,8 +21,6 @@ import re
 import sqlite3
 import sys
 
-import tqdm
-
 
 def unique_rows(csv_path):
     """
