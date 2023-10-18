@@ -94,7 +94,7 @@ def test_create_license_statement_fails_if_unrecognised_license():
 
 def test_create_posted_to_flickr_statement():
     actual = create_posted_to_flickr_statement(
-        posted_date=datetime.datetime(2023, 10, 12)
+        date_posted=datetime.datetime(2023, 10, 12)
     )
     expected = get_fixture("date_posted_to_flickr.json")
 
@@ -147,7 +147,7 @@ def test_create_sdc_claims_for_flickr_photo_without_date_taken(vcr_cassette):
         copyright_status="copyrighted",
         jpeg_url="https://live.staticflickr.com/65535/53248015596_c03f8123cf_o_d.jpg",
         license_id="cc-by-2.0",
-        posted_date=datetime.datetime.fromtimestamp(1696939706),
+        date_posted=datetime.datetime.fromtimestamp(1696939706),
         date_taken={
             "value": datetime.datetime(2023, 10, 10, 5, 8, 21),
             "unknown": True,
@@ -172,7 +172,7 @@ def test_create_sdc_claims_for_flickr_photo_with_date_taken(vcr_cassette):
         copyright_status="copyrighted",
         jpeg_url="https://live.staticflickr.com/65535/53234140350_93579322a9_o_d.jpg",
         license_id="cc-by-2.0",
-        posted_date=datetime.datetime.fromtimestamp(1696421915),
+        date_posted=datetime.datetime.fromtimestamp(1696421915),
         date_taken={
             "value": datetime.datetime(2023, 10, 3, 5, 45, 0),
             "unknown": False,

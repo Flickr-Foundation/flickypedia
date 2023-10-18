@@ -208,14 +208,14 @@ def create_license_statement(license_id):
     }
 
 
-def create_posted_to_flickr_statement(posted_date: datetime.datetime):
+def create_posted_to_flickr_statement(date_posted: datetime.datetime):
     """
     Create a structured data statement for date posted to Flickr.
     """
     qualifier_values = [
         {
             "property": WikidataProperties.PublicationDate,
-            "date": posted_date,
+            "date": date_posted,
             "precision": "day",
         },
     ]
@@ -301,7 +301,7 @@ def create_sdc_claims_for_flickr_photo(
     copyright_status: str,
     jpeg_url: str,
     license_id: str,
-    posted_date: datetime.datetime,
+    date_posted: datetime.datetime,
     date_taken: DateTaken,
 ):
     """
@@ -319,14 +319,14 @@ def create_sdc_claims_for_flickr_photo(
 
     license_statement = create_license_statement(license_id=license_id)
 
-    posted_date_statement = create_posted_to_flickr_statement(posted_date=posted_date)
+    date_posted_statement = create_posted_to_flickr_statement(date_posted=date_posted)
 
     statements = [
         creator_statement,
         copyright_statement,
         source_statement,
         license_statement,
-        posted_date_statement,
+        date_posted_statement,
     ]
 
     if not date_taken["unknown"]:
