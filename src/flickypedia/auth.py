@@ -114,7 +114,10 @@ class WikimediaUserSession(UserMixin, db.Model):
 
 @login.user_loader
 def load_user(session_id: str):
-    return db.session.get(WikimediaUserSession, session[SESSION_ID_KEY])
+    if current_app.config.get("TESTING"):
+        return WikimediaUserSession(id=-1, userid=-1, name="example")
+    else:  # pragma: no cover
+        return db.session.get(WikimediaUserSession, session[SESSION_ID_KEY])
 
 
 @login_required

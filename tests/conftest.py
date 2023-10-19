@@ -1,9 +1,11 @@
 import os
 
+from flask_login import FlaskLoginClient
 import pytest
 import vcr
 
 from flickypedia import create_app
+from flickypedia.auth import WikimediaUserSession, SESSION_ID_KEY
 from flickypedia.apis.wikimedia import WikimediaApi
 
 
@@ -71,8 +73,31 @@ def app():
 @pytest.fixture()
 def client(app):
     """
-    Creates a test client for use in testing.
+    Creates a client for use in testing.
 
     See https://flask.palletsprojects.com/en/3.0.x/testing/#fixtures
     """
-    return app.test_client()
+    with app.test_client() as client:
+        yield client
+
+
+@pytest.fixture
+def logged_in_client(app):
+    """
+    Creates a client for use in testing which is logged in.
+
+    See https://flask-login.readthedocs.io/en/latest/#automated-testing
+    """
+    app.test_client_class = FlaskLoginClient
+
+    user = WikimediaUserSession(
+        id=-1,
+        userid=-1,
+        name="example",
+    )
+
+    with app.test_client(user=user) as client:
+        with client.session_transaction() as session:
+            session[SESSION_ID_KEY] = user.id
+
+        yield client

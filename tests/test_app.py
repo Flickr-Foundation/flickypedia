@@ -13,5 +13,5 @@ def test_redirected_to_homepage_for_pages_requiring_login(client, path):
     resp = client.get(path)
     assert resp.status_code == 302
 
-    params = urlencode({'next': path})
-    assert resp.headers['location'] == f'/?{params}'
+    params = urlencode({"next": path})
+    assert resp.headers["location"] == f"/?{params}"
