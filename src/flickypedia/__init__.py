@@ -1,8 +1,12 @@
 from flask import Flask, render_template
 
-from flickypedia.auth import (db, login,     logout,
+from flickypedia.auth import (
+    db,
+    login,
+    logout,
     oauth2_authorize_wikimedia,
-    oauth2_callback_wikimedia,)
+    oauth2_callback_wikimedia,
+)
 from flickypedia.config import Config
 from flickypedia.tasks import celery_init_app
 

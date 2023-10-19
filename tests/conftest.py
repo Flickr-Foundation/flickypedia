@@ -3,6 +3,7 @@ import os
 import pytest
 import vcr
 
+from flickypedia import create_app
 from flickypedia.apis.wikimedia import WikimediaApi
 
 
@@ -52,3 +53,26 @@ def wikimedia_api(cassette_name):
         yield WikimediaApi(
             access_token=os.environ.get("WIKIMEDIA_ACCESS_TOKEN", "<REDACTED>")
         )
+
+
+@pytest.fixture()
+def app():
+    """
+    Creates an instance of the app for use in testing.
+
+    See https://flask.palletsprojects.com/en/3.0.x/testing/#fixtures
+    """
+    app = create_app()
+    app.config["TESTING"] = True
+
+    yield app
+
+
+@pytest.fixture()
+def client(app):
+    """
+    Creates a test client for use in testing.
+
+    See https://flask.palletsprojects.com/en/3.0.x/testing/#fixtures
+    """
+    return app.test_client()
