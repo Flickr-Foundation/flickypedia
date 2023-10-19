@@ -16,7 +16,12 @@ app.add_url_rule("/callback/wikimedia", view_func=oauth2_callback_wikimedia)
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("homepage.html")
+
+
+@app.route("/find_photos")
+def find_photos():
+    return render_template("find_photos.html")
 
 
 @app.route("/go")

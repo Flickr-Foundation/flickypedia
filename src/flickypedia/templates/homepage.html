@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Welcome to Flickypedia!</h1>
+  
+  <p>
+    It’s a tool to contribute Flickr photos to Wikimedia Commons.
+    (And you must have a Wikimedia Commons account to use it.)
+  </p>
+  
+  <p>
+    Here’s how it works:
+  </p>
+  
+  <img id="how_it_works" src="{{ url_for('static', filename='how_it_works.png') }}">
+  
+  <ul>
+    <li>
+      <h3>Wikimedia requires CC licensing</h3>
+      
+      <p>so we’ll only offer Flickr photos that fit</p>
+    </li>
+    
+    <li>
+      <h3>Start: <a href="{{ url_for('oauth2_authorize_wikimedia') }}">Log in</a></h3>
+        
+      <p>to Wikimedia Commons</p>
+    </li>
+  </ul>
+{% endblock %}

@@ -109,6 +109,10 @@ class WikimediaUserSession(UserMixin, db.Model):
     def access_token(self, key):
         return decrypt_string(key, ciphertext=self.encrypted_access_token)
 
+    @property
+    def profile_url(self):
+        return f"https://commons.wikimedia.org/wiki/User:{self.name}"
+
 
 @login.user_loader
 def load_user(session_id: str):
@@ -254,4 +258,6 @@ def oauth2_callback_wikimedia():
     # Log the user in
     login_user(user)
 
-    return redirect(url_for("index"))
+    flash("You’re logged in. ✅", category="login_header")
+
+    return redirect(url_for("find_photos"))

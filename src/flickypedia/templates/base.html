@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+    <title>flickypedia</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='phk3iud.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+
+  <body>
+    <main>
+      {% include "_flashes.html" %}
+      
+      {% block content %}{% endblock %}
+    </main>
+
+    {% include "_footer.html" %}
+  </body>
+</html>
