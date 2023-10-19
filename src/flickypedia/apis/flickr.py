@@ -3,6 +3,7 @@ This file contains some methods for calling the Flickr API.
 """
 
 import datetime
+import functools
 from typing import Optional, TypedDict
 import xml.etree.ElementTree as ET
 
@@ -49,9 +50,6 @@ class FlickrApi:
             params={"api_key": api_key},
         )
 
-    # TODO: I would really like 'method' to be a positional-only arg,
-    # using the 3.8+ syntax.
-    # See https://github.com/Flickr-Foundation/flinumeratr/issues/23
     def call(self, method, **params):
         params["method"] = method
 
@@ -90,7 +88,42 @@ class FlickrApi:
 
         return xml
 
-    def get_single_photo_info(self, *, photo_id: str):
+    @functools.lru_cache
+    def get_licenses(self):
+        """
+        Returns a list of licenses, arranged by code.
+        """
+        license_resp = self.call("flickr.photos.licenses.getInfo")
+
+        result = {}
+
+        for lic in license_resp.findall(".//license"):
+            result[lic.attrib["id"]] = {
+                "name": lic.attrib["name"],
+                "url": lic.attrib["url"],
+            }
+
+        return result
+
+    @functools.lru_cache(maxsize=None)
+    def lookup_license_code(self, *, license_code: str):
+        """
+        Given a license code from the Flickr API, return the license data.
+
+        e.g. a Flickr API response might include a photo in the following form:
+
+            <photo license="0" …>
+
+        Then you'd call this function to find out what that means:
+
+            >>> lookup_license_code(api, license_code="0")
+            {"name": "All Rights Reserved", "url": ""}
+
+        """
+        licenses = self.get_licenses()
+        return licenses[license_code]
+
+    def get_single_photo(self, *, photo_id: str):
         """
         Look up the information for a single photo.
         """
@@ -126,7 +159,7 @@ class FlickrApi:
         owner = {
             "id": info_resp.find(".//photo/owner").attrib["nsid"],
             "username": info_resp.find(".//photo/owner").attrib["username"],
-            "realname": info_resp.find(".//photo/owner").attrib["realname"] or None
+            "realname": info_resp.find(".//photo/owner").attrib["realname"] or None,
         }
 
         dates = info_resp.find(".//photo/dates").attrib
@@ -141,8 +174,8 @@ class FlickrApi:
 
         photo_page_url = info_resp.find('.//photo/urls/url[@type="photopage"]').text
 
-        license = lookup_license_code(
-            api, license_code=info_resp.find(".//photo").attrib["license"]
+        license = self.lookup_license_code(
+            license_code=info_resp.find(".//photo").attrib["license"]
         )
 
         # The getSizes response is a blob of XML of the form:
@@ -187,7 +220,6 @@ class FlickrApi:
             "url": photo_page_url,
             "sizes": sizes,
         }
-
 
 
 class FlickrApiException(Exception):
