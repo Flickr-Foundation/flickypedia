@@ -97,10 +97,37 @@ class FlickrApi:
 
         result = {}
 
+        # Add a short ID which can be used to more easily refer to this
+        # license throughout the codebase.
+        license_ids = {
+            "All Rights Reserved": "in-copyright",
+            "Attribution-NonCommercial-ShareAlike License": "cc-by-nc-sa-2.0",
+            "Attribution-NonCommercial License": "cc-by-nc-2.0",
+            "Attribution-NonCommercial-NoDerivs License": "cc-by-nc-nd-2.0",
+            "Attribution License": "cc-by-2.0",
+            "Attribution-ShareAlike License": "cc-by-sa-2.0",
+            "Attribution-NoDerivs License": "cc-by-nd-2.0",
+            "No known copyright restrictions": "nkcr",
+            "United States Government Work": "usgov",
+            "Public Domain Dedication (CC0)": "cc0-1.0",
+            "Public Domain Mark": "pdm",
+        }
+
+        license_labels = {
+            "Attribution-NonCommercial-ShareAlike License": "CC BY-NC-SA 2.0",
+            "Attribution-NonCommercial License": "CC BY-NC 2.0",
+            "Attribution-NonCommercial-NoDerivs License": "CC BY-NC-ND 2.0",
+            "Attribution License": "CC BY 2.0",
+            "Attribution-ShareAlike License": "CC BY-SA 2.0",
+            "Attribution-NoDerivs License": "CC BY-ND 2.0",
+            "Public Domain Dedication (CC0)": "CC0 1.0",
+        }
+
         for lic in license_resp.findall(".//license"):
             result[lic.attrib["id"]] = {
-                "name": lic.attrib["name"],
-                "url": lic.attrib["url"],
+                "id": license_ids[lic.attrib["name"]],
+                "label": license_labels.get(lic.attrib["name"], lic.attrib["name"]),
+                "url": lic.attrib["url"] or None,
             }
 
         return result
@@ -117,7 +144,7 @@ class FlickrApi:
         Then you'd call this function to find out what that means:
 
             >>> lookup_license_code(api, license_code="0")
-            {"name": "All Rights Reserved", "url": ""}
+            {"id": "in-copyright", "name": "All Rights Reserved", "url": ""}
 
         """
         licenses = self.get_licenses()

@@ -40,7 +40,7 @@ class TestOAuth2CallbackWikimedia:
         # If you're already logged in, you don't need to come through
         # this flow.
         assert resp.status_code == 302
-        assert resp.headers["location"] == "/"
+        assert resp.headers["location"] == "/find_photos"
 
     def test_missing_code_is_error(self, client):
         resp = client.get("/callback/wikimedia")
