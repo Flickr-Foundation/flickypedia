@@ -14,7 +14,8 @@ def main():
 
     args = parser.parse_args()
 
-    from flickypedia import app, db
+    from flickypedia import app
+    from flickypedia.auth import db
 
     with app.app_context():
         db.create_all()
