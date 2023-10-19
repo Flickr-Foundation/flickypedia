@@ -23,6 +23,9 @@ def create_app():
     login.init_app(app)
     celery_init_app(app)
 
+    with app.app_context():
+        db.create_all()
+
     app.add_url_rule("/", view_func=homepage)
 
     app.add_url_rule("/logout", view_func=logout)
