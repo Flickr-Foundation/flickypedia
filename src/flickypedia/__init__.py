@@ -30,6 +30,3 @@ def create_app():
     app.add_url_rule("/callback/wikimedia", view_func=oauth2_callback_wikimedia)
 
     return app
-
-
-app = create_app()
