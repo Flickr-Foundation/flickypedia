@@ -7,21 +7,19 @@ from flickypedia.auth import (
     oauth2_callback_wikimedia,
 )
 from flickypedia.tasks import get_status, upload_images
+from flickypedia.views.find_photos import find_photos
 
 
 app.add_url_rule("/logout", view_func=logout)
 app.add_url_rule("/authorize/wikimedia", view_func=oauth2_authorize_wikimedia)
 app.add_url_rule("/callback/wikimedia", view_func=oauth2_callback_wikimedia)
 
+app.add_url_rule("/find_photos", methods=["GET", "POST"], view_func=find_photos)
+
 
 @app.route("/")
 def index():
     return render_template("homepage.html")
-
-
-@app.route("/find_photos")
-def find_photos():
-    return render_template("find_photos.html")
 
 
 @app.route("/go")
