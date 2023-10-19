@@ -3,6 +3,7 @@ cryptography
 flask
 flask-login
 Flask-SQLAlchemy
+flask-wtf
 flickr-url-parser
 httpx
 
