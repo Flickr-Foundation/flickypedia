@@ -70,7 +70,7 @@ def test_create_source_data_for_photo():
     result = create_source_data_for_photo(
         user_id="199246608@N02",
         photo_id="53248015596",
-        jpeg_url="https://live.staticflickr.com/65535/53248015596_c03f8123cf_o_d.jpg",
+        original_url="https://live.staticflickr.com/65535/53248015596_c03f8123cf_o_d.jpg",
     )
     expected = get_fixture("photo_source_data.json")
 
@@ -145,7 +145,7 @@ def test_create_sdc_claims_for_flickr_photo_without_date_taken(vcr_cassette):
             "realname": "Alex Chan",
         },
         copyright_status="copyrighted",
-        jpeg_url="https://live.staticflickr.com/65535/53248015596_c03f8123cf_o_d.jpg",
+        original_url="https://live.staticflickr.com/65535/53248015596_c03f8123cf_o_d.jpg",
         license_id="cc-by-2.0",
         date_posted=datetime.datetime.fromtimestamp(1696939706),
         date_taken={
@@ -170,7 +170,7 @@ def test_create_sdc_claims_for_flickr_photo_with_date_taken(vcr_cassette):
             "realname": "Maryland GovPics",
         },
         copyright_status="copyrighted",
-        jpeg_url="https://live.staticflickr.com/65535/53234140350_93579322a9_o_d.jpg",
+        original_url="https://live.staticflickr.com/65535/53234140350_93579322a9_o_d.jpg",
         license_id="cc-by-2.0",
         date_posted=datetime.datetime.fromtimestamp(1696421915),
         date_taken={
