@@ -111,6 +111,10 @@ class WikimediaUserSession(UserMixin, db.Model):
     def access_token(self, key):
         return decrypt_string(key, ciphertext=self.encrypted_access_token)
 
+    @property
+    def profile_url(self):
+        return f"https://commons.wikimedia.org/wiki/User:{self.name}"
+
 
 @login.user_loader
 def load_user(session_id: str):
@@ -153,7 +157,7 @@ def oauth2_authorize_wikimedia():
     # TODO: What if somebody is logged in but we've lost their OAuth tokens
     # for some reason?  Then they'd need to log out and log back in again.
     if not current_user.is_anonymous:
-        return redirect(url_for("homepage"))
+        return redirect(url_for("find_photos"))
 
     provider_data = current_app.config["OAUTH2_PROVIDERS"]["wikimedia"]
 
@@ -259,4 +263,6 @@ def oauth2_callback_wikimedia():
     # Log the user in
     login_user(user)
 
-    return redirect(url_for("homepage"))
+    flash("You’re logged in. ✅", category="login_header")
+
+    return redirect(url_for("find_photos"))

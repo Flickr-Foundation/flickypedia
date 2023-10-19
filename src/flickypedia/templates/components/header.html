@@ -1,0 +1,22 @@
+<p>
+  {% with messages = get_flashed_messages(category_filter=["login_header"]) %}
+    {% if messages %}
+      OK, <a href="{{ current_user.profile_url }}">{{ current_user.name }}</a>.
+      {% for msg in messages %}
+        {{ msg }}
+      {% endfor %}
+    {% else %}
+      ✅ OK, <a href="{{ current_user.profile_url }}">{{ current_user.name }}</a>.
+      <a href="{{ url_for('logout') }}">Log out</a>.
+    {% endif %}
+  {% endwith %}
+</p>
+
+<nav>
+  <ul id="workflow_steps">
+    <li>Find Flickr photos</li>
+    <li>Prepare info</li>
+    <li>Upload to Wikimedia</li>
+    <li>Say thanks</li>
+  </ul>
+</nav>

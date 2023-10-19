@@ -8,6 +8,7 @@ from flickypedia.auth import (
     oauth2_callback_wikimedia,
 )
 from flickypedia.config import Config
+from flickypedia.pages import find_photos
 from flickypedia.tasks import celery_init_app
 
 
@@ -31,5 +32,7 @@ def create_app():
     app.add_url_rule("/logout", view_func=logout)
     app.add_url_rule("/authorize/wikimedia", view_func=oauth2_authorize_wikimedia)
     app.add_url_rule("/callback/wikimedia", view_func=oauth2_callback_wikimedia)
+
+    app.add_url_rule("/find_photos", view_func=find_photos)
 
     return app
