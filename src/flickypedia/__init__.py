@@ -21,8 +21,7 @@ def create_app():
 
     db.init_app(app)
     login.init_app(app)
-
-    celery_app = celery_init_app(app)
+    celery_init_app(app)
 
     app.add_url_rule("/", view_func=homepage)
 
