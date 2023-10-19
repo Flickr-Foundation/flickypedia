@@ -60,23 +60,25 @@ from urllib.parse import urlencode
 import uuid
 
 from cryptography.fernet import Fernet
-from flask import abort, flash, redirect, request, session, url_for
+from flask import abort, current_app, flash, redirect, request, session, url_for
 from flask_login import (
-    LoginManager,
+LoginManager,
     UserMixin,
     current_user,
     login_required,
     login_user,
     logout_user,
 )
+from flask_sqlalchemy import SQLAlchemy
 import httpx
 
-from flickypedia import app, db
 from flickypedia.apis.wikimedia import WikimediaApi
 from flickypedia.utils import decrypt_string, encrypt_string
 
 
-login = LoginManager(app)
+db = SQLAlchemy()
+
+login = LoginManager()
 login.login_view = "index"
 
 
@@ -154,7 +156,7 @@ def oauth2_authorize_wikimedia():
     if not current_user.is_anonymous:
         return redirect(url_for("index"))
 
-    provider_data = app.config["OAUTH2_PROVIDERS"]["wikimedia"]
+    provider_data = current_app.config["OAUTH2_PROVIDERS"]["wikimedia"]
 
     # Create a URL that takes the user to a page on meta.wikimedia.org
     # where they can log in with their Wikimedia account and approve
@@ -198,7 +200,7 @@ def oauth2_callback_wikimedia():
         abort(401)
 
     # Exchange the authorization code for an access token
-    provider_data = app.config["OAUTH2_PROVIDERS"]["wikimedia"]
+    provider_data = current_app.config["OAUTH2_PROVIDERS"]["wikimedia"]
 
     resp = httpx.post(
         provider_data["token_url"],
