@@ -14,10 +14,9 @@ def main():
 
     args = parser.parse_args()
 
-    from flickypedia import app, db
+    from flickypedia import create_app
 
-    with app.app_context():
-        db.create_all()
+    app = create_app()
 
     if app.config["OAUTH2_PROVIDERS"]["wikimedia"]["client_id"] is None:
         sys.exit("No Wikimedia client ID provided! Set WIKIMEDIA_CLIENT_ID.")

@@ -60,7 +60,7 @@ from urllib.parse import urlencode
 import uuid
 
 from cryptography.fernet import Fernet
-from flask import abort, flash, redirect, request, session, url_for
+from flask import abort, current_app, flash, redirect, request, session, url_for
 from flask_login import (
     LoginManager,
     UserMixin,
@@ -69,15 +69,17 @@ from flask_login import (
     login_user,
     logout_user,
 )
+from flask_sqlalchemy import SQLAlchemy
 import httpx
 
-from flickypedia import app, db
 from flickypedia.apis.wikimedia import WikimediaApi
 from flickypedia.utils import decrypt_string, encrypt_string
 
 
-login = LoginManager(app)
-login.login_view = "index"
+db = SQLAlchemy()
+
+login = LoginManager()
+login.login_view = "homepage"
 
 
 # Every user gets a session ID which matches their entry in the database
@@ -112,7 +114,10 @@ class WikimediaUserSession(UserMixin, db.Model):
 
 @login.user_loader
 def load_user(session_id: str):
-    return db.session.get(WikimediaUserSession, session[SESSION_ID_KEY])
+    if current_app.config.get("TESTING"):
+        return WikimediaUserSession(id=-1, userid=-1, name="example")
+    else:  # pragma: no cover
+        return db.session.get(WikimediaUserSession, session[SESSION_ID_KEY])
 
 
 @login_required
@@ -132,7 +137,7 @@ def logout():
     logout_user()
 
     flash("You have been logged out.")
-    return redirect(url_for("index"))
+    return redirect(url_for("homepage"))
 
 
 def oauth2_authorize_wikimedia():
@@ -148,9 +153,9 @@ def oauth2_authorize_wikimedia():
     # TODO: What if somebody is logged in but we've lost their OAuth tokens
     # for some reason?  Then they'd need to log out and log back in again.
     if not current_user.is_anonymous:
-        return redirect(url_for("index"))
+        return redirect(url_for("homepage"))
 
-    provider_data = app.config["OAUTH2_PROVIDERS"]["wikimedia"]
+    provider_data = current_app.config["OAUTH2_PROVIDERS"]["wikimedia"]
 
     # Create a URL that takes the user to a page on meta.wikimedia.org
     # where they can log in with their Wikimedia account and approve
@@ -175,7 +180,7 @@ def oauth2_callback_wikimedia():
     # If you're already logged in, you don't need to come through
     # this flow.
     if not current_user.is_anonymous:
-        return redirect(url_for("index"))
+        return redirect(url_for("homepage"))
 
     # TODO: This is copied out of Miguel Grinberg's Flask tutorial.
     #
@@ -184,7 +189,7 @@ def oauth2_callback_wikimedia():
     if "error" in request.args:
         for k, v in request.args.items():
             flash(f"{k}: {v}")
-        return redirect(url_for("index"))
+        return redirect(url_for("homepage"))
 
     # Make sure the authorization code is present
     try:
@@ -194,7 +199,7 @@ def oauth2_callback_wikimedia():
         abort(401)
 
     # Exchange the authorization code for an access token
-    provider_data = app.config["OAUTH2_PROVIDERS"]["wikimedia"]
+    provider_data = current_app.config["OAUTH2_PROVIDERS"]["wikimedia"]
 
     resp = httpx.post(
         provider_data["token_url"],
@@ -254,4 +259,4 @@ def oauth2_callback_wikimedia():
     # Log the user in
     login_user(user)
 
-    return redirect(url_for("index"))
+    return redirect(url_for("homepage"))

@@ -1,8 +1,11 @@
 import os
 
+from flask_login import FlaskLoginClient
 import pytest
 import vcr
 
+from flickypedia import create_app
+from flickypedia.auth import WikimediaUserSession, SESSION_ID_KEY
 from flickypedia.apis.wikimedia import WikimediaApi
 
 
@@ -52,3 +55,49 @@ def wikimedia_api(cassette_name):
         yield WikimediaApi(
             access_token=os.environ.get("WIKIMEDIA_ACCESS_TOKEN", "<REDACTED>")
         )
+
+
+@pytest.fixture()
+def app():
+    """
+    Creates an instance of the app for use in testing.
+
+    See https://flask.palletsprojects.com/en/3.0.x/testing/#fixtures
+    """
+    app = create_app()
+    app.config["TESTING"] = True
+
+    yield app
+
+
+@pytest.fixture()
+def client(app):
+    """
+    Creates a client for use in testing.
+
+    See https://flask.palletsprojects.com/en/3.0.x/testing/#fixtures
+    """
+    with app.test_client() as client:
+        yield client
+
+
+@pytest.fixture
+def logged_in_client(app):
+    """
+    Creates a client for use in testing which is logged in.
+
+    See https://flask-login.readthedocs.io/en/latest/#automated-testing
+    """
+    app.test_client_class = FlaskLoginClient
+
+    user = WikimediaUserSession(
+        id=-1,
+        userid=-1,
+        name="example",
+    )
+
+    with app.test_client(user=user) as client:
+        with client.session_transaction() as session:
+            session[SESSION_ID_KEY] = user.id
+
+        yield client
