@@ -1,3 +1,14 @@
+"""
+This file contains some methods for calling the Flickr API.
+"""
+
+import datetime
+from typing import Optional, TypedDict
+import xml.etree.ElementTree as ET
+
+import httpx
+
+
 class TakenDateGranularity:
     """
     Named constants for Flickr "Taken date" granularity.
@@ -9,3 +20,202 @@ class TakenDateGranularity:
     Month = 4
     Year = 6
     Circa = 8
+
+
+class DateTaken(TypedDict):
+    value: datetime.datetime
+    granularity: int
+    unknown: bool
+
+
+class FlickrUser(TypedDict):
+    id: str
+    username: str
+    realname: Optional[str]
+
+
+class FlickrApi:
+    """
+    This is a thin wrapper for calling the Flickr API.
+
+    It doesn't do much interesting stuff; the goal is just to reduce boilerplate
+    in the rest of the codebase, e.g. have the XML parsing in one place rather
+    than repeated everywhere.
+    """
+
+    def __init__(self, *, api_key):
+        self.client = httpx.Client(
+            base_url="https://api.flickr.com/services/rest/",
+            params={"api_key": api_key},
+        )
+
+    # TODO: I would really like 'method' to be a positional-only arg,
+    # using the 3.8+ syntax.
+    # See https://github.com/Flickr-Foundation/flinumeratr/issues/23
+    def call(self, method, **params):
+        params["method"] = method
+
+        resp = self.client.get(url="", params=params)
+        resp.raise_for_status()
+
+        # Note: the xml.etree.ElementTree is not secure against maliciously
+        # constructed data (see warning in the Python docs [1]), but that's
+        # fine here -- we're only using it for responses from the Flickr API,
+        # which we trust.
+        #
+        # [1]: https://docs.python.org/3/library/xml.etree.elementtree.html
+        xml = ET.fromstring(resp.text)
+
+        # If the Flickr API call fails, it will return a block of XML like:
+        #
+        #       <rsp stat="fail">
+        #       	<err
+        #               code="1"
+        #               msg="Photo &quot;1211111111111111&quot; not found (invalid ID)"
+        #           />
+        #       </rsp>
+        #
+        # Different API endpoints have different codes, and so we just throw
+        # and let calling functions decide how to handle it.
+        if xml.attrib["stat"] == "fail":
+            errors = xml.find(".//err").attrib
+
+            # Although I haven't found any explicit documentation of this,
+            # it seems like a pretty common convention that error code "1"
+            # means "not found".
+            if errors["code"] == "1":
+                raise ResourceNotFound(**params)
+            else:
+                raise FlickrApiException(errors)
+
+        return xml
+
+    def get_single_photo_info(self, *, photo_id: str):
+        """
+        Look up the information for a single photo.
+        """
+        info_resp = self.call("flickr.photos.getInfo", photo_id=photo_id)
+        sizes_resp = self.call("flickr.photos.getSizes", photo_id=photo_id)
+
+        # The getInfo response is a blob of XML of the form:
+        #
+        #       <?xml version="1.0" encoding="utf-8" ?>
+        #       <rsp stat="ok">
+        #       <photo license="8" …>
+        #       	<owner
+        #               nsid="30884892@N08
+        #               username="U.S. Coast Guard"
+        #               realname="Coast Guard" …
+        #           >
+        #       		…
+        #       	</owner>
+        #       	<title>Puppy Kisses</title>
+        #       	<dates
+        #               posted="1490376472"
+        #               taken="2017-02-17 00:00:00"
+        #               …
+        #           />
+        #       	<urls>
+        #       		<url type="photopage">https://www.flickr.com/photos/coast_guard/32812033543/</url>
+        #       	</urls>
+        #           …
+        #       </photo>
+        #       </rsp>
+        #
+        title = info_resp.find(".//photo/title").text
+        owner = {
+            "id": info_resp.find(".//photo/owner").attrib["nsid"],
+            "username": info_resp.find(".//photo/owner").attrib["username"],
+            "realname": info_resp.find(".//photo/owner").attrib["realname"] or None
+        }
+
+        dates = info_resp.find(".//photo/dates").attrib
+
+        date_posted = _parse_date_posted(dates["posted"])
+
+        date_taken = {
+            "value": _parse_date_taken(dates["taken"]),
+            "granularity": int(dates["takengranularity"]),
+            "unknown": dates["takenunknown"] == "1",
+        }
+
+        photo_page_url = info_resp.find('.//photo/urls/url[@type="photopage"]').text
+
+        license = lookup_license_code(
+            api, license_code=info_resp.find(".//photo").attrib["license"]
+        )
+
+        # The getSizes response is a blob of XML of the form:
+        #
+        #       <?xml version="1.0" encoding="utf-8" ?>
+        #       <rsp stat="ok">
+        #       <sizes canblog="0" canprint="0" candownload="1">
+        #           <size
+        #               label="Square"
+        #               width="75"
+        #               height="75"
+        #               source="https://live.staticflickr.com/2903/32812033543_c1b3784192_s.jpg"
+        #               url="https://www.flickr.com/photos/coast_guard/32812033543/sizes/sq/"
+        #               media="photo"
+        #           />
+        #           <size
+        #               label="Large Square"
+        #               width="150"
+        #               height="150"
+        #               source="https://live.staticflickr.com/2903/32812033543_c1b3784192_q.jpg"
+        #               url="https://www.flickr.com/photos/coast_guard/32812033543/sizes/q/"
+        #               media="photo"
+        #           />
+        #           …
+        #       </sizes>
+        #       </rsp>
+        #
+        # Within this function, we just return all the sizes -- we leave it up to the
+        # caller to decide which size is most appropriate for their purposes.
+        sizes = [s.attrib for s in sizes_resp.findall(".//size")]
+
+        for s in sizes:
+            s["width"] = int(s["width"])
+            s["height"] = int(s["height"])
+
+        return {
+            "title": title,
+            "owner": owner,
+            "date_posted": date_posted,
+            "date_taken": date_taken,
+            "license": license,
+            "url": photo_page_url,
+            "sizes": sizes,
+        }
+
+
+
+class FlickrApiException(Exception):
+    """
+    Base class for all exceptions thrown from the Flickr API.
+    """
+
+    pass
+
+
+class ResourceNotFound(FlickrApiException):
+    """
+    Thrown when you try to look up a resource that doesn't exist.
+    """
+
+    def __init__(self, method, **params):
+        super().__init__(
+            f"Unable to find resource at {method} with properties {params}"
+        )
+
+
+def _parse_date_posted(p):
+    # See https://www.flickr.com/services/api/misc.dates.html
+    # e.g. '1490376472'
+    return datetime.datetime.utcfromtimestamp(int(p))
+
+
+def _parse_date_taken(p):
+    # See https://www.flickr.com/services/api/misc.dates.html
+    # e.g. '2017-02-17 00:00:00'
+    return datetime.datetime.strptime(p, "%Y-%m-%d %H:%M:%S")

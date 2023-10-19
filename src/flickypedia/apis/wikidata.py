@@ -3,7 +3,7 @@ import re
 
 import httpx
 
-from flickypedia.types import FlickrUser
+from flickypedia.apis.flickr import FlickrUser
 
 
 class WikidataProperties:

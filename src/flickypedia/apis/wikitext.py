@@ -8,8 +8,7 @@ Create Wikitext for display on Wikimedia Commons.
 
 """
 
-from flickypedia.apis.flickr import TakenDateGranularity
-from flickypedia.types import DateTaken, FlickrUser
+from flickypedia.apis.flickr import DateTaken, FlickrUser, TakenDateGranularity
 
 
 def create_wikitext(
