@@ -97,6 +97,7 @@ class FlickrApi:
 
         result = {}
 
+
         for lic in license_resp.findall(".//license"):
             result[lic.attrib["id"]] = {
                 "name": lic.attrib["name"],
@@ -117,11 +118,29 @@ class FlickrApi:
         Then you'd call this function to find out what that means:
 
             >>> lookup_license_code(api, license_code="0")
-            {"name": "All Rights Reserved", "url": ""}
+            {"id": "in-copyright", "name": "All Rights Reserved", "url": ""}
 
         """
         licenses = self.get_licenses()
-        return licenses[license_code]
+        this_license = licenses[license_code]
+
+        # Add a short ID which can be used to more easily refer to this
+        # license throughout the codebase.
+        this_license["id"] = {
+            "All Rights Reserved": "in-copyright",
+            "Attribution-NonCommercial-ShareAlike License": "cc-by-nc-sa-2.0",
+            "Attribution-NonCommercial License": "cc-by-nc-2.0",
+            "Attribution-NonCommercial-NoDerivs License": "cc-by-nc-nd-2.0",
+            "Attribution License": "cc-by-2.0",
+            "Attribution-ShareAlike License": "cc-by-sa-2.0",
+            "Attribution-NoDerivs License": "cc-by-nd-2.0",
+            "No known copyright restrictions": "nkcr",
+            "United States Government Work": "usgov",
+            "Public Domain Dedication (CC0)": "cc0-1.0",
+            "Public Domain Mark": "pdm"
+        }[this_license["name"]]
+
+        return this_license
 
     def get_single_photo(self, *, photo_id: str):
         """

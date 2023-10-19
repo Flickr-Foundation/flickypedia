@@ -80,6 +80,7 @@ def test_get_licenses(flickr_api):
 
 def test_lookup_license_code(flickr_api):
     assert flickr_api.lookup_license_code(license_code="0") == {
+        "id": "in-copyright",
         "name": "All Rights Reserved",
         "url": "",
     }
