@@ -156,7 +156,7 @@ def create_copyright_status_statement(status):
     }
 
 
-def create_source_data_for_photo(user_id, photo_id, jpeg_url):
+def create_source_data_for_photo(user_id, photo_id, original_url):
     """
     Create a structured data statement for a Flickr photo.
 
@@ -172,7 +172,7 @@ def create_source_data_for_photo(user_id, photo_id, jpeg_url):
             "value": f"https://www.flickr.com/photos/{user_id}/{photo_id}/",
         },
         {"property": WikidataProperties.Operator, "entity_id": WikidataEntities.Flickr},
-        {"property": WikidataProperties.Url, "value": jpeg_url},
+        {"property": WikidataProperties.Url, "value": original_url},
     ]
 
     return {
@@ -299,7 +299,7 @@ def create_sdc_claims_for_flickr_photo(
     photo_id: str,
     user: FlickrUser,
     copyright_status: str,
-    jpeg_url: str,
+    original_url: str,
     license_id: str,
     date_posted: datetime.datetime,
     date_taken: DateTaken,
@@ -314,7 +314,7 @@ def create_sdc_claims_for_flickr_photo(
     copyright_statement = create_copyright_status_statement(status=copyright_status)
 
     source_statement = create_source_data_for_photo(
-        user_id=user["id"], photo_id=photo_id, jpeg_url=jpeg_url
+        user_id=user["id"], photo_id=photo_id, original_url=original_url
     )
 
     license_statement = create_license_statement(license_id=license_id)

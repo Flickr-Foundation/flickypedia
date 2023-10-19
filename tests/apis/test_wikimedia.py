@@ -65,7 +65,7 @@ class TestUploadImage:
 
         resp = wikimedia_api.upload_image(
             filename="Silver Blue Fish In Boston Aquarium.jpg",
-            jpeg_url="https://live.staticflickr.com/8338/8273352482_50cb58a54f_o_d.jpg",
+            original_url="https://live.staticflickr.com/8338/8273352482_50cb58a54f_o_d.jpg",
             text=text,
         )
 
@@ -78,7 +78,7 @@ class TestUploadImage:
         ):
             wikimedia_api.upload_image(
                 filename="example.jpg",
-                jpeg_url="https://alexwlchan.net/images/example.jpg",
+                original_url="https://alexwlchan.net/images/example.jpg",
                 text="An image which doesn’t even exist",
             )
 
@@ -89,7 +89,7 @@ class TestUploadImage:
         ):
             wikimedia_api.upload_image(
                 filename="example.jpg",
-                jpeg_url="https://flickr.com/doesntexist.jpg",
+                original_url="https://flickr.com/doesntexist.jpg",
                 text="An image which doesn’t even exist",
             )
 
@@ -97,7 +97,7 @@ class TestUploadImage:
         with pytest.raises(DuplicateFilenameUploadException) as exc:
             wikimedia_api.upload_image(
                 filename="RailwayMuseumClocks.jpg",
-                jpeg_url="https://live.staticflickr.com/65535/53248279408_c23cba9eb8_o_d.jpg",
+                original_url="https://live.staticflickr.com/65535/53248279408_c23cba9eb8_o_d.jpg",
                 text="A wall of railway pendulum clocks at the Slovenian Railway Museum in Ljubljana",
             )
 
@@ -107,7 +107,7 @@ class TestUploadImage:
         with pytest.raises(DuplicatePhotoUploadException) as exc:
             wikimedia_api.upload_image(
                 filename="Yellow fish at Houston Zoo aquarium.jpg",
-                jpeg_url="https://live.staticflickr.com/6192/6054362864_a8f52ef695_o_d.jpg",
+                original_url="https://live.staticflickr.com/6192/6054362864_a8f52ef695_o_d.jpg",
                 text="A yellow fish",
             )
 

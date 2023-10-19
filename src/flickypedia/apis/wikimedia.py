@@ -77,7 +77,7 @@ class WikimediaApi:
 
         return resp["query"]["userinfo"]
 
-    def upload_image(self, *, filename, jpeg_url, text):
+    def upload_image(self, *, filename: str, original_url: str, text: str):
         """
         Upload an image to Wikimedia Commons.  Returns the upload filename.
 
@@ -88,7 +88,7 @@ class WikimediaApi:
             data={
                 "action": "upload",
                 "filename": filename,
-                "url": jpeg_url,
+                "url": original_url,
                 "text": text,
             },
             # Note: this can fail with an httpx.ReadTimeout error with

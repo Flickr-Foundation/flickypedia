@@ -15,7 +15,7 @@ def upload_single_image(
     date_taken: DateTaken,
     date_posted: datetime.datetime,
     license_id: str,
-    jpeg_url: str,
+    original_url: str,
 ):
     """
     Upload a photo from Flickr to Wikimedia Commons.
@@ -40,13 +40,13 @@ def upload_single_image(
         photo_id=photo_id,
         user=user,
         copyright_status="copyrighted",
-        jpeg_url=jpeg_url,
+        original_url=original_url,
         license_id=license_id,
         date_posted=date_posted,
         date_taken=date_taken,
     )
 
-    api.upload_image(filename=filename, jpeg_url=jpeg_url, text=wikitext)
+    api.upload_image(filename=filename, original_url=original_url, text=wikitext)
 
     api.add_file_caption(filename=filename, language="en", value=file_caption)
 

@@ -17,5 +17,5 @@ def test_upload_single_image(wikimedia_api):
         },
         date_posted=datetime.datetime.fromtimestamp(1697645772),
         license_id="cc-by-2.0",
-        jpeg_url="https://live.staticflickr.com/65535/53268016608_5b890124fd_o_d.jpg",
+        original_url="https://live.staticflickr.com/65535/53268016608_5b890124fd_o_d.jpg",
     )
