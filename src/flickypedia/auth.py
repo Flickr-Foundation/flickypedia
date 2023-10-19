@@ -184,7 +184,7 @@ def oauth2_callback_wikimedia():
     # If you're already logged in, you don't need to come through
     # this flow.
     if not current_user.is_anonymous:
-        return redirect(url_for("homepage"))
+        return redirect(url_for("find_photos"))
 
     # TODO: This is copied out of Miguel Grinberg's Flask tutorial.
     #
