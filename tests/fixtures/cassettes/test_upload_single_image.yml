@@ -1,0 +1,488 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - query.wikidata.org
+      user-agent:
+      - python-httpx/0.25.0
+    method: GET
+    uri: https://query.wikidata.org/sparql?format=json&query=PREFIX%20wdt%3A%20%3Chttp%3A%2F%2Fwww.wikidata.org%2Fprop%2Fdirect%2F%3E%0A%0A%20%20%20%20%20%20%20%20SELECT%20%3Fitem%20WHERE%20%7B%0A%20%20%20%20%20%20%20%20%20%20%7B%20%3Fitem%20wdt%3AP3267%20%22199246608%40N02%22%20.%20%7D%0A%20%20%20%20%20%20%20%20%20%20UNION%0A%20%20%20%20%20%20%20%20%20%20%7B%20%3Fitem%20wdt%3AP3267%20%22cefarrjf87%22%20.%20%7D%0A%20%20%20%20%20%20%20%20%7D
+  response:
+    content: "{\n  \"head\" : {\n    \"vars\" : [ \"item\" ]\n  },\n  \"results\"
+      : {\n    \"bindings\" : [ ]\n  }\n}"
+    headers:
+      accept-ranges:
+      - bytes
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '133'
+      cache-control:
+      - public, max-age=300
+      content-length:
+      - '86'
+      content-type:
+      - application/sparql-results+json;charset=utf-8
+      date:
+      - Wed, 18 Oct 2023 16:14:47 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - nginx/1.18.0
+      server-timing:
+      - cache;desc="hit-local", host;desc="cp3066"
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept
+      x-cache:
+      - cp3066 hit, cp3066 pass
+      x-cache-status:
+      - hit-local
+      x-client-ip:
+      - 81.131.37.170
+      x-first-solution-millis:
+      - '1'
+      x-served-by:
+      - wdqs1013
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.0
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=query&meta=tokens&type=csrf&format=json
+  response:
+    content: '{"batchcomplete":"","query":{"tokens":{"csrftoken":"f0ae3c44f1fc6a3e213283f8433867cc653004fd+\\"}}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-length:
+      - '99'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Wed, 18 Oct 2023 16:17:01 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1382.eqiad.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - WMF-Last-Access=18-Oct-2023;Path=/;HttpOnly;secure;Expires=Sun, 19 Nov 2023
+        12:00:00 GMT
+      - GeoIP=GB:ENG:Newark_on_Trent:53.07:-0.82:v4; Path=/; secure; Domain=.wikimedia.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3066 pass, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: action=upload&filename=Thameslink+Class+700+in+Pride+livery.jpg&url=https%3A%2F%2Flive.staticflickr.com%2F65535%2F53268016608_5b890124fd_o_d.jpg&text=%3D%3D%7B%7Bint%3Afiledesc%7D%7D%3D%3D%0A%7B%7BInformation%0A%7CSource%3Dhttps%3A%2F%2Fwww.flickr.com%2Fphotos%2F199246608%40N02%2F53268016608%2F%0A%7CDate%3D2023-09-12+19%3A54%3A32%0A%7CAuthor%3D%5Bhttps%3A%2F%2Fwww.flickr.com%2Fpeople%2F199246608%40N02+Alex+Chan%5D%0A%7CPermission%3D%0A%7Cother_versions%3D%0A%7D%7D%0A%0A%3D%3D%7B%7Bint%3Alicense-header%7D%7D%3D%3D%0A%7B%7Bcc-by-2.0%7D%7D%0A&format=json&token=f0ae3c44f1fc6a3e213283f8433867cc653004fd%2B%5C
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '610'
+      content-type:
+      - application/x-www-form-urlencoded
+      cookie:
+      - GeoIP=GB:ENG:Newark_on_Trent:53.07:-0.82:v4; NetworkProbeLimit=0.001; WMF-Last-Access=18-Oct-2023
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.0
+    method: POST
+    uri: https://commons.wikimedia.org/w/api.php
+  response:
+    content: '{"upload":{"result":"Success","filename":"Thameslink_Class_700_in_Pride_livery.jpg","imageinfo":{"timestamp":"2023-10-18T16:17:08Z","user":"Alexwlchan","userid":829939,"size":3121958,"width":4032,"height":3024,"parsedcomment":"","comment":"","html":"<div>\n<figure
+      typeof=\"mw:Error mw:File/Thumb\"><a href=\"/w/index.php?title=Special:Upload&amp;wpDestFile=Thameslink_Class_700_in_Pride_livery.jpg\"
+      class=\"new\" title=\"File:Thameslink Class 700 in Pride livery.jpg\"><span
+      class=\"mw-file-element mw-broken-media\" data-width=\"100\">File:Thameslink
+      Class 700 in Pride livery.jpg</span></a><figcaption>Existing file</figcaption></figure>\n<p><span
+      id=\"wpUploadWarningFileexists\">A file with this name already exists; please
+      check <b><a class=\"mw-selflink selflink\">the existing file</a></b> if you
+      are not sure whether you want to change it. Please choose another filename,
+      unless you are uploading a technically improved version of the same file. <br
+      />Do not overwrite an image with a different one of the same topic (see <a href=\"/wiki/Commons:File_naming\"
+      title=\"Commons:File naming\">file naming</a>).</span>\n</p>\n<div style=\"clear:both;\"></div>\n</div>","canonicaltitle":"File:Thameslink
+      Class 700 in Pride livery.jpg","url":"https://upload.wikimedia.org/wikipedia/commons/f/ff/Thameslink_Class_700_in_Pride_livery.jpg","descriptionurl":"https://commons.wikimedia.org/wiki/File:Thameslink_Class_700_in_Pride_livery.jpg","sha1":"260b232c2fd20d209816e034747036b45e5e3e1f","metadata":[{"name":"Make","value":"Apple"},{"name":"Model","value":"iPhone
+      12 mini"},{"name":"Orientation","value":1},{"name":"XResolution","value":"72/1"},{"name":"YResolution","value":"72/1"},{"name":"ResolutionUnit","value":2},{"name":"Software","value":"16.6"},{"name":"DateTime","value":"2023:09:12
+      19:54:32"},{"name":"YCbCrPositioning","value":1},{"name":"ExposureTime","value":"1/50"},{"name":"FNumber","value":"8/5"},{"name":"ExposureProgram","value":2},{"name":"ISOSpeedRatings","value":400},{"name":"ExifVersion","value":"0232"},{"name":"DateTimeOriginal","value":"2023:09:12
+      19:54:32"},{"name":"DateTimeDigitized","value":"2023:09:12 19:54:32"},{"name":"ComponentsConfiguration","value":[{"name":0,"value":1},{"name":1,"value":2},{"name":2,"value":3},{"name":3,"value":0},{"name":"_type","value":"ol"}]},{"name":"ShutterSpeedValue","value":"59081/10469"},{"name":"ApertureValue","value":"14447/10653"},{"name":"BrightnessValue","value":"27461/42615"},{"name":"ExposureBiasValue","value":"0/1"},{"name":"MeteringMode","value":5},{"name":"Flash","value":16},{"name":"FocalLength","value":"21/5"},{"name":"SubSecTimeOriginal","value":"509"},{"name":"SubSecTimeDigitized","value":"509"},{"name":"FlashPixVersion","value":"0100"},{"name":"ColorSpace","value":65535},{"name":"SensingMethod","value":2},{"name":"SceneType","value":1},{"name":"ExposureMode","value":0},{"name":"WhiteBalance","value":0},{"name":"FocalLengthIn35mmFilm","value":26},{"name":"SceneCaptureType","value":0},{"name":"MEDIAWIKI_EXIF_VERSION","value":2}],"commonmetadata":[{"name":"Make","value":"Apple"},{"name":"Model","value":"iPhone
+      12 mini"},{"name":"Orientation","value":1},{"name":"XResolution","value":"72/1"},{"name":"YResolution","value":"72/1"},{"name":"ResolutionUnit","value":2},{"name":"Software","value":"16.6"},{"name":"DateTime","value":"2023:09:12
+      19:54:32"},{"name":"YCbCrPositioning","value":1},{"name":"ExposureTime","value":"1/50"},{"name":"FNumber","value":"8/5"},{"name":"ExposureProgram","value":2},{"name":"ISOSpeedRatings","value":400},{"name":"ExifVersion","value":"0232"},{"name":"DateTimeOriginal","value":"2023:09:12
+      19:54:32"},{"name":"DateTimeDigitized","value":"2023:09:12 19:54:32"},{"name":"ComponentsConfiguration","value":[{"name":0,"value":1},{"name":1,"value":2},{"name":2,"value":3},{"name":3,"value":0},{"name":"_type","value":"ol"}]},{"name":"ShutterSpeedValue","value":"59081/10469"},{"name":"ApertureValue","value":"14447/10653"},{"name":"BrightnessValue","value":"27461/42615"},{"name":"ExposureBiasValue","value":"0/1"},{"name":"MeteringMode","value":5},{"name":"Flash","value":16},{"name":"FocalLength","value":"21/5"},{"name":"SubSecTimeOriginal","value":"509"},{"name":"SubSecTimeDigitized","value":"509"},{"name":"FlashPixVersion","value":"0100"},{"name":"ColorSpace","value":65535},{"name":"SensingMethod","value":2},{"name":"SceneType","value":1},{"name":"ExposureMode","value":0},{"name":"WhiteBalance","value":0},{"name":"FocalLengthIn35mmFilm","value":26},{"name":"SceneCaptureType","value":0}],"extmetadata":{"DateTime":{"value":"2023-10-18
+      16:17:08","source":"mediawiki-metadata","hidden":""},"ObjectName":{"value":"Thameslink
+      Class 700 in Pride livery","source":"mediawiki-metadata"},"CommonsMetadataExtension":{"value":1.2,"source":"extension","hidden":""},"Categories":{"value":"","source":"commons-categories","hidden":""},"Assessments":{"value":"","source":"commons-categories","hidden":""}},"mime":"image/jpeg","mediatype":"BITMAP","bitdepth":8}}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '14'
+      cache-control:
+      - private, max-age=0, s-maxage=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Wed, 18 Oct 2023 16:17:01 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw2262.codfw.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - cpPosIndex=1%401697645828%231b5e5eb9377d3c687f9858a14d1dcc33; expires=Wed,
+        18-Oct-2023 16:17:18 GMT; Max-Age=10; path=/; secure; HttpOnly
+      - UseDC=master; expires=Wed, 18-Oct-2023 16:17:18 GMT; Max-Age=10; path=/; secure;
+        HttpOnly
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3066 pass, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - GeoIP=GB:ENG:Newark_on_Trent:53.07:-0.82:v4; NetworkProbeLimit=0.001; UseDC=master;
+        WMF-Last-Access=18-Oct-2023; cpPosIndex=1%401697645828%231b5e5eb9377d3c687f9858a14d1dcc33
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.0
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=query&meta=tokens&type=csrf&format=json
+  response:
+    content: '{"batchcomplete":"","query":{"tokens":{"csrftoken":"2b163554193f2a696054d80e943588dd65300504+\\"}}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-length:
+      - '99'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Wed, 18 Oct 2023 16:17:08 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw2298.codfw.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3066 pass, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: action=wbsetlabel&site=commonswiki&title=File%3AThameslink_Class_700_in_Pride_livery.jpg&language=en&value=A+Thameslink+Class+700+train+in+the+rainbow+Pride+livery%2C+taken+at+night&format=json&token=2b163554193f2a696054d80e943588dd65300504%2B%5C
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '246'
+      content-type:
+      - application/x-www-form-urlencoded
+      cookie:
+      - GeoIP=GB:ENG:Newark_on_Trent:53.07:-0.82:v4; NetworkProbeLimit=0.001; UseDC=master;
+        WMF-Last-Access=18-Oct-2023; cpPosIndex=1%401697645828%231b5e5eb9377d3c687f9858a14d1dcc33
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.0
+    method: POST
+    uri: https://commons.wikimedia.org/w/api.php
+  response:
+    content: '{"entity":{"labels":{"en":{"language":"en","value":"A Thameslink Class
+      700 train in the rainbow Pride livery, taken at night"}},"id":"M139134318","type":"mediainfo","lastrevid":812827205},"success":1}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '2'
+      cache-control:
+      - private, max-age=0, s-maxage=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-length:
+      - '200'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Wed, 18 Oct 2023 16:17:08 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw2397.codfw.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - cpPosIndex=2%401697645829%231b5e5eb9377d3c687f9858a14d1dcc33; expires=Wed,
+        18-Oct-2023 16:17:19 GMT; Max-Age=10; path=/; secure; HttpOnly
+      - UseDC=master; expires=Wed, 18-Oct-2023 16:17:19 GMT; Max-Age=10; path=/; secure;
+        HttpOnly
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3066 pass, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - GeoIP=GB:ENG:Newark_on_Trent:53.07:-0.82:v4; NetworkProbeLimit=0.001; UseDC=master;
+        WMF-Last-Access=18-Oct-2023; cpPosIndex=2%401697645829%231b5e5eb9377d3c687f9858a14d1dcc33
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.0
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=query&meta=tokens&type=csrf&format=json
+  response:
+    content: '{"batchcomplete":"","query":{"tokens":{"csrftoken":"8b236158ff4afa51d2e466841608ed8965300505+\\"}}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-length:
+      - '99'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Wed, 18 Oct 2023 16:17:09 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw2286.codfw.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3066 pass, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: action=wbeditentity&site=commonswiki&title=File%3AThameslink_Class_700_in_Pride_livery.jpg&data=%7B%22claims%22%3A+%5B%7B%22mainsnak%22%3A+%7B%22snaktype%22%3A+%22somevalue%22%2C+%22property%22%3A+%22P170%22%7D%2C+%22qualifiers%22%3A+%7B%22P2093%22%3A+%5B%7B%22datavalue%22%3A+%7B%22type%22%3A+%22string%22%2C+%22value%22%3A+%22Alex+Chan%22%7D%2C+%22property%22%3A+%22P2093%22%2C+%22snaktype%22%3A+%22value%22%7D%5D%2C+%22P2699%22%3A+%5B%7B%22datavalue%22%3A+%7B%22type%22%3A+%22string%22%2C+%22value%22%3A+%22https%3A%2F%2Fwww.flickr.com%2Fphotos%2F199246608%40N02%2F%22%7D%2C+%22property%22%3A+%22P2699%22%2C+%22snaktype%22%3A+%22value%22%7D%5D%2C+%22P3267%22%3A+%5B%7B%22datavalue%22%3A+%7B%22type%22%3A+%22string%22%2C+%22value%22%3A+%22199246608%40N02%22%7D%2C+%22property%22%3A+%22P3267%22%2C+%22snaktype%22%3A+%22value%22%7D%5D%7D%2C+%22qualifiers-order%22%3A+%5B%22P3267%22%2C+%22P2093%22%2C+%22P2699%22%5D%2C+%22type%22%3A+%22statement%22%7D%2C+%7B%22mainsnak%22%3A+%7B%22snaktype%22%3A+%22value%22%2C+%22property%22%3A+%22P6216%22%2C+%22datavalue%22%3A+%7B%22type%22%3A+%22wikibase-entityid%22%2C+%22value%22%3A+%7B%22id%22%3A+%22Q50423863%22%7D%7D%7D%2C+%22type%22%3A+%22statement%22%7D%2C+%7B%22mainsnak%22%3A+%7B%22snaktype%22%3A+%22value%22%2C+%22property%22%3A+%22P7482%22%2C+%22datavalue%22%3A+%7B%22type%22%3A+%22wikibase-entityid%22%2C+%22value%22%3A+%7B%22id%22%3A+%22Q74228490%22%7D%7D%7D%2C+%22qualifiers%22%3A+%7B%22P973%22%3A+%5B%7B%22datavalue%22%3A+%7B%22type%22%3A+%22string%22%2C+%22value%22%3A+%22https%3A%2F%2Fwww.flickr.com%2Fphotos%2F199246608%40N02%2F53268016608%2F%22%7D%2C+%22property%22%3A+%22P973%22%2C+%22snaktype%22%3A+%22value%22%7D%5D%2C+%22P137%22%3A+%5B%7B%22snaktype%22%3A+%22value%22%2C+%22property%22%3A+%22P137%22%2C+%22datavalue%22%3A+%7B%22type%22%3A+%22wikibase-entityid%22%2C+%22value%22%3A+%7B%22id%22%3A+%22Q103204%22%7D%7D%7D%5D%2C+%22P2699%22%3A+%5B%7B%22datavalue%22%3A+%7B%22type%22%3A+%22string%22%2C+%22value%22%3A+%22https%3A%2F%2Flive.staticflickr.com%2F65535%2F53268016608_5b890124fd_o_d.jpg%22%7D%2C+%22property%22%3A+%22P2699%22%2C+%22snaktype%22%3A+%22value%22%7D%5D%7D%2C+%22qualifiers-order%22%3A+%5B%22P973%22%2C+%22P137%22%2C+%22P2699%22%5D%2C+%22type%22%3A+%22statement%22%7D%2C+%7B%22mainsnak%22%3A+%7B%22snaktype%22%3A+%22value%22%2C+%22property%22%3A+%22P275%22%2C+%22datavalue%22%3A+%7B%22type%22%3A+%22wikibase-entityid%22%2C+%22value%22%3A+%7B%22id%22%3A+%22Q19125117%22%7D%7D%7D%2C+%22type%22%3A+%22statement%22%7D%2C+%7B%22mainsnak%22%3A+%7B%22snaktype%22%3A+%22value%22%2C+%22property%22%3A+%22P1433%22%2C+%22datavalue%22%3A+%7B%22type%22%3A+%22wikibase-entityid%22%2C+%22value%22%3A+%7B%22id%22%3A+%22Q103204%22%7D%7D%7D%2C+%22qualifiers%22%3A+%7B%22P577%22%3A+%5B%7B%22datavalue%22%3A+%7B%22value%22%3A+%7B%22time%22%3A+%22%2B2023-10-18T00%3A00%3A00Z%22%2C+%22precision%22%3A+11%2C+%22timezone%22%3A+0%2C+%22before%22%3A+0%2C+%22after%22%3A+0%2C+%22calendarmodel%22%3A+%22http%3A%2F%2Fwww.wikidata.org%2Fentity%2FQ1985727%22%7D%2C+%22type%22%3A+%22time%22%7D%2C+%22property%22%3A+%22P577%22%2C+%22snaktype%22%3A+%22value%22%7D%5D%7D%2C+%22qualifiers-order%22%3A+%5B%22P577%22%5D%2C+%22type%22%3A+%22statement%22%7D%2C+%7B%22mainsnak%22%3A+%7B%22datavalue%22%3A+%7B%22value%22%3A+%7B%22time%22%3A+%22%2B2023-09-12T00%3A00%3A00Z%22%2C+%22precision%22%3A+11%2C+%22timezone%22%3A+0%2C+%22before%22%3A+0%2C+%22after%22%3A+0%2C+%22calendarmodel%22%3A+%22http%3A%2F%2Fwww.wikidata.org%2Fentity%2FQ1985727%22%7D%2C+%22type%22%3A+%22time%22%7D%2C+%22property%22%3A+%22P571%22%2C+%22snaktype%22%3A+%22value%22%7D%2C+%22type%22%3A+%22statement%22%7D%5D%7D&format=json&token=8b236158ff4afa51d2e466841608ed8965300505%2B%5C
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '3689'
+      content-type:
+      - application/x-www-form-urlencoded
+      cookie:
+      - GeoIP=GB:ENG:Newark_on_Trent:53.07:-0.82:v4; NetworkProbeLimit=0.001; UseDC=master;
+        WMF-Last-Access=18-Oct-2023; cpPosIndex=2%401697645829%231b5e5eb9377d3c687f9858a14d1dcc33
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.0
+    method: POST
+    uri: https://commons.wikimedia.org/w/api.php
+  response:
+    content: '{"entity":{"type":"mediainfo","id":"M139134318","labels":{"en":{"language":"en","value":"A
+      Thameslink Class 700 train in the rainbow Pride livery, taken at night"}},"descriptions":{},"statements":{"P170":[{"mainsnak":{"snaktype":"somevalue","property":"P170","hash":"d3550e860f988c6675fff913440993f58f5c40c5"},"type":"statement","qualifiers":{"P3267":[{"snaktype":"value","property":"P3267","hash":"720421850357074e74457b9bdc5c93c477a1ab81","datavalue":{"value":"199246608@N02","type":"string"}}],"P2093":[{"snaktype":"value","property":"P2093","hash":"fab51479c0c03b1a3784816008ab10515b259301","datavalue":{"value":"Alex
+      Chan","type":"string"}}],"P2699":[{"snaktype":"value","property":"P2699","hash":"9bad7272b27927e7b6ea13142cd1800221cb8aa4","datavalue":{"value":"https://www.flickr.com/photos/199246608@N02/","type":"string"}}]},"qualifiers-order":["P3267","P2093","P2699"],"id":"M139134318$AD98EF78-5115-4DA0-8663-CDB77F27733B","rank":"normal"}],"P6216":[{"mainsnak":{"snaktype":"value","property":"P6216","hash":"5570347fdc76d2a80732f51ea10ee4b144a084e0","datavalue":{"value":{"entity-type":"item","numeric-id":50423863,"id":"Q50423863"},"type":"wikibase-entityid"}},"type":"statement","id":"M139134318$65C318C1-765D-459C-9AB1-D474D433B608","rank":"normal"}],"P7482":[{"mainsnak":{"snaktype":"value","property":"P7482","hash":"b82dd47222a210c6dc1f428b693c2fbf7b0e0d6e","datavalue":{"value":{"entity-type":"item","numeric-id":74228490,"id":"Q74228490"},"type":"wikibase-entityid"}},"type":"statement","qualifiers":{"P973":[{"snaktype":"value","property":"P973","hash":"256e2a1968b8b98ea39dbeac8fa7a49d5d457a4b","datavalue":{"value":"https://www.flickr.com/photos/199246608@N02/53268016608/","type":"string"}}],"P137":[{"snaktype":"value","property":"P137","hash":"3d8cd4c1ab91d3d9a14900210faaebf1a98b947b","datavalue":{"value":{"entity-type":"item","numeric-id":103204,"id":"Q103204"},"type":"wikibase-entityid"}}],"P2699":[{"snaktype":"value","property":"P2699","hash":"d67fd80560fa520b7fb4a1d8fb6489e4f53dd214","datavalue":{"value":"https://live.staticflickr.com/65535/53268016608_5b890124fd_o_d.jpg","type":"string"}}]},"qualifiers-order":["P973","P137","P2699"],"id":"M139134318$2786F193-D2AE-4506-B571-2CA6727B0BBD","rank":"normal"}],"P275":[{"mainsnak":{"snaktype":"value","property":"P275","hash":"82d5b402aa0a79040483a8c9264bd484c6c13f67","datavalue":{"value":{"entity-type":"item","numeric-id":19125117,"id":"Q19125117"},"type":"wikibase-entityid"}},"type":"statement","id":"M139134318$7DF22058-91EA-4074-B6DE-885385989279","rank":"normal"}],"P1433":[{"mainsnak":{"snaktype":"value","property":"P1433","hash":"42371a72aac2d430d87cc00de671b55cac1f5a79","datavalue":{"value":{"entity-type":"item","numeric-id":103204,"id":"Q103204"},"type":"wikibase-entityid"}},"type":"statement","qualifiers":{"P577":[{"snaktype":"value","property":"P577","hash":"040ac444cd11eeb55ebdeb56fafbe60c116c2a1a","datavalue":{"value":{"time":"+2023-10-18T00:00:00Z","timezone":0,"before":0,"after":0,"precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"},"type":"time"}}]},"qualifiers-order":["P577"],"id":"M139134318$AA30360C-404F-4C62-B7FD-1CF676FE6445","rank":"normal"}],"P571":[{"mainsnak":{"snaktype":"value","property":"P571","hash":"021b4ec52da275f13b26a624e5fbe91b534f870f","datavalue":{"value":{"time":"+2023-09-12T00:00:00Z","timezone":0,"before":0,"after":0,"precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"},"type":"time"}},"type":"statement","id":"M139134318$30288A2D-26A9-4E04-8EE2-6844D2088DF9","rank":"normal"}]},"lastrevid":812827206},"success":1}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '2'
+      cache-control:
+      - private, max-age=0, s-maxage=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Wed, 18 Oct 2023 16:17:09 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw2319.codfw.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - cpPosIndex=3%401697645830%231b5e5eb9377d3c687f9858a14d1dcc33; expires=Wed,
+        18-Oct-2023 16:17:20 GMT; Max-Age=10; path=/; secure; HttpOnly
+      - UseDC=master; expires=Wed, 18-Oct-2023 16:17:20 GMT; Max-Age=10; path=/; secure;
+        HttpOnly
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3066 pass, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1
