@@ -10,6 +10,8 @@ class DatetimeEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, datetime.datetime):
             return obj.isoformat()
+        else:  # pragma: no cover
+            pass
 
 
 @pytest.mark.parametrize(
