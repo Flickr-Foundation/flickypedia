@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% include "_header.html" %}
+  
+  At this Flickr URL:
+  
+  <form action="{{ url_for('find_photos') }}" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    
+    {% with messages = get_flashed_messages(category_filter=["flickr_url"]) %}
+      {% if messages %}
+        <ul class="flashes">
+        {% for message in messages %}
+          <li>{{ message | safe }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}    
+    
+    {{ form.flickr_url(value=flickr_url) }}
+    
+    <p>{{ form.submit() }}</p>
+  </form>
+  
+  
+  <p>{{ parsed_url }}</p>
+{% endblock %}

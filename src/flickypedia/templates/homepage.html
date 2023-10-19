@@ -1,20 +1,30 @@
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+{% extends "base.html" %}
 
-<p>Welcome to Flickypedia!</p>
-
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
-    <ul class="flashes">
-    {% for message in messages %}
-      <li>{{ message | safe }}</li>
-    {% endfor %}
-    </ul>
-  {% endif %}
-{% endwith %}
-
-{% if not current_user.is_anonymous %}
-  You are logged in to Wikimedia as <strong>{{ current_user.name }}</strong>
-  <a href="{{ url_for('logout') }}">Log out</a>
-{% else %}
-  <a href="{{ url_for('oauth2_authorize_wikimedia') }}">Log in to Wikimedia</a>
-{% endif %}
+{% block content %}
+  <h1>Welcome to Flickypedia!</h1>
+  
+  <p>
+    It’s a tool to contribute Flickr photos to Wikimedia Commons.
+    (And you must have a Wikimedia Commons account to use it.)
+  </p>
+  
+  <p>
+    Here’s how it works:
+  </p>
+  
+  <img id="how_it_works" src="{{ url_for('static', filename='how_it_works.png') }}">
+  
+  <ul>
+    <li>
+      <h3>Wikimedia requires CC licensing</h3>
+      
+      <p>so we’ll only offer Flickr photos that fit</p>
+    </li>
+    
+    <li>
+      <h3>Start: <a href="{{ url_for('oauth2_authorize_wikimedia') }}">Log in</a></h3>
+        
+      <p>to Wikimedia Commons</p>
+    </li>
+  </ul>
+{% endblock %}

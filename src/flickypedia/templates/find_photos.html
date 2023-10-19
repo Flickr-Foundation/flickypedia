@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% include "components/header.html" %}
+  
+  <h2>Enter a Flickr URL:</h2>
+  
+  <form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+  
+    {% with messages = get_flashed_messages(category_filter=["flickr_url"]) %}
+      {% if messages %}
+        <ul class="flashes">
+        {% for message in messages %}
+          <li>{{ message | safe }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}    
+  
+    {{ form.flickr_url }}
+  
+    <p>{{ form.submit() }}</p>
+  </form>
+
+  <p>
+    We’ll return Flickr photos with the right licenses for use on Wikimedia Commons.
+  </p>
+
+  <h3>Need help? Here are some examples:</h3>
+
+  <ul>
+    <li>
+      Flickr URL for a photo: <br/>
+      {{ "https://www.flickr.com/photos/schlesinger_library/13270291833" | a_href | safe }}
+    </li>
+  
+    <li>
+      An album: <br/>
+      {{ "https://www.flickr.com/photos/aljazeeraenglish/albums/72157626164453131" | a_href | safe }}
+    </li>
+  
+    <li>
+      A member’s photostream: <br/>
+      {{ "https://www.flickr.com/photos/obamawhitehouse/" | a_href | safe }}
+    </li>
+  
+    <li>
+      A group: <br/>
+      {{ "https://www.flickr.com/groups/lomo/pool/" | a_href | safe }}
+    </li>
+  
+    <li>
+      A gallery: <br/>
+      {{ "https://www.flickr.com/photos/bunnyfrogs/galleries/72157628088497125/" | a_href | safe }}
+    </li>
+  
+    <li>
+      A tag: <br/>
+      {{ "https://flickr.com/photos/tags/auroraborealis/" | a_href | safe }}
+    </li>
+  </ul>
+{% endblock %}

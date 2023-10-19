@@ -11,12 +11,12 @@ class TestOAuth2AuthorizeWikimedia:
             == "https://meta.wikimedia.org/w/rest.php/oauth2/authorize?client_id=example1234&response_type=code"
         )
 
-    def test_logged_in_user_is_redirected_to_homepage(self, logged_in_client):
+    def test_logged_in_user_is_redirected_to_find_photos(self, logged_in_client):
         resp = logged_in_client.get("/authorize/wikimedia")
 
-        # If you're already logged in, you should be redirected to the homepage
+        # If you're already logged in, you should be redirected
         assert resp.status_code == 302
-        assert resp.headers["location"] == "/"
+        assert resp.headers["location"] == "/find_photos"
 
 
 def test_logging_out_removes_user(logged_in_client):

@@ -8,7 +8,9 @@ from flickypedia.auth import (
     oauth2_callback_wikimedia,
 )
 from flickypedia.config import Config
+from flickypedia.pages import find_photos, prepare_info
 from flickypedia.tasks import celery_init_app
+from flickypedia.utils import a_href
 
 
 def homepage():
@@ -31,5 +33,10 @@ def create_app():
     app.add_url_rule("/logout", view_func=logout)
     app.add_url_rule("/authorize/wikimedia", view_func=oauth2_authorize_wikimedia)
     app.add_url_rule("/callback/wikimedia", view_func=oauth2_callback_wikimedia)
+
+    app.add_url_rule("/find_photos", view_func=find_photos, methods=["GET", "POST"])
+    app.add_url_rule("/prepare_info", view_func=prepare_info, methods=["GET", "POST"])
+
+    app.jinja_env.filters["a_href"] = a_href
 
     return app
