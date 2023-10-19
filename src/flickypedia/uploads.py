@@ -1,9 +1,9 @@
 import datetime
 
+from flickypedia.apis.flickr import DateTaken, FlickrUser
 from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
 from flickypedia.apis.wikimedia import WikimediaApi
 from flickypedia.apis.wikitext import create_wikitext
-from flickypedia.types import DateTaken, FlickrUser
 
 
 def upload_single_image(

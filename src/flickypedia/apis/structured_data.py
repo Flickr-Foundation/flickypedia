@@ -26,14 +26,13 @@ is supporting that function.
 
 import datetime
 
-from flickypedia.apis.flickr import TakenDateGranularity
+from flickypedia.apis.flickr import DateTaken, FlickrUser, TakenDateGranularity
 from flickypedia.apis.wikidata import (
     lookup_flickr_user_in_wikidata,
     to_wikidata_date,
     WikidataEntities,
     WikidataProperties,
 )
-from flickypedia.types import DateTaken, FlickrUser
 
 
 def _wikibase_entity_value(*, property_id, entity_id):

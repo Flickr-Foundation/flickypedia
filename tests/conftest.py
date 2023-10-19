@@ -6,6 +6,7 @@ import vcr
 
 from flickypedia import create_app
 from flickypedia.auth import WikimediaUserSession, SESSION_ID_KEY
+from flickypedia.apis.flickr import FlickrApi
 from flickypedia.apis.wikimedia import WikimediaApi
 
 
@@ -55,6 +56,22 @@ def wikimedia_api(cassette_name):
         yield WikimediaApi(
             access_token=os.environ.get("WIKIMEDIA_ACCESS_TOKEN", "<REDACTED>")
         )
+
+
+@pytest.fixture(scope="function")
+def flickr_api(cassette_name):
+    """
+    Creates an instance of the FlickrApi class for use in tests.
+
+    This instance of the API will record its interactions as "cassettes"
+    using vcr.py, which can be replayed offline (e.g. in CI tests).
+    """
+    with vcr.use_cassette(
+        cassette_name,
+        cassette_library_dir="tests/fixtures/cassettes",
+        filter_query_parameters=["api_key"],
+    ):
+        yield FlickrApi(api_key=os.environ.get("FLICKR_API_KEY", "<REDACTED>"))
 
 
 @pytest.fixture()
