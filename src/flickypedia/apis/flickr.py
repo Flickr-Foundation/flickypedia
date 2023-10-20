@@ -289,6 +289,7 @@ class FlickrApi:
             s["height"] = int(s["height"])
 
         return {
+            "id": photo_id,
             "title": title,
             "owner": owner,
             "date_posted": date_posted,
