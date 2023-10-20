@@ -49,6 +49,10 @@ def jsonify(v):
     ["method", "params"],
     [
         ("get_single_photo", {"photo_id": "12345678901234567890"}),
+        (
+            "lookup_user",
+            {"user_url": "https://www.flickr.com/photos/DefinitelyDoesNotExist"},
+        ),
     ],
 )
 def test_methods_fail_if_not_found(flickr_api, method, params):
@@ -125,6 +129,31 @@ def test_lookup_license_code(flickr_api):
         "label": "All Rights Reserved",
         "url": None,
     }
+
+
+@pytest.mark.parametrize(
+    ["user_url", "user"],
+    [
+        (
+            "https://www.flickr.com/photos/35591378@N03",
+            {
+                "id": "35591378@N03",
+                "username": "Obama White House Archived",
+                "realname": None,
+            },
+        ),
+        (
+            "https://www.flickr.com/photos/britishlibrary/",
+            {
+                "id": "12403504@N02",
+                "username": "The British Library",
+                "realname": "British Library",
+            },
+        ),
+    ],
+)
+def test_lookup_user(flickr_api, user_url, user):
+    assert flickr_api.lookup_user(user_url=user_url) == user
 
 
 class TestGetSinglePhoto:

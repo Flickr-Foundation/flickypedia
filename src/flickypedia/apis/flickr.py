@@ -150,6 +150,40 @@ class FlickrApi:
         licenses = self.get_licenses()
         return licenses[license_code]
 
+    def lookup_user(self, *, user_url: str):
+        """
+        Given the link to a user's photos or profile, return their info.
+
+            >>> lookup_user_id_from_url("https://www.flickr.com/photos/britishlibrary/")
+            {
+                "id": "12403504@N02",
+                "username": "The British Library",
+                "realname": "British Library"
+            }
+
+        """
+        # The lookupUser response is of the form:
+        #
+        #       <?xml version="1.0" encoding="utf-8" ?>
+        #       <rsp stat="ok">
+        #       <user id="12403504@N02">
+        #       	<username>The British Library</username>
+        #       </user>
+        #       </rsp>
+        #
+        resp = self.call("flickr.urls.lookupUser", url=user_url)
+        user_id = resp.find(".//user").attrib["id"]
+
+        resp = self.call("flickr.people.getInfo", user_id=user_id)
+        username = resp.find(".//username").text
+
+        try:
+            realname = resp.find(".//realname").text
+        except AttributeError:
+            realname = None
+
+        return {"id": user_id, "username": username, "realname": realname}
+
     def get_single_photo(self, *, photo_id: str):
         """
         Look up the information for a single photo.
