@@ -158,31 +158,44 @@ class FlickrApi:
             {
                 "id": "12403504@N02",
                 "username": "The British Library",
-                "realname": "British Library"
+                "realname": "British Library",
+                "photos_url": "https://www.flickr.com/photos/britishlibrary/",
             }
 
         """
         # The lookupUser response is of the form:
         #
-        #       <?xml version="1.0" encoding="utf-8" ?>
-        #       <rsp stat="ok">
         #       <user id="12403504@N02">
         #       	<username>The British Library</username>
         #       </user>
-        #       </rsp>
         #
         resp = self.call("flickr.urls.lookupUser", url=user_url)
         user_id = resp.find(".//user").attrib["id"]
 
+        # The getInfo response is of the form:
+
+        #     <person id="12403504@N02"…">
+        #   	<username>The British Library</username>
+        #       <realname>British Library</realname>
+        #       <photosurl>flickr.com/photos/britishlibrary/</photosurl>
+        #       …
+        #     </person>
+        #
         resp = self.call("flickr.people.getInfo", user_id=user_id)
         username = resp.find(".//username").text
+        photos_url = resp.find(".//photosurl").text
 
         try:
             realname = resp.find(".//realname").text
         except AttributeError:
             realname = None
 
-        return {"id": user_id, "username": username, "realname": realname}
+        return {
+            "id": user_id,
+            "username": username,
+            "realname": realname,
+            "photos_url": photos_url,
+        }
 
     def get_single_photo(self, *, photo_id: str):
         """

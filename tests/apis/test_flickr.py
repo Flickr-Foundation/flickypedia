@@ -140,6 +140,7 @@ def test_lookup_license_code(flickr_api):
                 "id": "35591378@N03",
                 "username": "Obama White House Archived",
                 "realname": None,
+                "photos_url": "https://www.flickr.com/photos/obamawhitehouse/",
             },
         ),
         (
@@ -148,6 +149,16 @@ def test_lookup_license_code(flickr_api):
                 "id": "12403504@N02",
                 "username": "The British Library",
                 "realname": "British Library",
+                "photos_url": "https://www.flickr.com/photos/britishlibrary/",
+            },
+        ),
+        (
+            "https://www.flickr.com/photos/199246608@N02",
+            {
+                "id": "199246608@N02",
+                "username": "cefarrjf87",
+                "realname": "Alex Chan",
+                "photos_url": "https://www.flickr.com/photos/199246608@N02/",
             },
         ),
     ],
