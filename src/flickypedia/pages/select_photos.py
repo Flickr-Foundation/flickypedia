@@ -26,7 +26,12 @@ def get_photos(parsed_url):
     api = FlickrApi(api_key=current_app.config["FLICKR_API_KEY"])
 
     if parsed_url["type"] == "single_photo":
-        return [api.get_single_photo(photo_id=parsed_url["photo_id"])]
+        return {'photos':[api.get_single_photo(photo_id=parsed_url["photo_id"])]}
+    elif parsed_url['type'] == 'album':
+        return api.get_photos_in_album(
+            user_url=parsed_url['user_url'],
+            album_id=parsed_url['album_id']
+        )
     else:
         raise TypeError
 
@@ -40,7 +45,7 @@ def select_photos():
         abort(400)
 
     try:
-        photos = get_photos(parsed_url)
+        photo_data = get_photos(parsed_url)
     except TypeError:
         flash(
             "I don't know how to find photos at that URL yet!",
@@ -66,5 +71,5 @@ def select_photos():
         flickr_url=flickr_url,
         parsed_url=parsed_url,
         form=form,
-        photos=photos,
+        photo_data=photo_data,
     )
