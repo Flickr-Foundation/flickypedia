@@ -234,9 +234,7 @@ class TestGetAlbum:
             album_id="72157677773252346",
         )
 
-        assert json.loads(json.dumps(resp, cls=DatetimeEncoder)) == json.load(
-            open("tests/fixtures/flickr_api/album-72157677773252346.json")
-        )
+        assert jsonify(resp) == get_fixture(filename="album-72157677773252346.json")
 
     def test_sets_owner_and_url_on_album_photos(self, flickr_api):
         resp = flickr_api.get_photos_in_album(
