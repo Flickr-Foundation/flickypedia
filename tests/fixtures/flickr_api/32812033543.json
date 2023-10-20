@@ -5,9 +5,9 @@
     "username": "U.S. Coast Guard",
     "realname": "Coast Guard"
   },
-  "date_posted": "2017-03-24T17:27:52",
+  "date_posted": "2017-03-24T17:27:52+00:00",
   "date_taken": {
-    "value": "2017-02-17T00:00:00",
+    "value": "2017-02-17T00:00:00+00:00",
     "granularity": 0,
     "unknown": false
   },
