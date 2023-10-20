@@ -451,4 +451,3 @@ def _parse_sizes(photo_elem):
             pass
 
     return sizes
->>>>>>> c7de3e7 (Write a method to get photos in an album)
