@@ -60,12 +60,18 @@ def jsonify(v):
         #
         (
             "get_photos_in_album",
-            {"user_url": "https://www.flickr.com/photos/DefinitelyDoesNotExist", "album_id": "1234"}
+            {
+                "user_url": "https://www.flickr.com/photos/DefinitelyDoesNotExist",
+                "album_id": "1234",
+            },
         ),
         (
             "get_photos_in_album",
-            {"user_url": "https://www.flickr.com/photos/britishlibrary/", "album_id": "12345678901234567890"}
-        )
+            {
+                "user_url": "https://www.flickr.com/photos/britishlibrary/",
+                "album_id": "12345678901234567890",
+            },
+        ),
     ],
 )
 def test_methods_fail_if_not_found(flickr_api, method, params):
@@ -154,6 +160,7 @@ def test_lookup_license_code(flickr_api):
                 "username": "Obama White House Archived",
                 "realname": None,
                 "photos_url": "https://www.flickr.com/photos/obamawhitehouse/",
+                "profile_url": "https://www.flickr.com/people/obamawhitehouse/",
             },
         ),
         (
@@ -163,6 +170,7 @@ def test_lookup_license_code(flickr_api):
                 "username": "The British Library",
                 "realname": "British Library",
                 "photos_url": "https://www.flickr.com/photos/britishlibrary/",
+                "profile_url": "https://www.flickr.com/people/britishlibrary/",
             },
         ),
         (
@@ -172,6 +180,7 @@ def test_lookup_license_code(flickr_api):
                 "username": "cefarrjf87",
                 "realname": "Alex Chan",
                 "photos_url": "https://www.flickr.com/photos/199246608@N02/",
+                'profile_url': 'https://www.flickr.com/people/199246608@N02/'
             },
         ),
     ],
@@ -218,16 +227,68 @@ class TestGetSinglePhoto:
         }
 
 
-@pytest.mark.parametrize(["method", "kwargs"], [
-    ("get_photos_in_album", {"user_url": "https://www.flickr.com/photos/spike_yun/", "album_id": "72157677773252346"})
-])
+class TestGetAlbum:
+    def test_can_get_album(self, flickr_api):
+        resp = flickr_api.get_photos_in_album(
+            user_url="https://www.flickr.com/photos/spike_yun/",
+            album_id="72157677773252346",
+        )
+
+        assert json.loads(json.dumps(resp, cls=DatetimeEncoder)) == json.load(
+            open("tests/fixtures/flickr_api/album-72157677773252346.json")
+        )
+
+    def test_sets_owner_and_url_on_album_photos(self, flickr_api):
+        resp = flickr_api.get_photos_in_album(
+            user_url="https://www.flickr.com/photos/joshuatreenp/",
+            album_id="72157640898611483"
+        )
+
+        assert resp["photos"][0]["owner"] == {
+            "id": "115357548@N08",
+            "username": "Joshua Tree National Park",
+            "realname": None,
+            "photos_url": "https://www.flickr.com/photos/joshuatreenp/",
+            'profile_url': 'https://www.flickr.com/people/joshuatreenp/'
+        }
+
+        assert resp["photos"][0]["url"] == 'https://www.flickr.com/photos/joshuatreenp/49021434741/'
+
+
+    def test_sets_date_unknown_on_date_taken_in_album(self, flickr_api):
+        resp = flickr_api.get_photos_in_album(
+            user_url="https://www.flickr.com/photos/nationalarchives/",
+            album_id="72157664284840282"
+        )
+
+        assert resp["photos"][0]["date_taken"] == {
+            "value": datetime.datetime(2016, 2, 9, 10, 1, 59),
+            "granularity": 0,
+            "unknown": True,
+        }
+
+
+
+@pytest.mark.parametrize(
+    ["method", "kwargs"],
+    [
+        (
+            "get_photos_in_album",
+            {
+                "user_url": "https://www.flickr.com/photos/spike_yun/",
+                "album_id": "72157677773252346",
+            },
+        )
+    ],
+)
 def test_get_collection_methods_are_paginated(flickr_api, method, kwargs):
     api_method = getattr(flickr_api, method)
 
     all_resp = api_method(**kwargs, page=1)
 
     # Getting the 5th page with a page size of 1 means getting the 5th image
-    individual_resp = api_method(**kwargs,
+    individual_resp = api_method(
+        **kwargs,
         page=5,
         per_page=1,
     )

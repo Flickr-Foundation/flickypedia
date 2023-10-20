@@ -178,12 +178,14 @@ class FlickrApi:
         #   	<username>The British Library</username>
         #       <realname>British Library</realname>
         #       <photosurl>flickr.com/photos/britishlibrary/</photosurl>
+        #       <profileurl>flickr.com/people/britishlibrary/</profileurl>
         #       …
         #     </person>
         #
         resp = self.call("flickr.people.getInfo", user_id=user_id)
         username = resp.find(".//username").text
         photos_url = resp.find(".//photosurl").text
+        profile_url = resp.find(".//profileurl").text
 
         try:
             realname = resp.find(".//realname").text
@@ -195,6 +197,7 @@ class FlickrApi:
             "username": username,
             "realname": realname,
             "photos_url": photos_url,
+            "profile_url": profile_url,
         }
 
     def get_single_photo(self, *, photo_id: str):
@@ -333,7 +336,7 @@ class FlickrApi:
                     "date_posted": _parse_date_posted(photo_elem.attrib["dateupload"]),
                     "date_taken": {
                         "value": _parse_date_taken(photo_elem.attrib["datetaken"]),
-                        "granularity": photo_elem.attrib["datetakengranularity"],
+                        "granularity": int(photo_elem.attrib["datetakengranularity"]),
                         "unknown": photo_elem.attrib["datetakenunknown"] == "1",
                     },
                     "license": self.lookup_license_code(
@@ -361,14 +364,17 @@ class FlickrApi:
             user_id=user["id"],
             photoset_id=album_id,
             extras=",".join(self.extras),
-            page=page,per_page=per_page
+            page=page,
+            per_page=per_page,
         )
 
-        parsed_resp = self._parse_collection_of_photos_response(resp.find(".//photoset"))
+        parsed_resp = self._parse_collection_of_photos_response(
+            resp.find(".//photoset")
+        )
 
         for p in parsed_resp["photos"]:
             p["owner"] = user
-            p["url"] = user["photos_url"] + p.pop("_elem").attrib["id"]
+            p["url"] = user["photos_url"] + p.pop("_elem").attrib["id"] + "/"
 
         return parsed_resp
 
