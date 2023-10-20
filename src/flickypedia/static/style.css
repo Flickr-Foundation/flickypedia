@@ -39,3 +39,8 @@ img {
 .flashes {
   color: red;
 }
+
+input[type="url"] {
+  width: 100%;
+  font-size: 1.2em;
+}

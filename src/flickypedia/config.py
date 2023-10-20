@@ -4,6 +4,8 @@ import os
 class Config(object):
     SECRET_KEY = os.environ.get("SECRET_KEY") or "you-will-never-guess"
 
+    FLICKR_API_KEY = os.environ.get("FLICKR_API_KEY", "<UNKNOWN>")
+
     SQLALCHEMY_DATABASE_URI = "sqlite:///db.sqlite"
 
     OAUTH2_PROVIDERS = {
