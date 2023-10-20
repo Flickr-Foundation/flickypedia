@@ -33,4 +33,4 @@ def test_redirects_if_photo_url(logged_in_client):
     resp = logged_in_client.post("/find_photos", data={"flickr_url": flickr_url})
 
     assert resp.status_code == 302
-    assert resp.headers["location"] == f"/prepare_info?flickr_url={flickr_url}"
+    assert resp.headers["location"] == f"/select_photos?flickr_url={flickr_url}"

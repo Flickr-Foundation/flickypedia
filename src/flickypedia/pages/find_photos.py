@@ -22,7 +22,7 @@ def find_photos():
             flash("There are no photos to show at that URL", category="flickr_url")
             return render_template("find_photos.html", form=form)
 
-        return redirect(url_for("prepare_info", flickr_url=url))
+        return redirect(url_for("select_photos", flickr_url=url))
 
     return render_template("find_photos.html", form=form)
 
