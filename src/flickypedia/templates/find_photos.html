@@ -18,7 +18,7 @@
       {% endif %}
     {% endwith %}    
   
-    {{ form.flickr_url }}
+    {{ form.flickr_url(value=flickr_url, placeholder="https://www.flickr.com/photos/…") }}
   
     <p>{{ form.submit() }}</p>
   </form>

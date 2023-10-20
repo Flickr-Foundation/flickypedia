@@ -25,4 +25,10 @@
   
   
   <p>{{ parsed_url }}</p>
+  
+  <ul>
+    {% for ph in photos %} 
+      <li>{{ ph.title }} <br/> {{ ph.url }} <br/> {{ ph.license.label }}</li>
+    {% endfor %}
+  </ul>
 {% endblock %}
