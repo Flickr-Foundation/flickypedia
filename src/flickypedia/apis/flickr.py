@@ -400,16 +400,24 @@ class ResourceNotFound(FlickrApiException):
 
 def _parse_date_posted(p):
     # See https://www.flickr.com/services/api/misc.dates.html
+    #
+    #     The posted date is always passed around as a unix timestamp,
+    #     which is an unsigned integer specifying the number of seconds
+    #     since Jan 1st 1970 GMT.
+    #
     # e.g. '1490376472'
     return datetime.datetime.fromtimestamp(int(p), tz=datetime.timezone.utc)
 
 
 def _parse_date_taken(p):
     # See https://www.flickr.com/services/api/misc.dates.html
+    #
+    #     The date taken should always be displayed in the timezone
+    #     of the photo owner, which is to say, don't perform
+    #     any conversion on it.
+    #
     # e.g. '2017-02-17 00:00:00'
-    return datetime.datetime.strptime(p, "%Y-%m-%d %H:%M:%S").replace(
-        tzinfo=datetime.timezone.utc
-    )
+    return datetime.datetime.strptime(p, "%Y-%m-%d %H:%M:%S")
 
 
 def _parse_sizes(photo_elem):

@@ -208,9 +208,7 @@ class TestGetSinglePhoto:
         info = flickr_api.get_single_photo(photo_id="5240741057")
 
         assert info["date_taken"] == {
-            "value": datetime.datetime(
-                1950, 1, 1, 0, 0, 0, tzinfo=datetime.timezone.utc
-            ),
+            "value": datetime.datetime(1950, 1, 1, 0, 0, 0),
             "granularity": 6,
             "unknown": False,
         }
@@ -219,9 +217,7 @@ class TestGetSinglePhoto:
         info = flickr_api.get_single_photo(photo_id="25868667441")
 
         assert info["date_taken"] == {
-            "value": datetime.datetime(
-                2016, 3, 21, 16, 15, 39, tzinfo=datetime.timezone.utc
-            ),
+            "value": datetime.datetime(2016, 3, 21, 16, 15, 39),
             "granularity": 0,
             "unknown": True,
         }
