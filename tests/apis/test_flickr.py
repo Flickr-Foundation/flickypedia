@@ -180,7 +180,7 @@ def test_lookup_license_code(flickr_api):
                 "username": "cefarrjf87",
                 "realname": "Alex Chan",
                 "photos_url": "https://www.flickr.com/photos/199246608@N02/",
-                'profile_url': 'https://www.flickr.com/people/199246608@N02/'
+                "profile_url": "https://www.flickr.com/people/199246608@N02/",
             },
         ),
     ],
@@ -241,7 +241,7 @@ class TestGetAlbum:
     def test_sets_owner_and_url_on_album_photos(self, flickr_api):
         resp = flickr_api.get_photos_in_album(
             user_url="https://www.flickr.com/photos/joshuatreenp/",
-            album_id="72157640898611483"
+            album_id="72157640898611483",
         )
 
         assert resp["photos"][0]["owner"] == {
@@ -249,16 +249,18 @@ class TestGetAlbum:
             "username": "Joshua Tree National Park",
             "realname": None,
             "photos_url": "https://www.flickr.com/photos/joshuatreenp/",
-            'profile_url': 'https://www.flickr.com/people/joshuatreenp/'
+            "profile_url": "https://www.flickr.com/people/joshuatreenp/",
         }
 
-        assert resp["photos"][0]["url"] == 'https://www.flickr.com/photos/joshuatreenp/49021434741/'
-
+        assert (
+            resp["photos"][0]["url"]
+            == "https://www.flickr.com/photos/joshuatreenp/49021434741/"
+        )
 
     def test_sets_date_unknown_on_date_taken_in_album(self, flickr_api):
         resp = flickr_api.get_photos_in_album(
             user_url="https://www.flickr.com/photos/nationalarchives/",
-            album_id="72157664284840282"
+            album_id="72157664284840282",
         )
 
         assert resp["photos"][0]["date_taken"] == {
@@ -267,6 +269,18 @@ class TestGetAlbum:
             "unknown": True,
         }
 
+    def test_only_gets_publicly_available_sizes(self, flickr_api):
+        # This user doesn't allow downloading of their original photos,
+        # so when we try to look up an album of their photos in the API,
+        # we shouldn't get an Original size.
+        resp = flickr_api.get_photos_in_album(
+            user_url="https://www.flickr.com/photos/mary_faith/",
+            album_id="72157711742505183",
+        )
+
+        assert not any(
+            size for size in resp["photos"][0]["sizes"] if size["label"] == "Original"
+        )
 
 
 @pytest.mark.parametrize(
