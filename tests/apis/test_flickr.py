@@ -53,6 +53,19 @@ def jsonify(v):
             "lookup_user",
             {"user_url": "https://www.flickr.com/photos/DefinitelyDoesNotExist"},
         ),
+        # We have two variants of this test:
+        #
+        #   1. The user doesn't exist, so they can't possibly have any albums!
+        #   2. The user exists, but the album ID doesn't
+        #
+        (
+            "get_photos_in_album",
+            {"user_url": "https://www.flickr.com/photos/DefinitelyDoesNotExist", "album_id": "1234"}
+        ),
+        (
+            "get_photos_in_album",
+            {"user_url": "https://www.flickr.com/photos/britishlibrary/", "album_id": "12345678901234567890"}
+        )
     ],
 )
 def test_methods_fail_if_not_found(flickr_api, method, params):
@@ -203,3 +216,20 @@ class TestGetSinglePhoto:
             "granularity": 0,
             "unknown": True,
         }
+
+
+@pytest.mark.parametrize(["method", "kwargs"], [
+    ("get_photos_in_album", {"user_url": "https://www.flickr.com/photos/spike_yun/", "album_id": "72157677773252346"})
+])
+def test_get_collection_methods_are_paginated(flickr_api, method, kwargs):
+    api_method = getattr(flickr_api, method)
+
+    all_resp = api_method(**kwargs, page=1)
+
+    # Getting the 5th page with a page size of 1 means getting the 5th image
+    individual_resp = api_method(**kwargs,
+        page=5,
+        per_page=1,
+    )
+
+    assert individual_resp["photos"][0] == all_resp["photos"][4]

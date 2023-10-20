@@ -295,6 +295,83 @@ class FlickrApi:
             "sizes": sizes,
         }
 
+    # There are a bunch of similar flickr.XXX.getPhotos methods;
+    # these are some constants and utility methods to help when
+    # calling them.
+    extras = [
+        "license",
+        "date_upload",
+        "date_taken",
+        "media",
+        "owner_name",
+        "url_sq",
+        "url_t",
+        "url_s",
+        "url_m",
+        "url_o",
+        # This isn't documented but it seems to work anyway, and
+        # Large Square might be quite useful for our purposes!
+        "url_q",
+    ]
+
+    def _parse_collection_of_photos_response(self, elem):
+        # The wrapper element includes a couple of attributes related
+        # to pagination, e.g.
+        #
+        #     <photoset pages="1" total="2" …>
+        #
+        page_count = int(elem.attrib["pages"])
+        total_photos = int(elem.attrib["total"])
+
+        photos = []
+
+        for photo_elem in elem.findall(".//photo"):
+            photos.append(
+                {
+                    "_elem": photo_elem,
+                    "title": photo_elem.attrib["title"],
+                    "date_posted": _parse_date_posted(photo_elem.attrib["dateupload"]),
+                    "date_taken": {
+                        "value": _parse_date_taken(photo_elem.attrib["datetaken"]),
+                        "granularity": photo_elem.attrib["datetakengranularity"],
+                        "unknown": photo_elem.attrib["datetakenunknown"] == "1",
+                    },
+                    "license": self.lookup_license_code(
+                        license_code=photo_elem.attrib["license"]
+                    ),
+                    "sizes": _parse_sizes(photo_elem),
+                }
+            )
+
+        return {
+            "page_count": page_count,
+            "total_photos": total_photos,
+            "photos": photos,
+        }
+
+    def get_photos_in_album(self, *, user_url, album_id, page=1, per_page=10):
+        """
+        Get the photos in an album.
+        """
+        user = self.lookup_user(user_url=user_url)
+
+        # https://www.flickr.com/services/api/flickr.photosets.getPhotos.html
+        resp = self.call(
+            "flickr.photosets.getPhotos",
+            user_id=user["id"],
+            photoset_id=album_id,
+            extras=",".join(self.extras),
+            page=page,per_page=per_page
+        )
+
+        parsed_resp = self._parse_collection_of_photos_response(resp.find(".//photoset"))
+
+        for p in parsed_resp["photos"]:
+            p["owner"] = user
+            p["url"] = user["photos_url"] + p.pop("_elem").attrib["id"]
+
+        return parsed_resp
+
 
 class FlickrApiException(Exception):
     """
@@ -327,3 +404,45 @@ def _parse_date_taken(p):
     return datetime.datetime.strptime(p, "%Y-%m-%d %H:%M:%S").replace(
         tzinfo=datetime.timezone.utc
     )
+
+
+def _parse_sizes(photo_elem):
+    """
+    Get a list of sizes from a photo in a collection response.
+    """
+    # When you get a collection of photos (e.g. in an album)
+    # you can get some of the sizes on the <photo> element, e.g.
+    #
+    #     <
+    #       photo
+    #       url_t="https://live.staticflickr.com/2893/1234567890_t.jpg"
+    #       height_t="78"
+    #       width_t="100"
+    #       …
+    #     />
+    #
+    sizes = []
+
+    for suffix, label in [
+        ("sq", "Square"),
+        ("q", "Large Square"),
+        ("t", "Thumbnail"),
+        ("s", "Small"),
+        ("m", "Medium"),
+        ("o", "Original"),
+    ]:
+        try:
+            sizes.append(
+                {
+                    "height": int(photo_elem.attrib[f"height_{suffix}"]),
+                    "width": int(photo_elem.attrib[f"width_{suffix}"]),
+                    "label": label,
+                    "media": photo_elem.attrib["media"],
+                    "source": photo_elem.attrib[f"url_{suffix}"],
+                }
+            )
+        except KeyError:
+            pass
+
+    return sizes
+>>>>>>> c7de3e7 (Write a method to get photos in an album)
