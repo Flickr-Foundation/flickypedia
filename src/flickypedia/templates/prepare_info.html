@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% include "components/header.html" %}
+  
+  <h3>Prepare these images</h3>
+  
+  <ul>
+    {% for ph in photos.photos %}
+      <li><img src="{{ ph.sizes | image_at('Square') }}">{{ ph.title }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

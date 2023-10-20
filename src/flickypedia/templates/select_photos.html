@@ -5,7 +5,7 @@
   
   At this Flickr URL:
   
-  <form action="{{ url_for('find_photos') }}" method="post" novalidate>
+  <form action="{{ url_for('find_photos') }}" method="post">
     {{ form.hidden_tag() }}
     
     {% with messages = get_flashed_messages(category_filter=["flickr_url"]) %}
@@ -26,9 +26,21 @@
   
   <p>{{ parsed_url }}</p>
   
-  <ul>
-    {% for ph in photo_data.photos %} 
-      <li>{{ ph.title }} <br/> {{ ph.url }} <br/> {{ ph.license.label }}</li>
-    {% endfor %}
-  </ul>
-{% endblock %}
+  <form action="{{ url_for('select_photos', flickr_url=flickr_url) }}" method="post">
+    {{ select_form.hidden_tag() }}
+
+    <ul>
+      {% for ph in photo_data.photos %} 
+        <li>
+          <input id="photo-{{ ph.id }}" name="photo-{{ ph.id }}" type="checkbox">
+          <label for="photo-{{ ph.id }}">
+            <img src="{{ ph.sizes|image_at('Square') }}">
+            {{ ph.title }} <br/> {{ ph.url }} <br/> {{ ph.license.label }}
+          </label>
+        </li>
+      {% endfor %}
+    </ul>
+    
+    <p>{{ select_form.submit() }}</p>
+  </form>
+  {% endblock %}

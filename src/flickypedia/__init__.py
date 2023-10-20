@@ -8,7 +8,7 @@ from flickypedia.auth import (
     oauth2_callback_wikimedia,
 )
 from flickypedia.config import Config
-from flickypedia.pages import find_photos, select_photos
+from flickypedia.pages import find_photos, prepare_info, select_photos
 from flickypedia.tasks import celery_init_app
 from flickypedia.utils import a_href
 
@@ -36,7 +36,21 @@ def create_app():
 
     app.add_url_rule("/find_photos", view_func=find_photos, methods=["GET", "POST"])
     app.add_url_rule("/select_photos", view_func=select_photos, methods=["GET", "POST"])
+    app.add_url_rule("/prepare_info", view_func=prepare_info, methods=["GET", "POST"])
 
     app.jinja_env.filters["a_href"] = a_href
+
+    @app.template_filter()
+    def image_at(sizes, desired_size):
+        """
+        Given a list of image sizes from the Flickr API, return the source URL of
+        the desired size.
+        """
+        # TODO: Make more rigorous.  This function is very basic, and will throw
+        # a StopIteration exception if the size isn't found.
+        #
+        # It would be better if it had an awareness of the sizes that the Flickr API
+        # might return, so it could
+        return next(s["source"] for s in sizes if s["label"] == desired_size)
 
     return app
