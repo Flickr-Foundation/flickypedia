@@ -52,6 +52,9 @@ def select_photos():
     except ResourceNotFound:
         label = {"single_photo": "photo"}[parsed_url["type"]]
 
+        # If we aren't able to resolve this URL, send the user back to
+        # the "find photos" page.  We put the URL they entered in the
+        # session so we can prefill the form with it.
         flash(f"There is no {label} at that URL!", category="flickr_url")
         session["flickr_url"] = flickr_url
         return redirect(url_for("find_photos"))

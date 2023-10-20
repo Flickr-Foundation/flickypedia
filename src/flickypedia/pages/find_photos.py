@@ -24,6 +24,12 @@ def find_photos():
 
         return redirect(url_for("select_photos", flickr_url=url))
 
+    # We may be redirected back to this page if something went wrong
+    # at the "select photos" step, e.g. if the URL looks like a valid
+    # Flickr URL but is actually a 404.
+    #
+    # In that case, we want to prefill the form with the URL the user
+    # entered previously, if they want to edit it and try again.
     flickr_url = session.pop("flickr_url", "")
 
     return render_template("find_photos.html", form=form, flickr_url=flickr_url)
