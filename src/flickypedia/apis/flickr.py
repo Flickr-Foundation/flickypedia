@@ -150,6 +150,56 @@ class FlickrApi:
         licenses = self.get_licenses()
         return licenses[license_code]
 
+    def lookup_user(self, *, user_url: str):
+        """
+        Given the link to a user's photos or profile, return their info.
+
+            >>> lookup_user_id_from_url("https://www.flickr.com/photos/britishlibrary/")
+            {
+                "id": "12403504@N02",
+                "username": "The British Library",
+                "realname": "British Library",
+                "photos_url": "https://www.flickr.com/photos/britishlibrary/",
+            }
+
+        """
+        # The lookupUser response is of the form:
+        #
+        #       <user id="12403504@N02">
+        #       	<username>The British Library</username>
+        #       </user>
+        #
+        resp = self.call("flickr.urls.lookupUser", url=user_url)
+        user_id = resp.find(".//user").attrib["id"]
+
+        # The getInfo response is of the form:
+
+        #     <person id="12403504@N02"…">
+        #   	<username>The British Library</username>
+        #       <realname>British Library</realname>
+        #       <photosurl>flickr.com/photos/britishlibrary/</photosurl>
+        #       <profileurl>flickr.com/people/britishlibrary/</profileurl>
+        #       …
+        #     </person>
+        #
+        resp = self.call("flickr.people.getInfo", user_id=user_id)
+        username = resp.find(".//username").text
+        photos_url = resp.find(".//photosurl").text
+        profile_url = resp.find(".//profileurl").text
+
+        try:
+            realname = resp.find(".//realname").text
+        except AttributeError:
+            realname = None
+
+        return {
+            "id": user_id,
+            "username": username,
+            "realname": realname,
+            "photos_url": photos_url,
+            "profile_url": profile_url,
+        }
+
     def get_single_photo(self, *, photo_id: str):
         """
         Look up the information for a single photo.
@@ -248,6 +298,86 @@ class FlickrApi:
             "sizes": sizes,
         }
 
+    # There are a bunch of similar flickr.XXX.getPhotos methods;
+    # these are some constants and utility methods to help when
+    # calling them.
+    extras = [
+        "license",
+        "date_upload",
+        "date_taken",
+        "media",
+        "owner_name",
+        "url_sq",
+        "url_t",
+        "url_s",
+        "url_m",
+        "url_o",
+        # This isn't documented but it seems to work anyway, and
+        # Large Square might be quite useful for our purposes!
+        "url_q",
+    ]
+
+    def _parse_collection_of_photos_response(self, elem):
+        # The wrapper element includes a couple of attributes related
+        # to pagination, e.g.
+        #
+        #     <photoset pages="1" total="2" …>
+        #
+        page_count = int(elem.attrib["pages"])
+        total_photos = int(elem.attrib["total"])
+
+        photos = []
+
+        for photo_elem in elem.findall(".//photo"):
+            photos.append(
+                {
+                    "_elem": photo_elem,
+                    "title": photo_elem.attrib["title"],
+                    "date_posted": _parse_date_posted(photo_elem.attrib["dateupload"]),
+                    "date_taken": {
+                        "value": _parse_date_taken(photo_elem.attrib["datetaken"]),
+                        "granularity": int(photo_elem.attrib["datetakengranularity"]),
+                        "unknown": photo_elem.attrib["datetakenunknown"] == "1",
+                    },
+                    "license": self.lookup_license_code(
+                        license_code=photo_elem.attrib["license"]
+                    ),
+                    "sizes": _parse_sizes(photo_elem),
+                }
+            )
+
+        return {
+            "page_count": page_count,
+            "total_photos": total_photos,
+            "photos": photos,
+        }
+
+    def get_photos_in_album(self, *, user_url, album_id, page=1, per_page=10):
+        """
+        Get the photos in an album.
+        """
+        user = self.lookup_user(user_url=user_url)
+
+        # https://www.flickr.com/services/api/flickr.photosets.getPhotos.html
+        resp = self.call(
+            "flickr.photosets.getPhotos",
+            user_id=user["id"],
+            photoset_id=album_id,
+            extras=",".join(self.extras),
+            page=page,
+            per_page=per_page,
+        )
+
+        parsed_resp = self._parse_collection_of_photos_response(
+            resp.find(".//photoset")
+        )
+
+        for p in parsed_resp["photos"]:
+            p["owner"] = user
+            p["url"] = user["photos_url"] + p.pop("_elem").attrib["id"] + "/"
+
+        return parsed_resp
+
 
 class FlickrApiException(Exception):
     """
@@ -270,13 +400,62 @@ class ResourceNotFound(FlickrApiException):
 
 def _parse_date_posted(p):
     # See https://www.flickr.com/services/api/misc.dates.html
+    #
+    #     The posted date is always passed around as a unix timestamp,
+    #     which is an unsigned integer specifying the number of seconds
+    #     since Jan 1st 1970 GMT.
+    #
     # e.g. '1490376472'
     return datetime.datetime.fromtimestamp(int(p), tz=datetime.timezone.utc)
 
 
 def _parse_date_taken(p):
     # See https://www.flickr.com/services/api/misc.dates.html
+    #
+    #     The date taken should always be displayed in the timezone
+    #     of the photo owner, which is to say, don't perform
+    #     any conversion on it.
+    #
     # e.g. '2017-02-17 00:00:00'
-    return datetime.datetime.strptime(p, "%Y-%m-%d %H:%M:%S").replace(
-        tzinfo=datetime.timezone.utc
-    )
+    return datetime.datetime.strptime(p, "%Y-%m-%d %H:%M:%S")
+
+
+def _parse_sizes(photo_elem):
+    """
+    Get a list of sizes from a photo in a collection response.
+    """
+    # When you get a collection of photos (e.g. in an album)
+    # you can get some of the sizes on the <photo> element, e.g.
+    #
+    #     <
+    #       photo
+    #       url_t="https://live.staticflickr.com/2893/1234567890_t.jpg"
+    #       height_t="78"
+    #       width_t="100"
+    #       …
+    #     />
+    #
+    sizes = []
+
+    for suffix, label in [
+        ("sq", "Square"),
+        ("q", "Large Square"),
+        ("t", "Thumbnail"),
+        ("s", "Small"),
+        ("m", "Medium"),
+        ("o", "Original"),
+    ]:
+        try:
+            sizes.append(
+                {
+                    "height": int(photo_elem.attrib[f"height_{suffix}"]),
+                    "width": int(photo_elem.attrib[f"width_{suffix}"]),
+                    "label": label,
+                    "media": photo_elem.attrib["media"],
+                    "source": photo_elem.attrib[f"url_{suffix}"],
+                }
+            )
+        except KeyError:
+            pass
+
+    return sizes

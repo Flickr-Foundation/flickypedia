@@ -1,0 +1,138 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - api.flickr.com
+      user-agent:
+      - python-httpx/0.25.0
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.urls.lookupUser&url=https%3A%2F%2Fwww.flickr.com%2Fphotos%2Fbritishlibrary%2F
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<user
+      id=\"12403504@N02\">\n\t<username>The British Library</username>\n</user>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '137'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Fri, 20 Oct 2023 11:44:39 GMT
+      Via:
+      - 1.1 c2195f43dfb390d43998c2e5488a25d2.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - RAzOSkyFXdcJ8AUz4h52-DQscM_GIB2zfnxQc5HyaeGMt4kPzfWtMg==
+      X-Amz-Cf-Pop:
+      - LHR61-P1
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.57 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Sun, 19-Nov-2023 11:44:39 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Sun, 19-Nov-2023 11:44:39 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - python-httpx/0.25.0
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.people.getInfo&user_id=12403504%40N02
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<person
+      id=\"12403504@N02\" nsid=\"12403504@N02\" ispro=\"1\" is_deleted=\"0\" iconserver=\"65535\"
+      iconfarm=\"66\" path_alias=\"britishlibrary\" has_stats=\"0\" pro_badge=\"standard\"
+      expire=\"1731948779\" has_adfree=\"0\" has_free_standard_shipping=\"0\" has_free_educational_resources=\"0\">\n\t<username>The
+      British Library</username>\n\t<realname>British Library</realname>\n\t<description>The
+      British Library\u2019s collections on Flickr Commons offer access to millions
+      of public domain images, which we encourage you to explore and &lt;a href=&quot;https://www.bl.uk/about-us/terms-and-conditions/content-on-flickr-and-wikimedia-commons&quot;
+      rel=&quot;noreferrer nofollow&quot;&gt;re-use&lt;/a&gt;. The &lt;a href=&quot;https://www.bl.uk/about-us/terms-and-conditions/content-on-flickr-and-wikimedia-commons&quot;
+      rel=&quot;noreferrer nofollow&quot;&gt;release of these collections into the
+      public domain&lt;/a&gt; represent the Library&#039;s desire to improve knowledge
+      of and about them, to enable novel and unexpected ways of using them, and to
+      begin working with researchers to explore and interpret large scale digital
+      collections.\n\nPublic Domain Mark and CC0 images from British Library collections
+      are being made available to increase access and encourage reuse of our open
+      materials. These works are marked \u201Cno known copyright restrictions\u201D,
+      indicating that the British Library is unaware of any current copyright restrictions
+      on these works. Please see our &lt;a href=&quot;https://www.bl.uk/help/ethical-terms-of-use&quot;
+      rel=&quot;noreferrer nofollow&quot;&gt;ethical terms of use&lt;/a&gt; statement
+      for culturally sensitive images.\n\nThe &lt;a href=&quot;http://britishlibrary.typepad.co.uk/digital-scholarship/2013/12/a-million-first-steps.html&quot;
+      rel=&quot;noreferrer nofollow&quot;&gt;first set&lt;/a&gt; we have added come
+      from a &lt;a href=&quot;http://labs.bl.uk/&quot; rel=&quot;noreferrer nofollow&quot;&gt;British
+      Library Labs&lt;/a&gt; project dubbed the &lt;a href=&quot;http://mechanicalcurator.tumblr.com&quot;
+      rel=&quot;noreferrer nofollow&quot;&gt;Mechanical Curator&lt;/a&gt;, which located
+      more than a million images from within our digitised collection of over 65,000
+      books from the 17th, 18th and 19th centuries. \n\nThis account is managed by
+      the British Library Digital Research Team. You can follow us on Twitter &lt;a
+      href=&quot;https://twitter.com/BL_DigiSchol&quot; rel=&quot;noreferrer nofollow&quot;&gt;@BL_DigiSchol&lt;/a&gt;
+      or get in touch by emailing &lt;a href=&quot;mailto:digitalresearch@bl.uk&quot;
+      rel=&quot;noreferrer nofollow&quot;&gt;digitalresearch@bl.uk&lt;/a&gt;.\n\n&lt;i&gt;The
+      British Library is the national library of the United Kingdom and one of the
+      world&#039;s greatest libraries. We hold over 14 million books, 920,000 journal
+      and newspaper titles, 57 million patents, 3 million sound recordings, and much,
+      much more. &lt;/i&gt;</description>\n\t<photosurl>https://www.flickr.com/photos/britishlibrary/</photosurl>\n\t<profileurl>https://www.flickr.com/people/britishlibrary/</profileurl>\n\t<mobileurl>https://m.flickr.com/photostream.gne?id=12383156</mobileurl>\n\t<photos>\n\t\t<firstdatetaken>1823-01-01
+      00:00:00</firstdatetaken>\n\t\t<firstdate>1385042795</firstdate>\n\t\t<count>1073589</count>\n\t</photos>\n</person>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1411'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Fri, 20 Oct 2023 11:44:39 GMT
+      Via:
+      - 1.1 c2195f43dfb390d43998c2e5488a25d2.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - WCE8d0OEiEoi9U9HUzE_0KvrKETy0q9iPfcaexlUJntW4p1MLVci4g==
+      X-Amz-Cf-Pop:
+      - LHR61-P1
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.57 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Sun, 19-Nov-2023 11:44:39 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

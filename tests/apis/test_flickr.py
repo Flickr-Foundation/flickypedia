@@ -49,6 +49,29 @@ def jsonify(v):
     ["method", "params"],
     [
         ("get_single_photo", {"photo_id": "12345678901234567890"}),
+        (
+            "lookup_user",
+            {"user_url": "https://www.flickr.com/photos/DefinitelyDoesNotExist"},
+        ),
+        # We have two variants of this test:
+        #
+        #   1. The user doesn't exist, so they can't possibly have any albums!
+        #   2. The user exists, but the album ID doesn't
+        #
+        (
+            "get_photos_in_album",
+            {
+                "user_url": "https://www.flickr.com/photos/DefinitelyDoesNotExist",
+                "album_id": "1234",
+            },
+        ),
+        (
+            "get_photos_in_album",
+            {
+                "user_url": "https://www.flickr.com/photos/britishlibrary/",
+                "album_id": "12345678901234567890",
+            },
+        ),
     ],
 )
 def test_methods_fail_if_not_found(flickr_api, method, params):
@@ -127,6 +150,45 @@ def test_lookup_license_code(flickr_api):
     }
 
 
+@pytest.mark.parametrize(
+    ["user_url", "user"],
+    [
+        (
+            "https://www.flickr.com/photos/35591378@N03",
+            {
+                "id": "35591378@N03",
+                "username": "Obama White House Archived",
+                "realname": None,
+                "photos_url": "https://www.flickr.com/photos/obamawhitehouse/",
+                "profile_url": "https://www.flickr.com/people/obamawhitehouse/",
+            },
+        ),
+        (
+            "https://www.flickr.com/photos/britishlibrary/",
+            {
+                "id": "12403504@N02",
+                "username": "The British Library",
+                "realname": "British Library",
+                "photos_url": "https://www.flickr.com/photos/britishlibrary/",
+                "profile_url": "https://www.flickr.com/people/britishlibrary/",
+            },
+        ),
+        (
+            "https://www.flickr.com/photos/199246608@N02",
+            {
+                "id": "199246608@N02",
+                "username": "cefarrjf87",
+                "realname": "Alex Chan",
+                "photos_url": "https://www.flickr.com/photos/199246608@N02/",
+                "profile_url": "https://www.flickr.com/people/199246608@N02/",
+            },
+        ),
+    ],
+)
+def test_lookup_user(flickr_api, user_url, user):
+    assert flickr_api.lookup_user(user_url=user_url) == user
+
+
 class TestGetSinglePhoto:
     def test_can_get_single_photo(self, flickr_api):
         resp = flickr_api.get_single_photo(photo_id="32812033543")
@@ -146,9 +208,7 @@ class TestGetSinglePhoto:
         info = flickr_api.get_single_photo(photo_id="5240741057")
 
         assert info["date_taken"] == {
-            "value": datetime.datetime(
-                1950, 1, 1, 0, 0, 0, tzinfo=datetime.timezone.utc
-            ),
+            "value": datetime.datetime(1950, 1, 1, 0, 0, 0),
             "granularity": 6,
             "unknown": False,
         }
@@ -157,9 +217,88 @@ class TestGetSinglePhoto:
         info = flickr_api.get_single_photo(photo_id="25868667441")
 
         assert info["date_taken"] == {
-            "value": datetime.datetime(
-                2016, 3, 21, 16, 15, 39, tzinfo=datetime.timezone.utc
-            ),
+            "value": datetime.datetime(2016, 3, 21, 16, 15, 39),
             "granularity": 0,
             "unknown": True,
         }
+
+
+class TestGetAlbum:
+    def test_can_get_album(self, flickr_api):
+        resp = flickr_api.get_photos_in_album(
+            user_url="https://www.flickr.com/photos/spike_yun/",
+            album_id="72157677773252346",
+        )
+
+        assert jsonify(resp) == get_fixture(filename="album-72157677773252346.json")
+
+    def test_sets_owner_and_url_on_album_photos(self, flickr_api):
+        resp = flickr_api.get_photos_in_album(
+            user_url="https://www.flickr.com/photos/joshuatreenp/",
+            album_id="72157640898611483",
+        )
+
+        assert resp["photos"][0]["owner"] == {
+            "id": "115357548@N08",
+            "username": "Joshua Tree National Park",
+            "realname": None,
+            "photos_url": "https://www.flickr.com/photos/joshuatreenp/",
+            "profile_url": "https://www.flickr.com/people/joshuatreenp/",
+        }
+
+        assert (
+            resp["photos"][0]["url"]
+            == "https://www.flickr.com/photos/joshuatreenp/49021434741/"
+        )
+
+    def test_sets_date_unknown_on_date_taken_in_album(self, flickr_api):
+        resp = flickr_api.get_photos_in_album(
+            user_url="https://www.flickr.com/photos/nationalarchives/",
+            album_id="72157664284840282",
+        )
+
+        assert resp["photos"][0]["date_taken"] == {
+            "value": datetime.datetime(2016, 2, 9, 10, 1, 59),
+            "granularity": 0,
+            "unknown": True,
+        }
+
+    def test_only_gets_publicly_available_sizes(self, flickr_api):
+        # This user doesn't allow downloading of their original photos,
+        # so when we try to look up an album of their photos in the API,
+        # we shouldn't get an Original size.
+        resp = flickr_api.get_photos_in_album(
+            user_url="https://www.flickr.com/photos/mary_faith/",
+            album_id="72157711742505183",
+        )
+
+        assert not any(
+            size for size in resp["photos"][0]["sizes"] if size["label"] == "Original"
+        )
+
+
+@pytest.mark.parametrize(
+    ["method", "kwargs"],
+    [
+        (
+            "get_photos_in_album",
+            {
+                "user_url": "https://www.flickr.com/photos/spike_yun/",
+                "album_id": "72157677773252346",
+            },
+        )
+    ],
+)
+def test_get_collection_methods_are_paginated(flickr_api, method, kwargs):
+    api_method = getattr(flickr_api, method)
+
+    all_resp = api_method(**kwargs, page=1)
+
+    # Getting the 5th page with a page size of 1 means getting the 5th image
+    individual_resp = api_method(
+        **kwargs,
+        page=5,
+        per_page=1,
+    )
+
+    assert individual_resp["photos"][0] == all_resp["photos"][4]

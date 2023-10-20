@@ -18,10 +18,13 @@ def cassette_name(request):
     #
     # See https://stackoverflow.com/a/67056955/1558022 for more info
     # on how this works.
+    function_name = request.function.__name__
+
     try:
-        return f"{request.function.__name__}.{request.node.callspec.id}.yml"
+        suffix = request.node.callspec.id.replace("https://", "").replace("/", "-")
+        return f"{function_name}.{suffix}.yml"
     except AttributeError:
-        return f"{request.function.__name__}.yml"
+        return f"{function_name}.yml"
 
 
 @pytest.fixture(scope="function")
