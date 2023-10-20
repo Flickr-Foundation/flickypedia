@@ -16,6 +16,13 @@ from .find_photos import FlickrPhotoURLForm
 
 
 def get_photos(parsed_url):
+    """
+    Given a correctly parsed URL, get a list of photos from the Flickr API.
+
+    Note: this doesn't do any checking of the URLs for correct license,
+    duplicates on Wikimedia Commons, etc.  It just returns a list of
+    photos which can be found on Flickr.
+    """
     api = FlickrApi(api_key=current_app.config["FLICKR_API_KEY"])
 
     if parsed_url["type"] == "single_photo":
@@ -32,15 +39,15 @@ def select_photos():
     except (KeyError, NotAFlickrUrl, UnrecognisedUrl):
         abort(400)
 
-    api = FlickrApi(api_key=current_app.config["FLICKR_API_KEY"])
-
     try:
-        try:
-            photos = get_photos(parsed_url)
-        except TypeError:
-            flash(f"I don't know how to find photos at that URL yet!")
-            session["flickr_url"] = flickr_url
-            return redirect(url_for("find_photos"))
+        photos = get_photos(parsed_url)
+    except TypeError:
+        flash(
+            "I don't know how to find photos at that URL yet!",
+            category="flickr_url",
+        )
+        session["flickr_url"] = flickr_url
+        return redirect(url_for("find_photos"))
 
     except ResourceNotFound:
         label = {"single_photo": "photo"}[parsed_url["type"]]
