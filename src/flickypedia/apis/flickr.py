@@ -271,10 +271,12 @@ class ResourceNotFound(FlickrApiException):
 def _parse_date_posted(p):
     # See https://www.flickr.com/services/api/misc.dates.html
     # e.g. '1490376472'
-    return datetime.datetime.utcfromtimestamp(int(p))
+    return datetime.datetime.fromtimestamp(int(p), tz=datetime.timezone.utc)
 
 
 def _parse_date_taken(p):
     # See https://www.flickr.com/services/api/misc.dates.html
     # e.g. '2017-02-17 00:00:00'
-    return datetime.datetime.strptime(p, "%Y-%m-%d %H:%M:%S")
+    return datetime.datetime.strptime(p, "%Y-%m-%d %H:%M:%S").replace(
+        tzinfo=datetime.timezone.utc
+    )
