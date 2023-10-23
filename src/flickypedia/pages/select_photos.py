@@ -91,6 +91,9 @@ def select_photos():
         if not selected_photo_ids:
             flash("You need to select at least one photo!", category="select_photos")
         else:
+            # TODO: Are there going to be issues if we put lots of data
+            # into this endpoint?  Maybe we should be POST-ing directly
+            # to /prepare_info instead?
             return redirect(
                 url_for(
                     "prepare_info",
