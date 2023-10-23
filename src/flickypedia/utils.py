@@ -1,3 +1,6 @@
+import datetime
+import json
+
 from cryptography.fernet import Fernet
 
 
@@ -45,3 +48,12 @@ def size_at(sizes, *, desired_size):
         # fallback here, e.g. if you ask for a Large but it's not
         # available, you get the Medium as the next-best option.
         raise ValueError(f"This photo is not available at size {desired_size!r}")
+
+
+class DatetimeEncoder(json.JSONEncoder):
+    """
+    A custom JSON encoder that encodes datetimes as strings
+    """
+    def default(self, obj):
+        if isinstance(obj, datetime.datetime):
+            return obj.isoformat()

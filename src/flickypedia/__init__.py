@@ -10,7 +10,7 @@ from flickypedia.auth import (
 from flickypedia.config import Config
 from flickypedia.pages import find_photos, select_photos
 from flickypedia.tasks import celery_init_app
-from flickypedia.utils import a_href
+from flickypedia.utils import a_href, size_at
 
 
 def homepage():
@@ -38,5 +38,6 @@ def create_app():
     app.add_url_rule("/select_photos", view_func=select_photos, methods=["GET", "POST"])
 
     app.jinja_env.filters["a_href"] = a_href
+    app.jinja_env.filters["size_at"] = size_at
 
     return app

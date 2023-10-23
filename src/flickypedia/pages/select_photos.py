@@ -1,3 +1,7 @@
+import json
+import os
+import uuid
+
 from flask import (
     abort,
     current_app,
@@ -10,8 +14,11 @@ from flask import (
 )
 from flask_login import login_required
 from flickr_url_parser import parse_flickr_url, NotAFlickrUrl, UnrecognisedUrl
+from flask_wtf import FlaskForm
+from wtforms import HiddenField, SubmitField
 
 from flickypedia.apis.flickr import FlickrApi, ResourceNotFound
+from flickypedia.utils import DatetimeEncoder
 from .find_photos import FlickrPhotoURLForm
 
 
@@ -33,6 +40,16 @@ def get_photos(parsed_url):
         )
     else:
         raise TypeError
+
+
+class SelectPhotosForm(FlaskForm):
+    """
+    The form that has the list of photos for a user to select from.
+
+    WIP.
+    """
+    result_filename = HiddenField("result_filename")
+    submit = SubmitField("Prepare info")
 
 
 @login_required
@@ -63,12 +80,27 @@ def select_photos():
         session["flickr_url"] = flickr_url
         return redirect(url_for("find_photos"))
 
-    form = FlickrPhotoURLForm()
+    photo_url_form = FlickrPhotoURLForm()
+
+    select_photos_form = SelectPhotosForm()
+
+    out_path = os.path.join(
+        current_app.config['FLICKR_API_RESPONSE_CACHE'],
+        f'{uuid.uuid4()}.json'
+    )
+
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
+
+    with open(out_path, 'w') as out_file:
+        out_file.write(json.dumps(photo_data, cls=DatetimeEncoder))
+
+    select_photos_form.result_filename.data = os.path.basename(out_path)
 
     return render_template(
         "select_photos.html",
         flickr_url=flickr_url,
         parsed_url=parsed_url,
-        form=form,
+        photo_url_form=photo_url_form,
+        select_photos_form=select_photos_form,
         photo_data=photo_data,
     )
