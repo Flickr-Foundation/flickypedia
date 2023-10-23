@@ -3,5 +3,87 @@
 {% block content %}
   {% include "components/header.html" %}
 
-  Prepare info!
+  <details style="background: yellow; padding: 1em;" open>
+    <h3>Read Me:</h3>
+
+    <p>
+      For each photo, you need to fill in two fields: <strong>Title</strong> and <strong>Short Caption</strong>.
+      Wikimedia Commons requires those to be published under a <a href="https://creativecommons.org/public-domain/cc0/">CC0</a> license.
+    </p>
+
+    <p>
+      We can do the data mapping from Flickr to Wikimedia Commons.
+      If you want to see what's happening with that, click the <strong>More Details</strong> tab.
+    </p>
+
+    <p>
+      And don’t forget, images for Wikimedia Commons must be information, educational, or instructional.
+      That means <strong>no selfies or other personal photos like that</strong>.
+    </p>
+  </details>
+  
+  <h3>Prepare {{ selected_photo_ids|length }} photos</h3>
+  
+  <form action="" method="post" style="background: yellow;">
+    {{ form.hidden_tag() }}
+
+    {{ form.result_filename }}
+    
+    <ul>
+      {% for photo in photos.photos %}
+        <li>
+          {% set thumbnail = photo.sizes|size_at(desired_size='Square') %}
+          <img src="{{ thumbnail.source }}">
+          
+          <p>
+            By {{ photo.owner.realname or photo.owner.username }} <br/>
+            {{ photo.license.label }}
+          </p>
+          
+          {% set category_filter = "photo-photo.id-title" | replace("photo.id", photo.id) %}
+          
+          {% with messages = get_flashed_messages(category_filter=[category_filter]) %}
+            {% if messages %}
+              <ul class="flashes">
+              {% for message in messages %}
+                <li>{{ message | safe }}</li>
+              {% endfor %}
+              </ul>
+            {% endif %}
+          {% endwith %}
+          
+          
+          <p>
+            <label for="photo-{{ photo.id }}-title">Title</label>
+            <input type="text" name="photo-{{ photo.id }}-title" id="photo-{{ photo.id }}-title" value="{{ data[photo.id]['title'] }}">
+          </p>
+          
+          {% set category_filter = "photo-photo.id-caption" | replace("photo.id", photo.id) %}
+          
+          {% with messages = get_flashed_messages(category_filter=[category_filter]) %}
+            {% if messages %}
+              <ul class="flashes">
+              {% for message in messages %}
+                <li>{{ message | safe }}</li>
+              {% endfor %}
+              </ul>
+            {% endif %}
+          {% endwith %}
+          
+          
+          <p>
+            <label for="photo-{{ photo.id }}-caption">Short Caption</label>
+            <input type="text" name="photo-{{ photo.id }}-caption" id="photo-{{ photo.id }}-caption" value="{{ data[photo.id]['caption'] }}">
+          </p>
+          
+          <p>
+            <label for="photo-{{ photo.id }}-categories">Add a Wikimedia Commons category</label>
+            <input type="text" name="photo-{{ photo.id }}-categories" id="photo-{{ photo.id }}-categories" value="{{ data[photo.id]['categories'] }}">
+          </p>
+        </li>
+      {% endfor %}
+    </ul>
+    
+    <p>{{ form.submit() }}</p>
+  </form>
 {% endblock %}
