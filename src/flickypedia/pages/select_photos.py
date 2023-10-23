@@ -17,6 +17,13 @@ with the URL of the Flickr page provided by the user.
 To ensure a stable experience over reloads/further steps, we save the
 initial API response from the Flickr API.  We can then retrieve this
 later in the session.
+
+TODO:
+
+*   Add filtering by license type to this page
+*   Limit the number of options you can submit
+*   Detect duplicates at this stage
+
 """
 
 import json
