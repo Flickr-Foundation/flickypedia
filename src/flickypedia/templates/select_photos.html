@@ -22,6 +22,17 @@
 
     <p>{{ photo_url_form.submit() }}</p>
   </form>
+  
+  {% with messages = get_flashed_messages(category_filter=["select_photos"]) %}
+    {% if messages %}
+      <ul class="flashes">
+      {% for message in messages %}
+        <li>{{ message | safe }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+  
 
   <form action="{{ url_for('select_photos', flickr_url=flickr_url) }}" method="post" style="background: yellow;">
     {{ select_photos_form.hidden_tag() }}
@@ -31,8 +42,8 @@
     <ul>
       {% for photo in photo_data.photos %}
         <li>
-          <input id="photo-{{ photo.id }}" name="photo-{{ photo.id }}" type="checkbox">
-          <label for="photo-{{ photo.id }}">
+          <input id="photo_{{ photo.id }}" name="photo_{{ photo.id }}" type="checkbox">
+          <label for="photo_{{ photo.id }}">
             {% set thumbnail = photo.sizes|size_at(desired_size='Square') %}
             <img src="{{ thumbnail.source }}">
             {{ photo.title }} <br/> {{ photo.url }} <br/> {{ photo.license.label }}

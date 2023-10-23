@@ -54,6 +54,7 @@ class DatetimeEncoder(json.JSONEncoder):
     """
     A custom JSON encoder that encodes datetimes as strings
     """
+
     def default(self, obj):
         if isinstance(obj, datetime.datetime):
             return obj.isoformat()

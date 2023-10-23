@@ -36,7 +36,10 @@ def find_photos():
 
 
 class FlickrPhotoURLForm(FlaskForm):
+    """
+    A form with a single input field where the user can enter a Flickr URL.
+    """
+
     flickr_url = URLField(validators=[DataRequired()])
 
     submit = SubmitField("Go")
-    pass

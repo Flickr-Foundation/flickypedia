@@ -13,7 +13,7 @@ class Config(object):
     # We can save results in here, and pass the filename around in the
     # user session.  This is just public data from the Flickr API,
     # so there's nothing sensitive in here.
-    FLICKR_API_RESPONSE_CACHE = 'flickr_api_cache'
+    FLICKR_API_RESPONSE_CACHE = "flickr_api_cache"
 
     OAUTH2_PROVIDERS = {
         # Implementation note: although these URLs are currently hard-coded,
