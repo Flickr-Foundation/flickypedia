@@ -27,7 +27,7 @@
   <p>{{ parsed_url }}</p>
   
   <ul>
-    {% for ph in photos %} 
+    {% for ph in photo_data.photos %} 
       <li>{{ ph.title }} <br/> {{ ph.url }} <br/> {{ ph.license.label }}</li>
     {% endfor %}
   </ul>

@@ -24,6 +24,16 @@ def test_gets_single_photo_on_flickr(logged_in_client, flickr_api):
     assert b"Mae_Eberhardt" in resp.data
 
 
+def test_gets_album_on_flickr(logged_in_client, flickr_api):
+    resp = logged_in_client.get(
+        "/select_photos?flickr_url=https://www.flickr.com/photos/aljazeeraenglish/albums/72157626164453131/"
+    )
+
+    assert resp.status_code == 200
+    assert b"https://www.flickr.com/photos/aljazeeraenglish/5536044022/" in resp.data
+    assert b"https://www.flickr.com/photos/aljazeeraenglish/5536043704/" in resp.data
+
+
 @pytest.mark.parametrize(
     ["url", "error"],
     [
