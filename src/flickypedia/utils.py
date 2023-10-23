@@ -28,3 +28,20 @@ def a_href(url):
 
     """
     return f'<a href="{url}">{url}</a>'
+
+
+def size_at(sizes, *, desired_size):
+    """
+    Given a list of sizes of Flickr photo, return the info about
+    the desired size.
+    """
+    try:
+        return next(s for s in sizes if s["label"] == desired_size)
+    except StopIteration:
+        # NOTE: Flickr has a published list of possible sizes here:
+        # https://www.flickr.com/services/api/misc.urls.html
+        #
+        # At some point it might be worthwhile to do some sort of
+        # fallback here, e.g. if you ask for a Large but it's not
+        # available, you get the Medium as the next-best option.
+        raise ValueError(f"This photo is not available at size {desired_size!r}")
