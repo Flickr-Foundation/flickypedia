@@ -1,3 +1,24 @@
+"""
+A page where a user is shown a list of photos with checkboxes, and
+they can choose which of them to upload to Wiki Commons.
+
+    - [ ] image 1
+    - [ ] image 2
+    - [ ] image 3
+
+This page gets a single argument as input: a ``flickr_url`` query parameter
+with the URL of the Flickr page provided by the user.
+
+-   If we can find photos at that URL, we render them on the page for
+    the user
+-   If we can't find photos at that URL, we send the user back to the
+    "enter a URL" page with an appropriate error message
+
+To ensure a stable experience over reloads/further steps, we save the
+initial API response from the Flickr API.  We can then retrieve this
+later in the session.
+"""
+
 import json
 import os
 import uuid
@@ -15,10 +36,11 @@ from flask import (
 from flask_login import login_required
 from flickr_url_parser import parse_flickr_url, NotAFlickrUrl, UnrecognisedUrl
 from flask_wtf import FlaskForm
-from wtforms import HiddenField, SubmitField
+from wtforms import BooleanField, HiddenField, SubmitField
+from wtforms.validators import DataRequired
 
 from flickypedia.apis.flickr import FlickrApi, ResourceNotFound
-from flickypedia.utils import DatetimeEncoder
+from flickypedia.utils import DatetimeDecoder, DatetimeEncoder
 from .find_photos import FlickrPhotoURLForm
 
 
@@ -42,115 +64,157 @@ def get_photos(parsed_url):
         raise TypeError
 
 
-class SelectPhotosForm(FlaskForm):
+class BaseSelectForm(FlaskForm):
     """
-    The form that has the list of photos for a user to select from,
-    i.e. a list of photos with checkboxes.
-
-    Because the list of photos changes per-request, we don't include
-    it in this form -- instead, we render it in the HTML on the page.
-    This from exists primarily for CSRF protection.
+    Base for the "select photos" form.  This is split out from
+    the "create" function below to make the view function more
+    consistent -- see comments in that function.
     """
 
-    result_filename = HiddenField("result_filename")
+    cached_api_response_id = HiddenField(
+        "cached_api_response_id", validators=[DataRequired()]
+    )
     submit = SubmitField("Prepare info")
+
+
+def create_select_photos_form(photos):
+    """
+    Create a Flask form with a boolean field (checkbox) for each photo
+    on the list.  This allows us to render a form like:
+
+        - [ ] photo 1
+        - [ ] photo 2
+        - [ ] photo 3
+
+    even though the list of photos is created dynamically from
+    the Flickr API.
+
+    The created fields will have be boolean fields with the ID 'photo_{id}',
+    similar to if we'd written:
+
+        class SelectPhotosForm(FlaskForm):
+            cached_api_response_id = …
+            submit = …
+
+            photo_1 = BooleanField()
+            photo_2 = BooleanField()
+            photo_3 = BooleanField()
+
+    The labels on each of the fields will be a dict with all the photo data,
+    which can be used to render nice previews/labels.
+
+    """
+
+    class CustomForm(BaseSelectForm):
+        pass
+
+    for p in photos:
+        setattr(CustomForm, f"photo_{p['id']}", BooleanField(label=p))
+
+    return CustomForm()
 
 
 @login_required
 def select_photos():
     try:
         flickr_url = request.args["flickr_url"]
-        parsed_url = parse_flickr_url(flickr_url)
-    except (KeyError, NotAFlickrUrl, UnrecognisedUrl):
+    except KeyError:
         abort(400)
 
-    # Create the "select photos" form -- if it's present and has a
-    # non-empty selection of photos, then we can skip straight to
-    # the next step without looking up anything in the Flickr API.
-    select_photos_form = SelectPhotosForm()
+    # If somebody's already visited the page and clicked the
+    # "Prepare info" button, then we should have a cached API response
+    # for them -- go ahead and retrieve it.
+    #
+    # At this point we can't construct the full form because we don't
+    # have the list of IDs -- we'll do that shortly.
+    #
+    # TODO: What if we get an error looking up the cached API resp here?
+    base_form = BaseSelectForm()
 
+    if base_form.validate_on_submit():
+        photo_data = get_cached_api_response(
+            response_id=base_form.cached_api_response_id.data
+        )
+
+    # If this is the first time somebody is visiting the page or
+    # we don't have a cached API response, then load the photos
+    # from the Flickr API.
+    else:
+        try:
+            parsed_url = parse_flickr_url(flickr_url)
+        except (NotAFlickrUrl, UnrecognisedUrl):
+            abort(400)
+
+        try:
+            photo_data = get_photos(parsed_url)
+        except ResourceNotFound:
+            label = {"single_photo": "photo", "album": "album"}[parsed_url["type"]]
+
+            # If we aren't able to resolve this URL, send the user back to
+            # the "find photos" page.  We put the URL they entered in the
+            # session so we can prefill the form with it.
+            flash(f"There is no {label} at that URL!", category="flickr_url")
+            session["flickr_url"] = flickr_url
+            return redirect(url_for("find_photos"))
+        except TypeError:
+            flash(
+                "I don't know how to find photos at that URL yet!",
+                category="flickr_url",
+            )
+            session["flickr_url"] = flickr_url
+            return redirect(url_for("find_photos"))
+
+    # At this point we know all the photos that should be in the list.
+    # Go ahead and build the full form.
+    select_photos_form = create_select_photos_form(photos=photo_data["photos"])
+
+    if base_form.validate_on_submit():
+        cached_api_response_id = base_form.cached_api_response_id.data
+    else:
+        cached_api_response_id = save_cached_api_response(photo_data)
+
+    select_photos_form.cached_api_response_id.data = cached_api_response_id
+
+    # Now check to see if somebody has submitted a form -- if so, we'll
+    # take those IDs and send them to the next step.
     if select_photos_form.validate_on_submit():
-        # The form data is an immutable dict of the form
-        #
-        #     [('result_filename', 'dbd1557d-3239-436d-949f-05f270f2f7ad.json'),
-        #      ('csrf_token', 'IjFhZ…'),
-        #      ('photo_5536044022', 'on'),
-        #      ('photo_5536043704', 'on'),
-        #      ('submit', 'Prepare info')
-        #     ]
-        #
-        # We have to use the raw form data because the photos aren't on
-        # the FlaskForm -- see comment on SelectPhotosForm.
         selected_photo_ids = [
-            name.replace("photo_", "")
-            for name, value in request.form.items()
-            if name.startswith("photo_") and value == "on"
+            name for name, value in select_photos_form.data.items() if value
         ]
 
-        # If the user hasn't selected any photos, tell them to try again!
-        if not selected_photo_ids:
-            flash("You need to select at least one photo!", category="select_photos")
-        else:
-            # TODO: Are there going to be issues if we put lots of data
-            # into this endpoint?  Maybe we should be POST-ing directly
-            # to /prepare_info instead?
-            return redirect(
-                url_for(
-                    "prepare_info",
-                    flickr_url=flickr_url,
-                    selected_photo_ids=",".join(selected_photo_ids),
-                    result_filename=select_photos_form.result_filename.data,
-                )
+        # TODO: Are there going to be issues if we put lots of data
+        # into this URL?  Maybe we should be POST-ing directly
+        # to /prepare_info instead?
+        return redirect(
+            url_for(
+                "prepare_info",
+                selected_photo_ids=",".join(selected_photo_ids),
+                cached_api_response_id=cached_api_response_id,
             )
-
-    # If the user hasn't chosen some photos, instead go off to the
-    # Flickr API and load them.  We'll then use these to render a list
-    # of checkboxes on the page.
-    try:
-        photo_data = get_photos(parsed_url)
-    except TypeError:
-        flash(
-            "I don't know how to find photos at that URL yet!",
-            category="flickr_url",
         )
-        session["flickr_url"] = flickr_url
-        return redirect(url_for("find_photos"))
-
-    except ResourceNotFound:
-        label = {"single_photo": "photo"}[parsed_url["type"]]
-
-        # If we aren't able to resolve this URL, send the user back to
-        # the "find photos" page.  We put the URL they entered in the
-        # session so we can prefill the form with it.
-        flash(f"There is no {label} at that URL!", category="flickr_url")
-        session["flickr_url"] = flickr_url
-        return redirect(url_for("find_photos"))
-
-    # If we've got some results from Flickr, save them to a local file
-    # on disk and add the name to the form.
-    #
-    # This means we can pass the same set of results to subsequent steps
-    # without worrying about results changing in the API (e.g. if somebody
-    # looks at an album and new photos are added halfway through).
-    out_filename = f"{uuid.uuid4()}.json"
-
-    out_path = os.path.join(
-        current_app.config["FLICKR_API_RESPONSE_CACHE"], out_filename
-    )
-
-    os.makedirs(os.path.dirname(out_path), exist_ok=True)
-
-    with open(out_path, "w") as out_file:
-        out_file.write(json.dumps(photo_data, cls=DatetimeEncoder))
-
-    select_photos_form.result_filename.data = out_filename
 
     # Complete the route by rendering the template.
     return render_template(
         "select_photos.html",
         flickr_url=flickr_url,
-        parsed_url=parsed_url,
         photo_url_form=FlickrPhotoURLForm(),
         select_photos_form=select_photos_form,
         photo_data=photo_data,
     )
+
+
+def get_cached_api_response(response_id):
+    cache_dir = current_app.config["FLICKR_API_RESPONSE_CACHE"]
+
+    with open(os.path.join(cache_dir, response_id + ".json")) as infile:
+        return json.load(infile, cls=DatetimeDecoder)
+
+
+def save_cached_api_response(response):
+    cache_dir = current_app.config["FLICKR_API_RESPONSE_CACHE"]
+    response_id = str(uuid.uuid4())
+
+    with open(os.path.join(cache_dir, response_id + ".json"), "w") as outfile:
+        outfile.write(json.dumps(response, cls=DatetimeEncoder))
+
+    return response_id

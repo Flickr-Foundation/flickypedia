@@ -37,23 +37,24 @@
   <form id="select_photos" action="{{ url_for('select_photos', flickr_url=flickr_url) }}" method="post" style="background: yellow;">
     {{ select_photos_form.hidden_tag() }}
     
-    {{ select_photos_form.result_filename }}
-    
+    {{ select_photos_form.cached_api_response_id }}
+
     <ul>
-      {% for photo in photo_data.photos %}
-        <li>
-          <input id="photo_{{ photo.id }}" name="photo_{{ photo.id }}" type="checkbox">
-          <label for="photo_{{ photo.id }}">
-            {% set thumbnail = photo.sizes|size_at(desired_size='Square') %}
-            <img src="{{ thumbnail.source }}">
-            {{ photo.title }} <br/> {{ photo.url }} <br/> {{ photo.license.label }}
-          </label>
-        </li>
+      {% for field in select_photos_form %}
+        {% if field.id.startswith('photo_') %}
+          <li>
+            {{ field }} <br/>
+            <label for="{{ field.id }}">
+              {% set photo = field.label.text %}
+              {% set thumbnail = photo.sizes|size_at(desired_size='Square') %}
+              <img src="{{ thumbnail.source }}">
+              {{ photo.title }} <br/> {{ photo.url }} <br/> {{ photo.license.label }}
+            </label>
+          </li>
+        {% endif %}
       {% endfor %}
     </ul>
-
+    
     <p>{{ select_photos_form.submit() }}</p>
   </form>
-
-  <p>{{ parsed_url }}</p>
 {% endblock %}
