@@ -289,6 +289,7 @@ class FlickrApi:
             s["height"] = int(s["height"])
 
         return {
+            "id": photo_id,
             "title": title,
             "owner": owner,
             "date_posted": date_posted,
@@ -332,6 +333,7 @@ class FlickrApi:
             photos.append(
                 {
                     "_elem": photo_elem,
+                    "id": photo_elem.attrib["id"],
                     "title": photo_elem.attrib["title"],
                     "date_posted": _parse_date_posted(photo_elem.attrib["dateupload"]),
                     "date_taken": {
