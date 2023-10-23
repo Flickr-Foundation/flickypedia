@@ -1,3 +1,5 @@
+import json
+
 import pytest
 
 
@@ -77,16 +79,25 @@ def test_no_photo_selection_is_error(logged_in_client, flickr_api):
     assert b"You need to select at least one photo!" in resp.data
 
 
-def test_selecting_photo_redirects_you_to_prepare_info(logged_in_client, flickr_api):
-    flickr_url = "https://www.flickr.com/photos/schlesinger_library/13270291833/"
+def test_selecting_photo_redirects_you_to_prepare_info(
+    logged_in_client, app, flickr_api
+):
+    flickr_url = "https://www.flickr.com/photos/coast_guard/32812033543/"
+
+    cache_dir = app.config["FLICKR_API_RESPONSE_CACHE"]
+
+    with open(f"{cache_dir}/1234567890.json", "w") as outfile:
+        with open("tests/fixtures/flickr_api/32812033543.json") as infile:
+            single_photo_resp = json.load(infile)
+        outfile.write(json.dumps({"photos": [single_photo_resp]}))
 
     resp = logged_in_client.post(
         f"/select_photos?flickr_url={flickr_url}",
-        data={"photo_13270291833": "on", "result_filename": "example.json"},
+        data={"photo_32812033543": "on", "cached_api_response_id": "1234567890"},
     )
 
     assert resp.status_code == 302
     assert (
         resp.headers["location"]
-        == f"/prepare_info?flickr_url={flickr_url}&selected_photo_ids=13270291833&result_filename=example.json"
+        == "/prepare_info?selected_photo_ids=32812033543&cached_api_response_id=1234567890"
     )
