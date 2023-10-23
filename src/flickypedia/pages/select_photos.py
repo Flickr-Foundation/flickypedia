@@ -210,6 +210,9 @@ def select_photos():
 
 
 def get_cached_api_response(response_id):
+    """
+    Retrieved a cached API response.
+    """
     cache_dir = current_app.config["FLICKR_API_RESPONSE_CACHE"]
 
     with open(os.path.join(cache_dir, response_id + ".json")) as infile:
@@ -217,8 +220,14 @@ def get_cached_api_response(response_id):
 
 
 def save_cached_api_response(response):
+    """
+    Save a cached API response.  Returns an ID which can be used to
+    retrieve this response now.
+    """
     cache_dir = current_app.config["FLICKR_API_RESPONSE_CACHE"]
     response_id = str(uuid.uuid4())
+
+    os.makedirs(cache_dir, exist_ok=True)
 
     with open(os.path.join(cache_dir, response_id + ".json"), "w") as outfile:
         outfile.write(json.dumps(response, cls=DatetimeEncoder))
