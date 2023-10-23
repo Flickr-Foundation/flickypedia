@@ -213,6 +213,7 @@ def select_photos():
         photo_url_form=FlickrPhotoURLForm(),
         select_photos_form=select_photos_form,
         photo_data=photo_data,
+        current_step="find_photos",
     )
 
 
