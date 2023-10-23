@@ -8,7 +8,7 @@ from flickypedia.auth import (
     oauth2_callback_wikimedia,
 )
 from flickypedia.config import Config
-from flickypedia.pages import find_photos, select_photos
+from flickypedia.pages import find_photos, prepare_info, select_photos
 from flickypedia.tasks import celery_init_app
 from flickypedia.utils import a_href, size_at
 
@@ -36,6 +36,7 @@ def create_app():
 
     app.add_url_rule("/find_photos", view_func=find_photos, methods=["GET", "POST"])
     app.add_url_rule("/select_photos", view_func=select_photos, methods=["GET", "POST"])
+    app.add_url_rule("/prepare_info", view_func=prepare_info, methods=["GET", "POST"])
 
     app.jinja_env.filters["a_href"] = a_href
     app.jinja_env.filters["size_at"] = size_at
