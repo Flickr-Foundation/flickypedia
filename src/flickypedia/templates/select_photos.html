@@ -2,12 +2,12 @@
 
 {% block content %}
   {% include "components/header.html" %}
-  
+
   At this Flickr URL:
-  
-  <form action="{{ url_for('find_photos') }}" method="post" novalidate>
-    {{ form.hidden_tag() }}
-    
+
+  <form action="{{ url_for('find_photos') }}" method="post">
+    {{ photo_url_form.hidden_tag() }}
+
     {% with messages = get_flashed_messages(category_filter=["flickr_url"]) %}
       {% if messages %}
         <ul class="flashes">
@@ -16,19 +16,44 @@
         {% endfor %}
         </ul>
       {% endif %}
-    {% endwith %}    
-    
-    {{ form.flickr_url(value=flickr_url) }}
-    
-    <p>{{ form.submit() }}</p>
+    {% endwith %}
+
+    {{ photo_url_form.flickr_url(value=flickr_url) }}
+
+    <p>{{ photo_url_form.submit() }}</p>
   </form>
   
+  {% with messages = get_flashed_messages(category_filter=["select_photos"]) %}
+    {% if messages %}
+      <ul class="flashes">
+      {% for message in messages %}
+        <li>{{ message | safe }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
   
+
+  <form id="select_photos" action="{{ url_for('select_photos', flickr_url=flickr_url) }}" method="post" style="background: yellow;">
+    {{ select_photos_form.hidden_tag() }}
+    
+    {{ select_photos_form.result_filename }}
+    
+    <ul>
+      {% for photo in photo_data.photos %}
+        <li>
+          <input id="photo_{{ photo.id }}" name="photo_{{ photo.id }}" type="checkbox">
+          <label for="photo_{{ photo.id }}">
+            {% set thumbnail = photo.sizes|size_at(desired_size='Square') %}
+            <img src="{{ thumbnail.source }}">
+            {{ photo.title }} <br/> {{ photo.url }} <br/> {{ photo.license.label }}
+          </label>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <p>{{ select_photos_form.submit() }}</p>
+  </form>
+
   <p>{{ parsed_url }}</p>
-  
-  <ul>
-    {% for ph in photo_data.photos %} 
-      <li>{{ ph.title }} <br/> {{ ph.url }} <br/> {{ ph.license.label }}</li>
-    {% endfor %}
-  </ul>
 {% endblock %}

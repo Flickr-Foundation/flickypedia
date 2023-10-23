@@ -63,3 +63,30 @@ def test_redirects_to_find_photos_if_non_existent_photo(
 
     assert error in redirected_resp.data
     assert f'value="{url}"'.encode("ascii") in redirected_resp.data
+
+
+def test_no_photo_selection_is_error(logged_in_client, flickr_api):
+    """
+    If you POST a form without a selection, you get an error.
+    """
+    flickr_url = "https://www.flickr.com/photos/schlesinger_library/13270291833/"
+
+    resp = logged_in_client.post(f"/select_photos?flickr_url={flickr_url}")
+
+    assert resp.status_code == 200
+    assert b"You need to select at least one photo!" in resp.data
+
+
+def test_selecting_photo_redirects_you_to_prepare_info(logged_in_client, flickr_api):
+    flickr_url = "https://www.flickr.com/photos/schlesinger_library/13270291833/"
+
+    resp = logged_in_client.post(
+        f"/select_photos?flickr_url={flickr_url}",
+        data={"photo_13270291833": "on", "result_filename": "example.json"},
+    )
+
+    assert resp.status_code == 302
+    assert (
+        resp.headers["location"]
+        == f"/prepare_info?flickr_url={flickr_url}&selected_photo_ids=13270291833&result_filename=example.json"
+    )

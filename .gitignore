@@ -12,3 +12,5 @@ flickr_ids_from_sdc.*
 # Files used by Celery
 tasks
 *.exchange
+
+flickr_api_cache
