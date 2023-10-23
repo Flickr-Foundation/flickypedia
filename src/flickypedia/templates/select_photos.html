@@ -34,7 +34,7 @@
   {% endwith %}
   
 
-  <form action="{{ url_for('select_photos', flickr_url=flickr_url) }}" method="post" style="background: yellow;">
+  <form id="select_photos" action="{{ url_for('select_photos', flickr_url=flickr_url) }}" method="post" style="background: yellow;">
     {{ select_photos_form.hidden_tag() }}
     
     {{ select_photos_form.result_filename }}
