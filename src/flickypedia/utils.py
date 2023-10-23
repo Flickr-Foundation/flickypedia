@@ -52,9 +52,41 @@ def size_at(sizes, *, desired_size):
 
 class DatetimeEncoder(json.JSONEncoder):
     """
-    A custom JSON encoder that encodes datetimes as strings
+    A custom JSON encoder that supports datetimes.
+
+        >>> t = datetime.datetime(2001, 2, 3, 4, 5, 6)
+        >>> json.dumps({"t": t}, cls=DatetimeEncoder)
+        '{"t": {"type": "datetime.datetime", "value": "2001-02-03T04:05:06"}}'
+
+    This is meant to be used with ``DatetimeDecoder`` -- together, they
+    allow you to serialise a datetime value via JSON and preserve its type.
+
     """
 
     def default(self, obj):
         if isinstance(obj, datetime.datetime):
-            return obj.isoformat()
+            return {"type": "datetime.datetime", "value": obj.isoformat()}
+        else:  # pragma: no cover
+            return obj
+
+
+class DatetimeDecoder(json.JSONDecoder):
+    """
+    A custom JSON decoder that supports the datetimes encoded
+    by DatetimeEncoder.
+
+        >>> json.loads(
+        ...     '{"t": {"type": "datetime.datetime", "value": "2001-02-03T04:05:06"}}',
+        ...     cls=DatetimeDecoder)
+        {'t': datetime.datetime(2001, 2, 3, 4, 5, 6)}
+
+    """
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(object_hook=self.dict_to_object, *args, **kwargs)
+
+    def dict_to_object(self, d):
+        if d.get("type") == "datetime.datetime":
+            return datetime.datetime.fromisoformat(d["value"])
+        else:
+            return d

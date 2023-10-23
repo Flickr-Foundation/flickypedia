@@ -1,7 +1,16 @@
+import datetime
+import json
+
 from cryptography.fernet import Fernet
 import pytest
 
-from flickypedia.utils import decrypt_string, encrypt_string, size_at
+from flickypedia.utils import (
+    decrypt_string,
+    encrypt_string,
+    size_at,
+    DatetimeDecoder,
+    DatetimeEncoder,
+)
 
 
 def test_encryption_can_round_trip():
@@ -49,3 +58,15 @@ def test_size_at_fails_if_no_desired_size():
         ValueError, match="This photo is not available at size 'Medium'"
     ):
         size_at(SIZES, desired_size="Medium")
+
+
+def test_can_json_round_trip():
+    d = {
+        "label": "an interesting time",
+        "time": datetime.datetime(2001, 2, 3, 4, 5, 6),
+    }
+
+    json_string = json.dumps(d, cls=DatetimeEncoder)
+    parsed_json_string = json.loads(json_string, cls=DatetimeDecoder)
+
+    assert parsed_json_string == d
