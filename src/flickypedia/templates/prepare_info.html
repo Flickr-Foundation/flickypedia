@@ -4,4 +4,25 @@
   {% include "components/header.html" %}
 
   Prepare info!
+  
+  <form action="" method="post">
+    {{ form.hidden_tag() }}
+    {{ form.cached_api_response_id }}
+    
+    <ul>
+      {% for field in form %}
+        {% if field.id.startswith('photo_') %}
+        <li>
+          {% set photo = field.label.text %}
+          {% set thumbnail = photo.sizes|size_at(desired_size='Square') %}
+          <img src="{{ thumbnail.source }}">
+          {{ photo.title }} <br/> {{ photo.url }} <br/> {{ photo.license.label }}
+          {{ field }}
+        </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+    
+    <p>{{ form.submit() }}</p>
+  </form>
 {% endblock %}
