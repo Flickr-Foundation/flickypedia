@@ -106,7 +106,12 @@ def create_select_photos_form(photos):
     """
 
     class CustomForm(BaseSelectForm):
-        pass
+        def selected_photo_ids(self):
+            return [
+                name.replace("photo_", "")
+                for name, value in self.data.items()
+                if name.startswith("photo_") and value
+            ]
 
     for p in photos:
         setattr(CustomForm, f"photo_{p['id']}", BooleanField(label=p))
@@ -178,20 +183,21 @@ def select_photos():
     # Now check to see if somebody has submitted a form -- if so, we'll
     # take those IDs and send them to the next step.
     if select_photos_form.validate_on_submit():
-        selected_photo_ids = [
-            name for name, value in select_photos_form.data.items() if value
-        ]
+        photo_ids = select_photos_form.selected_photo_ids()
 
-        # TODO: Are there going to be issues if we put lots of data
-        # into this URL?  Maybe we should be POST-ing directly
-        # to /prepare_info instead?
-        return redirect(
-            url_for(
-                "prepare_info",
-                selected_photo_ids=",".join(selected_photo_ids),
-                cached_api_response_id=cached_api_response_id,
+        if photo_ids:
+            # TODO: Are there going to be issues if we put lots of data
+            # into this URL?  Maybe we should be POST-ing directly
+            # to /prepare_info instead?
+            return redirect(
+                url_for(
+                    "prepare_info",
+                    selected_photo_ids=",".join(photo_ids),
+                    cached_api_response_id=cached_api_response_id,
+                )
             )
-        )
+        else:
+            flash("You need to select at least one photo!", category="select_photos")
 
     # Complete the route by rendering the template.
     return render_template(

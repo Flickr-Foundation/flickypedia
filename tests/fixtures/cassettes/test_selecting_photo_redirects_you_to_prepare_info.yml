@@ -1,0 +1,251 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - api.flickr.com
+      user-agent:
+      - python-httpx/0.25.0
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&photo_id=13270291833
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<photo
+      id=\"13270291833\" secret=\"a3cd57842f\" server=\"2889\" farm=\"3\" dateuploaded=\"1395250394\"
+      isfavorite=\"0\" license=\"7\" safety_level=\"0\" rotation=\"0\" originalsecret=\"de92c432c4\"
+      originalformat=\"jpg\" views=\"27564\" media=\"photo\">\n\t<owner nsid=\"99902797@N03\"
+      username=\"Schlesinger Library, RIAS, Harvard University\" realname=\"Schlesinger
+      Library on the History of Women in America\" location=\"\" iconserver=\"65535\"
+      iconfarm=\"66\" path_alias=\"schlesinger_library\">\n\t\t<gift gift_eligible=\"\"
+      new_flow=\"1\" />\n\t</owner>\n\t<title>Mae_Eberhardt</title>\n\t<description>&lt;b&gt;Biography:&lt;/b&gt;
+      Mae Massie Eberhardt has been a union activist for nearly 35 years. Born in
+      Virginia, one of the eight children of Randolph and Ida Kenny Graves, she married
+      and moved to New Jersey after completing high school. When she was divorced
+      from her first husband, she went to work at Orange and Domestic Laundry where
+      she became active in Local 284, AFL, and led the fight for better pay and improved
+      working conditions. She was elected shop steward and held that position until
+      the laundry went out of business 12 years later. Then employed as an electronics
+      worker for Kuthe Laboratories in Newark, she took an active part in the successful
+      organizing campaign for the International Union of Electrical, Radio and Machine
+      Workers (CIO). Elected president of the local, she also served as chief negotiator,
+      chairperson of the grievance committee, and member of the district executive
+      board. Mrs. Eberhardt went to work for IUE in 1963 as civil rights director
+      for District 3, which included the states of New Jersey and New York; in that
+      position she was instrumental in persuading the IUE to sponsor a scholarship
+      program--now nation-wide--for college students. Elected executive vice-president
+      of the New Jersey Industrial Union Council, she was the first Black woman ever
+      elected as an officer in a state labor organization. She is active in community
+      affairs and oversaw the founding of North Jersey Community Union, which was
+      designed to meet the health needs of the uninsured poor and which provides day
+      care, work for senior citizens, and hot meals.\n\n&lt;b&gt;Description:&lt;/b&gt;
+      \ The Black Women Oral History Project interviewed 72 African American women
+      between 1976 and 1981. With support from the Schlesinger Library, the project
+      recorded a cross section of women who had made significant contributions to
+      American society during the first half of the 20th century. Photograph taken
+      by Judith Sedwick\n\n&lt;b&gt;Repository:&lt;/b&gt; Schlesinger Library on the
+      History of Women in America.\n\n&lt;b&gt;Collection:&lt;/b&gt; Black Women Oral
+      History Project\n\n&lt;b&gt;Research Guide:&lt;/b&gt; &lt;a href=&quot;http://guides.library.harvard.edu/schlesinger_bwohp&quot;
+      rel=&quot;noreferrer nofollow&quot;&gt;guides.library.harvard.edu/schlesinger_bwohp&lt;/a&gt;\n\n\n&lt;b&gt;Questions?&lt;/b&gt;
+      &lt;a href=&quot;http://asklib.schlesinger.radcliffe.edu/index.php&quot; rel=&quot;noreferrer
+      nofollow&quot;&gt;Ask a Schlesinger Librarian&lt;/a&gt;</description>\n\t<visibility
+      ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" />\n\t<dates posted=\"1395250394\"
+      taken=\"2014-03-07 11:44:16\" takengranularity=\"0\" takenunknown=\"0\" lastupdate=\"1616719487\"
+      />\n\t<editability cancomment=\"0\" canaddmeta=\"0\" />\n\t<publiceditability
+      cancomment=\"1\" canaddmeta=\"1\" />\n\t<usage candownload=\"1\" canblog=\"0\"
+      canprint=\"0\" canshare=\"1\" />\n\t<comments>7</comments>\n\t<notes />\n\t<people
+      haspeople=\"0\" />\n\t<tags>\n\t\t<tag id=\"99879743-13270291833-204124333\"
+      author=\"99902797@N03\" authorname=\"Schlesinger Library, RIAS, Harvard University\"
+      raw=\"Black Women Oral History Project\" machine_tag=\"0\">blackwomenoralhistoryproject</tag>\n\t\t<tag
+      id=\"99879743-13270291833-256535612\" author=\"99902797@N03\" authorname=\"Schlesinger
+      Library, RIAS, Harvard University\" raw=\"Judith Sedwick\" machine_tag=\"0\">judithsedwick</tag>\n\t</tags>\n\t<urls>\n\t\t<url
+      type=\"photopage\">https://www.flickr.com/photos/schlesinger_library/13270291833/</url>\n\t</urls>\n</photo>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1915'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Mon, 23 Oct 2023 15:19:12 GMT
+      Via:
+      - 1.1 69bb5fd1ce23244553740f7d64d6366a.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - 9WingwkkEh2sNROfirHDGLNVdUXKIYMtqkanJ8of8VCm0NL1mOTAQg==
+      X-Amz-Cf-Pop:
+      - LHR50-P8
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.57 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Wed, 22-Nov-2023 15:19:12 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Wed, 22-Nov-2023 15:19:12 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - python-httpx/0.25.0
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&photo_id=13270291833
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<sizes
+      canblog=\"0\" canprint=\"0\" candownload=\"1\">\n\t<size label=\"Square\" width=\"75\"
+      height=\"75\" source=\"https://live.staticflickr.com/2889/13270291833_a3cd57842f_s.jpg\"
+      url=\"https://www.flickr.com/photos/schlesinger_library/13270291833/sizes/sq/\"
+      media=\"photo\" />\n\t<size label=\"Large Square\" width=\"150\" height=\"150\"
+      source=\"https://live.staticflickr.com/2889/13270291833_a3cd57842f_q.jpg\" url=\"https://www.flickr.com/photos/schlesinger_library/13270291833/sizes/q/\"
+      media=\"photo\" />\n\t<size label=\"Thumbnail\" width=\"79\" height=\"100\"
+      source=\"https://live.staticflickr.com/2889/13270291833_a3cd57842f_t.jpg\" url=\"https://www.flickr.com/photos/schlesinger_library/13270291833/sizes/t/\"
+      media=\"photo\" />\n\t<size label=\"Small\" width=\"191\" height=\"240\" source=\"https://live.staticflickr.com/2889/13270291833_a3cd57842f_m.jpg\"
+      url=\"https://www.flickr.com/photos/schlesinger_library/13270291833/sizes/s/\"
+      media=\"photo\" />\n\t<size label=\"Small 320\" width=\"254\" height=\"320\"
+      source=\"https://live.staticflickr.com/2889/13270291833_a3cd57842f_n.jpg\" url=\"https://www.flickr.com/photos/schlesinger_library/13270291833/sizes/n/\"
+      media=\"photo\" />\n\t<size label=\"Small 400\" width=\"318\" height=\"400\"
+      source=\"https://live.staticflickr.com/2889/13270291833_a3cd57842f_w.jpg\" url=\"https://www.flickr.com/photos/schlesinger_library/13270291833/sizes/w/\"
+      media=\"photo\" />\n\t<size label=\"Medium\" width=\"397\" height=\"500\" source=\"https://live.staticflickr.com/2889/13270291833_a3cd57842f.jpg\"
+      url=\"https://www.flickr.com/photos/schlesinger_library/13270291833/sizes/m/\"
+      media=\"photo\" />\n\t<size label=\"Medium 640\" width=\"508\" height=\"640\"
+      source=\"https://live.staticflickr.com/2889/13270291833_a3cd57842f_z.jpg\" url=\"https://www.flickr.com/photos/schlesinger_library/13270291833/sizes/z/\"
+      media=\"photo\" />\n\t<size label=\"Medium 800\" width=\"635\" height=\"800\"
+      source=\"https://live.staticflickr.com/2889/13270291833_a3cd57842f_c.jpg\" url=\"https://www.flickr.com/photos/schlesinger_library/13270291833/sizes/c/\"
+      media=\"photo\" />\n\t<size label=\"Large\" width=\"813\" height=\"1024\" source=\"https://live.staticflickr.com/2889/13270291833_a3cd57842f_b.jpg\"
+      url=\"https://www.flickr.com/photos/schlesinger_library/13270291833/sizes/l/\"
+      media=\"photo\" />\n\t<size label=\"Large 1600\" width=\"1270\" height=\"1600\"
+      source=\"https://live.staticflickr.com/2889/13270291833_a513a83282_h.jpg\" url=\"https://www.flickr.com/photos/schlesinger_library/13270291833/sizes/h/\"
+      media=\"photo\" />\n\t<size label=\"Large 2048\" width=\"1626\" height=\"2048\"
+      source=\"https://live.staticflickr.com/2889/13270291833_57ec62de87_k.jpg\" url=\"https://www.flickr.com/photos/schlesinger_library/13270291833/sizes/k/\"
+      media=\"photo\" />\n\t<size label=\"X-Large 3K\" width=\"2439\" height=\"3072\"
+      source=\"https://live.staticflickr.com/2889/13270291833_11baea34dc_3k.jpg\"
+      url=\"https://www.flickr.com/photos/schlesinger_library/13270291833/sizes/3k/\"
+      media=\"photo\" />\n\t<size label=\"X-Large 4K\" width=\"3252\" height=\"4096\"
+      source=\"https://live.staticflickr.com/2889/13270291833_188687ea70_4k.jpg\"
+      url=\"https://www.flickr.com/photos/schlesinger_library/13270291833/sizes/4k/\"
+      media=\"photo\" />\n\t<size label=\"Original\" width=\"3547\" height=\"4467\"
+      source=\"https://live.staticflickr.com/2889/13270291833_de92c432c4_o.jpg\" url=\"https://www.flickr.com/photos/schlesinger_library/13270291833/sizes/o/\"
+      media=\"photo\" />\n</sizes>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '564'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Mon, 23 Oct 2023 15:19:13 GMT
+      Via:
+      - 1.1 69bb5fd1ce23244553740f7d64d6366a.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - xc5AaQLizhYGOlXu8QD0UWMlUIpIzNR_TrYShiOCNaW7ObNApjpAiw==
+      X-Amz-Cf-Pop:
+      - LHR50-P8
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.57 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Wed, 22-Nov-2023 15:19:13 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - python-httpx/0.25.0
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.licenses.getInfo
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<licenses>\n\t<license
+      id=\"0\" name=\"All Rights Reserved\" url=\"\" />\n\t<license id=\"4\" name=\"Attribution
+      License\" url=\"https://creativecommons.org/licenses/by/2.0/\" />\n\t<license
+      id=\"6\" name=\"Attribution-NoDerivs License\" url=\"https://creativecommons.org/licenses/by-nd/2.0/\"
+      />\n\t<license id=\"3\" name=\"Attribution-NonCommercial-NoDerivs License\"
+      url=\"https://creativecommons.org/licenses/by-nc-nd/2.0/\" />\n\t<license id=\"2\"
+      name=\"Attribution-NonCommercial License\" url=\"https://creativecommons.org/licenses/by-nc/2.0/\"
+      />\n\t<license id=\"1\" name=\"Attribution-NonCommercial-ShareAlike License\"
+      url=\"https://creativecommons.org/licenses/by-nc-sa/2.0/\" />\n\t<license id=\"5\"
+      name=\"Attribution-ShareAlike License\" url=\"https://creativecommons.org/licenses/by-sa/2.0/\"
+      />\n\t<license id=\"7\" name=\"No known copyright restrictions\" url=\"https://www.flickr.com/commons/usage/\"
+      />\n\t<license id=\"8\" name=\"United States Government Work\" url=\"http://www.usa.gov/copyright.shtml\"
+      />\n\t<license id=\"9\" name=\"Public Domain Dedication (CC0)\" url=\"https://creativecommons.org/publicdomain/zero/1.0/\"
+      />\n\t<license id=\"10\" name=\"Public Domain Mark\" url=\"https://creativecommons.org/publicdomain/mark/1.0/\"
+      />\n</licenses>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '395'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Mon, 23 Oct 2023 15:19:13 GMT
+      Via:
+      - 1.1 69bb5fd1ce23244553740f7d64d6366a.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - hkzOOErZp4X4y5HoYoYMXrhzjyQQeIOe14DV6NVpDKUDHIIstQ3Xlw==
+      X-Amz-Cf-Pop:
+      - LHR50-P8
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.57 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Wed, 22-Nov-2023 15:19:13 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1
