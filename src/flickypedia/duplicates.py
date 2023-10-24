@@ -6,8 +6,7 @@ folder.  These databases should have a table ``flickr_photos_on_wikimedia``
 with at least two columns:
 
     CREATE TABLE flickr_photos_on_wikimedia (
-        flickr_photo_id INTEGER PRIMARY KEY,
-        wikimedia_title TEXT NOT NULL,
+        flickr_photo_id TEXT PRIMARY KEY,
         wikimedia_page_id TEXT NOT NULL
     )
 
@@ -15,9 +14,6 @@ This database can be created from a WMC snapshot by scripts in this repo
 (see the ``duplicates_from_sdc`` folder), and at some point we might use
 the Wikimedia Commons Query Service instead -- but for now this is
 our approach.
-
-TODO: The rest of the app passes around photo IDs as strings; we should
-do the same in this database.
 
 """
 
@@ -39,12 +35,7 @@ def find_duplicates(flickr_photo_ids: list[str]):
         []
 
         >>> find_duplicates(flickr_photo_ids=['53240661807'])
-        [
-            (
-                "53240661807",
-                {"page_id": "M138598125", "title": "File:Volvo 940 Estate (53240661807).jpg"}
-            )
-        ]
+        [("53240661807", "M138598125")]
 
     The result is a list of tuples, to match the order of the original
     Flickr IDs.
@@ -68,15 +59,15 @@ def find_duplicates(flickr_photo_ids: list[str]):
 
             cur.execute(
                 f"""
-                SELECT flickr_photo_id,wikimedia_title,wikimedia_page_id
+                SELECT flickr_photo_id,wikimedia_page_id
                 FROM flickr_photos_on_wikimedia
                 WHERE flickr_photo_id IN ({query});
                 """
             )
 
             for row in cur.fetchall():
-                assert str(row[0]) in flickr_photo_ids
-                result[str(row[0])] = {"title": row[1], "page_id": row[2]}
+                assert row[0] in flickr_photo_ids
+                result[row[0]] = row[1]
 
     return [
         (photo_id, result[photo_id])
@@ -90,6 +81,6 @@ def create_media_search_link(duplicates):
     Given a collection of duplicates from ``find_duplicates``, create
     a link to find those images on Wikimedia Commons.
     """
-    page_ids = [dupe["page_id"].replace("M", "") for _, dupe in duplicates]
+    page_ids = [dupe.replace("M", "") for _, dupe in duplicates]
 
     return f"https://commons.wikimedia.org/wiki/Special:MediaSearch?type=image&search=pageid:{'|'.join(page_ids)}"
