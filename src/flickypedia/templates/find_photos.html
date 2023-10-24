@@ -5,23 +5,7 @@
   
   <h2>Enter a Flickr URL:</h2>
   
-  <form action="" method="post" novalidate>
-    {{ form.hidden_tag() }}
-  
-    {% with messages = get_flashed_messages(category_filter=["flickr_url"]) %}
-      {% if messages %}
-        <ul class="flashes">
-        {% for message in messages %}
-          <li>{{ message | safe }}</li>
-        {% endfor %}
-        </ul>
-      {% endif %}
-    {% endwith %}    
-  
-    {{ form.flickr_url(value=flickr_url, placeholder="https://www.flickr.com/photos/…") }}
-  
-    <p>{{ form.submit() }}</p>
-  </form>
+  {% include "components/find_photos_form.html" %}
 
   <p>
     We’ll return Flickr photos with the right licenses for use on Wikimedia Commons.

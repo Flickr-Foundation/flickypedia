@@ -1,0 +1,17 @@
+<form action="{{ url_for('find_photos') }}" method="post">
+  {{ photo_url_form.hidden_tag() }}
+
+  {% with messages = get_flashed_messages(category_filter=["flickr_url"]) %}
+    {% if messages %}
+      <ul class="flashes">
+      {% for message in messages %}
+        <li>{{ message | safe }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+
+  {{ photo_url_form.flickr_url(value=flickr_url, placeholder="https://www.flickr.com/photos/…") }}
+
+  <p>{{ photo_url_form.submit() }}</p>
+</form>
