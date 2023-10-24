@@ -13,14 +13,19 @@ def find_photos():
     if form.validate_on_submit():
         url = form.flickr_url.data
 
+        # Try to parse this as a Flickr URL.  If parsing fails for
+        # some reason, return the user to the page.
+        #
+        # Make sure the input field still contains the URL they typed in,
+        # so they can adjust what they typed previously.
         try:
             parse_flickr_url(url)
         except NotAFlickrUrl:
             flash("That URL doesn’t live on Flickr.com", category="flickr_url")
-            return render_template("find_photos.html", form=form)
+            return render_template("find_photos.html", form=form, flickr_url=url)
         except UnrecognisedUrl:
             flash("There are no photos to show at that URL", category="flickr_url")
-            return render_template("find_photos.html", form=form)
+            return render_template("find_photos.html", form=form, flickr_url=url)
 
         return redirect(url_for("select_photos", flickr_url=url))
 
