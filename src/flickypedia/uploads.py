@@ -27,14 +27,7 @@ def upload_single_image(
     -   Adding the structured data to the photo
 
     """
-    photo_url = f"https://www.flickr.com/photos/{user['id']}/{photo_id}/"
-
-    wikitext = create_wikitext(
-        photo_url=photo_url,
-        date_taken=date_taken,
-        user=user,
-        license_id=license_id,
-    )
+    wikitext = create_wikitext(license_id=license_id)
 
     structured_data = create_sdc_claims_for_flickr_photo(
         photo_id=photo_id,

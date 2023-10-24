@@ -1,5 +1,3 @@
-import datetime
-
 import pytest
 
 from flickypedia.apis.structured_data import create_license_statement
@@ -48,20 +46,7 @@ def test_can_get_a_csrf_token(wikimedia_api):
 
 class TestUploadImage:
     def test_can_upload_an_image(self, wikimedia_api):
-        text = create_wikitext(
-            photo_url="https://www.flickr.com/photos/pictureclara/8273352482/",
-            date_taken={
-                "value": datetime.datetime(2012, 12, 8, 15, 8, 45),
-                "granularity": 0,
-                "unknown": False,
-            },
-            user={
-                "id": "13151547@N06",
-                "username": "Clara S.",
-                "realname": None,
-            },
-            license_id="cc-by-2.0",
-        )
+        text = create_wikitext(license_id="cc-by-2.0")
 
         resp = wikimedia_api.upload_image(
             filename="Silver Blue Fish In Boston Aquarium.jpg",
