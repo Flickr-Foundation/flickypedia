@@ -21,6 +21,8 @@ import re
 import sqlite3
 import sys
 
+import tqdm
+
 
 def unique_rows(csv_path):
     """
@@ -31,14 +33,13 @@ def unique_rows(csv_path):
     with open(csv_path) as in_file:
         reader = csv.DictReader(in_file)
 
-        for row in reader:
+        for row in tqdm.tqdm(reader):
             if row["flickr_photo_id"] in stored_ids:
                 continue
 
             stored_ids.add(row["flickr_photo_id"])
             yield (
-                int(row["flickr_photo_id"]),
-                row["wikimedia_title"],
+                row["flickr_photo_id"],
                 row["wikimedia_page_id"],
             )
 
@@ -72,8 +73,7 @@ if __name__ == "__main__":
     cur.execute(
         """
     CREATE TABLE flickr_photos_on_wikimedia (
-        flickr_photo_id INTEGER PRIMARY KEY,
-        wikimedia_title TEXT NOT NULL,
+        flickr_photo_id TEXT PRIMARY KEY,
         wikimedia_page_id TEXT NOT NULL
     );
     """
@@ -83,10 +83,11 @@ if __name__ == "__main__":
     cur.executemany(
         """
     INSERT INTO flickr_photos_on_wikimedia
-    VALUES(?, ?, ?)
+    VALUES(?, ?)
     """,
         unique_rows(csv_path),
     )
+
     con.commit()
 
     print(db_path)

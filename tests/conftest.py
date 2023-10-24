@@ -87,11 +87,14 @@ def app():
     app = create_app()
     app.config["TESTING"] = True
 
+    app.config["DUPLICATE_DATABASE_DIRECTORY"] = "tests/fixtures/duplicates"
+
     # This means I don't need to pass the CSRF token when posting
     # data to forms, which makes things a bit easier.
     app.config["WTF_CSRF_ENABLED"] = False
 
-    yield app
+    with app.app_context():
+        yield app
 
 
 @pytest.fixture()
