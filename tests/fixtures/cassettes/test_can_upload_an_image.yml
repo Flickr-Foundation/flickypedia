@@ -63,7 +63,7 @@ interactions:
     http_version: HTTP/1.1
     status_code: 200
 - request:
-    body: action=upload&filename=Silver+Blue+Fish+In+Boston+Aquarium.jpg&url=https%3A%2F%2Flive.staticflickr.com%2F8338%2F8273352482_50cb58a54f_o_d.jpg&text=%3D%3D%7B%7Bint%3Afiledesc%7D%7D%3D%3D%0A%7B%7BInformation%0A%7CSource%3Dhttps%3A%2F%2Fwww.flickr.com%2Fphotos%2Fpictureclara%2F8273352482%2F%0A%7CDate%3D2012-12-08+15%3A08%3A45%0A%7CAuthor%3D%5Bhttps%3A%2F%2Fwww.flickr.com%2Fpeople%2F13151547%40N06+Clara+S.%5D%0A%7CPermission%3D%0A%7Cother_versions%3D%0A%7D%7D%0A%0A%3D%3D%7B%7Bint%3Alicense-header%7D%7D%3D%3D%0A%7B%7Bcc-by-2.0%7D%7D%0A&format=json&token=9259b755e0401716925708666a90948d652ff65d%2B%5C
+    body: action=upload&filename=Silver+Blue+Fish+In+Boston+Aquarium.jpg&url=https%3A%2F%2Flive.staticflickr.com%2F8338%2F8273352482_50cb58a54f_o_d.jpg&text=%3D%3D%7B%7Bint%3Afiledesc%7D%7D%3D%3D%0A%7B%7BInformation%7D%7D%0A%0A%3D%3D%7B%7Bint%3Alicense-header%7D%7D%3D%3D%0A%7B%7Bcc-by-2.0%7D%7D%0A&format=json&token=9259b755e0401716925708666a90948d652ff65d%2B%5C
     headers:
       accept:
       - '*/*'
@@ -72,7 +72,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '601'
+      - '353'
       content-type:
       - application/x-www-form-urlencoded
       cookie:
