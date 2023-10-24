@@ -20,6 +20,10 @@ class Config(object):
     # so there's nothing sensitive in here.
     FLICKR_API_RESPONSE_CACHE = os.path.join(WORKING_DATA_DIRECTORY, "flickr_api_cache")
 
+    # Used as a directory to find SQLite databases which contain information
+    # about duplicates.
+    DUPLICATE_DATABASE_DIRECTORY = os.path.join(WORKING_DATA_DIRECTORY, "duplicates")
+
     OAUTH2_PROVIDERS = {
         # Implementation note: although these URLs are currently hard-coded,
         # there is a beta cluster we might use in the future.  It's currently
