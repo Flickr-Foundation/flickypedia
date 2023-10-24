@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, render_template
 
 from flickypedia.auth import (
@@ -7,7 +9,7 @@ from flickypedia.auth import (
     oauth2_authorize_wikimedia,
     oauth2_callback_wikimedia,
 )
-from flickypedia.config import Config
+from flickypedia.config import Config, get_directories
 from flickypedia.pages import find_photos, prepare_info, select_photos
 from flickypedia.tasks import celery_init_app
 from flickypedia.utils import a_href, size_at
@@ -27,6 +29,9 @@ def create_app():
 
     with app.app_context():
         db.create_all()
+
+    for dirname in get_directories(app.config):
+        os.makedirs(dirname, exist_ok=True)
 
     app.add_url_rule("/", view_func=homepage)
 

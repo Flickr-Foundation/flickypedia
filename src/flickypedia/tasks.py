@@ -48,19 +48,6 @@ def celery_init_app(app: Flask) -> Celery:
     """
     celery_app = Celery(app.name)
 
-    config = app.config["CELERY"]
-
-    # Ensure that all the folders that Celery requires are created before
-    # it starts -- Celery won't create them itself.
-    for dirname in [
-        config["result_backend"].replace("file://", ""),
-        config["broker_transport_options"]["data_folder_in"],
-        config["broker_transport_options"]["data_folder_out"],
-        config["broker_transport_options"]["processed_folder"],
-        config["broker_transport_options"]["in_progress_folder"],
-    ]:
-        os.makedirs(dirname, exist_ok=True)
-
     celery_app.config_from_object(app.config["CELERY"])
     celery_app.set_default()
     app.extensions["celery"] = celery_app
