@@ -23,7 +23,7 @@ def test_gets_single_photo_on_flickr(logged_in_client, flickr_api):
     )
 
     assert resp.status_code == 200
-    assert b"Mae_Eberhardt" in resp.data
+    assert b"by Schlesinger Library on the History of Women in America" in resp.data
 
 
 def test_gets_album_on_flickr(logged_in_client, flickr_api):
@@ -32,8 +32,7 @@ def test_gets_album_on_flickr(logged_in_client, flickr_api):
     )
 
     assert resp.status_code == 200
-    assert b"https://www.flickr.com/photos/aljazeeraenglish/5536044022/" in resp.data
-    assert b"https://www.flickr.com/photos/aljazeeraenglish/5536043704/" in resp.data
+    assert b"by Al Jazeera English" in resp.data
 
 
 @pytest.mark.parametrize(
