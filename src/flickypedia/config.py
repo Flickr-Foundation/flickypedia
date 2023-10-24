@@ -60,6 +60,9 @@ class Config(object):
         },
     }
 
+    # The IDs of licenses that we can upload to Flickypedia.
+    ALLOWED_LICENSES = {"cc-by-2.0", "cc-by-sa-2.0", "usgov", "cc0-1.0", "pdm"}
+
 
 def get_directories(config):
     """
