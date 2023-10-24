@@ -1,6 +1,11 @@
 import os
 
 
+# Flickypedia writes a number of temporary files as part of
+# its process.  This directory is the root for all of those files.
+WORKING_DATA_DIRECTORY = "data"
+
+
 class Config(object):
     SECRET_KEY = os.environ.get("SECRET_KEY") or "you-will-never-guess"
 
@@ -13,7 +18,7 @@ class Config(object):
     # We can save results in here, and pass the filename around in the
     # user session.  This is just public data from the Flickr API,
     # so there's nothing sensitive in here.
-    FLICKR_API_RESPONSE_CACHE = "flickr_api_cache"
+    FLICKR_API_RESPONSE_CACHE = os.path.join(WORKING_DATA_DIRECTORY, "flickr_api_cache")
 
     OAUTH2_PROVIDERS = {
         # Implementation note: although these URLs are currently hard-coded,
@@ -31,18 +36,18 @@ class Config(object):
     }
 
     CELERY = {
-        "result_backend": "file://tasks/results",
+        "result_backend": f"file://{WORKING_DATA_DIRECTORY}/celery/results",
         "broker_url": "filesystem://",
         "broker_transport_options": {
-            "data_folder_in": "tasks/queue",
-            "data_folder_out": "tasks/queue",
-            "processed_folder": "tasks/processed",
+            "data_folder_in": f"{WORKING_DATA_DIRECTORY}/celery/queue",
+            "data_folder_out": f"{WORKING_DATA_DIRECTORY}/celery/queue",
+            "processed_folder": f"{WORKING_DATA_DIRECTORY}/celery/processed",
             #
             # This isn't a Celery config option, but it's used by
             # Celery in our app for tracking in-progress work.
             #
             # We store it here for convenience.
-            "in_progress_folder": "tasks/in_progress_folder",
+            "in_progress_folder": f"{WORKING_DATA_DIRECTORY}/celery/in_progress_folder",
             #
             # The processed tasks include the original arguments passed
             # to Celery, which has the user's OAuth credentials in
@@ -50,3 +55,17 @@ class Config(object):
             "store_processed": False,
         },
     }
+
+
+def get_directories(config):
+    """
+    A list of directories that need to be created on startup.
+    """
+    return [
+        config["FLICKR_API_RESPONSE_CACHE"],
+        config["CELERY"]["result_backend"].replace("file://", ""),
+        config["CELERY"]["broker_transport_options"]["data_folder_in"],
+        config["CELERY"]["broker_transport_options"]["data_folder_out"],
+        config["CELERY"]["broker_transport_options"]["processed_folder"],
+        config["CELERY"]["broker_transport_options"]["in_progress_folder"],
+    ]
