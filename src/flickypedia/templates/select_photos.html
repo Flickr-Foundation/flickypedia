@@ -22,7 +22,7 @@
 
     <p>{{ photo_url_form.submit() }}</p>
   </form>
-  
+
   {% with messages = get_flashed_messages(category_filter=["select_photos"]) %}
     {% if messages %}
       <ul class="flashes">
@@ -32,29 +32,116 @@
       </ul>
     {% endif %}
   {% endwith %}
-  
 
-  <form id="select_photos" action="{{ url_for('select_photos', flickr_url=flickr_url) }}" method="post" style="background: yellow;">
+  <style>
+    #select_photos ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-column-gap: 1em;
+      grid-row-gap: 2em;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    #select_photos li {
+      display: inline-block;
+    }
+
+    #select_photos li.checked {
+      background: #ddd;
+      border: 5px solid #ddd;
+      margin: -5px;
+    }
+
+    #select_photos li img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+
+    #select_photos li .info {
+      display: grid;
+      padding-left: 10px;
+      padding-bottom: 8px;
+    }
+
+    #select_photos li label .owner {
+      grid-row: 1 / 2;
+      grid-column: 1 / 2;
+    }
+
+    #select_photos li label .license {
+      grid-row: 2 / 2;
+      grid-column: 1 / 2;
+    }
+
+    #select_photos li label input[type="checkbox"] {
+      grid-row: 1 / 2;
+      grid-column: 2 / 2;
+      margin-left: 8px;
+      margin-right: 8px;
+    }
+
+    #selectedPhotosSummary .count {
+      font-weight: bold;
+    }
+  </style>
+
+  <form id="select_photos" action="{{ url_for('select_photos', flickr_url=flickr_url) }}" method="post">
     {{ select_photos_form.hidden_tag() }}
-    
+
     {{ select_photos_form.cached_api_response_id }}
 
     <ul>
       {% for field in select_photos_form %}
         {% if field.id.startswith('photo_') %}
-          <li>
-            {{ field }} <br/>
+          <li id="li-{{ field.id }}">
             <label for="{{ field.id }}">
               {% set photo = field.label.text %}
-              {% set thumbnail = photo.sizes|size_at(desired_size='Square') %}
+              {% set thumbnail = photo.sizes|size_at(desired_size='Medium') %}
               <img src="{{ thumbnail.source }}">
-              {{ photo.title }} <br/> {{ photo.url }} <br/> {{ photo.license.label }}
+              <div class="info">
+                <span class="owner">by {{ photo.owner.realname or photo.owner.username }}</span>
+                <span class="license">{{ photo.license.label }}</span>
+                {{ field(onclick="highlightSelected()") }}
+              </div>
             </label>
           </li>
         {% endif %}
       {% endfor %}
     </ul>
-    
+
+    <p id="selectedPhotosSummary"></p>
+
     <p>{{ select_photos_form.submit() }}</p>
   </form>
+
+  <script>
+    function highlightSelected(x) {
+      const selectedPhotos =
+        Array.from(document.querySelectorAll("#select_photos li input"))
+          .filter(input => input.checked)
+          .map(input => input.id);
+
+      document.querySelectorAll("#select_photos li")
+        .forEach(li => {
+          if (selectedPhotos.includes(li.id.replace("li-", ""))) {
+            li.classList.add("checked");
+          } else {
+            li.classList.remove("checked");
+          }
+        })
+
+      if (selectedPhotos.length === 0) {
+        document.querySelector("#selectedPhotosSummary").innerHTML = "";
+      } else if (selectedPhotos.length === 1) {
+        document.querySelector("#selectedPhotosSummary").innerHTML = "<span class=\"count\">1</span> photo selected";
+      } else {
+        document.querySelector("#selectedPhotosSummary").innerHTML = `<span class=\"count\">${selectedPhotos.length}</span> photos selected`;
+      }
+
+      console.log(selectedPhotos);
+    }
+  </script>
 {% endblock %}
