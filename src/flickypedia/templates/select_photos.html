@@ -40,12 +40,16 @@
       margin: 0;
       display: grid;
       grid-column-gap: 1em;
-      grid-row-gap: 1em;
+      grid-row-gap: 2em;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
 
     #select_photos li {
       display: inline-block;
+    }
+
+    #select_photos li.checked {
+      background: #ddd;
     }
 
     #select_photos li img {
@@ -56,6 +60,8 @@
 
     #select_photos li .info {
       display: grid;
+      padding-left: 10px;
+      padding-bottom: 8px;
     }
 
     #select_photos li label .owner {
@@ -71,6 +77,12 @@
     #select_photos li label input[type="checkbox"] {
       grid-row: 1 / 2;
       grid-column: 2 / 2;
+      margin-left: 8px;
+      margin-right: 8px;
+    }
+
+    #selectedPhotosSummary .count {
+      font-weight: bold;
     }
   </style>
 
@@ -82,7 +94,7 @@
     <ul>
       {% for field in select_photos_form %}
         {% if field.id.startswith('photo_') %}
-          <li>
+          <li id="li-{{ field.id }}">
             <label for="{{ field.id }}">
               {% set photo = field.label.text %}
               {% set thumbnail = photo.sizes|size_at(desired_size='Medium') %}
@@ -90,7 +102,7 @@
               <div class="info">
                 <span class="owner">by {{ photo.owner.realname or photo.owner.username }}</span>
                 <span class="license">{{ photo.license.label }}</span>
-                {{ field }}
+                {{ field(onclick="highlightSelected()") }}
               </div>
             </label>
           </li>
@@ -98,6 +110,36 @@
       {% endfor %}
     </ul>
 
+    <p id="selectedPhotosSummary"></p>
+
     <p>{{ select_photos_form.submit() }}</p>
   </form>
+
+  <script>
+    function highlightSelected(x) {
+      const selectedPhotos =
+        Array.from(document.querySelectorAll("#select_photos li input"))
+          .filter(input => input.checked)
+          .map(input => input.id);
+
+      document.querySelectorAll("#select_photos li")
+        .forEach(li => {
+          if (selectedPhotos.includes(li.id.replace("li-", ""))) {
+            li.classList.add("checked");
+          } else {
+            li.classList.remove("checked");
+          }
+        })
+
+      if (selectedPhotos.length === 0) {
+        document.querySelector("#selectedPhotosSummary").innerHTML = "";
+      } else if (selectedPhotos.length === 1) {
+        document.querySelector("#selectedPhotosSummary").innerHTML = "<span class=\"count\">1</span> photo selected";
+      } else {
+        document.querySelector("#selectedPhotosSummary").innerHTML = `<span class=\"count\">${selectedPhotos.length}</span> photos selected`;
+      }
+
+      console.log(selectedPhotos);
+    }
+  </script>
 {% endblock %}

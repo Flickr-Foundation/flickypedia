@@ -10,6 +10,8 @@ main {
   margin-left:  auto;
   margin-right: auto;
   max-width: 800px;
+  padding-left:  1em;
+  padding-right: 1em;
 }
 
 footer {
