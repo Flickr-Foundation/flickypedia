@@ -23,7 +23,7 @@ import sqlite3
 from flask import current_app
 
 
-def find_duplicates(flickr_photo_ids: list[str]):
+def find_duplicates(flickr_photo_ids):
     """
     Given a list of Flickr photo IDs, return the duplicates files found
     on Wikimedia Commons.
