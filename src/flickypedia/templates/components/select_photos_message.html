@@ -98,14 +98,19 @@
     {% endif %}
     because
     {% if photos.disallowed_licenses|length == 1 %}
-      it has a
+      it has
+      {% if photos.disallowed_licenses.values()|sort == ["All Rights Reserved"] %}
+        an
+      {% else %}
+        a
+      {% endif %}
     {% else %}
       they have
     {% endif %}
     {% for lic in photos.disallowed_licenses.values()|unique %}
       {{ lic }}
       {%- if loop.index <= loop.length - 2 %},{% endif %}
-      {% if loop.index < loop.length - 1 %}, and{% endif %}
+      {% if loop.index == loop.length - 1 %} and{% endif %}
     {% endfor %}
     license{% if photos.disallowed_licenses|length > 1 %}s{% endif %}.
 

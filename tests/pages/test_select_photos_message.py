@@ -75,18 +75,18 @@ def test_shows_correct_message_when_all_duplicates(app, count, expected_text):
 @pytest.mark.parametrize(
     ["count", "expected_text"],
     [
-        (1, "This photo can’t be used because it has a CC-BY 2.0 license. Sorry!"),
+        (1, "This photo can’t be used because it has a CC BY-NC 2.0 license. Sorry!"),
         (
             2,
-            "Neither of these photos can be used because they have CC-BY 2.0 licenses. Sorry!",
+            "Neither of these photos can be used because they have CC BY-NC 2.0 licenses. Sorry!",
         ),
         (
             3,
-            "None of these photos can be used because they have CC-BY 2.0 licenses. Sorry!",
+            "None of these photos can be used because they have CC BY-NC 2.0 licenses. Sorry!",
         ),
         (
             10,
-            "None of these photos can be used because they have CC-BY 2.0 licenses. Sorry!",
+            "None of these photos can be used because they have CC BY-NC 2.0 licenses. Sorry!",
         ),
     ],
 )
@@ -97,7 +97,41 @@ def test_shows_correct_message_when_all_disallowed(app, count, expected_text):
     html = render_template(
         "components/select_photos_message.html",
         photos={
-            "disallowed_licenses": {f"photo-{i}": "CC-BY 2.0" for i in range(count)}
+            "disallowed_licenses": {f"photo-{i}": "CC BY-NC 2.0" for i in range(count)}
+        },
+    )
+
+    assert get_paragraphs(html) == [
+        {"class": "message_disallowed", "text": expected_text},
+        {
+            "class": "license_explanation",
+            "text": "Wikimedia Commons only accepts CC0, CC BY, CC BY-SA, and Public Domain images.",
+        },
+    ]
+
+
+@pytest.mark.parametrize(
+    ["licenses", "expected_text"],
+    [
+        (
+            ["CC BY-NC 2.0", "CC BY-ND 2.0", "CC BY-NC 2.0"],
+            "None of these photos can be used because they have CC BY-NC 2.0 and CC BY-ND 2.0 licenses. Sorry!",
+        ),
+        (
+            ["All Rights Reserved"],
+            "This photo can’t be used because it has an All Rights Reserved license. Sorry!",
+        ),
+        (
+            ["All Rights Reserved", "CC BY-NC 2.0", "CC BY-ND 2.0"],
+            "None of these photos can be used because they have All Rights Reserved, CC BY-NC 2.0 and CC BY-ND 2.0 licenses. Sorry!",
+        ),
+    ],
+)
+def test_shows_correct_combination_of_licenses(app, licenses, expected_text):
+    html = render_template(
+        "components/select_photos_message.html",
+        photos={
+            "disallowed_licenses": {f"photo-{i}": lic for i, lic in enumerate(licenses)}
         },
     )
 
