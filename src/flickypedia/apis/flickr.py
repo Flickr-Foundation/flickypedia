@@ -320,7 +320,8 @@ class FlickrApi:
         "url_o",
         # These parameters aren't documented, but they're quite
         # useful for our purposes!
-        "url_q",
+        "url_q",  # Large Square
+        "url_l",  # Large
         "description",
     ]
 
@@ -466,6 +467,7 @@ def _parse_sizes(photo_elem):
         ("t", "Thumbnail"),
         ("s", "Small"),
         ("m", "Medium"),
+        ("l", "Large"),
         ("o", "Original"),
     ]:
         try:
