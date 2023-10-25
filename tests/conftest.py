@@ -88,6 +88,7 @@ def app():
     app.config["TESTING"] = True
 
     app.config["DUPLICATE_DATABASE_DIRECTORY"] = "tests/fixtures/duplicates"
+    app.config["PHOTOS_PER_PAGE"] = 10
 
     # This means I don't need to pass the CSRF token when posting
     # data to forms, which makes things a bit easier.
