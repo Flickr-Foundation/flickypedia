@@ -7,6 +7,7 @@ with at least two columns:
 
     CREATE TABLE flickr_photos_on_wikimedia (
         flickr_photo_id TEXT PRIMARY KEY,
+        wikimedia_page_title TEXT NOT NULL,
         wikimedia_page_id TEXT NOT NULL
     )
 
@@ -32,17 +33,14 @@ def find_duplicates(flickr_photo_ids):
     and the values are the name of the file on Wikimedia Commons.
 
         >>> find_duplicates(flickr_photo_ids=['12345678901234567890'])
-        []
+        {}
 
-        >>> find_duplicates(flickr_photo_ids=['53240661807'])
-        [("53240661807", "M138598125")]
-
-    The result is a list of tuples, to match the order of the original
-    Flickr IDs.
+        >>> find_duplicates(flickr_photo_ids=['9999819294'])
+        {"9999819294": {"id": "M29907038", "title": "File:Museu da Ciência (9999819294).jpg"}}
 
     """
     if not flickr_photo_ids:
-        return []
+        return {}
 
     duplicate_dir = current_app.config["DUPLICATE_DATABASE_DIRECTORY"]
 
@@ -59,28 +57,52 @@ def find_duplicates(flickr_photo_ids):
 
             cur.execute(
                 f"""
-                SELECT flickr_photo_id,wikimedia_page_id
+                SELECT flickr_photo_id,wikimedia_page_title,wikimedia_page_id
                 FROM flickr_photos_on_wikimedia
                 WHERE flickr_photo_id IN ({query});
                 """
             )
 
+            titles = [d[0] for d in cur.description]
+
             for row in cur.fetchall():
-                assert row[0] in flickr_photo_ids
-                result[row[0]] = row[1]
+                row = dict(zip(titles, row))
 
-    return [
-        (photo_id, result[photo_id])
-        for photo_id in flickr_photo_ids
-        if photo_id in result
-    ]
+                assert row["flickr_photo_id"] in flickr_photo_ids
+                result[row["flickr_photo_id"]] = {
+                    "title": row["wikimedia_page_title"],
+                    "id": row["wikimedia_page_id"],
+                }
+
+    return result
 
 
-def create_media_search_link(duplicates):
+def create_link_to_commons(duplicates):
     """
     Given a collection of duplicates from ``find_duplicates``, create
     a link to find those images on Wikimedia Commons.
-    """
-    page_ids = [dupe.replace("M", "") for _, dupe in duplicates]
 
-    return f"https://commons.wikimedia.org/wiki/Special:MediaSearch?type=image&search=pageid:{'|'.join(page_ids)}"
+    If it's a single file, we link directly to the file.
+    If it's multiple files, we link to a gallery in MediaSearch.
+
+    """
+    assert len(duplicates) > 0
+
+    if len(duplicates) == 1:
+        title = list(duplicates.values())[0]["title"]
+
+        return f"https://commons.wikimedia.org/wiki/{title}"
+    else:
+        # Note: it's fine to sort here, because MediaSearch doesn't
+        # seem to care about order.
+        #
+        # Compare:
+        # https://commons.wikimedia.org/wiki/Special:MediaSearch?type=image&search=pageid%3A29907038%7C29907062
+        # https://commons.wikimedia.org/wiki/Special:MediaSearch?type=image&search=pageid%3A29907062%7C29907038
+        #
+        # It'd be nice if we could preserve the order of the original
+        # Flickr collection, but there doesn't seem to be a good way
+        # to do that.
+        page_ids = sorted([dupe["id"].replace("M", "") for dupe in duplicates.values()])
+
+        return f"https://commons.wikimedia.org/wiki/Special:MediaSearch?type=image&search=pageid:{'|'.join(page_ids)}"

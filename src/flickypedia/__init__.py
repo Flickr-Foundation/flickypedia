@@ -10,7 +10,7 @@ from flickypedia.auth import (
     oauth2_callback_wikimedia,
 )
 from flickypedia.config import Config, get_directories
-from flickypedia.duplicates import create_media_search_link
+from flickypedia.duplicates import create_link_to_commons
 from flickypedia.pages import find_photos, prepare_info, select_photos
 from flickypedia.tasks import celery_init_app
 from flickypedia.utils import a_href, size_at
@@ -46,6 +46,6 @@ def create_app():
 
     app.jinja_env.filters["a_href"] = a_href
     app.jinja_env.filters["size_at"] = size_at
-    app.jinja_env.filters["media_search_link"] = create_media_search_link
+    app.jinja_env.filters["link_to_commons"] = create_link_to_commons
 
     return app
