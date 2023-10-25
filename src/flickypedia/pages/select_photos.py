@@ -172,7 +172,8 @@ def create_select_photos_form(photos):
 def select_photos():
     try:
         flickr_url = request.args["flickr_url"]
-    except KeyError:
+        parsed_url = parse_flickr_url(flickr_url)
+    except (KeyError, NotAFlickrUrl, UnrecognisedUrl):
         abort(400)
 
     # If somebody's already visited the page and clicked the
@@ -197,11 +198,6 @@ def select_photos():
     # from the Flickr API.
     else:
         try:
-            parsed_url = parse_flickr_url(flickr_url)
-        except (NotAFlickrUrl, UnrecognisedUrl):
-            abort(400)
-
-        try:
             photo_data = get_photos(parsed_url)
             cached_api_response_id = save_cached_api_response(photo_data)
         except ResourceNotFound:
@@ -224,6 +220,21 @@ def select_photos():
     # Categorise the photos, so we know if there are any duplicates
     # or photos with disallowed licenses.
     photo_data["photos"] = categorise_photos(photo_data["photos"])
+
+    # If we've got a single photo which is available, we can send the
+    # user straight to the "prepare info" screen rather than making
+    # them select a single item from the list.
+    if (
+        parsed_url["type"] == "single_photo"
+        and len(photo_data["photos"]["available"]) == 1
+    ):
+        return redirect(
+            url_for(
+                "prepare_info",
+                selected_photo_ids=parsed_url["photo_id"],
+                cached_api_response_id=cached_api_response_id,
+            )
+        )
 
     # At this point we know all the photos that should be in the list.
     # Go ahead and build the full form.

@@ -22,8 +22,28 @@ def test_can_select_single_photo_on_flickr(logged_in_client, flickr_api):
         "/select_photos?flickr_url=https://www.flickr.com/photos/199246608@N02/53253175319/"
     )
 
+    assert resp.status_code == 302
+    assert resp.headers["location"].startswith(
+        "/prepare_info?selected_photo_ids=53253175319&cached_api_response_id="
+    )
+
+
+def test_duplicate_single_photo_on_flickr_is_not_allowed(logged_in_client, flickr_api):
+    resp = logged_in_client.get(
+        "/select_photos?flickr_url=https://www.flickr.com/photos/fotnmc/9999819294/"
+    )
+
     assert resp.status_code == 200
-    assert b"by Alex Chan" in resp.data
+    assert b"Your work is done!" in resp.data
+
+
+def test_single_photo_with_bad_license_is_not_allowed(logged_in_client, flickr_api):
+    resp = logged_in_client.get(
+        "/select_photos?flickr_url=https://www.flickr.com/photos/ryanschude/50868060871/"
+    )
+
+    assert resp.status_code == 200
+    assert "This photo can’t be used" in resp.data.decode("utf8")
 
 
 def test_gets_album_on_flickr(logged_in_client, flickr_api):

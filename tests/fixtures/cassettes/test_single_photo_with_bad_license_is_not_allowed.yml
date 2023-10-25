@@ -1,0 +1,219 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - api.flickr.com
+      user-agent:
+      - python-httpx/0.25.0
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&photo_id=50868060871
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<photo
+      id=\"50868060871\" secret=\"b6f62e5451\" server=\"65535\" farm=\"66\" dateuploaded=\"1611440912\"
+      isfavorite=\"0\" license=\"0\" safety_level=\"0\" rotation=\"0\" originalsecret=\"993e2f8360\"
+      originalformat=\"jpg\" views=\"36955\" media=\"photo\">\n\t<owner nsid=\"12013284@N00\"
+      username=\"ryan schude\" realname=\"Ryan Schude\" location=\"Los Angeles, California,
+      U.S.A.\" iconserver=\"65535\" iconfarm=\"66\" path_alias=\"ryanschude\">\n\t\t<gift
+      gift_eligible=\"1\" new_flow=\"1\">\n\t\t\t<eligible_durations />\n\t\t\t<eligible_durations
+      />\n\t\t\t<eligible_durations />\n\t\t</gift>\n\t</owner>\n\t<title>Leo Carrillo
+      State Beach</title>\n\t<description>All new collaboration with Neil Kremer and
+      Cory Johnson from @kremerjohnsonagain. I\u2019ve always found great value in
+      getting outside of your own head and teaming up with others to gain some new
+      perspective. Forever indebted to the wonderful cast and crew who made this possible!\n\nWardrobe:
+      @kaitlusk\n\n2nd Camera: @patrick_ryland \n\nPost Production: @jeffwhitlockdigitalartist\n\nAssistants:
+      @thecodyhowellstory @mortyvision @an.drewsm @jeff_bynum @linneabullion @ianmatthewsdp
+      \n\nTalent: @vicgoodhart @zipporahcardozo @vijaynazareth @jtrav @qraciela @tierracastro
+      @laureen_renee @ohlaurenpeterson @fine_arts_junky @arina.savien @catherine_savien
+      @Mimiunapologetically @Salvadorcats @denisegordanofafrica</description>\n\t<visibility
+      ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" />\n\t<dates posted=\"1611440912\"
+      taken=\"2020-12-22 17:29:04\" takengranularity=\"0\" takenunknown=\"0\" lastupdate=\"1681359284\"
+      />\n\t<editability cancomment=\"0\" canaddmeta=\"0\" />\n\t<publiceditability
+      cancomment=\"1\" canaddmeta=\"0\" />\n\t<usage candownload=\"1\" canblog=\"0\"
+      canprint=\"0\" canshare=\"1\" />\n\t<comments>21</comments>\n\t<notes />\n\t<people
+      haspeople=\"0\" />\n\t<tags />\n\t<urls>\n\t\t<url type=\"photopage\">https://www.flickr.com/photos/ryanschude/50868060871/</url>\n\t</urls>\n</photo>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1092'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Wed, 25 Oct 2023 13:17:43 GMT
+      Via:
+      - 1.1 d387fec28536c5aa92926c56363afe9a.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - M1pc90VMdX3BGE6wuYK57zVZ9x3xzdHdCe217wixjUyyUpb7NGKp2g==
+      X-Amz-Cf-Pop:
+      - LHR50-P8
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.57 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Fri, 24-Nov-2023 13:17:43 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Fri, 24-Nov-2023 13:17:43 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - python-httpx/0.25.0
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&photo_id=50868060871
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<sizes
+      canblog=\"0\" canprint=\"0\" candownload=\"1\">\n\t<size label=\"Square\" width=\"75\"
+      height=\"75\" source=\"https://live.staticflickr.com/65535/50868060871_b6f62e5451_s.jpg\"
+      url=\"https://www.flickr.com/photos/ryanschude/50868060871/sizes/sq/\" media=\"photo\"
+      />\n\t<size label=\"Large Square\" width=\"150\" height=\"150\" source=\"https://live.staticflickr.com/65535/50868060871_b6f62e5451_q.jpg\"
+      url=\"https://www.flickr.com/photos/ryanschude/50868060871/sizes/q/\" media=\"photo\"
+      />\n\t<size label=\"Thumbnail\" width=\"100\" height=\"61\" source=\"https://live.staticflickr.com/65535/50868060871_b6f62e5451_t.jpg\"
+      url=\"https://www.flickr.com/photos/ryanschude/50868060871/sizes/t/\" media=\"photo\"
+      />\n\t<size label=\"Small\" width=\"240\" height=\"146\" source=\"https://live.staticflickr.com/65535/50868060871_b6f62e5451_m.jpg\"
+      url=\"https://www.flickr.com/photos/ryanschude/50868060871/sizes/s/\" media=\"photo\"
+      />\n\t<size label=\"Small 320\" width=\"320\" height=\"195\" source=\"https://live.staticflickr.com/65535/50868060871_b6f62e5451_n.jpg\"
+      url=\"https://www.flickr.com/photos/ryanschude/50868060871/sizes/n/\" media=\"photo\"
+      />\n\t<size label=\"Small 400\" width=\"400\" height=\"243\" source=\"https://live.staticflickr.com/65535/50868060871_b6f62e5451_w.jpg\"
+      url=\"https://www.flickr.com/photos/ryanschude/50868060871/sizes/w/\" media=\"photo\"
+      />\n\t<size label=\"Medium\" width=\"500\" height=\"304\" source=\"https://live.staticflickr.com/65535/50868060871_b6f62e5451.jpg\"
+      url=\"https://www.flickr.com/photos/ryanschude/50868060871/sizes/m/\" media=\"photo\"
+      />\n\t<size label=\"Medium 640\" width=\"640\" height=\"390\" source=\"https://live.staticflickr.com/65535/50868060871_b6f62e5451_z.jpg\"
+      url=\"https://www.flickr.com/photos/ryanschude/50868060871/sizes/z/\" media=\"photo\"
+      />\n\t<size label=\"Medium 800\" width=\"800\" height=\"487\" source=\"https://live.staticflickr.com/65535/50868060871_b6f62e5451_c.jpg\"
+      url=\"https://www.flickr.com/photos/ryanschude/50868060871/sizes/c/\" media=\"photo\"
+      />\n\t<size label=\"Large\" width=\"1024\" height=\"623\" source=\"https://live.staticflickr.com/65535/50868060871_b6f62e5451_b.jpg\"
+      url=\"https://www.flickr.com/photos/ryanschude/50868060871/sizes/l/\" media=\"photo\"
+      />\n\t<size label=\"Large 1600\" width=\"1600\" height=\"974\" source=\"https://live.staticflickr.com/65535/50868060871_1bd948efc5_h.jpg\"
+      url=\"https://www.flickr.com/photos/ryanschude/50868060871/sizes/h/\" media=\"photo\"
+      />\n\t<size label=\"Large 2048\" width=\"2048\" height=\"1247\" source=\"https://live.staticflickr.com/65535/50868060871_2298771b21_k.jpg\"
+      url=\"https://www.flickr.com/photos/ryanschude/50868060871/sizes/k/\" media=\"photo\"
+      />\n\t<size label=\"Original\" width=\"3000\" height=\"1826\" source=\"https://live.staticflickr.com/65535/50868060871_993e2f8360_o.jpg\"
+      url=\"https://www.flickr.com/photos/ryanschude/50868060871/sizes/o/\" media=\"photo\"
+      />\n</sizes>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '505'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Wed, 25 Oct 2023 13:17:43 GMT
+      Via:
+      - 1.1 d387fec28536c5aa92926c56363afe9a.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - DE_bREuGCsdTSt5lXUozO0-DxNVIjEtir-XPORCWmIZBWwWeTbCnjQ==
+      X-Amz-Cf-Pop:
+      - LHR50-P8
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.57 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Fri, 24-Nov-2023 13:17:43 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - python-httpx/0.25.0
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.licenses.getInfo
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<licenses>\n\t<license
+      id=\"0\" name=\"All Rights Reserved\" url=\"\" />\n\t<license id=\"4\" name=\"Attribution
+      License\" url=\"https://creativecommons.org/licenses/by/2.0/\" />\n\t<license
+      id=\"6\" name=\"Attribution-NoDerivs License\" url=\"https://creativecommons.org/licenses/by-nd/2.0/\"
+      />\n\t<license id=\"3\" name=\"Attribution-NonCommercial-NoDerivs License\"
+      url=\"https://creativecommons.org/licenses/by-nc-nd/2.0/\" />\n\t<license id=\"2\"
+      name=\"Attribution-NonCommercial License\" url=\"https://creativecommons.org/licenses/by-nc/2.0/\"
+      />\n\t<license id=\"1\" name=\"Attribution-NonCommercial-ShareAlike License\"
+      url=\"https://creativecommons.org/licenses/by-nc-sa/2.0/\" />\n\t<license id=\"5\"
+      name=\"Attribution-ShareAlike License\" url=\"https://creativecommons.org/licenses/by-sa/2.0/\"
+      />\n\t<license id=\"7\" name=\"No known copyright restrictions\" url=\"https://www.flickr.com/commons/usage/\"
+      />\n\t<license id=\"8\" name=\"United States Government Work\" url=\"http://www.usa.gov/copyright.shtml\"
+      />\n\t<license id=\"9\" name=\"Public Domain Dedication (CC0)\" url=\"https://creativecommons.org/publicdomain/zero/1.0/\"
+      />\n\t<license id=\"10\" name=\"Public Domain Mark\" url=\"https://creativecommons.org/publicdomain/mark/1.0/\"
+      />\n</licenses>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '395'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Wed, 25 Oct 2023 13:17:44 GMT
+      Via:
+      - 1.1 d387fec28536c5aa92926c56363afe9a.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - BI1RhNNsYbPIDrS-9lz3SoMesuXlzYqsKL9a6gZ9CKi4YJg7Dievpg==
+      X-Amz-Cf-Pop:
+      - LHR50-P8
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.57 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Fri, 24-Nov-2023 13:17:44 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1
