@@ -23,8 +23,10 @@
         This photo
       {% elif photos.available|length == 1 %}
         One of these photos
+      {% elif photos.available|length == 2 and all_photos_available %}
+        Both photos
       {% elif all_photos_available %}
-        All {{ photos.available|length }} of these photos
+        All {{ photos.available|length }} photos
       {% else %}
         {{ photos.available|length }} of these photos
       {% endif %}
@@ -46,6 +48,11 @@
         Some of your work is done!
       </span>
       One of these photos is
+    {% elif photos.duplicates|length == 2 and all_photos_duplicates %}
+      <span class="highlight">
+        Your work is done!
+      </span>
+      Both photos are
     {% elif all_photos_duplicates %}
       <span class="highlight">
         Your work is done!
