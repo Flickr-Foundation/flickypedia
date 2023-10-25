@@ -1,8 +1,8 @@
-import re
-
 import bs4
 from flask import render_template
 import pytest
+
+from utils import minify
 
 
 def get_paragraphs(html):
@@ -12,7 +12,7 @@ def get_paragraphs(html):
 
     for paragraph in soup.find_all("p"):
         p_class = paragraph.attrs["class"][0]
-        text = re.sub(r"\s+", " ", paragraph.getText()).strip()
+        text = minify(paragraph.getText())
 
         result.append({"class": p_class, "text": text})
 
