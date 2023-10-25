@@ -40,6 +40,7 @@ def unique_rows(csv_path):
             stored_ids.add(row["flickr_photo_id"])
             yield (
                 row["flickr_photo_id"],
+                row["wikimedia_title"],
                 row["wikimedia_page_id"],
             )
 
@@ -74,6 +75,7 @@ if __name__ == "__main__":
         """
     CREATE TABLE flickr_photos_on_wikimedia (
         flickr_photo_id TEXT PRIMARY KEY,
+        wikimedia_page_title TEXT NOT NULL,
         wikimedia_page_id TEXT NOT NULL
     );
     """
@@ -83,7 +85,7 @@ if __name__ == "__main__":
     cur.executemany(
         """
     INSERT INTO flickr_photos_on_wikimedia
-    VALUES(?, ?)
+    VALUES(?, ?, ?)
     """,
         unique_rows(csv_path),
     )
