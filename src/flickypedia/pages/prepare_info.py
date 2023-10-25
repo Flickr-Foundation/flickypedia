@@ -1,10 +1,7 @@
 import collections
-import json
-import os
 
 from flask import (
     abort,
-    current_app,
     flash,
     render_template,
     request,
