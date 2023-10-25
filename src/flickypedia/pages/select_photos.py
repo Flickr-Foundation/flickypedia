@@ -102,6 +102,10 @@ def categorise_photos(all_photos):
         if photo["id"] not in duplicates and photo["id"] not in disallowed_licenses
     ]
 
+    assert len(duplicates) + len(disallowed_licenses) + len(available_photos) == len(
+        all_photos
+    )
+
     return {
         "duplicates": duplicates,
         "disallowed_licenses": disallowed_licenses,
