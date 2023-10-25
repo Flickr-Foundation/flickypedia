@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask, render_template
+from jinja2 import StrictUndefined
 
 from flickypedia.auth import (
     db,
@@ -47,5 +48,7 @@ def create_app():
     app.jinja_env.filters["a_href"] = a_href
     app.jinja_env.filters["size_at"] = size_at
     app.jinja_env.filters["link_to_commons"] = create_link_to_commons
+
+    app.jinja_env.undefined = StrictUndefined
 
     return app
