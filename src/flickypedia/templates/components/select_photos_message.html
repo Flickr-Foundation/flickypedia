@@ -73,39 +73,41 @@
   </p>
 {% endif %}
 
-{% if photos.disallowed %}
+{% if photos.disallowed_licenses %}
   <p class="message_disallowed">
-    {% if photos.disallowed|length == 1 and all_photos_disallowed %}
+    {% if photos.disallowed_licenses|length == 1 and all_photos_disallowed_licenses %}
       <span class="highlight">
         This photo can’t be used
       </span>
-    {% elif photos.disallowed|length == 1 %}
+    {% elif photos.disallowed_licenses|length == 1 %}
       <span class="highlight">
         1 photo can’t be used
       </span>
-    {% elif all_photos_disallowed %}
+    {% elif photos.disallowed_licenses|length == 2 and all_photos_disallowed_licenses %}
+      <span class="highlight">
+        Neither of these photos can be used
+      </span>
+    {% elif all_photos_disallowed_licenses %}
       <span class="highlight">
         None of these photos can be used
       </span>
     {% else %}
       <span class="highlight">
-        {{ photos.disallowed|length }} can’t be used
+        {{ photos.disallowed_licenses|length }} photos can’t be used
       </span>
     {% endif %}
     because
-    {% if photos.disallowed|length == 1 %}
-      if
+    {% if photos.disallowed_licenses|length == 1 %}
+      it has a
     {% else %}
-      they
+      they have
     {% endif %}
-    uses
-
-    {% for lic in photos.disallowed.values()|unique %}
-      {{ lic.label }}
+    {% for lic in photos.disallowed_licenses.values()|unique %}
+      {{ lic }}
       {%- if loop.index <= loop.length - 2 %},{% endif %}
-      {% if loop.index < loop.length - 1 %}and{% endif %}
+      {% if loop.index < loop.length - 1 %}, and{% endif %}
     {% endfor %}
-    license{% if photos.disallowed.values()|unique|length > 1 %}s{% endif %}.
+    license{% if photos.disallowed_licenses|length > 1 %}s{% endif %}.
 
     Sorry!
   </p>

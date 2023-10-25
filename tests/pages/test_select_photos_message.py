@@ -70,3 +70,41 @@ def test_shows_correct_message_when_all_duplicates(app, count, expected_text):
         {"class": "message_duplicate", "text": expected_text},
         {"class": "duplicate_link", "text": "Have a look?"},
     ]
+
+
+@pytest.mark.parametrize(
+    ["count", "expected_text"],
+    [
+        (1, "This photo can’t be used because it has a CC-BY 2.0 license. Sorry!"),
+        (
+            2,
+            "Neither of these photos can be used because they have CC-BY 2.0 licenses. Sorry!",
+        ),
+        (
+            3,
+            "None of these photos can be used because they have CC-BY 2.0 licenses. Sorry!",
+        ),
+        (
+            10,
+            "None of these photos can be used because they have CC-BY 2.0 licenses. Sorry!",
+        ),
+    ],
+)
+def test_shows_correct_message_when_all_disallowed(app, count, expected_text):
+    """
+    Every photo has a CC-BY 2.0 license which isn't allowed on Commons.
+    """
+    html = render_template(
+        "components/select_photos_message.html",
+        photos={
+            "disallowed_licenses": {f"photo-{i}": "CC-BY 2.0" for i in range(count)}
+        },
+    )
+
+    assert get_paragraphs(html) == [
+        {"class": "message_disallowed", "text": expected_text},
+        {
+            "class": "license_explanation",
+            "text": "Wikimedia Commons only accepts CC0, CC BY, CC BY-SA, and Public Domain images.",
+        },
+    ]
