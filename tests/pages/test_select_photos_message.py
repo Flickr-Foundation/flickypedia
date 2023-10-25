@@ -34,7 +34,11 @@ def test_shows_correct_message_when_all_available(app, count, expected_text):
     """
     html = render_template(
         "components/select_photos_message.html",
-        photos={"available": [f"photo-{i}" for i in range(count)]},
+        photos={
+            "available": [f"photo-{i}" for i in range(count)],
+            "duplicates": {},
+            "disallowed_licenses": {},
+        },
     )
 
     assert get_paragraphs(html) == [
@@ -63,7 +67,14 @@ def test_shows_correct_message_when_all_duplicates(app, count, expected_text):
     """
     html = render_template(
         "components/select_photos_message.html",
-        photos={"duplicates": {f"photo-{i}": "dupe" for i in range(count)}},
+        photos={
+            "duplicates": {
+                f"photo-{i}": {"id": "M1234", "title": "File:duplicate"}
+                for i in range(count)
+            },
+            "available": [],
+            "disallowed_licenses": {},
+        },
     )
 
     assert get_paragraphs(html) == [
@@ -97,7 +108,9 @@ def test_shows_correct_message_when_all_disallowed(app, count, expected_text):
     html = render_template(
         "components/select_photos_message.html",
         photos={
-            "disallowed_licenses": {f"photo-{i}": "CC BY-NC 2.0" for i in range(count)}
+            "disallowed_licenses": {f"photo-{i}": "CC BY-NC 2.0" for i in range(count)},
+            "available": [],
+            "duplicates": {},
         },
     )
 
@@ -131,7 +144,11 @@ def test_shows_correct_combination_of_licenses(app, licenses, expected_text):
     html = render_template(
         "components/select_photos_message.html",
         photos={
-            "disallowed_licenses": {f"photo-{i}": lic for i, lic in enumerate(licenses)}
+            "disallowed_licenses": {
+                f"photo-{i}": lic for i, lic in enumerate(licenses)
+            },
+            "available": [],
+            "duplicates": {},
         },
     )
 
@@ -209,7 +226,10 @@ def test_shows_correct_message(
         "components/select_photos_message.html",
         photos={
             "available": [f"photo-{i}" for i in range(available)],
-            "duplicates": {f"photo-{i}": f"M{i}" for i in range(duplicates)},
+            "duplicates": {
+                f"photo-{i}": {"id": f"M{i}", "title": "dupe"}
+                for i in range(duplicates)
+            },
             "disallowed_licenses": {
                 f"photo-{i}": "CC BY-NC 2.0" for i in range(disallowed_licenses)
             },
