@@ -14,7 +14,7 @@
     all_photos_disallowed_licenses =
     photos.disallowed_licenses
     and not photos.duplicates
-    and not photos.allowed %}
+    and not photos.available %}
 
 {% if photos.available %}
   <p class="message_available">
@@ -47,7 +47,7 @@
       <span class="highlight">
         Some of your work is done!
       </span>
-      One of these photos is
+      One photo is
     {% elif photos.duplicates|length == 2 and all_photos_duplicates %}
       <span class="highlight">
         Your work is done!
@@ -81,7 +81,7 @@
       </span>
     {% elif photos.disallowed_licenses|length == 1 %}
       <span class="highlight">
-        1 photo can’t be used
+        One photo can’t be used
       </span>
     {% elif photos.disallowed_licenses|length == 2 and all_photos_disallowed_licenses %}
       <span class="highlight">

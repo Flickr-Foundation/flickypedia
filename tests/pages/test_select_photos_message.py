@@ -142,3 +142,110 @@ def test_shows_correct_combination_of_licenses(app, licenses, expected_text):
             "text": "Wikimedia Commons only accepts CC0, CC BY, CC BY-SA, and Public Domain images.",
         },
     ]
+
+
+@pytest.mark.parametrize(
+    ["available", "expected_available_text"],
+    [
+        (0, None),
+        (1, "One of these photos can be uploaded to Wikimedia Commons. Yay!"),
+        (2, "2 of these photos can be uploaded to Wikimedia Commons. Yay!"),
+        (3, "3 of these photos can be uploaded to Wikimedia Commons. Yay!"),
+        (10, "10 of these photos can be uploaded to Wikimedia Commons. Yay!"),
+    ],
+)
+@pytest.mark.parametrize(
+    ["duplicates", "expected_duplicate_text"],
+    [
+        (0, None),
+        (
+            1,
+            "Some of your work is done! One photo is already in Wikimedia Commons. W00t!",
+        ),
+        (
+            2,
+            "Some of your work is done! 2 photos are already in Wikimedia Commons. W00t!",
+        ),
+        (
+            3,
+            "Some of your work is done! 3 photos are already in Wikimedia Commons. W00t!",
+        ),
+        (
+            10,
+            "Some of your work is done! 10 photos are already in Wikimedia Commons. W00t!",
+        ),
+    ],
+)
+@pytest.mark.parametrize(
+    ["disallowed_licenses", "expected_disallowed_licenses_text"],
+    [
+        (0, None),
+        (1, "One photo can’t be used because it has a CC BY-NC 2.0 license. Sorry!"),
+        (2, "2 photos can’t be used because they have CC BY-NC 2.0 licenses. Sorry!"),
+        (3, "3 photos can’t be used because they have CC BY-NC 2.0 licenses. Sorry!"),
+        (10, "10 photos can’t be used because they have CC BY-NC 2.0 licenses. Sorry!"),
+    ],
+)
+def test_shows_correct_message(
+    app,
+    available,
+    duplicates,
+    disallowed_licenses,
+    expected_available_text,
+    expected_duplicate_text,
+    expected_disallowed_licenses_text,
+):
+    # This test is explicitly for cases where we have a mixed collection
+    # of photos; any time the parameters give us a single type of photo,
+    # we want to skip.
+    if (
+        (available == 0 and duplicates == 0)
+        or (duplicates == 0 and disallowed_licenses == 0)
+        or (disallowed_licenses == 0 and available == 0)
+    ):
+        pytest.skip("invalid parameter combination")
+
+    html = render_template(
+        "components/select_photos_message.html",
+        photos={
+            "available": [f"photo-{i}" for i in range(available)],
+            "duplicates": {f"photo-{i}": f"M{i}" for i in range(duplicates)},
+            "disallowed_licenses": {
+                f"photo-{i}": "CC BY-NC 2.0" for i in range(disallowed_licenses)
+            },
+        },
+    )
+
+    expected = []
+
+    if available > 0:
+        expected.append(
+            {
+                "class": "message_available",
+                "text": expected_available_text,
+            }
+        )
+
+    if duplicates > 0:
+        expected.extend(
+            [
+                {"class": "message_duplicate", "text": expected_duplicate_text},
+                {"class": "duplicate_link", "text": "Have a look?"},
+            ]
+        )
+
+    if disallowed_licenses > 0:
+        expected.extend(
+            [
+                {
+                    "class": "message_disallowed",
+                    "text": expected_disallowed_licenses_text,
+                },
+                {
+                    "class": "license_explanation",
+                    "text": "Wikimedia Commons only accepts CC0, CC BY, CC BY-SA, and Public Domain images.",
+                },
+            ]
+        )
+
+    assert get_paragraphs(html) == expected
