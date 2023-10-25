@@ -25,13 +25,13 @@ interactions:
       Content-Type:
       - text/xml; charset=utf-8
       Date:
-      - Fri, 20 Oct 2023 12:11:27 GMT
+      - Wed, 25 Oct 2023 14:04:00 GMT
       Via:
-      - 1.1 65465b26d806dce678b2cef9e0066d06.cloudfront.net (CloudFront)
+      - 1.1 597c788e23cf83427002ab097f30f484.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - aPOo98htROeFnLiagrkeBRAwKgF18hHGfARqJdMHSVKEDnywQuOpFQ==
+      - K0lAP8H8fqZEz57N5IyMcRgXURX5133ULw1KeTJ4_9hTUfHKSfm4WQ==
       X-Amz-Cf-Pop:
-      - LHR61-P1
+      - LHR50-P8
       X-Cache:
       - Miss from cloudfront
       content-encoding:
@@ -40,9 +40,9 @@ interactions:
       - Apache/2.4.57 (Ubuntu)
       set-cookie:
       - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
-        expires=Sun, 19-Nov-2023 12:11:27 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+        expires=Fri, 24-Nov-2023 14:03:59 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
-        expires=Sun, 19-Nov-2023 12:11:27 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+        expires=Fri, 24-Nov-2023 14:03:59 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       vary:
       - Accept-Encoding
       x-frame-options:
@@ -98,13 +98,13 @@ interactions:
       Content-Type:
       - text/xml; charset=utf-8
       Date:
-      - Fri, 20 Oct 2023 12:11:27 GMT
+      - Wed, 25 Oct 2023 14:04:00 GMT
       Via:
-      - 1.1 65465b26d806dce678b2cef9e0066d06.cloudfront.net (CloudFront)
+      - 1.1 597c788e23cf83427002ab097f30f484.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - u42_piVr68TULLeH_l809uaIBAFKHHowjbA9MfvvKozIaBAFlXBHWA==
+      - KQuMbE2AhOEZ6zXVf3ko4EWQmqYCjVm97_Z6V4iLW4wYlgMQF_gh2g==
       X-Amz-Cf-Pop:
-      - LHR61-P1
+      - LHR50-P8
       X-Cache:
       - Miss from cloudfront
       content-encoding:
@@ -113,7 +113,7 @@ interactions:
       - Apache/2.4.57 (Ubuntu)
       set-cookie:
       - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
-        expires=Sun, 19-Nov-2023 12:11:27 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+        expires=Fri, 24-Nov-2023 14:04:00 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       vary:
       - Accept-Encoding
       x-frame-options:
@@ -260,13 +260,13 @@ interactions:
       Content-Type:
       - text/xml; charset=utf-8
       Date:
-      - Fri, 20 Oct 2023 12:11:27 GMT
+      - Wed, 25 Oct 2023 14:04:00 GMT
       Via:
-      - 1.1 65465b26d806dce678b2cef9e0066d06.cloudfront.net (CloudFront)
+      - 1.1 597c788e23cf83427002ab097f30f484.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - aMOjtcqrYgh1BqypJ8yubcm1AIQDinluD33uvQnIYjPTUX2ffXsW7Q==
+      - J0UUeR81VrC6TMViBXYLHvphYbz7iqRvet0Fh0E2NobHijVRibSMXQ==
       X-Amz-Cf-Pop:
-      - LHR61-P1
+      - LHR50-P8
       X-Cache:
       - Miss from cloudfront
       content-encoding:
@@ -275,7 +275,7 @@ interactions:
       - Apache/2.4.57 (Ubuntu)
       set-cookie:
       - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
-        expires=Sun, 19-Nov-2023 12:11:27 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+        expires=Fri, 24-Nov-2023 14:04:00 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       vary:
       - Accept-Encoding
       x-frame-options:
@@ -325,13 +325,13 @@ interactions:
       Content-Type:
       - text/xml; charset=utf-8
       Date:
-      - Fri, 20 Oct 2023 12:11:27 GMT
+      - Wed, 25 Oct 2023 14:04:00 GMT
       Via:
-      - 1.1 65465b26d806dce678b2cef9e0066d06.cloudfront.net (CloudFront)
+      - 1.1 597c788e23cf83427002ab097f30f484.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - XMzkRd3R3B9NEn2vvtrNb1PAHraoF4AA8uP-DaDv-VvGEPeKmSdWrg==
+      - 8m9u2GVpzuI9GytdHvOX2EmV5LNMMq0ZyLGfd1d2iF8KN5Qv11ZhPA==
       X-Amz-Cf-Pop:
-      - LHR61-P1
+      - LHR50-P8
       X-Cache:
       - Miss from cloudfront
       content-encoding:
@@ -340,7 +340,66 @@ interactions:
       - Apache/2.4.57 (Ubuntu)
       set-cookie:
       - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
-        expires=Sun, 19-Nov-2023 12:11:27 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+        expires=Fri, 24-Nov-2023 14:04:00 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - python-httpx/0.25.0
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photosets.getInfo&photoset_id=72157664284840282&user_id=31575009%40N05
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<photoset
+      id=\"72157664284840282\" owner=\"31575009@N05\" username=\"The National Archives
+      UK\" primary=\"24284955104\" secret=\"a636db6774\" server=\"1462\" farm=\"2\"
+      count_views=\"4073\" count_comments=\"0\" count_photos=\"21\" count_videos=\"0\"
+      can_comment=\"0\" date_create=\"1455012442\" date_update=\"1455538908\" photos=\"21\"
+      visibility_can_see_set=\"1\" needs_interstitial=\"0\">\n\t<title>The Mangrove
+      Nine</title>\n\t<description>The trial of the Mangrove Nine in 1970 represents
+      a high point of the Black Panther movement in the UK and stands as a watershed
+      moment for black activism.</description>\n</photoset>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '419'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Wed, 25 Oct 2023 14:04:00 GMT
+      Via:
+      - 1.1 597c788e23cf83427002ab097f30f484.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - WfQtZ36sIxVKMp4wYQ-ZWJixuWejtDrFnqjqhcH7DA51huTZDpqP3w==
+      X-Amz-Cf-Pop:
+      - LHR50-P8
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.57 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Fri, 24-Nov-2023 14:04:00 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       vary:
       - Accept-Encoding
       x-frame-options:

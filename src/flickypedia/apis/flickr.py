@@ -378,7 +378,18 @@ class FlickrApi:
             p["owner"] = user
             p["url"] = user["photos_url"] + p.pop("_elem").attrib["id"] + "/"
 
-        return parsed_resp
+        # https://www.flickr.com/services/api/flickr.photosets.getInfo.html
+        album_resp = self.call(
+            "flickr.photosets.getInfo", user_id=user["id"], photoset_id=album_id
+        )
+        album_title = album_resp.find(".//title").text
+
+        return {
+            "photos": parsed_resp["photos"],
+            "page_count": parsed_resp["page_count"],
+            "total_photos": parsed_resp["total_photos"],
+            "album": {"owner": user, "title": album_title},
+        }
 
 
 class FlickrApiException(Exception):

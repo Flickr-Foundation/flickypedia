@@ -25,13 +25,13 @@ interactions:
       Content-Type:
       - text/xml; charset=utf-8
       Date:
-      - Fri, 20 Oct 2023 12:08:05 GMT
+      - Wed, 25 Oct 2023 14:03:14 GMT
       Via:
-      - 1.1 7146be3ff59752909814bfd78c2fbf38.cloudfront.net (CloudFront)
+      - 1.1 30ef06f785f68fc7da8b2baef8948156.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - noMlKFfXtWZND5P8AzWVAZ8rrlLs7TG60sipS0RJ0jWZuUUE5mkT0g==
+      - FsK-AiIMJ6Ks4UMdt76wyZpdXZ9vs46GslLr8ZJbSPw80xUw9wJjQw==
       X-Amz-Cf-Pop:
-      - LHR61-P1
+      - LHR50-P8
       X-Cache:
       - Miss from cloudfront
       content-encoding:
@@ -40,9 +40,9 @@ interactions:
       - Apache/2.4.57 (Ubuntu)
       set-cookie:
       - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
-        expires=Sun, 19-Nov-2023 12:08:05 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+        expires=Fri, 24-Nov-2023 14:03:14 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
-        expires=Sun, 19-Nov-2023 12:08:05 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+        expires=Fri, 24-Nov-2023 14:03:14 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       vary:
       - Accept-Encoding
       x-frame-options:
@@ -84,13 +84,13 @@ interactions:
       Content-Type:
       - text/xml; charset=utf-8
       Date:
-      - Fri, 20 Oct 2023 12:08:05 GMT
+      - Wed, 25 Oct 2023 14:03:15 GMT
       Via:
-      - 1.1 7146be3ff59752909814bfd78c2fbf38.cloudfront.net (CloudFront)
+      - 1.1 30ef06f785f68fc7da8b2baef8948156.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - BSsXPEq9Ow5l2RYJ_YBPFrB7v7Mkx4adbi26A9i4yP_oS74XH2-EyQ==
+      - HU8ypTpb8LHDvgPm2ve-Q5dwPb6yG-MKMVkacl-i15HcTxBRIu7KxQ==
       X-Amz-Cf-Pop:
-      - LHR61-P1
+      - LHR50-P8
       X-Cache:
       - Miss from cloudfront
       content-encoding:
@@ -99,7 +99,7 @@ interactions:
       - Apache/2.4.57 (Ubuntu)
       set-cookie:
       - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
-        expires=Sun, 19-Nov-2023 12:08:05 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+        expires=Fri, 24-Nov-2023 14:03:15 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       vary:
       - Accept-Encoding
       x-frame-options:
@@ -238,13 +238,13 @@ interactions:
       Content-Type:
       - text/xml; charset=utf-8
       Date:
-      - Fri, 20 Oct 2023 12:08:06 GMT
+      - Wed, 25 Oct 2023 14:03:15 GMT
       Via:
-      - 1.1 7146be3ff59752909814bfd78c2fbf38.cloudfront.net (CloudFront)
+      - 1.1 30ef06f785f68fc7da8b2baef8948156.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - 6Wj8btAMaBD1eixXxaAJuEw9rPf33cs2hC62hyFgF6X9oYR96lguZw==
+      - qfTjWM3QnUH3m38b0fC0n_qS-FkDc7dAM7lwH-BvE5RdlHAP4EPrIg==
       X-Amz-Cf-Pop:
-      - LHR61-P1
+      - LHR50-P8
       X-Cache:
       - Miss from cloudfront
       content-encoding:
@@ -253,7 +253,7 @@ interactions:
       - Apache/2.4.57 (Ubuntu)
       set-cookie:
       - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
-        expires=Sun, 19-Nov-2023 12:08:06 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+        expires=Fri, 24-Nov-2023 14:03:15 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       vary:
       - Accept-Encoding
       x-frame-options:
@@ -303,13 +303,13 @@ interactions:
       Content-Type:
       - text/xml; charset=utf-8
       Date:
-      - Fri, 20 Oct 2023 12:08:06 GMT
+      - Wed, 25 Oct 2023 14:03:15 GMT
       Via:
-      - 1.1 7146be3ff59752909814bfd78c2fbf38.cloudfront.net (CloudFront)
+      - 1.1 30ef06f785f68fc7da8b2baef8948156.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - OsdiC8wzYw7qivgoQmJoQ86N3YVz1sFERICMT8SXKu1V9aombmTE4Q==
+      - Q5gcVEzxBK7hEwrVmHQX4vtvBAeDK2extHMb8Za010SakUy5ngKQ9Q==
       X-Amz-Cf-Pop:
-      - LHR61-P1
+      - LHR50-P8
       X-Cache:
       - Miss from cloudfront
       content-encoding:
@@ -318,7 +318,64 @@ interactions:
       - Apache/2.4.57 (Ubuntu)
       set-cookie:
       - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
-        expires=Sun, 19-Nov-2023 12:08:06 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+        expires=Fri, 24-Nov-2023 14:03:15 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - python-httpx/0.25.0
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photosets.getInfo&photoset_id=72157677773252346&user_id=132051449%40N06
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<photoset
+      id=\"72157677773252346\" owner=\"132051449@N06\" username=\"Jeong Vin, Yoon\"
+      primary=\"22905488190\" secret=\"1d41a842cb\" server=\"5629\" farm=\"6\" count_views=\"18\"
+      count_comments=\"0\" count_photos=\"84\" count_videos=\"0\" can_comment=\"0\"
+      date_create=\"1481807449\" date_update=\"1521352415\" photos=\"84\" visibility_can_see_set=\"1\"
+      needs_interstitial=\"0\">\n\t<title>\uD3EC\uD2B8\uD3F4\uB9AC\uC624 \uC81C\uC791\uC6A9</title>\n\t<description
+      />\n</photoset>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '364'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Wed, 25 Oct 2023 14:03:16 GMT
+      Via:
+      - 1.1 30ef06f785f68fc7da8b2baef8948156.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - RSTgnD8J3buVmgMNstyZEdSNqHEcINHj3c2pCN83I_1JuzuGrl-frw==
+      X-Amz-Cf-Pop:
+      - LHR50-P8
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.57 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Fri, 24-Nov-2023 14:03:16 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       vary:
       - Accept-Encoding
       x-frame-options:

@@ -50,6 +50,7 @@
 
     #select_photos li .info {
       display: grid;
+      grid-template-columns: auto 30px;
       padding-left: 10px;
       padding-bottom: 8px;
     }
@@ -62,6 +63,10 @@
     #select_photos li label .license {
       grid-row: 2 / 2;
       grid-column: 1 / 2;
+    }
+
+    #select_photos .photoslist-album li label .license {
+      grid-row: 1 / 2;
     }
 
     #select_photos li label input[type="checkbox"] {
@@ -85,6 +90,8 @@
     }
   </style>
 
+  {% include "components/select_photos_description.html" %}
+
   {% include "components/select_photos_message.html" %}
 
   {% if photo_data.photos.available %}
@@ -102,7 +109,7 @@
 
       {{ select_photos_form.cached_api_response_id }}
 
-      <ul>
+      <ul class="photoslist-{{ parsed_url.type }}">
         {% for field in select_photos_form %}
           {% if field.id.startswith('photo_') %}
             <li id="li-{{ field.id }}">
@@ -111,7 +118,9 @@
                 {% set thumbnail = photo.sizes|size_at(desired_size='Medium') %}
                 <img src="{{ thumbnail.source }}">
                 <div class="info">
+                  {% if parsed_url.type != 'album' %}
                   <span class="owner">by {{ photo.owner.realname or photo.owner.username }}</span>
+                  {% endif %}
                   <span class="license">{{ photo.license.label }}</span>
                   {{ field(onclick="highlightSelected()") }}
                 </div>
