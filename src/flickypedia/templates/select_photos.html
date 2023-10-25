@@ -83,12 +83,6 @@
   
   {% include "components/select_photos_message.html" %}
 
-  {% if photos.available %}
-    <p class="available">
-      {{ photos.available }} photo{% if photos.available %}s{% endif %} can be uploaded to Wikimedia Commons.
-    </p>
-  {% endif %}
-
   {% if photo_data.photos.available %}  
     <h3>
       Select photos to upload:

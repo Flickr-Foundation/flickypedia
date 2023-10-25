@@ -1,3 +1,26 @@
+<style>
+  .highlight {
+    font-weight: bold;
+    color: white;
+    padding-left: 4px;
+    margin-left: -4px;
+    margin-right: 5px;
+  }
+
+  .message_available .highlight {
+    background-color: green;
+    padding-right: 4px;
+  }
+
+  .message_duplicate .highlight {
+    background-color: deeppink;
+  }
+
+  .message_disallowed .highlight {
+    background-color: darkred;
+  }
+</style>
+
 {% set
     all_photos_available =
     photos.available
@@ -67,7 +90,7 @@
     already in Wikimedia Commons.
     W00t!
   </p>
-  
+
   <p class="duplicate_link">
     <a href="{{ photos.duplicates|media_search_link }}">Have a look</a>?
   </p>
@@ -116,7 +139,7 @@
 
     Sorry!
   </p>
-  
+
   <p class="license_explanation">
     Wikimedia Commons only accepts CC0, CC BY, CC BY-SA, and Public Domain images.
   </p>
