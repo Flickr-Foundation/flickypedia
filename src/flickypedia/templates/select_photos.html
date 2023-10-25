@@ -30,6 +30,10 @@
 
     #select_photos li {
       display: inline-block;
+
+      /* This prevents an image getting too big if it's the only one
+         available to select. */
+      max-width: 250px;
     }
 
     #select_photos li.checked {
@@ -80,19 +84,19 @@
       font-weight: bold;
     }
   </style>
-  
+
   {% include "components/select_photos_message.html" %}
 
-  {% if photo_data.photos.available %}  
+  {% if photo_data.photos.available %}
     <h3>
       Select photos to upload:
     </h3>
-    
+
     <p>
       And please don’t forget, images for Wikimedia Commons must be informative, educationl, or instructional.
       That means <strong>no selfies or other personal photos like that</strong>.
     </p>
-  
+
     <form id="select_photos" action="{{ url_for('select_photos', flickr_url=flickr_url) }}" method="post">
       {{ select_photos_form.hidden_tag() }}
 
