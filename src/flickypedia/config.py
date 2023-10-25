@@ -63,6 +63,9 @@ class Config(object):
     # The IDs of licenses that we can upload to Flickypedia.
     ALLOWED_LICENSES = {"cc-by-2.0", "cc-by-sa-2.0", "usgov", "cc0-1.0", "pdm"}
 
+    # The number of photos to show on a single page
+    PHOTOS_PER_PAGE = 100
+
 
 def get_directories(config):
     """
