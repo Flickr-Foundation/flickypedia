@@ -8,10 +8,10 @@ from wtforms.validators import DataRequired
 
 @login_required
 def find_photos():
-    form = FlickrPhotoURLForm()
+    photo_url_form = FlickrPhotoURLForm()
 
-    if form.validate_on_submit():
-        url = form.flickr_url.data
+    if photo_url_form.validate_on_submit():
+        url = photo_url_form.flickr_url.data
 
         # Try to parse this as a Flickr URL.  If parsing fails for
         # some reason, return the user to the page.
@@ -24,7 +24,7 @@ def find_photos():
             flash("That URL doesn’t live on Flickr.com", category="flickr_url")
             return render_template(
                 "find_photos.html",
-                form=form,
+                photo_url_form=photo_url_form,
                 current_step="find_photos",
                 flickr_url=url,
             )
@@ -32,7 +32,7 @@ def find_photos():
             flash("There are no photos to show at that URL", category="flickr_url")
             return render_template(
                 "find_photos.html",
-                form=form,
+                photo_url_form=photo_url_form,
                 current_step="find_photos",
                 flickr_url=url,
             )
@@ -48,7 +48,10 @@ def find_photos():
     flickr_url = session.pop("flickr_url", "")
 
     return render_template(
-        "find_photos.html", form=form, flickr_url=flickr_url, current_step="find_photos"
+        "find_photos.html",
+        photo_url_form=photo_url_form,
+        flickr_url=flickr_url,
+        current_step="find_photos",
     )
 
 
