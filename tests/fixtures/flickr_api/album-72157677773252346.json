@@ -672,5 +672,15 @@
       },
       "url": "https://www.flickr.com/photos/spike_yun/20428374183/"
     }
-  ]
+  ],
+  "album": {
+    "owner": {
+      "id": "132051449@N06",
+      "photos_url": "https://www.flickr.com/photos/spike_yun/",
+      "profile_url": "https://www.flickr.com/people/spike_yun/",
+      "realname": "Jeong Vin Yoon",
+      "username": "Jeong Vin, Yoon"
+    },
+    "title": "포트폴리오 제작용"
+  }
 }

@@ -50,7 +50,8 @@
 
     #select_photos li .info {
       display: grid;
-      padding-left: 10px;
+      grid-template-columns: auto 30px;
+      padding-left: 6px;
       padding-bottom: 8px;
     }
 
@@ -64,10 +65,17 @@
       grid-column: 1 / 2;
     }
 
+    /* If we're in an album, we don't bother showing the owner name on
+       the photos, so we can move this up a line. */
+    #select_photos .photoslist-album li label .license {
+      grid-row: 1 / 2;
+    }
+
     #select_photos li label input[type="checkbox"] {
       grid-row: 1 / 2;
       grid-column: 2 / 2;
       margin-left: 8px;
+      margin-top: 5px;
       margin-right: 8px;
     }
 
@@ -85,15 +93,17 @@
     }
   </style>
 
+  {% include "components/select_photos_description.html" %}
+
   {% include "components/select_photos_message.html" %}
 
   {% if photo_data.photos.available %}
-    <h3>
-      Select photos to upload:
-    </h3>
-
     <p>
-      And please don’t forget, images for Wikimedia Commons must be informative, educationl, or instructional.
+      <strong>
+        Select photos to upload:
+      </strong>
+      <br/>
+      And please don’t forget, images for Wikimedia Commons must be informative, educational, or instructional.
       That means <strong>no selfies or other personal photos like that</strong>.
     </p>
 
@@ -102,7 +112,7 @@
 
       {{ select_photos_form.cached_api_response_id }}
 
-      <ul>
+      <ul class="photoslist-{{ parsed_url.type }}">
         {% for field in select_photos_form %}
           {% if field.id.startswith('photo_') %}
             <li id="li-{{ field.id }}">
@@ -111,7 +121,15 @@
                 {% set thumbnail = photo.sizes|size_at(desired_size='Medium') %}
                 <img src="{{ thumbnail.source }}">
                 <div class="info">
+
+                  {#
+                    Every photo in an album belongs to the album owner, so
+                    we don’t need to repeat their name on every photo.
+                  #}
+                  {% if parsed_url.type != 'album' %}
                   <span class="owner">by {{ photo.owner.realname or photo.owner.username }}</span>
+                  {% endif %}
+
                   <span class="license">{{ photo.license.label }}</span>
                   {{ field(onclick="highlightSelected()") }}
                 </div>

@@ -1,0 +1,10 @@
+{% if parsed_url.type == 'album' %}
+  <h2>
+    {% if photo_data.photos.available -%}
+      You’re looking at
+    {%- else -%}
+      You looked up
+    {%- endif %}
+    {{ photo_data.album.owner.realname or photo_data.album.owner.username }}’s album called “{{ photo_data.album.title }}”.
+  </h2>
+{% endif %}

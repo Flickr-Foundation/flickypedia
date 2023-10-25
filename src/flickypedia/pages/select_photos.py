@@ -267,6 +267,7 @@ def select_photos():
     return render_template(
         "select_photos.html",
         flickr_url=flickr_url,
+        parsed_url=parsed_url,
         photo_url_form=FlickrPhotoURLForm(),
         select_photos_form=select_photos_form,
         photo_data=photo_data,

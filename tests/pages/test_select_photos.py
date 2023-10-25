@@ -2,6 +2,8 @@ import json
 
 import pytest
 
+from utils import minify
+
 
 @pytest.mark.parametrize(
     "url",
@@ -52,7 +54,11 @@ def test_gets_album_on_flickr(logged_in_client, flickr_api):
     )
 
     assert resp.status_code == 200
-    assert b"by Al Jazeera English" in resp.data
+    assert (
+        "You’re looking at Al Jazeera English’s album called “Faces from the Libyan front”."
+        in minify(resp.data.decode("utf8"))
+    )
+    assert b"by Al Jazeera English" not in resp.data
 
 
 @pytest.mark.parametrize(
