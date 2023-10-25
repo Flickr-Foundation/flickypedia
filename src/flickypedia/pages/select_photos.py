@@ -47,6 +47,7 @@ from wtforms import BooleanField, HiddenField, SubmitField
 from wtforms.validators import DataRequired
 
 from flickypedia.apis.flickr import FlickrApi, ResourceNotFound
+from flickypedia.duplicates import find_duplicates
 from flickypedia.utils import DatetimeDecoder, DatetimeEncoder
 from .find_photos import FlickrPhotoURLForm
 
@@ -69,6 +70,47 @@ def get_photos(parsed_url):
         )
     else:
         raise TypeError
+
+
+def categorise_photos(all_photos):
+    """
+    Given a list of photos from the Flickr API, split them into
+    three lists:
+
+    -   okay to choose ("available")
+    -   already on Wikimedia Commons ("duplicates")
+    -   using a license not allowed on WMC ("disallowed_license")
+
+    """
+    duplicates = find_duplicates(flickr_photo_ids=[photo["id"] for photo in all_photos])
+
+    disallowed_licenses = {
+        photo["id"]: photo["license"]["label"]
+        for photo in all_photos
+        # Note: it's possible that a photo with a disallowed license
+        # may already be on Wikimedia Commons.
+        #
+        # We want to avoid putting it in this list so we don't
+        # double-count photos.
+        if photo["license"]["id"] not in current_app.config["ALLOWED_LICENSES"]
+        and photo["id"] not in duplicates
+    }
+
+    available_photos = [
+        photo
+        for photo in all_photos
+        if photo["id"] not in duplicates and photo["id"] not in disallowed_licenses
+    ]
+
+    assert len(duplicates) + len(disallowed_licenses) + len(available_photos) == len(
+        all_photos
+    )
+
+    return {
+        "duplicates": duplicates,
+        "disallowed_licenses": disallowed_licenses,
+        "available": available_photos,
+    }
 
 
 class BaseSelectForm(FlaskForm):
@@ -148,6 +190,8 @@ def select_photos():
             response_id=base_form.cached_api_response_id.data
         )
 
+        cached_api_response_id = base_form.cached_api_response_id.data
+
     # If this is the first time somebody is visiting the page or
     # we don't have a cached API response, then load the photos
     # from the Flickr API.
@@ -159,6 +203,7 @@ def select_photos():
 
         try:
             photo_data = get_photos(parsed_url)
+            cached_api_response_id = save_cached_api_response(photo_data)
         except ResourceNotFound:
             label = {"single_photo": "photo", "album": "album"}[parsed_url["type"]]
 
@@ -176,14 +221,15 @@ def select_photos():
             session["flickr_url"] = flickr_url
             return redirect(url_for("find_photos"))
 
+    # Categorise the photos, so we know if there are any duplicates
+    # or photos with disallowed licenses.
+    photo_data["photos"] = categorise_photos(photo_data["photos"])
+
     # At this point we know all the photos that should be in the list.
     # Go ahead and build the full form.
-    select_photos_form = create_select_photos_form(photos=photo_data["photos"])
-
-    if base_form.validate_on_submit():
-        cached_api_response_id = base_form.cached_api_response_id.data
-    else:
-        cached_api_response_id = save_cached_api_response(photo_data)
+    select_photos_form = create_select_photos_form(
+        photos=photo_data["photos"]["available"]
+    )
 
     select_photos_form.cached_api_response_id.data = cached_api_response_id
 
@@ -214,6 +260,7 @@ def select_photos():
         select_photos_form=select_photos_form,
         photo_data=photo_data,
         current_step="find_photos",
+        photos=photo_data["photos"],
     )
 
 

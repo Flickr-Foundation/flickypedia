@@ -1,6 +1,7 @@
 -r requirements.txt
 
 black
+bs4
 coverage
 flake8
 pytest

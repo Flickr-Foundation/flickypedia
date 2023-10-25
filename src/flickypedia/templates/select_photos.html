@@ -67,65 +67,87 @@
       margin-right: 8px;
     }
 
+    .available {
+      background: darkgreen;
+    }
+
+    .available {
+      color: white;
+      font-weight: bold;
+    }
+
     #selectedPhotosSummary .count {
       font-weight: bold;
     }
   </style>
+  
+  {% include "components/select_photos_message.html" %}
 
-  <form id="select_photos" action="{{ url_for('select_photos', flickr_url=flickr_url) }}" method="post">
-    {{ select_photos_form.hidden_tag() }}
+  {% if photo_data.photos.available %}  
+    <h3>
+      Select photos to upload:
+    </h3>
+    
+    <p>
+      And please don’t forget, images for Wikimedia Commons must be informative, educationl, or instructional.
+      That means <strong>no selfies or other personal photos like that</strong>.
+    </p>
+  
+    <form id="select_photos" action="{{ url_for('select_photos', flickr_url=flickr_url) }}" method="post">
+      {{ select_photos_form.hidden_tag() }}
 
-    {{ select_photos_form.cached_api_response_id }}
+      {{ select_photos_form.cached_api_response_id }}
 
-    <ul>
-      {% for field in select_photos_form %}
-        {% if field.id.startswith('photo_') %}
-          <li id="li-{{ field.id }}">
-            <label for="{{ field.id }}">
-              {% set photo = field.label.text %}
-              {% set thumbnail = photo.sizes|size_at(desired_size='Medium') %}
-              <img src="{{ thumbnail.source }}">
-              <div class="info">
-                <span class="owner">by {{ photo.owner.realname or photo.owner.username }}</span>
-                <span class="license">{{ photo.license.label }}</span>
-                {{ field(onclick="highlightSelected()") }}
-              </div>
-            </label>
-          </li>
-        {% endif %}
-      {% endfor %}
-    </ul>
+      <ul>
+        {% for field in select_photos_form %}
+          {% if field.id.startswith('photo_') %}
+            <li id="li-{{ field.id }}">
+              <label for="{{ field.id }}">
+                {% set photo = field.label.text %}
+                {% set thumbnail = photo.sizes|size_at(desired_size='Medium') %}
+                <img src="{{ thumbnail.source }}">
+                <div class="info">
+                  <span class="owner">by {{ photo.owner.realname or photo.owner.username }}</span>
+                  <span class="license">{{ photo.license.label }}</span>
+                  {{ field(onclick="highlightSelected()") }}
+                </div>
+              </label>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
 
-    <p id="selectedPhotosSummary"></p>
+      <p id="selectedPhotosSummary"></p>
 
-    <p>{{ select_photos_form.submit() }}</p>
-  </form>
+      <p>{{ select_photos_form.submit() }}</p>
+    </form>
 
-  <script>
-    function highlightSelected(x) {
-      const selectedPhotos =
-        Array.from(document.querySelectorAll("#select_photos li input"))
-          .filter(input => input.checked)
-          .map(input => input.id);
+    <script>
+      function highlightSelected(x) {
+        const selectedPhotos =
+          Array.from(document.querySelectorAll("#select_photos li input"))
+            .filter(input => input.checked)
+            .map(input => input.id);
 
-      document.querySelectorAll("#select_photos li")
-        .forEach(li => {
-          if (selectedPhotos.includes(li.id.replace("li-", ""))) {
-            li.classList.add("checked");
-          } else {
-            li.classList.remove("checked");
-          }
-        })
+        document.querySelectorAll("#select_photos li")
+          .forEach(li => {
+            if (selectedPhotos.includes(li.id.replace("li-", ""))) {
+              li.classList.add("checked");
+            } else {
+              li.classList.remove("checked");
+            }
+          })
 
-      if (selectedPhotos.length === 0) {
-        document.querySelector("#selectedPhotosSummary").innerHTML = "";
-      } else if (selectedPhotos.length === 1) {
-        document.querySelector("#selectedPhotosSummary").innerHTML = "<span class=\"count\">1</span> photo selected";
-      } else {
-        document.querySelector("#selectedPhotosSummary").innerHTML = `<span class=\"count\">${selectedPhotos.length}</span> photos selected`;
+        if (selectedPhotos.length === 0) {
+          document.querySelector("#selectedPhotosSummary").innerHTML = "";
+        } else if (selectedPhotos.length === 1) {
+          document.querySelector("#selectedPhotosSummary").innerHTML = "<span class=\"count\">1</span> photo selected";
+        } else {
+          document.querySelector("#selectedPhotosSummary").innerHTML = `<span class=\"count\">${selectedPhotos.length}</span> photos selected`;
+        }
+
+        console.log(selectedPhotos);
       }
-
-      console.log(selectedPhotos);
-    }
-  </script>
+    </script>
+  {% endif %}
 {% endblock %}
