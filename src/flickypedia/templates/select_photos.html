@@ -65,6 +65,8 @@
       grid-column: 1 / 2;
     }
 
+    /* If we're in an album, we don't bother showing the owner name on
+       the photos, so we can move this up a line. */
     #select_photos .photoslist-album li label .license {
       grid-row: 1 / 2;
     }
@@ -118,9 +120,15 @@
                 {% set thumbnail = photo.sizes|size_at(desired_size='Medium') %}
                 <img src="{{ thumbnail.source }}">
                 <div class="info">
+
+                  {#
+                    Every photo in an album belongs to the album owner, so
+                    we don’t need to repeat their name on every photo.
+                  #}
                   {% if parsed_url.type != 'album' %}
                   <span class="owner">by {{ photo.owner.realname or photo.owner.username }}</span>
                   {% endif %}
+
                   <span class="license">{{ photo.license.label }}</span>
                   {{ field(onclick="highlightSelected()") }}
                 </div>
