@@ -32,7 +32,7 @@
     <ul>
       {% for photo in photos.photos %}
         <li>
-          {% set thumbnail = photo.sizes|size_at(desired_size='Square') %}
+          {% set thumbnail = photo.sizes|size_at(desired_size='Large') %}
           <img src="{{ thumbnail.source }}">
           
           <p>
@@ -55,7 +55,12 @@
           
           <p>
             <label for="photo-{{ photo.id }}-title">Title</label>
-            <input type="text" name="photo-{{ photo.id }}-title" id="photo-{{ photo.id }}-title" value="{{ data[photo.id]['title'] }}">
+            <input type="text" name="photo-{{ photo.id }}-title"
+              id="photo-{{ photo.id }}-title"
+              {% if "title" in data[photo.id] %}
+              value="{{ data[photo.id]['title'] }}"
+              {% endif %}
+            >
           </p>
           
           {% set category_filter = "photo-photo.id-caption" | replace("photo.id", photo.id) %}
@@ -70,15 +75,21 @@
             {% endif %}
           {% endwith %}
           
-          
           <p>
             <label for="photo-{{ photo.id }}-caption">Short Caption</label>
-            <input type="text" name="photo-{{ photo.id }}-caption" id="photo-{{ photo.id }}-caption" value="{{ data[photo.id]['caption'] }}">
+            <input type="text" name="photo-{{ photo.id }}-caption" id="photo-{{ photo.id }}-caption"
+              {% if "caption" in data[photo.id] %}
+              value="{{ data[photo.id]['caption'] }}"
+              {% endif %}>
           </p>
           
           <p>
             <label for="photo-{{ photo.id }}-categories">Add a Wikimedia Commons category</label>
-            <input type="text" name="photo-{{ photo.id }}-categories" id="photo-{{ photo.id }}-categories" value="{{ data[photo.id]['categories'] }}">
+            <input type="text" name="photo-{{ photo.id }}-categories" id="photo-{{ photo.id }}-categories"
+              {% if "categories" in data[photo.id] %}
+              value="{{ data[photo.id]['categories'] }}"
+              {% endif %}
+            >
           </p>
         </li>
       {% endfor %}

@@ -13,6 +13,8 @@ from flask_login import login_required
 from flask_wtf import Form, FlaskForm
 from wtforms import FieldList, FormField, HiddenField, SubmitField, StringField
 
+from flickypedia.pages.select_photos import get_cached_api_response
+
 
 class PhotoInfoForm(Form):
     title = StringField()
@@ -23,10 +25,6 @@ class PhotoInfoForm(Form):
 class PrepareInfoForm(FlaskForm):
     """
     The form that has the list of photos for a user to enter metadata.
-
-    Because the list of photos changes per-request, we don't include
-    it in this form -- instead, we render it in the HTML on the page.
-    This from exists primarily for CSRF protection.
     """
 
     result_filename = HiddenField("result_filename")
@@ -38,30 +36,19 @@ class PrepareInfoForm(FlaskForm):
 def prepare_info():
     try:
         selected_photo_ids = set(request.args["selected_photo_ids"].split(","))
-        result_filename = request.args["result_filename"]
-    except (KeyError, NotAFlickrUrl, UnrecognisedUrl):
+        cached_api_response_id = request.args["cached_api_response_id"]
+    except KeyError:
         abort(400)
 
-    cached_results_path = os.path.join(
-        current_app.config["FLICKR_API_RESPONSE_CACHE"], result_filename
-    )
-
-    try:
-        photo_data = json.load(open(cached_results_path))
-    except FileNotFoundError:
-        raise
+    photo_data = get_cached_api_response(cached_api_response_id)
 
     photo_data["photos"] = [
         ph for ph in photo_data["photos"] if ph["id"] in selected_photo_ids
     ]
 
-    from pprint import pprint
-
-    pprint(selected_photo_ids)
+    # TODO: Check we have the right licenses here!
 
     form = PrepareInfoForm(photos=photo_data["photos"])
-
-    # for photo in photo_data['photos']:
 
     if form.validate_on_submit():
         has_errors = False
@@ -86,14 +73,17 @@ def prepare_info():
         from pprint import pprint
 
         pprint(data)
+    else:
+        data = collections.defaultdict(dict)
 
     # from pprint import pprint; pprint(photo_data)
 
     return render_template(
         "prepare_info.html",
         selected_photo_ids=selected_photo_ids,
-        result_filename=result_filename,
+        cached_api_response_id=cached_api_response_id,
         photos=photo_data,
         form=form,
         data=data,
+        current_step="prepare_info",
     )

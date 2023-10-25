@@ -316,6 +316,7 @@ class FlickrApi:
         # This isn't documented but it seems to work anyway, and
         # Large Square might be quite useful for our purposes!
         "url_q",
+        "url_l",
     ]
 
     def _parse_collection_of_photos_response(self, elem):
@@ -456,6 +457,7 @@ def _parse_sizes(photo_elem):
         ("t", "Thumbnail"),
         ("s", "Small"),
         ("m", "Medium"),
+        ("l", "Large"),
         ("o", "Original"),
     ]:
         try:
