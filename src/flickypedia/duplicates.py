@@ -72,7 +72,6 @@ def find_duplicates(flickr_photo_ids):
                 result[row["flickr_photo_id"]] = {
                     "title": row["wikimedia_page_title"],
                     "id": row["wikimedia_page_id"],
-
                 }
     return result
 

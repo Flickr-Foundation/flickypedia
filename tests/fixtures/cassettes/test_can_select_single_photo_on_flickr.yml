@@ -1,0 +1,144 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - api.flickr.com
+      user-agent:
+      - python-httpx/0.25.0
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&photo_id=53253175319
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<photo
+      id=\"53253175319\" secret=\"b4a4297abf\" server=\"65535\" farm=\"66\" dateuploaded=\"1697116365\"
+      isfavorite=\"0\" license=\"4\" safety_level=\"0\" rotation=\"0\" originalsecret=\"2f310021b6\"
+      originalformat=\"jpg\" views=\"13\" media=\"photo\">\n\t<owner nsid=\"199246608@N02\"
+      username=\"cefarrjf87\" realname=\"Alex Chan\" location=\"\" iconserver=\"0\"
+      iconfarm=\"0\" path_alias=\"\">\n\t\t<gift gift_eligible=\"1\" new_flow=\"1\">\n\t\t\t<eligible_durations
+      />\n\t\t\t<eligible_durations />\n\t\t\t<eligible_durations />\n\t\t</gift>\n\t</owner>\n\t<title>IMG_5440</title>\n\t<description
+      />\n\t<visibility ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" />\n\t<dates
+      posted=\"1697116365\" taken=\"2023-10-11 11:32:02\" takengranularity=\"0\" takenunknown=\"0\"
+      lastupdate=\"1697116366\" />\n\t<editability cancomment=\"0\" canaddmeta=\"0\"
+      />\n\t<publiceditability cancomment=\"1\" canaddmeta=\"0\" />\n\t<usage candownload=\"1\"
+      canblog=\"0\" canprint=\"0\" canshare=\"1\" />\n\t<comments>0</comments>\n\t<notes
+      />\n\t<people haspeople=\"0\" />\n\t<tags />\n\t<urls>\n\t\t<url type=\"photopage\">https://www.flickr.com/photos/199246608@N02/53253175319/</url>\n\t</urls>\n</photo>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '607'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Wed, 25 Oct 2023 09:21:31 GMT
+      Via:
+      - 1.1 5633f59304cdd2083a4c0ecbd4c997b4.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - 86fASrT8XQh_T-c027hInQujJecELxwXtsA7CF1vhRgMDA3Vg3-9-A==
+      X-Amz-Cf-Pop:
+      - LHR50-P8
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.57 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Fri, 24-Nov-2023 09:21:31 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Fri, 24-Nov-2023 09:21:31 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - python-httpx/0.25.0
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&photo_id=53253175319
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<sizes
+      canblog=\"0\" canprint=\"0\" candownload=\"1\">\n\t<size label=\"Square\" width=\"75\"
+      height=\"75\" source=\"https://live.staticflickr.com/65535/53253175319_b4a4297abf_s.jpg\"
+      url=\"https://www.flickr.com/photos/199246608@N02/53253175319/sizes/sq/\" media=\"photo\"
+      />\n\t<size label=\"Large Square\" width=\"150\" height=\"150\" source=\"https://live.staticflickr.com/65535/53253175319_b4a4297abf_q.jpg\"
+      url=\"https://www.flickr.com/photos/199246608@N02/53253175319/sizes/q/\" media=\"photo\"
+      />\n\t<size label=\"Thumbnail\" width=\"100\" height=\"75\" source=\"https://live.staticflickr.com/65535/53253175319_b4a4297abf_t.jpg\"
+      url=\"https://www.flickr.com/photos/199246608@N02/53253175319/sizes/t/\" media=\"photo\"
+      />\n\t<size label=\"Small\" width=\"240\" height=\"180\" source=\"https://live.staticflickr.com/65535/53253175319_b4a4297abf_m.jpg\"
+      url=\"https://www.flickr.com/photos/199246608@N02/53253175319/sizes/s/\" media=\"photo\"
+      />\n\t<size label=\"Small 320\" width=\"320\" height=\"240\" source=\"https://live.staticflickr.com/65535/53253175319_b4a4297abf_n.jpg\"
+      url=\"https://www.flickr.com/photos/199246608@N02/53253175319/sizes/n/\" media=\"photo\"
+      />\n\t<size label=\"Small 400\" width=\"400\" height=\"300\" source=\"https://live.staticflickr.com/65535/53253175319_b4a4297abf_w.jpg\"
+      url=\"https://www.flickr.com/photos/199246608@N02/53253175319/sizes/w/\" media=\"photo\"
+      />\n\t<size label=\"Medium\" width=\"500\" height=\"375\" source=\"https://live.staticflickr.com/65535/53253175319_b4a4297abf.jpg\"
+      url=\"https://www.flickr.com/photos/199246608@N02/53253175319/sizes/m/\" media=\"photo\"
+      />\n\t<size label=\"Medium 640\" width=\"640\" height=\"480\" source=\"https://live.staticflickr.com/65535/53253175319_b4a4297abf_z.jpg\"
+      url=\"https://www.flickr.com/photos/199246608@N02/53253175319/sizes/z/\" media=\"photo\"
+      />\n\t<size label=\"Medium 800\" width=\"800\" height=\"600\" source=\"https://live.staticflickr.com/65535/53253175319_b4a4297abf_c.jpg\"
+      url=\"https://www.flickr.com/photos/199246608@N02/53253175319/sizes/c/\" media=\"photo\"
+      />\n\t<size label=\"Large\" width=\"1024\" height=\"768\" source=\"https://live.staticflickr.com/65535/53253175319_b4a4297abf_b.jpg\"
+      url=\"https://www.flickr.com/photos/199246608@N02/53253175319/sizes/l/\" media=\"photo\"
+      />\n\t<size label=\"Large 1600\" width=\"1600\" height=\"1200\" source=\"https://live.staticflickr.com/65535/53253175319_6f2a58da20_h.jpg\"
+      url=\"https://www.flickr.com/photos/199246608@N02/53253175319/sizes/h/\" media=\"photo\"
+      />\n\t<size label=\"Large 2048\" width=\"2048\" height=\"1536\" source=\"https://live.staticflickr.com/65535/53253175319_81d89b7e82_k.jpg\"
+      url=\"https://www.flickr.com/photos/199246608@N02/53253175319/sizes/k/\" media=\"photo\"
+      />\n\t<size label=\"Original\" width=\"4032\" height=\"3024\" source=\"https://live.staticflickr.com/65535/53253175319_2f310021b6_o.jpg\"
+      url=\"https://www.flickr.com/photos/199246608@N02/53253175319/sizes/o/\" media=\"photo\"
+      />\n</sizes>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '503'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Wed, 25 Oct 2023 09:21:31 GMT
+      Via:
+      - 1.1 5633f59304cdd2083a4c0ecbd4c997b4.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - mD_oqqVS1uPSVQUtNrEcUS-hbUobROKSF0MfAy01G0UzRbkrQPSwTg==
+      X-Amz-Cf-Pop:
+      - LHR50-P8
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.57 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Fri, 24-Nov-2023 09:21:31 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

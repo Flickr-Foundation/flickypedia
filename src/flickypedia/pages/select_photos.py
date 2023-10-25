@@ -256,7 +256,7 @@ def select_photos():
         select_photos_form=select_photos_form,
         photo_data=photo_data,
         current_step="find_photos",
-        photos=photo_data['photos'],
+        photos=photo_data["photos"],
     )
 
 

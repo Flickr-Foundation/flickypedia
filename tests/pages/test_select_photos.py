@@ -17,13 +17,13 @@ def test_rejects_pages_with_bad_query_params(logged_in_client, url):
     assert resp.status_code == 400
 
 
-def test_gets_single_photo_on_flickr(logged_in_client, flickr_api):
+def test_can_select_single_photo_on_flickr(logged_in_client, flickr_api):
     resp = logged_in_client.get(
-        "/select_photos?flickr_url=https://www.flickr.com/photos/schlesinger_library/13270291833/"
+        "/select_photos?flickr_url=https://www.flickr.com/photos/199246608@N02/53253175319/"
     )
 
     assert resp.status_code == 200
-    assert b"by Schlesinger Library on the History of Women in America" in resp.data
+    assert b"by Alex Chan" in resp.data
 
 
 def test_gets_album_on_flickr(logged_in_client, flickr_api):
