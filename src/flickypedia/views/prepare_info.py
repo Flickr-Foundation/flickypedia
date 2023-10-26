@@ -71,9 +71,16 @@ def create_prepare_info_form(photos):
 @login_required
 def prepare_info():
     try:
-        selected_photo_ids = set(request.args["selected_photo_ids"].split(","))
+        selected_photo_ids = {
+            photo_id
+            for photo_id in request.args["selected_photo_ids"].split(",")
+            if photo_id
+        }
         cached_api_response_id = request.args["cached_api_response_id"]
     except KeyError:
+        abort(400)
+
+    if not selected_photo_ids:
         abort(400)
 
     # Look up the cached Flickr API response from the previous stop.
