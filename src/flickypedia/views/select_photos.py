@@ -2,9 +2,9 @@
 A page where a user is shown a list of photos with checkboxes, and
 they can choose which of them to upload to Wiki Commons.
 
-    - [ ] image 1
-    - [ ] image 2
-    - [ ] image 3
+    - [ ] photo 1
+    - [ ] photo 2
+    - [ ] photo 3
 
 This page gets a single argument as input: a ``flickr_url`` query parameter
 with the URL of the Flickr page provided by the user.
