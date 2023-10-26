@@ -1,10 +1,9 @@
 import datetime
+import functools
 import re
 
 from flask import current_app
 import httpx
-
-from flickypedia.apis.flickr import FlickrUser
 
 
 class WikidataProperties:
@@ -60,14 +59,15 @@ class WikidataEntities:
     }
 
 
-def lookup_flickr_user_in_wikidata(user: FlickrUser):
+@functools.lru_cache
+def lookup_flickr_user_in_wikidata(user_id, username):
     """
     Return the Wikidata entity for a Flickr user, if it exists.
 
-        >>> lookup_flickr_user_in_wikidata(user={"id": "1234567@N02", "username": "brandnew"})
+        >>> lookup_flickr_user_in_wikidata(user_id="1234567@N02", username="brandnew")
         None
 
-        >>> lookup_flickr_user_in_wikidata(user={"id": "199246608@N02", "username": "ianemes"})
+        >>> lookup_flickr_user_in_wikidata(user_id="199246608@N02", username="ianemes")
         "Q5981474"
 
     Note that Wikidata entities are inconsistent about using the user ID
@@ -80,14 +80,14 @@ def lookup_flickr_user_in_wikidata(user: FlickrUser):
     #
     # I used https://stackoverflow.com/a/27212955/1558022 as the
     # starting point for these SPARQL queries.
-    if user["username"] is None:
+    if username is None:
         query = """PREFIX wdt: <http://www.wikidata.org/prop/direct/>
 
         SELECT ?item WHERE {
           { ?item wdt:%s "%s" . }
         }""" % (
             WikidataProperties.FlickrUserId,
-            user["id"],
+            user_id,
         )
     else:
         query = """PREFIX wdt: <http://www.wikidata.org/prop/direct/>
@@ -98,9 +98,9 @@ def lookup_flickr_user_in_wikidata(user: FlickrUser):
           { ?item wdt:%s "%s" . }
         }""" % (
             WikidataProperties.FlickrUserId,
-            user["id"],
+            user_id,
             WikidataProperties.FlickrUserId,
-            user["username"],
+            username,
         )
 
     resp = httpx.get(
@@ -135,7 +135,7 @@ def lookup_flickr_user_in_wikidata(user: FlickrUser):
     if len(results) > 1:
         print(
             "Warning: ambiguous Wikidata entities found for "
-            f"Flickr user id={user['id']} / username={user['username']}"
+            f"Flickr user id={user_id} / username={username}"
         )
         return
 
