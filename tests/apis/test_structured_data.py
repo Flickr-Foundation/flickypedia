@@ -24,11 +24,23 @@ def get_fixture(filename):
     ["user", "filename"],
     [
         (
-            {"id": "47397743@N05", "username": None, "realname": "WNDC"},
+            {
+                "id": "47397743@N05",
+                "username": None,
+                "realname": "WNDC",
+                "photos_url": "https://www.flickr.com/photos/west_northamptonshire_development_corporation/",
+                "profile_url": "https://www.flickr.com/people/west_northamptonshire_development_corporation/",
+            },
             "creator_Q7986087.json",
         ),
         (
-            {"id": "199246608@N02", "username": "Alex Chan", "realname": None},
+            {
+                "id": "199246608@N02",
+                "username": "Alex Chan",
+                "realname": None,
+                "photos_url": "https://www.flickr.com/photos/199246608@N02/",
+                "profile_url": "https://www.flickr.com/people/199246608@N02/",
+            },
             "creator_AlexChan.json",
         ),
         (
@@ -36,6 +48,8 @@ def get_fixture(filename):
                 "id": "35591378@N03",
                 "username": "Obama White House Archived",
                 "realname": None,
+                "photos_url": "https://www.flickr.com/photos/obamawhitehouse/",
+                "profile_url": "https://www.flickr.com/people/obamawhitehouse/",
             },
             "creator_ObamaWhiteHouse.json",
         ),
@@ -69,7 +83,7 @@ def test_create_copyright_status_statement(kwargs, filename):
 def test_create_source_data_for_photo():
     result = create_source_data_for_photo(
         user_id="199246608@N02",
-        photo_id="53248015596",
+        photo_url="https://www.flickr.com/photos/199246608@N02/53248015596/",
         original_url="https://live.staticflickr.com/65535/53248015596_c03f8123cf_o_d.jpg",
     )
     expected = get_fixture("photo_source_data.json")
@@ -135,14 +149,15 @@ def test_create_date_taken_statement_fails_on_unrecognised_granularity():
 
 
 def test_create_sdc_claims_for_flickr_photo_without_date_taken(app, vcr_cassette):
-    # This test is based on
-    # https://www.flickr.com/photos/199246608@N02/53248015596/
     actual = create_sdc_claims_for_flickr_photo(
         photo_id="53248015596",
+        photo_url="https://www.flickr.com/photos/199246608@N02/53248015596/",
         user={
             "id": "199246608@N02",
             "username": "cefarrjf87",
             "realname": "Alex Chan",
+            "photos_url": "https://www.flickr.com/photos/199246608@N02/",
+            "profile_url": "https://www.flickr.com/people/199246608@N02/",
         },
         copyright_status="copyrighted",
         original_url="https://live.staticflickr.com/65535/53248015596_c03f8123cf_o_d.jpg",
@@ -160,14 +175,15 @@ def test_create_sdc_claims_for_flickr_photo_without_date_taken(app, vcr_cassette
 
 
 def test_create_sdc_claims_for_flickr_photo_with_date_taken(app, vcr_cassette):
-    # This test is based on
-    # https://www.flickr.com/photos/mdgovpics/53234140350/
     actual = create_sdc_claims_for_flickr_photo(
         photo_id="53234140350",
+        photo_url="https://www.flickr.com/photos/mdgovpics/53234140350/",
         user={
             "id": "64018555@N03",
             "username": "MDGovpics",
             "realname": "Maryland GovPics",
+            "photos_url": "https://www.flickr.com/photos/mdgovpics/",
+            "profile_url": "https://www.flickr.com/people/mdgovpics/",
         },
         copyright_status="copyrighted",
         original_url="https://live.staticflickr.com/65535/53234140350_93579322a9_o_d.jpg",

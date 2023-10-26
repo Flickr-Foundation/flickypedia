@@ -195,14 +195,10 @@ class TestGetSinglePhoto:
 
         assert jsonify(resp) == get_fixture(filename="32812033543.json")
 
-    def test_sets_username_to_none_if_empty(self, flickr_api):
+    def test_sets_realname_to_none_if_empty(self, flickr_api):
         info = flickr_api.get_single_photo(photo_id="31073485032")
 
-        assert info["owner"] == {
-            "id": "35591378@N03",
-            "username": "Obama White House Archived",
-            "realname": None,
-        }
+        assert info["owner"]["realname"] is None
 
     def test_sets_granularity_on_date_taken(self, flickr_api):
         info = flickr_api.get_single_photo(photo_id="5240741057")

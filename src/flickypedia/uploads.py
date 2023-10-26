@@ -9,6 +9,7 @@ from flickypedia.apis.wikitext import create_wikitext
 def upload_single_image(
     api: WikimediaApi,
     photo_id: str,
+    photo_url: str,
     user: FlickrUser,
     filename: str,
     file_caption: str,
@@ -31,6 +32,7 @@ def upload_single_image(
 
     structured_data = create_sdc_claims_for_flickr_photo(
         photo_id=photo_id,
+        photo_url=photo_url,
         user=user,
         copyright_status="copyrighted",
         original_url=original_url,
