@@ -10,6 +10,11 @@ from flickypedia.auth import (
     oauth2_authorize_wikimedia,
     oauth2_callback_wikimedia,
 )
+from flickypedia.apis.wikidata import (
+    get_entity_label,
+    get_property_name,
+    render_wikidata_date,
+)
 from flickypedia.config import Config, get_directories
 from flickypedia.duplicates import create_link_to_commons
 from flickypedia.views import find_photos, homepage, prepare_info, select_photos
@@ -45,6 +50,17 @@ def create_app():
     app.jinja_env.filters["size_at"] = size_at
     app.jinja_env.filters["link_to_commons"] = create_link_to_commons
 
+    app.jinja_env.filters["wikidata_property_name"] = get_property_name
+    app.jinja_env.filters["wikidata_entity_label"] = get_entity_label
+    app.jinja_env.filters["wikidata_date"] = render_wikidata_date
+
+    # This option causes Jinja to throw if we use an undefined variable
+    # in one of the templates.
+    # See https://alexwlchan.net/2022/strict-jinja/
     app.jinja_env.undefined = StrictUndefined
+
+    # This causes Jinja to remove extraneous whitespace.
+    app.jinja_env.trim_blocks = True
+    app.jinja_env.lstrip_blocks = True
 
     return app

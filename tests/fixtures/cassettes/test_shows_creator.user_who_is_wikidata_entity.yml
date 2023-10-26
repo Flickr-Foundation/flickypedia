@@ -1,0 +1,136 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - query.wikidata.org
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://query.wikidata.org/sparql?format=json&query=PREFIX%20wdt%3A%20%3Chttp%3A%2F%2Fwww.wikidata.org%2Fprop%2Fdirect%2F%3E%0A%0A%20%20%20%20%20%20%20%20SELECT%20%3Fitem%20WHERE%20%7B%0A%20%20%20%20%20%20%20%20%20%20%7B%20%3Fitem%20wdt%3AP3267%20%2247397743%40N05%22%20.%20%7D%0A%20%20%20%20%20%20%20%20%7D
+  response:
+    content: "{\n  \"head\" : {\n    \"vars\" : [ \"item\" ]\n  },\n  \"results\"
+      : {\n    \"bindings\" : [ {\n      \"item\" : {\n        \"type\" : \"uri\",\n
+      \       \"value\" : \"http://www.wikidata.org/entity/Q7986087\"\n      }\n    }
+      ]\n  }\n}"
+    headers:
+      accept-ranges:
+      - bytes
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '208'
+      cache-control:
+      - public, max-age=300
+      content-length:
+      - '203'
+      content-type:
+      - application/sparql-results+json;charset=utf-8
+      date:
+      - Thu, 26 Oct 2023 15:35:26 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - nginx/1.18.0
+      server-timing:
+      - cache;desc="hit-local", host;desc="cp3068"
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept
+      x-cache:
+      - cp3068 hit, cp3068 pass
+      x-cache-status:
+      - hit-local
+      x-client-ip:
+      - 80.42.123.5
+      x-first-solution-millis:
+      - '1'
+      x-served-by:
+      - wdqs1012
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - www.wikidata.org
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://www.wikidata.org/w/rest.php/wikibase/v0/entities/items/Q7986087
+  response:
+    content: '{"type":"item","labels":{"en":"West Northamptonshire Development Corporation","fr":"West
+      Northamptonshire Development Corporation"},"descriptions":{"en":"organization","fi":"organisaatio","sq":"organizat\u00eb","de":"Organisation","ml":"\u0d38\u0d02\u0d18\u0d1f\u0d28","hy":"\u056f\u0561\u0566\u0574\u0561\u056f\u0565\u0580\u057a\u0578\u0582\u0569\u0575\u0578\u0582\u0576","bn":"\u09b8\u0982\u09b8\u09cd\u09a5\u09be"},"aliases":{},"statements":{"P31":[{"id":"Q7986087$EDA9DEAE-CDBE-4A8D-92C2-FDD680687F6F","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P31","data-type":"wikibase-item"},"value":{"type":"value","content":"Q5266682"}}],"P159":[{"id":"Q7986087$4B054AB0-EB09-4CB8-B3E5-869BD9B271DA","rank":"normal","qualifiers":[],"references":[{"hash":"fa278ebfc458360e5aed63d5058cca83c46134f1","parts":[{"property":{"id":"P143","data-type":"wikibase-item"},"value":{"type":"value","content":"Q328"}}]}],"property":{"id":"P159","data-type":"wikibase-item"},"value":{"type":"value","content":"Q23115"}}],"P571":[{"id":"Q7986087$B00ED2F6-6127-4B2D-A174-EBFA5ABFC915","rank":"normal","qualifiers":[],"references":[{"hash":"fa278ebfc458360e5aed63d5058cca83c46134f1","parts":[{"property":{"id":"P143","data-type":"wikibase-item"},"value":{"type":"value","content":"Q328"}}]}],"property":{"id":"P571","data-type":"time"},"value":{"type":"value","content":{"time":"+2004-12-15T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}],"P4527":[{"id":"Q7986087$2B9DC6F3-04DE-4E64-9F59-F2DFF0D2DB5F","rank":"normal","qualifiers":[{"property":{"id":"P1810","data-type":"string"},"value":{"type":"value","content":"West
+      Northamptonshire Development Corporation"}}],"references":[],"property":{"id":"P4527","data-type":"external-id"},"value":{"type":"value","content":"94528"}}],"P131":[{"id":"Q7986087$AD05979C-E151-4D67-B999-19F60488ACB7","rank":"normal","qualifiers":[],"references":[{"hash":"a6685bae1975ea153a6269ebea30088b4205a9d0","parts":[{"property":{"id":"P143","data-type":"wikibase-item"},"value":{"type":"value","content":"Q328"}},{"property":{"id":"P4656","data-type":"url"},"value":{"type":"value","content":"https://en.wikipedia.org/w/index.php?title=West_Northamptonshire_Development_Corporation&oldid=858763788"}}]}],"property":{"id":"P131","data-type":"wikibase-item"},"value":{"type":"value","content":"Q23115"}}],"P244":[{"id":"Q7986087$50455E90-9006-41C9-9D3F-17240C63D377","rank":"normal","qualifiers":[],"references":[{"hash":"14fa5898ac764e0660517aa07ea0bbba505f262b","parts":[{"property":{"id":"P248","data-type":"wikibase-item"},"value":{"type":"value","content":"Q54919"}},{"property":{"id":"P813","data-type":"time"},"value":{"type":"value","content":{"time":"+2019-03-06T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}]}],"property":{"id":"P244","data-type":"external-id"},"value":{"type":"value","content":"no2007095759"}}],"P856":[{"id":"Q7986087$4708BCF7-51FB-40C6-90C5-A3C6B23E4F22","rank":"normal","qualifiers":[{"property":{"id":"P582","data-type":"time"},"value":{"type":"value","content":{"time":"+2014-02-00T00:00:00Z","precision":10,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}],"references":[{"hash":"a6685bae1975ea153a6269ebea30088b4205a9d0","parts":[{"property":{"id":"P143","data-type":"wikibase-item"},"value":{"type":"value","content":"Q328"}},{"property":{"id":"P4656","data-type":"url"},"value":{"type":"value","content":"https://en.wikipedia.org/w/index.php?title=West_Northamptonshire_Development_Corporation&oldid=858763788"}}]}],"property":{"id":"P856","data-type":"url"},"value":{"type":"value","content":"http://www.wndc.org.uk"}},{"id":"Q7986087$cac6039d-4cbd-afe4-3330-a38f4e92f491","rank":"normal","qualifiers":[{"property":{"id":"P580","data-type":"time"},"value":{"type":"value","content":{"time":"+2012-10-17T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}],"references":[],"property":{"id":"P856","data-type":"url"},"value":{"type":"value","content":"https://www.gov.uk/government/organisations/the-west-northamptonshire-development-corporation"}}],"P17":[{"id":"Q7986087$00adcda4-4524-19c3-98bb-adfca7430ce8","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P17","data-type":"wikibase-item"},"value":{"type":"value","content":"Q145"}}],"P576":[{"id":"Q7986087$25e543d8-4214-973a-7341-e56d971d1af4","rank":"normal","qualifiers":[],"references":[{"hash":"d292a2724e3bc0dc9c502ac51ff3aa2977c54f19","parts":[{"property":{"id":"P3343","data-type":"external-id"},"value":{"type":"value","content":"uksi/2014/857"}}]}],"property":{"id":"P576","data-type":"time"},"value":{"type":"value","content":{"time":"+2014-03-31T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}],"P2002":[{"id":"Q7986087$7e1225d7-4ff6-fe01-ae64-dd6ee9f91fcd","rank":"normal","qualifiers":[{"property":{"id":"P6552","data-type":"external-id"},"value":{"type":"value","content":"108341318"}},{"property":{"id":"P3744","data-type":"quantity"},"value":{"type":"value","content":{"amount":"+1127","unit":"1"}}},{"property":{"id":"P580","data-type":"time"},"value":{"type":"value","content":{"time":"+2010-01-25T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}},{"property":{"id":"P585","data-type":"time"},"value":{"type":"value","content":{"time":"+2020-07-03T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}],"references":[],"property":{"id":"P2002","data-type":"external-id"},"value":{"type":"value","content":"TheWNDC"}}],"P3267":[{"id":"Q7986087$49e493d9-4d08-99ca-bd71-7ed1e3d9a3c3","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P3267","data-type":"external-id"},"value":{"type":"value","content":"47397743@N05"}}],"P2397":[{"id":"Q7986087$444930af-4cf4-2de5-ca6c-18efd5a2bd11","rank":"normal","qualifiers":[{"property":{"id":"P1810","data-type":"string"},"value":{"type":"value","content":"WestNorthantsDC"}},{"property":{"id":"P580","data-type":"time"},"value":{"type":"value","content":{"time":"+2011-11-11T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}},{"property":{"id":"P3744","data-type":"quantity"},"value":{"type":"value","content":{"amount":"+29","unit":"1"}}},{"property":{"id":"P3740","data-type":"quantity"},"value":{"type":"value","content":{"amount":"+16","unit":"1"}}},{"property":{"id":"P5436","data-type":"quantity"},"value":{"type":"value","content":{"amount":"+27719","unit":"1"}}},{"property":{"id":"P585","data-type":"time"},"value":{"type":"value","content":{"time":"+2020-12-08T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}],"references":[],"property":{"id":"P2397","data-type":"external-id"},"value":{"type":"value","content":"UCTwBGNzf1bbAWUS75nlN_EA"}}],"P214":[{"id":"Q7986087$769C4569-5FA1-49F8-B0F0-719522588A0D","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P214","data-type":"external-id"},"value":{"type":"value","content":"134072072"}}],"P7859":[{"id":"Q7986087$9AEE4D00-C159-4B72-9CC4-751E455F9C8A","rank":"normal","qualifiers":[],"references":[{"hash":"4ed7d07d8422611d2d375c03f0e2186e2bc5c36c","parts":[{"property":{"id":"P214","data-type":"external-id"},"value":{"type":"value","content":"134072072"}}]}],"property":{"id":"P7859","data-type":"external-id"},"value":{"type":"value","content":"lccn-no2007095759"}}],"P8167":[{"id":"Q7986087$B423A1D4-8A64-4D8A-8FEF-404053BE52D3","rank":"normal","qualifiers":[{"property":{"id":"P1810","data-type":"string"},"value":{"type":"value","content":"West
+      Northamptonshire Development Corporation"}}],"references":[],"property":{"id":"P8167","data-type":"external-id"},"value":{"type":"value","content":"wndc"}}],"P8687":[{"id":"Q7986087$9ae491a7-8a79-4d0e-b76f-d8700a5786aa","rank":"preferred","qualifiers":[{"property":{"id":"P6552","data-type":"external-id"},"value":{"type":"value","content":"108341318"}},{"property":{"id":"P585","data-type":"time"},"value":{"type":"value","content":{"time":"+2021-01-04T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}],"references":[],"property":{"id":"P8687","data-type":"quantity"},"value":{"type":"value","content":{"amount":"+1118","unit":"1"}}},{"id":"Q7986087$1d76d935-2e1d-4895-b976-e533facffc94","rank":"normal","qualifiers":[{"property":{"id":"P6552","data-type":"external-id"},"value":{"type":"value","content":"108341318"}},{"property":{"id":"P585","data-type":"time"},"value":{"type":"value","content":{"time":"+2020-07-03T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}],"references":[],"property":{"id":"P8687","data-type":"quantity"},"value":{"type":"value","content":{"amount":"+1127","unit":"1"}}}],"P646":[{"id":"Q7986087$785EF602-6FF3-4FE4-8FC8-985C2A9877DC","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P646","data-type":"external-id"},"value":{"type":"value","content":"/m/09jbzm"}}]},"sitelinks":{"enwiki":{"title":"West
+      Northamptonshire Development Corporation","badges":[],"url":"https://en.wikipedia.org/wiki/West_Northamptonshire_Development_Corporation"}},"id":"Q7986087"}'
+    headers:
+      accept-ranges:
+      - bytes
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '2'
+      cache-control:
+      - no-cache
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Thu, 26 Oct 2023 15:38:53 GMT
+      etag:
+      - W/"1491647034"
+      last-modified:
+      - Fri, 03 Sep 2021 04:31:02 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1396.eqiad.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3068"
+      set-cookie:
+      - WMF-Last-Access=26-Oct-2023;Path=/;HttpOnly;secure;Expires=Mon, 27 Nov 2023
+        12:00:00 GMT
+      - WMF-Last-Access-Global=26-Oct-2023;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon,
+        27 Nov 2023 12:00:00 GMT
+      - GeoIP=GB:ENG:Ipswich:52.06:1.16:v4; Path=/; secure; Domain=.wikidata.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3068 miss, cp3068 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 80.42.123.5
+      x-content-type-options:
+      - nosniff
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

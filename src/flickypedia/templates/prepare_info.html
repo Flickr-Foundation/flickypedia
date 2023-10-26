@@ -48,21 +48,24 @@
     .sdc {
       grid-column: 1 / span 2;
       grid-row: 3 / 3;
-      background: yellow;
+      background: antiquewhite;
+      padding: 1em;
+      border-radius: 8px;
+      overflow-x: auto;
     }
   </style>
 
   <form id="prepare_info" action="" method="post">
     {{ prepare_info_form.hidden_tag() }}
-    
+
     {{ prepare_info_form.cached_api_response_id() }}
 
     <h3>
       First, please set the language you’ll be using to write your captions:
     </h3>
-    
+
     {{ prepare_info_form.language() }}
-    
+
     <h3>
       Next, please add Titles and Captions for each photo, and optional Wikimedia Commons categories:
     </h3>
@@ -101,7 +104,7 @@
                 <strong>Title:</strong> <br/>
                 {{ photo.title }}
               </p>
-              
+
               <p>
                 <strong>Description:</strong> <br/>
                 {{ photo.description }}
@@ -128,9 +131,9 @@
             <details class="sdc">
               <summary>More details</summary>
 
-              <!-- TODO: Add structured data -->
-
-              {{ field.label }}
+              {% with structured_data = photo.sdc %}
+                {% include "components/structured_data_preview.html" %}
+              {% endwith %}
             </details>
           </div>
         </li>

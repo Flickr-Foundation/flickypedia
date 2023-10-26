@@ -1,4 +1,3 @@
-import json
 import shutil
 
 import pytest
@@ -23,10 +22,10 @@ def test_rejects_pages_with_bad_query_params(logged_in_client, url):
 def test_renders_form_for_single_photo(logged_in_client, app, flickr_api):
     cache_dir = app.config["FLICKR_API_RESPONSE_CACHE"]
 
-    with open(f"{cache_dir}/1234567890.json", "w") as outfile:
-        with open("tests/fixtures/flickr_api/32812033543.json") as infile:
-            single_photo_resp = json.load(infile)
-        outfile.write(json.dumps({"photos": [single_photo_resp]}))
+    shutil.copyfile(
+        "tests/fixtures/flickr_api/single_photo-32812033544.json",
+        f"{cache_dir}/1234567890.json",
+    )
 
     resp = logged_in_client.get(
         "/prepare_info?selected_photo_ids=32812033543&cached_api_response_id=1234567890",

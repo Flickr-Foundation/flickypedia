@@ -56,6 +56,49 @@ class WikidataEntities:
 
 
 @functools.lru_cache
+def get_property_name(code):
+    """
+    Look up the name of a Wikidata property.
+
+        >>> get_property_name(code="P137")
+        "operator"
+
+        >>> get_property_name(code="P2093")
+        "author name"
+
+    """
+    for attr in dir(WikidataProperties):
+        if getattr(WikidataProperties, attr) == code:
+            return " ".join(re.findall("[A-Z][^A-Z]*", attr)).lower()
+
+    # We never expect to end up here -- we're not using this to show
+    # the labels of arbitrary SDC, just the ones we're going to add.
+    else:  # pragma: no cover
+        raise KeyError
+
+
+@functools.lru_cache
+def get_entity_label(entity_id):
+    """
+    Look up the name of a Wikidata entity.
+
+    TODO: Currently this only returns the English label, but the API
+    returns labels in multiple languages.  This might be a good point
+    to do some internationalisation.
+    """
+    resp = httpx.get(
+        f"https://www.wikidata.org/w/rest.php/wikibase/v0/entities/items/{entity_id}",
+        headers={"User-Agent": current_app.config["USER_AGENT"]},
+    )
+
+    try:
+        resp.raise_for_status()
+        return resp.json()["labels"]["en"]
+    except Exception:  # pragma: no cover
+        return None
+
+
+@functools.lru_cache
 def lookup_flickr_user_in_wikidata(user_id, username):
     """
     Return the Wikidata entity for a Flickr user, if it exists.
@@ -190,7 +233,7 @@ def to_wikidata_date(d: datetime.datetime, *, precision: str):
         "year": d.strftime("+%Y-00-00T00:00:00Z"),
     }[precision]
 
-    # This is the numeric value of precsion used in the Wikidata model.
+    # This is the numeric value of precision used in the Wikidata model.
     #
     # See https://www.wikidata.org/wiki/Help:Dates#Precision
     precision_value = {"day": 11, "month": 10, "year": 9}[precision]
@@ -229,3 +272,29 @@ def to_wikidata_date(d: datetime.datetime, *, precision: str):
         },
         "type": "time",
     }
+
+
+def render_wikidata_date(value):
+    """
+    Given a Wikidata date from the SDC, render it as text.
+    """
+    assert (
+        value["calendarmodel"]
+        == f"http://www.wikidata.org/entity/{WikidataEntities.GregorianCalendar}"
+    )
+    assert value["precision"] in {11, 10, 9}
+
+    # This is the numeric value of precision used in the Wikidata model.
+    #
+    # See https://www.wikidata.org/wiki/Help:Dates#Precision
+    if value["precision"] == 11:
+        d = datetime.datetime.strptime(value["time"], "+%Y-%m-%dT00:00:00Z")
+        return "%s (precision: day, calendar: Gregorian)" % d.strftime("%d %B %Y")
+    elif value["precision"] == 10:
+        d = datetime.datetime.strptime(value["time"], "+%Y-%m-00T00:00:00Z")
+        return "%s (precision: month, calendar: Gregorian)" % d.strftime("%B %Y")
+    elif value["precision"] == 9:
+        d = datetime.datetime.strptime(value["time"], "+%Y-00-00T00:00:00Z")
+        return "%s (precision: year, calendar: Gregorian)" % d.strftime("%Y")
+    else:  # pragma: no cover
+        assert False

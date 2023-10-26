@@ -1,0 +1,33 @@
+{#
+  If it's a Wikidata entity, we display the label (if available) or
+  the plain entity ID:
+
+    copyrighted (Q50423863)
+    Q74228490
+
+#}
+{% if datavalue.type == "wikibase-entityid" %}
+  {% set entity_id = datavalue.value.id %}
+  {% set label = entity_id | wikidata_entity_label %}
+
+  {% if label != None %}
+    {{ label }} ({{ entity_id }})
+  {% else %}
+    {{ entity_id }}
+  {% endif %}
+
+{#
+  If it's a vanilla string, we just display the string value:
+
+    45198836@N04
+
+#}
+{% elif datavalue.type == "string" %}
+  {{ datavalue.value }}
+
+{% elif datavalue.type == "time" %}
+  {{ datavalue.value | wikidata_date }}
+
+{% else %}
+  {{ datavalue }}
+{% endif %}

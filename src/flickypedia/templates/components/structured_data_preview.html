@@ -1,0 +1,83 @@
+<style>
+  .structured_data_preview {
+    font-family: monospace;
+    line-height: 1.4em;
+    display: grid;
+    grid-template-columns: 190px auto;
+    margin-bottom: 0;
+  }
+
+  .structured_data_preview > dt {
+    font-weight: bold;
+    grid-column: 1 / 2;
+  }
+
+  .structured_data_preview > dd {
+    margin-left: 0;
+    grid-column: 2 / 2;
+  }
+
+  .structured_data_preview > dd {
+    margin-bottom: 15px;
+  }
+
+  .structured_data_preview > dd dl:first-child {
+    margin-top:    0;
+    margin-bottom: 0;
+  }
+
+  .structured_data_preview .snak-value .sdc_qualifiers {
+    margin-top: 5px;
+    margin-left: 18px;
+    font-size: 0.8em;
+  }
+
+  .structured_data_preview .snak-value .sdc_qualifiers li {
+    margin-bottom: 2px !important;
+  }
+
+  .sdc_qualifiers {
+    padding-top: 3px;
+    margin-bottom: 0;
+  }
+
+  .sdc_qualifiers li {
+    margin-bottom: 6px !important;
+  }
+
+  .structured_data_preview dt:last-of-type,
+  .structured_data_preview dd:last-of-type {
+    margin-bottom: 0;
+  }
+</style>
+
+<dl class="structured_data_preview">
+  {% for claim in structured_data %}
+  <dt>
+    {{ claim.mainsnak.property|wikidata_property_name }}:
+  </dt>
+  <dd class="snak-{{ claim.mainsnak.snaktype }}">
+    {#
+      If it's a 'value', then we can render it directly.
+
+      If it's a 'somevalue', then it's all qualifiers which will be rendered
+      further down.
+
+      Anything else we just dump the JSON onto the page; this is unlikely
+      but messy data is better than nothing.
+    #}
+    {% if claim.mainsnak.snaktype == 'value' %}
+      {% with datavalue = claim.mainsnak.datavalue %}
+        {% include "components/sdc_value.html" %}
+      {% endwith %}
+    {% elif claim.mainsnak.snaktype == 'somevalue' %}
+    {% else %}
+      {{ claim }}
+    {% endif %}
+
+    {% with qualifiers = claim.qualifiers %}
+      {% include "components/sdc_qualifiers.html" %}
+    {% endwith %}
+  </dd>
+  {% endfor %}
+</dl>
