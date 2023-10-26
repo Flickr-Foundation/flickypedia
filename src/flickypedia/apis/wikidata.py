@@ -56,6 +56,45 @@ class WikidataEntities:
 
 
 @functools.lru_cache
+def get_property_name(code):
+    """
+    Look up the name of a Wikidata property.
+
+        >>> get_property_name(code="P137")
+        "operator"
+
+        >>> get_property_name(code="P2093")
+        "author name"
+
+    """
+    for attr in dir(WikidataProperties):
+        if getattr(WikidataProperties, attr) == code:
+            return ' '.join(re.findall('[A-Z][^A-Z]*', attr)).lower()
+    else:
+        raise KeyError
+
+
+@functools.lru_cache
+def get_entity_label(entity_id):
+    """
+    Look up the name of a Wikidata entity.
+
+    TODO: Currently this only returns the English label
+    """
+    resp = httpx.get(
+        f'https://www.wikidata.org/w/rest.php/wikibase/v0/entities/items/{entity_id}',
+        headers={"User-Agent": current_app.config["USER_AGENT"]},
+    )
+
+    try:
+        resp.raise_for_status()
+        return resp.json()['labels']['en']
+    except Exception:
+        return None
+
+
+
+@functools.lru_cache
 def lookup_flickr_user_in_wikidata(user_id, username):
     """
     Return the Wikidata entity for a Flickr user, if it exists.

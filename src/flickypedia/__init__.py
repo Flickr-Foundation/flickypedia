@@ -10,6 +10,7 @@ from flickypedia.auth import (
     oauth2_authorize_wikimedia,
     oauth2_callback_wikimedia,
 )
+from flickypedia.apis.wikidata import get_entity_label, get_property_name
 from flickypedia.config import Config, get_directories
 from flickypedia.duplicates import create_link_to_commons
 from flickypedia.views import find_photos, homepage, prepare_info, select_photos
@@ -44,6 +45,9 @@ def create_app():
     app.jinja_env.filters["a_href"] = a_href
     app.jinja_env.filters["size_at"] = size_at
     app.jinja_env.filters["link_to_commons"] = create_link_to_commons
+
+    app.jinja_env.filters["wikidata_property_name"] = get_property_name
+    app.jinja_env.filters["wikidata_entity_label"] = get_entity_label
 
     app.jinja_env.undefined = StrictUndefined
 

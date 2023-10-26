@@ -1,0 +1,33 @@
+<dl>
+  {% for claim in structured_data %}
+  <dt>
+    {{ claim.mainsnak.property|wikidata_property_name }}
+  </dt>
+  <dd>
+    {% if claim.mainsnak.snaktype == 'value'
+          and claim.mainsnak.datavalue.type == 'wikibase-entityid' %}
+      {% set wikidata_entity_id = claim.mainsnak.datavalue.value.id %}
+      {% set label = wikidata_entity_id|wikidata_entity_label %}
+      <a href="https://www.wikidata.org/wiki/{{ wikidata_entity_id }}">
+        {% if label != None %}
+          {{ label }}
+        {% else %}
+          {{ wikidata_entity_id }}
+        {% endif %}
+      </a>
+
+    {% elif claim.mainsnak.snaktype == 'value'
+          and claim.mainsnak.datavalue.type == 'time' %}
+          TIME!!
+          {{ claim }}
+    {% else %}
+    {{ claim.mainsnak.snaktype }}
+      {{ claim }}
+    {% endif %}
+
+    {% if claim.qualifiers is defined %}
+      {{ claim.qualifiers }}
+    {% endif %}
+  </dd>
+  {% endfor %}
+</dl>
