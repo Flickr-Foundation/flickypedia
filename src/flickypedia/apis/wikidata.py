@@ -45,17 +45,13 @@ class WikidataEntities:
     Flickr = "Q103204"
     GregorianCalendar = "Q1985727"
 
+    # We only map the license types used by Flickypedia -- we should
+    # never be creating SDC for e.g. CC BY-NC.
     Licenses = {
         "cc-by-2.0": "Q19125117",
-        "cc-by-nc-2.0": "Q44128984",
-        "cc-by-nc-nd-2.0": "Q47008927",
-        "cc-by-nc-sa-2.0": "Q28050835",
-        "cc-by-nd-2.0": "Q35254645",
         "cc-by-sa-2.0": "Q19068220",
         "cc-0-1.0": "Q6938433",
-        # TODO: Flickr has a statement "US Government Work" which we
-        # might need to map here; if so, consider this entity:
-        # https://www.wikidata.org/wiki/Q60671452
+        "usgov": "Q60671452",
     }
 
 

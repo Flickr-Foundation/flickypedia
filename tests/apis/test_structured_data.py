@@ -92,7 +92,8 @@ def test_create_source_data_for_photo():
 
 
 @pytest.mark.parametrize(
-    ["license_id", "filename"], [("cc-by-2.0", "license_cc_by_2.0.json")]
+    ["license_id", "filename"],
+    [("cc-by-2.0", "license_cc_by_2.0.json"), ("usgov", "license_usgov.json")],
 )
 def test_create_license_statement(license_id, filename):
     actual = create_license_statement(license_id)
