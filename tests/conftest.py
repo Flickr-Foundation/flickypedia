@@ -93,6 +93,9 @@ def app():
     app.config["DUPLICATE_DATABASE_DIRECTORY"] = "tests/fixtures/duplicates"
     app.config["PHOTOS_PER_PAGE"] = 10
 
+    user_agent = "Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)"
+    app.config["USER_AGENT"] = user_agent
+
     # This means I don't need to pass the CSRF token when posting
     # data to forms, which makes things a bit easier.
     app.config["WTF_CSRF_ENABLED"] = False
