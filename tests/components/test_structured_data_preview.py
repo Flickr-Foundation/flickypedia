@@ -106,10 +106,6 @@ def test_shows_creator(app, vcr_cassette, user, html):
 
     actual = get_html(claims=[creator_claim])
 
-    print(actual)
-
     expected = prettify_html(f'<dl class="structured_data_preview">{html}</dl>')
-
-    print(expected)
 
     assert actual == expected
