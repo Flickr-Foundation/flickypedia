@@ -3,5 +3,141 @@
 {% block content %}
   {% include "components/header.html" %}
 
-  Prepare info!
+  <h2>Prepare info</h2>
+
+  <style>
+    #prepare_info li {
+      margin-bottom: 2em;
+    }
+
+    .info {
+      display: grid;
+      grid-gap: 15px;
+      grid-template-columns: 200px auto;
+      grid-template-rows: 20px auto auto;
+    }
+
+    .from_flickr {
+      grid-column: 1 / 2;
+      grid-row: 1 / 3;
+    }
+
+    .to_wiki {
+      grid-column: 2 / 2;
+      grid-row: 1 / 3;
+    }
+
+    .flickr_info {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+    }
+
+    .flickr_info p:first-child, .wiki_info p:first-child {
+      margin-top: 0;
+    }
+
+    .wiki_info {
+      grid-column: 2 / 2;
+      grid-row: 2 / 3;
+    }
+
+    .wiki_info input[type="text"] {
+      width: calc(100% - 20px);
+    }
+
+    .sdc {
+      grid-column: 1 / span 2;
+      grid-row: 3 / 3;
+      background: yellow;
+    }
+  </style>
+
+  <form id="prepare_info" action="" method="post">
+    {{ prepare_info_form.hidden_tag() }}
+    
+    {{ prepare_info_form.cached_api_response_id() }}
+
+    <h3>
+      First, please set the language you’ll be using to write your captions:
+    </h3>
+    
+    {{ prepare_info_form.language() }}
+    
+    <h3>
+      Next, please add Titles and Captions for each photo, and optional Wikimedia Commons categories:
+    </h3>
+
+    <ul class="plain_list">
+      {% for field in prepare_info_form %}
+        {% if field.id.startswith('photo_') %}
+          <li>
+          {% set photo = field.label.text %}
+
+          {% set large_size = photo.sizes | size_at(desired_size='Large') %}
+          <img src="{{ large_size.source }}">
+
+          <div class="info">
+            <div class="from_flickr">
+              From Flickr
+            </div>
+            <div class="to_wiki">
+              To the Wikimedia Commons Entry
+            </div>
+
+            <div class="flickr_info">
+              <p>
+                <strong>By:</strong> <br/>
+                {{ photo.owner.realname or photo.owner.username }} <br/>
+                {{ photo.license.label }}
+              </p>
+
+              <!-- What if the photo is untitled? -->
+
+              <!-- TODO: Tests for these two components -->
+              <!-- What if no title? -->
+              <!-- What if truncation? -->
+
+              <p>
+                <strong>Title:</strong> <br/>
+                {{ photo.title }}
+              </p>
+              
+              <p>
+                <strong>Description:</strong> <br/>
+                {{ photo.description }}
+              </p>
+            </div>
+
+            <div class="wiki_info">
+              <p>
+                <strong>Title</strong> <br/>
+                {{ field.title() }}
+              </p>
+
+              <p>
+                <strong>Short caption</strong> <br/>
+                {{ field.short_caption() }}
+              </p>
+
+              <p>
+                <strong>Add a Wikimedia Commons category</strong> <br/>
+                {{ field.categories() }}
+              </p>
+            </div>
+
+            <details class="sdc">
+              <summary>More details</summary>
+
+              <!-- TODO: Add structured data -->
+
+              {{ field.label }}
+            </details>
+          </div>
+        </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    <p>{{ prepare_info_form.submit() }}</p>
+  </form>
 {% endblock %}
