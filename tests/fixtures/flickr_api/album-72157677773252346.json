@@ -54,6 +54,13 @@
           "source": "https://live.staticflickr.com/7738/18250964001_df26421e40.jpg"
         },
         {
+          "height": 683,
+          "label": "Large",
+          "media": "photo",
+          "source": "https://live.staticflickr.com/7738/18250964001_df26421e40_b.jpg",
+          "width": 1024
+        },
+        {
           "height": 4847,
           "width": 7262,
           "label": "Original",
@@ -120,6 +127,13 @@
           "label": "Medium",
           "media": "photo",
           "source": "https://live.staticflickr.com/331/19722996319_d19a7b9291.jpg"
+        },
+        {
+          "height": 678,
+          "label": "Large",
+          "media": "photo",
+          "source": "https://live.staticflickr.com/331/19722996319_d19a7b9291_b.jpg",
+          "width": 1024
         },
         {
           "height": 847,
@@ -190,6 +204,13 @@
           "source": "https://live.staticflickr.com/513/19777368608_0bca88747b.jpg"
         },
         {
+          "height": 1024,
+          "label": "Large",
+          "media": "photo",
+          "source": "https://live.staticflickr.com/513/19777368608_0bca88747b_b.jpg",
+          "width": 678
+        },
+        {
           "height": 4928,
           "width": 3264,
           "label": "Original",
@@ -256,6 +277,13 @@
           "label": "Medium",
           "media": "photo",
           "source": "https://live.staticflickr.com/650/19995531304_613af003d9.jpg"
+        },
+        {
+          "height": 1024,
+          "label": "Large",
+          "media": "photo",
+          "source": "https://live.staticflickr.com/650/19995531304_613af003d9_b.jpg",
+          "width": 683
         },
         {
           "height": 1536,
@@ -326,6 +354,13 @@
           "source": "https://live.staticflickr.com/630/20434367760_1196dbfc73.jpg"
         },
         {
+          "height": 1024,
+          "label": "Large",
+          "media": "photo",
+          "source": "https://live.staticflickr.com/630/20434367760_1196dbfc73_b.jpg",
+          "width": 683
+        },
+        {
           "height": 1536,
           "width": 1025,
           "label": "Original",
@@ -392,6 +427,13 @@
           "label": "Medium",
           "media": "photo",
           "source": "https://live.staticflickr.com/707/20671286152_705894de24.jpg"
+        },
+        {
+          "height": 683,
+          "label": "Large",
+          "media": "photo",
+          "source": "https://live.staticflickr.com/707/20671286152_705894de24_b.jpg",
+          "width": 1024
         },
         {
           "height": 1025,
@@ -462,6 +504,13 @@
           "source": "https://live.staticflickr.com/5617/20889037076_79f7303c15.jpg"
         },
         {
+          "height": 1024,
+          "label": "Large",
+          "media": "photo",
+          "source": "https://live.staticflickr.com/5617/20889037076_79f7303c15_b.jpg",
+          "width": 678
+        },
+        {
           "height": 1536,
           "width": 1017,
           "label": "Original",
@@ -528,6 +577,13 @@
           "label": "Medium",
           "media": "photo",
           "source": "https://live.staticflickr.com/685/20967567081_59dc6d67f2.jpg"
+        },
+        {
+          "height": 1024,
+          "label": "Large",
+          "media": "photo",
+          "source": "https://live.staticflickr.com/685/20967567081_59dc6d67f2_b.jpg",
+          "width": 678
         },
         {
           "height": 1536,
@@ -598,6 +654,13 @@
           "source": "https://live.staticflickr.com/568/20351005903_3d53183ff8.jpg"
         },
         {
+          "height": 678,
+          "label": "Large",
+          "media": "photo",
+          "source": "https://live.staticflickr.com/568/20351005903_3d53183ff8_b.jpg",
+          "width": 1024
+        },
+        {
           "height": 1017,
           "width": 1536,
           "label": "Original",
@@ -664,6 +727,13 @@
           "label": "Medium",
           "media": "photo",
           "source": "https://live.staticflickr.com/5717/20428374183_76c77aaf6b.jpg"
+        },
+        {
+          "height": 678,
+          "label": "Large",
+          "media": "photo",
+          "source": "https://live.staticflickr.com/5717/20428374183_76c77aaf6b_b.jpg",
+          "width": 1024
         },
         {
           "height": 1017,
