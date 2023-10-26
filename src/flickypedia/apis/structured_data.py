@@ -97,7 +97,9 @@ def create_flickr_creator_statement(user: FlickrUser):
     *   A collection of values that link to their profile page
 
     """
-    wikidata_id = lookup_flickr_user_in_wikidata(user)
+    wikidata_id = lookup_flickr_user_in_wikidata(
+        user_id=user["id"], username=user["username"]
+    )
 
     if wikidata_id is not None:
         return {
