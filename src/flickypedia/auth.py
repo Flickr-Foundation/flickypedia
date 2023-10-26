@@ -233,7 +233,9 @@ def oauth2_callback_wikimedia():
         abort(401)
 
     # Get info about the logged in user
-    api = WikimediaApi(access_token=access_token)
+    api = WikimediaApi(
+        access_token=access_token, user_agent=current_app.config["USER_AGENT"]
+    )
     userinfo = api.get_userinfo()
 
     # Add our persistent ID to the session object.

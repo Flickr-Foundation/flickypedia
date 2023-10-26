@@ -76,6 +76,7 @@ def get_directories(config):
     """
     return [
         config["FLICKR_API_RESPONSE_CACHE"],
+        config["DUPLICATE_DATABASE_DIRECTORY"],
         config["CELERY"]["result_backend"].replace("file://", ""),
         config["CELERY"]["broker_transport_options"]["data_folder_in"],
         config["CELERY"]["broker_transport_options"]["data_folder_out"],
