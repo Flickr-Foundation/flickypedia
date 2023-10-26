@@ -20,9 +20,7 @@ later in the session.
 
 TODO:
 
-*   Add filtering by license type to this page
 *   Limit the number of options you can submit
-*   Detect duplicates at this stage
 
 """
 
