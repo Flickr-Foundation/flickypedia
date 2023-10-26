@@ -57,6 +57,15 @@
     {{ claim.mainsnak.property|wikidata_property_name }}:
   </dt>
   <dd class="snak-{{ claim.mainsnak.snaktype }}">
+    {#
+      If it's a 'value', then we can render it directly.
+
+      If it's a 'somevalue', then it's all qualifiers which will be rendered
+      further down.
+
+      Anything else we just dump the JSON onto the page; this is unlikely
+      but messy data is better than nothing.
+    #}
     {% if claim.mainsnak.snaktype == 'value' %}
       {% with datavalue = claim.mainsnak.datavalue %}
         {% include "components/sdc_value.html" %}
