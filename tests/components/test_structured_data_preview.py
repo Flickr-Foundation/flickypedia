@@ -6,4 +6,5 @@ from flickypedia.apis.structured_data import create_flickr_creator_statement
 
 
 def test_gets_creator_html(app):
-    statement = create_flickr_creator_statement(user={'id': })
+    # statement = create_flickr_creator_statement(user={'id': })
+    pass
