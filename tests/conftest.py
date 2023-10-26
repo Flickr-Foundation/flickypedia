@@ -10,6 +10,11 @@ from flickypedia.apis.flickr import FlickrApi
 from flickypedia.apis.wikimedia import WikimediaApi
 
 
+@pytest.fixture
+def user_agent():
+    return "Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)"
+
+
 @pytest.fixture(scope="function")
 def cassette_name(request):
     # By default we use the name of the test as the cassette name,
@@ -44,7 +49,7 @@ def vcr_cassette(cassette_name):
 
 
 @pytest.fixture(scope="function")
-def wikimedia_api(cassette_name):
+def wikimedia_api(cassette_name, user_agent):
     """
     Creates an instance of the WikimediaApi class for use in tests.
 
@@ -57,12 +62,13 @@ def wikimedia_api(cassette_name):
         filter_headers=["authorization"],
     ):
         yield WikimediaApi(
-            access_token=os.environ.get("WIKIMEDIA_ACCESS_TOKEN", "<REDACTED>")
+            access_token=os.environ.get("WIKIMEDIA_ACCESS_TOKEN", "<REDACTED>"),
+            user_agent=user_agent,
         )
 
 
 @pytest.fixture(scope="function")
-def flickr_api(cassette_name):
+def flickr_api(cassette_name, user_agent):
     """
     Creates an instance of the FlickrApi class for use in tests.
 
@@ -74,11 +80,14 @@ def flickr_api(cassette_name):
         cassette_library_dir="tests/fixtures/cassettes",
         filter_query_parameters=["api_key"],
     ):
-        yield FlickrApi(api_key=os.environ.get("FLICKR_API_KEY", "<REDACTED>"))
+        yield FlickrApi(
+            api_key=os.environ.get("FLICKR_API_KEY", "<REDACTED>"),
+            user_agent=user_agent,
+        )
 
 
 @pytest.fixture()
-def app():
+def app(user_agent):
     """
     Creates an instance of the app for use in testing.
 
@@ -89,6 +98,8 @@ def app():
 
     app.config["DUPLICATE_DATABASE_DIRECTORY"] = "tests/fixtures/duplicates"
     app.config["PHOTOS_PER_PAGE"] = 10
+
+    app.config["USER_AGENT"] = user_agent
 
     # This means I don't need to pass the CSRF token when posting
     # data to forms, which makes things a bit easier.

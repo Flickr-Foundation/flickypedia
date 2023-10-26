@@ -41,7 +41,7 @@ def get_fixture(filename):
         ),
     ],
 )
-def test_create_flickr_creator_statement(vcr_cassette, user, filename):
+def test_create_flickr_creator_statement(app, vcr_cassette, user, filename):
     result = create_flickr_creator_statement(user)
     expected = get_fixture(filename)
 
@@ -134,7 +134,7 @@ def test_create_date_taken_statement_fails_on_unrecognised_granularity():
         )
 
 
-def test_create_sdc_claims_for_flickr_photo_without_date_taken(vcr_cassette):
+def test_create_sdc_claims_for_flickr_photo_without_date_taken(app, vcr_cassette):
     # This test is based on
     # https://www.flickr.com/photos/199246608@N02/53248015596/
     actual = create_sdc_claims_for_flickr_photo(
@@ -159,7 +159,7 @@ def test_create_sdc_claims_for_flickr_photo_without_date_taken(vcr_cassette):
     assert actual == expected
 
 
-def test_create_sdc_claims_for_flickr_photo_with_date_taken(vcr_cassette):
+def test_create_sdc_claims_for_flickr_photo_with_date_taken(app, vcr_cassette):
     # This test is based on
     # https://www.flickr.com/photos/mdgovpics/53234140350/
     actual = create_sdc_claims_for_flickr_photo(

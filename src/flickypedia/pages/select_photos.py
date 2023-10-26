@@ -60,7 +60,10 @@ def get_photos(parsed_url):
     duplicates on Wikimedia Commons, etc.  It just returns a list of
     photos which can be found on Flickr.
     """
-    api = FlickrApi(api_key=current_app.config["FLICKR_API_KEY"])
+    api = FlickrApi(
+        api_key=current_app.config["FLICKR_API_KEY"],
+        user_agent=current_app.config["USER_AGENT"],
+    )
 
     if parsed_url["type"] == "single_photo":
         return {"photos": [api.get_single_photo(photo_id=parsed_url["photo_id"])]}

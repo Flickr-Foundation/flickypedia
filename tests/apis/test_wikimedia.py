@@ -31,8 +31,8 @@ def test_get_userinfo(wikimedia_api):
         ),
     ],
 )
-def test_call_api_with_bad_token(vcr_cassette, method_name, kwargs):
-    broken_api = WikimediaApi(access_token="not_a_real_token")
+def test_call_api_with_bad_token(vcr_cassette, user_agent, method_name, kwargs):
+    broken_api = WikimediaApi(access_token="not_a_real_token", user_agent=user_agent)
 
     with pytest.raises(InvalidAccessTokenException):
         getattr(broken_api, method_name)(**kwargs)

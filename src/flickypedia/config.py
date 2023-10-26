@@ -66,6 +66,9 @@ class Config(object):
     # The number of photos to show on a single page
     PHOTOS_PER_PAGE = 100
 
+    # A User-Agent sent on HTTP requests
+    USER_AGENT = "Flickypedia/0.1 (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)"
+
 
 def get_directories(config):
     """

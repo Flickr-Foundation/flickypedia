@@ -12,10 +12,13 @@ class WikimediaApi:
     than repeated everywhere.
     """
 
-    def __init__(self, *, access_token):
+    def __init__(self, *, access_token, user_agent):
         self.client = httpx.Client(
             base_url="https://commons.wikimedia.org",
-            headers={"Authorization": f"Bearer {access_token}"},
+            headers={
+                "Authorization": f"Bearer {access_token}",
+                "User-Agent": user_agent,
+            },
         )
 
     def _request(self, *, method, **kwargs):

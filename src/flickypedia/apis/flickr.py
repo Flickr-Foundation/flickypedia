@@ -44,10 +44,11 @@ class FlickrApi:
     than repeated everywhere.
     """
 
-    def __init__(self, *, api_key):
+    def __init__(self, *, api_key, user_agent):
         self.client = httpx.Client(
             base_url="https://api.flickr.com/services/rest/",
             params={"api_key": api_key},
+            headers={"User-Agent": user_agent},
         )
 
     def call(self, method, **params):

@@ -1,6 +1,7 @@
 import datetime
 import re
 
+from flask import current_app
 import httpx
 
 from flickypedia.apis.flickr import FlickrUser
@@ -103,7 +104,9 @@ def lookup_flickr_user_in_wikidata(user: FlickrUser):
         )
 
     resp = httpx.get(
-        "https://query.wikidata.org/sparql", params={"format": "json", "query": query}
+        "https://query.wikidata.org/sparql",
+        params={"format": "json", "query": query},
+        headers={"User-Agent": current_app.config["USER_AGENT"]},
     )
 
     resp.raise_for_status()

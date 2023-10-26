@@ -42,7 +42,7 @@ from flickypedia.apis.wikidata import lookup_flickr_user_in_wikidata, to_wikidat
         ("47397743@N05", "ianemes", None),
     ],
 )
-def test_lookup_flickr_user_in_wikidata(vcr_cassette, id, username, wikidata_id):
+def test_lookup_flickr_user_in_wikidata(app, vcr_cassette, id, username, wikidata_id):
     retrieved_wikidata_id = lookup_flickr_user_in_wikidata(
         user={"id": id, "username": username}
     )

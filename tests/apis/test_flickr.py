@@ -79,8 +79,8 @@ def test_methods_fail_if_not_found(flickr_api, method, params):
         getattr(flickr_api, method)(**params)
 
 
-def test_it_throws_if_bad_auth(vcr_cassette):
-    api = FlickrApi(api_key="doesnotexist")
+def test_it_throws_if_bad_auth(vcr_cassette, user_agent):
+    api = FlickrApi(api_key="doesnotexist", user_agent=user_agent)
 
     with pytest.raises(FlickrApiException):
         api.get_single_photo(photo_id="12345678901234567890")

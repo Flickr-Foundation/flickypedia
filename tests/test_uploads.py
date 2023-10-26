@@ -3,7 +3,7 @@ import datetime
 from flickypedia.uploads import upload_single_image
 
 
-def test_upload_single_image(wikimedia_api):
+def test_upload_single_image(app, wikimedia_api):
     upload_single_image(
         wikimedia_api,
         photo_id="53268016608",
