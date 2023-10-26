@@ -175,7 +175,8 @@ def select_photos():
     try:
         flickr_url = request.args["flickr_url"]
         parsed_url = parse_flickr_url(flickr_url)
-    except (KeyError, NotAFlickrUrl, UnrecognisedUrl):
+    except (KeyError, NotAFlickrUrl, UnrecognisedUrl) as e:
+        print(e)
         abort(400)
 
     # If somebody's already visited the page and clicked the
