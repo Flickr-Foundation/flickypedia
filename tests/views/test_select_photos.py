@@ -1,4 +1,5 @@
 import json
+import shutil
 
 import pytest
 
@@ -125,4 +126,32 @@ def test_selecting_photo_redirects_you_to_prepare_info(
     assert (
         resp.headers["location"]
         == "/prepare_info?selected_photo_ids=32812033543&cached_api_response_id=1234567890"
+    )
+
+
+def test_selecting_multiple_photo_redirects_you_to_prepare_info(
+    logged_in_client, app, flickr_api
+):
+    flickr_url = "https://www.flickr.com/photos/spike_yun/albums/72157677773252346"
+
+    cache_dir = app.config["FLICKR_API_RESPONSE_CACHE"]
+
+    shutil.copyfile(
+        "tests/fixtures/flickr_api/album-72177720312192106.json",
+        f"{cache_dir}/1234567890.json",
+    )
+
+    resp = logged_in_client.post(
+        f"/select_photos?flickr_url={flickr_url}",
+        data={
+            "photo_53285005734": "on",
+            "photo_53283740177": "on",
+            "cached_api_response_id": "1234567890",
+        },
+    )
+
+    assert resp.status_code == 302
+    assert (
+        resp.headers["location"]
+        == "/prepare_info?selected_photo_ids=53285005734,53283740177&cached_api_response_id=1234567890"
     )
