@@ -27,6 +27,7 @@ def cassette_name(request):
 
     try:
         suffix = request.node.callspec.id.replace("https://", "").replace("/", "-")
+
         return f"{function_name}.{suffix}.yml"
     except AttributeError:
         return f"{function_name}.yml"

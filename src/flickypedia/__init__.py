@@ -55,5 +55,7 @@ def create_app():
     app.jinja_env.filters["wikidata_date"] = render_wikidata_date
 
     app.jinja_env.undefined = StrictUndefined
+    app.jinja_env.trim_blocks = True
+    app.jinja_env.lstrip_blocks = True
 
     return app
