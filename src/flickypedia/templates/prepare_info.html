@@ -3,31 +3,16 @@
 {% block content %}
   {% include "components/header.html" %}
 
-  <details style="background: yellow; padding: 1em;" open>
-    <h3>Read Me:</h3>
-
-    <p>
-      For each photo, you need to fill in two fields: <strong>Title</strong> and <strong>Short Caption</strong>.
-      Wikimedia Commons requires those to be published under a <a href="https://creativecommons.org/public-domain/cc0/">CC0</a> license.
-    </p>
-
-    <p>
-      We can do the data mapping from Flickr to Wikimedia Commons.
-      If you want to see what's happening with that, click the <strong>More Details</strong> tab.
-    </p>
-
-    <p>
-      And don’t forget, images for Wikimedia Commons must be information, educational, or instructional.
-      That means <strong>no selfies or other personal photos like that</strong>.
-    </p>
-  </details>
-
-  <h3>Prepare {{ selected_photo_ids|length }} photos</h3>
+  <h2>Prepare info</h2>
 
   <style>
+    #prepare_info li {
+      margin-bottom: 2em;
+    }
+
     .info {
       display: grid;
-      grid-gap: 5px;
+      grid-gap: 15px;
       grid-template-columns: 200px auto;
       grid-template-rows: 20px auto auto;
     }
@@ -47,7 +32,7 @@
       grid-row: 2 / 3;
     }
 
-    .flickr_info p:first-child {
+    .flickr_info p:first-child, .wiki_info p:first-child {
       margin-top: 0;
     }
 
@@ -55,16 +40,37 @@
       grid-column: 2 / 2;
       grid-row: 2 / 3;
     }
+
+    .wiki_info input[type="text"] {
+      width: calc(100% - 20px);
+    }
+
+    .sdc {
+      grid-column: 1 / span 2;
+      grid-row: 3 / 3;
+      background: yellow;
+    }
   </style>
 
-  <form action="" method="post" style="background: yellow;">
+  <form id="prepare_info" action="" method="post">
     {{ form.hidden_tag() }}
+    
+    {{ form.cached_api_response_id() }}
 
-    {{ form.result_filename }}
+    <h3>
+      First, please set the language you’ll be using to write your captions:
+    </h3>
+    
+    {{ form.language() }}
+    
+    <h3>
+      Next, please add Titles and Captions for each photo, and optional Wikimedia Commons categories:
+    </h3>
 
     <ul class="plain_list">
       {% for field in form %}
         {% if field.id.startswith('photo_') %}
+          <li>
           {% set photo = field.label.text %}
 
           {% set large_size = photo.sizes | size_at(desired_size='Large') %}
@@ -91,7 +97,7 @@
                 <strong>Title:</strong> <br/>
                 {{ photo.title }}
               </p>
-              
+
               <p>
                 <strong>Description:</strong> <br/>
                 TODO: Get description
@@ -100,18 +106,28 @@
 
             <div class="wiki_info">
               <p>
-                <strong>By:</strong> <br/>
-                {{ photo.owner.realname or photo.owner.username }} <br/>
-                {{ photo.license.label }}
+                <strong>Title</strong> <br/>
+                {{ field.title() }}
               </p>
 
+              <p>
+                <strong>Short caption</strong> <br/>
+                {{ field.short_caption() }}
+              </p>
 
-
+              <p>
+                <strong>Add a Wikimedia Commons category</strong> <br/>
+                {{ field.categories() }}
+              </p>
             </div>
-          </div>
 
-          {{ field.label }}
-          {{ field }}
+            <details class="sdc">
+              <summary>More details</summary>
+
+              {{ field.label }}
+            </details>
+          </div>
+        </li>
         {% endif %}
       {% endfor %}
     </ul>

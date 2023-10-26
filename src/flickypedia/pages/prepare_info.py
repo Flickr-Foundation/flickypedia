@@ -9,7 +9,7 @@ from flask import (
 )
 from flask_login import login_required
 from flask_wtf import Form, FlaskForm
-from wtforms import FieldList, FormField, HiddenField, SubmitField, StringField
+from wtforms import FieldList, FormField, HiddenField, SelectField, SubmitField, StringField
 from wtforms.validators import DataRequired
 
 from flickypedia.pages.select_photos import get_cached_api_response
@@ -64,7 +64,8 @@ def create_prepare_info_form(photos):
         categories = StringField()
 
     class CustomForm(FlaskForm):
-        result_filename = HiddenField("result_filename")
+        cached_api_response_id = HiddenField("cached_api_response_id")
+        language = SelectField("language", choices=[('en', 'English'), ('de', 'Deutsch')])
         submit = SubmitField("Prepare info")
 
     for p in photos:
@@ -96,6 +97,7 @@ def prepare_info():
     )
 
     form = create_prepare_info_form(photos=selected_photos)
+    form.cached_api_response_id.data = cached_api_response_id
 
     if form.validate_on_submit():
         from pprint import pprint; pprint(form.data)
