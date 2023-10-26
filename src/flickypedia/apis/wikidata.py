@@ -69,7 +69,7 @@ def get_property_name(code):
     """
     for attr in dir(WikidataProperties):
         if getattr(WikidataProperties, attr) == code:
-            return ' '.join(re.findall('[A-Z][^A-Z]*', attr)).lower()
+            return " ".join(re.findall("[A-Z][^A-Z]*", attr)).lower()
     else:
         raise KeyError
 
@@ -82,16 +82,15 @@ def get_entity_label(entity_id):
     TODO: Currently this only returns the English label
     """
     resp = httpx.get(
-        f'https://www.wikidata.org/w/rest.php/wikibase/v0/entities/items/{entity_id}',
+        f"https://www.wikidata.org/w/rest.php/wikibase/v0/entities/items/{entity_id}",
         headers={"User-Agent": current_app.config["USER_AGENT"]},
     )
 
     try:
         resp.raise_for_status()
-        return resp.json()['labels']['en']
+        return resp.json()["labels"]["en"]
     except Exception:
         return None
-
 
 
 @functools.lru_cache
