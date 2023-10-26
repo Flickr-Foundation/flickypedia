@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template
+from flask import Flask
 from jinja2 import StrictUndefined
 
 from flickypedia.auth import (
@@ -12,13 +12,9 @@ from flickypedia.auth import (
 )
 from flickypedia.config import Config, get_directories
 from flickypedia.duplicates import create_link_to_commons
-from flickypedia.pages import find_photos, prepare_info, select_photos
+from flickypedia.views import find_photos, homepage, prepare_info, select_photos
 from flickypedia.tasks import celery_init_app
 from flickypedia.utils import a_href, size_at
-
-
-def homepage():
-    return render_template("homepage.html")
 
 
 def create_app():
