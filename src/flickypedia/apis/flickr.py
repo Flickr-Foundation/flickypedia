@@ -335,13 +335,14 @@ class FlickrApi:
         photos = []
 
         for photo_elem in elem.findall(".//photo"):
+            title = photo_elem.attrib["title"] or None
             description = photo_elem.find(".//description").text or None
 
             photos.append(
                 {
                     "_elem": photo_elem,
                     "id": photo_elem.attrib["id"],
-                    "title": photo_elem.attrib["title"],
+                    "title": title,
                     "description": description,
                     "date_posted": _parse_date_posted(photo_elem.attrib["dateupload"]),
                     "date_taken": {

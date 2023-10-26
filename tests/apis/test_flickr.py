@@ -229,6 +229,13 @@ class TestGetSinglePhoto:
         photo_with_desc = flickr_api.get_single_photo(photo_id="53248070597")
         assert photo_with_desc["description"] == "Paris Montmartre"
 
+    def test_empty_photo_title_is_none(self, flickr_api):
+        photo_without_title = flickr_api.get_single_photo(photo_id="20967567081")
+        assert photo_without_title["title"] is None
+
+        photo_with_title = flickr_api.get_single_photo(photo_id="20428374183")
+        assert photo_with_title["title"] == "Hapjeong"
+
 
 class TestGetAlbum:
     def test_can_get_album(self, flickr_api):
@@ -282,6 +289,15 @@ class TestGetAlbum:
         assert not any(
             size for size in resp["photos"][0]["sizes"] if size["label"] == "Original"
         )
+
+    def test_empty_album_title_is_none(self, flickr_api):
+        album = flickr_api.get_photos_in_album(
+            user_url="https://www.flickr.com/photos/spike_yun/",
+            album_id="72157677773252346",
+        )
+
+        assert album["photos"][0]["title"] == "Seoul"
+        assert album["photos"][7]["title"] is None
 
     def test_empty_album_description_is_none(self, flickr_api):
         album_without_desc = flickr_api.get_photos_in_album(
