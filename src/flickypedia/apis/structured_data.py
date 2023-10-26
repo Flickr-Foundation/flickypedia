@@ -157,7 +157,7 @@ def create_copyright_status_statement(status):
     }
 
 
-def create_source_data_for_photo(user_id, photo_url, original_url):
+def create_source_data_for_photo(photo_url, original_url):
     """
     Create a structured data statement for a Flickr photo.
 
@@ -316,7 +316,7 @@ def create_sdc_claims_for_flickr_photo(
     copyright_statement = create_copyright_status_statement(status=copyright_status)
 
     source_statement = create_source_data_for_photo(
-        user_id=user["id"], photo_url=photo_url, original_url=original_url
+        photo_url=photo_url, original_url=original_url
     )
 
     license_statement = create_license_statement(license_id=license_id)
