@@ -1,33 +1,74 @@
-<dl>
+<style>
+  .structured_data_preview {
+    font-family: monospace;
+    line-height: 1.3em;
+    display: grid;
+    grid-template-columns: 190px auto;
+    margin-bottom: 0;
+  }
+
+  .structured_data_preview > dt {
+    font-weight: bold;
+    grid-column: 1 / 2;
+  }
+
+  .structured_data_preview > dd {
+    margin-left: 0;
+    grid-column: 2 / 2;
+  }
+
+  .structured_data_preview > dd {
+    margin-bottom: 20px;
+  }
+
+  .structured_data_preview > dd dl:first-child {
+    margin-top:    0;
+    margin-bottom: 0;
+  }
+
+  .structured_data_preview .snak-value .sdc_qualifiers {
+    margin-top: 5px;
+    margin-left: 18px;
+    font-size: 0.8em;
+  }
+
+  .structured_data_preview .snak-value .sdc_qualifiers li {
+    margin-bottom: 2px !important;
+  }
+
+  .sdc_qualifiers {
+    padding-top: 3px;
+    margin-bottom: 0;
+  }
+
+  .sdc_qualifiers li {
+    margin-bottom: 6px !important;
+  }
+
+  .structured_data_preview dt:last-of-type,
+  .structured_data_preview dd:last-of-type {
+    margin-bottom: 0;
+  }
+</style>
+
+<dl class="structured_data_preview">
   {% for claim in structured_data %}
   <dt>
-    {{ claim.mainsnak.property|wikidata_property_name }}
+    {{ claim.mainsnak.property|wikidata_property_name }}:
   </dt>
-  <dd>
-    {% if claim.mainsnak.snaktype == 'value'
-          and claim.mainsnak.datavalue.type == 'wikibase-entityid' %}
-      {% set wikidata_entity_id = claim.mainsnak.datavalue.value.id %}
-      {% set label = wikidata_entity_id|wikidata_entity_label %}
-      <a href="https://www.wikidata.org/wiki/{{ wikidata_entity_id }}">
-        {% if label != None %}
-          {{ label }}
-        {% else %}
-          {{ wikidata_entity_id }}
-        {% endif %}
-      </a>
-
-    {% elif claim.mainsnak.snaktype == 'value'
-          and claim.mainsnak.datavalue.type == 'time' %}
-          TIME!!
-          {{ claim }}
+  <dd class="snak-{{ claim.mainsnak.snaktype }}">
+    {% if claim.mainsnak.snaktype == 'value' %}
+      {% with datavalue = claim.mainsnak.datavalue %}
+        {% include "components/sdc_value.html" %}
+      {% endwith %}
+    {% elif claim.mainsnak.snaktype == 'somevalue' %}
     {% else %}
-    {{ claim.mainsnak.snaktype }}
       {{ claim }}
     {% endif %}
 
-    {% if claim.qualifiers is defined %}
-      {{ claim.qualifiers }}
-    {% endif %}
+    {% with qualifiers = claim.qualifiers %}
+      {% include "components/sdc_qualifiers.html" %}
+    {% endwith %}
   </dd>
   {% endfor %}
 </dl>

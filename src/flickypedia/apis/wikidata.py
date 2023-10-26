@@ -228,7 +228,7 @@ def to_wikidata_date(d: datetime.datetime, *, precision: str):
         "year": d.strftime("+%Y-00-00T00:00:00Z"),
     }[precision]
 
-    # This is the numeric value of precsion used in the Wikidata model.
+    # This is the numeric value of precision used in the Wikidata model.
     #
     # See https://www.wikidata.org/wiki/Help:Dates#Precision
     precision_value = {"day": 11, "month": 10, "year": 9}[precision]
@@ -267,3 +267,25 @@ def to_wikidata_date(d: datetime.datetime, *, precision: str):
         },
         "type": "time",
     }
+
+
+def render_wikidata_date(value):
+    """
+    Given a Wikidata date from the SDC, render it as text.
+    """
+    assert value['calendarmodel'] == f"http://www.wikidata.org/entity/{WikidataEntities.GregorianCalendar}"
+    assert value['precision'] in {11, 10, 9}
+
+    d = datetime.datetime.strptime(value['time'], "+%Y-%m-%dT00:00:00Z")
+
+    # This is the numeric value of precision used in the Wikidata model.
+    #
+    # See https://www.wikidata.org/wiki/Help:Dates#Precision
+    if value['precision'] == 11:
+        return '%s (precision: day, calendar: Gregorian)' % d.strftime('%d %B %Y')
+    elif value['precision'] == 10:
+        return '%s (precision: month, calendar: Gregorian)' % d.strftime('%B %Y')
+    elif value['precision'] == 9:
+        return '%s (precision: year, calendar: Gregorian)' % d.strftime('%Y')
+    else:  # pragma: no cover
+        assert False

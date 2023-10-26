@@ -1,0 +1,12 @@
+{% if qualifiers is defined %}
+  <ul class="sdc_qualifiers plain_list">
+    {% for q in claim["qualifiers-order"] %}
+    <li>
+      {{ qualifiers[q][0].property | wikidata_property_name }}:
+      {% with datavalue = qualifiers[q][0].datavalue %}
+        {% include "components/sdc_value.html" %}
+      {% endwith %}
+    </li>
+    {% endfor %}
+  </ul>
+{% endif %}

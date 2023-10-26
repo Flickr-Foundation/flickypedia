@@ -66,6 +66,7 @@ def create_prepare_info_form(photos):
     for p in photos:
         p["sdc"] = create_sdc_claims_for_flickr_photo(
             photo_id=p["id"],
+            photo_url=p["url"],
             user=p["owner"],
             copyright_status="copyrighted",
             original_url=p["url"],
