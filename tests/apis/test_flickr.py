@@ -80,7 +80,10 @@ def test_methods_fail_if_not_found(flickr_api, method, params):
 
 
 def test_it_throws_if_bad_auth(vcr_cassette):
-    api = FlickrApi(api_key="doesnotexist")
+    api = FlickrApi(
+        api_key="doesnotexist",
+        user_agent="Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)",
+    )
 
     with pytest.raises(FlickrApiException):
         api.get_single_photo(photo_id="12345678901234567890")

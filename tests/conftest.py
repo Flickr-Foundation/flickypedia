@@ -74,7 +74,10 @@ def flickr_api(cassette_name):
         cassette_library_dir="tests/fixtures/cassettes",
         filter_query_parameters=["api_key"],
     ):
-        yield FlickrApi(api_key=os.environ.get("FLICKR_API_KEY", "<REDACTED>"))
+        yield FlickrApi(
+            api_key=os.environ.get("FLICKR_API_KEY", "<REDACTED>"),
+            user_agent="Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)",
+        )
 
 
 @pytest.fixture()
