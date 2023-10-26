@@ -220,6 +220,7 @@ class FlickrApi:
         #       		…
         #       	</owner>
         #       	<title>Puppy Kisses</title>
+        #           <description>Seaman Nina Bowen shows …</description>
         #       	<dates
         #               posted="1490376472"
         #               taken="2017-02-17 00:00:00"
@@ -233,6 +234,8 @@ class FlickrApi:
         #       </rsp>
         #
         title = info_resp.find(".//photo/title").text
+        description = info_resp.find(".//photo/description").text or None
+
         owner = {
             "id": info_resp.find(".//photo/owner").attrib["nsid"],
             "username": info_resp.find(".//photo/owner").attrib["username"],
@@ -291,6 +294,7 @@ class FlickrApi:
         return {
             "id": photo_id,
             "title": title,
+            "description": description,
             "owner": owner,
             "date_posted": date_posted,
             "date_taken": date_taken,
@@ -313,9 +317,10 @@ class FlickrApi:
         "url_s",
         "url_m",
         "url_o",
-        # This isn't documented but it seems to work anyway, and
-        # Large Square might be quite useful for our purposes!
+        # These parameters aren't documented, but they're quite
+        # useful for our purposes!
         "url_q",
+        "description",
     ]
 
     def _parse_collection_of_photos_response(self, elem):
@@ -330,11 +335,15 @@ class FlickrApi:
         photos = []
 
         for photo_elem in elem.findall(".//photo"):
+            title = photo_elem.attrib["title"] or None
+            description = photo_elem.find(".//description").text or None
+
             photos.append(
                 {
                     "_elem": photo_elem,
                     "id": photo_elem.attrib["id"],
-                    "title": photo_elem.attrib["title"],
+                    "title": title,
+                    "description": description,
                     "date_posted": _parse_date_posted(photo_elem.attrib["dateupload"]),
                     "date_taken": {
                         "value": _parse_date_taken(photo_elem.attrib["datetaken"]),
