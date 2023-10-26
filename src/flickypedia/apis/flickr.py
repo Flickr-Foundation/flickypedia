@@ -33,6 +33,8 @@ class FlickrUser(TypedDict):
     id: str
     username: str
     realname: Optional[str]
+    photos_url: str
+    profile_url: str
 
 
 class FlickrApi:
@@ -161,6 +163,7 @@ class FlickrApi:
                 "username": "The British Library",
                 "realname": "British Library",
                 "photos_url": "https://www.flickr.com/photos/britishlibrary/",
+                "profile_url": "https://www.flickr.com/people/britishlibrary/",
             }
 
         """
@@ -178,8 +181,8 @@ class FlickrApi:
         #     <person id="12403504@N02"…">
         #   	<username>The British Library</username>
         #       <realname>British Library</realname>
-        #       <photosurl>flickr.com/photos/britishlibrary/</photosurl>
-        #       <profileurl>flickr.com/people/britishlibrary/</profileurl>
+        #       <photosurl>https://www.flickr.com/photos/britishlibrary/</photosurl>
+        #       <profileurl>https://www.flickr.com/people/britishlibrary/</profileurl>
         #       …
         #     </person>
         #
@@ -237,10 +240,15 @@ class FlickrApi:
         title = info_resp.find(".//photo/title").text
         description = info_resp.find(".//photo/description").text or None
 
+        user_id = info_resp.find(".//photo/owner").attrib["nsid"]
+        path_alias = info_resp.find(".//photo/owner").attrib["path_alias"] or user_id
+
         owner = {
-            "id": info_resp.find(".//photo/owner").attrib["nsid"],
+            "id": user_id,
             "username": info_resp.find(".//photo/owner").attrib["username"],
             "realname": info_resp.find(".//photo/owner").attrib["realname"] or None,
+            "photos_url": f"https://www.flickr.com/photos/{path_alias}/",
+            "profile_url": f"https://www.flickr.com/people/{path_alias}/",
         }
 
         dates = info_resp.find(".//photo/dates").attrib

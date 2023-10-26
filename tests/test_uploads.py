@@ -7,7 +7,14 @@ def test_upload_single_image(app, wikimedia_api):
     upload_single_image(
         wikimedia_api,
         photo_id="53268016608",
-        user={"id": "199246608@N02", "username": "cefarrjf87", "realname": "Alex Chan"},
+        photo_url="https://www.flickr.com/photos/199246608@N02/53268016608",
+        user={
+            "id": "199246608@N02",
+            "username": "cefarrjf87",
+            "realname": "Alex Chan",
+            "photos_url": "https://www.flickr.com/photos/199246608@N02/",
+            "profile_url": "https://www.flickr.com/people/199246608@N02/",
+        },
         filename="Thameslink Class 700 in Pride livery.jpg",
         file_caption="A Thameslink Class 700 train in the rainbow Pride livery, taken at night",
         date_taken={
