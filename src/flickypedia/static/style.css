@@ -29,6 +29,12 @@ footer a {
   font-weight: bold;
 }
 
+ul.plain_list {
+  list-style-type: none;
+  padding: 0;
+  margin:  0;
+}
+
 /* Temporary styles */
 main {
   padding-bottom: 1em;
