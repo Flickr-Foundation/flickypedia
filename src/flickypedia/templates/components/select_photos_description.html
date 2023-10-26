@@ -1,10 +1,21 @@
+<style>
+  .select_photos_description {
+    font-weight: normal;
+  }
+
+  .select_photos_description .key_info {
+    font-weight: bold;
+  }
+</style>
+
 {% if parsed_url.type == 'album' %}
-  <h2>
+  <h2 class="select_photos_description">
     {% if photo_data.photos.available -%}
       You’re looking at
     {%- else -%}
       You looked up
     {%- endif %}
-    {{ photo_data.album.owner.realname or photo_data.album.owner.username }}’s album called “{{ photo_data.album.title }}”.
+    <span class="key_info">{{ photo_data.album.owner.realname or photo_data.album.owner.username }}</span>’s album
+    called <span class="key_info">“{{ photo_data.album.title }}”</span>.
   </h2>
 {% endif %}
