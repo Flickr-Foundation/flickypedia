@@ -3,8 +3,6 @@ import shutil
 
 import pytest
 
-from utils import minify
-
 
 @pytest.mark.parametrize(
     "url",
