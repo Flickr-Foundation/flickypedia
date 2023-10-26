@@ -19,6 +19,7 @@ from flask_login import login_required
 from wtforms import FormField, HiddenField, SelectField, StringField, SubmitField
 from wtforms.validators import DataRequired
 
+from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
 from .select_photos import get_cached_api_response
 
 
@@ -63,6 +64,15 @@ def create_prepare_info_form(photos):
         )
 
     for p in photos:
+        p["sdc"] = create_sdc_claims_for_flickr_photo(
+            photo_id=p["id"],
+            user=p["owner"],
+            copyright_status="copyrighted",
+            original_url=p["url"],
+            license_id=p["license"]["id"],
+            date_posted=p["date_posted"],
+            date_taken=p["date_taken"],
+        )
         setattr(CustomForm, f"photo_{p['id']}", FormField(PhotoInfoForm, label=p))
 
     return CustomForm()

@@ -125,12 +125,14 @@
               </p>
             </div>
 
-            <details class="sdc">
+            <details class="sdc" open>
               <summary>More details</summary>
 
               <!-- TODO: Add structured data -->
 
-              {{ field.label }}
+              {% with structured_data = photo.sdc %}
+                {% include "components/structured_data.html" %}
+              {% endwith %}
             </details>
           </div>
         </li>

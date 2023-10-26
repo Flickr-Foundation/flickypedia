@@ -1,0 +1,10 @@
+<dl>
+  {% for claim in structured_data %}
+  <dt>
+    {{ claim.mainsnak.property }}
+  </dt>
+  <dd>
+    {{ claim }}
+  </dd>
+  {% endfor %}
+</dl>
