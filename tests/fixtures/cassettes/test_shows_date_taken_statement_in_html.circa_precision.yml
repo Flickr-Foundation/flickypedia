@@ -1,0 +1,182 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - www.wikidata.org
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://www.wikidata.org/w/rest.php/wikibase/v0/entities/items/Q5727902
+  response:
+    content: '{"type":"item","labels":{"ht":"Alantou","zh-hans":"\u5927\u7ea6","zh-hant":"\u5927\u7d04\u70ba","zh-hk":"Circa","pt":"circa","sk":"Circa","eu":"circa","fr":"circa","en":"circa","es":"circa","af":"Circa","mk":"\u043e\u043a\u043e\u043b\u0443","fi":"noin","gl":"circa","la":"Circa","id":"kira-kira","nn":"cirka","ja":"\u304a\u3088\u305d","cs":"cirka","br":"Circa","ur":"\u062a\u0642\u0631\u06cc\u0628\u0627\u064b","ar":"\u0642\u0631\u0627\u0628\u0629","zh":"\u5927\u7d04\u70ba","nl":"circa","ca":"circa","el":"\u03c0\u03b5\u03c1\u03af\u03c0\u03bf\u03c5","de":"circa","tr":"yakla\u015f\u0131k","pa":"\u0a05\u0a70\u0a26\u0a3e\u0a1c\u0a3c\u0a28","he":"\u05dc\u05e2\u05e8\u05da","sv":"cirka","ru":"\u043e\u043a\u043e\u043b\u043e","be":"\u043a\u0430\u043b\u044f","pl":"oko\u0142o","sl":"okoli","it":"circa","scn":"circa","ast":"circa","nb":"cirka","hu":"k\u00f6r\u00fclbel\u00fcl","ko":"\ucbe4","cy":"tua","da":"cirka","pt-br":"circa","sr":"\u043e\u0442\u043f\u0440\u0438\u043b\u0438\u043a\u0435","en-gb":"circa","vi":"kho\u1ea3ng","sd":"\u062a\u0642\u0631\u064a\u0628\u0627\u064e\u064e","et":"umbes","uk":"\u0431\u043b\u0438\u0437\u044c\u043a\u043e","ka":"\u10d3\u10d0\u10d0\u10ee\u10da\u10dd\u10d4\u10d1\u10d8\u10d7","en-ca":"circa","ro":"circa","bg":"\u043e\u043a\u043e\u043b\u043e","ba":"\u0442\u0438\u0440\u04d9\u04bb\u0435","tg":"\u0442\u0430\u049b\u0440\u0438\u0431\u0430\u043d","hy":"\u0574\u0578\u057f\u0561\u057e\u0578\u0580\u0561\u057a\u0565\u057d","myv":"\u043c\u0430\u043b\u0430\u0432","eo":"\u0109irka\u016d","lb":"circa","bn":"\u0986\u09a8\u09c1\u09ae\u09be\u09a8\u09bf\u0995","azb":"\u0634\u0627\u0628\u0644\u0648\u0646:Circa","ml":"\u0d38\u0d3f\u0d7c\u0d15","nan":"Circa","gu":"\u0a86\u0ab6\u0ab0\u0ac7","be-tarask":"\u043a\u0430\u043b\u044f","ms":"lebih
+      kurang","hr":"Cirka","lv":"aptuveni","tt":"\u044f\u043a\u044b\u043d\u0447\u0430","sco":"circa","az":"t\u0259qrib\u0259n","ga":"circa","ext":"circa","tt-cyrl":"\u044f\u043a\u044b\u043d\u0447\u0430","zh-tw":"\u5927\u7d04\u70ba","tl":"Circa","sq":"rreth
+      vitit","vec":"sirca","lt":"apie","kw":"a-dro","ku":"n\u00eaz\u00eek\u00ee","sh":"otprilike","sms":"nu\u02b9tt","se":"sullii","smn":"suul\u00e2n","ms-arab":"\u0644\u0628\u064a\u0647
+      \u06a9\u0648\u0631\u06a0","sgs":"apl\u0117","bar":"circe","crh":"yaqla\u015f\u0131q","ary":"\u062c\u0648\u0627\u064a\u0647","yue":"\u5927\u6982","ks":"\u062a\u064e\u0642\u0631\u06cc\u0656\u0628\u064e\u0646","bs":"cirka","mzn":"\u062d\u062f\u0648\u062f","xmf":"\u10db\u10d4\u10ee\u10dd\u10da\u10d0\u10e4\u10d8\u10e0\u10dd"},"descriptions":{"en":"approximative
+      date \u2013 should be used with qualifier P1480 to indicate the source specified
+      a value and explicitly stated that value is approximate, but specify no precision
+      information. For example, \"born around 1709\"","ca":"al voltant de. aproximadament:
+      s''ha d''utilitzar amb el qualificador P1480 per indicar que la font ha especificat
+      un valor i ha indicat expl\u00edcitament que el valor \u00e9s aproximat, per\u00f2
+      no s''especifica informaci\u00f3 de precisi\u00f3.","ru":"\u0444\u043b\u0430\u0433,
+      \u0443\u043a\u0430\u0437\u044b\u0432\u0430\u044e\u0449\u0438\u0439, \u0447\u0442\u043e
+      \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a \u0443\u043a\u0430\u0437\u0430\u043b
+      \u043d\u0430 \u043f\u0440\u0438\u0431\u043b\u0438\u0437\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c
+      \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f, \u043d\u043e \u043d\u0435
+      \u0443\u043a\u0430\u0437\u0430\u043b \u0442\u043e\u0447\u043d\u044b\u0435 \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u044b\u0435
+      \u0433\u0440\u0430\u043d\u0438\u0446\u044b \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f","pl":"wyra\u017cenie
+      u\u017cywane do okre\u015blenia czego\u015b przybli\u017conego. na przyk\u0142ad
+      \"urodzony oko\u0142o 1908 roku\"","es":"preposici\u00f3n que denota incertidumbre
+      temporal (v\u00e9anse instrucciones)","sl":"npr. \"rojen pribli\u017eno leta
+      1709\" ali \" umrl blizu Berlina\"","ja":"\u3053\u306e\u60c5\u5831\u6e90\u3067\u306f\u3001\u3053\u306e\u60c5\u5831\u304c\u304a\u3088\u305d\u306e\u7cbe\u5ea6\u3067\u3042\u308b\u3053\u3068\u304c\u8ff0\u3079\u3089\u308c\u3066\u3044\u308b\u3002\u4f8b:
+      \u300c1709\u5e74\u9803\u8a95\u751f\u300d\u300c\u30d9\u30eb\u30ea\u30f3\u4ed8\u8fd1\u3067\u6ca1\u300d","scn":"qualificaturi
+      ca riggistra lu fattu chi la fonti di n''affirmazzioni spic\u00ecfica un valuri
+      approssimatu","de":"ungef\u00e4hr \u2013 sollte mit Qualifikator P1480 \u201eNachweisumst\u00e4nde\u201c
+      verwendet werden, um auszudr\u00fccken, dass die Quelle eine Angabe als ungef\u00e4hr
+      bezeichnet, aber ohne die Pr\u00e4zision anzugeben, z. B. \u201egeboren um 1709\u201c","it":"approssimatamente
+      \u2013 da utilizzare con il qualificatore P1480 per indicare che il valore \u00e8
+      stata indicato dalla fonte esplicitamente con valore approssimato (esempio \"nato
+      attorno al 1709\")","fr":"date approximative (\u00e0 utiliser avec le qualificatif
+      P1480)","hu":"a P1480 min\u0151s\u00edt\u0151 \u00e9rt\u00e9kek\u00e9nt haszn\u00e1land\u00f3,
+      amikor a forr\u00e1s kifejezetten k\u00f6r\u00fclbel\u00fcli \u00e9rt\u00e9kre
+      utal, pl. \u201e1709 k\u00f6r\u00fcl sz\u00fcletett\u201d","da":"omkring","pt-br":"aproximadamente
+      - deve ser usado com qualificador P1480 para indicar a fonte espec\u00edfica
+      e explicitamente atribu\u00eddo como aproximado, mas especificamente uma informa\u00e7\u00e3o
+      imprecisa. Por exemplo, \"nasceu por volta de 1709\"","cs":"p\u0159ibli\u017en\u011b
+      (pro \u010dasov\u00e9 vymezen\u00ed) \u2013 m\u011blo by se pou\u017e\u00edvat
+      s vymezen\u00edm P1480 pro vyzna\u010den\u00ed, \u017ee u uv\u00e1d\u011bn\u00e9
+      hodnoty zdroj v\u00fdslovn\u011b p\u00ed\u0161e, \u017ee je hodnota p\u0159ibli\u017en\u00e1,
+      ani\u017e by uvedl informace o p\u0159esnosti. Nap\u0159\u00edklad \u201enarozen
+      kolem roku 1709\u201c.","fi":"suunnilleen \u2013 k\u00e4ytet\u00e4\u00e4n yhdess\u00e4
+      tarkenteen P1480 kanssa, jolla ilmaistaan, ett\u00e4 l\u00e4hteen mukaan arvo
+      on summittainen eik\u00e4 tarkempaa tietoa ole tarjolla. Esimerkiksi \"syntynyt
+      n. 1709\"","ro":"aproximativ; de utilizat cu calificatorul P1480 pentru a indica
+      o valoare aproximativ\u0103, de exemplu \u201en\u0103scut \u00een cca 1709\u201d","nl":"ongeveer
+      - dient om aan te geven dat het niet om een exacte datering gaat","uk":"\u043f\u0440\u0438\u0431\u043b\u0438\u0437\u043d\u043e
+      \u2013 \u0434\u0436\u0435\u0440\u0435\u043b\u043e \u0432\u043a\u0430\u0437\u0430\u043b\u043e
+      \u043d\u0430 \u043f\u0440\u0438\u0431\u043b\u0438\u0437\u043d\u0456\u0441\u0442\u044c
+      \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f, \u0430\u043b\u0435 \u043d\u0435
+      \u0432\u043a\u0430\u0437\u0430\u043b\u043e \u0442\u043e\u0447\u043d\u0456 \u043c\u043e\u0436\u043b\u0438\u0432\u0456
+      \u043c\u0435\u0436\u0456 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f; \u0442\u0440\u0435\u0431\u0430
+      \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438
+      \u0437 \u043a\u0432\u0430\u043b\u0456\u0444\u0456\u043a\u0430\u0442\u043e\u0440\u043e\u043c
+      P1480","tr":"yakla\u015f\u0131k - belirtilen bir de\u011ferin s\u00f6z konusu
+      tarihe yak\u0131n oldu\u011funu belirtmek i\u00e7in kullan\u0131l\u0131r ve
+      P1480 ile birlikte kullan\u0131lmal\u0131d\u0131r ve kesin bilginin bulunmad\u0131\u011f\u0131
+      zamanlarda belirtilir.","vi":"v\u1ecb tr\u00ed x\u1ea5p x\u1ec9 \u2013 n\u00ean
+      \u0111\u01b0\u1ee3c d\u00f9ng v\u1edbi t\u1eeb khu bi\u1ec7t P1480 \u0111\u1ec3
+      ch\u1ec9 ra c\u00e1ch ngu\u1ed3n ghi l\u1ea1i m\u1ed9t gi\u00e1 tr\u1ecb v\u00e0
+      n\u00f3i r\u00f5 r\u1eb1ng gi\u00e1 tr\u1ecb n\u00e0y ch\u1ec9 mang t\u00ednh
+      x\u1ea5p x\u1ec9, v\u00e0 kh\u00f4ng c\u00f3 th\u00f4ng tin ch\u00ednh x\u00e1c.
+      V\u00ed d\u1ee5, \"sinh kho\u1ea3ng 1709\"","he":"\u05d1\u05e7\u05d9\u05e8\u05d5\u05d1","be-tarask":"\u043f\u0440\u044b\u0431\u043b\u0456\u0437\u043d\u0430
+      \u2014 \u0434\u043b\u044f \u0432\u044b\u043a\u0430\u0440\u044b\u0441\u0442\u0430\u043d\u044c\u043d\u044f
+      \u0437 \u043a\u0432\u0430\u043b\u0456\u0444\u0456\u043a\u0430\u0442\u0430\u0440\u0430\u043c
+      P1480. \u041d\u0430\u043f\u0440\u044b\u043a\u043b\u0430\u0434, \u00ab\u043d\u0430\u0440\u0430\u0434\u0437\u0456\u045e\u0441\u044f
+      \u043a\u0430\u043b\u044f 1789 \u0440\u043e\u043a\u0443\u00bb","pt":"express\u00e3o
+      latina equivalente a \"cerca de\", aproximadamente","gl":"termo latino que indica
+      aproximaci\u00f3n nunha data","el":"\u03c0\u03b5\u03c1\u03af\u03c0\u03bf\u03c5
+      (circa) - \u03b3\u03b9\u03b1 \u03c7\u03c1\u03ae\u03c3\u03b7 \u03c3\u03c4\u03bf\u03bd
+      \u03c0\u03c1\u03bf\u03c3\u03b4\u03b9\u03bf\u03c1\u03b9\u03c3\u03c4\u03ae P1480
+      \u00ab\u03c0\u03bf\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1 \u03b4\u03b5\u03b4\u03bf\u03bc\u03ad\u03bd\u03c9\u03bd\u00bb
+      (\u03c0\u03b1\u03c1\u03ac\u03b4\u03b5\u03b9\u03b3\u03bc\u03b1: \u03b3\u03b5\u03bd\u03bd\u03ae\u03b8\u03b7\u03ba\u03b5
+      \u03c0\u03b5\u03c1\u03af\u03c0\u03bf\u03c5 \u03c4\u03bf 1709)","ko":"\uba85\ud655\ud558\uc9c0
+      \uc54a\uc740 \uc815\ubcf4\ub97c \uadfc\uc0ac\uce58\uc5d0 \uac00\uae5d\uac8c
+      \ud45c\ud604\ud560 \ub54c \uc0ac\uc6a9 - \"1709\ub144\ucbe4\uc5d0 \ud0dc\uc5b4\ub0ac\ub2e4\"
+      \ub4f1","ar":"\u062a\u0642\u0631\u064a\u0628\u064b\u0627 - \u064a\u062c\u0628
+      \u0627\u0633\u062a\u062e\u062f\u0627\u0645\u0647 \u0645\u0639 \u0627\u0644\u0645\u0624\u0647\u0644
+      P1480 \u0644\u0644\u0625\u0634\u0627\u0631\u0629 \u0625\u0644\u0649 \u0627\u0644\u0645\u0635\u062f\u0631
+      \u0627\u0644\u0645\u062d\u062f\u062f \u0644\u0642\u064a\u0645\u0629 \u0648\u064a\u0648\u0636\u062d
+      \u0635\u0631\u0627\u062d\u0629 \u0623\u0646 \u0627\u0644\u0642\u064a\u0645\u0629
+      \u062a\u0642\u0631\u064a\u0628\u064a\u0629 \u060c \u0648\u0644\u0643\u0646 \u0644\u0627
+      \u062a\u062d\u062f\u062f \u0645\u0639\u0644\u0648\u0645\u0627\u062a \u062f\u0642\u064a\u0642\u0629.
+      \u0639\u0644\u0649 \u0633\u0628\u064a\u0644 \u0627\u0644\u0645\u062b\u0627\u0644
+      \u060c \"\u0648\u0644\u062f \u062d\u0648\u0627\u0644\u064a \u0639\u0627\u0645
+      1709\"","az":"t\u0259xmin\u0259n \u2014 P1480 parametr g\u00f6st\u0259ricisi
+      il\u0259 birlikd\u0259 i\u015fl\u0259dilm\u0259lidir","mzn":"\u062a\u0642\u0631\u06cc\u0628\u0627\u064b
+      \u0686\u0647 \u0639\u062f\u062f\u06cc \u0647\u0633\u062a\u0647 \u0631\u0647
+      \u0648\u0646\u062c\u0647 \u0633\u0631\u0627\u0642 \u062f\u0646\u0646\u0647"},"aliases":{"pt":["Ca.","C."],"sk":["Cirka","Cca"],"eu":["C.","Ca.","Cca."],"fr":["environ","c.","cette","cette.","ca","env.","vers
+      cette date","autour de cette date","aux environs de cette date"],"es":["c.","cerca
+      de","ca.","alrededor de"],"fi":["n.","suunnilleen","arviolta","suurinpiirtein"],"la":["Ca."],"nn":["sirka","ca.","omkring","omtrent","om
+      lag","nesten"],"ja":["\u30b5\u30fc\u30ab","\u30ad\u30eb\u30ab","\u7d04","\u5927\u4f53","\u6982\u306d","\u8fd1\u304f","\u4ed8\u8fd1","\u5468\u8fba","\u9803","\u51e1\u305d","\u304a\u304a\u3088\u305d","\u5185\u5916","\u304a\u3088\u305d\u3053\u306e\u9803"],"cs":["okolo","circa","cca","ca","asi","p\u0159ibli\u017en\u011b","kolem","p\u0159ibli\u017en\u00e1
+      hodnota"],"br":["Wd","C."],"ur":["Circa"],"ar":["\u062d\u0648\u0627\u0644\u064a"],"en":["c.","~","c","ca.","circ.","cca.","around","approx.","approximately","about","cca","approximate
+      date value"],"ca":["c.","vers","ca."],"sv":["ca","c:a","ca."],"pl":["przybli\u017cona
+      warto\u015b\u0107","w pobli\u017cu","circa"],"scn":["in circa","incirca","in
+      tornu a","intornu a"],"de":["zirka","ungef\u00e4hr","ca.","etwa","in etwa","n\u00e4herungsweise","um","rund","geboren
+      um","gestorben um","grob"],"ru":["Circa","ca","\u043e\u043a.","\u043f\u0440\u0438\u0431\u043b\u0438\u0437\u0438\u0442\u0435\u043b\u044c\u043d\u043e","\u043f\u0440\u0438\u043c\u0435\u0440\u043d\u043e"],"sl":["ok.","circa","cca","pribli\u017eno"],"nb":["ca.","omtrent"],"cy":["circa"],"pt-br":["c.","ca.","cerca","cerca
+      de","em torno de","por volta de"],"sr":["\u043e\u043a\u043e\u043b\u043e","\u0446\u0438\u0440\u043a\u0430"],"nl":["rond","ongeveer","ca.","ca","omstreeks"],"mk":["\u0446\u0438\u0440\u043a\u0430"],"el":["circa","\u03c0\u03b5\u03c1."],"et":["ca","ligikaudu"],"uk":["\u0431\u043b.","\u043f\u0440\u0438\u0431\u043b.","\u043f\u0440\u0438\u0431\u043b\u0438\u0437\u043d\u043e"],"hu":["kb.","megk\u00f6zel\u00edt\u0151leg","hozz\u00e1vet\u0151legesen","k\u00f6r\u00fcl","t\u00e1j\u00e9k\u00e1n"],"he":["\u05d1\u05e2\u05e8\u05da","\u05d1\u05e1\u05d1\u05d9\u05d1\u05d5\u05ea"],"en-ca":["c."],"en-gb":["c."],"ro":["cca","cam"],"ba":["\u044f\u04a1\u044b\u043d\u0441\u0430"],"tg":["\u0442\u0430\u049b\u0440."],"hy":["\u0574\u0578\u057f."],"bn":["\u0986\u09a8\u09c1."],"tr":["y.","yakl.","ykl\u015f."],"vi":["x\u1ea5p
+      x\u1ec9","ca.","c.","circa"],"da":["ca."],"be-tarask":["\u043a."],"ms":["kira-kira","agak-agak","dalam","kurang
+      lebih","sekitar"],"lv":["ap","apm\u0113ram"],"it":["c.","ca.","circ.","intorno
+      a","verso il"],"ga":["thart ar","tuairim is"],"eo":["\u0109."],"sq":["af\u00ebrsisht"],"zh-hans":["\u5927\u7ea6\u4e3a","\u5927\u7ea6\u662f"],"ko":["\ub300\ub7b5","\uc815\ub3c4"],"kw":["a.","circa"],"sh":["circa","cca"],"sms":["nu\u02b9tt-a","nu\u02b9tt-ba"],"se":["sulaid"],"smn":["suul\u00e1id"],"id":["circa"],"ast":["c.","ca."],"az":["t\u0259q","t\u0259x","t\u0259q.","t\u0259x."],"ary":["\u0639\u0644\u0627\u064a\u0646","\u062a\u0642\u0631\u064a\u0628\u0627\u064b"],"ks":["\u0627\u064e\u0644\u06c1\u0655
+      \u067e\u064e\u0644\u06c1\u0655","\u0644\u064e\u06af\u06c1\u0655 \u0628\u064e\u06af\u06c1\u0655"],"bs":["circa","cca","otprilike"],"mzn":["\u062d.","\u062d\u0648\u0627\u0644\u06cc","\u0642\u0631\u06cc\u0628"]},"statements":{"P646":[{"id":"Q5727902$765445BA-93CD-456A-B97A-A41F4FE5ED15","rank":"normal","qualifiers":[],"references":[{"hash":"2b00cb481cddcac7623114367489b5c194901c4a","parts":[{"property":{"id":"P248","data-type":"wikibase-item"},"value":{"type":"value","content":"Q15241312"}},{"property":{"id":"P577","data-type":"time"},"value":{"type":"value","content":{"time":"+2013-10-28T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}]}],"property":{"id":"P646","data-type":"external-id"},"value":{"type":"value","content":"/m/02nt8b"}}],"P31":[{"id":"Q5727902$7d1cd088-42cf-938b-cfaf-2cd1375d8ce7","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P31","data-type":"wikibase-item"},"value":{"type":"value","content":"Q104637420"}}],"P935":[{"id":"Q5727902$ED0234BC-F5DA-4234-A14E-6FCC14084F3B","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P935","data-type":"string"},"value":{"type":"value","content":"Circa"}}],"P1269":[{"id":"Q5727902$cc6b3e2d-465c-bbeb-a183-4fbfd0647564","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1269","data-type":"wikibase-item"},"value":{"type":"value","content":"Q205892"}}],"P1889":[{"id":"Q5727902$99b379c2-4ca6-f4fb-e40c-5c0b84aaba9d","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1889","data-type":"wikibase-item"},"value":{"type":"value","content":"Q21818619"}},{"id":"Q5727902$babb7ac2-4a18-a24b-6c65-eb1d3a262314","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1889","data-type":"wikibase-item"},"value":{"type":"value","content":"Q60070514"}},{"id":"Q5727902$0c696d24-4bc9-ad3b-9f71-9553fd4aa3d0","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1889","data-type":"wikibase-item"},"value":{"type":"value","content":"Q18122778"}}],"P4342":[{"id":"Q5727902$CDD5F84E-F54A-47DE-AFA2-70525218D547","rank":"normal","qualifiers":[{"property":{"id":"P4390","data-type":"wikibase-item"},"value":{"type":"value","content":"Q39893449"}}],"references":[],"property":{"id":"P4342","data-type":"external-id"},"value":{"type":"value","content":"cirka"}}],"P2559":[{"id":"Q5727902$1364ee49-470b-ccc7-47eb-4964a6a2467f","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P2559","data-type":"monolingualtext"},"value":{"type":"value","content":{"text":"approximative
+      date \u2013 should be used with qualifier P1480 to indicate the source specified
+      a value and explicitly stated that value is approximate, but specify no precision
+      information. For example, \"born around 1709\"","language":"en"}}},{"id":"Q5727902$fd98b066-43de-04c2-e8b0-fedfa7ba2ee6","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P2559","data-type":"monolingualtext"},"value":{"type":"value","content":{"text":"ungef\u00e4hr
+      \u2013 sollte mit Qualifikator P1480 \"Nachweisumst\u00e4nde\" verwendet werden,
+      um auszudr\u00fccken, dass die Quelle eine Angabe als ungef\u00e4hr bezeichnet,
+      aber ohne die Pr\u00e4zision anzugeben. Zum Beispiel \"geboren um 1709\"","language":"de"}}},{"id":"Q5727902$39ab2898-47f4-7962-073d-f1fd3e5c66f3","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P2559","data-type":"monolingualtext"},"value":{"type":"value","content":{"text":"se
+      usa cuando una fuente expl\u00edcitamente indica que el valor proporcionado
+      es aproximado o carece de precisi\u00f3n; \u00fasese exclusivamente con fechas","language":"es"}}},{"id":"Q5727902$988c9dd5-4fa9-bf8c-4932-85dafcada4fc","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P2559","data-type":"monolingualtext"},"value":{"type":"value","content":{"text":"\u3053\u306e\u9803
+      \u2014 \u53c2\u7167\u306e\u6307\u5b9a\u3059\u308b\u5024\u304c\u8fd1\u4f3c\u5024\u3067\u3042\u308b\u969b\u3001\u305d\u308c\u3092\u660e\u793a\u7684\u306b\u793a\u3059\u305f\u3081\u306b\u3001\u4fee\u98fe\u5b50\u300c\u60c5\u5831\u306e\u7cbe\u5ea6
+      (P1480)\u300d\u3068\u3068\u3082\u306b\u4f7f\u7528\u3059\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059\u304c\u3001\u7cbe\u5ea6\u60c5\u5831\u306f\u6307\u5b9a\u3057\u307e\u305b\u3093\u3002\u4f8b\uff1a\u300c1709\u5e74\u9803\u751f\u307e\u308c\u300d","language":"ja"}}}],"P1813":[{"id":"Q5727902$ca6250f6-4928-ae4f-51b3-34609c5b4d7a","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1813","data-type":"monolingualtext"},"value":{"type":"value","content":{"text":"ca.","language":"nb"}}},{"id":"Q5727902$ab991567-492f-e863-1a6e-c4d06d054879","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1813","data-type":"monolingualtext"},"value":{"type":"value","content":{"text":"ca.","language":"nn"}}},{"id":"Q5727902$25201af5-4043-8b62-2500-3224fa8b0004","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1813","data-type":"monolingualtext"},"value":{"type":"value","content":{"text":"\u0109.","language":"eo"}}},{"id":"Q5727902$5bf78958-4870-0e87-641c-44021d230875","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1813","data-type":"monolingualtext"},"value":{"type":"value","content":{"text":"ok.","language":"pl"}}},{"id":"Q5727902$f0466bc7-40e8-3663-2fbb-c644648ffc85","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1813","data-type":"monolingualtext"},"value":{"type":"value","content":{"text":"ca.","language":"en"}}},{"id":"Q5727902$8e17c2b2-4cd1-f0b6-1976-7a136839f9e7","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1813","data-type":"monolingualtext"},"value":{"type":"value","content":{"text":"a.","language":"kw"}}},{"id":"Q5727902$96449543-4129-6057-b0e9-653d88b9c5ae","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1813","data-type":"monolingualtext"},"value":{"type":"value","content":{"text":"ok.","language":"sl"}}},{"id":"Q5727902$8b293d29-475f-a1b5-6575-0af6df008a1b","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1813","data-type":"monolingualtext"},"value":{"type":"value","content":{"text":"~","language":"zxx"}}},{"id":"Q5727902$57f08518-4f82-f6cb-f41f-d228d3bf3b2f","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1813","data-type":"monolingualtext"},"value":{"type":"value","content":{"text":"\u7d04","language":"ja-hani"}}}],"P460":[{"id":"Q5727902$3de18d57-42cc-a072-b718-9eab19adee69","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P460","data-type":"wikibase-item"},"value":{"type":"value","content":"Q96147550"}}],"P11567":[{"id":"Q5727902$DE7DE5DA-47EA-4A6F-94CE-27B89EA92859","rank":"normal","qualifiers":[{"property":{"id":"P1810","data-type":"string"},"value":{"type":"value","content":"ca."}}],"references":[],"property":{"id":"P11567","data-type":"external-id"},"value":{"type":"value","content":"ca"}},{"id":"Q5727902$f7cc6e08-4c27-8a2a-c6b4-e652e10ee16e","rank":"normal","qualifiers":[{"property":{"id":"P1810","data-type":"string"},"value":{"type":"value","content":"circa"}}],"references":[],"property":{"id":"P11567","data-type":"external-id"},"value":{"type":"value","content":"circa"}}]},"sitelinks":{"htwiki":{"title":"Alantou","badges":[],"url":"https://ht.wikipedia.org/wiki/Alantou"},"zhwiki":{"title":"Circa","badges":[],"url":"https://zh.wikipedia.org/wiki/Circa"},"ptwiki":{"title":"Circa","badges":[],"url":"https://pt.wikipedia.org/wiki/Circa"},"euwiki":{"title":"Circa","badges":[],"url":"https://eu.wikipedia.org/wiki/Circa"},"frwiki":{"title":"Circa","badges":[],"url":"https://fr.wikipedia.org/wiki/Circa"},"enwiki":{"title":"Circa","badges":[],"url":"https://en.wikipedia.org/wiki/Circa"},"eswiki":{"title":"Circa","badges":[],"url":"https://es.wikipedia.org/wiki/Circa"},"afwiki":{"title":"Circa","badges":[],"url":"https://af.wikipedia.org/wiki/Circa"},"mkwiki":{"title":"\u0426\u0438\u0440\u043a\u0430","badges":[],"url":"https://mk.wikipedia.org/wiki/%D0%A6%D0%B8%D1%80%D0%BA%D0%B0"},"glwiki":{"title":"Circa","badges":[],"url":"https://gl.wikipedia.org/wiki/Circa"},"lawiki":{"title":"Circa","badges":["Q70893996"],"url":"https://la.wikipedia.org/wiki/Circa"},"idwiki":{"title":"Circa","badges":[],"url":"https://id.wikipedia.org/wiki/Circa"},"nnwiki":{"title":"Cirka","badges":[],"url":"https://nn.wikipedia.org/wiki/Cirka"},"jawiki":{"title":"Circa","badges":[],"url":"https://ja.wikipedia.org/wiki/Circa"},"cswiki":{"title":"Cirka","badges":[],"url":"https://cs.wikipedia.org/wiki/Cirka"},"brwiki":{"title":"Circa","badges":[],"url":"https://br.wikipedia.org/wiki/Circa"},"simplewiki":{"title":"Circa","badges":[],"url":"https://simple.wikipedia.org/wiki/Circa"},"trwiki":{"title":"Circa","badges":[],"url":"https://tr.wikipedia.org/wiki/Circa"},"commonswiki":{"title":"Circa","badges":[],"url":"https://commons.wikimedia.org/wiki/Circa"},"hewiki":{"title":"Circa","badges":[],"url":"https://he.wikipedia.org/wiki/Circa"},"astwiki":{"title":"Circa","badges":[],"url":"https://ast.wikipedia.org/wiki/Circa"},"viwiki":{"title":"Circa","badges":[],"url":"https://vi.wikipedia.org/wiki/Circa"},"sdwiki":{"title":"\u062a\u0642\u0631\u064a\u0628\u0627\u064e\u064e
+      (\u062a\u0627\u0631\u064a\u062e)","badges":[],"url":"https://sd.wikipedia.org/wiki/%D8%AA%D9%82%D8%B1%D9%8A%D8%A8%D8%A7%D9%8E%D9%8E_(%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE)"},"ruwiki":{"title":"Circa","badges":[],"url":"https://ru.wikipedia.org/wiki/Circa"},"pawiki":{"title":"\u0a05\u0a70\u0a26\u0a3e\u0a1c\u0a3c\u0a28","badges":[],"url":"https://pa.wikipedia.org/wiki/%E0%A8%85%E0%A9%B0%E0%A8%A6%E0%A8%BE%E0%A8%9C%E0%A8%BC%E0%A8%A8"},"arwiki":{"title":"\u062d\u0648\u0627\u0644\u064a","badges":[],"url":"https://ar.wikipedia.org/wiki/%D8%AD%D9%88%D8%A7%D9%84%D9%8A"},"zh_min_nanwiki":{"title":"Circa","badges":[],"url":"https://zh-min-nan.wikipedia.org/wiki/Circa"},"urwiki":{"title":"\u062a\u0642\u0631\u06cc\u0628\u0627\u064b
+      (\u062a\u0627\u0631\u06cc\u062e)","badges":[],"url":"https://ur.wikipedia.org/wiki/%D8%AA%D9%82%D8%B1%DB%8C%D8%A8%D8%A7%D9%8B_(%D8%AA%D8%A7%D8%B1%DB%8C%D8%AE)"},"ukwiki":{"title":"Circa","badges":[],"url":"https://uk.wikipedia.org/wiki/Circa"},"cawiki":{"title":"Circa","badges":[],"url":"https://ca.wikipedia.org/wiki/Circa"},"mlwiki":{"title":"\u0d38\u0d3f\u0d7c\u0d15","badges":[],"url":"https://ml.wikipedia.org/wiki/%E0%B4%B8%E0%B4%BF%E0%B5%BC%E0%B4%95"},"elwiki":{"title":"Circa","badges":[],"url":"https://el.wikipedia.org/wiki/Circa"},"nowiki":{"title":"Cirka","badges":[],"url":"https://no.wikipedia.org/wiki/Cirka"},"slwiki":{"title":"Circa","badges":[],"url":"https://sl.wikipedia.org/wiki/Circa"},"hrwiki":{"title":"Cirka","badges":[],"url":"https://hr.wikipedia.org/wiki/Cirka"},"mswiki":{"title":"Sekitar","badges":[],"url":"https://ms.wikipedia.org/wiki/Sekitar"},"tlwiki":{"title":"Circa","badges":[],"url":"https://tl.wikipedia.org/wiki/Circa"},"sqwiki":{"title":"Rreth
+      vitit","badges":[],"url":"https://sq.wikipedia.org/wiki/Rreth_vitit"},"skwiki":{"title":"Cirka","badges":[],"url":"https://sk.wikipedia.org/wiki/Cirka"},"shwiki":{"title":"Cirka","badges":[],"url":"https://sh.wikipedia.org/wiki/Cirka"}},"id":"Q5727902"}'
+    headers:
+      accept-ranges:
+      - bytes
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '0'
+      cache-control:
+      - no-cache
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Thu, 26 Oct 2023 16:03:49 GMT
+      etag:
+      - W/"1936821127"
+      last-modified:
+      - Tue, 18 Jul 2023 17:14:12 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1412.eqiad.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3068"
+      set-cookie:
+      - WMF-Last-Access=26-Oct-2023;Path=/;HttpOnly;secure;Expires=Mon, 27 Nov 2023
+        12:00:00 GMT
+      - WMF-Last-Access-Global=26-Oct-2023;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon,
+        27 Nov 2023 12:00:00 GMT
+      - GeoIP=GB:ENG:Ipswich:52.06:1.16:v4; Path=/; secure; Domain=.wikidata.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3068 miss, cp3068 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 80.42.123.5
+      x-content-type-options:
+      - nosniff
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

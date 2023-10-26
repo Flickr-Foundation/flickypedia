@@ -1,0 +1,103 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - www.wikidata.org
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://www.wikidata.org/w/rest.php/wikibase/v0/entities/items/Q19125117
+  response:
+    content: '{"type":"item","labels":{"en":"Creative Commons Attribution 2.0 Generic","ru":"Creative
+      Commons Attribution 2.0 Generic","nl":"CC BY 2.0 Generic","fr":"CC BY 2.0 G\u00e9n\u00e9rique","zh-hans":"\u77e5\u8bc6\u5171\u4eab\u7f72\u540d2.0\u901a\u7528","zh-hant":"\u5275\u7528CC\u59d3\u540d\u6a19\u793a2.0\u901a\u7528\u7248","de":"Creative
+      Commons Attribution 2.0 Generisch","es":"Creative Commons Reconocimiento 2.0
+      Gen\u00e9rica","sv":"Creative Commons Erk\u00e4nnande 2.0 Generisk","it":"Creative
+      Commons Attribuzione 2.0 Generico","pt":"Creative Commons Atribui\u00e7\u00e3o
+      2.0 Gen\u00e9rica","ca":"Creative Commons Reconeixement 2.0 Gen\u00e8ric","pt-br":"Creative
+      Commons Atribui\u00e7\u00e3o 2.0 Gen\u00e9rica","ar":"\u0631\u062e\u0635\u0629
+      \u0627\u0644\u0645\u0634\u0627\u0639 \u0627\u0644\u0625\u0628\u062f\u0627\u0639\u064a
+      \u0627\u0644\u0639\u0627\u0645\u064e\u0651\u0629 \u0627\u0644\u0645\u064f\u0644\u0632\u0650\u0645\u0629
+      \u0628\u0627\u0644\u0646\u0633\u0628 \u0644\u0645\u064f\u0624\u0644\u0650\u0651\u0641
+      \u0627\u0644\u0639\u0645\u0644 2.0","zh":"\u77e5\u8bc6\u5171\u4eab\u7f72\u540d2.0\u901a\u7528","en-ca":"Creative
+      Commons Attribution 2.0 Generic","en-gb":"Creative Commons Attribution 2.0 Generic","zh-hk":"\u5171\u4eab\u5275\u610f\u7f72\u540d2.0\u901a\u7528\u7248","ja":"\u30af\u30ea\u30a8\u30a4\u30c6\u30a3\u30d6\u30fb\u30b3\u30e2\u30f3\u30ba
+      \u8868\u793a 2.0 \u4e00\u822c","sl":"Creative Commons Priznanje avtorstva 2.0
+      Nedolo\u010dena"},"descriptions":{"en":"Creative Commons license","de":"Creative
+      Commons Lizenz","it":"licenza Creative Commons","pt":"licen\u00e7a da Creative
+      Commons","pt-br":"Licen\u00e7a Creative Commons","ja":"\u30af\u30ea\u30a8\u30a4\u30c6\u30a3\u30d6\u30fb\u30b3\u30e2\u30f3\u30ba\u30fb\u30e9\u30a4\u30bb\u30f3\u30b9"},"aliases":{"en":["CC-BY
+      2.0","CC BY 2.0","\ud83c\udd6d \ud83c\udd6f"],"nl":["Creative Commons 2.0 Naamsvermelding","Creative
+      Commons Naamsvermelding 2.0","CC BY 2.0","CC-BY 2.0"],"fr":["CC BY 2.0 Generic","CC-BY
+      2.0 Generic","CC-BY 2.0"],"de":["CC BY 2.0","CC-BY-2.0","CC-BY 2.0"],"it":["CC
+      BY 2.0"],"pt":["CC BY 2.0 Gen\u00e9rica","CC-BY-2.0 Gen\u00e9rica"],"pt-br":["CC-BY
+      2.0"],"es":["CC BY 2.0"],"zh":["CC BY 2.0"],"ja":["CC-BY 2.0","CC BY 2.0","\u8868\u793a
+      2.0 \u4e00\u822c"]},"statements":{"P31":[{"id":"Q19125117$c29edd7b-4c0f-765f-b4ce-dabd606ba505","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P31","data-type":"wikibase-item"},"value":{"type":"value","content":"Q284742"}},{"id":"Q19125117$5b38808e-4a2c-3e63-754f-7f8196ce3740","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P31","data-type":"wikibase-item"},"value":{"type":"value","content":"Q196294"}},{"id":"Q19125117$5577BEA1-BF54-41C8-8340-F69FE00C79CA","rank":"normal","qualifiers":[],"references":[{"hash":"2e7044f216dbd4494d74bfd76c9a0efdad1f75b5","parts":[{"property":{"id":"P854","data-type":"url"},"value":{"type":"value","content":"http://opendefinition.org/licenses/"}}]}],"property":{"id":"P31","data-type":"wikibase-item"},"value":{"type":"value","content":"Q30939938"}}],"P50":[{"id":"Q19125117$6d8d2d51-4dce-6558-fb00-445cb47738f8","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P50","data-type":"wikibase-item"},"value":{"type":"value","content":"Q43449"}}],"P1476":[{"id":"Q19125117$f89e2eac-44d0-4926-ca16-a11a75b3bff7","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1476","data-type":"monolingualtext"},"value":{"type":"value","content":{"text":"Creative
+      Commons Attribution 2.0 Generic","language":"en"}}}],"P856":[{"id":"Q19125117$0a194096-4f45-676b-e5ec-9cff76df9413","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P856","data-type":"url"},"value":{"type":"value","content":"https://creativecommons.org/licenses/by/2.0/"}}],"P629":[{"id":"Q19125117$43bc5871-4f5f-6413-128d-42ab30c3d0fc","rank":"normal","qualifiers":[{"property":{"id":"P348","data-type":"string"},"value":{"type":"value","content":"2.0"}}],"references":[],"property":{"id":"P629","data-type":"wikibase-item"},"value":{"type":"value","content":"Q6905323"}}],"P156":[{"id":"Q19125117$83abb3a1-4088-1ac5-97d3-48d97087a6c5","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P156","data-type":"wikibase-item"},"value":{"type":"value","content":"Q18810333"}}],"P2479":[{"id":"Q19125117$8f79c153-4eb2-89cb-f7ea-a8745e0cdf80","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P2479","data-type":"external-id"},"value":{"type":"value","content":"CC-BY-2.0"}}],"P155":[{"id":"Q19125117$b59e97c1-4836-f4ef-0ef9-2ee52b6117da","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P155","data-type":"wikibase-item"},"value":{"type":"value","content":"Q30942811"}}],"P1424":[{"id":"Q19125117$32a538cc-451d-1e5c-b685-07beb1762a70","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1424","data-type":"wikibase-item"},"value":{"type":"value","content":"Q5888213"}}],"P1813":[{"id":"Q19125117$99c95a12-4b05-e865-b447-76c17ddf9a85","rank":"preferred","qualifiers":[],"references":[],"property":{"id":"P1813","data-type":"monolingualtext"},"value":{"type":"value","content":{"text":"CC
+      BY 2.0","language":"mul"}}},{"id":"Q19125117$3423998D-4F44-4A98-A0B9-AF7EAF887F70","rank":"normal","qualifiers":[{"property":{"id":"P1547","data-type":"wikibase-item"},"value":{"type":"value","content":"Q87724322"}}],"references":[{"hash":"265123a49c1fd81f02d2930dd5faa9eea9aa54b6","parts":[{"property":{"id":"P854","data-type":"url"},"value":{"type":"value","content":"https://creativecommons.org/2020/03/18/the-unicode-standard-now-includes-cc-license-symbols/"}},{"property":{"id":"P1476","data-type":"monolingualtext"},"value":{"type":"value","content":{"text":"The
+      Unicode Standard Now Includes CC License Symbols","language":"en"}}}]}],"property":{"id":"P1813","data-type":"monolingualtext"},"value":{"type":"value","content":{"text":"\ud83c\udd6d
+      \ud83c\udd6f 2.0","language":"mul"}}}],"P953":[{"id":"Q19125117$a7e3d24c-4e02-6120-c12a-7d0178c41a92","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P953","data-type":"url"},"value":{"type":"value","content":"https://spdx.org/licenses/CC-BY-2.0.html"}},{"id":"Q19125117$9e4e1cc8-4ab9-def7-0286-95f7ee8ce0cd","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P953","data-type":"url"},"value":{"type":"value","content":"https://creativecommons.org/licenses/by/2.0/legalcode"}}],"P373":[{"id":"Q19125117$ebc355e3-4b94-1955-6dc7-1d38f3439534","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P373","data-type":"string"},"value":{"type":"value","content":"CC-BY-2.0"}}],"P910":[{"id":"Q19125117$d6316794-45b3-13be-f973-b2d147a6a315","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P910","data-type":"wikibase-item"},"value":{"type":"value","content":"Q6998477"}}],"P1922":[{"id":"Q19125117$9787d2b9-4218-e6be-0960-d98c4536eff1","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1922","data-type":"monolingualtext"},"value":{"type":"value","content":{"text":"CREATIVE
+      COMMONS CORPORATION IS NOT A LAW FIRM AND DOES NOT PROVIDE LEGAL SERVICES. DISTRIBUTION
+      OF THIS LICENSE DOES NOT CREATE AN ATTORNEY-CLIENT RELATIONSHIP. CREATIVE COMMONS
+      PROVIDES THIS INFORMATION ON AN \"AS-IS\" BASIS. CREATIVE COMMONS MAKES NO WARRANTIES
+      REGARDING THE INFORMATION PROVIDED, AND DISCLAIMS LIABILITY FOR DAMAGES RESULTING
+      FROM ITS USE.","language":"en"}}}],"P2888":[{"id":"Q19125117$152e8e41-44b8-f4e0-0f56-07c7e3dfb529","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P2888","data-type":"url"},"value":{"type":"value","content":"https://creativecommons.org/licenses/by/2.0/"}}],"P3132":[{"id":"Q19125117$d4833ecb-4328-333e-e9ad-5a553c6c8e17","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P3132","data-type":"monolingualtext"},"value":{"type":"value","content":{"text":"Creative
+      Commons may be contacted at https://creativecommons.org/.","language":"en"}}}]},"sitelinks":{"ruwikisource":{"title":"Creative
+      Commons Attribution 2.0 Generic","badges":[],"url":"https://ru.wikisource.org/wiki/Creative_Commons_Attribution_2.0_Generic"}},"id":"Q19125117"}'
+    headers:
+      accept-ranges:
+      - bytes
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '2'
+      cache-control:
+      - no-cache
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Thu, 26 Oct 2023 15:55:26 GMT
+      etag:
+      - W/"1951194662"
+      last-modified:
+      - Thu, 10 Aug 2023 13:59:05 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1359.eqiad.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3068"
+      set-cookie:
+      - WMF-Last-Access=26-Oct-2023;Path=/;HttpOnly;secure;Expires=Mon, 27 Nov 2023
+        12:00:00 GMT
+      - WMF-Last-Access-Global=26-Oct-2023;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon,
+        27 Nov 2023 12:00:00 GMT
+      - GeoIP=GB:ENG:Ipswich:52.06:1.16:v4; Path=/; secure; Domain=.wikidata.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3068 miss, cp3068 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 80.42.123.5
+      x-content-type-options:
+      - nosniff
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

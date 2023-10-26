@@ -70,7 +70,10 @@ def get_property_name(code):
     for attr in dir(WikidataProperties):
         if getattr(WikidataProperties, attr) == code:
             return " ".join(re.findall("[A-Z][^A-Z]*", attr)).lower()
-    else:
+
+    # We never expect to end up here -- we're not using this to show
+    # the labels of arbitrary SDC, just the ones we're going to add.
+    else:  # pragma: no cover
         raise KeyError
 
 
@@ -79,7 +82,9 @@ def get_entity_label(entity_id):
     """
     Look up the name of a Wikidata entity.
 
-    TODO: Currently this only returns the English label
+    TODO: Currently this only returns the English label, but the API
+    returns labels in multiple languages.  This might be a good point
+    to do some internationalisation.
     """
     resp = httpx.get(
         f"https://www.wikidata.org/w/rest.php/wikibase/v0/entities/items/{entity_id}",
@@ -89,7 +94,7 @@ def get_entity_label(entity_id):
     try:
         resp.raise_for_status()
         return resp.json()["labels"]["en"]
-    except Exception:
+    except Exception:  # pragma: no cover
         return None
 
 
@@ -279,16 +284,17 @@ def render_wikidata_date(value):
     )
     assert value["precision"] in {11, 10, 9}
 
-    d = datetime.datetime.strptime(value["time"], "+%Y-%m-%dT00:00:00Z")
-
     # This is the numeric value of precision used in the Wikidata model.
     #
     # See https://www.wikidata.org/wiki/Help:Dates#Precision
     if value["precision"] == 11:
+        d = datetime.datetime.strptime(value["time"], "+%Y-%m-%dT00:00:00Z")
         return "%s (precision: day, calendar: Gregorian)" % d.strftime("%d %B %Y")
     elif value["precision"] == 10:
+        d = datetime.datetime.strptime(value["time"], "+%Y-%m-00T00:00:00Z")
         return "%s (precision: month, calendar: Gregorian)" % d.strftime("%B %Y")
     elif value["precision"] == 9:
+        d = datetime.datetime.strptime(value["time"], "+%Y-00-00T00:00:00Z")
         return "%s (precision: year, calendar: Gregorian)" % d.strftime("%Y")
     else:  # pragma: no cover
         assert False
