@@ -70,7 +70,7 @@ def create_prepare_info_form(photos):
             photo_url=p["url"],
             user=p["owner"],
             copyright_status="copyrighted",
-            original_url=size_at(p["sizes"], desired_size='Original')['source'],
+            original_url=size_at(p["sizes"], desired_size="Original")["source"],
             license_id=p["license"]["id"],
             date_posted=p["date_posted"],
             date_taken=p["date_taken"],
