@@ -20,6 +20,7 @@ from wtforms import FormField, HiddenField, SelectField, StringField, SubmitFiel
 from wtforms.validators import DataRequired
 
 from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
+from flickypedia.utils import size_at
 from .select_photos import get_cached_api_response
 
 
@@ -69,7 +70,7 @@ def create_prepare_info_form(photos):
             photo_url=p["url"],
             user=p["owner"],
             copyright_status="copyrighted",
-            original_url=p["url"],
+            original_url=size_at(p["sizes"], desired_size='Original')['source'],
             license_id=p["license"]["id"],
             date_posted=p["date_posted"],
             date_taken=p["date_taken"],
