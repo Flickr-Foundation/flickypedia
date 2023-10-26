@@ -101,6 +101,7 @@ def prepare_info():
 
     if form.validate_on_submit():
         from pprint import pprint; pprint(form.data)
+        flash("Ready to upload!")
 
     return render_template(
         "prepare_info.html",
