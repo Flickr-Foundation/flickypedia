@@ -19,9 +19,6 @@
 
   <style>
     #select_photos ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
       display: grid;
       grid-column-gap: 1em;
       grid-row-gap: 2em;
@@ -52,7 +49,7 @@
       display: grid;
       grid-template-columns: auto 30px;
       padding-left: 6px;
-      padding-bottom: 8px;
+      padding-bottom: 4px;
     }
 
     #select_photos li label .owner {
@@ -112,7 +109,7 @@
 
       {{ select_photos_form.cached_api_response_id }}
 
-      <ul class="photoslist-{{ parsed_url.type }}">
+      <ul class="plain_list photoslist-{{ parsed_url.type }}">
         {% for field in select_photos_form %}
           {% if field.id.startswith('photo_') %}
             <li id="li-{{ field.id }}">

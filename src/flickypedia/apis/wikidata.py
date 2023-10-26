@@ -59,6 +59,7 @@ class WikidataEntities:
     }
 
 
+# TODO: Add caching to this method
 def lookup_flickr_user_in_wikidata(user: FlickrUser):
     """
     Return the Wikidata entity for a Flickr user, if it exists.

@@ -2,6 +2,7 @@ import collections
 
 from flask import (
     abort,
+    current_app,
     flash,
     render_template,
     request,
@@ -88,9 +89,13 @@ def prepare_info():
         ph for ph in photo_data["photos"] if ph["id"] in selected_photo_ids
     ]
 
-    form = create_prepare_info_form(photos=selected_photos)
+    # Check we have a set of photos with appropriate licenses.
+    assert all(
+        photo['license']['id'] in current_app.config['ALLOWED_LICENSES']
+        for photo in selected_photos
+    )
 
-    # TODO: Check we have the right licenses here!
+    form = create_prepare_info_form(photos=selected_photos)
 
     if form.validate_on_submit():
         from pprint import pprint; pprint(form.data)
