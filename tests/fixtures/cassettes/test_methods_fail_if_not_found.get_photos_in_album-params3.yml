@@ -25,13 +25,13 @@ interactions:
       Content-Type:
       - text/xml; charset=utf-8
       Date:
-      - Fri, 20 Oct 2023 11:58:53 GMT
+      - Thu, 26 Oct 2023 07:56:05 GMT
       Via:
-      - 1.1 b214b93d742fbebaa1ebb3a48c41e89a.cloudfront.net (CloudFront)
+      - 1.1 829762c3f42db9d1ea41f24010e3ac9e.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - 1YEjL-IKKuk4B5TSawGf219pjHNFKcy11j2cL-WDFJtoOJyzmpeXuQ==
+      - RmCVrfEuyz8GDZQly7Ypk9szqq9ap_vP27_lT1FR11Qrf2kFE7diLQ==
       X-Amz-Cf-Pop:
-      - LHR61-P1
+      - LHR50-P8
       X-Cache:
       - Miss from cloudfront
       content-encoding:
@@ -40,9 +40,9 @@ interactions:
       - Apache/2.4.57 (Ubuntu)
       set-cookie:
       - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
-        expires=Sun, 19-Nov-2023 11:58:53 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+        expires=Sat, 25-Nov-2023 07:56:05 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
-        expires=Sun, 19-Nov-2023 11:58:53 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+        expires=Sat, 25-Nov-2023 07:56:05 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       vary:
       - Accept-Encoding
       x-frame-options:
@@ -73,7 +73,13 @@ interactions:
       id=\"12403504@N02\" nsid=\"12403504@N02\" ispro=\"1\" is_deleted=\"0\" iconserver=\"65535\"
       iconfarm=\"66\" path_alias=\"britishlibrary\" has_stats=\"0\" pro_badge=\"standard\"
       expire=\"1731948779\" has_adfree=\"0\" has_free_standard_shipping=\"0\" has_free_educational_resources=\"0\">\n\t<username>The
-      British Library</username>\n\t<realname>British Library</realname>\n\t<description>The
+      British Library</username>\n\t<realname>British Library</realname>\n\t<description>Can&#039;t
+      find our images? They&#039;re now listed as type &#039;illustration/art&#039;
+      (not &#039;photos&#039;), so you&#039;ll need to &lt;a href=&quot;https://www.flickr.com/search/?advanced=1&amp;amp;content_types=0,2&amp;amp;video_content_types=0,1,2,3&quot;&gt;use
+      Advanced Search to find our images&lt;/a&gt;. Find out how to &#039;&lt;a href=&quot;https://www.flickrhelp.com/hc/en-us/articles/19964841478036&quot;
+      rel=&quot;noreferrer nofollow&quot;&gt;Search by Content Type&lt;/a&gt;&#039;
+      and &#039;&lt;a href=&quot;https://www.flickrhelp.com/hc/en-us/articles/4404381838100&quot;
+      rel=&quot;noreferrer nofollow&quot;&gt;Using Advanced Search&lt;/a&gt;&#039;.\n\n--\nThe
       British Library\u2019s collections on Flickr Commons offer access to millions
       of public domain images, which we encourage you to explore and &lt;a href=&quot;https://www.bl.uk/about-us/terms-and-conditions/content-on-flickr-and-wikimedia-commons&quot;
       rel=&quot;noreferrer nofollow&quot;&gt;re-use&lt;/a&gt;. The &lt;a href=&quot;https://www.bl.uk/about-us/terms-and-conditions/content-on-flickr-and-wikimedia-commons&quot;
@@ -94,9 +100,11 @@ interactions:
       rel=&quot;noreferrer nofollow&quot;&gt;Mechanical Curator&lt;/a&gt;, which located
       more than a million images from within our digitised collection of over 65,000
       books from the 17th, 18th and 19th centuries. \n\nThis account is managed by
-      the British Library Digital Research Team. You can follow us on Twitter &lt;a
-      href=&quot;https://twitter.com/BL_DigiSchol&quot; rel=&quot;noreferrer nofollow&quot;&gt;@BL_DigiSchol&lt;/a&gt;
-      or get in touch by emailing &lt;a href=&quot;mailto:digitalresearch@bl.uk&quot;
+      the British Library Digital Research Team. You can follow us on Mastodon &lt;a
+      href=&quot;https://techhub.social/@BL_DigiSchol&quot; rel=&quot;noreferrer nofollow&quot;&gt;@BL_DigiSchol@techhub.social
+      &lt;/a&gt; or Bluesky &lt;a href=&quot;https://bsky.app/profile/bldigischol.bsky.social&quot;
+      rel=&quot;noreferrer nofollow&quot;&gt;@bldigischol.bsky.social&lt;/a&gt;, or
+      get in touch by emailing &lt;a href=&quot;mailto:digitalresearch@bl.uk&quot;
       rel=&quot;noreferrer nofollow&quot;&gt;digitalresearch@bl.uk&lt;/a&gt;.\n\n&lt;i&gt;The
       British Library is the national library of the United Kingdom and one of the
       world&#039;s greatest libraries. We hold over 14 million books, 920,000 journal
@@ -107,17 +115,17 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '1411'
+      - '1681'
       Content-Type:
       - text/xml; charset=utf-8
       Date:
-      - Fri, 20 Oct 2023 11:58:54 GMT
+      - Thu, 26 Oct 2023 07:56:05 GMT
       Via:
-      - 1.1 b214b93d742fbebaa1ebb3a48c41e89a.cloudfront.net (CloudFront)
+      - 1.1 829762c3f42db9d1ea41f24010e3ac9e.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - NgL-V3WjFTMAYGFg2mHoyoljVsiStq5FpOOTfTclLvaNg4DndVg9Bg==
+      - o3f0I1PnNa4lFX68Shlc2WRPAnVpcvaARmU2Wmr0c7hQqk3pDHtamg==
       X-Amz-Cf-Pop:
-      - LHR61-P1
+      - LHR50-P8
       X-Cache:
       - Miss from cloudfront
       content-encoding:
@@ -126,7 +134,7 @@ interactions:
       - Apache/2.4.57 (Ubuntu)
       set-cookie:
       - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
-        expires=Sun, 19-Nov-2023 11:58:53 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+        expires=Sat, 25-Nov-2023 07:56:05 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       vary:
       - Accept-Encoding
       x-frame-options:
@@ -151,7 +159,7 @@ interactions:
       user-agent:
       - python-httpx/0.25.0
     method: GET
-    uri: https://api.flickr.com/services/rest/?extras=license%2Cdate_upload%2Cdate_taken%2Cmedia%2Cowner_name%2Curl_sq%2Curl_t%2Curl_s%2Curl_m%2Curl_o%2Curl_q&method=flickr.photosets.getPhotos&page=1&per_page=10&photoset_id=12345678901234567890&user_id=12403504%40N02
+    uri: https://api.flickr.com/services/rest/?extras=license%2Cdate_upload%2Cdate_taken%2Cmedia%2Cowner_name%2Curl_sq%2Curl_t%2Curl_s%2Curl_m%2Curl_o%2Curl_q%2Cdescription&method=flickr.photosets.getPhotos&page=1&per_page=10&photoset_id=12345678901234567890&user_id=12403504%40N02
   response:
     content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"fail\">\n\t<err
       code=\"1\" msg=\"Photoset not found\" />\n</rsp>\n"
@@ -163,13 +171,13 @@ interactions:
       Content-Type:
       - text/xml; charset=utf-8
       Date:
-      - Fri, 20 Oct 2023 11:58:54 GMT
+      - Thu, 26 Oct 2023 07:56:05 GMT
       Via:
-      - 1.1 b214b93d742fbebaa1ebb3a48c41e89a.cloudfront.net (CloudFront)
+      - 1.1 829762c3f42db9d1ea41f24010e3ac9e.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - Sv6evh4Z2Iw6CyBZJDvLjX_axhIj8jYM8OB7dRNaVwKNwzXeTjSDtQ==
+      - yPNia8SKj7UEyohzLdQBVWSHYkePNLJTL0FB69oo6wS3xye6CasgHg==
       X-Amz-Cf-Pop:
-      - LHR61-P1
+      - LHR50-P8
       X-Cache:
       - Miss from cloudfront
       content-encoding:
@@ -178,7 +186,7 @@ interactions:
       - Apache/2.4.57 (Ubuntu)
       set-cookie:
       - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
-        expires=Sun, 19-Nov-2023 11:58:54 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+        expires=Sat, 25-Nov-2023 07:56:05 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       vary:
       - Accept-Encoding
       x-frame-options:

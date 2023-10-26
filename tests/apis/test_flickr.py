@@ -222,6 +222,13 @@ class TestGetSinglePhoto:
             "unknown": True,
         }
 
+    def test_empty_photo_description_is_none(self, flickr_api):
+        photo_without_desc = flickr_api.get_single_photo(photo_id="5536044022")
+        assert photo_without_desc["description"] is None
+
+        photo_with_desc = flickr_api.get_single_photo(photo_id="53248070597")
+        assert photo_with_desc["description"] == "Paris Montmartre"
+
 
 class TestGetAlbum:
     def test_can_get_album(self, flickr_api):
@@ -274,6 +281,25 @@ class TestGetAlbum:
 
         assert not any(
             size for size in resp["photos"][0]["sizes"] if size["label"] == "Original"
+        )
+
+    def test_empty_album_description_is_none(self, flickr_api):
+        album_without_desc = flickr_api.get_photos_in_album(
+            user_url="https://www.flickr.com/photos/aljazeeraenglish/",
+            album_id="72157626164453131",
+        )
+
+        assert all(
+            photo["description"] is None for photo in album_without_desc["photos"]
+        )
+
+        album_with_desc = flickr_api.get_photos_in_album(
+            user_url="https://www.flickr.com/photos/zeeyolqpictures/",
+            album_id="72157631707062493",
+        )
+
+        assert all(
+            isinstance(photo["description"], str) for photo in album_with_desc["photos"]
         )
 
 

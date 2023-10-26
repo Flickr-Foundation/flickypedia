@@ -1,0 +1,350 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - api.flickr.com
+      user-agent:
+      - python-httpx/0.25.0
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&photo_id=5536044022
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<photo
+      id=\"5536044022\" secret=\"7e6f0df667\" server=\"5137\" farm=\"6\" dateuploaded=\"1300402940\"
+      isfavorite=\"0\" license=\"5\" safety_level=\"0\" rotation=\"0\" originalsecret=\"44d052df5a\"
+      originalformat=\"jpg\" views=\"2822\" media=\"photo\">\n\t<owner nsid=\"32834977@N03\"
+      username=\"Al Jazeera English\" realname=\"Al Jazeera English\" location=\"\"
+      iconserver=\"3279\" iconfarm=\"4\" path_alias=\"aljazeeraenglish\">\n\t\t<gift
+      gift_eligible=\"1\" new_flow=\"1\">\n\t\t\t<eligible_durations />\n\t\t\t<eligible_durations
+      />\n\t\t\t<eligible_durations />\n\t\t</gift>\n\t</owner>\n\t<title>IMG_1348</title>\n\t<description
+      />\n\t<visibility ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" />\n\t<dates
+      posted=\"1300402940\" taken=\"2011-03-04 15:44:00\" takengranularity=\"0\" takenunknown=\"0\"
+      lastupdate=\"1372387671\" />\n\t<editability cancomment=\"0\" canaddmeta=\"0\"
+      />\n\t<publiceditability cancomment=\"1\" canaddmeta=\"0\" />\n\t<usage candownload=\"1\"
+      canblog=\"0\" canprint=\"0\" canshare=\"1\" />\n\t<comments>2</comments>\n\t<notes
+      />\n\t<people haspeople=\"0\" />\n\t<tags />\n\t<urls>\n\t\t<url type=\"photopage\">https://www.flickr.com/photos/aljazeeraenglish/5536044022/</url>\n\t</urls>\n</photo>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '616'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Thu, 26 Oct 2023 07:53:53 GMT
+      Via:
+      - 1.1 56ac4d409ea3c91f84bc0c30648a1434.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - IuYc-3CZ6M6nWQdsHWRh8sWBpSgqJRyBMkuKzTQSjy3qEkIn4tppHQ==
+      X-Amz-Cf-Pop:
+      - LHR50-P8
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.57 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Sat, 25-Nov-2023 07:53:53 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Sat, 25-Nov-2023 07:53:53 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - python-httpx/0.25.0
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&photo_id=5536044022
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<sizes
+      canblog=\"0\" canprint=\"0\" candownload=\"1\">\n\t<size label=\"Square\" width=\"75\"
+      height=\"75\" source=\"https://live.staticflickr.com/5137/5536044022_7e6f0df667_s.jpg\"
+      url=\"https://www.flickr.com/photos/aljazeeraenglish/5536044022/sizes/sq/\"
+      media=\"photo\" />\n\t<size label=\"Large Square\" width=\"150\" height=\"150\"
+      source=\"https://live.staticflickr.com/5137/5536044022_7e6f0df667_q.jpg\" url=\"https://www.flickr.com/photos/aljazeeraenglish/5536044022/sizes/q/\"
+      media=\"photo\" />\n\t<size label=\"Thumbnail\" width=\"100\" height=\"75\"
+      source=\"https://live.staticflickr.com/5137/5536044022_7e6f0df667_t.jpg\" url=\"https://www.flickr.com/photos/aljazeeraenglish/5536044022/sizes/t/\"
+      media=\"photo\" />\n\t<size label=\"Small\" width=\"240\" height=\"180\" source=\"https://live.staticflickr.com/5137/5536044022_7e6f0df667_m.jpg\"
+      url=\"https://www.flickr.com/photos/aljazeeraenglish/5536044022/sizes/s/\" media=\"photo\"
+      />\n\t<size label=\"Small 320\" width=\"320\" height=\"240\" source=\"https://live.staticflickr.com/5137/5536044022_7e6f0df667_n.jpg\"
+      url=\"https://www.flickr.com/photos/aljazeeraenglish/5536044022/sizes/n/\" media=\"photo\"
+      />\n\t<size label=\"Small 400\" width=\"400\" height=\"300\" source=\"https://live.staticflickr.com/5137/5536044022_7e6f0df667_w.jpg\"
+      url=\"https://www.flickr.com/photos/aljazeeraenglish/5536044022/sizes/w/\" media=\"photo\"
+      />\n\t<size label=\"Medium\" width=\"500\" height=\"375\" source=\"https://live.staticflickr.com/5137/5536044022_7e6f0df667.jpg\"
+      url=\"https://www.flickr.com/photos/aljazeeraenglish/5536044022/sizes/m/\" media=\"photo\"
+      />\n\t<size label=\"Medium 640\" width=\"640\" height=\"480\" source=\"https://live.staticflickr.com/5137/5536044022_7e6f0df667_z.jpg\"
+      url=\"https://www.flickr.com/photos/aljazeeraenglish/5536044022/sizes/z/\" media=\"photo\"
+      />\n\t<size label=\"Medium 800\" width=\"800\" height=\"600\" source=\"https://live.staticflickr.com/5137/5536044022_7e6f0df667_c.jpg\"
+      url=\"https://www.flickr.com/photos/aljazeeraenglish/5536044022/sizes/c/\" media=\"photo\"
+      />\n\t<size label=\"Original\" width=\"800\" height=\"600\" source=\"https://live.staticflickr.com/5137/5536044022_44d052df5a_o.jpg\"
+      url=\"https://www.flickr.com/photos/aljazeeraenglish/5536044022/sizes/o/\" media=\"photo\"
+      />\n</sizes>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '420'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Thu, 26 Oct 2023 07:53:53 GMT
+      Via:
+      - 1.1 56ac4d409ea3c91f84bc0c30648a1434.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - Hnj0JFRj-f_WursXdlw9IIKzZorm3wVnpUpaNt9V6c2avKIvdNidWw==
+      X-Amz-Cf-Pop:
+      - LHR50-P8
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.57 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Sat, 25-Nov-2023 07:53:53 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - python-httpx/0.25.0
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.licenses.getInfo
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<licenses>\n\t<license
+      id=\"0\" name=\"All Rights Reserved\" url=\"\" />\n\t<license id=\"4\" name=\"Attribution
+      License\" url=\"https://creativecommons.org/licenses/by/2.0/\" />\n\t<license
+      id=\"6\" name=\"Attribution-NoDerivs License\" url=\"https://creativecommons.org/licenses/by-nd/2.0/\"
+      />\n\t<license id=\"3\" name=\"Attribution-NonCommercial-NoDerivs License\"
+      url=\"https://creativecommons.org/licenses/by-nc-nd/2.0/\" />\n\t<license id=\"2\"
+      name=\"Attribution-NonCommercial License\" url=\"https://creativecommons.org/licenses/by-nc/2.0/\"
+      />\n\t<license id=\"1\" name=\"Attribution-NonCommercial-ShareAlike License\"
+      url=\"https://creativecommons.org/licenses/by-nc-sa/2.0/\" />\n\t<license id=\"5\"
+      name=\"Attribution-ShareAlike License\" url=\"https://creativecommons.org/licenses/by-sa/2.0/\"
+      />\n\t<license id=\"7\" name=\"No known copyright restrictions\" url=\"https://www.flickr.com/commons/usage/\"
+      />\n\t<license id=\"8\" name=\"United States Government Work\" url=\"http://www.usa.gov/copyright.shtml\"
+      />\n\t<license id=\"9\" name=\"Public Domain Dedication (CC0)\" url=\"https://creativecommons.org/publicdomain/zero/1.0/\"
+      />\n\t<license id=\"10\" name=\"Public Domain Mark\" url=\"https://creativecommons.org/publicdomain/mark/1.0/\"
+      />\n</licenses>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '395'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Thu, 26 Oct 2023 07:53:53 GMT
+      Via:
+      - 1.1 56ac4d409ea3c91f84bc0c30648a1434.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - LoJEHiBMKO727VeZDPusfdAo8kCRrFgqyO1JG_liNTrUR2nKvMztnQ==
+      X-Amz-Cf-Pop:
+      - LHR50-P8
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.57 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Sat, 25-Nov-2023 07:53:53 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - python-httpx/0.25.0
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&photo_id=53248070597
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<photo
+      id=\"53248070597\" secret=\"91aed2326c\" server=\"65535\" farm=\"66\" dateuploaded=\"1696963680\"
+      isfavorite=\"0\" license=\"0\" safety_level=\"0\" rotation=\"0\" views=\"1058\"
+      media=\"photo\">\n\t<owner nsid=\"73422502@N08\" username=\"Zeeyolq Photography\"
+      realname=\"Yoann JEZEQUEL\" location=\"Paris, France\" iconserver=\"7384\" iconfarm=\"8\"
+      path_alias=\"zeeyolqpictures\">\n\t\t<gift gift_eligible=\"1\" new_flow=\"1\">\n\t\t\t<eligible_durations
+      />\n\t\t\t<eligible_durations />\n\t\t\t<eligible_durations />\n\t\t</gift>\n\t</owner>\n\t<title>Paris</title>\n\t<description>Paris
+      Montmartre</description>\n\t<visibility ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
+      />\n\t<dates posted=\"1696963680\" taken=\"2020-07-26 09:31:59\" takengranularity=\"0\"
+      takenunknown=\"0\" lastupdate=\"1697728606\" />\n\t<editability cancomment=\"0\"
+      canaddmeta=\"0\" />\n\t<publiceditability cancomment=\"1\" canaddmeta=\"1\"
+      />\n\t<usage candownload=\"0\" canblog=\"0\" canprint=\"0\" canshare=\"1\" />\n\t<comments>1</comments>\n\t<notes
+      />\n\t<people haspeople=\"0\" />\n\t<tags>\n\t\t<tag id=\"73329689-53248070597-484\"
+      author=\"73422502@N08\" authorname=\"Zeeyolq Photography\" raw=\"paris\" machine_tag=\"0\">paris</tag>\n\t</tags>\n\t<location
+      latitude=\"48.884444\" longitude=\"2.338611\" accuracy=\"16\" context=\"0\">\n\t\t<locality>Paris</locality>\n\t\t<county>Paris</county>\n\t\t<region>\xCEle-de-France</region>\n\t\t<country>France</country>\n\t\t<neighbourhood>Paris
+      02 Ancien - Quartier Faubourg-Montmartre</neighbourhood>\n\t</location>\n\t<geoperms
+      ispublic=\"1\" iscontact=\"0\" isfriend=\"0\" isfamily=\"0\" />\n\t<urls>\n\t\t<url
+      type=\"photopage\">https://www.flickr.com/photos/zeeyolqpictures/53248070597/</url>\n\t</urls>\n</photo>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '840'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Thu, 26 Oct 2023 07:53:53 GMT
+      Via:
+      - 1.1 56ac4d409ea3c91f84bc0c30648a1434.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - FItDOFbyFsV3TkLJKSB8Ok5gPYxg0KNEIr2xinU7C-YzG4eKrfonZg==
+      X-Amz-Cf-Pop:
+      - LHR50-P8
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.57 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Sat, 25-Nov-2023 07:53:53 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - python-httpx/0.25.0
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&photo_id=53248070597
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<sizes
+      canblog=\"0\" canprint=\"0\" candownload=\"0\">\n\t<size label=\"Square\" width=\"75\"
+      height=\"75\" source=\"https://live.staticflickr.com/65535/53248070597_91aed2326c_s.jpg\"
+      url=\"https://www.flickr.com/photos/zeeyolqpictures/53248070597/sizes/sq/\"
+      media=\"photo\" />\n\t<size label=\"Large Square\" width=\"150\" height=\"150\"
+      source=\"https://live.staticflickr.com/65535/53248070597_91aed2326c_q.jpg\"
+      url=\"https://www.flickr.com/photos/zeeyolqpictures/53248070597/sizes/q/\" media=\"photo\"
+      />\n\t<size label=\"Thumbnail\" width=\"100\" height=\"100\" source=\"https://live.staticflickr.com/65535/53248070597_91aed2326c_t.jpg\"
+      url=\"https://www.flickr.com/photos/zeeyolqpictures/53248070597/sizes/t/\" media=\"photo\"
+      />\n\t<size label=\"Small\" width=\"240\" height=\"240\" source=\"https://live.staticflickr.com/65535/53248070597_91aed2326c_m.jpg\"
+      url=\"https://www.flickr.com/photos/zeeyolqpictures/53248070597/sizes/s/\" media=\"photo\"
+      />\n\t<size label=\"Small 320\" width=\"320\" height=\"320\" source=\"https://live.staticflickr.com/65535/53248070597_91aed2326c_n.jpg\"
+      url=\"https://www.flickr.com/photos/zeeyolqpictures/53248070597/sizes/n/\" media=\"photo\"
+      />\n\t<size label=\"Small 400\" width=\"400\" height=\"400\" source=\"https://live.staticflickr.com/65535/53248070597_91aed2326c_w.jpg\"
+      url=\"https://www.flickr.com/photos/zeeyolqpictures/53248070597/sizes/w/\" media=\"photo\"
+      />\n\t<size label=\"Medium\" width=\"500\" height=\"500\" source=\"https://live.staticflickr.com/65535/53248070597_91aed2326c.jpg\"
+      url=\"https://www.flickr.com/photos/zeeyolqpictures/53248070597/sizes/m/\" media=\"photo\"
+      />\n\t<size label=\"Medium 640\" width=\"640\" height=\"640\" source=\"https://live.staticflickr.com/65535/53248070597_91aed2326c_z.jpg\"
+      url=\"https://www.flickr.com/photos/zeeyolqpictures/53248070597/sizes/z/\" media=\"photo\"
+      />\n\t<size label=\"Medium 800\" width=\"800\" height=\"800\" source=\"https://live.staticflickr.com/65535/53248070597_91aed2326c_c.jpg\"
+      url=\"https://www.flickr.com/photos/zeeyolqpictures/53248070597/sizes/c/\" media=\"photo\"
+      />\n\t<size label=\"Large\" width=\"1024\" height=\"1024\" source=\"https://live.staticflickr.com/65535/53248070597_91aed2326c_b.jpg\"
+      url=\"https://www.flickr.com/photos/zeeyolqpictures/53248070597/sizes/l/\" media=\"photo\"
+      />\n\t<size label=\"Large 1600\" width=\"1600\" height=\"1600\" source=\"https://live.staticflickr.com/65535/53248070597_70382cd456_h.jpg\"
+      url=\"https://www.flickr.com/photos/zeeyolqpictures/53248070597/sizes/h/\" media=\"photo\"
+      />\n\t<size label=\"Large 2048\" width=\"2048\" height=\"2048\" source=\"https://live.staticflickr.com/65535/53248070597_6576959c6b_k.jpg\"
+      url=\"https://www.flickr.com/photos/zeeyolqpictures/53248070597/sizes/k/\" media=\"photo\"
+      />\n</sizes>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '470'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Thu, 26 Oct 2023 07:53:53 GMT
+      Via:
+      - 1.1 56ac4d409ea3c91f84bc0c30648a1434.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - 0c3gogSryLOe8B71mljypYLKTeZrkzxPKYG0LDYJGNctyvaqDhVysg==
+      X-Amz-Cf-Pop:
+      - LHR50-P8
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.57 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Sat, 25-Nov-2023 07:53:53 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1
