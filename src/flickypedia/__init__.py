@@ -54,7 +54,12 @@ def create_app():
     app.jinja_env.filters["wikidata_entity_label"] = get_entity_label
     app.jinja_env.filters["wikidata_date"] = render_wikidata_date
 
+    # This option causes Jinja to throw if we use an undefined variable
+    # in one of the templates.
+    # See https://alexwlchan.net/2022/strict-jinja/
     app.jinja_env.undefined = StrictUndefined
+
+    # This causes Jinja to remove extraneous whitespace.
     app.jinja_env.trim_blocks = True
     app.jinja_env.lstrip_blocks = True
 
