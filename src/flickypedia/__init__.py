@@ -32,7 +32,7 @@ def create_app(data_directory):
 
     db.init_app(app)
     login.init_app(app)
-    celery_init_app(app)
+    celery = celery_init_app(app)
 
     with app.app_context():
         db.create_all()
@@ -71,6 +71,8 @@ def create_app(data_directory):
 
 
 # celery --app flickypedia.celery worker --loglevel INFO
-if os.path.basename(sys.argv[0]) == 'celery':
+if os.path.basename(sys.argv[0]) == "celery":
     app = create_app()
-    celery = celery_init_app(app)
+
+    with app.app_context():
+        celery = celery_init_app(app)

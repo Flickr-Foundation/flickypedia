@@ -88,20 +88,20 @@ def prepare_photos_for_upload(selected_photos, form_data):
         this_photo_form_data = form_data[f"photo_{photo['id']}"]
 
         new_photo = {
-            'id': photo['id'],
+            "id": photo["id"],
             "title": this_photo_form_data["title"],
             "short_caption": {
                 "language": form_data["language"],
                 "text": this_photo_form_data["short_caption"],
             },
             "categories": this_photo_form_data["categories"],
-            "license_id": photo['license']['id'],
-            'date_taken': photo['date_taken'],
-            'date_posted': photo['date_posted'],
-            'original_url': size_at(photo["sizes"], desired_size="Original")["source"],
-            'photo_url': photo['url'],
-            'sdc': photo['sdc'],
-            'owner': photo['owner'],
+            "license_id": photo["license"]["id"],
+            "date_taken": photo["date_taken"],
+            "date_posted": photo["date_posted"],
+            "original_url": size_at(photo["sizes"], desired_size="Original")["source"],
+            "photo_url": photo["url"],
+            "sdc": photo["sdc"],
+            "owner": photo["owner"],
         }
 
         photos_to_upload.append(new_photo)
@@ -154,14 +154,19 @@ def prepare_info():
             selected_photos, form_data=prepare_info_form.data
         )
 
-        upload_batch_of_photos.apply_async(kwargs={
-            'oauth_info':{
-                 "access_token": current_user.access_token(),
-                 "access_token_expires": current_user.access_token_expires,
-                 "refresh_token": current_user.refresh_token(),
-             },
-             'photos_to_upload':photos_to_upload,},task_id=cached_api_response_id
+        upload_batch_of_photos.apply_async(
+            kwargs={
+                "oauth_info": {
+                    "access_token": current_user.access_token(),
+                    "access_token_expires": current_user.access_token_expires,
+                    "refresh_token": current_user.refresh_token(),
+                },
+                "photos_to_upload": photos_to_upload,
+            },
+            task_id=cached_api_response_id,
         )
+
+        # TODO: Clear out the cached API response
 
         flash("Ready to upload!")
 
