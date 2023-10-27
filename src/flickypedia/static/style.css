@@ -1,10 +1,16 @@
+:root {
+  --cream: 255, 252, 242; /* #fffcf2 */
+  --blue:   80, 153, 233; /* #5099e9 */
+  --brown: 204, 197, 185; /* #CCC5B9 */;
+}
+
 body {
   margin: 0;
 
-  background: #fffcf2;
+  background: rgb(var(--cream));
 
   font-family: proxima-nova, sans-serif;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 400;
 }
 
@@ -23,18 +29,30 @@ footer {
   background: black;
 
   text-align: center;
-  color: white;
+  color: rgb(var(--cream));
 }
 
 footer a {
-  color: white;
+  color: rgb(var(--cream));
   font-weight: bold;
+}
+
+footer a:hover {
+  background-color: rgba(var(--cream), 0.4);
 }
 
 ul.plain_list {
   list-style-type: none;
   padding: 0;
   margin:  0;
+}
+
+a {
+  color: rgb(var(--blue));
+}
+
+a:hover {
+  background-color: rgba(var(--blue), 0.3);
 }
 
 /* Temporary styles */
