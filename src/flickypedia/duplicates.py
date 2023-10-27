@@ -1,9 +1,8 @@
 """
 This file implements the duplicate detection logic for Flickypedia.
 
-Currently this looks for SQLite databases in the DUPLICATE_DATABASE_DIRECTORY
-folder.  These databases should have a table ``flickr_photos_on_wikimedia``
-with at least two columns:
+This tool looks at SQLite databases in DUPLICATE_DATABASE_DIRECTORY.
+These databases should have a table ``flickr_photos_on_wikimedia`` like:
 
     CREATE TABLE flickr_photos_on_wikimedia (
         flickr_photo_id TEXT PRIMARY KEY,
@@ -11,10 +10,17 @@ with at least two columns:
         wikimedia_page_id TEXT NOT NULL
     )
 
-This database can be created from a WMC snapshot by scripts in this repo
-(see the ``duplicates_from_sdc`` folder), and at some point we might use
-the Wikimedia Commons Query Service instead -- but for now this is
-our approach.
+These databases can come from two places:
+
+*   The Wikimedia Commons snapshot.  We create a database from the snapshot
+    using scripts elsewhere in this repo (see ``duplicates_from_sdc``).
+
+    These snapshots are updated weekly by WMC at best, so they may be
+    a bit behind the latest uploads.
+
+*   Flickypedia itself.  Whenever it uploads a file, it makes a note of it
+    in a dedicated database.  This acts as a ledger of Flickypedia activity
+    and prevents double-uploads by the tool.
 
 """
 
@@ -116,6 +122,9 @@ def record_file_created_by_flickypedia(
     """
     Create a database entry to mark a file as having been uploaded to
     Wikimedia Commons.
+
+    This will prevent a user accidentally uploading the same file twice
+    in quick succession.
     """
     assert wikimedia_page_title.startswith("File:")
 
