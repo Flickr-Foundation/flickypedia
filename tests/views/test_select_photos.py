@@ -55,10 +55,16 @@ def test_gets_album_on_flickr(logged_in_client, flickr_api):
     )
 
     assert resp.status_code == 200
-    assert (
-        "You’re looking at Al Jazeera English’s album called “Faces from the Libyan front”."
-        in minify(resp.data.decode("utf8"))
-    )
+
+    html = minify(resp.data.decode("utf8"))
+
+    # These assertions are all split into separate checks because
+    # this expression is split into different <span> tags.
+    assert "You’re looking at" in html
+    assert "Al Jazeera English" in html
+    assert "’s album called" in html
+    assert "“Faces from the Libyan front”" in html
+
     assert b"by Al Jazeera English" not in resp.data
 
 
