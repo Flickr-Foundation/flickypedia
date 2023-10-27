@@ -1,4 +1,4 @@
-from flask import flash, redirect, render_template, session, url_for
+from flask import flash, redirect, render_template, request, session, url_for
 from flask_login import login_required
 from flask_wtf import FlaskForm
 from flickr_url_parser import parse_flickr_url, NotAFlickrUrl, UnrecognisedUrl
@@ -39,13 +39,26 @@ def find_photos():
 
         return redirect(url_for("select_photos", flickr_url=url))
 
-    # We may be redirected back to this page if something went wrong
-    # at the "select photos" step, e.g. if the URL looks like a valid
-    # Flickr URL but is actually a 404.
+    # We may end up on this page for several reasons, e.g.:
+    #
+    #   -   if something went wrong at the "select photos" step,
+    #       say the URL look valid but actually returns a 404.
+    #
+    #   -   if the user tries to submit the form, but the CSRF token
+    #       has expired.
     #
     # In that case, we want to prefill the form with the URL the user
     # entered previously, if they want to edit it and try again.
-    flickr_url = session.pop("flickr_url", "")
+    #
+    # We don't want to _submit_ their form, but we do want to preserve
+    # their previous input.
+    #
+    if "flickr_url" in session:
+        flickr_url = session.pop("flickr_url", "")
+    elif "flickr_url" in request.form:
+        flickr_url = request.form["flickr_url"]
+    else:
+        flickr_url = ""
 
     return render_template(
         "find_photos.html",

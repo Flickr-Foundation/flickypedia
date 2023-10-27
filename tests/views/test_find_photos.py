@@ -1,3 +1,9 @@
+from flask_login import FlaskLoginClient
+
+from flickypedia import create_app
+from flickypedia.auth import WikimediaUserSession, SESSION_ID_KEY
+
+
 def test_renders_basic_page(logged_in_client):
     resp = logged_in_client.get("/find_photos")
 
@@ -36,3 +42,44 @@ def test_redirects_if_photo_url(logged_in_client):
 
     assert resp.status_code == 302
     assert resp.headers["location"] == f"/select_photos?flickr_url={flickr_url}"
+
+
+def test_preserves_photo_if_csrf_bad():
+    """
+    If the user submits the form after their CSRF token expires, we
+    don't lose the URL they've typed in.
+
+    I wrote this test after leaving the "select photos" screen open
+    a while, entering a new URL, and clicking "GO".  I got back to
+    the "find photos" screen but it had forgotten my URL.  No more!
+    """
+    # We have to create the app object manually, rather than using the
+    # fixtures provided in ``conftest.py`` -- they disable CSRF for
+    # ease of testing, but in this case we need CSRF to replicate the bug.
+    app = create_app()
+    app.config["TESTING"] = True
+
+    app.config["WTF_CSRF_ENABLED"] = True
+
+    app.test_client_class = FlaskLoginClient
+
+    user = WikimediaUserSession(id=-1, userid=-1, name="example")
+
+    with app.app_context():
+        with app.test_client(user=user) as client:
+            with client.session_transaction() as session:
+                session[SESSION_ID_KEY] = user.id
+
+            resp = client.post(
+                "/find_photos",
+                data={
+                    "flickr_url": "https://www.flickr.com/photos/aljazeeraenglish/albums/72157626164453131/",
+                    "csrf_token": "1234",
+                },
+            )
+
+    assert resp.status_code == 200
+    assert (
+        b'value="https://www.flickr.com/photos/aljazeeraenglish/albums/72157626164453131/"'
+        in resp.data
+    )
