@@ -1,3 +1,4 @@
+from celery import current_task, shared_task
 import datetime
 
 from flickypedia.apis.flickr import DateTaken, FlickrUser
@@ -5,6 +6,24 @@ from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
 from flickypedia.apis.wikimedia import WikimediaApi
 from flickypedia.apis.wikitext import create_wikitext
 from flickypedia.duplicates import record_file_created_by_flickypedia
+from flickypedia.tasks import ProgressTracker
+
+
+@shared_task
+def upload_batch_of_photos(oauth_info, photos_to_upload):
+    tracker = ProgressTracker(task_id=current_task.request.id)
+
+    tracker.record_progress(
+        data=[
+            {"photo_id": photo["id"], "status": "not_started"}
+            for photo in photos_to_upload
+        ]
+    )
+
+    for idx, photo in enumerate(photos_to_upload):
+        wikitext = create_wikitext(license_id=photo["license_id"])
+
+        print(wikitext)
 
 
 def upload_single_image(

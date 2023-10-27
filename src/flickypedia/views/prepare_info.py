@@ -15,11 +15,12 @@ This page gets two arguments as query parameters:
 
 from flask import abort, current_app, flash, render_template, request
 from flask_wtf import FlaskForm, Form
-from flask_login import login_required
+from flask_login import current_user, login_required
 from wtforms import FormField, HiddenField, SelectField, StringField, SubmitField
 from wtforms.validators import DataRequired
 
 from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
+from flickypedia.uploads import upload_batch_of_photos
 from flickypedia.utils import size_at
 from .select_photos import get_cached_api_response
 
@@ -80,6 +81,34 @@ def create_prepare_info_form(photos):
     return CustomForm()
 
 
+def prepare_photos_for_upload(selected_photos, form_data):
+    photos_to_upload = []
+
+    for photo in selected_photos:
+        this_photo_form_data = form_data[f"photo_{photo['id']}"]
+
+        new_photo = {
+            'id': photo['id'],
+            "title": this_photo_form_data["title"],
+            "short_caption": {
+                "language": form_data["language"],
+                "text": this_photo_form_data["short_caption"],
+            },
+            "categories": this_photo_form_data["categories"],
+            "license_id": photo['license']['id'],
+            'date_taken': photo['date_taken'],
+            'date_posted': photo['date_posted'],
+            'original_url': size_at(photo["sizes"], desired_size="Original")["source"],
+            'photo_url': photo['url'],
+            'sdc': photo['sdc'],
+            'owner': photo['owner'],
+        }
+
+        photos_to_upload.append(new_photo)
+
+    return photos_to_upload
+
+
 @login_required
 def prepare_info():
     try:
@@ -121,9 +150,19 @@ def prepare_info():
     prepare_info_form = create_prepare_info_form(photos=selected_photos)
 
     if prepare_info_form.validate_on_submit():
-        from pprint import pprint
+        photos_to_upload = prepare_photos_for_upload(
+            selected_photos, form_data=prepare_info_form.data
+        )
 
-        pprint(prepare_info_form.data)
+        upload_batch_of_photos.apply_async(kwargs={
+            'oauth_info':{
+                 "access_token": current_user.access_token(),
+                 "access_token_expires": current_user.access_token_expires,
+                 "refresh_token": current_user.refresh_token(),
+             },
+             'photos_to_upload':photos_to_upload,},task_id=cached_api_response_id
+        )
+
         flash("Ready to upload!")
 
     return render_template(

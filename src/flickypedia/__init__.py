@@ -1,4 +1,5 @@
 import os
+import sys
 
 from flask import Flask
 from jinja2 import StrictUndefined
@@ -67,3 +68,9 @@ def create_app(data_directory):
     app.jinja_env.lstrip_blocks = True
 
     return app
+
+
+# celery --app flickypedia.celery worker --loglevel INFO
+if os.path.basename(sys.argv[0]) == 'celery':
+    app = create_app()
+    celery = celery_init_app(app)
