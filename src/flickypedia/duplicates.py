@@ -47,7 +47,7 @@ def find_duplicates(flickr_photo_ids):
     result = {}
 
     for name in os.listdir(duplicate_dir):
-        if name.endswith(".sqlite"):
+        if name.endswith((".db", ".sqlite")):
             con = sqlite3.connect(
                 f"file:{os.path.join(duplicate_dir, name)}?mode=ro", uri=True
             )
@@ -73,6 +73,9 @@ def find_duplicates(flickr_photo_ids):
                     "title": row["wikimedia_page_title"],
                     "id": row["wikimedia_page_id"],
                 }
+        else:  # pragma: no cover
+            print(f"Ignoring file {name} which doesn't look like a SQLite database")
+
     return result
 
 
@@ -105,3 +108,35 @@ def create_link_to_commons(duplicates):
         page_ids = sorted([dupe["id"].replace("M", "") for dupe in duplicates.values()])
 
         return f"https://commons.wikimedia.org/wiki/Special:MediaSearch?type=image&search=pageid:{'|'.join(page_ids)}"
+
+
+def record_file_created_by_flickypedia(
+    flickr_photo_id, wikimedia_page_title, wikimedia_page_id
+):
+    """
+    Create a database entry to mark a file as having been uploaded to
+    Wikimedia Commons.
+    """
+    assert wikimedia_page_title.startswith("File:")
+
+    duplicate_dir = current_app.config["DUPLICATE_DATABASE_DIRECTORY"]
+
+    con = sqlite3.connect(os.path.join(duplicate_dir, "flickypedia_uploads.db"))
+    cur = con.cursor()
+
+    cur.execute(
+        """
+        CREATE TABLE IF NOT EXISTS flickr_photos_on_wikimedia (
+            flickr_photo_id TEXT PRIMARY KEY,
+            wikimedia_page_title TEXT NOT NULL,
+            wikimedia_page_id TEXT NOT NULL
+        )
+        """
+    )
+
+    cur.execute(
+        "INSERT INTO flickr_photos_on_wikimedia VALUES(?, ?, ?)",
+        (flickr_photo_id, wikimedia_page_title, wikimedia_page_id),
+    )
+
+    con.commit()

@@ -41,11 +41,21 @@ def upload_single_image(
         date_taken=date_taken,
     )
 
-    api.upload_image(filename=filename, original_url=original_url, text=wikitext)
+    wikipedia_page_title = api.upload_image(
+        filename=filename, original_url=original_url, text=wikitext
+    )
 
-    api.add_file_caption(filename=filename, language="en", value=file_caption)
+    wikipedia_page_id = api.add_file_caption(
+        filename=filename, language="en", value=file_caption
+    )
 
     api.add_structured_data(filename=filename, data={"claims": structured_data})
+
+    record_file_created_by_flickypedia(
+        flickr_photo_id=photo_id,
+        wikimedia_page_title=f"File:{wikipedia_page_title}",
+        wikimedia_page_id=wikipedia_page_id,
+    )
 
     # TODO: Record the fact that we've uploaded this image into
     # Wikimedia Commons, so we don't try to offer it for upload again.

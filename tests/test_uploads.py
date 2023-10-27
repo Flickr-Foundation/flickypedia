@@ -1,9 +1,13 @@
 import datetime
 
+from flickypedia.duplicates import find_duplicates
 from flickypedia.uploads import upload_single_image
 
 
 def test_upload_single_image(app, wikimedia_api):
+    before_duplicates = find_duplicates(flickr_photo_ids=["53268016608"])
+    assert before_duplicates == {}
+
     upload_single_image(
         wikimedia_api,
         photo_id="53268016608",
@@ -26,3 +30,11 @@ def test_upload_single_image(app, wikimedia_api):
         license_id="cc-by-2.0",
         original_url="https://live.staticflickr.com/65535/53268016608_5b890124fd_o_d.jpg",
     )
+
+    after_duplicates = find_duplicates(flickr_photo_ids=["53268016608"])
+    assert after_duplicates == {
+        "53268016608": {
+            "id": "M139134318",
+            "title": "File:Thameslink_Class_700_in_Pride_livery.jpg",
+        }
+    }
