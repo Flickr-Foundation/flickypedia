@@ -88,8 +88,8 @@
   <svg x="105">
     <svg y="45">
       <text x="40" y="25">
-        <tspan x="40" dy="-6">Get Flickr</tspan>
-        <tspan x="40" dy="1.3em">photos</tspan>
+        <tspan x="40" dy="-6">Get Flickr</tspan><!--
+        --><tspan x="40" dy="1.3em">photos</tspan>
       </text>
     </svg>
 
