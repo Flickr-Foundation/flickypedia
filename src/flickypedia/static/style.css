@@ -2,12 +2,14 @@
   --cream: 255, 252, 242; /* #fffcf2 */
   --blue:   80, 153, 233; /* #5099e9 */
   --brown: 204, 197, 185; /* #CCC5B9 */;
+  --black:   8,   9,  10; /* 08090A */;
 }
 
 body {
   margin: 0;
 
   background: rgb(var(--cream));
+  color: rgb(var(--black));
 
   font-family: proxima-nova, sans-serif;
   font-size: 17px;
@@ -26,10 +28,17 @@ footer {
   margin-top: 1em;
   padding: 2px 1em;
 
-  background: black;
+  background: rgb(var(--black));
 
   text-align: center;
   color: rgb(var(--cream));
+
+  /* This ensures the background color extends to the bottom of the page,
+     wherever the footer appears.
+
+     See https://designdev.blog/extend-footer-background-color-to-bottom-of-web-page/
+   */
+  box-shadow: 0 50vh 0 50vh rgb(var(--black));
 }
 
 footer a {
