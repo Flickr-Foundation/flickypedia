@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% include "components/header.html" %}
+
+  <script>
+    function updateBasedOnTaskId() {
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", `${window.location}/status`);
+      xhr.send();
+      xhr.responseType = "json";
+      xhr.onload = () => {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          document.querySelector('#results').innerHTML = JSON.stringify(xhr.response);
+        } else {
+          console.log(`Error: ${xhr.status}`);
+        }
+      };
+    };
+
+    window.onload = function() {
+      updateBasedOnTaskId();
+      setInterval(updateBasedOnTaskId, 1000);
+    };
+  </script>
+
+  {{ task_id }}
+
+  <div id="results"></div>
+{% endblock %}

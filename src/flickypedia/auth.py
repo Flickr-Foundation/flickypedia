@@ -291,7 +291,7 @@ def freshen_oauth_info(oauth_info: OAuthInfo) -> OAuthInfo:
 
     # TODO: Implement a token refresh mechanism.  How do we cope with
     # a refresh token failure?
-    if delta.total_seconds() < 60 * 60:
+    if delta.total_seconds() < 5 * 60:
         raise ValueError("I don't know how to refresh yet!")
 
     return oauth_info

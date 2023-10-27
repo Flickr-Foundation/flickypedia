@@ -13,7 +13,7 @@ This page gets two arguments as query parameters:
 
 """
 
-from flask import abort, current_app, flash, render_template, request
+from flask import abort, current_app, flash, redirect, render_template, request, url_for
 from flask_wtf import FlaskForm, Form
 from flask_login import current_user, login_required
 from wtforms import FormField, HiddenField, SelectField, StringField, SubmitField
@@ -169,6 +169,10 @@ def prepare_info():
         # TODO: Clear out the cached API response
 
         flash("Ready to upload!")
+
+        return redirect(
+            url_for('wait_for_upload', task_id=cached_api_response_id)
+        )
 
     return render_template(
         "prepare_info.html",
