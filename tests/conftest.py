@@ -1,4 +1,5 @@
 import os
+import shutil
 
 from flask_login import FlaskLoginClient
 import pytest
@@ -88,16 +89,24 @@ def flickr_api(cassette_name, user_agent):
 
 
 @pytest.fixture()
-def app(user_agent):
+def app(user_agent, tmpdir):
     """
     Creates an instance of the app for use in testing.
 
     See https://flask.palletsprojects.com/en/3.0.x/testing/#fixtures
     """
-    app = create_app()
+    app = create_app(data_directory=tmpdir)
     app.config["TESTING"] = True
 
-    app.config["DUPLICATE_DATABASE_DIRECTORY"] = "tests/fixtures/duplicates"
+    app.config["DUPLICATE_DATABASE_DIRECTORY"] = os.path.join(tmpdir, "duplicates")
+    shutil.copyfile(
+        "tests/fixtures/duplicates/flickr_ids_from_sdc_for_testing.sqlite",
+        os.path.join(
+            app.config["DUPLICATE_DATABASE_DIRECTORY"],
+            "flickr_ids_from_sdc_for_testing.sqlite",
+        ),
+    )
+
     app.config["PHOTOS_PER_PAGE"] = 10
 
     app.config["USER_AGENT"] = user_agent

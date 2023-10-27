@@ -15,16 +15,19 @@ from flickypedia.apis.wikidata import (
     get_property_name,
     render_wikidata_date,
 )
-from flickypedia.config import Config, get_directories
+from flickypedia.config import create_config, get_directories
 from flickypedia.duplicates import create_link_to_commons
 from flickypedia.views import find_photos, homepage, prepare_info, select_photos
 from flickypedia.tasks import celery_init_app
 from flickypedia.utils import a_href, size_at
 
 
-def create_app():
+def create_app(data_directory):
     app = Flask(__name__)
-    app.config.from_object(Config)
+
+    config = create_config(data_directory)
+
+    app.config.update(**config)
 
     db.init_app(app)
     login.init_app(app)

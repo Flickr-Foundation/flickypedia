@@ -44,7 +44,7 @@ def test_redirects_if_photo_url(logged_in_client):
     assert resp.headers["location"] == f"/select_photos?flickr_url={flickr_url}"
 
 
-def test_preserves_photo_if_csrf_bad():
+def test_preserves_photo_if_csrf_bad(tmpdir):
     """
     If the user submits the form after their CSRF token expires, we
     don't lose the URL they've typed in.
@@ -56,7 +56,7 @@ def test_preserves_photo_if_csrf_bad():
     # We have to create the app object manually, rather than using the
     # fixtures provided in ``conftest.py`` -- they disable CSRF for
     # ease of testing, but in this case we need CSRF to replicate the bug.
-    app = create_app()
+    app = create_app(data_directory=tmpdir)
     app.config["TESTING"] = True
 
     app.config["WTF_CSRF_ENABLED"] = True
