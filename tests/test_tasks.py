@@ -7,7 +7,7 @@ from flickypedia.tasks import ProgressTracker
 
 
 @pytest.fixture
-def tracker():
+def tracker(app):
     t = ProgressTracker(task_id=str(uuid.uuid4()))
     yield t
 

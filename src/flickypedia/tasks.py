@@ -34,9 +34,7 @@ import time
 import celery
 from celery import Celery, shared_task
 from celery.result import AsyncResult
-from flask import Flask
-
-from flickypedia.config import Config
+from flask import Flask, current_app
 
 
 def celery_init_app(app: Flask) -> Celery:
@@ -64,7 +62,7 @@ class ProgressTracker:
         Returns the path to a file which can be used for tracking information
         about an in-progress task.
         """
-        config = Config().CELERY
+        config = current_app.config["CELERY"]
         in_progress_folder = config["broker_transport_options"]["in_progress_folder"]
 
         return os.path.join(in_progress_folder, f"{self.task_id}.json")

@@ -16,7 +16,7 @@ def main():
 
     from flickypedia import create_app
 
-    app = create_app()
+    app = create_app(data_directory="data")
 
     if app.config["OAUTH2_PROVIDERS"]["wikimedia"]["client_id"] is None:
         sys.exit("No Wikimedia client ID provided! Set WIKIMEDIA_CLIENT_ID.")
