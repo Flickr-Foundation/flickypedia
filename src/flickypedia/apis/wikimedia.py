@@ -158,6 +158,8 @@ class WikimediaApi:
         """
         Add a file caption to an image on Wikimedia Commons.
 
+        Returns the M-ID of this file.
+
         See https://commons.wikimedia.org/wiki/File_captions
         See https://www.wikidata.org/w/api.php?modules=wbsetlabel&action=help
 
@@ -199,7 +201,7 @@ class WikimediaApi:
         # See https://www.mediawiki.org/wiki/Wikibase/API#Response
         #
         if resp["success"] != 0:
-            return
+            return resp["entity"]["id"]
         else:  # pragma: no cover
             raise WikimediaApiException(f"Unexpected response: {resp}")
 
