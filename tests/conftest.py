@@ -130,11 +130,7 @@ def logged_in_client(app):
     """
     app.test_client_class = FlaskLoginClient
 
-    user = WikimediaUserSession(
-        id=-1,
-        userid=-1,
-        name="example",
-    )
+    user = WikimediaUserSession(id=-1, userid=-1, name="example")
 
     with app.test_client(user=user) as client:
         with client.session_transaction() as session:
