@@ -303,3 +303,12 @@ def save_cached_api_response(response):
         outfile.write(json.dumps(response, cls=DatetimeEncoder))
 
     return response_id
+
+
+def remove_cached_api_response(response_id):
+    """
+    Remove a cached API response.
+    """
+    cache_dir = current_app.config["FLICKR_API_RESPONSE_CACHE"]
+
+    os.unlink(os.path.join(cache_dir, response_id + ".json"))

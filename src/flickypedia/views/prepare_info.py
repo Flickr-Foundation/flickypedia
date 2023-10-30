@@ -22,7 +22,7 @@ from wtforms.validators import DataRequired
 from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
 from flickypedia.uploads import upload_batch_of_photos
 from flickypedia.utils import size_at
-from .select_photos import get_cached_api_response
+from .select_photos import get_cached_api_response, remove_cached_api_response
 
 
 def create_prepare_info_form(photos):
@@ -166,9 +166,7 @@ def prepare_info():
             task_id=cached_api_response_id,
         )
 
-        # TODO: Clear out the cached API response
-
-        flash("Ready to upload!")
+        remove_cached_api_response(response_id=cached_api_response_id)
 
         return redirect(url_for("wait_for_upload", task_id=cached_api_response_id))
 
