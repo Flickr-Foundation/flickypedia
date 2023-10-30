@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <style>
+    .bookmarklet {
+      text-align: center;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+  {% include "components/header.html" %}
+
+  <h2>Flickypedia bookmarklet</h2>
+
+  <p>
+    <strong>A bookmarklet is a browser bookmark that <em>does something extra</em>.</strong>
+  </p>
+
+  <p>
+    Use the Flickypedia bookmark as you’re exploring Flickr to quickly send the URL of a Flickr page straight to Flickypedia.
+    It’s easy!
+  </p>
+
+  <p>
+    Drag the button below to your menu bar to install your Flickypedia bookmarklet today!
+  </p>
+
+  <p class="bookmarklet">
+    <a href="javascript:(function()%7Bopen(%60http%3A%2F%2Flocalhost:5000%2Fselect_photos%3Fflickr_url%3D%24%7Bdocument.location.href%7D%60%2C%20%22targetname%22)%3B%7D)()%3B" class="pink_button">
+      Send to Flickypedia
+    </a>
+  </p>
+
+  <p>
+    <strong>And remember:</strong> <br/>
+    Flickypedia will filter any Flickr URL you submit for photos that match the Wikimedia Commons rules.
+    That means it only shows public and safe Flickr photos licensed with either CC&nbsp;BY, CC&nbsp;BY&#8209;SA, CC0, or Public Domain.
+  </p>
+{% endblock %}

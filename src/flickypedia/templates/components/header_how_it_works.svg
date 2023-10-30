@@ -69,10 +69,12 @@
         {{ step.label }}
       </text>
     
+      {% if current_step != None %}
       <svg x="120">
         <path d="M 2 14 L 40 14"/>
         <polygon points="40,14 38,9 45,14 38,19"/>
       </svg>
+      {% endif %}
     </svg>
   {% endfor %}
 </svg>
