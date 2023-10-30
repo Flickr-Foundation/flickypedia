@@ -15,6 +15,10 @@
         fill: currentColor;
       }
       
+      rect.next_step:hover {
+        opacity: 0.8;
+      }
+      
       rect.step {
         fill: rgb(var(--brown));
       }
@@ -48,11 +52,6 @@
 				dominant-baseline: middle;
 			}
     </style>
-
-    <marker id="pointer" markerWidth="10" markerHeight="8"
-    	refX="9.5" refY="5.1" orient="auto" markerUnits="userSpaceOnUse">
-      <polyline points="1 1, 10 5, 1 7" />
-    </marker>
   </defs>
 
   <!-- Log in -->
