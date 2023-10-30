@@ -45,7 +45,7 @@ from flask_wtf import FlaskForm
 from wtforms import BooleanField, HiddenField, SubmitField
 from wtforms.validators import DataRequired
 
-from flickypedia.apis.flickr import FlickrApi, ResourceNotFound
+from flickypedia.apis.flickr import FlickrApi, ResourceNotFound, SafetyLevel
 from flickypedia.duplicates import find_duplicates
 from flickypedia.utils import DatetimeDecoder, DatetimeEncoder
 from .get_photos import FlickrPhotoURLForm
@@ -84,6 +84,7 @@ def categorise_photos(all_photos):
     -   okay to choose ("available")
     -   already on Wikimedia Commons ("duplicates")
     -   using a license not allowed on WMC ("disallowed_license")
+    -   with a safety level not allowed on WMC ("restricted")
 
     """
     duplicates = find_duplicates(flickr_photo_ids=[photo["id"] for photo in all_photos])
@@ -100,19 +101,30 @@ def categorise_photos(all_photos):
         and photo["id"] not in duplicates
     }
 
+    restricted_photos = {
+        photo["id"]
+        for photo in all_photos
+        if photo["id"] not in duplicates
+        and photo["id"] not in disallowed_licenses
+        and photo["safety_level"] != SafetyLevel.Safe
+    }
+
     available_photos = [
         photo
         for photo in all_photos
-        if photo["id"] not in duplicates and photo["id"] not in disallowed_licenses
+        if photo["id"] not in duplicates
+        and photo["id"] not in disallowed_licenses
+        and photo["id"] not in restricted_photos
     ]
 
-    assert len(duplicates) + len(disallowed_licenses) + len(available_photos) == len(
-        all_photos
-    )
+    assert len(duplicates) + len(disallowed_licenses) + len(available_photos) + len(
+        restricted_photos
+    ) == len(all_photos)
 
     return {
         "duplicates": duplicates,
         "disallowed_licenses": disallowed_licenses,
+        "restricted": restricted_photos,
         "available": available_photos,
     }
 

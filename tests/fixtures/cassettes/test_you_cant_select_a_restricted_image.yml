@@ -1,0 +1,240 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - api.flickr.com
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&photo_id=35856118446
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<photo
+      id=\"35856118446\" secret=\"8602109868\" server=\"4235\" farm=\"5\" dateuploaded=\"1499949704\"
+      isfavorite=\"0\" license=\"4\" safety_level=\"2\" rotation=\"0\" originalsecret=\"67359e9346\"
+      originalformat=\"jpg\" views=\"416\" media=\"photo\">\n\t<owner nsid=\"156555495@N04\"
+      username=\"Free For Commercial Use (FFC)\" realname=\"Free Images\" location=\"\"
+      iconserver=\"4360\" iconfarm=\"5\" path_alias=\"free-images-flickr\">\n\t\t<gift
+      gift_eligible=\"1\" new_flow=\"1\">\n\t\t\t<eligible_durations />\n\t\t\t<eligible_durations
+      />\n\t\t\t<eligible_durations />\n\t\t</gift>\n\t</owner>\n\t<title>Mistakes
+      On The Road to Truth: Inspirational Quote</title>\n\t<description>There are
+      only two mistakes one can make along the road to truth; not going all the way,
+      and not starting. By Budda.\n\nYou are free to use this image as long as you
+      fave or comment AND include a credit via a clickable link to:\n\n&lt;a href=&quot;https://mahileather.com&quot;
+      rel=&quot;noreferrer nofollow&quot;&gt;mahileather.com&lt;/a&gt;\n\nThank you.\n</description>\n\t<visibility
+      ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" />\n\t<dates posted=\"1499949704\"
+      taken=\"2016-08-04 22:33:06\" takengranularity=\"0\" takenunknown=\"0\" lastupdate=\"1623108439\"
+      />\n\t<editability cancomment=\"0\" canaddmeta=\"0\" />\n\t<publiceditability
+      cancomment=\"1\" canaddmeta=\"0\" />\n\t<usage candownload=\"1\" canblog=\"0\"
+      canprint=\"0\" canshare=\"0\" />\n\t<comments>0</comments>\n\t<notes />\n\t<people
+      haspeople=\"0\" />\n\t<tags>\n\t\t<tag id=\"156523356-35856118446-5014\" author=\"156555495@N04\"
+      authorname=\"Free For Commercial Use (FFC)\" raw=\"quote\" machine_tag=\"0\">quote</tag>\n\t\t<tag
+      id=\"156523356-35856118446-405\" author=\"156555495@N04\" authorname=\"Free
+      For Commercial Use (FFC)\" raw=\"inspiration\" machine_tag=\"0\">inspiration</tag>\n\t\t<tag
+      id=\"156523356-35856118446-30285\" author=\"156555495@N04\" authorname=\"Free
+      For Commercial Use (FFC)\" raw=\"inspirational\" machine_tag=\"0\">inspirational</tag>\n\t\t<tag
+      id=\"156523356-35856118446-6131\" author=\"156555495@N04\" authorname=\"Free
+      For Commercial Use (FFC)\" raw=\"text\" machine_tag=\"0\">text</tag>\n\t\t<tag
+      id=\"156523356-35856118446-22287\" author=\"156555495@N04\" authorname=\"Free
+      For Commercial Use (FFC)\" raw=\"mistake\" machine_tag=\"0\">mistake</tag>\n\t\t<tag
+      id=\"156523356-35856118446-61\" author=\"156555495@N04\" authorname=\"Free For
+      Commercial Use (FFC)\" raw=\"road\" machine_tag=\"0\">road</tag>\n\t\t<tag id=\"156523356-35856118446-3144\"
+      author=\"156555495@N04\" authorname=\"Free For Commercial Use (FFC)\" raw=\"truth\"
+      machine_tag=\"0\">truth</tag>\n\t\t<tag id=\"156523356-35856118446-13717\" author=\"156555495@N04\"
+      authorname=\"Free For Commercial Use (FFC)\" raw=\"journey\" machine_tag=\"0\">journey</tag>\n\t\t<tag
+      id=\"156523356-35856118446-39592\" author=\"156555495@N04\" authorname=\"Free
+      For Commercial Use (FFC)\" raw=\"budda\" machine_tag=\"0\">budda</tag>\n\t\t<tag
+      id=\"156523356-35856118446-142907\" author=\"156555495@N04\" authorname=\"Free
+      For Commercial Use (FFC)\" raw=\"mahi\" machine_tag=\"0\">mahi</tag>\n\t\t<tag
+      id=\"156523356-35856118446-7937\" author=\"156555495@N04\" authorname=\"Free
+      For Commercial Use (FFC)\" raw=\"free\" machine_tag=\"0\">free</tag>\n\t\t<tag
+      id=\"156523356-35856118446-2073429\" author=\"156555495@N04\" authorname=\"Free
+      For Commercial Use (FFC)\" raw=\"free download\" machine_tag=\"0\">freedownload</tag>\n\t\t<tag
+      id=\"156523356-35856118446-18161466\" author=\"156555495@N04\" authorname=\"Free
+      For Commercial Use (FFC)\" raw=\"free for commercial use\" machine_tag=\"0\">freeforcommercialuse</tag>\n\t\t<tag
+      id=\"156523356-35856118446-15864\" author=\"156555495@N04\" authorname=\"Free
+      For Commercial Use (FFC)\" raw=\"creative commons\" machine_tag=\"0\">creativecommons</tag>\n\t\t<tag
+      id=\"156523356-35856118446-7023043\" author=\"156555495@N04\" authorname=\"Free
+      For Commercial Use (FFC)\" raw=\"creative commons attribution\" machine_tag=\"0\">creativecommonsattribution</tag>\n\t</tags>\n\t<urls>\n\t\t<url
+      type=\"photopage\">https://www.flickr.com/photos/free-images-flickr/35856118446/</url>\n\t</urls>\n</photo>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1171'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Mon, 30 Oct 2023 16:46:58 GMT
+      Via:
+      - 1.1 56ac4d409ea3c91f84bc0c30648a1434.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - NhynvES2ZzRCcBX39zmbQHM-t-etQbIpy1vIFSc6OGBZCkRkwdcpVg==
+      X-Amz-Cf-Pop:
+      - LHR50-P8
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.57 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Wed, 29-Nov-2023 16:46:58 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Wed, 29-Nov-2023 16:46:58 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&photo_id=35856118446
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<sizes
+      canblog=\"0\" canprint=\"0\" candownload=\"1\">\n\t<size label=\"Square\" width=\"75\"
+      height=\"75\" source=\"https://live.staticflickr.com/4235/35856118446_8602109868_s.jpg\"
+      url=\"https://www.flickr.com/photos/free-images-flickr/35856118446/sizes/sq/\"
+      media=\"photo\" />\n\t<size label=\"Large Square\" width=\"150\" height=\"150\"
+      source=\"https://live.staticflickr.com/4235/35856118446_8602109868_q.jpg\" url=\"https://www.flickr.com/photos/free-images-flickr/35856118446/sizes/q/\"
+      media=\"photo\" />\n\t<size label=\"Thumbnail\" width=\"100\" height=\"100\"
+      source=\"https://live.staticflickr.com/4235/35856118446_8602109868_t.jpg\" url=\"https://www.flickr.com/photos/free-images-flickr/35856118446/sizes/t/\"
+      media=\"photo\" />\n\t<size label=\"Small\" width=\"240\" height=\"240\" source=\"https://live.staticflickr.com/4235/35856118446_8602109868_m.jpg\"
+      url=\"https://www.flickr.com/photos/free-images-flickr/35856118446/sizes/s/\"
+      media=\"photo\" />\n\t<size label=\"Small 320\" width=\"320\" height=\"320\"
+      source=\"https://live.staticflickr.com/4235/35856118446_8602109868_n.jpg\" url=\"https://www.flickr.com/photos/free-images-flickr/35856118446/sizes/n/\"
+      media=\"photo\" />\n\t<size label=\"Small 400\" width=\"400\" height=\"400\"
+      source=\"https://live.staticflickr.com/4235/35856118446_8602109868_w.jpg\" url=\"https://www.flickr.com/photos/free-images-flickr/35856118446/sizes/w/\"
+      media=\"photo\" />\n\t<size label=\"Medium\" width=\"500\" height=\"500\" source=\"https://live.staticflickr.com/4235/35856118446_8602109868.jpg\"
+      url=\"https://www.flickr.com/photos/free-images-flickr/35856118446/sizes/m/\"
+      media=\"photo\" />\n\t<size label=\"Medium 640\" width=\"640\" height=\"640\"
+      source=\"https://live.staticflickr.com/4235/35856118446_8602109868_z.jpg\" url=\"https://www.flickr.com/photos/free-images-flickr/35856118446/sizes/z/\"
+      media=\"photo\" />\n\t<size label=\"Medium 800\" width=\"800\" height=\"800\"
+      source=\"https://live.staticflickr.com/4235/35856118446_8602109868_c.jpg\" url=\"https://www.flickr.com/photos/free-images-flickr/35856118446/sizes/c/\"
+      media=\"photo\" />\n\t<size label=\"Large\" width=\"1024\" height=\"1024\" source=\"https://live.staticflickr.com/4235/35856118446_8602109868_b.jpg\"
+      url=\"https://www.flickr.com/photos/free-images-flickr/35856118446/sizes/l/\"
+      media=\"photo\" />\n\t<size label=\"Original\" width=\"1080\" height=\"1080\"
+      source=\"https://live.staticflickr.com/4235/35856118446_67359e9346_o.jpg\" url=\"https://www.flickr.com/photos/free-images-flickr/35856118446/sizes/o/\"
+      media=\"photo\" />\n</sizes>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '447'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Mon, 30 Oct 2023 16:46:58 GMT
+      Via:
+      - 1.1 56ac4d409ea3c91f84bc0c30648a1434.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - ncQcWuISV0uRipIxbGoRtOOeX-ZOUpMR6rCrbkw6ElkCEG9Kr2G32A==
+      X-Amz-Cf-Pop:
+      - LHR50-P8
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.57 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Wed, 29-Nov-2023 16:46:58 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.licenses.getInfo
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<licenses>\n\t<license
+      id=\"0\" name=\"All Rights Reserved\" url=\"\" />\n\t<license id=\"4\" name=\"Attribution
+      License\" url=\"https://creativecommons.org/licenses/by/2.0/\" />\n\t<license
+      id=\"6\" name=\"Attribution-NoDerivs License\" url=\"https://creativecommons.org/licenses/by-nd/2.0/\"
+      />\n\t<license id=\"3\" name=\"Attribution-NonCommercial-NoDerivs License\"
+      url=\"https://creativecommons.org/licenses/by-nc-nd/2.0/\" />\n\t<license id=\"2\"
+      name=\"Attribution-NonCommercial License\" url=\"https://creativecommons.org/licenses/by-nc/2.0/\"
+      />\n\t<license id=\"1\" name=\"Attribution-NonCommercial-ShareAlike License\"
+      url=\"https://creativecommons.org/licenses/by-nc-sa/2.0/\" />\n\t<license id=\"5\"
+      name=\"Attribution-ShareAlike License\" url=\"https://creativecommons.org/licenses/by-sa/2.0/\"
+      />\n\t<license id=\"7\" name=\"No known copyright restrictions\" url=\"https://www.flickr.com/commons/usage/\"
+      />\n\t<license id=\"8\" name=\"United States Government Work\" url=\"http://www.usa.gov/copyright.shtml\"
+      />\n\t<license id=\"9\" name=\"Public Domain Dedication (CC0)\" url=\"https://creativecommons.org/publicdomain/zero/1.0/\"
+      />\n\t<license id=\"10\" name=\"Public Domain Mark\" url=\"https://creativecommons.org/publicdomain/mark/1.0/\"
+      />\n</licenses>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '395'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Mon, 30 Oct 2023 16:46:58 GMT
+      Via:
+      - 1.1 56ac4d409ea3c91f84bc0c30648a1434.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - RCeb5AAQMmnzfwW2lGhKf45IO0mBEKfYC1clWBo0O4-Udl-Yt10l9g==
+      X-Amz-Cf-Pop:
+      - LHR50-P8
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.57 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Wed, 29-Nov-2023 16:46:58 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

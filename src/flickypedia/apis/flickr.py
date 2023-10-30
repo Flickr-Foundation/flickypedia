@@ -23,6 +23,18 @@ class TakenDateGranularity:
     Circa = 8
 
 
+class SafetyLevel:
+    """
+    Named constants for Flickr Safety Levels.
+
+    See https://www.flickrhelp.com/hc/en-us/articles/4404064206996-Content-filters
+    """
+
+    Safe = 0
+    Moderate = 1
+    Restricted = 2
+
+
 class DateTaken(TypedDict):
     value: datetime.datetime
     granularity: int
@@ -267,6 +279,8 @@ class FlickrApi:
             license_code=info_resp.find(".//photo").attrib["license"]
         )
 
+        safety_level = int(info_resp.find(".//photo").attrib["safety_level"])
+
         # The getSizes response is a blob of XML of the form:
         #
         #       <?xml version="1.0" encoding="utf-8" ?>
@@ -307,6 +321,7 @@ class FlickrApi:
             "owner": owner,
             "date_posted": date_posted,
             "date_taken": date_taken,
+            "safety_level": safety_level,
             "license": license,
             "url": photo_page_url,
             "sizes": sizes,
@@ -331,6 +346,7 @@ class FlickrApi:
         "url_q",  # Large Square
         "url_l",  # Large
         "description",
+        "safety_level",
     ]
 
     def _parse_collection_of_photos_response(self, elem):
@@ -364,6 +380,7 @@ class FlickrApi:
                         license_code=photo_elem.attrib["license"]
                     ),
                     "sizes": _parse_sizes(photo_elem),
+                    "safety_level": int(photo_elem.attrib["safety_level"]),
                 }
             )
 
