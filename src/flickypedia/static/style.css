@@ -3,9 +3,9 @@
   --blue:    0, 102, 153; /* #069, from the Wiki Commons logo */
   --brown: 204, 197, 185; /* #CCC5B9 */;
   --black:   8,   9,  10; /* #08090A */;
-  --grey:   87,  90,  94;  /* #575A5E */;
+  --grey:   87,  90,  94; /* #575A5E */;
 
-  --pink:   227, 99, 151;  /* #E36397 */;
+  --pink:   227, 99, 151; /* #E36397 */;
 }
 
 body {
@@ -101,6 +101,13 @@ input[type="url"] {
 
 input.pink_button:active {
   transform: translate(0, 2px);
+}
+
+.warning {
+  background: color-mix(in srgb, yellow, #fff 65%);
+  padding: 1em;
+  font-size: 1.2em;
+  text-align: center;
 }
 
 /* Styles for the 'get photos' form */
