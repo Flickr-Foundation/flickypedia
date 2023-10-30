@@ -3,6 +3,7 @@
   --blue:    0, 102, 153; /* #069, from the Wiki Commons logo */
   --brown: 204, 197, 185; /* #CCC5B9 */;
   --black:   8,   9,  10; /* #08090A */;
+  --grey:   87,  90,  94;  /* #575A5E */;
 
   --pink:   227, 99, 151;  /* #E36397 */;
 }
@@ -29,7 +30,7 @@ main {
 
 footer {
   margin-top: 1em;
-  padding: 2px 1em;
+  padding: 1em;
 
   background: rgb(var(--black));
 
@@ -46,11 +47,20 @@ footer {
 
 footer a {
   color: rgb(var(--cream));
-  font-weight: bold;
 }
 
 footer a:hover {
   background-color: rgba(var(--cream), 0.4);
+}
+
+footer li {
+  display: inline-block;
+}
+
+footer li:not(:last-child):after {
+  content: "| ";
+  white-space: pre;
+  color: rgb(var(--grey));
 }
 
 ul.plain_list {
@@ -73,7 +83,7 @@ input[type="url"] {
   padding: 10px 6px;
 }
 
-input.pink_button {
+.pink_button {
   color: rgb(var(--cream));
   font-size: 1.5em;
   font-weight: bold;
@@ -81,10 +91,12 @@ input.pink_button {
   background: rgb(var(--pink));
   border: none;
   padding: 6px 12px;
+  cursor: pointer;
+  text-decoration: none;
 }
 
-input.pink_button:hover {
-  background: rgb(var(--pink));
+.pink_button:hover {
+  background: color-mix(in srgb, rgb(var(--pink)), #000 15%);
 }
 
 input.pink_button:active {
