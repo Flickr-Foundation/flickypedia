@@ -75,4 +75,4 @@ class FlickrPhotoURLForm(FlaskForm):
 
     flickr_url = URLField(validators=[DataRequired()])
 
-    submit = SubmitField("Go")
+    submit = SubmitField("GO")

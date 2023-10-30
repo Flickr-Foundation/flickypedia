@@ -4,10 +4,7 @@
   --brown: 204, 197, 185; /* #CCC5B9 */;
   --black:   8,   9,  10; /* #08090A */;
 
-  --pink1: 255,   0, 123; /* #ff0084, the Flickr Foundation pink */
-  --pink2: 255,  90, 164; /* #ff5aa4, from the logo */
-  --pink3: 255, 147, 195; /* #ff93c3, from the logo */
-  --pink4: 255, 202, 225; /* #ffcae1, from the logo */
+  --pink:   227, 99, 151;  /* #E36397 */;
 }
 
 body {
@@ -77,17 +74,17 @@ input[type="url"] {
 }
 
 input.pink_button {
-  color: rgb(var(--black));
+  color: rgb(var(--cream));
   font-size: 1.5em;
   font-weight: bold;
   border-radius: 8px;
-  background: rgb(var(--pink3));
+  background: rgb(var(--pink));
   border: none;
   padding: 6px 12px;
 }
 
 input.pink_button:hover {
-  background: rgb(var(--pink2));
+  background: rgb(var(--pink));
 }
 
 input.pink_button:active {
@@ -109,11 +106,12 @@ input.pink_button:active {
 
 .get_photos input[type="button"] {
   width: 80px;
+  text-transform: uppercase;
 }
 
 .get_photos input[type="url"],
 .get_photos input[type="button"] {
-  height: 25px;
+  height: 28px;
 }
 
 /* Temporary styles */
