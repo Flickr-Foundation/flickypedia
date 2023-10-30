@@ -50,7 +50,7 @@ class WikidataEntities:
     Licenses = {
         "cc-by-2.0": "Q19125117",
         "cc-by-sa-2.0": "Q19068220",
-        "cc-0-1.0": "Q6938433",
+        "cc0-1.0": "Q6938433",
         "usgov": "Q60671452",
     }
 

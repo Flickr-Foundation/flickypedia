@@ -1,0 +1,13 @@
+{
+  "mainsnak": {
+    "snaktype": "value",
+    "property": "P275",
+    "datavalue": {
+      "value": {
+        "id": "Q6938433"
+      },
+      "type": "wikibase-entityid"
+    }
+  },
+  "type": "statement"
+}
