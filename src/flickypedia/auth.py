@@ -295,4 +295,3 @@ def freshen_oauth_info(oauth_info: OAuthInfo) -> OAuthInfo:
         raise ValueError("I don't know how to refresh yet!")
 
     return oauth_info
->>>>>>> 56c568f (Continue getting celery bits working)
