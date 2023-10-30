@@ -39,6 +39,13 @@
     and not photos.duplicates
     and not photos.available %}
 
+{% set
+    all_photos_restricted =
+    photos.restricted
+    and not photos.available
+    and not photos.duplicates
+    and not photos.disallowed_licenses %}
+
 {% if photos.available %}
   <p class="message_available">
     <span class="highlight">
@@ -136,6 +143,30 @@
       {% if loop.index == loop.length - 1 %} and{% endif %}
     {% endfor %}
     license{% if photos.disallowed_licenses|length > 1 %}s{% endif %}.
+
+    Sorry!
+  </p>
+
+  <p class="license_explanation">
+    Wikimedia Commons only accepts CC0, CC BY, CC BY-SA, and Public Domain photos that are also public and safe on Flickr.
+  </p>
+{% endif %}
+
+{% if all_photos_restricted %}
+  <p class="message_disallowed">
+    {% if photos.restricted|length == 1 %}
+      <span class="highlight">
+        This photo can’t be used.
+      </span>
+    {% elif photos.restricted|length == 2 %}
+      <span class="highlight">
+        Neither of these photos can be used.
+      </span>
+    {% else %}
+      <span class="highlight">
+        None of these photos can be used.
+      </span>
+    {% endif %}
 
     Sorry!
   </p>
