@@ -12,6 +12,7 @@
         "granularity": 0,
         "unknown": false
       },
+      "safety_level": 0,
       "license": {
         "id": "in-copyright",
         "label": "All Rights Reserved",
@@ -87,6 +88,7 @@
         "granularity": 0,
         "unknown": true
       },
+      "safety_level": 0,
       "license": {
         "id": "in-copyright",
         "label": "All Rights Reserved",
@@ -162,6 +164,7 @@
         "granularity": 0,
         "unknown": false
       },
+      "safety_level": 0,
       "license": {
         "id": "in-copyright",
         "label": "All Rights Reserved",
@@ -237,6 +240,7 @@
         "granularity": 0,
         "unknown": true
       },
+      "safety_level": 0,
       "license": {
         "id": "in-copyright",
         "label": "All Rights Reserved",
@@ -312,6 +316,7 @@
         "granularity": 0,
         "unknown": true
       },
+      "safety_level": 0,
       "license": {
         "id": "in-copyright",
         "label": "All Rights Reserved",
@@ -387,6 +392,7 @@
         "granularity": 0,
         "unknown": true
       },
+      "safety_level": 0,
       "license": {
         "id": "in-copyright",
         "label": "All Rights Reserved",
@@ -462,6 +468,7 @@
         "granularity": 0,
         "unknown": true
       },
+      "safety_level": 0,
       "license": {
         "id": "in-copyright",
         "label": "All Rights Reserved",
@@ -537,6 +544,7 @@
         "granularity": 0,
         "unknown": true
       },
+      "safety_level": 0,
       "license": {
         "id": "in-copyright",
         "label": "All Rights Reserved",
@@ -612,6 +620,7 @@
         "granularity": 0,
         "unknown": true
       },
+      "safety_level": 0,
       "license": {
         "id": "in-copyright",
         "label": "All Rights Reserved",
@@ -687,6 +696,7 @@
         "granularity": 0,
         "unknown": true
       },
+      "safety_level": 0,
       "license": {
         "id": "in-copyright",
         "label": "All Rights Reserved",
