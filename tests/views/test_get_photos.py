@@ -8,7 +8,7 @@ def test_renders_basic_page(logged_in_client):
     resp = logged_in_client.get("/get_photos")
 
     assert resp.status_code == 200
-    assert b"Enter a Flickr URL" in resp.data
+    assert b"Put your Flickr URL here" in resp.data
 
 
 def test_rejects_a_non_flickr_url(logged_in_client):
@@ -18,7 +18,7 @@ def test_rejects_a_non_flickr_url(logged_in_client):
 
     assert resp.status_code == 200
 
-    assert b"Enter a Flickr URL" in resp.data
+    assert b"Put your Flickr URL here" in resp.data
     assert "That URL doesn’t live on Flickr.com" in resp.data.decode("utf8")
     assert b'value="https://example.net"' in resp.data
 
@@ -30,7 +30,7 @@ def test_rejects_a_non_photo_flickr_url(logged_in_client):
 
     assert resp.status_code == 200
 
-    assert b"Enter a Flickr URL" in resp.data
+    assert b"Put your Flickr URL here" in resp.data
     assert b"There are no photos to show at that URL" in resp.data
     assert b'value="https://flickr.com/help"' in resp.data
 
