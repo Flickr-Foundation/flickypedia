@@ -52,6 +52,7 @@ class WikidataEntities:
         "cc-by-sa-2.0": "Q19068220",
         "cc0-1.0": "Q6938433",
         "usgov": "Q60671452",
+        "pdm": "Q19652",
     }
 
 

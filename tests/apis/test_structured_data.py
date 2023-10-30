@@ -105,6 +105,11 @@ def test_create_license_statement(license_id, filename):
     assert actual == expected
 
 
+def test_can_create_license_statement_for_all_allowed_licenses(app):
+    for license_id in app.config["ALLOWED_LICENSES"]:
+        create_license_statement(license_id)
+
+
 def test_create_license_statement_fails_if_unrecognised_license():
     with pytest.raises(ValueError, match="Unrecognised license ID"):
         create_license_statement(license_id="mystery")
