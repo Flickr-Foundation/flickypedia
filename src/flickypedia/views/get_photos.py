@@ -7,7 +7,7 @@ from wtforms.validators import DataRequired
 
 
 @login_required
-def find_photos():
+def get_photos():
     photo_url_form = FlickrPhotoURLForm()
 
     if photo_url_form.validate_on_submit():
@@ -23,17 +23,17 @@ def find_photos():
         except NotAFlickrUrl:
             flash("That URL doesn’t live on Flickr.com", category="flickr_url")
             return render_template(
-                "find_photos.html",
+                "get_photos.html",
                 photo_url_form=photo_url_form,
-                current_step="find_photos",
+                current_step="get_photos",
                 flickr_url=url,
             )
         except UnrecognisedUrl:
             flash("There are no photos to show at that URL", category="flickr_url")
             return render_template(
-                "find_photos.html",
+                "get_photos.html",
                 photo_url_form=photo_url_form,
-                current_step="find_photos",
+                current_step="get_photos",
                 flickr_url=url,
             )
 
@@ -61,10 +61,10 @@ def find_photos():
         flickr_url = ""
 
     return render_template(
-        "find_photos.html",
+        "get_photos.html",
         photo_url_form=photo_url_form,
         flickr_url=flickr_url,
-        current_step="find_photos",
+        current_step="get_photos",
     )
 
 

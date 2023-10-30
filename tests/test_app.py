@@ -16,7 +16,7 @@ def test_homepage_shows_user_info_if_logged_in(logged_in_client):
     assert "you’re logged in as" in resp.data.decode("utf8")
 
 
-@pytest.mark.parametrize("path", ["/logout", "/find_photos", "/select_photos"])
+@pytest.mark.parametrize("path", ["/logout", "/get_photos", "/select_photos"])
 def test_redirected_to_homepage_for_pages_requiring_login(client, path):
     resp = client.get(path)
     assert resp.status_code == 302

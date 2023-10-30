@@ -11,12 +11,12 @@ class TestOAuth2AuthorizeWikimedia:
             == "https://meta.wikimedia.org/w/rest.php/oauth2/authorize?client_id=example1234&response_type=code"
         )
 
-    def test_logged_in_user_is_redirected_to_find_photos(self, logged_in_client):
+    def test_logged_in_user_is_redirected_to_get_photos(self, logged_in_client):
         resp = logged_in_client.get("/authorize/wikimedia")
 
         # If you're already logged in, you should be redirected
         assert resp.status_code == 302
-        assert resp.headers["location"] == "/find_photos"
+        assert resp.headers["location"] == "/get_photos"
 
 
 def test_logging_out_removes_user(logged_in_client):
@@ -40,7 +40,7 @@ class TestOAuth2CallbackWikimedia:
         # If you're already logged in, you don't need to come through
         # this flow.
         assert resp.status_code == 302
-        assert resp.headers["location"] == "/find_photos"
+        assert resp.headers["location"] == "/get_photos"
 
     def test_missing_code_is_error(self, client):
         resp = client.get("/callback/wikimedia")

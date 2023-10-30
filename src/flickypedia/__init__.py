@@ -17,7 +17,7 @@ from flickypedia.apis.wikidata import (
 )
 from flickypedia.config import create_config, get_directories
 from flickypedia.duplicates import create_link_to_commons
-from flickypedia.views import find_photos, homepage, prepare_info, select_photos
+from flickypedia.views import get_photos, homepage, prepare_info, select_photos
 from flickypedia.tasks import celery_init_app
 from flickypedia.utils import a_href, size_at
 
@@ -45,7 +45,7 @@ def create_app(data_directory):
     app.add_url_rule("/authorize/wikimedia", view_func=oauth2_authorize_wikimedia)
     app.add_url_rule("/callback/wikimedia", view_func=oauth2_callback_wikimedia)
 
-    app.add_url_rule("/find_photos", view_func=find_photos, methods=["GET", "POST"])
+    app.add_url_rule("/get_photos", view_func=get_photos, methods=["GET", "POST"])
     app.add_url_rule("/select_photos", view_func=select_photos, methods=["GET", "POST"])
     app.add_url_rule("/prepare_info", view_func=prepare_info, methods=["GET", "POST"])
 

@@ -7,7 +7,6 @@
 
   header, header div {
     height: 80px;
-/*    background: red;*/
   }
 
   header img {
@@ -37,7 +36,6 @@
   </div>
 
   <p>
-
     {% with messages = get_flashed_messages(category_filter=["login_header"]) %}
       {% if messages %}
         ✅ OK, <a href="{{ current_user.profile_url }}">{{ current_user.name }}</a>.
@@ -75,7 +73,7 @@
 
 <nav>
   <ul id="workflow_steps">
-    <li {% if current_step == "find_photos" %}class="selected"{% endif %}>Find Flickr photos</li>
+    <li {% if current_step == "get_photos" %}class="selected"{% endif %}>Get Flickr photos</li>
     <li {% if current_step == "prepare_info" %}class="selected"{% endif %}>Prepare info</li>
     <li {% if current_step == "upload_to_wikimedia" %}class="selected"{% endif %}>Upload to Wikimedia</li>
     <li {% if current_step == "say_thanks" %}class="selected"{% endif %}>Say thanks</li>
