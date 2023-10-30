@@ -1,9 +1,17 @@
 {% extends "base.html" %}
 
+{% block head %}
+  <style>
+    h2 {
+      margin-top: 2em;
+    }
+  </style>
+{% endblock %}
+
 {% block content %}
   {% include "components/header.html" %}
   
-  <h2>Enter a Flickr URL:</h2>
+  <h2>Put your Flickr URL here:</h2>
   
   {% include "components/get_photos_form.html" %}
 

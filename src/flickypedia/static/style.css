@@ -64,6 +64,12 @@ a:hover {
   background-color: rgba(var(--blue), 0.3);
 }
 
+input[type="url"] {
+  border: 1px solid rgb(var(--black));
+  border-radius: 8px;
+  padding: 10px 6px;
+}
+
 /* Temporary styles */
 main {
   padding-bottom: 1em;

@@ -50,32 +50,6 @@
   </p>
 </header>
 
-<style>
-  nav #workflow_steps {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    margin-bottom: 1em;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 5px;
-  }
-
-  nav #workflow_steps li {
-    background: #ccc;
-    padding: 3px 5px;
-  }
-
-  nav #workflow_steps li.selected {
-    background: pink;
-  }
-</style>
-
 <nav>
-  <ul id="workflow_steps">
-    <li {% if current_step == "get_photos" %}class="selected"{% endif %}>Get Flickr photos</li>
-    <li {% if current_step == "prepare_info" %}class="selected"{% endif %}>Prepare info</li>
-    <li {% if current_step == "upload_to_wikimedia" %}class="selected"{% endif %}>Upload to Wikimedia</li>
-    <li {% if current_step == "say_thanks" %}class="selected"{% endif %}>Say thanks</li>
-  </ul>
+  {% include "components/header_how_it_works.svg" %}
 </nav>
