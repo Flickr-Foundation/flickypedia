@@ -5,7 +5,15 @@ import pytest
 
 def test_homepage(client):
     resp = client.get("/")
-    assert b"Welcome to Flickypedia!" in resp.data
+    assert b"Flickypedia helps you put Flickr photos in Wikimedia Commons" in resp.data
+
+    assert b"Log in" in resp.data
+    assert b"to Wikimedia Commons" in resp.data
+
+
+def test_homepage_shows_user_info_if_logged_in(logged_in_client):
+    resp = logged_in_client.get("/")
+    assert "you’re logged in as" in resp.data.decode("utf8")
 
 
 @pytest.mark.parametrize("path", ["/logout", "/find_photos", "/select_photos"])
