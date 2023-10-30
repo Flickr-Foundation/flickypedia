@@ -170,9 +170,7 @@ def prepare_info():
 
         flash("Ready to upload!")
 
-        return redirect(
-            url_for('wait_for_upload', task_id=cached_api_response_id)
-        )
+        return redirect(url_for("wait_for_upload", task_id=cached_api_response_id))
 
     return render_template(
         "prepare_info.html",

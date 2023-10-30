@@ -18,7 +18,14 @@ from flickypedia.apis.wikidata import (
 )
 from flickypedia.config import create_config, get_directories
 from flickypedia.duplicates import create_link_to_commons
-from flickypedia.views import get_photos, get_upload_status, homepage, prepare_info, select_photos
+from flickypedia.views import (
+    get_photos,
+    get_upload_status,
+    homepage,
+    prepare_info,
+    select_photos,
+    wait_for_upload,
+)
 from flickypedia.tasks import celery_init_app
 from flickypedia.utils import a_href, size_at
 

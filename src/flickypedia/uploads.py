@@ -17,16 +17,18 @@ def upload_batch_of_photos(oauth_info, photos_to_upload):
     tracker = ProgressTracker(task_id=current_task.request.id)
 
     progress_data = [
-            {"photo_id": photo["id"], "status": "not_started"}
-            for photo in photos_to_upload
-        ]
+        {"photo_id": photo["id"], "status": "not_started"} for photo in photos_to_upload
+    ]
 
     tracker.record_progress(data=progress_data)
 
     for idx, photo in enumerate(photos_to_upload):
         oauth_info = freshen_oauth_info(oauth_info)
 
-        api = WikimediaApi(access_token=oauth_info['access_token'], user_agent=current_app.config['USER_AGENT'])
+        api = WikimediaApi(
+            access_token=oauth_info["access_token"],
+            user_agent=current_app.config["USER_AGENT"],
+        )
 
         try:
             # import random
@@ -38,29 +40,30 @@ def upload_batch_of_photos(oauth_info, photos_to_upload):
             #     raise ValueError
             upload_single_image(
                 api,
-                photo_id=photo['id'],
-                photo_url=photo['photo_url'],
-                user=photo['owner'],
-                filename=photo['title'],
-                file_caption_language=photo['short_caption']['language'],
-                file_caption=photo['short_caption']['text'],
-                date_taken=photo['date_taken'],
-                date_posted=photo['date_posted'],
-                license_id=photo['license_id'],
-                original_url=photo['original_url']
+                photo_id=photo["id"],
+                photo_url=photo["photo_url"],
+                user=photo["owner"],
+                filename=photo["title"],
+                file_caption_language=photo["short_caption"]["language"],
+                file_caption=photo["short_caption"]["text"],
+                date_taken=photo["date_taken"],
+                date_posted=photo["date_posted"],
+                license_id=photo["license_id"],
+                original_url=photo["original_url"],
             )
         except Exception as exc:
-            progress_data[idx]['status'] = 'failed'
-            progress_data[idx]['error'] = str(exc)
+            progress_data[idx]["status"] = "failed"
+            progress_data[idx]["error"] = str(exc)
         else:
-            progress_data[idx]['status'] = 'succeeded'
+            progress_data[idx]["status"] = "succeeded"
 
-        from pprint import pprint; pprint(progress_data)
+        from pprint import pprint
+
+        pprint(progress_data)
 
         tracker.record_progress(data=progress_data)
 
     return progress_data
-
 
 
 def upload_single_image(
@@ -115,6 +118,4 @@ def upload_single_image(
         wikimedia_page_id=wikimedia_page_id,
     )
 
-    return {
-        'id': wikimedia_page_id, 'title': wikimedia_page_title
-    }
+    return {"id": wikimedia_page_id, "title": wikimedia_page_title}

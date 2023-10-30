@@ -10,4 +10,10 @@ def homepage():
     return render_template("homepage.html")
 
 
-__all__ = ["get_photos", "get_upload_status", "homepage", "prepare_info", "select_photos"]
+__all__ = [
+    "get_photos",
+    "get_upload_status",
+    "homepage",
+    "prepare_info",
+    "select_photos",
+]
