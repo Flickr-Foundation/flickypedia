@@ -264,6 +264,6 @@ def oauth2_callback_wikimedia():
     # Log the user in
     login_user(user)
 
-    flash("You’re logged in. ✅", category="login_header")
+    flash("You’re logged in.", category="login_header")
 
     return redirect(url_for("get_photos"))

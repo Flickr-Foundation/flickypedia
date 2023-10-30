@@ -24,6 +24,10 @@
     margin-top:    auto;
     margin-bottom: auto;
   }
+
+  .flash {
+    background: yellow;
+  }
 </style>
 
 <header>
@@ -40,10 +44,10 @@
       {% if messages %}
         ✅ OK, <a href="{{ current_user.profile_url }}">{{ current_user.name }}</a>.
         {% for msg in messages %}
-          {{ msg }}
+          <span class="flash">{{ msg }}</span>
         {% endfor %}
       {% else %}
-        <a href="{{ current_user.profile_url }}">{{ current_user.name }}</a>.
+        <a href="{{ current_user.profile_url }}">{{ current_user.name }}</a>
       {% endif %}
       / <a href="{{ url_for('logout') }}">Log out</a>
     {% endwith %}
