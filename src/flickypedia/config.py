@@ -34,6 +34,8 @@ def create_config(data_directory):
     return {
         "SECRET_KEY": os.environ.get("SECRET_KEY") or "you-will-never-guess",
         "FLICKR_API_KEY": os.environ.get("FLICKR_API_KEY", "<UNKNOWN>"),
+        #
+        # TODO: Get this into the data directory.
         "SQLALCHEMY_DATABASE_URI": f"sqlite:///{os.path.abspath(data_directory)}/db.sqlite",
         #
         # Used as a temporary cache for responses from the Flickr API.

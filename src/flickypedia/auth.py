@@ -56,6 +56,7 @@ to the user's browser can't just retrieve their token.
 """
 
 import datetime
+from typing import TypedDict
 from urllib.parse import urlencode
 import uuid
 
@@ -108,8 +109,15 @@ class WikimediaUserSession(UserMixin, db.Model):
     access_token_expires = db.Column(db.DateTime, nullable=False)
     encrypted_refresh_token = db.Column(db.LargeBinary, nullable=False)
 
-    def access_token(self, key):
-        return decrypt_string(key, ciphertext=self.encrypted_access_token)
+    def access_token(self):
+        return decrypt_string(
+            key=session[SESSION_ENCRYPTION_KEY], ciphertext=self.encrypted_access_token
+        )
+
+    def refresh_token(self):
+        return decrypt_string(
+            key=session[SESSION_ENCRYPTION_KEY], ciphertext=self.encrypted_refresh_token
+        )
 
     @property
     def profile_url(self):
@@ -267,3 +275,23 @@ def oauth2_callback_wikimedia():
     flash("You’re logged in.", category="login_header")
 
     return redirect(url_for("get_photos"))
+
+
+class OAuthInfo(TypedDict):
+    access_token: str
+    access_token_expires: datetime.datetime
+    refresh_token: str
+
+
+def freshen_oauth_info(oauth_info: OAuthInfo) -> OAuthInfo:
+    """
+    Freshen any OAuth info as necessary.
+    """
+    delta = oauth_info["access_token_expires"] - datetime.datetime.now()
+
+    # TODO: Implement a token refresh mechanism.  How do we cope with
+    # a refresh token failure?
+    if delta.total_seconds() < 5 * 60:
+        raise ValueError("I don't know how to refresh yet!")
+
+    return oauth_info

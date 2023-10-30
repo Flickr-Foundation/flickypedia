@@ -20,6 +20,7 @@ def test_upload_single_image(app, wikimedia_api):
             "profile_url": "https://www.flickr.com/people/199246608@N02/",
         },
         filename="Thameslink Class 700 in Pride livery.jpg",
+        file_caption_language="en",
         file_caption="A Thameslink Class 700 train in the rainbow Pride livery, taken at night",
         date_taken={
             "value": datetime.datetime(2023, 9, 12, 19, 54, 32),

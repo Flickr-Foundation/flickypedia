@@ -1,4 +1,5 @@
 import os
+import sys
 
 from flask import Flask
 from jinja2 import StrictUndefined
@@ -17,12 +18,19 @@ from flickypedia.apis.wikidata import (
 )
 from flickypedia.config import create_config, get_directories
 from flickypedia.duplicates import create_link_to_commons
-from flickypedia.views import get_photos, homepage, prepare_info, select_photos
+from flickypedia.views import (
+    get_photos,
+    get_upload_status,
+    homepage,
+    prepare_info,
+    select_photos,
+    wait_for_upload,
+)
 from flickypedia.tasks import celery_init_app
 from flickypedia.utils import a_href, size_at
 
 
-def create_app(data_directory):
+def create_app(data_directory="data"):
     app = Flask(__name__)
 
     config = create_config(data_directory)
@@ -48,6 +56,8 @@ def create_app(data_directory):
     app.add_url_rule("/get_photos", view_func=get_photos, methods=["GET", "POST"])
     app.add_url_rule("/select_photos", view_func=select_photos, methods=["GET", "POST"])
     app.add_url_rule("/prepare_info", view_func=prepare_info, methods=["GET", "POST"])
+    app.add_url_rule("/wait_for_upload/<task_id>", view_func=wait_for_upload)
+    app.add_url_rule("/wait_for_upload/<task_id>/status", view_func=get_upload_status)
 
     app.jinja_env.filters["a_href"] = a_href
     app.jinja_env.filters["size_at"] = size_at
@@ -67,3 +77,11 @@ def create_app(data_directory):
     app.jinja_env.lstrip_blocks = True
 
     return app
+
+
+# celery --app flickypedia.celery worker --loglevel INFO
+if os.path.basename(sys.argv[0]) == "celery":
+    app = create_app()
+
+    with app.app_context():
+        celery = celery_init_app(app)
