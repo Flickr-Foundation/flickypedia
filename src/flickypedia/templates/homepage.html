@@ -1,30 +1,151 @@
 {% extends "base.html" %}
 
+{% block head %}
+  <style>
+    main p {
+      font-size: 20px;
+    }
+
+    img.hero {
+      width:  350px;
+      height: 350px;
+
+      /* Center the image.  Note that images are inline by default, so
+         you need the `display: block;` or the margins won't apply. */
+      display: block;
+      margin-left:  auto;
+      margin-right: auto;
+    }
+
+    /* No margin between the image and the text; there's already a fair
+       amount of padding in the image itself. */
+    img.hero + h2.hero {
+      margin-top: 0;
+    }
+
+    .hero {
+      text-align: center;
+      font-weight: normal;
+    }
+
+    .hero .welcome {
+      font-weight: bold;
+    }
+
+    #actions {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 10px;
+    }
+
+    #actions li {
+      text-align: center;
+    }
+
+    #actions img {
+      width: 70px;
+    }
+
+    /* This is a crude bit of padding to ensure that the CC and Wikimedia
+       Commons logos are vertically aligned.
+
+       The Wiki Commons logo has dimensions of 1024 × 1376 in the source SVG,
+       whereas the CC logo is square.
+
+       This means the WMC logo is 70 / 1024 × (1376 − 1024) ≈ 24px taller
+       than the CC logic.  This padding eliminates the difference.
+     */
+    #wiki_requires_cc_licenses img {
+      margin-top: 24px;
+    }
+
+    #actions h3 {
+      font-size: 20px;
+      margin-top:    5px;
+      margin-bottom: 5px;
+    }
+
+    #actions p {
+      font-size: 17px;
+      margin-top: 5px;
+    }
+
+    svg a {
+      color: rgb(var(--black));
+    }
+
+    svg a text,
+    svg a tspan {
+      color: rgb(var(--cream));
+      font-weight: bold;
+      text-decoration: underline;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-  <h1>Welcome to Flickypedia!</h1>
-  
-  <p>
-    It’s a tool to contribute Flickr photos to Wikimedia Commons.
-    (And you must have a Wikimedia Commons account to use it.)
-  </p>
-  
-  <p>
+  <img
+    class="hero"
+    src="{{ url_for('static', filename='flickypedia-hero.svg') }}"
+    alt="Flickypedia, by Flickr.org."
+  >
+
+  <h2 class="hero">
+    <span class="welcome">Welcome!</span>
+    Flickypedia helps you put Flickr photos in Wikimedia Commons.
+    You need a Wikimedia Commons account to use it.
+  </h2>
+
+  <h2 class="hero">
     Here’s how it works:
-  </p>
-  
-  <img id="how_it_works" src="{{ url_for('static', filename='how_it_works.png') }}">
-  
-  <ul>
-    <li>
-      <h3>Wikimedia requires CC licensing</h3>
-      
+  </h2>
+
+  {% include "components/homepage_how_it_works.svg" %}
+
+  <ul id="actions" class="plain_list">
+    <li id="wiki_requires_cc_licenses">
+      <div id="cc_logo_wrapper">
+        <img
+          src="{{ url_for('static', filename='creative-commons-logo.svg') }}"
+          alt=""
+        >
+      </div>
+
+      <h3>Wikimedia requires CC licenses</h3>
+
       <p>so we’ll only offer Flickr photos that fit</p>
     </li>
-    
-    <li>
-      <h3>Start: <a href="{{ url_for('oauth2_authorize_wikimedia') }}">Log in</a></h3>
-        
-      <p>to Wikimedia Commons</p>
+
+    <li id="get_started">
+      <img
+        src="{{ url_for('static', filename='wikimedia-commons-logo.svg') }}"
+        alt=""
+      >
+
+      {% if current_user.is_anonymous %}
+        <h3>
+          Start:
+          <a href="{{ url_for('oauth2_authorize_wikimedia') }}">Log in</a>
+        </h3>
+
+        <p>to Wikimedia Commons</p>
+      {% else %}
+        <h3>
+          Start:
+          <a href="{{ url_for('find_photos') }}">Get Flickr photos</a>
+        </h3>
+
+        <p>
+          you’re logged in as
+          <br/>
+          <a class="wikimedia_user" href="{{ current_user.profile_url }}">
+            {{- current_user.name -}}
+          </a>
+          /
+          <a href="{{ url_for('logout') }}">Log out</a>
+        </p>
+      {% endif %}
+
     </li>
   </ul>
 {% endblock %}
