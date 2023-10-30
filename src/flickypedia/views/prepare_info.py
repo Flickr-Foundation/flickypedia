@@ -13,7 +13,7 @@ This page gets two arguments as query parameters:
 
 """
 
-from flask import abort, current_app, flash, redirect, render_template, request, url_for
+from flask import abort, current_app, redirect, render_template, request, url_for
 from flask_wtf import FlaskForm, Form
 from flask_login import current_user, login_required
 from wtforms import FormField, HiddenField, SelectField, StringField, SubmitField
