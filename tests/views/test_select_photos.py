@@ -1,5 +1,4 @@
 import json
-import shutil
 
 import pytest
 
@@ -121,7 +120,7 @@ def test_selecting_photo_redirects_you_to_prepare_info(
     with open(f"{cache_dir}/1234567890.json", "w") as outfile:
         with open("tests/fixtures/flickr_api/32812033543.json") as infile:
             single_photo_resp = json.load(infile)
-        outfile.write(json.dumps({"photos": [single_photo_resp]}))
+        outfile.write(json.dumps({"value": {"photos": [single_photo_resp]}}))
 
     resp = logged_in_client.post(
         f"/select_photos?flickr_url={flickr_url}",
@@ -138,14 +137,14 @@ def test_selecting_photo_redirects_you_to_prepare_info(
 def test_selecting_multiple_photo_redirects_you_to_prepare_info(
     logged_in_client, app, flickr_api
 ):
-    flickr_url = "https://www.flickr.com/photos/spike_yun/albums/72157677773252346"
+    flickr_url = "https://www.flickr.com/photos/icann/albums/72177720312192106"
 
     cache_dir = app.config["FLICKR_API_RESPONSE_CACHE"]
 
-    shutil.copyfile(
-        "tests/fixtures/flickr_api/album-72177720312192106.json",
-        f"{cache_dir}/1234567890.json",
-    )
+    with open(f"{cache_dir}/1234567890.json", "w") as outfile:
+        with open("tests/fixtures/flickr_api/album-72177720312192106.json") as infile:
+            album_resp = json.load(infile)
+        outfile.write(json.dumps({"value": album_resp}))
 
     resp = logged_in_client.post(
         f"/select_photos?flickr_url={flickr_url}",
