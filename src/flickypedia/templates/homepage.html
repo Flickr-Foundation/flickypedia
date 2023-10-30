@@ -17,6 +17,8 @@
       margin-right: auto;
     }
 
+    /* No margin between the image and the text; there's already a fair
+       amount of padding in the image itself. */
     img.hero + h2.hero {
       margin-top: 0;
     }
@@ -85,7 +87,7 @@
   <img
     class="hero"
     src="{{ url_for('static', filename='flickypedia-hero.svg') }}"
-    alt="A logo that looks a bit like a smiling caterpillar, made up of circles that resemble the Flickr and Wikimedia Commons logos. It says “Flickypedia, by Flickr.org”."
+    alt="Flickypedia, by Flickr.org."
   >
 
   <h2 class="hero">
