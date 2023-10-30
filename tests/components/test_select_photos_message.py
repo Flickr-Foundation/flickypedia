@@ -118,7 +118,7 @@ def test_shows_correct_message_when_all_disallowed(app, count, expected_text):
         {"class": "message_disallowed", "text": expected_text},
         {
             "class": "license_explanation",
-            "text": "Wikimedia Commons only accepts CC0, CC BY, CC BY-SA, and Public Domain images.",
+            "text": "Wikimedia Commons only accepts CC0, CC BY, CC BY-SA, and Public Domain photos that are also public and safe on Flickr.",
         },
     ]
 
@@ -156,7 +156,7 @@ def test_shows_correct_combination_of_licenses(app, licenses, expected_text):
         {"class": "message_disallowed", "text": expected_text},
         {
             "class": "license_explanation",
-            "text": "Wikimedia Commons only accepts CC0, CC BY, CC BY-SA, and Public Domain images.",
+            "text": "Wikimedia Commons only accepts CC0, CC BY, CC BY-SA, and Public Domain photos that are also public and safe on Flickr.",
         },
     ]
 
@@ -263,7 +263,7 @@ def test_shows_correct_message(
                 },
                 {
                     "class": "license_explanation",
-                    "text": "Wikimedia Commons only accepts CC0, CC BY, CC BY-SA, and Public Domain images.",
+                    "text": "Wikimedia Commons only accepts CC0, CC BY, CC BY-SA, and Public Domain photos that are also public and safe on Flickr.",
                 },
             ]
         )
