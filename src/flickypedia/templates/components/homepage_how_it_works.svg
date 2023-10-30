@@ -77,7 +77,7 @@
 
   <!-- Get Flickr photos -->
   {% if not current_user.is_anonymous %}
-  <a href="{{ url_for('find_photos') }}">
+  <a href="{{ url_for('get_photos') }}">
   {% endif %}
   <rect
     x="105" y="45" width="80" height="50"

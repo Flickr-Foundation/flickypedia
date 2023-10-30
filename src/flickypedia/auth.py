@@ -156,7 +156,7 @@ def oauth2_authorize_wikimedia():
     # TODO: What if somebody is logged in but we've lost their OAuth tokens
     # for some reason?  Then they'd need to log out and log back in again.
     if not current_user.is_anonymous:
-        return redirect(url_for("find_photos"))
+        return redirect(url_for("get_photos"))
 
     provider_data = current_app.config["OAUTH2_PROVIDERS"]["wikimedia"]
 
@@ -183,7 +183,7 @@ def oauth2_callback_wikimedia():
     # If you're already logged in, you don't need to come through
     # this flow.
     if not current_user.is_anonymous:
-        return redirect(url_for("find_photos"))
+        return redirect(url_for("get_photos"))
 
     # TODO: This is copied out of Miguel Grinberg's Flask tutorial.
     #
@@ -264,6 +264,6 @@ def oauth2_callback_wikimedia():
     # Log the user in
     login_user(user)
 
-    flash("You’re logged in. ✅", category="login_header")
+    flash("You’re logged in.", category="login_header")
 
-    return redirect(url_for("find_photos"))
+    return redirect(url_for("get_photos"))

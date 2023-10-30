@@ -1,43 +1,59 @@
-<p>
-  {% with messages = get_flashed_messages(category_filter=["login_header"]) %}
-    {% if messages %}
-      OK, <a href="{{ current_user.profile_url }}">{{ current_user.name }}</a>.
-      {% for msg in messages %}
-        {{ msg }}
-      {% endfor %}
-    {% else %}
-      ✅ OK, <a href="{{ current_user.profile_url }}">{{ current_user.name }}</a>.
-      <a href="{{ url_for('logout') }}">Log out</a>.
-    {% endif %}
-  {% endwith %}
-</p>
-
 <style>
-  nav #workflow_steps {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    margin-bottom: 1em;
+  header {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 5px;
+    grid-template-columns: 1fr 30px auto;
+    grid-gap: 10px;
   }
 
-  nav #workflow_steps li {
-    background: #ccc;
-    padding: 3px 5px;
+  header, header div {
+    height: 80px;
   }
 
-  nav #workflow_steps li.selected {
-    background: pink;
+  header img {
+    margin-top: 15px;
+    height: 50px;
+    margin-bottom: 15px;
+  }
+
+  header img.wiki_commons {
+    height: 50px;
+  }
+
+  header p {
+    padding-top: 7px;
+    margin-top:    auto;
+    margin-bottom: auto;
+  }
+
+  .flash {
+    background: yellow;
   }
 </style>
 
+<header>
+  <div>
+    <img class="icon" src="{{ url_for('static', filename='flickypedia-logo.svg') }}">
+  </div>
+
+  <div>
+    <img class="wiki_commons" src="{{ url_for('static', filename='wikimedia-commons-logo.svg') }}">
+  </div>
+
+  <p>
+    {% with messages = get_flashed_messages(category_filter=["login_header"]) %}
+      {% if messages %}
+        ✅ OK, <a href="{{ current_user.profile_url }}">{{ current_user.name }}</a>.
+        {% for msg in messages %}
+          <span class="flash">{{ msg }}</span>
+        {% endfor %}
+      {% else %}
+        <a href="{{ current_user.profile_url }}">{{ current_user.name }}</a>
+      {% endif %}
+      / <a href="{{ url_for('logout') }}">Log out</a>
+    {% endwith %}
+  </p>
+</header>
+
 <nav>
-  <ul id="workflow_steps">
-    <li {% if current_step == "find_photos" %}class="selected"{% endif %}>Find Flickr photos</li>
-    <li {% if current_step == "prepare_info" %}class="selected"{% endif %}>Prepare info</li>
-    <li {% if current_step == "upload_to_wikimedia" %}class="selected"{% endif %}>Upload to Wikimedia</li>
-    <li {% if current_step == "say_thanks" %}class="selected"{% endif %}>Say thanks</li>
-  </ul>
+  {% include "components/header_how_it_works.svg" %}
 </nav>

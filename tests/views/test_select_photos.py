@@ -77,7 +77,7 @@ def test_gets_album_on_flickr(logged_in_client, flickr_api):
         )
     ],
 )
-def test_redirects_to_find_photos_if_non_existent_photo(
+def test_redirects_to_get_photos_if_non_existent_photo(
     logged_in_client, flickr_api, url, error
 ):
     """
@@ -90,7 +90,7 @@ def test_redirects_to_find_photos_if_non_existent_photo(
     """
     resp = logged_in_client.get(f"/select_photos?flickr_url={url}")
     assert resp.status_code == 302
-    assert resp.headers["location"] == "/find_photos"
+    assert resp.headers["location"] == "/get_photos"
 
     redirected_resp = logged_in_client.get(resp.headers["location"])
     assert redirected_resp.status_code == 200

@@ -47,7 +47,7 @@ from wtforms.validators import DataRequired
 from flickypedia.apis.flickr import FlickrApi, ResourceNotFound
 from flickypedia.duplicates import find_duplicates
 from flickypedia.utils import DatetimeDecoder, DatetimeEncoder
-from .find_photos import FlickrPhotoURLForm
+from .get_photos import FlickrPhotoURLForm
 
 
 def get_photos(parsed_url):
@@ -211,14 +211,14 @@ def select_photos():
             # session so we can prefill the form with it.
             flash(f"There is no {label} at that URL!", category="flickr_url")
             session["flickr_url"] = flickr_url
-            return redirect(url_for("find_photos"))
+            return redirect(url_for("get_photos"))
         except TypeError:
             flash(
                 "I don't know how to find photos at that URL yet!",
                 category="flickr_url",
             )
             session["flickr_url"] = flickr_url
-            return redirect(url_for("find_photos"))
+            return redirect(url_for("get_photos"))
 
     # Categorise the photos, so we know if there are any duplicates
     # or photos with disallowed licenses.
@@ -274,7 +274,7 @@ def select_photos():
         photo_url_form=FlickrPhotoURLForm(),
         select_photos_form=select_photos_form,
         photo_data=photo_data,
-        current_step="find_photos",
+        current_step="get_photos",
         photos=photo_data["photos"],
     )
 
