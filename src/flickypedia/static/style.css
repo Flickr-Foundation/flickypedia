@@ -2,7 +2,12 @@
   --cream: 255, 252, 242; /* #fffcf2 */
   --blue:    0, 102, 153; /* #069, from the Wiki Commons logo */
   --brown: 204, 197, 185; /* #CCC5B9 */;
-  --black:   8,   9,  10; /* 08090A */;
+  --black:   8,   9,  10; /* #08090A */;
+
+  --pink1: 255,   0, 123; /* #ff0084, the Flickr Foundation pink */
+  --pink2: 255,  90, 164; /* #ff5aa4, from the logo */
+  --pink3: 255, 147, 195; /* #ff93c3, from the logo */
+  --pink4: 255, 202, 225; /* #ffcae1, from the logo */
 }
 
 body {
@@ -22,6 +27,7 @@ main {
   max-width: 850px;
   padding-left:  1em;
   padding-right: 1em;
+  margin-bottom: 3em;
 }
 
 footer {
@@ -68,6 +74,46 @@ input[type="url"] {
   border: 1px solid rgb(var(--black));
   border-radius: 8px;
   padding: 10px 6px;
+}
+
+input.pink_button {
+  color: rgb(var(--black));
+  font-size: 1.5em;
+  font-weight: bold;
+  border-radius: 8px;
+  background: rgb(var(--pink3));
+  border: none;
+  padding: 6px 12px;
+}
+
+input.pink_button:hover {
+  background: rgb(var(--pink2));
+}
+
+input.pink_button:active {
+  transform: translate(0, 2px);
+}
+
+/* Styles for the 'get photos' form */
+
+.get_photos .inputs {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: auto 80px;
+  height: 50px;
+}
+
+.get_photos input[type="url"] {
+  width: calc(100% - 10px);
+}
+
+.get_photos input[type="button"] {
+  width: 80px;
+}
+
+.get_photos input[type="url"],
+.get_photos input[type="button"] {
+  height: 25px;
 }
 
 /* Temporary styles */

@@ -5,51 +5,55 @@
     h2 {
       margin-top: 2em;
     }
+
+    #examples li {
+      display: inline-block;
+      margin-right:  8px;
+      margin-bottom: 8px;
+    }
   </style>
+
+  <script>
+    function setExample(url) {
+      document.querySelector('form.get_photos input[type="url"]').value = url;
+    }
+  </script>
 {% endblock %}
 
 {% block content %}
   {% include "components/header.html" %}
-  
+
   <h2>Put your Flickr URL here:</h2>
-  
+
   {% include "components/get_photos_form.html" %}
 
   <p>
-    We’ll return Flickr photos with the right licenses for use on Wikimedia Commons.
+    <strong>Note:</strong>
+    Wikimedia Commons will only accept photos <a href="https://commons.wikimedia.org/wiki/Commons:Licensing">with certain licenses</a>, so we’ll hide any that don’t match those requirements.
   </p>
 
-  <h3>Need help? Here are some examples:</h3>
+  <p>Try out these examples to see how it works:</p>
 
-  <ul>
+  {% set try_it_out_examples = [
+    {"label": "Album", "url": "https://www.flickr.com/photos/aljazeeraenglish/albums/72157626164453131/"},
+    {"label": "Gallery", "url": "https://www.flickr.com/photos/bunnyfrogs/galleries/72157628088497125/"},
+    {"label": "Group pool", "url": "https://www.flickr.com/groups/lomo/pool/"},
+    {"label": "Photo", "url": "https://www.flickr.com/photos/schlesinger_library/13270291833/"},
+    {"label": "Photostream", "url": "https://www.flickr.com/photos/obamawhitehouse/"},
+    {"label": "Search", "url": "https://www.flickr.com/search/?text=hot%20air%20balloons"},
+    {"label": "Tag", "url": "https://flickr.com/photos/tags/auroraborealis/"},
+  ] %}
+
+  <ul class="plain_list" id="examples">
+    {% for example in try_it_out_examples %}
     <li>
-      Flickr URL for a photo: <br/>
-      {{ "https://www.flickr.com/photos/schlesinger_library/13270291833" | a_href | safe }}
+      <input
+        type="button"
+        class="pink_button"
+        onclick="setExample('{{ example.url }}')"
+        value="{{ example.label }}"
+      >
     </li>
-  
-    <li>
-      An album: <br/>
-      {{ "https://www.flickr.com/photos/aljazeeraenglish/albums/72157626164453131" | a_href | safe }}
-    </li>
-  
-    <li>
-      A member’s photostream: <br/>
-      {{ "https://www.flickr.com/photos/obamawhitehouse/" | a_href | safe }}
-    </li>
-  
-    <li>
-      A group: <br/>
-      {{ "https://www.flickr.com/groups/lomo/pool/" | a_href | safe }}
-    </li>
-  
-    <li>
-      A gallery: <br/>
-      {{ "https://www.flickr.com/photos/bunnyfrogs/galleries/72157628088497125/" | a_href | safe }}
-    </li>
-  
-    <li>
-      A tag: <br/>
-      {{ "https://flickr.com/photos/tags/auroraborealis/" | a_href | safe }}
-    </li>
+    {% endfor %}
   </ul>
 {% endblock %}
