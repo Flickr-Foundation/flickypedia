@@ -127,7 +127,7 @@ class BaseSelectForm(FlaskForm):
     cached_api_response_id = HiddenField(
         "cached_api_response_id", validators=[DataRequired()]
     )
-    submit = SubmitField("Prepare info")
+    submit = SubmitField("PREPARE INFO")
 
 
 def create_select_photos_form(photos):
@@ -239,6 +239,9 @@ def select_photos():
                 cached_api_response_id=cached_api_response_id,
             )
         )
+
+    # TODO: If we know there are no photos available, then we can
+    # delete the cached API response
 
     # At this point we know all the photos that should be in the list.
     # Go ahead and build the full form.

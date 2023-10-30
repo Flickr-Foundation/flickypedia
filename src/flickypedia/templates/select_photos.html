@@ -1,23 +1,11 @@
 {% extends "base.html" %}
 
-{% block content %}
-  {% include "components/header.html" %}
-
-  At this Flickr URL:
-
-  {% include "components/get_photos_form.html" %}
-
-  {% with messages = get_flashed_messages(category_filter=["select_photos"]) %}
-    {% if messages %}
-      <ul class="flashes">
-      {% for message in messages %}
-        <li>{{ message | safe }}</li>
-      {% endfor %}
-      </ul>
-    {% endif %}
-  {% endwith %}
-
+{% block head %}
   <style>
+    label[for="flickr_url"] {
+      margin-bottom: 5px;
+    }
+
     #select_photos ul {
       display: grid;
       grid-column-gap: 1em;
@@ -34,8 +22,8 @@
     }
 
     #select_photos li.checked {
-      background: #ddd;
-      border: 5px solid #ddd;
+      background: color-mix(in srgb, rgb(var(--pink)), #fff 50%);
+      border:  5px solid color-mix(in srgb, rgb(var(--pink)), #fff 50%);
       margin: -5px;
     }
 
@@ -88,21 +76,51 @@
     #selectedPhotosSummary .count {
       font-weight: bold;
     }
+
+    #summary {
+      text-align: right;
+    }
+
+    #summary .pink_button {
+      padding-left:  16px;
+      padding-right: 16px;
+      padding-top: 5px;
+    }
+
+    #selectedPhotosSummary {
+      font-size: 1.2em;
+      margin-right: 5px;
+    }
   </style>
+{% endblock %}
+
+{% block content %}
+  {% include "components/header.html" %}
+
+  <p style="margin-bottom: 5px; margin-top: 0;">
+    At this Flickr URL:
+  </p>
+
+  {% include "components/get_photos_form.html" %}
+
+  {% with messages = get_flashed_messages(category_filter=["select_photos"]) %}
+    {% if messages %}
+      <ul class="flashes">
+      {% for message in messages %}
+        <li>{{ message | safe }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
 
   {% include "components/select_photos_description.html" %}
 
   {% include "components/select_photos_message.html" %}
 
   {% if photo_data.photos.available %}
-    <p>
-      <strong>
-        Select photos to upload:
-      </strong>
-      <br/>
-      And please don’t forget, images for Wikimedia Commons must be informative, educational, or instructional.
-      That means <strong>no selfies or other personal photos like that</strong>.
-    </p>
+    <h3>
+      Select photos to upload:
+    </h3>
 
     <form id="select_photos" action="{{ url_for('select_photos', flickr_url=flickr_url) }}" method="post">
       {{ select_photos_form.hidden_tag() }}
@@ -136,9 +154,16 @@
         {% endfor %}
       </ul>
 
-      <p id="selectedPhotosSummary"></p>
+      <p class="warning">
+        Don’t forget, your selection must be information, educational, or instructional. <br/>
+        That means <strong>no selfies or other personal photos like that</strong>.
+      </p>
 
-      <p>{{ select_photos_form.submit() }}</p>
+      <p id="summary">
+        <span id="selectedPhotosSummary"></span>
+
+        {{ select_photos_form.submit(class="pink_button") }}
+      </p>
     </form>
 
     <script>

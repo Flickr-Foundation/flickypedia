@@ -58,7 +58,7 @@ def create_prepare_info_form(photos):
 
     class CustomForm(FlaskForm):
         cached_api_response_id = HiddenField("cached_api_response_id")
-        submit = SubmitField("Prepare info")
+        submit = SubmitField("PREPARE INFO")
 
         # TODO: Get a proper list of languages here
         language = SelectField(
