@@ -79,7 +79,7 @@ def find_duplicates(flickr_photo_ids):
                     "title": row["wikimedia_page_title"],
                     "id": row["wikimedia_page_id"],
                 }
-        else:  # pragma: no cover
+        elif name != ".DS_Store":  # pragma: no cover
             print(f"Ignoring file {name} which doesn't look like a SQLite database")
 
     return result
