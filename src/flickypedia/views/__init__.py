@@ -16,4 +16,5 @@ __all__ = [
     "homepage",
     "prepare_info",
     "select_photos",
+    "wait_for_upload",
 ]
