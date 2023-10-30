@@ -267,6 +267,8 @@ class FlickrApi:
             license_code=info_resp.find(".//photo").attrib["license"]
         )
 
+        safety_level = int(info_resp.find(".//photo").attrib["safety_level"])
+
         # The getSizes response is a blob of XML of the form:
         #
         #       <?xml version="1.0" encoding="utf-8" ?>
@@ -307,6 +309,7 @@ class FlickrApi:
             "owner": owner,
             "date_posted": date_posted,
             "date_taken": date_taken,
+            "safety_level": safety_level,
             "license": license,
             "url": photo_page_url,
             "sizes": sizes,
