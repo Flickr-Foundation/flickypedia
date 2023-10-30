@@ -28,11 +28,8 @@ which can be used to report progress updates as you're going along.
 
 import json
 import os
-import random
-import time
 
-import celery
-from celery import Celery, Task, shared_task
+from celery import Celery, Task
 from celery.result import AsyncResult
 from flask import Flask, current_app
 
@@ -108,27 +105,3 @@ def get_status(task_id):
             "ready": False,
             "progress": ProgressTracker(task_id=task_id).get_progress(),
         }
-
-
-@shared_task(ignore_result=False)
-def upload_images(count: int) -> int:
-    tracker = ProgressTracker(task_id=celery.current_task.request.id)
-
-    tracker.record_progress(
-        data={"waiting": list(range(count)), "success": [], "failure": []},
-    )
-
-    for i in range(count):
-        print(f"working on task {celery.current_task.request.id} / image {i}")
-
-        time.sleep(random.uniform(1, 5))
-
-        result = "success" if random.uniform(0, 1) > 0.15 else "failure"
-
-        data = tracker.get_progress()
-        data["waiting"].remove(i)
-        data[result].append(i)
-
-        tracker.record_progress(data=data)
-
-    return tracker.get_progress()
