@@ -1,18 +1,5 @@
-from flask import (
-    abort,
-    flash,
-    jsonify,
-    redirect,
-    render_template,
-    request,
-    session,
-    url_for,
-)
+from flask import jsonify, render_template
 from flask_login import login_required
-from flask_wtf import FlaskForm
-from flickr_url_parser import parse_flickr_url, NotAFlickrUrl, UnrecognisedUrl
-from wtforms import URLField, SubmitField
-from wtforms.validators import DataRequired
 
 from flickypedia.tasks import get_status
 

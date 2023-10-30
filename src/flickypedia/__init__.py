@@ -39,7 +39,7 @@ def create_app(data_directory="data"):
 
     db.init_app(app)
     login.init_app(app)
-    celery = celery_init_app(app)
+    celery_init_app(app)
 
     with app.app_context():
         db.create_all()
