@@ -38,7 +38,7 @@ from flask import (
     session,
     url_for,
 )
-from flask_login import login_required
+from flask_login import current_user, login_required
 from flickr_url_parser import parse_flickr_url, NotAFlickrUrl, UnrecognisedUrl
 from flask_wtf import FlaskForm
 from wtforms import BooleanField, HiddenField, SubmitField
@@ -286,7 +286,9 @@ def get_cached_api_response(response_id):
     cache_dir = current_app.config["FLICKR_API_RESPONSE_CACHE"]
 
     with open(os.path.join(cache_dir, response_id + ".json")) as infile:
-        return json.load(infile, cls=DatetimeDecoder)
+        cached_data = json.load(infile, cls=DatetimeDecoder)
+
+    return cached_data["value"]
 
 
 def save_cached_api_response(response):
@@ -299,8 +301,14 @@ def save_cached_api_response(response):
 
     os.makedirs(cache_dir, exist_ok=True)
 
+    out_data = {
+        "user": current_user.name,
+        "now": datetime.datetime.now(),
+        "value": response,
+    }
+
     with open(os.path.join(cache_dir, response_id + ".json"), "w") as outfile:
-        outfile.write(json.dumps(response, cls=DatetimeEncoder))
+        outfile.write(json.dumps(out_data, cls=DatetimeEncoder))
 
     return response_id
 
