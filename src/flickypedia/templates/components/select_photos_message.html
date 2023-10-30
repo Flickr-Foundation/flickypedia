@@ -152,6 +152,14 @@
   </p>
 {% endif %}
 
+{#
+  We don't want to acknowledge the existence of restricted photos -- if
+  there are other photos in the mix, we show the user those messages instead.
+  
+  This is only for the case where every/the only image is restricted,
+  in which case we need to provide some sort of explanation.
+#}
+
 {% if all_photos_restricted %}
   <p class="message_disallowed">
     {% if photos.restricted|length == 1 %}

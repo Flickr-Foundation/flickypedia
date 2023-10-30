@@ -160,3 +160,14 @@ def test_selecting_multiple_photo_redirects_you_to_prepare_info(
         resp.headers["location"]
         == "/prepare_info?selected_photo_ids=53285005734,53283740177&cached_api_response_id=1234567890"
     )
+
+
+def test_you_cant_select_a_restricted_image(logged_in_client, flickr_api):
+    # This is a graphic showing a Buddha quote which is marked as
+    # safety level "restricted", so we shouldn't allow somebody to select
+    # it for sending to Wikimedia Commons.
+    flickr_url = "https://www.flickr.com/photos/free-images-flickr/35856118446"
+
+    resp = logged_in_client.get(f"/select_photos?flickr_url={flickr_url}")
+
+    assert "This photo can’t be used." in resp.data.decode("utf8")
