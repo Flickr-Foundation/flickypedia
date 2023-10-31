@@ -475,16 +475,13 @@ class FlickrApi:
             }
 
         gallery_title = resp.find(".//gallery/title").text
-        gallery_owner_name = resp.find(".//gallery").attrib['username']
+        gallery_owner_name = resp.find(".//gallery").attrib["username"]
 
         return {
             "photos": parsed_resp["photos"],
             "page_count": parsed_resp["page_count"],
             "total_photos": parsed_resp["total_photos"],
-            'gallery': {
-                'owner_name': gallery_owner_name,
-                'title': gallery_title
-            }
+            "gallery": {"owner_name": gallery_owner_name, "title": gallery_title},
         }
 
 
