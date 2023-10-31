@@ -232,6 +232,19 @@ class TestGetSinglePhoto:
         photo_with_title = flickr_api.get_single_photo(photo_id="20428374183")
         assert photo_with_title["title"] == "Hapjeong"
 
+    @pytest.mark.parametrize(
+        ["photo_id", "original_format"],
+        [
+            ("53248070597", None),
+            ("32812033543", "jpg"),
+            ("12533665685", "png"),
+            ("4079570071", "gif"),
+        ],
+    )
+    def test_gets_original_format(self, flickr_api, photo_id, original_format):
+        photo = flickr_api.get_single_photo(photo_id=photo_id)
+        assert photo["original_format"] == original_format
+
 
 class TestGetAlbum:
     def test_can_get_album(self, flickr_api):
