@@ -246,16 +246,16 @@ class TestGetSinglePhoto:
         assert photo["original_format"] == original_format
 
 
-class TestGetAlbum:
-    def test_can_get_album(self, flickr_api):
-        resp = flickr_api.get_photos_in_album(
-            user_url="https://www.flickr.com/photos/spike_yun/",
-            album_id="72157677773252346",
-        )
+class TestCollectionsPhotoResponse:
+    """
+    This class contains tests for the _parse_collection_of_photos_response,
+    which is shared among all collection responses (albums, galleries, etc.)
 
-        assert jsonify(resp) == get_fixture(filename="album-72157677773252346.json")
+    We don't want to expose/test that function directly; instead we test
+    how it affects the final response.
+    """
 
-    def test_sets_owner_and_url_on_album_photos(self, flickr_api):
+    def test_sets_owner_and_url_on_collection(self, flickr_api):
         resp = flickr_api.get_photos_in_album(
             user_url="https://www.flickr.com/photos/joshuatreenp/",
             album_id="72157640898611483",
@@ -274,7 +274,7 @@ class TestGetAlbum:
             == "https://www.flickr.com/photos/joshuatreenp/49021434741/"
         )
 
-    def test_sets_date_unknown_on_date_taken_in_album(self, flickr_api):
+    def test_sets_date_unknown_on_date_taken_in_collection(self, flickr_api):
         resp = flickr_api.get_photos_in_album(
             user_url="https://www.flickr.com/photos/nationalarchives/",
             album_id="72157664284840282",
@@ -298,6 +298,27 @@ class TestGetAlbum:
         assert not any(
             size for size in resp["photos"][0]["sizes"] if size["label"] == "Original"
         )
+
+    def test_sets_originalformat_to_none_if_no_downloads(self, flickr_api):
+        # This user doesn't allow downloading of their original photos,
+        # so when we try to look up an album of their photos in the API,
+        # we shouldn't get an Original size.
+        resp = flickr_api.get_photos_in_album(
+            user_url="https://www.flickr.com/photos/mary_faith/",
+            album_id="72157711742505183",
+        )
+
+        assert all(photo["original_format"] is None for photo in resp["photos"])
+
+
+class TestGetAlbum:
+    def test_can_get_album(self, flickr_api):
+        resp = flickr_api.get_photos_in_album(
+            user_url="https://www.flickr.com/photos/spike_yun/",
+            album_id="72157677773252346",
+        )
+
+        assert jsonify(resp) == get_fixture(filename="album-72157677773252346.json")
 
     def test_empty_album_title_is_none(self, flickr_api):
         album = flickr_api.get_photos_in_album(
