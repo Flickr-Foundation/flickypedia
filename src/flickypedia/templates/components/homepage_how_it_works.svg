@@ -8,7 +8,7 @@
   are already logged in, the first step is "Get Flickr photos".
  -->
 
-<svg viewBox="0 0 490 140" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 485 120" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
       rect.next_step {
@@ -53,17 +53,17 @@
 			}
     </style>
   </defs>
-
+  
   <!-- Log in -->
   {% if current_user.is_anonymous %}
   <a href="{{ url_for('oauth2_authorize_wikimedia') }}">
   {% endif %}
   <rect
-    x="5" y="45" width="80" height="50"
+    x="2" y="35" width="80" height="50"
     class="{% if current_user.is_anonymous %}next_step{% else %}step{% endif %}"
   />
 
-  <svg x="5" y="45">
+  <svg x="2" y="35">
     <text x="40" y="25">
       Log in
     </text>
@@ -80,29 +80,29 @@
   <a href="{{ url_for('get_photos') }}">
   {% endif %}
   <rect
-    x="105" y="45" width="80" height="50"
+    x="102" y="35" width="80" height="50"
     class="{% if current_user.is_anonymous %}step{% else %}next_step{% endif %}"
   />
   
-  <svg x="105">
-    <svg y="45">
+  <svg x="102">
+    <svg y="35">
       <text x="40" y="25">
         <tspan x="40" dy="-6">Get Flickr</tspan><!--
         --><tspan x="40" dy="1.3em">photos</tspan>
       </text>
     </svg>
 
-    <path d="M 40 45 C 40 5, 140 5, 140 37"/>
-    <polygon points="140,43 145,36 140,38 135,36"/>
+    <path d="M 40 35 C 40 -5, 140 -5, 140 27"/>
+    <polygon points="140,33 145,26 140,28 135,26"/>
   </svg>
   {% if not current_user.is_anonymous %}
   </a>
   {% endif %}
 
   <!-- Check info -->
-  <rect x="205" y="45" width="80" height="50" class="step"/>
+  <rect x="202" y="35" width="80" height="50" class="step"/>
 
-  <svg x="205" y="45">
+  <svg x="202" y="35">
     <text x="40" y="25">Check info</text>
 
     <polygon points="140,52 145,59 140,57 135,59"/>
@@ -110,24 +110,24 @@
   </svg>
 
   <!-- Upload to Wikimedia -->
-  <rect x="305" y="45" width="80" height="50" class="step"/>
+  <rect x="302" y="35" width="80" height="50" class="step"/>
   
-  <svg x="305">
-    <svg y="45">
+  <svg x="302">
+    <svg y="35">
       <text x="40" y="25">
         <tspan x="40" dy="-6">Upload to</tspan>
         <tspan x="40" dy="1.3em">Wikimedia</tspan>
       </text>
     </svg>
 
-    <path d="M 40 45 C 40 5, 140 5, 140 37"/>
-    <polygon points="140,43 145,36 140,38 135,36"/>
+    <path d="M 40 35 C 40 -5, 140 -5, 140 27"/>
+    <polygon points="140,33 145,26 140,28 135,26"/>
   </svg>
 
   <!-- Leave a thank you -->
-  <rect x="405" y="45" width="80" height="50" class="step"/>
+  <rect x="402" y="35" width="80" height="50" class="step"/>
   
-  <svg x="405" y="45">
+  <svg x="402" y="35">
     <text x="40" y="25">
       <tspan x="40" dy="-5">Leave a</tspan>
       <tspan x="40" dy="1.2em">thank you</tspan>
