@@ -25,11 +25,11 @@ interactions:
       Content-Type:
       - text/xml; charset=utf-8
       Date:
-      - Mon, 30 Oct 2023 16:31:01 GMT
+      - Tue, 31 Oct 2023 08:45:11 GMT
       Via:
-      - 1.1 8b50ae2d42852aa6b1f0bbf18cf24e76.cloudfront.net (CloudFront)
+      - 1.1 5d9b63835f78c8585a7d3adf703b1d36.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - qW18JDx9wQbcciBtULnb5QMwv-OYjfIg_hCiUenmRwTzaXxy2DcDQw==
+      - st45yG9yl6BIIoqO1SaCid_CqX9askosaYDg-UqY9-4NbY_Ig9vWRg==
       X-Amz-Cf-Pop:
       - LHR50-P8
       X-Cache:
@@ -40,9 +40,9 @@ interactions:
       - Apache/2.4.57 (Ubuntu)
       set-cookie:
       - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
-        expires=Wed, 29-Nov-2023 16:31:01 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+        expires=Thu, 30-Nov-2023 08:45:11 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
-        expires=Wed, 29-Nov-2023 16:31:01 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+        expires=Thu, 30-Nov-2023 08:45:11 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       vary:
       - Accept-Encoding
       x-frame-options:
@@ -91,11 +91,11 @@ interactions:
       Content-Type:
       - text/xml; charset=utf-8
       Date:
-      - Mon, 30 Oct 2023 16:31:01 GMT
+      - Tue, 31 Oct 2023 08:45:11 GMT
       Via:
-      - 1.1 8b50ae2d42852aa6b1f0bbf18cf24e76.cloudfront.net (CloudFront)
+      - 1.1 5d9b63835f78c8585a7d3adf703b1d36.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - XnxbjyHCAbVf6zcRTOSdXtbFdED3C87o4NzYI6wH25kVXbFZq0RzNA==
+      - 7RQYL7NpoLCgmTPxKLJ-F2_od2decVB7Vpfiuax14q1mVR76phpYRQ==
       X-Amz-Cf-Pop:
       - LHR50-P8
       X-Cache:
@@ -106,7 +106,7 @@ interactions:
       - Apache/2.4.57 (Ubuntu)
       set-cookie:
       - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
-        expires=Wed, 29-Nov-2023 16:31:01 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+        expires=Thu, 30-Nov-2023 08:45:11 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       vary:
       - Accept-Encoding
       x-frame-options:
@@ -131,7 +131,7 @@ interactions:
       user-agent:
       - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
     method: GET
-    uri: https://api.flickr.com/services/rest/?extras=license%2Cdate_upload%2Cdate_taken%2Cmedia%2Cowner_name%2Curl_sq%2Curl_t%2Curl_s%2Curl_m%2Curl_o%2Curl_q%2Curl_l%2Cdescription%2Csafety_level&method=flickr.photosets.getPhotos&page=1&per_page=10&photoset_id=72157640898611483&user_id=115357548%40N08
+    uri: https://api.flickr.com/services/rest/?extras=license%2Cdate_upload%2Cdate_taken%2Cmedia%2Coriginal_format%2Cowner_name%2Curl_sq%2Curl_t%2Curl_s%2Curl_m%2Curl_o%2Curl_q%2Curl_l%2Cdescription%2Csafety_level&method=flickr.photosets.getPhotos&page=1&per_page=10&photoset_id=72157640898611483&user_id=115357548%40N08
   response:
     content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<photoset
       id=\"72157640898611483\" primary=\"40750084443\" owner=\"115357548@N08\" ownername=\"Joshua
@@ -140,8 +140,8 @@ interactions:
       server=\"65535\" farm=\"66\" title=\"Sleepy Barn Owl (Tyto alba)\" isprimary=\"0\"
       ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"10\" safety_level=\"0\"
       dateupload=\"1573001718\" datetaken=\"2019-10-29 16:59:38\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" ownername=\"Joshua Tree National Park\" media=\"photo\"
-      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/49021434741_1f8bf237c2_s.jpg\"
+      datetakenunknown=\"0\" ownername=\"Joshua Tree National Park\" originalsecret=\"eeb224640e\"
+      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/49021434741_1f8bf237c2_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/49021434741_1f8bf237c2_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/49021434741_1f8bf237c2_m.jpg\"
       height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/49021434741_1f8bf237c2.jpg\"
@@ -154,7 +154,8 @@ interactions:
       Barn Owl\" isprimary=\"0\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"10\"
       safety_level=\"0\" dateupload=\"1573001718\" datetaken=\"2019-10-29 16:51:32\"
       datetakengranularity=\"0\" datetakenunknown=\"0\" ownername=\"Joshua Tree National
-      Park\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/49020912923_e2c2305913_s.jpg\"
+      Park\" originalsecret=\"61fca6d638\" originalformat=\"jpg\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/49020912923_e2c2305913_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/49020912923_e2c2305913_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/49020912923_e2c2305913_m.jpg\"
       height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/49020912923_e2c2305913.jpg\"
@@ -167,7 +168,8 @@ interactions:
       Barn Owl\" isprimary=\"0\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"10\"
       safety_level=\"0\" dateupload=\"1573001717\" datetaken=\"2019-10-29 16:47:41\"
       datetakengranularity=\"0\" datetakenunknown=\"0\" ownername=\"Joshua Tree National
-      Park\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/49021639582_f567a31b86_s.jpg\"
+      Park\" originalsecret=\"4f48a7db33\" originalformat=\"jpg\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/49021639582_f567a31b86_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/49021639582_f567a31b86_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/49021639582_f567a31b86_m.jpg\"
       height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/49021639582_f567a31b86.jpg\"
@@ -180,7 +182,8 @@ interactions:
       Barn Owl\" isprimary=\"0\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"10\"
       safety_level=\"0\" dateupload=\"1573001717\" datetaken=\"2019-10-29 16:36:08\"
       datetakengranularity=\"0\" datetakenunknown=\"0\" ownername=\"Joshua Tree National
-      Park\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/49021436591_afd3cf75d3_s.jpg\"
+      Park\" originalsecret=\"b784f1fbbc\" originalformat=\"jpg\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/49021436591_afd3cf75d3_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/49021436591_afd3cf75d3_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/49021436591_afd3cf75d3_m.jpg\"
       height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/49021436591_afd3cf75d3.jpg\"
@@ -193,7 +196,8 @@ interactions:
       Barn Owl\" isprimary=\"0\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"10\"
       safety_level=\"0\" dateupload=\"1573001717\" datetaken=\"2019-10-29 16:31:56\"
       datetakengranularity=\"0\" datetakenunknown=\"0\" ownername=\"Joshua Tree National
-      Park\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/49020914453_d155dfcc7b_s.jpg\"
+      Park\" originalsecret=\"73dc88e07b\" originalformat=\"jpg\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/49020914453_d155dfcc7b_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/49020914453_d155dfcc7b_t.jpg\"
       height_t=\"100\" width_t=\"67\" url_s=\"https://live.staticflickr.com/65535/49020914453_d155dfcc7b_m.jpg\"
       height_s=\"240\" width_s=\"160\" url_m=\"https://live.staticflickr.com/65535/49020914453_d155dfcc7b.jpg\"
@@ -206,7 +210,8 @@ interactions:
       barn owl (Tyto alba)\" isprimary=\"0\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       license=\"10\" safety_level=\"0\" dateupload=\"1572548119\" datetaken=\"2019-10-29
       15:09:01\" datetakengranularity=\"0\" datetakenunknown=\"0\" ownername=\"Joshua
-      Tree National Park\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/48992137491_29648ce09d_s.jpg\"
+      Tree National Park\" originalsecret=\"c32f43b8ec\" originalformat=\"jpg\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/48992137491_29648ce09d_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/48992137491_29648ce09d_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/48992137491_29648ce09d_m.jpg\"
       height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/48992137491_29648ce09d.jpg\"
@@ -219,8 +224,8 @@ interactions:
       server=\"65535\" farm=\"66\" title=\"Juvenile barn owl (Tyto alba)\" isprimary=\"0\"
       ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"10\" safety_level=\"0\"
       dateupload=\"1572548118\" datetaken=\"2019-10-29 15:01:19\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" ownername=\"Joshua Tree National Park\" media=\"photo\"
-      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/48992335797_28950db2bb_s.jpg\"
+      datetakenunknown=\"0\" ownername=\"Joshua Tree National Park\" originalsecret=\"db4294733c\"
+      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/48992335797_28950db2bb_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/48992335797_28950db2bb_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/48992335797_28950db2bb_m.jpg\"
       height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/48992335797_28950db2bb.jpg\"
@@ -233,7 +238,8 @@ interactions:
       nestlings in cholla nest\" isprimary=\"0\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       license=\"10\" safety_level=\"0\" dateupload=\"1556236013\" datetaken=\"2019-04-16
       16:28:22\" datetakengranularity=\"0\" datetakenunknown=\"0\" ownername=\"Joshua
-      Tree National Park\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/40733986283_35169f18e5_s.jpg\"
+      Tree National Park\" originalsecret=\"ca4ea42010\" originalformat=\"jpg\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/40733986283_35169f18e5_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/40733986283_35169f18e5_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/40733986283_35169f18e5_m.jpg\"
       height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/40733986283_35169f18e5.jpg\"
@@ -246,8 +252,8 @@ interactions:
       server=\"65535\" farm=\"66\" title=\"Sparrow nestlings in cholla nest\" isprimary=\"0\"
       ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"10\" safety_level=\"0\"
       dateupload=\"1556236014\" datetaken=\"2019-04-16 16:28:16\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" ownername=\"Joshua Tree National Park\" media=\"photo\"
-      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/32757107117_b8c41702ff_s.jpg\"
+      datetakenunknown=\"0\" ownername=\"Joshua Tree National Park\" originalsecret=\"3036dcacd6\"
+      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/32757107117_b8c41702ff_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/32757107117_b8c41702ff_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/32757107117_b8c41702ff_m.jpg\"
       height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/32757107117_b8c41702ff.jpg\"
@@ -259,7 +265,8 @@ interactions:
       nestlings in cholla nest\" isprimary=\"0\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       license=\"10\" safety_level=\"0\" dateupload=\"1556236014\" datetaken=\"2019-04-08
       19:28:49\" datetakengranularity=\"0\" datetakenunknown=\"0\" ownername=\"Joshua
-      Tree National Park\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/47647261722_57f7d82c7a_s.jpg\"
+      Tree National Park\" originalsecret=\"c93d9543cb\" originalformat=\"jpg\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/47647261722_57f7d82c7a_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/47647261722_57f7d82c7a_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/47647261722_57f7d82c7a_m.jpg\"
       height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/47647261722_57f7d82c7a.jpg\"
@@ -271,15 +278,15 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '1616'
+      - '1681'
       Content-Type:
       - text/xml; charset=utf-8
       Date:
-      - Mon, 30 Oct 2023 16:31:01 GMT
+      - Tue, 31 Oct 2023 08:45:11 GMT
       Via:
-      - 1.1 8b50ae2d42852aa6b1f0bbf18cf24e76.cloudfront.net (CloudFront)
+      - 1.1 5d9b63835f78c8585a7d3adf703b1d36.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - UuCHS6fxv_ZS0ItAisQbHEAetjS1l2MXRRu9dfD6RklcHTPjKyV-vQ==
+      - 5ImdAtXJfwE1oOeUbooWHh7fTLQVEsDXX8bYQd68rmSz-qUGrQ3p5g==
       X-Amz-Cf-Pop:
       - LHR50-P8
       X-Cache:
@@ -290,7 +297,7 @@ interactions:
       - Apache/2.4.57 (Ubuntu)
       set-cookie:
       - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
-        expires=Wed, 29-Nov-2023 16:31:01 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+        expires=Thu, 30-Nov-2023 08:45:11 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       vary:
       - Accept-Encoding
       x-frame-options:
@@ -340,11 +347,11 @@ interactions:
       Content-Type:
       - text/xml; charset=utf-8
       Date:
-      - Mon, 30 Oct 2023 16:31:02 GMT
+      - Tue, 31 Oct 2023 08:45:11 GMT
       Via:
-      - 1.1 8b50ae2d42852aa6b1f0bbf18cf24e76.cloudfront.net (CloudFront)
+      - 1.1 5d9b63835f78c8585a7d3adf703b1d36.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - Sk4gAcaHvl_uI4tSsuZX8zdPN3sQOKRL66fFu3R0wK7VacXYYATJvg==
+      - TTl5qYPbURvHQlRqlgeuiuiN682zZgncs6MevGDy1DguAgpyK7907Q==
       X-Amz-Cf-Pop:
       - LHR50-P8
       X-Cache:
@@ -355,7 +362,7 @@ interactions:
       - Apache/2.4.57 (Ubuntu)
       set-cookie:
       - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
-        expires=Wed, 29-Nov-2023 16:31:02 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+        expires=Thu, 30-Nov-2023 08:45:11 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       vary:
       - Accept-Encoding
       x-frame-options:
@@ -385,7 +392,7 @@ interactions:
     content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<photoset
       id=\"72157640898611483\" owner=\"115357548@N08\" username=\"Joshua Tree National
       Park\" primary=\"40750084443\" secret=\"6f4957a282\" server=\"65535\" farm=\"66\"
-      count_views=\"14014\" count_comments=\"0\" count_photos=\"355\" count_videos=\"0\"
+      count_views=\"14015\" count_comments=\"0\" count_photos=\"355\" count_videos=\"0\"
       can_comment=\"0\" date_create=\"1392248190\" date_update=\"1688585489\" photos=\"355\"
       visibility_can_see_set=\"1\" needs_interstitial=\"0\">\n\t<title>Birds</title>\n\t<description>Bird
       species of Joshua Tree National Park.</description>\n</photoset>\n</rsp>\n"
@@ -397,11 +404,11 @@ interactions:
       Content-Type:
       - text/xml; charset=utf-8
       Date:
-      - Mon, 30 Oct 2023 16:31:02 GMT
+      - Tue, 31 Oct 2023 08:45:12 GMT
       Via:
-      - 1.1 8b50ae2d42852aa6b1f0bbf18cf24e76.cloudfront.net (CloudFront)
+      - 1.1 5d9b63835f78c8585a7d3adf703b1d36.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - yfLwfDvLXq--s0vu7NzqkHVUVSSU9fsVQ3TuNjNKs8wDefDv-WUrwQ==
+      - 0fVxY5ZbbRGIcZEKx2sARHVnRRykcN2Xzh2MQxLPDjro7nBmgG9ozw==
       X-Amz-Cf-Pop:
       - LHR50-P8
       X-Cache:
@@ -412,7 +419,7 @@ interactions:
       - Apache/2.4.57 (Ubuntu)
       set-cookie:
       - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
-        expires=Wed, 29-Nov-2023 16:31:02 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+        expires=Thu, 30-Nov-2023 08:45:12 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       vary:
       - Accept-Encoding
       x-frame-options:
