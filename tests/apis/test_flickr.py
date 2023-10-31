@@ -72,6 +72,7 @@ def jsonify(v):
                 "album_id": "12345678901234567890",
             },
         ),
+        ("get_photos_in_gallery", {"gallery_id": "12345678901234567890"}),
     ],
 )
 def test_methods_fail_if_not_found(flickr_api, method, params):
@@ -349,6 +350,12 @@ class TestGetAlbum:
         )
 
 
+def test_get_gallery_from_id(flickr_api):
+    resp = flickr_api.get_photos_in_gallery(gallery_id="72157720932863274")
+
+    assert jsonify(resp) == get_fixture(filename="gallery-72157677773252346.json")
+
+
 @pytest.mark.parametrize(
     ["method", "kwargs"],
     [
@@ -358,7 +365,8 @@ class TestGetAlbum:
                 "user_url": "https://www.flickr.com/photos/spike_yun/",
                 "album_id": "72157677773252346",
             },
-        )
+        ),
+        ("get_photos_in_gallery", {"gallery_id": "72157720932863274"}),
     ],
 )
 def test_get_collection_methods_are_paginated(flickr_api, method, kwargs):

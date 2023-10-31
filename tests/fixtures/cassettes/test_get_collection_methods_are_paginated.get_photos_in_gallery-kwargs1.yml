@@ -1,0 +1,315 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - api.flickr.com
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?extras=license%2Cdate_upload%2Cdate_taken%2Cmedia%2Coriginal_format%2Cowner_name%2Curl_sq%2Curl_t%2Curl_s%2Curl_m%2Curl_o%2Curl_q%2Curl_l%2Cdescription%2Csafety_level%2Cpath_alias&gallery_id=72157720932863274&method=flickr.galleries.getPhotos&page=1&per_page=10
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<photos
+      page=\"1\" pages=\"14\" perpage=\"10\" total=\"140\">\n\t<photo id=\"52381250655\"
+      owner=\"78978556@N06\" secret=\"dcf763d335\" server=\"65535\" farm=\"66\" title=\"When
+      the Sun goes down.. (Explored on 24 Sep 22)\" ispublic=\"1\" isfriend=\"0\"
+      isfamily=\"0\" license=\"0\" safety_level=\"0\" dateupload=\"1664036044\" datetaken=\"2022-09-24
+      17:50:41\" datetakengranularity=\"0\" datetakenunknown=\"0\" ownername=\"Dunstan
+      Fernando\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52381250655_dcf763d335_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52381250655_dcf763d335_t.jpg\"
+      height_t=\"70\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52381250655_dcf763d335_m.jpg\"
+      height_s=\"168\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/52381250655_dcf763d335.jpg\"
+      height_m=\"350\" width_m=\"500\" url_q=\"https://live.staticflickr.com/65535/52381250655_dcf763d335_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/52381250655_dcf763d335_b.jpg\"
+      height_l=\"717\" width_l=\"1024\" pathalias=\"dunstanfdo\" is_primary=\"1\"
+      has_comment=\"0\">\n\t\t<description>While we were shooting some waders on the
+      ground, noticed flock of Greater Flamingos flying at a distance. I had no time
+      to change the settings on the camera, just clicked One shot. \n\nI thought of
+      sharing with you.\n\nTaken at Masirah Island, Oman. \nNikkor 200-500mm Lens
+      handheld. \n\nHave a peaceful weekend everyone.\n\nThank you so much for dropping
+      by my photostream and leaving all the kind comments. They are very much appreciated.\n\n85A_0883</description>\n\t</photo>\n\t<photo
+      id=\"52391562366\" owner=\"34869895@N06\" secret=\"5887ec13db\" server=\"65535\"
+      farm=\"66\" title=\"New York Sunset\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
+      license=\"0\" safety_level=\"0\" dateupload=\"1664409652\" datetaken=\"2021-08-25
+      19:27:42\" datetakengranularity=\"0\" datetakenunknown=\"0\" ownername=\"dimaruss34\"
+      originalsecret=\"a9ce25f1cf\" originalformat=\"jpg\" media=\"photo\" media_status=\"ready\"
+      url_sq=\"https://live.staticflickr.com/65535/52391562366_5887ec13db_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52391562366_5887ec13db_t.jpg\"
+      height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52391562366_5887ec13db_m.jpg\"
+      height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/52391562366_5887ec13db.jpg\"
+      height_m=\"375\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/52391562366_a9ce25f1cf_o.jpg\"
+      height_o=\"3456\" width_o=\"4608\" url_q=\"https://live.staticflickr.com/65535/52391562366_5887ec13db_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/52391562366_5887ec13db_b.jpg\"
+      height_l=\"768\" width_l=\"1024\" pathalias=\"dimaruss34\" is_primary=\"0\"
+      has_comment=\"0\">\n\t\t<description>Brooklyn, New York</description>\n\t</photo>\n\t<photo
+      id=\"52370517025\" owner=\"9846013@N04\" secret=\"0ff217b924\" server=\"65535\"
+      farm=\"66\" title=\"LYL_1681-Edit-Edit-Edit.jpg\" ispublic=\"1\" isfriend=\"0\"
+      isfamily=\"0\" license=\"0\" safety_level=\"0\" dateupload=\"1663623173\" datetaken=\"2022-07-25
+      19:56:03\" datetakengranularity=\"0\" datetakenunknown=\"0\" ownername=\"@ttomab\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52370517025_0ff217b924_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52370517025_0ff217b924_t.jpg\"
+      height_t=\"100\" width_t=\"67\" url_s=\"https://live.staticflickr.com/65535/52370517025_0ff217b924_m.jpg\"
+      height_s=\"240\" width_s=\"160\" url_m=\"https://live.staticflickr.com/65535/52370517025_0ff217b924.jpg\"
+      height_m=\"500\" width_m=\"333\" url_q=\"https://live.staticflickr.com/65535/52370517025_0ff217b924_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/52370517025_0ff217b924_b.jpg\"
+      height_l=\"1024\" width_l=\"683\" pathalias=\"justmybestphotos\" is_primary=\"0\"
+      has_comment=\"0\">\n\t\t<description />\n\t</photo>\n\t<photo id=\"52393258045\"
+      owner=\"144999844@N06\" secret=\"55359c80cb\" server=\"65535\" farm=\"66\" title=\"Contemplation
+      !\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"0\" safety_level=\"0\"
+      dateupload=\"1664464740\" datetaken=\"2022-09-27 19:59:28\" datetakengranularity=\"0\"
+      datetakenunknown=\"0\" ownername=\"Armelle85\" originalsecret=\"44bb000f46\"
+      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52393258045_55359c80cb_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52393258045_55359c80cb_t.jpg\"
+      height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52393258045_55359c80cb_m.jpg\"
+      height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/52393258045_55359c80cb.jpg\"
+      height_m=\"375\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/52393258045_44bb000f46_o.jpg\"
+      height_o=\"3888\" width_o=\"5184\" url_q=\"https://live.staticflickr.com/65535/52393258045_55359c80cb_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/52393258045_55359c80cb_b.jpg\"
+      height_l=\"768\" width_l=\"1024\" pathalias=\"\" is_primary=\"0\" has_comment=\"0\">\n\t\t<description>C\xF4te
+      vend\xE9enne .... France \nLa lagune au 1er plan , la plage et l&#039; oc\xE9an
+      ! \U0001F60D</description>\n\t</photo>\n\t<photo id=\"52402720516\" owner=\"59238173@N07\"
+      secret=\"f4fd8ff976\" server=\"65535\" farm=\"66\" title=\"Sunset seen from
+      onboard a ferry bound for Vancouver Island, Canada\" ispublic=\"1\" isfriend=\"0\"
+      isfamily=\"0\" license=\"0\" safety_level=\"0\" dateupload=\"1665043380\" datetaken=\"2022-08-30
+      19:44:00\" datetakengranularity=\"0\" datetakenunknown=\"0\" ownername=\"JH_1982\"
+      originalsecret=\"a0d03bbc80\" originalformat=\"jpg\" media=\"photo\" media_status=\"ready\"
+      url_sq=\"https://live.staticflickr.com/65535/52402720516_f4fd8ff976_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52402720516_f4fd8ff976_t.jpg\"
+      height_t=\"69\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52402720516_f4fd8ff976_m.jpg\"
+      height_s=\"165\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/52402720516_f4fd8ff976.jpg\"
+      height_m=\"345\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/52402720516_a0d03bbc80_o.jpg\"
+      height_o=\"724\" width_o=\"1050\" url_q=\"https://live.staticflickr.com/65535/52402720516_f4fd8ff976_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/52402720516_f4fd8ff976_b.jpg\"
+      height_l=\"706\" width_l=\"1024\" pathalias=\"\" is_primary=\"0\" has_comment=\"0\">\n\t\t<description
+      />\n\t</photo>\n\t<photo id=\"52376724970\" owner=\"49910084@N03\" secret=\"2d2b148535\"
+      server=\"65535\" farm=\"66\" title=\"We will return!\" ispublic=\"1\" isfriend=\"0\"
+      isfamily=\"0\" license=\"0\" safety_level=\"0\" dateupload=\"1663852374\" datetaken=\"2010-06-19
+      19:57:41\" datetakengranularity=\"0\" datetakenunknown=\"0\" ownername=\"Vitor
+      S. Cruz\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52376724970_2d2b148535_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52376724970_2d2b148535_t.jpg\"
+      height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52376724970_2d2b148535_m.jpg\"
+      height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/52376724970_2d2b148535.jpg\"
+      height_m=\"333\" width_m=\"500\" url_q=\"https://live.staticflickr.com/65535/52376724970_2d2b148535_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/52376724970_2d2b148535_b.jpg\"
+      height_l=\"683\" width_l=\"1024\" pathalias=\"olhando_o_sol\" is_primary=\"0\"
+      has_comment=\"0\">\n\t\t<description />\n\t</photo>\n\t<photo id=\"52398380693\"
+      owner=\"38382651@N04\" secret=\"f08ec53f85\" server=\"65535\" farm=\"66\" title=\"Sunsetting
+      Reflections on the Pacific!\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"0\"
+      safety_level=\"0\" dateupload=\"1664668335\" datetaken=\"2021-09-25 17:56:34\"
+      datetakengranularity=\"0\" datetakenunknown=\"0\" ownername=\"medaibl (Meedo)\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52398380693_f08ec53f85_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52398380693_f08ec53f85_t.jpg\"
+      height_t=\"100\" width_t=\"57\" url_s=\"https://live.staticflickr.com/65535/52398380693_f08ec53f85_m.jpg\"
+      height_s=\"240\" width_s=\"136\" url_m=\"https://live.staticflickr.com/65535/52398380693_f08ec53f85.jpg\"
+      height_m=\"500\" width_m=\"284\" url_q=\"https://live.staticflickr.com/65535/52398380693_f08ec53f85_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/52398380693_f08ec53f85_b.jpg\"
+      height_l=\"1024\" width_l=\"581\" pathalias=\"\" is_primary=\"0\" has_comment=\"0\">\n\t\t<description
+      />\n\t</photo>\n\t<photo id=\"52394890775\" owner=\"38382651@N04\" secret=\"951691903e\"
+      server=\"65535\" farm=\"66\" title=\"Sunset, Palms, and Hills!\" ispublic=\"1\"
+      isfriend=\"0\" isfamily=\"0\" license=\"0\" safety_level=\"0\" dateupload=\"1664535983\"
+      datetaken=\"2022-09-27 18:16:02\" datetakengranularity=\"0\" datetakenunknown=\"0\"
+      ownername=\"medaibl (Meedo)\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52394890775_951691903e_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52394890775_951691903e_t.jpg\"
+      height_t=\"71\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52394890775_951691903e_m.jpg\"
+      height_s=\"170\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/52394890775_951691903e.jpg\"
+      height_m=\"354\" width_m=\"500\" url_q=\"https://live.staticflickr.com/65535/52394890775_951691903e_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/52394890775_951691903e_b.jpg\"
+      height_l=\"726\" width_l=\"1024\" pathalias=\"\" is_primary=\"0\" has_comment=\"0\">\n\t\t<description
+      />\n\t</photo>\n\t<photo id=\"52412509807\" owner=\"194968553@N08\" secret=\"064c41dbc2\"
+      server=\"65535\" farm=\"66\" title=\"The beauty of sunrise...\" ispublic=\"1\"
+      isfriend=\"0\" isfamily=\"0\" license=\"0\" safety_level=\"0\" dateupload=\"1665249122\"
+      datetaken=\"2022-04-30 06:56:09\" datetakengranularity=\"0\" datetakenunknown=\"0\"
+      ownername=\"mjuvenalia\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52412509807_064c41dbc2_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52412509807_064c41dbc2_t.jpg\"
+      height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52412509807_064c41dbc2_m.jpg\"
+      height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/52412509807_064c41dbc2.jpg\"
+      height_m=\"334\" width_m=\"500\" url_q=\"https://live.staticflickr.com/65535/52412509807_064c41dbc2_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/52412509807_064c41dbc2_b.jpg\"
+      height_l=\"684\" width_l=\"1024\" pathalias=\"juvenalia_de_oliveira\" is_primary=\"0\"
+      has_comment=\"0\">\n\t\t<description>Vasco da Gama Bridge, Lisboa - Portugal</description>\n\t</photo>\n\t<photo
+      id=\"52412249876\" owner=\"138018182@N02\" secret=\"5da1c8982a\" server=\"65535\"
+      farm=\"66\" title=\"SUNSET... bye bye sun ...\" ispublic=\"1\" isfriend=\"0\"
+      isfamily=\"0\" license=\"0\" safety_level=\"0\" dateupload=\"1665214694\" datetaken=\"2018-08-16
+      20:19:04\" datetakengranularity=\"0\" datetakenunknown=\"0\" ownername=\"f@lcogr\"
+      originalsecret=\"607e3c11e1\" originalformat=\"jpg\" media=\"photo\" media_status=\"ready\"
+      url_sq=\"https://live.staticflickr.com/65535/52412249876_5da1c8982a_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52412249876_5da1c8982a_t.jpg\"
+      height_t=\"66\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52412249876_5da1c8982a_m.jpg\"
+      height_s=\"159\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/52412249876_5da1c8982a.jpg\"
+      height_m=\"331\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/52412249876_607e3c11e1_o.jpg\"
+      height_o=\"1853\" width_o=\"2797\" url_q=\"https://live.staticflickr.com/65535/52412249876_5da1c8982a_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/52412249876_5da1c8982a_b.jpg\"
+      height_l=\"678\" width_l=\"1024\" pathalias=\"falcogr\" is_primary=\"0\" has_comment=\"0\">\n\t\t<description>Portoferraio
+      - Isola d&#039;Elba... a destra l&#039;isola di Capraia.</description>\n\t</photo>\n</photos>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '2320'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Tue, 31 Oct 2023 12:37:00 GMT
+      Via:
+      - 1.1 95f360f450bf272a98ce1e9bee061af8.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - TniSV60hFWEz4WpSCu_S7H8i_GfM_knExNE41ivZLLWY_OsAclYCfw==
+      X-Amz-Cf-Pop:
+      - LHR50-P8
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.57 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Thu, 30-Nov-2023 12:37:00 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Thu, 30-Nov-2023 12:37:00 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.licenses.getInfo
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<licenses>\n\t<license
+      id=\"0\" name=\"All Rights Reserved\" url=\"\" />\n\t<license id=\"4\" name=\"Attribution
+      License\" url=\"https://creativecommons.org/licenses/by/2.0/\" />\n\t<license
+      id=\"6\" name=\"Attribution-NoDerivs License\" url=\"https://creativecommons.org/licenses/by-nd/2.0/\"
+      />\n\t<license id=\"3\" name=\"Attribution-NonCommercial-NoDerivs License\"
+      url=\"https://creativecommons.org/licenses/by-nc-nd/2.0/\" />\n\t<license id=\"2\"
+      name=\"Attribution-NonCommercial License\" url=\"https://creativecommons.org/licenses/by-nc/2.0/\"
+      />\n\t<license id=\"1\" name=\"Attribution-NonCommercial-ShareAlike License\"
+      url=\"https://creativecommons.org/licenses/by-nc-sa/2.0/\" />\n\t<license id=\"5\"
+      name=\"Attribution-ShareAlike License\" url=\"https://creativecommons.org/licenses/by-sa/2.0/\"
+      />\n\t<license id=\"7\" name=\"No known copyright restrictions\" url=\"https://www.flickr.com/commons/usage/\"
+      />\n\t<license id=\"8\" name=\"United States Government Work\" url=\"http://www.usa.gov/copyright.shtml\"
+      />\n\t<license id=\"9\" name=\"Public Domain Dedication (CC0)\" url=\"https://creativecommons.org/publicdomain/zero/1.0/\"
+      />\n\t<license id=\"10\" name=\"Public Domain Mark\" url=\"https://creativecommons.org/publicdomain/mark/1.0/\"
+      />\n</licenses>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '395'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Tue, 31 Oct 2023 12:37:00 GMT
+      Via:
+      - 1.1 95f360f450bf272a98ce1e9bee061af8.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - uPdgy9iD9b31EP5w9Xzqd8oN93U088NjZeRpiqcGWSVf6VCoCYEUqA==
+      X-Amz-Cf-Pop:
+      - LHR50-P8
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.57 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Thu, 30-Nov-2023 12:37:00 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?extras=license%2Cdate_upload%2Cdate_taken%2Cmedia%2Coriginal_format%2Cowner_name%2Curl_sq%2Curl_t%2Curl_s%2Curl_m%2Curl_o%2Curl_q%2Curl_l%2Cdescription%2Csafety_level%2Cpath_alias&gallery_id=72157720932863274&method=flickr.galleries.getPhotos&page=5&per_page=1
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<photos
+      page=\"5\" pages=\"140\" perpage=\"1\" total=\"140\">\n\t<photo id=\"52402720516\"
+      owner=\"59238173@N07\" secret=\"f4fd8ff976\" server=\"65535\" farm=\"66\" title=\"Sunset
+      seen from onboard a ferry bound for Vancouver Island, Canada\" ispublic=\"1\"
+      isfriend=\"0\" isfamily=\"0\" license=\"0\" safety_level=\"0\" dateupload=\"1665043380\"
+      datetaken=\"2022-08-30 19:44:00\" datetakengranularity=\"0\" datetakenunknown=\"0\"
+      ownername=\"JH_1982\" originalsecret=\"a0d03bbc80\" originalformat=\"jpg\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52402720516_f4fd8ff976_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52402720516_f4fd8ff976_t.jpg\"
+      height_t=\"69\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52402720516_f4fd8ff976_m.jpg\"
+      height_s=\"165\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/52402720516_f4fd8ff976.jpg\"
+      height_m=\"345\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/52402720516_a0d03bbc80_o.jpg\"
+      height_o=\"724\" width_o=\"1050\" url_q=\"https://live.staticflickr.com/65535/52402720516_f4fd8ff976_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/52402720516_f4fd8ff976_b.jpg\"
+      height_l=\"706\" width_l=\"1024\" pathalias=\"\" is_primary=\"0\" has_comment=\"0\">\n\t\t<description
+      />\n\t</photo>\n</photos>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '589'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Tue, 31 Oct 2023 12:37:01 GMT
+      Via:
+      - 1.1 95f360f450bf272a98ce1e9bee061af8.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - 8jPklc7vgMHm5LkidRegeAxIYG8e80NnFQJx4S5QZbzZUOZKAHDfUQ==
+      X-Amz-Cf-Pop:
+      - LHR50-P8
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.57 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Thu, 30-Nov-2023 12:37:01 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1
