@@ -38,16 +38,23 @@ def size_at(sizes, *, desired_size):
     Given a list of sizes of Flickr photo, return the info about
     the desired size.
     """
-    try:
-        return next(s for s in sizes if s["label"] == desired_size)
-    except StopIteration:
-        # NOTE: Flickr has a published list of possible sizes here:
-        # https://www.flickr.com/services/api/misc.urls.html
-        #
-        # At some point it might be worthwhile to do some sort of
-        # fallback here, e.g. if you ask for a Large but it's not
-        # available, you get the Medium as the next-best option.
-        raise ValueError(f"This photo is not available at size {desired_size!r}")
+    sizes_by_label = {s["label"]: s for s in sizes}
+
+    # If we have that exact size available, return that!
+    if desired_size in sizes_by_label:
+        return sizes_by_label[desired_size]
+
+    # Flickr has a published list of possible sizes here:
+    # https://www.flickr.com/services/api/misc.urls.html
+    #
+    # If the desired size isn't available, we can look for alternatives,
+    # but this fallback code is deliberately conservative and simple.
+    # We're trying to build something that works for Flickypedia,
+    # not any combination of Flickr sizes/desired size.
+    if desired_size == "Medium" and "Small" in sizes_by_label:
+        return sizes_by_label["Small"]
+
+    raise ValueError(f"This photo is not available at size {desired_size!r}")
 
 
 class DatetimeEncoder(json.JSONEncoder):
