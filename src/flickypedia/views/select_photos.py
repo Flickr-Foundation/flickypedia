@@ -217,7 +217,9 @@ def select_photos():
             photo_data = get_photos(parsed_url)
             cached_api_response_id = save_cached_api_response(photo_data)
         except ResourceNotFound:
-            label = {"single_photo": "photo", "album": "album"}[parsed_url["type"]]
+            label = {"single_photo": "photo"}.get(
+                parsed_url["type"], parsed_url["type"]
+            )
 
             # If we aren't able to resolve this URL, send the user back to
             # the "find photos" page.  We put the URL they entered in the
