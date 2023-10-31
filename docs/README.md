@@ -7,8 +7,6 @@ It's not meant not somebody using Flickypedia to upload images to Wikimedia Comm
 
 ## Architecture Decision Records (ADRs)
 
-
-
 <dl>
   <dt>
     <a href="adrs/01-choose-python-and-flask.md">
