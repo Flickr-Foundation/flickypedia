@@ -347,6 +347,7 @@ class FlickrApi:
         "date_upload",
         "date_taken",
         "media",
+        "original_format",
         "owner_name",
         "url_sq",
         "url_t",
@@ -392,6 +393,7 @@ class FlickrApi:
                         license_code=photo_elem.attrib["license"]
                     ),
                     "sizes": _parse_sizes(photo_elem),
+                    "original_format": photo_elem.attrib.get("originalformat"),
                     "safety_level": int(photo_elem.attrib["safety_level"]),
                 }
             )
