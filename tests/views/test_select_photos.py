@@ -73,7 +73,15 @@ def test_gets_album_on_flickr(logged_in_client, flickr_api):
         (
             "https://www.flickr.com/photos/doesnotexist/12345678901234567890",
             b"There is no photo at that URL!",
-        )
+        ),
+        (
+            "https://www.flickr.com/photos/doesnotexist/albums/12345678901234567890/",
+            b"There is no album at that URL!",
+        ),
+        (
+            "https://www.flickr.com/photos/doesnotexist/galleries/12345678901234567890/",
+            b"There is no gallery at that URL!",
+        ),
     ],
 )
 def test_redirects_to_get_photos_if_non_existent_photo(

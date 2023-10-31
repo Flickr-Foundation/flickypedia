@@ -8,7 +8,16 @@
   }
 </style>
 
-{% if parsed_url.type == 'album' %}
+{% if parsed_url.type == 'single_photo' %}
+  <h2 class="select_photos_description">
+    {% if photo_data.photos.available -%}
+      You’re looking at
+    {%- else -%}
+      You looked up
+    {%- endif %}
+    <span class="key_info">{{ photo_data.owner.realname or photo_data.owner.username }}</span>’s photo.
+  </h2>
+{% elif parsed_url.type == 'album' %}
   <h2 class="select_photos_description">
     {% if photo_data.photos.available -%}
       You’re looking at
@@ -17,5 +26,15 @@
     {%- endif %}
     <span class="key_info">{{ photo_data.album.owner.realname or photo_data.album.owner.username }}</span>’s album
     called <span class="key_info">“{{ photo_data.album.title }}”</span>.
+  </h2>
+{% elif parsed_url.type == 'gallery' %}
+  <h2 class="select_photos_description">
+    {% if photo_data.photos.available -%}
+      You’re looking at
+    {%- else -%}
+      You looked up
+    {%- endif %}
+    <span class="key_info">{{ photo_data.gallery.owner_name }}</span>’s gallery
+    called <span class="key_info">“{{ photo_data.gallery.title }}”</span>.
   </h2>
 {% endif %}

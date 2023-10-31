@@ -441,6 +441,49 @@ class FlickrApi:
             "album": {"owner": user, "title": album_title},
         }
 
+    def get_photos_in_gallery(
+        self, *, gallery_id: str, page: int = 1, per_page: int = 10
+    ):
+        """
+        Get the photos in a gallery.
+        """
+        # https://www.flickr.com/services/api/flickr.galleries.getPhotos.html
+        resp = self.call(
+            "flickr.galleries.getPhotos",
+            gallery_id=gallery_id,
+            get_gallery_info="1",
+            extras=",".join(self.extras + ["path_alias"]),
+            page=page,
+            per_page=per_page,
+        )
+
+        parsed_resp = self._parse_collection_of_photos_response(resp.find(".//photos"))
+
+        for p in parsed_resp["photos"]:
+            photo_elem = p.pop("_elem")
+
+            photo_id = photo_elem.attrib["id"]
+            path_alias = photo_elem.attrib["pathalias"] or photo_elem.attrib["owner"]
+            p["url"] = f"https://www.flickr.com/photos/{path_alias}/{photo_id}"
+
+            p["owner"] = {
+                "id": photo_elem.attrib["owner"],
+                "username": photo_elem.attrib["ownername"],
+                "realname": None,
+                "photos_url": f"https://www.flickr.com/photos/{path_alias}/",
+                "profile_url": f"https://www.flickr.com/people/{path_alias}/",
+            }
+
+        gallery_title = resp.find(".//gallery/title").text
+        gallery_owner_name = resp.find(".//gallery").attrib["username"]
+
+        return {
+            "photos": parsed_resp["photos"],
+            "page_count": parsed_resp["page_count"],
+            "total_photos": parsed_resp["total_photos"],
+            "gallery": {"owner_name": gallery_owner_name, "title": gallery_title},
+        }
+
 
 class FlickrApiException(Exception):
     """

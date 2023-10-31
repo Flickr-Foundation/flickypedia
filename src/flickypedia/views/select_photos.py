@@ -65,11 +65,17 @@ def get_photos(parsed_url):
     )
 
     if parsed_url["type"] == "single_photo":
-        return {"photos": [api.get_single_photo(photo_id=parsed_url["photo_id"])]}
+        photo = api.get_single_photo(photo_id=parsed_url["photo_id"])
+        return {"photos": [photo], "owner": photo["owner"]}
     elif parsed_url["type"] == "album":
         return api.get_photos_in_album(
             user_url=parsed_url["user_url"],
             album_id=parsed_url["album_id"],
+            per_page=current_app.config["PHOTOS_PER_PAGE"],
+        )
+    elif parsed_url["type"] == "gallery":
+        return api.get_photos_in_gallery(
+            gallery_id=parsed_url["gallery_id"],
             per_page=current_app.config["PHOTOS_PER_PAGE"],
         )
     else:
@@ -217,7 +223,9 @@ def select_photos():
             photo_data = get_photos(parsed_url)
             cached_api_response_id = save_cached_api_response(photo_data)
         except ResourceNotFound:
-            label = {"single_photo": "photo", "album": "album"}[parsed_url["type"]]
+            label = {"single_photo": "photo"}.get(
+                parsed_url["type"], parsed_url["type"]
+            )
 
             # If we aren't able to resolve this URL, send the user back to
             # the "find photos" page.  We put the URL they entered in the
