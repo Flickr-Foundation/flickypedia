@@ -16,6 +16,6 @@ It's not meant not somebody using Flickypedia to upload images to Wikimedia Comm
     </a>
   </dt>
   <dd>
-    I chose Python and Flask as the foundation of Flickypedia because it's
+    I chose Python and Flask as the foundation of Flickypedia because it's a set of tools I'm already familiar with, and that means good things for both the short-term and the long-term.
   </dd>
 </dl>
