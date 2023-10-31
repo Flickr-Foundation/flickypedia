@@ -54,10 +54,12 @@ def test_size_at_finds_desired_size():
 
 
 def test_size_at_fails_if_no_desired_size():
-    with pytest.raises(
-        ValueError, match="This photo is not available at size 'Medium'"
-    ):
-        size_at(SIZES, desired_size="Medium")
+    with pytest.raises(ValueError, match="This photo is not available at size 'Large'"):
+        size_at(SIZES, desired_size="Large")
+
+
+def test_size_at_will_get_small_if_medium_unavailable():
+    assert size_at(SIZES, desired_size="Medium") == SIZES[-1]
 
 
 def test_can_json_round_trip():
