@@ -42,8 +42,14 @@
       grid-row: 2 / 3;
     }
 
-    .wiki_info input[type="text"] {
+    .wiki_info input[type="text"],
+    .wiki_info textarea {
       width: calc(100% - 20px);
+    }
+
+    .wiki_info label:not(:first-child) {
+      display: block;
+      margin-top: 1.5em;
     }
 
     .sdc {
@@ -114,17 +120,17 @@
 
             <div class="wiki_info">
               <p>
-                Title <br/>
+                <label for="{{ field.title.id }}">Title</label>
                 {{ field.title() }}
               </p>
 
               <p>
-                Short caption <br/>
-                {{ field.short_caption(rows="2") }}
+                <label for="{{ field.short_caption.id }}">Short caption</label>
+                {{ field.short_caption() }}
               </p>
 
               <p>
-                Add a Wikimedia Commons category <br/>
+                <label for="{{ field.categories.id }}">Add a Wikimedia Commons category</label>
                 {{ field.categories() }}
               </p>
             </div>
