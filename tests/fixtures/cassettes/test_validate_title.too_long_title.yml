@@ -1,0 +1,138 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=query&titles=File%3AFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishing.jpg&prop=info&format=json
+  response:
+    content: '{"batchcomplete":"","query":{"pages":{"-1":{"title":"File:FishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishing.jpg","invalidreason":"The
+      requested page title is too long. It must be no longer than 255 bytes in UTF-8
+      encoding.","invalid":""}}}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-encoding:
+      - gzip
+      content-length:
+      - '178'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Wed, 01 Nov 2023 09:38:07 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1421.eqiad.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - WMF-Last-Access=01-Nov-2023;Path=/;HttpOnly;secure;Expires=Sun, 03 Dec 2023
+        00:00:00 GMT
+      - GeoIP=GB:ENG:Southwark:51.50:-0.09:v4; Path=/; secure; Domain=.wikimedia.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie
+      x-cache:
+      - cp3066 miss, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - GeoIP=GB:ENG:Southwark:51.50:-0.09:v4; NetworkProbeLimit=0.001; WMF-Last-Access=01-Nov-2023
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=titleblacklist&tbaction=create&tbtitle=File%3AFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishing.jpg&format=json
+  response:
+    content: '{"error":{"code":"invalidtitle","info":"Bad title \"File:FishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishingFishing.jpg\".","*":"See
+      https://commons.wikimedia.org/w/api.php for API usage. Subscribe to the mediawiki-api-announce
+      mailing list at &lt;https://lists.wikimedia.org/postorius/lists/mediawiki-api-announce.lists.wikimedia.org/&gt;
+      for notice of API deprecations and breaking changes."},"servedby":"mw1396"}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '2'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-encoding:
+      - gzip
+      content-length:
+      - '264'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Wed, 01 Nov 2023 09:38:07 GMT
+      mediawiki-api-error:
+      - invalidtitle
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1396.eqiad.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3066 miss, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

@@ -7,6 +7,7 @@ from flickypedia.apis.wikimedia import (
     DuplicatePhotoUploadException,
     InvalidAccessTokenException,
     UnknownWikimediaApiException,
+    validate_title,
 )
 from flickypedia.apis.wikitext import create_wikitext
 
@@ -197,3 +198,33 @@ class TestAddStructuredData:
                 filename="example.jpg",
                 data=[create_license_statement(license_id="cc-by-2.0")],
             )
+
+
+@pytest.mark.parametrize(
+    ["title", "result"],
+    [
+        pytest.param(
+            "File:StainedGlassWindowAtEly.jpg",
+            "duplicate",
+            id="duplicate_title",
+        ),
+        pytest.param("File:P60506151.jpg", "blacklisted", id="blacklisted_title"),
+        pytest.param(
+            "File:" + "a" * 241 + ".tiff",
+            "too_long",
+            id="barely_too_long_title",
+        ),
+        pytest.param(f"File:{'Fishing' * 100}.jpg", "too_long", id="too_long_title"),
+        pytest.param(
+            "File:{with invalid chars}.jpg",
+            "invalid",
+            id="disallowed_characters",
+        ),
+        pytest.param("File:\b\b\b.jpg", "invalid", id="disallowed_characters_2"),
+        pytest.param("File:.", "invalid", id="only_a_single_period"),
+        pytest.param("File:FishingBoatsByTheRiver.jpg", "ok", id="allowed_title"),
+        pytest.param("File:FishingBoatsByTheRiver.jpg", "ok", id="allowed_title"),
+    ],
+)
+def test_validate_title(vcr_cassette, title, result):
+    assert validate_title(title=title)["result"] == result

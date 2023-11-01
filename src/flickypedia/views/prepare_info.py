@@ -17,12 +17,24 @@ from flask import abort, current_app, redirect, render_template, request, url_fo
 from flask_wtf import FlaskForm, Form
 from flask_login import current_user, login_required
 from wtforms import FormField, HiddenField, SelectField, StringField, SubmitField
-from wtforms.validators import DataRequired
+from wtforms.validators import DataRequired, Length
 
 from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
 from flickypedia.uploads import upload_batch_of_photos
 from flickypedia.utils import size_at
 from .select_photos import get_cached_api_response, remove_cached_api_response
+
+
+class PhotoInfoForm(Form):
+    # This is based on the restrictions from Wikimedia Commons.
+    # Note that these are only loose limits -- the max length is actually
+    # 240 bytes, nor characters.
+    #
+    # See https://commons.wikimedia.org/wiki/Commons:File_naming#Length
+    title = StringField(validators=[DataRequired(), Length(min=5, max=240)])
+
+    short_caption = StringField(validators=[DataRequired()])
+    categories = StringField()
 
 
 def create_prepare_info_form(photos):
@@ -50,11 +62,6 @@ def create_prepare_info_form(photos):
     The labels on each of the fields will be a dict with all the photo data,
     which can be used to render nice previews/labels.
     """
-
-    class PhotoInfoForm(Form):
-        title = StringField(validators=[DataRequired()])
-        short_caption = StringField(validators=[DataRequired()])
-        categories = StringField()
 
     class CustomForm(FlaskForm):
         cached_api_response_id = HiddenField("cached_api_response_id")
