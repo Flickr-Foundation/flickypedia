@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block head %}
+  <script src="{{ url_for('static', filename='flickypedia.js') }}"></script>
+{% endblock %}
+
 {% block content %}
   {% include "components/header.html" %}
 
@@ -60,7 +64,8 @@
       font-family: monospace;
       font-size: small;
       color: red;
-      margin-top: 8px;
+      margin-top: 7px;
+      line-height: 1.4em;
     }
 
     .errors.hidden {
@@ -68,7 +73,15 @@
     }
   </style>
 
-  <form id="prepare_info" action="" method="post" novalidate>
+  <script>
+    window.onload = function() {
+      document.querySelectorAll('input[data-type="title"]').forEach(input =>
+        addTitleValidatorTo(input)
+      );
+    }
+  </script>
+
+  <form id="prepare_info" action="" method="post">
     {{ prepare_info_form.hidden_tag() }}
 
     {{ prepare_info_form.cached_api_response_id() }}
@@ -86,8 +99,8 @@
     <ul class="plain_list">
       {% for field in prepare_info_form %}
         {% if field.id.startswith('photo_') %}
-          <li>
           {% set photo = field.label.text %}
+          <li>
 
           {% set large_size = photo.sizes | size_at(desired_size='Large') %}
           <img src="{{ large_size.source }}">
@@ -126,10 +139,18 @@
 
             <div class="wiki_info">
               <label for="{{ field.title.id }}">Title</label>
-              {{ field.title() }}
+              {{
+                field.title(
+                   **{
+                     "data-type": "title",
+                     "data-originalformat": photo.original_format,
+                   }
+                 )
+              }}
 
               <p class="errors errors_title
-                        {% if not field.title.errors %}hidden{% endif %}">
+                        {% if not field.title.errors %}hidden{% endif %}"
+                 for="{{ field.title.id }}">
                 {{ " ".join(field.title.errors) }}
               </p>
 
