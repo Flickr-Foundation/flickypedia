@@ -3,6 +3,7 @@ import pytest
 from flickypedia.apis.structured_data import create_license_statement
 from flickypedia.apis.wikimedia import (
     WikimediaApi,
+    WikimediaPublicApi,
     DuplicateFilenameUploadException,
     DuplicatePhotoUploadException,
     InvalidAccessTokenException,
@@ -197,3 +198,39 @@ class TestAddStructuredData:
                 filename="example.jpg",
                 data=[create_license_statement(license_id="cc-by-2.0")],
             )
+
+
+@pytest.mark.parametrize(
+    ["title", "expected"],
+    [
+        pytest.param(
+            "File:StainedGlassWindowAtEly.jpg",
+            {"result": "duplicate"},
+            id="duplicate_title",
+        ),
+        pytest.param(
+            "File:P60506151.jpg", {"result": "blacklisted"}, id="blacklisted_title"
+        ),
+        pytest.param(
+            f"File:{'Fishing' * 100}.jpg", {"result": "invalid"}, id="too_long_title"
+        ),
+        pytest.param(
+            "File:{with invalid chars}.jpg",
+            {"result": "invalid"},
+            id="disallowed_characters",
+        ),
+        pytest.param(
+            "File:\b\b\b.jpg", {"result": "invalid"}, id="disallowed_characters_2"
+        ),
+        pytest.param("File:.", {"result": "invalid"}, id="only_a_single_period"),
+        pytest.param(
+            "File:FishingBoatsByTheRiver.jpg", {"result": "ok"}, id="allowed_title"
+        ),
+    ],
+)
+def test_validate_title(vcr_cassette, user_agent, title, expected):
+    api = WikimediaPublicApi(user_agent)
+
+    actual = api.validate_title(title=title)
+
+    assert actual == expected
