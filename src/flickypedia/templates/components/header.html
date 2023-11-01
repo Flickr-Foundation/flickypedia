@@ -44,17 +44,21 @@
   </div>
 
   <p>
-    {% with messages = get_flashed_messages(category_filter=["login_header"]) %}
-      {% if messages %}
-        ✅ OK, <a href="{{ current_user.profile_url }}">{{ current_user.name }}</a>.
-        {% for msg in messages %}
-          <span class="flash">{{ msg }}</span>
-        {% endfor %}
-      {% else %}
-        <a href="{{ current_user.profile_url }}">{{ current_user.name }}</a>
-      {% endif %}
-      / <a href="{{ url_for('logout') }}">Log out</a>
-    {% endwith %}
+    {% if current_user.is_anonymous %}
+      <a href="{{ url_for('oauth2_authorize_wikimedia') }}">Log in</a>
+    {% else %}
+      {% with messages = get_flashed_messages(category_filter=["login_header"]) %}
+        {% if messages %}
+          ✅ OK, <a href="{{ current_user.profile_url }}">{{ current_user.name }}</a>.
+          {% for msg in messages %}
+            <span class="flash">{{ msg }}</span>
+          {% endfor %}
+        {% else %}
+          <a href="{{ current_user.profile_url }}">{{ current_user.name }}</a>
+        {% endif %}
+        / <a href="{{ url_for('logout') }}">Log out</a>
+      {% endwith %}
+    {% endif %}
   </p>
 </header>
 
