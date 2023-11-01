@@ -12,6 +12,16 @@
 function addTitleValidatorTo(inputElement) {
   inputElement.addEventListener("blur", () => {
 
+    /* If the user hasn't entered anything, just clear any validation --
+     * it'll get picked up by other validation that marks the field as
+     * required and having a min/max length.
+     */
+    if (inputElement.value === "") {
+      errorElement.innerHTML = "";
+      inputElement.setCustomValidity("");
+      return;
+    }
+
     /* Label the class as thinking; this adds a progress indicator
      * to the UI (see the CSS for inputElement.thinking) */
     inputElement.classList.add("thinking")
