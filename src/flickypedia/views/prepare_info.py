@@ -13,17 +13,36 @@ This page gets two arguments as query parameters:
 
 """
 
-from flask import abort, current_app, redirect, render_template, request, url_for
+from flask import abort, current_app, flash, redirect, render_template, request, url_for
 from flask_wtf import FlaskForm, Form
 from flask_login import current_user, login_required
 from wtforms import FormField, HiddenField, SelectField, StringField, SubmitField
-from wtforms.validators import DataRequired
+from wtforms.validators import DataRequired, ValidationError
 from wtforms.widgets import TextArea
 
 from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
+from flickypedia.apis.wikimedia import WikimediaPublicApi
 from flickypedia.uploads import upload_batch_of_photos
 from flickypedia.utils import size_at
 from .select_photos import get_cached_api_response, remove_cached_api_response
+
+
+class PhotoInfoForm(Form):
+    title = StringField(validators=[DataRequired()])
+    short_caption = StringField(validators=[DataRequired()], widget=TextArea())
+    categories = StringField()
+
+    original_format: str
+
+    def validate_title(form, field):
+        title = f'File:{field.data}.{form.original_format}'
+
+        api = WikimediaPublicApi(user_agent=current_app.config['USER_AGENT'])
+
+        validation = api.validate_title(title=title)
+
+        if validation['result'] != 'ok':
+            raise ValidationError(str(validation))
 
 
 def create_prepare_info_form(photos):
@@ -51,14 +70,6 @@ def create_prepare_info_form(photos):
     The labels on each of the fields will be a dict with all the photo data,
     which can be used to render nice previews/labels.
     """
-
-    class PhotoInfoForm(Form):
-        title = StringField(validators=[DataRequired()])
-        short_caption = StringField(validators=[DataRequired()], widget=TextArea())
-        categories = StringField()
-
-        original_format: str
-
     class CustomForm(FlaskForm):
         cached_api_response_id = HiddenField("cached_api_response_id")
         submit = SubmitField("PREPARE INFO")
@@ -79,7 +90,11 @@ def create_prepare_info_form(photos):
             date_posted=p["date_posted"],
             date_taken=p["date_taken"],
         )
-        setattr(CustomForm, f"photo_{p['id']}", FormField(PhotoInfoForm, label=p))
+
+        class ThisPhotoInfoForm(PhotoInfoForm):
+            original_format = p['original_format']
+
+        setattr(CustomForm, f"photo_{p['id']}", FormField(ThisPhotoInfoForm, label=p))
 
     return CustomForm()
 
