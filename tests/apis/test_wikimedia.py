@@ -213,7 +213,12 @@ class TestAddStructuredData:
             "File:P60506151.jpg", {"result": "blacklisted"}, id="blacklisted_title"
         ),
         pytest.param(
-            f"File:{'Fishing' * 100}.jpg", {"result": "invalid"}, id="too_long_title"
+            "File:" + "a" * 241 + ".tiff",
+            {"result": "too_long"},
+            id="barely_too_long_title",
+        ),
+        pytest.param(
+            f"File:{'Fishing' * 100}.jpg", {"result": "too_long"}, id="too_long_title"
         ),
         pytest.param(
             "File:{with invalid chars}.jpg",
@@ -224,6 +229,9 @@ class TestAddStructuredData:
             "File:\b\b\b.jpg", {"result": "invalid"}, id="disallowed_characters_2"
         ),
         pytest.param("File:.", {"result": "invalid"}, id="only_a_single_period"),
+        pytest.param(
+            "File:FishingBoatsByTheRiver.jpg", {"result": "ok"}, id="allowed_title"
+        ),
         pytest.param(
             "File:FishingBoatsByTheRiver.jpg", {"result": "ok"}, id="allowed_title"
         ),

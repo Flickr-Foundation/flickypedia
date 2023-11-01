@@ -336,8 +336,17 @@ def validate_title(title: str):
 
     assert title.startswith("File:")
 
-    # First check for other pages with this title -- are we going
-    # to duplicate an existing file?
+    # There's a maximum length of 240 bytes for UTF-8 encoded filenames
+    # in Wikimedia Commons.
+    #
+    # See https://commons.wikimedia.org/wiki/Commons:File_naming#Length
+    length_in_bytes = len(title.encode("utf8"))
+
+    if length_in_bytes > 240:
+        return {"result": "too_long"}
+
+    # Check for other pages with this title -- are we going to
+    # duplicate an existing file?
     #
     # If the file exists, we'll get the ID of the existing page in
     # the `pages` list in the response:
