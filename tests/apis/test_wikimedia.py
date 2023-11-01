@@ -8,6 +8,7 @@ from flickypedia.apis.wikimedia import (
     DuplicatePhotoUploadException,
     InvalidAccessTokenException,
     UnknownWikimediaApiException,
+    validate_title,
 )
 from flickypedia.apis.wikitext import create_wikitext
 
@@ -228,9 +229,5 @@ class TestAddStructuredData:
         ),
     ],
 )
-def test_validate_title(vcr_cassette, user_agent, title, expected):
-    api = WikimediaPublicApi(user_agent)
-
-    actual = api.validate_title(title=title)
-
-    assert actual == expected
+def test_validate_title(vcr_cassette, title, expected):
+    assert validate_title(title=title) == expected
