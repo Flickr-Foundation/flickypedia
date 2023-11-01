@@ -1,11 +1,12 @@
 :root {
   --cream: 255, 252, 242; /* #fffcf2 */
   --blue:    0, 102, 153; /* #069, from the Wiki Commons logo */
-  --brown: 204, 197, 185; /* #CCC5B9 */;
-  --black:   8,   9,  10; /* #08090A */;
-  --grey:   87,  90,  94; /* #575A5E */;
+  --brown: 204, 197, 185; /* #CCC5B9 */
+  --black:   8,   9,  10; /* #08090A */
+  --grey:   87,  90,  94; /* #575A5E */
 
-  --pink:   227, 99, 151; /* #E36397 */;
+  --pink:   227, 99, 151; /* #E36397 */
+  --red:    255,  0,   0; /* CSS red */
 }
 
 body {
@@ -163,6 +164,27 @@ input.pink_button:active {
  * Note that I've tweaked the background-position to go left-to-right,
  * whereas the code in that article goes right-to-left.
  */
+.required, .validation_errors {
+  font-family: monospace;
+  font-size: small;
+  color: rgb(var(--red));
+}
+
+.validation_errors {
+  margin-top: 7px;
+  line-height: 1.4em;
+}
+
+.validation_errors.hidden {
+  display: none;
+}
+
+label .required {
+  display: inline;
+  margin-left: 1em;
+  margin-bottom: 2px;
+}
+
 input.thinking {
   animation: barberpole 21s linear infinite;
   background-size: 200% 200%;
