@@ -18,6 +18,7 @@ from flask_wtf import FlaskForm, Form
 from flask_login import current_user, login_required
 from wtforms import FormField, HiddenField, SelectField, StringField, SubmitField
 from wtforms.validators import DataRequired
+from wtforms.widgets import TextArea
 
 from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
 from flickypedia.uploads import upload_batch_of_photos
@@ -53,7 +54,7 @@ def create_prepare_info_form(photos):
 
     class PhotoInfoForm(Form):
         title = StringField(validators=[DataRequired()])
-        short_caption = StringField(validators=[DataRequired()])
+        short_caption = StringField(validators=[DataRequired()], widget=TextArea())
         categories = StringField()
 
     class CustomForm(FlaskForm):
