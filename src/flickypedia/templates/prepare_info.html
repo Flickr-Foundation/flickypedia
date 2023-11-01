@@ -109,7 +109,7 @@
     }
   </script>
 
-  <form id="prepare_info" action="" method="post">
+  <form id="prepare_info" action="" method="post" novalidate>
     {{ prepare_info_form.hidden_tag() }}
 
     {{ prepare_info_form.cached_api_response_id() }}
@@ -169,7 +169,7 @@
               <label for="{{ field.title.id }}">Title</label>
               {{ field.title(**{"data-originalformat": photo.original_format}) }}
 
-              {% if field.title.errors %}
+             {% if field.title.errors %}
                 <p class="errors">
                   {{ " ".join(field.title.errors) }}
                 </p>
@@ -181,7 +181,7 @@
               <label for="{{ field.short_caption.id }}">Short caption</label>
               {{ field.short_caption(rows="2") }}
 
-              {% if field.title.errors %}
+              {% if field.short_caption.errors %}
                 <p class="errors">
                   {{ " ".join(field.short_caption.errors) }}
                 </p>
