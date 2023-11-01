@@ -228,3 +228,12 @@ class TestAddStructuredData:
 )
 def test_validate_title(vcr_cassette, title, result):
     assert validate_title(title=title)["result"] == result
+
+
+def test_validate_title_links_to_duplicates(vcr_cassette):
+    result = validate_title(title="File:P1.jpg")
+
+    assert (
+        result["text"]
+        == "There is already <a href='https://commons.wikimedia.org/wiki/File:P1.jpg'>a file on Commons</a> with this title. Please choose something different."
+    )
