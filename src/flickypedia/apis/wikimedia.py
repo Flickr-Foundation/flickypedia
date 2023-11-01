@@ -326,7 +326,7 @@ def validate_title(title: str):
 
     The current result from this function is always a dict like:
 
-        {'result': 'duplicate|blacklisted|invalid|ok'}
+        {'result': 'duplicate|blacklisted|invalid|ok|…'}
 
     The theory is that at some point we might add additional keys
     to this dictionary, e.g. with more detailed error information.
