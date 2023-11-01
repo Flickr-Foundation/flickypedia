@@ -91,7 +91,10 @@
           <li>
 
           {% set large_size = photo.sizes | size_at(desired_size='Large') %}
-          <img src="{{ large_size.source }}">
+          <img
+            src="{{ large_size.source }}"
+            style="aspect-ratio: {{ large_size.width }} / {{ large_size.height }}"
+          >
 
           <div class="info">
             <div class="from_flickr">
