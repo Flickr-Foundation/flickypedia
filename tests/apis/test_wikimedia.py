@@ -3,7 +3,6 @@ import pytest
 from flickypedia.apis.structured_data import create_license_statement
 from flickypedia.apis.wikimedia import (
     WikimediaApi,
-    WikimediaPublicApi,
     DuplicateFilenameUploadException,
     DuplicatePhotoUploadException,
     InvalidAccessTokenException,
