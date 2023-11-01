@@ -57,6 +57,8 @@ def create_prepare_info_form(photos):
         short_caption = StringField(validators=[DataRequired()], widget=TextArea())
         categories = StringField()
 
+        original_format: str
+
     class CustomForm(FlaskForm):
         cached_api_response_id = HiddenField("cached_api_response_id")
         submit = SubmitField("PREPARE INFO")
@@ -82,20 +84,22 @@ def create_prepare_info_form(photos):
     return CustomForm()
 
 
-def prepare_photos_for_upload(selected_photos, form_data):
+def prepare_photos_for_upload(selected_photos, form):
+    form_data = form.data
+
     photos_to_upload = []
 
     for photo in selected_photos:
-        this_photo_form_data = form_data[f"photo_{photo['id']}"]
+        this_form = getattr(form, f"photo_{photo['id']}")
 
         new_photo = {
             "id": photo["id"],
-            "title": this_photo_form_data["title"],
+            "title": f"{this_form.title.data}.{photo['original_format']}",
             "short_caption": {
-                "language": form_data["language"],
-                "text": this_photo_form_data["short_caption"],
+                "language": form.language.data,
+                "text": this_form.short_caption.data,
             },
-            "categories": this_photo_form_data["categories"],
+            "categories": this_form.categories.data,
             "license_id": photo["license"]["id"],
             "date_taken": photo["date_taken"],
             "date_posted": photo["date_posted"],
@@ -152,7 +156,7 @@ def prepare_info():
 
     if prepare_info_form.validate_on_submit():
         photos_to_upload = prepare_photos_for_upload(
-            selected_photos, form_data=prepare_info_form.data
+            selected_photos, form=prepare_info_form
         )
 
         upload_batch_of_photos.apply_async(
