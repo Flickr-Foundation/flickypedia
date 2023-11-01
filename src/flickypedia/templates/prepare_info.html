@@ -46,6 +46,11 @@
       width: calc(100% - 20px);
     }
 
+    .wiki_info label:not(:first-child) {
+      display: block;
+      margin-top: 1.5em;
+    }
+
     .sdc {
       grid-column: 1 / span 2;
       grid-row: 3 / 3;
@@ -54,9 +59,24 @@
       border-radius: 8px;
       overflow-x: auto;
     }
+
+    .errors {
+      font-family: monospace;
+      font-size: small;
+      color: red;
+      margin-top: 8px;
+    }
+
+    textarea + p.errors {
+      margin-top: 0;
+    }
+
+    .errors.hidden {
+      display: none;
+    }
   </style>
 
-  <form id="prepare_info" action="" method="post">
+  <form id="prepare_info" action="" method="post" novalidate>
     {{ prepare_info_form.hidden_tag() }}
 
     {{ prepare_info_form.cached_api_response_id() }}
@@ -113,20 +133,35 @@
             </div>
 
             <div class="wiki_info">
-              <p>
-                Title <br/>
-                {{ field.title() }}
+              <label for="{{ field.title.id }}">Title</label>
+              {{ field.title() }}
+
+              {% if field.title.errors %}
+                <p class="errors">
+                  {{ " ".join(field.title.errors) }}
+                </p>
+              {% endif %}
+
+              <p class="errors errors_title hidden">
               </p>
 
-              <p>
-                Short caption <br/>
-                {{ field.short_caption(rows="2") }}
-              </p>
+              <label for="{{ field.short_caption.id }}">Short caption</label>
+              {{ field.short_caption(rows="2") }}
 
-              <p>
-                Add a Wikimedia Commons category <br/>
-                {{ field.categories() }}
-              </p>
+              {% if field.title.errors %}
+                <p class="errors">
+                  {{ " ".join(field.short_caption.errors) }}
+                </p>
+              {% endif %}
+
+              <label for="{{ field.categories.id }}">Add a Wikimedia Commons category</label>
+              {{ field.categories() }}
+
+              {% if field.categories.errors %}
+                <p class="errors">
+                  {{ " ".join(field.categories.errors) }}
+                </p>
+              {% endif %}
             </div>
 
             <details class="sdc">
