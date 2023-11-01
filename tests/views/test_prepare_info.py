@@ -17,7 +17,7 @@ def test_rejects_pages_with_bad_query_params(logged_in_client, url):
     assert resp.status_code == 400
 
 
-def test_renders_form_for_single_photo(logged_in_client, app, flickr_api):
+def test_renders_form_for_single_photo(logged_in_client, app):
     cache_dir = app.config["FLICKR_API_RESPONSE_CACHE"]
 
     with open("tests/fixtures/flickr_api/single_photo-32812033544.json") as in_file:
@@ -32,7 +32,7 @@ def test_renders_form_for_single_photo(logged_in_client, app, flickr_api):
     assert b"Puppy Kisses" in resp.data
 
 
-def test_renders_form_for_multiple_photo(logged_in_client, app, flickr_api):
+def test_renders_form_for_multiple_photo(logged_in_client, app):
     cache_dir = app.config["FLICKR_API_RESPONSE_CACHE"]
 
     with open("tests/fixtures/flickr_api/album-72177720312192106.json") as in_file:
