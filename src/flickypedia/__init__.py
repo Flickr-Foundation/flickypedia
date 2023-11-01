@@ -26,6 +26,7 @@ from flickypedia.views import (
     homepage,
     prepare_info,
     select_photos,
+    validate_title,
     wait_for_upload,
 )
 from flickypedia.tasks import celery_init_app
@@ -63,6 +64,8 @@ def create_app(data_directory="data"):
 
     app.add_url_rule("/about", view_func=about)
     app.add_url_rule("/bookmarklet", view_func=bookmarklet)
+
+    app.add_url_rule("/api/validate_title", view_func=validate_title)
 
     app.jinja_env.filters["a_href"] = a_href
     app.jinja_env.filters["size_at"] = size_at

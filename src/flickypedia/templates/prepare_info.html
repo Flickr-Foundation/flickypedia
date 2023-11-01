@@ -76,7 +76,40 @@
     }
   </style>
 
-  <form id="prepare_info" action="" method="post" novalidate>
+  <script>
+    function validateTitle(title, originalFormat) {
+      console.log(`title = ${title}, originalFormat=${originalFormat}`);
+    }
+
+    window.onload = function() {
+      document.querySelectorAll('input[type="text"]').forEach(input => {
+        if (input.name.endsWith('-title')) {
+          const originalFormat = input.getAttribute("data-originalformat");
+
+          input.addEventListener("blur", (event) => {
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", `/api/validate_title?title=File:${input.value}.${originalFormat}`);
+            xhr.send();
+            xhr.responseType = "json";
+            xhr.onload = () => {
+              if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log(xhr.response)
+                if (xhr.response.result === 'ok') {
+                  input.setCustomValidity("");
+                } else {
+                  input.setCustomValidity(JSON.stringify(xhr.response));
+                }
+              };
+            }
+          });
+          console.log(input.value);
+        }
+
+      })
+    }
+  </script>
+
+  <form id="prepare_info" action="" method="post">
     {{ prepare_info_form.hidden_tag() }}
 
     {{ prepare_info_form.cached_api_response_id() }}
@@ -134,7 +167,7 @@
 
             <div class="wiki_info">
               <label for="{{ field.title.id }}">Title</label>
-              {{ field.title() }}
+              {{ field.title(**{"data-originalformat": photo.original_format}) }}
 
               {% if field.title.errors %}
                 <p class="errors">

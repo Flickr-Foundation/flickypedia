@@ -1,5 +1,6 @@
-from flask import render_template
+from flask import abort, current_app, jsonify, render_template, request
 
+from flickypedia.apis.wikimedia import WikimediaPublicApi
 from .get_photos import get_photos
 from .prepare_info import prepare_info
 from .select_photos import select_photos
@@ -18,6 +19,17 @@ def bookmarklet():
     return render_template("bookmarklet.html", current_step=None)
 
 
+def validate_title():
+    try:
+        title = request.args['title']
+    except KeyError:
+        abort(400)
+
+    api = WikimediaPublicApi(user_agent=current_app.config['USER_AGENT'])
+
+    return jsonify(api.validate_title(title=title))
+
+
 __all__ = [
     "about",
     "bookmarklet",
@@ -26,5 +38,6 @@ __all__ = [
     "homepage",
     "prepare_info",
     "select_photos",
+    "validate_title",
     "wait_for_upload",
 ]
