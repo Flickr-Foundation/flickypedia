@@ -55,9 +55,20 @@
       border-radius: 8px;
       overflow-x: auto;
     }
+
+    .errors {
+      font-family: monospace;
+      font-size: small;
+      color: red;
+      margin-top: 8px;
+    }
+
+    .errors.hidden {
+      display: none;
+    }
   </style>
 
-  <form id="prepare_info" action="" method="post">
+  <form id="prepare_info" action="" method="post" novalidate>
     {{ prepare_info_form.hidden_tag() }}
 
     {{ prepare_info_form.cached_api_response_id() }}
@@ -114,9 +125,12 @@
             </div>
 
             <div class="wiki_info">
-              <p>
-                <label for="{{ field.title.id }}">Title</label>
-                {{ field.title() }}
+              <label for="{{ field.title.id }}">Title</label>
+              {{ field.title() }}
+
+              <p class="errors errors_title
+                        {% if not field.title.errors %}hidden{% endif %}">
+                {{ " ".join(field.title.errors) }}
               </p>
 
               <p>

@@ -17,10 +17,11 @@ from flask import abort, current_app, redirect, render_template, request, url_fo
 from flask_wtf import FlaskForm, Form
 from flask_login import current_user, login_required
 from wtforms import FormField, HiddenField, SelectField, StringField, SubmitField
-from wtforms.validators import DataRequired, Length
+from wtforms.validators import DataRequired, Length, ValidationError
 from wtforms.widgets import TextArea
 
 from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
+from flickypedia.apis.wikimedia import validate_title
 from flickypedia.uploads import upload_batch_of_photos
 from flickypedia.utils import size_at
 from .select_photos import get_cached_api_response, remove_cached_api_response
@@ -42,12 +43,10 @@ class PhotoInfoForm(Form):
     def validate_title(form, field):
         title = f"File:{field.data}.{form.original_format}"
 
-        api = WikimediaPublicApi(user_agent=current_app.config["USER_AGENT"])
-
-        validation = api.validate_title(title=title)
+        validation = validate_title(title=title)
 
         if validation["result"] != "ok":
-            raise ValidationError(str(validation))
+            raise ValidationError(validation["text"])
 
 
 def create_prepare_info_form(photos):
