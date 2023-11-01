@@ -3,23 +3,8 @@ import json
 import httpx
 
 
-class WikimediaApi:
-    """
-    This is a thin wrapper for calling the Wikimedia API.
-
-    It doesn't do much interesting stuff; the goal is just to reduce boilerplate
-    in the rest of the codebase, e.g. have the error handling in one place rather
-    than repeated everywhere.
-    """
-
-    def __init__(self, *, access_token, user_agent):
-        self.client = httpx.Client(
-            base_url="https://commons.wikimedia.org",
-            headers={
-                "Authorization": f"Bearer {access_token}",
-                "User-Agent": user_agent,
-            },
-        )
+class WikimediaApiBase:
+    client: httpx.Client
 
     def _request(self, *, method, **kwargs):
         resp = self.client.request(method, url="w/api.php", **kwargs)
@@ -50,6 +35,25 @@ class WikimediaApi:
             method="POST",
             data={**data, "format": "json", "token": self.get_csrf_token()},
             **kwargs,
+        )
+
+
+class WikimediaApi(WikimediaApiBase):
+    """
+    This is a thin wrapper for calling the Wikimedia API.
+
+    It doesn't do much interesting stuff; the goal is just to reduce boilerplate
+    in the rest of the codebase, e.g. have the error handling in one place rather
+    than repeated everywhere.
+    """
+
+    def __init__(self, *, access_token, user_agent):
+        self.client = httpx.Client(
+            base_url="https://commons.wikimedia.org",
+            headers={
+                "Authorization": f"Bearer {access_token}",
+                "User-Agent": user_agent,
+            },
         )
 
     def get_csrf_token(self) -> str:
@@ -298,6 +302,110 @@ class WikimediaApi:
             return
         else:  # pragma: no cover
             raise WikimediaApiException(f"Unexpected response: {resp}")
+
+
+class WikimediaPublicApi(WikimediaApiBase):
+    def __init__(self, user_agent):
+        self.client = httpx.Client(
+            base_url="https://commons.wikimedia.org",
+            headers={"User-Agent": user_agent},
+        )
+
+    def validate_title(self, title: str):
+        """
+        Given the name of a title, check whether it's allowed as
+        a title for a new file on Wikimedia Commons.
+
+        We try to rely on the Wikimedia APIs to do this for us, rather
+        than duplicating their logic -- it's slower, but it saves us
+        from having to maintain our own copy of the logic (which would
+        inevitably be slightly wrong or broken).
+
+        Instead, we do similar checks to the File Upload Wizard.
+        I opened the Upload Wizard in my browser, then I used the
+        developer tools to observe the API requests going back and
+        forth to check whether the title was okay.
+
+        The current result from this function is always a dict like:
+
+            {'result': 'duplicate|blacklisted|invalid|ok'}
+
+        The theory is that at some point we might add additional keys
+        to this dictionary, e.g. with more detailed error information.
+
+        """
+        assert title.startswith("File:")
+
+        # First check for other pages with this title -- are we going
+        # to duplicate an existing file?
+        #
+        # If the file exists, we'll get the ID of the existing page in
+        # the `pages` list in the response:
+        #
+        #     {"query": {"pages": {"139632053": {…}}}}
+        #
+        # If the file doesn't exist, we'll get "-1" as the ID:
+        #
+        #     {"query": {"pages": {"-1": {…}}}}
+        #
+        existing_title_resp = self._get(
+            params={"action": "query", "titles": title, "prop": "info"}
+        )
+
+        if existing_title_resp["query"]["pages"].keys() != {"-1"}:
+            return {"result": "duplicate"}
+
+        # Second check to see if the title is blocked.
+        #
+        # This could be if e.g. the title is too long, or too short, or
+        # contains forbidden characters.
+        #
+        # If the title is blacklisted, we'll get a response like:
+        #
+        #     {
+        #       "titleblacklist": {
+        #         "result": "blacklisted",
+        #         "reason":"<p>The file name you were trying to upload
+        #                   has been [[c:MediaWiki:Titleblacklist|blacklisted]]
+        #                   because it is very common, uninformative, or
+        #                   spelled in ALLCAPS.
+        #       …
+        #     }
+        #
+        # If the title is invalid, we'll get a response like:
+        #
+        #     {
+        #       "error": {
+        #         "code": "invalidtitle",
+        #         "info":"Bad title \"File:\".",
+        #         …
+        #     }
+        #
+        # If the title is allowed, we'll get a response:
+        #
+        #     {"titleblacklist":{"result":"ok"}}
+        #
+        # See https://www.mediawiki.org/wiki/Extension:TitleBlacklist#Testing_for_matches
+        # See https://www.mediawiki.org/w/api.php?action=help&modules=titleblacklist
+        #
+        try:
+            blacklist_resp = self._get(
+                params={
+                    "action": "titleblacklist",
+                    "tbaction": "create",
+                    "tbtitle": title,
+                }
+            )
+        except UnknownWikimediaApiException as exc:
+            if exc.code == "invalidtitle":
+                return {"result": "invalid"}
+            else:  # pragma: no cover
+                raise
+
+        if blacklist_resp["titleblacklist"]["result"] != "ok":
+            return {"result": "blacklisted"}
+
+        return {"result": "ok"}
 
 
 class WikimediaApiException(Exception):

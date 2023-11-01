@@ -1,0 +1,148 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=query&titles=File%3AP60506151.jpg&prop=info&format=json
+  response:
+    content: '{"batchcomplete":"","query":{"pages":{"-1":{"ns":6,"title":"File:P60506151.jpg","missing":"","contentmodel":"wikitext","pagelanguage":"en","pagelanguagehtmlcode":"en","pagelanguagedir":"ltr"}}}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-length:
+      - '194'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Wed, 01 Nov 2023 09:38:07 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1426.eqiad.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - WMF-Last-Access=01-Nov-2023;Path=/;HttpOnly;secure;Expires=Sun, 03 Dec 2023
+        00:00:00 GMT
+      - GeoIP=GB:ENG:Southwark:51.50:-0.09:v4; Path=/; secure; Domain=.wikimedia.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie
+      x-cache:
+      - cp3066 miss, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - GeoIP=GB:ENG:Southwark:51.50:-0.09:v4; NetworkProbeLimit=0.001; WMF-Last-Access=01-Nov-2023
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=titleblacklist&tbaction=create&tbtitle=File%3AP60506151.jpg&format=json
+  response:
+    content: '{"titleblacklist":{"result":"blacklisted","reason":"<p>The file name
+      you were trying to upload has been [[c:MediaWiki:Titleblacklist|blacklisted]]
+      because it is very common, uninformative, or spelled in ALLCAPS. Please go back
+      and choose a better file name.  When [[c:Commons:Upload|uploading files to Wikimedia
+      Commons]], please use a file name that describes the content of the image or
+      media file you''re uploading and is sufficiently distinctive that no-one else
+      is likely to pick the same name by accident.</p>\n\n<p><b>Examples of good file
+      names:</b></p>\n<ul>\n<li>Nodnol skyline from Nodnol City Hall - Aug 2022.jpg</li>\n<li>1875
+      Meeting of Settlers at Falconer Bay, New Nodland.jpg</li>\n<li>Pseudohedron
+      with no vertex visible from center.png</li>\n</ul>\n\n<p><b>Examples of bad
+      file names:</b></p>\n<ul>\n<li>Image01.png</li>\n<li>Joe.jpg</li>\n<li>DSC00001.JPG</li>\n<li>Foo.svg.png</li>\n<li>30996951316264l.jpg</li>\n<li>PSEUDOHEDRON
+      WITH NO VERTEX VISIBLE FROM CENTER.png</li>\n</ul>\n\n<p>For more information,
+      please see [[c:Commons:First steps/Upload form|Commons:First steps/Upload form]].
+      If you have a good reason for uploading a file with this name, or if you receive
+      this message when attempting to upload a new version of an existing file, please
+      let us know at [[c:Commons:Administrators'' noticeboard|Commons:Administrators''
+      noticeboard]] or directly at [[c:MediaWiki talk:Titleblacklist|MediaWiki talk:Titleblacklist]].  Be
+      sure to specify the exact name of the file you are trying to upload. Thank you.</p>","message":"titleblacklist-custom-filename","line":"
+      File:P[\\dA-F][\\d\\s]+\\.JPG  &lt;reupload|errmsg=titleblacklist-custom-filename&gt;  #
+      Olympus, Kodak"}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Wed, 01 Nov 2023 09:38:07 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1380.eqiad.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3066 miss, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1
