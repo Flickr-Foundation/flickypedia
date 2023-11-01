@@ -112,7 +112,7 @@ def prepare_photos_for_upload(selected_photos, form_data):
 
         new_photo = {
             "id": photo["id"],
-            "title": this_photo_form_data["title"] + '.' + photo['original_format'],
+            "title": this_photo_form_data["title"] + "." + photo["original_format"],
             "short_caption": {
                 "language": form_data["language"],
                 "text": this_photo_form_data["short_caption"],
