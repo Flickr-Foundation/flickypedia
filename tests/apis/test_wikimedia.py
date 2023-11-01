@@ -202,40 +202,30 @@ class TestAddStructuredData:
 
 
 @pytest.mark.parametrize(
-    ["title", "expected"],
+    ["title", "result"],
     [
         pytest.param(
             "File:StainedGlassWindowAtEly.jpg",
-            {"result": "duplicate"},
+            "duplicate",
             id="duplicate_title",
         ),
-        pytest.param(
-            "File:P60506151.jpg", {"result": "blacklisted"}, id="blacklisted_title"
-        ),
+        pytest.param("File:P60506151.jpg", "blacklisted", id="blacklisted_title"),
         pytest.param(
             "File:" + "a" * 241 + ".tiff",
-            {"result": "too_long"},
+            "too_long",
             id="barely_too_long_title",
         ),
-        pytest.param(
-            f"File:{'Fishing' * 100}.jpg", {"result": "too_long"}, id="too_long_title"
-        ),
+        pytest.param(f"File:{'Fishing' * 100}.jpg", "too_long", id="too_long_title"),
         pytest.param(
             "File:{with invalid chars}.jpg",
-            {"result": "invalid"},
+            "invalid",
             id="disallowed_characters",
         ),
-        pytest.param(
-            "File:\b\b\b.jpg", {"result": "invalid"}, id="disallowed_characters_2"
-        ),
-        pytest.param("File:.", {"result": "invalid"}, id="only_a_single_period"),
-        pytest.param(
-            "File:FishingBoatsByTheRiver.jpg", {"result": "ok"}, id="allowed_title"
-        ),
-        pytest.param(
-            "File:FishingBoatsByTheRiver.jpg", {"result": "ok"}, id="allowed_title"
-        ),
+        pytest.param("File:\b\b\b.jpg", "invalid", id="disallowed_characters_2"),
+        pytest.param("File:.", "invalid", id="only_a_single_period"),
+        pytest.param("File:FishingBoatsByTheRiver.jpg", "ok", id="allowed_title"),
+        pytest.param("File:FishingBoatsByTheRiver.jpg", "ok", id="allowed_title"),
     ],
 )
-def test_validate_title(vcr_cassette, title, expected):
-    assert validate_title(title=title) == expected
+def test_validate_title(vcr_cassette, title, result):
+    assert validate_title(title=title)["result"] == result

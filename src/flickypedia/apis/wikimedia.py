@@ -343,7 +343,10 @@ def validate_title(title: str):
     length_in_bytes = len(title.encode("utf8"))
 
     if length_in_bytes > 240:
-        return {"result": "too_long"}
+        return {
+            "result": "too_long",
+            "text": "This title is too long. Please choose a title which is less than 240 bytes.",
+        }
 
     # Check for other pages with this title -- are we going to
     # duplicate an existing file?
@@ -362,7 +365,10 @@ def validate_title(title: str):
     )
 
     if existing_title_resp["query"]["pages"].keys() != {"-1"}:
-        return {"result": "duplicate"}
+        return {
+            "result": "duplicate",
+            "text": "There is already <a href='https://commons.wikimedia.org/wiki/{title}'>a file on Commons</a> with this title. Please choose something different.",
+        }
 
     # Second check to see if the title is blocked.
     #
@@ -407,12 +413,18 @@ def validate_title(title: str):
         )
     except UnknownWikimediaApiException as exc:
         if exc.code == "invalidtitle":
-            return {"result": "invalid"}
+            return {
+                "result": "invalid",
+                "text": "Please choose a different, more descriptive title.",
+            }
         else:  # pragma: no cover
             raise
 
     if blacklist_resp["titleblacklist"]["result"] != "ok":
-        return {"result": "blacklisted"}
+        return {
+            "result": "blacklisted",
+            "text": "Please choose a different, more descriptive title.",
+        }
 
     return {"result": "ok"}
 
