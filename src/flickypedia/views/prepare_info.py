@@ -18,6 +18,7 @@ from flask_wtf import FlaskForm, Form
 from flask_login import current_user, login_required
 from wtforms import FormField, HiddenField, SelectField, StringField, SubmitField
 from wtforms.validators import DataRequired, Length
+from wtforms.widgets import TextArea
 
 from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
 from flickypedia.uploads import upload_batch_of_photos
@@ -33,7 +34,7 @@ class PhotoInfoForm(Form):
     # See https://commons.wikimedia.org/wiki/Commons:File_naming#Length
     title = StringField(validators=[DataRequired(), Length(min=5, max=240)])
 
-    short_caption = StringField(validators=[DataRequired()])
+    short_caption = StringField(validators=[DataRequired()], widget=TextArea())
     categories = StringField()
 
 

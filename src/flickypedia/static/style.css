@@ -77,10 +77,14 @@ a:hover {
   background-color: rgba(var(--blue), 0.3);
 }
 
-input[type="url"] {
-  border: 1px solid rgb(var(--black));
+input[type="url"],
+input[type="text"],
+textarea {
+  border: 1px solid rgb(var(--brown));
   border-radius: 8px;
   padding: 10px 6px;
+  width: calc(100% - 20px);
+  font-size: 1.2em;
 }
 
 .pink_button {
@@ -144,9 +148,4 @@ img {
 
 .flashes {
   color: red;
-}
-
-input[type="url"] {
-  width: 100%;
-  font-size: 1.2em;
 }

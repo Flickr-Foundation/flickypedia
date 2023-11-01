@@ -30,6 +30,7 @@
     .flickr_info {
       grid-column: 1 / 2;
       grid-row: 2 / 3;
+      font-size: small;
     }
 
     .flickr_info p:first-child, .wiki_info p:first-child {
@@ -113,17 +114,17 @@
 
             <div class="wiki_info">
               <p>
-                <strong>Title</strong> <br/>
+                Title <br/>
                 {{ field.title() }}
               </p>
 
               <p>
-                <strong>Short caption</strong> <br/>
-                {{ field.short_caption() }}
+                Short caption <br/>
+                {{ field.short_caption(rows="2") }}
               </p>
 
               <p>
-                <strong>Add a Wikimedia Commons category</strong> <br/>
+                Add a Wikimedia Commons category <br/>
                 {{ field.categories() }}
               </p>
             </div>
