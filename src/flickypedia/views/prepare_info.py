@@ -85,7 +85,6 @@ def create_prepare_info_form(photos):
     """
 
     class CustomForm(FlaskForm):
-        cached_api_response_id = HiddenField("cached_api_response_id")
         upload = SubmitField("UPLOAD")
 
         # TODO: Get a proper list of languages here
