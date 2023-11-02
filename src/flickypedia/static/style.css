@@ -185,6 +185,7 @@ label .required, label .charCounter {
   margin-bottom: 4.5px;
 }
 
+/* Styles for the "From Flickr" info in the left-hand sidebar */
 .flickr_info {
   font-size: small;
   margin-top: 0;
