@@ -51,12 +51,6 @@
     .flickr_info {
       grid-column: 1 / 2;
       grid-row: 2 / 3;
-      font-size: small;
-      padding-top: 0.5em;
-    }
-
-    .flickr_info p:first-child, .wiki_info p:first-child {
-      margin-top: 0;
     }
 
     .wiki_info {
@@ -173,9 +167,7 @@
             <div>To the Wikimedia Commons Entry</div>
           </div>
 
-          <div class="flickr_info">
-            {% include "components/prepare_info_flickr_photo_info.html" %}
-          </div>
+          {% include "components/prepare_info_flickr_photo_info.html" %}
 
           <div class="wiki_info">
             <label for="{{ field.title.id }}">
