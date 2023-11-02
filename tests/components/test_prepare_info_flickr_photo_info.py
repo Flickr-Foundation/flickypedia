@@ -5,9 +5,17 @@ from flask import render_template
 import pytest
 
 
+EMPTY_INFO = {
+    "owner": {"username": "example", "realname": "example"},
+    "license": {"label": "CC BY 2.0"},
+    "title": None,
+    "description": None,
+}
+
+
 def get_metadata(photo):
     html = render_template(
-        "components/prepare_info_flickr_photo_info.html", photo=photo
+        "components/prepare_info_flickr_photo_info.html", photo={**EMPTY_INFO, **photo}
     )
 
     soup = bs4.BeautifulSoup(html, "html.parser")
@@ -42,14 +50,7 @@ def get_metadata(photo):
     ],
 )
 def test_it_shows_the_correct_owner_name(app, owner, expected_name):
-    metadata = get_metadata(
-        photo={
-            "owner": owner,
-            "license": {"label": "CC BY 2.0"},
-            "title": None,
-            "description": None,
-        }
-    )
+    metadata = get_metadata(photo={"owner": owner})
 
     assert metadata[0] == {"key": "By:", "value": f"{expected_name}\nCC BY 2.0"}
 
@@ -57,37 +58,47 @@ def test_it_shows_the_correct_owner_name(app, owner, expected_name):
 def test_it_shows_the_title(app):
     metadata = get_metadata(
         photo={
-            "owner": {"username": "example", "realname": "example"},
-            "license": {"label": "CC BY 2.0"},
             "title": "A photo of some autumn leaves",
-            "description": None,
         }
     )
 
     assert {"key": "Title:", "value": "A photo of some autumn leaves"} in metadata
 
 
-def test_it_shows_the_description(app):
-    metadata = get_metadata(
-        photo={
-            "owner": {"username": "example", "realname": "example"},
-            "license": {"label": "CC BY 2.0"},
-            "title": None,
-            "description": "Red, gold, and orange leaves lying on the ground",
-        }
-    )
+@pytest.mark.parametrize(
+    "description",
+    [
+        {
+            "input": "Red, gold, and orange leaves lying on the ground",
+            "expected_key": "Description:",
+            "expected_value": "Red, gold, and orange leaves lying on the ground",
+        },
+        # A test for escaping HTML entities
+        {
+            "input": "It pulls coaches of the 1960s &quot;Rheingold&quot; Express again.",
+            "expected_key": "Description:",
+            "expected_value": 'It pulls coaches of the 1960s "Rheingold" Express again.',
+        },
+        # A test for truncation
+        {
+            "input": "a" * 150 + " and now we have some words to push us over",
+            "expected_key": "Description (excerpt):",
+            "expected_value": "a" * 150 + " and now we have some…",
+        },
+    ],
+)
+def test_it_shows_the_description(app, description):
+    metadata = get_metadata(photo={"description": description["input"]})
 
     assert {
-        "key": "Description:",
-        "value": "Red, gold, and orange leaves lying on the ground",
+        "key": description["expected_key"],
+        "value": description["expected_value"],
     } in metadata
 
 
 def test_it_omits_title_and_description_if_empty(app):
     metadata = get_metadata(
         photo={
-            "owner": {"username": "example", "realname": "example"},
-            "license": {"label": "CC BY 2.0"},
             "title": None,
             "description": None,
         }
