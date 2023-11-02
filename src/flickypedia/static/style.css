@@ -197,7 +197,7 @@ label .required, label .charCounter {
   display: inline;
   margin-left: 1em;
   margin-top: auto;
-  margin-bottom: 4px;
+  margin-bottom: 4.5px;
 }
 
 input.thinking {
