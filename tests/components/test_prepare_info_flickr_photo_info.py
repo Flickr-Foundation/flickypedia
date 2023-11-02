@@ -1,18 +1,8 @@
-import datetime
 import re
 
 import bs4
 from flask import render_template
 import pytest
-
-from flickypedia.apis.structured_data import (
-    create_copyright_status_statement,
-    create_date_taken_statement,
-    create_flickr_creator_statement,
-    create_license_statement,
-    create_posted_to_flickr_statement,
-    create_source_data_for_photo,
-)
 
 
 def get_metadata(photo):
