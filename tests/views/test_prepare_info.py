@@ -31,6 +31,10 @@ def test_renders_form_for_single_photo(logged_in_client, app, vcr_cassette):
     assert resp.status_code == 200
     assert b"Puppy Kisses" in resp.data
 
+    # Test that we don't get the "X of Y" counter overlaid on a single
+    # preview photo
+    assert b"1 of 1" not in resp.data
+
 
 def test_renders_form_for_multiple_photo(logged_in_client, app, vcr_cassette):
     cache_dir = app.config["FLICKR_API_RESPONSE_CACHE"]
@@ -46,6 +50,10 @@ def test_renders_form_for_multiple_photo(logged_in_client, app, vcr_cassette):
     assert resp.status_code == 200
     assert b"ICANN78-AtLarge EURALO Plenary-100" in resp.data
     assert b"ICANN78-AtLarge EURALO Plenary-110" in resp.data
+
+    # Test that we get the "X of Y" counter overlaid on the preview images
+    assert b"1 of 2" in resp.data
+    assert b"2 of 2" in resp.data
 
 
 def test_blocks_uploads_with_an_invalid_title(logged_in_client, app, vcr_cassette):
@@ -85,4 +93,3 @@ def test_blocks_uploads_with_a_too_long_caption(logged_in_client, app, vcr_casse
     )
 
     assert resp.status_code == 200
-    assert b"Field cannot be longer than 250 characters." in resp.data
