@@ -174,27 +174,7 @@
           </div>
 
           <div class="flickr_info">
-            <p>
-              <strong>By:</strong> <br/>
-              {{ photo.owner.realname or photo.owner.username }} <br/>
-              {{ photo.license.label }}
-            </p>
-
-            <!-- What if the photo is untitled? -->
-
-            <!-- TODO: Tests for these two components -->
-            <!-- What if no title? -->
-            <!-- What if truncation? -->
-
-            <p>
-              <strong>Title:</strong> <br/>
-              {{ photo.title }}
-            </p>
-
-            <p>
-              <strong>Description:</strong> <br/>
-              {{ photo.description }}
-            </p>
+            {% include "components/prepare_info_flickr_photo_info.html" %}
           </div>
 
           <div class="wiki_info">

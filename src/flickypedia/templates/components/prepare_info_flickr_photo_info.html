@@ -1,0 +1,30 @@
+{#
+  This template renders the info about the original photo on Flickr,
+  as shown in the sidebar on the "Prepare info" page.
+  
+  The template takes a single variable: ``photo``, which should be
+  a photo as returned by the various ``get_photos`` method on the
+  FlickrApi class.
+#}
+
+<p>
+  <strong>By:</strong> <br/>
+  {{ photo.owner.realname or photo.owner.username }} <br/>
+  {{ photo.license.label }}
+</p>
+
+<!-- What if the photo is untitled? -->
+
+<!-- TODO: Tests for these two components -->
+<!-- What if no title? -->
+<!-- What if truncation? -->
+
+<p>
+  <strong>Title:</strong> <br/>
+  {{ photo.title }}
+</p>
+
+<p>
+  <strong>Description:</strong> <br/>
+  {{ photo.description }}
+</p>
