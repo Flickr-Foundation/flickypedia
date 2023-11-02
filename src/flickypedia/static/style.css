@@ -204,7 +204,7 @@ label .required, label .charCounter {
 }
 
 .flickr_description {
-  white-space: pre-wrap;
+  white-space: pre-line;
 }
 
 /* These two selectors add a "barberpole" animation to any input field
