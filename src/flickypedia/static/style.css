@@ -6,7 +6,9 @@
   --grey:   87,  90,  94; /* #575A5E */
 
   --pink:   227, 99, 151; /* #E36397 */
-  --red:    255,  0,   0; /* CSS red */
+
+  --red:    255,  0,   0; /* CSS red    */
+  --yellow: 255, 255,  0; /* CSS yellow */
 }
 
 body {
@@ -119,10 +121,14 @@ input.pink_button:active {
 }
 
 .warning {
-  background: color-mix(in srgb, yellow, #fff 65%);
+  background: color-mix(in srgb, rgb(var(--yellow)), white 65%);
   padding: 1em;
   font-size: 1.2em;
   text-align: center;
+}
+
+.highlight {
+  background: rgb(var(--yellow));
 }
 
 /* Styles for the 'get photos' form */
