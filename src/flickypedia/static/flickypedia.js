@@ -106,12 +106,32 @@ function addCharCounterTo(inputElement, counterElement) {
     }
   }
 
-  /* We want to display the count immediately on load, but also update it
-   * as soon as the user starts typing.
+  function hideCharCounterOnBlur() {
+    const enteredCharacters = inputElement.value.length;
+
+    if (minCount <= enteredCharacters && enteredCharacters <= maxCount) {
+      counterElement.innerHTML = "";
+    }
+  }
+
+  /* When the user selected the field, we want to display the counter and
+   * keep it updated as they type.
+   *
+   * When the user switches away from the field, we want to hide the counter
+   * if they've entered enough of a caption -- otherwise we keep showing
+   * the error message.
    */
   updateCharCounter();
 
   inputElement.addEventListener("input", () => {
     updateCharCounter();
+  });
+
+  inputElement.addEventListener("focus", () => {
+    updateCharCounter();
+  });
+
+  inputElement.addEventListener("blur", () => {
+    hideCharCounterOnBlur();
   });
 }

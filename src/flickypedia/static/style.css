@@ -222,6 +222,7 @@ input.thinking {
 .charCounter {
   font-family: monospace;
   font-size: small;
+  color: rgb(var(--grey));
   margin-left: auto !important;
   margin-right: 1em;
 }
