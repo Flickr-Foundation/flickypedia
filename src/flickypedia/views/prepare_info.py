@@ -45,7 +45,7 @@ class PhotoInfoForm(Form):
         validators=[DataRequired(), Length(min=5, max=250)], widget=TextArea()
     )
 
-    categories = StringField()
+    categories = StringField(widget=TextArea())
 
     original_format: str
 
