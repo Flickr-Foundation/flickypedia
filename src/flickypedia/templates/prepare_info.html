@@ -2,6 +2,23 @@
 
 {% block head %}
   <script src="{{ url_for('static', filename='flickypedia.js') }}"></script>
+
+  <script>
+    window.onload = function() {
+      document
+        .querySelectorAll('input[data-type="title"]')
+        .forEach(input => addTitleValidatorTo(input));
+
+      document
+        .querySelectorAll('textarea[data-type="short_caption"]')
+        .forEach(textarea => {
+          const counterElement =
+            document.querySelector(`label[for=${textarea.id}] .charCounter`);
+
+          addCharCounterTo(textarea, counterElement);
+        });
+    }
+  </script>
 {% endblock %}
 
 {% block content %}
@@ -86,14 +103,6 @@
     }
   </style>
 
-  <script>
-    window.onload = function() {
-      document.querySelectorAll('input[data-type="title"]').forEach(input =>
-        addTitleValidatorTo(input)
-      );
-    }
-  </script>
-
   <form id="prepare_info" action="" method="post">
     {{ prepare_info_form.hidden_tag() }}
 
@@ -167,11 +176,9 @@
               </label>
               {{
                 field.title(
-                   **{
-                     "data-type": "title",
-                     "data-originalformat": photo.original_format,
-                   }
-                 )
+                  data_type="title",
+                  data_originalformat=photo['original_format']
+                )
               }}
 
               <p class="validation_errors
@@ -183,14 +190,25 @@
               <label for="{{ field.short_caption.id }}">
                 Short caption
                 <div class="required">required</div>
+                <div class="charCounter"></div>
               </label>
-              {{ field.short_caption() }}
-                            
-              <p class="validation_errors
-                        {% if not field.short_caption.errors %}hidden{% endif %}"
-                 for="{{ field.short_caption.id }}">
-                {{ " ".join(field.short_caption.errors) }}
-              </p>
+              {{ field.short_caption(data_type="short_caption") }}
+
+              <!--
+                This error message comes from the server, but users with
+                JS enabled will get an inline message that updates with
+                the number of characters in real-time.
+
+                We only need to show the error from the server if the
+                user doesn't have JS enabled.
+               -->
+              {% if field.short_caption.errors %}
+                <noscript>
+                  <p class="validation_errors">
+                    {{ " ".join(field.short_caption.errors) }}
+                  </p>
+                </noscript>
+              {% endif %}
 
               <p>
                 <label for="{{ field.categories.id }}">Add a Wikimedia Commons category</label>

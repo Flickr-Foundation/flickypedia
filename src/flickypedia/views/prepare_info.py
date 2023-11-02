@@ -38,9 +38,11 @@ class PhotoInfoForm(Form):
     # Captions on Wikimedia Commons are limited to 250 characters
     # (which matches the behaviour of the Upload Wizard).
     #
-    # See https://commons.wikimedia.org/w/index.php?title=Commons%3AFile_captions&oldformat=true#What_makes_a_good_caption?
+    # The Upload Wizard enforces a minimum of 5 characters, which we mimic.
+    #
+    # See https://commons.wikimedia.org/w/index.php?title=Commons%3AFile_captions&oldformat=true#What_makes_a_good_caption
     short_caption = StringField(
-        validators=[DataRequired(), Length(max=250)], widget=TextArea()
+        validators=[DataRequired(), Length(min=5, max=250)], widget=TextArea()
     )
 
     categories = StringField()

@@ -170,7 +170,7 @@ input.pink_button:active {
  * Note that I've tweaked the background-position to go left-to-right,
  * whereas the code in that article goes right-to-left.
  */
-.required, .validation_errors {
+.required, .validation_errors, .too_many_characters, .not_enough_characters {
   font-family: monospace;
   font-size: small;
   color: rgb(var(--red));
@@ -189,10 +189,15 @@ textarea + .validation_errors {
   display: none;
 }
 
-label .required {
+#prepare_info label {
+  display: flex;
+}
+
+label .required, label .charCounter {
   display: inline;
   margin-left: 1em;
-  margin-bottom: 2px;
+  margin-top: auto;
+  margin-bottom: 4px;
 }
 
 input.thinking {
@@ -212,6 +217,17 @@ input.thinking {
   100% {
     background-position: 100% 100%;
   }
+}
+
+.charCounter {
+  font-family: monospace;
+  font-size: small;
+  margin-left: auto !important;
+  margin-right: 1em;
+}
+
+.charCounter .remainingCharacters {
+  font-weight: bold;
 }
 
 /* Temporary styles */
