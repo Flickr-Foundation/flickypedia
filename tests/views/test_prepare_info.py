@@ -1,5 +1,6 @@
 import pytest
 
+from flickypedia.views import truncate_description
 
 @pytest.mark.parametrize(
     "url",
@@ -93,3 +94,31 @@ def test_blocks_uploads_with_a_too_long_caption(logged_in_client, app, vcr_casse
     )
 
     assert resp.status_code == 200
+
+
+@pytest.mark.parametrize(
+    ["original", "truncated"],
+    [
+        # A description which is split across many lines
+        ("1\n2\n3\n4\n5\n6\n7\n", "1\n2\n3\n4\n5"),
+        # A description which is short enough to be returned unmodified
+        ("A blue train in a green field", "A blue train in a green field"),
+        # A description which is around the target length
+        ("a" * 161, "a" * 161),
+        ("a" * 170, "a" * 170),
+        # A description which is comfortably over the target length, truncated
+        # at the right word.
+        (
+            "a" * 150 + " and now we have some words to push us towards the end",
+            "a" * 150 + " and now we have some…",
+        ),
+        # A description which is comfortably over the target length, truncated
+        # just before a line break.
+        (
+            "a" * 150 + " and now we have\nsome words to push us towards the end",
+            "a" * 150 + " and now we have…",
+        ),
+    ],
+)
+def test_truncate_description(original, truncated):
+    assert truncate_description(original) == truncated

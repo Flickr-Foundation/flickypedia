@@ -210,3 +210,48 @@ def prepare_info():
             field for field in prepare_info_form if field.id.startswith("photo_")
         ],
     )
+
+
+def truncate_description(d):
+    """
+    Given a complete description from Flickr, truncate it so it's suitable
+    for description on the "prepare info" screen.
+
+    The rough target is "about 5–6 lines of text in the UI.
+    """
+    # Heuristic #1: because we preserve line breaks in the description,
+    # make sure we don't display a silly number of lines.
+    if len(d.splitlines()) > 5:
+        return truncate_description("\n".join(d.splitlines()[:5]))
+
+    # Heuristic #2: try to cut it about a target number of characters.
+    #
+    # The target length is a loose number, not a hard upper limit.
+    target_length = 160
+
+    # If we're already under the target length, we're already good.
+    #
+    # Allow a little bit of slop here.
+    if len(d) <= target_length + 20:
+        return d
+
+    # Okay, so now truncate to the target length plus our slop.
+    #
+    # Then split on spaces and chop off the last word, so we don't
+    # end mid-word.
+    d = d[: target_length + 15]
+    d, _ = d.rsplit(" ", 1)
+
+    # How long is the last line?
+    #
+    # If it's short, trim the whole thing and go up to the previous line
+    # rather than having a tiny line at the end.
+    try:
+        remainder, last_line = d.rsplit("\n", 1)
+    except ValueError:  # no newlines
+        pass
+    else:
+        if len(last_line) <= 10:
+            d = remainder
+
+    return d.strip() + "…"
