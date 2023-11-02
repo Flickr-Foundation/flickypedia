@@ -1,0 +1,36 @@
+{#
+  This template renders the info about the original photo on Flickr,
+  as shown in the sidebar on the "Prepare info" page. e.g.
+
+      By:
+      Alex Chan
+      CC BY 2.0
+
+      Title:
+      P9160753
+
+      Description:
+      A photo of a black train in Slovenia.
+
+  The template takes a single variable: ``photo``, which should be
+  a photo as returned by the various ``get_photos`` method on the
+  FlickrApi class.
+#}
+
+<dl class="flickr_info">
+  <dt>By:</dt>
+  <dd>
+    {{ photo.owner.realname or photo.owner.username}} <br/>
+    {{ photo.license.label }}
+  </dd>
+  
+  {% if photo.title %}  
+    <dt>Title:</dt>
+    <dd>{{ photo.title }}</dd>
+  {% endif %}
+  
+  {% if photo.description %}
+    <dt>Description:</dt>
+    <dd>{{ photo.description }}</dd>
+  {% endif %}
+</dl>
