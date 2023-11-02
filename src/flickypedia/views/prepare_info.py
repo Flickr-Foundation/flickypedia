@@ -206,4 +206,7 @@ def prepare_info():
         "prepare_info.html",
         current_step="prepare_info",
         prepare_info_form=prepare_info_form,
+        photo_fields=[
+            field for field in prepare_info_form if field.id.startswith("photo_")
+        ],
     )
