@@ -31,7 +31,8 @@ function addTitleValidatorTo(inputElement) {
     fetch(`/api/validate_title?title=${title}`)
       .then((response) => response.json())
       .then((json) => {
-        const errorElement = document.querySelector(`p[for="${inputElement.id}"]`);
+        const errorElement = document
+          .querySelector(`p[for="${inputElement.id}"]`);
 
         /* The response from the API should be of the form
          *
@@ -53,4 +54,84 @@ function addTitleValidatorTo(inputElement) {
         inputElement.classList.remove("thinking")
       });
   })
+}
+
+/*
+ * Add a character counter to an input field.
+ *
+ * As the user is typing in the field, we'll display a "N characters"
+ * remaining indicator to tell them how much they have left.
+ */
+function addCharCounterTo(inputElement, counterElement) {
+  const minCount = inputElement.getAttribute("minlength");
+  const maxCount = inputElement.getAttribute("maxlength");
+
+  function updateCharCounter() {
+    const enteredCharacters = inputElement.value.length;
+    const remainingCharacters = maxCount - enteredCharacters;
+
+    if (enteredCharacters === 0) {
+      counterElement.innerHTML = '';
+    } else if (enteredCharacters === minCount - 1) {
+      counterElement.innerHTML = `
+        <span class="not_enough_characters">
+          <span class="remainingCharacters">1</span> more character required
+        </span>
+        `;
+    } else if (enteredCharacters < minCount) {
+      counterElement.innerHTML = `
+        <span class="not_enough_characters">
+          <span class="remainingCharacters">${minCount - enteredCharacters}</span>
+          more characters required
+        </span>
+        `;
+    } else if (remainingCharacters === 0) {
+      counterElement.innerHTML = '<span class="remainingCharacters">No</span> characters left';
+    } else if (remainingCharacters === 1) {
+      counterElement.innerHTML = '<span class="remainingCharacters">1</span> character left';
+    } else if (remainingCharacters > 1) {
+      counterElement.innerHTML = `<span class="remainingCharacters">${remainingCharacters}</span> characters left`;
+    } else if (remainingCharacters === -1) {
+      counterElement.innerHTML = `
+        <span class="too_many_characters">
+          <span class="remainingCharacters">1</span>
+          character too many
+        </span>`;
+    } else {
+      counterElement.innerHTML = `
+        <span class="too_many_characters">
+          <span class="remainingCharacters">${Math.abs(remainingCharacters)}</span>
+          characters too many
+        </span>`;
+    }
+  }
+
+  function hideCharCounterOnBlur() {
+    const enteredCharacters = inputElement.value.length;
+
+    if (minCount <= enteredCharacters && enteredCharacters <= maxCount) {
+      counterElement.innerHTML = "";
+    }
+  }
+
+  /* When the user selected the field, we want to display the counter and
+   * keep it updated as they type.
+   *
+   * When the user switches away from the field, we want to hide the counter
+   * if they've entered enough of a caption -- otherwise we keep showing
+   * the error message.
+   */
+  updateCharCounter();
+
+  inputElement.addEventListener("input", () => {
+    updateCharCounter();
+  });
+
+  inputElement.addEventListener("focus", () => {
+    updateCharCounter();
+  });
+
+  inputElement.addEventListener("blur", () => {
+    hideCharCounterOnBlur();
+  });
 }

@@ -35,7 +35,16 @@ class PhotoInfoForm(Form):
     # See https://commons.wikimedia.org/wiki/Commons:File_naming#Length
     title = StringField(validators=[DataRequired(), Length(min=5, max=240)])
 
-    short_caption = StringField(validators=[DataRequired()], widget=TextArea())
+    # Captions on Wikimedia Commons are limited to 250 characters
+    # (which matches the behaviour of the Upload Wizard).
+    #
+    # The Upload Wizard enforces a minimum of 5 characters, which we mimic.
+    #
+    # See https://commons.wikimedia.org/w/index.php?title=Commons%3AFile_captions&oldformat=true#What_makes_a_good_caption
+    short_caption = StringField(
+        validators=[DataRequired(), Length(min=5, max=250)], widget=TextArea()
+    )
+
     categories = StringField()
 
     original_format: str
@@ -197,4 +206,7 @@ def prepare_info():
         "prepare_info.html",
         current_step="prepare_info",
         prepare_info_form=prepare_info_form,
+        photo_fields=[
+            field for field in prepare_info_form if field.id.startswith("photo_")
+        ],
     )

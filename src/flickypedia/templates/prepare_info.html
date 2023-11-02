@@ -2,6 +2,23 @@
 
 {% block head %}
   <script src="{{ url_for('static', filename='flickypedia.js') }}"></script>
+
+  <script>
+    window.onload = function() {
+      document
+        .querySelectorAll('input[data-type="title"]')
+        .forEach(input => addTitleValidatorTo(input));
+
+      document
+        .querySelectorAll('textarea[data-type="short_caption"]')
+        .forEach(textarea => {
+          const counterElement =
+            document.querySelector(`label[for=${textarea.id}] .charCounter`);
+
+          addCharCounterTo(textarea, counterElement);
+        });
+    }
+  </script>
 {% endblock %}
 
 {% block content %}
@@ -35,6 +52,7 @@
       grid-column: 1 / 2;
       grid-row: 2 / 3;
       font-size: small;
+      padding-top: 0.5em;
     }
 
     .flickr_info p:first-child, .wiki_info p:first-child {
@@ -54,122 +72,187 @@
     .sdc {
       grid-column: 1 / span 2;
       grid-row: 3 / 3;
-      background: antiquewhite;
+      background: rgb(var(--brown));
       padding: 1em;
       border-radius: 8px;
       overflow-x: auto;
     }
-  </style>
 
-  <script>
-    window.onload = function() {
-      document.querySelectorAll('input[data-type="title"]').forEach(input =>
-        addTitleValidatorTo(input)
-      );
+    .to_from_with_logo {
+      display: grid;
+
+      height: 25px;
     }
-  </script>
+
+    .to_from_with_logo.from_flickr {
+      grid-template-columns: 30px auto;
+    }
+
+    .to_from_with_logo.to_wiki {
+      grid-template-columns: 24px auto;
+    }
+
+    .to_from_with_logo img {
+      height: 25px;
+    }
+
+    .to_from_with_logo div {
+      font-size: small;
+      line-height: 25px;
+      color: rgb(var(--grey));
+    }
+
+    .preview {
+      position: relative;
+    }
+
+    .preview .image_counter {
+      position: absolute;
+      right: 0;
+      top: -12px;
+      background: rgb(var(--black));
+      color: rgb(var(--cream));
+      padding: 1px 20px;
+      font-size: 2em;
+      font-weight: bold;
+    }
+  </style>
 
   <form id="prepare_info" action="" method="post">
     {{ prepare_info_form.hidden_tag() }}
 
     {{ prepare_info_form.cached_api_response_id() }}
 
+    <!-- TODO: These messages need to be plural-aware -->
+
     <h3>
-      First, please set the language you’ll be using to write your captions:
+      <span class="highlight">First</span>, please set the language you’ll be using to write your captions:
     </h3>
 
     {{ prepare_info_form.language() }}
 
     <h3>
-      Next, please add Titles and Captions for each photo, and optional Wikimedia Commons categories:
+      <span class="highlight">Next</span>, please add Titles and Captions for each photo, and optional Wikimedia Commons categories:
     </h3>
 
     <ul class="plain_list">
-      {% for field in prepare_info_form %}
-        {% if field.id.startswith('photo_') %}
-          {% set photo = field.label.text %}
-          <li>
+      {% for field in photo_fields %}
+        {% set photo = field.label.text %}
+        <li>
 
-          {% set large_size = photo.sizes | size_at(desired_size='Large') %}
+        {% set large_size = photo.sizes | size_at(desired_size='Large') %}
+
+        {% if loop.length > 1 %}
+          <div class="preview">
+            <div class="image_counter">
+              {{ loop.index }} of {{ loop.length }}
+            </div>
+
+            <img
+              src="{{ large_size.source }}"
+              style="aspect-ratio: {{ large_size.width }} / {{ large_size.height }}"
+            >
+          </div>
+        {% else %}
           <img
             src="{{ large_size.source }}"
             style="aspect-ratio: {{ large_size.width }} / {{ large_size.height }}"
           >
-
-          <div class="info">
-            <div class="from_flickr">
-              From Flickr
-            </div>
-            <div class="to_wiki">
-              To the Wikimedia Commons Entry
-            </div>
-
-            <div class="flickr_info">
-              <p>
-                <strong>By:</strong> <br/>
-                {{ photo.owner.realname or photo.owner.username }} <br/>
-                {{ photo.license.label }}
-              </p>
-
-              <!-- What if the photo is untitled? -->
-
-              <!-- TODO: Tests for these two components -->
-              <!-- What if no title? -->
-              <!-- What if truncation? -->
-
-              <p>
-                <strong>Title:</strong> <br/>
-                {{ photo.title }}
-              </p>
-
-              <p>
-                <strong>Description:</strong> <br/>
-                {{ photo.description }}
-              </p>
-            </div>
-
-            <div class="wiki_info">
-              <label for="{{ field.title.id }}">
-                Title
-                <div class="required">required</div>
-              </label>
-              {{
-                field.title(
-                   **{
-                     "data-type": "title",
-                     "data-originalformat": photo.original_format,
-                   }
-                 )
-              }}
-
-              <p class="validation_errors
-                        {% if not field.title.errors %}hidden{% endif %}"
-                 for="{{ field.title.id }}">
-                {{ " ".join(field.title.errors) }}
-              </p>
-
-              <label for="{{ field.short_caption.id }}">
-                Short caption
-                <div class="required">required</div>
-              </label>
-              {{ field.short_caption() }}
-
-              <p>
-                <label for="{{ field.categories.id }}">Add a Wikimedia Commons category</label>
-                {{ field.categories() }}
-              </p>
-            </div>
-
-            <details class="sdc">
-              <summary>More details</summary>
-
-              {% with structured_data = photo.sdc %}
-                {% include "components/structured_data_preview.html" %}
-              {% endwith %}
-            </details>
-          </div>
-        </li>
         {% endif %}
+
+        <div class="info">
+          <div class="to_from_with_logo from_flickr">
+            <img src="{{ url_for('static', filename='flickr-logo.svg') }}">
+
+            <div>From Flickr</div>
+          </div>
+
+          <div class="to_from_with_logo to_wiki">
+            <img src="{{ url_for('static', filename='wikimedia-commons-logo.svg') }}">
+
+            <div>To the Wikimedia Commons Entry</div>
+          </div>
+
+          <div class="flickr_info">
+            <p>
+              <strong>By:</strong> <br/>
+              {{ photo.owner.realname or photo.owner.username }} <br/>
+              {{ photo.license.label }}
+            </p>
+
+            <!-- What if the photo is untitled? -->
+
+            <!-- TODO: Tests for these two components -->
+            <!-- What if no title? -->
+            <!-- What if truncation? -->
+
+            <p>
+              <strong>Title:</strong> <br/>
+              {{ photo.title }}
+            </p>
+
+            <p>
+              <strong>Description:</strong> <br/>
+              {{ photo.description }}
+            </p>
+          </div>
+
+          <div class="wiki_info">
+            <label for="{{ field.title.id }}">
+              Title
+              <div class="required">required</div>
+            </label>
+            {{
+              field.title(
+                data_type="title",
+                data_originalformat=photo['original_format']
+              )
+            }}
+
+            <p class="validation_errors
+                      {% if not field.title.errors %}hidden{% endif %}"
+               for="{{ field.title.id }}">
+              {{ " ".join(field.title.errors) }}
+            </p>
+
+            <label for="{{ field.short_caption.id }}">
+              Short caption
+              <div class="required">required</div>
+              <div class="charCounter"></div>
+            </label>
+            {{ field.short_caption(data_type="short_caption", rows="3") }}
+
+            <!--
+              This error message comes from the server, but users with
+              JS enabled will get an inline message that updates with
+              the number of characters in real-time.
+
+              We only need to show the error from the server if the
+              user doesn't have JS enabled.
+             -->
+            {% if field.short_caption.errors %}
+              <noscript>
+                <p class="validation_errors">
+                  {{ " ".join(field.short_caption.errors) }}
+                </p>
+              </noscript>
+            {% endif %}
+
+            <p>
+              <label for="{{ field.categories.id }}">Add a Wikimedia Commons category</label>
+              {{ field.categories() }}
+            </p>
+          </div>
+
+          <details class="sdc">
+            <summary>More details</summary>
+
+            {% with structured_data = photo.sdc %}
+              {% include "components/structured_data_preview.html" %}
+            {% endwith %}
+          </details>
+        </div>
+        </li>
       {% endfor %}
     </ul>
 

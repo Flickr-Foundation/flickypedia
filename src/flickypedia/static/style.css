@@ -6,7 +6,9 @@
   --grey:   87,  90,  94; /* #575A5E */
 
   --pink:   227, 99, 151; /* #E36397 */
-  --red:    255,  0,   0; /* CSS red */
+
+  --red:    255,  0,   0; /* CSS red    */
+  --yellow: 255, 255,  0; /* CSS yellow */
 }
 
 body {
@@ -119,10 +121,14 @@ input.pink_button:active {
 }
 
 .warning {
-  background: color-mix(in srgb, yellow, #fff 65%);
+  background: color-mix(in srgb, rgb(var(--yellow)), white 65%);
   padding: 1em;
   font-size: 1.2em;
   text-align: center;
+}
+
+.highlight {
+  background: rgb(var(--yellow));
 }
 
 /* Styles for the 'get photos' form */
@@ -164,7 +170,7 @@ input.pink_button:active {
  * Note that I've tweaked the background-position to go left-to-right,
  * whereas the code in that article goes right-to-left.
  */
-.required, .validation_errors {
+.required, .validation_errors, .too_many_characters, .not_enough_characters {
   font-family: monospace;
   font-size: small;
   color: rgb(var(--red));
@@ -175,14 +181,23 @@ input.pink_button:active {
   line-height: 1.4em;
 }
 
+textarea + .validation_errors {
+  margin-top: 1px;
+}
+
 .validation_errors.hidden {
   display: none;
 }
 
-label .required {
+#prepare_info label {
+  display: flex;
+}
+
+label .required, label .charCounter {
   display: inline;
   margin-left: 1em;
-  margin-bottom: 2px;
+  margin-top: auto;
+  margin-bottom: 4.5px;
 }
 
 input.thinking {
@@ -202,6 +217,18 @@ input.thinking {
   100% {
     background-position: 100% 100%;
   }
+}
+
+.charCounter {
+  font-family: monospace;
+  font-size: small;
+  color: rgb(var(--grey));
+  margin-left: auto !important;
+  margin-right: 1em;
+}
+
+.charCounter .remainingCharacters {
+  font-weight: bold;
 }
 
 /* Temporary styles */

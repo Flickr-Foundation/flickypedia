@@ -369,7 +369,7 @@ def validate_title(title: str):
             "result": "duplicate",
             "text": (
                 "Please choose a different title. "
-                f"There is already <a href='https://commons.wikimedia.org/wiki/{title}'>a file on Commons</a> with the same title."
+                f"There is already <a href='https://commons.wikimedia.org/wiki/{title}'>a file on Commons</a> with that title."
             ),
         }
 

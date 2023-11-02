@@ -235,5 +235,5 @@ def test_validate_title_links_to_duplicates(vcr_cassette):
 
     assert (
         result["text"]
-        == "Please choose a different title. There is already <a href='https://commons.wikimedia.org/wiki/File:P1.jpg'>a file on Commons</a> with the same title."
+        == "Please choose a different title. There is already <a href='https://commons.wikimedia.org/wiki/File:P1.jpg'>a file on Commons</a> with that title."
     )
