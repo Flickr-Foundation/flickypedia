@@ -185,6 +185,12 @@
                 <div class="required">required</div>
               </label>
               {{ field.short_caption() }}
+                            
+              <p class="validation_errors
+                        {% if not field.short_caption.errors %}hidden{% endif %}"
+                 for="{{ field.short_caption.id }}">
+                {{ " ".join(field.short_caption.errors) }}
+              </p>
 
               <p>
                 <label for="{{ field.categories.id }}">Add a Wikimedia Commons category</label>

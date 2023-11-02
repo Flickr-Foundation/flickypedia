@@ -181,6 +181,10 @@ input.pink_button:active {
   line-height: 1.4em;
 }
 
+textarea + .validation_errors {
+  margin-top: 1px;
+}
+
 .validation_errors.hidden {
   display: none;
 }
