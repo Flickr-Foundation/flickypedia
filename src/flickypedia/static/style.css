@@ -188,7 +188,7 @@ label .required, label .charCounter {
 /* Styles for the "From Flickr" info in the left-hand sidebar */
 .flickr_info {
   font-size: small;
-  margin-top: 0;
+  margin-top: 4px;
 }
 
 .flickr_info dt {
@@ -201,6 +201,10 @@ label .required, label .charCounter {
 
 .flickr_info dd {
   margin-left: 0;
+}
+
+.flickr_description {
+  white-space: pre-line;
 }
 
 /* These two selectors add a "barberpole" animation to any input field

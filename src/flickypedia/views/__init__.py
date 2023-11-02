@@ -2,7 +2,7 @@ from flask import abort, render_template, request, jsonify
 
 from flickypedia.apis.wikimedia import validate_title
 from .get_photos import get_photos
-from .prepare_info import prepare_info
+from .prepare_info import prepare_info, truncate_description
 from .select_photos import select_photos
 from .wait_for_upload import get_upload_status, wait_for_upload
 
@@ -42,6 +42,7 @@ __all__ = [
     "homepage",
     "prepare_info",
     "select_photos",
+    "truncate_description",
     "validate_title_api",
     "wait_for_upload",
 ]

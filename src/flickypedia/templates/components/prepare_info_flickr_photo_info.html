@@ -23,14 +23,19 @@
     {{ photo.owner.realname or photo.owner.username}} <br/>
     {{ photo.license.label }}
   </dd>
-  
-  {% if photo.title %}  
+
+  {% if photo.title %}
     <dt>Title:</dt>
     <dd>{{ photo.title }}</dd>
   {% endif %}
-  
+
   {% if photo.description %}
-    <dt>Description:</dt>
-    <dd>{{ photo.description }}</dd>
+    {% set is_excerpt =
+        photo.description | truncate_description | length <
+        photo.description | length %}
+    <dt>Description{% if is_excerpt %} (excerpt){% endif %}:</dt>
+    <dd class="flickr_description">
+      {{- photo.description | truncate_description | html_unescape -}}
+    </dd>
   {% endif %}
 </dl>
