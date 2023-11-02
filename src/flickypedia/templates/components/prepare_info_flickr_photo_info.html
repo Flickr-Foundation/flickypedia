@@ -24,9 +24,13 @@
     {{ photo.license.label }}
   </dd>
   
-  <dt>Title:</dt>
-  <dd>{{ photo.title }}</dd>
+  {% if photo.title %}  
+    <dt>Title:</dt>
+    <dd>{{ photo.title }}</dd>
+  {% endif %}
   
-  <dt>Description:</dt>
-  <dd>{{ photo.description }}</dd>
+  {% if photo.description %}
+    <dt>Description:</dt>
+    <dd>{{ photo.description }}</dd>
+  {% endif %}
 </dl>
