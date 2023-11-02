@@ -203,6 +203,10 @@ label .required, label .charCounter {
   margin-left: 0;
 }
 
+.flickr_description {
+  white-space: pre-wrap;
+}
+
 /* These two selectors add a "barberpole" animation to any input field
  * which is "thinking" (making an API request which hasn't returned yet).
  *

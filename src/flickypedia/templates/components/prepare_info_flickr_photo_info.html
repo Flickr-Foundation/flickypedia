@@ -23,14 +23,14 @@
     {{ photo.owner.realname or photo.owner.username}} <br/>
     {{ photo.license.label }}
   </dd>
-  
-  {% if photo.title %}  
+
+  {% if photo.title %}
     <dt>Title:</dt>
     <dd>{{ photo.title }}</dd>
   {% endif %}
-  
+
   {% if photo.description %}
     <dt>Description:</dt>
-    <dd>{{ photo.description }}</dd>
+    <dd class="flickr_description">{{ photo.description }}</dd>
   {% endif %}
 </dl>
