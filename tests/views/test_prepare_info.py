@@ -2,6 +2,7 @@ import pytest
 
 from flickypedia.views import truncate_description
 
+
 @pytest.mark.parametrize(
     "url",
     [
