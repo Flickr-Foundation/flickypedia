@@ -40,19 +40,24 @@ def size_at(sizes, *, desired_size):
     """
     sizes_by_label = {s["label"]: s for s in sizes}
 
-    # If we have that exact size available, return that!
-    if desired_size in sizes_by_label:
-        return sizes_by_label[desired_size]
-
     # Flickr has a published list of possible sizes here:
     # https://www.flickr.com/services/api/misc.urls.html
     #
-    # If the desired size isn't available, we can look for alternatives,
-    # but this fallback code is deliberately conservative and simple.
-    # We're trying to build something that works for Flickypedia,
-    # not any combination of Flickr sizes/desired size.
-    if desired_size == "Medium" and "Small" in sizes_by_label:
-        return sizes_by_label["Small"]
+    # If the desired size isn't available, that means one of two things:
+    #
+    #   1.  The owner of this photo has done something to restrict downloads
+    #       of their photo beyond a certain size.  But CC-licensed photos
+    #       are always available to download, so that's not an issue for us.
+    #   2.  This photo is smaller than the size we've asked for, in which
+    #       case we fall back to Original as the largest possible size.
+    #
+    try:
+        return sizes_by_label[desired_size]
+    except KeyError:
+        return sizes_by_label["Original"]
+
+    if desired_size == "Medium":
+        return sizes_by_label["Original"]
 
     raise ValueError(f"This photo is not available at size {desired_size!r}")
 

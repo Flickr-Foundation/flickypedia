@@ -2,7 +2,6 @@ import datetime
 import json
 
 from cryptography.fernet import Fernet
-import pytest
 
 from flickypedia.utils import (
     decrypt_string,
@@ -46,19 +45,22 @@ SIZES = sizes = [
         "url": "https://www.flickr.com/photos/coast_guard/32812033543/sizes/s/",
         "media": "photo",
     },
+    {
+        "label": "Original",
+        "width": 5172,
+        "height": 3145,
+        "source": "https://live.staticflickr.com/2903/32812033543_41cc4e453a_o.jpg",
+        "url": "https://www.flickr.com/photos/coast_guard/32812033543/sizes/o/",
+        "media": "photo",
+    },
 ]
 
 
 def test_size_at_finds_desired_size():
-    assert size_at(SIZES, desired_size="Small") == SIZES[-1]
+    assert size_at(SIZES, desired_size="Small") == SIZES[-2]
 
 
-def test_size_at_fails_if_no_desired_size():
-    with pytest.raises(ValueError, match="This photo is not available at size 'Large'"):
-        size_at(SIZES, desired_size="Large")
-
-
-def test_size_at_will_get_small_if_medium_unavailable():
+def test_size_at_falls_back_to_original_if_desired_size_unavailable():
     assert size_at(SIZES, desired_size="Medium") == SIZES[-1]
 
 
