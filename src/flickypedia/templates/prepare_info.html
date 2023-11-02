@@ -35,6 +35,7 @@
       grid-column: 1 / 2;
       grid-row: 2 / 3;
       font-size: small;
+      padding-top: 0.5em;
     }
 
     .flickr_info p:first-child, .wiki_info p:first-child {
@@ -54,10 +55,34 @@
     .sdc {
       grid-column: 1 / span 2;
       grid-row: 3 / 3;
-      background: antiquewhite;
+      background: rgb(var(--brown));
       padding: 1em;
       border-radius: 8px;
       overflow-x: auto;
+    }
+
+    .to_from_with_logo {
+      display: grid;
+
+      height: 25px;
+    }
+
+    .to_from_with_logo.from_flickr {
+      grid-template-columns: 30px auto;
+    }
+
+    .to_from_with_logo.to_wiki {
+      grid-template-columns: 24px auto;
+    }
+
+    .to_from_with_logo img {
+      height: 25px;
+    }
+
+    .to_from_with_logo div {
+      font-size: small;
+      line-height: 25px;
+      color: rgb(var(--grey));
     }
   </style>
 
@@ -99,11 +124,16 @@
           >
 
           <div class="info">
-            <div class="from_flickr">
-              From Flickr
+            <div class="to_from_with_logo from_flickr">
+              <img src="{{ url_for('static', filename='flickr-logo.svg') }}">
+
+              <div>From Flickr</div>
             </div>
-            <div class="to_wiki">
-              To the Wikimedia Commons Entry
+
+            <div class="to_from_with_logo to_wiki">
+              <img src="{{ url_for('static', filename='wikimedia-commons-logo.svg') }}">
+
+              <div>To the Wikimedia Commons Entry</div>
             </div>
 
             <div class="flickr_info">
