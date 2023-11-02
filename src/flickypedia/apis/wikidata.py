@@ -290,7 +290,7 @@ def render_wikidata_date(value):
     # See https://www.wikidata.org/wiki/Help:Dates#Precision
     if value["precision"] == 11:
         d = datetime.datetime.strptime(value["time"], "+%Y-%m-%dT00:00:00Z")
-        return "%s (precision: day, calendar: Gregorian)" % d.strftime("%d %B %Y")
+        return "%s (precision: day, calendar: Gregorian)" % d.strftime("%-d %B %Y")
     elif value["precision"] == 10:
         d = datetime.datetime.strptime(value["time"], "+%Y-%m-00T00:00:00Z")
         return "%s (precision: month, calendar: Gregorian)" % d.strftime("%B %Y")

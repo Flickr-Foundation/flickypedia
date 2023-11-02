@@ -229,6 +229,14 @@ def test_shows_posted_statement(app, vcr_cassette):
         ),
         pytest.param(
             {
+                "value": datetime.datetime(2023, 10, 1),
+                "granularity": 0,
+            },
+            "1 October 2023 (precision: day, calendar: Gregorian)",
+            id="day_precision_with_single_digit_day",
+        ),
+        pytest.param(
+            {
                 "value": datetime.datetime(2023, 10, 12),
                 "granularity": 4,
             },
