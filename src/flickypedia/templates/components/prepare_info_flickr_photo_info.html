@@ -31,6 +31,6 @@
 
   {% if photo.description %}
     <dt>Description:</dt>
-    <dd class="flickr_description">{{ photo.description }}</dd>
+    <dd class="flickr_description">{{ photo.description | truncate_description }}</dd>
   {% endif %}
 </dl>
