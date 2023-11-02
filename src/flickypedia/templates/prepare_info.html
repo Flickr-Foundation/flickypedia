@@ -3,6 +3,16 @@
 {% block head %}
   <script src="{{ url_for('static', filename='flickypedia.js') }}"></script>
 
+  <style>
+  #chosenCategories li {
+    margin-bottom: 0 !important;
+  }
+
+  #chosenCategories a {
+    margin-left: 10px;
+  }
+  </style>
+
   <script>
     window.onload = function() {
       document
@@ -17,6 +27,62 @@
 
           addCharCounterTo(textarea, counterElement);
         });
+
+      const textArea = document.querySelector("#photo_31545143905-categories");
+
+      textArea.style.background = "yellow";
+      textArea.style.opacity = 0.5;
+
+      var inputElement = document.createElement("input");
+      inputElement.type = "text";
+
+      const listElement = document.querySelector("#chosenCategories");
+
+      inputElement.addEventListener("input", () => {
+        if (inputElement.value === "") {
+          return;
+        }
+      })
+
+      inputElement.addEventListener("keypress", event => {
+        console.log(event.key);
+
+        if (event.key === 'Enter') {
+          const thisValue = inputElement.value;
+
+          existingCategories = textArea.value === '' ? [] : JSON.parse(textArea.value);
+          existingCategories.push(inputElement.value);
+
+          textArea.value = JSON.stringify(existingCategories);
+
+          const listEntry = document.createElement("li");
+
+          const span = document.createElement("span");
+          span.innerHTML = inputElement.value;
+          listEntry.appendChild(span);
+
+          const close = document.createElement("a");
+          close.innerHTML = "[X]"
+          close.onclick = function() {
+            existingCategories = textArea.value === '' ? [] : JSON.parse(textArea.value);
+            existingCategories = existingCategories.filter(v => v != thisValue);
+            textArea.value = JSON.stringify(existingCategories);
+
+            listElement.removeChild(listEntry);
+          }
+
+          listEntry.appendChild(close);
+
+          listElement.appendChild(listEntry);
+
+          inputElement.value = "";
+
+
+          event.preventDefault();
+        }
+      });
+
+      document.querySelector("#categoriesController").appendChild(inputElement);
     }
   </script>
 {% endblock %}
@@ -115,8 +181,6 @@
   <form id="prepare_info" action="" method="post">
     {{ prepare_info_form.hidden_tag() }}
 
-    {{ prepare_info_form.cached_api_response_id() }}
-
     <!-- TODO: These messages need to be plural-aware -->
 
     <h3>
@@ -212,8 +276,15 @@
 
             <p>
               <label for="{{ field.categories.id }}">Add a Wikimedia Commons category</label>
+
               {{ field.categories() }}
             </p>
+
+            <div id="categoriesController">
+            </div>
+
+            <ul id="chosenCategories">
+            </ul>
           </div>
 
           <details class="sdc">
