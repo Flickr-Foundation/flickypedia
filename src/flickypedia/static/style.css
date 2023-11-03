@@ -195,7 +195,7 @@ label .required, label .charCounter {
   color: rgb(var(--red));
 }
 
-.remove_category:hover {
+#prepare_info .wiki_info .selected_categories .remove_category:hover {
   background: none;
 }
 
