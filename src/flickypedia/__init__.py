@@ -90,7 +90,7 @@ def create_app(data_directory="data"):
     app.jinja_env.lstrip_blocks = True
 
     # Compile the SCSS file into CSS
-    sass_path = os.path.join(app.static_folder, 'style.scss')
+    sass_path = os.path.join(app.static_folder, 'assets', 'style.scss')
     css_path = os.path.join(app.static_folder, 'style.css')
 
     with open(css_path, 'w') as out_file:
