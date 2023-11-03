@@ -4,6 +4,7 @@ import sys
 
 from flask import Flask
 from jinja2 import StrictUndefined
+import sass
 
 from flickypedia.auth import (
     db,
@@ -87,6 +88,13 @@ def create_app(data_directory="data"):
     # This causes Jinja to remove extraneous whitespace.
     app.jinja_env.trim_blocks = True
     app.jinja_env.lstrip_blocks = True
+
+    # Compile the SCSS file into CSS
+    sass_path = os.path.join(app.static_folder, 'style.scss')
+    css_path = os.path.join(app.static_folder, 'style.css')
+
+    with open(css_path, 'w') as out_file:
+        out_file.write(sass.compile(filename=sass_path))
 
     return app
 

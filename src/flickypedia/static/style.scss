@@ -1,0 +1,298 @@
+/* Flickypedia palette, sent in a Slack DM from George to Alex
+ * on 27 Oct 2023.
+ *
+ * See https://flickrfoundation.slack.com/archives/D05UN456AGM/p1698397310132959
+ */
+$pink:    #E36397;
+$cream:   #FFFCF2;
+$brown:   #CCC5B9;
+$black:   #08090A;
+$grey:    #575A5E;
+
+/* Other palette colours we use. */
+$blue:    #069;    /* from the Wikimedia Commons logo */
+$red:     red;
+$yellow:  yellow;
+
+/* A couple of handy mixins. */
+@mixin link_styles($color, $opacity) {
+  color: $color;
+
+  &:hover {
+    background: rgba($color, $opacity);
+  }
+}
+
+/* Styles for the site. */
+
+body {
+  margin: 0;
+
+  background: $cream;
+  color: $black;
+
+  font-family: proxima-nova, sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+}
+
+main {
+  margin-left:  auto;
+  margin-right: auto;
+  max-width: 850px;
+  padding-left:  1em;
+  padding-right: 1em;
+  margin-bottom: 1em;
+}
+
+footer {
+  margin-top: 1em;
+  padding: 1em;
+
+  text-align: center;
+
+  background: $black;
+  color: $cream;
+
+  a {
+    @include link_styles($cream, 0.4)
+  }
+
+  li {
+    display: inline-block;
+
+    /* Add a pipe character between list elements */
+    &:not(:last-child):after {
+      content: "| ";
+      white-space: pre;
+      color: $grey;
+    }
+  }
+
+  /* This ensures the background color extends to the bottom of the page,
+     wherever the footer appears.
+
+     See https://designdev.blog/extend-footer-background-color-to-bottom-of-web-page/
+   */
+  box-shadow: 0 50vh 0 50vh $black;
+}
+
+ul.plain_list {
+  list-style-type: none;
+  padding: 0;
+  margin:  0;
+
+  /* If we nest a <ul> inside a plain list, it should appear to the user
+   * as if it's a top-level list with bullets, not circles. */
+  ul li {
+    list-style-type: disc;
+  }
+}
+
+a {
+  @include link_styles($blue, 0.3);
+}
+
+input[type="url"],
+input[type="text"],
+select,
+textarea {
+  border: 1px solid $brown;
+  border-radius: 8px;
+  padding: 10px 6px;
+  font-size: 1.2em;
+}
+
+select {
+  background: $cream;
+}
+
+input[type="url"],
+input[type="text"],
+textarea {
+  width: calc(100% - 20px);
+}
+
+.pink_button {
+  color: $cream;
+  font-size: 1.5em;
+  font-weight: bold;
+  border-radius: 8px;
+  background: $pink;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    background: darken($pink, 15%);
+  }
+
+  &:active {
+    transform: translate(0, 2px);
+  }
+}
+
+.warning {
+  background: lighten($yellow, 65%);
+  padding: 1em;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.highlight {
+  background: $yellow;
+}
+
+form.get_photos {
+  .inputs {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: auto 80px;
+    height: 50px;
+  }
+
+  input[type="url"] {
+    width: calc(100% - 10px);
+  }
+
+  input[type="button"] {
+    width: 80px;
+    text-transform: uppercase;
+  }
+
+  input[type="url"], input[type="button"] {
+    height: 28px;
+  }
+}
+
+#prepare_info {
+  li.photo {
+    margin-bottom: 2em;
+  }
+
+  .required, .validation_errors, .too_many_characters, .not_enough_characters {
+    font-family: monospace;
+    font-size: small;
+    color: $red;
+  }
+
+  .validation_errors {
+    margin-top: 7px;
+    line-height: 1.4em;
+
+    &.hidden {
+      display: none;
+    }
+
+  }
+
+  textarea + .validation_errors {
+    margin-top: 1px;
+  }
+
+  label {
+    display: flex;
+
+    .required, .charCounter {
+      display: inline;
+      margin-left: 1em;
+      margin-top: auto;
+      margin-bottom: 4.5px;
+    }
+  }
+
+  .flickr_info {
+    font-size: small;
+    margin-top: 4px;
+
+    dt {
+      font-weight: bold;
+
+      &:not(:first-child) {
+        margin-top: 1em;
+      }
+    }
+
+    dd {
+      margin-left: 0;
+    }
+  }
+
+  .flickr_description {
+    white-space: pre-line;
+  }
+
+  .selected_categories {
+    margin-top: 1em;
+
+    .remove_category {
+      margin-left: 5px;
+      cursor: pointer;
+      color: $red;
+
+      &:hover {
+        background: none;
+      }
+    }
+  }
+
+  /* Styles for "N characters remaining" on the short caption field */
+  .charCounter {
+    font-family: monospace;
+    font-size: small;
+    color: $grey;
+    margin-left: auto !important;
+    margin-right: 1em;
+
+    .remainingCharacters {
+      font-weight: bold;
+    }
+  }
+}
+
+/* These two selectors add a "barberpole" animation to any input field
+ * which is "thinking" (making an API request which hasn't returned yet).
+ *
+ * It's a basic progress indicator, similar to the one found in the
+ * Wikimedia Commons Upload Wizard interface.
+ *
+ * You can get a funky edge appear when the lines don't quite match up;
+ * the hope is that we're not "thinking" long enough for this to be
+ * noticeable!
+ *
+ * Based on https://css-tricks.com/books/fundamental-css-tactics/striped-barberpole-animation/
+ * Note that I've tweaked the background-position to go left-to-right,
+ * whereas the code in that article goes right-to-left.
+ */
+input.thinking {
+  animation: barberpole 21s linear infinite;
+  background-size: 200% 200%;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba($brown, 0.3),
+    rgba($brown, 0.3) 10px,
+    rgba($brown, 0.5) 10px,
+    rgba($brown, 0.5) 20px
+  );
+  background-position: 250% 100%;
+}
+
+@keyframes barberpole {
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+/* Temporary styles */
+main {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+.flashes {
+  color: $red;
+}

@@ -6,6 +6,7 @@ flask-wtf
 Flask-SQLAlchemy
 flickr-url-parser
 httpx
+libsass
 
 # This pin is because of an ImportError in flask-login caused by
 # a newer version of Werkzeug.
