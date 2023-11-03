@@ -135,3 +135,87 @@ function addCharCounterTo(inputElement, counterElement) {
     hideCharCounterOnBlur();
   });
 }
+
+/*
+ * Add interactive categories.
+ *
+ * We hide the <textarea> and insert an <input> field that will have
+ * an associated autocomplete function.
+ */
+function addInteractiveCategoriesTo(categoriesElement) {
+  const textAreaElement = categoriesElement.querySelector('textarea');
+
+  /* Hide the original <textarea> */
+  textAreaElement.style.background = 'yellow';
+
+  /* Create a new inputElement where the user can enter one category
+   * at a time. */
+  const inputElement = document.createElement('input');
+  inputElement.type = 'text';
+
+  textAreaElement.after(inputElement);
+
+  /* Create a visible <ul> element where we can show the user the list
+   * of categories they've selected.
+   */
+  const listOfCategories = document.createElement('ul');
+  inputElement.after(listOfCategories);
+
+  /* Add a category based on the current contents of this input element. */
+  function addCategory() {
+    const newCategory = inputElement.value;
+
+    if (newCategory === '') {
+      return;
+    }
+
+    /* Add it to the hidden <textarea> */
+    textAreaElement.value += `${newCategory}\n`;
+
+    /* Add it to the list of categories shown in the UI.
+     *
+     * This will show the name of the category and an [X] button to remove it.
+     */
+    const listEntry = document.createElement("li");
+
+    const span = document.createElement("span");
+    span.innerHTML = newCategory;
+    listEntry.appendChild(span);
+
+    const removeCategoryButton = document.createElement("a");
+    removeCategoryButton.innerHTML = '[X]';
+    removeCategoryButton.classList.add("remove_category");
+    removeCategoryButton.onclick = function() {
+      removeCategory(newCategory, listEntry)
+    }
+    listEntry.appendChild(removeCategoryButton);
+
+    listOfCategories.appendChild(listEntry);
+
+    /* Clear the <input> element */
+    inputElement.value = '';
+  }
+
+  /* Remove a category from the selected list. */
+  function removeCategory(categoryName, listEntryElement) {
+
+    /* Remove the category name from the <textarea> */
+    textAreaElement.value =
+      textAreaElement.value
+        .split('\n')
+        .filter(category => category != categoryName)
+        .join('\n');
+
+    /* Remove the category from the list of categories shown to the user */
+    listEntryElement.remove();
+  }
+
+  /* If somebody presses 'enter' in this field, add a category rather
+   * than submitting the form. */
+  inputElement.addEventListener('keypress', event => {
+    if (event.key === 'Enter') {
+      addCategory();
+      event.preventDefault();
+    }
+  });
+}
