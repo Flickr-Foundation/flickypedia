@@ -84,7 +84,7 @@ ul.plain_list {
 
   /* If we nest a <ul> inside a plain list, it should appear to the user
    * as if it's a top-level list with bullets, not circles. */
-  ul li {
+  ul:not(.plain_list) li {
     list-style-type: disc;
   }
 }
@@ -166,90 +166,7 @@ form.get_photos {
   }
 }
 
-#prepare_info {
-  li.photo {
-    margin-bottom: 2em;
-  }
-
-  .required, .validation_errors, .too_many_characters, .not_enough_characters {
-    font-family: monospace;
-    font-size: small;
-    color: $red;
-  }
-
-  .validation_errors {
-    margin-top: 7px;
-    line-height: 1.4em;
-
-    &.hidden {
-      display: none;
-    }
-
-  }
-
-  textarea + .validation_errors {
-    margin-top: 1px;
-  }
-
-  label {
-    display: flex;
-
-    .required, .charCounter {
-      display: inline;
-      margin-left: 1em;
-      margin-top: auto;
-      margin-bottom: 4.5px;
-    }
-  }
-
-  .flickr_info {
-    font-size: small;
-    margin-top: 4px;
-
-    dt {
-      font-weight: bold;
-
-      &:not(:first-child) {
-        margin-top: 1em;
-      }
-    }
-
-    dd {
-      margin-left: 0;
-    }
-  }
-
-  .flickr_description {
-    white-space: pre-line;
-  }
-
-  .selected_categories {
-    margin-top: 1em;
-
-    .remove_category {
-      margin-left: 5px;
-      cursor: pointer;
-      color: $red;
-
-      &:hover {
-        background: none;
-      }
-    }
-  }
-
-  /* Styles for "N characters remaining" on the short caption field */
-  .charCounter {
-    font-family: monospace;
-    font-size: small;
-    color: $grey;
-    margin-left: auto !important;
-    margin-right: 1em;
-
-    .remainingCharacters {
-      font-weight: bold;
-    }
-  }
-}
+@import "prepare_info.scss";
 
 /* These two selectors add a "barberpole" animation to any input field
  * which is "thinking" (making an API request which hasn't returned yet).

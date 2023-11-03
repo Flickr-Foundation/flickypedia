@@ -16,6 +16,7 @@ Flickypedia is a tool to copy openly licensed photos from Flickr to Wikimedia Co
 * templates
   * everything is named after URL paths
   * show steps as a Mermaid diagram
+* assets
 
 ## Development
 
