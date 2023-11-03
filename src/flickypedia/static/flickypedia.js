@@ -146,7 +146,7 @@ function addInteractiveCategoriesTo(categoriesElement) {
   const textAreaElement = categoriesElement.querySelector('textarea');
 
   /* Hide the original <textarea> */
-  textAreaElement.style.background = 'yellow';
+  textAreaElement.style.display = 'none';
 
   /* Create a new inputElement where the user can enter one category
    * at a time.  Next to the inputElement is a "+" button. */
@@ -234,4 +234,22 @@ function addInteractiveCategoriesTo(categoriesElement) {
       event.preventDefault();
     }
   });
+
+  /* If somebody pastes into this field, split on newlines and add those
+   * categories. */
+  inputElement.addEventListener('paste', event => {
+    const categories = (event.clipboardData || window.clipboardData)
+      .getData("text")
+      .split("\n");
+
+    for (i = 0; i < categories.length; i++) {
+      inputElement.value = categories[i];
+      addCategory();
+    }
+
+    /* The default action is to insert the text into the <input>, but
+     * we don't want that here -- we want the user to have an empty
+     * field for more inputs. */
+    event.preventDefault();
+  })
 }
