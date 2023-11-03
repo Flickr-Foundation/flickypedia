@@ -14,3 +14,5 @@ data
 *.exchange
 
 flickr_api_cache
+
+style.css
