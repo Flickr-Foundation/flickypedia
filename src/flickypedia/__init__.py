@@ -26,6 +26,7 @@ from flickypedia.views import (
     get_photos,
     get_upload_status,
     homepage,
+    lookup_categories_api,
     prepare_info,
     select_photos,
     truncate_description,
@@ -69,6 +70,7 @@ def create_app(data_directory="data"):
     app.add_url_rule("/bookmarklet", view_func=bookmarklet)
 
     app.add_url_rule("/api/validate_title", view_func=validate_title_api)
+    app.add_url_rule("/api/lookup_categories", view_func=lookup_categories_api)
 
     app.jinja_env.filters["a_href"] = a_href
     app.jinja_env.filters["html_unescape"] = html.unescape

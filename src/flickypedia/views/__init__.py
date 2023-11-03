@@ -1,6 +1,6 @@
 from flask import abort, render_template, request, jsonify
 
-from flickypedia.apis.wikimedia import validate_title
+from flickypedia.apis.wikimedia import lookup_categories, validate_title
 from .get_photos import get_photos
 from .prepare_info import prepare_info, truncate_description
 from .select_photos import select_photos
@@ -34,12 +34,22 @@ def validate_title_api():
     return jsonify(validate_title(title))
 
 
+def lookup_categories_api():
+    try:
+        query = request.args['query']
+    except KeyError:
+        return abort(400)
+
+    return jsonify(lookup_categories(query))
+
+
 __all__ = [
     "about",
     "bookmarklet",
     "get_photos",
     "get_upload_status",
     "homepage",
+    "lookup_categories_api",
     "prepare_info",
     "select_photos",
     "truncate_description",

@@ -192,9 +192,12 @@ def prepare_info():
         )
 
         from flask import flash
-        flash('go go go!')
 
-        from pprint import pprint; pprint(prepare_info_form.data)
+        flash("go go go!")
+
+        from pprint import pprint
+
+        pprint(prepare_info_form.data)
 
         # upload_batch_of_photos.apply_async(
         #     kwargs={

@@ -153,9 +153,14 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm) {
   const categoryInputs = document.createElement('div');
   categoryInputs.classList.add('category_inputs');
 
+  const autocompleteContainer = document.createElement('div');
+  autocompleteContainer.classList.add('autocomplete');
+
   const inputElement = document.createElement('input');
   inputElement.type = 'text';
-  categoryInputs.appendChild(inputElement);
+
+  autocompleteContainer.appendChild(inputElement);
+  categoryInputs.appendChild(autocompleteContainer);
 
   /* Create a button that a user can click to add a new category. */
   const addCategoryButton = document.createElement('input');
@@ -259,4 +264,101 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm) {
   parentForm.addEventListener('submit', () => {
     addCategory();
   });
+
+  /* As somebody starts typing in this form, query the Wikimedia API
+   * and offer an autocomplete menu for categories.
+   *
+   * This is loosely based on code from
+   * https://www.w3schools.com/howto/howto_js_autocomplete.asp
+   */
+  var currentFocus = -1;
+
+  inputElement.addEventListener('input', () => openAutocompleteMenu());
+  inputElement.addEventListener('blur', () => closeAutocompleteMenus());
+  inputElement.addEventListener('focus', () => openAutocompleteMenu());
+
+  inputElement.autocomplete = 'off';
+
+  function openAutocompleteMenu() {
+    closeAutocompleteMenus();
+
+    if (inputElement.value === '') {
+      return;
+    }
+
+    currentFocus = -1;
+
+    inputElement.classList.add('thinking');
+
+    const autocompleteElement = document.createElement('div');
+    autocompleteElement.classList.add('autocomplete-items');
+
+    autocompleteContainer.appendChild(autocompleteElement);
+
+    fetch(`/api/lookup_categories?query=${inputElement.value}`)
+      .then((response) => response.json())
+      .then((json) => {
+        for (i = 0; i < json.length; i++) {
+          var suggestion = json[i];
+          const suggestionElement = document.createElement('div');
+          suggestionElement.innerHTML = suggestion;
+
+          suggestionElement.addEventListener('click', () => {
+            inputElement.value = suggestionElement.innerHTML;
+            addCategory();
+            closeAutocompleteMenus();
+          })
+
+          autocompleteElement.appendChild(suggestionElement);
+        }
+
+        inputElement.classList.remove('thinking');
+      });
+  }
+
+  inputElement.addEventListener('keydown', event => {
+    if (event.key === 'ArrowDown') {
+      currentFocus++;
+      updateFocusedItem();
+    } else if (event.key === 'ArrowUp') {
+      currentFocus--;
+      updateFocusedItem();
+    } else if (event.key === 'Enter') {
+      if (currentFocus > -1) {
+
+        inputElement.value =
+          autocompleteContainer
+            .querySelector('.autocomplete-items')
+            .children[currentFocus]
+            .innerHTML;
+
+        addCategory();
+        closeAutocompleteMenus();
+
+        event.preventDefault();
+      }
+    }
+  });
+
+  function updateFocusedItem() {
+    const items =
+      autocompleteContainer
+        .querySelector('.autocomplete-items')
+        .children;
+
+    for (i = 0; i < items.length; i++) {
+      if (i === currentFocus) {
+        items[i].classList.add('autocomplete-active');
+      } else {
+        items[i].classList.remove('autocomplete-active');
+      }
+    }
+  }
+
+  function closeAutocompleteMenus() {
+    currentFocus = -1;
+    document
+      .querySelectorAll('.autocomplete-items')
+      .forEach(item => item.remove());
+  }
 }
