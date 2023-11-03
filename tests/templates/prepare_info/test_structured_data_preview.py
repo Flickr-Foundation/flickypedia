@@ -26,7 +26,7 @@ def prettify_html(html, find_kwargs=None):
 
 def get_html(claims):
     html = render_template(
-        "components/structured_data_preview.html", structured_data=claims
+        "prepare_info/structured_data_preview.html", structured_data=claims
     )
 
     html = re.sub(r"\s+", " ", html)

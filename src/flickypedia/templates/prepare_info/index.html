@@ -167,60 +167,15 @@
             <div>To the Wikimedia Commons Entry</div>
           </div>
 
-          {% include "components/prepare_info_flickr_photo_info.html" %}
+          {% include "prepare_info/flickr_photo_info.html" %}
 
-          <div class="wiki_info">
-            <label for="{{ field.title.id }}">
-              Title
-              <div class="required">required</div>
-            </label>
-            {{
-              field.title(
-                data_type="title",
-                data_originalformat=photo['original_format']
-              )
-            }}
-
-            <p class="validation_errors
-                      {% if not field.title.errors %}hidden{% endif %}"
-               for="{{ field.title.id }}">
-              {{ " ".join(field.title.errors) }}
-            </p>
-
-            <label for="{{ field.short_caption.id }}">
-              Short caption
-              <div class="required">required</div>
-              <div class="charCounter"></div>
-            </label>
-            {{ field.short_caption(data_type="short_caption", rows="3") }}
-
-            <!--
-              This error message comes from the server, but users with
-              JS enabled will get an inline message that updates with
-              the number of characters in real-time.
-
-              We only need to show the error from the server if the
-              user doesn't have JS enabled.
-             -->
-            {% if field.short_caption.errors %}
-              <noscript>
-                <p class="validation_errors">
-                  {{ " ".join(field.short_caption.errors) }}
-                </p>
-              </noscript>
-            {% endif %}
-
-            <p>
-              <label for="{{ field.categories.id }}">Add a Wikimedia Commons category</label>
-              {{ field.categories() }}
-            </p>
-          </div>
+          {% include "prepare_info/wiki_fields_form.html" %}
 
           <details class="sdc">
             <summary>More details</summary>
 
             {% with structured_data = photo.sdc %}
-              {% include "components/structured_data_preview.html" %}
+              {% include "prepare_info/structured_data_preview.html" %}
             {% endwith %}
           </details>
         </div>

@@ -27,7 +27,7 @@ from flickypedia.utils import size_at
 from .select_photos import get_cached_api_response, remove_cached_api_response
 
 
-class PhotoInfoForm(Form):
+class WikiFieldsForm(Form):
     # This is based on the restrictions from Wikimedia Commons.
     # Note that these are only loose limits -- the max length is actually
     # 240 bytes, nor characters.
@@ -105,10 +105,10 @@ def create_prepare_info_form(photos):
             date_taken=p["date_taken"],
         )
 
-        class ThisPhotoInfoForm(PhotoInfoForm):
+        class FormForThisPhoto(WikiFieldsForm):
             original_format = p["original_format"]
 
-        setattr(CustomForm, f"photo_{p['id']}", FormField(ThisPhotoInfoForm, label=p))
+        setattr(CustomForm, f"photo_{p['id']}", FormField(FormForThisPhoto, label=p))
 
     return CustomForm()
 
@@ -203,7 +203,7 @@ def prepare_info():
         return redirect(url_for("wait_for_upload", task_id=cached_api_response_id))
 
     return render_template(
-        "prepare_info.html",
+        "prepare_info/index.html",
         current_step="prepare_info",
         prepare_info_form=prepare_info_form,
         photo_fields=[

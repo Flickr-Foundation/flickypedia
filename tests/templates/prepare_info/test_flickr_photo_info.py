@@ -15,7 +15,7 @@ EMPTY_INFO = {
 
 def get_metadata(photo):
     html = render_template(
-        "components/prepare_info_flickr_photo_info.html", photo={**EMPTY_INFO, **photo}
+        "prepare_info/flickr_photo_info.html", photo={**EMPTY_INFO, **photo}
     )
 
     soup = bs4.BeautifulSoup(html, "html.parser")

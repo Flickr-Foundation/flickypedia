@@ -9,6 +9,14 @@ Flickypedia is a tool to copy openly licensed photos from Flickr to Wikimedia Co
 *   Flickr APIs for download
 *   Celery for background processing
 
+## How to understand the codebase
+
+* __init__.py
+* views
+* templates
+  * everything is named after URL paths
+  * show steps as a Mermaid diagram
+
 ## Development
 
 You can set up a local development environment by cloning the repo and installing dependencies:
