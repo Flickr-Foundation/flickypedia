@@ -189,21 +189,26 @@ def prepare_info():
             selected_photos, form_data=prepare_info_form.data
         )
 
-        upload_batch_of_photos.apply_async(
-            kwargs={
-                "oauth_info": {
-                    "access_token": current_user.access_token(),
-                    "access_token_expires": current_user.access_token_expires,
-                    "refresh_token": current_user.refresh_token(),
-                },
-                "photos_to_upload": photos_to_upload,
-            },
-            task_id=cached_api_response_id,
-        )
+        from flask import flash
+        flash('go go go!')
 
-        remove_cached_api_response(response_id=cached_api_response_id)
+        from pprint import pprint; pprint(prepare_info_form.data)
 
-        return redirect(url_for("wait_for_upload", task_id=cached_api_response_id))
+        # upload_batch_of_photos.apply_async(
+        #     kwargs={
+        #         "oauth_info": {
+        #             "access_token": current_user.access_token(),
+        #             "access_token_expires": current_user.access_token_expires,
+        #             "refresh_token": current_user.refresh_token(),
+        #         },
+        #         "photos_to_upload": photos_to_upload,
+        #     },
+        #     task_id=cached_api_response_id,
+        # )
+        #
+        # remove_cached_api_response(response_id=cached_api_response_id)
+        #
+        # return redirect(url_for("wait_for_upload", task_id=cached_api_response_id))
 
     return render_template(
         "prepare_info/index.html",
