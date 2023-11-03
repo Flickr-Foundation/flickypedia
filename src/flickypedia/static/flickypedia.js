@@ -149,18 +149,33 @@ function addInteractiveCategoriesTo(categoriesElement) {
   textAreaElement.style.background = 'yellow';
 
   /* Create a new inputElement where the user can enter one category
-   * at a time. */
+   * at a time.  Next to the inputElement is a "+" button. */
+  const categoryInputs = document.createElement('div');
+  categoryInputs.classList.add('category_inputs');
+
   const inputElement = document.createElement('input');
   inputElement.type = 'text';
+  categoryInputs.appendChild(inputElement);
 
-  textAreaElement.after(inputElement);
+  /* Create a button that a user can click to add a new category. */
+  const addCategoryButton = document.createElement('input');
+  addCategoryButton.type = 'button';
+  addCategoryButton.value = '+';
+  addCategoryButton.classList.add("pink_button");
+  addCategoryButton.onclick = function(event) {
+    addCategory();
+    event.preventDefault();
+  }
+  categoryInputs.appendChild(addCategoryButton);
+
+  textAreaElement.after(categoryInputs);
 
   /* Create a visible <ul> element where we can show the user the list
    * of categories they've selected.
    */
   const listOfCategories = document.createElement('ul');
   listOfCategories.classList.add("selected_categories");
-  inputElement.after(listOfCategories);
+  categoryInputs.after(listOfCategories);
 
   /* Add a category based on the current contents of this input element. */
   function addCategory() {
