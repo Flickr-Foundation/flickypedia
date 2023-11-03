@@ -159,6 +159,7 @@ function addInteractiveCategoriesTo(categoriesElement) {
    * of categories they've selected.
    */
   const listOfCategories = document.createElement('ul');
+  listOfCategories.classList.add("selected_categories");
   inputElement.after(listOfCategories);
 
   /* Add a category based on the current contents of this input element. */
@@ -183,7 +184,7 @@ function addInteractiveCategoriesTo(categoriesElement) {
     listEntry.appendChild(span);
 
     const removeCategoryButton = document.createElement("a");
-    removeCategoryButton.innerHTML = '[X]';
+    removeCategoryButton.innerHTML = '[x]';
     removeCategoryButton.classList.add("remove_category");
     removeCategoryButton.onclick = function() {
       removeCategory(newCategory, listEntry)

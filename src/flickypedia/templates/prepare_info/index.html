@@ -33,9 +33,6 @@
   <h2>Prepare info</h2>
 
   <style>
-    #prepare_info li {
-      margin-bottom: 2em;
-    }
 
     .info {
       display: grid;
@@ -138,7 +135,7 @@
     <ul class="plain_list">
       {% for field in photo_fields %}
         {% set photo = field.label.text %}
-        <li>
+        <li class="photo">
 
         {% set large_size = photo.sizes | size_at(desired_size='Large') %}
 
