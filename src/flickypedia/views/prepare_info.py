@@ -45,7 +45,10 @@ class WikiFieldsForm(Form):
         validators=[DataRequired(), Length(min=5, max=250)], widget=TextArea()
     )
 
-    categories = StringField()
+    # The categories will be written in the textarea, one per line.
+    #
+    # See the comments in the form template.
+    categories = StringField(widget=TextArea())
 
     original_format: str
 

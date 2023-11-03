@@ -17,6 +17,12 @@
 
           addCharCounterTo(textarea, counterElement);
         });
+
+      document
+        .querySelectorAll('.categories')
+        .forEach(categoriesElement => {
+          addInteractiveCategoriesTo(categoriesElement)
+        });
     }
   </script>
 {% endblock %}
@@ -58,9 +64,9 @@
       grid-row: 2 / 3;
     }
 
-    .wiki_info label:not(:first-child) {
+    .wiki_info label:not(:first-child), .wiki_info .categories {
       display: block;
-      margin-top: 1.5em;
+      margin-top: 1em;
     }
 
     .sdc {
