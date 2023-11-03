@@ -14,14 +14,7 @@ $blue:    #069;    /* from the Wikimedia Commons logo */
 $red:     red;
 $yellow:  yellow;
 
-/* A couple of handy mixins. */
-@mixin link_styles($color, $opacity) {
-  color: $color;
-
-  &:hover {
-    background: rgba($color, $opacity);
-  }
-}
+@import "mixins.scss";
 
 /* Styles for the site. */
 
@@ -144,30 +137,6 @@ textarea {
   background: $yellow;
 }
 
-form.get_photos {
-  .inputs {
-    display: grid;
-    grid-gap: 10px;
-    grid-template-columns: auto 80px;
-    height: 50px;
-  }
-
-  input[type="url"] {
-    width: calc(100% - 10px);
-  }
-
-  input[type="button"] {
-    width: 80px;
-    text-transform: uppercase;
-  }
-
-  input[type="url"], input[type="button"] {
-    height: 28px;
-  }
-}
-
-@import "prepare_info.scss";
-
 /* These two selectors add a "barberpole" animation to any input field
  * which is "thinking" (making an API request which hasn't returned yet).
  *
@@ -200,6 +169,9 @@ input.thinking {
     background-position: 100% 100%;
   }
 }
+
+@import "get_photos.scss";
+@import "prepare_info.scss";
 
 /* Temporary styles */
 main {
