@@ -20,7 +20,7 @@
       }
       
       rect.step {
-        fill: rgb(var(--brown));
+        fill: var(--brown);
       }
 
       path {
