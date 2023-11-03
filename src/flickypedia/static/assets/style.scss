@@ -14,6 +14,12 @@ $blue:    #069;    /* from the Wikimedia Commons logo */
 $red:     red;
 $yellow:  yellow;
 
+:root {
+  --black: #{$black};
+  --brown: #{$brown};
+  --cream: #{$cream};
+}
+
 @import "mixins.scss";
 
 /* Styles for the site. */
@@ -135,6 +141,20 @@ textarea {
 
 .highlight {
   background: $yellow;
+}
+
+svg a {
+  color: $black;
+}
+
+svg a text,
+svg a tspan {
+  color: $cream;
+  font-weight: bold;
+}
+
+svg rect.step {
+  fill: $brown;
 }
 
 /* These two selectors add a "barberpole" animation to any input field
