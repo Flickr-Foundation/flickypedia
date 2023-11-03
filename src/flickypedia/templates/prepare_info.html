@@ -10,6 +10,13 @@
 
   #chosenCategories a {
     margin-left: 10px;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+
   }
   </style>
 
@@ -28,7 +35,7 @@
           addCharCounterTo(textarea, counterElement);
         });
 
-      const textArea = document.querySelector("#photo_31545143905-categories");
+      const textArea = document.querySelector("#photo_53289942695-categories");
 
       textArea.style.background = "yellow";
       textArea.style.opacity = 0.5;
@@ -44,41 +51,60 @@
         }
       })
 
+      function addCategory() {
+        const thisValue = inputElement.value;
+
+        existingCategories = textArea.value === '' ? [] : JSON.parse(textArea.value);
+        existingCategories.push(inputElement.value);
+
+        textArea.value = JSON.stringify(existingCategories);
+
+        const listEntry = document.createElement("li");
+
+        const span = document.createElement("span");
+        span.innerHTML = inputElement.value;
+        listEntry.appendChild(span);
+
+        const close = document.createElement("a");
+        close.innerHTML = "[X]"
+        close.onclick = function() {
+          existingCategories = textArea.value === '' ? [] : JSON.parse(textArea.value);
+          existingCategories = existingCategories.filter(v => v != thisValue);
+          textArea.value = JSON.stringify(existingCategories);
+
+          listElement.removeChild(listEntry);
+        }
+
+        listEntry.appendChild(close);
+
+        listElement.appendChild(listEntry);
+
+        inputElement.value = "";
+
+
+        event.preventDefault();
+      }
+
+      inputElement.addEventListener("paste", event => {
+        event.preventDefault();
+
+        let paste = (event.clipboardData || window.clipboardData).getData("text");
+
+        const lines = paste.split("\n");
+
+        for (i = 0; i < lines.length; i++) {
+          inputElement.value = lines[i];
+          addCategory();
+        }
+
+        console.log(lines);
+      })
+
       inputElement.addEventListener("keypress", event => {
         console.log(event.key);
 
         if (event.key === 'Enter') {
-          const thisValue = inputElement.value;
-
-          existingCategories = textArea.value === '' ? [] : JSON.parse(textArea.value);
-          existingCategories.push(inputElement.value);
-
-          textArea.value = JSON.stringify(existingCategories);
-
-          const listEntry = document.createElement("li");
-
-          const span = document.createElement("span");
-          span.innerHTML = inputElement.value;
-          listEntry.appendChild(span);
-
-          const close = document.createElement("a");
-          close.innerHTML = "[X]"
-          close.onclick = function() {
-            existingCategories = textArea.value === '' ? [] : JSON.parse(textArea.value);
-            existingCategories = existingCategories.filter(v => v != thisValue);
-            textArea.value = JSON.stringify(existingCategories);
-
-            listElement.removeChild(listEntry);
-          }
-
-          listEntry.appendChild(close);
-
-          listElement.appendChild(listEntry);
-
-          inputElement.value = "";
-
-
-          event.preventDefault();
+          addCategory();
         }
       });
 
