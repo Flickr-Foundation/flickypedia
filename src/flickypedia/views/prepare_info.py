@@ -203,7 +203,7 @@ def prepare_info():
         return redirect(url_for("wait_for_upload", task_id=cached_api_response_id))
 
     return render_template(
-        "prepare_info.html",
+        "prepare_info/index.html",
         current_step="prepare_info",
         prepare_info_form=prepare_info_form,
         photo_fields=[
