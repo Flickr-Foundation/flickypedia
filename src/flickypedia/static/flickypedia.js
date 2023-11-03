@@ -142,7 +142,7 @@ function addCharCounterTo(inputElement, counterElement) {
  * We hide the <textarea> and insert an <input> field that will have
  * an associated autocomplete function.
  */
-function addInteractiveCategoriesTo(categoriesElement) {
+function addInteractiveCategoriesTo(categoriesElement, parentForm) {
   const textAreaElement = categoriesElement.querySelector('textarea');
 
   /* Hide the original <textarea> */
@@ -251,5 +251,12 @@ function addInteractiveCategoriesTo(categoriesElement) {
      * we don't want that here -- we want the user to have an empty
      * field for more inputs. */
     event.preventDefault();
-  })
+  });
+
+  /* If the user clicks the "Upload" button, add anything in the <input>
+   * which they haven't explicitly added to the list of categories.
+   */
+  parentForm.addEventListener('submit', () => {
+    addCategory();
+  });
 }
