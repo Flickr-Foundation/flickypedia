@@ -1,8 +1,6 @@
-# flickypedia
+<img src="logo.svg" alt="Flickypedia, by Flickr.org">
 
-This is a tool to copy Creative Commons-licensed photos from Flickr to Wikimedia Commons.
-
-It's in its initial stages, but check back soon for more info!
+Flickypedia is a tool to copy openly licensed photos from Flickr to Wikimedia Commons.
 
 ## Key pieces
 
@@ -31,6 +29,9 @@ $ pip install -r dev_requirements.txt
 $ coverage run -m pytest tests
 $ coverage report
 ```
+
+* What keys do you need?
+* How do you run the app?
 
 ## How to run the background worker
 
