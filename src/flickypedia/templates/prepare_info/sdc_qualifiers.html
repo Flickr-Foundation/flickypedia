@@ -4,7 +4,7 @@
     <li>
       {{ qualifiers[q][0].property | wikidata_property_name }}:
       {% with datavalue = qualifiers[q][0].datavalue %}
-        {% include "components/sdc_value.html" %}
+        {% include "prepare_info/sdc_value.html" %}
       {% endwith %}
     </li>
     {% endfor %}

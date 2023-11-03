@@ -68,7 +68,7 @@
     #}
     {% if claim.mainsnak.snaktype == 'value' %}
       {% with datavalue = claim.mainsnak.datavalue %}
-        {% include "components/sdc_value.html" %}
+        {% include "prepare_info/sdc_value.html" %}
       {% endwith %}
     {% elif claim.mainsnak.snaktype == 'somevalue' %}
     {% else %}
@@ -76,7 +76,7 @@
     {% endif %}
 
     {% with qualifiers = claim.qualifiers %}
-      {% include "components/sdc_qualifiers.html" %}
+      {% include "prepare_info/sdc_qualifiers.html" %}
     {% endwith %}
   </dd>
   {% endfor %}
