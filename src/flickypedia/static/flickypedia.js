@@ -273,12 +273,30 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm) {
    */
   var currentFocus = -1;
 
+  /* When somebody starts typing or switches to this field, open
+   * the autocomplete menu. */
   inputElement.addEventListener('input', () => openAutocompleteMenu());
-  inputElement.addEventListener('blur', () => closeAutocompleteMenus());
   inputElement.addEventListener('focus', () => openAutocompleteMenu());
 
+  /* When somebody switches or clicks away from the input, close the
+   * autocomplete menu -- unless they clicked on an autocomplete suggestion,
+   * in which case apply that first. */
+  inputElement.addEventListener('blur', event => {
+    if (event.relatedTarget !== null) {
+      if (event.relatedTarget.classList.contains('suggestion')) {
+        inputElement.value = event.relatedTarget.innerHTML;
+        addCategory();
+      }
+    }
+
+    closeAutocompleteMenus();
+  });
+
+  /* An attempt to disable browser autocomplete from interfering. */
   inputElement.autocomplete = 'off';
 
+  /* Open the autocomplete menu -- query the Flickypedia API to get a
+   * list of category suggestions, then put them in a list. */
   function openAutocompleteMenu() {
     closeAutocompleteMenus();
 
@@ -301,13 +319,20 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm) {
         for (i = 0; i < json.length; i++) {
           var suggestion = json[i];
           const suggestionElement = document.createElement('div');
+          suggestionElement.classList.add('suggestion');
           suggestionElement.innerHTML = suggestion;
 
-          suggestionElement.addEventListener('click', () => {
-            inputElement.value = suggestionElement.innerHTML;
-            addCategory();
-            closeAutocompleteMenus();
-          })
+          /* This allows the element to receive focus.
+           *
+           * In turn, when the blur event fires on the 'input' element
+           * (somebody has clicked elsewhere), we can detect if:
+           *
+           *    - they clicked on this suggestion, in which case we should
+           *      apply it, or
+           *    - they clicked somewhere else, in which case we should just
+           *      close the autocomplete menu.
+           */
+          suggestionElement.tabIndex = "-1";
 
           autocompleteElement.appendChild(suggestionElement);
         }

@@ -1,3 +1,4 @@
+import functools
 import json
 
 import httpx
@@ -432,7 +433,10 @@ def validate_title(title: str):
     return {"result": "ok"}
 
 
+@functools.lru_cache()
 def lookup_categories(query):
+    # TODO: Add an API key here to avoid rate limiting?
+    # See https://api.wikimedia.org/wiki/Rate_limits#:~:text=API%20requests%20authenticated%20using%20a,to%205%2C000%20requests%20per%20hour.
     api = WikimediaPublicApi()
 
     resp = api._get(
