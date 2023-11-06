@@ -6,9 +6,8 @@ class TestOAuth2AuthorizeWikimedia:
             resp = client.get("/authorize/wikimedia")
 
         assert resp.status_code == 302
-        assert (
-            resp.headers["location"]
-            == "https://meta.wikimedia.org/w/rest.php/oauth2/authorize?client_id=example1234&response_type=code"
+        assert resp.headers["location"].startswith(
+            "https://meta.wikimedia.org/w/rest.php/oauth2/authorize?response_type=code&client_id=example1234&state="
         )
 
     def test_logged_in_user_is_redirected_to_get_photos(self, logged_in_client):
@@ -33,6 +32,14 @@ def test_logging_out_removes_user(logged_in_client):
     assert auth_resp.headers["location"].startswith("https://meta.wikimedia.org/")
 
 
+def test_can_get_token_from_wikimedia(client):
+    resp = client.get("/authorize/wikimedia")
+
+    print(resp)
+
+    assert 0
+
+
 class TestOAuth2CallbackWikimedia:
     def test_already_logged_in_bypasses_flow(self, logged_in_client):
         resp = logged_in_client.get("/callback/wikimedia")
@@ -42,8 +49,24 @@ class TestOAuth2CallbackWikimedia:
         assert resp.status_code == 302
         assert resp.headers["location"] == "/get_photos"
 
-    def test_missing_code_is_error(self, client):
-        resp = client.get("/callback/wikimedia")
+    def test_missing_state_is_error(self, client):
+        resp = client.get("/callback/wikimedia?code=12345")
+
+        assert resp.status_code == 401
+
+    def test_missing_code_is_error(self, client, vcr_cassette):
+        with client.session_transaction() as session:
+            session["oauth_authorize_state"] = "1234"
+
+        resp = client.get("/callback/wikimedia?state=XYZ")
+
+        assert resp.status_code == 401
+
+    def test_mismatched_code_is_error(self, client, vcr_cassette):
+        with client.session_transaction() as session:
+            session["oauth_authorize_state"] = "1234"
+
+        resp = client.get("/callback/wikimedia?code=ABC&state=XYZ")
 
         assert resp.status_code == 401
 

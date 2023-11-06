@@ -1,13 +1,22 @@
 import json
 
+from authlib.integrations.httpx_client.oauth2_client import OAuth2Client
 import httpx
 
 
 class WikimediaApiBase:
     client: httpx.Client
+    user_agent: str
 
     def _request(self, *, method, **kwargs):
-        resp = self.client.request(method, url="w/api.php", **kwargs)
+        resp = self.client.request(
+            method,
+            url="https://commons.wikimedia.org/w/api.php",
+            headers={
+                "User-Agent": self.user_agent,
+            },
+            **kwargs,
+        )
 
         # When something goes wrong, we get an ``error`` key in the response.
         #
@@ -38,6 +47,28 @@ class WikimediaApiBase:
         )
 
 
+class WikimediaOAuthApi(WikimediaApiBase):
+    def __init__(self, *, client: OAuth2Client, token, user_agent: str):
+        self.client = client
+        client.token = token
+
+        self.user_agent = user_agent
+
+    def get_userinfo(self) -> str:
+        """
+        Returns the user ID and name for a Wikimedia Commons user.
+
+            >>> get_userinfo()
+            {"id": 829939, "name": "Alexwlchan"}
+
+        See https://www.mediawiki.org/wiki/API:Userinfo
+
+        """
+        resp = self._get(params={"action": "query", "meta": "userinfo"})
+
+        return resp["query"]["userinfo"]
+
+
 class WikimediaApi(WikimediaApiBase):
     """
     This is a thin wrapper for calling the Wikimedia API.
@@ -48,6 +79,7 @@ class WikimediaApi(WikimediaApiBase):
     """
 
     def __init__(self, *, access_token, user_agent):
+        self.user_agent = user_agent
         self.client = httpx.Client(
             base_url="https://commons.wikimedia.org",
             headers={
@@ -307,6 +339,7 @@ class WikimediaApi(WikimediaApiBase):
 class WikimediaPublicApi(WikimediaApiBase):
     def __init__(self):
         self.client = httpx.Client(base_url="https://commons.wikimedia.org")
+        self.user_agent = "testing"
 
 
 def validate_title(title: str):

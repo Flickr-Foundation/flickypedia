@@ -53,13 +53,17 @@ to the user's browser can't just retrieve their token.
 *   Auth0's "Token Storage" docs
     https://auth0.com/docs/secure/security-guidance/data-security/token-storage
 
+*   OAuth 2 Session in the authlib docs:
+    https://docs.authlib.org/en/latest/client/oauth2.html
+
 """
 
 import datetime
+import json
 from typing import TypedDict
-from urllib.parse import urlencode
 import uuid
 
+from authlib.integrations.httpx_client.oauth2_client import OAuth2Client
 from cryptography.fernet import Fernet
 from flask import abort, current_app, flash, redirect, request, session, url_for
 from flask_login import (
@@ -71,9 +75,8 @@ from flask_login import (
     logout_user,
 )
 from flask_sqlalchemy import SQLAlchemy
-import httpx
 
-from flickypedia.apis.wikimedia import WikimediaApi
+from flickypedia.apis.wikimedia import WikimediaOAuthApi
 from flickypedia.utils import decrypt_string, encrypt_string
 
 
@@ -94,6 +97,33 @@ SESSION_ID_KEY = "oauth_userid_wikimedia"
 SESSION_ENCRYPTION_KEY = "oauth_key_wikimedia"
 
 
+def get_oauth_client() -> OAuth2Client:
+    """
+    Creates an OAuth2 client which uses our app credentials to connect to Wikimedia.
+    """
+    config = current_app.config["OAUTH2_PROVIDERS"]["wikimedia"]
+
+    return OAuth2Client(
+        client_id=config["client_id"],
+        client_secret=config["client_secret"],
+        authorization_endpoint=config["authorize_url"],
+        token_endpoint=config["token_url"],
+    )
+
+
+def get_wikimedia_client() -> WikimediaOAuthApi:
+    """
+    Returns an instance of the Wikimedia OAuth API which is connected for the
+    current user.
+    """
+    client = get_oauth_client()
+    token = current_user.token()
+
+    return WikimediaOAuthApi(
+        client=client, token=token, user_agent=current_app.config["USER_AGENT"]
+    )
+
+
 class WikimediaUserSession(UserMixin, db.Model):
     """
     Represents a single session for a logged-in Wikimedia user.
@@ -105,18 +135,13 @@ class WikimediaUserSession(UserMixin, db.Model):
     id = db.Column(db.String(64), primary_key=True)
     userid = db.Column(db.Integer, nullable=False)
     name = db.Column(db.String(64), nullable=False)
-    encrypted_access_token = db.Column(db.LargeBinary, nullable=False)
-    access_token_expires = db.Column(db.DateTime, nullable=False)
-    encrypted_refresh_token = db.Column(db.LargeBinary, nullable=False)
+    encrypted_token = db.Column(db.LargeBinary, nullable=False)
 
-    def access_token(self):
-        return decrypt_string(
-            key=session[SESSION_ENCRYPTION_KEY], ciphertext=self.encrypted_access_token
-        )
-
-    def refresh_token(self):
-        return decrypt_string(
-            key=session[SESSION_ENCRYPTION_KEY], ciphertext=self.encrypted_refresh_token
+    def token(self):
+        return json.loads(
+            decrypt_string(
+                key=session[SESSION_ENCRYPTION_KEY], ciphertext=self.encrypted_token
+            )
         )
 
     @property
@@ -166,22 +191,20 @@ def oauth2_authorize_wikimedia():
     if not current_user.is_anonymous:
         return redirect(url_for("get_photos"))
 
-    provider_data = current_app.config["OAUTH2_PROVIDERS"]["wikimedia"]
-
     # Create a URL that takes the user to a page on meta.wikimedia.org
     # where they can log in with their Wikimedia account and approve
     # an authorization request.
     #
     # This is the URL described in step 2 of
     # https://api.wikimedia.org/wiki/Authentication#2._Request_authorization
-    qs = urlencode(
-        {
-            "client_id": provider_data["client_id"],
-            "response_type": "code",
-        }
+    client = get_oauth_client()
+    uri, state = client.create_authorization_url(
+        url=client.metadata["authorization_endpoint"]
     )
 
-    return redirect(provider_data["authorize_url"] + "?" + qs)
+    session["oauth_authorize_state"] = state
+
+    return redirect(uri)
 
 
 def oauth2_callback_wikimedia():
@@ -193,55 +216,27 @@ def oauth2_callback_wikimedia():
     if not current_user.is_anonymous:
         return redirect(url_for("get_photos"))
 
-    # TODO: This is copied out of Miguel Grinberg's Flask tutorial.
-    #
-    # It seems benign enough, but does the Wikimedia redirect ever
-    # actually include this parameter?
-    if "error" in request.args:
-        for k, v in request.args.items():
-            flash(f"{k}: {v}")
-        return redirect(url_for("homepage"))
+    # Exchange the authorization response for an access token
+    client = get_oauth_client()
 
-    # Make sure the authorization code is present
     try:
-        authorization_code = request.args["code"]
+        state = session.pop("oauth_authorize_state")
     except KeyError:
-        flash("No authorization code in callback")
         abort(401)
 
-    # Exchange the authorization code for an access token
-    provider_data = current_app.config["OAUTH2_PROVIDERS"]["wikimedia"]
-
-    resp = httpx.post(
-        provider_data["token_url"],
-        data={
-            "grant_type": "authorization_code",
-            "code": authorization_code,
-            "client_id": provider_data["client_id"],
-            "client_secret": provider_data["client_secret"],
-        },
-    )
-
-    if resp.status_code != 200:
-        flash("Error while getting access token from Wikimedia")
-        abort(401)
-
-    # Extract the key values from the token response.
-    #
-    # As well as the ``access_token`` and ``refresh_token`` fields
-    # described in their docs, Wikimedia also returns an ``expires``
-    # field which tells us how long the access token will last.
     try:
-        access_token = resp.json()["access_token"]
-        refresh_token = resp.json()["refresh_token"]
-        expires_in = resp.json()["expires_in"]
-    except KeyError:
-        flash("Malformed access token response from Wikimedia")
+        token = client.fetch_token(
+            token_endpoint=client.metadata["token_endpoint"],
+            authorization_response=request.url,
+            state=state,
+        )
+    except Exception as exc:
+        print(f'Error exchanging authorization code for token: {exc}')
         abort(401)
 
     # Get info about the logged in user
-    api = WikimediaApi(
-        access_token=access_token, user_agent=current_app.config["USER_AGENT"]
+    api = WikimediaOAuthApi(
+        client=client, token=token, user_agent=current_app.config["USER_AGENT"]
     )
     userinfo = api.get_userinfo()
 
@@ -261,10 +256,7 @@ def oauth2_callback_wikimedia():
         id=session[SESSION_ID_KEY],
         userid=userinfo["id"],
         name=userinfo["name"],
-        encrypted_access_token=encrypt_string(key, plaintext=access_token),
-        access_token_expires=datetime.datetime.now()
-        + datetime.timedelta(seconds=expires_in),
-        encrypted_refresh_token=encrypt_string(key, plaintext=refresh_token),
+        encrypted_token=encrypt_string(key, plaintext=json.dumps(token)),
     )
     db.session.add(user)
     db.session.commit()
