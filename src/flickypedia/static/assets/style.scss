@@ -1,0 +1,158 @@
+/* Flickypedia palette, sent in a Slack DM from George to Alex
+ * on 27 Oct 2023.
+ *
+ * See https://flickrfoundation.slack.com/archives/D05UN456AGM/p1698397310132959
+ */
+$pink:        #E36397;
+$cream:       #FFFCF2;
+$brown:       #CCC5B9;
+$black:       #08090A;
+$grey:        #575A5E;
+
+/* Other palette colours we use. */
+$blue:        #069;    /* from the Wikimedia Commons logo */
+$red:         red;
+$yellow:      yellow;
+$green:       green;
+$lightgreen:  mediumseagreen
+
+/* Supply a couple of variables to be used in SVG files. */
+:root {
+  --black: #{$black};
+  --brown: #{$brown};
+  --cream: #{$cream};
+}
+
+@import "mixins.scss";
+
+body {
+  margin: 0;
+
+  background: $cream;
+  color: $black;
+
+  font-family: proxima-nova, sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+}
+
+main {
+  margin-left:  auto;
+  margin-right: auto;
+  max-width: 850px;
+  padding-left:  1em;
+  padding-right: 1em;
+  margin-bottom: 1em;
+}
+
+footer {
+  margin-top: 1em;
+  padding: 1em;
+
+  background: $black;
+  text-align: center;
+  color: $cream;
+
+  a {
+    @include link_styles($cream, 0.4);
+  }
+
+  /* There's a list of links in the footer, which we want to appear as a horizontal
+   * list of links separated by pipes. */
+  li {
+    display: inline-block;
+  }
+
+  li:not(:last-child):after {
+    content: "| ";
+    white-space: pre;
+    color: $grey;
+  }
+
+  /* This ensures the background color extends to the bottom of the page,
+     wherever the footer appears.
+
+     See https://designdev.blog/extend-footer-background-color-to-bottom-of-web-page/
+   */
+  box-shadow: 0 50vh 0 50vh $black;
+}
+
+ul.plain_list {
+  list-style-type: none;
+  padding: 0;
+  margin:  0;
+}
+
+a {
+  @include link_styles($blue, 0.3);
+}
+
+input[type="url"],
+input[type="text"],
+select,
+textarea {
+  border: 1px solid $brown;
+  border-radius: 8px;
+  padding: 10px 6px;
+  font-size: 1.2em;
+}
+
+select {
+  background: $cream;
+}
+
+input[type="url"],
+input[type="text"],
+textarea {
+  width: calc(100% - 20px);
+}
+
+.pink_button {
+  color: $cream;
+  font-size: 1.5em;
+  font-weight: bold;
+  border-radius: 8px;
+  background: $pink;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.pink_button:hover {
+  background: darken($pink, 15%);
+}
+
+input.pink_button:active {
+  transform: translate(0, 2px);
+}
+
+.warning {
+  background: lighten($yellow, 30%);
+  padding: 1em;
+  font-size: 1.2em;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.highlight {
+  background: $yellow;
+}
+
+@import "homepage.scss";
+@import "get_photos.scss";
+@import "select_photos.scss";
+@import "prepare_info.scss";
+
+/* Temporary styles */
+main {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+.flashes {
+  color: $red;
+}

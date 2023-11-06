@@ -1,0 +1,81 @@
+#page-homepage {
+  main p {
+    font-size: 20px;
+  }
+
+  img.hero {
+    width:  300px;
+    height: 300px;
+
+    margin-top:    -1em;
+    margin-bottom: -1em;
+
+    /* Center the image.  Note that images are inline by default, so
+       you need the `display: block;` or the margins won't apply. */
+    display: block;
+    margin-left:  auto;
+    margin-right: auto;
+  }
+
+  /* No margin between the image and the text; there's already a fair
+     amount of padding in the image itself. */
+  img.hero + h2.hero {
+    margin-top: 0;
+  }
+
+  .hero {
+    text-align: center;
+    font-weight: normal;
+  }
+
+  .hero .welcome {
+    font-weight: bold;
+  }
+
+  #actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+
+    li {
+      text-align: center;
+    }
+
+    h3 {
+      font-size: 20px;
+      margin-top:    5px;
+      margin-bottom: 5px;
+    }
+
+    p {
+      font-size: 17px;
+      margin-top: 5px;
+    }
+
+    img {
+      width: 70px;
+    }
+
+    /* This is a crude bit of padding to ensure that the CC and Wikimedia
+       Commons logos are vertically aligned.
+
+       The Wiki Commons logo has dimensions of 1024 × 1376 in the source SVG,
+       whereas the CC logo is square.
+
+       This means the WMC logo is 70 / 1024 × (1376 − 1024) ≈ 24px taller
+       than the CC logic.  This padding eliminates the difference.
+     */
+    #wiki_requires_cc_licenses img {
+      margin-top: 24px;
+    }
+  }
+
+  svg a {
+    color: $black;
+
+    text, tspan {
+      color: $cream !important;
+      font-weight: bold;
+    }
+  }
+}

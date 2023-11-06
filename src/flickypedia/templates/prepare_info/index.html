@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% set page_id = "prepare_info" %}
+
 {% block head %}
   <script src="{{ url_for('static', filename='flickypedia.js') }}"></script>
 
@@ -26,92 +28,6 @@
 
   <h2>Prepare info</h2>
 
-  <style>
-    #prepare_info li {
-      margin-bottom: 2em;
-    }
-
-    .info {
-      display: grid;
-      grid-gap: 15px;
-      grid-template-columns: 200px auto;
-      grid-template-rows: 20px auto auto;
-    }
-
-    .from_flickr {
-      grid-column: 1 / 2;
-      grid-row: 1 / 3;
-    }
-
-    .to_wiki {
-      grid-column: 2 / 2;
-      grid-row: 1 / 3;
-    }
-
-    .flickr_info {
-      grid-column: 1 / 2;
-      grid-row: 2 / 3;
-    }
-
-    .wiki_info {
-      grid-column: 2 / 2;
-      grid-row: 2 / 3;
-    }
-
-    .wiki_info label:not(:first-child) {
-      display: block;
-      margin-top: 1.5em;
-    }
-
-    .sdc {
-      grid-column: 1 / span 2;
-      grid-row: 3 / 3;
-      background: rgb(var(--brown));
-      padding: 1em;
-      border-radius: 8px;
-      overflow-x: auto;
-    }
-
-    .to_from_with_logo {
-      display: grid;
-
-      height: 25px;
-    }
-
-    .to_from_with_logo.from_flickr {
-      grid-template-columns: 30px auto;
-    }
-
-    .to_from_with_logo.to_wiki {
-      grid-template-columns: 24px auto;
-    }
-
-    .to_from_with_logo img {
-      height: 25px;
-    }
-
-    .to_from_with_logo div {
-      font-size: small;
-      line-height: 25px;
-      color: rgb(var(--grey));
-    }
-
-    .preview {
-      position: relative;
-    }
-
-    .preview .image_counter {
-      position: absolute;
-      right: 0;
-      top: -12px;
-      background: rgb(var(--black));
-      color: rgb(var(--cream));
-      padding: 1px 20px;
-      font-size: 2em;
-      font-weight: bold;
-    }
-  </style>
-
   <form id="prepare_info" action="" method="post">
     {{ prepare_info_form.hidden_tag() }}
 
@@ -132,7 +48,7 @@
     <ul class="plain_list">
       {% for field in photo_fields %}
         {% set photo = field.label.text %}
-        <li>
+        <li class="photo">
 
         {% set large_size = photo.sizes | size_at(desired_size='Large') %}
 

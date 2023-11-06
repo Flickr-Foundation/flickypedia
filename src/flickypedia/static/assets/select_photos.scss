@@ -1,0 +1,143 @@
+#page-select_photos {
+  label[for="flickr_url"] {
+    margin-bottom: 5px;
+  }
+
+  form#select_photos {
+    ul {
+      display: grid;
+      grid-column-gap: 1em;
+      grid-row-gap: 2em;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    /* Render an entry for each photo in the form.
+     *
+     * Each photo is arranged into three areas:
+     *
+     *    +--------------------------+
+     *    |                          |
+     *    |   square photo preview   |
+     *    |                          |
+     *    +----------------+---------+
+     *    | photo info     | tickbox |
+     *    +----------------+---------+
+     *
+     */
+    li {
+      display: inline-block;
+
+      /* Make images square; ensure they don't appear too large if there's
+       * only one or two options to choose from. */
+      img {
+        width: 100%;
+        max-width: 250px;
+        aspect-ratio: 1;
+        object-fit: cover;
+      }
+
+      /* Add a pink highlight to all selected photos, to make them nice
+       * and prominent in the UI. */
+      &.checked {
+        background: lighten($pink, 20%);
+        border:  5px solid lighten($pink, 20%);
+        margin: -5px;
+      }
+
+      /* Lay out the info in the bottom half of the image.  We want to give
+       * as much space as possible to the text, and push the checkbox to
+       * the right. */
+      .info {
+        display: grid;
+        grid-template-columns: auto 30px;
+        padding-left: 6px;
+        padding-bottom: 4px;
+      }
+
+      label .owner {
+        grid-row: 1 / 2;
+        grid-column: 1 / 2;
+      }
+
+      label .license {
+        grid-row: 2 / 2;
+        grid-column: 1 / 2;
+      }
+
+      label input[type="checkbox"] {
+          grid-row: 1 / 2;
+          grid-column: 2 / 2;
+          margin-left: 8px;
+          margin-top: 5px;
+          margin-right: 8px;
+        }
+    }
+
+    /* If we're in an album, we don't bother showing the owner name on
+       the photos, so we can move this up a line. */
+    .photoslist-album li label .license {
+      grid-row: 1 / 2;
+    }
+  }
+
+  /* Styles for the text that describes what the user has selected, e.g.
+   *
+   *    You’re looking at Jane Smith’s album called “my first album”.
+   *
+   * We highlight the key pieces of information in bold to make them stand out.
+   */
+  .select_photos_description {
+    font-weight: normal;
+
+    .key_info { font-weight: bold; }
+  }
+
+  /* Styles for the text which tells the user which messages can be uploaded
+   * (if any), and which have been rejected for duplicates/bad license/not safe. */
+  .which_photos_can_be_uploaded {
+    .highlight {
+      color: white;
+      font-weight: bold;
+      padding-left: 4px;
+      margin-left: -4px;
+      margin-right: 4px;
+    }
+
+    .message_available .highlight {
+      background: $green;
+    }
+
+    /* If every photo is a duplicate, we want a pink highlight.
+     * If some photos are duplicates, we want a light green highlight.
+     */
+    .message_duplicate .highlight {
+      background-color: $lightgreen;
+    }
+
+    .message_duplicate.all_photos_duplicates .highlight {
+      background-color: $pink;
+    }
+
+    .message_disallowed .highlight {
+      background-color: $red;
+    }
+
+    /* Tighten up the spacing */
+    p:not(:last-child)  { margin-bottom: 0; }
+    p:not(:first-child) { margin-top:    0; }
+  }
+
+  #summary {
+    text-align: right;
+    font-size: 1.2em;
+    margin-right: 5px;
+
+    /* Make the numeral bold in "2 photos selected" */
+    .count { font-weight: bold; }
+
+    .pink_button {
+      padding-left:  16px;
+      padding-right: 16px;
+      padding-top: 5px;
+    }
+    }}
