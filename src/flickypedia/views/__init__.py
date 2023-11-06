@@ -8,7 +8,7 @@ from .wait_for_upload import get_upload_status, wait_for_upload
 
 
 def homepage():
-    return render_template("homepage.html", page_id="homepage")
+    return render_template("homepage.html")
 
 
 def about():

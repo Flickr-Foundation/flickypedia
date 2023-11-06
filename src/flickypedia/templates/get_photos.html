@@ -1,14 +1,8 @@
 {% extends "base.html" %}
 
-{% block head %}
-  <style>
-    #examples li {
-      display: inline-block;
-      margin-right:  8px;
-      margin-bottom: 8px;
-    }
-  </style>
+{% set page_id = "get_photos" %}
 
+{% block head %}
   <script>
     function setExample(url) {
       document.querySelector('form.get_photos input[type="url"]').value = url;
