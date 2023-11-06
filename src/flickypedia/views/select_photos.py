@@ -223,6 +223,7 @@ def select_photos():
             photo_data = get_photos(parsed_url)
             cached_api_response_id = save_cached_api_response(photo_data)
         except ResourceNotFound:
+            # TODO: Add tests for this
             label = {"single_photo": "photo"}.get(
                 parsed_url["type"], parsed_url["type"]
             )
