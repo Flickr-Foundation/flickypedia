@@ -149,7 +149,11 @@ def test_shows_correct_message_when_all_restricted(app, count, expected_text):
     )
 
     assert get_paragraphs(html) == [
-        {"class": "message_disallowed", "text": expected_text + " Wikimedia Commons only accepts CC0, CC BY, CC BY-SA, and Public Domain photos that are also public and safe on Flickr."},
+        {
+            "class": "message_disallowed",
+            "text": expected_text
+            + " Wikimedia Commons only accepts CC0, CC BY, CC BY-SA, and Public Domain photos that are also public and safe on Flickr.",
+        },
     ]
 
 
