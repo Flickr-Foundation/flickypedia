@@ -40,12 +40,12 @@ from flask import (
     url_for,
 )
 from flask_login import current_user, login_required
+from flickr_photos_api import FlickrPhotosApi, ResourceNotFound, SafetyLevel
 from flickr_url_parser import parse_flickr_url, NotAFlickrUrl, UnrecognisedUrl
 from flask_wtf import FlaskForm
 from wtforms import BooleanField, HiddenField, SubmitField
 from wtforms.validators import DataRequired
 
-from flickypedia.apis.flickr import FlickrApi, ResourceNotFound, SafetyLevel
 from flickypedia.duplicates import find_duplicates
 from flickypedia.utils import DatetimeDecoder, DatetimeEncoder
 from .get_photos import FlickrPhotoURLForm
@@ -59,7 +59,7 @@ def get_photos(parsed_url):
     duplicates on Wikimedia Commons, etc.  It just returns a list of
     photos which can be found on Flickr.
     """
-    api = FlickrApi(
+    api = FlickrPhotosApi(
         api_key=current_app.config["FLICKR_API_KEY"],
         user_agent=current_app.config["USER_AGENT"],
     )
@@ -112,7 +112,7 @@ def categorise_photos(all_photos):
         for photo in all_photos
         if photo["id"] not in duplicates
         and photo["id"] not in disallowed_licenses
-        and photo["safety_level"] != SafetyLevel.Safe
+        and photo["safety_level"] != "safe"
     }
 
     available_photos = [
