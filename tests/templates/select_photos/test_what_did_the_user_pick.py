@@ -40,7 +40,7 @@ def get_text(html):
 )
 def test_gets_an_album_description(app, has_available_photos, album, expected_text):
     html = render_template(
-        "components/select_photos_description.html",
+        "select_photos/what_did_the_user_pick.html",
         parsed_url={"type": "album"},
         photo_data={
             "photos": {

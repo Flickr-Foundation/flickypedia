@@ -293,7 +293,7 @@ def select_photos():
 
     # Complete the route by rendering the template.
     return render_template(
-        "select_photos.html",
+        "select_photos/index.html",
         flickr_url=flickr_url,
         parsed_url=parsed_url,
         photo_url_form=FlickrPhotoURLForm(),

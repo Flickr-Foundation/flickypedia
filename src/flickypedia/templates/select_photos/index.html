@@ -113,9 +113,9 @@
     {% endif %}
   {% endwith %}
 
-  {% include "components/select_photos_description.html" %}
+  {% include "select_photos/what_did_the_user_pick.html" %}
 
-  {% include "components/select_photos_message.html" %}
+  {% include "select_photos/which_photos_can_be_uploaded.html" %}
 
   {% if photo_data.photos.available %}
     <h3>
