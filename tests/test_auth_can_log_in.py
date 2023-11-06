@@ -30,7 +30,7 @@ def test_can_get_token_from_wikimedia(client, vcr_cassette, user_agent):
     """
     # Check we aren't currently logged in.  Normally this would be an anonymous
     # user, but I haven't got that working with Flask-Login and tests.
-    assert current_user == None
+    assert current_user == None  # noqa: E711
 
     # Take the user to the loign endpoint.  See where we get redirected.
     authorize_resp = client.get("/authorize/wikimedia")
