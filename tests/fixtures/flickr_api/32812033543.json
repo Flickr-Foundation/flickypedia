@@ -11,10 +11,10 @@
   "date_posted": "2017-03-24T17:27:52+00:00",
   "date_taken": {
     "value": "2017-02-17T00:00:00",
-    "granularity": 0,
+    "granularity": "second",
     "unknown": false
   },
-  "safety_level": 0,
+  "safety_level": "safe",
   "license": {
     "id": "usgov",
     "label": "United States Government Work",

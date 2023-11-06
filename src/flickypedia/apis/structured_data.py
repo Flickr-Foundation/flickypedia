@@ -26,7 +26,8 @@ is supporting that function.
 
 import datetime
 
-from flickypedia.apis.flickr import DateTaken, FlickrUser, TakenDateGranularity
+from flickr_photos_api import DateTaken, User as FlickrUser
+
 from flickypedia.apis.wikidata import (
     lookup_flickr_user_in_wikidata,
     to_wikidata_date,
@@ -245,23 +246,19 @@ def create_date_taken_statement(date_taken: DateTaken):
     """
     assert not date_taken["unknown"]
 
-    granularity = date_taken["granularity"]
+    flickr_granularity = date_taken["granularity"]
 
     try:
         wikidata_precision = {
-            TakenDateGranularity.Second: "day",
-            TakenDateGranularity.Month: "month",
-            TakenDateGranularity.Year: "year",
-            TakenDateGranularity.Circa: "year",
-        }[granularity]
+            "second": "day",
+            "month": "month",
+            "year": "year",
+            "circa": "year",
+        }[flickr_granularity]
     except KeyError:
-        raise ValueError(f"Unrecognised taken_granularity: {granularity!r}")
+        raise ValueError(f"Unrecognised taken_granularity: {flickr_granularity!r}")
 
-    if granularity in {
-        TakenDateGranularity.Second,
-        TakenDateGranularity.Month,
-        TakenDateGranularity.Year,
-    }:
+    if flickr_granularity in {"second", "month", "year"}:
         return {
             "mainsnak": {
                 "datavalue": to_wikidata_date(
@@ -273,7 +270,7 @@ def create_date_taken_statement(date_taken: DateTaken):
             "type": "statement",
         }
     else:
-        assert granularity == TakenDateGranularity.Circa
+        assert flickr_granularity == "circa"
 
         qualifier_values = [
             {

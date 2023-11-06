@@ -178,6 +178,8 @@ def prepare_info():
         for photo in selected_photos
     )
 
+    # TODO: Add safety checks here
+
     # Now construct the "prepare info" form.
     prepare_info_form = create_prepare_info_form(photos=selected_photos)
 

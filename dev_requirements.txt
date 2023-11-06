@@ -83,6 +83,8 @@ flask-sqlalchemy==3.1.1
     # via -r requirements.txt
 flask-wtf==1.2.1
     # via -r requirements.txt
+flickr-photos-api==1.0.3
+    # via -r requirements.txt
 flickr-url-parser==1.1.0
     # via -r requirements.txt
 h11==0.14.0
@@ -96,6 +98,7 @@ httpcore==0.18.0
 httpx==0.25.0
     # via
     #   -r requirements.txt
+    #   flickr-photos-api
     #   flickr-url-parser
 hyperlink==21.0.0
     # via

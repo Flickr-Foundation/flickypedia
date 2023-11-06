@@ -23,7 +23,7 @@ def get_fixture(filename):
 @pytest.mark.parametrize(
     ["user", "filename"],
     [
-        (
+        pytest.param(
             {
                 "id": "47397743@N05",
                 "username": None,
@@ -32,8 +32,9 @@ def get_fixture(filename):
                 "profile_url": "https://www.flickr.com/people/west_northamptonshire_development_corporation/",
             },
             "creator_Q7986087.json",
+            id="47397743@N05",
         ),
-        (
+        pytest.param(
             {
                 "id": "199246608@N02",
                 "username": "Alex Chan",
@@ -42,8 +43,9 @@ def get_fixture(filename):
                 "profile_url": "https://www.flickr.com/people/199246608@N02/",
             },
             "creator_AlexChan.json",
+            id="AlexChan",
         ),
-        (
+        pytest.param(
             {
                 "id": "35591378@N03",
                 "username": "Obama White House Archived",
@@ -52,6 +54,7 @@ def get_fixture(filename):
                 "profile_url": "https://www.flickr.com/people/obamawhitehouse/",
             },
             "creator_ObamaWhiteHouse.json",
+            id="ObamaWhiteHouse",
         ),
     ],
 )
@@ -128,13 +131,17 @@ def test_create_posted_to_flickr_statement():
     ["date_taken", "granularity", "filename"],
     [
         # Based on https://www.flickr.com/photos/184374196@N07/53069446440
-        (datetime.datetime(2023, 2, 20, 23, 32, 31), 0, "date_taken_YYYY-MM-DD.json"),
+        (
+            datetime.datetime(2023, 2, 20, 23, 32, 31),
+            "second",
+            "date_taken_YYYY-MM-DD.json",
+        ),
         # Based on https://www.flickr.com/photos/normko/361850789
-        (datetime.datetime(1970, 3, 1, 0, 0, 0), 4, "date_taken_YYYY-MM.json"),
+        (datetime.datetime(1970, 3, 1, 0, 0, 0), "month", "date_taken_YYYY-MM.json"),
         # Based on https://www.flickr.com/photos/nationalarchives/5240741057
-        (datetime.datetime(1950, 1, 1, 0, 0, 0), 6, "date_taken_YYYY.json"),
+        (datetime.datetime(1950, 1, 1, 0, 0, 0), "year", "date_taken_YYYY.json"),
         # Based on https://www.flickr.com/photos/nlireland/6975991819
-        (datetime.datetime(1910, 1, 1, 0, 0, 0), 8, "date_taken_circa.json"),
+        (datetime.datetime(1910, 1, 1, 0, 0, 0), "circa", "date_taken_circa.json"),
     ],
 )
 def test_create_date_taken_statement(date_taken, granularity, filename):
@@ -201,7 +208,7 @@ def test_create_sdc_claims_for_flickr_photo_with_date_taken(app, vcr_cassette):
         date_taken={
             "value": datetime.datetime(2023, 10, 3, 5, 45, 0),
             "unknown": False,
-            "granularity": 0,
+            "granularity": "second",
         },
     )
     expected = get_fixture("photo_53234140350.json")

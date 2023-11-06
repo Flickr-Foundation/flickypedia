@@ -56,11 +56,6 @@ def size_at(sizes, *, desired_size):
     except KeyError:
         return sizes_by_label["Original"]
 
-    if desired_size == "Medium":
-        return sizes_by_label["Original"]
-
-    raise ValueError(f"This photo is not available at size {desired_size!r}")
-
 
 class DatetimeEncoder(json.JSONEncoder):
     """

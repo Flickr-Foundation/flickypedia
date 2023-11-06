@@ -19,9 +19,10 @@
           "type": "datetime.datetime",
           "value": "2017-02-17T00:00:00"
         },
-        "granularity": 0,
+        "granularity": "second",
         "unknown": false
       },
+      "safety_level": "safe",
       "license": {
         "id": "usgov",
         "label": "United States Government Work",

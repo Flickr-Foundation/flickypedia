@@ -24,7 +24,7 @@ def test_upload_single_image(app, wikimedia_api):
         file_caption="A Thameslink Class 700 train in the rainbow Pride livery, taken at night",
         date_taken={
             "value": datetime.datetime(2023, 9, 12, 19, 54, 32),
-            "granularity": 0,
+            "granularity": "second",
             "unknown": False,
         },
         date_posted=datetime.datetime.fromtimestamp(1697645772),
