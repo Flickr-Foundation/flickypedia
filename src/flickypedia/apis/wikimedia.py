@@ -441,17 +441,16 @@ def lookup_categories(query):
 
     resp = api._get(
         {
-              'action': 'opensearch',
-              'format': 'json',
-              'formatversion': '2',
-              'namespace': '14',
-              'limit': '10',
-              'search': query,
-            }
+            "action": "opensearch",
+            "format": "json",
+            "formatversion": "2",
+            "namespace": "14",
+            "limit": "10",
+            "search": query,
+        }
     )
 
-    return [name.replace('Category:', '') for name in resp[1]]
-
+    return [name.replace("Category:", "") for name in resp[1]]
 
 
 class WikimediaApiException(Exception):

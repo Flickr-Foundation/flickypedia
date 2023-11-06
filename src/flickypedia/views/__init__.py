@@ -36,7 +36,7 @@ def validate_title_api():
 
 def lookup_categories_api():
     try:
-        query = request.args['query']
+        query = request.args["query"]
     except KeyError:
         return abort(400)
 
