@@ -16,6 +16,7 @@ import httpx
 class WikimediaApi:
     def __init__(self, client: httpx.Client) -> None:
         self.client = client
+        super().__init__()
 
     def _request(self, *, method, **kwargs):
         resp = self.client.request(
@@ -85,6 +86,7 @@ class WikimediaApi:
         See https://www.mediawiki.org/wiki/API:Upload
 
         """
+        # TODO: We should use the async version of this method.
         upload_resp = self._post(
             data={
                 "action": "upload",
