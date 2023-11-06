@@ -1,4 +1,4 @@
-<form class="get_photos" action="{{ url_for('get_photos') }}" method="post">
+<form id="get_photos" action="{{ url_for('get_photos') }}" method="post">
   {{ photo_url_form.hidden_tag() }}
 
   {% with messages = get_flashed_messages(category_filter=["flickr_url"]) %}

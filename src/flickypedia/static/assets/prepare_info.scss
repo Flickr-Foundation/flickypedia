@@ -1,0 +1,235 @@
+/* Styles for the "prepare info" form
+  *
+  * Each photo is arranged into six primary areas:
+  *
+  *    +-------------------------+
+  *    |                         |
+  *    |      photo preview      |
+  *    |                         |
+  *    +-------------+-----------+
+  *    | from Flickr |  to Wiki  |
+  *    +-------------+-----------+
+  *    | Flickr info | Wiki info |
+  *    +-------------+-----------+
+  *    |        SDC preview      |
+  *    +-------------------------+
+  *
+  */
+form#prepare_info {
+  li.photo {
+    margin-bottom: 2em;
+  }
+
+  /* Styles for the photo preview area.
+    *
+    * If there's more than one photo on the page, we show a 1 of N indicator
+    * in white-on-black in the top right-hand corner.
+    *
+    * To avoid photos completely dominating the page (especially portrait photos),
+    * we put a max-height restriction and centre photos which are larger than that.
+    */
+  .preview {
+    position: relative;
+    max-width: 100%;
+    margin-bottom: 8px;
+
+    /* This ensures that a landscape 4:3 photo will display at full size and fill
+     * the screen, but portrait images will be resized. */
+    &, img {
+      max-height: calc(100vw * 3 / 4);
+    }
+
+    img {
+      margin-left:  auto;
+      margin-right: auto;
+      display: block;
+    }
+
+    .image_counter {
+      position: absolute;
+      right: 0;
+      top:   0;
+      background: $black;
+      color: $cream;
+      padding: 1px 20px;
+      font-size: 2em;
+      font-weight: bold;
+    }
+  }
+
+  /* Grid positioning for the 2×2 grid of info boxes */
+  .info {
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: 200px auto;
+    grid-template-rows: 20px auto auto;
+  }
+
+  .from_flickr {
+    grid-column: 1 / 2;
+    grid-row:    1 / 3;
+  }
+
+  .to_wiki {
+    grid-column: 2 / 2;
+    grid-row:    1 / 3;
+  }
+
+  .flickr_info {
+    grid-column: 1 / 2;
+    grid-row:    2 / 3;
+  }
+
+  .wiki_info {
+    grid-column: 2 / 2;
+    grid-row:    2 / 3;
+  }
+
+  /* Styles for the to/from labels at the top of the 2×2 grid. */
+  .to_from_with_logo {
+    display: grid;
+
+    &, img {
+      height: 25px;
+    }
+
+    &.from_flickr {
+      grid-template-columns: 30px auto;
+    }
+
+    &.to_wiki {
+      grid-template-columns: 24px auto;
+    }
+
+    div {
+      font-size: small;
+      line-height: 25px;
+      color: $grey;
+    }
+  }
+
+  /* Styles for the "from Flickr" sidebar down the left-hand side
+   *
+   * This contains a <dl> with Flickr metadata; no interactive elements.
+   */
+  .flickr_info {
+    font-size: small;
+    margin-top: 4px;
+
+    dt {
+      font-weight: bold;
+    }
+
+    dt:not(:first-child) {
+      margin-top: 1em;
+    }
+
+    dd {
+      margin-left: 0;
+    }
+
+    /* Flickr descriptions can contain newlines, which we want to preserve
+     * in the rendered output. */
+    .flickr_description {
+      white-space: pre-line;
+    }
+  }
+
+  /* Styles for the "Wiki info" panel on the lower right-hand side.
+   *
+   * This is a form with a number of validation elements.
+   */
+  .wiki_info {
+    /* Add vertical spacing between the different bits of the form */
+    label:not(:first-child), .categories {
+      display: block;
+      margin-top: 1em;
+    }
+
+    .required, .validation_errors, .too_many_characters, .not_enough_characters {
+      font-family: monospace;
+      font-size: small;
+      color: $red;
+    }
+
+    .validation_errors {
+      margin-top: 7px;
+      line-height: 1.4em;
+    }
+
+    .validation_errors.hidden {
+      display: none;
+    }
+
+    textarea + .validation_errors {
+      margin-top: 1px;
+    }
+
+    label {
+      display: flex;
+    }
+
+    label .required, label .charCounter {
+      display: inline;
+      margin-left: 1em;
+      margin-top: auto;
+      margin-bottom: 4.5px;
+    }
+
+    /* Styles for "N characters remaining" on the short caption field */
+    .charCounter {
+      font-family: monospace;
+      font-size: small;
+      color: $grey;
+      margin-left: auto !important;
+      margin-right: 1em;
+    }
+
+    .charCounter .remainingCharacters {
+      font-weight: bold;
+    }
+  }
+
+  /* Styles for the structured data preview at the bottom of the form */
+  .sdc {
+    grid-column: 1 / span 2;
+    grid-row:    3 / 3;
+    background: $brown;
+    padding: 1em;
+    border-radius: 8px;
+    overflow-x: auto;
+  }
+}
+
+/* These two selectors add a "barberpole" animation to any input field
+ * which is "thinking" (making an API request which hasn't returned yet).
+ *
+ * It's a basic progress indicator, similar to the one found in the
+ * Wikimedia Commons Upload Wizard interface.
+ *
+ * You can get a funky edge appear when the lines don't quite match up;
+ * the hope is that we're not "thinking" long enough for this to be
+ * noticeable!
+ *
+ * Based on https://css-tricks.com/books/fundamental-css-tactics/striped-barberpole-animation/
+ * Note that I've tweaked the background-position to go left-to-right,
+ * whereas the code in that article goes right-to-left.
+ */
+input.thinking {
+  animation: barberpole 21s linear infinite;
+  background-size: 200% 200%;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba($brown, 0.3),
+    rgba($brown, 0.3) 10px,
+    rgba($brown, 0.5) 10px,
+    rgba($brown, 0.5) 20px
+  );
+  background-position: 250% 100%;
+}
+
+@keyframes barberpole {
+  100% {
+    background-position: 100% 100%;
+  }
+}
