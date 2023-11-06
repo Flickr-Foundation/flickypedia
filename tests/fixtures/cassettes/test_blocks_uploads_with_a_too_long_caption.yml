@@ -9,9 +9,68 @@ interactions:
       connection:
       - keep-alive
       host:
+      - query.wikidata.org
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://query.wikidata.org/sparql?format=json&query=PREFIX%20wdt%3A%20%3Chttp%3A%2F%2Fwww.wikidata.org%2Fprop%2Fdirect%2F%3E%0A%0A%20%20%20%20%20%20%20%20SELECT%20%3Fitem%20WHERE%20%7B%0A%20%20%20%20%20%20%20%20%20%20%7B%20%3Fitem%20wdt%3AP3267%20%2230884892%40N08%22%20.%20%7D%0A%20%20%20%20%20%20%20%20%20%20UNION%0A%20%20%20%20%20%20%20%20%20%20%7B%20%3Fitem%20wdt%3AP3267%20%22U.S.%20Coast%20Guard%22%20.%20%7D%0A%20%20%20%20%20%20%20%20%7D
+  response:
+    content: "{\n  \"head\" : {\n    \"vars\" : [ \"item\" ]\n  },\n  \"results\"
+      : {\n    \"bindings\" : [ ]\n  }\n}"
+    headers:
+      accept-ranges:
+      - bytes
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '113'
+      cache-control:
+      - public, max-age=300
+      content-length:
+      - '86'
+      content-type:
+      - application/sparql-results+json;charset=utf-8
+      date:
+      - Mon, 06 Nov 2023 21:59:37 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - nginx/1.18.0
+      server-timing:
+      - cache;desc="hit-local", host;desc="cp3070"
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept
+      x-cache:
+      - cp3070 hit, cp3070 pass
+      x-cache-status:
+      - hit-local
+      x-client-ip:
+      - 92.13.36.200
+      x-first-solution-millis:
+      - '5'
+      x-served-by:
+      - wdqs1015
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
       - commons.wikimedia.org
       user-agent:
-      - python-httpx/0.25.0
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
     method: GET
     uri: https://commons.wikimedia.org/w/api.php?action=query&titles=File%3AA%20photo%20with%20a%20reasonable%20title.jpg&prop=info&format=json
   response:
@@ -21,7 +80,7 @@ interactions:
       accept-ranges:
       - bytes
       age:
-      - '2'
+      - '0'
       cache-control:
       - private, must-revalidate, max-age=0
       content-disposition:
@@ -31,7 +90,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Thu, 02 Nov 2023 08:42:14 GMT
+      - Mon, 06 Nov 2023 22:01:29 GMT
       nel:
       - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
         0.0}'
@@ -39,12 +98,12 @@ interactions:
       - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
         }] }'
       server:
-      - mw1396.eqiad.wmnet
+      - mw1426.eqiad.wmnet
       server-timing:
       - cache;desc="pass", host;desc="cp3070"
       set-cookie:
-      - WMF-Last-Access=02-Nov-2023;Path=/;HttpOnly;secure;Expires=Mon, 04 Dec 2023
-        00:00:00 GMT
+      - WMF-Last-Access=06-Nov-2023;Path=/;HttpOnly;secure;Expires=Fri, 08 Dec 2023
+        12:00:00 GMT
       - GeoIP=GB:ENG:Lowestoft:52.50:1.71:v4; Path=/; secure; Domain=.wikimedia.org
       - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
       strict-transport-security:
@@ -52,7 +111,7 @@ interactions:
       vary:
       - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie
       x-cache:
-      - cp3070 miss, cp3070 pass
+      - cp3070 pass, cp3070 pass
       x-cache-status:
       - pass
       x-client-ip:
@@ -73,11 +132,11 @@ interactions:
       connection:
       - keep-alive
       cookie:
-      - GeoIP=GB:ENG:Lowestoft:52.50:1.71:v4; NetworkProbeLimit=0.001; WMF-Last-Access=02-Nov-2023
+      - GeoIP=GB:ENG:Lowestoft:52.50:1.71:v4; NetworkProbeLimit=0.001; WMF-Last-Access=06-Nov-2023
       host:
       - commons.wikimedia.org
       user-agent:
-      - python-httpx/0.25.0
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
     method: GET
     uri: https://commons.wikimedia.org/w/api.php?action=titleblacklist&tbaction=create&tbtitle=File%3AA%20photo%20with%20a%20reasonable%20title.jpg&format=json
   response:
@@ -96,7 +155,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Thu, 02 Nov 2023 08:42:15 GMT
+      - Mon, 06 Nov 2023 22:01:29 GMT
       nel:
       - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
         0.0}'
@@ -104,13 +163,172 @@ interactions:
       - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
         }] }'
       server:
-      - mw1358.eqiad.wmnet
+      - mw1425.eqiad.wmnet
       server-timing:
       - cache;desc="pass", host;desc="cp3070"
       set-cookie:
       - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
       strict-transport-security:
       - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3070 pass, cp3070 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 92.13.36.200
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - www.wikidata.org
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://www.wikidata.org/w/rest.php/wikibase/v0/entities/items/Q50423863
+  response:
+    content: '{"type":"item","labels":{"nl":"auteursrechtelijk beschermd","en":"copyrighted","fr":"sous
+      copyright","zh-hans":"\u7248\u6743\u6240\u6709","zh-hant":"\u6709\u8457\u4f5c\u6b0a","sr":"\u0437\u0430\u0448\u0442\u0438\u045b\u0435\u043d\u043e
+      \u0430\u0443\u0442\u043e\u0440\u0441\u043a\u0438\u043c \u043f\u0440\u0430\u0432\u0438\u043c\u0430","eo":"sub
+      kopirajto","bn":"\u0995\u09aa\u09bf\u09b0\u09be\u0987\u099f\u0995\u09c3\u09a4","es":"bajo
+      derechos de autor","ja":"\u8457\u4f5c\u6a29\u3067\u4fdd\u8b77","ru":"\u0437\u0430\u0449\u0438\u0449\u0435\u043d\u043e
+      \u0430\u0432\u0442\u043e\u0440\u0441\u043a\u0438\u043c \u043f\u0440\u0430\u0432\u043e\u043c","pt":"protegido
+      por direitos autorais","cs":"d\u00edlo chr\u00e1n\u011bn\u00e9 autorsk\u00fdm
+      pr\u00e1vem","be-tarask":"\u0430\u0445\u043e\u045e\u0432\u0430\u0435\u0446\u0446\u0430
+      \u0430\u045e\u0442\u0430\u0440\u0441\u043a\u0456\u043c \u043f\u0440\u0430\u0432\u0430\u043c","nn":"opphavsrettsleg
+      verna","sv":"upphovsr\u00e4ttsskyddad","id":"berhak cipta","be":"\u0430\u0445\u043e\u045e\u0432\u0430\u0435\u0446\u0446\u0430
+      \u0430\u045e\u0442\u0430\u0440\u0441\u043a\u0456\u043c \u043f\u0440\u0430\u0432\u0430\u043c","nb":"opphavsrettsbeskyttet","he":"\u05de\u05d5\u05d2\u05df
+      \u05d1\u05d6\u05db\u05d5\u05d9\u05d5\u05ea \u05d9\u05d5\u05e6\u05e8\u05d9\u05dd","uk":"\u0437\u0430\u0445\u0438\u0449\u0435\u043d\u043e
+      \u0430\u0432\u0442\u043e\u0440\u0441\u044c\u043a\u0438\u043c \u043f\u0440\u0430\u0432\u043e\u043c","zh":"\u7248\u6743\u6240\u6709","tt":"\u0430\u0432\u0442\u043e\u0440\u043b\u044b\u043a
+      \u0445\u043e\u043a\u0443\u043a\u043b\u0430\u0440\u044b \u0431\u0435\u043b\u04d9\u043d
+      \u044f\u043a\u043b\u0430\u043d\u0433\u0430\u043d","ms":"berhak cipta","gl":"baixo
+      dereito de autor\u00eda","de":"urheberrechtlich gesch\u00fctzt","zh-tw":"\u6709\u8457\u4f5c\u6b0a","eu":"copyrightduna","ro":"material
+      protejat de drepturi de autor","ca":"amb drets d''autor","hsb":"\u0161kitane
+      p\u0159ez awtorske prawo","it":"coperto da diritti d''autore","pl":"chroniony
+      prawem autorskim","ml":"\u0d2a\u0d15\u0d7c\u0d2a\u0d4d\u0d2a\u0d35\u0d15\u0d3e\u0d36
+      \u0d38\u0d02\u0d30\u0d15\u0d4d\u0d37\u0d3f\u0d24\u0d02","fi":"tekij\u00e4noikeuden
+      suojaama","ga":"faoi ch\u00f3ipcheart","hr":"za\u0161ti\u0107eno autorskim pravom","da":"ophavsretsbeskyttet","lv":"aizsarg\u0101ts
+      ar autorties\u012bb\u0101m","vi":"c\u00f3 b\u1ea3n quy\u1ec1n","mk":"\u0437\u0430\u0448\u0442\u0438\u0442\u0435\u043d\u043e
+      \u0441\u043e \u0430\u0432\u0442\u043e\u0440\u0441\u043a\u0438 \u043f\u0440\u0430\u0432\u0430","hu":"szerz\u0151i
+      jogi v\u00e9delem alatt \u00e1ll","th":"\u0e21\u0e35\u0e25\u0e34\u0e02\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e4c","tr":"telif
+      hakk\u0131 al\u0131nm\u0131\u015f","sq":"me t\u00eb drejta autori","pt-br":"protegido
+      por direitos autorais","ce":"\u0430\u0432\u0442\u043e\u0440\u0430\u043d \u0431\u0430\u043a\u044a\u043e
+      \u043b\u0430\u0440\u0439\u0438\u043d\u0430 \u044e","fa":"\u062d\u0642 \u062a\u06a9\u062b\u06cc\u0631
+      \u0645\u062d\u0641\u0648\u0638 \u0634\u062f\u0647","ar":"\u062d\u0642\u0648\u0642
+      \u0627\u0644\u062a\u0623\u0644\u064a\u0641 \u0648\u0627\u0644\u0646\u0634\u0631
+      \u0645\u062d\u0641\u0648\u0638\u0629","arz":"\u062d\u0642\u0648\u0642 \u0627\u0644\u0637\u0628\u0639
+      \u0648 \u0627\u0644\u0646\u0634\u0631 \u0645\u062d\u0641\u0648\u0638\u0647","zh-cn":"\u7248\u6743\u6240\u6709","bs":"za\u0161ti\u0107eno
+      autorskim pravima","el":"\u03c0\u03c1\u03bf\u03c3\u03c4\u03b1\u03c4\u03b5\u03cd\u03b5\u03c4\u03b1\u03b9
+      \u03b1\u03c0\u03cc \u03c0\u03bd\u03b5\u03c5\u03bc\u03b1\u03c4\u03b9\u03ba\u03ac
+      \u03b4\u03b9\u03ba\u03b1\u03b9\u03ce\u03bc\u03b1\u03c4\u03b1","ko":"\uc800\uc791\uad8c
+      \uc18c\uc720","cy":"dan hawlfraint","vec":"protezesto da deriti d''autor","hi":"\u0915\u0949\u092a\u0940\u0930\u093e\u0907\u091f
+      \u0915\u0947 \u0905\u0902\u0924\u0930\u094d\u0917\u0924","sl":"avtorskopravno
+      varovano","ks":"\u06a9\u0627\u067e\u06cc \u0631\u0627\u06cc\u0650\u0679 \u062f\u0627\u0631","ur":"\u062d\u0642
+      \u0646\u0642\u0644 \u0648 \u0627\u0634\u0627\u0639\u062a \u0645\u062d\u0641\u0648\u0638
+      \u0634\u062f\u06c1","uz":"mualliflik huquqi himoyalangan","en-us":"copyrighted","ms-arab":"\u0628\u0631\u062d\u0642
+      \u0686\u064a\u06a4\u062a\u0627","yue":"\u6709\u7248\u6b0a","de-at":"urheberrechtlich
+      gesch\u00fctzt","de-ch":"urheberrechtlich gesch\u00fctzt"},"descriptions":{"en":"legal
+      state of a work as recognised as an intellectual property of an entity","nl":"juridische
+      status van een werk waarbij het valt onder auteursrechtelijke bescherming","fr":"statut
+      l\u00e9gal d''une \u0153uvre appartenant \u00e0 son cr\u00e9ateur","es":"estatus
+      legal de una obra","cs":"pr\u00e1vn\u00ed stav d\u00edla, kter\u00e9 po\u017e\u00edv\u00e1
+      ochrany autorsk\u00fdm pr\u00e1vem","id":"diindungi oleh hukum untuk kekayaan
+      intelektual","gl":"estado legal dunha obra","zh-hant":"\u4f5c\u54c1\u8457\u4f5c\u6b0a\u72c0\u614b\uff0c\u6307\u5176\u53d7\u8457\u4f5c\u6b0a\u6cd5\u4fdd\u8b77\u7684\u4f5c\u54c1","it":"stato
+      legale di un opera o lavoro intellettuale","ml":"\u0d07\u0d28\u0d24\u0d4d\u0d24\u0d3f\u0d28\u0d4d\u0d31\u0d46
+      \u0d2c\u0d57\u0d26\u0d4d\u0d27\u0d3f\u0d15\u0d38\u0d4d\u0d35\u0d24\u0d4d\u0d24\u0d35\u0d15\u0d3e\u0d36\u0d02
+      \u0d38\u0d02\u0d2c\u0d28\u0d4d\u0d27\u0d3f\u0d1a\u0d4d\u0d1a \u0d28\u0d3f\u0d2f\u0d2e\u0d2a\u0d30\u0d2e\u0d3e\u0d2f
+      \u0d38\u0d4d\u0d25\u0d3f\u0d24\u0d3f","fi":"teoksen laillinen tila","de":"einem
+      Urheberrechtsschutz unterliegende Werke","th":"\u0e2a\u0e16\u0e32\u0e19\u0e30\u0e17\u0e32\u0e07\u0e01\u0e0e\u0e2b\u0e21\u0e32\u0e22\u0e02\u0e2d\u0e07\u0e07\u0e32\u0e19\u0e17\u0e35\u0e48\u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e22\u0e2d\u0e21\u0e23\u0e31\u0e1a\u0e27\u0e48\u0e32\u0e40\u0e1b\u0e47\u0e19\u0e17\u0e23\u0e31\u0e1e\u0e22\u0e4c\u0e2a\u0e34\u0e19\u0e17\u0e32\u0e07\u0e1b\u0e31\u0e0d\u0e0d\u0e32\u0e02\u0e2d\u0e07\u0e19\u0e34\u0e15\u0e34\u0e1a\u0e38\u0e04\u0e04\u0e25","tr":"fikri
+      m\u00fclkiyeti olarak tan\u0131nan bir \u00e7al\u0131\u015fman\u0131n yasal
+      durumu","pt-br":"estado legal de uma obra reconhecida como propriedade intelectual
+      de uma entidade","fa":"\u0648\u0636\u0639\u06cc\u062a \u062d\u0642\u0648\u0642\u06cc
+      \u06a9\u0627\u0631 \u0628\u0647 \u0639\u0646\u0648\u0627\u0646 \u0645\u0627\u0644\u06a9\u06cc\u062a
+      \u0645\u0639\u0646\u0648\u06cc \u06cc\u06a9 \u0645\u0648\u062c\u0648\u062f \u0634\u0646\u0627\u062e\u062a\u0647
+      \u0634\u062f\u0647 \u0627\u0633\u062a","ar":"\u0625\u062d\u062f\u0649 \u0627\u0644\u062d\u0627\u0644\u0627\u062a
+      \u0627\u0644\u0642\u0627\u0646\u0648\u0646\u064a\u0629 \u0644\u062d\u0642\u0648\u0642
+      \u0627\u0644\u062a\u0623\u0644\u064a\u0641 \u0648\u0627\u0644\u0646\u0634\u0631","zh-tw":"\u4f5c\u54c1\u8457\u4f5c\u6b0a\u72c0\u614b\uff0c\u6307\u5176\u53d7\u8457\u4f5c\u6b0a\u6cd5\u4fdd\u8b77\u7684\u4f5c\u54c1","hi":"\u0915\u093f\u0938\u0940
+      \u0915\u093e\u0930\u094d\u092f \u0915\u0940 \u0915\u093e\u0928\u0942\u0928\u0940
+      \u0938\u094d\u0925\u093f\u0924\u093f \u091c\u0939\u093e\u0901 \u0909\u0938\u0947
+      \u0915\u093f\u0938\u0940 \u0935\u094d\u092f\u0915\u094d\u0924\u093f \u0915\u0947
+      \u0928\u093f\u091c\u0940 \u0938\u0902\u092a\u0924\u094d\u0924\u093f \u0915\u0947
+      \u0930\u0942\u092a \u092e\u0947\u0902 \u092a\u0939\u091a\u093e\u0928\u093e \u091c\u093e\u0924\u093e
+      \u0939\u0948","sl":"stanje dela z vidika prava intelektualne lastnine","ja":"\u30a8\u30f3\u30c6\u30a3\u30c6\u30a3\u306e\u77e5\u7684\u8ca1\u7523\u3068\u3057\u3066\u8a8d\u8b58\u3055\u308c\u3066\u3044\u308b\u8457\u4f5c\u7269\u306e\u6cd5\u7684\u72b6\u614b","uz":"sub''ektning
+      intellektual mulki sifatida tan olingan asarning huquqiy holati","ca":"estatus
+      legal d''una obra","en-us":"legal state of a work as recognised as an intellectual
+      property of an entity","sv":"lagligt skyddad mot kopiering och spridning","el":"\u03ad\u03c1\u03b3\u03b1
+      \u03c0\u03bf\u03c5 \u03c5\u03c0\u03cc\u03ba\u03b5\u03b9\u03bd\u03c4\u03b1\u03b9
+      \u03c3\u03b5 \u03c0\u03c1\u03bf\u03c3\u03c4\u03b1\u03c3\u03af\u03b1 \u03c0\u03bd\u03b5\u03c5\u03bc\u03b1\u03c4\u03b9\u03ba\u03ce\u03bd
+      \u03b4\u03b9\u03ba\u03b1\u03b9\u03c9\u03bc\u03ac\u03c4\u03c9\u03bd","yue":"\u7dad\u57fa\u4ecb\u9762\u6a19\u7c64","de-at":"einem
+      Urheberrechtsschutz unterliegende Werke","de-ch":"einem Urheberrechtsschutz
+      unterliegende Werke","uk":"\u043f\u0440\u0430\u0432\u043e\u0432\u0438\u0439
+      \u0441\u0442\u0430\u043d \u0442\u0432\u043e\u0440\u0443, \u0432\u0438\u0437\u043d\u0430\u043d\u043e\u0433\u043e
+      \u0456\u043d\u0442\u0435\u043b\u0435\u043a\u0442\u0443\u0430\u043b\u044c\u043d\u043e\u044e
+      \u0432\u043b\u0430\u0441\u043d\u0456\u0441\u0442\u044e \u0441\u0443\u0431''\u0454\u043a\u0442\u0430"},"aliases":{"es":["con
+      derechos de autor"],"ru":["\u043a\u043e\u043f\u0438\u0440\u0430\u0439\u0442"],"en":["in
+      copyright","under copyright","protected by copyrights","copyright-protected"],"cs":["chr\u00e1n\u011bno
+      autorsk\u00fdm pr\u00e1vem"],"nn":["opphavsrettsverna"],"be":["\u043a\u0430\u043f\u0456\u0440\u0430\u0439\u0442"],"nb":["opphavsrettslig
+      beskyttet"],"uk":["\u043a\u043e\u043f\u0456\u0440\u0430\u0439\u0442"],"ms":["mempunyai
+      hak cipta","memiliki hak cipta","hak cipta","dalam perlindungan hak cipta"],"ro":["copyright"],"it":["coperto
+      da copyright"],"pl":["prawa autorskie zastrze\u017cone"],"vi":["d\u01b0\u1edbi
+      b\u1ea3n quy\u1ec1n"],"de":["unter Urheberrechtsschutz","Urheberrechtsschutz"],"hu":["jogv\u00e9dett"],"th":["\u0e15\u0e34\u0e14\u0e25\u0e34\u0e02\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e4c","\u0e1b\u0e49\u0e2d\u0e07\u0e01\u0e31\u0e19\u0e14\u0e49\u0e27\u0e22\u0e25\u0e34\u0e02\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e4c"],"zh-tw":["\u7248\u6b0a\u6240\u6709"],"zh-hant":["\u7248\u6b0a\u6240\u6709"],"tr":["telifli","telif
+      hakl\u0131"],"sq":["copyrighted","t\u00eb mbrojtura nga e drejta e autorit"],"zh":["\u7248\u6b0a\u6240\u6709","\u6709\u8457\u4f5c\u6b0a","\u6709\u8457\u4f5c\u6743"],"fi":["tekij\u00e4noikeussuojattu","tekij\u00e4noikeuden
+      alainen","tekij\u00e4noikeus voimassa","nauttii tekij\u00e4noikeuden suojaa"],"hi":["\u0915\u0949\u092a\u0940\u0930\u093e\u0907\u091f\u0947\u0921","\u0915\u0949\u092a\u0940\u0930\u093e\u0907\u091f
+      \u092e\u0947\u0902","\u0915\u0949\u092a\u0940\u0930\u093e\u0907\u091f\u0915\u0943\u0924"],"sl":["za\u0161\u010diteno
+      delo","avtorsko zavarovano delo","zavarovano delo"],"ja":["\u8457\u4f5c\u6a29\u4fdd\u8b77\u4e0b"],"fr":["sous
+      droit d''auteur"]},"statements":{"P1269":[{"id":"Q50423863$8c0b85bf-4a77-f293-ee34-58dcd6075286","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1269","data-type":"wikibase-item"},"value":{"type":"value","content":"Q1297822"}}],"P31":[{"id":"Q50423863$fdc63b2a-4bda-87a1-e78f-071ea7ec1d9c","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P31","data-type":"wikibase-item"},"value":{"type":"value","content":"Q73568642"}},{"id":"Q50423863$2bee8b98-4a4f-904e-d694-13e6e4097959","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P31","data-type":"wikibase-item"},"value":{"type":"value","content":"Q50424085"}}],"P279":[{"id":"Q50423863$9b396e43-44de-68da-6c19-77fc49cad494","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P279","data-type":"wikibase-item"},"value":{"type":"value","content":"Q131257"}},{"id":"Q50423863$b66c20c7-4aff-aec8-a370-4148d65ece89","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P279","data-type":"wikibase-item"},"value":{"type":"value","content":"Q67011165"}}],"P461":[{"id":"Q50423863$98a62e86-4230-7a3b-6d5c-339d458f7051","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P461","data-type":"wikibase-item"},"value":{"type":"value","content":"Q19652"}}],"P4967":[{"id":"Q50423863$6d897b03-4a6c-6629-b435-05567ab21492","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P4967","data-type":"wikibase-item"},"value":{"type":"value","content":"Q707401"}}],"P18":[{"id":"Q50423863$e5de0e84-48a5-f2e2-631a-dee81722ecb8","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P18","data-type":"commonsMedia"},"value":{"type":"value","content":"Copyright.svg"}}],"P4801":[{"id":"Q50423863$AC6D44C9-0CF4-4AF9-A6A2-B3A7ADB25CA5","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P4801","data-type":"external-id"},"value":{"type":"value","content":"preservation/copyrightStatus/cpr"}}],"P1542":[{"id":"Q50423863$93fac459-49f8-5722-6ef3-fc940e1a48e0","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1542","data-type":"wikibase-item"},"value":{"type":"value","content":"Q1297822"}}],"P973":[{"id":"Q50423863$251bb86d-44ca-3144-cb93-d721ccafdbcd","rank":"normal","qualifiers":[{"property":{"id":"P1476","data-type":"monolingualtext"},"value":{"type":"value","content":{"text":"Urheberrecht","language":"de"}}},{"property":{"id":"P98","data-type":"wikibase-item"},"value":{"type":"value","content":"Q24082934"}},{"property":{"id":"P407","data-type":"wikibase-item"},"value":{"type":"value","content":"Q188"}}],"references":[],"property":{"id":"P973","data-type":"url"},"value":{"type":"value","content":"https://www.ihk-muenchen.de/de/Service/Recht-und-Steuern/Urheberrecht/Copyrights-Urheberrecht-sch%C3%BCtzen-und-nutzen/"}}]},"sitelinks":{},"id":"Q50423863"}'
+    headers:
+      accept-ranges:
+      - bytes
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '0'
+      cache-control:
+      - no-cache
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Mon, 06 Nov 2023 22:01:29 GMT
+      etag:
+      - W/"2004481526"
+      last-modified:
+      - Sat, 04 Nov 2023 19:04:56 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1398.eqiad.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3070"
+      set-cookie:
+      - WMF-Last-Access=06-Nov-2023;Path=/;HttpOnly;secure;Expires=Fri, 08 Dec 2023
+        12:00:00 GMT
+      - WMF-Last-Access-Global=06-Nov-2023;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Fri,
+        08 Dec 2023 12:00:00 GMT
+      - GeoIP=GB:ENG:Lowestoft:52.50:1.71:v4; Path=/; secure; Domain=.wikidata.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
       vary:
       - Accept-Encoding
       x-cache:
@@ -121,8 +339,331 @@ interactions:
       - 92.13.36.200
       x-content-type-options:
       - nosniff
-      x-frame-options:
-      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - www.wikidata.org
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://www.wikidata.org/w/rest.php/wikibase/v0/entities/items/Q74228490
+  response:
+    content: '{"type":"item","labels":{"en":"file available on the internet","nl":"bestand
+      beschikbaar op internet","hu":"az interneten el\u00e9rhet\u0151 f\u00e1jl","ja":"\u30a4\u30f3\u30bf\u30fc\u30cd\u30c3\u30c8\u4e0a\u3067\u5229\u7528\u53ef\u80fd\u306a\u30d5\u30a1\u30a4\u30eb","de":"Datei
+      aus dem Internet","fr":"fichier disponible sur internet","es":"archivo disponible
+      en internet","mk":"\u043f\u043e\u0434\u0430\u0442\u043e\u0442\u0435\u043a\u0430
+      \u0434\u043e\u0441\u0442\u0430\u043f\u043d\u0430 \u043d\u0430 \u0441\u0435\u043c\u0440\u0435\u0436\u0458\u0435\u0442\u043e","hr":"datoteka
+      dostupna na internetu","ca":"fitxer disponible a Internet","pt":"arquivo dispon\u00edvel
+      na internet","it":"file disponibile su internet","pl":"plik z internetu","sv":"fil
+      som \u00e4r tillg\u00e4nglig p\u00e5 internet","be-tarask":"\u0444\u0430\u0439\u043b
+      \u0437 \u0456\u043d\u0442\u044d\u0440\u043d\u044d\u0442\u0443","ar":"\u0627\u0644\u0645\u0644\u0641
+      \u0645\u062a\u0648\u0627\u0641\u0631 \u0639\u0644\u0649 \u0627\u0644\u0625\u0646\u062a\u0631\u0646\u062a","vi":"t\u1eadp
+      tin tr\u00ean m\u1ea1ng","ru":"\u0444\u0430\u0439\u043b \u0434\u043e\u0441\u0442\u0443\u043f\u0435\u043d
+      \u0432 \u0418\u043d\u0442\u0435\u0440\u043d\u0435\u0442\u0435","cs":"soubor
+      dostupn\u00fd na internetu","zh-hant":"\u6a94\u6848\u53ef\u65bc\u7db2\u969b\u7db2\u8def\u53d6\u7528","tr":"internette
+      olan dosya","uz":"fayl internetda mavjud","fi":"kuva saatavilla internetiss\u00e4","sl":"datoteka
+      na spletu","yue":"\u7db2\u4e0a\u6435\u5230"},"descriptions":{"en":"value to
+      indicate the source of an image on Wikimedia Commons","nl":"waarde om de bron
+      van een afbeelding op Wikimedia Commons aan te geven","ja":"\u30b3\u30e2\u30f3\u30ba\u4e0a\u306e\u753b\u50cf\u306e\u30bd\u30fc\u30b9\u3092\u793a\u3059\u5024","de":"Wert
+      zu Angabe der Quelle eines Fotos auf Wikimedia Commons","fr":"source d\u2019une
+      image sur Wikimedia Commons","pt":"valor indicativo da fonte do material subido
+      no Wikimedia Commons","it":"valore per indicare l''origine di un''immagine su
+      Commons","pl":"warto\u015b\u0107 do oznaczenia pochodzenia pliku w Wikimedia
+      Commons","zh-hant":"\u6307\u51fa\u7dad\u57fa\u5171\u4eab\u8cc7\u6e90\u6a94\u6848\u4f86\u6e90\u4e4b\u503c","uz":"Wikimedia
+      Commons-dagi rasm manbasini ko''rsatadigan qiymat","ru":"\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435
+      \u0434\u043b\u044f \u0443\u043a\u0430\u0437\u0430\u043d\u0438\u044f \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u0430
+      \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f \u043d\u0430
+      \u0412\u0438\u043a\u0438\u0441\u043a\u043b\u0430\u0434\u0435","yue":"\u7dad\u57fa\u4ecb\u9762\u6a19\u7c64"},"aliases":{"en":["somewhere
+      on the internet","file downloaded from the internet","file from the internet","available
+      on the internet","found online","file on the internet","file found on the internet"],"pt":["ficheiro
+      dispon\u00edvel na internet"],"be-tarask":["\u0444\u0430\u0439\u043b \u0434\u0430\u0441\u0442\u0443\u043f\u043d\u044b
+      \u045e \u0456\u043d\u0442\u044d\u0440\u043d\u044d\u0446\u0435"],"vi":["t\u1eadp
+      tin c\u00f3 s\u1eb5n tr\u00ean Internet","t\u1eadp tin c\u00f3 s\u1eb5n tr\u00ean
+      m\u1ea1ng","t\u1eadp tin tr\u00ean Internet"],"zh-hant":["\u4f86\u81ea\u7db2\u969b\u7db2\u8def\u7684\u6a94\u6848"],"ru":["\u0444\u0430\u0439\u043b
+      \u0438\u0437 \u0418\u043d\u0442\u0435\u0440\u043d\u0435\u0442\u0430"],"fi":["kuva
+      ladattu internetist\u00e4"],"sl":["datoteka iz spleta","prenos iz spleta","nekje
+      na intenetu"]},"statements":{"P31":[{"id":"Q74228490$fcdd22fb-4cb7-8d66-6f86-67399dd33a37","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P31","data-type":"wikibase-item"},"value":{"type":"value","content":"Q72610003"}}],"P279":[{"id":"Q74228490$c0265b17-4ff9-ae56-4bd2-8a8e0822615b","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P279","data-type":"wikibase-item"},"value":{"type":"value","content":"Q269415"}}]},"sitelinks":{},"id":"Q74228490"}'
+    headers:
+      accept-ranges:
+      - bytes
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '0'
+      cache-control:
+      - no-cache
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Mon, 06 Nov 2023 22:01:30 GMT
+      etag:
+      - W/"1991432021"
+      last-modified:
+      - Sat, 14 Oct 2023 21:29:34 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw-api-ext.eqiad.main-6bd9c49465-s4cbw
+      server-timing:
+      - cache;desc="pass", host;desc="cp3070"
+      set-cookie:
+      - WMF-Last-Access=06-Nov-2023;Path=/;HttpOnly;secure;Expires=Fri, 08 Dec 2023
+        12:00:00 GMT
+      - WMF-Last-Access-Global=06-Nov-2023;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Fri,
+        08 Dec 2023 12:00:00 GMT
+      - GeoIP=GB:ENG:Lowestoft:52.50:1.71:v4; Path=/; secure; Domain=.wikidata.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3070 miss, cp3070 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 92.13.36.200
+      x-content-type-options:
+      - nosniff
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - www.wikidata.org
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://www.wikidata.org/w/rest.php/wikibase/v0/entities/items/Q103204
+  response:
+    content: '{"type":"item","labels":{"zh-hans":"Flickr","zh-hant":"Flickr","zh-hk":"Flickr","zh-cn":"Flickr","zh-sg":"Flickr","zh-tw":"Flickr","jv":"Flickr","pl":"Flickr","eu":"Flickr","es":"Flickr","ta":"\u0b83\u0baa\u0bbf\u0bb3\u0bbf\u0b95\u0bcd\u0b95\u0bb0\u0bcd","hu":"Flickr","ms":"Flickr","el":"Flickr","nl":"Flickr","sv":"Flickr","ar":"\u0641\u0644\u064a\u0643\u0631","pt":"Flickr","ru":"Flickr","sr-el":"Flickr","sr-ec":"Flickr","ckb":"\u0641\u0644\u06cc\u06a9\u0631","tr":"Flickr","fi":"Flickr","uk":"Flickr","hr":"Flickr","az":"Flickr","da":"Flickr","fr":"Flickr","ko":"\ud50c\ub9ac\ucee4","he":"\u05e4\u05dc\u05d9\u05e7\u05e8","bar":"Flickr","it":"Flickr","gl":"Flickr","id":"Flickr","de":"Flickr","ml":"\u0d2b\u0d4d\u0d32\u0d3f\u0d15\u0d4d\u0d15\u0d7c","ja":"Flickr","vi":"Flickr","yue":"Flickr","hi":"\u092b\u093c\u094d\u0932\u093f\u0915\u0930","wuu":"Flickr","sk":"Flickr","kn":"\u0cab\u0ccd\u0cb2\u0cbf\u0c95\u0cb0\u0ccd","th":"\u0e1f\u0e25\u0e34\u0e04\u0e40\u0e01\u0e2d\u0e23\u0e4c","ro":"Flickr","ca":"Flickr","cy":"Flickr","sl":"Flickr","cs":"Flickr","fa":"\u0641\u0644\u06cc\u06a9\u0631","ka":"Flickr","nds":"Flickr","lt":"Flickr","zh":"Flickr","sr":"\u0424\u043b\u0438\u043a\u0440","oc":"Flickr","tk":"Flickr","nb":"Flickr","bn":"\u09ab\u09cd\u09b2\u09bf\u0995\u09be\u09b0","scn":"Flickr","be":"Flickr","sh":"Flickr","hy":"Flickr","et":"Flickr","nan":"Flickr","bho":"\u092b\u094d\u0932\u093f\u0915\u0930","kk":"Flickr","en":"Flickr","nn":"Flickr","bg":"Flickr","mg":"Flickr","cdo":"Flickr","hak":"Flickr","zh-my":"Flickr","zh-mo":"Flickr","eo":"Flickr","co":"Flickr","qu":"Flickr","shn":"Flickr"},"descriptions":{"en":"American
+      image and video hosting website","fr":"site web","scn":"situ pi pubblicari e
+      cunniv\u00ecdiri fotu","de":"Bilder- und Video-Hosting-Website","nl":"website","es":"p\u00e1gina
+      web estadounidense de almacenamiento de im\u00e1genes y v\u00eddeos","id":"layanan
+      media sosial","sk":"komunitn\u00e1 webov\u00e1 lokalita pre zdie\u013eanie fotografi\u00ed
+      a videa","vi":"d\u1ecbch v\u1ee5 web chia s\u1ebb h\u00ecnh \u1ea3nh","fa":"\u06cc\u06a9\u06cc
+      \u0627\u0632 \u0633\u0627\u06cc\u062a\u200c\u0647\u0627\u06cc \u0627\u0634\u062a\u0631\u0627\u06a9\u200c\u06af\u0630\u0627\u0631\u06cc
+      \u062a\u0635\u0648\u06cc\u0631 \u0648 \u0648\u06cc\u062f\u0626\u0648","pl":"serwis
+      internetowy","ru":"\u0445\u043e\u0441\u0442\u0438\u043d\u0433 \u0444\u043e\u0442\u043e-
+      \u0438 \u0432\u0438\u0434\u0435\u043e\u0444\u0430\u0439\u043b\u043e\u0432","zh":"\u5716\u7247\u8a17\u7ba1\u548c\u8996\u983b\u8a17\u7ba1\u7db2\u7ad9","uk":"\u0445\u043e\u0441\u0442\u0438\u043d\u0433
+      \u0444\u043e\u0442\u043e- \u0456 \u0432\u0456\u0434\u0435\u043e\u0444\u0430\u0439\u043b\u0456\u0432","bar":"Netzportal
+      zum Speichan vo Fotos und Videos","ja":"\u5199\u771f\u30fb\u52d5\u753b\u306e\u5171\u6709\u30b5\u30a4\u30c8","ar":"\u062e\u062f\u0645\u0629\u064c
+      \u0648\u0645\u062c\u062a\u0645\u0639\u064c \u0639\u0644\u0649 \u0627\u0644\u0625\u0646\u062a\u0631\u0646\u062a
+      \u0644\u0627\u0633\u062a\u0636\u0627\u0641\u0629 \u0627\u0644\u0635\u0648\u0631
+      \u0648\u0645\u0642\u0627\u0637\u0639 \u0627\u0644\u0641\u064a\u062f\u064a\u0648","bn":"\u099a\u09bf\u09a4\u09cd\u09b0
+      \u09b9\u09cb\u09b8\u09cd\u099f\u09bf\u0982 \u0993 \u09ad\u09bf\u09a1\u09bf\u0993
+      \u09b9\u09cb\u09b8\u09cd\u099f\u09bf\u0982 \u09aa\u09b0\u09bf\u09b7\u09c7\u09ac\u09be
+      \u0993\u09af\u09bc\u09c7\u09ac\u09b8\u09be\u0987\u099f \u098f\u09ac\u0982 \u0993\u09af\u09bc\u09c7\u09ac
+      \u09aa\u09b0\u09bf\u09b7\u09c7\u09ac\u09be \u09b8\u09ae\u09b7\u09cd\u099f\u09bf
+      \u09af\u09be \u09b2\u09c1\u09a1\u09bf\u0995\u09b0\u09cd\u09aa \u0995\u09cb\u09ae\u09cd\u09aa\u09be\u09a8\u09bf
+      \u0995\u09b0\u09cd\u09a4\u09c3\u0995 \u09e8\u09e6\u09e6\u09ea \u09b8\u09be\u09b2\u09c7
+      \u098f\u099f\u09bf \u09a4\u09c8\u09b0\u09bf \u0995\u09b0\u09be \u09b9\u09af\u09bc
+      \u098f\u09ac\u0982 \u09ae\u09be\u09b0\u09cd\u099a \u09e8\u09e6, \u09e8\u09e6\u09e6\u09eb
+      \u09b8\u09be\u09b2\u09c7 \u0987\u09af\u09bc\u09be\u09b9\u09c1 \u0995\u09b0\u09cd\u09a4\u09c3\u0995
+      \u0995\u09cd\u09b0\u09af\u09bc\u0995\u09c3\u09a4","nb":"amerikansk bilde- og
+      videodelingsplatform","bg":"\u0430\u043c\u0435\u0440\u0438\u043a\u0430\u043d\u0441\u043a\u0438
+      \u0443\u0435\u0431\u0441\u0430\u0439\u0442","ko":"\uc18c\uc15c \ub124\ud2b8\uc6cc\ud06c
+      \uc11c\ube44\uc2a4","sv":"webbtj\u00e4nst","zh-hk":"\u7f8e\u570b\u5716\u7247\u53ca\u5f71\u7247\u8a17\u7ba1\u7db2\u7ad9","it":"sito
+      web di propriet\u00e0 di SmugMug"},"aliases":{"es":["Flickr.com","Fickr"],"ta":["\u0b83\u0baa\u0bbf\u0bb2\u0bbf\u0b95\u0bcd\u0b95\u0bb0\u0bcd"],"nl":["Flickr.com"],"ar":["Flickr.com","\u0641\u0644\u0643\u0631"],"ru":["Flickr.com","\u0424\u043b\u0438\u043a\u0440"],"sr":["Fliker"],"uk":["\u0423\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0438\u0439
+      \u0424\u043b\u0456\u043a\u0435\u0440","\u0424\u043b\u0456\u043a\u0435\u0440","\u0424\u043b\u0456\u043a\u0440"],"fr":["Flickr.com","Fickr"],"ko":["\ud50c\ub9ad\ucee4","Flickr"],"he":["Flickr.com","Flickr"],"ml":["Flickr"],"th":["\u0e1f\u0e25\u0e34\u0e04\u0e23\u0e4c","\u0e1f\u0e25\u0e34\u0e01","Flickr","\u0e1f\u0e25\u0e34\u0e04","\u0e1f\u0e25\u0e34\u0e04\u0e2d\u0e32\u0e23\u0e4c","\u0e1f\u0e25\u0e34\u0e01\u0e40\u0e01\u0e2d\u0e23\u0e4c"],"ka":["\u10e4\u10da\u10d8\u10d9\u10e0\u10d8","\u10e4\u10da\u10d8\u10d9\u10d4\u10e0\u10d8"],"en":["flickr","flickr.com"],"it":["Flickr
+      com","Flickr.com"],"ja":["\u30d5\u30ea\u30c3\u30ab\u30fc"],"nb":["flickr.com"],"vi":["flickr.com"]},"statements":{"P154":[{"id":"Q103204$AA8CFF4F-0327-4ACC-865E-72339CF65D78","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P154","data-type":"commonsMedia"},"value":{"type":"value","content":"Flickr
+      wordmark.svg"}}],"P31":[{"id":"Q103204$e1931a3d-41c4-b636-fd52-f8f9906ca7f3","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P31","data-type":"wikibase-item"},"value":{"type":"value","content":"Q2721136"}},{"id":"Q103204$87a8acbc-418a-34c2-65f6-f7a7bda14086","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P31","data-type":"wikibase-item"},"value":{"type":"value","content":"Q559856"}},{"id":"Q103204$4ef078fc-48ed-e18c-6564-cb71490faa35","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P31","data-type":"wikibase-item"},"value":{"type":"value","content":"Q6576792"}},{"id":"Q103204$f8930e85-4fd8-cc91-4de4-81694fd3c51b","rank":"normal","qualifiers":[],"references":[{"hash":"155f3cbe880bbf586c5078f84ef66ee617cf423b","parts":[{"property":{"id":"P143","data-type":"wikibase-item"},"value":{"type":"value","content":"Q206855"}},{"property":{"id":"P4656","data-type":"url"},"value":{"type":"value","content":"https://ru.wikipedia.org/?oldid=97352330"}}]}],"property":{"id":"P31","data-type":"wikibase-item"},"value":{"type":"value","content":"Q354869"}},{"id":"Q103204$8281e2fa-490b-32d4-38b2-3623ec6f62a1","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P31","data-type":"wikibase-item"},"value":{"type":"value","content":"Q72610003"}},{"id":"Q103204$069aff17-4318-ed2e-e9eb-ded99af6101e","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P31","data-type":"wikibase-item"},"value":{"type":"value","content":"Q620615"}}],"P373":[{"id":"Q103204$5C67EC98-3EE5-4B82-BBC9-FD2287F2DA8A","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P373","data-type":"string"},"value":{"type":"value","content":"Flickr"}}],"P856":[{"id":"Q103204$5860bd73-4b13-d3f1-439a-44e90e6fc5b1","rank":"normal","qualifiers":[{"property":{"id":"P407","data-type":"wikibase-item"},"value":{"type":"value","content":"Q1860"}}],"references":[],"property":{"id":"P856","data-type":"url"},"value":{"type":"value","content":"https://www.flickr.com"}}],"P646":[{"id":"Q103204$A5CAFEB3-5A68-4D12-90BD-543C296B7F53","rank":"normal","qualifiers":[],"references":[{"hash":"2b00cb481cddcac7623114367489b5c194901c4a","parts":[{"property":{"id":"P248","data-type":"wikibase-item"},"value":{"type":"value","content":"Q15241312"}},{"property":{"id":"P577","data-type":"time"},"value":{"type":"value","content":{"time":"+2013-10-28T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}]}],"property":{"id":"P646","data-type":"external-id"},"value":{"type":"value","content":"/m/04dtx9"}}],"P749":[{"id":"Q103204$E52C3CFD-A1F2-4D95-A86C-4EB690CF34FD","rank":"normal","qualifiers":[{"property":{"id":"P580","data-type":"time"},"value":{"type":"value","content":{"time":"+2018-04-20T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}],"references":[],"property":{"id":"P749","data-type":"wikibase-item"},"value":{"type":"value","content":"Q507135"}}],"P2013":[{"id":"Q103204$199769e2-4522-cd75-5cdf-1a587b5d7735","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P2013","data-type":"external-id"},"value":{"type":"value","content":"flickr"}}],"P2002":[{"id":"Q103204$94eb4ae2-4221-3132-d8dc-64109a89f865","rank":"normal","qualifiers":[{"property":{"id":"P3744","data-type":"quantity"},"value":{"type":"value","content":{"amount":"+1174501","unit":"1"}}},{"property":{"id":"P6552","data-type":"external-id"},"value":{"type":"value","content":"21237045"}},{"property":{"id":"P1552","data-type":"wikibase-item"},"value":{"type":"value","content":"Q28378282"}},{"property":{"id":"P580","data-type":"time"},"value":{"type":"value","content":{"time":"+2009-02-18T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}},{"property":{"id":"P585","data-type":"time"},"value":{"type":"value","content":{"time":"+2020-04-25T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}],"references":[{"hash":"830e0d3d65e6b91e769889d7d1177706b5c1e0ca","parts":[{"property":{"id":"P813","data-type":"time"},"value":{"type":"value","content":{"time":"+2018-05-10T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}]}],"property":{"id":"P2002","data-type":"external-id"},"value":{"type":"value","content":"Flickr"}}],"P1547":[{"id":"Q103204$8f98a0f2-483c-0897-9245-8af78d684e00","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1547","data-type":"wikibase-item"},"value":{"type":"value","content":"Q16878131"}}],"P443":[{"id":"Q103204$6A357843-00A7-45BE-950D-CE1C262CE65E","rank":"normal","qualifiers":[{"property":{"id":"P407","data-type":"wikibase-item"},"value":{"type":"value","content":"Q1860"}}],"references":[],"property":{"id":"P443","data-type":"commonsMedia"},"value":{"type":"value","content":"Flickr
+      pronunciation.oga"}}],"P1581":[{"id":"Q103204$8a2c7dc1-4979-9f83-18e7-a0387eb4dbf9","rank":"normal","qualifiers":[{"property":{"id":"P407","data-type":"wikibase-item"},"value":{"type":"value","content":"Q1860"}}],"references":[],"property":{"id":"P1581","data-type":"url"},"value":{"type":"value","content":"https://blog.flickr.net"}}],"P1687":[{"id":"Q103204$c7f6b93f-460b-9cff-50bd-4b26d17b74e6","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1687","data-type":"wikibase-property"},"value":{"type":"value","content":"P3267"}},{"id":"Q103204$A6F322EA-7245-40F9-AB09-A12F6B322785","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1687","data-type":"wikibase-property"},"value":{"type":"value","content":"P12120"}}],"P3418":[{"id":"Q103204$498c93f7-43f1-23ca-6752-02928211e6c0","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P3418","data-type":"external-id"},"value":{"type":"value","content":"com.flickr.android"}}],"P3569":[{"id":"Q103204$3D08029F-5153-400D-86F0-CAE596B5C94A","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P3569","data-type":"external-id"},"value":{"type":"value","content":"media/flickr"}}],"P571":[{"id":"Q103204$56413876-A776-4D21-87C7-D35E5F4A7512","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P571","data-type":"time"},"value":{"type":"value","content":{"time":"+2004-02-10T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}],"P3417":[{"id":"Q103204$955d5651-4d54-8e60-667b-bb9798126f05","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P3417","data-type":"external-id"},"value":{"type":"value","content":"Flickr-product"}}],"P3943":[{"id":"Q103204$134F10C6-5E7E-4498-A7DE-301FB5471968","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P3943","data-type":"external-id"},"value":{"type":"value","content":"flickr"}}],"P178":[{"id":"Q103204$8c3b33a6-4be6-25aa-1a95-dfd7316410d8","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P178","data-type":"wikibase-item"},"value":{"type":"value","content":"Q507135"}}],"P3861":[{"id":"Q103204$40270332-4afe-24a9-d241-15c9f3b1e95e","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P3861","data-type":"external-id"},"value":{"type":"value","content":"328407587"}}],"P1661":[{"id":"Q103204$AEEC56A8-9265-4352-9B3E-EF91877DDAE6","rank":"normal","qualifiers":[{"property":{"id":"P585","data-type":"time"},"value":{"type":"value","content":{"time":"+2017-11-20T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}],"references":[{"hash":"998a97d8ea37175ad7ac6e747b5a62073d18b3af","parts":[{"property":{"id":"P1065","data-type":"url"},"value":{"type":"value","content":"https://web.archive.org/web/20171120174748/https://www.alexa.com/siteinfo/flickr.com"}},{"property":{"id":"P854","data-type":"url"},"value":{"type":"value","content":"https://www.alexa.com/siteinfo/flickr.com"}},{"property":{"id":"P2960","data-type":"time"},"value":{"type":"value","content":{"time":"+2017-11-20T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}]}],"property":{"id":"P1661","data-type":"quantity"},"value":{"type":"value","content":{"amount":"+342","unit":"1"}}},{"id":"Q103204$8b327b38-4cf7-bd04-58d7-f42a44a51c71","rank":"preferred","qualifiers":[{"property":{"id":"P585","data-type":"time"},"value":{"type":"value","content":{"time":"+2019-08-20T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}],"references":[{"hash":"0e19625d6a8bb22571200d26b28612ae2fd69303","parts":[{"property":{"id":"P854","data-type":"url"},"value":{"type":"value","content":"https://www.alexa.com/siteinfo/flickr.com"}},{"property":{"id":"P813","data-type":"time"},"value":{"type":"value","content":{"time":"+2019-08-20T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}},{"property":{"id":"P1065","data-type":"url"},"value":{"type":"value","content":"https://web.archive.org/web/20190820202945/https://www.alexa.com/siteinfo/flickr.com"}},{"property":{"id":"P2960","data-type":"time"},"value":{"type":"value","content":{"time":"+2019-08-20T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}]}],"property":{"id":"P1661","data-type":"quantity"},"value":{"type":"value","content":{"amount":"+421","unit":"1"}}}],"P1417":[{"id":"Q103204$FFA3AD9D-509F-4B0E-9160-BD86CAD4E7AB","rank":"normal","qualifiers":[{"property":{"id":"P1810","data-type":"string"},"value":{"type":"value","content":"Flickr"}}],"references":[],"property":{"id":"P1417","data-type":"external-id"},"value":{"type":"value","content":"topic/Flickrcom"}}],"P112":[{"id":"Q103204$30715c7d-40ce-4683-e678-34586d186d44","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P112","data-type":"wikibase-item"},"value":{"type":"value","content":"Q1561837"}},{"id":"Q103204$d88e7aa9-4915-646e-4934-16cecb3fdd93","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P112","data-type":"wikibase-item"},"value":{"type":"value","content":"Q37195"}}],"P159":[{"id":"Q103204$5c31e610-42f9-e479-ac15-9fb5777eed15","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P159","data-type":"wikibase-item"},"value":{"type":"value","content":"Q62"}}],"P4354":[{"id":"Q103204$c804eab8-46c1-acc9-f970-367da44884c0","rank":"normal","qualifiers":[{"property":{"id":"P407","data-type":"wikibase-item"},"value":{"type":"value","content":"Q1860"}}],"references":[],"property":{"id":"P4354","data-type":"string"},"value":{"type":"value","content":"https://www.flickr.com/search/?text=$1"}}],"P407":[{"id":"Q103204$7c85454a-4bed-f995-2257-7742fb60cf62","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P407","data-type":"wikibase-item"},"value":{"type":"value","content":"Q1860"}},{"id":"Q103204$8f9fc573-47e8-c6b5-6679-aede05cd174e","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P407","data-type":"wikibase-item"},"value":{"type":"value","content":"Q7850"}},{"id":"Q103204$f4018d8a-4b57-1994-c7c1-51d540d9a8e7","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P407","data-type":"wikibase-item"},"value":{"type":"value","content":"Q1321"}},{"id":"Q103204$89c39f21-4d8a-f6dd-f2ef-ebdb1e2b6992","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P407","data-type":"wikibase-item"},"value":{"type":"value","content":"Q150"}},{"id":"Q103204$07243abb-4d27-fc70-2dc2-70a399ae63d7","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P407","data-type":"wikibase-item"},"value":{"type":"value","content":"Q9176"}},{"id":"Q103204$831ec7c0-4215-7e2a-83e1-1c7fb7e57026","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P407","data-type":"wikibase-item"},"value":{"type":"value","content":"Q652"}},{"id":"Q103204$2ca1f1da-424e-bc03-b6ba-eabddef1e645","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P407","data-type":"wikibase-item"},"value":{"type":"value","content":"Q5146"}},{"id":"Q103204$f11013e8-48a7-7a44-9742-b7d55a566f26","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P407","data-type":"wikibase-item"},"value":{"type":"value","content":"Q9199"}},{"id":"Q103204$9f0a8acf-49e5-86ae-2c9e-176aeec914b6","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P407","data-type":"wikibase-item"},"value":{"type":"value","content":"Q9240"}}],"P1482":[{"id":"Q103204$ecf5b91f-4c3f-8f29-5538-5c90b88fd3cd","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1482","data-type":"url"},"value":{"type":"value","content":"https://stackoverflow.com/tags/flickr"}}],"P2179":[{"id":"Q103204$F300A95F-AF72-4467-96AB-4699F7C8C941","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P2179","data-type":"string"},"value":{"type":"value","content":"10011476"}}],"P4342":[{"id":"Q103204$D9DC7509-DCFB-4B06-9D06-E059019E2BB9","rank":"normal","qualifiers":[{"property":{"id":"P4390","data-type":"wikibase-item"},"value":{"type":"value","content":"Q39893449"}}],"references":[],"property":{"id":"P4342","data-type":"external-id"},"value":{"type":"value","content":"Flickr"}}],"P4742":[{"id":"Q103204$f08d03d6-435f-f920-4df2-60a52571b913","rank":"normal","qualifiers":[],"references":[{"hash":"57d7cdef401e770ce03a2865d722f83a95b38a00","parts":[{"property":{"id":"P854","data-type":"url"},"value":{"type":"value","content":"https://stackoverflow.com/questions/18576285/open-flickr-from-third-party-ios-app"}},{"property":{"id":"P1476","data-type":"monolingualtext"},"value":{"type":"value","content":{"text":"hyperlink
+      - Open Flickr From Third Party iOS App - Stack Overflow","language":"en"}}},{"property":{"id":"P577","data-type":"time"},"value":{"type":"value","content":{"time":"+2013-09-02T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}},{"property":{"id":"P813","data-type":"time"},"value":{"type":"value","content":{"time":"+2018-06-09T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}]}],"property":{"id":"P4742","data-type":"external-id"},"value":{"type":"value","content":"flickr"}}],"P3267":[{"id":"Q103204$7579F6D9-648B-4F9A-A8BD-E34854D0BA1B","rank":"normal","qualifiers":[{"property":{"id":"P554","data-type":"string"},"value":{"type":"value","content":"Official
+      Flickr account"}}],"references":[],"property":{"id":"P3267","data-type":"external-id"},"value":{"type":"value","content":"66956608@N06"}}],"P6720":[{"id":"Q103204$7a0b2bb0-40a9-57e8-7f3e-5a1058b335af","rank":"normal","qualifiers":[{"property":{"id":"P1630","data-type":"string"},"value":{"type":"value","content":"//www.flickr.com/people/$1"}},{"property":{"id":"P580","data-type":"time"},"value":{"type":"value","content":{"time":"+2005-10-14T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}],"references":[],"property":{"id":"P6720","data-type":"external-id"},"value":{"type":"value","content":"flickruser"}},{"id":"Q103204$e7168348-4d69-a943-27b2-5449965134a0","rank":"normal","qualifiers":[{"property":{"id":"P1630","data-type":"string"},"value":{"type":"value","content":"//www.flickr.com/photo.gne?id=$1"}},{"property":{"id":"P580","data-type":"time"},"value":{"type":"value","content":{"time":"+2010-08-09T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}],"references":[],"property":{"id":"P6720","data-type":"external-id"},"value":{"type":"value","content":"flickrphoto"}}],"P1296":[{"id":"Q103204$171B9AF6-6D4C-4ED6-97E1-ED2BB3DC6CD2","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1296","data-type":"external-id"},"value":{"type":"value","content":"0522771"}}],"P7818":[{"id":"Q103204$95250745-7C27-4F29-A532-2256D78AC04E","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P7818","data-type":"external-id"},"value":{"type":"value","content":"Flickr"}}],"P7014":[{"id":"Q103204$ddb9c624-4201-48c7-20ab-588bc8ef21a6","rank":"normal","qualifiers":[{"property":{"id":"P1476","data-type":"monolingualtext"},"value":{"type":"value","content":{"text":"Flickr
+      Terms & Conditions of Use","language":"en"}}},{"property":{"id":"P407","data-type":"wikibase-item"},"value":{"type":"value","content":"Q1860"}},{"property":{"id":"P5017","data-type":"time"},"value":{"type":"value","content":{"time":"+2020-01-01T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}},{"property":{"id":"P1065","data-type":"url"},"value":{"type":"value","content":"https://web.archive.org/web/20200314235232/https://www.flickr.com/help/terms"}}],"references":[{"hash":"355ddd6a17723098f4ff3148954797ae049fab62","parts":[{"property":{"id":"P854","data-type":"url"},"value":{"type":"value","content":"https://commons.wikimedia.org/wiki/Special:UploadWizard"}}]}],"property":{"id":"P7014","data-type":"url"},"value":{"type":"value","content":"https://www.flickr.com/help/terms"}}],"P7101":[{"id":"Q103204$90fa4f88-433d-0559-6e81-0b261059313e","rank":"normal","qualifiers":[{"property":{"id":"P1476","data-type":"monolingualtext"},"value":{"type":"value","content":{"text":"Flickr
+      Privacy Policy","language":"en"}}},{"property":{"id":"P407","data-type":"wikibase-item"},"value":{"type":"value","content":"Q1860"}},{"property":{"id":"P5017","data-type":"time"},"value":{"type":"value","content":{"time":"+2020-01-22T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}},{"property":{"id":"P1065","data-type":"url"},"value":{"type":"value","content":"https://web.archive.org/web/20200322000935/https://www.flickr.com/help/privacy"}}],"references":[{"hash":"355ddd6a17723098f4ff3148954797ae049fab62","parts":[{"property":{"id":"P854","data-type":"url"},"value":{"type":"value","content":"https://commons.wikimedia.org/wiki/Special:UploadWizard"}}]}],"property":{"id":"P7101","data-type":"url"},"value":{"type":"value","content":"https://www.flickr.com/help/privacy"}}],"P7306":[{"id":"Q103204$99555B5A-DCB2-467D-B126-D354B6705388","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P7306","data-type":"external-id"},"value":{"type":"value","content":"flickr"}}],"P1282":[{"id":"Q103204$d4ff7499-4283-d8b3-298b-56c75130f1d6","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1282","data-type":"string"},"value":{"type":"value","content":"Key:flickr"}}],"P8525":[{"id":"Q103204$038934dd-499d-288f-d2b4-d25a1d3e0829","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P8525","data-type":"external-id"},"value":{"type":"value","content":"186"}}],"P8687":[{"id":"Q103204$26faf771-6f12-4565-b35d-038eb6248abf","rank":"normal","qualifiers":[{"property":{"id":"P6552","data-type":"external-id"},"value":{"type":"value","content":"21237045"}},{"property":{"id":"P585","data-type":"time"},"value":{"type":"value","content":{"time":"+2021-01-03T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}],"references":[],"property":{"id":"P8687","data-type":"quantity"},"value":{"type":"value","content":{"amount":"+1149798","unit":"1"}}},{"id":"Q103204$7046147a-2ea7-4467-825e-366417957c69","rank":"normal","qualifiers":[{"property":{"id":"P6552","data-type":"external-id"},"value":{"type":"value","content":"21237045"}},{"property":{"id":"P585","data-type":"time"},"value":{"type":"value","content":{"time":"+2020-04-25T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}],"references":[],"property":{"id":"P8687","data-type":"quantity"},"value":{"type":"value","content":{"amount":"+1174501","unit":"1"}}},{"id":"Q103204$0adf3749-fc37-419b-9b1d-dad82b88afb0","rank":"normal","qualifiers":[{"property":{"id":"P6552","data-type":"external-id"},"value":{"type":"value","content":"21237045"}},{"property":{"id":"P585","data-type":"time"},"value":{"type":"value","content":{"time":"+2022-03-02T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}],"references":[],"property":{"id":"P8687","data-type":"quantity"},"value":{"type":"value","content":{"amount":"+1117453","unit":"1"}}},{"id":"Q103204$76ad8981-cce6-4087-afb4-154fbd706711","rank":"preferred","qualifiers":[{"property":{"id":"P6552","data-type":"external-id"},"value":{"type":"value","content":"21237045"}},{"property":{"id":"P585","data-type":"time"},"value":{"type":"value","content":{"time":"+2023-02-05T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}],"references":[],"property":{"id":"P8687","data-type":"quantity"},"value":{"type":"value","content":{"amount":"+1100498","unit":"1"}}}],"P9138":[{"id":"Q103204$3024021c-47fb-b2c7-3b3b-476c77755c6b","rank":"normal","qualifiers":[{"property":{"id":"P407","data-type":"wikibase-item"},"value":{"type":"value","content":"Q1860"}}],"references":[],"property":{"id":"P9138","data-type":"url"},"value":{"type":"value","content":"https://status.flickr.net"}}],"P17":[{"id":"Q103204$d4749b87-466c-5c5d-5b87-12093766dcfa","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P17","data-type":"wikibase-item"},"value":{"type":"value","content":"Q30"}}],"P3553":[{"id":"Q103204$4BC5F148-3A82-4A0A-97D2-5DBE2D7AEEB6","rank":"normal","qualifiers":[{"property":{"id":"P1810","data-type":"string"},"value":{"type":"value","content":"Flickr"}}],"references":[],"property":{"id":"P3553","data-type":"external-id"},"value":{"type":"value","content":"19556612"}}],"P9618":[{"id":"Q103204$8eea8131-4e10-1682-d070-ae16554480fc","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P9618","data-type":"external-id"},"value":{"type":"value","content":"flickr"}}],"P9100":[{"id":"Q103204$775A7E0B-436E-464E-A490-D521FFC08E8E","rank":"normal","qualifiers":[],"references":[{"hash":"193d864da3325e12e4e34a4e18171e0697942d58","parts":[{"property":{"id":"P854","data-type":"url"},"value":{"type":"value","content":"https://github.com/topics/flickr"}},{"property":{"id":"P1476","data-type":"monolingualtext"},"value":{"type":"value","content":{"text":"flickr
+      \u00b7 GitHub Topics \u00b7 GitHub","language":"en"}}},{"property":{"id":"P813","data-type":"time"},"value":{"type":"value","content":{"time":"+2021-07-25T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}]}],"property":{"id":"P9100","data-type":"external-id"},"value":{"type":"value","content":"flickr"}}],"P2347":[{"id":"Q103204$405D51E2-6A0C-419C-9075-F7EA9DCE7C0A","rank":"normal","qualifiers":[],"references":[{"hash":"f00903755813c3f26f7060558542501a67b7612f","parts":[{"property":{"id":"P248","data-type":"wikibase-item"},"value":{"type":"value","content":"Q89345680"}},{"property":{"id":"P813","data-type":"time"},"value":{"type":"value","content":{"time":"+2021-11-09T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}]}],"property":{"id":"P2347","data-type":"external-id"},"value":{"type":"value","content":"38652"}}],"P10784":[{"id":"Q103204$d613d11f-441d-e068-da69-6ea5313fdc05","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P10784","data-type":"external-id"},"value":{"type":"value","content":"flickr"}}],"P750":[{"id":"Q103204$9E6688FE-CF49-4612-9DD8-0A5506C973DC","rank":"normal","qualifiers":[{"property":{"id":"P400","data-type":"wikibase-item"},"value":{"type":"value","content":"Q94"}},{"property":{"id":"P437","data-type":"wikibase-item"},"value":{"type":"value","content":"Q620615"}}],"references":[{"hash":"e56941bd215c56c8b0a7a28e8d953a38e6ae2076","parts":[{"property":{"id":"P3452","data-type":"wikibase-item"},"value":{"type":"value","content":"Q79576"}},{"property":{"id":"P4656","data-type":"url"},"value":{"type":"value","content":"https://www.wikidata.org/wiki/Q103204#P3418"}},{"property":{"id":"P4656","data-type":"url"},"value":{"type":"value","content":"https://www.wikidata.org/wiki/Property:P3418#P2302"}}]}],"property":{"id":"P750","data-type":"wikibase-item"},"value":{"type":"value","content":"Q79576"}},{"id":"Q103204$8B03B9D9-5B2D-4E65-BBE6-2F3BFE842FD9","rank":"normal","qualifiers":[{"property":{"id":"P400","data-type":"wikibase-item"},"value":{"type":"value","content":"Q48493"}},{"property":{"id":"P437","data-type":"wikibase-item"},"value":{"type":"value","content":"Q620615"}}],"references":[{"hash":"b209809900d8bb5db0023824a2802c0eb7b60a95","parts":[{"property":{"id":"P3452","data-type":"wikibase-item"},"value":{"type":"value","content":"Q368215"}},{"property":{"id":"P4656","data-type":"url"},"value":{"type":"value","content":"https://www.wikidata.org/wiki/Q103204#P3861"}},{"property":{"id":"P4656","data-type":"url"},"value":{"type":"value","content":"https://www.wikidata.org/wiki/Property:P3861#P2302"}}]}],"property":{"id":"P750","data-type":"wikibase-item"},"value":{"type":"value","content":"Q368215"}}],"P279":[{"id":"Q103204$a316c2cd-42ce-10db-57cc-f03aa5596f6d","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P279","data-type":"wikibase-item"},"value":{"type":"value","content":"Q74228490"}}],"P1889":[{"id":"Q103204$5922cc82-4afb-42fd-f452-43c33d3221f9","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1889","data-type":"wikibase-item"},"value":{"type":"value","content":"Q118959064"}}],"P437":[{"id":"Q103204$366a6311-44ae-16e3-8b7d-4dd039c7e096","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P437","data-type":"wikibase-item"},"value":{"type":"value","content":"Q54820071"}}],"P400":[{"id":"Q103204$7381c169-4f08-dfe4-a84e-6a4638622fb3","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P400","data-type":"wikibase-item"},"value":{"type":"value","content":"Q94"}},{"id":"Q103204$9f72a97f-4dac-c979-1892-f601c5905228","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P400","data-type":"wikibase-item"},"value":{"type":"value","content":"Q48493"}}],"P479":[{"id":"Q103204$8d93bf90-4321-d5d5-43b0-e9719552e8f0","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P479","data-type":"wikibase-item"},"value":{"type":"value","content":"Q165970"}}]},"sitelinks":{"zhwiki":{"title":"Flickr","badges":[],"url":"https://zh.wikipedia.org/wiki/Flickr"},"jvwiki":{"title":"Flickr","badges":[],"url":"https://jv.wikipedia.org/wiki/Flickr"},"plwiki":{"title":"Flickr","badges":[],"url":"https://pl.wikipedia.org/wiki/Flickr"},"euwiki":{"title":"Flickr","badges":[],"url":"https://eu.wikipedia.org/wiki/Flickr"},"eswiki":{"title":"Flickr","badges":[],"url":"https://es.wikipedia.org/wiki/Flickr"},"huwiki":{"title":"Flickr","badges":[],"url":"https://hu.wikipedia.org/wiki/Flickr"},"mswiki":{"title":"Flickr","badges":[],"url":"https://ms.wikipedia.org/wiki/Flickr"},"elwiki":{"title":"Flickr","badges":[],"url":"https://el.wikipedia.org/wiki/Flickr"},"nlwiki":{"title":"Flickr","badges":[],"url":"https://nl.wikipedia.org/wiki/Flickr"},"svwiki":{"title":"Flickr","badges":[],"url":"https://sv.wikipedia.org/wiki/Flickr"},"arwiki":{"title":"\u0641\u0644\u064a\u0643\u0631","badges":[],"url":"https://ar.wikipedia.org/wiki/%D9%81%D9%84%D9%8A%D9%83%D8%B1"},"ptwiki":{"title":"Flickr","badges":[],"url":"https://pt.wikipedia.org/wiki/Flickr"},"ruwiki":{"title":"Flickr","badges":[],"url":"https://ru.wikipedia.org/wiki/Flickr"},"ckbwiki":{"title":"\u0641\u0644\u06cc\u06a9\u0631","badges":[],"url":"https://ckb.wikipedia.org/wiki/%D9%81%D9%84%DB%8C%DA%A9%D8%B1"},"trwiki":{"title":"Flickr","badges":[],"url":"https://tr.wikipedia.org/wiki/Flickr"},"fiwiki":{"title":"Flickr","badges":[],"url":"https://fi.wikipedia.org/wiki/Flickr"},"ukwiki":{"title":"Flickr","badges":[],"url":"https://uk.wikipedia.org/wiki/Flickr"},"hrwiki":{"title":"Flickr","badges":[],"url":"https://hr.wikipedia.org/wiki/Flickr"},"azwiki":{"title":"Flickr","badges":[],"url":"https://az.wikipedia.org/wiki/Flickr"},"dawiki":{"title":"Flickr","badges":[],"url":"https://da.wikipedia.org/wiki/Flickr"},"frwiki":{"title":"Flickr","badges":[],"url":"https://fr.wikipedia.org/wiki/Flickr"},"kowiki":{"title":"\ud50c\ub9ac\ucee4","badges":[],"url":"https://ko.wikipedia.org/wiki/%ED%94%8C%EB%A6%AC%EC%BB%A4"},"hewiki":{"title":"\u05e4\u05dc\u05d9\u05e7\u05e8","badges":[],"url":"https://he.wikipedia.org/wiki/%D7%A4%D7%9C%D7%99%D7%A7%D7%A8"},"barwiki":{"title":"Flickr","badges":[],"url":"https://bar.wikipedia.org/wiki/Flickr"},"itwiki":{"title":"Flickr","badges":[],"url":"https://it.wikipedia.org/wiki/Flickr"},"glwiki":{"title":"Flickr","badges":[],"url":"https://gl.wikipedia.org/wiki/Flickr"},"idwiki":{"title":"Flickr","badges":[],"url":"https://id.wikipedia.org/wiki/Flickr"},"dewiki":{"title":"Flickr","badges":[],"url":"https://de.wikipedia.org/wiki/Flickr"},"mlwiki":{"title":"\u0d2b\u0d4d\u0d32\u0d3f\u0d15\u0d4d\u0d15\u0d7c","badges":[],"url":"https://ml.wikipedia.org/wiki/%E0%B4%AB%E0%B5%8D%E0%B4%B2%E0%B4%BF%E0%B4%95%E0%B5%8D%E0%B4%95%E0%B5%BC"},"jawiki":{"title":"Flickr","badges":[],"url":"https://ja.wikipedia.org/wiki/Flickr"},"viwiki":{"title":"Flickr","badges":[],"url":"https://vi.wikipedia.org/wiki/Flickr"},"simplewiki":{"title":"Flickr","badges":[],"url":"https://simple.wikipedia.org/wiki/Flickr"},"zh_yuewiki":{"title":"Flickr","badges":[],"url":"https://zh-yue.wikipedia.org/wiki/Flickr"},"hiwiki":{"title":"\u092b\u093c\u094d\u0932\u093f\u0915\u0930","badges":[],"url":"https://hi.wikipedia.org/wiki/%E0%A4%AB%E0%A4%BC%E0%A5%8D%E0%A4%B2%E0%A4%BF%E0%A4%95%E0%A4%B0"},"wuuwiki":{"title":"Flickr","badges":[],"url":"https://wuu.wikipedia.org/wiki/Flickr"},"skwiki":{"title":"Flickr","badges":[],"url":"https://sk.wikipedia.org/wiki/Flickr"},"knwiki":{"title":"\u0cab\u0ccd\u0cb2\u0cbf\u0c95\u0cb0\u0ccd","badges":[],"url":"https://kn.wikipedia.org/wiki/%E0%B2%AB%E0%B3%8D%E0%B2%B2%E0%B2%BF%E0%B2%95%E0%B2%B0%E0%B3%8D"},"enwiki":{"title":"Flickr","badges":[],"url":"https://en.wikipedia.org/wiki/Flickr"},"thwiki":{"title":"\u0e1f\u0e25\u0e34\u0e04\u0e40\u0e01\u0e2d\u0e23\u0e4c","badges":[],"url":"https://th.wikipedia.org/wiki/%E0%B8%9F%E0%B8%A5%E0%B8%B4%E0%B8%84%E0%B9%80%E0%B8%81%E0%B8%AD%E0%B8%A3%E0%B9%8C"},"nowiki":{"title":"Flickr","badges":[],"url":"https://no.wikipedia.org/wiki/Flickr"},"rowiki":{"title":"Flickr","badges":[],"url":"https://ro.wikipedia.org/wiki/Flickr"},"cawiki":{"title":"Flickr","badges":[],"url":"https://ca.wikipedia.org/wiki/Flickr"},"cywiki":{"title":"Flickr","badges":[],"url":"https://cy.wikipedia.org/wiki/Flickr"},"slwiki":{"title":"Flickr","badges":[],"url":"https://sl.wikipedia.org/wiki/Flickr"},"cswiki":{"title":"Flickr","badges":[],"url":"https://cs.wikipedia.org/wiki/Flickr"},"fawiki":{"title":"\u0641\u0644\u06cc\u06a9\u0631","badges":[],"url":"https://fa.wikipedia.org/wiki/%D9%81%D9%84%DB%8C%DA%A9%D8%B1"},"kawiki":{"title":"Flickr","badges":[],"url":"https://ka.wikipedia.org/wiki/Flickr"},"ndswiki":{"title":"Flickr","badges":[],"url":"https://nds.wikipedia.org/wiki/Flickr"},"ltwiki":{"title":"Flickr","badges":[],"url":"https://lt.wikipedia.org/wiki/Flickr"},"tkwiki":{"title":"Flickr","badges":[],"url":"https://tk.wikipedia.org/wiki/Flickr"},"bnwiki":{"title":"\u09ab\u09cd\u09b2\u09bf\u0995\u09be\u09b0","badges":[],"url":"https://bn.wikipedia.org/wiki/%E0%A6%AB%E0%A7%8D%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%B0"},"zhwikibooks":{"title":"Flickr","badges":[],"url":"https://zh.wikibooks.org/wiki/Flickr"},"shwiki":{"title":"Flickr","badges":[],"url":"https://sh.wikipedia.org/wiki/Flickr"},"etwiki":{"title":"Flickr","badges":[],"url":"https://et.wikipedia.org/wiki/Flickr"},"commonswiki":{"title":"Category:Flickr","badges":[],"url":"https://commons.wikimedia.org/wiki/Category:Flickr"},"azwikibooks":{"title":"Sosial
+      \u015f\u0259b\u0259k\u0259l\u0259r/Flickr","badges":[],"url":"https://az.wikibooks.org/wiki/Sosial_%C5%9F%C9%99b%C9%99k%C9%99l%C9%99r/Flickr"},"zh_min_nanwiki":{"title":"Flickr","badges":[],"url":"https://zh-min-nan.wikipedia.org/wiki/Flickr"},"bhwiki":{"title":"\u092b\u094d\u0932\u093f\u0915\u0930","badges":[],"url":"https://bh.wikipedia.org/wiki/%E0%A4%AB%E0%A5%8D%E0%A4%B2%E0%A4%BF%E0%A4%95%E0%A4%B0"},"kkwiki":{"title":"Flickr","badges":[],"url":"https://kk.wikipedia.org/wiki/Flickr"},"tawiki":{"title":"\u0baa\u0bbf\u0bb3\u0bbf\u0b95\u0bcd\u0b95\u0bb0\u0bcd","badges":[],"url":"https://ta.wikipedia.org/wiki/%E0%AE%AA%E0%AE%BF%E0%AE%B3%E0%AE%BF%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%B0%E0%AF%8D"},"hywiki":{"title":"Flickr","badges":[],"url":"https://hy.wikipedia.org/wiki/Flickr"},"ruwikinews":{"title":"\u041a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f:Flickr","badges":[],"url":"https://ru.wikinews.org/wiki/%D0%9A%D0%B0%D1%82%D0%B5%D0%B3%D0%BE%D1%80%D0%B8%D1%8F:Flickr"},"cdowiki":{"title":"Flickr","badges":[],"url":"https://cdo.wikipedia.org/wiki/Flickr"},"hakwiki":{"title":"Flickr","badges":[],"url":"https://hak.wikipedia.org/wiki/Flickr"},"srwiki":{"title":"Flickr","badges":[],"url":"https://sr.wikipedia.org/wiki/Flickr"},"eowiki":{"title":"Flickr","badges":[],"url":"https://eo.wikipedia.org/wiki/Flickr"},"cowiki":{"title":"Flickr","badges":[],"url":"https://co.wikipedia.org/wiki/Flickr"},"quwiki":{"title":"Flickr","badges":[],"url":"https://qu.wikipedia.org/wiki/Flickr"},"shnwiki":{"title":"Flickr","badges":[],"url":"https://shn.wikipedia.org/wiki/Flickr"}},"id":"Q103204"}'
+    headers:
+      accept-ranges:
+      - bytes
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '0'
+      cache-control:
+      - no-cache
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Mon, 06 Nov 2023 22:01:30 GMT
+      etag:
+      - W/"1996817705"
+      last-modified:
+      - Wed, 25 Oct 2023 09:57:09 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1489.eqiad.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3070"
+      set-cookie:
+      - WMF-Last-Access=06-Nov-2023;Path=/;HttpOnly;secure;Expires=Fri, 08 Dec 2023
+        12:00:00 GMT
+      - WMF-Last-Access-Global=06-Nov-2023;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Fri,
+        08 Dec 2023 12:00:00 GMT
+      - GeoIP=GB:ENG:Lowestoft:52.50:1.71:v4; Path=/; secure; Domain=.wikidata.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3070 miss, cp3070 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 92.13.36.200
+      x-content-type-options:
+      - nosniff
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - www.wikidata.org
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://www.wikidata.org/w/rest.php/wikibase/v0/entities/items/Q60671452
+  response:
+    content: '{"type":"item","labels":{"en":"work of the federal government of the
+      United States","pl":"utw\u00f3r Rz\u0105du Federalnego Stan\u00f3w Zjednoczonych","nl":"werk
+      van de federale overheid van de Verenigde Staten","zh-hans":"\u7f8e\u56fd\u8054\u90a6\u653f\u5e9c\u7684\u4f5c\u54c1","zh-hant":"\u7f8e\u570b\u806f\u90a6\u653f\u5e9c\u7684\u4f5c\u54c1","fr":"\u0153uvre
+      d''un service du Gouvernement f\u00e9d\u00e9ral des \u00c9tats-Unis","ja":"\u7c73\u56fd\u9023\u90a6\u653f\u5e9c\u306b\u3088\u308b\u8457\u4f5c\u7269","el":"\u03ad\u03c1\u03b3\u03bf
+      \u03c4\u03b7\u03c2 \u039f\u03bc\u03bf\u03c3\u03c0\u03bf\u03bd\u03b4\u03b9\u03b1\u03ba\u03ae\u03c2
+      \u039a\u03c5\u03b2\u03ad\u03c1\u03bd\u03b7\u03c3\u03b7\u03c2 \u03c4\u03c9\u03bd
+      \u0397\u03bd\u03c9\u03bc\u03ad\u03bd\u03c9\u03bd \u03a0\u03bf\u03bb\u03b9\u03c4\u03b5\u03b9\u03ce\u03bd","ca":"obra
+      del govern federal dels Estats Units","zh":"\u7f8e\u56fd\u8054\u90a6\u653f\u5e9c\u7684\u4f5c\u54c1","eo":"verko
+      de la Usona federacia registaro","ko":"\ubbf8\uad6d \uc5f0\ubc29\uc815\ubd80\uc758
+      \uc800\uc791\ubb3c","es":"obra del gobierno federal de los Estados Unidos","de":"Werk
+      der Bundesregierung der Vereinigten Staaten","pt":"obra do governo federal dos
+      Estados Unidos","ru":"\u0440\u0430\u0431\u043e\u0442\u0430 \u0444\u0435\u0434\u0435\u0440\u0430\u043b\u044c\u043d\u043e\u0433\u043e
+      \u043f\u0440\u0430\u0432\u0438\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u0430
+      \u0421\u0428\u0410"},"descriptions":{"en":"generally in the public domain in
+      the U.S., if prepared by an officer or employee of the U.S. government as part
+      of their official duties","pl":"Utwory przygotowane przez oficera lub pracownika
+      rz\u0105du Stan\u00f3w Zjednoczonych w ramach oficjalnych obowi\u0105zk\u00f3w
+      tej osoby znajduj\u0105 si\u0119 w domenie publicznej w USA","ko":"\ubbf8\uad6d
+      \uc815\ubd80\uc758 \uacf5\ubb34\uc6d0\uc774\ub098 \ubbf8\uad6d \uc815\ubd80\uc5d0
+      \uace0\uc6a9\ub41c \uc778\ubb3c\uc758 \uc800\uc791\ubb3c\ub85c \ub300\ubd80\ubd84\uc758
+      \uacbd\uc6b0 \ud37c\ube14\ub9ad \ub3c4\uba54\uc778\uc784","es":"generalmente
+      en el dominio p\u00fablico en los Estados Uindos, si est\u00e1 preparado por
+      un emplado u oficial del gobierno de los Estados Unidos, como parte de sus deberes
+      oficiales","de":"im Allgemeinen in den USA gemeinfrei, wenn sie von einem Beamten
+      oder Angestellten der US-Regierung im Rahmen ihrer offiziellen Pflichten erstellt
+      wurden","ru":"\u0432 \u0441\u0438\u043b\u0443 \u044d\u0442\u043e\u0433\u043e
+      \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u0441\u044f \u0432 \u043e\u0431\u0449\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u043c
+      \u0434\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u0438"},"aliases":{"en":["work
+      of the U.S. Federal Government","17 U.S.C. \u00a7 105","PD-USCG","works of Federal
+      Government of the United States","PD-USGov","work of federal government of the
+      United States","work of U.S. federal government","The work was made by the United
+      States government","created by US federal government","United States government
+      publication","prepared by an officer or employee of the United States Government
+      as part of that person\u2019s official duties"],"fr":["PD-USCG"],"ja":["\u30a2\u30e1\u30ea\u30ab\u5408\u8846\u56fd\u653f\u5e9c\u306e\u8457\u4f5c\u7269","\u5408\u8846\u56fd\u653f\u5e9c\u306e\u8457\u4f5c\u7269"],"ko":["PD-USCG","PD-USGov","\ubbf8\uc5f0\ubc29\uc815\ubd80
+      \uc800\uc791\ubb3c","\ubbf8 \uc5f0\ubc29\uc815\ubd80 \uc800\uc791\ubb3c"],"ru":["\u0441\u043e\u0437\u0434\u0430\u043d\u043e
+      \u0440\u0430\u0431\u043e\u0442\u043d\u0438\u043a\u043e\u043c \u0444\u0435\u0434\u0435\u0440\u0430\u043b\u044c\u043d\u043e\u0433\u043e
+      \u043f\u0440\u0430\u0432\u0438\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u0430
+      \u0421\u0428\u0410"]},"statements":{"P31":[{"id":"Q60671452$d513e0db-4dc0-6d1b-b167-f8bc78275008","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P31","data-type":"wikibase-item"},"value":{"type":"value","content":"Q61005213"}},{"id":"Q60671452$9e42ef21-4754-ab55-2f98-6e6075fc8b82","rank":"normal","qualifiers":[{"property":{"id":"P642","data-type":"wikibase-item"},"value":{"type":"value","content":"Q842270"}}],"references":[],"property":{"id":"P31","data-type":"wikibase-item"},"value":{"type":"value","content":"Q2135465"}}],"P279":[{"id":"Q60671452$a172e781-4dd5-e3b0-504a-20cf99349f78","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P279","data-type":"wikibase-item"},"value":{"type":"value","content":"Q60998463"}},{"id":"Q60671452$87275A17-73CD-4C7C-9417-2B75DD1CFDCD","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P279","data-type":"wikibase-item"},"value":{"type":"value","content":"Q19652"}}],"P1001":[{"id":"Q60671452$5C1301ED-5AD7-48CD-98F4-06E4AC27C4BA","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1001","data-type":"wikibase-item"},"value":{"type":"value","content":"Q30"}}],"P921":[{"id":"Q60671452$75eddfee-4e60-23e2-444d-974ed9a3ecbf","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P921","data-type":"wikibase-item"},"value":{"type":"value","content":"Q905768"}}],"P973":[{"id":"Q60671452$935eb2f1-4555-1505-076d-18e8d959f7df","rank":"normal","qualifiers":[{"property":{"id":"P407","data-type":"wikibase-item"},"value":{"type":"value","content":"Q1860"}}],"references":[],"property":{"id":"P973","data-type":"url"},"value":{"type":"value","content":"https://copyright.cornell.edu/publicdomain"}},{"id":"Q60671452$f6731cd7-4c6b-e1ae-2c57-eb48bea3dbf6","rank":"normal","qualifiers":[{"property":{"id":"P407","data-type":"wikibase-item"},"value":{"type":"value","content":"Q1860"}}],"references":[],"property":{"id":"P973","data-type":"url"},"value":{"type":"value","content":"https://www.cendi.gov/publications/FAQ_Copyright_30jan18.html#_Toc505089925"}}],"P1424":[{"id":"Q60671452$d56ac59c-4111-849f-802a-5cc4563f3779","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1424","data-type":"wikibase-item"},"value":{"type":"value","content":"Q5837126"}}],"P1343":[{"id":"Q60671452$d9e55ceb-4128-bd90-2670-fda71d7db948","rank":"normal","qualifiers":[{"property":{"id":"P2699","data-type":"url"},"value":{"type":"value","content":"https://www.usa.gov/government-works"}},{"property":{"id":"P1810","data-type":"string"},"value":{"type":"value","content":"U.S.
+      Government Works"}},{"property":{"id":"P407","data-type":"wikibase-item"},"value":{"type":"value","content":"Q1860"}}],"references":[],"property":{"id":"P1343","data-type":"wikibase-item"},"value":{"type":"value","content":"Q7865719"}}],"P1889":[{"id":"Q60671452$50FAE1EA-D925-4B36-B18D-82E62888C338","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1889","data-type":"wikibase-item"},"value":{"type":"value","content":"Q905768"}},{"id":"Q60671452$8ad60aad-469b-1d54-8274-c294d8b3a8c0","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1889","data-type":"wikibase-item"},"value":{"type":"value","content":"Q61002900"}}],"P1542":[{"id":"Q60671452$A00B93AB-4FA6-4CB4-9E9B-202126782B24","rank":"normal","qualifiers":[{"property":{"id":"P1001","data-type":"wikibase-item"},"value":{"type":"value","content":"Q13780930"}}],"references":[],"property":{"id":"P1542","data-type":"wikibase-item"},"value":{"type":"value","content":"Q50551851"}}],"P1269":[{"id":"Q60671452$A78E0DF4-CC0D-47FB-A6DA-B908829171D5","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1269","data-type":"wikibase-item"},"value":{"type":"value","content":"Q842270"}}],"P17":[{"id":"Q60671452$948fabe0-49c7-df64-373d-865fdeb5c498","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P17","data-type":"wikibase-item"},"value":{"type":"value","content":"Q30"}}],"P92":[{"id":"Q60671452$49e3c14e-4886-e2fd-7984-8b512c80e657","rank":"normal","qualifiers":[{"property":{"id":"P958","data-type":"string"},"value":{"type":"value","content":"17
+      U.S. Code \u00a7 105(a)"}},{"property":{"id":"P1683","data-type":"monolingualtext"},"value":{"type":"value","content":{"text":"Copyright
+      protection under this title is not available for any work of the United States
+      Government, but the United States Government is not precluded from receiving
+      and holding copyrights transferred to it by assignment, bequest, or otherwise.","language":"en"}}}],"references":[{"hash":"21d9fbfceca1da7a7387716779bf962aa6f0eb8a","parts":[{"property":{"id":"P248","data-type":"wikibase-item"},"value":{"type":"value","content":"Q51772877"}},{"property":{"id":"P854","data-type":"url"},"value":{"type":"value","content":"https://www.govinfo.gov/content/pkg/USCODE-2020-title17/html/USCODE-2020-title17-chap1-sec105.htm"}},{"property":{"id":"P813","data-type":"time"},"value":{"type":"value","content":{"time":"+2022-10-21T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}]}],"property":{"id":"P92","data-type":"wikibase-item"},"value":{"type":"value","content":"Q7810046"}},{"id":"Q60671452$99f234eb-4695-cd7c-6a43-08b41a472aa6","rank":"normal","qualifiers":[{"property":{"id":"P958","data-type":"string"},"value":{"type":"value","content":"17
+      U.S. Code \u00a7 101"}},{"property":{"id":"P1683","data-type":"monolingualtext"},"value":{"type":"value","content":{"text":"A
+      \u201cwork of the United States Government\u201d is a work prepared by an officer
+      or employee of the United States Government as part of that person\u2019s official
+      duties.","language":"en-us"}}}],"references":[{"hash":"b94cbd2314ecc44026ea0bb292b5bf2cc85959ab","parts":[{"property":{"id":"P248","data-type":"wikibase-item"},"value":{"type":"value","content":"Q51772877"}},{"property":{"id":"P854","data-type":"url"},"value":{"type":"value","content":"https://www.govinfo.gov/content/pkg/USCODE-2020-title17/html/USCODE-2020-title17-chap1-sec101.htm"}},{"property":{"id":"P813","data-type":"time"},"value":{"type":"value","content":{"time":"+2022-10-21T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}]}],"property":{"id":"P92","data-type":"wikibase-item"},"value":{"type":"value","content":"Q7810046"}}]},"sitelinks":{},"id":"Q60671452"}'
+    headers:
+      accept-ranges:
+      - bytes
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '0'
+      cache-control:
+      - no-cache
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Mon, 06 Nov 2023 22:01:30 GMT
+      etag:
+      - W/"1996684658"
+      last-modified:
+      - Wed, 25 Oct 2023 05:32:54 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1402.eqiad.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3070"
+      set-cookie:
+      - WMF-Last-Access=06-Nov-2023;Path=/;HttpOnly;secure;Expires=Fri, 08 Dec 2023
+        12:00:00 GMT
+      - WMF-Last-Access-Global=06-Nov-2023;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Fri,
+        08 Dec 2023 12:00:00 GMT
+      - GeoIP=GB:ENG:Lowestoft:52.50:1.71:v4; Path=/; secure; Domain=.wikidata.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3070 miss, cp3070 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 92.13.36.200
+      x-content-type-options:
+      - nosniff
     http_version: HTTP/1.1
     status_code: 200
 version: 1
