@@ -13,10 +13,10 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:31:57"
         },
-        "granularity": 0,
+        "granularity": "second",
         "unknown": false
       },
-      "safety_level": 0,
+      "safety_level": "safe",
       "license": {
         "id": "cc-by-sa-2.0",
         "label": "CC BY-SA 2.0",
@@ -96,10 +96,10 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:34:36"
         },
-        "granularity": 0,
+        "granularity": "second",
         "unknown": false
       },
-      "safety_level": 0,
+      "safety_level": "safe",
       "license": {
         "id": "cc-by-sa-2.0",
         "label": "CC BY-SA 2.0",
@@ -179,10 +179,10 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:35:04"
         },
-        "granularity": 0,
+        "granularity": "second",
         "unknown": false
       },
-      "safety_level": 0,
+      "safety_level": "safe",
       "license": {
         "id": "cc-by-sa-2.0",
         "label": "CC BY-SA 2.0",
@@ -262,10 +262,10 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:36:42"
         },
-        "granularity": 0,
+        "granularity": "second",
         "unknown": false
       },
-      "safety_level": 0,
+      "safety_level": "safe",
       "license": {
         "id": "cc-by-sa-2.0",
         "label": "CC BY-SA 2.0",
@@ -345,10 +345,10 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:36:46"
         },
-        "granularity": 0,
+        "granularity": "second",
         "unknown": false
       },
-      "safety_level": 0,
+      "safety_level": "safe",
       "license": {
         "id": "cc-by-sa-2.0",
         "label": "CC BY-SA 2.0",
@@ -428,10 +428,10 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:39:07"
         },
-        "granularity": 0,
+        "granularity": "second",
         "unknown": false
       },
-      "safety_level": 0,
+      "safety_level": "safe",
       "license": {
         "id": "cc-by-sa-2.0",
         "label": "CC BY-SA 2.0",
@@ -511,10 +511,10 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:40:07"
         },
-        "granularity": 0,
+        "granularity": "second",
         "unknown": false
       },
-      "safety_level": 0,
+      "safety_level": "safe",
       "license": {
         "id": "cc-by-sa-2.0",
         "label": "CC BY-SA 2.0",
@@ -594,10 +594,10 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:40:50"
         },
-        "granularity": 0,
+        "granularity": "second",
         "unknown": false
       },
-      "safety_level": 0,
+      "safety_level": "safe",
       "license": {
         "id": "cc-by-sa-2.0",
         "label": "CC BY-SA 2.0",
@@ -677,10 +677,10 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:41:15"
         },
-        "granularity": 0,
+        "granularity": "second",
         "unknown": false
       },
-      "safety_level": 0,
+      "safety_level": "safe",
       "license": {
         "id": "cc-by-sa-2.0",
         "label": "CC BY-SA 2.0",
@@ -760,10 +760,10 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:41:41"
         },
-        "granularity": 0,
+        "granularity": "second",
         "unknown": false
       },
-      "safety_level": 0,
+      "safety_level": "safe",
       "license": {
         "id": "cc-by-sa-2.0",
         "label": "CC BY-SA 2.0",
@@ -843,10 +843,10 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:42:14"
         },
-        "granularity": 0,
+        "granularity": "second",
         "unknown": false
       },
-      "safety_level": 0,
+      "safety_level": "safe",
       "license": {
         "id": "cc-by-sa-2.0",
         "label": "CC BY-SA 2.0",
@@ -926,10 +926,10 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:42:23"
         },
-        "granularity": 0,
+        "granularity": "second",
         "unknown": false
       },
-      "safety_level": 0,
+      "safety_level": "safe",
       "license": {
         "id": "cc-by-sa-2.0",
         "label": "CC BY-SA 2.0",
@@ -1009,10 +1009,10 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:42:25"
         },
-        "granularity": 0,
+        "granularity": "second",
         "unknown": false
       },
-      "safety_level": 0,
+      "safety_level": "safe",
       "license": {
         "id": "cc-by-sa-2.0",
         "label": "CC BY-SA 2.0",
@@ -1092,10 +1092,10 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:43:00"
         },
-        "granularity": 0,
+        "granularity": "second",
         "unknown": false
       },
-      "safety_level": 0,
+      "safety_level": "safe",
       "license": {
         "id": "cc-by-sa-2.0",
         "label": "CC BY-SA 2.0",
@@ -1175,10 +1175,10 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:43:20"
         },
-        "granularity": 0,
+        "granularity": "second",
         "unknown": false
       },
-      "safety_level": 0,
+      "safety_level": "safe",
       "license": {
         "id": "cc-by-sa-2.0",
         "label": "CC BY-SA 2.0",
@@ -1258,10 +1258,10 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:43:42"
         },
-        "granularity": 0,
+        "granularity": "second",
         "unknown": false
       },
-      "safety_level": 0,
+      "safety_level": "safe",
       "license": {
         "id": "cc-by-sa-2.0",
         "label": "CC BY-SA 2.0",
@@ -1341,10 +1341,10 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:43:50"
         },
-        "granularity": 0,
+        "granularity": "second",
         "unknown": false
       },
-      "safety_level": 0,
+      "safety_level": "safe",
       "license": {
         "id": "cc-by-sa-2.0",
         "label": "CC BY-SA 2.0",
@@ -1424,10 +1424,10 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:43:58"
         },
-        "granularity": 0,
+        "granularity": "second",
         "unknown": false
       },
-      "safety_level": 0,
+      "safety_level": "safe",
       "license": {
         "id": "cc-by-sa-2.0",
         "label": "CC BY-SA 2.0",
@@ -1507,10 +1507,10 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:44:02"
         },
-        "granularity": 0,
+        "granularity": "second",
         "unknown": false
       },
-      "safety_level": 0,
+      "safety_level": "safe",
       "license": {
         "id": "cc-by-sa-2.0",
         "label": "CC BY-SA 2.0",
@@ -1590,10 +1590,10 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:44:16"
         },
-        "granularity": 0,
+        "granularity": "second",
         "unknown": false
       },
-      "safety_level": 0,
+      "safety_level": "safe",
       "license": {
         "id": "cc-by-sa-2.0",
         "label": "CC BY-SA 2.0",
@@ -1673,10 +1673,10 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:44:28"
         },
-        "granularity": 0,
+        "granularity": "second",
         "unknown": false
       },
-      "safety_level": 0,
+      "safety_level": "safe",
       "license": {
         "id": "cc-by-sa-2.0",
         "label": "CC BY-SA 2.0",
@@ -1756,10 +1756,10 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:44:52"
         },
-        "granularity": 0,
+        "granularity": "second",
         "unknown": false
       },
-      "safety_level": 0,
+      "safety_level": "safe",
       "license": {
         "id": "cc-by-sa-2.0",
         "label": "CC BY-SA 2.0",
@@ -1839,10 +1839,10 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:44:58"
         },
-        "granularity": 0,
+        "granularity": "second",
         "unknown": false
       },
-      "safety_level": 0,
+      "safety_level": "safe",
       "license": {
         "id": "cc-by-sa-2.0",
         "label": "CC BY-SA 2.0",
@@ -1922,10 +1922,10 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:45:18"
         },
-        "granularity": 0,
+        "granularity": "second",
         "unknown": false
       },
-      "safety_level": 0,
+      "safety_level": "safe",
       "license": {
         "id": "cc-by-sa-2.0",
         "label": "CC BY-SA 2.0",
@@ -2005,10 +2005,10 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:45:20"
         },
-        "granularity": 0,
+        "granularity": "second",
         "unknown": false
       },
-      "safety_level": 0,
+      "safety_level": "safe",
       "license": {
         "id": "cc-by-sa-2.0",
         "label": "CC BY-SA 2.0",
@@ -2088,10 +2088,10 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:45:26"
         },
-        "granularity": 0,
+        "granularity": "second",
         "unknown": false
       },
-      "safety_level": 0,
+      "safety_level": "safe",
       "license": {
         "id": "cc-by-sa-2.0",
         "label": "CC BY-SA 2.0",
@@ -2171,10 +2171,10 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:46:12"
         },
-        "granularity": 0,
+        "granularity": "second",
         "unknown": false
       },
-      "safety_level": 0,
+      "safety_level": "safe",
       "license": {
         "id": "cc-by-sa-2.0",
         "label": "CC BY-SA 2.0",

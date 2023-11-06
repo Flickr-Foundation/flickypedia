@@ -26,7 +26,7 @@ is supporting that function.
 
 import datetime
 
-from flickr_photos_api import DateTaken, TakenGranularity, User as FlickrUser
+from flickr_photos_api import DateTaken, User as FlickrUser
 
 from flickypedia.apis.wikidata import (
     lookup_flickr_user_in_wikidata,
@@ -258,9 +258,7 @@ def create_date_taken_statement(date_taken: DateTaken):
     except KeyError:
         raise ValueError(f"Unrecognised taken_granularity: {flickr_granularity!r}")
 
-    if granularity in {
-        "second", "month", "year"
-    }:
+    if flickr_granularity in {"second", "month", "year"}:
         return {
             "mainsnak": {
                 "datavalue": to_wikidata_date(
@@ -272,7 +270,7 @@ def create_date_taken_statement(date_taken: DateTaken):
             "type": "statement",
         }
     else:
-        assert granularity == "circa"
+        assert flickr_granularity == "circa"
 
         qualifier_values = [
             {

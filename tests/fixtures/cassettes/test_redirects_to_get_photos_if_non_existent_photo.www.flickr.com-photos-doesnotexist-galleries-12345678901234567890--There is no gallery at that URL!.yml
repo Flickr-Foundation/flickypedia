@@ -13,7 +13,7 @@ interactions:
       user-agent:
       - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
     method: GET
-    uri: https://api.flickr.com/services/rest/?extras=license%2Cdate_upload%2Cdate_taken%2Cmedia%2Coriginal_format%2Cowner_name%2Curl_sq%2Curl_t%2Curl_s%2Curl_m%2Curl_o%2Curl_q%2Curl_l%2Cdescription%2Csafety_level%2Cpath_alias&gallery_id=12345678901234567890&get_gallery_info=1&method=flickr.galleries.getPhotos&page=1&per_page=10
+    uri: https://api.flickr.com/services/rest/?extras=license%2Cdate_upload%2Cdate_taken%2Cmedia%2Coriginal_format%2Cowner_name%2Curl_sq%2Curl_t%2Curl_s%2Curl_m%2Curl_o%2Curl_q%2Curl_l%2Cdescription%2Csafety_level%2Crealname%2Cpath_alias&gallery_id=12345678901234567890&get_gallery_info=1&method=flickr.galleries.getPhotos&page=1&per_page=10
   response:
     content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"fail\">\n\t<err
       code=\"1\" msg=\"Invalid gallery ID\" />\n</rsp>\n"
@@ -25,13 +25,13 @@ interactions:
       Content-Type:
       - text/xml; charset=utf-8
       Date:
-      - Tue, 31 Oct 2023 12:41:50 GMT
+      - Mon, 06 Nov 2023 09:06:12 GMT
       Via:
-      - 1.1 e07486e51a3aad165a6bab2a951bba48.cloudfront.net (CloudFront)
+      - 1.1 039ee779486557ccf22d128d6266e00e.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - bpCg8UeftryPYKq2U65jisqjV_LnQblOcek0RqApdg-ooqi06Vvjjg==
+      - FUSt-xgdCRGeFv3rPyNmk_bman_5SOATNAP24IT7MptSVFjzktsyvQ==
       X-Amz-Cf-Pop:
-      - LHR50-P8
+      - AMS58-P5
       X-Cache:
       - Miss from cloudfront
       content-encoding:
@@ -40,9 +40,9 @@ interactions:
       - Apache/2.4.57 (Ubuntu)
       set-cookie:
       - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
-        expires=Thu, 30-Nov-2023 12:41:50 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+        expires=Wed, 06-Dec-2023 09:06:12 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
-        expires=Thu, 30-Nov-2023 12:41:50 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+        expires=Wed, 06-Dec-2023 09:06:12 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       vary:
       - Accept-Encoding
       x-frame-options:

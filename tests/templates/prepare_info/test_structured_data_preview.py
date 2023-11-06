@@ -222,7 +222,7 @@ def test_shows_posted_statement(app, vcr_cassette):
         pytest.param(
             {
                 "value": datetime.datetime(2023, 10, 12),
-                "granularity": 0,
+                "granularity": "second",
             },
             "12 October 2023 (precision: day, calendar: Gregorian)",
             id="day_precision",
@@ -230,7 +230,7 @@ def test_shows_posted_statement(app, vcr_cassette):
         pytest.param(
             {
                 "value": datetime.datetime(2023, 10, 1),
-                "granularity": 0,
+                "granularity": "second",
             },
             "1 October 2023 (precision: day, calendar: Gregorian)",
             id="day_precision_with_single_digit_day",
@@ -238,7 +238,7 @@ def test_shows_posted_statement(app, vcr_cassette):
         pytest.param(
             {
                 "value": datetime.datetime(2023, 10, 12),
-                "granularity": 4,
+                "granularity": "month",
             },
             "October 2023 (precision: month, calendar: Gregorian)",
             id="month_precision",
@@ -246,7 +246,7 @@ def test_shows_posted_statement(app, vcr_cassette):
         pytest.param(
             {
                 "value": datetime.datetime(2023, 10, 12),
-                "granularity": 6,
+                "granularity": "year",
             },
             "2023 (precision: year, calendar: Gregorian)",
             id="year_precision",
@@ -254,7 +254,7 @@ def test_shows_posted_statement(app, vcr_cassette):
         pytest.param(
             {
                 "value": datetime.datetime(2023, 10, 12),
-                "granularity": 8,
+                "granularity": "circa",
             },
             """
             2023 (precision: year, calendar: Gregorian)
