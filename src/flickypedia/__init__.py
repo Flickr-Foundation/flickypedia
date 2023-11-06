@@ -36,7 +36,7 @@ from flickypedia.tasks import celery_init_app
 from flickypedia.utils import a_href, size_at
 
 
-def create_app(data_directory: str="data", debug: bool=False):
+def create_app(data_directory: str = "data", debug: bool = False):
     app = Flask(__name__)
 
     config = create_config(data_directory)
@@ -84,11 +84,13 @@ def create_app(data_directory: str="data", debug: bool=False):
     compile_scss(app.static_folder)
 
     if debug:
+
         @app.before_request
         def recompile_css():
-            if request.path == '/static/style.css':
+            if request.path == "/static/style.css":
                 compile_scss(app.static_folder)
-        print('debug!')
+
+        print("debug!")
 
     # This option causes Jinja to throw if we use an undefined variable
     # in one of the templates.
@@ -109,11 +111,11 @@ def compile_scss(static_folder):
     sass_path = os.path.join(static_folder, "assets", "style.scss")
     css_path = os.path.join(static_folder, "style.css")
 
-    with open(css_path + '.tmp', "w") as out_file:
+    with open(css_path + ".tmp", "w") as out_file:
         out_file.write(sass.compile(filename=sass_path))
 
     try:
-        os.rename(css_path + '.tmp', css_path)
+        os.rename(css_path + ".tmp", css_path)
     except FileNotFoundError:
         pass
 
