@@ -8,6 +8,8 @@ amqp==5.1.1
     # via kombu
 anyio==4.0.0
     # via httpcore
+authlib==1.2.1
+    # via -r requirements.in
 billiard==4.1.0
     # via celery
 blinker==1.6.3
@@ -34,7 +36,9 @@ click-plugins==1.1.1
 click-repl==0.3.0
     # via celery
 cryptography==41.0.4
-    # via -r requirements.in
+    # via
+    #   -r requirements.in
+    #   authlib
 exceptiongroup==1.1.3
     # via anyio
 flask==2.3.3

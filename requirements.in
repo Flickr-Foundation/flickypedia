@@ -1,3 +1,4 @@
+authlib
 celery
 cryptography
 flask
