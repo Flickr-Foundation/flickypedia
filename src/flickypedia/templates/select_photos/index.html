@@ -1,105 +1,15 @@
 {% extends "base.html" %}
 
-{% block head %}
-  <style>
-    label[for="flickr_url"] {
-      margin-bottom: 5px;
-    }
-
-    #select_photos ul {
-      display: grid;
-      grid-column-gap: 1em;
-      grid-row-gap: 2em;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    }
-
-    #select_photos li {
-      display: inline-block;
-
-      /* This prevents an image getting too big if it's the only one
-         available to select. */
-      max-width: 250px;
-    }
-
-    #select_photos li.checked {
-      background: color-mix(in srgb, rgb(var(--pink)), #fff 50%);
-      border:  5px solid color-mix(in srgb, rgb(var(--pink)), #fff 50%);
-      margin: -5px;
-    }
-
-    #select_photos li img {
-      width: 100%;
-      aspect-ratio: 1;
-      object-fit: cover;
-    }
-
-    #select_photos li .info {
-      display: grid;
-      grid-template-columns: auto 30px;
-      padding-left: 6px;
-      padding-bottom: 4px;
-    }
-
-    #select_photos li label .owner {
-      grid-row: 1 / 2;
-      grid-column: 1 / 2;
-    }
-
-    #select_photos li label .license {
-      grid-row: 2 / 2;
-      grid-column: 1 / 2;
-    }
-
-    /* If we're in an album, we don't bother showing the owner name on
-       the photos, so we can move this up a line. */
-    #select_photos .photoslist-album li label .license {
-      grid-row: 1 / 2;
-    }
-
-    #select_photos li label input[type="checkbox"] {
-      grid-row: 1 / 2;
-      grid-column: 2 / 2;
-      margin-left: 8px;
-      margin-top: 5px;
-      margin-right: 8px;
-    }
-
-    .available {
-      background: darkgreen;
-    }
-
-    .available {
-      color: white;
-      font-weight: bold;
-    }
-
-    #selectedPhotosSummary .count {
-      font-weight: bold;
-    }
-
-    #summary {
-      text-align: right;
-    }
-
-    #summary .pink_button {
-      padding-left:  16px;
-      padding-right: 16px;
-      padding-top: 5px;
-    }
-
-    #selectedPhotosSummary {
-      font-size: 1.2em;
-      margin-right: 5px;
-    }
-  </style>
-{% endblock %}
+{% set page_id = "select_photos" %}
 
 {% block content %}
   {% include "components/header.html" %}
 
-  <p style="margin-bottom: 5px; margin-top: 0;">
-    At this Flickr URL:
-  </p>
+  <label for="{{ photo_url_form.flickr_url.id }}">
+    <p>
+      At this Flickr URL:
+    </p>
+  </label>
 
   {% include "components/get_photos_form.html" %}
 

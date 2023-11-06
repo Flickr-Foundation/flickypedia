@@ -1,13 +1,3 @@
-<style>
-  .select_photos_description {
-    font-weight: normal;
-  }
-
-  .select_photos_description .key_info {
-    font-weight: bold;
-  }
-</style>
-
 {% if parsed_url.type == 'single_photo' %}
   <h2 class="select_photos_description">
     {% if photo_data.photos.available -%}
