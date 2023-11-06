@@ -10,7 +10,7 @@ from pytest import FixtureRequest
 import vcr
 
 from flickypedia import create_app
-from flickypedia.auth import WikimediaUserSession, SESSION_ID_KEY
+from flickypedia.auth import WikimediaUserSession
 from flickypedia.apis.wikimedia import WikimediaOAuthApi
 
 
@@ -158,7 +158,5 @@ def logged_in_client(app):
     user = WikimediaUserSession(id=-1, userid=-1, name="example")
 
     with app.test_client(user=user) as client:
-        with client.session_transaction() as session:
-            session[SESSION_ID_KEY] = user.id
 
         yield client

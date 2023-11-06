@@ -84,13 +84,6 @@ login = LoginManager()
 login.login_view = "homepage"
 
 
-# Every user gets a session ID which matches their entry in the database
-# of access tokens.  This ID is an opaque identifier that avoids us
-# having to deal with e.g. the same user logged in on two computers.
-#
-# This is the name of the key that ID is stored under in their session.
-SESSION_ID_KEY = "oauth_userid_wikimedia"
-
 # This is the name of the encryption key which is stored in the user session.
 SESSION_ENCRYPTION_KEY = "oauth_key_wikimedia"
 
@@ -135,6 +128,14 @@ class WikimediaUserSession(UserMixin, db.Model):
     name = db.Column(db.String(64), nullable=False)
     encrypted_token = db.Column(db.LargeBinary, nullable=False)
 
+    def get_id(self) -> str:
+        """
+        This method is used by Flask-Login to identify the user's session.
+
+        See https://flask-login.readthedocs.io/en/latest/#your-user-class
+        """
+        return self.id
+
     def token(self):
         """
         Retrieve the unencrypted value of the user's token.
@@ -170,11 +171,11 @@ class WikimediaUserSession(UserMixin, db.Model):
 
 
 @login.user_loader
-def load_user(session_id: str):
+def load_user(userid: str):
     if current_app.config.get("TESTING"):
         return WikimediaUserSession(id=-1, userid=-1, name="example")
     else:  # pragma: no cover
-        return db.session.get(WikimediaUserSession, session[SESSION_ID_KEY])
+        return db.session.get(WikimediaUserSession, userid)
 
 
 @login_required
@@ -185,11 +186,13 @@ def logout():
     # Delete both parts of the user's session: the encrypted copy of
     # their OAuth tokens in the server-side database, and the encryption
     # key in their session cookie.
-    db.session.query(WikimediaUserSession).filter(
-        id == session["oauth_userid_wikimedia"]
-    ).delete()
+    db.session.query(WikimediaUserSession).filter(id == current_user.id).delete()
     db.session.commit()
-    del session[SESSION_ENCRYPTION_KEY]
+
+    try:
+        del session[SESSION_ENCRYPTION_KEY]
+    except KeyError:
+        pass
 
     logout_user()
 
@@ -260,9 +263,6 @@ def oauth2_callback_wikimedia():
     )
     userinfo = api.get_userinfo()
 
-    # Add our persistent ID to the session object.
-    session[SESSION_ID_KEY] = str(uuid.uuid4())
-
     # Now create a user and store it in the database.
     #
     # In Miguel Grinberg's code, he looks for an existing user.  We don't
@@ -273,7 +273,7 @@ def oauth2_callback_wikimedia():
     session[SESSION_ENCRYPTION_KEY] = key
 
     user = WikimediaUserSession(
-        id=session[SESSION_ID_KEY],
+        id=str(uuid.uuid4()),
         userid=userinfo["id"],
         name=userinfo["name"],
         encrypted_token=encrypt_string(key, plaintext=json.dumps(token)),
