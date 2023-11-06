@@ -303,6 +303,11 @@ class WikimediaOAuthApi(WikimediaApiBase):
         self.user_agent = user_agent
 
     def _request(self, *args, **kwargs):
+        """
+        Make a request to the Wikimedia API.  The underlying OAuth2Client may do
+        a token refresh if the access token expires; if so, we need to store that
+        new access token and the new refresh token.
+        """
         old_token = self.client.token
 
         resp = super()._request(*args, **kwargs)
@@ -310,7 +315,7 @@ class WikimediaOAuthApi(WikimediaApiBase):
         new_token = self.client.token
 
         if old_token != new_token:
-            current_user.store_new_token(new_token=self.client.token)
+            current_user.store_new_token(new_token=new_token)
 
         return resp
 
