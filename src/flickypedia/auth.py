@@ -191,6 +191,9 @@ def logout():
     ).delete()
     user_db.session.commit()
 
+    # Admittedly it would be unusual if the user didn't have an
+    # encryption key in their session cookie, but if they don't, it
+    # shouldn't stop the logout process.
     try:
         del session[SESSION_ENCRYPTION_KEY]
     except KeyError:
