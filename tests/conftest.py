@@ -1,6 +1,8 @@
+import json
 import os
 import shutil
 
+from authlib.integrations.httpx_client.oauth2_client import OAuth2Client
 from flask_login import FlaskLoginClient
 from flickr_photos_api import FlickrPhotosApi
 import pytest
@@ -9,7 +11,7 @@ import vcr
 
 from flickypedia import create_app
 from flickypedia.auth import WikimediaUserSession, SESSION_ID_KEY
-from flickypedia.apis.wikimedia import WikimediaApi
+from flickypedia.apis.wikimedia import WikimediaOAuthApi
 
 
 @pytest.fixture
@@ -54,7 +56,7 @@ def vcr_cassette(cassette_name):
 @pytest.fixture(scope="function")
 def wikimedia_api(cassette_name, user_agent):
     """
-    Creates an instance of the WikimediaApi class for use in tests.
+    Creates an instance of the WikimediaOAuthApi class for use in tests.
 
     This instance of the API will record its interactions as "cassettes"
     using vcr.py, which can be replayed offline (e.g. in CI tests).
@@ -64,8 +66,21 @@ def wikimedia_api(cassette_name, user_agent):
         cassette_library_dir="tests/fixtures/cassettes",
         filter_headers=["authorization"],
     ):
-        yield WikimediaApi(
-            access_token=os.environ.get("WIKIMEDIA_ACCESS_TOKEN", "<REDACTED>"),
+        yield WikimediaOAuthApi(
+            client=OAuth2Client(),
+            token=json.loads(
+                os.environ.get(
+                    "WIKIMEDIA_ACCESS_TOKEN",
+                    json.dumps(
+                        {
+                            "token_type": "Bearer",
+                            "expires_in": 14400,
+                            "access_token": "ACCESS_TOKEN",
+                            "refresh_token": "REFRESH_TOKEN",
+                        }
+                    ),
+                )
+            ),
             user_agent=user_agent,
         )
 

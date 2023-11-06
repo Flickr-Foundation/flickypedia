@@ -1,4 +1,5 @@
 from flask import abort, render_template, request, jsonify
+from flask_login import login_required
 
 from flickypedia.apis.wikimedia import validate_title
 from .get_photos import get_photos
@@ -19,6 +20,7 @@ def bookmarklet():
     return render_template("bookmarklet.html", current_step=None)
 
 
+@login_required
 def validate_title_api():
     """
     A basic API for title validation that can be called from JS on the page.

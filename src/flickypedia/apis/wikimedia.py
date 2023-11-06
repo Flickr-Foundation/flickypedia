@@ -1,13 +1,23 @@
 import json
 
+from authlib.integrations.httpx_client.oauth2_client import OAuth2Client
+from flask_login import current_user
 import httpx
 
 
 class WikimediaApiBase:
     client: httpx.Client
+    user_agent: str
 
     def _request(self, *, method, **kwargs):
-        resp = self.client.request(method, url="w/api.php", **kwargs)
+        resp = self.client.request(
+            method,
+            url="https://commons.wikimedia.org/w/api.php",
+            headers={
+                "User-Agent": self.user_agent,
+            },
+            **kwargs,
+        )
 
         # When something goes wrong, we get an ``error`` key in the response.
         #
@@ -35,25 +45,6 @@ class WikimediaApiBase:
             method="POST",
             data={**data, "format": "json", "token": self.get_csrf_token()},
             **kwargs,
-        )
-
-
-class WikimediaApi(WikimediaApiBase):
-    """
-    This is a thin wrapper for calling the Wikimedia API.
-
-    It doesn't do much interesting stuff; the goal is just to reduce boilerplate
-    in the rest of the codebase, e.g. have the error handling in one place rather
-    than repeated everywhere.
-    """
-
-    def __init__(self, *, access_token, user_agent):
-        self.client = httpx.Client(
-            base_url="https://commons.wikimedia.org",
-            headers={
-                "Authorization": f"Bearer {access_token}",
-                "User-Agent": user_agent,
-            },
         )
 
     def get_csrf_token(self) -> str:
@@ -304,9 +295,35 @@ class WikimediaApi(WikimediaApiBase):
             raise WikimediaApiException(f"Unexpected response: {resp}")
 
 
+class WikimediaOAuthApi(WikimediaApiBase):
+    def __init__(self, *, client: OAuth2Client, token, user_agent: str):
+        self.client = client
+        client.token = token
+
+        self.user_agent = user_agent
+
+    def _request(self, *args, **kwargs):
+        """
+        Make a request to the Wikimedia API.  The underlying OAuth2Client may do
+        a token refresh if the access token expires; if so, we need to store that
+        new access token and the new refresh token.
+        """
+        old_token = self.client.token
+
+        resp = super()._request(*args, **kwargs)
+
+        new_token = self.client.token
+
+        if old_token != new_token:
+            current_user.store_new_token(new_token=new_token)
+
+        return resp
+
+
 class WikimediaPublicApi(WikimediaApiBase):
     def __init__(self):
         self.client = httpx.Client(base_url="https://commons.wikimedia.org")
+        self.user_agent = "testing"
 
 
 def validate_title(title: str):
