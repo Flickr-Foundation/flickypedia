@@ -136,6 +136,12 @@ class WikimediaUserSession(UserMixin, db.Model):
     encrypted_token = db.Column(db.LargeBinary, nullable=False)
 
     def token(self):
+        """
+        Retrieve the unencrypted value of the user's token.
+
+        This can only be called in the context of a logged-in Flask session,
+        where we have access to the per-session encryption key.
+        """
         return json.loads(
             decrypt_string(
                 key=session[SESSION_ENCRYPTION_KEY], ciphertext=self.encrypted_token
@@ -147,6 +153,9 @@ class WikimediaUserSession(UserMixin, db.Model):
         Store a new OAuth token in the database.
 
         This method should only be called when the token has changed.
+
+        This can only be called in the context of a logged-in Flask session,
+        where we have access to the per-session encryption key.
         """
         assert dict(new_token) != self.token()
 
