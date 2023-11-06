@@ -4,6 +4,7 @@ import shutil
 from flask_login import FlaskLoginClient
 from flickr_photos_api import FlickrPhotosApi
 import pytest
+from pytest import FixtureRequest
 import vcr
 
 from flickypedia import create_app
@@ -17,21 +18,21 @@ def user_agent():
 
 
 @pytest.fixture(scope="function")
-def cassette_name(request):
-    # By default we use the name of the test as the cassette name,
-    # but if it's a test parametrised with @pytest.mark.parametrize,
-    # we include the parameter name to distinguish cassettes.
-    #
-    # See https://stackoverflow.com/a/67056955/1558022 for more info
-    # on how this works.
-    function_name = request.function.__name__
+def cassette_name(request: FixtureRequest) -> str:
+    """
+    Returns the name of a cassette for vcr.py.
 
-    try:
-        suffix = request.node.callspec.id.replace("https://", "").replace("/", "-")
+    The name can be made up of (up to) three parts:
 
-        return f"{function_name}.{suffix}.yml"
-    except AttributeError:
-        return f"{function_name}.yml"
+    -   the name of the test class
+    -   the name of the test function
+    -   the ID of the test case in @pytest.mark.parametrize
+
+    """
+    if request.cls is not None:
+        return f"{request.cls.__name__}.{request.node.name}.yml"
+    else:
+        return f"{request.node.name}.yml"
 
 
 @pytest.fixture(scope="function")

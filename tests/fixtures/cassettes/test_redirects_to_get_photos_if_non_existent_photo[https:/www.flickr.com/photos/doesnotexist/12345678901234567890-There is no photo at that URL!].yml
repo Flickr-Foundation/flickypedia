@@ -11,28 +11,27 @@ interactions:
       host:
       - api.flickr.com
       user-agent:
-      - python-httpx/0.25.0
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
     method: GET
     uri: https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&photo_id=12345678901234567890
   response:
     content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"fail\">\n\t<err
-      code=\"1\" msg=\"Photo &quot;12345678901234567890&quot; not found (invalid ID)\"
-      />\n</rsp>\n"
+      code=\"100\" msg=\"Invalid API Key (Key has invalid format)\" />\n</rsp>\n"
     headers:
       Connection:
       - keep-alive
       Content-Length:
-      - '150'
+      - '136'
       Content-Type:
       - text/xml; charset=utf-8
       Date:
-      - Fri, 20 Oct 2023 11:44:40 GMT
+      - Mon, 06 Nov 2023 09:12:40 GMT
       Via:
-      - 1.1 093beac632db05785d90f7138ab9cc1c.cloudfront.net (CloudFront)
+      - 1.1 c7deb8fcb33ecb1e5a3a6d85b3f06e68.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - If8npu4w0AjvLVd0ytEGKkzCuD98dBmfJzG07p-XAwRai17aMFGNlw==
+      - nD8RJV_zLtuaup3LK3dir3q5A8INhwqipYHgYxqVQoT3riDoE0nFNA==
       X-Amz-Cf-Pop:
-      - LHR61-P1
+      - CDG52-P6
       X-Cache:
       - Miss from cloudfront
       content-encoding:
@@ -41,9 +40,9 @@ interactions:
       - Apache/2.4.57 (Ubuntu)
       set-cookie:
       - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
-        expires=Sun, 19-Nov-2023 11:44:40 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+        expires=Wed, 06-Dec-2023 09:12:40 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
-        expires=Sun, 19-Nov-2023 11:44:40 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+        expires=Wed, 06-Dec-2023 09:12:40 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       vary:
       - Accept-Encoding
       x-frame-options:

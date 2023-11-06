@@ -23,7 +23,7 @@ def get_fixture(filename):
 @pytest.mark.parametrize(
     ["user", "filename"],
     [
-        (
+        pytest.param(
             {
                 "id": "47397743@N05",
                 "username": None,
@@ -32,8 +32,9 @@ def get_fixture(filename):
                 "profile_url": "https://www.flickr.com/people/west_northamptonshire_development_corporation/",
             },
             "creator_Q7986087.json",
+            id="47397743@N05"
         ),
-        (
+        pytest.param(
             {
                 "id": "199246608@N02",
                 "username": "Alex Chan",
@@ -42,8 +43,9 @@ def get_fixture(filename):
                 "profile_url": "https://www.flickr.com/people/199246608@N02/",
             },
             "creator_AlexChan.json",
+            id="AlexChan"
         ),
-        (
+        pytest.param(
             {
                 "id": "35591378@N03",
                 "username": "Obama White House Archived",
@@ -52,6 +54,7 @@ def get_fixture(filename):
                 "profile_url": "https://www.flickr.com/people/obamawhitehouse/",
             },
             "creator_ObamaWhiteHouse.json",
+            id="ObamaWhiteHouse"
         ),
     ],
 )
