@@ -136,6 +136,10 @@ class WikimediaUserSession(UserMixin, user_db.Model):
         """
         return self.id
 
+    @property
+    def profile_url(self):
+        return f"https://commons.wikimedia.org/wiki/User:{self.name}"
+
     def token(self):
         """
         Retrieve the unencrypted value of the user's token.
@@ -164,10 +168,6 @@ class WikimediaUserSession(UserMixin, user_db.Model):
             key=session[SESSION_ENCRYPTION_KEY], plaintext=json.dumps(new_token)
         )
         user_db.session.commit()
-
-    @property
-    def profile_url(self):
-        return f"https://commons.wikimedia.org/wiki/User:{self.name}"
 
 
 @login.user_loader
