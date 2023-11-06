@@ -54,7 +54,7 @@ footer {
   color: $cream;
 
   a {
-    include link_styles($cream, 0.4);
+    @include link_styles($cream, 0.4);
   }
 
   /* There's a list of links in the footer, which we want to appear as a horizontal
@@ -137,29 +137,6 @@ input.pink_button:active {
 
 .highlight {
   background: $yellow;
-}
-
-/* Styles for the 'get photos' form */
-
-.get_photos .inputs {
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: auto 80px;
-  height: 50px;
-}
-
-.get_photos input[type="url"] {
-  width: calc(100% - 10px);
-}
-
-.get_photos input[type="button"] {
-  width: 80px;
-  text-transform: uppercase;
-}
-
-.get_photos input[type="url"],
-.get_photos input[type="button"] {
-  height: 28px;
 }
 
 /* Styles for the 'prepare info' page */
