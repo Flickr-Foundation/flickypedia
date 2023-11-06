@@ -73,17 +73,17 @@ def test_gets_album_on_flickr(logged_in_client, flickr_api):
         pytest.param(
             "https://www.flickr.com/photos/doesnotexist/12345678901234567890",
             b"There is no photo at that URL!",
-            id="single_photo"
+            id="single_photo",
         ),
         pytest.param(
             "https://www.flickr.com/photos/doesnotexist/albums/12345678901234567890/",
             b"There is no album at that URL!",
-            id="album"
+            id="album",
         ),
         pytest.param(
             "https://www.flickr.com/photos/doesnotexist/galleries/12345678901234567890/",
             b"There is no gallery at that URL!",
-            id="gallery"
+            id="gallery",
         ),
     ],
 )

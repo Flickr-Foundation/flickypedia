@@ -32,7 +32,7 @@ def get_fixture(filename):
                 "profile_url": "https://www.flickr.com/people/west_northamptonshire_development_corporation/",
             },
             "creator_Q7986087.json",
-            id="47397743@N05"
+            id="47397743@N05",
         ),
         pytest.param(
             {
@@ -43,7 +43,7 @@ def get_fixture(filename):
                 "profile_url": "https://www.flickr.com/people/199246608@N02/",
             },
             "creator_AlexChan.json",
-            id="AlexChan"
+            id="AlexChan",
         ),
         pytest.param(
             {
@@ -54,7 +54,7 @@ def get_fixture(filename):
                 "profile_url": "https://www.flickr.com/people/obamawhitehouse/",
             },
             "creator_ObamaWhiteHouse.json",
-            id="ObamaWhiteHouse"
+            id="ObamaWhiteHouse",
         ),
     ],
 )
