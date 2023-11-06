@@ -186,7 +186,9 @@ def logout():
     # Delete both parts of the user's session: the encrypted copy of
     # their OAuth tokens in the server-side database, and the encryption
     # key in their session cookie.
-    db.session.query(WikimediaUserSession).filter(id == current_user.id).delete()
+    db.session.query(WikimediaUserSession).filter(
+        WikimediaUserSession.id == current_user.id
+    ).delete()
     db.session.commit()
 
     try:

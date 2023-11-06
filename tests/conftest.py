@@ -3,14 +3,14 @@ import os
 import shutil
 
 from authlib.integrations.httpx_client.oauth2_client import OAuth2Client
-from flask_login import FlaskLoginClient
+from flask_login import FlaskLoginClient, current_user, login_user
 from flickr_photos_api import FlickrPhotosApi
 import pytest
 from pytest import FixtureRequest
 import vcr
 
 from flickypedia import create_app
-from flickypedia.auth import WikimediaUserSession
+from flickypedia.auth import WikimediaUserSession, db
 from flickypedia.apis.wikimedia import WikimediaOAuthApi
 
 
@@ -155,8 +155,21 @@ def logged_in_client(app):
     """
     app.test_client_class = FlaskLoginClient
 
-    user = WikimediaUserSession(id=-1, userid=-1, name="example")
+    user = WikimediaUserSession(
+        id="-1", userid="-1", name="example", encrypted_token=b"<sekrit>"
+    )
 
-    with app.test_client(user=user) as client:
+    # Note: we have to enter the request context before we enter
+    # the test client context.  This took me a while to figure
+    # out; see https://stackoverflow.com/a/69961887/1558022
+    with app.test_request_context():
+        db.create_all()
 
-        yield client
+        db.session.add(user)
+        db.session.commit()
+
+        with app.test_client(user=user) as client:
+            login_user(user)
+            assert current_user == user
+
+            yield client
