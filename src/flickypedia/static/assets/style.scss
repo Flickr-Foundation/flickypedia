@@ -50,9 +50,24 @@ footer {
   padding: 1em;
 
   background: $black;
-
   text-align: center;
   color: $cream;
+
+  a {
+    include link_styles($cream, 0.4);
+  }
+
+  /* There's a list of links in the footer, which we want to appear as a horizontal
+   * list of links separated by pipes. */
+  li {
+    display: inline-block;
+  }
+
+  li:not(:last-child):after {
+    content: "| ";
+    white-space: pre;
+    color: $grey;
+  }
 
   /* This ensures the background color extends to the bottom of the page,
      wherever the footer appears.
@@ -60,24 +75,6 @@ footer {
      See https://designdev.blog/extend-footer-background-color-to-bottom-of-web-page/
    */
   box-shadow: 0 50vh 0 50vh $black;
-}
-
-footer a {
-  color: $cream;
-}
-
-footer a:hover {
-  background-color: rgba($cream, 0.4);
-}
-
-footer li {
-  display: inline-block;
-}
-
-footer li:not(:last-child):after {
-  content: "| ";
-  white-space: pre;
-  color: $grey;
 }
 
 ul.plain_list {
@@ -131,10 +128,11 @@ input.pink_button:active {
 }
 
 .warning {
-  background: lighten($yellow, 65%);
+  background: lighten($yellow, 30%);
   padding: 1em;
   font-size: 1.2em;
   text-align: center;
+  border-radius: 4px;
 }
 
 .highlight {
@@ -261,11 +259,6 @@ input.thinking {
 
 .charCounter .remainingCharacters {
   font-weight: bold;
-}
-
-.warning {
-  background: lighten($yellow, 30%);
-  border-radius: 4px;
 }
 
 @import "homepage.scss";
