@@ -2,12 +2,12 @@ import os
 import shutil
 
 from flask_login import FlaskLoginClient
+from flickr_photos_api import FlickrPhotosApi
 import pytest
 import vcr
 
 from flickypedia import create_app
 from flickypedia.auth import WikimediaUserSession, SESSION_ID_KEY
-from flickypedia.apis.flickr import FlickrApi
 from flickypedia.apis.wikimedia import WikimediaApi
 
 
@@ -82,7 +82,7 @@ def flickr_api(cassette_name, user_agent):
         cassette_library_dir="tests/fixtures/cassettes",
         filter_query_parameters=["api_key"],
     ):
-        yield FlickrApi(
+        yield FlickrPhotosApi(
             api_key=os.environ.get("FLICKR_API_KEY", "<REDACTED>"),
             user_agent=user_agent,
         )
