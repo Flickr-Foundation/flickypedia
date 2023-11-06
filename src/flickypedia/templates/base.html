@@ -13,7 +13,7 @@
   </head>
 
   <body>
-    <main>
+    <main {% if page_id is defined %} id="page-{{ page_id }}"{% endif %}>
       {% include "components/flashes.html" %}
 
       {% block content %}{% endblock %}

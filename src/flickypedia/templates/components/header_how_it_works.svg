@@ -19,7 +19,7 @@
 			}
       
       rect.step {
-        fill: rgb(var(--brown));
+        fill: var(--brown);
       }
       
       #step-{{ current_step }} rect {
@@ -27,7 +27,7 @@
       }
       
       #step-{{ current_step }} text {
-        fill: rgb(var(--cream)) !important;
+        fill: var(--cream) !important;
         font-weight: bold;
       }
       

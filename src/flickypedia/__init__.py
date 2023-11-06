@@ -2,8 +2,9 @@ import html
 import os
 import sys
 
-from flask import Flask
+from flask import Flask, request
 from jinja2 import StrictUndefined
+import sass
 
 from flickypedia.auth import (
     db,
@@ -35,7 +36,7 @@ from flickypedia.tasks import celery_init_app
 from flickypedia.utils import a_href, size_at
 
 
-def create_app(data_directory="data"):
+def create_app(data_directory: str="data", debug: bool=False):
     app = Flask(__name__)
 
     config = create_config(data_directory)
@@ -79,6 +80,16 @@ def create_app(data_directory="data"):
     app.jinja_env.filters["wikidata_entity_label"] = get_entity_label
     app.jinja_env.filters["wikidata_date"] = render_wikidata_date
 
+    # Compile the CSS.  If we're running in debug mode
+    compile_scss(app.static_folder)
+
+    if debug:
+        @app.before_request
+        def recompile_css():
+            if request.path == '/static/style.css':
+                compile_scss(app.static_folder)
+        print('debug!')
+
     # This option causes Jinja to throw if we use an undefined variable
     # in one of the templates.
     # See https://alexwlchan.net/2022/strict-jinja/
@@ -89,6 +100,22 @@ def create_app(data_directory="data"):
     app.jinja_env.lstrip_blocks = True
 
     return app
+
+
+def compile_scss(static_folder):
+    """
+    Compile the SCSS file into static.css.
+    """
+    sass_path = os.path.join(static_folder, "assets", "style.scss")
+    css_path = os.path.join(static_folder, "style.css")
+
+    with open(css_path + '.tmp', "w") as out_file:
+        out_file.write(sass.compile(filename=sass_path))
+
+    try:
+        os.rename(css_path + '.tmp', css_path)
+    except FileNotFoundError:
+        pass
 
 
 # celery --app flickypedia.celery worker --loglevel INFO
