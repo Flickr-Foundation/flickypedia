@@ -1,7 +1,14 @@
+import datetime
+
+from cryptography.fernet import Fernet
 from flask_login import current_user
 
+from flickypedia.apis.wikimedia import WikimediaOAuthApi
+from flickypedia.auth import get_oauth_client
+from flickypedia.auth import WikimediaUserSession, SESSION_ENCRYPTION_KEY, SESSION_ID_KEY
 
-def test_can_get_token_from_wikimedia(client, vcr_cassette):
+
+def test_can_get_token_from_wikimedia(client, vcr_cassette, user_agent):
     """
     This test verifies that our login code works.
 
@@ -23,29 +30,63 @@ def test_can_get_token_from_wikimedia(client, vcr_cassette):
     4.  I redacted the secrets from the URL and the VCR cassette.
 
     """
-    assert current_user == None  # noqa: E711
+    # Check we aren't currently logged in.  Normally this would be an anonymous
+    # user, but I haven't got that working with Flask-Login and tests.
+    assert current_user == None
 
+    # Take the user to the loign endpoint.  See where we get redirected.
     authorize_resp = client.get("/authorize/wikimedia")
-
     location = authorize_resp.headers["location"]
 
+    # Print that URL -- open this in a browser separately, and make note of where
+    # I was redirected.
     print(location)
     # assert 0
 
+    # Now pass the redirect URL in here, as if I had been redirected to the
+    # test client.
     with client.session_transaction() as session:
-        session["oauth_authorize_state"] = "XertqAsuJqXjgns0v9fHXUKeK3gwcf"
+        session["oauth_authorize_state"] = "7E7Nw3ZzjpVkOnPcQHxEm4LeIih1CU"
 
     callback_resp = client.get(
-        "/callback/wikimedia?code=[CODE]&state=XertqAsuJqXjgns0v9fHXUKeK3gwcf"
+        "/callback/wikimedia?code=[CODE]&state=7E7Nw3ZzjpVkOnPcQHxEm4LeIih1CU"
     )
 
+    # Check I've been logged in and redirected to the "get photos" page
     assert callback_resp.headers["location"] == "/get_photos"
+    assert not current_user.is_anonymous
 
+    # Now check the value of the current user's token.
+    #
+    # The 'expires_at' will vary based on when the token was retrieved, so
+    # ignore it.
     token = current_user.token()
-    del token["expires_at"]
-    assert token == {
+
+    expected_token = {
         "token_type": "Bearer",
         "expires_in": 14400,
-        "access_token": "ACCESS_TOKEN",
-        "refresh_token": "REFRESH_TOKEN",
+        "access_token": "[ACCESS_TOKEN...sqfLY]",
+        "refresh_token": "[REFRESH_TOKEN...8f34f]",
     }
+
+
+    assert all(
+        token[k] == expected_token[k]
+        for k in expected_token
+    )
+
+    # Now futz with the token -- set it to have just expired.  This should
+    # force the OAuth client to refresh the token on the next request.
+    token['expires_at'] = int(datetime.datetime.now().timestamp()) - 1
+
+    # Construct an instance of the Wikimedia OAuth API, and check the token
+    # is refreshed.  Check also that it's been stored.
+    api = WikimediaOAuthApi(
+       client=get_oauth_client(),
+       token=token,
+    user_agent=user_agent
+   )
+    api.get_userinfo()
+
+    assert api.client.token != token
+    assert current_user.token() == api.client.token
