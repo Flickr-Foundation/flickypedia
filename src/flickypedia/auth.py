@@ -143,6 +143,13 @@ class WikimediaUserSession(UserMixin, db.Model):
         )
 
     def store_new_token(self, new_token):
+        """
+        Store a new OAuth token in the database.
+
+        This method should only be called when the token has changed.
+        """
+        assert dict(new_token) != self.token()
+
         self.encrypted_token = encrypt_string(
             key=session[SESSION_ENCRYPTION_KEY], plaintext=json.dumps(new_token)
         )
