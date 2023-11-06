@@ -78,18 +78,11 @@ from flickypedia.apis.wikimedia import WikimediaOAuthApi
 from flickypedia.utils import decrypt_string, encrypt_string
 
 
-db = SQLAlchemy()
+user_db = SQLAlchemy()
 
 login = LoginManager()
 login.login_view = "homepage"
 
-
-# Every user gets a session ID which matches their entry in the database
-# of access tokens.  This ID is an opaque identifier that avoids us
-# having to deal with e.g. the same user logged in on two computers.
-#
-# This is the name of the key that ID is stored under in their session.
-SESSION_ID_KEY = "oauth_userid_wikimedia"
 
 # This is the name of the encryption key which is stored in the user session.
 SESSION_ENCRYPTION_KEY = "oauth_key_wikimedia"
@@ -122,7 +115,7 @@ def get_wikimedia_api() -> WikimediaOAuthApi:
     )
 
 
-class WikimediaUserSession(UserMixin, db.Model):
+class WikimediaUserSession(UserMixin, user_db.Model):
     """
     Represents a single session for a logged-in Wikimedia user.
     This model is written to a SQLite database that lives on the server,
@@ -130,10 +123,18 @@ class WikimediaUserSession(UserMixin, db.Model):
     """
 
     __tablename__ = "wikimedia_user_sessions"
-    id = db.Column(db.String(64), primary_key=True)
-    userid = db.Column(db.Integer, nullable=False)
-    name = db.Column(db.String(64), nullable=False)
-    encrypted_token = db.Column(db.LargeBinary, nullable=False)
+    id = user_db.Column(user_db.String(64), primary_key=True)
+    userid = user_db.Column(user_db.Integer, nullable=False)
+    name = user_db.Column(user_db.String(64), nullable=False)
+    encrypted_token = user_db.Column(user_db.LargeBinary, nullable=False)
+
+    def get_id(self) -> str:
+        """
+        This method is used by Flask-Login to identify the user's session.
+
+        See https://flask-login.readthedocs.io/en/latest/#your-user-class
+        """
+        return self.id
 
     def token(self):
         """
@@ -162,7 +163,7 @@ class WikimediaUserSession(UserMixin, db.Model):
         self.encrypted_token = encrypt_string(
             key=session[SESSION_ENCRYPTION_KEY], plaintext=json.dumps(new_token)
         )
-        db.session.commit()
+        user_db.session.commit()
 
     @property
     def profile_url(self):
@@ -170,11 +171,11 @@ class WikimediaUserSession(UserMixin, db.Model):
 
 
 @login.user_loader
-def load_user(session_id: str):
+def load_user(userid: str):
     if current_app.config.get("TESTING"):
         return WikimediaUserSession(id=-1, userid=-1, name="example")
     else:  # pragma: no cover
-        return db.session.get(WikimediaUserSession, session[SESSION_ID_KEY])
+        return user_db.session.get(WikimediaUserSession, userid)
 
 
 @login_required
@@ -185,11 +186,18 @@ def logout():
     # Delete both parts of the user's session: the encrypted copy of
     # their OAuth tokens in the server-side database, and the encryption
     # key in their session cookie.
-    db.session.query(WikimediaUserSession).filter(
-        id == session["oauth_userid_wikimedia"]
+    user_db.session.query(WikimediaUserSession).filter(
+        WikimediaUserSession.id == current_user.id
     ).delete()
-    db.session.commit()
-    del session[SESSION_ID_KEY]
+    user_db.session.commit()
+
+    # Admittedly it would be unusual if the user didn't have an
+    # encryption key in their session cookie, but if they don't, it
+    # shouldn't stop the logout process.
+    try:
+        del session[SESSION_ENCRYPTION_KEY]
+    except KeyError:
+        pass
 
     logout_user()
 
@@ -260,9 +268,6 @@ def oauth2_callback_wikimedia():
     )
     userinfo = api.get_userinfo()
 
-    # Add our persistent ID to the session object.
-    session[SESSION_ID_KEY] = str(uuid.uuid4())
-
     # Now create a user and store it in the database.
     #
     # In Miguel Grinberg's code, he looks for an existing user.  We don't
@@ -273,13 +278,13 @@ def oauth2_callback_wikimedia():
     session[SESSION_ENCRYPTION_KEY] = key
 
     user = WikimediaUserSession(
-        id=session[SESSION_ID_KEY],
+        id=str(uuid.uuid4()),
         userid=userinfo["id"],
         name=userinfo["name"],
         encrypted_token=encrypt_string(key, plaintext=json.dumps(token)),
     )
-    db.session.add(user)
-    db.session.commit()
+    user_db.session.add(user)
+    user_db.session.commit()
 
     # Log the user in
     login_user(user)

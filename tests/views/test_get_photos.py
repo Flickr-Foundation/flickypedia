@@ -1,7 +1,7 @@
 from flask_login import FlaskLoginClient
 
 from flickypedia import create_app
-from flickypedia.auth import WikimediaUserSession, SESSION_ID_KEY
+from flickypedia.auth import WikimediaUserSession
 
 
 def test_renders_basic_page(logged_in_client):
@@ -67,9 +67,6 @@ def test_preserves_photo_if_csrf_bad(tmpdir):
 
     with app.app_context():
         with app.test_client(user=user) as client:
-            with client.session_transaction() as session:
-                session[SESSION_ID_KEY] = user.id
-
             resp = client.post(
                 "/get_photos",
                 data={
