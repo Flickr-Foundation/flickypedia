@@ -10,7 +10,7 @@ from pytest import FixtureRequest
 import vcr
 
 from flickypedia import create_app
-from flickypedia.auth import WikimediaUserSession, db
+from flickypedia.auth import WikimediaUserSession, user_db
 from flickypedia.apis.wikimedia import WikimediaOAuthApi
 
 
@@ -163,10 +163,10 @@ def logged_in_client(app):
     # the test client context.  This took me a while to figure
     # out; see https://stackoverflow.com/a/69961887/1558022
     with app.test_request_context():
-        db.create_all()
+        user_db.create_all()
 
-        db.session.add(user)
-        db.session.commit()
+        user_db.session.add(user)
+        user_db.session.commit()
 
         with app.test_client(user=user) as client:
             login_user(user)

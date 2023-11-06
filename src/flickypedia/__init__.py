@@ -7,11 +7,11 @@ from jinja2 import StrictUndefined
 import sass
 
 from flickypedia.auth import (
-    db,
     login,
     logout,
     oauth2_authorize_wikimedia,
     oauth2_callback_wikimedia,
+    user_db,
 )
 from flickypedia.apis.wikidata import (
     get_entity_label,
@@ -43,12 +43,12 @@ def create_app(data_directory: str = "data", debug: bool = False):
 
     app.config.update(**config)
 
-    db.init_app(app)
+    user_db.init_app(app)
     login.init_app(app)
     celery_init_app(app)
 
     with app.app_context():
-        db.create_all()
+        user_db.create_all()
 
     for dirname in get_directories(app.config):
         os.makedirs(dirname, exist_ok=True)

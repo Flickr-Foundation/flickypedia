@@ -1,7 +1,7 @@
 from flask import session
 from flask_login import current_user
 
-from flickypedia.auth import db, WikimediaUserSession, SESSION_ENCRYPTION_KEY
+from flickypedia.auth import user_db, WikimediaUserSession, SESSION_ENCRYPTION_KEY
 
 
 class TestOAuth2AuthorizeWikimedia:
@@ -45,12 +45,12 @@ class TestLogOut:
 
         assert current_user.is_anonymous
 
-    def test_logging_out_removes_user_from_db(self, logged_in_client):
-        assert len(db.session.query(WikimediaUserSession).all()) == 1
+    def test_logging_out_removes_user_from_user_db(self, logged_in_client):
+        assert len(user_db.session.query(WikimediaUserSession).all()) == 1
 
         logged_in_client.get("/logout")
 
-        assert len(db.session.query(WikimediaUserSession).all()) == 0
+        assert len(user_db.session.query(WikimediaUserSession).all()) == 0
 
     def test_logging_out_removes_encryption_key_from_session(self, logged_in_client):
         session[SESSION_ENCRYPTION_KEY] = "<sekrit key>"

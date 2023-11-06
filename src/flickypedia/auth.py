@@ -78,7 +78,7 @@ from flickypedia.apis.wikimedia import WikimediaOAuthApi
 from flickypedia.utils import decrypt_string, encrypt_string
 
 
-db = SQLAlchemy()
+user_db = SQLAlchemy()
 
 login = LoginManager()
 login.login_view = "homepage"
@@ -115,7 +115,7 @@ def get_wikimedia_api() -> WikimediaOAuthApi:
     )
 
 
-class WikimediaUserSession(UserMixin, db.Model):
+class WikimediaUserSession(UserMixin, user_db.Model):
     """
     Represents a single session for a logged-in Wikimedia user.
     This model is written to a SQLite database that lives on the server,
@@ -123,10 +123,10 @@ class WikimediaUserSession(UserMixin, db.Model):
     """
 
     __tablename__ = "wikimedia_user_sessions"
-    id = db.Column(db.String(64), primary_key=True)
-    userid = db.Column(db.Integer, nullable=False)
-    name = db.Column(db.String(64), nullable=False)
-    encrypted_token = db.Column(db.LargeBinary, nullable=False)
+    id = user_db.Column(user_db.String(64), primary_key=True)
+    userid = user_db.Column(user_db.Integer, nullable=False)
+    name = user_db.Column(user_db.String(64), nullable=False)
+    encrypted_token = user_db.Column(user_db.LargeBinary, nullable=False)
 
     def get_id(self) -> str:
         """
@@ -163,7 +163,7 @@ class WikimediaUserSession(UserMixin, db.Model):
         self.encrypted_token = encrypt_string(
             key=session[SESSION_ENCRYPTION_KEY], plaintext=json.dumps(new_token)
         )
-        db.session.commit()
+        user_db.session.commit()
 
     @property
     def profile_url(self):
@@ -175,7 +175,7 @@ def load_user(userid: str):
     if current_app.config.get("TESTING"):
         return WikimediaUserSession(id=-1, userid=-1, name="example")
     else:  # pragma: no cover
-        return db.session.get(WikimediaUserSession, userid)
+        return user_db.session.get(WikimediaUserSession, userid)
 
 
 @login_required
@@ -186,10 +186,10 @@ def logout():
     # Delete both parts of the user's session: the encrypted copy of
     # their OAuth tokens in the server-side database, and the encryption
     # key in their session cookie.
-    db.session.query(WikimediaUserSession).filter(
+    user_db.session.query(WikimediaUserSession).filter(
         WikimediaUserSession.id == current_user.id
     ).delete()
-    db.session.commit()
+    user_db.session.commit()
 
     try:
         del session[SESSION_ENCRYPTION_KEY]
@@ -280,8 +280,8 @@ def oauth2_callback_wikimedia():
         name=userinfo["name"],
         encrypted_token=encrypt_string(key, plaintext=json.dumps(token)),
     )
-    db.session.add(user)
-    db.session.commit()
+    user_db.session.add(user)
+    user_db.session.commit()
 
     # Log the user in
     login_user(user)
