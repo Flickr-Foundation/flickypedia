@@ -85,25 +85,24 @@ def test_shows_correct_message_when_all_duplicates(app, count, expected_text):
 
     assert get_paragraphs(html) == [
         {"class": "message_duplicate", "text": expected_text},
-        {"class": "duplicate_link", "text": "Have a look?"},
     ]
 
 
 @pytest.mark.parametrize(
     ["count", "expected_text"],
     [
-        (1, "This photo can’t be used because it has a CC BY-NC 2.0 license. Sorry!"),
+        (1, "This photo can’t be used because it has a CC BY-NC 2.0 license."),
         (
             2,
-            "Neither of these photos can be used because they have CC BY-NC 2.0 licenses. Sorry!",
+            "Neither of these photos can be used because they have CC BY-NC 2.0 licenses.",
         ),
         (
             3,
-            "None of these photos can be used because they have CC BY-NC 2.0 licenses. Sorry!",
+            "None of these photos can be used because they have CC BY-NC 2.0 licenses.",
         ),
         (
             10,
-            "None of these photos can be used because they have CC BY-NC 2.0 licenses. Sorry!",
+            "None of these photos can be used because they have CC BY-NC 2.0 licenses.",
         ),
     ],
 )
@@ -120,10 +119,10 @@ def test_shows_correct_message_when_all_disallowed(app, count, expected_text):
     )
 
     assert get_paragraphs(html) == [
-        {"class": "message_disallowed", "text": expected_text},
         {
-            "class": "license_explanation",
-            "text": "Wikimedia Commons only accepts CC0, CC BY, CC BY-SA, and Public Domain photos that are also public and safe on Flickr.",
+            "class": "message_disallowed",
+            "text": f"{expected_text} "
+            + "Wikimedia Commons only accepts CC0, CC BY, CC BY-SA, and Public Domain photos that are also public and safe on Flickr.",
         },
     ]
 
@@ -131,10 +130,10 @@ def test_shows_correct_message_when_all_disallowed(app, count, expected_text):
 @pytest.mark.parametrize(
     ["count", "expected_text"],
     [
-        (1, "This photo can’t be used. Sorry!"),
-        (2, "Neither of these photos can be used. Sorry!"),
-        (3, "None of these photos can be used. Sorry!"),
-        (10, "None of these photos can be used. Sorry!"),
+        (1, "This photo can’t be used."),
+        (2, "Neither of these photos can be used."),
+        (3, "None of these photos can be used."),
+        (10, "None of these photos can be used."),
     ],
 )
 def test_shows_correct_message_when_all_restricted(app, count, expected_text):
@@ -150,11 +149,7 @@ def test_shows_correct_message_when_all_restricted(app, count, expected_text):
     )
 
     assert get_paragraphs(html) == [
-        {"class": "message_disallowed", "text": expected_text},
-        {
-            "class": "license_explanation",
-            "text": "Wikimedia Commons only accepts CC0, CC BY, CC BY-SA, and Public Domain photos that are also public and safe on Flickr.",
-        },
+        {"class": "message_disallowed", "text": expected_text + " Wikimedia Commons only accepts CC0, CC BY, CC BY-SA, and Public Domain photos that are also public and safe on Flickr."},
     ]
 
 
@@ -163,15 +158,15 @@ def test_shows_correct_message_when_all_restricted(app, count, expected_text):
     [
         (
             ["CC BY-NC 2.0", "CC BY-ND 2.0", "CC BY-NC 2.0"],
-            "None of these photos can be used because they have CC BY-NC 2.0 and CC BY-ND 2.0 licenses. Sorry!",
+            "None of these photos can be used because they have CC BY-NC 2.0 and CC BY-ND 2.0 licenses.",
         ),
         (
             ["All Rights Reserved"],
-            "This photo can’t be used because it has an All Rights Reserved license. Sorry!",
+            "This photo can’t be used because it has an All Rights Reserved license.",
         ),
         (
             ["All Rights Reserved", "CC BY-NC 2.0", "CC BY-ND 2.0"],
-            "None of these photos can be used because they have All Rights Reserved, CC BY-NC 2.0 and CC BY-ND 2.0 licenses. Sorry!",
+            "None of these photos can be used because they have All Rights Reserved, CC BY-NC 2.0 and CC BY-ND 2.0 licenses.",
         ),
     ],
 )
@@ -187,10 +182,10 @@ def test_shows_correct_combination_of_licenses(app, licenses, expected_text):
     )
 
     assert get_paragraphs(html) == [
-        {"class": "message_disallowed", "text": expected_text},
         {
-            "class": "license_explanation",
-            "text": "Wikimedia Commons only accepts CC0, CC BY, CC BY-SA, and Public Domain photos that are also public and safe on Flickr.",
+            "class": "message_disallowed",
+            "text": expected_text
+            + " Wikimedia Commons only accepts CC0, CC BY, CC BY-SA, and Public Domain photos that are also public and safe on Flickr.",
         },
     ]
 
@@ -231,10 +226,10 @@ def test_shows_correct_combination_of_licenses(app, licenses, expected_text):
     ["disallowed_licenses", "expected_disallowed_licenses_text"],
     [
         (0, None),
-        (1, "One photo can’t be used because it has a CC BY-NC 2.0 license. Sorry!"),
-        (2, "2 photos can’t be used because they have CC BY-NC 2.0 licenses. Sorry!"),
-        (3, "3 photos can’t be used because they have CC BY-NC 2.0 licenses. Sorry!"),
-        (10, "10 photos can’t be used because they have CC BY-NC 2.0 licenses. Sorry!"),
+        (1, "One photo can’t be used because it has a CC BY-NC 2.0 license."),
+        (2, "2 photos can’t be used because they have CC BY-NC 2.0 licenses."),
+        (3, "3 photos can’t be used because they have CC BY-NC 2.0 licenses."),
+        (10, "10 photos can’t be used because they have CC BY-NC 2.0 licenses."),
     ],
 )
 @pytest.mark.parametrize("restricted", [0, 1])
@@ -287,7 +282,6 @@ def test_shows_correct_message(
         expected.extend(
             [
                 {"class": "message_duplicate", "text": expected_duplicate_text},
-                {"class": "duplicate_link", "text": "Have a look?"},
             ]
         )
 
@@ -296,11 +290,8 @@ def test_shows_correct_message(
             [
                 {
                     "class": "message_disallowed",
-                    "text": expected_disallowed_licenses_text,
-                },
-                {
-                    "class": "license_explanation",
-                    "text": "Wikimedia Commons only accepts CC0, CC BY, CC BY-SA, and Public Domain photos that are also public and safe on Flickr.",
+                    "text": expected_disallowed_licenses_text
+                    + " Wikimedia Commons only accepts CC0, CC BY, CC BY-SA, and Public Domain photos that are also public and safe on Flickr.",
                 },
             ]
         )

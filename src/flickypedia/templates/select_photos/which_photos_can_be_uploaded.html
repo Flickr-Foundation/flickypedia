@@ -101,12 +101,8 @@
       </span>
       {{ photos.duplicates|length }} photos are
     {% endif %}
-    already in Wikimedia Commons.
+    <a href="{{ photos.duplicates | link_to_commons }}"> already in Wikimedia Commons</a>.
     W00t!
-  </p>
-
-  <p class="duplicate_link">
-    <a href="{{ photos.duplicates|link_to_commons }}">Have a look</a>?
   </p>
 {% endif %}
 
@@ -150,11 +146,6 @@
       {% if loop.index == loop.length - 1 %} and{% endif %}
     {% endfor %}
     license{% if photos.disallowed_licenses|length > 1 %}s{% endif %}.
-
-    Sorry!
-  </p>
-
-  <p class="license_explanation">
     Wikimedia Commons only accepts CC0, CC BY, CC BY-SA, and Public Domain photos that are also public and safe on Flickr.
   </p>
 {% endif %}
@@ -182,11 +173,6 @@
         None of these photos can be used.
       </span>
     {% endif %}
-
-    Sorry!
-  </p>
-
-  <p class="license_explanation">
     Wikimedia Commons only accepts CC0, CC BY, CC BY-SA, and Public Domain photos that are also public and safe on Flickr.
   </p>
 {% endif %}
