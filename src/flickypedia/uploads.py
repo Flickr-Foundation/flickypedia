@@ -1,13 +1,12 @@
 import datetime
 
 from celery import current_task, shared_task
-from flask import current_app
 from flickr_photos_api import DateTaken, User as FlickrUser
 
 from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
-from flickypedia.apis.wikimedia import WikimediaApi
+from flickypedia.apis.wikimedia import WikimediaApiBase
 from flickypedia.apis.wikitext import create_wikitext
-from flickypedia.auth import freshen_oauth_info
+from flickypedia.auth import get_wikimedia_api
 from flickypedia.duplicates import record_file_created_by_flickypedia
 from flickypedia.tasks import ProgressTracker
 
@@ -23,12 +22,7 @@ def upload_batch_of_photos(oauth_info, photos_to_upload):
     tracker.record_progress(data=progress_data)
 
     for idx, photo in enumerate(photos_to_upload):
-        oauth_info = freshen_oauth_info(oauth_info)
-
-        api = WikimediaApi(
-            access_token=oauth_info["access_token"],
-            user_agent=current_app.config["USER_AGENT"],
-        )
+        api = get_wikimedia_api()
 
         try:
             # import random
@@ -67,7 +61,7 @@ def upload_batch_of_photos(oauth_info, photos_to_upload):
 
 
 def upload_single_image(
-    api: WikimediaApi,
+    api: WikimediaApiBase,
     photo_id: str,
     photo_url: str,
     user: FlickrUser,

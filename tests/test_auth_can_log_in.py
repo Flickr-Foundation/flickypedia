@@ -23,29 +23,29 @@ def test_can_get_token_from_wikimedia(client, vcr_cassette):
     4.  I redacted the secrets from the URL and the VCR cassette.
 
     """
-    assert current_user == None
+    assert current_user == None  # noqa: E711
 
     authorize_resp = client.get("/authorize/wikimedia")
 
-    location = authorize_resp.headers['location']
+    location = authorize_resp.headers["location"]
 
     print(location)
     # assert 0
 
     with client.session_transaction() as session:
-        session['oauth_authorize_state'] = 'XertqAsuJqXjgns0v9fHXUKeK3gwcf'
+        session["oauth_authorize_state"] = "XertqAsuJqXjgns0v9fHXUKeK3gwcf"
 
     callback_resp = client.get(
-        '/callback/wikimedia?code=[CODE]&state=XertqAsuJqXjgns0v9fHXUKeK3gwcf'
+        "/callback/wikimedia?code=[CODE]&state=XertqAsuJqXjgns0v9fHXUKeK3gwcf"
     )
 
-    assert callback_resp.headers['location'] == '/get_photos'
+    assert callback_resp.headers["location"] == "/get_photos"
 
     token = current_user.token()
-    del token['expires_at']
+    del token["expires_at"]
     assert token == {
-        'token_type': 'Bearer',
-        'expires_in': 14400,
-        'access_token': 'ACCESS_TOKEN',
-        'refresh_token': 'REFRESH_TOKEN',
+        "token_type": "Bearer",
+        "expires_in": 14400,
+        "access_token": "ACCESS_TOKEN",
+        "refresh_token": "REFRESH_TOKEN",
     }

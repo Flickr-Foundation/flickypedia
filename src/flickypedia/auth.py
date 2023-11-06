@@ -58,9 +58,7 @@ to the user's browser can't just retrieve their token.
 
 """
 
-import datetime
 import json
-from typing import TypedDict
 import uuid
 
 from authlib.integrations.httpx_client.oauth2_client import OAuth2Client
@@ -111,7 +109,7 @@ def get_oauth_client() -> OAuth2Client:
     )
 
 
-def get_wikimedia_client() -> WikimediaOAuthApi:
+def get_wikimedia_api() -> WikimediaOAuthApi:
     """
     Returns an instance of the Wikimedia OAuth API which is connected for the
     current user.
@@ -143,6 +141,12 @@ class WikimediaUserSession(UserMixin, db.Model):
                 key=session[SESSION_ENCRYPTION_KEY], ciphertext=self.encrypted_token
             )
         )
+
+    def store_new_token(self, new_token):
+        self.encrypted_token = encrypt_string(
+            key=session[SESSION_ENCRYPTION_KEY], plaintext=json.dumps(new_token)
+        )
+        db.session.commit()
 
     @property
     def profile_url(self):
@@ -231,7 +235,7 @@ def oauth2_callback_wikimedia():
             state=state,
         )
     except Exception as exc:
-        print(f'Error exchanging authorization code for token: {exc}')
+        print(f"Error exchanging authorization code for token: {exc}")
         abort(401)
 
     # Get info about the logged in user
@@ -267,23 +271,3 @@ def oauth2_callback_wikimedia():
     flash("You’re logged in.", category="login_header")
 
     return redirect(url_for("get_photos"))
-
-
-class OAuthInfo(TypedDict):
-    access_token: str
-    access_token_expires: datetime.datetime
-    refresh_token: str
-
-
-def freshen_oauth_info(oauth_info: OAuthInfo) -> OAuthInfo:
-    """
-    Freshen any OAuth info as necessary.
-    """
-    delta = oauth_info["access_token_expires"] - datetime.datetime.now()
-
-    # TODO: Implement a token refresh mechanism.  How do we cope with
-    # a refresh token failure?
-    if delta.total_seconds() < 5 * 60:
-        raise ValueError("I don't know how to refresh yet!")
-
-    return oauth_info

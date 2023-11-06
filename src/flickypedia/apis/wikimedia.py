@@ -1,6 +1,7 @@
 import json
 
 from authlib.integrations.httpx_client.oauth2_client import OAuth2Client
+from flask_login import current_user
 import httpx
 
 
@@ -44,48 +45,6 @@ class WikimediaApiBase:
             method="POST",
             data={**data, "format": "json", "token": self.get_csrf_token()},
             **kwargs,
-        )
-
-
-class WikimediaOAuthApi(WikimediaApiBase):
-    def __init__(self, *, client: OAuth2Client, token, user_agent: str):
-        self.client = client
-        client.token = token
-
-        self.user_agent = user_agent
-
-    def get_userinfo(self) -> str:
-        """
-        Returns the user ID and name for a Wikimedia Commons user.
-
-            >>> get_userinfo()
-            {"id": 829939, "name": "Alexwlchan"}
-
-        See https://www.mediawiki.org/wiki/API:Userinfo
-
-        """
-        resp = self._get(params={"action": "query", "meta": "userinfo"})
-
-        return resp["query"]["userinfo"]
-
-
-class WikimediaApi(WikimediaApiBase):
-    """
-    This is a thin wrapper for calling the Wikimedia API.
-
-    It doesn't do much interesting stuff; the goal is just to reduce boilerplate
-    in the rest of the codebase, e.g. have the error handling in one place rather
-    than repeated everywhere.
-    """
-
-    def __init__(self, *, access_token, user_agent):
-        self.user_agent = user_agent
-        self.client = httpx.Client(
-            base_url="https://commons.wikimedia.org",
-            headers={
-                "Authorization": f"Bearer {access_token}",
-                "User-Agent": user_agent,
-            },
         )
 
     def get_csrf_token(self) -> str:
@@ -334,6 +293,27 @@ class WikimediaApi(WikimediaApiBase):
             return
         else:  # pragma: no cover
             raise WikimediaApiException(f"Unexpected response: {resp}")
+
+
+class WikimediaOAuthApi(WikimediaApiBase):
+    def __init__(self, *, client: OAuth2Client, token, user_agent: str):
+        self.client = client
+        client.token = token
+
+        self.user_agent = user_agent
+
+    def _request(self, *args, **kwargs):
+        old_token = self.client.token
+
+        resp = super()._request(*args, **kwargs)
+
+        new_token = self.client.token
+
+        if old_token != new_token:
+            current_user.store_new_token(new_token=self.client.token)
+
+        return resp
+
 
 
 class WikimediaPublicApi(WikimediaApiBase):
