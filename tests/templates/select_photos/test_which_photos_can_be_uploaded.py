@@ -41,7 +41,7 @@ def test_shows_correct_message_when_all_available(app, count, expected_text):
     Every photo can be uploaded to Wikimedia Commons.
     """
     html = render_template(
-        "components/select_photos_message.html",
+        "select_photos/which_photos_can_be_uploaded.html",
         photos={
             **EMPTY_DATA,
             "available": [f"photo-{i}" for i in range(count)],
@@ -73,7 +73,7 @@ def test_shows_correct_message_when_all_duplicates(app, count, expected_text):
     Every photo is a duplicate of one already on Commons.
     """
     html = render_template(
-        "components/select_photos_message.html",
+        "select_photos/which_photos_can_be_uploaded.html",
         photos={
             **EMPTY_DATA,
             "duplicates": {
@@ -112,7 +112,7 @@ def test_shows_correct_message_when_all_disallowed(app, count, expected_text):
     Every photo has a CC-BY 2.0 license which isn't allowed on Commons.
     """
     html = render_template(
-        "components/select_photos_message.html",
+        "select_photos/which_photos_can_be_uploaded.html",
         photos={
             **EMPTY_DATA,
             "disallowed_licenses": {f"photo-{i}": "CC BY-NC 2.0" for i in range(count)},
@@ -142,7 +142,7 @@ def test_shows_correct_message_when_all_restricted(app, count, expected_text):
     Every photo has a CC-BY 2.0 license which isn't allowed on Commons.
     """
     html = render_template(
-        "components/select_photos_message.html",
+        "select_photos/which_photos_can_be_uploaded.html",
         photos={
             **EMPTY_DATA,
             "restricted": {f"photo-{i}": "CC BY-NC 2.0" for i in range(count)},
@@ -177,7 +177,7 @@ def test_shows_correct_message_when_all_restricted(app, count, expected_text):
 )
 def test_shows_correct_combination_of_licenses(app, licenses, expected_text):
     html = render_template(
-        "components/select_photos_message.html",
+        "select_photos/which_photos_can_be_uploaded.html",
         photos={
             **EMPTY_DATA,
             "disallowed_licenses": {
@@ -259,7 +259,7 @@ def test_shows_correct_message(
         pytest.skip("invalid parameter combination")
 
     html = render_template(
-        "components/select_photos_message.html",
+        "select_photos/which_photos_can_be_uploaded.html",
         photos={
             "available": [f"photo-{i}" for i in range(available)],
             "duplicates": {
