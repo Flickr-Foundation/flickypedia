@@ -11,7 +11,7 @@ interactions:
       host:
       - commons.wikimedia.org
       user-agent:
-      - python-httpx/0.25.0
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
     method: GET
     uri: https://commons.wikimedia.org/w/api.php?action=query&titles=File%3AFishingBoatsByTheRiver.jpg&prop=info&format=json
   response:
@@ -30,7 +30,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 01 Nov 2023 12:59:50 GMT
+      - Mon, 06 Nov 2023 16:27:35 GMT
       nel:
       - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
         0.0}'
@@ -38,11 +38,11 @@ interactions:
       - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
         }] }'
       server:
-      - mw1378.eqiad.wmnet
+      - mw1489.eqiad.wmnet
       server-timing:
       - cache;desc="pass", host;desc="cp3066"
       set-cookie:
-      - WMF-Last-Access=01-Nov-2023;Path=/;HttpOnly;secure;Expires=Sun, 03 Dec 2023
+      - WMF-Last-Access=06-Nov-2023;Path=/;HttpOnly;secure;Expires=Fri, 08 Dec 2023
         12:00:00 GMT
       - GeoIP=GB:ENG:Southwark:51.50:-0.09:v4; Path=/; secure; Domain=.wikimedia.org
       - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
@@ -51,7 +51,7 @@ interactions:
       vary:
       - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie
       x-cache:
-      - cp3066 miss, cp3066 pass
+      - cp3066 pass, cp3066 pass
       x-cache-status:
       - pass
       x-client-ip:
@@ -72,11 +72,11 @@ interactions:
       connection:
       - keep-alive
       cookie:
-      - GeoIP=GB:ENG:Southwark:51.50:-0.09:v4; NetworkProbeLimit=0.001; WMF-Last-Access=01-Nov-2023
+      - GeoIP=GB:ENG:Southwark:51.50:-0.09:v4; NetworkProbeLimit=0.001; WMF-Last-Access=06-Nov-2023
       host:
       - commons.wikimedia.org
       user-agent:
-      - python-httpx/0.25.0
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
     method: GET
     uri: https://commons.wikimedia.org/w/api.php?action=titleblacklist&tbaction=create&tbtitle=File%3AFishingBoatsByTheRiver.jpg&format=json
   response:
@@ -85,7 +85,7 @@ interactions:
       accept-ranges:
       - bytes
       age:
-      - '2'
+      - '1'
       cache-control:
       - private, must-revalidate, max-age=0
       content-disposition:
@@ -95,7 +95,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 01 Nov 2023 12:59:50 GMT
+      - Mon, 06 Nov 2023 16:27:36 GMT
       nel:
       - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
         0.0}'
@@ -103,7 +103,7 @@ interactions:
       - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
         }] }'
       server:
-      - mw1426.eqiad.wmnet
+      - mw1400.eqiad.wmnet
       server-timing:
       - cache;desc="pass", host;desc="cp3066"
       set-cookie:
@@ -113,7 +113,131 @@ interactions:
       vary:
       - Accept-Encoding
       x-cache:
-      - cp3066 miss, cp3066 pass
+      - cp3066 pass, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - GeoIP=GB:ENG:Southwark:51.50:-0.09:v4; NetworkProbeLimit=0.001; WMF-Last-Access=06-Nov-2023
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=query&titles=File%3AFishingBoatsByTheRiver.jpg&prop=info&format=json
+  response:
+    content: '{"batchcomplete":"","query":{"pages":{"-1":{"ns":6,"title":"File:FishingBoatsByTheRiver.jpg","missing":"","contentmodel":"wikitext","pagelanguage":"en","pagelanguagehtmlcode":"en","pagelanguagedir":"ltr"}}}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-length:
+      - '207'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Mon, 06 Nov 2023 16:27:36 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1400.eqiad.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie
+      x-cache:
+      - cp3066 pass, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - GeoIP=GB:ENG:Southwark:51.50:-0.09:v4; NetworkProbeLimit=0.001; WMF-Last-Access=06-Nov-2023
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=titleblacklist&tbaction=create&tbtitle=File%3AFishingBoatsByTheRiver.jpg&format=json
+  response:
+    content: '{"titleblacklist":{"result":"ok"}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-length:
+      - '34'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Mon, 06 Nov 2023 16:27:36 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1358.eqiad.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3066 pass, cp3066 pass
       x-cache-status:
       - pass
       x-client-ip:
