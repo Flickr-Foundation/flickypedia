@@ -315,7 +315,6 @@ class WikimediaOAuthApi(WikimediaApiBase):
         return resp
 
 
-
 class WikimediaPublicApi(WikimediaApiBase):
     def __init__(self):
         self.client = httpx.Client(base_url="https://commons.wikimedia.org")

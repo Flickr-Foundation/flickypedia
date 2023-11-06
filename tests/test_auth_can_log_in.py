@@ -1,11 +1,9 @@
 import datetime
 
-from cryptography.fernet import Fernet
 from flask_login import current_user
 
 from flickypedia.apis.wikimedia import WikimediaOAuthApi
 from flickypedia.auth import get_oauth_client
-from flickypedia.auth import WikimediaUserSession, SESSION_ENCRYPTION_KEY, SESSION_ID_KEY
 
 
 def test_can_get_token_from_wikimedia(client, vcr_cassette, user_agent):
@@ -69,23 +67,17 @@ def test_can_get_token_from_wikimedia(client, vcr_cassette, user_agent):
         "refresh_token": "[REFRESH_TOKEN...8f34f]",
     }
 
-
-    assert all(
-        token[k] == expected_token[k]
-        for k in expected_token
-    )
+    assert all(token[k] == expected_token[k] for k in expected_token)
 
     # Now futz with the token -- set it to have just expired.  This should
     # force the OAuth client to refresh the token on the next request.
-    token['expires_at'] = int(datetime.datetime.now().timestamp()) - 1
+    token["expires_at"] = int(datetime.datetime.now().timestamp()) - 1
 
     # Construct an instance of the Wikimedia OAuth API, and check the token
     # is refreshed.  Check also that it's been stored.
     api = WikimediaOAuthApi(
-       client=get_oauth_client(),
-       token=token,
-    user_agent=user_agent
-   )
+        client=get_oauth_client(), token=token, user_agent=user_agent
+    )
     api.get_userinfo()
 
     assert api.client.token != token
