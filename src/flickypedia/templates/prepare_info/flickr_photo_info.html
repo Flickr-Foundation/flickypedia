@@ -20,7 +20,7 @@
 <dl class="flickr_info">
   <dt>By:</dt>
   <dd>
-    {{ photo.owner.realname or photo.owner.username}} <br/>
+    <a href="{{ photo.owner.profile_url}}">{{ photo.owner.realname or photo.owner.username}}</a> <br/>
     {{ photo.license.label }}
   </dd>
 

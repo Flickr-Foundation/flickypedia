@@ -33,9 +33,7 @@ def test_renders_form_for_single_photo(logged_in_client, app, vcr_cassette):
     assert resp.status_code == 200
     assert b"Puppy Kisses" in resp.data
 
-    # Test that we don't get the "X of Y" counter overlaid on a single
-    # preview photo
-    assert b"1 of 1" not in resp.data
+    assert b"1 of 1" in resp.data
 
 
 def test_renders_form_for_multiple_photo(logged_in_client, app, vcr_cassette):

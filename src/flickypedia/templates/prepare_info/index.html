@@ -52,23 +52,16 @@
 
         {% set large_size = photo.sizes | size_at(desired_size='Large') %}
 
-        {% if loop.length > 1 %}
-          <div class="preview">
-            <div class="image_counter">
-              {{ loop.index }} of {{ loop.length }}
-            </div>
-
-            <img
-              src="{{ large_size.source }}"
-              style="aspect-ratio: {{ large_size.width }} / {{ large_size.height }}"
-            >
+        <div class="preview">
+          <div class="image_counter">
+            {{ loop.index }} of {{ loop.length }}
           </div>
-        {% else %}
+
           <img
             src="{{ large_size.source }}"
             style="aspect-ratio: {{ large_size.width }} / {{ large_size.height }}"
           >
-        {% endif %}
+        </div>
 
         <div class="info">
           <div class="to_from_with_logo from_flickr">
@@ -80,7 +73,7 @@
           <div class="to_from_with_logo to_wiki">
             <img src="{{ url_for('static', filename='wikimedia-commons-logo.svg') }}">
 
-            <div>To the Wikimedia Commons Entry</div>
+            <div>To Wikimedia Commons</div>
           </div>
 
           {% include "prepare_info/flickr_photo_info.html" %}
