@@ -10,6 +10,9 @@
  * and a validation prompt, so the form can't be submitted.
  */
 function addTitleValidatorTo(inputElement) {
+  const errorElement = document
+    .querySelector(`p[for="${inputElement.id}"]`);
+
   inputElement.addEventListener("blur", () => {
 
     /* If the user hasn't entered anything, just clear any validation --
@@ -31,8 +34,6 @@ function addTitleValidatorTo(inputElement) {
     fetch(`/api/validate_title?title=${title}`)
       .then((response) => response.json())
       .then((json) => {
-        const errorElement = document
-          .querySelector(`p[for="${inputElement.id}"]`);
 
         /* The response from the API should be of the form
          *
