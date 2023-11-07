@@ -24,12 +24,21 @@ class PhotoToUpload(TypedDict):
     short_caption: ShortCaption
 
 
+class ProgressData(TypedDict):
+    data: PhotoToUpload
+    status: Literal['not_started', 'failed', 'succeeded']
+
+
 @shared_task
-def upload_batch_of_photos(token, key, photos_to_upload):
+def upload_batch_of_photos(token, key, photos_to_upload: List[PhotoToUpload]):
     tracker = ProgressTracker(task_id=current_task.request.id)
 
-    progress_data = [
-        {"photo_id": photo["id"], "status": "not_started"} for photo in photos_to_upload
+    progress_data: List[ProgressData] = [
+        {
+            'data': data,
+            'status': 'not_started'
+        }
+        for data in photos_to_upload
     ]
 
     tracker.record_progress(data=progress_data)
