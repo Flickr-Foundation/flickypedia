@@ -169,6 +169,28 @@ class WikimediaUserSession(UserMixin, user_db.Model):
         )
         user_db.session.commit()
 
+    def delete(self) -> None:
+        """
+        Remove the user from the database.  This will effectively end
+        their login session, as we no longer have any OAuth credentials
+        for them.
+        """
+        # Delete both parts of the user's session: the encrypted copy of
+        # their OAuth tokens in the server-side database, and the encryption
+        # key in their session cookie.
+        user_db.session.query(WikimediaUserSession).filter(
+            WikimediaUserSession.id == current_user.id
+        ).delete()
+        user_db.session.commit()
+
+        # Admittedly it would be unusual if the user didn't have an
+        # encryption key in their session cookie, but if they don't, it
+        # shouldn't stop the logout process.
+        try:
+            del session[SESSION_ENCRYPTION_KEY]
+        except KeyError:
+            pass
+
 
 @login.user_loader
 def load_user(userid: str):
@@ -183,21 +205,7 @@ def logout():
     """
     A route to log out the user.
     """
-    # Delete both parts of the user's session: the encrypted copy of
-    # their OAuth tokens in the server-side database, and the encryption
-    # key in their session cookie.
-    user_db.session.query(WikimediaUserSession).filter(
-        WikimediaUserSession.id == current_user.id
-    ).delete()
-    user_db.session.commit()
-
-    # Admittedly it would be unusual if the user didn't have an
-    # encryption key in their session cookie, but if they don't, it
-    # shouldn't stop the logout process.
-    try:
-        del session[SESSION_ENCRYPTION_KEY]
-    except KeyError:
-        pass
+    current_user.delete()
 
     logout_user()
 
