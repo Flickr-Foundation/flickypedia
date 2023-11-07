@@ -87,6 +87,7 @@ import httpx
 
 from flickypedia.apis.wikimedia import WikimediaApi
 from flickypedia.utils import decrypt_string, encrypt_string
+from flickypedia.views._types import ViewResponse
 
 
 user_db = SQLAlchemy()
@@ -99,7 +100,7 @@ login.login_view = "homepage"
 SESSION_ENCRYPTION_KEY = "oauth_key_wikimedia"
 
 
-class WikimediaUserSession(UserMixin, user_db.Model):
+class WikimediaUserSession(UserMixin, user_db.Model):  # type: ignore
     """
     Represents a single session for a logged-in Wikimedia user.
     This model is written to a SQLite database that lives on the server,
@@ -118,17 +119,17 @@ class WikimediaUserSession(UserMixin, user_db.Model):
 
         See https://flask-login.readthedocs.io/en/latest/#your-user-class
         """
-        return self.id
+        return self.id  # type: ignore
 
     @property
-    def profile_url(self):
+    def profile_url(self) -> str:
         """
         Returns a link to the user's profile on Wikimedia Commons.
         """
         return f"https://commons.wikimedia.org/wiki/User:{self.name}"
 
     @property
-    def uploads_url(self):
+    def uploads_url(self) -> str:
         """
         Returns a link to the user's uploads on Wikimedia Commons.
         """
@@ -149,10 +150,11 @@ class WikimediaUserSession(UserMixin, user_db.Model):
 
         return OAuth2Token(params)
 
-    def _oauth2_client(self, **kwargs) -> OAuth2Client:
+    def _oauth2_client(self) -> OAuth2Client:
         """
         Returns a configured OAuth2 client.
         """
+        headers = {"User-Agent": current_app.config["USER_AGENT"]}
 
         def update_token(token: OAuth2Token, refresh_token: str) -> None:
             self.encrypted_token = encrypt_string(
@@ -171,10 +173,10 @@ class WikimediaUserSession(UserMixin, user_db.Model):
             # If/when the token is updated (using a refresh token), ensure
             # we update the value in the database.
             update_token=update_token,
-            **kwargs,
+            headers=headers,
         )
 
-    def ensure_active_token(self):
+    def ensure_active_token(self) -> None:
         """
         Check that the user's token is active, and if not, use the refresh token
         to update it.
@@ -186,7 +188,7 @@ class WikimediaUserSession(UserMixin, user_db.Model):
         """
         Returns a Wikimedia API client which is authenticated for this user.
         """
-        headers = {"User-Agent": current_app.config["USER_AGENT"]}
+        client: httpx.Client
 
         try:
             client = self._oauth2_client()
@@ -195,7 +197,7 @@ class WikimediaUserSession(UserMixin, user_db.Model):
             # we aren't dealing with real sessions or real credentials --
             # we're just replaying API interactions from the VCR cassettes.
             assert current_app.config["TESTING"]
-            client = httpx.Client(headers=headers)
+            client = httpx.Client()
 
         return WikimediaApi(client=client)
 
@@ -238,7 +240,7 @@ def load_user(userid: str) -> Optional[WikimediaUserSession]:
         user = user_db.session.get(WikimediaUserSession, userid)
 
         if user is None:
-            return
+            return None
 
         # Ensure the user has a OAuth token which is still active -- either
         # created recently enough that it's still valid, or we have a valid
@@ -256,7 +258,7 @@ def load_user(userid: str) -> Optional[WikimediaUserSession]:
 
 
 @login_required
-def logout():
+def logout() -> ViewResponse:
     """
     A route to log out the user.
     """
@@ -267,7 +269,7 @@ def logout():
     return redirect(url_for("homepage"))
 
 
-def oauth2_authorize_wikimedia():
+def oauth2_authorize_wikimedia() -> ViewResponse:
     """
     Authorize the user with the Wikimedia APIs.
 
@@ -287,21 +289,16 @@ def oauth2_authorize_wikimedia():
     # https://api.wikimedia.org/wiki/Authentication#2._Request_authorization
     config = current_app.config["OAUTH2_PROVIDERS"]["wikimedia"]
 
-    client = OAuth2Client(
-        client_id=config["client_id"],
-        authorization_endpoint=config["authorize_url"],
-    )
+    client = OAuth2Client(client_id=config["client_id"])
 
-    uri, state = client.create_authorization_url(
-        url=client.metadata["authorization_endpoint"]
-    )
+    uri, state = client.create_authorization_url(url=config["authorize_url"])
 
     session["oauth_authorize_state"] = state
 
     return redirect(uri)
 
 
-def oauth2_callback_wikimedia():
+def oauth2_callback_wikimedia() -> ViewResponse:
     """
     Handle an authorization callback from Wikimedia.
     """
@@ -318,14 +315,14 @@ def oauth2_callback_wikimedia():
         abort(401)
 
     config = current_app.config["OAUTH2_PROVIDERS"]["wikimedia"]
-    client = OAuth2Client(
+    token_client = OAuth2Client(
         client_id=config["client_id"],
         client_secret=config["client_secret"],
         token_endpoint=config["token_url"],
     )
 
     try:
-        token = client.fetch_token(
+        token = token_client.fetch_token(
             token_endpoint=config["token_url"],
             authorization_response=request.url,
             state=state,
@@ -335,13 +332,13 @@ def oauth2_callback_wikimedia():
         abort(401)
 
     # Get info about the logged in user
-    client = httpx.Client(
+    wiki_client = httpx.Client(
         headers={
             "Authorization": f"Bearer {token['access_token']}",
             "User-Agent": current_app.config["USER_AGENT"],
         }
     )
-    api = WikimediaApi(client=client)
+    api = WikimediaApi(client=wiki_client)
     userinfo = api.get_userinfo()
 
     # Now create a user and store it in the database.
@@ -355,8 +352,8 @@ def oauth2_callback_wikimedia():
 
     user = WikimediaUserSession(
         id=str(uuid.uuid4()),
-        userid=userinfo["id"],
-        name=userinfo["name"],
+        userid=userinfo["id"],  # type: ignore
+        name=userinfo["name"],  # type: ignore
         encrypted_token=encrypt_string(key, plaintext=json.dumps(token)),
     )
     user_db.session.add(user)
