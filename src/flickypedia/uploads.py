@@ -91,30 +91,25 @@ def upload_single_image(
     """
     photo: SinglePhoto = {
         "id": photo_id,
-        'url': photo_url,
-        'owner': user,
-        'license': {
-            'id': license_id,
-            'label': '?',
-            'url': '?'
-        },
-        'sizes': [
+        "url": photo_url,
+        "owner": user,
+        "license": {"id": license_id, "label": "?", "url": "?"},
+        "sizes": [
             {
                 "label": "Original",
                 "source": original_url,
                 "media": "photo",
                 "width": -1,
-                "height": -1
+                "height": -1,
             }
         ],
-        'title': None,
-        'description': None,
-        'date_posted': date_posted,
-        'date_taken': date_taken,
-        'safety_level': 'safe',
-        'original_format': 'jpeg'
+        "title": None,
+        "description": None,
+        "date_posted": date_posted,
+        "date_taken": date_taken,
+        "safety_level": "safe",
+        "original_format": "jpeg",
     }
-
 
     wikitext = create_wikitext(license_id=license_id)
 

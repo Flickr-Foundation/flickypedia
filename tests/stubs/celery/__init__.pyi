@@ -1,7 +1,7 @@
 from typing import Any, Callable, Dict, Type
 
 class Request:
-  id: str
+    id: str
 
 class Task:
     def run(self, *args: object, **kwargs: object) -> object: ...
