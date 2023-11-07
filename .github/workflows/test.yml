@@ -42,7 +42,13 @@ jobs:
           tests/views \
           tests/utils.py \
           tests/test_auth.py \
-          tests/templates
+          tests/templates \
+          tests/test_app.py \
+          tests/test_auth_can_log_in.py \
+          tests/test_duplicates.py \
+          tests/test_tasks.py \
+          tests/test_uploads.py \
+          tests/test_utils.py
     - name: Run linting
       run: |
         black --check .

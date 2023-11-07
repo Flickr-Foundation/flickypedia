@@ -15,14 +15,16 @@ file we can add to the Git repo for testing.
 
 """
 
+from flask import FlaskClient
+
 from flickypedia.duplicates import create_link_to_commons, find_duplicates
 
 
-def test_no_flickr_photo_ids_is_no_duplicates(client):
+def test_no_flickr_photo_ids_is_no_duplicates(client: FlaskClient) -> None:
     assert find_duplicates(flickr_photo_ids=[]) == {}
 
 
-def test_finds_single_flickr_photo_id(client):
+def test_finds_single_flickr_photo_id(client: FlaskClient) -> None:
     assert find_duplicates(flickr_photo_ids=["9999819294"]) == {
         "9999819294": {
             "id": "M29907038",
@@ -31,7 +33,7 @@ def test_finds_single_flickr_photo_id(client):
     }
 
 
-def test_finds_multiple_flickr_photo_ids(client):
+def test_finds_multiple_flickr_photo_ids(client: FlaskClient) -> None:
     actual = find_duplicates(
         flickr_photo_ids=[
             "9999819294",
@@ -63,7 +65,7 @@ def test_finds_multiple_flickr_photo_ids(client):
     assert actual == expected
 
 
-def test_create_link_to_commons(client):
+def test_create_link_to_commons(client: FlaskClient) -> None:
     duplicates = find_duplicates(flickr_photo_ids=["9999819294"])
 
     assert (
@@ -72,7 +74,7 @@ def test_create_link_to_commons(client):
     )
 
 
-def test_create_link_to_commons_for_multiple_ids(client):
+def test_create_link_to_commons_for_multiple_ids(client: FlaskClient) -> None:
     duplicates = find_duplicates(
         flickr_photo_ids=[
             "9999819294",

@@ -1,9 +1,12 @@
 import datetime
 
+from flask import FlaskClient
 from flask_login import current_user
 
 
-def test_can_get_token_from_wikimedia(client, vcr_cassette, user_agent):
+def test_can_get_token_from_wikimedia(
+    client: FlaskClient, vcr_cassette: str, user_agent: str
+) -> None:
     """
     This test verifies that our login code works.
 
@@ -75,5 +78,5 @@ def test_can_get_token_from_wikimedia(client, vcr_cassette, user_agent):
     api = current_user.wikimedia_api()
     api.get_userinfo()
 
-    assert api.client.token != token
-    assert current_user.token() == api.client.token
+    assert api.client.token != token  # type: ignore
+    assert api.client.token == current_user.token()  # type: ignore
