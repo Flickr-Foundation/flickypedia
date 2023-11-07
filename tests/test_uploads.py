@@ -52,8 +52,10 @@ def test_upload_single_image(app: Flask, wikimedia_api: WikimediaApi) -> None:
         wikimedia_api,
         photo=photo,
         filename="Thameslink Class 700 in Pride livery.jpg",
-        file_caption_language="en",
-        file_caption="A Thameslink Class 700 train in the rainbow Pride livery, taken at night",
+        caption={
+            "language": "en",
+            "text": "A Thameslink Class 700 train in the rainbow Pride livery, taken at night",
+        },
     )
 
     after_duplicates = find_duplicates(flickr_photo_ids=["53268016608"])

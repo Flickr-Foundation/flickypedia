@@ -5,7 +5,7 @@ from flask_login import current_user
 from flickr_photos_api import SinglePhoto
 
 from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
-from flickypedia.apis.wikimedia import WikimediaApi
+from flickypedia.apis.wikimedia import ShortCaption, WikimediaApi
 from flickypedia.apis.wikitext import create_wikitext
 from flickypedia.duplicates import record_file_created_by_flickypedia
 from flickypedia.photos import size_at
@@ -59,8 +59,7 @@ def upload_batch_of_photos(oauth_info: Any, photos_to_upload: List[Any]) -> Any:
                 api,
                 photo=single_photo,
                 filename=photo["title"],
-                file_caption_language=photo["short_caption"]["language"],
-                file_caption=photo["short_caption"]["text"],
+                caption=photo["short_caption"],
             )
         except Exception as exc:
             progress_data[idx]["status"] = "failed"
@@ -83,11 +82,7 @@ class UploadResult(TypedDict):
 
 
 def upload_single_image(
-    api: WikimediaApi,
-    photo: SinglePhoto,
-    filename: str,
-    file_caption_language: str,
-    file_caption: str,
+    api: WikimediaApi, photo: SinglePhoto, filename: str, caption: ShortCaption
 ) -> UploadResult:
     """
     Upload a photo from Flickr to Wikimedia Commons.
@@ -110,9 +105,7 @@ def upload_single_image(
         filename=filename, original_url=original_size["source"], text=wikitext
     )
 
-    wikimedia_page_id = api.add_file_caption(
-        filename=filename, language=file_caption_language, value=file_caption
-    )
+    wikimedia_page_id = api.add_file_caption(filename=filename, caption=caption)
 
     api.add_structured_data(filename=filename, data={"claims": structured_data})
 
