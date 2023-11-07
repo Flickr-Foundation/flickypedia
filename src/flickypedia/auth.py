@@ -39,6 +39,14 @@ This means that somebody who gets access to the server-side database
 can't just read out all the user tokens, and somebody who gets access
 to the user's browser can't just retrieve their token.
 
+== External interface ==
+
+Flask passes around state in global variables (``request``, ``session``,
+etc.) and Flask-Login follows this pattern with ``current_user``.
+
+Whenever code outside this file needs to get an authenticated resource,
+it should be accessing it via ``current_user``.
+
 == Useful background reading ==
 
 *   Wikimedia OAuth 2.0 user authentication flow
