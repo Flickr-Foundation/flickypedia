@@ -295,7 +295,13 @@ def oauth2_authorize_wikimedia():
     #
     # This is the URL described in step 2 of
     # https://api.wikimedia.org/wiki/Authentication#2._Request_authorization
-    client = get_oauth_client()
+    config = current_app.config["OAUTH2_PROVIDERS"]["wikimedia"]
+
+    client = OAuth2Client(
+        client_id=config["client_id"],
+        authorization_endpoint=config["authorize_url"],
+    )
+
     uri, state = client.create_authorization_url(
         url=client.metadata["authorization_endpoint"]
     )
@@ -315,16 +321,21 @@ def oauth2_callback_wikimedia():
         return redirect(url_for("get_photos"))
 
     # Exchange the authorization response for an access token
-    client = get_oauth_client()
-
     try:
         state = session.pop("oauth_authorize_state")
     except KeyError:
         abort(401)
 
+    config = current_app.config["OAUTH2_PROVIDERS"]["wikimedia"]
+    client = OAuth2Client(
+        client_id=config["client_id"],
+        client_secret=config["client_secret"],
+        token_endpoint=config["token_url"],
+    )
+
     try:
         token = client.fetch_token(
-            token_endpoint=client.metadata["token_endpoint"],
+            token_endpoint=config["token_url"],
             authorization_response=request.url,
             state=state,
         )
