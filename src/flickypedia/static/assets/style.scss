@@ -139,6 +139,8 @@ input.pink_button:active {
   background: $yellow;
 }
 
+@import "header.scss";
+
 @import "homepage.scss";
 @import "get_photos.scss";
 @import "select_photos.scss";
