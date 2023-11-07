@@ -1,4 +1,7 @@
+from typing import Dict
+
 from authlib.integrations.httpx_client.oauth2_client import OAuth2Client
+from authlib.oauth2.rfc6749.wrappers import OAuth2Token
 import pytest
 
 from flickypedia.apis.structured_data import create_license_statement
@@ -12,7 +15,7 @@ from flickypedia.apis.wikimedia import (
 from flickypedia.apis.wikitext import create_wikitext
 
 
-def test_get_userinfo(wikimedia_api):
+def test_get_userinfo(wikimedia_api: WikimediaApi) -> None:
     info = wikimedia_api.get_userinfo()
 
     assert info == {"id": 829939, "name": "Alexwlchan"}
@@ -32,14 +35,18 @@ def test_get_userinfo(wikimedia_api):
         ),
     ],
 )
-def test_call_api_with_bad_token(vcr_cassette, method_name, kwargs):
+def test_call_api_with_bad_token(
+    vcr_cassette: str, method_name: str, kwargs: Dict[str, str]
+) -> None:
     client = OAuth2Client(
-        token={
-            "token_type": "Bearer",
-            "expires_in": 14400,
-            "access_token": "ACCESS_TOKEN",
-            "refresh_token": "REFRESH_TOKEN",
-        },
+        token=OAuth2Token(
+            {
+                "token_type": "Bearer",
+                "expires_in": 14400,
+                "access_token": "ACCESS_TOKEN",
+                "refresh_token": "REFRESH_TOKEN",
+            }
+        ),
     )
 
     broken_api = WikimediaApi(client)
@@ -48,14 +55,14 @@ def test_call_api_with_bad_token(vcr_cassette, method_name, kwargs):
         getattr(broken_api, method_name)(**kwargs)
 
 
-def test_can_get_a_csrf_token(wikimedia_api):
+def test_can_get_a_csrf_token(wikimedia_api: WikimediaApi) -> None:
     assert (
         wikimedia_api.get_csrf_token() == "b06523b8444d39f30df59c8bdee0515b65253321+\\"
     )
 
 
 class TestUploadImage:
-    def test_can_upload_an_image(self, wikimedia_api):
+    def test_can_upload_an_image(self, wikimedia_api: WikimediaApi) -> None:
         text = create_wikitext(license_id="cc-by-2.0")
 
         resp = wikimedia_api.upload_image(
@@ -66,7 +73,9 @@ class TestUploadImage:
 
         assert resp == "Silver_Blue_Fish_In_Boston_Aquarium.jpg"
 
-    def test_fails_if_uploading_image_from_disallowed_domain(self, wikimedia_api):
+    def test_fails_if_uploading_image_from_disallowed_domain(
+        self, wikimedia_api: WikimediaApi
+    ) -> None:
         with pytest.raises(
             UnknownWikimediaApiException,
             match="Uploads by URL are not allowed from this domain",
@@ -77,7 +86,9 @@ class TestUploadImage:
                 text="An image which doesn’t even exist",
             )
 
-    def test_fails_if_uploading_non_existent_image(self, wikimedia_api):
+    def test_fails_if_uploading_non_existent_image(
+        self, wikimedia_api: WikimediaApi
+    ) -> None:
         with pytest.raises(
             UnknownWikimediaApiException,
             match="Uploads by URL are not allowed from this domain",
@@ -88,7 +99,9 @@ class TestUploadImage:
                 text="An image which doesn’t even exist",
             )
 
-    def test_fails_if_uploading_image_which_is_duplicate(self, wikimedia_api):
+    def test_fails_if_uploading_image_which_is_duplicate(
+        self, wikimedia_api: WikimediaApi
+    ) -> None:
         with pytest.raises(DuplicateFilenameUploadException) as exc:
             wikimedia_api.upload_image(
                 filename="RailwayMuseumClocks.jpg",
@@ -98,7 +111,9 @@ class TestUploadImage:
 
         assert exc.value.filename == "RailwayMuseumClocks.jpg"
 
-    def test_fails_if_uploading_image_which_is_duplicate_hash(self, wikimedia_api):
+    def test_fails_if_uploading_image_which_is_duplicate_hash(
+        self, wikimedia_api: WikimediaApi
+    ) -> None:
         with pytest.raises(DuplicatePhotoUploadException) as exc:
             wikimedia_api.upload_image(
                 filename="Yellow fish at Houston Zoo aquarium.jpg",
@@ -110,14 +125,16 @@ class TestUploadImage:
 
 
 class TestAddFileCaption:
-    def test_can_set_a_file_caption(self, wikimedia_api):
+    def test_can_set_a_file_caption(self, wikimedia_api: WikimediaApi) -> None:
         wikimedia_api.add_file_caption(
             filename="GwrFireBuckets.jpg",
             language="en",
             value="A row of red fire buckets on a heritage railway in Gloucestershire",
         )
 
-    def test_fails_if_file_caption_is_too_long(self, wikimedia_api):
+    def test_fails_if_file_caption_is_too_long(
+        self, wikimedia_api: WikimediaApi
+    ) -> None:
         # The maximum length of a file caption is ~250 characters, so
         # this will easily be too long.
         with pytest.raises(UnknownWikimediaApiException) as exc:
@@ -130,7 +147,7 @@ class TestAddFileCaption:
 
         assert exc.value.code == "modification-failed"
 
-    def test_fails_if_bad_language(self, wikimedia_api):
+    def test_fails_if_bad_language(self, wikimedia_api: WikimediaApi) -> None:
         with pytest.raises(UnknownWikimediaApiException) as exc:
             wikimedia_api.add_file_caption(
                 filename="GwrFireBuckets.jpg",
@@ -140,7 +157,7 @@ class TestAddFileCaption:
 
         assert exc.value.code == "badvalue"
 
-    def test_fails_if_file_does_not_exist(self, wikimedia_api):
+    def test_fails_if_file_does_not_exist(self, wikimedia_api: WikimediaApi) -> None:
         with pytest.raises(UnknownWikimediaApiException) as exc:
             wikimedia_api.add_file_caption(
                 filename="!!!.jpg",
@@ -152,7 +169,7 @@ class TestAddFileCaption:
 
 
 class TestAddStructuredData:
-    def test_can_add_structured_data(self, wikimedia_api):
+    def test_can_add_structured_data(self, wikimedia_api: WikimediaApi) -> None:
         # This test was run against one of my Wikimedia Commons images
         # which didn't have any SDC attached; I added the license statement
         # and checked that it was updated as part of the process.
@@ -192,7 +209,9 @@ class TestAddStructuredData:
             }
         ]
 
-    def test_fails_sdc_if_file_does_not_exist(self, wikimedia_api):
+    def test_fails_sdc_if_file_does_not_exist(
+        self, wikimedia_api: WikimediaApi
+    ) -> None:
         with pytest.raises(UnknownWikimediaApiException) as exc:
             wikimedia_api.add_structured_data(
                 filename="!!!.jpg",
@@ -201,11 +220,11 @@ class TestAddStructuredData:
 
         assert exc.value.code == "no-such-entity-link"
 
-    def test_throws_error_for_bad_sdc_format(self, wikimedia_api):
+    def test_throws_error_for_bad_sdc_format(self, wikimedia_api: WikimediaApi) -> None:
         with pytest.raises(TypeError):
             wikimedia_api.add_structured_data(
                 filename="example.jpg",
-                data=[create_license_statement(license_id="cc-by-2.0")],
+                data=[create_license_statement(license_id="cc-by-2.0")],  # type: ignore
             )
 
 
@@ -235,20 +254,20 @@ class TestAddStructuredData:
         pytest.param("File:FishingBoatsByTheRiver.jpg", "ok", id="allowed_title"),
     ],
 )
-def test_validate_title(wikimedia_api, title, result):
+def test_validate_title(wikimedia_api: WikimediaApi, title: str, result: str) -> None:
     assert wikimedia_api.validate_title(title=title)["result"] == result
 
 
-def test_validate_title_links_to_duplicates(wikimedia_api):
+def test_validate_title_links_to_duplicates(wikimedia_api: WikimediaApi) -> None:
     result = wikimedia_api.validate_title(title="File:P1.jpg")
 
-    assert (
-        result["text"]
-        == "Please choose a different title. There is already <a href='https://commons.wikimedia.org/wiki/File:P1.jpg'>a file on Commons</a> with that title."
-    )
+    assert result == {
+        "result": "duplicate",
+        "text": "Please choose a different title. There is already <a href='https://commons.wikimedia.org/wiki/File:P1.jpg'>a file on Commons</a> with that title.",
+    }
 
 
-def test_find_matching_categories(wikimedia_api):
+def test_find_matching_categories(wikimedia_api: WikimediaApi) -> None:
     result = wikimedia_api.find_matching_categories(query="a")
 
     assert result == [
@@ -265,7 +284,7 @@ def test_find_matching_categories(wikimedia_api):
     ]
 
 
-def test_can_find_rare_categories(wikimedia_api):
+def test_can_find_rare_categories(wikimedia_api: WikimediaApi) -> None:
     result = wikimedia_api.find_matching_categories(query="Aircraft in Taj")
 
     assert result == [
@@ -275,5 +294,7 @@ def test_can_find_rare_categories(wikimedia_api):
     ]
 
 
-def test_returns_an_empty_list_if_no_matching_categories(wikimedia_api):
+def test_returns_an_empty_list_if_no_matching_categories(
+    wikimedia_api: WikimediaApi,
+) -> None:
     assert wikimedia_api.find_matching_categories(query="sdfdsgd") == []

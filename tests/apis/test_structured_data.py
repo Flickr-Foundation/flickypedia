@@ -1,7 +1,10 @@
 import datetime
 import json
 import os
+from typing import Any
 
+from flask import Flask
+from flickr_photos_api import TakenGranularity, User as FlickrUser
 import pytest
 
 from flickypedia.apis.structured_data import (
@@ -15,7 +18,7 @@ from flickypedia.apis.structured_data import (
 )
 
 
-def get_fixture(filename):
+def get_fixture(filename: str) -> Any:
     with open(os.path.join("tests/fixtures/structured_data", filename)) as f:
         return json.load(f)
 
@@ -58,32 +61,34 @@ def get_fixture(filename):
         ),
     ],
 )
-def test_create_flickr_creator_statement(app, vcr_cassette, user, filename):
+def test_create_flickr_creator_statement(
+    app: Flask, vcr_cassette: str, user: FlickrUser, filename: str
+) -> None:
     result = create_flickr_creator_statement(user)
     expected = get_fixture(filename)
 
     assert result == expected
 
 
-def test_create_copyright_status_statement_fails_for_unknown_value():
+def test_create_copyright_status_statement_fails_for_unknown_value() -> None:
     with pytest.raises(ValueError, match="Unable to map a copyright status"):
         create_copyright_status_statement(status="No known copyright status")
 
 
 @pytest.mark.parametrize(
-    ["kwargs", "filename"],
+    ["status", "filename"],
     [
-        ({"status": "copyrighted"}, "copyright_status_copyrighted.json"),
+        ("copyrighted", "copyright_status_copyrighted.json"),
     ],
 )
-def test_create_copyright_status_statement(kwargs, filename):
-    result = create_copyright_status_statement(**kwargs)
+def test_create_copyright_status_statement(status: str, filename: str) -> None:
+    result = create_copyright_status_statement(status=status)
     expected = get_fixture(filename)
 
     assert result == expected
 
 
-def test_create_source_data_for_photo():
+def test_create_source_data_for_photo() -> None:
     result = create_source_data_for_photo(
         photo_url="https://www.flickr.com/photos/199246608@N02/53248015596/",
         original_url="https://live.staticflickr.com/65535/53248015596_c03f8123cf_o_d.jpg",
@@ -101,24 +106,24 @@ def test_create_source_data_for_photo():
         ("cc0-1.0", "license_cc0.json"),
     ],
 )
-def test_create_license_statement(license_id, filename):
+def test_create_license_statement(license_id: str, filename: str) -> None:
     actual = create_license_statement(license_id)
     expected = get_fixture(filename)
 
     assert actual == expected
 
 
-def test_can_create_license_statement_for_all_allowed_licenses(app):
+def test_can_create_license_statement_for_all_allowed_licenses(app: Flask) -> None:
     for license_id in app.config["ALLOWED_LICENSES"]:
         create_license_statement(license_id)
 
 
-def test_create_license_statement_fails_if_unrecognised_license():
+def test_create_license_statement_fails_if_unrecognised_license() -> None:
     with pytest.raises(ValueError, match="Unrecognised license ID"):
         create_license_statement(license_id="mystery")
 
 
-def test_create_posted_to_flickr_statement():
+def test_create_posted_to_flickr_statement() -> None:
     actual = create_posted_to_flickr_statement(
         date_posted=datetime.datetime(2023, 10, 12)
     )
@@ -144,7 +149,9 @@ def test_create_posted_to_flickr_statement():
         (datetime.datetime(1910, 1, 1, 0, 0, 0), "circa", "date_taken_circa.json"),
     ],
 )
-def test_create_date_taken_statement(date_taken, granularity, filename):
+def test_create_date_taken_statement(
+    date_taken: datetime.datetime, granularity: TakenGranularity, filename: str
+) -> None:
     actual = create_date_taken_statement(
         date_taken={"value": date_taken, "granularity": granularity, "unknown": False}
     )
@@ -153,18 +160,20 @@ def test_create_date_taken_statement(date_taken, granularity, filename):
     assert actual == expected
 
 
-def test_create_date_taken_statement_fails_on_unrecognised_granularity():
+def test_create_date_taken_statement_fails_on_unrecognised_granularity() -> None:
     with pytest.raises(ValueError, match="Unrecognised taken_granularity"):
         create_date_taken_statement(
             date_taken={
                 "value": datetime.datetime.now(),
-                "granularity": -1,
+                "granularity": -1,  # type: ignore
                 "unknown": False,
             }
         )
 
 
-def test_create_sdc_claims_for_flickr_photo_without_date_taken(app, vcr_cassette):
+def test_create_sdc_claims_for_flickr_photo_without_date_taken(
+    app: Flask, vcr_cassette: str
+) -> None:
     actual = create_sdc_claims_for_flickr_photo(
         photo_id="53248015596",
         photo_url="https://www.flickr.com/photos/199246608@N02/53248015596/",
@@ -180,9 +189,7 @@ def test_create_sdc_claims_for_flickr_photo_without_date_taken(app, vcr_cassette
         license_id="cc-by-2.0",
         date_posted=datetime.datetime.fromtimestamp(1696939706),
         date_taken={
-            "value": datetime.datetime(2023, 10, 10, 5, 8, 21),
             "unknown": True,
-            "granularity": 0,
         },
     )
     expected = get_fixture("photo_53248015596.json")
@@ -190,7 +197,9 @@ def test_create_sdc_claims_for_flickr_photo_without_date_taken(app, vcr_cassette
     assert actual == expected
 
 
-def test_create_sdc_claims_for_flickr_photo_with_date_taken(app, vcr_cassette):
+def test_create_sdc_claims_for_flickr_photo_with_date_taken(
+    app: Flask, vcr_cassette: str
+) -> None:
     actual = create_sdc_claims_for_flickr_photo(
         photo_id="53234140350",
         photo_url="https://www.flickr.com/photos/mdgovpics/53234140350/",
