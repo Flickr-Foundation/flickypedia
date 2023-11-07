@@ -27,7 +27,7 @@ is supporting that function.
 import datetime
 from typing import Dict, List, Literal, TypedDict, Union
 
-from flickr_photos_api import DateTaken, User as FlickrUser
+from flickr_photos_api import DateTaken, User as FlickrUser, SinglePhoto
 
 from flickypedia.apis.wikidata import (
     lookup_flickr_user_in_wikidata,
@@ -35,7 +35,7 @@ from flickypedia.apis.wikidata import (
     WikidataEntities,
     WikidataProperties,
 )
-from ._types import Snak, Statement
+from ._types import DataValue, Snak, Statement
 
 
 def _wikibase_entity_value(*, property_id: str, entity_id: str) -> Snak:
@@ -82,31 +82,28 @@ def _create_qualifiers(
     for qualifier in qualifier_values:
         property_id = qualifier["property"]
 
+        datavalue: DataValue
+
         if qualifier["type"] == "string":
-            result[property_id] = [
-                {
-                    "datavalue": {"type": "string", "value": qualifier["value"]},
-                    "property": property_id,
-                    "snaktype": "value",
-                }
-            ]
+            datavalue = {"type": "string", "value": qualifier["value"]}
         elif qualifier["type"] == "entity":
-            result[property_id] = [
-                _wikibase_entity_value(
-                    property_id=property_id, entity_id=qualifier["entity_id"]
-                )
-            ]
+            datavalue = {
+                "type": "wikibase-entityid",
+                "value": {"id": qualifier["entity_id"]},
+            }
         else:
             assert qualifier["type"] == "date"
-            result[property_id] = [
-                {
-                    "datavalue": to_wikidata_date(
-                        qualifier["date"], precision=qualifier["precision"]
-                    ),
-                    "property": property_id,
-                    "snaktype": "value",
-                }
-            ]
+            datavalue = to_wikidata_date(
+                qualifier["date"], precision=qualifier["precision"]
+            )
+
+        result[property_id] = [
+            {
+                "datavalue": datavalue,
+                "property": property_id,
+                "snaktype": "value",
+            }
+        ]
 
     return result
 
