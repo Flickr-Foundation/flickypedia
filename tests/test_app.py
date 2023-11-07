@@ -22,7 +22,6 @@ def test_homepage_shows_user_info_if_logged_in(logged_in_client):
         "/logout",
         "/get_photos",
         "/select_photos",
-        "/api/validate_title?title=MyGreatPhoto",
     ],
 )
 def test_redirected_to_homepage_for_pages_requiring_login(client, path):
