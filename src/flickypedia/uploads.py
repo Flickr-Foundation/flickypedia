@@ -4,7 +4,7 @@ from celery import current_task, shared_task
 from flickr_photos_api import DateTaken, User as FlickrUser
 
 from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
-from flickypedia.apis.wikimedia import WikimediaApiBase
+from flickypedia.apis.wikimedia import WikimediaApi
 from flickypedia.apis.wikitext import create_wikitext
 from flickypedia.auth import get_wikimedia_api
 from flickypedia.duplicates import record_file_created_by_flickypedia
@@ -61,7 +61,7 @@ def upload_batch_of_photos(oauth_info, photos_to_upload):
 
 
 def upload_single_image(
-    api: WikimediaApiBase,
+    api: WikimediaApi,
     photo_id: str,
     photo_url: str,
     user: FlickrUser,
