@@ -1,0 +1,129 @@
+{
+  "photos": [
+    {
+      "id": "4452100167",
+      "title": "hammered",
+      "description": "These textures are posted with the Attribution Creative Commons license.\n<b>Credit must be given if used.</b>\n\nCopy this Credit Line:\n\nTexture by &lt;a href=&quot;http://www.flickr.com/photos/joxxsx/sets/72157603809451557&quot;&gt;August Norman&lt;/a&gt;\n\nAppears as:\n\nTexture by <a href=\"http://www.flickr.com/photos/joxxsx/sets/72157603809451557\">August Norman</a>",
+      "owner": {
+        "id": "9276674@N07",
+        "username": "August Norman",
+        "realname": "Norman",
+        "photos_url": "https://www.flickr.com/photos/joxxsx/",
+        "profile_url": "https://www.flickr.com/people/joxxsx/"
+      },
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2010-03-22T01:16:27+00:00"
+      },
+      "date_taken": {
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2007-03-01T00:00:00"
+        },
+        "granularity": "month",
+        "unknown": false
+      },
+      "safety_level": "safe",
+      "license": {
+        "id": "cc-by-sa-2.0",
+        "label": "CC BY-SA 2.0",
+        "url": "https://creativecommons.org/licenses/by-sa/2.0/"
+      },
+      "url": "https://www.flickr.com/photos/joxxsx/4452100167/",
+      "sizes": [
+        {
+          "label": "Square",
+          "width": 75,
+          "height": 75,
+          "media": "photo",
+          "source": "https://live.staticflickr.com/2677/4452100167_bdaafeb18d_s.jpg"
+        },
+        {
+          "label": "Large Square",
+          "width": 150,
+          "height": 150,
+          "media": "photo",
+          "source": "https://live.staticflickr.com/2677/4452100167_bdaafeb18d_q.jpg"
+        },
+        {
+          "label": "Thumbnail",
+          "width": 100,
+          "height": 75,
+          "media": "photo",
+          "source": "https://live.staticflickr.com/2677/4452100167_bdaafeb18d_t.jpg"
+        },
+        {
+          "label": "Small",
+          "width": 240,
+          "height": 180,
+          "media": "photo",
+          "source": "https://live.staticflickr.com/2677/4452100167_bdaafeb18d_m.jpg"
+        },
+        {
+          "label": "Small 320",
+          "width": 320,
+          "height": 239,
+          "media": "photo",
+          "source": "https://live.staticflickr.com/2677/4452100167_bdaafeb18d_n.jpg"
+        },
+        {
+          "label": "Small 400",
+          "width": 400,
+          "height": 299,
+          "media": "photo",
+          "source": "https://live.staticflickr.com/2677/4452100167_bdaafeb18d_w.jpg"
+        },
+        {
+          "label": "Medium",
+          "width": 500,
+          "height": 374,
+          "media": "photo",
+          "source": "https://live.staticflickr.com/2677/4452100167_bdaafeb18d.jpg"
+        },
+        {
+          "label": "Medium 640",
+          "width": 640,
+          "height": 479,
+          "media": "photo",
+          "source": "https://live.staticflickr.com/2677/4452100167_bdaafeb18d_z.jpg"
+        },
+        {
+          "label": "Medium 800",
+          "width": 800,
+          "height": 598,
+          "media": "photo",
+          "source": "https://live.staticflickr.com/2677/4452100167_bdaafeb18d_c.jpg"
+        },
+        {
+          "label": "Large",
+          "width": 1024,
+          "height": 766,
+          "media": "photo",
+          "source": "https://live.staticflickr.com/2677/4452100167_bdaafeb18d_b.jpg"
+        },
+        {
+          "label": "Large 1600",
+          "width": 1500,
+          "height": 1122,
+          "media": "photo",
+          "source": "https://live.staticflickr.com/2677/4452100167_4c253dd5ed_h.jpg"
+        },
+        {
+          "label": "Original",
+          "width": 1500,
+          "height": 1122,
+          "media": "photo",
+          "source": "https://live.staticflickr.com/2677/4452100167_2d4719f914_o.jpg"
+        }
+      ],
+      "original_format": "jpg"
+    }
+  ],
+  "owner": {
+    "id": "9276674@N07",
+    "username": "August Norman",
+    "realname": "Norman",
+    "photos_url": "https://www.flickr.com/photos/joxxsx/",
+    "profile_url": "https://www.flickr.com/people/joxxsx/"
+  }
+}
