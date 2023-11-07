@@ -4,7 +4,7 @@ import os
 from typing import Any
 
 from flask import Flask
-from flickr_photos_api import TakenGranularity, User as FlickrUser
+from flickr_photos_api import SinglePhoto, TakenGranularity, User as FlickrUser
 import pytest
 
 from flickypedia.apis.structured_data import (
@@ -174,24 +174,41 @@ def test_create_date_taken_statement_fails_on_unrecognised_granularity() -> None
 def test_create_sdc_claims_for_flickr_photo_without_date_taken(
     app: Flask, vcr_cassette: str
 ) -> None:
-    actual = create_sdc_claims_for_flickr_photo(
-        photo_id="53248015596",
-        photo_url="https://www.flickr.com/photos/199246608@N02/53248015596/",
-        user={
+    photo: SinglePhoto = {
+        "id": "53248015596",
+        "url": "https://www.flickr.com/photos/199246608@N02/53248015596/",
+        "owner": {
             "id": "199246608@N02",
             "username": "cefarrjf87",
             "realname": "Alex Chan",
             "photos_url": "https://www.flickr.com/photos/199246608@N02/",
             "profile_url": "https://www.flickr.com/people/199246608@N02/",
         },
-        copyright_status="copyrighted",
-        original_url="https://live.staticflickr.com/65535/53248015596_c03f8123cf_o_d.jpg",
-        license_id="cc-by-2.0",
-        date_posted=datetime.datetime.fromtimestamp(1696939706),
-        date_taken={
+        "title": "IMG_6027",
+        "description": None,
+        "sizes": [
+            {
+                "label": "Original",
+                "source": "https://live.staticflickr.com/65535/53248015596_c03f8123cf_o_d.jpg",
+                "media": "photo",
+                "width": 4032,
+                "height": 3024
+            }
+        ],
+        "license": {
+            "id": "cc-by-2.0",
+            "label": "CC BY 2.0",
+            "url": "https://creativecommons.org/licenses/by/2.0/",
+        },
+        "date_posted": datetime.datetime.fromtimestamp(1696939706),
+        "date_taken": {
             "unknown": True,
         },
-    )
+        "safety_level": "safe",
+        "original_format": "jpg"
+    }
+
+    actual = create_sdc_claims_for_flickr_photo(photo=photo)
     expected = get_fixture("photo_53248015596.json")
 
     assert actual == expected
