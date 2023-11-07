@@ -15,6 +15,7 @@ from flickr_photos_api import (
 )
 from flickr_url_parser import ParseResult
 
+from flickypedia.apis._types import Statement
 from flickypedia.duplicates import find_duplicates, DuplicateInfo
 
 
@@ -139,3 +140,22 @@ def categorise_photos(all_photos: List[SinglePhoto]) -> CategorisedPhotos:
         "restricted": restricted_photos,
         "available": available_photos,
     }
+
+
+class PhotoWithSdc(TypedDict):
+    photo: SinglePhoto
+    sdc: List[Statement]
+
+
+def add_sdc_to_photos(photos: List[SinglePhoto]) -> List[PhotoWithSdc]:
+    """
+    Create a list of photos which includes their structured data.
+    """
+    from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
+
+    result: List[PhotoWithSdc] = []
+
+    for p in photos:
+        result.append({"photo": p, "sdc": create_sdc_claims_for_flickr_photo(p)})
+
+    return result
