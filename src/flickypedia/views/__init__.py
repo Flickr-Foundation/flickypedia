@@ -5,17 +5,18 @@ from .get_photos import get_photos
 from .prepare_info import prepare_info, truncate_description
 from .select_photos import select_photos
 from .wait_for_upload import get_upload_status, wait_for_upload
+from ._types import ViewResponse
 
 
-def homepage():
+def homepage() -> ViewResponse:
     return render_template("homepage.html")
 
 
-def about():
+def about() -> ViewResponse:
     return render_template("about.html", current_step=None)
 
 
-def bookmarklet():
+def bookmarklet() -> ViewResponse:
     return render_template("bookmarklet.html", current_step=None)
 
 

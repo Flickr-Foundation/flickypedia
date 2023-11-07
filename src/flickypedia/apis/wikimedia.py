@@ -10,6 +10,7 @@ See https://api.wikimedia.org/wiki/Authentication
 
 import json
 import re
+from typing import List
 from xml.etree import ElementTree as ET
 
 import httpx
@@ -419,7 +420,7 @@ class WikimediaApi:
 
         return {"result": "ok"}
 
-    def find_matching_categories(self, query):
+    def find_matching_categories(self, query: str) -> List[str]:
         """
         Return a list of categories that might match this query.
 

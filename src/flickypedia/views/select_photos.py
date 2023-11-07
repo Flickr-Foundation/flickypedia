@@ -27,6 +27,7 @@ TODO:
 import datetime
 import json
 import os
+from typing import Any, Dict
 import uuid
 
 from flask import (
@@ -304,7 +305,7 @@ def select_photos():
     )
 
 
-def get_cached_api_response(response_id):
+def get_cached_api_response(response_id: str) -> Dict[str, Any]:
     """
     Retrieved a cached API response.
     """

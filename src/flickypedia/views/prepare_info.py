@@ -51,7 +51,7 @@ class WikiFieldsForm(Form):
 
     original_format: str
 
-    def validate_title(form, field):
+    def validate_title(form: WikiFieldsForm, field: StringField) -> None:
         title = f"File:{field.data}.{form.original_format}"
 
         api = current_user.wikimedia_api()
@@ -61,7 +61,7 @@ class WikiFieldsForm(Form):
             raise ValidationError(validation["text"])
 
 
-def create_prepare_info_form(photos):
+def create_prepare_info_form(photos) -> FlaskForm:
     """
     Create a Flask form with a PhotoInfoForm (list of fields) for each
     photo in the list.  This allows us to render a form like:
@@ -217,7 +217,7 @@ def prepare_info():
     )
 
 
-def truncate_description(d):
+def truncate_description(d: str) -> str:
     """
     Given a complete description from Flickr, truncate it so it's suitable
     for description on the "prepare info" screen.

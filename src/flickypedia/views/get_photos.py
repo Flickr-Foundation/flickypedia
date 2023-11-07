@@ -5,9 +5,11 @@ from flickr_url_parser import parse_flickr_url, NotAFlickrUrl, UnrecognisedUrl
 from wtforms import URLField, SubmitField
 from wtforms.validators import DataRequired
 
+from ._types import ViewResponse
+
 
 @login_required
-def get_photos():
+def get_photos() -> ViewResponse:
     photo_url_form = FlickrPhotoURLForm()
 
     if photo_url_form.validate_on_submit():
