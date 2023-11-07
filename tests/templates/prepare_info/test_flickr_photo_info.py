@@ -6,7 +6,11 @@ import pytest
 
 
 EMPTY_INFO = {
-    "owner": {"username": "example", "realname": "example"},
+    "owner": {
+        "username": "example",
+        "realname": "example",
+        "profile_url": "https://www.flickr.com/people/example",
+    },
     "license": {"label": "CC BY 2.0"},
     "title": None,
     "description": None,
@@ -43,10 +47,18 @@ def get_metadata(photo):
             {
                 "username": "Obama White House Archived",
                 "realname": None,
+                "profile_url": "https://www.flickr.com/people/obamawhitehouse",
             },
             "Obama White House Archived",
         ),
-        ({"username": "George", "realname": "George Oates"}, "George Oates"),
+        (
+            {
+                "username": "George",
+                "realname": "George Oates",
+                "profile_url": "https://www.flickr.com/people/george",
+            },
+            "George Oates",
+        ),
     ],
 )
 def test_it_shows_the_correct_owner_name(app, owner, expected_name):
