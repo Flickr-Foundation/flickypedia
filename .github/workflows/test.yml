@@ -28,15 +28,16 @@ jobs:
     - name: Check types
       run: |
         MYPYPATH=tests/stubs/ mypy \
-          src/flickypedia/utils.py \
-          src/flickypedia/duplicates.py \
-          src/flickypedia/config.py \
-          src/flickypedia/cli.py \
           src/flickypedia/views/api.py \
           src/flickypedia/views/get_photos.py \
+          src/flickypedia/views/wait_for_upload.py \
           src/flickypedia/auth.py \
+          src/flickypedia/cli.py \
+          src/flickypedia/config.py \
+          src/flickypedia/duplicates.py \
           src/flickypedia/tasks.py \
           src/flickypedia/uploads.py \
+          src/flickypedia/utils.py \
           src/flickypedia/apis \
           tests
     - name: Run linting
