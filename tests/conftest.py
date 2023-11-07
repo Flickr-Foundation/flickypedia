@@ -80,10 +80,12 @@ def wikimedia_api(cassette_name):
         cassette_library_dir="tests/fixtures/cassettes",
         filter_headers=["authorization"],
     ):
+        # Coverage note: depending on whether you have an API token or
+        # not, only one of these branches were run.
         try:  # pragma: no cover
             token = os.environ["WIKIMEDIA_PERSONAL_API_TOKEN"]
             client = httpx.Client(headers={"Authorization": f"Bearer {token}"})
-        except KeyError:
+        except KeyError:  # pragma: no cover
             client = httpx.Client()
 
         yield WikimediaApi(client=client)
