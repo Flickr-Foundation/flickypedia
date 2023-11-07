@@ -57,7 +57,7 @@ def vcr_cassette(cassette_name):
 
 
 @pytest.fixture(scope="function")
-def wikimedia_api(cassette_name, user_agent):
+def wikimedia_api(cassette_name):
     """
     Creates an instance of the WikimediaApi class for use in tests.
 
@@ -71,13 +71,11 @@ def wikimedia_api(cassette_name, user_agent):
         cassette_library_dir="tests/fixtures/cassettes",
         filter_headers=["authorization"],
     ):
-        headers = {"User-Agent": user_agent}
-
         try:
             token = json.loads(os.environ["WIKIMEDIA_ACCESS_TOKEN"])
-            client = OAuth2Client(token=token, headers=headers)
+            client = OAuth2Client(token=token)
         except KeyError:
-            client = httpx.Client(headers=headers)
+            client = httpx.Client()
 
         yield WikimediaApi(client=client)
 
