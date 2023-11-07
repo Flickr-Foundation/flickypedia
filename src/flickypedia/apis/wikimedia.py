@@ -10,8 +10,6 @@ See https://api.wikimedia.org/wiki/Authentication
 
 import json
 
-from authlib.integrations.httpx_client.oauth2_client import OAuth2Client
-from flask_login import current_user
 import httpx
 
 
@@ -300,31 +298,6 @@ class WikimediaApi:
             return
         else:  # pragma: no cover
             raise WikimediaApiException(f"Unexpected response: {resp}")
-
-
-class WikimediaOAuthApi(WikimediaApi):
-    def __init__(self, *, client: OAuth2Client, token, user_agent: str):
-        client.token = token
-        client.headers = {"User-Agent": user_agent}
-
-        super().__init__(client=client)
-
-    def _request(self, *args, **kwargs):
-        """
-        Make a request to the Wikimedia API.  The underlying OAuth2Client may do
-        a token refresh if the access token expires; if so, we need to store that
-        new access token and the new refresh token.
-        """
-        old_token = self.client.token
-
-        resp = super()._request(*args, **kwargs)
-
-        new_token = self.client.token
-
-        if old_token != new_token:
-            current_user.store_new_token(new_token=new_token)
-
-        return resp
 
 
 class WikimediaPublicApi(WikimediaApi):

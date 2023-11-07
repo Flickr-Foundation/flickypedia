@@ -6,13 +6,14 @@ import shutil
 from authlib.integrations.httpx_client.oauth2_client import OAuth2Client
 from flask_login import FlaskLoginClient, current_user
 from flickr_photos_api import FlickrPhotosApi
+import httpx
 import pytest
 from pytest import FixtureRequest
 import vcr
 
 from flickypedia import create_app
 from flickypedia.auth import WikimediaUserSession
-from flickypedia.apis.wikimedia import WikimediaOAuthApi
+from flickypedia.apis.wikimedia import WikimediaApi
 from utils import store_user
 
 
@@ -58,7 +59,7 @@ def vcr_cassette(cassette_name):
 @pytest.fixture(scope="function")
 def wikimedia_api(cassette_name, user_agent):
     """
-    Creates an instance of the WikimediaOAuthApi class for use in tests.
+    Creates an instance of the WikimediaApi class for use in tests.
 
     This instance of the API will record its interactions as "cassettes"
     using vcr.py, which can be replayed offline (e.g. in CI tests).
@@ -68,23 +69,15 @@ def wikimedia_api(cassette_name, user_agent):
         cassette_library_dir="tests/fixtures/cassettes",
         filter_headers=["authorization"],
     ):
-        yield WikimediaOAuthApi(
-            client=OAuth2Client(),
-            token=json.loads(
-                os.environ.get(
-                    "WIKIMEDIA_ACCESS_TOKEN",
-                    json.dumps(
-                        {
-                            "token_type": "Bearer",
-                            "expires_in": 14400,
-                            "access_token": "ACCESS_TOKEN",
-                            "refresh_token": "REFRESH_TOKEN",
-                        }
-                    ),
-                )
-            ),
-            user_agent=user_agent,
-        )
+        headers = {"User-Agent": user_agent}
+
+        try:
+            token = json.loads(os.environ["WIKIMEDIA_ACCESS_TOKEN"])
+            client = OAuth2Client(token=token, headers=headers)
+        except KeyError:
+            client = httpx.Client(headers=headers)
+
+        yield WikimediaApi(client=client)
 
 
 @pytest.fixture(scope="function")

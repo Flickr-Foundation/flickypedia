@@ -85,7 +85,7 @@ from flask_login import (
 from flask_sqlalchemy import SQLAlchemy
 import httpx
 
-from flickypedia.apis.wikimedia import WikimediaOAuthApi, WikimediaApi
+from flickypedia.apis.wikimedia import WikimediaApi
 from flickypedia.utils import decrypt_string, encrypt_string
 
 
@@ -174,22 +174,6 @@ class WikimediaUserSession(UserMixin, user_db.Model):
         """
         client = self._oauth2_client()
         client.ensure_active_token(token=self.token())
-
-    def store_new_token(self, new_token):
-        """
-        Store a new OAuth token in the database.
-
-        This method should only be called when the token has changed.
-
-        This can only be called in the context of a logged-in Flask session,
-        where we have access to the per-session encryption key.
-        """
-        assert dict(new_token) != self.token()
-
-        self.encrypted_token = encrypt_string(
-            key=session[SESSION_ENCRYPTION_KEY], plaintext=json.dumps(new_token)
-        )
-        user_db.session.commit()
 
     def wikimedia_api(self) -> WikimediaApi:
         """
@@ -343,9 +327,13 @@ def oauth2_callback_wikimedia():
         abort(401)
 
     # Get info about the logged in user
-    api = WikimediaOAuthApi(
-        client=client, token=token, user_agent=current_app.config["USER_AGENT"]
+    client = httpx.Client(
+        headers={
+            "Authorization": f"Bearer {token['access_token']}",
+            "User-Agent": current_app.config["USER_AGENT"],
+        }
     )
+    api = WikimediaApi(client=client)
     userinfo = api.get_userinfo()
 
     # Now create a user and store it in the database.

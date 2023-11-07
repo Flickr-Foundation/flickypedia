@@ -3,7 +3,7 @@ import pytest
 
 from flickypedia.apis.structured_data import create_license_statement
 from flickypedia.apis.wikimedia import (
-    WikimediaOAuthApi,
+    WikimediaApi,
     DuplicateFilenameUploadException,
     DuplicatePhotoUploadException,
     InvalidAccessTokenException,
@@ -33,17 +33,17 @@ def test_get_userinfo(wikimedia_api):
         ),
     ],
 )
-def test_call_api_with_bad_token(vcr_cassette, user_agent, method_name, kwargs):
-    broken_api = WikimediaOAuthApi(
-        client=OAuth2Client(),
+def test_call_api_with_bad_token(vcr_cassette, method_name, kwargs):
+    client = OAuth2Client(
         token={
             "token_type": "Bearer",
             "expires_in": 14400,
             "access_token": "ACCESS_TOKEN",
             "refresh_token": "REFRESH_TOKEN",
         },
-        user_agent=user_agent,
     )
+
+    broken_api = WikimediaApi(client)
 
     with pytest.raises(InvalidAccessTokenException):
         getattr(broken_api, method_name)(**kwargs)
