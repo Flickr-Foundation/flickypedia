@@ -4,7 +4,6 @@ from urllib.parse import quote as urlquote, urlparse
 
 from cryptography.fernet import Fernet
 from flask import render_template, request
-import hyperlink
 
 
 def encrypt_string(key: bytes, plaintext: str) -> bytes:
@@ -99,7 +98,7 @@ def create_bookmarklet(filename: str) -> str:
     assert filename.endswith(".js")
 
     u = urlparse(request.url)
-    base_url = f'{u.scheme}://{u.netloc}'
+    base_url = f"{u.scheme}://{u.netloc}"
 
     js = render_template(f"bookmarklets/{filename}", base_url=base_url).strip()
     wrapped_js = """(function() { %s })();""" % js
