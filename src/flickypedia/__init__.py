@@ -34,7 +34,7 @@ from flickypedia.views import (
     wait_for_upload,
 )
 from flickypedia.tasks import celery_init_app
-from flickypedia.utils import a_href, size_at
+from flickypedia.utils import size_at
 
 
 def create_app(data_directory: str = "data", debug: bool = False):
@@ -71,7 +71,6 @@ def create_app(data_directory: str = "data", debug: bool = False):
 
     app.add_url_rule("/api/validate_title", view_func=validate_title_api)
 
-    app.jinja_env.filters["a_href"] = a_href
     app.jinja_env.filters["html_unescape"] = html.unescape
     app.jinja_env.filters["size_at"] = size_at
     app.jinja_env.filters["link_to_commons"] = create_link_to_commons

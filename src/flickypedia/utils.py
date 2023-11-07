@@ -20,19 +20,6 @@ def decrypt_string(key: bytes, ciphertext: bytes) -> str:
     return Fernet(key).decrypt(ciphertext).decode("ascii")
 
 
-def a_href(url):
-    """
-    Render a URL as an <a> tag with the URL as both target and text.
-
-        >>> a_href("https://example.net")
-        '<a href="https://example.net">https://example.net</a>'
-
-    This is a utility function for Flask templates.
-
-    """
-    return f'<a href="{url}">{url}</a>'
-
-
 def size_at(sizes, *, desired_size):
     """
     Given a list of sizes of Flickr photo, return the info about
