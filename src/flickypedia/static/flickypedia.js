@@ -108,3 +108,128 @@ function addCharCounterTo(inputElement, counterElement) {
     updateCharCounter();
   });
 }
+
+/*
+ * Add interactive categories.
+ *
+ * We hide the <textarea> and insert an <input> field that will have
+ * an associated autocomplete function.
+ */
+function addInteractiveCategoriesTo(categoriesElement, parentForm) {
+  const textAreaElement = categoriesElement.querySelector('textarea');
+
+  /* Hide the original <textarea> */
+  textAreaElement.style.display = 'none';
+
+  /* Create a new inputElement where the user can enter one category
+   * at a time.  Next to the inputElement is a "+" button. */
+  const categoryInputs = document.createElement('div');
+  categoryInputs.classList.add('category_inputs');
+
+  const inputElement = document.createElement('input');
+  inputElement.type = 'text';
+  categoryInputs.appendChild(inputElement);
+
+  /* Create a button that a user can click to add a new category. */
+  const addCategoryButton = document.createElement('input');
+  addCategoryButton.type = 'button';
+  addCategoryButton.value = '+';
+  addCategoryButton.classList.add("pink_button");
+  addCategoryButton.onclick = function(event) {
+    addCategory();
+    event.preventDefault();
+  }
+  categoryInputs.appendChild(addCategoryButton);
+
+  textAreaElement.after(categoryInputs);
+
+  /* Create a visible <ul> element where we can show the user the list
+   * of categories they've selected.
+   */
+  const listOfCategories = document.createElement('ul');
+  listOfCategories.classList.add("selected_categories");
+  categoryInputs.after(listOfCategories);
+
+  /* Add a category based on the current contents of this input element. */
+  function addCategory() {
+    const newCategory = inputElement.value;
+
+    if (newCategory === '') {
+      return;
+    }
+
+    /* Add it to the hidden <textarea> */
+    textAreaElement.value += `${newCategory}\n`;
+
+    /* Add it to the list of categories shown in the UI.
+     *
+     * This will show the name of the category and an [X] button to remove it.
+     */
+    const listEntry = document.createElement("li");
+
+    const span = document.createElement("span");
+    span.innerHTML = newCategory;
+    listEntry.appendChild(span);
+
+    const removeCategoryButton = document.createElement("a");
+    removeCategoryButton.innerHTML = '[x]';
+    removeCategoryButton.classList.add("remove_category");
+    removeCategoryButton.onclick = function() {
+      removeCategory(newCategory, listEntry)
+    }
+    listEntry.appendChild(removeCategoryButton);
+
+    listOfCategories.appendChild(listEntry);
+
+    /* Clear the <input> element */
+    inputElement.value = '';
+  }
+
+  /* Remove a category from the selected list. */
+  function removeCategory(categoryName, listEntryElement) {
+
+    /* Remove the category name from the <textarea> */
+    textAreaElement.value =
+      textAreaElement.value
+        .split('\n')
+        .filter(category => category != categoryName)
+        .join('\n');
+
+    /* Remove the category from the list of categories shown to the user */
+    listEntryElement.remove();
+  }
+
+  /* If somebody presses 'enter' in this field, add a category rather
+   * than submitting the form. */
+  inputElement.addEventListener('keypress', event => {
+    if (event.key === 'Enter') {
+      addCategory();
+      event.preventDefault();
+    }
+  });
+
+  /* If somebody pastes into this field, split on newlines and add those
+   * categories. */
+  inputElement.addEventListener('paste', event => {
+    const categories = (event.clipboardData || window.clipboardData)
+      .getData("text")
+      .split("\n");
+
+    for (i = 0; i < categories.length; i++) {
+      inputElement.value = categories[i];
+      addCategory();
+    }
+
+    /* The default action is to insert the text into the <input>, but
+     * we don't want that here -- we want the user to have an empty
+     * field for more inputs. */
+    event.preventDefault();
+  });
+
+  /* If the user clicks the "Upload" button, add anything in the <input>
+   * which they haven't explicitly added to the list of categories.
+   */
+  parentForm.addEventListener('submit', () => {
+    addCategory();
+  });
+}

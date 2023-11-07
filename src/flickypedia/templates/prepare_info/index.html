@@ -19,6 +19,14 @@
 
           addCharCounterTo(textarea, counterElement);
         });
+
+      const parentForm = document.querySelector('form#prepare_info');
+
+      document
+        .querySelectorAll('.categories')
+        .forEach(categoriesElement =>
+           addInteractiveCategoriesTo(categoriesElement, parentForm)
+        );
     }
   </script>
 {% endblock %}

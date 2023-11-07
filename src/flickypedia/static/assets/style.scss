@@ -81,6 +81,12 @@ ul.plain_list {
   list-style-type: none;
   padding: 0;
   margin:  0;
+
+  /* If we nest a <ul> inside a plain list, it should appear to the user
+   * as if it's a top-level list with bullets, not circles. */
+  ul:not(.plain_list) li {
+    list-style-type: disc;
+  }
 }
 
 a {

@@ -56,8 +56,20 @@
     </noscript>
   {% endif %}
 
-  <p>
+  <!--
+     We need to ask the user for a list of categories, and we
+     want to pass those as a list in the <textarea> element,
+     one category for line.
+     
+     For users without JS, we just show them the plain <textarea>.
+     
+     For users with JS, we hide the <textarea> and show them a
+     one-line <input> field.  We can then offer them suggestions
+     on categories from the Wikimedia API, and when they add/remove
+     categories, we'll update the value in the <textarea>.
+    -->
+  <div class="categories">
     <label for="{{ field.categories.id }}">Add a Wikimedia Commons category</label>
     {{ field.categories() }}
-  </p>
+  </div>
 </div>
