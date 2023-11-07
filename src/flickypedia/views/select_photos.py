@@ -27,7 +27,7 @@ TODO:
 import datetime
 import json
 import os
-from typing import Any, Dict, List
+from typing import Any, Dict, List, TypedDict, Union
 import uuid
 
 from flask import (
@@ -41,7 +41,7 @@ from flask import (
     url_for,
 )
 from flask_login import current_user, login_required
-from flickr_photos_api import FlickrPhotosApi, ResourceNotFound
+from flickr_photos_api import FlickrPhotosApi, PhotosInAlbum, PhotosInGallery, ResourceNotFound, SinglePhoto, User as FlickrUser
 from flickr_url_parser import parse_flickr_url, NotAFlickrUrl, ParseResult, UnrecognisedUrl
 from flask_wtf import FlaskForm
 from wtforms import BooleanField, HiddenField, SubmitField
@@ -52,8 +52,15 @@ from flickypedia.utils import DatetimeDecoder, DatetimeEncoder
 from .get_photos import FlickrPhotoURLForm
 
 
+class SinglePhotoData(TypedDict):
+    photos: List[SinglePhoto]
+    owner: FlickrUser
+
+GetPhotosData = Union[SinglePhotoData, PhotosInAlbum, PhotosInGallery]
+
+
 # TODO: Change parsed_url to parse_result
-def get_photos(parsed_url: ParseResult):
+def get_photos(parsed_url: ParseResult) -> GetPhotosData:
     """
     Given a correctly parsed URL, get a list of photos from the Flickr API.
 
