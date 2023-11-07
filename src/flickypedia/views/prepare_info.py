@@ -13,6 +13,8 @@ This page gets two arguments as query parameters:
 
 """
 
+from typing import Any, Dict, List
+
 from flask import abort, current_app, redirect, render_template, request, url_for
 from flask_wtf import FlaskForm, Form
 from flask_login import current_user, login_required
@@ -20,9 +22,8 @@ from wtforms import FormField, HiddenField, SelectField, StringField, SubmitFiel
 from wtforms.validators import DataRequired, Length, ValidationError
 from wtforms.widgets import TextArea
 
-from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
-from flickypedia.uploads import upload_batch_of_photos
-from flickypedia.utils import size_at
+from flickypedia.apis.structured_data import add_sdc_to_photos, PhotoWithSdc
+from flickypedia.uploads import upload_batch_of_photos, PhotoToUpload
 from .select_photos import get_cached_api_response, remove_cached_api_response
 
 
@@ -61,7 +62,7 @@ class WikiFieldsForm(Form):
             raise ValidationError(validation["text"])
 
 
-def create_prepare_info_form(photos) -> FlaskForm:
+def create_prepare_info_form(photos: List[PhotoWithSdc]) -> FlaskForm:
     """
     Create a Flask form with a PhotoInfoForm (list of fields) for each
     photo in the list.  This allows us to render a form like:
@@ -97,49 +98,47 @@ def create_prepare_info_form(photos) -> FlaskForm:
         )
 
     for p in photos:
-        p["sdc"] = create_sdc_claims_for_flickr_photo(
-            photo_id=p["id"],
-            photo_url=p["url"],
-            user=p["owner"],
-            copyright_status="copyrighted",
-            original_url=size_at(p["sizes"], desired_size="Original")["source"],
-            license_id=p["license"]["id"],
-            date_posted=p["date_posted"],
-            date_taken=p["date_taken"],
-        )
 
         class FormForThisPhoto(WikiFieldsForm):
-            original_format = p["original_format"]
+            # This will always be a 'str' because you can always get
+            # the original format back for CC-licensed photos.
+            original_format = p["photo"]["original_format"]  # type: ignore
 
-        setattr(CustomForm, f"photo_{p['id']}", FormField(FormForThisPhoto, label=p))
+        setattr(
+            CustomForm,
+            f"photo_{p['photo']['id']}",
+            FormField(FormForThisPhoto, label=p),  # type: ignore
+        )
 
     return CustomForm()
 
 
-def prepare_photos_for_upload(selected_photos, form_data):
-    photos_to_upload = []
+def combine_photos_with_form_data(
+    photos_with_sdc: List[PhotoWithSdc], form_data: Dict[str, Any]
+) -> PhotoToUpload:
+    """
+    Given a list of photos which have SDC statements and a validated
+    set of data from the form, combine the two.
+    """
+    photos_to_upload: List[PhotoToUpload] = []
 
-    for photo in selected_photos:
+    for photo_data in photos_with_sdc:
+        photo = photo_data["photo"]
+        sdc_statements = photo_data["sdc_statements"]
+
         this_photo_form_data = form_data[f"photo_{photo['id']}"]
 
-        new_photo = {
-            "id": photo["id"],
-            "title": this_photo_form_data["title"] + "." + photo["original_format"],
-            "short_caption": {
-                "language": form_data["language"],
-                "text": this_photo_form_data["short_caption"],
-            },
-            "categories": this_photo_form_data["categories"],
-            "license_id": photo["license"]["id"],
-            "date_taken": photo["date_taken"],
-            "date_posted": photo["date_posted"],
-            "original_url": size_at(photo["sizes"], desired_size="Original")["source"],
-            "photo_url": photo["url"],
-            "sdc": photo["sdc"],
-            "owner": photo["owner"],
-        }
-
-        photos_to_upload.append(new_photo)
+        photos_to_upload.append(
+            {
+                "photo": photo,
+                "sdc_statements": sdc_statements,
+                "title": this_photo_form_data["title"] + "." + photo["original_format"],
+                "short_caption": {
+                    "language": form_data["language"],
+                    "text": this_photo_form_data["short_caption"],
+                },
+            }
+        )
 
     return photos_to_upload
 
@@ -180,24 +179,23 @@ def prepare_info():
         photo["license"]["id"] in current_app.config["ALLOWED_LICENSES"]
         for photo in selected_photos
     )
+    assert all(photo["safety_level"] == "safe" for photo in selected_photos)
 
-    # TODO: Add safety checks here
+    # Enrich the photos with some structured data.
+    enriched_photos = add_sdc_to_photos(photos=selected_photos)
 
     # Now construct the "prepare info" form.
-    prepare_info_form = create_prepare_info_form(photos=selected_photos)
+    prepare_info_form = create_prepare_info_form(photos=enriched_photos)
 
     if prepare_info_form.validate_on_submit():
-        photos_to_upload = prepare_photos_for_upload(
-            selected_photos, form_data=prepare_info_form.data
+        photos_to_upload = combine_photos_with_form_data(
+            enriched_photos, form_data=prepare_info_form.data
         )
 
         upload_batch_of_photos.apply_async(
             kwargs={
-                "oauth_info": {
-                    "access_token": current_user.access_token(),
-                    "access_token_expires": current_user.access_token_expires,
-                    "refresh_token": current_user.refresh_token(),
-                },
+                "token": current_user.token(),
+                "key": current_user.token_key(),
                 "photos_to_upload": photos_to_upload,
             },
             task_id=cached_api_response_id,

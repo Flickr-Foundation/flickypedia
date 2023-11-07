@@ -150,6 +150,9 @@ class WikimediaUserSession(UserMixin, user_db.Model):  # type: ignore
 
         return OAuth2Token(params)
 
+    def token_key(self) -> str:
+        return session[SESSION_ENCRYPTION_KEY]
+
     def _oauth2_client(self) -> OAuth2Client:
         """
         Returns a configured OAuth2 client.

@@ -336,19 +336,21 @@ def create_sdc_claims_for_flickr_photo(photo: SinglePhoto) -> List[Statement]:
 
     This is the main entry point into this file for the rest of Flickypedia.
     """
-    creator_statement = create_flickr_creator_statement(user=photo['owner'])
+    creator_statement = create_flickr_creator_statement(user=photo["owner"])
 
-    copyright_statement = create_copyright_status_statement(status='copyrighted')
+    copyright_statement = create_copyright_status_statement(status="copyrighted")
 
     original_size = size_at(photo["sizes"], desired_size="Original")
 
     source_statement = create_source_data_for_photo(
-        photo_url=photo['url'], original_url=original_size['source']
+        photo_url=photo["url"], original_url=original_size["source"]
     )
 
-    license_statement = create_license_statement(license_id=photo['license']['id'])
+    license_statement = create_license_statement(license_id=photo["license"]["id"])
 
-    date_posted_statement = create_posted_to_flickr_statement(date_posted=photo['date_posted'])
+    date_posted_statement = create_posted_to_flickr_statement(
+        date_posted=photo["date_posted"]
+    )
 
     statements = [
         creator_statement,
@@ -358,7 +360,26 @@ def create_sdc_claims_for_flickr_photo(photo: SinglePhoto) -> List[Statement]:
         date_posted_statement,
     ]
 
-    if not photo['date_taken']["unknown"]:
-        statements.append(create_date_taken_statement(date_taken=photo['date_taken']))
+    if not photo["date_taken"]["unknown"]:
+        statements.append(create_date_taken_statement(date_taken=photo["date_taken"]))
 
     return statements
+
+
+class PhotoWithSdc(TypedDict):
+    photo: SinglePhoto
+    sdc_statements: List[Statement]
+
+
+def add_sdc_to_photos(photos: List[SinglePhoto]) -> PhotoWithSdc:
+    """
+    Given a list of Flickr photos, enrich them with structured data claims.
+    """
+    result: List[PhotoWithSdc] = []
+
+    for p in photos:
+        result.append(
+            {"photo": p, "sdc_statements": create_sdc_claims_for_flickr_photo(p)}
+        )
+
+    return result

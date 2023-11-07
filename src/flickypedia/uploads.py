@@ -1,18 +1,31 @@
 import datetime
+from typing import List, TypedDict
 
 from celery import current_task, shared_task
 from flask_login import current_user
-from flickr_photos_api import DateTaken, User as FlickrUser
+from flickr_photos_api import DateTaken, User as FlickrUser, SinglePhoto
 
-from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
+from flickypedia.apis.structured_data import Statement
 from flickypedia.apis.wikimedia import WikimediaApi
 from flickypedia.apis.wikitext import create_wikitext
 from flickypedia.duplicates import record_file_created_by_flickypedia
 from flickypedia.tasks import ProgressTracker
 
 
+class ShortCaption(TypedDict):
+    language: str
+    text: str
+
+
+class PhotoToUpload(TypedDict):
+    photo: SinglePhoto
+    sdc_statements: List[Statement]
+    title: str
+    short_caption: ShortCaption
+
+
 @shared_task
-def upload_batch_of_photos(oauth_info, photos_to_upload):
+def upload_batch_of_photos(token, key, photos_to_upload):
     tracker = ProgressTracker(task_id=current_task.request.id)
 
     progress_data = [
