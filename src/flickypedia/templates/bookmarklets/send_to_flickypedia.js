@@ -11,7 +11,3 @@ if (!thisUrl.startsWith('https://www.flickr.com/')) {
 } else {
   open(`{{ base_url }}{{ url_for('select_photos', flickr_url='URL') | replace('URL', '${document.location.href}') }}`, "targetname");
 }
-
-
-
-
