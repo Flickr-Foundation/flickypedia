@@ -1,4 +1,4 @@
-""""
+"""
 This is an auth-agnostic implementation of some Wikimedia API methods.
 
 Callers are responsible for creating an ``httpx.Client`` instance which
@@ -19,9 +19,7 @@ class WikimediaApi:
 
     def _request(self, *, method, **kwargs):
         resp = self.client.request(
-            method,
-            url="https://commons.wikimedia.org/w/api.php",
-            **kwargs,
+            method, url="https://commons.wikimedia.org/w/api.php", **kwargs
         )
 
         # When something goes wrong, we get an ``error`` key in the response.
