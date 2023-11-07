@@ -1,6 +1,7 @@
 import pytest
 
 from flickypedia.views import truncate_description
+from utils import minify
 
 
 @pytest.mark.parametrize(
@@ -35,8 +36,10 @@ def test_renders_form_for_single_photo(logged_in_client, app, vcr_cassette):
 
     assert b"1 of 1" in resp.data
 
-    assert b"please set the language you’ll be using to write your caption:" in resp.data
-    assert b"please add a title and short caption" in resp.data
+    assert "please set the language you’ll be using to write your caption:" in minify(
+        resp.data
+    )
+    assert "please add a title and short caption" in minify(resp.data)
 
 
 def test_renders_form_for_multiple_photo(logged_in_client, app, vcr_cassette):
@@ -58,8 +61,10 @@ def test_renders_form_for_multiple_photo(logged_in_client, app, vcr_cassette):
     assert b"1 of 2" in resp.data
     assert b"2 of 2" in resp.data
 
-    assert b"please set the language you’ll be using to write your captions:" in resp.data
-    assert b"please set titles and captions for each photo" in resp.data
+    assert "please set the language you’ll be using to write your captions:" in minify(
+        resp.data
+    )
+    assert "please add titles and captions for each photo" in minify(resp.data)
 
 
 def test_blocks_uploads_with_an_invalid_title(logged_in_client, app, vcr_cassette):
