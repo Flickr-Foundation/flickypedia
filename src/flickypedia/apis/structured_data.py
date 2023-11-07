@@ -35,7 +35,7 @@ from flickypedia.apis.wikidata import (
     WikidataEntities,
     WikidataProperties,
 )
-from flickypedia.utils import size_at
+from flickypedia.photos import size_at
 from ._types import DataValue, Snak, Statement
 
 

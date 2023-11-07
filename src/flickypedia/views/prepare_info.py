@@ -26,8 +26,8 @@ from wtforms.widgets import TextArea
 
 from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
 from flickypedia.apis._types import Statement
+from flickypedia.photos import size_at
 from flickypedia.uploads import upload_batch_of_photos
-from flickypedia.utils import size_at
 from .select_photos import get_cached_api_response, remove_cached_api_response
 from ._types import ViewResponse
 
