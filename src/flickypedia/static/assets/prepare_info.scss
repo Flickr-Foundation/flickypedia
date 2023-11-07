@@ -142,7 +142,6 @@ form#prepare_info {
   .wiki_info {
     /* Add vertical spacing between the different bits of the form */
     label:not(:first-child), .categories {
-      display: block;
       margin-top: 1em;
     }
 
