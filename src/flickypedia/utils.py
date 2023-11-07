@@ -1,9 +1,11 @@
 import datetime
 import json
+from typing import Any, Dict, List, Literal, TypedDict, TypeVar, Union
 from urllib.parse import quote as urlquote, urlparse
 
 from cryptography.fernet import Fernet
 from flask import render_template, request
+from flickr_photos_api import Size
 
 
 def encrypt_string(key: bytes, plaintext: str) -> bytes:
@@ -22,7 +24,7 @@ def decrypt_string(key: bytes, ciphertext: bytes) -> str:
     return Fernet(key).decrypt(ciphertext).decode("ascii")
 
 
-def size_at(sizes, *, desired_size):
+def size_at(sizes: List[Size], *, desired_size: str) -> Size:
     """
     Given a list of sizes of Flickr photo, return the info about
     the desired size.
@@ -46,6 +48,13 @@ def size_at(sizes, *, desired_size):
         return sizes_by_label["Original"]
 
 
+T = TypeVar("T")
+
+EncodedDate = TypedDict(
+    "EncodedDate", {"type": Literal["datetime.datetime"], "value": str}
+)
+
+
 class DatetimeEncoder(json.JSONEncoder):
     """
     A custom JSON encoder that supports datetimes.
@@ -59,11 +68,11 @@ class DatetimeEncoder(json.JSONEncoder):
 
     """
 
-    def default(self, obj):
-        if isinstance(obj, datetime.datetime):
-            return {"type": "datetime.datetime", "value": obj.isoformat()}
+    def default(self, t: T) -> Union[T, EncodedDate]:
+        if isinstance(t, datetime.datetime):
+            return {"type": "datetime.datetime", "value": t.isoformat()}
         else:  # pragma: no cover
-            return obj
+            return t
 
 
 class DatetimeDecoder(json.JSONDecoder):
@@ -78,10 +87,12 @@ class DatetimeDecoder(json.JSONDecoder):
 
     """
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(object_hook=self.dict_to_object, *args, **kwargs)
+    def __init__(self) -> None:
+        super().__init__(object_hook=self.dict_to_object)
 
-    def dict_to_object(self, d):
+    def dict_to_object(
+        self, d: Dict[str, Any]
+    ) -> Union[Dict[str, Any], datetime.datetime]:
         if d.get("type") == "datetime.datetime":
             return datetime.datetime.fromisoformat(d["value"])
         else:
