@@ -121,3 +121,36 @@ def test_blocks_uploads_with_a_too_long_caption(logged_in_client, app, vcr_casse
 )
 def test_truncate_description(original, truncated):
     assert truncate_description(original) == truncated
+
+
+def test_escapes_html_in_description(logged_in_client, app):
+    """
+    Flickr photos can contain HTML tags.
+
+    In theory it's only a small subset of tags [1], but we escape all
+    of them rather than risk unescaped HTML being rendered in our UI.
+
+    [1]: https://www.flickr.com/html.gne
+
+    """
+    cache_dir = app.config["FLICKR_API_RESPONSE_CACHE"]
+
+    with open("tests/fixtures/flickr_api/single_photo-4452100167.json") as in_file:
+        with open(f"{cache_dir}/4452100167.json", "w") as out_file:
+            out_file.write('{"value": %s}' % in_file.read())
+
+    resp = logged_in_client.get(
+        "/prepare_info?selected_photo_ids=4452100167&cached_api_response_id=4452100167",
+    )
+
+    assert (
+        b"These textures are posted with the Attribution Creative Commons license.\n"
+        b"&lt;b&gt;Credit must be given if used.&lt;/b&gt;\n\n"
+        b"Copy this Credit Line:"
+    ) in resp.data
+
+    assert (
+        b"These textures are posted with the Attribution Creative Commons license.\n"
+        b"<b>Credit must be given if used.</b>\n\n"
+        b"Copy this Credit Line:"
+    ) not in resp.data
