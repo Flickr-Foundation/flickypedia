@@ -263,3 +263,17 @@ def test_find_matching_categories(wikimedia_api):
         "Aircraft in Tanzanian service",
         "Aircraft in Thailand",
     ]
+
+
+def test_can_find_rare_categories(wikimedia_api):
+    result = wikimedia_api.find_matching_categories(query="Aircraft in Taj")
+
+    assert result == [
+        "Aircraft in Tajikistan",
+        "Aircraft in Tajikistani service",
+        "Aircraft in Tajikistani service by airline",
+    ]
+
+
+def test_returns_an_empty_list_if_no_matching_categories(wikimedia_api):
+    assert wikimedia_api.find_matching_categories(query="sdfdsgd") == []

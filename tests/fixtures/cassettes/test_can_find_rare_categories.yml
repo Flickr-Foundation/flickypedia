@@ -1,0 +1,74 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.0
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=opensearch&format=xml&limit=10&search=Aircraft%20in%20Taj&namespace=14
+  response:
+    content: <?xml version="1.0"?><SearchSuggestion version="2.0" xmlns="http://opensearch.org/searchsuggest2"><Query
+      xml:space="preserve">Aircraft in Taj</Query><Section><Item><Text xml:space="preserve">Category:Aircraft
+      in Tajikistan</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/Category:Aircraft_in_Tajikistan</Url></Item><Item><Text
+      xml:space="preserve">Category:Aircraft in Tajikistani service</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/Category:Aircraft_in_Tajikistani_service</Url></Item><Item><Text
+      xml:space="preserve">Category:Aircraft in Tajikistani service by airline</Text><Url
+      xml:space="preserve">https://commons.wikimedia.org/wiki/Category:Aircraft_in_Tajikistani_service_by_airline</Url></Item></Section></SearchSuggestion>
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=10800
+      content-disposition:
+      - inline; filename=api-result.xml
+      content-length:
+      - '773'
+      content-type:
+      - text/xml; charset=utf-8
+      date:
+      - Tue, 07 Nov 2023 09:42:40 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1406.eqiad.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3070"
+      set-cookie:
+      - WMF-Last-Access=07-Nov-2023;Path=/;HttpOnly;secure;Expires=Sat, 09 Dec 2023
+        00:00:00 GMT
+      - GeoIP=GB:ENG:Lowestoft:52.50:1.71:v4; Path=/; secure; Domain=.wikimedia.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie
+      x-cache:
+      - cp3070 pass, cp3070 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 92.13.36.200
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-opensearch-type:
+      - prefix
+      x-search-id:
+      - eu3b7ite3idu5ci5dsm8apm0z
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1
