@@ -27,7 +27,7 @@ TODO:
 import datetime
 import json
 import os
-from typing import Any, Dict, List, Set, TypedDict, Union
+from typing import Dict, List, Set, TypedDict, Union
 import uuid
 
 from flask import (
@@ -177,8 +177,11 @@ class BaseSelectForm(FlaskForm):
     )
     submit = SubmitField("PREPARE INFO")
 
+    def selected_photo_ids(self) -> List[str]:
+        raise NotImplementedError
 
-def create_select_photos_form(photos: List[SinglePhoto]) -> FlaskForm:
+
+def create_select_photos_form(photos: List[SinglePhoto]) -> BaseSelectForm:
     """
     Create a Flask form with a boolean field (checkbox) for each photo
     on the list.  This allows us to render a form like:
@@ -240,7 +243,7 @@ def select_photos() -> ViewResponse:
 
     if base_form.validate_on_submit():
         photo_data = get_cached_api_response(
-            response_id=base_form.cached_api_response_id.data
+            response_id=base_form.cached_api_response_id.data  # type: ignore
         )
 
         cached_api_response_id = base_form.cached_api_response_id.data
@@ -274,15 +277,12 @@ def select_photos() -> ViewResponse:
 
     # Categorise the photos, so we know if there are any duplicates
     # or photos with disallowed licenses.
-    photo_data["photos"] = categorise_photos(photo_data["photos"])
+    sorted_photos = categorise_photos(photo_data["photos"])
 
     # If we've got a single photo which is available, we can send the
     # user straight to the "prepare info" screen rather than making
     # them select a single item from the list.
-    if (
-        parsed_url["type"] == "single_photo"
-        and len(photo_data["photos"]["available"]) == 1
-    ):
+    if parsed_url["type"] == "single_photo" and len(sorted_photos["available"]) == 1:
         return redirect(
             url_for(
                 "prepare_info",
@@ -296,9 +296,7 @@ def select_photos() -> ViewResponse:
 
     # At this point we know all the photos that should be in the list.
     # Go ahead and build the full form.
-    select_photos_form = create_select_photos_form(
-        photos=photo_data["photos"]["available"]
-    )
+    select_photos_form = create_select_photos_form(photos=sorted_photos["available"])
 
     select_photos_form.cached_api_response_id.data = cached_api_response_id
 
@@ -328,13 +326,13 @@ def select_photos() -> ViewResponse:
         parsed_url=parsed_url,
         photo_url_form=FlickrPhotoURLForm(),
         select_photos_form=select_photos_form,
-        photo_data=photo_data,
+        photo_data={k: v for k, v in photo_data.items() if k != "photos"},
         current_step="get_photos",
-        photos=photo_data["photos"],
+        photos=sorted_photos,
     )
 
 
-def get_cached_api_response(response_id: str) -> Dict[str, Any]:
+def get_cached_api_response(response_id: str) -> GetPhotosData:
     """
     Retrieved a cached API response.
     """
@@ -343,10 +341,10 @@ def get_cached_api_response(response_id: str) -> Dict[str, Any]:
     with open(os.path.join(cache_dir, response_id + ".json")) as infile:
         cached_data = json.load(infile, cls=DatetimeDecoder)
 
-    return cached_data["value"]
+    return cached_data["value"]  # type: ignore
 
 
-def save_cached_api_response(response):
+def save_cached_api_response(response: GetPhotosData) -> str:
     """
     Save a cached API response.  Returns an ID which can be used to
     retrieve this response now.
@@ -368,7 +366,7 @@ def save_cached_api_response(response):
     return response_id
 
 
-def remove_cached_api_response(response_id):
+def remove_cached_api_response(response_id: str) -> None:
     """
     Remove a cached API response.
     """

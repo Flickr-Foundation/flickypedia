@@ -13,17 +13,23 @@ This page gets two arguments as query parameters:
 
 """
 
+import datetime
+from typing import cast, Any, Dict, List, TypedDict
+
 from flask import abort, current_app, redirect, render_template, request, url_for
 from flask_wtf import FlaskForm, Form
 from flask_login import current_user, login_required
+from flickr_photos_api import DateTaken, SinglePhoto, User as FlickrUser
 from wtforms import FormField, HiddenField, SelectField, StringField, SubmitField
 from wtforms.validators import DataRequired, Length, ValidationError
 from wtforms.widgets import TextArea
 
 from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
+from flickypedia.apis._types import Statement
 from flickypedia.uploads import upload_batch_of_photos
 from flickypedia.utils import size_at
 from .select_photos import get_cached_api_response, remove_cached_api_response
+from ._types import ViewResponse
 
 
 class WikiFieldsForm(Form):
@@ -61,7 +67,7 @@ class WikiFieldsForm(Form):
             raise ValidationError(validation["text"])
 
 
-def create_prepare_info_form(photos) -> FlaskForm:
+def create_prepare_info_form(photos: List[SinglePhoto]) -> FlaskForm:
     """
     Create a Flask form with a PhotoInfoForm (list of fields) for each
     photo in the list.  This allows us to render a form like:
@@ -97,23 +103,51 @@ def create_prepare_info_form(photos) -> FlaskForm:
         )
 
     for p in photos:
-        p["sdc"] = create_sdc_claims_for_flickr_photo(p)
+        sdc = create_sdc_claims_for_flickr_photo(p)
 
         class FormForThisPhoto(WikiFieldsForm):
-            original_format = p["original_format"]
+            # original_format is optional in the Flickr API, because
+            # you might not get it if the owner has disabled downloads --
+            # but it's always available for CC licensed photos.
+            original_format = cast(str, p["original_format"])
 
-        setattr(CustomForm, f"photo_{p['id']}", FormField(FormForThisPhoto, label=p))
+        setattr(CustomForm, f"photo_{p['id']}", FormField(FormForThisPhoto, label={**p, "sdc": sdc}))  # type: ignore
 
     return CustomForm()
 
 
-def prepare_photos_for_upload(selected_photos, form_data):
-    photos_to_upload = []
+class ShortCaption(TypedDict):
+    language: str
+    text: str
+
+
+class PhotoForUpload(TypedDict):
+    id: str
+    title: str
+    short_caption: ShortCaption
+    categories: List[str]
+    license_id: str
+    date_taken: DateTaken
+    date_posted: datetime.datetime
+    original_url: str
+    photo_url: str
+    sdc: List[Statement]
+    owner: FlickrUser
+
+
+class PhotoWithSdc(SinglePhoto):
+    sdc: List[Statement]
+
+
+def prepare_photos_for_upload(
+    selected_photos: List[PhotoWithSdc], form_data: Dict[str, Any]
+) -> List[PhotoForUpload]:
+    photos_to_upload: List[PhotoForUpload] = []
 
     for photo in selected_photos:
         this_photo_form_data = form_data[f"photo_{photo['id']}"]
 
-        new_photo = {
+        new_photo: PhotoForUpload = {
             "id": photo["id"],
             "title": this_photo_form_data["title"] + "." + photo["original_format"],
             "short_caption": {
@@ -136,7 +170,7 @@ def prepare_photos_for_upload(selected_photos, form_data):
 
 
 @login_required
-def prepare_info():
+def prepare_info() -> ViewResponse:
     try:
         selected_photo_ids = {
             photo_id
@@ -179,10 +213,10 @@ def prepare_info():
 
     if prepare_info_form.validate_on_submit():
         photos_to_upload = prepare_photos_for_upload(
-            selected_photos, form_data=prepare_info_form.data
+            selected_photos, form_data=prepare_info_form.data  # type: ignore
         )
 
-        upload_batch_of_photos.apply_async(
+        upload_batch_of_photos.apply_async(  # type: ignore
             kwargs={
                 "oauth_info": {
                     "access_token": current_user.access_token(),

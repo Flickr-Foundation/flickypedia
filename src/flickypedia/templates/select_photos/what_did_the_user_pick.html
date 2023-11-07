@@ -1,6 +1,6 @@
 {% if parsed_url.type == 'single_photo' %}
   <h2 class="select_photos_description">
-    {% if photo_data.photos.available -%}
+    {% if photos.available -%}
       You’re looking at
     {%- else -%}
       You looked up
@@ -9,7 +9,7 @@
   </h2>
 {% elif parsed_url.type == 'album' %}
   <h2 class="select_photos_description">
-    {% if photo_data.photos.available -%}
+    {% if photos.available -%}
       You’re looking at
     {%- else -%}
       You looked up
@@ -19,7 +19,7 @@
   </h2>
 {% elif parsed_url.type == 'gallery' %}
   <h2 class="select_photos_description">
-    {% if photo_data.photos.available -%}
+    {% if photos.available -%}
       You’re looking at
     {%- else -%}
       You looked up

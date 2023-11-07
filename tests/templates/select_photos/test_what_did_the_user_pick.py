@@ -45,12 +45,12 @@ def test_gets_an_album_description(
     html = render_template(
         "select_photos/what_did_the_user_pick.html",
         parsed_url={"type": "album"},
+        photos={
+            "available": [
+                f"photo-{i}" for i in range(1 if has_available_photos else 0)
+            ],
+        },
         photo_data={
-            "photos": {
-                "available": [
-                    f"photo-{i}" for i in range(1 if has_available_photos else 0)
-                ],
-            },
             "album": album,
         },
     )
