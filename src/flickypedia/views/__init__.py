@@ -1,6 +1,6 @@
-from flask import abort, render_template, request, jsonify
-from flask_login import current_user, login_required
+from flask import render_template
 
+from .api import validate_title_api
 from .get_photos import get_photos
 from .prepare_info import prepare_info, truncate_description
 from .select_photos import select_photos
@@ -17,28 +17,6 @@ def about():
 
 def bookmarklet():
     return render_template("bookmarklet.html", current_step=None)
-
-
-@login_required
-def validate_title_api():
-    """
-    A basic API for title validation that can be called from JS on the page.
-
-    This allows us to have a single definition of title validation
-    which is shared by client and server-side checks.
-    """
-    try:
-        title = request.args["title"]
-    except KeyError:
-        abort(400)
-
-    if not title.startswith("File:"):
-        abort(400)
-
-    api = current_user.wikimedia_api()
-    result = api.validate_title(title)
-
-    return jsonify(result)
 
 
 __all__ = [
