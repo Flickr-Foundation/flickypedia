@@ -3,7 +3,7 @@ from typing import Any, List, TypedDict
 
 from celery import current_task, shared_task
 from flask_login import current_user
-from flickr_photos_api import DateTaken, User as FlickrUser
+from flickr_photos_api import DateTaken, SinglePhoto, User as FlickrUser
 
 from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
 from flickypedia.apis.wikimedia import WikimediaApi
@@ -89,18 +89,36 @@ def upload_single_image(
     -   Adding the structured data to the photo
 
     """
+    photo: SinglePhoto = {
+        "id": photo_id,
+        'url': photo_url,
+        'owner': user,
+        'license': {
+            'id': license_id,
+            'label': '?',
+            'url': '?'
+        },
+        'sizes': [
+            {
+                "label": "Original",
+                "source": original_url,
+                "media": "photo",
+                "width": -1,
+                "height": -1
+            }
+        ],
+        'title': None,
+        'description': None,
+        'date_posted': date_posted,
+        'date_taken': date_taken,
+        'safety_level': 'safe',
+        'original_format': 'jpeg'
+    }
+
+
     wikitext = create_wikitext(license_id=license_id)
 
-    structured_data = create_sdc_claims_for_flickr_photo(
-        photo_id=photo_id,
-        photo_url=photo_url,
-        user=user,
-        copyright_status="copyrighted",
-        original_url=original_url,
-        license_id=license_id,
-        date_posted=date_posted,
-        date_taken=date_taken,
-    )
+    structured_data = create_sdc_claims_for_flickr_photo(photo=photo)
 
     wikimedia_page_title = api.upload_image(
         filename=filename, original_url=original_url, text=wikitext
