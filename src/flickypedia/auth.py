@@ -59,9 +59,11 @@ to the user's browser can't just retrieve their token.
 """
 
 import json
+from typing import Optional
 import uuid
 
 from authlib.integrations.httpx_client.oauth2_client import OAuth2Client
+from authlib.oauth2.rfc6749.wrappers import OAuth2Token
 from cryptography.fernet import Fernet
 from flask import abort, current_app, flash, redirect, request, session, url_for
 from flask_login import (
@@ -140,18 +142,53 @@ class WikimediaUserSession(UserMixin, user_db.Model):
     def profile_url(self):
         return f"https://commons.wikimedia.org/wiki/User:{self.name}"
 
-    def token(self):
+    def token(self) -> OAuth2Token:
         """
         Retrieve the unencrypted value of the user's token.
 
         This can only be called in the context of a logged-in Flask session,
         where we have access to the per-session encryption key.
         """
-        return json.loads(
-            decrypt_string(
-                key=session[SESSION_ENCRYPTION_KEY], ciphertext=self.encrypted_token
-            )
+        decrypted_token = decrypt_string(
+            key=session[SESSION_ENCRYPTION_KEY], ciphertext=self.encrypted_token
         )
+
+        params = json.loads(decrypted_token)
+
+        return OAuth2Token(params)
+
+    def _oauth2_client(self, **kwargs) -> OAuth2Client:
+        """
+        Returns a configured OAuth2 client.
+        """
+
+        def update_token(token: OAuth2Token, refresh_token: str) -> None:
+            self.encrypted_token = encrypt_string(
+                key=session[SESSION_ENCRYPTION_KEY], plaintext=json.dumps(token)
+            )
+            user_db.session.commit()
+
+        config = current_app.config["OAUTH2_PROVIDERS"]["wikimedia"]
+
+        return OAuth2Client(
+            client_id=config["client_id"],
+            client_secret=config["client_secret"],
+            authorization_endpoint=config["authorize_url"],
+            token_endpoint=config["token_url"],
+            token=self.token(),
+            # If/when the token is updated (using a refresh token), ensure
+            # we update the value in the database.
+            update_token=update_token,
+            **kwargs,
+        )
+
+    def ensure_active_token(self):
+        """
+        Check that the user's token is active, and if not, use the refresh token
+        to update it.
+        """
+        client = self._oauth2_client()
+        client.ensure_active_token(token=self.token())
 
     def store_new_token(self, new_token):
         """
@@ -193,11 +230,36 @@ class WikimediaUserSession(UserMixin, user_db.Model):
 
 
 @login.user_loader
-def load_user(userid: str):
+def load_user(userid: str) -> Optional[WikimediaUserSession]:
+    """
+    Load a user.  This includes checking that we still have valid
+    Wikimedia credentials for them.
+
+    This is a method required by Flask-Login.
+
+    See https://flask-login.readthedocs.io/en/latest/#flask_login.LoginManager.user_loader
+    """
     if current_app.config.get("TESTING"):
         return WikimediaUserSession(id=-1, userid=-1, name="example")
-    else:  # pragma: no cover
-        return user_db.session.get(WikimediaUserSession, userid)
+    else:
+        user = user_db.session.get(WikimediaUserSession, userid)
+
+        if user is None:
+            return
+
+        # Ensure the user has a OAuth token which is still active -- either
+        # created recently enough that it's still valid, or we have a valid
+        # refresh token we can use to get a new token.
+        #
+        # If this fails for some reason, we should log the user out.
+        try:
+            user.ensure_active_token()
+        except Exception as exc:
+            print(f"Unable to ensure active token for {user}: {exc}")
+            user.delete()
+            return None
+        else:
+            return user
 
 
 @login_required

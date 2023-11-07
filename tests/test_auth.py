@@ -1,7 +1,15 @@
+import datetime
+
 from flask import session
 from flask_login import current_user
 
-from flickypedia.auth import user_db, WikimediaUserSession, SESSION_ENCRYPTION_KEY
+from flickypedia.auth import (
+    load_user,
+    user_db,
+    WikimediaUserSession,
+    SESSION_ENCRYPTION_KEY,
+)
+from utils import store_user
 
 
 class TestOAuth2AuthorizeWikimedia:
@@ -102,3 +110,43 @@ class TestOAuth2CallbackWikimedia:
             resp = client.get("/callback/wikimedia?code=123")
 
         assert resp.status_code == 401
+
+
+class TestLoadUser:
+    def test_no_matching_id_is_no_user(self, app):
+        app.config["TESTING"] = False
+
+        with app.test_request_context():
+            assert load_user(userid="-1") is None
+
+    def test_user_with_inactive_token_is_no_user(self, app, vcr_cassette):
+        app.config["TESTING"] = False
+
+        token = {
+            "token_type": "Bearer",
+            "expires_in": 14400,
+            "access_token": "[ACCESS_TOKEN...sqfLY]",
+            "refresh_token": "[REFRESH_TOKEN...8f34f]",
+            "expires_at": -1,
+        }
+
+        with app.test_request_context():
+            user = store_user(token)
+
+            assert load_user(userid=user.id) is None
+
+    def test_returns_user_with_active_token(self, app):
+        app.config["TESTING"] = False
+
+        token = {
+            "token_type": "Bearer",
+            "expires_in": 14400,
+            "access_token": "[ACCESS_TOKEN...sqfLY]",
+            "refresh_token": "[REFRESH_TOKEN...8f34f]",
+            "expires_at": datetime.datetime.now().timestamp() + 3600,
+        }
+
+        with app.test_request_context():
+            user = store_user(token)
+
+            assert load_user(userid=user.id) == user

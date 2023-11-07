@@ -1,4 +1,12 @@
+import json
 import re
+
+from cryptography.fernet import Fernet
+from flask import session
+from flask_login import login_user
+
+from flickypedia.auth import user_db, WikimediaUserSession, SESSION_ENCRYPTION_KEY
+from flickypedia.utils import encrypt_string
 
 
 def minify(text: str) -> str:
@@ -16,3 +24,25 @@ def minify(text: str) -> str:
     but it's good enough for our test assertions.
     """
     return re.sub(r"\s+", " ", text).strip()
+
+
+def store_user(token) -> WikimediaUserSession:
+    """
+    Create a user and store them in the database.
+    """
+    key = Fernet.generate_key()
+
+    session[SESSION_ENCRYPTION_KEY] = key
+
+    user = WikimediaUserSession(
+        id="example",
+        userid="-1",
+        name="example",
+        encrypted_token=encrypt_string(key, plaintext=json.dumps(token)),
+    )
+    user_db.session.add(user)
+    user_db.session.commit()
+
+    login_user(user)
+
+    return user
