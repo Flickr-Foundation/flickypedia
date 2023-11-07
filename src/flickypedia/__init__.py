@@ -21,6 +21,7 @@ from flickypedia.apis.wikidata import (
 )
 from flickypedia.config import create_config, get_directories
 from flickypedia.duplicates import create_link_to_commons
+from flickypedia.photos import size_at
 from flickypedia.views import (
     about,
     bookmarklet,
@@ -35,7 +36,7 @@ from flickypedia.views import (
     wait_for_upload,
 )
 from flickypedia.tasks import celery_init_app
-from flickypedia.utils import create_bookmarklet, size_at
+from flickypedia.utils import create_bookmarklet
 
 
 def create_app(data_directory: str = "data", debug: bool = False) -> Flask:

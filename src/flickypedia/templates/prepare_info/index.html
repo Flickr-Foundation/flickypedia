@@ -39,7 +39,7 @@
   <form id="prepare_info" action="" method="post">
     {{ prepare_info_form.hidden_tag() }}
 
-    {{ prepare_info_form.cached_api_response_id() }}
+    {{ prepare_info_form.cache_id() }}
 
     <!-- TODO: These messages need to be plural-aware -->
 
@@ -61,7 +61,7 @@
 
     <ul class="plain_list">
       {% for field in photo_fields %}
-        {% set photo = field.label.text %}
+        {% set photo = field.label.text.photo %}
         <li class="photo">
 
         {% set large_size = photo.sizes | size_at(desired_size='Large') %}
@@ -97,7 +97,7 @@
           <details class="sdc">
             <summary>More details</summary>
 
-            {% with structured_data = photo.sdc %}
+            {% with structured_data = field.label.text.sdc %}
               {% include "prepare_info/structured_data_preview.html" %}
             {% endwith %}
           </details>

@@ -12,8 +12,8 @@ from utils import minify
         "/prepare_info",
         "/prepare_info?selected_photo_ids=",
         "/prepare_info?selected_photo_ids=123",
-        "/prepare_info?cached_api_response_id=123",
-        "/prepare_info?selected_photo_ids=&cached_api_response_id=123",
+        "/prepare_info?cache_id=123",
+        "/prepare_info?selected_photo_ids=&cache_id=123",
     ],
 )
 def test_rejects_pages_with_bad_query_params(
@@ -34,7 +34,7 @@ def test_renders_form_for_single_photo(
             out_file.write('{"value": %s}' % in_file.read())
 
     resp = logged_in_client.get(
-        "/prepare_info?selected_photo_ids=32812033543&cached_api_response_id=1234567890",
+        "/prepare_info?selected_photo_ids=32812033543&cache_id=1234567890",
     )
 
     assert resp.status_code == 200
@@ -58,7 +58,7 @@ def test_renders_form_for_multiple_photo(
             out_file.write('{"value": %s}' % in_file.read())
 
     resp = logged_in_client.get(
-        "/prepare_info?selected_photo_ids=53285005734,53283740177&cached_api_response_id=1234567890",
+        "/prepare_info?selected_photo_ids=53285005734,53283740177&cache_id=1234567890",
     )
 
     assert resp.status_code == 200
@@ -85,7 +85,7 @@ def test_blocks_uploads_with_an_invalid_title(
             out_file.write('{"value": %s}' % in_file.read())
 
     resp = logged_in_client.post(
-        "/prepare_info?selected_photo_ids=32812033543&cached_api_response_id=1234567890",
+        "/prepare_info?selected_photo_ids=32812033543&cache_id=1234567890",
         data={
             "photo_32812033543-title": "a" * 240,
             "photo_32812033543-short_caption": "A photo with a very long title",
@@ -107,7 +107,7 @@ def test_blocks_uploads_with_a_too_long_caption(
             out_file.write('{"value": %s}' % in_file.read())
 
     resp = logged_in_client.post(
-        "/prepare_info?selected_photo_ids=32812033543&cached_api_response_id=1234567890",
+        "/prepare_info?selected_photo_ids=32812033543&cache_id=1234567890",
         data={
             "photo_32812033543-title": "A photo with a reasonable title",
             "photo_32812033543-short_caption": "A photo with a very long caption" * 100,
@@ -163,7 +163,7 @@ def test_escapes_html_in_description(logged_in_client: FlaskClient, app: Flask) 
             out_file.write('{"value": %s}' % in_file.read())
 
     resp = logged_in_client.get(
-        "/prepare_info?selected_photo_ids=4452100167&cached_api_response_id=4452100167",
+        "/prepare_info?selected_photo_ids=4452100167&cache_id=4452100167",
     )
 
     assert (

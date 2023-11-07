@@ -23,6 +23,11 @@ class UserInfo(TypedDict):
     name: str
 
 
+class ShortCaption(TypedDict):
+    language: str
+    text: str
+
+
 class WikimediaApi:
     def __init__(self, client: httpx.Client) -> None:
         self.client = client
@@ -173,7 +178,7 @@ class WikimediaApi:
 
         return upload_resp["upload"]["filename"]  # type: ignore
 
-    def add_file_caption(self, *, filename: str, language: str, value: str) -> str:
+    def add_file_caption(self, *, filename: str, caption: ShortCaption) -> str:
         """
         Add a file caption to an image on Wikimedia Commons.
 
@@ -188,8 +193,8 @@ class WikimediaApi:
                 "action": "wbsetlabel",
                 "site": "commonswiki",
                 "title": f"File:{filename}",
-                "language": language,
-                "value": value,
+                "language": caption["language"],
+                "value": caption["text"],
             }
         )
 

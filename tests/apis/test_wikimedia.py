@@ -1,4 +1,4 @@
-from typing import Dict
+from typing import Any, Dict
 
 from authlib.integrations.httpx_client.oauth2_client import OAuth2Client
 from authlib.oauth2.rfc6749.wrappers import OAuth2Token
@@ -29,14 +29,16 @@ def test_get_userinfo(wikimedia_api: WikimediaApi) -> None:
             "add_file_caption",
             {
                 "filename": "GwrFireBuckets.jpg",
-                "language": "en",
-                "value": "A row of red fire buckets on a heritage railway in Gloucestershire",
+                "caption": {
+                    "language": "en",
+                    "text": "A row of red fire buckets on a heritage railway in Gloucestershire",
+                },
             },
         ),
     ],
 )
 def test_call_api_with_bad_token(
-    vcr_cassette: str, method_name: str, kwargs: Dict[str, str]
+    vcr_cassette: str, method_name: str, kwargs: Dict[str, Any]
 ) -> None:
     client = OAuth2Client(
         token=OAuth2Token(
@@ -128,8 +130,10 @@ class TestAddFileCaption:
     def test_can_set_a_file_caption(self, wikimedia_api: WikimediaApi) -> None:
         wikimedia_api.add_file_caption(
             filename="GwrFireBuckets.jpg",
-            language="en",
-            value="A row of red fire buckets on a heritage railway in Gloucestershire",
+            caption={
+                "language": "en",
+                "text": "A row of red fire buckets on a heritage railway in Gloucestershire",
+            },
         )
 
     def test_fails_if_file_caption_is_too_long(
@@ -140,9 +144,11 @@ class TestAddFileCaption:
         with pytest.raises(UnknownWikimediaApiException) as exc:
             wikimedia_api.add_file_caption(
                 filename="GwrFireBuckets.jpg",
-                language="en",
-                value="A row of red fire buckets on a heritage railway in Gloucestershire"
-                * 10,
+                caption={
+                    "language": "en",
+                    "text": "A row of red fire buckets on a heritage railway in Gloucestershire"
+                    * 10,
+                },
             )
 
         assert exc.value.code == "modification-failed"
@@ -151,8 +157,10 @@ class TestAddFileCaption:
         with pytest.raises(UnknownWikimediaApiException) as exc:
             wikimedia_api.add_file_caption(
                 filename="GwrFireBuckets.jpg",
-                language="doesnotexist",
-                value="A row of red fire buckets on a heritage railway in Gloucestershire",
+                caption={
+                    "language": "doesnotexist",
+                    "text": "A row of red fire buckets on a heritage railway in Gloucestershire",
+                },
             )
 
         assert exc.value.code == "badvalue"
@@ -161,8 +169,10 @@ class TestAddFileCaption:
         with pytest.raises(UnknownWikimediaApiException) as exc:
             wikimedia_api.add_file_caption(
                 filename="!!!.jpg",
-                language="en",
-                value="A file that doesn't actually exist in Wiki Commons",
+                caption={
+                    "language": "en",
+                    "text": "A file that doesn't actually exist in Wiki Commons",
+                },
             )
 
         assert exc.value.code == "no-such-entity-link"

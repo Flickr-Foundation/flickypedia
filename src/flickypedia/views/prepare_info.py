@@ -9,26 +9,31 @@ and they have to add title/caption/other metadata
 This page gets two arguments as query parameters:
 
 -   A comma-separated list of photo IDs in ``selected_photo_ids``
--   A pointer to a cached Flickr API response in ``cached_api_response_id``
+-   A pointer to a cached Flickr API response in ``cache_id``
 
 """
 
 import datetime
 from typing import cast, Any, Dict, List, TypedDict
 
-from flask import abort, current_app, redirect, render_template, request, url_for
+from flask import abort, redirect, render_template, request, url_for
 from flask_wtf import FlaskForm, Form
 from flask_login import current_user, login_required
-from flickr_photos_api import DateTaken, SinglePhoto, User as FlickrUser
+from flickr_photos_api import DateTaken, User as FlickrUser
 from wtforms import FormField, HiddenField, SelectField, StringField, SubmitField
 from wtforms.validators import DataRequired, Length, ValidationError
 from wtforms.widgets import TextArea
 
-from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
 from flickypedia.apis._types import Statement
+from flickypedia.photos import (
+    CategorisedPhotos,
+    PhotoWithSdc,
+    add_sdc_to_photos,
+    categorise_photos,
+    size_at,
+)
 from flickypedia.uploads import upload_batch_of_photos
-from flickypedia.utils import size_at
-from .select_photos import get_cached_api_response, remove_cached_api_response
+from .select_photos import get_cached_photos_data, remove_cached_photos_data
 from ._types import ViewResponse
 
 
@@ -67,7 +72,7 @@ class WikiFieldsForm(Form):
             raise ValidationError(validation["text"])
 
 
-def create_prepare_info_form(photos: List[SinglePhoto]) -> FlaskForm:
+def create_prepare_info_form(photos: List[PhotoWithSdc]) -> FlaskForm:
     """
     Create a Flask form with a PhotoInfoForm (list of fields) for each
     photo in the list.  This allows us to render a form like:
@@ -83,7 +88,7 @@ def create_prepare_info_form(photos: List[SinglePhoto]) -> FlaskForm:
     similar to if we'd written:
 
         class PrepareInfoForm(FlaskForm):
-            cached_api_response_id = …
+            cache_id = …
             submit = …
             photo_1 = FormField()
             photo_2 = FormField()
@@ -94,7 +99,7 @@ def create_prepare_info_form(photos: List[SinglePhoto]) -> FlaskForm:
     """
 
     class CustomForm(FlaskForm):
-        cached_api_response_id = HiddenField("cached_api_response_id")
+        cache_id = HiddenField("cache_id")
         upload = SubmitField("UPLOAD")
 
         # TODO: Get a proper list of languages here
@@ -103,15 +108,18 @@ def create_prepare_info_form(photos: List[SinglePhoto]) -> FlaskForm:
         )
 
     for p in photos:
-        sdc = create_sdc_claims_for_flickr_photo(p)
 
         class FormForThisPhoto(WikiFieldsForm):
             # original_format is optional in the Flickr API, because
             # you might not get it if the owner has disabled downloads --
             # but it's always available for CC licensed photos.
-            original_format = cast(str, p["original_format"])
+            original_format = cast(str, p["photo"]["original_format"])
 
-        setattr(CustomForm, f"photo_{p['id']}", FormField(FormForThisPhoto, label={**p, "sdc": sdc}))  # type: ignore
+        setattr(
+            CustomForm,
+            f"photo_{p['photo']['id']}",
+            FormField(FormForThisPhoto, label=p),  # type: ignore
+        )
 
     return CustomForm()
 
@@ -135,16 +143,13 @@ class PhotoForUpload(TypedDict):
     owner: FlickrUser
 
 
-class PhotoWithSdc(SinglePhoto):
-    sdc: List[Statement]
-
-
 def prepare_photos_for_upload(
     selected_photos: List[PhotoWithSdc], form_data: Dict[str, Any]
 ) -> List[PhotoForUpload]:
     photos_to_upload: List[PhotoForUpload] = []
 
-    for photo in selected_photos:
+    for photo_with_sdc in selected_photos:
+        photo = photo_with_sdc["photo"]
         this_photo_form_data = form_data[f"photo_{photo['id']}"]
 
         new_photo: PhotoForUpload = {
@@ -160,7 +165,7 @@ def prepare_photos_for_upload(
             "date_posted": photo["date_posted"],
             "original_url": size_at(photo["sizes"], desired_size="Original")["source"],
             "photo_url": photo["url"],
-            "sdc": photo["sdc"],
+            "sdc": photo_with_sdc["sdc"],
             "owner": photo["owner"],
         }
 
@@ -177,7 +182,7 @@ def prepare_info() -> ViewResponse:
             for photo_id in request.args["selected_photo_ids"].split(",")
             if photo_id
         }
-        cached_api_response_id = request.args["cached_api_response_id"]
+        cache_id = request.args["cache_id"]
     except KeyError:
         abort(400)
 
@@ -191,7 +196,7 @@ def prepare_info() -> ViewResponse:
     # This will have the same order as the photos in the previous page,
     # so doing this filter will show the photos in the same order in
     # this page.
-    api_response = get_cached_api_response(cached_api_response_id)
+    api_response = get_cached_photos_data(cache_id)
 
     selected_photos = [
         photo for photo in api_response["photos"] if photo["id"] in selected_photo_ids
@@ -200,16 +205,21 @@ def prepare_info() -> ViewResponse:
     # Do some basic consistency checks.  These assertions could fail
     # if somebody has mucked around with the URL query parameters,
     #  but in that case I'm okay to let it fail.
-    assert len(selected_photos) == len(selected_photo_ids)
-    assert all(
-        photo["license"]["id"] in current_app.config["ALLOWED_LICENSES"]
-        for photo in selected_photos
+    assert categorise_photos(selected_photos) == cast(
+        CategorisedPhotos,
+        {
+            "available": selected_photos,
+            "duplicates": {},
+            "disallowed_licenses": {},
+            "restricted": set(),
+        },
     )
 
-    # TODO: Add safety checks here
+    # Next add the structured data to the photos.
+    photos_with_sdc = add_sdc_to_photos(selected_photos)
 
     # Now construct the "prepare info" form.
-    prepare_info_form = create_prepare_info_form(photos=selected_photos)
+    prepare_info_form = create_prepare_info_form(photos=photos_with_sdc)
 
     if prepare_info_form.validate_on_submit():
         photos_to_upload = prepare_photos_for_upload(
@@ -225,12 +235,12 @@ def prepare_info() -> ViewResponse:
                 },
                 "photos_to_upload": photos_to_upload,
             },
-            task_id=cached_api_response_id,
+            task_id=cache_id,
         )
 
-        remove_cached_api_response(response_id=cached_api_response_id)
+        remove_cached_photos_data(response_id=cache_id)
 
-        return redirect(url_for("wait_for_upload", task_id=cached_api_response_id))
+        return redirect(url_for("wait_for_upload", task_id=cache_id))
 
     return render_template(
         "prepare_info/index.html",
