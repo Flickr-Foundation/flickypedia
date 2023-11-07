@@ -71,7 +71,7 @@ def wikimedia_api(cassette_name):
         cassette_library_dir="tests/fixtures/cassettes",
         filter_headers=["authorization"],
     ):
-        try:
+        try:  # pragma: no cover
             token = json.loads(os.environ["WIKIMEDIA_ACCESS_TOKEN"])
             client = OAuth2Client(token=token)
         except KeyError:
