@@ -27,7 +27,9 @@ class TestOAuth2AuthorizeWikimedia:
             "https://meta.wikimedia.org/w/rest.php/oauth2/authorize?response_type=code&client_id=example1234&state="
         )
 
-    def test_logged_in_user_is_redirected_to_get_photos(self, logged_in_client: FlaskClient) -> None:
+    def test_logged_in_user_is_redirected_to_get_photos(
+        self, logged_in_client: FlaskClient
+    ) -> None:
         resp = logged_in_client.get("/authorize/wikimedia")
 
         # If you're already logged in, you should be redirected
@@ -36,7 +38,9 @@ class TestOAuth2AuthorizeWikimedia:
 
 
 class TestLogOut:
-    def test_logging_out_redirects_to_homepage(self, logged_in_client: FlaskClient) -> None:
+    def test_logging_out_redirects_to_homepage(
+        self, logged_in_client: FlaskClient
+    ) -> None:
         logout_resp = logged_in_client.get("/logout")
 
         # After you're logged out, you should be redirected to the homepage
@@ -49,21 +53,27 @@ class TestLogOut:
         auth_resp = logged_in_client.get("/authorize/wikimedia")
         assert auth_resp.headers["location"].startswith("https://meta.wikimedia.org/")
 
-    def test_logging_out_removes_current_user(self, logged_in_client: FlaskClient) -> None:
+    def test_logging_out_removes_current_user(
+        self, logged_in_client: FlaskClient
+    ) -> None:
         assert not current_user.is_anonymous
 
         logged_in_client.get("/logout")
 
         assert current_user.is_anonymous
 
-    def test_logging_out_removes_user_from_user_db(self, logged_in_client: FlaskClient) -> None:
+    def test_logging_out_removes_user_from_user_db(
+        self, logged_in_client: FlaskClient
+    ) -> None:
         assert len(user_db.session.query(WikimediaUserSession).all()) == 1
 
         logged_in_client.get("/logout")
 
         assert len(user_db.session.query(WikimediaUserSession).all()) == 0
 
-    def test_logging_out_removes_encryption_key_from_session(self, logged_in_client: FlaskClient) -> None:
+    def test_logging_out_removes_encryption_key_from_session(
+        self, logged_in_client: FlaskClient
+    ) -> None:
         session[SESSION_ENCRYPTION_KEY] = "<sekrit key>"
 
         logged_in_client.get("/logout")
@@ -72,7 +82,9 @@ class TestLogOut:
 
 
 class TestOAuth2CallbackWikimedia:
-    def test_already_logged_in_bypasses_flow(self, logged_in_client: FlaskClient) -> None:
+    def test_already_logged_in_bypasses_flow(
+        self, logged_in_client: FlaskClient
+    ) -> None:
         resp = logged_in_client.get("/callback/wikimedia")
 
         # If you're already logged in, you don't need to come through
@@ -85,7 +97,9 @@ class TestOAuth2CallbackWikimedia:
 
         assert resp.status_code == 401
 
-    def test_missing_code_is_error(self, client: FlaskClient, vcr_cassette: str) -> None:
+    def test_missing_code_is_error(
+        self, client: FlaskClient, vcr_cassette: str
+    ) -> None:
         with client.session_transaction() as session:
             session["oauth_authorize_state"] = "1234"
 
@@ -93,7 +107,9 @@ class TestOAuth2CallbackWikimedia:
 
         assert resp.status_code == 401
 
-    def test_mismatched_code_is_error(self, client: FlaskClient, vcr_cassette: str) -> None:
+    def test_mismatched_code_is_error(
+        self, client: FlaskClient, vcr_cassette: str
+    ) -> None:
         with client.session_transaction() as session:
             session["oauth_authorize_state"] = "1234"
 
@@ -101,7 +117,9 @@ class TestOAuth2CallbackWikimedia:
 
         assert resp.status_code == 401
 
-    def test_bad_token_from_wikimedia_is_error(self, app: Flask, vcr_cassette: str) -> None:
+    def test_bad_token_from_wikimedia_is_error(
+        self, app: Flask, vcr_cassette: str
+    ) -> None:
         app.config["OAUTH2_PROVIDERS"]["wikimedia"].update(
             {
                 "client_id": "client1234",
@@ -115,7 +133,9 @@ class TestOAuth2CallbackWikimedia:
         assert resp.status_code == 401
 
 
-def test_token_is_saved_to_database_when_refreshed(app: Flask, client: FlaskClient, vcr_cassette: str) -> None:
+def test_token_is_saved_to_database_when_refreshed(
+    app: Flask, client: FlaskClient, vcr_cassette: str
+) -> None:
     """
     Periodically, we call the ``ensure_active_token()`` to make sure
     we still have a valid token for use with the Wikimedia API.
@@ -171,16 +191,20 @@ class TestLoadUser:
         with app.test_request_context():
             assert load_user(userid="-1") is None
 
-    def test_user_with_inactive_token_is_no_user(self, app: Flask, vcr_cassette: str) -> None:
+    def test_user_with_inactive_token_is_no_user(
+        self, app: Flask, vcr_cassette: str
+    ) -> None:
         app.config["TESTING"] = False
 
-        token = OAuth2Token({
-            "token_type": "Bearer",
-            "expires_in": 14400,
-            "access_token": "[ACCESS_TOKEN...sqfLY]",
-            "refresh_token": "[REFRESH_TOKEN...8f34f]",
-            "expires_at": -1,
-        })
+        token = OAuth2Token(
+            {
+                "token_type": "Bearer",
+                "expires_in": 14400,
+                "access_token": "[ACCESS_TOKEN...sqfLY]",
+                "refresh_token": "[REFRESH_TOKEN...8f34f]",
+                "expires_at": -1,
+            }
+        )
 
         with app.test_request_context():
             user = store_user(token)
@@ -190,13 +214,15 @@ class TestLoadUser:
     def test_returns_user_with_active_token(self, app: Flask) -> None:
         app.config["TESTING"] = False
 
-        token = OAuth2Token({
-            "token_type": "Bearer",
-            "expires_in": 14400,
-            "access_token": "[ACCESS_TOKEN...sqfLY]",
-            "refresh_token": "[REFRESH_TOKEN...8f34f]",
-            "expires_at": datetime.datetime.now().timestamp() + 3600,
-        })
+        token = OAuth2Token(
+            {
+                "token_type": "Bearer",
+                "expires_in": 14400,
+                "access_token": "[ACCESS_TOKEN...sqfLY]",
+                "refresh_token": "[REFRESH_TOKEN...8f34f]",
+                "expires_at": datetime.datetime.now().timestamp() + 3600,
+            }
+        )
 
         with app.test_request_context():
             user = store_user(token)

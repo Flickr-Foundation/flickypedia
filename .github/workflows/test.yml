@@ -41,7 +41,8 @@ jobs:
           tests/apis \
           tests/views \
           tests/utils.py \
-          tests/test_auth.py
+          tests/test_auth.py \
+          tests/templates
     - name: Run linting
       run: |
         black --check .
