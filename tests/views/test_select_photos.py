@@ -33,7 +33,7 @@ def test_can_select_single_photo_on_flickr(
 
     assert resp.status_code == 302
     assert resp.headers["location"].startswith(
-        "/prepare_info?selected_photo_ids=53253175319&cached_api_response_id="
+        "/prepare_info?selected_photo_ids=53253175319&cache_id="
     )
 
 
@@ -150,13 +150,13 @@ def test_selecting_photo_redirects_you_to_prepare_info(
 
     resp = logged_in_client.post(
         f"/select_photos?flickr_url={flickr_url}",
-        data={"photo_32812033543": "on", "cached_api_response_id": "1234567890"},
+        data={"photo_32812033543": "on", "cache_id": "1234567890"},
     )
 
     assert resp.status_code == 302
     assert (
         resp.headers["location"]
-        == "/prepare_info?selected_photo_ids=32812033543&cached_api_response_id=1234567890"
+        == "/prepare_info?selected_photo_ids=32812033543&cache_id=1234567890"
     )
 
 
@@ -177,14 +177,14 @@ def test_selecting_multiple_photo_redirects_you_to_prepare_info(
         data={
             "photo_53285005734": "on",
             "photo_53283740177": "on",
-            "cached_api_response_id": "1234567890",
+            "cache_id": "1234567890",
         },
     )
 
     assert resp.status_code == 302
     assert (
         resp.headers["location"]
-        == "/prepare_info?selected_photo_ids=53285005734,53283740177&cached_api_response_id=1234567890"
+        == "/prepare_info?selected_photo_ids=53285005734,53283740177&cache_id=1234567890"
     )
 
 

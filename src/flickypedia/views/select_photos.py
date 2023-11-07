@@ -67,9 +67,7 @@ class BaseSelectForm(FlaskForm):
     consistent -- see comments in that function.
     """
 
-    cached_api_response_id = HiddenField(
-        "cached_api_response_id", validators=[DataRequired()]
-    )
+    cache_id = HiddenField("cache_id", validators=[DataRequired()])
     submit = SubmitField("PREPARE INFO")
 
     def selected_photo_ids(self) -> List[str]:
@@ -92,7 +90,7 @@ def create_select_photos_form(photos: List[SinglePhoto]) -> BaseSelectForm:
     similar to if we'd written:
 
         class SelectPhotosForm(FlaskForm):
-            cached_api_response_id = …
+            cache_id = …
             submit = …
 
             photo_1 = BooleanField()
@@ -137,11 +135,11 @@ def select_photos() -> ViewResponse:
     base_form = BaseSelectForm()
 
     if base_form.validate_on_submit():
-        photo_data = get_cached_api_response(
-            response_id=base_form.cached_api_response_id.data  # type: ignore
+        photo_data = get_cached_photos_data(
+            response_id=base_form.cache_id.data  # type: ignore
         )
 
-        cached_api_response_id = base_form.cached_api_response_id.data
+        cache_id = base_form.cache_id.data
 
     # If this is the first time somebody is visiting the page or
     # we don't have a cached API response, then load the photos
@@ -149,7 +147,7 @@ def select_photos() -> ViewResponse:
     else:
         try:
             photo_data = get_photos_from_flickr(parsed_url)
-            cached_api_response_id = save_cached_api_response(photo_data)
+            cache_id = save_cached_photos_data(photo_data)
         except ResourceNotFound:
             # TODO: Add tests for this
             label = {"single_photo": "photo"}.get(
@@ -182,7 +180,7 @@ def select_photos() -> ViewResponse:
             url_for(
                 "prepare_info",
                 selected_photo_ids=parsed_url["photo_id"],
-                cached_api_response_id=cached_api_response_id,
+                cache_id=cache_id,
             )
         )
 
@@ -193,7 +191,7 @@ def select_photos() -> ViewResponse:
     # Go ahead and build the full form.
     select_photos_form = create_select_photos_form(photos=sorted_photos["available"])
 
-    select_photos_form.cached_api_response_id.data = cached_api_response_id
+    select_photos_form.cache_id.data = cache_id
 
     # Now check to see if somebody has submitted a form -- if so, we'll
     # take those IDs and send them to the next step.
@@ -208,7 +206,7 @@ def select_photos() -> ViewResponse:
                 url_for(
                     "prepare_info",
                     selected_photo_ids=",".join(photo_ids),
-                    cached_api_response_id=cached_api_response_id,
+                    cache_id=cache_id,
                 )
             )
         else:
@@ -227,9 +225,9 @@ def select_photos() -> ViewResponse:
     )
 
 
-def get_cached_api_response(response_id: str) -> GetPhotosData:
+def get_cached_photos_data(response_id: str) -> GetPhotosData:
     """
-    Retrieved a cached API response.
+    Retrieve some cached photos data.
     """
     cache_dir = current_app.config["FLICKR_API_RESPONSE_CACHE"]
 
@@ -239,7 +237,7 @@ def get_cached_api_response(response_id: str) -> GetPhotosData:
     return cached_data["value"]  # type: ignore
 
 
-def save_cached_api_response(response: GetPhotosData) -> str:
+def save_cached_photos_data(response: GetPhotosData) -> str:
     """
     Save a cached API response.  Returns an ID which can be used to
     retrieve this response now.
@@ -261,7 +259,7 @@ def save_cached_api_response(response: GetPhotosData) -> str:
     return response_id
 
 
-def remove_cached_api_response(response_id: str) -> None:
+def remove_cached_photos_data(response_id: str) -> None:
     """
     Remove a cached API response.
     """

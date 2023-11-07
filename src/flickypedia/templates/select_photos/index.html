@@ -35,7 +35,7 @@
     <form id="select_photos" action="{{ url_for('select_photos', flickr_url=flickr_url) }}" method="post">
       {{ select_photos_form.hidden_tag() }}
 
-      {{ select_photos_form.cached_api_response_id }}
+      {{ select_photos_form.cache_id }}
 
       <ul class="plain_list photoslist-{{ parsed_url.type }}">
         {% for field in select_photos_form %}

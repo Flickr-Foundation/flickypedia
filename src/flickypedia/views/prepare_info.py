@@ -9,7 +9,7 @@ and they have to add title/caption/other metadata
 This page gets two arguments as query parameters:
 
 -   A comma-separated list of photo IDs in ``selected_photo_ids``
--   A pointer to a cached Flickr API response in ``cached_api_response_id``
+-   A pointer to a cached Flickr API response in ``cache_id``
 
 """
 
@@ -28,7 +28,7 @@ from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
 from flickypedia.apis._types import Statement
 from flickypedia.photos import CategorisedPhotos, categorise_photos, size_at
 from flickypedia.uploads import upload_batch_of_photos
-from .select_photos import get_cached_api_response, remove_cached_api_response
+from .select_photos import get_cached_photos_data, remove_cached_photos_data
 from ._types import ViewResponse
 
 
@@ -83,7 +83,7 @@ def create_prepare_info_form(photos: List[SinglePhoto]) -> FlaskForm:
     similar to if we'd written:
 
         class PrepareInfoForm(FlaskForm):
-            cached_api_response_id = …
+            cache_id = …
             submit = …
             photo_1 = FormField()
             photo_2 = FormField()
@@ -94,7 +94,7 @@ def create_prepare_info_form(photos: List[SinglePhoto]) -> FlaskForm:
     """
 
     class CustomForm(FlaskForm):
-        cached_api_response_id = HiddenField("cached_api_response_id")
+        cache_id = HiddenField("cache_id")
         upload = SubmitField("UPLOAD")
 
         # TODO: Get a proper list of languages here
@@ -177,7 +177,7 @@ def prepare_info() -> ViewResponse:
             for photo_id in request.args["selected_photo_ids"].split(",")
             if photo_id
         }
-        cached_api_response_id = request.args["cached_api_response_id"]
+        cache_id = request.args["cache_id"]
     except KeyError:
         abort(400)
 
@@ -191,7 +191,7 @@ def prepare_info() -> ViewResponse:
     # This will have the same order as the photos in the previous page,
     # so doing this filter will show the photos in the same order in
     # this page.
-    api_response = get_cached_api_response(cached_api_response_id)
+    api_response = get_cached_photos_data(cache_id)
 
     selected_photos = [
         photo for photo in api_response["photos"] if photo["id"] in selected_photo_ids
@@ -227,12 +227,12 @@ def prepare_info() -> ViewResponse:
                 },
                 "photos_to_upload": photos_to_upload,
             },
-            task_id=cached_api_response_id,
+            task_id=cache_id,
         )
 
-        remove_cached_api_response(response_id=cached_api_response_id)
+        remove_cached_photos_data(response_id=cache_id)
 
-        return redirect(url_for("wait_for_upload", task_id=cached_api_response_id))
+        return redirect(url_for("wait_for_upload", task_id=cache_id))
 
     return render_template(
         "prepare_info/index.html",
