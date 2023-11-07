@@ -21,7 +21,6 @@ from wtforms.validators import DataRequired, Length, ValidationError
 from wtforms.widgets import TextArea
 
 from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
-from flickypedia.apis.wikimedia import validate_title
 from flickypedia.uploads import upload_batch_of_photos
 from flickypedia.utils import size_at
 from .select_photos import get_cached_api_response, remove_cached_api_response
@@ -52,7 +51,8 @@ class WikiFieldsForm(Form):
     def validate_title(form, field):
         title = f"File:{field.data}.{form.original_format}"
 
-        validation = validate_title(title=title)
+        api = current_user.wikimedia_api()
+        validation = api.validate_title(title=title)
 
         if validation["result"] != "ok":
             raise ValidationError(validation["text"])

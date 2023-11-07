@@ -8,7 +8,6 @@ from flickypedia.apis.wikimedia import (
     DuplicatePhotoUploadException,
     InvalidAccessTokenException,
     UnknownWikimediaApiException,
-    validate_title,
 )
 from flickypedia.apis.wikitext import create_wikitext
 
@@ -236,12 +235,12 @@ class TestAddStructuredData:
         pytest.param("File:FishingBoatsByTheRiver.jpg", "ok", id="allowed_title"),
     ],
 )
-def test_validate_title(vcr_cassette, title, result):
-    assert validate_title(title=title)["result"] == result
+def test_validate_title(wikimedia_api, title, result):
+    assert wikimedia_api.validate_title(title=title)["result"] == result
 
 
-def test_validate_title_links_to_duplicates(vcr_cassette):
-    result = validate_title(title="File:P1.jpg")
+def test_validate_title_links_to_duplicates(wikimedia_api):
+    result = wikimedia_api.validate_title(title="File:P1.jpg")
 
     assert (
         result["text"]

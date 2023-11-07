@@ -1,7 +1,6 @@
 from flask import abort, render_template, request, jsonify
-from flask_login import login_required
+from flask_login import current_user, login_required
 
-from flickypedia.apis.wikimedia import validate_title
 from .get_photos import get_photos
 from .prepare_info import prepare_info, truncate_description
 from .select_photos import select_photos
@@ -33,7 +32,10 @@ def validate_title_api():
     except KeyError:
         return abort(400)
 
-    return jsonify(validate_title(title))
+    api = current_user.wikimedia_api()
+    result = api.validate_title(title)
+
+    return jsonify(result)
 
 
 __all__ = [
