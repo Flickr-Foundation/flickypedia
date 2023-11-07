@@ -1,11 +1,14 @@
+from typing import List, TypedDict
+
 import bs4
-from flask import render_template
+from flask import Flask, render_template
 import pytest
 
+from flickypedia.views.select_photos import CategorisedPhotos
 from utils import minify
 
 
-EMPTY_DATA = {
+EMPTY_DATA: CategorisedPhotos = {
     "duplicates": {},
     "disallowed_licenses": {},
     "restricted": set(),
@@ -13,10 +16,13 @@ EMPTY_DATA = {
 }
 
 
-def get_paragraphs(html):
+ParagraphData = TypedDict("ParagraphData", {"class": str, "text": str})
+
+
+def get_paragraphs(html: str) -> List[ParagraphData]:
     soup = bs4.BeautifulSoup(html, "html.parser")
 
-    result = []
+    result: List[ParagraphData] = []
 
     for paragraph in soup.find_all("p"):
         p_class = paragraph.attrs["class"][0]
@@ -36,7 +42,9 @@ def get_paragraphs(html):
         (10, "All 10 photos can be uploaded to Wikimedia Commons. Yay!"),
     ],
 )
-def test_shows_correct_message_when_all_available(app, count, expected_text):
+def test_shows_correct_message_when_all_available(
+    app: Flask, count: int, expected_text: str
+) -> None:
     """
     Every photo can be uploaded to Wikimedia Commons.
     """
@@ -68,7 +76,9 @@ def test_shows_correct_message_when_all_available(app, count, expected_text):
         ),
     ],
 )
-def test_shows_correct_message_when_all_duplicates(app, count, expected_text):
+def test_shows_correct_message_when_all_duplicates(
+    app: Flask, count: int, expected_text: str
+) -> None:
     """
     Every photo is a duplicate of one already on Commons.
     """
@@ -106,7 +116,9 @@ def test_shows_correct_message_when_all_duplicates(app, count, expected_text):
         ),
     ],
 )
-def test_shows_correct_message_when_all_disallowed(app, count, expected_text):
+def test_shows_correct_message_when_all_disallowed(
+    app: Flask, count: int, expected_text: str
+) -> None:
     """
     Every photo has a CC-BY 2.0 license which isn't allowed on Commons.
     """
@@ -136,7 +148,9 @@ def test_shows_correct_message_when_all_disallowed(app, count, expected_text):
         (10, "None of these photos can be used."),
     ],
 )
-def test_shows_correct_message_when_all_restricted(app, count, expected_text):
+def test_shows_correct_message_when_all_restricted(
+    app: Flask, count: int, expected_text: str
+) -> None:
     """
     Every photo has a CC-BY 2.0 license which isn't allowed on Commons.
     """
@@ -174,7 +188,9 @@ def test_shows_correct_message_when_all_restricted(app, count, expected_text):
         ),
     ],
 )
-def test_shows_correct_combination_of_licenses(app, licenses, expected_text):
+def test_shows_correct_combination_of_licenses(
+    app: Flask, licenses: List[str], expected_text: str
+) -> None:
     html = render_template(
         "select_photos/which_photos_can_be_uploaded.html",
         photos={
@@ -238,15 +254,15 @@ def test_shows_correct_combination_of_licenses(app, licenses, expected_text):
 )
 @pytest.mark.parametrize("restricted", [0, 1])
 def test_shows_correct_message(
-    app,
-    available,
-    duplicates,
-    disallowed_licenses,
-    restricted,
-    expected_available_text,
-    expected_duplicate_text,
-    expected_disallowed_licenses_text,
-):
+    app: Flask,
+    available: int,
+    duplicates: int,
+    disallowed_licenses: int,
+    restricted: int,
+    expected_available_text: str,
+    expected_duplicate_text: str,
+    expected_disallowed_licenses_text: str,
+) -> None:
     # This test is explicitly for cases where we have a mixed collection
     # of photos; any time the parameters give us a single type of photo,
     # we want to skip.

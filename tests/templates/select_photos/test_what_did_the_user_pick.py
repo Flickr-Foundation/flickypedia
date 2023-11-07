@@ -1,14 +1,15 @@
 import bs4
-from flask import render_template
+from flask import Flask, render_template
+from flickr_photos_api import AlbumInfo
 import pytest
 
 from utils import minify
 
 
-def get_text(html):
+def get_text(html: str) -> str:
     soup = bs4.BeautifulSoup(html, "html.parser")
 
-    return minify(soup.find("h2").getText().strip())
+    return minify(soup.find("h2").getText().strip())  # type: ignore
 
 
 @pytest.mark.parametrize(
@@ -38,7 +39,9 @@ def get_text(html):
         ),
     ],
 )
-def test_gets_an_album_description(app, has_available_photos, album, expected_text):
+def test_gets_an_album_description(
+    app: Flask, has_available_photos: bool, album: AlbumInfo, expected_text: str
+) -> None:
     html = render_template(
         "select_photos/what_did_the_user_pick.html",
         parsed_url={"type": "album"},

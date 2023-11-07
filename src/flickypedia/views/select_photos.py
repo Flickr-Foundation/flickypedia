@@ -27,7 +27,7 @@ TODO:
 import datetime
 import json
 import os
-from typing import Any, Dict, List, TypedDict, Union
+from typing import Any, Dict, List, Set, TypedDict, Union
 import uuid
 
 from flask import (
@@ -59,9 +59,10 @@ from flask_wtf import FlaskForm
 from wtforms import BooleanField, HiddenField, SubmitField
 from wtforms.validators import DataRequired
 
-from flickypedia.duplicates import find_duplicates
+from flickypedia.duplicates import find_duplicates, DuplicateInfo
 from flickypedia.utils import DatetimeDecoder, DatetimeEncoder
 from .get_photos import FlickrPhotoURLForm
+from ._types import ViewResponse
 
 
 class SinglePhotoData(TypedDict):
@@ -104,7 +105,14 @@ def get_photos(parsed_url: ParseResult) -> GetPhotosData:
         raise TypeError
 
 
-def categorise_photos(all_photos: List[SinglePhoto]):
+class CategorisedPhotos(TypedDict):
+    duplicates: Dict[str, DuplicateInfo]
+    disallowed_licenses: Dict[str, str]
+    restricted: Set[str]
+    available: List[SinglePhoto]
+
+
+def categorise_photos(all_photos: List[SinglePhoto]) -> CategorisedPhotos:
     """
     Given a list of photos from the Flickr API, split them into
     three lists:
@@ -170,7 +178,7 @@ class BaseSelectForm(FlaskForm):
     submit = SubmitField("PREPARE INFO")
 
 
-def create_select_photos_form(photos):
+def create_select_photos_form(photos: List[SinglePhoto]) -> FlaskForm:
     """
     Create a Flask form with a boolean field (checkbox) for each photo
     on the list.  This allows us to render a form like:
@@ -199,7 +207,7 @@ def create_select_photos_form(photos):
     """
 
     class CustomForm(BaseSelectForm):
-        def selected_photo_ids(self):
+        def selected_photo_ids(self) -> List[str]:
             return [
                 name.replace("photo_", "")
                 for name, value in self.data.items()
@@ -207,13 +215,13 @@ def create_select_photos_form(photos):
             ]
 
     for p in photos:
-        setattr(CustomForm, f"photo_{p['id']}", BooleanField(label=p))
+        setattr(CustomForm, f"photo_{p['id']}", BooleanField(label=p))  # type: ignore
 
     return CustomForm()
 
 
 @login_required
-def select_photos():
+def select_photos() -> ViewResponse:
     try:
         flickr_url = request.args["flickr_url"]
         parsed_url = parse_flickr_url(flickr_url)

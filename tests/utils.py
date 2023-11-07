@@ -2,6 +2,7 @@ import json
 import re
 from typing import Union
 
+from authlib.oauth2.rfc6749.wrappers import OAuth2Token
 from cryptography.fernet import Fernet
 from flask import session
 from flask_login import login_user
@@ -34,7 +35,7 @@ def minify(text: Union[str, bytes]) -> str:
     return text
 
 
-def store_user(token) -> WikimediaUserSession:
+def store_user(token: OAuth2Token) -> WikimediaUserSession:
     """
     Create a user and store them in the database.
     """

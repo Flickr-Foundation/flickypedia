@@ -1,5 +1,7 @@
 from typing import Any, Callable
 
+from flask.testing import FlaskClient
+
 from flickypedia.auth import WikimediaUserSession
 
 current_user: WikimediaUserSession
@@ -14,3 +16,5 @@ class LoginManager:
     def user_loader(self, callback: Callable[..., Any]) -> Callable[..., Any]: ...
 
     login_view: str
+
+class FlaskLoginClient(FlaskClient): ...

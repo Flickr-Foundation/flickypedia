@@ -1,7 +1,11 @@
 import datetime
 import os
 import shutil
+from typing import Generator
 
+from authlib.oauth2.rfc6749.wrappers import OAuth2Token
+from flask import Flask
+from flask.testing import FlaskClient
 from flask_login import FlaskLoginClient, current_user
 from flickr_photos_api import FlickrPhotosApi
 import httpx
@@ -16,7 +20,7 @@ from utils import store_user
 
 
 @pytest.fixture
-def user_agent():
+def user_agent() -> str:
     return "Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)"
 
 
@@ -39,7 +43,7 @@ def cassette_name(request: FixtureRequest) -> str:
 
 
 @pytest.fixture(scope="function")
-def vcr_cassette(cassette_name):
+def vcr_cassette(cassette_name: str) -> Generator[None, None, None]:
     """
     Creates a VCR cassette for use in tests.
 
@@ -55,7 +59,7 @@ def vcr_cassette(cassette_name):
 
 
 @pytest.fixture(scope="function")
-def wikimedia_api(cassette_name):
+def wikimedia_api(cassette_name: str) -> Generator[WikimediaApi, None, None]:
     """
     Creates an instance of the WikimediaApi class for use in tests.
 
@@ -92,7 +96,9 @@ def wikimedia_api(cassette_name):
 
 
 @pytest.fixture(scope="function")
-def flickr_api(cassette_name, user_agent):
+def flickr_api(
+    cassette_name: str, user_agent: str
+) -> Generator[FlickrPhotosApi, None, None]:
     """
     Creates an instance of the FlickrApi class for use in tests.
 
@@ -111,7 +117,7 @@ def flickr_api(cassette_name, user_agent):
 
 
 @pytest.fixture()
-def app(user_agent, tmpdir):
+def app(user_agent: str, tmpdir: str) -> Generator[Flask, None, None]:
     """
     Creates an instance of the app for use in testing.
 
@@ -142,7 +148,7 @@ def app(user_agent, tmpdir):
 
 
 @pytest.fixture()
-def client(app):
+def client(app: Flask) -> Generator[FlaskClient, None, None]:
     """
     Creates a client for use in testing.
 
@@ -153,7 +159,7 @@ def client(app):
 
 
 @pytest.fixture
-def logged_in_client(app):
+def logged_in_client(app: Flask) -> Generator[FlaskClient, None, None]:
     """
     Creates a client for use in testing which is logged in.
 
@@ -171,13 +177,15 @@ def logged_in_client(app):
     with app.test_request_context():
         with app.test_client(user=user) as client:
             user = store_user(
-                token={
-                    "token_type": "Bearer",
-                    "expires_in": 14400,
-                    "access_token": "[ACCESS_TOKEN...abcde]",
-                    "refresh_token": "[REFRESH_TOKEN...12345]",
-                    "expires_at": datetime.datetime.now().timestamp() + 3600,
-                }
+                token=OAuth2Token(
+                    {
+                        "token_type": "Bearer",
+                        "expires_in": 14400,
+                        "access_token": "[ACCESS_TOKEN...abcde]",
+                        "refresh_token": "[REFRESH_TOKEN...12345]",
+                        "expires_at": datetime.datetime.now().timestamp() + 3600,
+                    }
+                )
             )
             assert current_user == user
 

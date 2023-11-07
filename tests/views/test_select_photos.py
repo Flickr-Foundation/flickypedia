@@ -1,5 +1,8 @@
 import json
 
+from flask import Flask
+from flask.testing import FlaskClient
+from flickr_photos_api import FlickrPhotosApi
 import pytest
 
 from utils import minify
@@ -13,13 +16,17 @@ from utils import minify
         "/select_photos?flickr_url=https://example.net",
     ],
 )
-def test_rejects_pages_with_bad_query_params(logged_in_client, url):
+def test_rejects_pages_with_bad_query_params(
+    logged_in_client: FlaskClient, url: str
+) -> None:
     resp = logged_in_client.get(url)
 
     assert resp.status_code == 400
 
 
-def test_can_select_single_photo_on_flickr(logged_in_client, flickr_api):
+def test_can_select_single_photo_on_flickr(
+    logged_in_client: FlaskClient, flickr_api: FlickrPhotosApi
+) -> None:
     resp = logged_in_client.get(
         "/select_photos?flickr_url=https://www.flickr.com/photos/199246608@N02/53253175319/"
     )
@@ -30,7 +37,9 @@ def test_can_select_single_photo_on_flickr(logged_in_client, flickr_api):
     )
 
 
-def test_duplicate_single_photo_on_flickr_is_not_allowed(logged_in_client, flickr_api):
+def test_duplicate_single_photo_on_flickr_is_not_allowed(
+    logged_in_client: FlaskClient, flickr_api: FlickrPhotosApi
+) -> None:
     resp = logged_in_client.get(
         "/select_photos?flickr_url=https://www.flickr.com/photos/fotnmc/9999819294/"
     )
@@ -39,7 +48,9 @@ def test_duplicate_single_photo_on_flickr_is_not_allowed(logged_in_client, flick
     assert b"Your work is done!" in resp.data
 
 
-def test_single_photo_with_bad_license_is_not_allowed(logged_in_client, flickr_api):
+def test_single_photo_with_bad_license_is_not_allowed(
+    logged_in_client: FlaskClient, flickr_api: FlickrPhotosApi
+) -> None:
     resp = logged_in_client.get(
         "/select_photos?flickr_url=https://www.flickr.com/photos/ryanschude/50868060871/"
     )
@@ -48,7 +59,9 @@ def test_single_photo_with_bad_license_is_not_allowed(logged_in_client, flickr_a
     assert "This photo can’t be used" in resp.data.decode("utf8")
 
 
-def test_gets_album_on_flickr(logged_in_client, flickr_api):
+def test_gets_album_on_flickr(
+    logged_in_client: FlaskClient, flickr_api: FlickrPhotosApi
+) -> None:
     resp = logged_in_client.get(
         "/select_photos?flickr_url=https://www.flickr.com/photos/aljazeeraenglish/albums/72157626164453131/"
     )
@@ -88,8 +101,8 @@ def test_gets_album_on_flickr(logged_in_client, flickr_api):
     ],
 )
 def test_redirects_to_get_photos_if_resource_not_found(
-    logged_in_client, flickr_api, url, error
-):
+    logged_in_client: FlaskClient, flickr_api: FlickrPhotosApi, url: str, error: bytes
+) -> None:
     """
     If you try to look up a non-existent URL, you should be redirected
     back to the find photos screen, where:
@@ -109,7 +122,9 @@ def test_redirects_to_get_photos_if_resource_not_found(
     assert f'value="{url}"'.encode("ascii") in redirected_resp.data
 
 
-def test_no_photo_selection_is_error(logged_in_client, flickr_api):
+def test_no_photo_selection_is_error(
+    logged_in_client: FlaskClient, flickr_api: FlickrPhotosApi
+) -> None:
     """
     If you POST a form without a selection, you get an error.
     """
@@ -122,8 +137,8 @@ def test_no_photo_selection_is_error(logged_in_client, flickr_api):
 
 
 def test_selecting_photo_redirects_you_to_prepare_info(
-    logged_in_client, app, flickr_api
-):
+    logged_in_client: FlaskClient, app: Flask, flickr_api: FlickrPhotosApi
+) -> None:
     flickr_url = "https://www.flickr.com/photos/coast_guard/32812033543/"
 
     cache_dir = app.config["FLICKR_API_RESPONSE_CACHE"]
@@ -146,8 +161,8 @@ def test_selecting_photo_redirects_you_to_prepare_info(
 
 
 def test_selecting_multiple_photo_redirects_you_to_prepare_info(
-    logged_in_client, app, flickr_api
-):
+    logged_in_client: FlaskClient, app: Flask, flickr_api: FlickrPhotosApi
+) -> None:
     flickr_url = "https://www.flickr.com/photos/icann/albums/72177720312192106"
 
     cache_dir = app.config["FLICKR_API_RESPONSE_CACHE"]
@@ -173,7 +188,9 @@ def test_selecting_multiple_photo_redirects_you_to_prepare_info(
     )
 
 
-def test_you_cant_select_a_restricted_image(logged_in_client, flickr_api):
+def test_you_cant_select_a_restricted_image(
+    logged_in_client: FlaskClient, flickr_api: FlickrPhotosApi
+) -> None:
     # This is a graphic showing a Buddha quote which is marked as
     # safety level "restricted", so we shouldn't allow somebody to select
     # it for sending to Wikimedia Commons.

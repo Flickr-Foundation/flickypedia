@@ -1,17 +1,18 @@
+from flask.testing import FlaskClient
 from flask_login import FlaskLoginClient
 
 from flickypedia import create_app
 from flickypedia.auth import WikimediaUserSession
 
 
-def test_renders_basic_page(logged_in_client):
+def test_renders_basic_page(logged_in_client: FlaskClient) -> None:
     resp = logged_in_client.get("/get_photos")
 
     assert resp.status_code == 200
     assert b"Put your Flickr URL here" in resp.data
 
 
-def test_rejects_a_non_flickr_url(logged_in_client):
+def test_rejects_a_non_flickr_url(logged_in_client: FlaskClient) -> None:
     resp = logged_in_client.post(
         "/get_photos", data={"flickr_url": "https://example.net"}
     )
@@ -23,7 +24,7 @@ def test_rejects_a_non_flickr_url(logged_in_client):
     assert b'value="https://example.net"' in resp.data
 
 
-def test_rejects_a_non_photo_flickr_url(logged_in_client):
+def test_rejects_a_non_photo_flickr_url(logged_in_client: FlaskClient) -> None:
     resp = logged_in_client.post(
         "/get_photos", data={"flickr_url": "https://flickr.com/help"}
     )
@@ -35,7 +36,7 @@ def test_rejects_a_non_photo_flickr_url(logged_in_client):
     assert b'value="https://flickr.com/help"' in resp.data
 
 
-def test_redirects_if_photo_url(logged_in_client):
+def test_redirects_if_photo_url(logged_in_client: FlaskClient) -> None:
     flickr_url = "https://www.flickr.com/photos/schlesinger_library/13270291833"
 
     resp = logged_in_client.post("/get_photos", data={"flickr_url": flickr_url})
@@ -44,7 +45,7 @@ def test_redirects_if_photo_url(logged_in_client):
     assert resp.headers["location"] == f"/select_photos?flickr_url={flickr_url}"
 
 
-def test_preserves_photo_if_csrf_bad(tmpdir):
+def test_preserves_photo_if_csrf_bad(tmpdir: str) -> None:
     """
     If the user submits the form after their CSRF token expires, we
     don't lose the URL they've typed in.

@@ -1,11 +1,13 @@
 import re
+from typing import Any, List, Optional, TypedDict
 
 import bs4
-from flask import render_template
+from flask import Flask, render_template
+from flickr_photos_api import User as FlickrUser
 import pytest
 
 
-EMPTY_INFO = {
+EMPTY_INFO: Any = {
     "owner": {
         "username": "example",
         "realname": "example",
@@ -17,22 +19,27 @@ EMPTY_INFO = {
 }
 
 
-def get_metadata(photo):
+class MetadataEntry(TypedDict):
+    key: str
+    value: Optional[str]
+
+
+def get_metadata(photo: Any) -> List[MetadataEntry]:
     html = render_template(
         "prepare_info/flickr_photo_info.html", photo={**EMPTY_INFO, **photo}
     )
 
     soup = bs4.BeautifulSoup(html, "html.parser")
 
-    result = []
+    result: List[MetadataEntry] = []
 
-    for elem in soup.find("dl").children:
+    for elem in soup.find("dl").children:  # type: ignore
         if elem == "\n":
             continue
 
-        if elem.name == "dt":
+        if elem.name == "dt":  # type: ignore
             result.append({"key": elem.text.strip(), "value": None})
-        elif elem.name == "dd":
+        elif elem.name == "dd":  # type: ignore
             result[-1]["value"] = re.sub(r"\s*\n\s*", "\n", elem.text.strip())
         else:  # pragma: no cover
             raise ValueError(f"unrecognised element: {elem}")
@@ -61,13 +68,15 @@ def get_metadata(photo):
         ),
     ],
 )
-def test_it_shows_the_correct_owner_name(app, owner, expected_name):
+def test_it_shows_the_correct_owner_name(
+    app: Flask, owner: FlickrUser, expected_name: str
+) -> None:
     metadata = get_metadata(photo={"owner": owner})
 
     assert metadata[0] == {"key": "By:", "value": f"{expected_name}\nCC BY 2.0"}
 
 
-def test_it_shows_the_title(app):
+def test_it_shows_the_title(app: Flask) -> None:
     metadata = get_metadata(
         photo={
             "title": "A photo of some autumn leaves",
@@ -75,6 +84,12 @@ def test_it_shows_the_title(app):
     )
 
     assert {"key": "Title:", "value": "A photo of some autumn leaves"} in metadata
+
+
+class Description(TypedDict):
+    input: str
+    expected_key: str
+    expected_value: str
 
 
 @pytest.mark.parametrize(
@@ -99,7 +114,7 @@ def test_it_shows_the_title(app):
         },
     ],
 )
-def test_it_shows_the_description(app, description):
+def test_it_shows_the_description(app: Flask, description: Description) -> None:
     metadata = get_metadata(photo={"description": description["input"]})
 
     assert {
@@ -108,7 +123,7 @@ def test_it_shows_the_description(app, description):
     } in metadata
 
 
-def test_it_omits_title_and_description_if_empty(app):
+def test_it_omits_title_and_description_if_empty(app: Flask) -> None:
     metadata = get_metadata(
         photo={
             "title": None,
