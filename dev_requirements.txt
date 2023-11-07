@@ -146,8 +146,12 @@ mccabe==0.7.0
     # via flake8
 multidict==6.0.4
     # via yarl
+mypy==1.6.1
+    # via -r dev_requirements.in
 mypy-extensions==1.0.0
-    # via black
+    # via
+    #   black
+    #   mypy
 packaging==23.2
     # via
     #   black
@@ -202,6 +206,7 @@ tomli==2.0.1
     # via
     #   black
     #   coverage
+    #   mypy
     #   pytest
 tqdm==4.66.1
     # via -r dev_requirements.in
@@ -210,6 +215,7 @@ typing-extensions==4.8.0
     #   -r requirements.txt
     #   black
     #   kombu
+    #   mypy
     #   sqlalchemy
 tzdata==2023.3
     # via
