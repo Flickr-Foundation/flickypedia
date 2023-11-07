@@ -145,6 +145,18 @@ input.pink_button:active {
   background: $yellow;
 }
 
+#summary {
+  text-align: right;
+  font-size: 1.2em;
+  margin-right: 5px;
+
+  .pink_button {
+    padding-left:  16px;
+    padding-right: 16px;
+    padding-top: 5px;
+  }
+}
+
 /* This is a very small bit of polish: it prevents CC license labels
  * (e.g. CC BY 2.0) from being split across multiple lines.
  */
