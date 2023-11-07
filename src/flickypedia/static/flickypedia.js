@@ -63,29 +63,13 @@ function addTitleValidatorTo(inputElement) {
  * remaining indicator to tell them how much they have left.
  */
 function addCharCounterTo(inputElement, counterElement) {
-  const minCount = inputElement.getAttribute("minlength");
   const maxCount = inputElement.getAttribute("maxlength");
 
   function updateCharCounter() {
     const enteredCharacters = inputElement.value.length;
     const remainingCharacters = maxCount - enteredCharacters;
 
-    if (enteredCharacters === 0) {
-      counterElement.innerHTML = '';
-    } else if (enteredCharacters === minCount - 1) {
-      counterElement.innerHTML = `
-        <span class="not_enough_characters">
-          <span class="remainingCharacters">1</span> more character required
-        </span>
-        `;
-    } else if (enteredCharacters < minCount) {
-      counterElement.innerHTML = `
-        <span class="not_enough_characters">
-          <span class="remainingCharacters">${minCount - enteredCharacters}</span>
-          more characters required
-        </span>
-        `;
-    } else if (remainingCharacters === 0) {
+    if (remainingCharacters === 0) {
       counterElement.innerHTML = '<span class="remainingCharacters">No</span> characters left';
     } else if (remainingCharacters === 1) {
       counterElement.innerHTML = '<span class="remainingCharacters">1</span> character left';
@@ -106,14 +90,6 @@ function addCharCounterTo(inputElement, counterElement) {
     }
   }
 
-  function hideCharCounterOnBlur() {
-    const enteredCharacters = inputElement.value.length;
-
-    if (minCount <= enteredCharacters && enteredCharacters <= maxCount) {
-      counterElement.innerHTML = "";
-    }
-  }
-
   /* When the user selected the field, we want to display the counter and
    * keep it updated as they type.
    *
@@ -129,9 +105,5 @@ function addCharCounterTo(inputElement, counterElement) {
 
   inputElement.addEventListener("focus", () => {
     updateCharCounter();
-  });
-
-  inputElement.addEventListener("blur", () => {
-    hideCharCounterOnBlur();
   });
 }
