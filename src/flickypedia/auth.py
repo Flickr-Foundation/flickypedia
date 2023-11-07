@@ -352,8 +352,8 @@ def oauth2_callback_wikimedia() -> ViewResponse:
 
     user = WikimediaUserSession(
         id=str(uuid.uuid4()),
-        userid=userinfo["id"],  # type: ignore
-        name=userinfo["name"],  # type: ignore
+        userid=userinfo["id"],
+        name=userinfo["name"],
         encrypted_token=encrypt_string(key, plaintext=json.dumps(token)),
     )
     user_db.session.add(user)
