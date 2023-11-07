@@ -27,7 +27,7 @@ TODO:
 import datetime
 import json
 import os
-from typing import Dict, List, Set, TypedDict, Union
+from typing import Dict, List, Set, TypedDict
 import uuid
 
 from flask import (
@@ -42,17 +42,12 @@ from flask import (
 )
 from flask_login import current_user, login_required
 from flickr_photos_api import (
-    FlickrPhotosApi,
-    PhotosInAlbum,
-    PhotosInGallery,
     ResourceNotFound,
     SinglePhoto,
-    User as FlickrUser,
 )
 from flickr_url_parser import (
     parse_flickr_url,
     NotAFlickrUrl,
-    ParseResult,
     UnrecognisedUrl,
 )
 from flask_wtf import FlaskForm
@@ -61,48 +56,9 @@ from wtforms.validators import DataRequired
 
 from flickypedia.duplicates import find_duplicates, DuplicateInfo
 from flickypedia.utils import DatetimeDecoder, DatetimeEncoder
+from flickypedia.photos import get_photos_from_flickr, GetPhotosData
 from .get_photos import FlickrPhotoURLForm
 from ._types import ViewResponse
-
-
-class SinglePhotoData(TypedDict):
-    photos: List[SinglePhoto]
-    owner: FlickrUser
-
-
-GetPhotosData = Union[SinglePhotoData, PhotosInAlbum, PhotosInGallery]
-
-
-# TODO: Change parsed_url to parse_result
-def get_photos(parsed_url: ParseResult) -> GetPhotosData:
-    """
-    Given a correctly parsed URL, get a list of photos from the Flickr API.
-
-    Note: this doesn't do any checking of the URLs for correct license,
-    duplicates on Wikimedia Commons, etc.  It just returns a list of
-    photos which can be found on Flickr.
-    """
-    api = FlickrPhotosApi(
-        api_key=current_app.config["FLICKR_API_KEY"],
-        user_agent=current_app.config["USER_AGENT"],
-    )
-
-    if parsed_url["type"] == "single_photo":
-        photo = api.get_single_photo(photo_id=parsed_url["photo_id"])
-        return {"photos": [photo], "owner": photo["owner"]}
-    elif parsed_url["type"] == "album":
-        return api.get_photos_in_album(
-            user_url=parsed_url["user_url"],
-            album_id=parsed_url["album_id"],
-            per_page=current_app.config["PHOTOS_PER_PAGE"],
-        )
-    elif parsed_url["type"] == "gallery":
-        return api.get_photos_in_gallery(
-            gallery_id=parsed_url["gallery_id"],
-            per_page=current_app.config["PHOTOS_PER_PAGE"],
-        )
-    else:
-        raise TypeError
 
 
 class CategorisedPhotos(TypedDict):
@@ -253,7 +209,7 @@ def select_photos() -> ViewResponse:
     # from the Flickr API.
     else:
         try:
-            photo_data = get_photos(parsed_url)
+            photo_data = get_photos_from_flickr(parsed_url)
             cached_api_response_id = save_cached_api_response(photo_data)
         except ResourceNotFound:
             # TODO: Add tests for this
