@@ -39,6 +39,14 @@ This means that somebody who gets access to the server-side database
 can't just read out all the user tokens, and somebody who gets access
 to the user's browser can't just retrieve their token.
 
+== External interface ==
+
+Flask passes around state in global variables (``request``, ``session``,
+etc.) and Flask-Login follows this pattern with ``current_user``.
+
+Whenever code outside this file needs to get an authenticated resource,
+it should be accessing it via ``current_user``.
+
 == Useful background reading ==
 
 *   Wikimedia OAuth 2.0 user authentication flow
@@ -75,8 +83,9 @@ from flask_login import (
     logout_user,
 )
 from flask_sqlalchemy import SQLAlchemy
+import httpx
 
-from flickypedia.apis.wikimedia import WikimediaOAuthApi
+from flickypedia.apis.wikimedia import WikimediaApi
 from flickypedia.utils import decrypt_string, encrypt_string
 
 
@@ -87,34 +96,7 @@ login.login_view = "homepage"
 
 
 # This is the name of the encryption key which is stored in the user session.
-SESSION_ENCRYPTION_KEY = "oauth_key_wikimedia"
-
-
-def get_oauth_client() -> OAuth2Client:
-    """
-    Creates an OAuth2 client which uses our app credentials to connect to Wikimedia.
-    """
-    config = current_app.config["OAUTH2_PROVIDERS"]["wikimedia"]
-
-    return OAuth2Client(
-        client_id=config["client_id"],
-        client_secret=config["client_secret"],
-        authorization_endpoint=config["authorize_url"],
-        token_endpoint=config["token_url"],
-    )
-
-
-def get_wikimedia_api() -> WikimediaOAuthApi:
-    """
-    Returns an instance of the Wikimedia OAuth API which is connected for the
-    current user.
-    """
-    client = get_oauth_client()
-    token = current_user.token()
-
-    return WikimediaOAuthApi(
-        client=client, token=token, user_agent=current_app.config["USER_AGENT"]
-    )
+SESSION_ENCRYPTION_KEY = "oauth_key_wikimedia" ""
 
 
 class WikimediaUserSession(UserMixin, user_db.Model):
@@ -193,21 +175,22 @@ class WikimediaUserSession(UserMixin, user_db.Model):
         client = self._oauth2_client()
         client.ensure_active_token(token=self.token())
 
-    def store_new_token(self, new_token):
+    def wikimedia_api(self) -> WikimediaApi:
         """
-        Store a new OAuth token in the database.
-
-        This method should only be called when the token has changed.
-
-        This can only be called in the context of a logged-in Flask session,
-        where we have access to the per-session encryption key.
+        Returns a Wikimedia API client which is authenticated for this user.
         """
-        assert dict(new_token) != self.token()
+        headers = {"User-Agent": current_app.config["USER_AGENT"]}
 
-        self.encrypted_token = encrypt_string(
-            key=session[SESSION_ENCRYPTION_KEY], plaintext=json.dumps(new_token)
-        )
-        user_db.session.commit()
+        try:
+            client = self._oauth2_client()
+        except KeyError:
+            # During tests, it's okay to use an unauthenticated client, because
+            # we aren't dealing with real sessions or real credentials --
+            # we're just replaying API interactions from the VCR cassettes.
+            assert current_app.config["TESTING"]
+            client = httpx.Client(headers=headers)
+
+        return WikimediaApi(client=client)
 
     def delete(self) -> None:
         """
@@ -344,9 +327,13 @@ def oauth2_callback_wikimedia():
         abort(401)
 
     # Get info about the logged in user
-    api = WikimediaOAuthApi(
-        client=client, token=token, user_agent=current_app.config["USER_AGENT"]
+    client = httpx.Client(
+        headers={
+            "Authorization": f"Bearer {token['access_token']}",
+            "User-Agent": current_app.config["USER_AGENT"],
+        }
     )
+    api = WikimediaApi(client=client)
     userinfo = api.get_userinfo()
 
     # Now create a user and store it in the database.

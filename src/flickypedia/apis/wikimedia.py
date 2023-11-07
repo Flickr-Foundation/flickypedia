@@ -1,21 +1,26 @@
+""""
+This is an auth-agnostic implementation of some Wikimedia API methods.
+
+Callers are responsible for creating an ``httpx.Client`` instance which
+is appropriately authenticated with the Wikimedia API.  This class is
+designed to be used with any auth approach.
+
+See https://api.wikimedia.org/wiki/Authentication
+"""
+
 import json
 
-from authlib.integrations.httpx_client.oauth2_client import OAuth2Client
-from flask_login import current_user
 import httpx
 
 
-class WikimediaApiBase:
-    client: httpx.Client
-    user_agent: str
+class WikimediaApi:
+    def __init__(self, client: httpx.Client) -> None:
+        self.client = client
 
     def _request(self, *, method, **kwargs):
         resp = self.client.request(
             method,
             url="https://commons.wikimedia.org/w/api.php",
-            headers={
-                "User-Agent": self.user_agent,
-            },
             **kwargs,
         )
 
@@ -295,35 +300,12 @@ class WikimediaApiBase:
             raise WikimediaApiException(f"Unexpected response: {resp}")
 
 
-class WikimediaOAuthApi(WikimediaApiBase):
-    def __init__(self, *, client: OAuth2Client, token, user_agent: str):
-        self.client = client
-        client.token = token
-
-        self.user_agent = user_agent
-
-    def _request(self, *args, **kwargs):
-        """
-        Make a request to the Wikimedia API.  The underlying OAuth2Client may do
-        a token refresh if the access token expires; if so, we need to store that
-        new access token and the new refresh token.
-        """
-        old_token = self.client.token
-
-        resp = super()._request(*args, **kwargs)
-
-        new_token = self.client.token
-
-        if old_token != new_token:
-            current_user.store_new_token(new_token=new_token)
-
-        return resp
-
-
-class WikimediaPublicApi(WikimediaApiBase):
+class WikimediaPublicApi(WikimediaApi):
     def __init__(self):
-        self.client = httpx.Client(base_url="https://commons.wikimedia.org")
-        self.user_agent = "testing"
+        client = httpx.Client(
+            base_url="https://commons.wikimedia.org", headers={"User-Agent": "testing"}
+        )
+        super().__init__(client=client)
 
 
 def validate_title(title: str):
