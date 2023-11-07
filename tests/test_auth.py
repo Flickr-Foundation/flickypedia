@@ -1,4 +1,6 @@
 import datetime
+import json
+import os
 
 from flask import session
 from flask_login import current_user
@@ -110,6 +112,55 @@ class TestOAuth2CallbackWikimedia:
             resp = client.get("/callback/wikimedia?code=123")
 
         assert resp.status_code == 401
+
+
+def test_token_is_saved_to_database_when_refreshed(app, client, vcr_cassette):
+    """
+    Periodically, we call the ``ensure_active_token()`` to make sure
+    we still have a valid token for use with the Wikimedia API.
+
+    This test checks that this method will update the token if necessary.
+
+    Note: as with some other tests that involve credentials, I initially
+    ran this with my real credentials, then I went back and redacted the
+    VCR cassette for safety.
+    """
+    with app.test_request_context():
+        try:  # pragma: no cover
+            token = json.loads(os.environ["WIKIMEDIA_ACCESS_TOKEN"])
+        except KeyError:  # pragma: no cover
+            token = {
+                "token_type": "Bearer",
+                "expires_in": 14400,
+                "access_token": "[ACCESS_TOKEN...sqfLY]",
+                "refresh_token": "[REFRESH_TOKEN...8f34f]",
+                "expires_at": 1699322615,
+            }
+
+        # Modify the 'expires_at' time, so it's actually 1 second ago -- as far
+        # as authlib is concerned, this token is now invalid.
+        token['expires_at'] = int(datetime.datetime.now().timestamp() - 1)
+
+        # Now save a user with this token to the database.
+        user = store_user(token)
+
+        # Check that if we retrieve the token, it's the one that was stored.
+        assert user.token() == token
+
+        # Now call the ensure_active_token() token method.  This should force
+        # a token refresh.
+        user.ensure_active_token()
+
+        # Check that the user's token no longer matches the one we saved earlier.
+        assert user.token() != token
+        assert user.token()['expires_at'] > datetime.datetime.now().timestamp()
+
+        refreshed_token = user.token()
+
+        # Now call ensure_active_token() a second time, and check that we don't
+        # get a refresh, because we already have an up-to-date token.
+        user.ensure_active_token()
+        assert user.token() == refreshed_token
 
 
 class TestLoadUser:
