@@ -1,0 +1,264 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=opensearch&format=xml&limit=10&search=a&namespace=14
+  response:
+    content: <?xml version="1.0"?><SearchSuggestion version="2.0" xmlns="http://opensearch.org/searchsuggest2"><Query
+      xml:space="preserve">a</Query><Section><Item><Text xml:space="preserve">Category:A</Text><Url
+      xml:space="preserve">https://commons.wikimedia.org/wiki/Category:A</Url><Image
+      source="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/ICS_Alfa.svg/50px-ICS_Alfa.svg.png"
+      width="50" height="50" /></Item><Item><Text xml:space="preserve">Category:Aircraft
+      in the Gambia</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/Category:Aircraft_in_the_Gambia</Url></Item><Item><Text
+      xml:space="preserve">Category:Aircraft in Barbados</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/Category:Aircraft_in_Barbados</Url></Item><Item><Text
+      xml:space="preserve">Category:Architecture of Landkreis Forchheim</Text><Url
+      xml:space="preserve">https://commons.wikimedia.org/wiki/Category:Architecture_of_Landkreis_Forchheim</Url></Item><Item><Text
+      xml:space="preserve">Category:August 2011 Georgia photographs</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/Category:August_2011_Georgia_photographs</Url></Item><Item><Text
+      xml:space="preserve">Category:Airbus aircraft in Luxembourg</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/Category:Airbus_aircraft_in_Luxembourg</Url></Item><Item><Text
+      xml:space="preserve">Category:Aircraft in Ghanaian service by type of operator</Text><Url
+      xml:space="preserve">https://commons.wikimedia.org/wiki/Category:Aircraft_in_Ghanaian_service_by_type_of_operator</Url></Item><Item><Text
+      xml:space="preserve">Category:Amber and purple</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/Category:Amber_and_purple</Url></Item><Item><Text
+      xml:space="preserve">Category:Architecture of Krasnodar Krai</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/Category:Architecture_of_Krasnodar_Krai</Url></Item><Item><Text
+      xml:space="preserve">Category:Art of Landkreis Bayreuth</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/Category:Art_of_Landkreis_Bayreuth</Url></Item></Section></SearchSuggestion>
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '2'
+      cache-control:
+      - max-age=10800, s-maxage=10800, public
+      content-disposition:
+      - inline; filename=api-result.xml
+      content-encoding:
+      - gzip
+      content-type:
+      - text/xml; charset=utf-8
+      date:
+      - Tue, 07 Nov 2023 09:38:41 GMT
+      expires:
+      - Tue, 07 Nov 2023 12:38:42 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1493.eqiad.wmnet
+      server-timing:
+      - cache;desc="miss", host;desc="cp3070"
+      set-cookie:
+      - WMF-Last-Access=07-Nov-2023;Path=/;HttpOnly;secure;Expires=Sat, 09 Dec 2023
+        00:00:00 GMT
+      - GeoIP=GB:ENG:Lowestoft:52.50:1.71:v4; Path=/; secure; Domain=.wikimedia.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie
+      x-cache:
+      - cp3070 miss, cp3070 miss
+      x-cache-status:
+      - miss
+      x-client-ip:
+      - 92.13.36.200
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-opensearch-type:
+      - prefix
+      x-search-id:
+      - 21euehpj43rcdrmc770lloust
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - query.wikidata.org
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://query.wikidata.org/sparql?format=json&query=PREFIX%20wdt%3A%20%3Chttp%3A%2F%2Fwww.wikidata.org%2Fprop%2Fdirect%2F%3E%0A%0A%20%20%20%20%20%20%20%20SELECT%20%3Fitem%20WHERE%20%7B%0A%20%20%20%20%20%20%20%20%20%20%7B%20%3Fitem%20wdt%3AP3267%20%2230884892%40N08%22%20.%20%7D%0A%20%20%20%20%20%20%20%20%20%20UNION%0A%20%20%20%20%20%20%20%20%20%20%7B%20%3Fitem%20wdt%3AP3267%20%22U.S.%20Coast%20Guard%22%20.%20%7D%0A%20%20%20%20%20%20%20%20%7D
+  response:
+    content: "{\n  \"head\" : {\n    \"vars\" : [ \"item\" ]\n  },\n  \"results\"
+      : {\n    \"bindings\" : [ ]\n  }\n}"
+    headers:
+      accept-ranges:
+      - bytes
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '0'
+      cache-control:
+      - public, max-age=300
+      content-encoding:
+      - gzip
+      content-length:
+      - '81'
+      content-type:
+      - application/sparql-results+json;charset=utf-8
+      date:
+      - Tue, 07 Nov 2023 09:38:42 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - nginx/1.18.0
+      server-timing:
+      - cache;desc="pass", host;desc="cp3070"
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept, Accept-Encoding
+      x-cache:
+      - cp3070 miss, cp3070 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 92.13.36.200
+      x-first-solution-millis:
+      - '2'
+      x-served-by:
+      - wdqs1012
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - www.wikidata.org
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://www.wikidata.org/w/rest.php/wikibase/v0/entities/items/Q60671452
+  response:
+    content: '{"type":"item","labels":{"en":"work of the federal government of the
+      United States","pl":"utw\u00f3r Rz\u0105du Federalnego Stan\u00f3w Zjednoczonych","nl":"werk
+      van de federale overheid van de Verenigde Staten","zh-hans":"\u7f8e\u56fd\u8054\u90a6\u653f\u5e9c\u7684\u4f5c\u54c1","zh-hant":"\u7f8e\u570b\u806f\u90a6\u653f\u5e9c\u7684\u4f5c\u54c1","fr":"\u0153uvre
+      d''un service du Gouvernement f\u00e9d\u00e9ral des \u00c9tats-Unis","ja":"\u7c73\u56fd\u9023\u90a6\u653f\u5e9c\u306b\u3088\u308b\u8457\u4f5c\u7269","el":"\u03ad\u03c1\u03b3\u03bf
+      \u03c4\u03b7\u03c2 \u039f\u03bc\u03bf\u03c3\u03c0\u03bf\u03bd\u03b4\u03b9\u03b1\u03ba\u03ae\u03c2
+      \u039a\u03c5\u03b2\u03ad\u03c1\u03bd\u03b7\u03c3\u03b7\u03c2 \u03c4\u03c9\u03bd
+      \u0397\u03bd\u03c9\u03bc\u03ad\u03bd\u03c9\u03bd \u03a0\u03bf\u03bb\u03b9\u03c4\u03b5\u03b9\u03ce\u03bd","ca":"obra
+      del govern federal dels Estats Units","zh":"\u7f8e\u56fd\u8054\u90a6\u653f\u5e9c\u7684\u4f5c\u54c1","eo":"verko
+      de la Usona federacia registaro","ko":"\ubbf8\uad6d \uc5f0\ubc29\uc815\ubd80\uc758
+      \uc800\uc791\ubb3c","es":"obra del gobierno federal de los Estados Unidos","de":"Werk
+      der Bundesregierung der Vereinigten Staaten","pt":"obra do governo federal dos
+      Estados Unidos","ru":"\u0440\u0430\u0431\u043e\u0442\u0430 \u0444\u0435\u0434\u0435\u0440\u0430\u043b\u044c\u043d\u043e\u0433\u043e
+      \u043f\u0440\u0430\u0432\u0438\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u0430
+      \u0421\u0428\u0410"},"descriptions":{"en":"generally in the public domain in
+      the U.S., if prepared by an officer or employee of the U.S. government as part
+      of their official duties","pl":"Utwory przygotowane przez oficera lub pracownika
+      rz\u0105du Stan\u00f3w Zjednoczonych w ramach oficjalnych obowi\u0105zk\u00f3w
+      tej osoby znajduj\u0105 si\u0119 w domenie publicznej w USA","ko":"\ubbf8\uad6d
+      \uc815\ubd80\uc758 \uacf5\ubb34\uc6d0\uc774\ub098 \ubbf8\uad6d \uc815\ubd80\uc5d0
+      \uace0\uc6a9\ub41c \uc778\ubb3c\uc758 \uc800\uc791\ubb3c\ub85c \ub300\ubd80\ubd84\uc758
+      \uacbd\uc6b0 \ud37c\ube14\ub9ad \ub3c4\uba54\uc778\uc784","es":"generalmente
+      en el dominio p\u00fablico en los Estados Uindos, si est\u00e1 preparado por
+      un emplado u oficial del gobierno de los Estados Unidos, como parte de sus deberes
+      oficiales","de":"im Allgemeinen in den USA gemeinfrei, wenn sie von einem Beamten
+      oder Angestellten der US-Regierung im Rahmen ihrer offiziellen Pflichten erstellt
+      wurden","ru":"\u0432 \u0441\u0438\u043b\u0443 \u044d\u0442\u043e\u0433\u043e
+      \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u0441\u044f \u0432 \u043e\u0431\u0449\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u043c
+      \u0434\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u0438"},"aliases":{"en":["work
+      of the U.S. Federal Government","17 U.S.C. \u00a7 105","PD-USCG","works of Federal
+      Government of the United States","PD-USGov","work of federal government of the
+      United States","work of U.S. federal government","The work was made by the United
+      States government","created by US federal government","United States government
+      publication","prepared by an officer or employee of the United States Government
+      as part of that person\u2019s official duties"],"fr":["PD-USCG"],"ja":["\u30a2\u30e1\u30ea\u30ab\u5408\u8846\u56fd\u653f\u5e9c\u306e\u8457\u4f5c\u7269","\u5408\u8846\u56fd\u653f\u5e9c\u306e\u8457\u4f5c\u7269"],"ko":["PD-USCG","PD-USGov","\ubbf8\uc5f0\ubc29\uc815\ubd80
+      \uc800\uc791\ubb3c","\ubbf8 \uc5f0\ubc29\uc815\ubd80 \uc800\uc791\ubb3c"],"ru":["\u0441\u043e\u0437\u0434\u0430\u043d\u043e
+      \u0440\u0430\u0431\u043e\u0442\u043d\u0438\u043a\u043e\u043c \u0444\u0435\u0434\u0435\u0440\u0430\u043b\u044c\u043d\u043e\u0433\u043e
+      \u043f\u0440\u0430\u0432\u0438\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u0430
+      \u0421\u0428\u0410"]},"statements":{"P31":[{"id":"Q60671452$d513e0db-4dc0-6d1b-b167-f8bc78275008","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P31","data-type":"wikibase-item"},"value":{"type":"value","content":"Q61005213"}},{"id":"Q60671452$9e42ef21-4754-ab55-2f98-6e6075fc8b82","rank":"normal","qualifiers":[{"property":{"id":"P642","data-type":"wikibase-item"},"value":{"type":"value","content":"Q842270"}}],"references":[],"property":{"id":"P31","data-type":"wikibase-item"},"value":{"type":"value","content":"Q2135465"}}],"P279":[{"id":"Q60671452$a172e781-4dd5-e3b0-504a-20cf99349f78","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P279","data-type":"wikibase-item"},"value":{"type":"value","content":"Q60998463"}},{"id":"Q60671452$87275A17-73CD-4C7C-9417-2B75DD1CFDCD","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P279","data-type":"wikibase-item"},"value":{"type":"value","content":"Q19652"}}],"P1001":[{"id":"Q60671452$5C1301ED-5AD7-48CD-98F4-06E4AC27C4BA","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1001","data-type":"wikibase-item"},"value":{"type":"value","content":"Q30"}}],"P921":[{"id":"Q60671452$75eddfee-4e60-23e2-444d-974ed9a3ecbf","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P921","data-type":"wikibase-item"},"value":{"type":"value","content":"Q905768"}}],"P973":[{"id":"Q60671452$935eb2f1-4555-1505-076d-18e8d959f7df","rank":"normal","qualifiers":[{"property":{"id":"P407","data-type":"wikibase-item"},"value":{"type":"value","content":"Q1860"}}],"references":[],"property":{"id":"P973","data-type":"url"},"value":{"type":"value","content":"https://copyright.cornell.edu/publicdomain"}},{"id":"Q60671452$f6731cd7-4c6b-e1ae-2c57-eb48bea3dbf6","rank":"normal","qualifiers":[{"property":{"id":"P407","data-type":"wikibase-item"},"value":{"type":"value","content":"Q1860"}}],"references":[],"property":{"id":"P973","data-type":"url"},"value":{"type":"value","content":"https://www.cendi.gov/publications/FAQ_Copyright_30jan18.html#_Toc505089925"}}],"P1424":[{"id":"Q60671452$d56ac59c-4111-849f-802a-5cc4563f3779","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1424","data-type":"wikibase-item"},"value":{"type":"value","content":"Q5837126"}}],"P1343":[{"id":"Q60671452$d9e55ceb-4128-bd90-2670-fda71d7db948","rank":"normal","qualifiers":[{"property":{"id":"P2699","data-type":"url"},"value":{"type":"value","content":"https://www.usa.gov/government-works"}},{"property":{"id":"P1810","data-type":"string"},"value":{"type":"value","content":"U.S.
+      Government Works"}},{"property":{"id":"P407","data-type":"wikibase-item"},"value":{"type":"value","content":"Q1860"}}],"references":[],"property":{"id":"P1343","data-type":"wikibase-item"},"value":{"type":"value","content":"Q7865719"}}],"P1889":[{"id":"Q60671452$50FAE1EA-D925-4B36-B18D-82E62888C338","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1889","data-type":"wikibase-item"},"value":{"type":"value","content":"Q905768"}},{"id":"Q60671452$8ad60aad-469b-1d54-8274-c294d8b3a8c0","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1889","data-type":"wikibase-item"},"value":{"type":"value","content":"Q61002900"}}],"P1542":[{"id":"Q60671452$A00B93AB-4FA6-4CB4-9E9B-202126782B24","rank":"normal","qualifiers":[{"property":{"id":"P1001","data-type":"wikibase-item"},"value":{"type":"value","content":"Q13780930"}}],"references":[],"property":{"id":"P1542","data-type":"wikibase-item"},"value":{"type":"value","content":"Q50551851"}}],"P1269":[{"id":"Q60671452$A78E0DF4-CC0D-47FB-A6DA-B908829171D5","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1269","data-type":"wikibase-item"},"value":{"type":"value","content":"Q842270"}}],"P17":[{"id":"Q60671452$948fabe0-49c7-df64-373d-865fdeb5c498","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P17","data-type":"wikibase-item"},"value":{"type":"value","content":"Q30"}}],"P92":[{"id":"Q60671452$49e3c14e-4886-e2fd-7984-8b512c80e657","rank":"normal","qualifiers":[{"property":{"id":"P958","data-type":"string"},"value":{"type":"value","content":"17
+      U.S. Code \u00a7 105(a)"}},{"property":{"id":"P1683","data-type":"monolingualtext"},"value":{"type":"value","content":{"text":"Copyright
+      protection under this title is not available for any work of the United States
+      Government, but the United States Government is not precluded from receiving
+      and holding copyrights transferred to it by assignment, bequest, or otherwise.","language":"en"}}}],"references":[{"hash":"21d9fbfceca1da7a7387716779bf962aa6f0eb8a","parts":[{"property":{"id":"P248","data-type":"wikibase-item"},"value":{"type":"value","content":"Q51772877"}},{"property":{"id":"P854","data-type":"url"},"value":{"type":"value","content":"https://www.govinfo.gov/content/pkg/USCODE-2020-title17/html/USCODE-2020-title17-chap1-sec105.htm"}},{"property":{"id":"P813","data-type":"time"},"value":{"type":"value","content":{"time":"+2022-10-21T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}]}],"property":{"id":"P92","data-type":"wikibase-item"},"value":{"type":"value","content":"Q7810046"}},{"id":"Q60671452$99f234eb-4695-cd7c-6a43-08b41a472aa6","rank":"normal","qualifiers":[{"property":{"id":"P958","data-type":"string"},"value":{"type":"value","content":"17
+      U.S. Code \u00a7 101"}},{"property":{"id":"P1683","data-type":"monolingualtext"},"value":{"type":"value","content":{"text":"A
+      \u201cwork of the United States Government\u201d is a work prepared by an officer
+      or employee of the United States Government as part of that person\u2019s official
+      duties.","language":"en-us"}}}],"references":[{"hash":"b94cbd2314ecc44026ea0bb292b5bf2cc85959ab","parts":[{"property":{"id":"P248","data-type":"wikibase-item"},"value":{"type":"value","content":"Q51772877"}},{"property":{"id":"P854","data-type":"url"},"value":{"type":"value","content":"https://www.govinfo.gov/content/pkg/USCODE-2020-title17/html/USCODE-2020-title17-chap1-sec101.htm"}},{"property":{"id":"P813","data-type":"time"},"value":{"type":"value","content":{"time":"+2022-10-21T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}]}],"property":{"id":"P92","data-type":"wikibase-item"},"value":{"type":"value","content":"Q7810046"}}]},"sitelinks":{},"id":"Q60671452"}'
+    headers:
+      accept-ranges:
+      - bytes
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '0'
+      cache-control:
+      - no-cache
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Tue, 07 Nov 2023 09:38:42 GMT
+      etag:
+      - W/"1996684658"
+      last-modified:
+      - Wed, 25 Oct 2023 05:32:54 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1493.eqiad.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3070"
+      set-cookie:
+      - WMF-Last-Access=07-Nov-2023;Path=/;HttpOnly;secure;Expires=Sat, 09 Dec 2023
+        00:00:00 GMT
+      - WMF-Last-Access-Global=07-Nov-2023;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Sat,
+        09 Dec 2023 00:00:00 GMT
+      - GeoIP=GB:ENG:Lowestoft:52.50:1.71:v4; Path=/; secure; Domain=.wikidata.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3070 miss, cp3070 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 92.13.36.200
+      x-content-type-options:
+      - nosniff
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1
