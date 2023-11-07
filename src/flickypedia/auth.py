@@ -286,9 +286,6 @@ def oauth2_authorize_wikimedia():
     """
     # If you're already logged in, you don't need to come through
     # this flow.
-    #
-    # TODO: What if somebody is logged in but we've lost their OAuth tokens
-    # for some reason?  Then they'd need to log out and log back in again.
     if not current_user.is_anonymous:
         return redirect(url_for("get_photos"))
 
