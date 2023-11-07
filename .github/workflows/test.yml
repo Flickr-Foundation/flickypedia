@@ -25,6 +25,15 @@ jobs:
       run: |
         pip install -e .
         pip install -r dev_requirements.txt
+    - name: Check types
+      run: |
+        MYPYPATH=tests/stubs/ mypy \
+          src/flickypedia/utils.py \
+          src/flickypedia/duplicates.py \
+          src/flickypedia/config.py \
+          src/flickypedia/cli.py \
+          src/flickypedia/views/api.py \
+          src/flickypedia/views/get_photos.py
     - name: Run linting
       run: |
         black --check .

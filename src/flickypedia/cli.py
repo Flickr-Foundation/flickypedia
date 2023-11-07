@@ -2,7 +2,7 @@ import argparse
 import sys
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(
         prog="flickypedia",
         description="Run a local version of flickypedia, a tool to copy CC-licensed photos from Flickr to Wikimedia Commons.",

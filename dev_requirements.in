@@ -4,7 +4,9 @@ black
 bs4
 coverage
 flake8
+mypy
 pytest
 pytest-cov
 tqdm
+types-wtforms
 vcrpy

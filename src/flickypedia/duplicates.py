@@ -26,11 +26,17 @@ These databases can come from two places:
 
 import os
 import sqlite3
+from typing import Dict, List, TypedDict
 
 from flask import current_app
 
 
-def find_duplicates(flickr_photo_ids):
+class DuplicateInfo(TypedDict):
+    id: str
+    title: str
+
+
+def find_duplicates(flickr_photo_ids: List[str]) -> Dict[str, DuplicateInfo]:
     """
     Given a list of Flickr photo IDs, return the duplicates files found
     on Wikimedia Commons.
@@ -50,7 +56,7 @@ def find_duplicates(flickr_photo_ids):
 
     duplicate_dir = current_app.config["DUPLICATE_DATABASE_DIRECTORY"]
 
-    result = {}
+    result: Dict[str, DuplicateInfo] = {}
 
     for name in os.listdir(duplicate_dir):
         if name.endswith((".db", ".sqlite")):
@@ -85,7 +91,7 @@ def find_duplicates(flickr_photo_ids):
     return result
 
 
-def create_link_to_commons(duplicates):
+def create_link_to_commons(duplicates: Dict[str, DuplicateInfo]) -> str:
     """
     Given a collection of duplicates from ``find_duplicates``, create
     a link to find those images on Wikimedia Commons.
@@ -117,8 +123,8 @@ def create_link_to_commons(duplicates):
 
 
 def record_file_created_by_flickypedia(
-    flickr_photo_id, wikimedia_page_title, wikimedia_page_id
-):
+    flickr_photo_id: str, wikimedia_page_title: str, wikimedia_page_id: str
+) -> None:
     """
     Create a database entry to mark a file as having been uploaded to
     Wikimedia Commons.

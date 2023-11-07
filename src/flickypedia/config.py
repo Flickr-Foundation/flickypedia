@@ -1,7 +1,8 @@
 import os
+from typing import Any, Dict, List
 
 
-def create_config(data_directory):
+def create_config(data_directory: str) -> Dict[str, Any]:
     """
     Create the config for Flickypedia.
 
@@ -75,7 +76,7 @@ def create_config(data_directory):
     }
 
 
-def get_directories(config):
+def get_directories(config: Dict[str, Any]) -> List[str]:
     """
     A list of directories that need to be created on startup.
     """

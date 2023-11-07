@@ -1,9 +1,11 @@
 from flask import abort, jsonify, request
 from flask_login import current_user, login_required
 
+from ._types import ViewResponse
+
 
 @login_required
-def validate_title_api():
+def validate_title_api() -> ViewResponse:
     """
     A basic API for title validation that can be called from JS on the page.
 
@@ -25,7 +27,7 @@ def validate_title_api():
 
 
 @login_required
-def find_matching_categories_api():
+def find_matching_categories_api() -> ViewResponse:
     """
     A basic API for looking up matching categories that can be called
     from JS on the page.
