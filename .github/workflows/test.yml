@@ -36,6 +36,7 @@ jobs:
           src/flickypedia/views/get_photos.py \
           src/flickypedia/auth.py \
           src/flickypedia/tasks.py \
+          src/flickypedia/uploads.py \
           src/flickypedia/apis \
           tests/apis
     - name: Run linting

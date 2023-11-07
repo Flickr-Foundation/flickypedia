@@ -27,7 +27,7 @@ is supporting that function.
 import datetime
 from typing import Dict, List, Literal, TypedDict, Union
 
-from flickr_photos_api import DateTaken, User as FlickrUser
+from flickr_photos_api import DateTaken, User as FlickrUser, SinglePhoto
 
 from flickypedia.apis.wikidata import (
     lookup_flickr_user_in_wikidata,
@@ -35,7 +35,8 @@ from flickypedia.apis.wikidata import (
     WikidataEntities,
     WikidataProperties,
 )
-from ._types import Snak, Statement
+from flickypedia.utils import size_at
+from ._types import DataValue, Snak, Statement
 
 
 def _wikibase_entity_value(*, property_id: str, entity_id: str) -> Snak:
@@ -82,31 +83,28 @@ def _create_qualifiers(
     for qualifier in qualifier_values:
         property_id = qualifier["property"]
 
+        datavalue: DataValue
+
         if qualifier["type"] == "string":
-            result[property_id] = [
-                {
-                    "datavalue": {"type": "string", "value": qualifier["value"]},
-                    "property": property_id,
-                    "snaktype": "value",
-                }
-            ]
+            datavalue = {"type": "string", "value": qualifier["value"]}
         elif qualifier["type"] == "entity":
-            result[property_id] = [
-                _wikibase_entity_value(
-                    property_id=property_id, entity_id=qualifier["entity_id"]
-                )
-            ]
+            datavalue = {
+                "type": "wikibase-entityid",
+                "value": {"id": qualifier["entity_id"]},
+            }
         else:
             assert qualifier["type"] == "date"
-            result[property_id] = [
-                {
-                    "datavalue": to_wikidata_date(
-                        qualifier["date"], precision=qualifier["precision"]
-                    ),
-                    "property": property_id,
-                    "snaktype": "value",
-                }
-            ]
+            datavalue = to_wikidata_date(
+                qualifier["date"], precision=qualifier["precision"]
+            )
+
+        result[property_id] = [
+            {
+                "datavalue": datavalue,
+                "property": property_id,
+                "snaktype": "value",
+            }
+        ]
 
     return result
 
@@ -329,32 +327,27 @@ def create_date_taken_statement(date_taken: DateTaken) -> Statement:
         }
 
 
-def create_sdc_claims_for_flickr_photo(
-    photo_id: str,
-    photo_url: str,
-    user: FlickrUser,
-    copyright_status: str,
-    original_url: str,
-    license_id: str,
-    date_posted: datetime.datetime,
-    date_taken: DateTaken,
-) -> List[Statement]:
+def create_sdc_claims_for_flickr_photo(photo: SinglePhoto) -> List[Statement]:
     """
     Creates a complete structured data claim for a Flickr photo.
 
     This is the main entry point into this file for the rest of Flickypedia.
     """
-    creator_statement = create_flickr_creator_statement(user)
+    creator_statement = create_flickr_creator_statement(user=photo["owner"])
 
-    copyright_statement = create_copyright_status_statement(status=copyright_status)
+    copyright_statement = create_copyright_status_statement(status="copyrighted")
+
+    original_size = size_at(sizes=photo["sizes"], desired_size="Original")
 
     source_statement = create_source_data_for_photo(
-        photo_url=photo_url, original_url=original_url
+        photo_url=photo["url"], original_url=original_size["source"]
     )
 
-    license_statement = create_license_statement(license_id=license_id)
+    license_statement = create_license_statement(license_id=photo["license"]["id"])
 
-    date_posted_statement = create_posted_to_flickr_statement(date_posted=date_posted)
+    date_posted_statement = create_posted_to_flickr_statement(
+        date_posted=photo["date_posted"]
+    )
 
     statements = [
         creator_statement,
@@ -364,7 +357,7 @@ def create_sdc_claims_for_flickr_photo(
         date_posted_statement,
     ]
 
-    if not date_taken["unknown"]:
-        statements.append(create_date_taken_statement(date_taken))
+    if not photo["date_taken"]["unknown"]:
+        statements.append(create_date_taken_statement(date_taken=photo["date_taken"]))
 
     return statements
