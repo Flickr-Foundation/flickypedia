@@ -96,7 +96,7 @@ login.login_view = "homepage"
 
 
 # This is the name of the encryption key which is stored in the user session.
-SESSION_ENCRYPTION_KEY = "oauth_key_wikimedia" ""
+SESSION_ENCRYPTION_KEY = "oauth_key_wikimedia"
 
 
 class WikimediaUserSession(UserMixin, user_db.Model):
