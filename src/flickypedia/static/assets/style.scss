@@ -110,7 +110,7 @@ select {
 input[type="url"],
 input[type="text"],
 textarea {
-  width: calc(100% - 20px);
+  width: calc(100% - 13px);
 }
 
 .pink_button {
@@ -143,6 +143,18 @@ input.pink_button:active {
 
 .highlight {
   background: $yellow;
+}
+
+#summary {
+  text-align: right;
+  font-size: 1.2em;
+  margin-right: 5px;
+
+  .pink_button {
+    padding-left:  16px;
+    padding-right: 16px;
+    padding-top: 5px;
+  }
 }
 
 /* This is a very small bit of polish: it prevents CC license labels

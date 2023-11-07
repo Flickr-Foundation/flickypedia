@@ -1,5 +1,6 @@
 import json
 import re
+from typing import Union
 
 from cryptography.fernet import Fernet
 from flask import session
@@ -9,7 +10,7 @@ from flickypedia.auth import user_db, WikimediaUserSession, SESSION_ENCRYPTION_K
 from flickypedia.utils import encrypt_string
 
 
-def minify(text: str) -> str:
+def minify(text: Union[str, bytes]) -> str:
     """
     Minify an HTML string.  This means compacting long runs of whitespace,
     e.g.
@@ -23,7 +24,14 @@ def minify(text: str) -> str:
     It's meant for use in tests -- this may not be a perfect minifier,
     but it's good enough for our test assertions.
     """
-    return re.sub(r"\s+", " ", text).strip()
+    if isinstance(text, bytes):
+        text = text.decode("utf8")
+
+    text = text.replace("\n", " ")
+    text = re.sub(r"\s+", " ", text)
+    text = text.strip()
+
+    return text
 
 
 def store_user(token) -> WikimediaUserSession:

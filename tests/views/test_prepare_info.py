@@ -1,6 +1,7 @@
 import pytest
 
 from flickypedia.views import truncate_description
+from utils import minify
 
 
 @pytest.mark.parametrize(
@@ -35,6 +36,11 @@ def test_renders_form_for_single_photo(logged_in_client, app, vcr_cassette):
 
     assert b"1 of 1" in resp.data
 
+    assert "please set the language you’ll be using to write your caption:" in minify(
+        resp.data
+    )
+    assert "please add a title and short caption" in minify(resp.data)
+
 
 def test_renders_form_for_multiple_photo(logged_in_client, app, vcr_cassette):
     cache_dir = app.config["FLICKR_API_RESPONSE_CACHE"]
@@ -54,6 +60,11 @@ def test_renders_form_for_multiple_photo(logged_in_client, app, vcr_cassette):
     # Test that we get the "X of Y" counter overlaid on the preview images
     assert b"1 of 2" in resp.data
     assert b"2 of 2" in resp.data
+
+    assert "please set the language you’ll be using to write your captions:" in minify(
+        resp.data
+    )
+    assert "please add titles and captions for each photo" in minify(resp.data)
 
 
 def test_blocks_uploads_with_an_invalid_title(logged_in_client, app, vcr_cassette):
@@ -99,7 +110,7 @@ def test_blocks_uploads_with_a_too_long_caption(logged_in_client, app, vcr_casse
     ["original", "truncated"],
     [
         # A description which is split across many lines
-        ("1\n2\n3\n4\n5\n6\n7\n", "1\n2\n3\n4\n5"),
+        ("1\n2\n3\n4\n5\n6\n7\n", "1\n2\n3\n4\n5…"),
         # A description which is short enough to be returned unmodified
         ("A blue train in a green field", "A blue train in a green field"),
         # A description which is around the target length
