@@ -140,6 +140,9 @@ class WikimediaUserSession(UserMixin, user_db.Model):
 
     @property
     def profile_url(self):
+        """
+        Returns a link to the user's profile on Wikimedia Commons.
+        """
         return f"https://commons.wikimedia.org/wiki/User:{self.name}"
 
     def token(self) -> OAuth2Token:
