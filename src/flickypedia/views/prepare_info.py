@@ -194,6 +194,7 @@ def prepare_info():
 
         upload_batch_of_photos.apply_async(
             kwargs={
+                "userid": current_user.id,
                 "token": current_user.token(),
                 "key": current_user.token_key(),
                 "photos_to_upload": photos_to_upload,
