@@ -39,6 +39,7 @@ source = [
 
 [tool.coverage.report]
 show_missing = true
+skip_covered = true
 # fail_under = 100
 exclude_also = [
   "from typing import",
