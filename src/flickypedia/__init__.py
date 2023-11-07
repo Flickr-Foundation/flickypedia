@@ -35,7 +35,7 @@ from flickypedia.views import (
     wait_for_upload,
 )
 from flickypedia.tasks import celery_init_app
-from flickypedia.utils import size_at
+from flickypedia.utils import create_bookmarklet, size_at
 
 
 def create_app(data_directory: str = "data", debug: bool = False):
@@ -79,6 +79,7 @@ def create_app(data_directory: str = "data", debug: bool = False):
     app.jinja_env.filters["size_at"] = size_at
     app.jinja_env.filters["link_to_commons"] = create_link_to_commons
     app.jinja_env.filters["truncate_description"] = truncate_description
+    app.jinja_env.filters["bookmarklet"] = create_bookmarklet
 
     app.jinja_env.filters["wikidata_property_name"] = get_property_name
     app.jinja_env.filters["wikidata_entity_label"] = get_entity_label
