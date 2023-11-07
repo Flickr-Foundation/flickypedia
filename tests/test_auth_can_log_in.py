@@ -1,6 +1,6 @@
 import datetime
 
-from flask import FlaskClient
+from flask.testing import FlaskClient
 from flask_login import current_user
 
 

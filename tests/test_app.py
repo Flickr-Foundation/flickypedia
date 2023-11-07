@@ -1,6 +1,6 @@
 from urllib.parse import urlencode
 
-from flask import FlaskClient
+from flask.testing import FlaskClient
 import pytest
 
 

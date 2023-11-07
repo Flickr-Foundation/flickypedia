@@ -4,7 +4,8 @@ import shutil
 from typing import Generator
 
 from authlib.oauth2.rfc6749.wrappers import OAuth2Token
-from flask import Flask, FlaskClient
+from flask import Flask
+from flask.testing import FlaskClient
 from flask_login import FlaskLoginClient, current_user
 from flickr_photos_api import FlickrPhotosApi
 import httpx

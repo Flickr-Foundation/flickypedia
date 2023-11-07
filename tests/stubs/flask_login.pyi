@@ -1,6 +1,6 @@
 from typing import Any, Callable
 
-from flask import FlaskClient
+from flask.testing import FlaskClient
 
 from flickypedia.auth import WikimediaUserSession
 
@@ -17,4 +17,4 @@ class LoginManager:
 
     login_view: str
 
-class FlaskLoginClient(FlaskClient): ...  # type: ignore
+class FlaskLoginClient(FlaskClient): ...

@@ -1,6 +1,7 @@
 import json
 
-from flask import Flask, FlaskClient
+from flask import Flask
+from flask.testing import FlaskClient
 from flickr_photos_api import FlickrPhotosApi
 import pytest
 

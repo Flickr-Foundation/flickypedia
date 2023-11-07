@@ -3,7 +3,8 @@ import json
 import os
 
 from authlib.oauth2.rfc6749.wrappers import OAuth2Token
-from flask import Flask, FlaskClient, session
+from flask import Flask, session
+from flask.testing import FlaskClient
 from flask_login import current_user
 
 from flickypedia.auth import (

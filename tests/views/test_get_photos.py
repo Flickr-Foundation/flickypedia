@@ -1,4 +1,4 @@
-from flask import FlaskClient
+from flask.testing import FlaskClient
 from flask_login import FlaskLoginClient
 
 from flickypedia import create_app

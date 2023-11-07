@@ -15,7 +15,7 @@ file we can add to the Git repo for testing.
 
 """
 
-from flask import FlaskClient
+from flask.testing import FlaskClient
 
 from flickypedia.duplicates import create_link_to_commons, find_duplicates
 

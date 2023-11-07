@@ -1,6 +1,6 @@
 import json
 
-from flask import FlaskClient
+from flask.testing import FlaskClient
 
 
 class TestValidateTitleApi:

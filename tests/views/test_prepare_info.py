@@ -1,4 +1,5 @@
-from flask import Flask, FlaskClient
+from flask import Flask
+from flask.testing import FlaskClient
 import pytest
 
 from flickypedia.views import truncate_description

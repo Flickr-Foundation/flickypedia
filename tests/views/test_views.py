@@ -1,4 +1,4 @@
-from flask import FlaskClient
+from flask.testing import FlaskClient
 
 
 def test_can_load_about_page(client: FlaskClient) -> None:
