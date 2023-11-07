@@ -36,6 +36,22 @@
   <h3 id="privacy">Privacy policy</h3>
   
   <p>
-    TODO
+    The primary purpose of Flickypedia is to help you upload photos from Flickr to Wikimedia Commons.
   </p>
-{% endblock %}
+  
+  <p>
+    All the photos and metadata you upload are recorded in
+    {% if current_user.is_anonymous %}
+      your public upload history
+    {% else %}
+      <a href="{{ current_user.uploads_url }}">your public upload history</a>
+    {% endif %}
+    on Wikimedia Commons.
+  </p>
+  
+  <p>
+    We use cookies to keep you logged in to Wikimedia Commons and Flickr.
+    We don’t use any analytics or tracking cookies.
+    We don’t share your information with any third parties except Wikimedia Commons and Flickr.
+  </p>
+  {% endblock %}
