@@ -127,6 +127,13 @@ class WikimediaUserSession(UserMixin, user_db.Model):
         """
         return f"https://commons.wikimedia.org/wiki/User:{self.name}"
 
+    @property
+    def uploads_url(self):
+        """
+        Returns a link to the user's uploads on Wikimedia Commons.
+        """
+        return f"https://commons.wikimedia.org/w/index.php?title=Special:ListFiles/{self.name}&ilshowall=1"
+
     def token(self) -> OAuth2Token:
         """
         Retrieve the unencrypted value of the user's token.
