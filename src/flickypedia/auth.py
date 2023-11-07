@@ -306,7 +306,8 @@ def oauth2_callback_wikimedia():
     # Exchange the authorization response for an access token
     try:
         state = session.pop("oauth_authorize_state")
-    except KeyError:
+    except KeyError as e:
+        print("Unable to retrieve oauth_authorize_state from user's session")
         abort(401)
 
     config = current_app.config["OAUTH2_PROVIDERS"]["wikimedia"]
