@@ -109,7 +109,15 @@ def get_wikimedia_api() -> WikimediaOAuthApi:
     Returns an instance of the Wikimedia OAuth API which is connected for the
     current user.
     """
-    client = get_oauth_client()
+    config = current_app.config["OAUTH2_PROVIDERS"]["wikimedia"]
+
+    client = OAuth2Client(
+        client_id=config["client_id"],
+        client_secret=config["client_secret"],
+        authorization_endpoint=config["authorize_url"],
+        token_endpoint=config["token_url"],
+    )
+
     token = current_user.token()
 
     return WikimediaOAuthApi(
