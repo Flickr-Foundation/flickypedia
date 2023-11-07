@@ -51,8 +51,8 @@ class WikiFieldsForm(Form):
 
     original_format: str
 
-    def validate_title(form: WikiFieldsForm, field: StringField) -> None:
-        title = f"File:{field.data}.{form.original_format}"
+    def validate_title(self, field: StringField) -> None:
+        title = f"File:{field.data}.{self.original_format}"
 
         api = current_user.wikimedia_api()
         validation = api.validate_title(title=title)
