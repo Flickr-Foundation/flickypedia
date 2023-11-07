@@ -1,0 +1,84 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.0
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=opensearch&format=xml&limit=10&search=a&namespace=14
+  response:
+    content: <?xml version="1.0"?><SearchSuggestion version="2.0" xmlns="http://opensearch.org/searchsuggest2"><Query
+      xml:space="preserve">a</Query><Section><Item><Text xml:space="preserve">Category:A</Text><Url
+      xml:space="preserve">https://commons.wikimedia.org/wiki/Category:A</Url><Image
+      source="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/ICS_Alfa.svg/50px-ICS_Alfa.svg.png"
+      width="50" height="50" /></Item><Item><Text xml:space="preserve">Category:Amsterdam
+      in the 1810s</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/Category:Amsterdam_in_the_1810s</Url></Item><Item><Text
+      xml:space="preserve">Category:Aircraft of Uzbekistan</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/Category:Aircraft_of_Uzbekistan</Url></Item><Item><Text
+      xml:space="preserve">Category:Aircraft registered in Mali</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/Category:Aircraft_registered_in_Mali</Url></Item><Item><Text
+      xml:space="preserve">Category:Architectural elements in Germany</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/Category:Architectural_elements_in_Germany</Url></Item><Item><Text
+      xml:space="preserve">Category:Aircraft in Portugal</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/Category:Aircraft_in_Portugal</Url></Item><Item><Text
+      xml:space="preserve">Category:Aircraft in Sierra Leone</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/Category:Aircraft_in_Sierra_Leone</Url></Item><Item><Text
+      xml:space="preserve">Category:Aircraft in Malawi</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/Category:Aircraft_in_Malawi</Url></Item><Item><Text
+      xml:space="preserve">Category:Aircraft in Tanzanian service</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/Category:Aircraft_in_Tanzanian_service</Url></Item><Item><Text
+      xml:space="preserve">Category:Aircraft in Thailand</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/Category:Aircraft_in_Thailand</Url></Item></Section></SearchSuggestion>
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=10800
+      content-disposition:
+      - inline; filename=api-result.xml
+      content-encoding:
+      - gzip
+      content-type:
+      - text/xml; charset=utf-8
+      date:
+      - Tue, 07 Nov 2023 09:34:46 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1492.eqiad.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3070"
+      set-cookie:
+      - WMF-Last-Access=07-Nov-2023;Path=/;HttpOnly;secure;Expires=Sat, 09 Dec 2023
+        00:00:00 GMT
+      - GeoIP=GB:ENG:Lowestoft:52.50:1.71:v4; Path=/; secure; Domain=.wikimedia.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie
+      x-cache:
+      - cp3070 pass, cp3070 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 92.13.36.200
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-opensearch-type:
+      - prefix
+      x-search-id:
+      - 4ymuu98rcwc5krebgkgeu1u0r
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

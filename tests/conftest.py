@@ -1,9 +1,7 @@
 import datetime
-import json
 import os
 import shutil
 
-from authlib.integrations.httpx_client.oauth2_client import OAuth2Client
 from flask_login import FlaskLoginClient, current_user
 from flickr_photos_api import FlickrPhotosApi
 import httpx
@@ -64,7 +62,18 @@ def wikimedia_api(cassette_name):
     This instance of the API will record its interactions as "cassettes"
     using vcr.py, which can be replayed offline (e.g. in CI tests).
 
-    TODO: Document how to record new interactions.
+    To create VCR cassettes for new tests:
+
+    1.  Create a new Personal API token for Wikimedia, following the
+        instructions at:
+        https://api.wikimedia.org/wiki/Authentication#Personal_API_tokens
+    2.  Put this token in the WIKIMEDIA_PERSONAL_API_TOKEN env var.
+    3.  Run the test.
+    4.  Check in your new VCR cassette.
+
+    Note that not all Wikimedia APIs require authentication, e.g. the
+    category lookup, so you may be able to create VCR cassettes for
+    some tests without an API token.
     """
     with vcr.use_cassette(
         cassette_name,
@@ -72,8 +81,8 @@ def wikimedia_api(cassette_name):
         filter_headers=["authorization"],
     ):
         try:  # pragma: no cover
-            token = json.loads(os.environ["WIKIMEDIA_ACCESS_TOKEN"])
-            client = OAuth2Client(token=token)
+            token = os.environ["WIKIMEDIA_PERSONAL_API_TOKEN"]
+            client = httpx.Client(headers={"Authorization": f"Bearer {token}"})
         except KeyError:
             client = httpx.Client()
 
