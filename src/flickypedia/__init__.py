@@ -66,8 +66,8 @@ def create_app(data_directory: str = "data", debug: bool = False):
     app.add_url_rule("/wait_for_upload/<task_id>", view_func=wait_for_upload)
     app.add_url_rule("/wait_for_upload/<task_id>/status", view_func=get_upload_status)
 
-    app.add_url_rule("/about", view_func=about)
-    app.add_url_rule("/bookmarklet", view_func=bookmarklet)
+    app.add_url_rule("/about/", view_func=about)
+    app.add_url_rule("/bookmarklet/", view_func=bookmarklet)
 
     app.add_url_rule("/api/validate_title", view_func=validate_title_api)
 
