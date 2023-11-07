@@ -217,26 +217,43 @@ def test_create_sdc_claims_for_flickr_photo_without_date_taken(
 def test_create_sdc_claims_for_flickr_photo_with_date_taken(
     app: Flask, vcr_cassette: str
 ) -> None:
-    actual = create_sdc_claims_for_flickr_photo(
-        photo_id="53234140350",
-        photo_url="https://www.flickr.com/photos/mdgovpics/53234140350/",
-        user={
+    photo: SinglePhoto = {
+        "id": "53234140350",
+        "url": "https://www.flickr.com/photos/mdgovpics/53234140350/",
+        "owner": {
             "id": "64018555@N03",
             "username": "MDGovpics",
             "realname": "Maryland GovPics",
             "photos_url": "https://www.flickr.com/photos/mdgovpics/",
             "profile_url": "https://www.flickr.com/people/mdgovpics/",
         },
-        copyright_status="copyrighted",
-        original_url="https://live.staticflickr.com/65535/53234140350_93579322a9_o_d.jpg",
-        license_id="cc-by-2.0",
-        date_posted=datetime.datetime.fromtimestamp(1696421915),
-        date_taken={
+        "title": "UMD Class Visits",
+        "description": "Lt. Governor Aruna visits classes at University of Maryland by Joe Andrucyk at Thurgood Marshall Hall, 7805 Regents Dr, College Park MD 20742",
+        "sizes": [
+            {
+                "label": "Original",
+                "source": "https://live.staticflickr.com/65535/53234140350_93579322a9_o_d.jpg",
+                "media": "photo",
+                "width": 6192,
+                "height": 4128
+            }
+        ],
+        "license": {
+            "id": "cc-by-2.0",
+            "label": "CC BY 2.0",
+            "url": "https://creativecommons.org/licenses/by/2.0/",
+        },
+        "date_posted": datetime.datetime.fromtimestamp(1696421915),
+        "date_taken": {
             "value": datetime.datetime(2023, 10, 3, 5, 45, 0),
             "unknown": False,
             "granularity": "second",
         },
-    )
+        "safety_level": "safe",
+        "original_format": "jpg"
+    }
+
+    actual = create_sdc_claims_for_flickr_photo(photo=photo)
     expected = get_fixture("photo_53234140350.json")
 
     assert actual == expected

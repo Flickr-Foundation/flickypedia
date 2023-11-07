@@ -97,16 +97,7 @@ def create_prepare_info_form(photos) -> FlaskForm:
         )
 
     for p in photos:
-        p["sdc"] = create_sdc_claims_for_flickr_photo(
-            photo_id=p["id"],
-            photo_url=p["url"],
-            user=p["owner"],
-            copyright_status="copyrighted",
-            original_url=size_at(p["sizes"], desired_size="Original")["source"],
-            license_id=p["license"]["id"],
-            date_posted=p["date_posted"],
-            date_taken=p["date_taken"],
-        )
+        p["sdc"] = create_sdc_claims_for_flickr_photo(p)
 
         class FormForThisPhoto(WikiFieldsForm):
             original_format = p["original_format"]
