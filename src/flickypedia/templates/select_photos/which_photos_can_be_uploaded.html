@@ -112,12 +112,16 @@
         they have
       {% endif %}
       {% for lic in photos.disallowed_licenses.values()|unique %}
-        {{ lic }}
+        {% if lic.startswith('CC') %}
+          <span class="cc_license_label">{{ lic }}</span>
+        {%- else -%}
+          {{ lic }}
+        {%- endif -%}
         {%- if loop.index <= loop.length - 2 %},{% endif %}
         {% if loop.index == loop.length - 1 %} and{% endif %}
       {% endfor %}
       license{% if photos.disallowed_licenses|length > 1 %}s{% endif %}.
-      Wikimedia Commons only accepts CC0, CC BY, CC BY-SA, and Public Domain photos that are also public and safe on Flickr.
+      Wikimedia Commons only accepts <span class="cc_license_label">CC0</span>, <span class="cc_license_label">CC BY</span>, <span class="cc_license_label">CC BY-SA</span>, and Public Domain photos that are also public and safe on Flickr.
     </p>
   {% endif %}
 

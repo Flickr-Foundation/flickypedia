@@ -139,6 +139,13 @@ input.pink_button:active {
   background: $yellow;
 }
 
+/* This is a very small bit of polish: it prevents CC license labels
+ * (e.g. CC BY 2.0) from being split across multiple lines.
+ */
+.cc_license_label {
+  white-space: nowrap;
+}
+
 @import "header.scss";
 
 @import "homepage.scss";
