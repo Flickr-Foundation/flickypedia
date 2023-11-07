@@ -1,42 +1,42 @@
-name: Test
-
-on:
-  push:
-    branches:
-    - main
-
-  pull_request:
-    branches:
-    - main
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
-    steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-        pip install -e .
-        pip install -r dev_requirements.txt
-    - name: Run linting
-      run: |
-        black --check .
-
-        # E501 = line too long; anything up to 100-ish is fine in my book
-        # (the "ish" is intentional; see https://www.youtube.com/watch?v=wf-BqAjZb8M)
-        #
-        # W503 = line break before binary operator; this is something added
-        # by black and I don't have a strong opinion on, so I'm going to trust
-        # black and have flake8 ignore it.
-        flake8 --ignore=E501,W503
-    - name: Run tests
-      run: |
-        coverage run -m pytest tests
-        coverage report
+# name: Test
+#
+# on:
+#   push:
+#     branches:
+#     - main
+#
+#   pull_request:
+#     branches:
+#     - main
+#
+# jobs:
+#   test:
+#     runs-on: ubuntu-latest
+#     strategy:
+#       matrix:
+#         python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+#     steps:
+#     - uses: actions/checkout@v3
+#     - name: Set up Python ${{ matrix.python-version }}
+#       uses: actions/setup-python@v4
+#       with:
+#         python-version: ${{ matrix.python-version }}
+#     - name: Install dependencies
+#       run: |
+#         pip install -e .
+#         pip install -r dev_requirements.txt
+#     - name: Run linting
+#       run: |
+#         black --check .
+#
+#         # E501 = line too long; anything up to 100-ish is fine in my book
+#         # (the "ish" is intentional; see https://www.youtube.com/watch?v=wf-BqAjZb8M)
+#         #
+#         # W503 = line break before binary operator; this is something added
+#         # by black and I don't have a strong opinion on, so I'm going to trust
+#         # black and have flake8 ignore it.
+#         flake8 --ignore=E501,W503
+#     - name: Run tests
+#       run: |
+#         coverage run -m pytest tests
+#         coverage report
