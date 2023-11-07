@@ -4,7 +4,7 @@ import bs4
 from flask import Flask, render_template
 import pytest
 
-from flickypedia.views.select_photos import CategorisedPhotos
+from flickypedia.photos import CategorisedPhotos
 from utils import minify
 
 

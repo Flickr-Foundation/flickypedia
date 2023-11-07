@@ -16,7 +16,7 @@ This page gets two arguments as query parameters:
 import datetime
 from typing import cast, Any, Dict, List, TypedDict
 
-from flask import abort, current_app, redirect, render_template, request, url_for
+from flask import abort, redirect, render_template, request, url_for
 from flask_wtf import FlaskForm, Form
 from flask_login import current_user, login_required
 from flickr_photos_api import DateTaken, SinglePhoto, User as FlickrUser
@@ -26,7 +26,7 @@ from wtforms.widgets import TextArea
 
 from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
 from flickypedia.apis._types import Statement
-from flickypedia.photos import size_at
+from flickypedia.photos import CategorisedPhotos, categorise_photos, size_at
 from flickypedia.uploads import upload_batch_of_photos
 from .select_photos import get_cached_api_response, remove_cached_api_response
 from ._types import ViewResponse
@@ -200,13 +200,15 @@ def prepare_info() -> ViewResponse:
     # Do some basic consistency checks.  These assertions could fail
     # if somebody has mucked around with the URL query parameters,
     #  but in that case I'm okay to let it fail.
-    assert len(selected_photos) == len(selected_photo_ids)
-    assert all(
-        photo["license"]["id"] in current_app.config["ALLOWED_LICENSES"]
-        for photo in selected_photos
+    assert categorise_photos(selected_photos) == cast(
+        CategorisedPhotos,
+        {
+            "available": selected_photos,
+            "duplicates": {},
+            "disallowed_licenses": {},
+            "restricted": set(),
+        },
     )
-
-    # TODO: Add safety checks here
 
     # Now construct the "prepare info" form.
     prepare_info_form = create_prepare_info_form(photos=selected_photos)
