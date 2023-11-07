@@ -41,8 +41,20 @@ from flask import (
     url_for,
 )
 from flask_login import current_user, login_required
-from flickr_photos_api import FlickrPhotosApi, PhotosInAlbum, PhotosInGallery, ResourceNotFound, SinglePhoto, User as FlickrUser
-from flickr_url_parser import parse_flickr_url, NotAFlickrUrl, ParseResult, UnrecognisedUrl
+from flickr_photos_api import (
+    FlickrPhotosApi,
+    PhotosInAlbum,
+    PhotosInGallery,
+    ResourceNotFound,
+    SinglePhoto,
+    User as FlickrUser,
+)
+from flickr_url_parser import (
+    parse_flickr_url,
+    NotAFlickrUrl,
+    ParseResult,
+    UnrecognisedUrl,
+)
 from flask_wtf import FlaskForm
 from wtforms import BooleanField, HiddenField, SubmitField
 from wtforms.validators import DataRequired
@@ -55,6 +67,7 @@ from .get_photos import FlickrPhotoURLForm
 class SinglePhotoData(TypedDict):
     photos: List[SinglePhoto]
     owner: FlickrUser
+
 
 GetPhotosData = Union[SinglePhotoData, PhotosInAlbum, PhotosInGallery]
 
