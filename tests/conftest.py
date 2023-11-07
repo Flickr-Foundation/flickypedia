@@ -63,6 +63,8 @@ def wikimedia_api(cassette_name, user_agent):
 
     This instance of the API will record its interactions as "cassettes"
     using vcr.py, which can be replayed offline (e.g. in CI tests).
+
+    TODO: Document how to record new interactions.
     """
     with vcr.use_cassette(
         cassette_name,
