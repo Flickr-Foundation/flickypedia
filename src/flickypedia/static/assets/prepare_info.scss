@@ -187,6 +187,38 @@ form#prepare_info {
     .charCounter .remainingCharacters {
       font-weight: bold;
     }
+    
+    /* Styles for the category selector */
+    .category_inputs {
+      display: grid;
+      grid-gap: 5px;
+      grid-template-columns: auto 40px;
+      height: 50px;
+
+      input[type="text"] {
+        height: 28px;
+      }
+
+      input[type="button"] {
+        height: 49px;
+        padding-top: 3px;
+      }
+    }
+
+    .selected_categories {
+      margin-top: 1em;
+
+      .remove_category {
+        margin-left: 5px;
+        cursor: pointer;
+        color: $red;
+        @include disable_select();
+
+        &:hover {
+          background: none;
+        }
+      }
+    }
   }
 
   /* Styles for the structured data preview at the bottom of the form */
