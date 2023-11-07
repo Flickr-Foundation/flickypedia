@@ -27,7 +27,7 @@ jobs:
         pip install -r dev_requirements.txt
     - name: Check types
       run: |
-        mypy \
+        MYPYPATH=tests/stubs/ mypy \
           src/flickypedia/utils.py \
           src/flickypedia/duplicates.py \
           src/flickypedia/config.py \
