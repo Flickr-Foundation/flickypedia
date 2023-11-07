@@ -139,7 +139,7 @@ def test_token_is_saved_to_database_when_refreshed(app, client, vcr_cassette):
 
         # Modify the 'expires_at' time, so it's actually 1 second ago -- as far
         # as authlib is concerned, this token is now invalid.
-        token['expires_at'] = int(datetime.datetime.now().timestamp() - 1)
+        token["expires_at"] = int(datetime.datetime.now().timestamp() - 1)
 
         # Now save a user with this token to the database.
         user = store_user(token)
@@ -153,7 +153,7 @@ def test_token_is_saved_to_database_when_refreshed(app, client, vcr_cassette):
 
         # Check that the user's token no longer matches the one we saved earlier.
         assert user.token() != token
-        assert user.token()['expires_at'] > datetime.datetime.now().timestamp()
+        assert user.token()["expires_at"] > datetime.datetime.now().timestamp()
 
         refreshed_token = user.token()
 
