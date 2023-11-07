@@ -21,6 +21,7 @@ from flickypedia.apis.wikidata import (
 )
 from flickypedia.config import create_config, get_directories
 from flickypedia.duplicates import create_link_to_commons
+from flickypedia import views
 from flickypedia.views import (
     about,
     bookmarklet,
@@ -70,6 +71,9 @@ def create_app(data_directory: str = "data", debug: bool = False):
     app.add_url_rule("/bookmarklet/", view_func=bookmarklet)
 
     app.add_url_rule("/api/validate_title", view_func=validate_title_api)
+    app.add_url_rule(
+        "/api/find_matching_categories", view_func=views.find_matching_categories_api
+    )
 
     app.jinja_env.filters["a_href"] = a_href
     app.jinja_env.filters["html_unescape"] = html.unescape

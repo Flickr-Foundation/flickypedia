@@ -22,3 +22,20 @@ def validate_title_api():
     result = api.validate_title(title)
 
     return jsonify(result)
+
+
+@login_required
+def find_matching_categories_api():
+    """
+    A basic API for looking up matching categories that can be called
+    from JS on the page.
+    """
+    query = request.args.get("query")
+
+    if not query:
+        abort(400)
+
+    api = current_user.wikimedia_api()
+    result = api.find_matching_categories(query)
+
+    return jsonify(result)

@@ -1,6 +1,6 @@
 from flask import render_template
 
-from .api import validate_title_api
+from .api import find_matching_categories_api, validate_title_api
 from .get_photos import get_photos
 from .prepare_info import prepare_info, truncate_description
 from .select_photos import select_photos
@@ -22,6 +22,7 @@ def bookmarklet():
 __all__ = [
     "about",
     "bookmarklet",
+    "find_matching_categories_api",
     "get_photos",
     "get_upload_status",
     "homepage",
