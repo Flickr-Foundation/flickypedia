@@ -1,0 +1,92 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=opensearch&format=xml&limit=10&search=apple&namespace=14
+  response:
+    content: <?xml version="1.0"?><SearchSuggestion version="2.0" xmlns="http://opensearch.org/searchsuggest2"><Query
+      xml:space="preserve">apple</Query><Section><Item><Text xml:space="preserve">Category:Apple</Text><Url
+      xml:space="preserve">https://commons.wikimedia.org/wiki/Category:Apple</Url></Item><Item><Text
+      xml:space="preserve">Category:Appleton, Wisconsin</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/Category:Appleton,_Wisconsin</Url><Image
+      source="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/FoxRiverPaperCompanyHistoricDistrictAppletonWI.jpg/50px-FoxRiverPaperCompanyHistoricDistrictAppletonWI.jpg"
+      width="50" height="33" /></Item><Item><Text xml:space="preserve">Category:Apples</Text><Url
+      xml:space="preserve">https://commons.wikimedia.org/wiki/Category:Apples</Url><Image
+      source="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Honeycrisp.jpg/50px-Honeycrisp.jpg"
+      width="50" height="50" /></Item><Item><Text xml:space="preserve">Category:Apple
+      trees in Germany</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/Category:Apple_trees_in_Germany</Url></Item><Item><Text
+      xml:space="preserve">Category:Apples of the Hesperides</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/Category:Apples_of_the_Hesperides</Url><Image
+      source="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Mosaico_Trabajos_H%C3%A9rcules_%28M.A.N._Madrid%29_11.jpg/50px-Mosaico_Trabajos_H%C3%A9rcules_%28M.A.N._Madrid%29_11.jpg"
+      width="50" height="34" /></Item><Item><Text xml:space="preserve">Category:Apple
+      trees</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/Category:Apple_trees</Url><Image
+      source="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Tree_with_red_apples_in_Barkedal_4.jpg/50px-Tree_with_red_apples_in_Barkedal_4.jpg"
+      width="50" height="50" /></Item><Item><Text xml:space="preserve">Category:Apple
+      trees in Russia</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/Category:Apple_trees_in_Russia</Url></Item><Item><Text
+      xml:space="preserve">Category:Apple trees in Lithuania</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/Category:Apple_trees_in_Lithuania</Url></Item><Item><Text
+      xml:space="preserve">Category:Apple trees in Turkey</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/Category:Apple_trees_in_Turkey</Url></Item><Item><Text
+      xml:space="preserve">Category:Apple trees in Armenia</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/Category:Apple_trees_in_Armenia</Url></Item></Section></SearchSuggestion>
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '45'
+      cache-control:
+      - max-age=10800, s-maxage=10800, public
+      content-disposition:
+      - inline; filename=api-result.xml
+      content-encoding:
+      - gzip
+      content-length:
+      - '542'
+      content-type:
+      - text/xml; charset=utf-8
+      date:
+      - Tue, 07 Nov 2023 10:32:29 GMT
+      expires:
+      - Tue, 07 Nov 2023 13:32:29 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1425.eqiad.wmnet
+      server-timing:
+      - cache;desc="hit-front", host;desc="cp3070"
+      set-cookie:
+      - WMF-Last-Access=07-Nov-2023;Path=/;HttpOnly;secure;Expires=Sat, 09 Dec 2023
+        00:00:00 GMT
+      - GeoIP=GB:ENG:Lowestoft:52.50:1.71:v4; Path=/; secure; Domain=.wikimedia.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie
+      x-cache:
+      - cp3070 miss, cp3070 hit/4
+      x-cache-status:
+      - hit-front
+      x-client-ip:
+      - 92.13.36.200
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-opensearch-type:
+      - prefix
+      x-search-id:
+      - c55h8ca33w0n6qm7ozqiqv5n0
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1
