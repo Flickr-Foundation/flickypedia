@@ -52,7 +52,7 @@ function addTitleValidatorTo(inputElement) {
         }
 
         /* We're done thinking! */
-        inputElement.classList.remove("thinking")
+        inputElement.classList.remove("thinking");
       });
   });
 }
@@ -125,9 +125,14 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm) {
   const categoryInputs = document.createElement("div");
   categoryInputs.classList.add("category_inputs");
 
+  const autocompleteContainer = document.createElement("div");
+  autocompleteContainer.classList.add("autocomplete");
+
   const inputElement = document.createElement("input");
   inputElement.type = "text";
-  categoryInputs.appendChild(inputElement);
+
+  autocompleteContainer.appendChild(inputElement);
+  categoryInputs.appendChild(autocompleteContainer);
 
   /* Create a button that a user can click to add a new category. */
   const addCategoryButton = document.createElement("input");
@@ -228,4 +233,128 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm) {
    * which they haven't explicitly added to the list of categories.
    */
   parentForm.addEventListener("submit", () => addCategory());
+
+  /* As somebody starts typing in this form, query the Wikimedia API
+   * and offer an autocomplete menu for categories.
+   *
+   * This is loosely based on code from
+   * https://www.w3schools.com/howto/howto_js_autocomplete.asp
+   */
+  var currentFocus = -1;
+
+  /* When somebody starts typing or switches to this field, open
+   * the autocomplete menu. */
+  inputElement.addEventListener("input", () => openAutocompleteMenu());
+  inputElement.addEventListener("focus", () => openAutocompleteMenu());
+
+  /* When somebody switches or clicks away from the input, close the
+   * autocomplete menu -- unless they clicked on an autocomplete suggestion,
+   * in which case apply that first. */
+  inputElement.addEventListener("blur", function(event) {
+    if (event.relatedTarget !== null) {
+      if (event.relatedTarget.classList.contains("suggestion")) {
+        inputElement.value = event.relatedTarget.innerHTML;
+        addCategory();
+      }
+    }
+
+    closeAutocompleteMenus();
+  });
+
+  /* An attempt to disable browser autocomplete from interfering. */
+  inputElement.autocomplete = "off";
+
+  /* Open the autocomplete menu -- query the Flickypedia API to get a
+   * list of category suggestions, then put them in a list. */
+  function openAutocompleteMenu() {
+    closeAutocompleteMenus();
+
+    if (inputElement.value === "") {
+      return;
+    }
+
+    currentFocus = -1;
+
+    inputElement.classList.add("thinking");
+
+    const autocompleteElement = document.createElement("div");
+    autocompleteElement.classList.add("autocomplete-items");
+
+    autocompleteContainer.appendChild(autocompleteElement);
+
+    fetch(`/api/find_matching_categories?query=${inputElement.value}`)
+      .then((response) => response.json())
+      .then(function (json) {
+        for (i = 0; i < json.length; i++) {
+          var suggestion = json[i];
+          const suggestionElement = document.createElement("div");
+          suggestionElement.classList.add("suggestion");
+          suggestionElement.innerHTML = suggestion;
+
+          /* This allows the element to receive focus.
+           *
+           * In turn, when the blur event fires on the 'input' element
+           * (somebody has clicked elsewhere), we can detect if:
+           *
+           *    - they clicked on this suggestion, in which case we should
+           *      apply it, or
+           *    - they clicked somewhere else, in which case we should just
+           *      close the autocomplete menu.
+           */
+          suggestionElement.tabIndex = "-1";
+
+          autocompleteElement.appendChild(suggestionElement);
+        }
+
+        inputElement.classList.remove("thinking");
+      });
+  }
+
+  inputElement.addEventListener("keydown", function(event) {
+    console.log(event.key);
+
+    if (event.key === "ArrowDown") {
+      currentFocus++;
+      updateFocusedItem();
+    } else if (event.key === "ArrowUp") {
+      currentFocus--;
+      updateFocusedItem();
+    } else if (event.key === "Enter") {
+      if (currentFocus > -1) {
+
+        inputElement.value =
+          autocompleteContainer
+            .querySelector(".autocomplete-items")
+            .children[currentFocus]
+            .innerHTML;
+
+        addCategory();
+        closeAutocompleteMenus();
+
+        event.preventDefault();
+      }
+    }
+  });
+
+  function updateFocusedItem() {
+    const items =
+      autocompleteContainer
+        .querySelector(".autocomplete-items")
+        .children;
+
+    for (var i = 0; i < items.length; i++) {
+      if (i === currentFocus) {
+        items[i].classList.add("autocomplete-active");
+      } else {
+        items[i].classList.remove("autocomplete-active");
+      }
+    }
+  }
+
+  function closeAutocompleteMenus() {
+    currentFocus = -1;
+    document
+      .querySelectorAll(".autocomplete-items")
+      .forEach((item) => item.remove());
+  }
 }
