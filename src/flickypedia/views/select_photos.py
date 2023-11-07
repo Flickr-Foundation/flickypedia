@@ -41,7 +41,7 @@ from flask import (
     url_for,
 )
 from flask_login import current_user, login_required
-from flickr_photos_api import FlickrPhotosApi, ResourceNotFound,
+from flickr_photos_api import FlickrPhotosApi, ResourceNotFound
 from flickr_url_parser import parse_flickr_url, NotAFlickrUrl, ParseResult, UnrecognisedUrl
 from flask_wtf import FlaskForm
 from wtforms import BooleanField, HiddenField, SubmitField
