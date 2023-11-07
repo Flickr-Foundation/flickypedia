@@ -25,6 +25,7 @@ is supporting that function.
 """
 
 import datetime
+from typing import Dict, List, Literal, TypedDict, Union
 
 from flickr_photos_api import DateTaken, User as FlickrUser
 
@@ -34,9 +35,10 @@ from flickypedia.apis.wikidata import (
     WikidataEntities,
     WikidataProperties,
 )
+from ._types import Snak, Statement
 
 
-def _wikibase_entity_value(*, property_id, entity_id):
+def _wikibase_entity_value(*, property_id: str, entity_id: str) -> Snak:
     return {
         "snaktype": "value",
         "property": property_id,
@@ -47,13 +49,40 @@ def _wikibase_entity_value(*, property_id, entity_id):
     }
 
 
-def _create_qualifiers(qualifier_values):
-    result = {}
+class QualifierValueTypes:
+    String = TypedDict(
+        "String", {"type": Literal["string"], "property": str, "value": str}
+    )
+    Entity = TypedDict(
+        "Entity", {"type": Literal["entity"], "property": str, "entity_id": str}
+    )
+    Date = TypedDict(
+        "Date",
+        {
+            "type": Literal["date"],
+            "property": str,
+            "date": datetime.datetime,
+            "precision": str,
+        },
+    )
+
+
+QualifierValues = Union[
+    QualifierValueTypes.String,
+    QualifierValueTypes.Entity,
+    QualifierValueTypes.Date,
+]
+
+
+def _create_qualifiers(
+    qualifier_values: List[QualifierValues],
+) -> Dict[str, List[Snak]]:
+    result: Dict[str, List[Snak]] = {}
 
     for qualifier in qualifier_values:
         property_id = qualifier["property"]
 
-        if qualifier.keys() == {"property", "value"}:
+        if qualifier["type"] == "string":
             result[property_id] = [
                 {
                     "datavalue": {"type": "string", "value": qualifier["value"]},
@@ -61,13 +90,14 @@ def _create_qualifiers(qualifier_values):
                     "snaktype": "value",
                 }
             ]
-        elif qualifier.keys() == {"property", "entity_id"}:
+        elif qualifier["type"] == "entity":
             result[property_id] = [
                 _wikibase_entity_value(
                     property_id=property_id, entity_id=qualifier["entity_id"]
                 )
             ]
-        elif qualifier.keys() == {"property", "date", "precision"}:
+        else:
+            assert qualifier["type"] == "date"
             result[property_id] = [
                 {
                     "datavalue": to_wikidata_date(
@@ -77,18 +107,11 @@ def _create_qualifiers(qualifier_values):
                     "snaktype": "value",
                 }
             ]
-        # This should never happen in practice, but we add an ``else:``
-        # with a meaningful error message in case it ever occurs.
-        #
-        # We don't need to test this branch because it's only a function
-        # used in this file, not externally.
-        else:  # pragma: no cover
-            raise ValueError(f"Unrecognised qualifier value: {qualifier!r}")
 
     return result
 
 
-def create_flickr_creator_statement(user: FlickrUser):
+def create_flickr_creator_statement(user: FlickrUser) -> Statement:
     """
     Create a structured data statement for a user on Flickr.
 
@@ -110,16 +133,22 @@ def create_flickr_creator_statement(user: FlickrUser):
             "type": "statement",
         }
     else:
-        qualifier_values = [
+        qualifier_values: List[QualifierValues] = [
             {
                 "property": WikidataProperties.AuthorName,
                 "value": user["realname"] or user["username"],
+                "type": "string",
             },
             {
                 "property": WikidataProperties.Url,
                 "value": user["profile_url"],
+                "type": "string",
             },
-            {"property": WikidataProperties.FlickrUserId, "value": user["id"]},
+            {
+                "property": WikidataProperties.FlickrUserId,
+                "value": user["id"],
+                "type": "string",
+            },
         ]
 
         return {
@@ -137,7 +166,7 @@ def create_flickr_creator_statement(user: FlickrUser):
         }
 
 
-def create_copyright_status_statement(status):
+def create_copyright_status_statement(status: str) -> Statement:
     """
     Create a structured data statement for a copyright status.
 
@@ -158,7 +187,7 @@ def create_copyright_status_statement(status):
     }
 
 
-def create_source_data_for_photo(photo_url, original_url):
+def create_source_data_for_photo(photo_url: str, original_url: str) -> Statement:
     """
     Create a structured data statement for a Flickr photo.
 
@@ -168,13 +197,18 @@ def create_source_data_for_photo(photo_url, original_url):
     'Uploaded by Flickypedia'.  That's not supported here, but we should
     consider it.
     """
-    qualifier_values = [
+    qualifier_values: List[QualifierValues] = [
         {
             "property": WikidataProperties.DescribedAtUrl,
             "value": photo_url,
+            "type": "string",
         },
-        {"property": WikidataProperties.Operator, "entity_id": WikidataEntities.Flickr},
-        {"property": WikidataProperties.Url, "value": original_url},
+        {
+            "property": WikidataProperties.Operator,
+            "entity_id": WikidataEntities.Flickr,
+            "type": "entity",
+        },
+        {"property": WikidataProperties.Url, "value": original_url, "type": "string"},
     ]
 
     return {
@@ -192,7 +226,7 @@ def create_source_data_for_photo(photo_url, original_url):
     }
 
 
-def create_license_statement(license_id):
+def create_license_statement(license_id: str) -> Statement:
     """
     Create a structured data statement for copyright license.
     """
@@ -210,15 +244,16 @@ def create_license_statement(license_id):
     }
 
 
-def create_posted_to_flickr_statement(date_posted: datetime.datetime):
+def create_posted_to_flickr_statement(date_posted: datetime.datetime) -> Statement:
     """
     Create a structured data statement for date posted to Flickr.
     """
-    qualifier_values = [
+    qualifier_values: List[QualifierValues] = [
         {
             "property": WikidataProperties.PublicationDate,
             "date": date_posted,
             "precision": "day",
+            "type": "date",
         },
     ]
 
@@ -233,7 +268,7 @@ def create_posted_to_flickr_statement(date_posted: datetime.datetime):
     }
 
 
-def create_date_taken_statement(date_taken: DateTaken):
+def create_date_taken_statement(date_taken: DateTaken) -> Statement:
     """
     Create a structured data statement for date taken.
 
@@ -272,10 +307,11 @@ def create_date_taken_statement(date_taken: DateTaken):
     else:
         assert flickr_granularity == "circa"
 
-        qualifier_values = [
+        qualifier_values: List[QualifierValues] = [
             {
                 "property": WikidataProperties.SourcingCircumstances,
                 "entity_id": WikidataEntities.Circa,
+                "type": "entity",
             },
         ]
 
@@ -302,7 +338,7 @@ def create_sdc_claims_for_flickr_photo(
     license_id: str,
     date_posted: datetime.datetime,
     date_taken: DateTaken,
-):
+) -> List[Statement]:
     """
     Creates a complete structured data claim for a Flickr photo.
 

@@ -10,19 +10,32 @@ See https://api.wikimedia.org/wiki/Authentication
 
 import json
 import re
-from typing import List
+from typing import Any, Dict, List, Optional
 from xml.etree import ElementTree as ET
 
 import httpx
+
+from ._types import StructuredDataClaims, TitleValidation
 
 
 class WikimediaApi:
     def __init__(self, client: httpx.Client) -> None:
         self.client = client
 
-    def _request(self, *, method, **kwargs):
+    def _request(
+        self,
+        *,
+        method: str,
+        params: Optional[Dict[str, str]] = None,
+        data: Optional[Dict[str, str]] = None,
+        timeout: Optional[int] = None,
+    ) -> Any:
         resp = self.client.request(
-            method, url="https://commons.wikimedia.org/w/api.php", **kwargs
+            method,
+            url="https://commons.wikimedia.org/w/api.php",
+            params=params,
+            data=data,
+            timeout=timeout,
         )
 
         # When something goes wrong, we get an ``error`` key in the response.
@@ -43,14 +56,14 @@ class WikimediaApi:
 
         return resp.json()
 
-    def _get(self, params):
+    def _get(self, params: Dict[str, str]) -> Any:
         return self._request(method="GET", params={**params, "format": "json"})
 
-    def _post(self, data, **kwargs):
+    def _post(self, data: Dict[str, str], timeout: Optional[int] = None) -> Any:
         return self._request(
             method="POST",
             data={**data, "format": "json", "token": self.get_csrf_token()},
-            **kwargs,
+            timeout=timeout,
         )
 
     def get_csrf_token(self) -> str:
@@ -65,7 +78,7 @@ class WikimediaApi:
         """
         resp = self._get(params={"action": "query", "meta": "tokens", "type": "csrf"})
 
-        return resp["query"]["tokens"]["csrftoken"]
+        return resp["query"]["tokens"]["csrftoken"]  # type: ignore
 
     def get_userinfo(self) -> str:
         """
@@ -79,9 +92,9 @@ class WikimediaApi:
         """
         resp = self._get(params={"action": "query", "meta": "userinfo"})
 
-        return resp["query"]["userinfo"]
+        return resp["query"]["userinfo"]  # type: ignore
 
-    def upload_image(self, *, filename: str, original_url: str, text: str):
+    def upload_image(self, *, filename: str, original_url: str, text: str) -> str:
         """
         Upload an image to Wikimedia Commons.  Returns the upload filename.
 
@@ -153,9 +166,9 @@ class WikimediaApi:
         if upload_resp["upload"]["result"] != "Success":  # pragma: no cover
             raise RuntimeError(f"Unexpected result from upload API: {upload_resp!r}")
 
-        return upload_resp["upload"]["filename"]
+        return upload_resp["upload"]["filename"]  # type: ignore
 
-    def add_file_caption(self, *, filename, language, value):
+    def add_file_caption(self, *, filename: str, language: str, value: str) -> str:
         """
         Add a file caption to an image on Wikimedia Commons.
 
@@ -202,11 +215,11 @@ class WikimediaApi:
         # See https://www.mediawiki.org/wiki/Wikibase/API#Response
         #
         if resp["success"] != 0:
-            return resp["entity"]["id"]
+            return resp["entity"]["id"]  # type: ignore
         else:  # pragma: no cover
             raise WikimediaApiException(f"Unexpected response: {resp}")
 
-    def get_structured_data(self, *, filename):
+    def get_structured_data(self, *, filename: str) -> Any:
         """
         Retrieve the structured data for a file on Wikimedia Commons.
 
@@ -227,7 +240,7 @@ class WikimediaApi:
             }
         )
 
-    def add_structured_data(self, *, filename, data):
+    def add_structured_data(self, *, filename: str, data: StructuredDataClaims) -> None:
         """
         Add some structured data to a file on Wikimedia Commons.
 
@@ -296,11 +309,11 @@ class WikimediaApi:
         )
 
         if resp["success"] != 0:
-            return
+            return None
         else:  # pragma: no cover
             raise WikimediaApiException(f"Unexpected response: {resp}")
 
-    def validate_title(self, title: str):
+    def validate_title(self, title: str) -> TitleValidation:
         """
         Given the name of a title, check whether it's allowed as
         a title for a new file on Wikimedia Commons.
@@ -486,7 +499,7 @@ class WikimediaApi:
         namespaces = {"": "http://opensearch.org/searchsuggest2"}
 
         return [
-            re.sub(r"^Category:", "", text_elem.text)
+            re.sub(r"^Category:", "", text_elem.text)  # type: ignore
             for text_elem in xml.findall(".//Text", namespaces=namespaces)
         ]
 
@@ -496,7 +509,7 @@ class WikimediaApiException(Exception):
 
 
 class UnknownWikimediaApiException(WikimediaApiException):
-    def __init__(self, resp):
+    def __init__(self, resp: httpx.Response) -> None:
         error_info = resp.json()["error"]
 
         self.code = error_info.get("code")
@@ -518,7 +531,7 @@ class DuplicateFilenameUploadException(WikimediaApiException):
     file as a file already on Wikimedia Commons.
     """
 
-    def __init__(self, filename):
+    def __init__(self, filename: str) -> None:
         self.filename = filename
         super().__init__(
             f"There is already a photo on Wikimedia Commons called {filename}"
@@ -531,7 +544,7 @@ class DuplicatePhotoUploadException(WikimediaApiException):
     an existing photo.
     """
 
-    def __init__(self, filename):
+    def __init__(self, filename: str) -> None:
         self.filename = filename
         super().__init__(
             f"There is already an identical photo on Wikimedia Commons ({filename})"
