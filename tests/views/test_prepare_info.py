@@ -1,3 +1,4 @@
+from flask import Flask, FlaskClient
 import pytest
 
 from flickypedia.views import truncate_description
@@ -14,13 +15,17 @@ from utils import minify
         "/prepare_info?selected_photo_ids=&cached_api_response_id=123",
     ],
 )
-def test_rejects_pages_with_bad_query_params(logged_in_client, url):
+def test_rejects_pages_with_bad_query_params(
+    logged_in_client: FlaskClient, url: str
+) -> None:
     resp = logged_in_client.get(url)
 
     assert resp.status_code == 400
 
 
-def test_renders_form_for_single_photo(logged_in_client, app, vcr_cassette):
+def test_renders_form_for_single_photo(
+    logged_in_client: FlaskClient, app: Flask, vcr_cassette: str
+) -> None:
     cache_dir = app.config["FLICKR_API_RESPONSE_CACHE"]
 
     with open("tests/fixtures/flickr_api/single_photo-32812033544.json") as in_file:
@@ -42,7 +47,9 @@ def test_renders_form_for_single_photo(logged_in_client, app, vcr_cassette):
     assert "please add a title and short caption" in minify(resp.data)
 
 
-def test_renders_form_for_multiple_photo(logged_in_client, app, vcr_cassette):
+def test_renders_form_for_multiple_photo(
+    logged_in_client: FlaskClient, app: Flask, vcr_cassette: str
+) -> None:
     cache_dir = app.config["FLICKR_API_RESPONSE_CACHE"]
 
     with open("tests/fixtures/flickr_api/album-72177720312192106.json") as in_file:
@@ -67,7 +74,9 @@ def test_renders_form_for_multiple_photo(logged_in_client, app, vcr_cassette):
     assert "please add titles and captions for each photo" in minify(resp.data)
 
 
-def test_blocks_uploads_with_an_invalid_title(logged_in_client, app, vcr_cassette):
+def test_blocks_uploads_with_an_invalid_title(
+    logged_in_client: FlaskClient, app: Flask, vcr_cassette: str
+) -> None:
     cache_dir = app.config["FLICKR_API_RESPONSE_CACHE"]
 
     with open("tests/fixtures/flickr_api/single_photo-32812033544.json") as in_file:
@@ -87,7 +96,9 @@ def test_blocks_uploads_with_an_invalid_title(logged_in_client, app, vcr_cassett
     assert b"Please choose a title which is less than 240 bytes" in resp.data
 
 
-def test_blocks_uploads_with_a_too_long_caption(logged_in_client, app, vcr_cassette):
+def test_blocks_uploads_with_a_too_long_caption(
+    logged_in_client: FlaskClient, app: Flask, vcr_cassette: str
+) -> None:
     cache_dir = app.config["FLICKR_API_RESPONSE_CACHE"]
 
     with open("tests/fixtures/flickr_api/single_photo-32812033544.json") as in_file:
@@ -130,11 +141,11 @@ def test_blocks_uploads_with_a_too_long_caption(logged_in_client, app, vcr_casse
         ),
     ],
 )
-def test_truncate_description(original, truncated):
+def test_truncate_description(original: str, truncated: str) -> None:
     assert truncate_description(original) == truncated
 
 
-def test_escapes_html_in_description(logged_in_client, app):
+def test_escapes_html_in_description(logged_in_client: FlaskClient, app: Flask) -> None:
     """
     Flickr photos can contain HTML tags.
 

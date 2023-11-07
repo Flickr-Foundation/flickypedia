@@ -39,7 +39,8 @@ jobs:
           src/flickypedia/uploads.py \
           src/flickypedia/apis \
           tests/apis \
-          tests/views/test_api.py
+          tests/views \
+          tests/utils.py
     - name: Run linting
       run: |
         black --check .
