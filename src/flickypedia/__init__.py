@@ -1,6 +1,7 @@
 import html
 import os
 import sys
+import uuid
 
 from flask import Flask, request
 from jinja2 import StrictUndefined
@@ -111,13 +112,18 @@ def compile_scss(static_folder):
     sass_path = os.path.join(static_folder, "assets", "style.scss")
     css_path = os.path.join(static_folder, "style.css")
 
-    with open(css_path + ".tmp", "w") as out_file:
+    # We want to write the CSS to a temporary file first, then atomically
+    # rename it into place -- this avoids the server sending a user
+    # a partially-complete CSS file.
+    #
+    # We give each temp file a unique name to avoid two different processes
+    # trying to write to the same file.
+    tmp_path = f"{css_path}.{uuid.uuid4()}.tmp"
+
+    with open(tmp_path, "w") as out_file:
         out_file.write(sass.compile(filename=sass_path))
 
-    try:
-        os.rename(css_path + ".tmp", css_path)
-    except FileNotFoundError:
-        pass
+    os.rename(tmp_path, css_path)
 
 
 # celery --app flickypedia.celery worker --loglevel INFO
