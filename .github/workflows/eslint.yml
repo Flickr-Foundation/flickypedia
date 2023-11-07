@@ -15,6 +15,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install modules
-      run: yarn
+      run: yarn install eslint
     - name: Run ESLint
       run: eslint src/flickypedia/static/flickypedia.js
