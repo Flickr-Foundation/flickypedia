@@ -251,11 +251,9 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm) {
    * autocomplete menu -- unless they clicked on an autocomplete suggestion,
    * in which case apply that first. */
   inputElement.addEventListener("blur", function(event) {
-    if (event.relatedTarget !== null) {
-      if (event.relatedTarget.classList.contains("suggestion")) {
-        inputElement.value = event.relatedTarget.innerHTML;
-        addCategory();
-      }
+    if (event.relatedTarget !== null &&
+        event.relatedTarget.classList.contains("suggestion")) {
+      inputElement.value = event.relatedTarget.innerHTML;
     }
 
     closeAutocompleteMenus();
@@ -329,10 +327,12 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm) {
             .innerHTML;
 
         addCategory();
-        closeAutocompleteMenus();
 
+        closeAutocompleteMenus();
         event.preventDefault();
       }
+    } else if (event.key === "Escape") {
+      closeAutocompleteMenus();
     }
   });
 
