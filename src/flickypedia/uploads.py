@@ -1,4 +1,5 @@
 import datetime
+from typing import Any, List, TypedDict
 
 from celery import current_task, shared_task
 from flask_login import current_user
@@ -12,7 +13,7 @@ from flickypedia.tasks import ProgressTracker
 
 
 @shared_task
-def upload_batch_of_photos(oauth_info, photos_to_upload):
+def upload_batch_of_photos(oauth_info: Any, photos_to_upload: List[Any]) -> Any:
     tracker = ProgressTracker(task_id=current_task.request.id)
 
     progress_data = [
@@ -60,6 +61,11 @@ def upload_batch_of_photos(oauth_info, photos_to_upload):
     return progress_data
 
 
+class UploadResult(TypedDict):
+    id: str
+    title: str
+
+
 def upload_single_image(
     api: WikimediaApi,
     photo_id: str,
@@ -72,7 +78,7 @@ def upload_single_image(
     date_posted: datetime.datetime,
     license_id: str,
     original_url: str,
-):
+) -> UploadResult:
     """
     Upload a photo from Flickr to Wikimedia Commons.
 
