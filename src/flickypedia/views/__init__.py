@@ -30,7 +30,10 @@ def validate_title_api():
     try:
         title = request.args["title"]
     except KeyError:
-        return abort(400)
+        abort(400)
+
+    if not title.startswith("File:"):
+        abort(400)
 
     api = current_user.wikimedia_api()
     result = api.validate_title(title)
