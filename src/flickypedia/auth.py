@@ -75,8 +75,9 @@ from flask_login import (
     logout_user,
 )
 from flask_sqlalchemy import SQLAlchemy
+import httpx
 
-from flickypedia.apis.wikimedia import WikimediaOAuthApi
+from flickypedia.apis.wikimedia import WikimediaOAuthApi, WikimediaApi
 from flickypedia.utils import decrypt_string, encrypt_string
 
 
@@ -87,42 +88,7 @@ login.login_view = "homepage"
 
 
 # This is the name of the encryption key which is stored in the user session.
-SESSION_ENCRYPTION_KEY = "oauth_key_wikimedia"
-
-
-def get_oauth_client() -> OAuth2Client:
-    """
-    Creates an OAuth2 client which uses our app credentials to connect to Wikimedia.
-    """
-    config = current_app.config["OAUTH2_PROVIDERS"]["wikimedia"]
-
-    return OAuth2Client(
-        client_id=config["client_id"],
-        client_secret=config["client_secret"],
-        authorization_endpoint=config["authorize_url"],
-        token_endpoint=config["token_url"],
-    )
-
-
-def get_wikimedia_api() -> WikimediaOAuthApi:
-    """
-    Returns an instance of the Wikimedia OAuth API which is connected for the
-    current user.
-    """
-    config = current_app.config["OAUTH2_PROVIDERS"]["wikimedia"]
-
-    client = OAuth2Client(
-        client_id=config["client_id"],
-        client_secret=config["client_secret"],
-        authorization_endpoint=config["authorize_url"],
-        token_endpoint=config["token_url"],
-    )
-
-    token = current_user.token()
-
-    return WikimediaOAuthApi(
-        client=client, token=token, user_agent=current_app.config["USER_AGENT"]
-    )
+SESSION_ENCRYPTION_KEY = "oauth_key_wikimedia" ""
 
 
 class WikimediaUserSession(UserMixin, user_db.Model):
@@ -216,6 +182,23 @@ class WikimediaUserSession(UserMixin, user_db.Model):
             key=session[SESSION_ENCRYPTION_KEY], plaintext=json.dumps(new_token)
         )
         user_db.session.commit()
+
+    def wikimedia_api(self) -> WikimediaApi:
+        """
+        Returns a Wikimedia API client which is authenticated for this user.
+        """
+        headers = {"User-Agent": current_app.config["USER_AGENT"]}
+
+        try:
+            client = self._oauth2_client()
+        except KeyError:
+            # During tests, it's okay to use an unauthenticated client, because
+            # we aren't dealing with real sessions or real credentials --
+            # we're just replaying API interactions from the VCR cassettes.
+            assert current_app.config["TESTING"]
+            client = httpx.Client(headers=headers)
+
+        return WikimediaApi(client=client)
 
     def delete(self) -> None:
         """

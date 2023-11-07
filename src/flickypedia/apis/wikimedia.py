@@ -21,7 +21,9 @@ class WikimediaApi:
 
     def _request(self, *, method, **kwargs):
         resp = self.client.request(
-            method, url="https://commons.wikimedia.org/w/api.php", **kwargs,
+            method,
+            url="https://commons.wikimedia.org/w/api.php",
+            **kwargs,
         )
 
         # When something goes wrong, we get an ``error`` key in the response.
@@ -327,7 +329,9 @@ class WikimediaOAuthApi(WikimediaApi):
 
 class WikimediaPublicApi(WikimediaApi):
     def __init__(self):
-        client = httpx.Client(base_url="https://commons.wikimedia.org", headers={"User-Agent": "testing"})
+        client = httpx.Client(
+            base_url="https://commons.wikimedia.org", headers={"User-Agent": "testing"}
+        )
         super().__init__(client=client)
 
 
