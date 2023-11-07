@@ -38,7 +38,7 @@ from flickypedia.tasks import celery_init_app
 from flickypedia.utils import create_bookmarklet, size_at
 
 
-def create_app(data_directory: str = "data", debug: bool = False):
+def create_app(data_directory: str = "data", debug: bool = False) -> Flask:
     app = Flask(__name__)
 
     config = create_config(data_directory)
@@ -85,17 +85,18 @@ def create_app(data_directory: str = "data", debug: bool = False):
     app.jinja_env.filters["wikidata_entity_label"] = get_entity_label
     app.jinja_env.filters["wikidata_date"] = render_wikidata_date
 
-    # Compile the CSS.  If we're running in debug mode
-    compile_scss(app.static_folder)
+    # Compile the CSS.  If we're running in debug mode, rebuild it on
+    # every request for convenience.
+    static_folder: str = app.static_folder  # type: ignore
+
+    compile_scss(static_folder)
 
     if debug:
 
         @app.before_request
-        def recompile_css():
+        def recompile_css() -> None:
             if request.path == "/static/style.css":
-                compile_scss(app.static_folder)
-
-        print("debug!")
+                compile_scss(static_folder)
 
     # This option causes Jinja to throw if we use an undefined variable
     # in one of the templates.
@@ -109,7 +110,7 @@ def create_app(data_directory: str = "data", debug: bool = False):
     return app
 
 
-def compile_scss(static_folder):
+def compile_scss(static_folder: str) -> None:
     """
     Compile the SCSS file into static.css.
     """
