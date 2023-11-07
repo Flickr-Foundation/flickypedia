@@ -27,7 +27,7 @@ TODO:
 import datetime
 import json
 import os
-from typing import Any, Dict
+from typing import Any, Dict, List
 import uuid
 
 from flask import (
@@ -41,8 +41,8 @@ from flask import (
     url_for,
 )
 from flask_login import current_user, login_required
-from flickr_photos_api import FlickrPhotosApi, ResourceNotFound
-from flickr_url_parser import parse_flickr_url, NotAFlickrUrl, UnrecognisedUrl
+from flickr_photos_api import FlickrPhotosApi, ResourceNotFound,
+from flickr_url_parser import parse_flickr_url, NotAFlickrUrl, ParseResult, UnrecognisedUrl
 from flask_wtf import FlaskForm
 from wtforms import BooleanField, HiddenField, SubmitField
 from wtforms.validators import DataRequired
@@ -52,7 +52,8 @@ from flickypedia.utils import DatetimeDecoder, DatetimeEncoder
 from .get_photos import FlickrPhotoURLForm
 
 
-def get_photos(parsed_url):
+# TODO: Change parsed_url to parse_result
+def get_photos(parsed_url: ParseResult):
     """
     Given a correctly parsed URL, get a list of photos from the Flickr API.
 
@@ -83,7 +84,7 @@ def get_photos(parsed_url):
         raise TypeError
 
 
-def categorise_photos(all_photos):
+def categorise_photos(all_photos: List[SinglePhoto]):
     """
     Given a list of photos from the Flickr API, split them into
     three lists:
