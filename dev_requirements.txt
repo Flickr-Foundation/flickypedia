@@ -89,7 +89,7 @@ flask-wtf==1.2.1
     # via -r requirements.txt
 flickr-photos-api==1.0.3
     # via -r requirements.txt
-flickr-url-parser==1.1.0
+flickr-url-parser==1.2.4
     # via -r requirements.txt
 h11==0.14.0
     # via
@@ -140,6 +140,7 @@ markupsafe==2.1.3
     # via
     #   -r requirements.txt
     #   jinja2
+    #   types-wtforms
     #   werkzeug
     #   wtforms
 mccabe==0.7.0
@@ -209,6 +210,8 @@ tomli==2.0.1
     #   mypy
     #   pytest
 tqdm==4.66.1
+    # via -r dev_requirements.in
+types-wtforms==3.1.0.0
     # via -r dev_requirements.in
 typing-extensions==4.8.0
     # via

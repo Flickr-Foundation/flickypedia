@@ -14,6 +14,7 @@ def get_photos() -> ViewResponse:
 
     if photo_url_form.validate_on_submit():
         url = photo_url_form.flickr_url.data
+        assert url is not None
 
         # Try to parse this as a Flickr URL.  If parsing fails for
         # some reason, return the user to the page.
