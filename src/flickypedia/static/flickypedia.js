@@ -10,10 +10,9 @@
  * and a validation prompt, so the form can't be submitted.
  */
 function addTitleValidatorTo(inputElement) {
-  const errorElement = document
-    .querySelector(`p[for="${inputElement.id}"]`);
+  const errorElement = document.querySelector(`p[for="${inputElement.id}"]`);
 
-  inputElement.addEventListener("blur", () => {
+  inputElement.addEventListener("blur", function () {
 
     /* If the user hasn't entered anything, just clear any validation --
      * it'll get picked up by other validation that marks the field as
@@ -27,13 +26,14 @@ function addTitleValidatorTo(inputElement) {
 
     /* Label the class as thinking; this adds a progress indicator
      * to the UI (see the CSS for inputElement.thinking) */
-    inputElement.classList.add("thinking")
+    inputElement.classList.add("thinking");
 
-    const title = `File:${inputElement.value}.${inputElement.getAttribute("data-originalformat")}`;
+    const originalFormat = inputElement.getAttribute("data-originalformat");
+    const title = `File:${inputElement.value}.${originalFormat}`;
 
     fetch(`/api/validate_title?title=${title}`)
       .then((response) => response.json())
-      .then((json) => {
+      .then(function (json) {
 
         /* The response from the API should be of the form
          *
@@ -42,7 +42,7 @@ function addTitleValidatorTo(inputElement) {
          *
          * The text is suitable for display in the UI.
          */
-        if (json.result === 'ok') {
+        if (json.result === "ok") {
           errorElement.classList.add("hidden");
           inputElement.setCustomValidity("");
         } else {
@@ -54,7 +54,7 @@ function addTitleValidatorTo(inputElement) {
         /* We're done thinking! */
         inputElement.classList.remove("thinking")
       });
-  })
+  });
 }
 
 /*
@@ -71,11 +71,15 @@ function addCharCounterTo(inputElement, counterElement) {
     const remainingCharacters = maxCount - enteredCharacters;
 
     if (remainingCharacters === 0) {
-      counterElement.innerHTML = '<span class="remainingCharacters">No</span> characters left';
+      counterElement.innerHTML =
+        "<span class=\"remainingCharacters\">No</span> characters left";
     } else if (remainingCharacters === 1) {
-      counterElement.innerHTML = '<span class="remainingCharacters">1</span> character left';
+      counterElement.innerHTML =
+        "<span class=\"remainingCharacters\">1</span> character left";
     } else if (remainingCharacters > 1) {
-      counterElement.innerHTML = `<span class="remainingCharacters">${remainingCharacters}</span> characters left`;
+      counterElement.innerHTML =
+        `<span class="remainingCharacters">${remainingCharacters}</span>` +
+        " characters left";
     } else if (remainingCharacters === -1) {
       counterElement.innerHTML = `
         <span class="too_many_characters">
@@ -100,13 +104,8 @@ function addCharCounterTo(inputElement, counterElement) {
    */
   updateCharCounter();
 
-  inputElement.addEventListener("input", () => {
-    updateCharCounter();
-  });
-
-  inputElement.addEventListener("focus", () => {
-    updateCharCounter();
-  });
+  inputElement.addEventListener("input", () => updateCharCounter());
+  inputElement.addEventListener("focus", () => updateCharCounter());
 }
 
 /*
@@ -116,29 +115,29 @@ function addCharCounterTo(inputElement, counterElement) {
  * an associated autocomplete function.
  */
 function addInteractiveCategoriesTo(categoriesElement, parentForm) {
-  const textAreaElement = categoriesElement.querySelector('textarea');
+  const textAreaElement = categoriesElement.querySelector("textarea");
 
   /* Hide the original <textarea> */
-  textAreaElement.style.display = 'none';
+  textAreaElement.style.display = "none";
 
   /* Create a new inputElement where the user can enter one category
    * at a time.  Next to the inputElement is a "+" button. */
-  const categoryInputs = document.createElement('div');
-  categoryInputs.classList.add('category_inputs');
+  const categoryInputs = document.createElement("div");
+  categoryInputs.classList.add("category_inputs");
 
-  const inputElement = document.createElement('input');
-  inputElement.type = 'text';
+  const inputElement = document.createElement("input");
+  inputElement.type = "text";
   categoryInputs.appendChild(inputElement);
 
   /* Create a button that a user can click to add a new category. */
-  const addCategoryButton = document.createElement('input');
-  addCategoryButton.type = 'button';
-  addCategoryButton.value = '+';
+  const addCategoryButton = document.createElement("input");
+  addCategoryButton.type = "button";
+  addCategoryButton.value = "+";
   addCategoryButton.classList.add("pink_button");
-  addCategoryButton.onclick = function(event) {
+  addCategoryButton.onclick = function (event) {
     addCategory();
     event.preventDefault();
-  }
+  };
   categoryInputs.appendChild(addCategoryButton);
 
   textAreaElement.after(categoryInputs);
@@ -146,7 +145,7 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm) {
   /* Create a visible <ul> element where we can show the user the list
    * of categories they've selected.
    */
-  const listOfCategories = document.createElement('ul');
+  const listOfCategories = document.createElement("ul");
   listOfCategories.classList.add("selected_categories");
   categoryInputs.after(listOfCategories);
 
@@ -154,7 +153,7 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm) {
   function addCategory() {
     const newCategory = inputElement.value;
 
-    if (newCategory === '') {
+    if (newCategory === "") {
       return;
     }
 
@@ -172,17 +171,17 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm) {
     listEntry.appendChild(span);
 
     const removeCategoryButton = document.createElement("a");
-    removeCategoryButton.innerHTML = '[x]';
+    removeCategoryButton.innerHTML = "[x]";
     removeCategoryButton.classList.add("remove_category");
-    removeCategoryButton.onclick = function() {
-      removeCategory(newCategory, listEntry)
-    }
+    removeCategoryButton.onclick = function () {
+      removeCategory(newCategory, listEntry);
+    };
     listEntry.appendChild(removeCategoryButton);
 
     listOfCategories.appendChild(listEntry);
 
     /* Clear the <input> element */
-    inputElement.value = '';
+    inputElement.value = "";
   }
 
   /* Remove a category from the selected list. */
@@ -191,9 +190,9 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm) {
     /* Remove the category name from the <textarea> */
     textAreaElement.value =
       textAreaElement.value
-        .split('\n')
-        .filter(category => category != categoryName)
-        .join('\n');
+        .split("\n")
+        .filter((category) => category !== categoryName)
+        .join("\n");
 
     /* Remove the category from the list of categories shown to the user */
     listEntryElement.remove();
@@ -201,8 +200,8 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm) {
 
   /* If somebody presses 'enter' in this field, add a category rather
    * than submitting the form. */
-  inputElement.addEventListener('keypress', event => {
-    if (event.key === 'Enter') {
+  inputElement.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
       addCategory();
       event.preventDefault();
     }
@@ -210,15 +209,14 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm) {
 
   /* If somebody pastes into this field, split on newlines and add those
    * categories. */
-  inputElement.addEventListener('paste', event => {
-    const categories = (event.clipboardData || window.clipboardData)
-      .getData("text")
-      .split("\n");
+  inputElement.addEventListener("paste", function (event) {
+    const clipboard = (event.clipboardData || window.clipboardData);
+    const categories = clipboard.getData("text").split("\n");
 
-    for (i = 0; i < categories.length; i++) {
-      inputElement.value = categories[i];
+    categories.forEach(function (category) {
+      inputElement.value = category;
       addCategory();
-    }
+    });
 
     /* The default action is to insert the text into the <input>, but
      * we don't want that here -- we want the user to have an empty
@@ -229,7 +227,5 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm) {
   /* If the user clicks the "Upload" button, add anything in the <input>
    * which they haven't explicitly added to the list of categories.
    */
-  parentForm.addEventListener('submit', () => {
-    addCategory();
-  });
+  parentForm.addEventListener("submit", () => addCategory());
 }
