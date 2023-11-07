@@ -10,12 +10,17 @@ See https://api.wikimedia.org/wiki/Authentication
 
 import json
 import re
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, TypedDict
 from xml.etree import ElementTree as ET
 
 import httpx
 
 from ._types import StructuredDataClaims, TitleValidation
+
+
+class UserInfo(TypedDict):
+    id: str
+    name: str
 
 
 class WikimediaApi:
@@ -80,7 +85,7 @@ class WikimediaApi:
 
         return resp["query"]["tokens"]["csrftoken"]  # type: ignore
 
-    def get_userinfo(self) -> str:
+    def get_userinfo(self) -> UserInfo:
         """
         Returns the user ID and name for a Wikimedia Commons user.
 

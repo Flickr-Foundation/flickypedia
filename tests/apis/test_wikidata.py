@@ -1,8 +1,11 @@
 import datetime
+from typing import Optional, TypedDict
 
+from flask import Flask
 import pytest
 
 from flickypedia.apis.wikidata import lookup_flickr_user_in_wikidata, to_wikidata_date
+from flickypedia.apis._types import DataValueTypes
 
 
 @pytest.mark.parametrize(
@@ -43,13 +46,20 @@ from flickypedia.apis.wikidata import lookup_flickr_user_in_wikidata, to_wikidat
     ],
 )
 def test_lookup_flickr_user_in_wikidata(
-    app, vcr_cassette, user_id, username, wikidata_id
-):
+    app: Flask,
+    vcr_cassette: str,
+    user_id: Optional[str],
+    username: Optional[str],
+    wikidata_id: Optional[str],
+) -> None:
     retrieved_wikidata_id = lookup_flickr_user_in_wikidata(
         user_id=user_id, username=username
     )
 
     assert retrieved_wikidata_id == wikidata_id
+
+
+ToWikidateArgs = TypedDict("ToWikidateArgs", {"d": datetime.datetime, "precision": str})
 
 
 @pytest.mark.parametrize(
@@ -99,10 +109,12 @@ def test_lookup_flickr_user_in_wikidata(
         ),
     ],
 )
-def test_to_wikidata_date(kwargs, expected):
+def test_to_wikidata_date(
+    kwargs: ToWikidateArgs, expected: DataValueTypes.Time
+) -> None:
     assert to_wikidata_date(**kwargs) == expected
 
 
-def test_to_wikidata_date_fails_with_unexpected_precision():
+def test_to_wikidata_date_fails_with_unexpected_precision() -> None:
     with pytest.raises(ValueError, match="Unrecognised precision"):
         to_wikidata_date(d=datetime.datetime(2023, 10, 12), precision="second")
