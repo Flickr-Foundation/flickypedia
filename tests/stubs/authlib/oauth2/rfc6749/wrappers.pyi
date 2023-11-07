@@ -1,0 +1,3 @@
+from typing import Any, Dict
+
+class OAuth2Token(Dict[str, Any]): ...

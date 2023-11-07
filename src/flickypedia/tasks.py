@@ -28,6 +28,7 @@ which can be used to report progress updates as you're going along.
 
 import json
 import os
+from typing import Any, Literal, TypedDict, Union
 
 from celery import Celery, Task
 from celery.result import AsyncResult
@@ -56,11 +57,11 @@ def celery_init_app(app: Flask) -> Celery:
 
 
 class ProgressTracker:
-    def __init__(self, task_id):
+    def __init__(self, task_id: str) -> None:
         self.task_id = task_id
 
     @property
-    def path(self):
+    def path(self) -> str:
         """
         Returns the path to a file which can be used for tracking information
         about an in-progress task.
@@ -70,14 +71,14 @@ class ProgressTracker:
 
         return os.path.join(in_progress_folder, f"{self.task_id}.json")
 
-    def record_progress(self, data):
+    def record_progress(self, data: Any) -> None:
         """
         Records the state of an in-progress task.
         """
         with open(self.path, "w") as out_file:
             out_file.write(json.dumps(data))
 
-    def get_progress(self):
+    def get_progress(self) -> Any:
         """
         Retrieves the state of an in-progress task.
         """
@@ -85,10 +86,21 @@ class ProgressTracker:
             with open(self.path) as in_file:
                 return json.load(in_file)
         except FileNotFoundError:
-            return
+            return None
 
 
-def get_status(task_id):
+class SuccessfulStatus(TypedDict):
+    ready: Literal[True]
+    successful: bool
+    value: Any
+
+
+class PendingStatus(TypedDict):
+    ready: Literal[False]
+    progress: Any
+
+
+def get_status(task_id: str) -> Union[SuccessfulStatus, PendingStatus]:
     """
     Retrieve the status of a Celery task.
     """
@@ -96,7 +108,7 @@ def get_status(task_id):
 
     if result.ready():
         return {
-            "ready": result.ready(),
+            "ready": True,
             "successful": result.successful(),
             "value": result.result if result.ready() else None,
         }
