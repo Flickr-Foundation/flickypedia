@@ -6,7 +6,7 @@ from typing import Optional
 from flask import current_app
 import httpx
 
-from ._types import DateValue, WikidataTime
+from ._types import DataTypes, DataValueTypes
 
 
 class WikidataProperties:
@@ -211,7 +211,7 @@ def lookup_flickr_user_in_wikidata(user_id: str, username: str) -> Optional[str]
         return None
 
 
-def to_wikidata_date(d: datetime.datetime, *, precision: str) -> WikidataTime:
+def to_wikidata_date(d: datetime.datetime, *, precision: str) -> DataValueTypes.Time:
     """
     Convert a Python native-datetime to the Wikidata data model.
 
@@ -278,7 +278,7 @@ def to_wikidata_date(d: datetime.datetime, *, precision: str) -> WikidataTime:
     }
 
 
-def render_wikidata_date(value: DateValue) -> str:
+def render_wikidata_date(value: DataTypes.Date) -> str:
     """
     Given a Wikidata date from the SDC, render it as text.
     """
