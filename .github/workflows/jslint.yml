@@ -1,4 +1,4 @@
-name: eslint
+name: jslint
 
 on:
   push:
@@ -15,6 +15,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install modules
-      run: npm install eslint
-    - name: Run ESLint
-      run: npx eslint src/flickypedia/static/flickypedia.js
+      run: curl -L https://www.jslint.com/jslint.mjs > jslint.mjs
+    - name: Run JSLint
+      run: node jslint.mjs src/flickypedia/static/flickypedia.js
