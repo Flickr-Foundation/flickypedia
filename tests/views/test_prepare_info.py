@@ -110,7 +110,7 @@ def test_blocks_uploads_with_a_too_long_caption(logged_in_client, app, vcr_casse
     ["original", "truncated"],
     [
         # A description which is split across many lines
-        ("1\n2\n3\n4\n5\n6\n7\n", "1\n2\n3\n4\n5"),
+        ("1\n2\n3\n4\n5\n6\n7\n", "1\n2\n3\n4\n5…"),
         # A description which is short enough to be returned unmodified
         ("A blue train in a green field", "A blue train in a green field"),
         # A description which is around the target length

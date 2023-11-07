@@ -227,7 +227,7 @@ def truncate_description(d):
     # Heuristic #1: because we preserve line breaks in the description,
     # make sure we don't display a silly number of lines.
     if len(d.splitlines()) > 5:
-        return truncate_description("\n".join(d.splitlines()[:5]))
+        return truncate_description("\n".join(d.splitlines()[:5])) + "…"
 
     # Heuristic #2: try to cut it about a target number of characters.
     #
