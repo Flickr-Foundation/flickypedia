@@ -7,5 +7,5 @@ class Form:
 
 class FlaskForm(Form):
     data: Dict[str, Any]
-    
+
     def __iter__(self) -> Generator[Field, None, None]: ...

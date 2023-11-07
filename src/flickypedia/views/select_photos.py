@@ -27,7 +27,7 @@ TODO:
 import datetime
 import json
 import os
-from typing import Any, Dict, List, Set, TypedDict, Union
+from typing import Dict, List, Set, TypedDict, Union
 import uuid
 
 from flask import (
@@ -282,10 +282,7 @@ def select_photos() -> ViewResponse:
     # If we've got a single photo which is available, we can send the
     # user straight to the "prepare info" screen rather than making
     # them select a single item from the list.
-    if (
-        parsed_url["type"] == "single_photo"
-        and len(sorted_photos["available"]) == 1
-    ):
+    if parsed_url["type"] == "single_photo" and len(sorted_photos["available"]) == 1:
         return redirect(
             url_for(
                 "prepare_info",
@@ -299,9 +296,7 @@ def select_photos() -> ViewResponse:
 
     # At this point we know all the photos that should be in the list.
     # Go ahead and build the full form.
-    select_photos_form = create_select_photos_form(
-        photos=sorted_photos["available"]
-    )
+    select_photos_form = create_select_photos_form(photos=sorted_photos["available"])
 
     select_photos_form.cached_api_response_id.data = cached_api_response_id
 
@@ -331,7 +326,7 @@ def select_photos() -> ViewResponse:
         parsed_url=parsed_url,
         photo_url_form=FlickrPhotoURLForm(),
         select_photos_form=select_photos_form,
-        photo_data={k: v for k, v in photo_data.items() if k != 'photos'},
+        photo_data={k: v for k, v in photo_data.items() if k != "photos"},
         current_step="get_photos",
         photos=sorted_photos,
     )
