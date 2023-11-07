@@ -8,5 +8,6 @@ mypy
 pytest
 pytest-cov
 tqdm
+types-beautifulsoup4
 types-wtforms
 vcrpy
