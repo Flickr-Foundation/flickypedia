@@ -3,6 +3,7 @@ import datetime
 from flask import Flask
 from flickr_photos_api import SinglePhoto
 
+from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
 from flickypedia.apis.wikimedia import WikimediaApi
 from flickypedia.duplicates import find_duplicates
 from flickypedia.uploads import upload_single_image
@@ -45,16 +46,20 @@ def test_upload_single_image(app: Flask, wikimedia_api: WikimediaApi) -> None:
             "unknown": False,
         },
         "safety_level": "safe",
-        "original_format": "jpeg",
+        "original_format": "jpg",
     }
 
     upload_single_image(
         wikimedia_api,
-        photo=photo,
-        filename="Thameslink Class 700 in Pride livery.jpg",
-        caption={
-            "language": "en",
-            "text": "A Thameslink Class 700 train in the rainbow Pride livery, taken at night",
+        request={
+            "photo": photo,
+            "sdc": create_sdc_claims_for_flickr_photo(photo),
+            "title": "Thameslink Class 700 in Pride livery",
+            "caption": {
+                "language": "en",
+                "text": "A Thameslink Class 700 train in the rainbow Pride livery, taken at night",
+            },
+            "categories": [],
         },
     )
 
