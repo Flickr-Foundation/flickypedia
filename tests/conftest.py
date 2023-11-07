@@ -1,17 +1,19 @@
+import datetime
 import json
 import os
 import shutil
 
 from authlib.integrations.httpx_client.oauth2_client import OAuth2Client
-from flask_login import FlaskLoginClient, current_user, login_user
+from flask_login import FlaskLoginClient, current_user
 from flickr_photos_api import FlickrPhotosApi
 import pytest
 from pytest import FixtureRequest
 import vcr
 
 from flickypedia import create_app
-from flickypedia.auth import WikimediaUserSession, user_db
+from flickypedia.auth import WikimediaUserSession
 from flickypedia.apis.wikimedia import WikimediaOAuthApi
+from utils import store_user
 
 
 @pytest.fixture
@@ -163,13 +165,16 @@ def logged_in_client(app):
     # the test client context.  This took me a while to figure
     # out; see https://stackoverflow.com/a/69961887/1558022
     with app.test_request_context():
-        user_db.create_all()
-
-        user_db.session.add(user)
-        user_db.session.commit()
-
         with app.test_client(user=user) as client:
-            login_user(user)
+            user = store_user(
+                token={
+                    "token_type": "Bearer",
+                    "expires_in": 14400,
+                    "access_token": "[ACCESS_TOKEN...abcde]",
+                    "refresh_token": "[REFRESH_TOKEN...12345]",
+                    "expires_at": datetime.datetime.now().timestamp() + 3600,
+                }
+            )
             assert current_user == user
 
             yield client
