@@ -35,7 +35,10 @@ jobs:
           src/flickypedia/views/api.py \
           src/flickypedia/views/get_photos.py \
           src/flickypedia/auth.py \
-          src/flickypedia/tasks.py
+          src/flickypedia/tasks.py \
+          src/flickypedia/apis/wikitext.py \
+          src/flickypedia/apis/wikimedia.py \
+          src/flickypedia/apis/wikidata.py
     - name: Run linting
       run: |
         black --check .

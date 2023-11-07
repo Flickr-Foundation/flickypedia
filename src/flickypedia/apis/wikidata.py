@@ -1,9 +1,12 @@
 import datetime
 import functools
 import re
+from typing import Optional
 
 from flask import current_app
 import httpx
+
+from ._types import DateValue, WikidataTime
 
 
 class WikidataProperties:
@@ -57,7 +60,7 @@ class WikidataEntities:
 
 
 @functools.lru_cache
-def get_property_name(code):
+def get_property_name(code: str) -> str:
     """
     Look up the name of a Wikidata property.
 
@@ -79,7 +82,7 @@ def get_property_name(code):
 
 
 @functools.lru_cache
-def get_entity_label(entity_id):
+def get_entity_label(entity_id: str) -> Optional[str]:
     """
     Look up the name of a Wikidata entity.
 
@@ -94,13 +97,13 @@ def get_entity_label(entity_id):
 
     try:
         resp.raise_for_status()
-        return resp.json()["labels"]["en"]
+        return resp.json()["labels"]["en"]  # type: ignore
     except Exception:  # pragma: no cover
         return None
 
 
 @functools.lru_cache
-def lookup_flickr_user_in_wikidata(user_id, username):
+def lookup_flickr_user_in_wikidata(user_id: str, username: str) -> Optional[str]:
     """
     Return the Wikidata entity for a Flickr user, if it exists.
 
@@ -177,7 +180,7 @@ def lookup_flickr_user_in_wikidata(user_id, username):
             "Warning: ambiguous Wikidata entities found for "
             f"Flickr user id={user_id} / username={username}"
         )
-        return
+        return None
 
     # Look for something that looks like a single Wikidata entity URL
     # in the response.
@@ -205,10 +208,10 @@ def lookup_flickr_user_in_wikidata(user_id, username):
             )
 
     except (IndexError, KeyError):
-        pass
+        return None
 
 
-def to_wikidata_date(d: datetime.datetime, *, precision: str):
+def to_wikidata_date(d: datetime.datetime, *, precision: str) -> WikidataTime:
     """
     Convert a Python native-datetime to the Wikidata data model.
 
@@ -275,7 +278,7 @@ def to_wikidata_date(d: datetime.datetime, *, precision: str):
     }
 
 
-def render_wikidata_date(value):
+def render_wikidata_date(value: DateValue) -> str:
     """
     Given a Wikidata date from the SDC, render it as text.
     """
