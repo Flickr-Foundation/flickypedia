@@ -1,98 +1,3 @@
-<style>
-  #progress ul {
-    display: grid;
-    grid-column-gap: 2em;
-    grid-row-gap: 2em;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  }
-
-  #progress li {
-    display: inline-block;;
-  }
-
-/*  #progress li {
-    display: inline-block;
-    margin-right:  2em;
-    margin-bottom: 2em;
-  }
-*/
-  #progress li p {
-    margin: 0;
-  }
-
-  #progress img {
-    width: 100%;
-    display: block;
-    aspect-ratio: 1.01; /* weird spacing issue*/
-    object-fit: cover;
-  }
-
-  li[data-status="succeeded"] .container {
-    border: 5px solid green;
-    padding: 0;
-    margin: -5px;
-    position: relative;
-  }
-
-  li[data-status="failed"] .container {
-    border: 5px solid red;
-    padding: 0;
-    margin: -5px;
-    position: relative;
-  }
-
-  li[data-status="in_progress"] .container {
-    border: 10px solid black;
-    padding: 0;
-    margin: -10px;
-    animation: Pulsate 3s linear infinite;
-
-  }
-
-  .text {
-    position: absolute;
-    height: 30px;
-    line-height: 30px;
-    border-radius: 2px;
-    text-align: center;
-    color: white;
-    font-weight: bold;
-  }
-
-  .text {
-    display: none;
-  }
-
-  li[data-status="waiting"] img {
-    filter: saturate(0%);
-  }
-
-  li[data-status="succeeded"] .text.success {
-    display: block;
-    background: green;
-
-    bottom: -15px;  /* 250 - (30/2) */
-    width: 70px;
-    left: calc(50% - 35px);
-  }
-
-  li[data-status="failed"] .text.failed {
-    background: red;
-    display: block;
-    bottom: -1px;
-    right: -20px;
-    width: 110px;
-    rotate: -17deg;
-  }
-
-  /* https://stackoverflow.com/q/34889902/1558022 */
-  @keyframes Pulsate {
-    from { opacity: 1; }
-    50% { opacity: 0.65; }
-    to { opacity: 1; }
-  }
-</style>
-
 <ul class="plain_list">
   {% for item in status.progress %}
     {% with photo = item.req.photo %}
@@ -100,9 +5,12 @@
       <div class="container">
         {% set large_size = photo.sizes|size_at(desired_size='Large') %}
         <img src="{{ large_size.source }}">
-
-        <div class="text success">DONE</div>
-        <div class="text failed">NOT DONE</div>
+        
+        {% if item.status == "succeeded" %}
+          <div class="text success">DONE</div>
+        {% elif item.status == "failed" %}
+          <div class="text failed">NOT DONE</div>
+        {% endif %}
       </div>
     </li>
     {% endwith %}
