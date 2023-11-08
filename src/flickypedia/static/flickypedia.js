@@ -383,6 +383,9 @@ function updatePhotosWithUploadProgress() {
         const liElement = document
           .querySelector(`li[data-id="${photoId}"]`);
 
+        /* If the status has changed, add it to the <li> element for
+         * this photo.  Also add the text label if necessary.
+         */
         if (liElement.getAttribute("data-status") !== uploadStatus) {
           liElement.setAttribute("data-status", uploadStatus);
 

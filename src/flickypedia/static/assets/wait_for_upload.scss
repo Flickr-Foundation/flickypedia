@@ -23,7 +23,7 @@
       width: 100%;
       display: block;
       /* I actually want a square, but an aspect ratio of 1 causes
-       * some weird spacing issues. */
+       * a small amount of space below the image. */
       aspect-ratio: 1.01;
       object-fit: cover;
     }
@@ -65,7 +65,7 @@
 
       .text {
         background: $pink;
-        bottom: -17px;  /* 250 - (30/2) */
+        bottom: -17px;
         width: 70px;
         left: calc(50% - 35px);
       }
