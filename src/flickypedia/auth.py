@@ -184,6 +184,17 @@ class WikimediaUserSession(UserMixin, user_db.Model):  # type: ignore
         client = self._oauth2_client()
         client.ensure_active_token(token=self.token())
 
+    def refresh_token(self) -> None:
+        """
+        Regardless of the current state of the user's session, get
+        a new token -- this will ensure the current access token is valid
+        for another four hours.
+        """
+        config = current_app.config["OAUTH2_PROVIDERS"]["wikimedia"]
+
+        client = self._oauth2_client()
+        client.refresh_token(url=config['token_url'])
+
     def wikimedia_api(self) -> WikimediaApi:
         """
         Returns a Wikimedia API client which is authenticated for this user.
