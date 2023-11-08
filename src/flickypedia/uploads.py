@@ -73,15 +73,15 @@ def upload_batch_of_photos(
 
     for idx, req in enumerate(upload_requests):
         try:
-            # import random
-            # import time
-            #
-            # time.sleep(10)
-            #
-            # if random.uniform(0, 1) > 0.95:
-            #     raise ValueError
+            import random
+            import time
 
-            upload_single_image(api, req)
+            time.sleep(10)
+
+            if random.uniform(0, 1) > 0.8:
+                raise ValueError
+
+            # upload_single_image(api, req)
         except Exception as exc:
             progress_data[idx]["status"] = "failed"
             progress_data[idx]["error"] = str(exc)
