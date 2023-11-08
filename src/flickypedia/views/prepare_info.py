@@ -30,9 +30,8 @@ from flickypedia.photos import (
     PhotoWithSdc,
     add_sdc_to_photos,
     categorise_photos,
-    size_at,
 )
-from flickypedia.uploads import upload_batch_of_photos
+from flickypedia.uploads import UploadRequest, upload_batch_of_photos
 from .select_photos import get_cached_photos_data, remove_cached_photos_data
 from ._types import ViewResponse
 
@@ -143,35 +142,29 @@ class PhotoForUpload(TypedDict):
     owner: FlickrUser
 
 
-def prepare_photos_for_upload(
-    selected_photos: List[PhotoWithSdc], form_data: Dict[str, Any]
-) -> List[PhotoForUpload]:
-    photos_to_upload: List[PhotoForUpload] = []
+def create_upload_requests(
+    photos: List[PhotoWithSdc], form_data: Dict[str, Any]
+) -> List[UploadRequest]:
+    upload_requests: List[UploadRequest] = []
 
-    for photo_with_sdc in selected_photos:
+    for photo_with_sdc in photos:
         photo = photo_with_sdc["photo"]
         this_photo_form_data = form_data[f"photo_{photo['id']}"]
 
-        new_photo: PhotoForUpload = {
-            "id": photo["id"],
-            "title": this_photo_form_data["title"] + "." + photo["original_format"],
-            "short_caption": {
-                "language": form_data["language"],
-                "text": this_photo_form_data["short_caption"],
-            },
-            "categories": this_photo_form_data["categories"],
-            "license_id": photo["license"]["id"],
-            "date_taken": photo["date_taken"],
-            "date_posted": photo["date_posted"],
-            "original_url": size_at(photo["sizes"], desired_size="Original")["source"],
-            "photo_url": photo["url"],
-            "sdc": photo_with_sdc["sdc"],
-            "owner": photo["owner"],
-        }
+        upload_requests.append(
+            {
+                "photo": photo,
+                "sdc": photo_with_sdc["sdc"],
+                "title": this_photo_form_data["title"] + "." + photo["original_format"],
+                "caption": {
+                    "language": form_data["language"],
+                    "text": this_photo_form_data["short_caption"],
+                },
+                "categories": this_photo_form_data["categories"],
+            }
+        )
 
-        photos_to_upload.append(new_photo)
-
-    return photos_to_upload
+    return upload_requests
 
 
 @login_required
@@ -222,8 +215,8 @@ def prepare_info() -> ViewResponse:
     prepare_info_form = create_prepare_info_form(photos=photos_with_sdc)
 
     if prepare_info_form.validate_on_submit():
-        photos_to_upload = prepare_photos_for_upload(
-            selected_photos, form_data=prepare_info_form.data  # type: ignore
+        upload_requests = create_upload_requests(
+            photos_with_sdc, form_data=prepare_info_form.data
         )
 
         upload_batch_of_photos.apply_async(  # type: ignore
@@ -233,7 +226,7 @@ def prepare_info() -> ViewResponse:
                     "access_token_expires": current_user.access_token_expires,
                     "refresh_token": current_user.refresh_token(),
                 },
-                "photos_to_upload": photos_to_upload,
+                "upload_requests": upload_requests,
             },
             task_id=cache_id,
         )
