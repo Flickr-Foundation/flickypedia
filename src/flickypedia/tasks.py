@@ -117,5 +117,5 @@ def get_status(task_id: str) -> Union[SuccessfulStatus, PendingStatus]:
     else:
         return {
             "ready": False,
-            "progress": ProgressTracker(task_id=task_id).get_progress(),
+            "value": ProgressTracker(task_id=task_id).get_progress(),
         }
