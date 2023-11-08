@@ -2,6 +2,12 @@
 
 {% set page_id = "wait_for_upload" %}
 
+{% block head %}
+<noscript>
+  <meta http-equiv="refresh" content="10">
+</noscript>
+{% endblock %}
+
 {% block content %}
   {% include "components/header.html" %}
 
