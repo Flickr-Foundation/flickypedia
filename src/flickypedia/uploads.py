@@ -59,10 +59,7 @@ def upload_batch_of_photos(
     access_token: str, upload_requests: List[UploadRequest]
 ) -> Any:
     tracker = ProgressTracker(task_id=current_task.request.id)
-
-    progress_data = [{"req": req, "status": "not_started"} for req in upload_requests]
-
-    tracker.record_progress(data=progress_data)
+    progress_data = tracker.get_progress()
 
     client = httpx.Client(headers={
         'Authorization': f'Bearer {access_token}',
@@ -72,13 +69,17 @@ def upload_batch_of_photos(
     api = WikimediaApi(client=client)
 
     for idx, req in enumerate(upload_requests):
+
+        progress_data[idx]['status'] = 'in_progress'
+        tracker.record_progress(data=progress_data)
+
         try:
             import random
             import time
 
-            time.sleep(10)
+            time.sleep(5)
 
-            if random.uniform(0, 1) > 0.8:
+            if random.uniform(0, 1) > 0.6:
                 raise ValueError
 
             # upload_single_image(api, req)
