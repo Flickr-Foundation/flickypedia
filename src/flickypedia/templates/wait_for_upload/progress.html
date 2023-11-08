@@ -7,9 +7,9 @@
         <img src="{{ large_size.source }}">
         
         {% if item.status == "succeeded" %}
-          <div class="text success">DONE</div>
+          <div class="text">DONE</div>
         {% elif item.status == "failed" %}
-          <div class="text failed">NOT DONE</div>
+          <div class="text">NOT DONE</div>
         {% endif %}
       </div>
     </li>

@@ -11,43 +11,10 @@
 {% block content %}
   {% include "components/header.html" %}
 
+  <script src="{{ url_for('static', filename='flickypedia.js') }}"></script>
   <script>
-    function updateBasedOnTaskId() {
-      const xhr = new XMLHttpRequest();
-      xhr.open("GET", `${window.location}/status`);
-      xhr.send();
-      xhr.responseType = "json";
-      xhr.onload = () => {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-          var processing = 0;
-
-          xhr.response.progress.forEach((progress) => {
-            const photoId = progress.req.photo.id;
-            const uploadStatus = progress.status;
-
-            document
-              .querySelector(`li[data-id="${photoId}"]`)
-              .setAttribute("data-status", uploadStatus);
-
-            if (uploadStatus !== "waiting") {
-              processing += 1;
-            }
-
-          });
-
-          document
-            .querySelector('.image_counter')
-            .innerHTML = `${processing} of ${xhr.response.progress.length}`;
-
-        } else {
-          console.log(`Error: ${xhr.status}`);
-        }
-      };
-    };
-
     window.onload = function() {
-      updateBasedOnTaskId();
-      setInterval(updateBasedOnTaskId, 1000);
+      setInterval(updatePhotosWithUploadProgress, 1000);
     };
   </script>
 
