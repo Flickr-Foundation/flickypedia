@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% set page_id = "wait_for_upload" %}
+
 {% block content %}
   {% include "components/header.html" %}
 
@@ -42,13 +44,9 @@
       setInterval(updateBasedOnTaskId, 1000);
     };
   </script>
-    
-  <h2 class="animated_uploading">Uploading<span class="ellipsis">.....</span</h2>
 
-  <div class="container" style="position: relative;">
-    <h2>
-      Uploading....
-    </h2>
+  <div class="title_container" style="position: relative;">
+    <h2 class="animated_uploading">Uploading<span class="ellipsis">.....</span></h2>
 
     <div class="image_counter">1 of {{ status.progress|length }}</div>
   </div>

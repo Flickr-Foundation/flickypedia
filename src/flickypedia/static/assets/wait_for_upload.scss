@@ -1,3 +1,16 @@
+#page-wait_for_upload {
+  /* Ensure that the animated "Uploading....." and "1 of N" are
+   * vertically aligned with each other. */
+  .title_container {
+    line-height: 50px;
+    margin-bottom: 1.5em;
+  }
+
+  .title_container, .image_counter {
+    height: 50px;
+  }
+}
+
 /*
  * This adds five animated dots on Uploading.....
  *
