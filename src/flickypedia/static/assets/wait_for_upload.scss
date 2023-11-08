@@ -1,0 +1,43 @@
+/*
+ * This adds five animated dots on Uploading.....
+ *
+ * The dots gradually fill up and then reset.  For users who have
+ * CSS disabled or the "reduce motion" preference, it just shows
+ * a static five dots.
+ *
+ */
+.animated_uploading:after {
+  display: inline-block;
+  vertical-align: bottom;
+  animation: ellipsis 1.2s linear infinite;
+  content: ".....";
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+.animated_uploading .ellipsis {
+  display: none;
+}
+
+@keyframes ellipsis {
+  0% {
+    content: "";
+  }
+  20% {
+    content: ".";
+  }
+  40% {
+    content: "..";
+  }
+  60% {
+    content: "...";
+  }
+  80% {
+    content: "....";
+  }
+  100% {
+    content: ".....";
+  }
+}
