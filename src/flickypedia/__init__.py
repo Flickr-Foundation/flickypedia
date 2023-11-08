@@ -34,6 +34,7 @@ from flickypedia.views import (
     truncate_description,
     validate_title_api,
     wait_for_upload,
+    upload_complete,
 )
 from flickypedia.tasks import celery_init_app
 from flickypedia.utils import create_bookmarklet
@@ -67,6 +68,7 @@ def create_app(data_directory: str = "data", debug: bool = False) -> Flask:
     app.add_url_rule("/prepare_info", view_func=prepare_info, methods=["GET", "POST"])
     app.add_url_rule("/wait_for_upload/<task_id>", view_func=wait_for_upload)
     app.add_url_rule("/wait_for_upload/<task_id>/status", view_func=get_upload_status)
+    app.add_url_rule("/upload_complete/<task_id>", view_func=upload_complete)
 
     app.add_url_rule("/about/", view_func=about)
     app.add_url_rule("/bookmarklet/", view_func=bookmarklet)

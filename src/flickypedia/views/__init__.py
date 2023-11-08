@@ -5,6 +5,7 @@ from .get_photos import get_photos
 from .prepare_info import prepare_info, truncate_description
 from .select_photos import select_photos
 from .wait_for_upload import get_upload_status, wait_for_upload
+from .upload_complete import upload_complete
 from ._types import ViewResponse
 
 
@@ -32,4 +33,5 @@ __all__ = [
     "truncate_description",
     "validate_title_api",
     "wait_for_upload",
+    "upload_complete",
 ]
