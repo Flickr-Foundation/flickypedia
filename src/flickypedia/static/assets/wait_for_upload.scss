@@ -52,7 +52,7 @@
       position: absolute;
       height: 30px;
       line-height: 30px;
-      border-radius: 2px;
+      border-radius: 6px;
       text-align: center;
       color: white;
       font-weight: bold;
@@ -65,7 +65,7 @@
 
       .text {
         background: $pink;
-        bottom: -15px;  /* 250 - (30/2) */
+        bottom: -17px;  /* 250 - (30/2) */
         width: 70px;
         left: calc(50% - 35px);
       }
