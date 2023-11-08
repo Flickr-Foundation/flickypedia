@@ -55,11 +55,14 @@ from ._types import ViewResponse
 def wait_for_upload(task_id: str) -> ViewResponse:
     status = get_status(task_id)
 
-    if status['ready']:
-        return redirect(url_for('upload_complete', task_id=task_id))
+    if status["ready"]:
+        return redirect(url_for("upload_complete", task_id=task_id))
 
     return render_template(
-        "wait_for_upload.html", task_id=task_id, current_step="upload_to_wikimedia", status=status
+        "wait_for_upload.html",
+        task_id=task_id,
+        current_step="upload_to_wikimedia",
+        status=status,
     )
 
 

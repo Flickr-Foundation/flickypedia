@@ -215,7 +215,6 @@ def prepare_info() -> ViewResponse:
     prepare_info_form = create_prepare_info_form(photos=photos_with_sdc)
 
     if prepare_info_form.validate_on_submit():
-
         upload_requests = create_upload_requests(
             photos_with_sdc, form_data=prepare_info_form.data
         )
@@ -223,6 +222,8 @@ def prepare_info() -> ViewResponse:
         task_id = begin_upload(
             upload_requests=upload_requests,
         )
+
+        remove_cached_photos_data(prepare_info_form.cache_id.data)
 
         return redirect(url_for("wait_for_upload", task_id=task_id))
 

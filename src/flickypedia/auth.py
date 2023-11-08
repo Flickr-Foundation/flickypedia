@@ -193,7 +193,7 @@ class WikimediaUserSession(UserMixin, user_db.Model):  # type: ignore
         config = current_app.config["OAUTH2_PROVIDERS"]["wikimedia"]
 
         client = self._oauth2_client()
-        client.refresh_token(url=config['token_url'])
+        client.refresh_token(url=config["token_url"])
 
     def wikimedia_api(self) -> WikimediaApi:
         """

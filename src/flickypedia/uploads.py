@@ -45,7 +45,7 @@ def begin_upload(upload_requests: List[UploadRequest]) -> str:
 
     upload_batch_of_photos.apply_async(  # type: ignore
         kwargs={
-            "access_token": current_user.token()['access_token'],
+            "access_token": current_user.token()["access_token"],
             "upload_requests": upload_requests,
         },
         task_id=task_id,
@@ -61,16 +61,17 @@ def upload_batch_of_photos(
     tracker = ProgressTracker(task_id=current_task.request.id)
     progress_data = tracker.get_progress()
 
-    client = httpx.Client(headers={
-        'Authorization': f'Bearer {access_token}',
-        'User-Agent': current_app.config['USER_AGENT']
-    })
+    client = httpx.Client(
+        headers={
+            "Authorization": f"Bearer {access_token}",
+            "User-Agent": current_app.config["USER_AGENT"],
+        }
+    )
 
-    api = WikimediaApi(client=client)
+    api = WikimediaApi(client=client)  # noqa
 
     for idx, req in enumerate(upload_requests):
-
-        progress_data[idx]['status'] = 'in_progress'
+        progress_data[idx]["status"] = "in_progress"
         tracker.record_progress(data=progress_data)
 
         try:
