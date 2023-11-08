@@ -112,10 +112,10 @@ def get_status(task_id: str) -> Union[SuccessfulStatus, PendingStatus]:
         return {
             "ready": True,
             "successful": result.successful(),
-            "value": result.result if result.ready() else None,
+            "progress": result.result if result.ready() else None,
         }
     else:
         return {
             "ready": False,
-            "value": ProgressTracker(task_id=task_id).get_progress(),
+            "progress": ProgressTracker(task_id=task_id).get_progress(),
         }

@@ -7,8 +7,10 @@ from ._types import ViewResponse
 
 @login_required
 def wait_for_upload(task_id: str) -> ViewResponse:
+    status = get_status(task_id)
+
     return render_template(
-        "wait_for_upload.html", task_id=task_id, current_step="upload_to_wikimedia"
+        "wait_for_upload.html", task_id=task_id, current_step="upload_to_wikimedia", status=status
     )
 
 

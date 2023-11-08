@@ -11,7 +11,26 @@
       xhr.responseType = "json";
       xhr.onload = () => {
         if (xhr.readyState == 4 && xhr.status == 200) {
-          document.querySelector('#results').innerHTML = JSON.stringify(xhr.response);
+          var processing = 0;
+
+          xhr.response.progress.forEach((progress) => {
+            const photoId = progress.req.photo.id;
+            const uploadStatus = progress.status;
+
+            document
+              .querySelector(`li[data-id="${photoId}"]`)
+              .setAttribute("data-status", uploadStatus);
+
+            if (uploadStatus !== "waiting") {
+              processing += 1;
+            }
+
+          });
+
+          document
+            .querySelector('.image_counter')
+            .innerHTML = `${processing} of ${xhr.response.progress.length}`;
+
         } else {
           console.log(`Error: ${xhr.status}`);
         }
@@ -24,7 +43,17 @@
     };
   </script>
 
-  {{ task_id }}
+  <div class="container" style="position: relative;">
+    <h2>
+      Uploading....
+    </h2>
+
+    <div class="image_counter">1 of {{ status.progress|length }}</div>
+  </div>
+
+  <div id="progress">
+    {% include "wait_for_upload/progress.html" %}
+  </div>
 
   <div id="results"></div>
 {% endblock %}
