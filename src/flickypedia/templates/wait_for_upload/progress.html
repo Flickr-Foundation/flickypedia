@@ -1,0 +1,18 @@
+<ul class="plain_list">
+  {% for item in status.progress %}
+    {% with photo = item.req.photo %}
+    <li data-id="{{ photo.id }}" data-status="{{ item.status }}">
+      <div class="container">
+        {% set large_size = photo.sizes|size_at(desired_size='Large') %}
+        <img src="{{ large_size.source }}">
+        
+        {% if item.status == "succeeded" %}
+          <div class="text">DONE</div>
+        {% elif item.status == "failed" %}
+          <div class="text">NOT DONE</div>
+        {% endif %}
+      </div>
+    </li>
+    {% endwith %}
+  {% endfor %}
+</ul>

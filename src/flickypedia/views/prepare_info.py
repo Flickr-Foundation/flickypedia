@@ -31,7 +31,7 @@ from flickypedia.photos import (
     add_sdc_to_photos,
     categorise_photos,
 )
-from flickypedia.uploads import UploadRequest, upload_batch_of_photos
+from flickypedia.uploads import UploadRequest, begin_upload
 from .select_photos import get_cached_photos_data, remove_cached_photos_data
 from ._types import ViewResponse
 
@@ -219,21 +219,13 @@ def prepare_info() -> ViewResponse:
             photos_with_sdc, form_data=prepare_info_form.data
         )
 
-        upload_batch_of_photos.apply_async(  # type: ignore
-            kwargs={
-                "oauth_info": {
-                    "access_token": current_user.access_token(),
-                    "access_token_expires": current_user.access_token_expires,
-                    "refresh_token": current_user.refresh_token(),
-                },
-                "upload_requests": upload_requests,
-            },
-            task_id=cache_id,
+        task_id = begin_upload(
+            upload_requests=upload_requests,
         )
 
-        remove_cached_photos_data(response_id=cache_id)
+        remove_cached_photos_data(prepare_info_form.cache_id.data)  # type: ignore
 
-        return redirect(url_for("wait_for_upload", task_id=cache_id))
+        return redirect(url_for("wait_for_upload", task_id=task_id))
 
     return render_template(
         "prepare_info/index.html",

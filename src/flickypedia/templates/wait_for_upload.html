@@ -1,32 +1,30 @@
 {% extends "base.html" %}
 
+{% set page_id = "wait_for_upload" %}
+
+{% block head %}
+<noscript>
+  <meta http-equiv="refresh" content="10">
+</noscript>
+{% endblock %}
+
 {% block content %}
   {% include "components/header.html" %}
 
+  <script src="{{ url_for('static', filename='flickypedia.js') }}"></script>
   <script>
-    function updateBasedOnTaskId() {
-      const xhr = new XMLHttpRequest();
-      xhr.open("GET", `${window.location}/status`);
-      xhr.send();
-      xhr.responseType = "json";
-      xhr.onload = () => {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-          document.querySelector('#results').innerHTML = JSON.stringify(xhr.response);
-        } else {
-          console.log(`Error: ${xhr.status}`);
-        }
-      };
-    };
-
     window.onload = function() {
-      updateBasedOnTaskId();
-      setInterval(updateBasedOnTaskId, 1000);
+      setInterval(updatePhotosWithUploadProgress, 1000);
     };
   </script>
-    
-  <h2 class="animated_uploading">Uploading<span class="ellipsis">.....</span</h2>
 
-  {{ task_id }}
+  <div class="title_container" style="position: relative;">
+    <h2 class="animated_uploading">Uploading<span class="ellipsis">.....</span></h2>
 
-  <div id="results"></div>
+    <div class="image_counter">1 of {{ status.progress|length }}</div>
+  </div>
+
+  <div id="progress">
+    {% include "wait_for_upload/progress.html" %}
+  </div>
 {% endblock %}

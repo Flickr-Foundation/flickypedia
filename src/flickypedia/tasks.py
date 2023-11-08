@@ -34,6 +34,8 @@ from celery import Celery, Task
 from celery.result import AsyncResult
 from flask import Flask, current_app
 
+from flickypedia.utils import DatetimeDecoder, DatetimeEncoder
+
 
 def celery_init_app(app: Flask) -> Celery:
     """
@@ -76,7 +78,7 @@ class ProgressTracker:
         Records the state of an in-progress task.
         """
         with open(self.path, "w") as out_file:
-            out_file.write(json.dumps(data))
+            out_file.write(json.dumps(data, cls=DatetimeEncoder))
 
     def get_progress(self) -> Any:
         """
@@ -84,7 +86,7 @@ class ProgressTracker:
         """
         try:
             with open(self.path) as in_file:
-                return json.load(in_file)
+                return json.load(in_file, cls=DatetimeDecoder)
         except FileNotFoundError:
             return None
 
@@ -92,7 +94,7 @@ class ProgressTracker:
 class SuccessfulStatus(TypedDict):
     ready: Literal[True]
     successful: bool
-    value: Any
+    progress: Any
 
 
 class PendingStatus(TypedDict):
@@ -110,7 +112,7 @@ def get_status(task_id: str) -> Union[SuccessfulStatus, PendingStatus]:
         return {
             "ready": True,
             "successful": result.successful(),
-            "value": result.result if result.ready() else None,
+            "progress": result.result if result.ready() else None,
         }
     else:
         return {

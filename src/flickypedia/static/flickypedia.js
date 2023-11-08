@@ -358,3 +358,59 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm) {
       .forEach((item) => item.remove());
   }
 }
+
+/*
+ * Update the state of currently-being-uploaded photos.
+ *
+ * This function is called once per second on the "wait for upload"
+ * screen.  It adds the "Done" or "Not Done" labels to photos.
+ */
+function updatePhotosWithUploadProgress() {
+  fetch(`${window.location}/status`)
+    .then((response) => response.json())
+    .then(function (json) {
+      var processingCount = 0;
+
+      /* If we're done, redirect the user to the next screen. */
+      if (json.ready) {
+        window.location.href = window.location.href.replace("/wait_for_upload/", "/upload_complete/")
+      }
+
+      json.progress.forEach((progress) => {
+        const photoId = progress.req.photo.id;
+        const uploadStatus = progress.status;
+
+        const liElement = document
+          .querySelector(`li[data-id="${photoId}"]`);
+
+        /* If the status has changed, add it to the <li> element for
+         * this photo.  Also add the text label if necessary.
+         */
+        if (liElement.getAttribute("data-status") !== uploadStatus) {
+          liElement.setAttribute("data-status", uploadStatus);
+
+          if (uploadStatus === "succeeded") {
+            const textElement = document.createElement("div");
+            textElement.classList.add("text");
+            textElement.innerHTML = "DONE";
+            liElement.querySelector('.container').appendChild(textElement);
+          }
+
+          if (uploadStatus === "failed") {
+            const textElement = document.createElement("div");
+            textElement.classList.add("text");
+            textElement.innerHTML = "NOT DONE";
+            liElement.querySelector('.container').appendChild(textElement);
+          }
+        }
+
+        if (uploadStatus !== "waiting") {
+          processingCount += 1;
+        }
+      });
+
+      document
+        .querySelector('.image_counter')
+        .innerHTML = `${processingCount} of ${json.progress.length}`;
+    });
+}

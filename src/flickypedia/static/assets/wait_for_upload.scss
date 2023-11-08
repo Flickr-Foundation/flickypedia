@@ -1,3 +1,103 @@
+#page-wait_for_upload {
+  /* Ensure that the animated "Uploading....." and "1 of N" are
+   * vertically aligned with each other. */
+  .title_container {
+    line-height: 50px;
+    margin-bottom: 1.5em;
+  }
+
+  .title_container, .image_counter {
+    height: 50px;
+  }
+
+  #progress ul {
+    display: grid;
+    grid-gap: 2em;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+
+    li {
+      display: inline-block;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+      /* I actually want a square, but an aspect ratio of 1 causes
+       * a small amount of space below the image. */
+      aspect-ratio: 1.01;
+      object-fit: cover;
+    }
+
+    li[data-status="succeeded"] .container,
+    li[data-status="failed"] .container {
+      border-style: solid;
+      border-width: 5px;
+      padding: 0;
+      margin: -5px;
+      position: relative;
+    }
+
+    li[data-status="in_progress"] .container {
+      border: 10px solid $black;
+      padding: 0;
+      margin: -10px;
+      animation: Pulsate 2.5s linear infinite;
+
+      @media (prefers-reduced-motion: reduce) {
+        animation: none;
+      }
+    }
+
+    .text {
+      position: absolute;
+      height: 30px;
+      line-height: 30px;
+      border-radius: 6px;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+    }
+
+    li[data-status="succeeded"] {
+      .container {
+        border-color: $pink;
+      }
+
+      .text {
+        background: $pink;
+        bottom: -17px;
+        width: 70px;
+        left: calc(50% - 35px);
+      }
+    }
+
+    li[data-status="failed"] {
+      .container {
+        border-color: $red;
+      }
+
+      .text {
+        background: $red;
+        bottom: -1px;
+        right: -20px;
+        width: 110px;
+        rotate: -17deg;
+      }
+    }
+
+    li[data-status="waiting"] img {
+      filter: saturate(0%);
+    }
+  }
+}
+
+/* https://stackoverflow.com/q/34889902/1558022 */
+@keyframes Pulsate {
+  from { filter: saturate(  0%); }
+  50%  { filter: saturate(100%); }
+  to   { filter: saturate(  0%); }
+}
+
 /*
  * This adds five animated dots on Uploading.....
  *

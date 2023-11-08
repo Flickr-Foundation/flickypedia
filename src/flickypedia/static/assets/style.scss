@@ -157,6 +157,17 @@ input.pink_button:active {
   }
 }
 
+.image_counter {
+  position: absolute;
+  right: 0;
+  top:   0;
+  background: $black;
+  color: $cream;
+  padding: 1px 20px;
+  font-size: 2em;
+  font-weight: bold;
+}
+
 /* This is a very small bit of polish: it prevents CC license labels
  * (e.g. CC BY 2.0) from being split across multiple lines.
  */
