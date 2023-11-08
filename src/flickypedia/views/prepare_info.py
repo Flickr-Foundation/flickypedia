@@ -223,7 +223,7 @@ def prepare_info() -> ViewResponse:
             upload_requests=upload_requests,
         )
 
-        remove_cached_photos_data(prepare_info_form.cache_id.data)
+        remove_cached_photos_data(prepare_info_form.cache_id.data)  # type: ignore
 
         return redirect(url_for("wait_for_upload", task_id=task_id))
 

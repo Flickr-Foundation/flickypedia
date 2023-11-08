@@ -94,7 +94,7 @@ class ProgressTracker:
 class SuccessfulStatus(TypedDict):
     ready: Literal[True]
     successful: bool
-    value: Any
+    progress: Any
 
 
 class PendingStatus(TypedDict):
