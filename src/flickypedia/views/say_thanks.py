@@ -10,9 +10,7 @@ def say_thanks(task_id: str) -> ViewResponse:
     status = get_status(task_id)
 
     assert status["ready"]
-    assert len(status['progress']) >= 1
+    assert len(status["progress"]) >= 1
     assert all(item["status"] in {"succeeded", "failed"} for item in status["progress"])
 
-    return render_template(
-        "say_thanks.html", current_step="say_thanks"
-    )
+    return render_template("say_thanks.html", current_step="say_thanks")
