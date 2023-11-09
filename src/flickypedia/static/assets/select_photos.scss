@@ -95,32 +95,6 @@
   /* Styles for the text which tells the user which messages can be uploaded
    * (if any), and which have been rejected for duplicates/bad license/not safe. */
   .which_photos_can_be_uploaded {
-    .highlight {
-      color: white;
-      font-weight: bold;
-      padding-left: 4px;
-      margin-left: -4px;
-      margin-right: 4px;
-    }
-
-    .message_available .highlight {
-      background: $green;
-    }
-
-    /* If every photo is a duplicate, we want a pink highlight.
-     * If some photos are duplicates, we want a light green highlight.
-     */
-    .message_duplicate .highlight {
-      background-color: $lightgreen;
-    }
-
-    .message_duplicate.all_photos_duplicates .highlight {
-      background-color: $pink;
-    }
-
-    .message_disallowed .highlight {
-      background-color: $red;
-    }
 
     /* Tighten up the spacing */
     p:not(:last-child)  { margin-bottom: 0; }

@@ -141,10 +141,6 @@ input.pink_button:active {
   border-radius: 4px;
 }
 
-.highlight {
-  background: $yellow;
-}
-
 #summary {
   text-align: right;
   font-size: 1.2em;
@@ -166,6 +162,31 @@ input.pink_button:active {
   padding: 1px 20px;
   font-size: 2em;
   font-weight: bold;
+}
+
+/* A highlight is white text on a coloured background that shows the user
+ * some key information.  They usually appear at the start of a line.
+ *
+ * There are four vari
+ */
+.highlight {
+  color: white;
+  font-weight: bold;
+  padding-left: 4px;
+  padding-right: 4px;
+  margin-left: -4px;
+  margin-right: 4px;
+
+  &.green      { background: $green; }
+  &.red        { background: $red;   }
+  &.lightgreen { background: $lightgreen; }
+  &.pink       { background: $pink;       }
+}
+
+/* A "next step" is any element highlighted in yellow to show the user
+ * where to go next. */
+.next_step {
+  background: $yellow;
 }
 
 /* This is a very small bit of polish: it prevents CC license labels

@@ -26,7 +26,7 @@
 
   {% if photos.available %}
     <p class="message_available">
-      <span class="highlight">
+      <span class="highlight green">
         {% if photos.available|length == 1 and all_photos_available %}
           This photo
         {% elif photos.available|length == 1 %}
@@ -47,27 +47,27 @@
   {% if photos.duplicates %}
     <p class="message_duplicate{% if all_photos_duplicates %} all_photos_duplicates{% endif %}">
       {% if photos.duplicates|length == 1 and all_photos_duplicates %}
-        <span class="highlight">
+        <span class="highlight pink">
           Your work is done!
         </span>
         This photo is
       {% elif photos.duplicates|length == 1 %}
-        <span class="highlight">
+        <span class="highlight lightgreen">
           Some of your work is done!
         </span>
         One photo is
       {% elif photos.duplicates|length == 2 and all_photos_duplicates %}
-        <span class="highlight">
+        <span class="highlight pink">
           Your work is done!
         </span>
         Both photos are
       {% elif all_photos_duplicates %}
-        <span class="highlight">
+        <span class="highlight pink">
           Your work is done!
         </span>
         All {{ photos.duplicates|length }} photos are
       {% else %}
-        <span class="highlight">
+        <span class="highlight lightgreen">
           Some of your work is done!
         </span>
         {{ photos.duplicates|length }} photos are
@@ -80,23 +80,23 @@
   {% if photos.disallowed_licenses %}
     <p class="message_disallowed">
       {% if photos.disallowed_licenses|length == 1 and all_photos_disallowed_licenses %}
-        <span class="highlight">
+        <span class="highlight red">
           This photo can’t be used
         </span>
       {% elif photos.disallowed_licenses|length == 1 %}
-        <span class="highlight">
+        <span class="highlight red">
           One photo can’t be used
         </span>
       {% elif photos.disallowed_licenses|length == 2 and all_photos_disallowed_licenses %}
-        <span class="highlight">
+        <span class="highlight red">
           Neither of these photos can be used
         </span>
       {% elif all_photos_disallowed_licenses %}
-        <span class="highlight">
+        <span class="highlight red">
           None of these photos can be used
         </span>
       {% else %}
-        <span class="highlight">
+        <span class="highlight red">
           {{ photos.disallowed_licenses|length }} photos can’t be used
         </span>
       {% endif %}
@@ -136,15 +136,15 @@
   {% if all_photos_restricted %}
     <p class="message_disallowed">
       {% if photos.restricted|length == 1 %}
-        <span class="highlight">
+        <span class="highlight red">
           This photo can’t be used.
         </span>
       {% elif photos.restricted|length == 2 %}
-        <span class="highlight">
+        <span class="highlight red">
           Neither of these photos can be used.
         </span>
       {% else %}
-        <span class="highlight">
+        <span class="highlight red">
           None of these photos can be used.
         </span>
       {% endif %}

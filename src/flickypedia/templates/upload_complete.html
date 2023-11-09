@@ -67,16 +67,6 @@
       margin-left: 0;
     }
 
-    .highlight.danger {
-      color: white;
-      font-weight: bold;
-      padding-left: 4px;
-      padding-right: 4px;
-      margin-left: -4px;
-      margin-right: 4px;
-      background: red;
-    }
-
     .successful_requests img {
       max-width
     }
@@ -84,7 +74,7 @@
 
   {% if failed_requests %}
     <p>
-      <span class="highlight danger">
+      <span class="highlight red">
         {{ failed_requests|length }}
         of your photo{% if failed_requests|length > 1 %}s{% endif %}
         did not upload
@@ -123,7 +113,7 @@
       {% endfor %}
     </ul>
   {% endif %}
-  
+
   <p></p>
 
   <ul class="plain_list upload_progress successful_requests">
