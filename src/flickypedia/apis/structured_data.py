@@ -213,12 +213,6 @@ def create_copyright_status_statement(license_id: str) -> Statement:
     else:
         raise ValueError(f"Unable to map a copyright status for license {license_id!r}")
 
-    # if status != "copyrighted":
-    #     raise ValueError(
-    #         f"Unable to map a copyright status which isn't “copyrighted”: {status!r}"
-    #     )
-    #
-
 
 def create_source_data_for_photo(
     photo_id: str, photo_url: str, original_url: str
