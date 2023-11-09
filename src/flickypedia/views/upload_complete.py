@@ -16,10 +16,13 @@ def upload_complete(task_id: str) -> ViewResponse:
     successful_requests = [s for s in status["progress"] if s["status"] == "succeeded"]
     failed_requests = [s for s in status["progress"] if s["status"] == "failed"]
 
+    upload_results = [s['upload_result'] for s in successful_requests]
+
     return render_template(
         "upload_complete.html",
         task_id=task_id,
         successful_requests=successful_requests,
         failed_requests=failed_requests,
+        upload_results=upload_results,
         current_step="upload_to_wikimedia",
     )

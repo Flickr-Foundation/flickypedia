@@ -16,8 +16,11 @@
 
   <!-- TODO: There should be a link here -->
 
-  {% if successful_requests %}
-    <p>Review your work on Wikimedia Commons?</p>
+  {% if successful_requests %}  
+    <p>
+      <a href="{{ upload_results|link_to_commons }}">Review your work</a>
+      on Wikimedia Commons?
+    </p>
   {% endif %}
 
   {% if failed_requests %}
@@ -30,50 +33,48 @@
       We recommend you try uploading {% if failed_requests|length > 1 %}them{% else %}it{% endif %} again later.
       You can make a copy of the title{% if failed_requests|length > 1 %}s{% endif %} and caption{% if failed_requests|length > 1 %}s{% endif %} you wrote for your next attempt.
     </p>
-    
-    <ul class="plain_list upload_progress">
-      {% for item in failed_requests %}
-        {% with photo = item.req.photo %}
-        <li data-status="{{ item.status }}">
-          {% set large_size = photo.sizes|size_at(desired_size='Large') %}
-          <div class="container">
-            <img src="{{ large_size.source }}">
-            <div class="text">NOT DONE</div>
-          </div>
-        </li>
-        <li class="error_info">
-          <dl>
-            <dt>URL</dt>
-            <dd>{{ photo.url }}</dd>
-
-            <dt>title</dt>
-            <dd>{{ item.req.title }}</dd>
-
-            <dt>short caption</dt>
-            <dd>{{ item.req.caption.text }}</dd>
-
-            <dt>error</dt>
-            <dd>{{ item.error or '<unknown>' }}</dt>
-          </dl>
-        </li>
-        {% endwith %}
-      {% endfor %}
-      
-      {% for item in successful_requests %}
-        {% with photo = item.req.photo %}
-        <li data-status="{{ item.status }}">
-          <a href="{{ photo.url }}">
-            <div class="container">
-              {% set large_size = photo.sizes|size_at(desired_size='Large') %}
-              <img src="{{ large_size.source }}">
-              <div class="text">DONE</div>
-            </div>
-          </a>
-        </li>
-        {% endwith %}
-      {% endfor %}
-    </ul>
   {% endif %}
+  
+  <ul class="plain_list upload_progress">
+    {% for item in failed_requests %}
+      {% with photo = item.req.photo %}
+      <li data-status="{{ item.status }}">
+        {% set large_size = photo.sizes|size_at(desired_size='Large') %}
+        <div class="container">
+          <img src="{{ large_size.source }}">
+          <div class="text">NOT DONE</div>
+        </div>
+      </li>
+      <li class="error_info">
+        <dl>
+          <dt>URL</dt>
+          <dd>{{ photo.url }}</dd>
 
-  <p></p>
+          <dt>title</dt>
+          <dd>{{ item.req.title }}</dd>
+
+          <dt>short caption</dt>
+          <dd>{{ item.req.caption.text }}</dd>
+
+          <dt>error</dt>
+          <dd>{{ item.error or '<unknown>' }}</dt>
+        </dl>
+      </li>
+      {% endwith %}
+    {% endfor %}
+    
+    {% for item in successful_requests %}
+      {% with photo = item.req.photo %}
+      <li data-status="{{ item.status }}">
+        <a href="https://commons.wikimedia.org/wiki/{{ item.upload_result.title }}">
+          <div class="container">
+            {% set large_size = photo.sizes|size_at(desired_size='Large') %}
+            <img src="{{ large_size.source }}">
+            <div class="text">DONE</div>
+          </div>
+        </a>
+      </li>
+      {% endwith %}
+    {% endfor %}
+  </ul>
 {% endblock %}

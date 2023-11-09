@@ -5,6 +5,10 @@ ul.upload_progress {
 
   li {
     display: inline-block;
+
+    /* This stops them appearing too big in the grid, even if there's just
+     * one or two photos. */
+    max-width: 250px;
   }
 
   img {

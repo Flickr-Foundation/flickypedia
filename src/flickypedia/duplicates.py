@@ -91,7 +91,7 @@ def find_duplicates(flickr_photo_ids: List[str]) -> Dict[str, DuplicateInfo]:
     return result
 
 
-def create_link_to_commons(duplicates: Dict[str, DuplicateInfo]) -> str:
+def create_link_to_commons(duplicates: List[DuplicateInfo]) -> str:
     """
     Given a collection of duplicates from ``find_duplicates``, create
     a link to find those images on Wikimedia Commons.
@@ -103,7 +103,7 @@ def create_link_to_commons(duplicates: Dict[str, DuplicateInfo]) -> str:
     assert len(duplicates) > 0
 
     if len(duplicates) == 1:
-        title = list(duplicates.values())[0]["title"]
+        title = duplicates[0]["title"]
 
         return f"https://commons.wikimedia.org/wiki/{title}"
     else:
@@ -117,7 +117,7 @@ def create_link_to_commons(duplicates: Dict[str, DuplicateInfo]) -> str:
         # It'd be nice if we could preserve the order of the original
         # Flickr collection, but there doesn't seem to be a good way
         # to do that.
-        page_ids = sorted([dupe["id"].replace("M", "") for dupe in duplicates.values()])
+        page_ids = sorted([dupe["id"].replace("M", "") for dupe in duplicates])
 
         return f"https://commons.wikimedia.org/wiki/Special:MediaSearch?type=image&search=pageid:{'|'.join(page_ids)}"
 

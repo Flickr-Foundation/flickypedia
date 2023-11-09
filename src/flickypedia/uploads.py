@@ -118,16 +118,12 @@ def upload_single_image(api: WikimediaApi, request: UploadRequest) -> UploadResu
 
     api.add_structured_data(filename=request["title"], data={"claims": request["sdc"]})
 
+    wikimedia_page_title = f"File:{wikimedia_page_title}"
+
     record_file_created_by_flickypedia(
         flickr_photo_id=request["photo"]["id"],
-        wikimedia_page_title=f"File:{wikimedia_page_title}",
+        wikimedia_page_title=wikimedia_page_title,
         wikimedia_page_id=wikimedia_page_id,
     )
 
     return {"id": wikimedia_page_id, "title": wikimedia_page_title}
-
-
-#
-#
-# if __name__ == '__main__':
-#     main()
