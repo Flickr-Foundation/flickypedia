@@ -84,6 +84,14 @@ def upload_batch_of_photos(
 
         tracker.record_progress(data=progress_data)
 
+    api.purge_pages(
+        filenames=[
+            pd["upload_result"]["filename"]
+            for pd in progress_data
+            if pd["status"] == "succeeded"
+        ]
+    )
+
     return progress_data
 
 
