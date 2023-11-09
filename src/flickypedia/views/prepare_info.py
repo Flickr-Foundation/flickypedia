@@ -152,7 +152,8 @@ def create_upload_requests(
         this_photo_form_data = form_data[f"photo_{photo['id']}"]
 
         categories = (
-            enriched_photo["default_categories"] + this_photo_form_data["categories"]
+            enriched_photo["default_categories"]
+            + this_photo_form_data["categories"].strip().splitlines()
         )
 
         upload_requests.append(
