@@ -12,17 +12,24 @@ need to put in much text ourself.
 
 """
 
+from typing import List
 
-def create_wikitext(license_id: str) -> str:
+
+def create_wikitext(license_id: str, categories: List[str]) -> str:
     """
     Creates the Wikitext for a Flickr photo being uploaded to Wiki Commons.
     """
 
-    return """=={{int:filedesc}}==
-{{Information}}
+    lines = [
+        "=={{int:filedesc}}==",
+        "{{Information}}",
+        "",
+        "=={{int:license-header}}==",
+        "{{%s}}" % license_id,
+        "",
+    ]
 
-=={{int:license-header}}==
-{{%s}}
-""" % (
-        license_id,
-    )
+    for category_name in categories:
+        lines.append(f"[[Category:{category_name}]]")
+
+    return "\n".join(lines).strip()
