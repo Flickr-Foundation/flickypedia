@@ -1,5 +1,7 @@
 #page-upload_complete {
   .error_info {
+    /* This causes the error information to fill all the remaining columns.
+     * See https://stackoverflow.com/a/50612664/1558022 */
     grid-column: 2 / -1;
 
     dl {
