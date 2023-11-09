@@ -75,7 +75,7 @@ def upload_batch_of_photos(
         tracker.record_progress(data=progress_data)
 
         try:
-            progress_data[idx]['upload_result'] = upload_single_image(api, req)
+            progress_data[idx]["upload_result"] = upload_single_image(api, req)
         except Exception as exc:
             progress_data[idx]["status"] = "failed"
             progress_data[idx]["error"] = str(exc)

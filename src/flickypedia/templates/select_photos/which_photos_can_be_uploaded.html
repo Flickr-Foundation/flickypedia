@@ -72,7 +72,7 @@
         </span>
         {{ photos.duplicates|length }} photos are
       {% endif %}
-      <a href="{{ photos.duplicates.values() | link_to_commons }}"> already in Wikimedia Commons</a>.
+      <a href="{{ photos.duplicates.values()|list | link_to_commons }}"> already in Wikimedia Commons</a>.
       W00t!
     </p>
   {% endif %}

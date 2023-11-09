@@ -69,7 +69,7 @@ def test_create_link_to_commons(client: FlaskClient) -> None:
     duplicates = find_duplicates(flickr_photo_ids=["9999819294"])
 
     assert (
-        create_link_to_commons(duplicates)
+        create_link_to_commons(list(duplicates.values()))
         == "https://commons.wikimedia.org/wiki/File:Museu da Ciência (9999819294).jpg"
     )
 
@@ -85,6 +85,6 @@ def test_create_link_to_commons_for_multiple_ids(client: FlaskClient) -> None:
     )
 
     assert (
-        create_link_to_commons(duplicates)
+        create_link_to_commons(list(duplicates.values()))
         == "https://commons.wikimedia.org/wiki/Special:MediaSearch?type=image&search=pageid:29907038|29907062|29907327|29907338"
     )
