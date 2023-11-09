@@ -1,0 +1,27 @@
+#page-upload_complete {
+  .error_info {
+    grid-column: 2 / -1;
+
+    dl {
+      font-family: monospace;
+      line-height: 1.6em;
+      margin-top: 0;
+
+      dt {
+        font-weight: bold;
+      }
+
+      dt:not(:first-child) {
+        margin-top: 1em;
+      }
+
+      dd {
+        margin-left: 0;
+      }
+    }
+  }
+
+  .text {
+    @include disable_select();
+  }
+}

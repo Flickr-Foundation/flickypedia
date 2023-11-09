@@ -9,11 +9,16 @@ from ._types import ViewResponse
 def upload_complete(task_id: str) -> ViewResponse:
     status = get_status(task_id)
 
-    assert status['ready']
+    assert status["ready"]
+    assert len(status['progress']) >= 1
+    assert all(item["status"] in {"succeeded", "failed"} for item in status["progress"])
 
-    assert all(
-        item['status'] in {'succeeded', 'failed'}
-        for item in status['progress']
+    successful_requests = [s for s in status["progress"] if s["status"] == "succeeded"]
+    failed_requests = [s for s in status["progress"] if s["status"] == "failed"]
+
+    return render_template(
+        "upload_complete.html",
+        successful_requests=successful_requests,
+        failed_requests=failed_requests,
+        current_step="upload_to_wikimedia",
     )
-
-    return render_template("upload_complete.html", status=status, current_step="upload_to_wikimedia")

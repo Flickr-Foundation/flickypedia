@@ -5,72 +5,17 @@
 {% block content %}
   {% include "components/header.html" %}
 
-  <h2>Upload complete!</h2>
+  {% if successful_requests %}
+    <h2>Upload complete!</h2>
+  {% else %}
+    <h2>Upload failed!</h2>
+  {% endif %}
 
-  <p>Review your work on Wikimedia Commons?</p>
+  <!-- TODO: There should be a link here -->
 
-  {% set failed_requests = status.progress|selectattr("status", "eq", "failed")|list %}
-
-  {% set succeeded_photos = status.progress|selectattr("status", "eq", "succeeded")|list %}
-
-  <style>
-    .failed_requests {
-      grid-template-columns: auto !important;
-    }
-
-    .failed_requests .container {
-      aspect-ratio: 1.01 !important;
-    }
-
-    .failed_requests li {
-      display: grid !important;
-      grid-template-columns: 200px auto;
-      grid-gap: 2em;
-    }
-
-    .failed_requests .text {
-      // Disable text selection highlighting
-      // https://stackoverflow.com/a/4407335/1558022
-      -webkit-touch-callout: none; /* iOS Safari */
-        -webkit-user-select: none; /* Safari */
-         -khtml-user-select: none; /* Konqueror HTML */
-           -moz-user-select: none; /* Firefox */
-            -ms-user-select: none; /* Internet Explorer/Edge */
-                user-select: none; /* Non-prefixed version, currently
-                                      supported by Chrome and Opera */
-    }
-
-    .failed_requests img {
-      width: 100%;
-      display: block;
-      /* I actually want a square, but an aspect ratio of 1 causes
-       * a small amount of space below the image. */
-      aspect-ratio: 1.01;
-      object-fit: cover;
-    }
-
-    .failed_requests dl {
-      font-family: monospace;
-      line-height: 1.6em;
-      margin-top: 0;
-    }
-
-    .failed_requests dt {
-      font-weight: bold;
-    }
-
-    .failed_requests dt:not(:first-child) {
-      margin-top: 1em;
-    }
-
-    .failed_requests dd {
-      margin-left: 0;
-    }
-
-    .successful_requests img {
-      max-width
-    }
-  </style>
+  {% if successful_requests %}
+    <p>Review your work on Wikimedia Commons?</p>
+  {% endif %}
 
   {% if failed_requests %}
     <p>
@@ -85,16 +30,18 @@
       We recommend you try uploading {% if failed_requests|length > 1 %}them{% else %}it{% endif %} again later.
       You can make a copy of the title{% if failed_requests|length > 1 %}s{% endif %} and caption{% if failed_requests|length > 1 %}s{% endif %} you wrote for your next attempt.
     </p>
-
-    <ul class="plain_list upload_progress failed_requests">
+    
+    <ul class="plain_list upload_progress">
       {% for item in failed_requests %}
-      <li data-status="{{ item.status }}">
         {% with photo = item.req.photo %}
+        <li data-status="{{ item.status }}">
           {% set large_size = photo.sizes|size_at(desired_size='Large') %}
           <div class="container">
             <img src="{{ large_size.source }}">
             <div class="text">NOT DONE</div>
           </div>
+        </li>
+        <li class="error_info">
           <dl>
             <dt>URL</dt>
             <dd>{{ photo.url }}</dd>
@@ -108,27 +55,25 @@
             <dt>error</dt>
             <dd>{{ item.error or '<unknown>' }}</dt>
           </dl>
+        </li>
         {% endwith %}
-      </li>
+      {% endfor %}
+      
+      {% for item in successful_requests %}
+        {% with photo = item.req.photo %}
+        <li data-status="{{ item.status }}">
+          <a href="{{ photo.url }}">
+            <div class="container">
+              {% set large_size = photo.sizes|size_at(desired_size='Large') %}
+              <img src="{{ large_size.source }}">
+              <div class="text">DONE</div>
+            </div>
+          </a>
+        </li>
+        {% endwith %}
       {% endfor %}
     </ul>
   {% endif %}
 
   <p></p>
-
-  <ul class="plain_list upload_progress successful_requests">
-    {% for item in succeeded_photos %}
-      {% with photo = item.req.photo %}
-      <li data-status="{{ item.status }}">
-        <a href="{{ photo.url }}">
-          <div class="container">
-            {% set large_size = photo.sizes|size_at(desired_size='Large') %}
-            <img src="{{ large_size.source }}">
-            <div class="text">DONE</div>
-          </div>
-        </a>
-      </li>
-      {% endwith %}
-    {% endfor %}
-  </ul>
 {% endblock %}
