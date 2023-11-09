@@ -185,17 +185,18 @@ def create_copyright_status_statement(status: str) -> Statement:
     }
 
 
-def create_source_data_for_photo(photo_url: str, original_url: str) -> Statement:
+def create_source_data_for_photo(
+    photo_id: str, photo_url: str, original_url: str
+) -> Statement:
     """
     Create a structured data statement for a Flickr photo.
-
-    TODO: The mapping document mentions adding Identifier -> Flickr Photo ID
-
-    TODO: The mapping document mentions adding a category for
-    'Uploaded by Flickypedia'.  That's not supported here, but we should
-    consider it.
     """
     qualifier_values: List[QualifierValues] = [
+        {
+            "property": WikidataProperties.FlickrPhotoId,
+            "value": photo_id,
+            "type": "string",
+        },
         {
             "property": WikidataProperties.DescribedAtUrl,
             "value": photo_url,
@@ -216,6 +217,7 @@ def create_source_data_for_photo(photo_url: str, original_url: str) -> Statement
         ),
         "qualifiers": _create_qualifiers(qualifier_values),
         "qualifiers-order": [
+            WikidataProperties.FlickrPhotoId,
             WikidataProperties.DescribedAtUrl,
             WikidataProperties.Operator,
             WikidataProperties.Url,
@@ -340,7 +342,9 @@ def create_sdc_claims_for_flickr_photo(photo: SinglePhoto) -> List[Statement]:
     original_size = size_at(sizes=photo["sizes"], desired_size="Original")
 
     source_statement = create_source_data_for_photo(
-        photo_url=photo["url"], original_url=original_size["source"]
+        photo_id=photo["id"],
+        photo_url=photo["url"],
+        original_url=original_size["source"],
     )
 
     license_statement = create_license_statement(license_id=photo["license"]["id"])
