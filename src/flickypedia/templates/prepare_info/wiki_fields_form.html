@@ -8,10 +8,11 @@
       Alex Chan
       CC BY 2.0
 
-  This template takes two variables:
+  This template takes three variables:
   
   - ``photo``, which should contain the photo metadata
   - ``field``, which should be an instance of the ``WikiFieldsForm`` class
+  - ``default_categories``, which is a list of the auto-populated categories
 
 #}
 
@@ -72,4 +73,13 @@
     <label for="{{ field.categories.id }}">Add a Wikimedia Commons category</label>
     {{ field.categories() }}
   </div>
+  
+  <p>
+    We’ll add these categories too:
+    <ul>
+      {% for category in default_categories %}
+      <li>{{ category }}</li>
+      {% endfor %}
+    </ul>
+  </p>
 </div>
