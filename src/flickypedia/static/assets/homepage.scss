@@ -23,24 +23,11 @@
     margin-top: 0;
   }
 
-  .hero {
-    text-align: center;
-    font-weight: normal;
-  }
-
   .hero .welcome {
     font-weight: bold;
   }
 
-  #actions {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 10px;
-
-    li {
-      text-align: center;
-    }
-
+  .two_column_actions {
     h3 {
       font-size: 20px;
       margin-top:    5px;

@@ -18,6 +18,7 @@ def upload_complete(task_id: str) -> ViewResponse:
 
     return render_template(
         "upload_complete.html",
+        task_id=task_id,
         successful_requests=successful_requests,
         failed_requests=failed_requests,
         current_step="upload_to_wikimedia",

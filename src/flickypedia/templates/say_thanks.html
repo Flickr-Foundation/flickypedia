@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% set page_id = "upload_complete" %}
+
+{% block content %}
+  {% include "components/header.html" %}
+
+  <style>
+    h2 {
+      text-align: center;
+    }
+
+    .two_column_actions img {
+      width: 100px;
+    }
+
+    .pink_button, .grey_button {
+      font-size: 1em;
+      text-transform: uppercase;
+      width: 230px;
+      display: inline-block;
+    }
+
+    #thanks_for_thanks {
+      margin-top: 2em;
+    }
+  </style>
+
+  <h2 class="hero">
+    There are two ways to say thanks:
+  </h2>
+
+  <ul class="two_column_actions">
+    <li>
+      <p>If you have a Flickr account:</p>
+
+      <img
+        src="{{ url_for('static', filename='flickr-logo.svg') }}"
+        alt=""
+      >
+
+      <p>
+        <span class="next_step">You</span> can leave a comment on Flickr
+      </p>
+
+      <a href="#" class="pink_button" onclick="javascript:alert('Sorry, this feature doesn’t work yet!')">
+        Log in to Flickr
+      </a>
+    </li>
+
+    <li>
+      <p>If you don’t have a Flickr account:</p>
+
+      <img
+        src="{{ url_for('static', filename='flickypedia-bot-logo.svg') }}"
+        alt=""
+      >
+
+      <p>
+        Our <span class="next_step">robot</span> can do it for you
+      </p>
+
+      <a href="#" class="grey_button"onclick="javascript:alert('Sorry, this feature doesn’t work yet!')">
+        Robot can say thanks
+      </a>
+    </li>
+  </ul>
+
+  <p class="hero" id="thanks_for_thanks">
+    Don’t worry – you can review everything before you post.<br/>
+    And thanks for saying thanks – it’s nice!
+  </p>
+{% endblock %}

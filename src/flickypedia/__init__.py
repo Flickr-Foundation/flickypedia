@@ -30,6 +30,7 @@ from flickypedia.views import (
     get_upload_status,
     homepage,
     prepare_info,
+    say_thanks,
     select_photos,
     truncate_description,
     validate_title_api,
@@ -69,6 +70,7 @@ def create_app(data_directory: str = "data", debug: bool = False) -> Flask:
     app.add_url_rule("/wait_for_upload/<task_id>", view_func=wait_for_upload)
     app.add_url_rule("/wait_for_upload/<task_id>/status", view_func=get_upload_status)
     app.add_url_rule("/upload_complete/<task_id>", view_func=upload_complete)
+    app.add_url_rule("/say_thanks/<task_id>", view_func=say_thanks)
 
     app.add_url_rule("/about/", view_func=about)
     app.add_url_rule("/bookmarklet/", view_func=bookmarklet)

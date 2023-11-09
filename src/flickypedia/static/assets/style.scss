@@ -114,23 +114,11 @@ textarea {
 }
 
 .pink_button {
-  color: $cream;
-  font-size: 1.5em;
-  font-weight: bold;
-  border-radius: 8px;
-  background: $pink;
-  border: none;
-  padding: 6px 12px;
-  cursor: pointer;
-  text-decoration: none;
+  @include colored_button_styles($pink)
 }
 
-.pink_button:hover {
-  background: darken($pink, 15%);
-}
-
-input.pink_button:active {
-  transform: translate(0, 2px);
+.grey_button {
+  @include colored_button_styles($grey)
 }
 
 .warning {
@@ -164,11 +152,14 @@ input.pink_button:active {
   font-weight: bold;
 }
 
+.hero {
+  text-align: center;
+  font-weight: normal;
+  font-size: 1.5em;
+}
+
 /* A highlight is white text on a coloured background that shows the user
- * some key information.  They usually appear at the start of a line.
- *
- * There are four vari
- */
+ * some key information.  They usually appear at the start of a line. */
 .highlight {
   color: white;
   font-weight: bold;
@@ -187,6 +178,7 @@ input.pink_button:active {
  * where to go next. */
 .next_step {
   background: $yellow;
+  font-weight: bold;
 }
 
 /* This is a very small bit of polish: it prevents CC license labels
@@ -194,6 +186,25 @@ input.pink_button:active {
  */
 .cc_license_label {
   white-space: nowrap;
+}
+
+/* This is a component for displaying two actions side-by-side.
+ *
+ * It's used on the homepage and on the "say thanks" screen.
+ */
+ul.two_column_actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+
+  li {
+    text-align: center;
+  }
+
+  /* two-column actions are always plain lists */
+  list-style-type: none;
+  padding: 0;
+  margin:  0;
 }
 
 @import "header.scss";

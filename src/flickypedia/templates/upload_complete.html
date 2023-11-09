@@ -6,7 +6,10 @@
   {% include "components/header.html" %}
 
   {% if successful_requests %}
-    <h2>Upload complete!</h2>
+    <div class="title">
+      <h2>Upload complete!</h2>
+      <a href="{{ url_for('say_thanks', task_id=task_id) }}" class="pink_button">SAY THANKS</a>
+    </div>
   {% else %}
     <h2>Upload failed!</h2>
   {% endif %}
@@ -24,9 +27,6 @@
         of your photo{% if failed_requests|length > 1 %}s{% endif %}
         did not upload
       </span>
-    </p>
-
-    <p>
       We recommend you try uploading {% if failed_requests|length > 1 %}them{% else %}it{% endif %} again later.
       You can make a copy of the title{% if failed_requests|length > 1 %}s{% endif %} and caption{% if failed_requests|length > 1 %}s{% endif %} you wrote for your next attempt.
     </p>
