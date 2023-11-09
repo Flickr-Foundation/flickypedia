@@ -13,7 +13,7 @@ interactions:
       user-agent:
       - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
     method: GET
-    uri: https://query.wikidata.org/sparql?format=json&query=PREFIX+wdt%3A+%3Chttp%3A%2F%2Fwww.wikidata.org%2Fprop%2Fdirect%2F%3E%0A%0A++++++++SELECT+%3Fitem+WHERE+%7B%0A++++++++++%7B+%3Fitem+wdt%3AP3267+%2228660070%40N07%22+.+%7D%0A++++++++++UNION%0A++++++++++%7B+%3Fitem+wdt%3AP3267+%22icannphotos%22+.+%7D%0A++++++++%7D
+    uri: https://query.wikidata.org/sparql?format=json&query=PREFIX%20wdt%3A%20%3Chttp%3A%2F%2Fwww.wikidata.org%2Fprop%2Fdirect%2F%3E%0A%0A%20%20%20%20%20%20%20%20SELECT%20%3Fitem%20WHERE%20%7B%0A%20%20%20%20%20%20%20%20%20%20%7B%20%3Fitem%20wdt%3AP3267%20%2228660070%40N07%22%20.%20%7D%0A%20%20%20%20%20%20%20%20%20%20UNION%0A%20%20%20%20%20%20%20%20%20%20%7B%20%3Fitem%20wdt%3AP3267%20%22icannphotos%22%20.%20%7D%0A%20%20%20%20%20%20%20%20%7D
   response:
     content: "{\n  \"head\" : {\n    \"vars\" : [ \"item\" ]\n  },\n  \"results\"
       : {\n    \"bindings\" : [ ]\n  }\n}"
@@ -23,7 +23,7 @@ interactions:
       access-control-allow-origin:
       - '*'
       age:
-      - '1'
+      - '0'
       cache-control:
       - public, max-age=300
       content-encoding:
@@ -33,7 +33,7 @@ interactions:
       content-type:
       - application/sparql-results+json;charset=utf-8
       date:
-      - Thu, 26 Oct 2023 15:21:25 GMT
+      - Thu, 09 Nov 2023 11:37:01 GMT
       nel:
       - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
         0.0}'
@@ -43,21 +43,21 @@ interactions:
       server:
       - nginx/1.18.0
       server-timing:
-      - cache;desc="pass", host;desc="cp3068"
+      - cache;desc="pass", host;desc="cp3070"
       strict-transport-security:
       - max-age=106384710; includeSubDomains; preload
       vary:
       - Accept, Accept-Encoding
       x-cache:
-      - cp3068 miss, cp3068 pass
+      - cp3070 miss, cp3070 pass
       x-cache-status:
       - pass
       x-client-ip:
-      - 80.42.123.5
+      - 92.13.36.200
       x-first-solution-millis:
       - '2'
       x-served-by:
-      - wdqs1006
+      - wdqs1014
     http_version: HTTP/1.1
     status_code: 200
 - request:
@@ -91,7 +91,7 @@ interactions:
       \u0430\u0432\u0442\u043e\u0440\u0441\u044c\u043a\u0438\u043c \u043f\u0440\u0430\u0432\u043e\u043c","zh":"\u7248\u6743\u6240\u6709","tt":"\u0430\u0432\u0442\u043e\u0440\u043b\u044b\u043a
       \u0445\u043e\u043a\u0443\u043a\u043b\u0430\u0440\u044b \u0431\u0435\u043b\u04d9\u043d
       \u044f\u043a\u043b\u0430\u043d\u0433\u0430\u043d","ms":"berhak cipta","gl":"baixo
-      dereito de autor\u00eda","de":"Urheberrechtsschutz","zh-tw":"\u6709\u8457\u4f5c\u6b0a","eu":"copyrightduna","ro":"material
+      dereito de autor\u00eda","de":"urheberrechtlich gesch\u00fctzt","zh-tw":"\u6709\u8457\u4f5c\u6b0a","eu":"copyrightduna","ro":"material
       protejat de drepturi de autor","ca":"amb drets d''autor","hsb":"\u0161kitane
       p\u0159ez awtorske prawo","it":"coperto da diritti d''autore","pl":"chroniony
       prawem autorskim","ml":"\u0d2a\u0d15\u0d7c\u0d2a\u0d4d\u0d2a\u0d35\u0d15\u0d3e\u0d36
@@ -115,7 +115,8 @@ interactions:
       varovano","ks":"\u06a9\u0627\u067e\u06cc \u0631\u0627\u06cc\u0650\u0679 \u062f\u0627\u0631","ur":"\u062d\u0642
       \u0646\u0642\u0644 \u0648 \u0627\u0634\u0627\u0639\u062a \u0645\u062d\u0641\u0648\u0638
       \u0634\u062f\u06c1","uz":"mualliflik huquqi himoyalangan","en-us":"copyrighted","ms-arab":"\u0628\u0631\u062d\u0642
-      \u0686\u064a\u06a4\u062a\u0627","yue":"\u6709\u7248\u6b0a"},"descriptions":{"en":"legal
+      \u0686\u064a\u06a4\u062a\u0627","yue":"\u6709\u7248\u6b0a","de-at":"urheberrechtlich
+      gesch\u00fctzt","de-ch":"urheberrechtlich gesch\u00fctzt"},"descriptions":{"en":"legal
       state of a work as recognised as an intellectual property of an entity","nl":"juridische
       status van een werk waarbij het valt onder auteursrechtelijke bescherming","fr":"statut
       l\u00e9gal d''une \u0153uvre appartenant \u00e0 son cr\u00e9ateur","es":"estatus
@@ -125,8 +126,8 @@ interactions:
       legale di un opera o lavoro intellettuale","ml":"\u0d07\u0d28\u0d24\u0d4d\u0d24\u0d3f\u0d28\u0d4d\u0d31\u0d46
       \u0d2c\u0d57\u0d26\u0d4d\u0d27\u0d3f\u0d15\u0d38\u0d4d\u0d35\u0d24\u0d4d\u0d24\u0d35\u0d15\u0d3e\u0d36\u0d02
       \u0d38\u0d02\u0d2c\u0d28\u0d4d\u0d27\u0d3f\u0d1a\u0d4d\u0d1a \u0d28\u0d3f\u0d2f\u0d2e\u0d2a\u0d30\u0d2e\u0d3e\u0d2f
-      \u0d38\u0d4d\u0d25\u0d3f\u0d24\u0d3f","fi":"teoksen laillinen tila","de":"Werke,
-      die einem Urheberrechtsschutz unterliegen","th":"\u0e2a\u0e16\u0e32\u0e19\u0e30\u0e17\u0e32\u0e07\u0e01\u0e0e\u0e2b\u0e21\u0e32\u0e22\u0e02\u0e2d\u0e07\u0e07\u0e32\u0e19\u0e17\u0e35\u0e48\u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e22\u0e2d\u0e21\u0e23\u0e31\u0e1a\u0e27\u0e48\u0e32\u0e40\u0e1b\u0e47\u0e19\u0e17\u0e23\u0e31\u0e1e\u0e22\u0e4c\u0e2a\u0e34\u0e19\u0e17\u0e32\u0e07\u0e1b\u0e31\u0e0d\u0e0d\u0e32\u0e02\u0e2d\u0e07\u0e19\u0e34\u0e15\u0e34\u0e1a\u0e38\u0e04\u0e04\u0e25","tr":"fikri
+      \u0d38\u0d4d\u0d25\u0d3f\u0d24\u0d3f","fi":"teoksen laillinen tila","de":"einem
+      Urheberrechtsschutz unterliegende Werke","th":"\u0e2a\u0e16\u0e32\u0e19\u0e30\u0e17\u0e32\u0e07\u0e01\u0e0e\u0e2b\u0e21\u0e32\u0e22\u0e02\u0e2d\u0e07\u0e07\u0e32\u0e19\u0e17\u0e35\u0e48\u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e22\u0e2d\u0e21\u0e23\u0e31\u0e1a\u0e27\u0e48\u0e32\u0e40\u0e1b\u0e47\u0e19\u0e17\u0e23\u0e31\u0e1e\u0e22\u0e4c\u0e2a\u0e34\u0e19\u0e17\u0e32\u0e07\u0e1b\u0e31\u0e0d\u0e0d\u0e32\u0e02\u0e2d\u0e07\u0e19\u0e34\u0e15\u0e34\u0e1a\u0e38\u0e04\u0e04\u0e25","tr":"fikri
       m\u00fclkiyeti olarak tan\u0131nan bir \u00e7al\u0131\u015fman\u0131n yasal
       durumu","pt-br":"estado legal de uma obra reconhecida como propriedade intelectual
       de uma entidade","fa":"\u0648\u0636\u0639\u06cc\u062a \u062d\u0642\u0648\u0642\u06cc
@@ -146,19 +147,24 @@ interactions:
       property of an entity","sv":"lagligt skyddad mot kopiering och spridning","el":"\u03ad\u03c1\u03b3\u03b1
       \u03c0\u03bf\u03c5 \u03c5\u03c0\u03cc\u03ba\u03b5\u03b9\u03bd\u03c4\u03b1\u03b9
       \u03c3\u03b5 \u03c0\u03c1\u03bf\u03c3\u03c4\u03b1\u03c3\u03af\u03b1 \u03c0\u03bd\u03b5\u03c5\u03bc\u03b1\u03c4\u03b9\u03ba\u03ce\u03bd
-      \u03b4\u03b9\u03ba\u03b1\u03b9\u03c9\u03bc\u03ac\u03c4\u03c9\u03bd","yue":"\u7dad\u57fa\u4ecb\u9762\u6a19\u7c64"},"aliases":{"es":["con
+      \u03b4\u03b9\u03ba\u03b1\u03b9\u03c9\u03bc\u03ac\u03c4\u03c9\u03bd","yue":"\u7dad\u57fa\u4ecb\u9762\u6a19\u7c64","de-at":"einem
+      Urheberrechtsschutz unterliegende Werke","de-ch":"einem Urheberrechtsschutz
+      unterliegende Werke","uk":"\u043f\u0440\u0430\u0432\u043e\u0432\u0438\u0439
+      \u0441\u0442\u0430\u043d \u0442\u0432\u043e\u0440\u0443, \u0432\u0438\u0437\u043d\u0430\u043d\u043e\u0433\u043e
+      \u0456\u043d\u0442\u0435\u043b\u0435\u043a\u0442\u0443\u0430\u043b\u044c\u043d\u043e\u044e
+      \u0432\u043b\u0430\u0441\u043d\u0456\u0441\u0442\u044e \u0441\u0443\u0431''\u0454\u043a\u0442\u0430"},"aliases":{"es":["con
       derechos de autor"],"ru":["\u043a\u043e\u043f\u0438\u0440\u0430\u0439\u0442"],"en":["in
       copyright","under copyright","protected by copyrights","copyright-protected"],"cs":["chr\u00e1n\u011bno
       autorsk\u00fdm pr\u00e1vem"],"nn":["opphavsrettsverna"],"be":["\u043a\u0430\u043f\u0456\u0440\u0430\u0439\u0442"],"nb":["opphavsrettslig
       beskyttet"],"uk":["\u043a\u043e\u043f\u0456\u0440\u0430\u0439\u0442"],"ms":["mempunyai
       hak cipta","memiliki hak cipta","hak cipta","dalam perlindungan hak cipta"],"ro":["copyright"],"it":["coperto
       da copyright"],"pl":["prawa autorskie zastrze\u017cone"],"vi":["d\u01b0\u1edbi
-      b\u1ea3n quy\u1ec1n"],"de":["urheberrechtlich gesch\u00fctzt"],"hu":["jogv\u00e9dett"],"th":["\u0e15\u0e34\u0e14\u0e25\u0e34\u0e02\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e4c","\u0e1b\u0e49\u0e2d\u0e07\u0e01\u0e31\u0e19\u0e14\u0e49\u0e27\u0e22\u0e25\u0e34\u0e02\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e4c"],"zh-tw":["\u7248\u6b0a\u6240\u6709"],"zh-hant":["\u7248\u6b0a\u6240\u6709"],"tr":["telifli","telif
+      b\u1ea3n quy\u1ec1n"],"de":["unter Urheberrechtsschutz","Urheberrechtsschutz"],"hu":["jogv\u00e9dett"],"th":["\u0e15\u0e34\u0e14\u0e25\u0e34\u0e02\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e4c","\u0e1b\u0e49\u0e2d\u0e07\u0e01\u0e31\u0e19\u0e14\u0e49\u0e27\u0e22\u0e25\u0e34\u0e02\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e4c"],"zh-tw":["\u7248\u6b0a\u6240\u6709"],"zh-hant":["\u7248\u6b0a\u6240\u6709"],"tr":["telifli","telif
       hakl\u0131"],"sq":["copyrighted","t\u00eb mbrojtura nga e drejta e autorit"],"zh":["\u7248\u6b0a\u6240\u6709","\u6709\u8457\u4f5c\u6b0a","\u6709\u8457\u4f5c\u6743"],"fi":["tekij\u00e4noikeussuojattu","tekij\u00e4noikeuden
       alainen","tekij\u00e4noikeus voimassa","nauttii tekij\u00e4noikeuden suojaa"],"hi":["\u0915\u0949\u092a\u0940\u0930\u093e\u0907\u091f\u0947\u0921","\u0915\u0949\u092a\u0940\u0930\u093e\u0907\u091f
       \u092e\u0947\u0902","\u0915\u0949\u092a\u0940\u0930\u093e\u0907\u091f\u0915\u0943\u0924"],"sl":["za\u0161\u010diteno
       delo","avtorsko zavarovano delo","zavarovano delo"],"ja":["\u8457\u4f5c\u6a29\u4fdd\u8b77\u4e0b"],"fr":["sous
-      droit d''auteur"]},"statements":{"P1269":[{"id":"Q50423863$8c0b85bf-4a77-f293-ee34-58dcd6075286","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1269","data-type":"wikibase-item"},"value":{"type":"value","content":"Q1297822"}}],"P31":[{"id":"Q50423863$fdc63b2a-4bda-87a1-e78f-071ea7ec1d9c","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P31","data-type":"wikibase-item"},"value":{"type":"value","content":"Q73568642"}},{"id":"Q50423863$2bee8b98-4a4f-904e-d694-13e6e4097959","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P31","data-type":"wikibase-item"},"value":{"type":"value","content":"Q50424085"}}],"P279":[{"id":"Q50423863$9b396e43-44de-68da-6c19-77fc49cad494","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P279","data-type":"wikibase-item"},"value":{"type":"value","content":"Q131257"}},{"id":"Q50423863$b66c20c7-4aff-aec8-a370-4148d65ece89","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P279","data-type":"wikibase-item"},"value":{"type":"value","content":"Q67011165"}}],"P461":[{"id":"Q50423863$98a62e86-4230-7a3b-6d5c-339d458f7051","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P461","data-type":"wikibase-item"},"value":{"type":"value","content":"Q19652"}}],"P4967":[{"id":"Q50423863$6d897b03-4a6c-6629-b435-05567ab21492","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P4967","data-type":"wikibase-item"},"value":{"type":"value","content":"Q707401"}}],"P18":[{"id":"Q50423863$e5de0e84-48a5-f2e2-631a-dee81722ecb8","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P18","data-type":"commonsMedia"},"value":{"type":"value","content":"Copyright.svg"}}],"P1889":[{"id":"Q50423863$db6cf7a7-4f40-ac92-0b2a-ab10db340ada","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1889","data-type":"wikibase-item"},"value":{"type":"value","content":"Q109332052"}}],"P4801":[{"id":"Q50423863$AC6D44C9-0CF4-4AF9-A6A2-B3A7ADB25CA5","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P4801","data-type":"external-id"},"value":{"type":"value","content":"preservation/copyrightStatus/cpr"}}],"P1542":[{"id":"Q50423863$93fac459-49f8-5722-6ef3-fc940e1a48e0","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1542","data-type":"wikibase-item"},"value":{"type":"value","content":"Q1297822"}}]},"sitelinks":{},"id":"Q50423863"}'
+      droit d''auteur"]},"statements":{"P1269":[{"id":"Q50423863$8c0b85bf-4a77-f293-ee34-58dcd6075286","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1269","data-type":"wikibase-item"},"value":{"type":"value","content":"Q1297822"}}],"P31":[{"id":"Q50423863$fdc63b2a-4bda-87a1-e78f-071ea7ec1d9c","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P31","data-type":"wikibase-item"},"value":{"type":"value","content":"Q73568642"}},{"id":"Q50423863$2bee8b98-4a4f-904e-d694-13e6e4097959","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P31","data-type":"wikibase-item"},"value":{"type":"value","content":"Q50424085"}}],"P279":[{"id":"Q50423863$9b396e43-44de-68da-6c19-77fc49cad494","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P279","data-type":"wikibase-item"},"value":{"type":"value","content":"Q131257"}},{"id":"Q50423863$b66c20c7-4aff-aec8-a370-4148d65ece89","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P279","data-type":"wikibase-item"},"value":{"type":"value","content":"Q67011165"}}],"P461":[{"id":"Q50423863$98a62e86-4230-7a3b-6d5c-339d458f7051","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P461","data-type":"wikibase-item"},"value":{"type":"value","content":"Q19652"}}],"P4967":[{"id":"Q50423863$6d897b03-4a6c-6629-b435-05567ab21492","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P4967","data-type":"wikibase-item"},"value":{"type":"value","content":"Q707401"}}],"P18":[{"id":"Q50423863$e5de0e84-48a5-f2e2-631a-dee81722ecb8","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P18","data-type":"commonsMedia"},"value":{"type":"value","content":"Copyright.svg"}}],"P4801":[{"id":"Q50423863$AC6D44C9-0CF4-4AF9-A6A2-B3A7ADB25CA5","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P4801","data-type":"external-id"},"value":{"type":"value","content":"preservation/copyrightStatus/cpr"}}],"P1542":[{"id":"Q50423863$93fac459-49f8-5722-6ef3-fc940e1a48e0","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1542","data-type":"wikibase-item"},"value":{"type":"value","content":"Q1297822"}}],"P973":[{"id":"Q50423863$251bb86d-44ca-3144-cb93-d721ccafdbcd","rank":"normal","qualifiers":[{"property":{"id":"P1476","data-type":"monolingualtext"},"value":{"type":"value","content":{"text":"Urheberrecht","language":"de"}}},{"property":{"id":"P98","data-type":"wikibase-item"},"value":{"type":"value","content":"Q24082934"}},{"property":{"id":"P407","data-type":"wikibase-item"},"value":{"type":"value","content":"Q188"}}],"references":[],"property":{"id":"P973","data-type":"url"},"value":{"type":"value","content":"https://www.ihk-muenchen.de/de/Service/Recht-und-Steuern/Urheberrecht/Copyrights-Urheberrecht-sch%C3%BCtzen-und-nutzen/"}}]},"sitelinks":{},"id":"Q50423863"}'
     headers:
       accept-ranges:
       - bytes
@@ -173,11 +179,11 @@ interactions:
       content-type:
       - application/json
       date:
-      - Thu, 26 Oct 2023 15:21:25 GMT
+      - Thu, 09 Nov 2023 11:37:02 GMT
       etag:
-      - W/"1991433729"
+      - W/"2004481526"
       last-modified:
-      - Sat, 14 Oct 2023 21:34:13 GMT
+      - Sat, 04 Nov 2023 19:04:56 GMT
       nel:
       - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
         0.0}'
@@ -185,15 +191,15 @@ interactions:
       - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
         }] }'
       server:
-      - mw1382.eqiad.wmnet
+      - mw1424.eqiad.wmnet
       server-timing:
-      - cache;desc="pass", host;desc="cp3068"
+      - cache;desc="pass", host;desc="cp3070"
       set-cookie:
-      - WMF-Last-Access=26-Oct-2023;Path=/;HttpOnly;secure;Expires=Mon, 27 Nov 2023
-        12:00:00 GMT
-      - WMF-Last-Access-Global=26-Oct-2023;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon,
-        27 Nov 2023 12:00:00 GMT
-      - GeoIP=GB:ENG:Ipswich:52.06:1.16:v4; Path=/; secure; Domain=.wikidata.org
+      - WMF-Last-Access=09-Nov-2023;Path=/;HttpOnly;secure;Expires=Mon, 11 Dec 2023
+        00:00:00 GMT
+      - WMF-Last-Access-Global=09-Nov-2023;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon,
+        11 Dec 2023 00:00:00 GMT
+      - GeoIP=GB:ENG:Sudbury:52.06:0.61:v4; Path=/; secure; Domain=.wikidata.org
       - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
       strict-transport-security:
       - max-age=106384710; includeSubDomains; preload
@@ -202,11 +208,11 @@ interactions:
       vary:
       - Accept-Encoding
       x-cache:
-      - cp3068 miss, cp3068 pass
+      - cp3070 miss, cp3070 pass
       x-cache-status:
       - pass
       x-client-ip:
-      - 80.42.123.5
+      - 92.13.36.200
       x-content-type-options:
       - nosniff
     http_version: HTTP/1.1
@@ -276,7 +282,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Thu, 26 Oct 2023 15:21:25 GMT
+      - Thu, 09 Nov 2023 11:37:02 GMT
       etag:
       - W/"1991432021"
       last-modified:
@@ -288,15 +294,15 @@ interactions:
       - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
         }] }'
       server:
-      - mw1386.eqiad.wmnet
+      - mw1421.eqiad.wmnet
       server-timing:
-      - cache;desc="pass", host;desc="cp3068"
+      - cache;desc="pass", host;desc="cp3070"
       set-cookie:
-      - WMF-Last-Access=26-Oct-2023;Path=/;HttpOnly;secure;Expires=Mon, 27 Nov 2023
-        12:00:00 GMT
-      - WMF-Last-Access-Global=26-Oct-2023;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon,
-        27 Nov 2023 12:00:00 GMT
-      - GeoIP=GB:ENG:Ipswich:52.06:1.16:v4; Path=/; secure; Domain=.wikidata.org
+      - WMF-Last-Access=09-Nov-2023;Path=/;HttpOnly;secure;Expires=Mon, 11 Dec 2023
+        00:00:00 GMT
+      - WMF-Last-Access-Global=09-Nov-2023;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon,
+        11 Dec 2023 00:00:00 GMT
+      - GeoIP=GB:ENG:Sudbury:52.06:0.61:v4; Path=/; secure; Domain=.wikidata.org
       - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
       strict-transport-security:
       - max-age=106384710; includeSubDomains; preload
@@ -305,11 +311,11 @@ interactions:
       vary:
       - Accept-Encoding
       x-cache:
-      - cp3068 miss, cp3068 pass
+      - cp3070 miss, cp3070 pass
       x-cache-status:
       - pass
       x-client-ip:
-      - 80.42.123.5
+      - 92.13.36.200
       x-content-type-options:
       - nosniff
     http_version: HTTP/1.1
@@ -383,7 +389,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Thu, 26 Oct 2023 15:21:25 GMT
+      - Thu, 09 Nov 2023 11:37:02 GMT
       etag:
       - W/"1996817705"
       last-modified:
@@ -395,15 +401,15 @@ interactions:
       - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
         }] }'
       server:
-      - mw1386.eqiad.wmnet
+      - mw1375.eqiad.wmnet
       server-timing:
-      - cache;desc="pass", host;desc="cp3068"
+      - cache;desc="pass", host;desc="cp3070"
       set-cookie:
-      - WMF-Last-Access=26-Oct-2023;Path=/;HttpOnly;secure;Expires=Mon, 27 Nov 2023
-        12:00:00 GMT
-      - WMF-Last-Access-Global=26-Oct-2023;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon,
-        27 Nov 2023 12:00:00 GMT
-      - GeoIP=GB:ENG:Ipswich:52.06:1.16:v4; Path=/; secure; Domain=.wikidata.org
+      - WMF-Last-Access=09-Nov-2023;Path=/;HttpOnly;secure;Expires=Mon, 11 Dec 2023
+        00:00:00 GMT
+      - WMF-Last-Access-Global=09-Nov-2023;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon,
+        11 Dec 2023 00:00:00 GMT
+      - GeoIP=GB:ENG:Sudbury:52.06:0.61:v4; Path=/; secure; Domain=.wikidata.org
       - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
       strict-transport-security:
       - max-age=106384710; includeSubDomains; preload
@@ -412,11 +418,11 @@ interactions:
       vary:
       - Accept-Encoding
       x-cache:
-      - cp3068 miss, cp3068 pass
+      - cp3070 miss, cp3070 pass
       x-cache-status:
       - pass
       x-client-ip:
-      - 80.42.123.5
+      - 92.13.36.200
       x-content-type-options:
       - nosniff
     http_version: HTTP/1.1
@@ -490,7 +496,7 @@ interactions:
       access-control-allow-origin:
       - '*'
       age:
-      - '2'
+      - '1'
       cache-control:
       - no-cache
       content-encoding:
@@ -498,7 +504,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Thu, 26 Oct 2023 15:21:25 GMT
+      - Thu, 09 Nov 2023 11:37:03 GMT
       etag:
       - W/"1939977611"
       last-modified:
@@ -510,15 +516,15 @@ interactions:
       - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
         }] }'
       server:
-      - mw1449.eqiad.wmnet
+      - mw1424.eqiad.wmnet
       server-timing:
-      - cache;desc="pass", host;desc="cp3068"
+      - cache;desc="pass", host;desc="cp3070"
       set-cookie:
-      - WMF-Last-Access=26-Oct-2023;Path=/;HttpOnly;secure;Expires=Mon, 27 Nov 2023
-        12:00:00 GMT
-      - WMF-Last-Access-Global=26-Oct-2023;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon,
-        27 Nov 2023 12:00:00 GMT
-      - GeoIP=GB:ENG:Ipswich:52.06:1.16:v4; Path=/; secure; Domain=.wikidata.org
+      - WMF-Last-Access=09-Nov-2023;Path=/;HttpOnly;secure;Expires=Mon, 11 Dec 2023
+        00:00:00 GMT
+      - WMF-Last-Access-Global=09-Nov-2023;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon,
+        11 Dec 2023 00:00:00 GMT
+      - GeoIP=GB:ENG:Sudbury:52.06:0.61:v4; Path=/; secure; Domain=.wikidata.org
       - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
       strict-transport-security:
       - max-age=106384710; includeSubDomains; preload
@@ -527,11 +533,89 @@ interactions:
       vary:
       - Accept-Encoding
       x-cache:
-      - cp3068 miss, cp3068 pass
+      - cp3070 miss, cp3070 pass
       x-cache-status:
       - pass
       x-client-ip:
-      - 80.42.123.5
+      - 92.13.36.200
+      x-content-type-options:
+      - nosniff
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - www.wikidata.org
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://www.wikidata.org/w/rest.php/wikibase/v0/entities/items/Q61045577
+  response:
+    content: '{"type":"item","labels":{"en":"stated by copyright holder at source
+      website","nl":"aangegeven door de auteursrechthebbende op de bronpagina","zh-hans":"\u5728\u6765\u6e90\u7f51\u7ad9\u7531\u8457\u4f5c\u6743\u6240\u6709\u8005\u4f5c\u51fa\u7684\u58f0\u660e","zh-hant":"\u5728\u4f86\u6e90\u7db2\u7ad9\u7531\u8457\u4f5c\u6b0a\u6240\u6709\u8005\u4f5c\u51fa\u7684\u8072\u660e","eo":"asertita
+      de la kopirajto-posedanto en fonta retejo","ja":"\u30bd\u30fc\u30b9\u3068\u306a\u308b\u30a6\u30a7\u30d6\u30b5\u30a4\u30c8\u4e0a\u3067\u306e\u8457\u4f5c\u6a29\u6240\u6709\u8005\u306b\u3088\u308b\u8a18\u8f09","de":"vom
+      Urheberrechtsinhaber auf der Quellwebsite angegeben"},"descriptions":{"en":"Used
+      in copyright status (P6216)  statements as determination method (P459) for cases
+      where we know the copyright status because the copyright holder(s) stated it
+      at the source website.","de":"wird in Urheberrechtsstatusangaben (P6216) als
+      Bestimmungsmethode (P459) f\u00fcr F\u00e4lle verwendet, in denen wir den Urheberrechtsstatus
+      kennen, weil der/die Urheberrechtsinhaber ihn auf der Quellwebsite angegeben
+      haben."},"aliases":{},"statements":{"P31":[{"id":"Q61045577$0b4d7b4c-4e09-057c-08d4-d7cde325e9b1","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P31","data-type":"wikibase-item"},"value":{"type":"value","content":"Q61005213"}}]},"sitelinks":{},"id":"Q61045577"}'
+    headers:
+      accept-ranges:
+      - bytes
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '0'
+      cache-control:
+      - no-cache
+      content-encoding:
+      - gzip
+      content-length:
+      - '714'
+      content-type:
+      - application/json
+      date:
+      - Thu, 09 Nov 2023 11:37:03 GMT
+      etag:
+      - W/"1717029450"
+      last-modified:
+      - Tue, 30 Aug 2022 15:11:21 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw-api-ext.eqiad.main-68d967545c-vpjhj
+      server-timing:
+      - cache;desc="pass", host;desc="cp3070"
+      set-cookie:
+      - WMF-Last-Access=09-Nov-2023;Path=/;HttpOnly;secure;Expires=Mon, 11 Dec 2023
+        00:00:00 GMT
+      - WMF-Last-Access-Global=09-Nov-2023;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon,
+        11 Dec 2023 00:00:00 GMT
+      - GeoIP=GB:ENG:Sudbury:52.06:0.61:v4; Path=/; secure; Domain=.wikidata.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3070 miss, cp3070 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 92.13.36.200
       x-content-type-options:
       - nosniff
     http_version: HTTP/1.1

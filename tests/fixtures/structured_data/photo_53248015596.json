@@ -130,6 +130,23 @@
         "type": "wikibase-entityid"
       }
     },
+    "qualifiers": {
+      "P459": [
+        {
+          "datavalue": {
+            "type": "wikibase-entityid",
+            "value": {
+              "id": "Q61045577"
+            }
+          },
+          "property": "P459",
+          "snaktype": "value"
+        }
+      ]
+    },
+    "qualifiers-order": [
+      "P459"
+    ],
     "type": "statement"
   },
   {
