@@ -21,7 +21,7 @@
 
   {% include "components/homepage_how_it_works.svg" %}
 
-  <ul id="actions" class="plain_list">
+  <ul class="two_column_actions">
     <li id="wiki_requires_cc_licenses">
       <div id="cc_logo_wrapper">
         <img
@@ -43,14 +43,14 @@
 
       {% if current_user.is_anonymous %}
         <h3>
-          <span class="highlight">Start</span>:
+          <span class="next_step">Start</span>:
           <a href="{{ url_for('oauth2_authorize_wikimedia') }}">Log in</a>
         </h3>
 
         <p>to Wikimedia Commons</p>
       {% else %}
         <h3>
-          <span class="highlight">Start</span>:
+          <span class="next_step">Start</span>:
           <a href="{{ url_for('get_photos') }}">Get Flickr photos</a>
         </h3>
 

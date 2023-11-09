@@ -1,0 +1,44 @@
+#page-upload_complete {
+  .title {
+    display: grid;
+    grid-template-columns: auto 200px;
+    height: 50px;
+
+    h2 {
+      margin: 0;
+      line-height: 50px;
+    }
+
+    a {
+      text-align: center;
+    }
+  }
+
+  .error_info {
+    /* This causes the error information to fill all the remaining columns.
+     * See https://stackoverflow.com/a/50612664/1558022 */
+    grid-column: 2 / -1;
+
+    dl {
+      font-family: monospace;
+      line-height: 1.6em;
+      margin-top: 0;
+
+      dt {
+        font-weight: bold;
+      }
+
+      dt:not(:first-child) {
+        margin-top: 1em;
+      }
+
+      dd {
+        margin-left: 0;
+      }
+    }
+  }
+
+  .text {
+    @include disable_select();
+  }
+}

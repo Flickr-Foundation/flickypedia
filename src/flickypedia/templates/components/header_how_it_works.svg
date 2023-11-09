@@ -58,7 +58,7 @@
     {"id": "get_photos", "label": "Get Flickr photos"},
     {"id": "prepare_info", "label": "Prepare info"},
     {"id": "upload_to_wikimedia", "label": "Upload to Wikimedia"},
-    {"id": "Say thanks", "label": "Say thanks"}
+    {"id": "say_thanks", "label": "Say thanks"}
   ] %}
   
   {% for step in nav_steps %}

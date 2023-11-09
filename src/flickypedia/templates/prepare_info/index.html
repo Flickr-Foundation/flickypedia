@@ -44,13 +44,13 @@
     <!-- TODO: These messages need to be plural-aware -->
 
     <h3>
-      <span class="highlight">First</span>, please set the language you’ll be using to write your caption{% if photo_fields|length > 1 %}s{% endif %}:
+      <span class="next_step">First</span>, please set the language you’ll be using to write your caption{% if photo_fields|length > 1 %}s{% endif %}:
     </h3>
 
     {{ prepare_info_form.language() }}
 
     <h3>
-      <span class="highlight">Next</span>, please add
+      <span class="next_step">Next</span>, please add
       {% if photo_fields|length > 1 %}
         titles and captions for each photo,
       {% else %}

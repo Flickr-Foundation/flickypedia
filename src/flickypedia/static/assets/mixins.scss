@@ -17,3 +17,23 @@
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
 }
+
+@mixin colored_button_styles($color) {
+  color: $cream;
+  font-size: 1.5em;
+  font-weight: bold;
+  border-radius: 8px;
+  background: $color;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    background: darken($color, 15%);
+  }
+
+  &:active {
+    transform: translate(0, 2px);
+  }
+}

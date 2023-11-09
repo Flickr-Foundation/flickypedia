@@ -3,6 +3,7 @@ from flask import render_template
 from .api import find_matching_categories_api, validate_title_api
 from .get_photos import get_photos
 from .prepare_info import prepare_info, truncate_description
+from .say_thanks import say_thanks
 from .select_photos import select_photos
 from .wait_for_upload import get_upload_status, wait_for_upload
 from .upload_complete import upload_complete
@@ -29,6 +30,7 @@ __all__ = [
     "get_upload_status",
     "homepage",
     "prepare_info",
+    "say_thanks",
     "select_photos",
     "truncate_description",
     "validate_title_api",

@@ -75,15 +75,7 @@ def upload_batch_of_photos(
         tracker.record_progress(data=progress_data)
 
         try:
-            import random
-            import time
-
-            time.sleep(5)
-
-            if random.uniform(0, 1) > 0.6:
-                raise ValueError
-
-            # upload_single_image(api, req)
+            progress_data[idx]["upload_result"] = upload_single_image(api, req)
         except Exception as exc:
             progress_data[idx]["status"] = "failed"
             progress_data[idx]["error"] = str(exc)
@@ -126,16 +118,12 @@ def upload_single_image(api: WikimediaApi, request: UploadRequest) -> UploadResu
 
     api.add_structured_data(filename=request["title"], data={"claims": request["sdc"]})
 
+    wikimedia_page_title = f"File:{wikimedia_page_title}"
+
     record_file_created_by_flickypedia(
         flickr_photo_id=request["photo"]["id"],
-        wikimedia_page_title=f"File:{wikimedia_page_title}",
+        wikimedia_page_title=wikimedia_page_title,
         wikimedia_page_id=wikimedia_page_id,
     )
 
     return {"id": wikimedia_page_id, "title": wikimedia_page_title}
-
-
-#
-#
-# if __name__ == '__main__':
-#     main()
