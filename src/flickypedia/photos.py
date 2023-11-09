@@ -142,20 +142,43 @@ def categorise_photos(all_photos: List[SinglePhoto]) -> CategorisedPhotos:
     }
 
 
-class PhotoWithSdc(TypedDict):
+class EnrichedPhoto(TypedDict):
     photo: SinglePhoto
     sdc: List[Statement]
+    default_categories: List[str]
 
 
-def add_sdc_to_photos(photos: List[SinglePhoto]) -> List[PhotoWithSdc]:
+def create_default_categories(photo: SinglePhoto, wikimedia_username: str) -> List[str]:
+    """
+    Create the list of default categories that we're populating for
+    the user.
+    """
+    return [
+        "Uploads using Flickypedia",
+        f"Uploads by User:{wikimedia_username}",
+        f"Flickr photos by {photo['owner']['username']}",
+    ]
+
+
+def enrich_photo(
+    photos: List[SinglePhoto], wikimedia_username: str
+) -> List[EnrichedPhoto]:
     """
     Create a list of photos which includes their structured data.
     """
     from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
 
-    result: List[PhotoWithSdc] = []
+    result: List[EnrichedPhoto] = []
 
     for p in photos:
-        result.append({"photo": p, "sdc": create_sdc_claims_for_flickr_photo(p)})
+        result.append(
+            {
+                "photo": p,
+                "sdc": create_sdc_claims_for_flickr_photo(p),
+                "default_categories": create_default_categories(
+                    p, wikimedia_username=wikimedia_username
+                ),
+            }
+        )
 
     return result

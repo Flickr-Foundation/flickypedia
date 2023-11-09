@@ -65,7 +65,7 @@ def test_can_get_a_csrf_token(wikimedia_api: WikimediaApi) -> None:
 
 class TestUploadImage:
     def test_can_upload_an_image(self, wikimedia_api: WikimediaApi) -> None:
-        text = create_wikitext(license_id="cc-by-2.0")
+        text = create_wikitext(license_id="cc-by-2.0", categories=[])
 
         resp = wikimedia_api.upload_image(
             filename="Silver Blue Fish In Boston Aquarium.jpg",

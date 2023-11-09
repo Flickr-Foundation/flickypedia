@@ -104,7 +104,9 @@ def upload_single_image(api: WikimediaApi, request: UploadRequest) -> UploadResu
 
     """
 
-    wikitext = create_wikitext(license_id=request["photo"]["license"]["id"])
+    wikitext = create_wikitext(
+        license_id=request["photo"]["license"]["id"], categories=request["categories"]
+    )
 
     original_size = size_at(request["photo"]["sizes"], desired_size="Original")
 

@@ -27,8 +27,8 @@ from wtforms.widgets import TextArea
 from flickypedia.apis._types import Statement
 from flickypedia.photos import (
     CategorisedPhotos,
-    PhotoWithSdc,
-    add_sdc_to_photos,
+    EnrichedPhoto,
+    enrich_photo,
     categorise_photos,
 )
 from flickypedia.uploads import UploadRequest, begin_upload
@@ -71,7 +71,7 @@ class WikiFieldsForm(Form):
             raise ValidationError(validation["text"])
 
 
-def create_prepare_info_form(photos: List[PhotoWithSdc]) -> FlaskForm:
+def create_prepare_info_form(photos: List[EnrichedPhoto]) -> FlaskForm:
     """
     Create a Flask form with a PhotoInfoForm (list of fields) for each
     photo in the list.  This allows us to render a form like:
@@ -143,24 +143,29 @@ class PhotoForUpload(TypedDict):
 
 
 def create_upload_requests(
-    photos: List[PhotoWithSdc], form_data: Dict[str, Any]
+    photos: List[EnrichedPhoto], form_data: Dict[str, Any]
 ) -> List[UploadRequest]:
     upload_requests: List[UploadRequest] = []
 
-    for photo_with_sdc in photos:
-        photo = photo_with_sdc["photo"]
+    for enriched_photo in photos:
+        photo = enriched_photo["photo"]
         this_photo_form_data = form_data[f"photo_{photo['id']}"]
+
+        categories = (
+            enriched_photo["default_categories"]
+            + this_photo_form_data["categories"].strip().splitlines()
+        )
 
         upload_requests.append(
             {
                 "photo": photo,
-                "sdc": photo_with_sdc["sdc"],
+                "sdc": enriched_photo["sdc"],
                 "title": this_photo_form_data["title"] + "." + photo["original_format"],
                 "caption": {
                     "language": form_data["language"],
                     "text": this_photo_form_data["short_caption"],
                 },
-                "categories": this_photo_form_data["categories"],
+                "categories": categories,
             }
         )
 
@@ -209,19 +214,19 @@ def prepare_info() -> ViewResponse:
     )
 
     # Next add the structured data to the photos.
-    photos_with_sdc = add_sdc_to_photos(selected_photos)
+    enriched_photos = enrich_photo(
+        selected_photos, wikimedia_username=current_user.name
+    )
 
     # Now construct the "prepare info" form.
-    prepare_info_form = create_prepare_info_form(photos=photos_with_sdc)
+    prepare_info_form = create_prepare_info_form(photos=enriched_photos)
 
     if prepare_info_form.validate_on_submit():
         upload_requests = create_upload_requests(
-            photos_with_sdc, form_data=prepare_info_form.data
+            enriched_photos, form_data=prepare_info_form.data
         )
 
-        task_id = begin_upload(
-            upload_requests=upload_requests,
-        )
+        task_id = begin_upload(upload_requests=upload_requests)
 
         remove_cached_photos_data(cache_id)
 
