@@ -125,7 +125,7 @@ def test_shows_creator(
 
 
 def test_shows_copyright_status(app: Flask, vcr_cassette: str) -> None:
-    copyright_claim = create_copyright_status_statement(status="copyrighted")
+    copyright_claim = create_copyright_status_statement(license_id="cc-by-2.0")
 
     actual = get_html(claims=[copyright_claim])
 
@@ -191,6 +191,11 @@ def test_shows_license_statement(app: Flask, vcr_cassette: str) -> None:
           <dt>copyright license:</dt>
           <dd class="snak-value">
             Creative Commons Attribution 2.0 Generic (Q19125117)
+            <ul class="sdc_qualifiers plain_list">
+             <li>
+              determination method: stated by copyright holder at source website (Q61045577)
+             </li>
+            </ul>
           </dd>
         </dl>
         """

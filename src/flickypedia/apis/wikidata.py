@@ -19,8 +19,10 @@ class WikidataProperties:
     #
     # e.g. https://www.wikidata.org/wiki/Property:P2093
     Operator = "P137"
+    AppliesToJurisdiction = "P1001"
     Creator = "P170"
     DescribedAtUrl = "P973"
+    DeterminationMethod = "P459"
     AuthorName = "P2093"
     FlickrPhotoId = "P12120"
     FlickrUserId = "P3267"
@@ -48,6 +50,10 @@ class WikidataEntities:
     FileAvailableOnInternet = "Q74228490"
     Flickr = "Q103204"
     GregorianCalendar = "Q1985727"
+    PublicDomain = "Q19652"
+    StatedByCopyrightHolderAtSourceWebsite = "Q61045577"
+    UnitedStatesOfAmerica = "Q30"
+    WorkOfTheFederalGovernmentOfTheUnitedStates = "Q60671452"
 
     # We only map the license types used by Flickypedia -- we should
     # never be creating SDC for e.g. CC BY-NC.

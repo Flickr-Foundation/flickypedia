@@ -164,25 +164,54 @@ def create_flickr_creator_statement(user: FlickrUser) -> Statement:
         }
 
 
-def create_copyright_status_statement(status: str) -> Statement:
+def create_copyright_status_statement(license_id: str) -> Statement:
     """
     Create a structured data statement for a copyright status.
-
-    Currently this only supports "Copyright status: copyrighted", but
-    it might evolve in future if we e.g. support "no known copyright status".
     """
-    if status != "copyrighted":
-        raise ValueError(
-            f"Unable to map a copyright status which isn't “copyrighted”: {status!r}"
-        )
+    if license_id in {"cc-by-2.0", "cc-by-sa-2.0"}:
+        return {
+            "mainsnak": _wikibase_entity_value(
+                property_id=WikidataProperties.CopyrightStatus,
+                entity_id=WikidataEntities.Copyrighted,
+            ),
+            "type": "statement",
+        }
+    elif license_id == "usgov":
+        qualifier_values: List[QualifierValues] = [
+            {
+                "property": WikidataProperties.AppliesToJurisdiction,
+                "entity_id": WikidataEntities.UnitedStatesOfAmerica,
+                "type": "entity",
+            },
+            {
+                "property": WikidataProperties.DeterminationMethod,
+                "entity_id": WikidataEntities.WorkOfTheFederalGovernmentOfTheUnitedStates,
+                "type": "entity",
+            },
+        ]
 
-    return {
-        "mainsnak": _wikibase_entity_value(
-            property_id=WikidataProperties.CopyrightStatus,
-            entity_id=WikidataEntities.Copyrighted,
-        ),
-        "type": "statement",
-    }
+        return {
+            "mainsnak": _wikibase_entity_value(
+                property_id=WikidataProperties.CopyrightStatus,
+                entity_id=WikidataEntities.PublicDomain,
+            ),
+            "qualifiers": _create_qualifiers(qualifier_values),
+            "qualifiers-order": [
+                WikidataProperties.AppliesToJurisdiction,
+                WikidataProperties.DeterminationMethod,
+            ],
+            "type": "statement",
+        }
+    elif license_id in {"cc0-1.0", "pdm"}:
+        return {
+            "mainsnak": _wikibase_entity_value(
+                property_id=WikidataProperties.CopyrightStatus,
+                entity_id=WikidataEntities.PublicDomain,
+            ),
+            "type": "statement",
+        }
+    else:
+        raise ValueError(f"Unable to map a copyright status for license {license_id!r}")
 
 
 def create_source_data_for_photo(
@@ -235,11 +264,23 @@ def create_license_statement(license_id: str) -> Statement:
     except KeyError:
         raise ValueError(f"Unrecognised license ID: {license_id!r}")
 
+    qualifier_values: List[QualifierValues] = [
+        {
+            "property": WikidataProperties.DeterminationMethod,
+            "entity_id": WikidataEntities.StatedByCopyrightHolderAtSourceWebsite,
+            "type": "entity",
+        },
+    ]
+
     return {
         "mainsnak": _wikibase_entity_value(
             property_id=WikidataProperties.CopyrightLicense,
             entity_id=wikidata_license_id,
         ),
+        "qualifiers": _create_qualifiers(qualifier_values),
+        "qualifiers-order": [
+            WikidataProperties.DeterminationMethod,
+        ],
         "type": "statement",
     }
 
@@ -337,7 +378,9 @@ def create_sdc_claims_for_flickr_photo(photo: SinglePhoto) -> List[Statement]:
     """
     creator_statement = create_flickr_creator_statement(user=photo["owner"])
 
-    copyright_statement = create_copyright_status_statement(status="copyrighted")
+    copyright_statement = create_copyright_status_statement(
+        license_id=photo["license"]["id"]
+    )
 
     original_size = size_at(sizes=photo["sizes"], desired_size="Original")
 
