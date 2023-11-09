@@ -15,6 +15,7 @@ from xml.etree import ElementTree as ET
 
 import httpx
 
+from flickypedia.utils import chunked_iterable
 from ._types import StructuredDataClaims, TitleValidation
 
 
@@ -512,6 +513,33 @@ class WikimediaApi:
             re.sub(r"^Category:", "", text_elem.text)  # type: ignore
             for text_elem in xml.findall(".//Text", namespaces=namespaces)
         ]
+
+    def purge_pages(self, filenames: List[str]) -> None:
+        """
+        Purge a series of pages on Wikimedia.
+
+        This forces Commons to recreate a page from its database,
+        rather than relying on the cached version.
+
+        In particular, this forces a re-render of any dynamic templates in
+        the Wikitext -- including the {{Information}} template we use to
+        render SDC on the page.  If we complete the upload process too
+        quickly, those values are left empty until the next edit to
+        the page.  Purging should fix this.
+
+        See https://commons.wikimedia.org/wiki/Help:Purge
+        See https://www.mediawiki.org/wiki/API:Purge
+        """
+        for title_batch in chunked_iterable(filenames, size=50):
+            title = "|".join(f"File:{f}" for f in title_batch)
+
+            self._post(
+                data={
+                    "action": "purge",
+                    "site": "commonswiki",
+                    "title": title,
+                }
+            )
 
 
 class WikimediaApiException(Exception):

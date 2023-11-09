@@ -22,6 +22,7 @@ class WikidataProperties:
     Creator = "P170"
     DescribedAtUrl = "P973"
     AuthorName = "P2093"
+    FlickrPhotoId = "P12120"
     FlickrUserId = "P3267"
     Url = "P2699"
     SourceOfFile = "P7482"

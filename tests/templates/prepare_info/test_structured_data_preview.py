@@ -145,6 +145,7 @@ def test_shows_copyright_status(app: Flask, vcr_cassette: str) -> None:
 
 def test_shows_source_data(app: Flask, vcr_cassette: str) -> None:
     source_claim = create_source_data_for_photo(
+        photo_id="53248015596",
         photo_url="https://www.flickr.com/photos/199246608@N02/53248015596/",
         original_url="https://live.staticflickr.com/65535/53248015596_c03f8123cf_o_d.jpg",
     )
@@ -158,6 +159,9 @@ def test_shows_source_data(app: Flask, vcr_cassette: str) -> None:
           <dd class="snak-value">
             file available on the internet (Q74228490)
             <ul class="sdc_qualifiers plain_list">
+              <li>
+                flickr photo id: 53248015596
+              </li>
               <li>
                 described at url: https://www.flickr.com/photos/199246608@N02/53248015596/
               </li>

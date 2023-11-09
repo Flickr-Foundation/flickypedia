@@ -1,6 +1,17 @@
 import datetime
+import itertools
 import json
-from typing import Any, Dict, Literal, TypedDict, TypeVar, Union
+from typing import (
+    Any,
+    Dict,
+    Generator,
+    Iterable,
+    Literal,
+    Tuple,
+    TypedDict,
+    TypeVar,
+    Union,
+)
 from urllib.parse import quote as urlquote, urlparse
 
 from cryptography.fernet import Fernet
@@ -90,3 +101,25 @@ def create_bookmarklet(filename: str) -> str:
     wrapped_js = """(function() { %s })();""" % js
 
     return urlquote(wrapped_js)
+
+
+def chunked_iterable(
+    iterable: Iterable[T], *, size: int
+) -> Generator[Tuple[T, ...], None, None]:
+    """
+    Break an iterable into fixed-size pieces.
+
+        >>> chunked_iterable(range(14), size=4):
+        (0, 1, 2, 3)
+        (4, 5, 6, 7)
+        (8, 9, 10, 11)
+        (12, 13)
+        (0, 1, 2)
+
+    """
+    it = iter(iterable)
+    while True:
+        chunk = tuple(itertools.islice(it, size))
+        if not chunk:
+            break
+        yield chunk

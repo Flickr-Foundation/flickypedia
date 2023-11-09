@@ -90,6 +90,7 @@ def test_create_copyright_status_statement(status: str, filename: str) -> None:
 
 def test_create_source_data_for_photo() -> None:
     result = create_source_data_for_photo(
+        photo_id="53248015596",
         photo_url="https://www.flickr.com/photos/199246608@N02/53248015596/",
         original_url="https://live.staticflickr.com/65535/53248015596_c03f8123cf_o_d.jpg",
     )

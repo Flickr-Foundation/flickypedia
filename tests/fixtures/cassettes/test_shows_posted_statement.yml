@@ -13,109 +13,6 @@ interactions:
       user-agent:
       - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
     method: GET
-    uri: https://www.wikidata.org/w/rest.php/wikibase/v0/entities/items/Q74228490
-  response:
-    content: '{"type":"item","labels":{"en":"file available on the internet","nl":"bestand
-      beschikbaar op internet","hu":"az interneten el\u00e9rhet\u0151 f\u00e1jl","ja":"\u30a4\u30f3\u30bf\u30fc\u30cd\u30c3\u30c8\u4e0a\u3067\u5229\u7528\u53ef\u80fd\u306a\u30d5\u30a1\u30a4\u30eb","de":"Datei
-      aus dem Internet","fr":"fichier disponible sur internet","es":"archivo disponible
-      en internet","mk":"\u043f\u043e\u0434\u0430\u0442\u043e\u0442\u0435\u043a\u0430
-      \u0434\u043e\u0441\u0442\u0430\u043f\u043d\u0430 \u043d\u0430 \u0441\u0435\u043c\u0440\u0435\u0436\u0458\u0435\u0442\u043e","hr":"datoteka
-      dostupna na internetu","ca":"fitxer disponible a Internet","pt":"arquivo dispon\u00edvel
-      na internet","it":"file disponibile su internet","pl":"plik z internetu","sv":"fil
-      som \u00e4r tillg\u00e4nglig p\u00e5 internet","be-tarask":"\u0444\u0430\u0439\u043b
-      \u0437 \u0456\u043d\u0442\u044d\u0440\u043d\u044d\u0442\u0443","ar":"\u0627\u0644\u0645\u0644\u0641
-      \u0645\u062a\u0648\u0627\u0641\u0631 \u0639\u0644\u0649 \u0627\u0644\u0625\u0646\u062a\u0631\u0646\u062a","vi":"t\u1eadp
-      tin tr\u00ean m\u1ea1ng","ru":"\u0444\u0430\u0439\u043b \u0434\u043e\u0441\u0442\u0443\u043f\u0435\u043d
-      \u0432 \u0418\u043d\u0442\u0435\u0440\u043d\u0435\u0442\u0435","cs":"soubor
-      dostupn\u00fd na internetu","zh-hant":"\u6a94\u6848\u53ef\u65bc\u7db2\u969b\u7db2\u8def\u53d6\u7528","tr":"internette
-      olan dosya","uz":"fayl internetda mavjud","fi":"kuva saatavilla internetiss\u00e4","sl":"datoteka
-      na spletu","yue":"\u7db2\u4e0a\u6435\u5230"},"descriptions":{"en":"value to
-      indicate the source of an image on Wikimedia Commons","nl":"waarde om de bron
-      van een afbeelding op Wikimedia Commons aan te geven","ja":"\u30b3\u30e2\u30f3\u30ba\u4e0a\u306e\u753b\u50cf\u306e\u30bd\u30fc\u30b9\u3092\u793a\u3059\u5024","de":"Wert
-      zu Angabe der Quelle eines Fotos auf Wikimedia Commons","fr":"source d\u2019une
-      image sur Wikimedia Commons","pt":"valor indicativo da fonte do material subido
-      no Wikimedia Commons","it":"valore per indicare l''origine di un''immagine su
-      Commons","pl":"warto\u015b\u0107 do oznaczenia pochodzenia pliku w Wikimedia
-      Commons","zh-hant":"\u6307\u51fa\u7dad\u57fa\u5171\u4eab\u8cc7\u6e90\u6a94\u6848\u4f86\u6e90\u4e4b\u503c","uz":"Wikimedia
-      Commons-dagi rasm manbasini ko''rsatadigan qiymat","ru":"\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435
-      \u0434\u043b\u044f \u0443\u043a\u0430\u0437\u0430\u043d\u0438\u044f \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u0430
-      \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f \u043d\u0430
-      \u0412\u0438\u043a\u0438\u0441\u043a\u043b\u0430\u0434\u0435","yue":"\u7dad\u57fa\u4ecb\u9762\u6a19\u7c64"},"aliases":{"en":["somewhere
-      on the internet","file downloaded from the internet","file from the internet","available
-      on the internet","found online","file on the internet","file found on the internet"],"pt":["ficheiro
-      dispon\u00edvel na internet"],"be-tarask":["\u0444\u0430\u0439\u043b \u0434\u0430\u0441\u0442\u0443\u043f\u043d\u044b
-      \u045e \u0456\u043d\u0442\u044d\u0440\u043d\u044d\u0446\u0435"],"vi":["t\u1eadp
-      tin c\u00f3 s\u1eb5n tr\u00ean Internet","t\u1eadp tin c\u00f3 s\u1eb5n tr\u00ean
-      m\u1ea1ng","t\u1eadp tin tr\u00ean Internet"],"zh-hant":["\u4f86\u81ea\u7db2\u969b\u7db2\u8def\u7684\u6a94\u6848"],"ru":["\u0444\u0430\u0439\u043b
-      \u0438\u0437 \u0418\u043d\u0442\u0435\u0440\u043d\u0435\u0442\u0430"],"fi":["kuva
-      ladattu internetist\u00e4"],"sl":["datoteka iz spleta","prenos iz spleta","nekje
-      na intenetu"]},"statements":{"P31":[{"id":"Q74228490$fcdd22fb-4cb7-8d66-6f86-67399dd33a37","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P31","data-type":"wikibase-item"},"value":{"type":"value","content":"Q72610003"}}],"P279":[{"id":"Q74228490$c0265b17-4ff9-ae56-4bd2-8a8e0822615b","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P279","data-type":"wikibase-item"},"value":{"type":"value","content":"Q269415"}}]},"sitelinks":{},"id":"Q74228490"}'
-    headers:
-      accept-ranges:
-      - bytes
-      access-control-allow-origin:
-      - '*'
-      age:
-      - '0'
-      cache-control:
-      - no-cache
-      content-encoding:
-      - gzip
-      content-type:
-      - application/json
-      date:
-      - Thu, 09 Nov 2023 11:02:42 GMT
-      etag:
-      - W/"1991432021"
-      last-modified:
-      - Sat, 14 Oct 2023 21:29:34 GMT
-      nel:
-      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
-        0.0}'
-      report-to:
-      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
-        }] }'
-      server:
-      - mw1471.eqiad.wmnet
-      server-timing:
-      - cache;desc="pass", host;desc="cp3070"
-      set-cookie:
-      - WMF-Last-Access=09-Nov-2023;Path=/;HttpOnly;secure;Expires=Mon, 11 Dec 2023
-        00:00:00 GMT
-      - WMF-Last-Access-Global=09-Nov-2023;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon,
-        11 Dec 2023 00:00:00 GMT
-      - GeoIP=GB:ENG:Sudbury:52.06:0.61:v4; Path=/; secure; Domain=.wikidata.org
-      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
-      strict-transport-security:
-      - max-age=106384710; includeSubDomains; preload
-      transfer-encoding:
-      - chunked
-      vary:
-      - Accept-Encoding
-      x-cache:
-      - cp3070 miss, cp3070 pass
-      x-cache-status:
-      - pass
-      x-client-ip:
-      - 92.13.36.200
-      x-content-type-options:
-      - nosniff
-    http_version: HTTP/1.1
-    status_code: 200
-- request:
-    body: ''
-    headers:
-      accept:
-      - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
-      - keep-alive
-      host:
-      - www.wikidata.org
-      user-agent:
-      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
-    method: GET
     uri: https://www.wikidata.org/w/rest.php/wikibase/v0/entities/items/Q103204
   response:
     content: '{"type":"item","labels":{"zh-hans":"Flickr","zh-hant":"Flickr","zh-hk":"Flickr","zh-cn":"Flickr","zh-sg":"Flickr","zh-tw":"Flickr","jv":"Flickr","pl":"Flickr","eu":"Flickr","es":"Flickr","ta":"\u0b83\u0baa\u0bbf\u0bb3\u0bbf\u0b95\u0bcd\u0b95\u0bb0\u0bcd","hu":"Flickr","ms":"Flickr","el":"Flickr","nl":"Flickr","sv":"Flickr","ar":"\u0641\u0644\u064a\u0643\u0631","pt":"Flickr","ru":"Flickr","sr-el":"Flickr","sr-ec":"Flickr","ckb":"\u0641\u0644\u06cc\u06a9\u0631","tr":"Flickr","fi":"Flickr","uk":"Flickr","hr":"Flickr","az":"Flickr","da":"Flickr","fr":"Flickr","ko":"\ud50c\ub9ac\ucee4","he":"\u05e4\u05dc\u05d9\u05e7\u05e8","bar":"Flickr","it":"Flickr","gl":"Flickr","id":"Flickr","de":"Flickr","ml":"\u0d2b\u0d4d\u0d32\u0d3f\u0d15\u0d4d\u0d15\u0d7c","ja":"Flickr","vi":"Flickr","yue":"Flickr","hi":"\u092b\u093c\u094d\u0932\u093f\u0915\u0930","wuu":"Flickr","sk":"Flickr","kn":"\u0cab\u0ccd\u0cb2\u0cbf\u0c95\u0cb0\u0ccd","th":"\u0e1f\u0e25\u0e34\u0e04\u0e40\u0e01\u0e2d\u0e23\u0e4c","ro":"Flickr","ca":"Flickr","cy":"Flickr","sl":"Flickr","cs":"Flickr","fa":"\u0641\u0644\u06cc\u06a9\u0631","ka":"Flickr","nds":"Flickr","lt":"Flickr","zh":"Flickr","sr":"\u0424\u043b\u0438\u043a\u0440","oc":"Flickr","tk":"Flickr","nb":"Flickr","bn":"\u09ab\u09cd\u09b2\u09bf\u0995\u09be\u09b0","scn":"Flickr","be":"Flickr","sh":"Flickr","hy":"Flickr","et":"Flickr","nan":"Flickr","bho":"\u092b\u094d\u0932\u093f\u0915\u0930","kk":"Flickr","en":"Flickr","nn":"Flickr","bg":"Flickr","mg":"Flickr","cdo":"Flickr","hak":"Flickr","zh-my":"Flickr","zh-mo":"Flickr","eo":"Flickr","co":"Flickr","qu":"Flickr","shn":"Flickr"},"descriptions":{"en":"American
@@ -171,7 +68,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Thu, 09 Nov 2023 11:02:42 GMT
+      - Thu, 09 Nov 2023 11:01:58 GMT
       etag:
       - W/"1996817705"
       last-modified:
@@ -183,7 +80,7 @@ interactions:
       - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
         }] }'
       server:
-      - mw1465.eqiad.wmnet
+      - mw1448.eqiad.wmnet
       server-timing:
       - cache;desc="pass", host;desc="cp3070"
       set-cookie:
