@@ -25,9 +25,6 @@ jobs:
       run: |
         pip install -e .
         pip install -r dev_requirements.txt
-    - name: Check types
-      run: |
-        mypy src tests
     - name: Run linting
       run: |
         black --check .
@@ -39,6 +36,8 @@ jobs:
         # by black and I don't have a strong opinion on, so I'm going to trust
         # black and have flake8 ignore it.
         flake8 --ignore=E501,W503
+    - name: Check types
+      run: mypy src tests
     - name: Run tests
       run: |
         coverage run -m pytest tests
