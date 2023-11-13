@@ -29,24 +29,22 @@ from typing import Dict, List, Literal, TypedDict, Union
 
 from flickr_photos_api import DateTaken, User as FlickrUser, SinglePhoto
 
-from flickypedia.structured_data.flickr_user_ids import lookup_flickr_user_in_wikidata
-from flickypedia.apis.wikidata import (
-    to_wikidata_date,
+from .flickr_user_ids import lookup_flickr_user_in_wikidata
+from ._types import DataValue, Snak, Statement
+from .wikidata import (
+    to_wikidata_date_value,
+    to_wikidata_entity_value,
     WikidataEntities,
     WikidataProperties,
 )
 from flickypedia.photos import size_at
-from ._types import DataValue, Snak, Statement
 
 
 def _wikibase_entity_value(*, property_id: str, entity_id: str) -> Snak:
     return {
         "snaktype": "value",
         "property": property_id,
-        "datavalue": {
-            "type": "wikibase-entityid",
-            "value": {"id": entity_id},
-        },
+        "datavalue": to_wikidata_entity_value(entity_id=entity_id),
     }
 
 
@@ -88,13 +86,10 @@ def _create_qualifiers(
         if qualifier["type"] == "string":
             datavalue = {"type": "string", "value": qualifier["value"]}
         elif qualifier["type"] == "entity":
-            datavalue = {
-                "type": "wikibase-entityid",
-                "value": {"id": qualifier["entity_id"]},
-            }
+            datavalue = to_wikidata_entity_value(entity_id=qualifier["entity_id"])
         else:
             assert qualifier["type"] == "date"
-            datavalue = to_wikidata_date(
+            datavalue = to_wikidata_date_value(
                 qualifier["date"], precision=qualifier["precision"]
             )
 
@@ -123,9 +118,11 @@ def create_flickr_creator_statement(user: FlickrUser) -> Statement:
 
     if wikidata_id is not None:
         return {
-            "mainsnak": _wikibase_entity_value(
-                property_id=WikidataProperties.Creator, entity_id=wikidata_id
-            ),
+            "mainsnak": {
+                "snaktype": "value",
+                "property": WikidataProperties.Creator,
+                "datavalue": to_wikidata_entity_value(entity_id=wikidata_id),
+            },
             "type": "statement",
         }
     else:
@@ -335,7 +332,7 @@ def create_date_taken_statement(date_taken: DateTaken) -> Statement:
     if flickr_granularity in {"second", "month", "year"}:
         return {
             "mainsnak": {
-                "datavalue": to_wikidata_date(
+                "datavalue": to_wikidata_date_value(
                     date_taken["value"], precision=wikidata_precision
                 ),
                 "property": WikidataProperties.Inception,
@@ -356,7 +353,7 @@ def create_date_taken_statement(date_taken: DateTaken) -> Statement:
 
         return {
             "mainsnak": {
-                "datavalue": to_wikidata_date(
+                "datavalue": to_wikidata_date_value(
                     date_taken["value"], precision=wikidata_precision
                 ),
                 "property": WikidataProperties.Inception,

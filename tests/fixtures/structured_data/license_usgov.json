@@ -4,7 +4,9 @@
     "property": "P275",
     "datavalue": {
       "value": {
-        "id": "Q60671452"
+        "id": "Q60671452",
+        "numeric-id": 60671452,
+        "entity-type": "item"
       },
       "type": "wikibase-entityid"
     }
@@ -15,7 +17,9 @@
         "datavalue": {
           "type": "wikibase-entityid",
           "value": {
-            "id": "Q61045577"
+            "id": "Q61045577",
+            "numeric-id": 61045577,
+            "entity-type": "item"
           }
         },
         "property": "P459",

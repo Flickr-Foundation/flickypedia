@@ -5,7 +5,9 @@
     "datavalue": {
       "type": "wikibase-entityid",
       "value": {
-        "id": "Q74228490"
+        "id": "Q74228490",
+        "numeric-id": 74228490,
+        "entity-type": "item"
       }
     }
   },
@@ -25,7 +27,9 @@
         "datavalue": {
           "type": "wikibase-entityid",
           "value": {
-            "id": "Q103204"
+            "id": "Q103204",
+        "numeric-id": 103204,
+        "entity-type": "item"
           }
         },
         "property": "P137",

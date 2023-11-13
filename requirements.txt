@@ -6,6 +6,8 @@
 #
 amqp==5.2.0
     # via kombu
+annotated-types==0.6.0
+    # via pydantic
 anyio==4.0.0
     # via httpx
 authlib==1.2.1
@@ -96,6 +98,10 @@ prompt-toolkit==3.0.40
     # via click-repl
 pycparser==2.21
     # via cffi
+pydantic==2.4.2
+    # via -r requirements.in
+pydantic-core==2.10.1
+    # via pydantic
 python-dateutil==2.8.2
     # via celery
 six==1.16.0
@@ -109,6 +115,8 @@ sqlalchemy==2.0.23
 typing-extensions==4.8.0
     # via
     #   kombu
+    #   pydantic
+    #   pydantic-core
     #   sqlalchemy
 tzdata==2023.3
     # via celery

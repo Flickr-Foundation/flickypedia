@@ -6,7 +6,7 @@ from typing import Optional
 from flask import current_app
 import httpx
 
-from ._types import DataTypes, DataValueTypes
+from ._types import DataValueTypes, Value
 
 
 class WikidataProperties:
@@ -109,7 +109,9 @@ def get_entity_label(entity_id: str) -> Optional[str]:
         return None
 
 
-def to_wikidata_date(d: datetime.datetime, *, precision: str) -> DataValueTypes.Time:
+def to_wikidata_date_value(
+    d: datetime.datetime, *, precision: str
+) -> DataValueTypes.Time:
     """
     Convert a Python native-datetime to the Wikidata data model.
 
@@ -176,7 +178,23 @@ def to_wikidata_date(d: datetime.datetime, *, precision: str) -> DataValueTypes.
     }
 
 
-def render_wikidata_date(value: DataTypes.Date) -> str:
+def to_wikidata_entity_value(*, entity_id: str) -> DataValueTypes.WikibaseEntityId:
+    """
+    Create a datavalue for a Wikidata entity.
+    """
+    assert re.match(r"^Q[0-9]+$", entity_id)
+
+    return {
+        "value": {
+            "id": entity_id,
+            "entity-type": "item",
+            "numeric-id": int(entity_id.replace("Q", "")),
+        },
+        "type": "wikibase-entityid",
+    }
+
+
+def render_wikidata_date(value: Value.Time) -> str:
     """
     Given a Wikidata date from the SDC, render it as text.
     """
