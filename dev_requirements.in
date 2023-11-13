@@ -5,6 +5,7 @@ bs4
 coverage
 flake8
 mypy
+pip-tools
 pytest
 pytest-cov
 tqdm
