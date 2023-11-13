@@ -4,7 +4,9 @@
     "property": "P1433",
     "datavalue": {
       "value": {
-        "id": "Q103204"
+        "id": "Q103204",
+        "numeric-id": 103204,
+        "entity-type": "item"
       },
       "type": "wikibase-entityid"
     }

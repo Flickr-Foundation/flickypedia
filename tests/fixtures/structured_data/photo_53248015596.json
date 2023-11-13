@@ -49,7 +49,9 @@
       "property": "P6216",
       "datavalue": {
         "value": {
-          "id": "Q50423863"
+          "id": "Q50423863",
+          "numeric-id": 50423863,
+          "entity-type": "item"
         },
         "type": "wikibase-entityid"
       }
@@ -62,7 +64,9 @@
       "property": "P7482",
       "datavalue": {
         "value": {
-          "id": "Q74228490"
+          "id": "Q74228490",
+          "numeric-id": 74228490,
+          "entity-type": "item"
         },
         "type": "wikibase-entityid"
       }
@@ -95,7 +99,9 @@
           "property": "P137",
           "datavalue": {
             "value": {
-              "id": "Q103204"
+              "id": "Q103204",
+              "numeric-id": 103204,
+              "entity-type": "item"
             },
             "type": "wikibase-entityid"
           }
@@ -125,7 +131,9 @@
       "property": "P275",
       "datavalue": {
         "value": {
-          "id": "Q19125117"
+          "id": "Q19125117",
+          "numeric-id": 19125117,
+          "entity-type": "item"
         },
         "type": "wikibase-entityid"
       }
@@ -136,7 +144,9 @@
           "datavalue": {
             "type": "wikibase-entityid",
             "value": {
-              "id": "Q61045577"
+              "id": "Q61045577",
+              "numeric-id": 61045577,
+              "entity-type": "item"
             }
           },
           "property": "P459",
@@ -155,7 +165,9 @@
       "property": "P1433",
       "datavalue": {
         "value": {
-          "id": "Q103204"
+          "id": "Q103204",
+          "numeric-id": 103204,
+          "entity-type": "item"
         },
         "type": "wikibase-entityid"
       }

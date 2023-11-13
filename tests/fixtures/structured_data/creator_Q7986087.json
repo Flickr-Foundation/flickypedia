@@ -5,7 +5,9 @@
     "datavalue": {
       "type": "wikibase-entityid",
       "value": {
-        "id": "Q7986087"
+        "id": "Q7986087",
+        "numeric-id": 7986087,
+        "entity-type": "item"
       }
     }
   },

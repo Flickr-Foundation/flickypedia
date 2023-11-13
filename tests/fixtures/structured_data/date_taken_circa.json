@@ -21,13 +21,17 @@
         "property": "P1480",
         "datavalue": {
           "value": {
-            "id": "Q5727902"
+            "id": "Q5727902",
+            "numeric-id": 5727902,
+            "entity-type": "item"
           },
           "type": "wikibase-entityid"
         }
       }
     ]
   },
-  "qualifiers-order": ["P1480"],
+  "qualifiers-order": [
+    "P1480"
+  ],
   "type": "statement"
 }
