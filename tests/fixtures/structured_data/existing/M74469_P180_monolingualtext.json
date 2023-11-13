@@ -1,0 +1,81 @@
+{
+  "P180": [
+    {
+      "mainsnak": {
+        "snaktype": "value",
+        "property": "P180",
+        "datavalue": {
+          "value": {
+            "entity-type": "item",
+            "numeric-id": 900857,
+            "id": "Q900857"
+          },
+          "type": "wikibase-entityid"
+        }
+      },
+      "type": "statement",
+      "qualifiers": {
+        "P462": [
+          {
+            "snaktype": "value",
+            "property": "P462",
+            "hash": "4cd33b83ef1fd79c0f4743ce2b02ce1f16f60c30",
+            "datavalue": {
+              "value": {
+                "entity-type": "item",
+                "numeric-id": 42519,
+                "id": "Q42519"
+              },
+              "type": "wikibase-entityid"
+            }
+          },
+          {
+            "snaktype": "value",
+            "property": "P462",
+            "hash": "d764eafaefe32ab8774f38f77cfcc0404ddd7243",
+            "datavalue": {
+              "value": {
+                "entity-type": "item",
+                "numeric-id": 3142,
+                "id": "Q3142"
+              },
+              "type": "wikibase-entityid"
+            }
+          }
+        ],
+        "P426": [
+          {
+            "snaktype": "value",
+            "property": "P426",
+            "hash": "4709087808133113dd95b7f54b90307802ef286a",
+            "datavalue": {
+              "value": "G-BWTG",
+              "type": "string"
+            }
+          }
+        ],
+        "P1684": [
+          {
+            "snaktype": "value",
+            "property": "P1684",
+            "hash": "e9d3441f2099aec262278049bb9915eaf3fc20fb",
+            "datavalue": {
+              "value": {
+                "text": "910",
+                "language": "en"
+              },
+              "type": "monolingualtext"
+            }
+          }
+        ]
+      },
+      "qualifiers-order": [
+        "P462",
+        "P426",
+        "P1684"
+      ],
+      "id": "M74469$fe4cab45-42c3-fd5d-7a8c-c7553869859b",
+      "rank": "normal"
+    }
+  ]
+}

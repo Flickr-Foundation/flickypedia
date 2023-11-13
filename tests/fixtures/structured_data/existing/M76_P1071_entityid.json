@@ -1,0 +1,21 @@
+{
+  "P1071": [
+    {
+      "id": "M76$FF29D275-B2A1-436E-B649-89A6175F7666",
+      "mainsnak": {
+        "datavalue": {
+          "type": "wikibase-entityid",
+          "value": {
+            "entity-type": "item",
+            "id": "Q49280472",
+            "numeric-id": 49280472
+          }
+        },
+        "property": "P1071",
+        "snaktype": "value"
+      },
+      "rank": "normal",
+      "type": "statement"
+    }
+  ]
+}
