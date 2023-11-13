@@ -50,6 +50,7 @@ def create_app(data_directory: str = "data", debug: bool = False) -> Flask:
 
     user_db.init_app(app)
     login.init_app(app)
+    celery_init_app(app)
 
     with app.app_context():
         user_db.create_all()

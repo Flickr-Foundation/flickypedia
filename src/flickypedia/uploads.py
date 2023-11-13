@@ -86,7 +86,7 @@ def upload_batch_of_photos(
 
     api.purge_pages(
         filenames=[
-            pd["upload_result"]["filename"]
+            pd["upload_result"]["title"]
             for pd in progress_data
             if pd["status"] == "succeeded"
         ]

@@ -19,7 +19,7 @@ def main() -> None:  # pragma: no cover
     type=click.Choice(["127.0.0.1", "0.0.0.0"]),
     show_default=True,
 )
-@click.option("--debug", help="Run in debug mode.", is_flag=True)
+@click.option("--debug", help="Run the web app in debug mode.", is_flag=True)
 def run_dev_server(port: int, host: str, debug: bool) -> None:
     from flickypedia import create_app
 
@@ -34,8 +34,8 @@ def run_dev_server(port: int, host: str, debug: bool) -> None:
     app.run(debug=debug, port=port, host=host)
 
 
-@main.command(help="Start the Celery background worker.")
-def start_celery_worker() -> None:
+@main.command(help="Run the Celery background worker.")
+def run_celery_worker() -> None:
     from flickypedia import create_app
     from flickypedia.tasks import celery_init_app
 
