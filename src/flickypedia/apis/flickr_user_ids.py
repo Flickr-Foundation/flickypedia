@@ -41,6 +41,7 @@ import re
 from typing import Dict, Optional, TypedDict
 
 from flickr_photos_api import User as FlickrUser
+import httpx
 
 from flickypedia.apis.wikidata import WikidataProperties
 
@@ -92,8 +93,6 @@ def find_wikidata_entities_with_flickr_ids() -> WikidataEntityLookup:
     """
     Creates a dictionary that maps Flickr user IDs to Wikidata entity IDs.
     """
-    import httpx
-
     result: WikidataEntityLookup = {
         "by_user_id": {},
         "by_pathalias": {},
