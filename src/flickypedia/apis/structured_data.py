@@ -29,8 +29,8 @@ from typing import Dict, List, Literal, TypedDict, Union
 
 from flickr_photos_api import DateTaken, User as FlickrUser, SinglePhoto
 
+from flickypedia.structured_data.flickr_user_ids import lookup_flickr_user_in_wikidata
 from flickypedia.apis.wikidata import (
-    lookup_flickr_user_in_wikidata,
     to_wikidata_date,
     WikidataEntities,
     WikidataProperties,
@@ -119,9 +119,7 @@ def create_flickr_creator_statement(user: FlickrUser) -> Statement:
     *   A collection of values that link to their profile page
 
     """
-    wikidata_id = lookup_flickr_user_in_wikidata(
-        user_id=user["id"], username=user["username"]
-    )
+    wikidata_id = lookup_flickr_user_in_wikidata(user)
 
     if wikidata_id is not None:
         return {
