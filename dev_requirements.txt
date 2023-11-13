@@ -8,6 +8,10 @@ amqp==5.2.0
     # via
     #   -r requirements.txt
     #   kombu
+annotated-types==0.6.0
+    # via
+    #   -r requirements.txt
+    #   pydantic
 anyio==4.0.0
     # via
     #   -r requirements.txt
@@ -175,6 +179,12 @@ pycparser==2.21
     # via
     #   -r requirements.txt
     #   cffi
+pydantic==2.4.2
+    # via -r requirements.txt
+pydantic-core==2.10.1
+    # via
+    #   -r requirements.txt
+    #   pydantic
 pyflakes==3.1.0
     # via flake8
 pytest==7.4.2
@@ -224,6 +234,8 @@ typing-extensions==4.8.0
     #   black
     #   kombu
     #   mypy
+    #   pydantic
+    #   pydantic-core
     #   sqlalchemy
 tzdata==2023.3
     # via
