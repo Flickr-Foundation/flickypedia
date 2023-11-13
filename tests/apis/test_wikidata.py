@@ -3,7 +3,7 @@ from typing import TypedDict
 
 import pytest
 
-from flickypedia.apis.wikidata import to_wikidata_date
+from flickypedia.apis.wikidata import to_wikidata_date_value
 from flickypedia.apis._types import DataValueTypes
 
 
@@ -57,12 +57,12 @@ ToWikidateArgs = TypedDict("ToWikidateArgs", {"d": datetime.datetime, "precision
         ),
     ],
 )
-def test_to_wikidata_date(
+def test_to_wikidata_date_value(
     kwargs: ToWikidateArgs, expected: DataValueTypes.Time
 ) -> None:
-    assert to_wikidata_date(**kwargs) == expected
+    assert to_wikidata_date_value(**kwargs) == expected
 
 
-def test_to_wikidata_date_fails_with_unexpected_precision() -> None:
+def test_to_wikidata_date_value_fails_with_unexpected_precision() -> None:
     with pytest.raises(ValueError, match="Unrecognised precision"):
-        to_wikidata_date(d=datetime.datetime(2023, 10, 12), precision="second")
+        to_wikidata_date_value(d=datetime.datetime(2023, 10, 12), precision="second")

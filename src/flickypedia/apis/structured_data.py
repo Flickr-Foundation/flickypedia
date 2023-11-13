@@ -31,7 +31,7 @@ from flickr_photos_api import DateTaken, User as FlickrUser, SinglePhoto
 
 from flickypedia.structured_data.flickr_user_ids import lookup_flickr_user_in_wikidata
 from flickypedia.apis.wikidata import (
-    to_wikidata_date,
+    to_wikidata_date_value,
     WikidataEntities,
     WikidataProperties,
 )
@@ -94,7 +94,7 @@ def _create_qualifiers(
             }
         else:
             assert qualifier["type"] == "date"
-            datavalue = to_wikidata_date(
+            datavalue = to_wikidata_date_value(
                 qualifier["date"], precision=qualifier["precision"]
             )
 
@@ -335,7 +335,7 @@ def create_date_taken_statement(date_taken: DateTaken) -> Statement:
     if flickr_granularity in {"second", "month", "year"}:
         return {
             "mainsnak": {
-                "datavalue": to_wikidata_date(
+                "datavalue": to_wikidata_date_value(
                     date_taken["value"], precision=wikidata_precision
                 ),
                 "property": WikidataProperties.Inception,
@@ -356,7 +356,7 @@ def create_date_taken_statement(date_taken: DateTaken) -> Statement:
 
         return {
             "mainsnak": {
-                "datavalue": to_wikidata_date(
+                "datavalue": to_wikidata_date_value(
                     date_taken["value"], precision=wikidata_precision
                 ),
                 "property": WikidataProperties.Inception,

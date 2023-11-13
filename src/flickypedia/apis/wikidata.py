@@ -109,7 +109,9 @@ def get_entity_label(entity_id: str) -> Optional[str]:
         return None
 
 
-def to_wikidata_date(d: datetime.datetime, *, precision: str) -> DataValueTypes.Time:
+def to_wikidata_date_value(
+    d: datetime.datetime, *, precision: str
+) -> DataValueTypes.Time:
     """
     Convert a Python native-datetime to the Wikidata data model.
 
