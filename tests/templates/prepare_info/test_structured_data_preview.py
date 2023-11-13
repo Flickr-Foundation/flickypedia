@@ -29,7 +29,7 @@ def prettify_html(html: str, find_kwargs: Optional[Dict[str, Any]] = None) -> st
 
 def get_html(claims: List[NewStatement]) -> str:
     html = render_template(
-        "prepare_info/structured_data_preview.html", structured_data=claims
+        "prepare_info/structured_data_preview.html", structured_data={"claims": claims}
     )
 
     html = re.sub(r"\s+", " ", html)
