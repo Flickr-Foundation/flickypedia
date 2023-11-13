@@ -20,6 +20,7 @@ def test_upload_single_image(app: Flask, wikimedia_api: WikimediaApi) -> None:
             "id": "199246608@N02",
             "username": "cefarrjf87",
             "realname": "Alex Chan",
+            "path_alias": None,
             "photos_url": "https://www.flickr.com/photos/199246608@N02/",
             "profile_url": "https://www.flickr.com/people/199246608@N02/",
         },
