@@ -40,14 +40,6 @@ from .wikidata import (
 from flickypedia.photos import size_at
 
 
-def _wikibase_entity_value(*, property_id: str, entity_id: str) -> Snak:
-    return {
-        "snaktype": "value",
-        "property": property_id,
-        "datavalue": to_wikidata_entity_value(entity_id=entity_id),
-    }
-
-
 class QualifierValueTypes:
     String = TypedDict(
         "String", {"type": Literal["string"], "property": str, "value": str}
@@ -165,10 +157,13 @@ def create_copyright_status_statement(license_id: str) -> Statement:
     """
     if license_id in {"cc-by-2.0", "cc-by-sa-2.0"}:
         return {
-            "mainsnak": _wikibase_entity_value(
-                property_id=WikidataProperties.CopyrightStatus,
-                entity_id=WikidataEntities.Copyrighted,
-            ),
+            "mainsnak": {
+                "snaktype": "value",
+                "property": WikidataProperties.CopyrightStatus,
+                "datavalue": to_wikidata_entity_value(
+                    entity_id=WikidataEntities.Copyrighted
+                ),
+            },
             "type": "statement",
         }
     elif license_id == "usgov":
@@ -186,10 +181,13 @@ def create_copyright_status_statement(license_id: str) -> Statement:
         ]
 
         return {
-            "mainsnak": _wikibase_entity_value(
-                property_id=WikidataProperties.CopyrightStatus,
-                entity_id=WikidataEntities.PublicDomain,
-            ),
+            "mainsnak": {
+                "snaktype": "value",
+                "property": WikidataProperties.CopyrightStatus,
+                "datavalue": to_wikidata_entity_value(
+                    entity_id=WikidataEntities.PublicDomain
+                ),
+            },
             "qualifiers": _create_qualifiers(qualifier_values),
             "qualifiers-order": [
                 WikidataProperties.AppliesToJurisdiction,
@@ -199,10 +197,13 @@ def create_copyright_status_statement(license_id: str) -> Statement:
         }
     elif license_id in {"cc0-1.0", "pdm"}:
         return {
-            "mainsnak": _wikibase_entity_value(
-                property_id=WikidataProperties.CopyrightStatus,
-                entity_id=WikidataEntities.PublicDomain,
-            ),
+            "mainsnak": {
+                "snaktype": "value",
+                "property": WikidataProperties.CopyrightStatus,
+                "datavalue": to_wikidata_entity_value(
+                    entity_id=WikidataEntities.PublicDomain
+                ),
+            },
             "type": "statement",
         }
     else:
@@ -235,10 +236,13 @@ def create_source_data_for_photo(
     ]
 
     return {
-        "mainsnak": _wikibase_entity_value(
-            property_id=WikidataProperties.SourceOfFile,
-            entity_id=WikidataEntities.FileAvailableOnInternet,
-        ),
+        "mainsnak": {
+            "snaktype": "value",
+            "property": WikidataProperties.SourceOfFile,
+            "datavalue": to_wikidata_entity_value(
+                entity_id=WikidataEntities.FileAvailableOnInternet
+            ),
+        },
         "qualifiers": _create_qualifiers(qualifier_values),
         "qualifiers-order": [
             WikidataProperties.FlickrPhotoId,
@@ -268,10 +272,11 @@ def create_license_statement(license_id: str) -> Statement:
     ]
 
     return {
-        "mainsnak": _wikibase_entity_value(
-            property_id=WikidataProperties.CopyrightLicense,
-            entity_id=wikidata_license_id,
-        ),
+        "mainsnak": {
+            "snaktype": "value",
+            "property": WikidataProperties.CopyrightLicense,
+            "datavalue": to_wikidata_entity_value(entity_id=wikidata_license_id),
+        },
         "qualifiers": _create_qualifiers(qualifier_values),
         "qualifiers-order": [
             WikidataProperties.DeterminationMethod,
@@ -294,10 +299,11 @@ def create_posted_to_flickr_statement(date_posted: datetime.datetime) -> Stateme
     ]
 
     return {
-        "mainsnak": _wikibase_entity_value(
-            property_id=WikidataProperties.PublishedIn,
-            entity_id=WikidataEntities.Flickr,
-        ),
+        "mainsnak": {
+            "snaktype": "value",
+            "property": WikidataProperties.PublishedIn,
+            "datavalue": to_wikidata_entity_value(entity_id=WikidataEntities.Flickr),
+        },
         "qualifiers": _create_qualifiers(qualifier_values),
         "qualifiers-order": [WikidataProperties.PublicationDate],
         "type": "statement",
