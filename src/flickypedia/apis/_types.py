@@ -14,7 +14,7 @@ trying to replace Wikidata validation, just allow ourselves to
 write sensible validation logic.
 """
 
-from typing import Dict, List, Literal, TypedDict, Union
+from typing import Dict, List, Literal, NotRequired, TypedDict, Union
 
 
 # Definitions for the Wikidata entities that we create as part of
@@ -123,53 +123,52 @@ DataValue = Union[
 ]
 
 
-class SnakTypes:
-    Value = TypedDict(
-        "Value", {"snaktype": Literal["value"], "property": str, "datavalue": DataValue}
-    )
-    SomeValue = TypedDict(
-        "SomeValue", {"snaktype": Literal["somevalue"], "property": str}
-    )
+# -> snak
+#
+#    -> property: pxx
+#    -> snaktype: value / somevalue / novalue
+#    -> (datavalue) ->
+#
+class Snak(TypedDict):
+    property: str
+    snaktype: Literal["value", "somevalue", "novalue"]
+    datavalue: NotRequired[DataValue]
+    hash: NotRequired[str]
 
 
-Snak = Union[SnakTypes.Value, SnakTypes.SomeValue]
+# -> claims
+#
+# pxx
+#   0..*
+#     id
+#     rank
+#     type = statement
+#     mainsnak -> snak
+#     (qualifiers-order)
+#     (qualifiers)
+#     (references)
+#
+# We don't use references for Flickr SDC, but we should make sure we never
+# delete references which have been saved by other users/tools.
+#
+NewStatement = TypedDict(
+    "NewStatement",
+    {
+        "type": Literal["statement"],
+        "mainsnak": Snak,
+        "qualifiers-order": NotRequired[List[str]],
+        "qualifiers": NotRequired[Dict[str, List[Snak]]],
+    },
+)
 
 
-class StatementTypes:
-    UnqualifiedStatement = TypedDict(
-        "UnqualifiedStatement",
-        {"mainsnak": Snak, "type": Literal["statement"]},
-    )
-
-    QualifiedStatement = TypedDict(
-        "QualifiedStatement",
-        {
-            "mainsnak": Snak,
-            "qualifiers": Dict[str, List[Snak]],
-            "qualifiers-order": List[str],
-            "type": Literal["statement"],
-        },
-    )
+class ExistingStatement(NewStatement):
+    id: str
+    rank: str
 
 
-Statement = Union[
-    StatementTypes.UnqualifiedStatement, StatementTypes.QualifiedStatement
-]
+class NewClaims(TypedDict):
+    claims: List[NewStatement]
 
 
-class StructuredDataClaims(TypedDict):
-    claims: List[Statement]
-
-
-class TitleValidationResult:
-    Ok = TypedDict("Ok", {"result": Literal["ok"]})
-    Failed = TypedDict(
-        "Failed",
-        {
-            "result": Literal["blacklisted", "duplicate", "invalid", "too_long"],
-            "text": str,
-        },
-    )
-
-
-TitleValidation = Union[TitleValidationResult.Ok, TitleValidationResult.Failed]
+ExistingClaims = Dict[str, List[ExistingStatement]]

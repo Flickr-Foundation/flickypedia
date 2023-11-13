@@ -24,7 +24,7 @@ from wtforms import FormField, HiddenField, SelectField, StringField, SubmitFiel
 from wtforms.validators import DataRequired, Length, ValidationError
 from wtforms.widgets import TextArea
 
-from flickypedia.apis._types import Statement
+from flickypedia.apis._types import NewClaims
 from flickypedia.photos import (
     CategorisedPhotos,
     EnrichedPhoto,
@@ -138,7 +138,7 @@ class PhotoForUpload(TypedDict):
     date_posted: datetime.datetime
     original_url: str
     photo_url: str
-    sdc: List[Statement]
+    sdc: NewClaims
     owner: FlickrUser
 
 

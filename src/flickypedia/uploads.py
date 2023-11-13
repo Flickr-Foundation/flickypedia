@@ -8,7 +8,7 @@ from flask_login import current_user
 from flickr_photos_api import SinglePhoto
 import httpx
 
-from flickypedia.apis._types import Statement
+from flickypedia.apis._types import NewClaims
 from flickypedia.apis.wikimedia import ShortCaption, WikimediaApi
 from flickypedia.apis.wikitext import create_wikitext
 from flickypedia.duplicates import record_file_created_by_flickypedia
@@ -18,7 +18,7 @@ from flickypedia.tasks import ProgressTracker
 
 class UploadRequest(TypedDict):
     photo: SinglePhoto
-    sdc: List[Statement]
+    sdc: NewClaims
     title: str
     caption: ShortCaption
     categories: List[str]
@@ -126,7 +126,7 @@ def upload_single_image(api: WikimediaApi, request: UploadRequest) -> UploadResu
         filename=request["title"], caption=request["caption"]
     )
 
-    api.add_structured_data(filename=request["title"], data={"claims": request["sdc"]})
+    api.add_structured_data(filename=request["title"], data=request["sdc"])
 
     wikimedia_page_title = f"File:{wikimedia_page_title}"
 

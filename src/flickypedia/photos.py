@@ -15,7 +15,7 @@ from flickr_photos_api import (
 )
 from flickr_url_parser import ParseResult
 
-from flickypedia.apis._types import Statement
+from flickypedia.apis._types import NewClaims
 from flickypedia.duplicates import find_duplicates, DuplicateInfo
 
 
@@ -144,7 +144,7 @@ def categorise_photos(all_photos: List[SinglePhoto]) -> CategorisedPhotos:
 
 class EnrichedPhoto(TypedDict):
     photo: SinglePhoto
-    sdc: List[Statement]
+    sdc: NewClaims
     default_categories: List[str]
 
 
