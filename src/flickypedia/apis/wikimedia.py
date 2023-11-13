@@ -10,13 +10,13 @@ See https://api.wikimedia.org/wiki/Authentication
 
 import json
 import re
-from typing import Any, Dict, List, Optional, TypedDict
+from typing import Any, Dict, List, Literal, Optional, TypedDict, Union
 from xml.etree import ElementTree as ET
 
 import httpx
 
 from flickypedia.utils import chunked_iterable
-from ._types import StructuredDataClaims, TitleValidation
+from ._types import NewClaims
 
 
 class UserInfo(TypedDict):
@@ -27,6 +27,20 @@ class UserInfo(TypedDict):
 class ShortCaption(TypedDict):
     language: str
     text: str
+
+
+class TitleValidationResult:
+    Ok = TypedDict("Ok", {"result": Literal["ok"]})
+    Failed = TypedDict(
+        "Failed",
+        {
+            "result": Literal["blacklisted", "duplicate", "invalid", "too_long"],
+            "text": str,
+        },
+    )
+
+
+TitleValidation = Union[TitleValidationResult.Ok, TitleValidationResult.Failed]
 
 
 class WikimediaApi:
@@ -251,7 +265,7 @@ class WikimediaApi:
             }
         )
 
-    def add_structured_data(self, *, filename: str, data: StructuredDataClaims) -> None:
+    def add_structured_data(self, *, filename: str, data: NewClaims) -> None:
         """
         Add some structured data to a file on Wikimedia Commons.
 

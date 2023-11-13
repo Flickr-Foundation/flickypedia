@@ -52,7 +52,7 @@
 </style>
 
 <dl class="structured_data_preview">
-  {% for claim in structured_data %}
+  {% for claim in structured_data.claims %}
   <dt>
     {{ claim.mainsnak.property|wikidata_property_name }}:
   </dt>

@@ -30,7 +30,7 @@ from typing import Dict, List, Literal, TypedDict, Union
 from flickr_photos_api import DateTaken, User as FlickrUser, SinglePhoto
 
 from .flickr_user_ids import lookup_flickr_user_in_wikidata
-from ._types import DataValue, Snak, Statement
+from ._types import DataValue, Snak, NewStatement, NewClaims
 from .wikidata import (
     to_wikidata_date_value,
     to_wikidata_entity_value,
@@ -96,7 +96,7 @@ def _create_qualifiers(
     return result
 
 
-def create_flickr_creator_statement(user: FlickrUser) -> Statement:
+def create_flickr_creator_statement(user: FlickrUser) -> NewStatement:
     """
     Create a structured data statement for a user on Flickr.
 
@@ -151,7 +151,7 @@ def create_flickr_creator_statement(user: FlickrUser) -> Statement:
         }
 
 
-def create_copyright_status_statement(license_id: str) -> Statement:
+def create_copyright_status_statement(license_id: str) -> NewStatement:
     """
     Create a structured data statement for a copyright status.
     """
@@ -212,7 +212,7 @@ def create_copyright_status_statement(license_id: str) -> Statement:
 
 def create_source_data_for_photo(
     photo_id: str, photo_url: str, original_url: str
-) -> Statement:
+) -> NewStatement:
     """
     Create a structured data statement for a Flickr photo.
     """
@@ -254,7 +254,7 @@ def create_source_data_for_photo(
     }
 
 
-def create_license_statement(license_id: str) -> Statement:
+def create_license_statement(license_id: str) -> NewStatement:
     """
     Create a structured data statement for copyright license.
     """
@@ -285,7 +285,7 @@ def create_license_statement(license_id: str) -> Statement:
     }
 
 
-def create_posted_to_flickr_statement(date_posted: datetime.datetime) -> Statement:
+def create_posted_to_flickr_statement(date_posted: datetime.datetime) -> NewStatement:
     """
     Create a structured data statement for date posted to Flickr.
     """
@@ -310,7 +310,7 @@ def create_posted_to_flickr_statement(date_posted: datetime.datetime) -> Stateme
     }
 
 
-def create_date_taken_statement(date_taken: DateTaken) -> Statement:
+def create_date_taken_statement(date_taken: DateTaken) -> NewStatement:
     """
     Create a structured data statement for date taken.
 
@@ -371,7 +371,7 @@ def create_date_taken_statement(date_taken: DateTaken) -> Statement:
         }
 
 
-def create_sdc_claims_for_flickr_photo(photo: SinglePhoto) -> List[Statement]:
+def create_sdc_claims_for_flickr_photo(photo: SinglePhoto) -> NewClaims:
     """
     Creates a complete structured data claim for a Flickr photo.
 
@@ -408,4 +408,4 @@ def create_sdc_claims_for_flickr_photo(photo: SinglePhoto) -> List[Statement]:
     if not photo["date_taken"]["unknown"]:
         statements.append(create_date_taken_statement(date_taken=photo["date_taken"]))
 
-    return statements
+    return {"claims": statements}

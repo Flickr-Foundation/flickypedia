@@ -15,7 +15,7 @@ from flickypedia.apis.structured_data import (
     create_posted_to_flickr_statement,
     create_source_data_for_photo,
 )
-from flickypedia.apis._types import Statement
+from flickypedia.apis._types import NewStatement
 
 
 def prettify_html(html: str, find_kwargs: Optional[Dict[str, Any]] = None) -> str:
@@ -27,9 +27,9 @@ def prettify_html(html: str, find_kwargs: Optional[Dict[str, Any]] = None) -> st
     return soup.prettify(formatter="html")
 
 
-def get_html(claims: List[Statement]) -> str:
+def get_html(claims: List[NewStatement]) -> str:
     html = render_template(
-        "prepare_info/structured_data_preview.html", structured_data=claims
+        "prepare_info/structured_data_preview.html", structured_data={"claims": claims}
     )
 
     html = re.sub(r"\s+", " ", html)
