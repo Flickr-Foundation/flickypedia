@@ -15,8 +15,8 @@ from xml.etree import ElementTree as ET
 
 import httpx
 
-from flickypedia.utils import chunked_iterable
-from ._types import NewClaims
+from flickypedia.utils import chunked_iterable, validate_typeddict
+from ._types import ExistingClaims, NewClaims
 
 
 class UserInfo(TypedDict):
@@ -244,7 +244,8 @@ class WikimediaApi:
         else:  # pragma: no cover
             raise WikimediaApiException(f"Unexpected response: {resp}")
 
-    def get_structured_data(self, *, filename: str) -> Any:
+    # TODO: This method should take a page ID instead of a filename.
+    def get_structured_data(self, *, filename: str) -> ExistingClaims:
         """
         Retrieve the structured data for a file on Wikimedia Commons.
 
@@ -257,13 +258,33 @@ class WikimediaApi:
         See https://www.wikidata.org/w/api.php?modules=wbgetentities&action=help
 
         """
-        return self._get(
+        resp = self._get(
             params={
                 "action": "wbgetentities",
                 "sites": "commonswiki",
                 "titles": f"File:{filename}",
             }
         )
+
+        # This will be an object of the form:
+        #
+        #     {
+        #       "entities": {
+        #         "$pageId": {
+        #           "statements": {…}
+        #         }
+        #       }
+        #     }
+        #
+        # We're only interested in the list of statements for now.
+        assert len(resp["entities"]) == 1
+
+        statements = list(resp["entities"].values())[0]["statements"]
+
+        if statements == []:
+            return {}
+        else:
+            return validate_typeddict(statements, model=ExistingClaims)
 
     def add_structured_data(self, *, filename: str, data: NewClaims) -> None:
         """

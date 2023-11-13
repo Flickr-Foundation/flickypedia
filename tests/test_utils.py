@@ -1,11 +1,15 @@
 import datetime
 import json
+from typing import Any, TypedDict
 
 from cryptography.fernet import Fernet
+from pydantic import ValidationError
+import pytest
 
 from flickypedia.utils import (
     decrypt_string,
     encrypt_string,
+    validate_typeddict,
     DatetimeDecoder,
     DatetimeEncoder,
 )
@@ -29,3 +33,27 @@ def test_can_json_round_trip() -> None:
     parsed_json_string = json.loads(json_string, cls=DatetimeDecoder)
 
     assert parsed_json_string == d
+
+
+class Shape(TypedDict):
+    color: str
+    sides: int
+
+
+@pytest.mark.parametrize(
+    "data",
+    [
+        {"color": "red"},
+        {"sides": 4},
+        {"color": "red", "sides": "four"},
+        {"color": (255, 0, 0), "sides": 4},
+        {"color": "red", "sides": 4, "angle": 36},
+    ],
+)
+def test_validate_typeddict_flags_incorrect_data(data: Any) -> None:
+    with pytest.raises(ValidationError):
+        validate_typeddict(data, model=Shape)
+
+
+def test_validate_typeddict_allows_valid_data() -> None:
+    validate_typeddict({"color": "red", "sides": 4}, model=Shape)

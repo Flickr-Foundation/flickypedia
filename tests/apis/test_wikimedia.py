@@ -183,22 +183,22 @@ class TestAddStructuredData:
         # This test was run against one of my Wikimedia Commons images
         # which didn't have any SDC attached; I added the license statement
         # and checked that it was updated as part of the process.
-        before_data = wikimedia_api.get_structured_data(
+        before_statements = wikimedia_api.get_structured_data(
             filename="PrintedLibraryOfCongressSubjectHeadings.jpg"
         )
 
-        assert "P275" not in before_data["entities"]["M138833893"]["statements"]
+        assert "P275" not in before_statements
 
         wikimedia_api.add_structured_data(
             filename="PrintedLibraryOfCongressSubjectHeadings.jpg",
             data={"claims": [create_license_statement(license_id="cc-by-2.0")]},
         )
 
-        after_data = wikimedia_api.get_structured_data(
+        after_statements = wikimedia_api.get_structured_data(
             filename="PrintedLibraryOfCongressSubjectHeadings.jpg"
         )
 
-        assert after_data["entities"]["M138833893"]["statements"]["P275"] == [
+        assert after_statements["P275"] == [
             {
                 "id": "M138833893$3EDD9F54-EFDF-4D25-A431-F4A03486265D",
                 "mainsnak": {

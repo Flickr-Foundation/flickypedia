@@ -16,6 +16,7 @@ from urllib.parse import quote as urlquote, urlparse
 
 from cryptography.fernet import Fernet
 from flask import render_template, request
+from pydantic import ConfigDict, TypeAdapter
 
 
 def encrypt_string(key: bytes, plaintext: str) -> bytes:
@@ -123,3 +124,18 @@ def chunked_iterable(
         if not chunk:
             break
         yield chunk
+
+
+def validate_typeddict(t: Any, model: type[T]) -> T:
+    """
+    Check that some data matches a TypedDict.
+
+    We use this to check that the structured data we receive
+    from Wikimedia matches our definitions, so we can use it
+    in type-checked Python.
+
+    See https://stackoverflow.com/a/77386216/1558022
+    """
+    model.__pydantic_config__ = ConfigDict(extra="forbid")  # type: ignore
+    TypedDictValidator = TypeAdapter(model)
+    return TypedDictValidator.validate_python(t, strict=True)

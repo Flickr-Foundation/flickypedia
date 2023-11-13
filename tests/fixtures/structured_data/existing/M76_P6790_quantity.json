@@ -1,0 +1,20 @@
+{
+  "P6790": [
+    {
+      "id": "M76$71C303E3-1E8C-4C79-90D1-BB277551FBF5",
+      "mainsnak": {
+        "datavalue": {
+          "type": "quantity",
+          "value": {
+            "amount": "+3.5",
+            "unit": "1"
+          }
+        },
+        "property": "P6790",
+        "snaktype": "value"
+      },
+      "rank": "normal",
+      "type": "statement"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "P1259": [
+    {
+      "id": "M76$2DA5F4AA-859C-4D02-8C80-6FE2A1A6A5C7",
+      "mainsnak": {
+        "datavalue": {
+          "type": "globecoordinate",
+          "value": {
+            "altitude": null,
+            "globe": "http://www.wikidata.org/entity/Q2",
+            "latitude": 52.9913,
+            "longitude": 6.5702,
+            "precision": 0.0001
+          }
+        },
+        "property": "P1259",
+        "snaktype": "value"
+      },
+      "rank": "normal",
+      "type": "statement"
+    }
+  ]
+}
