@@ -12,7 +12,7 @@ authors = [
 maintainers = [
   {name = "Alex Chan", email="alex@flickr.org"},
 ]
-requires-python = ">=3.8"
+requires-python = ">=3.12"
 dynamic = ["dependencies", "version"]
 
 [project.urls]
