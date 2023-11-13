@@ -32,3 +32,14 @@ def run_dev_server(port: int, host: str, debug: bool) -> None:
         sys.exit("No Wikimedia client secret provided! Set WIKIMEDIA_CLIENT_SECRET.")
 
     app.run(debug=debug, port=port, host=host)
+
+
+@main.command(help="Start the Celery background worker.")
+def start_celery_worker() -> None:
+    from flickypedia import create_app
+    from flickypedia.tasks import celery_init_app
+
+    app = create_app()
+    celery = celery_init_app(app)
+    worker = celery.Worker()
+    worker.start()
