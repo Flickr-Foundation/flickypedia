@@ -30,7 +30,7 @@ def test_renders_form_for_single_photo(
     logged_in_client: FlaskClient, app: Flask, vcr_cassette: str
 ) -> None:
     get_photos_data = get_typed_fixture(
-        path="flickr_api/single_photo-32812033544.json", model=SinglePhotoData
+        path="flickr_api/single_photo-32812033543.json", model=SinglePhotoData
     )
 
     cache_id = save_cached_photos_data(get_photos_data)
@@ -81,7 +81,7 @@ def test_blocks_uploads_with_an_invalid_title(
     logged_in_client: FlaskClient, app: Flask, vcr_cassette: str
 ) -> None:
     get_photos_data = get_typed_fixture(
-        path="flickr_api/single_photo-32812033544.json", model=SinglePhotoData
+        path="flickr_api/single_photo-32812033543.json", model=SinglePhotoData
     )
 
     cache_id = save_cached_photos_data(get_photos_data)
@@ -103,7 +103,7 @@ def test_blocks_uploads_with_a_too_long_caption(
     logged_in_client: FlaskClient, app: Flask, vcr_cassette: str
 ) -> None:
     get_photos_data = get_typed_fixture(
-        path="flickr_api/single_photo-32812033544.json", model=SinglePhotoData
+        path="flickr_api/single_photo-32812033543.json", model=SinglePhotoData
     )
 
     cache_id = save_cached_photos_data(get_photos_data)

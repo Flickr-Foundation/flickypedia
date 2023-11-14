@@ -1,13 +1,12 @@
-import json
-
+import bs4
 from flask import Flask
 from flask.testing import FlaskClient
 from flickr_photos_api import FlickrPhotosApi
 import pytest
 
-import bs4
-
-from utils import minify
+from flickypedia.apis.flickr import PhotosInAlbumData, SinglePhotoData
+from flickypedia.views.select_photos import save_cached_photos_data
+from utils import minify, get_typed_fixture
 
 
 @pytest.mark.parametrize(
@@ -197,22 +196,21 @@ def test_selecting_photo_redirects_you_to_prepare_info(
 ) -> None:
     flickr_url = "https://www.flickr.com/photos/coast_guard/32812033543/"
 
-    cache_dir = app.config["FLICKR_API_RESPONSE_CACHE"]
+    get_photos_data = get_typed_fixture(
+        path="flickr_api/single_photo-32812033543.json", model=SinglePhotoData
+    )
 
-    with open(f"{cache_dir}/1234567890.json", "w") as outfile:
-        with open("tests/fixtures/flickr_api/32812033543.json") as infile:
-            single_photo_resp = json.load(infile)
-        outfile.write(json.dumps({"value": {"photos": [single_photo_resp]}}))
+    cache_id = save_cached_photos_data(get_photos_data)
 
     resp = logged_in_client.post(
         f"/select_photos?flickr_url={flickr_url}",
-        data={"photo_32812033543": "on", "cache_id": "1234567890"},
+        data={"photo_32812033543": "on", "cache_id": cache_id},
     )
 
     assert resp.status_code == 302
     assert (
         resp.headers["location"]
-        == "/prepare_info?selected_photo_ids=32812033543&cache_id=1234567890"
+        == f"/prepare_info?selected_photo_ids=32812033543&cache_id={cache_id}"
     )
 
 
@@ -221,26 +219,25 @@ def test_selecting_multiple_photo_redirects_you_to_prepare_info(
 ) -> None:
     flickr_url = "https://www.flickr.com/photos/icann/albums/72177720312192106"
 
-    cache_dir = app.config["FLICKR_API_RESPONSE_CACHE"]
+    get_photos_data = get_typed_fixture(
+        path="flickr_api/album-72177720312192106.json", model=PhotosInAlbumData
+    )
 
-    with open(f"{cache_dir}/1234567890.json", "w") as outfile:
-        with open("tests/fixtures/flickr_api/album-72177720312192106.json") as infile:
-            album_resp = json.load(infile)
-        outfile.write(json.dumps({"value": album_resp}))
+    cache_id = save_cached_photos_data(get_photos_data)
 
     resp = logged_in_client.post(
         f"/select_photos?flickr_url={flickr_url}",
         data={
             "photo_53285005734": "on",
             "photo_53283740177": "on",
-            "cache_id": "1234567890",
+            "cache_id": cache_id,
         },
     )
 
     assert resp.status_code == 302
     assert (
         resp.headers["location"]
-        == "/prepare_info?selected_photo_ids=53285005734,53283740177&cache_id=1234567890"
+        == f"/prepare_info?selected_photo_ids=53285005734,53283740177&cache_id={cache_id}"
     )
 
 
