@@ -73,9 +73,10 @@
       }
     }
 
-    /* If we're in an album, we don't bother showing the owner name on
-       the photos, so we can move this up a line. */
-    .photoslist-album li label .license {
+    /* If we're in an album or photostream, we don't bother showing the
+     * owner name on the photos, so we can move this up a line. */
+    .photoslist-album li label .license,
+    .photoslist-user li label .license {
       grid-row: 1 / 2;
     }
   }

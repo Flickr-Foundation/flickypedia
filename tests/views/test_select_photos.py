@@ -5,6 +5,8 @@ from flask.testing import FlaskClient
 from flickr_photos_api import FlickrPhotosApi
 import pytest
 
+import bs4
+
 from utils import minify
 
 
@@ -59,6 +61,55 @@ def test_single_photo_with_bad_license_is_not_allowed(
     assert "This photo can’t be used" in resp.data.decode("utf8")
 
 
+@pytest.mark.parametrize(
+    ["flickr_url", "description"],
+    [
+        pytest.param(
+            "https://www.flickr.com/photos/aljazeeraenglish/albums/72157626164453131/",
+            "You’re looking at Al Jazeera English’s album called “Faces from the Libyan front”.",
+            id="album",
+        ),
+        pytest.param(
+            "https://www.flickr.com/photos/george/",
+            "You’re looking at photos taken by George Oates.",
+            id="user",
+        ),
+        pytest.param(
+            "https://www.flickr.com/photos/flickr/galleries/72157720348635494/",
+            "You’re looking at Flickr’s gallery called “Popular Creative Commons Licensed Photos Shared in 2021”.",
+            id="gallery",
+        ),
+        pytest.param(
+            "https://www.flickr.com/groups/uruguay/",
+            "You’re looking at photos from the Uruguay group.",
+            id="group",
+        ),
+        pytest.param(
+            "https://www.flickr.com/photos/tags/nature/",
+            "You’re looking at photos tagged with nature.",
+            id="tag",
+        ),
+    ],
+)
+def test_shows_correct_description(
+    logged_in_client: FlaskClient,
+    flickr_api: FlickrPhotosApi,
+    flickr_url: str,
+    description: str,
+) -> None:
+    resp = logged_in_client.get(f"/select_photos?flickr_url={flickr_url}")
+
+    assert resp.status_code == 200
+
+    soup = bs4.BeautifulSoup(minify(resp.data), "html.parser")
+
+    description_elem = soup.find("h2", attrs={"class": "select_photos_description"})
+    assert description_elem.getText().strip() == description  # type: ignore
+
+    # Check there's at least one photo in the list.
+    assert len(soup.find("ul", attrs={"class": "photoslist"}).find_all("li")) > 1  # type: ignore
+
+
 def test_gets_album_on_flickr(
     logged_in_client: FlaskClient, flickr_api: FlickrPhotosApi
 ) -> None:
@@ -67,16 +118,6 @@ def test_gets_album_on_flickr(
     )
 
     assert resp.status_code == 200
-
-    html = minify(resp.data.decode("utf8"))
-
-    # These assertions are all split into separate checks because
-    # this expression is split into different <span> tags.
-    assert "You’re looking at" in html
-    assert "Al Jazeera English" in html
-    assert "’s album called" in html
-    assert "“Faces from the Libyan front”" in html
-
     assert b"by Al Jazeera English" not in resp.data
 
 
@@ -94,9 +135,24 @@ def test_gets_album_on_flickr(
             id="album",
         ),
         pytest.param(
+            "https://www.flickr.com/photos/thisuserdoesnotexist/",
+            b"There is no user at that URL!",
+            id="album",
+        ),
+        pytest.param(
             "https://www.flickr.com/photos/doesnotexist/galleries/12345678901234567890/",
             b"There is no gallery at that URL!",
             id="gallery",
+        ),
+        pytest.param(
+            "https://www.flickr.com/groups/doesnotexist/",
+            b"There is no group at that URL!",
+            id="group",
+        ),
+        pytest.param(
+            "https://www.flickr.com/photos/tags/ThereIsNothingInThisTag/",
+            b"There are no photos with that tag!",
+            id="tag",
         ),
     ],
 )

@@ -54,8 +54,9 @@ from flask_wtf import FlaskForm
 from wtforms import BooleanField, HiddenField, SubmitField
 from wtforms.validators import DataRequired
 
+from flickypedia.apis.flickr import get_photos_from_flickr, GetPhotosData
 from flickypedia.utils import DatetimeDecoder, DatetimeEncoder
-from flickypedia.photos import categorise_photos, get_photos_from_flickr, GetPhotosData
+from flickypedia.photos import categorise_photos
 from .get_photos import FlickrPhotoURLForm
 from ._types import ViewResponse
 
@@ -149,7 +150,6 @@ def select_photos() -> ViewResponse:
             photo_data = get_photos_from_flickr(parsed_url)
             cache_id = save_cached_photos_data(photo_data)
         except ResourceNotFound:
-            # TODO: Add tests for this
             label = {"single_photo": "photo"}.get(
                 parsed_url["type"], parsed_url["type"]
             )
@@ -167,6 +167,11 @@ def select_photos() -> ViewResponse:
             )
             session["flickr_url"] = flickr_url
             return redirect(url_for("get_photos"))
+
+    if parsed_url["type"] == "tag" and not photo_data["photos"]:
+        flash("There are no photos with that tag!", category="flickr_url")
+        session["flickr_url"] = flickr_url
+        return redirect(url_for("get_photos"))
 
     # Categorise the photos, so we know if there are any duplicates
     # or photos with disallowed licenses.

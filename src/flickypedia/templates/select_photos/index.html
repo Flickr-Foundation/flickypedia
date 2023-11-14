@@ -37,7 +37,7 @@
 
       {{ select_photos_form.cache_id }}
 
-      <ul class="plain_list photoslist-{{ parsed_url.type }}">
+      <ul class="plain_list photoslist photoslist-{{ parsed_url.type }}">
         {% for field in select_photos_form %}
           {% if field.id.startswith('photo_') %}
             <li id="li-{{ field.id }}">
@@ -51,7 +51,7 @@
                     Every photo in an album belongs to the album owner, so
                     we don’t need to repeat their name on every photo.
                   #}
-                  {% if parsed_url.type != 'album' %}
+                  {% if parsed_url.type != 'album' and parsed_url.type != 'user' %}
                   <span class="owner">by {{ photo.owner.realname or photo.owner.username }}</span>
                   {% endif %}
 

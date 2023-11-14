@@ -1,30 +1,24 @@
-{% if parsed_url.type == 'single_photo' %}
-  <h2 class="select_photos_description">
-    {% if photos.available -%}
-      You’re looking at
-    {%- else -%}
-      You looked up
-    {%- endif %}
+<h2 class="select_photos_description">
+  {% if photos.available -%}
+    You’re looking at
+  {%- else -%}
+    You looked up
+  {%- endif %}
+  
+  {% if parsed_url.type == 'single_photo' %}
     <span class="key_info">{{ photo_data.owner.realname or photo_data.owner.username }}</span>’s photo.
-  </h2>
-{% elif parsed_url.type == 'album' %}
-  <h2 class="select_photos_description">
-    {% if photos.available -%}
-      You’re looking at
-    {%- else -%}
-      You looked up
-    {%- endif %}
+  {% elif parsed_url.type == 'album' %}
     <span class="key_info">{{ photo_data.album.owner.realname or photo_data.album.owner.username }}</span>’s album
     called <span class="key_info">“{{ photo_data.album.title }}”</span>.
-  </h2>
-{% elif parsed_url.type == 'gallery' %}
-  <h2 class="select_photos_description">
-    {% if photos.available -%}
-      You’re looking at
-    {%- else -%}
-      You looked up
-    {%- endif %}
+  {% elif parsed_url.type == 'user' %}
+    photos taken by <span class="key_info">{{ photo_data.owner.realname or photo_data.owner.username }}</span>.
+  {% elif parsed_url.type == 'group' %}
+    photos from the <span class="key_info">{{ photo_data.group.name }}</span> group.
+  {% elif parsed_url.type == 'gallery' %}
     <span class="key_info">{{ photo_data.gallery.owner_name }}</span>’s gallery
     called <span class="key_info">“{{ photo_data.gallery.title }}”</span>.
-  </h2>
-{% endif %}
+  {% elif parsed_url.type == 'tag' %}
+    photos tagged with <span class="key_info">{{ parsed_url.tag }}</span>.
+  {% endif %}
+</h2>  
+
