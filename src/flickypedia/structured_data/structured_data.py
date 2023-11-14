@@ -25,74 +25,19 @@ is supporting that function.
 """
 
 import datetime
-from typing import Dict, List, Literal, TypedDict, Union
+from typing import List
 
 from flickr_photos_api import DateTaken, User as FlickrUser, SinglePhoto
 
 from flickypedia.apis.flickr_user_ids import lookup_flickr_user_in_wikidata
-from ._types import DataValue, Snak, NewStatement, NewClaims
+from ._qualifiers import create_qualifiers as create_qualifiers, QualifierValues
+from ._types import NewStatement, NewClaims
 from .wikidata import (
     to_wikidata_date_value,
     to_wikidata_entity_value,
     WikidataEntities,
     WikidataProperties,
 )
-
-
-class QualifierValueTypes:
-    String = TypedDict(
-        "String", {"type": Literal["string"], "property": str, "value": str}
-    )
-    Entity = TypedDict(
-        "Entity", {"type": Literal["entity"], "property": str, "entity_id": str}
-    )
-    Date = TypedDict(
-        "Date",
-        {
-            "type": Literal["date"],
-            "property": str,
-            "date": datetime.datetime,
-            "precision": str,
-        },
-    )
-
-
-QualifierValues = Union[
-    QualifierValueTypes.String,
-    QualifierValueTypes.Entity,
-    QualifierValueTypes.Date,
-]
-
-
-def _create_qualifiers(
-    qualifier_values: List[QualifierValues],
-) -> Dict[str, List[Snak]]:
-    result: Dict[str, List[Snak]] = {}
-
-    for qualifier in qualifier_values:
-        property_id = qualifier["property"]
-
-        datavalue: DataValue
-
-        if qualifier["type"] == "string":
-            datavalue = {"type": "string", "value": qualifier["value"]}
-        elif qualifier["type"] == "entity":
-            datavalue = to_wikidata_entity_value(entity_id=qualifier["entity_id"])
-        else:
-            assert qualifier["type"] == "date"
-            datavalue = to_wikidata_date_value(
-                qualifier["date"], precision=qualifier["precision"]
-            )
-
-        result[property_id] = [
-            {
-                "datavalue": datavalue,
-                "property": property_id,
-                "snaktype": "value",
-            }
-        ]
-
-    return result
 
 
 def create_flickr_creator_statement(user: FlickrUser) -> NewStatement:
@@ -140,7 +85,7 @@ def create_flickr_creator_statement(user: FlickrUser) -> NewStatement:
                 "snaktype": "somevalue",
                 "property": WikidataProperties.Creator,
             },
-            "qualifiers": _create_qualifiers(qualifier_values),
+            "qualifiers": create_qualifiers(qualifier_values),
             "qualifiers-order": [
                 WikidataProperties.FlickrUserId,
                 WikidataProperties.AuthorName,
@@ -187,7 +132,7 @@ def create_copyright_status_statement(license_id: str) -> NewStatement:
                     entity_id=WikidataEntities.PublicDomain
                 ),
             },
-            "qualifiers": _create_qualifiers(qualifier_values),
+            "qualifiers": create_qualifiers(qualifier_values),
             "qualifiers-order": [
                 WikidataProperties.AppliesToJurisdiction,
                 WikidataProperties.DeterminationMethod,
@@ -242,7 +187,7 @@ def create_source_data_for_photo(
                 entity_id=WikidataEntities.FileAvailableOnInternet
             ),
         },
-        "qualifiers": _create_qualifiers(qualifier_values),
+        "qualifiers": create_qualifiers(qualifier_values),
         "qualifiers-order": [
             WikidataProperties.FlickrPhotoId,
             WikidataProperties.DescribedAtUrl,
@@ -276,7 +221,7 @@ def create_license_statement(license_id: str) -> NewStatement:
             "property": WikidataProperties.CopyrightLicense,
             "datavalue": to_wikidata_entity_value(entity_id=wikidata_license_id),
         },
-        "qualifiers": _create_qualifiers(qualifier_values),
+        "qualifiers": create_qualifiers(qualifier_values),
         "qualifiers-order": [
             WikidataProperties.DeterminationMethod,
         ],
@@ -303,7 +248,7 @@ def create_posted_to_flickr_statement(date_posted: datetime.datetime) -> NewStat
             "property": WikidataProperties.PublishedIn,
             "datavalue": to_wikidata_entity_value(entity_id=WikidataEntities.Flickr),
         },
-        "qualifiers": _create_qualifiers(qualifier_values),
+        "qualifiers": create_qualifiers(qualifier_values),
         "qualifiers-order": [WikidataProperties.PublicationDate],
         "type": "statement",
     }
@@ -364,7 +309,7 @@ def create_date_taken_statement(date_taken: DateTaken) -> NewStatement:
                 "property": WikidataProperties.Inception,
                 "snaktype": "value",
             },
-            "qualifiers": _create_qualifiers(qualifier_values),
+            "qualifiers": create_qualifiers(qualifier_values),
             "qualifiers-order": [WikidataProperties.SourcingCircumstances],
             "type": "statement",
         }
