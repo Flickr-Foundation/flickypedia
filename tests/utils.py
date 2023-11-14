@@ -9,7 +9,7 @@ from flask import session
 from flask_login import login_user
 
 from flickypedia.auth import user_db, WikimediaUserSession, SESSION_ENCRYPTION_KEY
-from flickypedia.utils import encrypt_string, validate_typeddict
+from flickypedia.utils import DatetimeDecoder, encrypt_string, validate_typeddict
 
 
 T = TypeVar("T")
@@ -69,4 +69,4 @@ def get_typed_fixture(path: str, model: type[T]) -> T:
     specified model.
     """
     with open(os.path.join("tests/fixtures", path)) as f:
-        return validate_typeddict(json.load(f), model)
+        return validate_typeddict(json.load(f, cls=DatetimeDecoder), model)
