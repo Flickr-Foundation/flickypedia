@@ -47,6 +47,7 @@ class WikidataEntities:
     # e.g. https://www.wikidata.org/wiki/Q103204
     Circa = "Q5727902"
     Copyrighted = "Q50423863"
+    DedicatedToPublicDomainByCopyrightOwner = "Q88088423"
     FileAvailableOnInternet = "Q74228490"
     Flickr = "Q103204"
     GregorianCalendar = "Q1985727"
