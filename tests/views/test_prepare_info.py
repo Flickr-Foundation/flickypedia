@@ -2,8 +2,10 @@ from flask import Flask
 from flask.testing import FlaskClient
 import pytest
 
+from flickypedia.apis.flickr import SinglePhotoData, PhotosInAlbumData
+from flickypedia.views.select_photos import save_cached_photos_data
 from flickypedia.views import truncate_description
-from utils import minify
+from utils import minify, get_typed_fixture
 
 
 @pytest.mark.parametrize(
@@ -27,14 +29,14 @@ def test_rejects_pages_with_bad_query_params(
 def test_renders_form_for_single_photo(
     logged_in_client: FlaskClient, app: Flask, vcr_cassette: str
 ) -> None:
-    cache_dir = app.config["FLICKR_API_RESPONSE_CACHE"]
+    get_photos_data = get_typed_fixture(
+        path="flickr_api/single_photo-32812033543.json", model=SinglePhotoData
+    )
 
-    with open("tests/fixtures/flickr_api/single_photo-32812033544.json") as in_file:
-        with open(f"{cache_dir}/1234567890.json", "w") as out_file:
-            out_file.write('{"value": %s}' % in_file.read())
+    cache_id = save_cached_photos_data(get_photos_data)
 
     resp = logged_in_client.get(
-        "/prepare_info?selected_photo_ids=32812033543&cache_id=1234567890",
+        f"/prepare_info?selected_photo_ids=32812033543&cache_id={cache_id}",
     )
 
     assert resp.status_code == 200
@@ -51,14 +53,14 @@ def test_renders_form_for_single_photo(
 def test_renders_form_for_multiple_photo(
     logged_in_client: FlaskClient, app: Flask, vcr_cassette: str
 ) -> None:
-    cache_dir = app.config["FLICKR_API_RESPONSE_CACHE"]
+    get_photos_data = get_typed_fixture(
+        path="flickr_api/album-72177720312192106.json", model=PhotosInAlbumData
+    )
 
-    with open("tests/fixtures/flickr_api/album-72177720312192106.json") as in_file:
-        with open(f"{cache_dir}/1234567890.json", "w") as out_file:
-            out_file.write('{"value": %s}' % in_file.read())
+    cache_id = save_cached_photos_data(get_photos_data)
 
     resp = logged_in_client.get(
-        "/prepare_info?selected_photo_ids=53285005734,53283740177&cache_id=1234567890",
+        f"/prepare_info?selected_photo_ids=53285005734,53283740177&cache_id={cache_id}",
     )
 
     assert resp.status_code == 200
@@ -78,14 +80,14 @@ def test_renders_form_for_multiple_photo(
 def test_blocks_uploads_with_an_invalid_title(
     logged_in_client: FlaskClient, app: Flask, vcr_cassette: str
 ) -> None:
-    cache_dir = app.config["FLICKR_API_RESPONSE_CACHE"]
+    get_photos_data = get_typed_fixture(
+        path="flickr_api/single_photo-32812033543.json", model=SinglePhotoData
+    )
 
-    with open("tests/fixtures/flickr_api/single_photo-32812033544.json") as in_file:
-        with open(f"{cache_dir}/1234567890.json", "w") as out_file:
-            out_file.write('{"value": %s}' % in_file.read())
+    cache_id = save_cached_photos_data(get_photos_data)
 
     resp = logged_in_client.post(
-        "/prepare_info?selected_photo_ids=32812033543&cache_id=1234567890",
+        f"/prepare_info?selected_photo_ids=32812033543&cache_id={cache_id}",
         data={
             "photo_32812033543-title": "a" * 240,
             "photo_32812033543-short_caption": "A photo with a very long title",
@@ -100,14 +102,14 @@ def test_blocks_uploads_with_an_invalid_title(
 def test_blocks_uploads_with_a_too_long_caption(
     logged_in_client: FlaskClient, app: Flask, vcr_cassette: str
 ) -> None:
-    cache_dir = app.config["FLICKR_API_RESPONSE_CACHE"]
+    get_photos_data = get_typed_fixture(
+        path="flickr_api/single_photo-32812033543.json", model=SinglePhotoData
+    )
 
-    with open("tests/fixtures/flickr_api/single_photo-32812033544.json") as in_file:
-        with open(f"{cache_dir}/1234567890.json", "w") as out_file:
-            out_file.write('{"value": %s}' % in_file.read())
+    cache_id = save_cached_photos_data(get_photos_data)
 
     resp = logged_in_client.post(
-        "/prepare_info?selected_photo_ids=32812033543&cache_id=1234567890",
+        f"/prepare_info?selected_photo_ids=32812033543&cache_id={cache_id}",
         data={
             "photo_32812033543-title": "A photo with a reasonable title",
             "photo_32812033543-short_caption": "A photo with a very long caption" * 100,
@@ -156,14 +158,14 @@ def test_escapes_html_in_description(logged_in_client: FlaskClient, app: Flask) 
     [1]: https://www.flickr.com/html.gne
 
     """
-    cache_dir = app.config["FLICKR_API_RESPONSE_CACHE"]
+    get_photos_data = get_typed_fixture(
+        path="flickr_api/single_photo-4452100167.json", model=SinglePhotoData
+    )
 
-    with open("tests/fixtures/flickr_api/single_photo-4452100167.json") as in_file:
-        with open(f"{cache_dir}/4452100167.json", "w") as out_file:
-            out_file.write('{"value": %s}' % in_file.read())
+    cache_id = save_cached_photos_data(get_photos_data)
 
     resp = logged_in_client.get(
-        "/prepare_info?selected_photo_ids=4452100167&cache_id=4452100167",
+        f"/prepare_info?selected_photo_ids=4452100167&cache_id={cache_id}",
     )
 
     assert (

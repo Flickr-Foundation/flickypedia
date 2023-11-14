@@ -38,7 +38,6 @@
           "width": 75,
           "height": 75,
           "source": "https://live.staticflickr.com/2903/32812033543_c1b3784192_s.jpg",
-          "url": "https://www.flickr.com/photos/coast_guard/32812033543/sizes/sq/",
           "media": "photo"
         },
         {
@@ -46,7 +45,6 @@
           "width": 150,
           "height": 150,
           "source": "https://live.staticflickr.com/2903/32812033543_c1b3784192_q.jpg",
-          "url": "https://www.flickr.com/photos/coast_guard/32812033543/sizes/q/",
           "media": "photo"
         },
         {
@@ -54,7 +52,6 @@
           "width": 100,
           "height": 61,
           "source": "https://live.staticflickr.com/2903/32812033543_c1b3784192_t.jpg",
-          "url": "https://www.flickr.com/photos/coast_guard/32812033543/sizes/t/",
           "media": "photo"
         },
         {
@@ -62,7 +59,6 @@
           "width": 240,
           "height": 146,
           "source": "https://live.staticflickr.com/2903/32812033543_c1b3784192_m.jpg",
-          "url": "https://www.flickr.com/photos/coast_guard/32812033543/sizes/s/",
           "media": "photo"
         },
         {
@@ -70,7 +66,6 @@
           "width": 320,
           "height": 195,
           "source": "https://live.staticflickr.com/2903/32812033543_c1b3784192_n.jpg",
-          "url": "https://www.flickr.com/photos/coast_guard/32812033543/sizes/n/",
           "media": "photo"
         },
         {
@@ -78,7 +73,6 @@
           "width": 400,
           "height": 243,
           "source": "https://live.staticflickr.com/2903/32812033543_c1b3784192_w.jpg",
-          "url": "https://www.flickr.com/photos/coast_guard/32812033543/sizes/w/",
           "media": "photo"
         },
         {
@@ -86,7 +80,6 @@
           "width": 500,
           "height": 304,
           "source": "https://live.staticflickr.com/2903/32812033543_c1b3784192.jpg",
-          "url": "https://www.flickr.com/photos/coast_guard/32812033543/sizes/m/",
           "media": "photo"
         },
         {
@@ -94,7 +87,6 @@
           "width": 640,
           "height": 389,
           "source": "https://live.staticflickr.com/2903/32812033543_c1b3784192_z.jpg",
-          "url": "https://www.flickr.com/photos/coast_guard/32812033543/sizes/z/",
           "media": "photo"
         },
         {
@@ -102,7 +94,6 @@
           "width": 800,
           "height": 486,
           "source": "https://live.staticflickr.com/2903/32812033543_c1b3784192_c.jpg",
-          "url": "https://www.flickr.com/photos/coast_guard/32812033543/sizes/c/",
           "media": "photo"
         },
         {
@@ -110,7 +101,6 @@
           "width": 1024,
           "height": 623,
           "source": "https://live.staticflickr.com/2903/32812033543_c1b3784192_b.jpg",
-          "url": "https://www.flickr.com/photos/coast_guard/32812033543/sizes/l/",
           "media": "photo"
         },
         {
@@ -118,7 +108,6 @@
           "width": 1600,
           "height": 973,
           "source": "https://live.staticflickr.com/2903/32812033543_c34e251a30_h.jpg",
-          "url": "https://www.flickr.com/photos/coast_guard/32812033543/sizes/h/",
           "media": "photo"
         },
         {
@@ -126,7 +115,6 @@
           "width": 2048,
           "height": 1245,
           "source": "https://live.staticflickr.com/2903/32812033543_04e9bcc8a2_k.jpg",
-          "url": "https://www.flickr.com/photos/coast_guard/32812033543/sizes/k/",
           "media": "photo"
         },
         {
@@ -134,10 +122,21 @@
           "width": 5172,
           "height": 3145,
           "source": "https://live.staticflickr.com/2903/32812033543_41cc4e453a_o.jpg",
-          "url": "https://www.flickr.com/photos/coast_guard/32812033543/sizes/o/",
           "media": "photo"
         }
       ]
     }
-  ]
+  ],
+  "owner": {
+    "id": "30884892@N08",
+    "username": "U.S. Coast Guard",
+    "realname": "Coast Guard",
+    "path_alias": "coast_guard",
+    "photos_url": "https://www.flickr.com/photos/coast_guard/",
+    "profile_url": "https://www.flickr.com/people/coast_guard/"
+  },
+  "retrieved_at": {
+    "type": "datetime.datetime",
+    "value": "2023-11-14T16:48:12+00:00"
+  }
 }

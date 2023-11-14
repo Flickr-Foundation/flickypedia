@@ -25,7 +25,7 @@ class RetrievedAtMixin(TypedDict):
     retrieved_at: datetime.datetime
 
 
-class SinglePhotoData(TypedDict, RetrievedAtMixin):
+class SinglePhotoData(RetrievedAtMixin):
     photos: List[SinglePhoto]
     owner: FlickrUser
 

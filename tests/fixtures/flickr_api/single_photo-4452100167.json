@@ -127,5 +127,9 @@
     "path_alias": "joxxsx",
     "photos_url": "https://www.flickr.com/photos/joxxsx/",
     "profile_url": "https://www.flickr.com/people/joxxsx/"
+  },
+  "retrieved_at": {
+    "type": "datetime.datetime",
+    "value": "2023-11-14T16:56:23+00:00"
   }
 }
