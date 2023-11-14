@@ -108,6 +108,7 @@ def test_create_source_data_for_photo() -> None:
         photo_id="53248015596",
         photo_url="https://www.flickr.com/photos/199246608@N02/53248015596/",
         original_url="https://live.staticflickr.com/65535/53248015596_c03f8123cf_o_d.jpg",
+        retrieved_at=datetime.datetime(2023, 11, 14, 16, 15, 0),
     )
     expected = get_statement_fixture(filename="photo_source_data.json")
 
@@ -225,8 +226,10 @@ def test_create_sdc_claims_for_flickr_photo_without_date_taken(
         "original_format": "jpg",
     }
 
-    actual = create_sdc_claims_for_flickr_photo(photo=photo)
-    expected = get_claims_fixture(filename="photo_53248015596.json")
+    actual = create_sdc_claims_for_flickr_photo(
+        photo=photo, retrieved_at=datetime.datetime(2023, 11, 14, 16, 15, 0)
+    )
+    expected = get_claims_fixture("photo_53248015596.json")
 
     assert actual == expected
 
@@ -271,7 +274,9 @@ def test_create_sdc_claims_for_flickr_photo_with_date_taken(
         "original_format": "jpg",
     }
 
-    actual = create_sdc_claims_for_flickr_photo(photo=photo)
-    expected = get_claims_fixture(filename="photo_53234140350.json")
+    actual = create_sdc_claims_for_flickr_photo(
+        photo=photo, retrieved_at=datetime.datetime(2023, 11, 14, 16, 15, 0)
+    )
+    expected = get_claims_fixture("photo_53234140350.json")
 
     assert actual == expected

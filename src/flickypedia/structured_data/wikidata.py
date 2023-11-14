@@ -33,6 +33,7 @@ class WikidataProperties:
     Inception = "P571"
     PublicationDate = "P577"
     PublishedIn = "P1433"
+    Retrieved = "P813"
     SourcingCircumstances = "P1480"
 
 

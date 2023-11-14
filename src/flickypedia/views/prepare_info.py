@@ -215,7 +215,9 @@ def prepare_info() -> ViewResponse:
 
     # Next add the structured data to the photos.
     enriched_photos = enrich_photo(
-        selected_photos, wikimedia_username=current_user.name
+        selected_photos,
+        wikimedia_username=current_user.name,
+        retrieved_at=api_response["retrieved_at"],
     )
 
     # Now construct the "prepare info" form.
