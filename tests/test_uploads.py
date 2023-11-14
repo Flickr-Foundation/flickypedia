@@ -54,7 +54,9 @@ def test_upload_single_image(app: Flask, wikimedia_api: WikimediaApi) -> None:
         wikimedia_api,
         request={
             "photo": photo,
-            "sdc": create_sdc_claims_for_flickr_photo(photo),
+            "sdc": create_sdc_claims_for_flickr_photo(
+                photo, retrieved_at=datetime.datetime(2023, 11, 14, 16, 16, 0)
+            ),
             "title": "Thameslink Class 700 in Pride livery.jpg",
             "caption": {
                 "language": "en",

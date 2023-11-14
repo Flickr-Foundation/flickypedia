@@ -2,6 +2,7 @@
 Some methods for working with collections of photos.
 """
 
+import datetime
 from typing import Dict, List, Set, TypedDict
 
 from flask import current_app
@@ -114,7 +115,7 @@ def create_default_categories(photo: SinglePhoto, wikimedia_username: str) -> Li
 
 
 def enrich_photo(
-    photos: List[SinglePhoto], wikimedia_username: str
+    photos: List[SinglePhoto], wikimedia_username: str, retrieved_at: datetime.datetime
 ) -> List[EnrichedPhoto]:
     """
     Create a list of photos which includes their structured data.
@@ -125,7 +126,7 @@ def enrich_photo(
         result.append(
             {
                 "photo": p,
-                "sdc": create_sdc_claims_for_flickr_photo(p),
+                "sdc": create_sdc_claims_for_flickr_photo(p, retrieved_at=retrieved_at),
                 "default_categories": create_default_categories(
                     p, wikimedia_username=wikimedia_username
                 ),

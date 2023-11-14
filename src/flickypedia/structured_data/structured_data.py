@@ -166,7 +166,7 @@ def create_copyright_status_statement(license_id: str) -> NewStatement:
 
 
 def create_source_data_for_photo(
-    photo_id: str, photo_url: str, original_url: str
+    photo_id: str, photo_url: str, original_url: str, retrieved_at: datetime.datetime
 ) -> NewStatement:
     """
     Create a structured data statement for a Flickr photo.
@@ -188,6 +188,12 @@ def create_source_data_for_photo(
             "type": "entity",
         },
         {"property": WikidataProperties.Url, "value": original_url, "type": "string"},
+        {
+            "property": WikidataProperties.Retrieved,
+            "date": retrieved_at,
+            "precision": "day",
+            "type": "date",
+        },
     ]
 
     return {
@@ -204,6 +210,7 @@ def create_source_data_for_photo(
             WikidataProperties.DescribedAtUrl,
             WikidataProperties.Operator,
             WikidataProperties.Url,
+            WikidataProperties.Retrieved,
         ],
         "type": "statement",
     }
@@ -326,7 +333,9 @@ def create_date_taken_statement(date_taken: DateTaken) -> NewStatement:
         }
 
 
-def create_sdc_claims_for_flickr_photo(photo: SinglePhoto) -> NewClaims:
+def create_sdc_claims_for_flickr_photo(
+    photo: SinglePhoto, retrieved_at: datetime.datetime
+) -> NewClaims:
     """
     Creates a complete structured data claim for a Flickr photo.
 
@@ -352,6 +361,7 @@ def create_sdc_claims_for_flickr_photo(photo: SinglePhoto) -> NewClaims:
         photo_id=photo["id"],
         photo_url=photo["url"],
         original_url=original_size["source"],
+        retrieved_at=retrieved_at,
     )
 
     license_statement = create_license_statement(license_id=photo["license"]["id"])
