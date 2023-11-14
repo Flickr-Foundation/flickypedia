@@ -134,11 +134,3 @@ def compile_scss(static_folder: str) -> None:
         out_file.write(sass.compile(filename=sass_path))
 
     os.rename(tmp_path, css_path)
-
-
-# celery --app flickypedia.celery worker --loglevel INFO
-if os.path.basename(sys.argv[0]) == "celery":
-    app = create_app()
-
-    with app.app_context():
-        celery = celery_init_app(app)
