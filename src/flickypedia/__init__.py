@@ -1,6 +1,5 @@
 import html
 import os
-import sys
 import uuid
 
 from flask import Flask, request
