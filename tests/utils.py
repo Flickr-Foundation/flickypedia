@@ -1,3 +1,4 @@
+import datetime
 import json
 import os
 import re
@@ -52,6 +53,7 @@ def store_user(token: OAuth2Token) -> WikimediaUserSession:
         userid="-1",
         name="example",
         encrypted_token=encrypt_string(key, plaintext=json.dumps(token)),
+        first_login=datetime.datetime.now(),
     )
     user_db.session.add(user)
     user_db.session.commit()

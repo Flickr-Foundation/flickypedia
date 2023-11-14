@@ -66,6 +66,7 @@ it should be accessing it via ``current_user``.
 
 """
 
+import datetime
 import json
 from typing import Optional
 import uuid
@@ -112,6 +113,7 @@ class WikimediaUserSession(UserMixin, user_db.Model):  # type: ignore
     userid = user_db.Column(user_db.Integer, nullable=False)
     name = user_db.Column(user_db.String(64), nullable=False)
     encrypted_token = user_db.Column(user_db.LargeBinary, nullable=False)
+    first_login = user_db.Column(user_db.DateTime, nullable=False)
 
     def get_id(self) -> str:
         """
@@ -366,6 +368,7 @@ def oauth2_callback_wikimedia() -> ViewResponse:
         userid=userinfo["id"],
         name=userinfo["name"],
         encrypted_token=encrypt_string(key, plaintext=json.dumps(token)),
+        first_login=datetime.datetime.now(),
     )
     user_db.session.add(user)
     user_db.session.commit()
