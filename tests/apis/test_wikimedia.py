@@ -4,7 +4,7 @@ from authlib.integrations.httpx_client.oauth2_client import OAuth2Client
 from authlib.oauth2.rfc6749.wrappers import OAuth2Token
 import pytest
 
-from flickypedia.apis.structured_data import create_license_statement
+from flickypedia.structured_data import create_license_statement
 from flickypedia.apis.wikimedia import (
     WikimediaApi,
     DuplicateFilenameUploadException,

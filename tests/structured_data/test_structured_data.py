@@ -7,14 +7,14 @@ from flask import Flask
 from flickr_photos_api import SinglePhoto, TakenGranularity, User as FlickrUser
 import pytest
 
-from flickypedia.apis.structured_data import (
-    create_date_taken_statement,
-    create_license_statement,
+from flickypedia.structured_data import (
     create_copyright_status_statement,
+    create_date_taken_statement,
     create_flickr_creator_statement,
-    create_source_data_for_photo,
+    create_license_statement,
     create_posted_to_flickr_statement,
     create_sdc_claims_for_flickr_photo,
+    create_source_data_for_photo,
 )
 
 

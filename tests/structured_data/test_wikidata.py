@@ -3,8 +3,8 @@ from typing import TypedDict
 
 import pytest
 
-from flickypedia.apis.wikidata import to_wikidata_date_value
-from flickypedia.apis._types import DataValueTypes
+from flickypedia.structured_data.wikidata import to_wikidata_date_value
+from flickypedia.structured_data._types import DataValueTypes
 
 
 ToWikidateArgs = TypedDict("ToWikidateArgs", {"d": datetime.datetime, "precision": str})

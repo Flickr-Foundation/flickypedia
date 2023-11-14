@@ -29,7 +29,7 @@ from typing import Dict, List, Literal, TypedDict, Union
 
 from flickr_photos_api import DateTaken, User as FlickrUser, SinglePhoto
 
-from .flickr_user_ids import lookup_flickr_user_in_wikidata
+from flickypedia.apis.flickr_user_ids import lookup_flickr_user_in_wikidata
 from ._types import DataValue, Snak, NewStatement, NewClaims
 from .wikidata import (
     to_wikidata_date_value,
@@ -37,7 +37,6 @@ from .wikidata import (
     WikidataEntities,
     WikidataProperties,
 )
-from flickypedia.photos import size_at
 
 
 class QualifierValueTypes:
@@ -383,7 +382,15 @@ def create_sdc_claims_for_flickr_photo(photo: SinglePhoto) -> NewClaims:
         license_id=photo["license"]["id"]
     )
 
-    original_size = size_at(sizes=photo["sizes"], desired_size="Original")
+    # Note: the "Original" size is not guaranteed to be available
+    # for all Flickr photos (in particular those who've disabled
+    # downloads), but:
+    #
+    #   1.  We should only be calling this method with CC-licensed
+    #       or public domain photos
+    #   1.  Downloads are always available for those photos
+    #
+    original_size = [s for s in photo["sizes"] if s["label"] == "Original"][0]
 
     source_statement = create_source_data_for_photo(
         photo_id=photo["id"],

@@ -15,8 +15,8 @@ from flickr_photos_api import (
 )
 from flickr_url_parser import ParseResult
 
-from flickypedia.apis._types import NewClaims
 from flickypedia.duplicates import find_duplicates, DuplicateInfo
+from flickypedia.structured_data import create_sdc_claims_for_flickr_photo, NewClaims
 
 
 class SinglePhotoData(TypedDict):
@@ -166,8 +166,6 @@ def enrich_photo(
     """
     Create a list of photos which includes their structured data.
     """
-    from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
-
     result: List[EnrichedPhoto] = []
 
     for p in photos:
