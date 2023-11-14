@@ -13,23 +13,30 @@ interactions:
       user-agent:
       - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
     method: GET
-    uri: https://api.flickr.com/services/rest/?extras=license%2Cdate_upload%2Cdate_taken%2Cmedia%2Coriginal_format%2Cowner_name%2Curl_sq%2Curl_t%2Curl_s%2Curl_m%2Curl_o%2Curl_q%2Curl_l%2Cdescription%2Csafety_level%2Crealname%2Cpath_alias&gallery_id=12345678901234567890&get_gallery_info=1&method=flickr.galleries.getPhotos&page=1&per_page=100
+    uri: https://api.flickr.com/services/rest/?extras=license%2Cdate_upload%2Cdate_taken%2Cmedia%2Coriginal_format%2Cowner_name%2Curl_sq%2Curl_t%2Curl_s%2Curl_m%2Curl_o%2Curl_q%2Curl_l%2Cdescription%2Csafety_level%2Crealname&method=flickr.photos.search&page=1&per_page=100&sort=interestingness-desc&tags=ThereIsNothingInThisTag
   response:
-    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"fail\">\n\t<err
-      code=\"1\" msg=\"Invalid gallery ID\" />\n</rsp>\n"
+    content: '<?xml version="1.0" encoding="utf-8" ?>
+
+      <rsp stat="ok">
+
+      <photos page="1" pages="0" perpage="100" total="0" />
+
+      </rsp>
+
+      '
     headers:
       Connection:
       - keep-alive
       Content-Length:
-      - '117'
+      - '114'
       Content-Type:
       - text/xml; charset=utf-8
       Date:
-      - Tue, 14 Nov 2023 17:07:15 GMT
+      - Tue, 14 Nov 2023 17:45:11 GMT
       Via:
-      - 1.1 193df30c309d24eae2b0c02f133e627a.cloudfront.net (CloudFront)
+      - 1.1 25ba1453cdf06e0effa33e8120ec3346.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - FqGnT0wuHXm__tnUmblGy5PoJMpNC4ag4alY-lzP_AXER-9T0rLNIw==
+      - 9h1Mt4upiTxIeA9Lc9I0R5SVePv1cTB6-Jou9Lj5LLRLWGT_B_lFNA==
       X-Amz-Cf-Pop:
       - EZE50-P1
       X-Cache:
@@ -40,7 +47,7 @@ interactions:
       - Apache/2.4.57 (Ubuntu)
       set-cookie:
       - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
-        expires=Thu, 14-Dec-2023 17:07:15 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+        expires=Thu, 14-Dec-2023 17:45:11 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       vary:
       - Accept-Encoding
       x-frame-options:
