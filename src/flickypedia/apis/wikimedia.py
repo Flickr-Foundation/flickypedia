@@ -15,7 +15,7 @@ from xml.etree import ElementTree as ET
 
 import httpx
 
-from flickypedia.utils import chunked_iterable, validate_typeddict
+from flickypedia.utils import validate_typeddict
 from ._types import ExistingClaims, NewClaims
 
 
@@ -51,8 +51,8 @@ class WikimediaApi:
         self,
         *,
         method: str,
-        params: Optional[Dict[str, str]] = None,
-        data: Optional[Dict[str, str]] = None,
+        params: Optional[Dict[str, Union[str, int, bool]]] = None,
+        data: Optional[Dict[str, Union[str, bool]]] = None,
         timeout: Optional[int] = None,
     ) -> Any:
         resp = self.client.request(
@@ -81,10 +81,12 @@ class WikimediaApi:
 
         return resp.json()
 
-    def _get(self, params: Dict[str, str]) -> Any:
+    def _get(self, params: Dict[str, Union[str, int, bool]]) -> Any:
         return self._request(method="GET", params={**params, "format": "json"})
 
-    def _post(self, data: Dict[str, str], timeout: Optional[int] = None) -> Any:
+    def _post(
+        self, data: Dict[str, Union[str, bool]], timeout: Optional[int] = None
+    ) -> Any:
         return self._request(
             method="POST",
             data={**data, "format": "json", "token": self.get_csrf_token()},
@@ -549,30 +551,85 @@ class WikimediaApi:
             for text_elem in xml.findall(".//Text", namespaces=namespaces)
         ]
 
-    def purge_pages(self, filenames: List[str]) -> None:
+    def get_existing_wikitext(self, filename: str) -> str:
         """
-        Purge a series of pages on Wikimedia.
+        Get the Wikitext for an existing page on Wikimedia.
 
-        This forces Commons to recreate a page from its database,
-        rather than relying on the cached version.
-
-        In particular, this forces a re-render of any dynamic templates in
-        the Wikitext -- including the {{Information}} template we use to
-        render SDC on the page.  If we complete the upload process too
-        quickly, those values are left empty until the next edit to
-        the page.  Purging should fix this.
-
-        See https://commons.wikimedia.org/wiki/Help:Purge
-        See https://www.mediawiki.org/wiki/API:Purge
+        See https://www.mediawiki.org/wiki/API:Revisions
         """
-        for title_batch in chunked_iterable(filenames, size=50):
-            title = "|".join(f"File:{f}" for f in title_batch)
+        resp = self._get(
+            params={
+                "action": "query",
+                "prop": "revisions",
+                "titles": f"File:{filename}",
+                "rvlimit": 1,
+                "rvslots": "main",
+                "rvprop": "content",
+            }
+        )
 
+        # The response will be wrapped in a dict of the form:
+        #
+        #     {
+        #       'batchcomplete': '',
+        #       'query': {
+        #         'pages': {'[page ID]': { … data … }}
+        #       }
+        #     }
+        #
+        assert len(resp["query"]["pages"]) == 1
+
+        from pprint import pprint
+
+        pprint(resp)
+
+        this_page = list(resp["query"]["pages"].values())[0]
+
+        # The data abotu the individual page is in turn wrapped in
+        # a response like:
+        #
+        #     {'ns': 6,
+        #      'pageid': 139134318,
+        #      'revisions': [{'slots': {'main': {'*': '… wikitext …'}}}]}
+        #
+        wikitext = this_page["revisions"][0]["slots"]["main"]["*"]
+
+        assert isinstance(wikitext, str)
+
+        return wikitext
+
+    def add_categories_to_page(self, filename: str, categories: List[str]) -> None:
+        """
+        Append a list of categories to a page on Wikimedia.
+
+        This method is idempotent; it will only add categories once.
+        If a page already has all the categories specified, this is a no-op.
+
+        See https://www.wikidata.org/w/api.php?modules=edit&action=help
+        """
+        existing_text = self.get_existing_wikitext(filename=filename)
+
+        formatted_categories = [
+            f"[[Category:{category_name}]]" for category_name in categories
+        ]
+
+        new_categories = [c for c in formatted_categories if c not in existing_text]
+
+        # Prepend a newline, so the new categories appear on newlines,
+        # and don't get bunched up with existing categories.
+        #
+        # TODO: it would be nice to skip this newline if the Wikitext already
+        # ends in a newline, but I'm not sure if that's possible.
+        new_text = "\n" + "\n".join(new_categories)
+
+        if new_categories:
             self._post(
                 data={
-                    "action": "purge",
+                    "action": "edit",
                     "site": "commonswiki",
-                    "title": title,
+                    "title": f"File:{filename}",
+                    "nocreate": True,
+                    "appendtext": new_text,
                 }
             )
 

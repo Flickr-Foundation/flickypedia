@@ -65,7 +65,7 @@ def test_can_get_a_csrf_token(wikimedia_api: WikimediaApi) -> None:
 
 class TestUploadImage:
     def test_can_upload_an_image(self, wikimedia_api: WikimediaApi) -> None:
-        text = create_wikitext(license_id="cc-by-2.0", categories=[])
+        text = create_wikitext(license_id="cc-by-2.0")
 
         resp = wikimedia_api.upload_image(
             filename="Silver Blue Fish In Boston Aquarium.jpg",
@@ -308,3 +308,58 @@ def test_returns_an_empty_list_if_no_matching_categories(
     wikimedia_api: WikimediaApi,
 ) -> None:
     assert wikimedia_api.find_matching_categories(query="sdfdsgd") == []
+
+
+def test_can_add_categories_to_page(wikimedia_api: WikimediaApi) -> None:
+    # Step 1: Retrieve the existing Wikitext
+    existing_text = wikimedia_api.get_existing_wikitext(
+        filename="Thameslink_Class_700_in_Pride_livery.jpg"
+    )
+
+    assert "[[Category:Uploads using Flickypedia]]" not in existing_text
+    assert "[[Category:Uploads by User:alexwlchan]]" not in existing_text
+
+    # Step 2: Append one of the categories to the Wikitext.
+    #
+    # Retrieve the updated Wikitext and check it's now included.
+    wikimedia_api.add_categories_to_page(
+        filename="Thameslink_Class_700_in_Pride_livery.jpg",
+        categories=["Uploads using Flickypedia"],
+    )
+
+    updated_text = wikimedia_api.get_existing_wikitext(
+        filename="Thameslink_Class_700_in_Pride_livery.jpg"
+    )
+    assert "[[Category:Uploads using Flickypedia]]" in updated_text
+    assert "[[Category:Uploads by User:alexwlchan]]" not in updated_text
+
+    # Step 3: Append both of the categories to the Wikitext.
+    #
+    # Retrieve the updated Wikitext and check that both categories
+    # are now included, and that the category added in Step 2 is
+    # only present once.
+    wikimedia_api.add_categories_to_page(
+        filename="Thameslink_Class_700_in_Pride_livery.jpg",
+        categories=["Uploads using Flickypedia", "Uploads by User:alexwlchan"],
+    )
+
+    updated_text = wikimedia_api.get_existing_wikitext(
+        filename="Thameslink_Class_700_in_Pride_livery.jpg"
+    )
+    assert "[[Category:Uploads using Flickypedia]]" in updated_text
+    assert "[[Category:Uploads by User:alexwlchan]]" in updated_text
+
+    assert updated_text.count("[[Category:Uploads using Flickypedia]]") == 1
+
+    # Step 4: Append both of the categories to the Wikitext again.
+    #
+    # Check that the Wikitext hasn't changed.
+    wikimedia_api.add_categories_to_page(
+        filename="Thameslink_Class_700_in_Pride_livery.jpg",
+        categories=["Uploads using Flickypedia", "Uploads by User:alexwlchan"],
+    )
+
+    updated_text_final = wikimedia_api.get_existing_wikitext(
+        filename="Thameslink_Class_700_in_Pride_livery.jpg"
+    )
+    assert updated_text == updated_text_final
