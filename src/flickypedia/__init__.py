@@ -14,14 +14,14 @@ from flickypedia.auth import (
     oauth2_callback_wikimedia,
     user_db,
 )
-from flickypedia.apis.wikidata import (
+from flickypedia.config import create_config, get_directories
+from flickypedia.duplicates import create_link_to_commons
+from flickypedia.photos import size_at
+from flickypedia.structured_data.wikidata import (
     get_entity_label,
     get_property_name,
     render_wikidata_date,
 )
-from flickypedia.config import create_config, get_directories
-from flickypedia.duplicates import create_link_to_commons
-from flickypedia.photos import size_at
 from flickypedia.views import (
     about,
     bookmarklet,

@@ -7,15 +7,15 @@ from flask import Flask, render_template
 from flickr_photos_api import DateTaken, User as FlickrUser
 import pytest
 
-from flickypedia.apis.structured_data import (
+from flickypedia.structured_data import (
     create_copyright_status_statement,
     create_date_taken_statement,
     create_flickr_creator_statement,
     create_license_statement,
     create_posted_to_flickr_statement,
     create_source_data_for_photo,
+    NewStatement,
 )
-from flickypedia.apis._types import NewStatement
 
 
 def prettify_html(html: str, find_kwargs: Optional[Dict[str, Any]] = None) -> str:
