@@ -142,6 +142,12 @@ def test_blocks_uploads_with_a_too_long_caption(
             "a" * 150 + " and now we have\nsome words to push us towards the end",
             "a" * 150 + " and now we have…",
         ),
+        # A description which is comfortably over the target length, truncated
+        # well after a line break.
+        (
+            "a" * 140 + " and now we have\nsome words to push us towards the end",
+            "a" * 140 + " and now we have\nsome words to…",
+        ),
     ],
 )
 def test_truncate_description(original: str, truncated: str) -> None:
