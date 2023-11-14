@@ -1,0 +1,797 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.1
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=query&prop=revisions&titles=File%3AThameslink_Class_700_in_Pride_livery.jpg&rvlimit=1&rvslots=main&rvprop=content&format=json
+  response:
+    content: '{"continue":{"rvcontinue":"20231114104801|821672807","continue":"||"},"query":{"normalized":[{"from":"File:Thameslink_Class_700_in_Pride_livery.jpg","to":"File:Thameslink
+      Class 700 in Pride livery.jpg"}],"pages":{"139134318":{"pageid":139134318,"ns":6,"title":"File:Thameslink
+      Class 700 in Pride livery.jpg","revisions":[{"slots":{"main":{"contentmodel":"wikitext","contentformat":"text/x-wiki","*":"The
+      structured data:\n\n{{Structured Data}}\n\n=={{int:filedesc}}==\n{{Information\n|Source=[https://www.flickr.com/photos/199246608@N02/53268016608/
+      IMG_4664]\n|Date={{taken on|location=United Kingdom|2023-09-12 19:54}}\n|Author=[https://www.flickr.com/people/199246608@N02
+      Alex Chan]\n|Permission=\n|other_versions=\n}}\n\n=={{int:license-header}}==\n{{cc-by-2.0}}\n{{FlickreviewR|status=passed|author=cefarrjf87|sourceurl=https://flickr.com/photos/199246608@N02/53268016608|archive=|reviewdate=2023-10-18
+      17:58:26|reviewlicense=cc-by-2.0|reviewer=FlickreviewR 2}}\n\n[[Category:British
+      Rail Class 700s in Thameslink Southern Great Northern Pride livery]]\n[[Category:Unidentified
+      locations in England]]\n[[Category:September 2023 in rail transport in the United
+      Kingdom]]\n[[Category:Railway photographs taken on 2023-09-12]]\n[[Category:UK
+      trains with unidentified locations]]"}}}]}}}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '2'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-encoding:
+      - gzip
+      content-length:
+      - '685'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Tue, 14 Nov 2023 10:50:09 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw2350.codfw.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp2041"
+      set-cookie:
+      - WMF-Last-Access=14-Nov-2023;Path=/;HttpOnly;secure;Expires=Sat, 16 Dec 2023
+        00:00:00 GMT
+      - GeoIP=UY:MO:Montevideo:-34.91:-56.15:v4; Path=/; secure; Domain=.wikimedia.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie
+      x-cache:
+      - cp2041 pass, cp2041 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 201.217.137.162
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - WMF-Last-Access=14-Nov-2023; NetworkProbeLimit=0.001; GeoIP=UY:MO:Montevideo:-34.91:-56.15:v4
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.1
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=query&prop=revisions&titles=File%3AThameslink_Class_700_in_Pride_livery.jpg&rvlimit=1&rvslots=main&rvprop=content&format=json
+  response:
+    content: '{"continue":{"rvcontinue":"20231114104801|821672807","continue":"||"},"query":{"normalized":[{"from":"File:Thameslink_Class_700_in_Pride_livery.jpg","to":"File:Thameslink
+      Class 700 in Pride livery.jpg"}],"pages":{"139134318":{"pageid":139134318,"ns":6,"title":"File:Thameslink
+      Class 700 in Pride livery.jpg","revisions":[{"slots":{"main":{"contentmodel":"wikitext","contentformat":"text/x-wiki","*":"The
+      structured data:\n\n{{Structured Data}}\n\n=={{int:filedesc}}==\n{{Information\n|Source=[https://www.flickr.com/photos/199246608@N02/53268016608/
+      IMG_4664]\n|Date={{taken on|location=United Kingdom|2023-09-12 19:54}}\n|Author=[https://www.flickr.com/people/199246608@N02
+      Alex Chan]\n|Permission=\n|other_versions=\n}}\n\n=={{int:license-header}}==\n{{cc-by-2.0}}\n{{FlickreviewR|status=passed|author=cefarrjf87|sourceurl=https://flickr.com/photos/199246608@N02/53268016608|archive=|reviewdate=2023-10-18
+      17:58:26|reviewlicense=cc-by-2.0|reviewer=FlickreviewR 2}}\n\n[[Category:British
+      Rail Class 700s in Thameslink Southern Great Northern Pride livery]]\n[[Category:Unidentified
+      locations in England]]\n[[Category:September 2023 in rail transport in the United
+      Kingdom]]\n[[Category:Railway photographs taken on 2023-09-12]]\n[[Category:UK
+      trains with unidentified locations]]"}}}]}}}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Tue, 14 Nov 2023 10:50:10 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw2321.codfw.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp2041"
+      set-cookie:
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie
+      x-cache:
+      - cp2033 pass, cp2041 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 201.217.137.162
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - WMF-Last-Access=14-Nov-2023; NetworkProbeLimit=0.001; GeoIP=UY:MO:Montevideo:-34.91:-56.15:v4
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.1
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=query&meta=tokens&type=csrf&format=json
+  response:
+    content: '{"batchcomplete":"","query":{"tokens":{"csrftoken":"2d8c157966d8ab20db200c61c4265cc3655350e2+\\"}}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-length:
+      - '99'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Tue, 14 Nov 2023 10:50:10 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw2350.codfw.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp2041"
+      set-cookie:
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp2041 pass, cp2041 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 201.217.137.162
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: action=edit&site=commonswiki&title=File%3AThameslink_Class_700_in_Pride_livery.jpg&nocreate=true&appendtext=%5B%5BCategory%3AUploads+using+Flickypedia%5D%5D&format=json&token=2d8c157966d8ab20db200c61c4265cc3655350e2%2B%5C
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '221'
+      content-type:
+      - application/x-www-form-urlencoded
+      cookie:
+      - WMF-Last-Access=14-Nov-2023; NetworkProbeLimit=0.001; GeoIP=UY:MO:Montevideo:-34.91:-56.15:v4
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.1
+    method: POST
+    uri: https://commons.wikimedia.org/w/api.php
+  response:
+    content: '{"warnings":{"main":{"*":"Unrecognized parameter: site."}},"edit":{"result":"Success","pageid":139134318,"title":"File:Thameslink
+      Class 700 in Pride livery.jpg","contentmodel":"wikitext","oldrevid":821673555,"newrevid":821674036,"newtimestamp":"2023-11-14T10:50:10Z"}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '2'
+      cache-control:
+      - private, max-age=0, s-maxage=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-length:
+      - '268'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Tue, 14 Nov 2023 10:50:10 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw2352.codfw.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp2041"
+      set-cookie:
+      - cpPosIndex=1%401699959011%2362fdadaf62e470f4a22fa5e042b95368; expires=Tue,
+        14-Nov-2023 10:50:21 GMT; Max-Age=10; path=/; secure; HttpOnly
+      - UseDC=master; expires=Tue, 14-Nov-2023 10:50:21 GMT; Max-Age=10; path=/; secure;
+        HttpOnly
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp2035 pass, cp2041 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 201.217.137.162
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - WMF-Last-Access=14-Nov-2023; NetworkProbeLimit=0.001; cpPosIndex=1%401699959011%2362fdadaf62e470f4a22fa5e042b95368;
+        UseDC=master; GeoIP=UY:MO:Montevideo:-34.91:-56.15:v4
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.1
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=query&prop=revisions&titles=File%3AThameslink_Class_700_in_Pride_livery.jpg&rvlimit=1&rvslots=main&rvprop=content&format=json
+  response:
+    content: '{"continue":{"rvcontinue":"20231114104912|821673555","continue":"||"},"query":{"normalized":[{"from":"File:Thameslink_Class_700_in_Pride_livery.jpg","to":"File:Thameslink
+      Class 700 in Pride livery.jpg"}],"pages":{"139134318":{"pageid":139134318,"ns":6,"title":"File:Thameslink
+      Class 700 in Pride livery.jpg","revisions":[{"slots":{"main":{"contentmodel":"wikitext","contentformat":"text/x-wiki","*":"The
+      structured data:\n\n{{Structured Data}}\n\n=={{int:filedesc}}==\n{{Information\n|Source=[https://www.flickr.com/photos/199246608@N02/53268016608/
+      IMG_4664]\n|Date={{taken on|location=United Kingdom|2023-09-12 19:54}}\n|Author=[https://www.flickr.com/people/199246608@N02
+      Alex Chan]\n|Permission=\n|other_versions=\n}}\n\n=={{int:license-header}}==\n{{cc-by-2.0}}\n{{FlickreviewR|status=passed|author=cefarrjf87|sourceurl=https://flickr.com/photos/199246608@N02/53268016608|archive=|reviewdate=2023-10-18
+      17:58:26|reviewlicense=cc-by-2.0|reviewer=FlickreviewR 2}}\n\n[[Category:British
+      Rail Class 700s in Thameslink Southern Great Northern Pride livery]]\n[[Category:Unidentified
+      locations in England]]\n[[Category:September 2023 in rail transport in the United
+      Kingdom]]\n[[Category:Railway photographs taken on 2023-09-12]]\n[[Category:UK
+      trains with unidentified locations]][[Category:Uploads using Flickypedia]]"}}}]}}}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-encoding:
+      - gzip
+      content-length:
+      - '704'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Tue, 14 Nov 2023 10:50:26 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw2352.codfw.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp2041"
+      set-cookie:
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie
+      x-cache:
+      - cp2029 pass, cp2041 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 201.217.137.162
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - WMF-Last-Access=14-Nov-2023; NetworkProbeLimit=0.001; cpPosIndex=1%401699959011%2362fdadaf62e470f4a22fa5e042b95368;
+        UseDC=master; GeoIP=UY:MO:Montevideo:-34.91:-56.15:v4
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.1
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=query&prop=revisions&titles=File%3AThameslink_Class_700_in_Pride_livery.jpg&rvlimit=1&rvslots=main&rvprop=content&format=json
+  response:
+    content: '{"continue":{"rvcontinue":"20231114105010|821674036","continue":"||"},"query":{"normalized":[{"from":"File:Thameslink_Class_700_in_Pride_livery.jpg","to":"File:Thameslink
+      Class 700 in Pride livery.jpg"}],"pages":{"139134318":{"pageid":139134318,"ns":6,"title":"File:Thameslink
+      Class 700 in Pride livery.jpg","revisions":[{"slots":{"main":{"contentmodel":"wikitext","contentformat":"text/x-wiki","*":"The
+      structured data:\n\n{{Structured Data}}\n\n=={{int:filedesc}}==\n{{Information\n|Source=[https://www.flickr.com/photos/199246608@N02/53268016608/
+      IMG_4664]\n|Date={{taken on|location=United Kingdom|2023-09-12 19:54}}\n|Author=[https://www.flickr.com/people/199246608@N02
+      Alex Chan]\n|Permission=\n|other_versions=\n}}\n\n=={{int:license-header}}==\n{{cc-by-2.0}}\n{{FlickreviewR|status=passed|author=cefarrjf87|sourceurl=https://flickr.com/photos/199246608@N02/53268016608|archive=|reviewdate=2023-10-18
+      17:58:26|reviewlicense=cc-by-2.0|reviewer=FlickreviewR 2}}\n\n[[Category:British
+      Rail Class 700s in Thameslink Southern Great Northern Pride livery]]\n[[Category:Unidentified
+      locations in England]]\n[[Category:September 2023 in rail transport in the United
+      Kingdom]]\n[[Category:Railway photographs taken on 2023-09-12]]\n[[Category:UK
+      trains with unidentified locations]]\n[[Category:Uploads using Flickypedia]]"}}}]}}}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Tue, 14 Nov 2023 10:51:56 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw2292.codfw.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp2041"
+      set-cookie:
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie
+      x-cache:
+      - cp2037 pass, cp2041 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 201.217.137.162
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - WMF-Last-Access=14-Nov-2023; NetworkProbeLimit=0.001; cpPosIndex=1%401699959011%2362fdadaf62e470f4a22fa5e042b95368;
+        UseDC=master; GeoIP=UY:MO:Montevideo:-34.91:-56.15:v4
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.1
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=query&meta=tokens&type=csrf&format=json
+  response:
+    content: '{"batchcomplete":"","query":{"tokens":{"csrftoken":"f77244795d5b3d70990060850aa685f56553514d+\\"}}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-length:
+      - '99'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Tue, 14 Nov 2023 10:51:57 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw2319.codfw.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp2041"
+      set-cookie:
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp2031 pass, cp2041 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 201.217.137.162
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: action=edit&site=commonswiki&title=File%3AThameslink_Class_700_in_Pride_livery.jpg&nocreate=true&appendtext=%0A%5B%5BCategory%3AUploads+by+User%3Aalexwlchan%5D%5D&format=json&token=f77244795d5b3d70990060850aa685f56553514d%2B%5C
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '227'
+      content-type:
+      - application/x-www-form-urlencoded
+      cookie:
+      - WMF-Last-Access=14-Nov-2023; NetworkProbeLimit=0.001; cpPosIndex=1%401699959011%2362fdadaf62e470f4a22fa5e042b95368;
+        UseDC=master; GeoIP=UY:MO:Montevideo:-34.91:-56.15:v4
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.1
+    method: POST
+    uri: https://commons.wikimedia.org/w/api.php
+  response:
+    content: '{"warnings":{"main":{"*":"Unrecognized parameter: site."}},"edit":{"result":"Success","pageid":139134318,"title":"File:Thameslink
+      Class 700 in Pride livery.jpg","contentmodel":"wikitext","oldrevid":821674400,"newrevid":821675079,"newtimestamp":"2023-11-14T10:51:57Z"}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '2'
+      cache-control:
+      - private, max-age=0, s-maxage=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-length:
+      - '268'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Tue, 14 Nov 2023 10:51:57 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw2296.codfw.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp2041"
+      set-cookie:
+      - cpPosIndex=1%401699959118%2362fdadaf62e470f4a22fa5e042b95368; expires=Tue,
+        14-Nov-2023 10:52:08 GMT; Max-Age=10; path=/; secure; HttpOnly
+      - UseDC=master; expires=Tue, 14-Nov-2023 10:52:08 GMT; Max-Age=10; path=/; secure;
+        HttpOnly
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp2035 pass, cp2041 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 201.217.137.162
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - WMF-Last-Access=14-Nov-2023; NetworkProbeLimit=0.001; cpPosIndex=1%401699959118%2362fdadaf62e470f4a22fa5e042b95368;
+        UseDC=master; GeoIP=UY:MO:Montevideo:-34.91:-56.15:v4
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.1
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=query&prop=revisions&titles=File%3AThameslink_Class_700_in_Pride_livery.jpg&rvlimit=1&rvslots=main&rvprop=content&format=json
+  response:
+    content: '{"continue":{"rvcontinue":"20231114105048|821674400","continue":"||"},"query":{"normalized":[{"from":"File:Thameslink_Class_700_in_Pride_livery.jpg","to":"File:Thameslink
+      Class 700 in Pride livery.jpg"}],"pages":{"139134318":{"pageid":139134318,"ns":6,"title":"File:Thameslink
+      Class 700 in Pride livery.jpg","revisions":[{"slots":{"main":{"contentmodel":"wikitext","contentformat":"text/x-wiki","*":"The
+      structured data:\n\n{{Structured Data}}\n\n=={{int:filedesc}}==\n{{Information\n|Source=[https://www.flickr.com/photos/199246608@N02/53268016608/
+      IMG_4664]\n|Date={{taken on|location=United Kingdom|2023-09-12 19:54}}\n|Author=[https://www.flickr.com/people/199246608@N02
+      Alex Chan]\n|Permission=\n|other_versions=\n}}\n\n=={{int:license-header}}==\n{{cc-by-2.0}}\n{{FlickreviewR|status=passed|author=cefarrjf87|sourceurl=https://flickr.com/photos/199246608@N02/53268016608|archive=|reviewdate=2023-10-18
+      17:58:26|reviewlicense=cc-by-2.0|reviewer=FlickreviewR 2}}\n\n[[Category:British
+      Rail Class 700s in Thameslink Southern Great Northern Pride livery]]\n[[Category:Unidentified
+      locations in England]]\n[[Category:September 2023 in rail transport in the United
+      Kingdom]]\n[[Category:Railway photographs taken on 2023-09-12]]\n[[Category:UK
+      trains with unidentified locations]]\n[[Category:Uploads using Flickypedia]]\n[[Category:Uploads
+      by User:alexwlchan]]"}}}]}}}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Tue, 14 Nov 2023 10:52:26 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw2296.codfw.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp2041"
+      set-cookie:
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie
+      x-cache:
+      - cp2029 pass, cp2041 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 201.217.137.162
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - WMF-Last-Access=14-Nov-2023; NetworkProbeLimit=0.001; cpPosIndex=1%401699959118%2362fdadaf62e470f4a22fa5e042b95368;
+        UseDC=master; GeoIP=UY:MO:Montevideo:-34.91:-56.15:v4
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.1
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=query&prop=revisions&titles=File%3AThameslink_Class_700_in_Pride_livery.jpg&rvlimit=1&rvslots=main&rvprop=content&format=json
+  response:
+    content: '{"continue":{"rvcontinue":"20231114105048|821674400","continue":"||"},"query":{"normalized":[{"from":"File:Thameslink_Class_700_in_Pride_livery.jpg","to":"File:Thameslink
+      Class 700 in Pride livery.jpg"}],"pages":{"139134318":{"pageid":139134318,"ns":6,"title":"File:Thameslink
+      Class 700 in Pride livery.jpg","revisions":[{"slots":{"main":{"contentmodel":"wikitext","contentformat":"text/x-wiki","*":"The
+      structured data:\n\n{{Structured Data}}\n\n=={{int:filedesc}}==\n{{Information\n|Source=[https://www.flickr.com/photos/199246608@N02/53268016608/
+      IMG_4664]\n|Date={{taken on|location=United Kingdom|2023-09-12 19:54}}\n|Author=[https://www.flickr.com/people/199246608@N02
+      Alex Chan]\n|Permission=\n|other_versions=\n}}\n\n=={{int:license-header}}==\n{{cc-by-2.0}}\n{{FlickreviewR|status=passed|author=cefarrjf87|sourceurl=https://flickr.com/photos/199246608@N02/53268016608|archive=|reviewdate=2023-10-18
+      17:58:26|reviewlicense=cc-by-2.0|reviewer=FlickreviewR 2}}\n\n[[Category:British
+      Rail Class 700s in Thameslink Southern Great Northern Pride livery]]\n[[Category:Unidentified
+      locations in England]]\n[[Category:September 2023 in rail transport in the United
+      Kingdom]]\n[[Category:Railway photographs taken on 2023-09-12]]\n[[Category:UK
+      trains with unidentified locations]]\n[[Category:Uploads using Flickypedia]]\n[[Category:Uploads
+      by User:alexwlchan]]"}}}]}}}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Tue, 14 Nov 2023 10:53:04 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw2292.codfw.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp2041"
+      set-cookie:
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie
+      x-cache:
+      - cp2041 pass, cp2041 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 201.217.137.162
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - WMF-Last-Access=14-Nov-2023; NetworkProbeLimit=0.001; cpPosIndex=1%401699959118%2362fdadaf62e470f4a22fa5e042b95368;
+        UseDC=master; GeoIP=UY:MO:Montevideo:-34.91:-56.15:v4
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.1
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=query&prop=revisions&titles=File%3AThameslink_Class_700_in_Pride_livery.jpg&rvlimit=1&rvslots=main&rvprop=content&format=json
+  response:
+    content: '{"continue":{"rvcontinue":"20231114105048|821674400","continue":"||"},"query":{"normalized":[{"from":"File:Thameslink_Class_700_in_Pride_livery.jpg","to":"File:Thameslink
+      Class 700 in Pride livery.jpg"}],"pages":{"139134318":{"pageid":139134318,"ns":6,"title":"File:Thameslink
+      Class 700 in Pride livery.jpg","revisions":[{"slots":{"main":{"contentmodel":"wikitext","contentformat":"text/x-wiki","*":"The
+      structured data:\n\n{{Structured Data}}\n\n=={{int:filedesc}}==\n{{Information\n|Source=[https://www.flickr.com/photos/199246608@N02/53268016608/
+      IMG_4664]\n|Date={{taken on|location=United Kingdom|2023-09-12 19:54}}\n|Author=[https://www.flickr.com/people/199246608@N02
+      Alex Chan]\n|Permission=\n|other_versions=\n}}\n\n=={{int:license-header}}==\n{{cc-by-2.0}}\n{{FlickreviewR|status=passed|author=cefarrjf87|sourceurl=https://flickr.com/photos/199246608@N02/53268016608|archive=|reviewdate=2023-10-18
+      17:58:26|reviewlicense=cc-by-2.0|reviewer=FlickreviewR 2}}\n\n[[Category:British
+      Rail Class 700s in Thameslink Southern Great Northern Pride livery]]\n[[Category:Unidentified
+      locations in England]]\n[[Category:September 2023 in rail transport in the United
+      Kingdom]]\n[[Category:Railway photographs taken on 2023-09-12]]\n[[Category:UK
+      trains with unidentified locations]]\n[[Category:Uploads using Flickypedia]]\n[[Category:Uploads
+      by User:alexwlchan]]"}}}]}}}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Tue, 14 Nov 2023 10:53:07 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw2300.codfw.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp2041"
+      set-cookie:
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie
+      x-cache:
+      - cp2027 pass, cp2041 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 201.217.137.162
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1
