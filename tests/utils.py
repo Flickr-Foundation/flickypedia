@@ -1,6 +1,7 @@
 import json
+import os
 import re
-from typing import Union
+from typing import TypeVar, Union
 
 from authlib.oauth2.rfc6749.wrappers import OAuth2Token
 from cryptography.fernet import Fernet
@@ -8,7 +9,10 @@ from flask import session
 from flask_login import login_user
 
 from flickypedia.auth import user_db, WikimediaUserSession, SESSION_ENCRYPTION_KEY
-from flickypedia.utils import encrypt_string
+from flickypedia.utils import encrypt_string, validate_typeddict
+
+
+T = TypeVar("T")
 
 
 def minify(text: Union[str, bytes]) -> str:
@@ -55,3 +59,14 @@ def store_user(token: OAuth2Token) -> WikimediaUserSession:
     login_user(user)
 
     return user
+
+
+def get_typed_fixture(path: str, model: type[T]) -> T:
+    """
+    Read a JSON fixture from the ``tests/fixtures`` directory.
+
+    This function will validate that the JSON fixture matches the
+    specified model.
+    """
+    with open(os.path.join("tests/fixtures", path)) as f:
+        return validate_typeddict(json.load(f), model)

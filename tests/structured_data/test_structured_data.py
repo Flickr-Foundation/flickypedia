@@ -1,7 +1,5 @@
 import datetime
-import json
 import os
-from typing import Any
 
 from flask import Flask
 from flickr_photos_api import SinglePhoto, TakenGranularity, User as FlickrUser
@@ -15,12 +13,22 @@ from flickypedia.structured_data import (
     create_posted_to_flickr_statement,
     create_sdc_claims_for_flickr_photo,
     create_source_data_for_photo,
+    NewClaims,
+    NewStatement,
 )
+from utils import get_typed_fixture
 
 
-def get_fixture(filename: str) -> Any:
-    with open(os.path.join("tests/fixtures/structured_data", filename)) as f:
-        return json.load(f)
+def get_claims_fixture(filename: str) -> NewClaims:
+    return get_typed_fixture(
+        path=os.path.join("structured_data", filename), model=NewClaims
+    )
+
+
+def get_statement_fixture(filename: str) -> NewStatement:
+    return get_typed_fixture(
+        path=os.path.join("structured_data", filename), model=NewStatement
+    )
 
 
 @pytest.mark.parametrize(
@@ -68,7 +76,7 @@ def test_create_flickr_creator_statement(
     app: Flask, vcr_cassette: str, user: FlickrUser, filename: str
 ) -> None:
     result = create_flickr_creator_statement(user)
-    expected = get_fixture(filename)
+    expected = get_statement_fixture(filename)
 
     assert result == expected
 
@@ -90,7 +98,7 @@ def test_create_copyright_status_statement_fails_for_unknown_license() -> None:
 )
 def test_create_copyright_status_statement(license_id: str, filename: str) -> None:
     result = create_copyright_status_statement(license_id=license_id)
-    expected = get_fixture(filename)
+    expected = get_statement_fixture(filename)
 
     assert result == expected
 
@@ -101,7 +109,7 @@ def test_create_source_data_for_photo() -> None:
         photo_url="https://www.flickr.com/photos/199246608@N02/53248015596/",
         original_url="https://live.staticflickr.com/65535/53248015596_c03f8123cf_o_d.jpg",
     )
-    expected = get_fixture("photo_source_data.json")
+    expected = get_statement_fixture(filename="photo_source_data.json")
 
     assert result == expected
 
@@ -116,7 +124,7 @@ def test_create_source_data_for_photo() -> None:
 )
 def test_create_license_statement(license_id: str, filename: str) -> None:
     actual = create_license_statement(license_id)
-    expected = get_fixture(filename)
+    expected = get_statement_fixture(filename)
 
     assert actual == expected
 
@@ -135,7 +143,7 @@ def test_create_posted_to_flickr_statement() -> None:
     actual = create_posted_to_flickr_statement(
         date_posted=datetime.datetime(2023, 10, 12)
     )
-    expected = get_fixture("date_posted_to_flickr.json")
+    expected = get_statement_fixture(filename="date_posted_to_flickr.json")
 
     assert actual == expected
 
@@ -163,7 +171,7 @@ def test_create_date_taken_statement(
     actual = create_date_taken_statement(
         date_taken={"value": date_taken, "granularity": granularity, "unknown": False}
     )
-    expected = get_fixture(filename)
+    expected = get_statement_fixture(filename)
 
     assert actual == expected
 
@@ -218,7 +226,7 @@ def test_create_sdc_claims_for_flickr_photo_without_date_taken(
     }
 
     actual = create_sdc_claims_for_flickr_photo(photo=photo)
-    expected = get_fixture("photo_53248015596.json")
+    expected = get_claims_fixture(filename="photo_53248015596.json")
 
     assert actual == expected
 
@@ -264,6 +272,6 @@ def test_create_sdc_claims_for_flickr_photo_with_date_taken(
     }
 
     actual = create_sdc_claims_for_flickr_photo(photo=photo)
-    expected = get_fixture("photo_53234140350.json")
+    expected = get_claims_fixture(filename="photo_53234140350.json")
 
     assert actual == expected
