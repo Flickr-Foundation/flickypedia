@@ -160,7 +160,11 @@ def select_photos() -> ViewResponse:
             flash(f"There is no {label} at that URL!", category="flickr_url")
             session["flickr_url"] = flickr_url
             return redirect(url_for("get_photos"))
-        except TypeError:
+
+        # We should support getting photos for any URL that can be
+        # parsed by flickr-url-parser, but we include this branch in
+        # case it ever adds support for new kinds of URL.
+        except TypeError:  # pragma: no cover
             flash(
                 "I don't know how to find photos at that URL yet!",
                 category="flickr_url",
