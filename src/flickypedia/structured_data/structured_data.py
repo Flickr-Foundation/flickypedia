@@ -28,9 +28,9 @@ is supporting that function.
 """
 
 import datetime
-from typing import List
+from typing import List, Optional
 
-from flickr_photos_api import DateTaken, User as FlickrUser, SinglePhoto
+from flickr_photos_api import DateTaken, LocationInfo, User as FlickrUser, SinglePhoto
 
 from flickypedia.apis.flickr_user_ids import lookup_flickr_user_in_wikidata
 from ._qualifiers import create_qualifiers as create_qualifiers, QualifierValues
@@ -245,6 +245,21 @@ def create_license_statement(license_id: str) -> NewStatement:
         ],
         "type": "statement",
     }
+
+
+def create_location_statement(location: Optional[LocationInfo]) -> Optional[NewStatement]:
+    """
+    Creates a structured data statement for the "coordinates of
+    the point of view" statement.
+
+    This is the location of the camera, not the location of the subject.
+    There were several discussions about this in the Flickr.org Slack and
+    this was agreed as the most suitable.
+
+    See https://flickrfoundation.slack.com/archives/C05AVC1JYL9/p1696947242703349
+    """
+    if location is None:
+        return None
 
 
 def create_posted_to_flickr_statement(date_posted: datetime.datetime) -> NewStatement:

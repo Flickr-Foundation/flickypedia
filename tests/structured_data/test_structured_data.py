@@ -2,7 +2,7 @@ import datetime
 import os
 
 from flask import Flask
-from flickr_photos_api import SinglePhoto, TakenGranularity, User as FlickrUser
+from flickr_photos_api import LocationInfo, SinglePhoto, TakenGranularity, User as FlickrUser
 import pytest
 
 from flickypedia.structured_data import (
@@ -10,6 +10,7 @@ from flickypedia.structured_data import (
     create_date_taken_statement,
     create_flickr_creator_statement,
     create_license_statement,
+    create_location_statement,
     create_posted_to_flickr_statement,
     create_sdc_claims_for_flickr_photo,
     create_source_data_for_photo,
@@ -186,6 +187,11 @@ def test_create_date_taken_statement_fails_on_unrecognised_granularity() -> None
                 "unknown": False,
             }
         )
+
+
+class TestCreateLocationStatement:
+    def test_empty_location_is_no_statement(self) -> None:
+        assert create_location_statement(location=None) is None
 
 
 def test_create_sdc_claims_for_flickr_photo_without_date_taken(
