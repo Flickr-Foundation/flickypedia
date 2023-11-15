@@ -15,6 +15,11 @@
         "label": "All Rights Reserved",
         "url": null
       },
+      "location": {
+        "latitude": 20.647242,
+        "longitude": 58.875732,
+        "accuracy": 16
+      },
       "sizes": [
         {
           "height": 75,
@@ -85,6 +90,7 @@
         "label": "All Rights Reserved",
         "url": null
       },
+      "location": null,
       "sizes": [
         {
           "height": 75,
@@ -162,6 +168,11 @@
         "label": "All Rights Reserved",
         "url": null
       },
+      "location": {
+        "latitude": 37.850272,
+        "longitude": -119.660264,
+        "accuracy": 16
+      },
       "sizes": [
         {
           "height": 75,
@@ -232,6 +243,7 @@
         "label": "All Rights Reserved",
         "url": null
       },
+      "location": null,
       "sizes": [
         {
           "height": 75,
@@ -308,6 +320,11 @@
         "id": "in-copyright",
         "label": "All Rights Reserved",
         "url": null
+      },
+      "location": {
+        "latitude": 49.175643,
+        "longitude": -123.621597,
+        "accuracy": 11
       },
       "sizes": [
         {
@@ -386,6 +403,7 @@
         "label": "All Rights Reserved",
         "url": null
       },
+      "location": null,
       "sizes": [
         {
           "height": 75,
@@ -456,6 +474,7 @@
         "label": "All Rights Reserved",
         "url": null
       },
+      "location": null,
       "sizes": [
         {
           "height": 75,
@@ -525,6 +544,11 @@
         "id": "in-copyright",
         "label": "All Rights Reserved",
         "url": null
+      },
+      "location": {
+        "latitude": 36.087089,
+        "longitude": -114.931159,
+        "accuracy": 15
       },
       "sizes": [
         {
@@ -596,6 +620,7 @@
         "label": "All Rights Reserved",
         "url": null
       },
+      "location": null,
       "sizes": [
         {
           "height": 75,
@@ -665,6 +690,11 @@
         "id": "in-copyright",
         "label": "All Rights Reserved",
         "url": null
+      },
+      "location": {
+        "latitude": 42.825724,
+        "longitude": 10.313072,
+        "accuracy": 11
       },
       "sizes": [
         {

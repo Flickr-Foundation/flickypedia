@@ -13,7 +13,7 @@ interactions:
       user-agent:
       - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
     method: GET
-    uri: https://api.flickr.com/services/rest/?extras=license%2Cdate_upload%2Cdate_taken%2Cmedia%2Coriginal_format%2Cowner_name%2Curl_sq%2Curl_t%2Curl_s%2Curl_m%2Curl_o%2Curl_q%2Curl_l%2Cdescription%2Csafety_level%2Crealname&method=flickr.photos.search&page=1&per_page=100&sort=interestingness-desc&tags=ThereIsNothingInThisTag
+    uri: https://api.flickr.com/services/rest/?extras=license%2Cdate_upload%2Cdate_taken%2Cmedia%2Coriginal_format%2Cowner_name%2Curl_sq%2Curl_t%2Curl_s%2Curl_m%2Curl_o%2Ctags%2Cgeo%2Curl_q%2Curl_l%2Cdescription%2Csafety_level%2Crealname&method=flickr.photos.search&page=1&per_page=100&sort=interestingness-desc&tags=ThereIsNothingInThisTag
   response:
     content: '<?xml version="1.0" encoding="utf-8" ?>
 
@@ -32,11 +32,11 @@ interactions:
       Content-Type:
       - text/xml; charset=utf-8
       Date:
-      - Tue, 14 Nov 2023 17:45:11 GMT
+      - Wed, 15 Nov 2023 18:27:14 GMT
       Via:
-      - 1.1 25ba1453cdf06e0effa33e8120ec3346.cloudfront.net (CloudFront)
+      - 1.1 54873881ed8204e5e7870d53ad4ad88e.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - 9h1Mt4upiTxIeA9Lc9I0R5SVePv1cTB6-Jou9Lj5LLRLWGT_B_lFNA==
+      - PPRrSZTvMK4vwIOZI6-Kt5JP7uMQR1GVXltcu2y852GrRMElGKZQ6A==
       X-Amz-Cf-Pop:
       - EZE50-P1
       X-Cache:
@@ -44,10 +44,10 @@ interactions:
       content-encoding:
       - gzip
       server:
-      - Apache/2.4.57 (Ubuntu)
+      - Apache/2.4.58 (Ubuntu)
       set-cookie:
       - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
-        expires=Thu, 14-Dec-2023 17:45:11 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+        expires=Fri, 15-Dec-2023 18:27:14 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       vary:
       - Accept-Encoding
       x-frame-options:

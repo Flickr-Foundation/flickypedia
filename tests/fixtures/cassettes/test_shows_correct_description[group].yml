@@ -25,11 +25,11 @@ interactions:
       Content-Type:
       - text/xml; charset=utf-8
       Date:
-      - Tue, 14 Nov 2023 17:34:39 GMT
+      - Wed, 15 Nov 2023 18:26:42 GMT
       Via:
-      - 1.1 2ddd948d1ec2ebdb41f08585eb5b0876.cloudfront.net (CloudFront)
+      - 1.1 663e9700db88d7dfc36171ed7a7061bc.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - 21WuoYUWy_o-RDe1O0tpoMIMHzsAp3Wblmva3OjzdXHi6u6rpnAGvQ==
+      - U_szQXWpL_ShE2hK8j5dmdKTHQ6YhG7QPY-6KTRVhTYYKEzzpV2V9w==
       X-Amz-Cf-Pop:
       - EZE50-P1
       X-Cache:
@@ -37,10 +37,10 @@ interactions:
       content-encoding:
       - gzip
       server:
-      - Apache/2.4.57 (Ubuntu)
+      - Apache/2.4.58 (Ubuntu)
       set-cookie:
       - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
-        expires=Thu, 14-Dec-2023 17:34:39 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+        expires=Fri, 15-Dec-2023 18:26:42 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       vary:
       - Accept-Encoding
       x-frame-options:
@@ -65,16 +65,34 @@ interactions:
       user-agent:
       - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
     method: GET
-    uri: https://api.flickr.com/services/rest/?extras=license%2Cdate_upload%2Cdate_taken%2Cmedia%2Coriginal_format%2Cowner_name%2Curl_sq%2Curl_t%2Curl_s%2Curl_m%2Curl_o%2Curl_q%2Curl_l%2Cdescription%2Csafety_level%2Crealname&group_id=90096392%40N00&method=flickr.groups.pools.getPhotos&page=1&per_page=100
+    uri: https://api.flickr.com/services/rest/?extras=license%2Cdate_upload%2Cdate_taken%2Cmedia%2Coriginal_format%2Cowner_name%2Curl_sq%2Curl_t%2Curl_s%2Curl_m%2Curl_o%2Ctags%2Cgeo%2Curl_q%2Curl_l%2Cdescription%2Csafety_level%2Crealname&group_id=90096392%40N00&method=flickr.groups.pools.getPhotos&page=1&per_page=100
   response:
     content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<photos
-      page=\"1\" pages=\"427\" perpage=\"100\" total=\"42644\">\n\t<photo id=\"52894798448\"
-      owner=\"26128697@N07\" secret=\"5c782e7a49\" server=\"65535\" farm=\"66\" title=\"Capilla
-      de Cella, Canelones\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" ownername=\"Luiz
-      Filipe Varella\" dateadded=\"1699873079\" license=\"0\" safety_level=\"0\" dateupload=\"1683985195\"
-      datetaken=\"2023-05-13 06:01:38\" datetakengranularity=\"0\" datetakenunknown=\"1\"
-      realname=\"\" originalsecret=\"cdc2dff94c\" originalformat=\"jpg\" media=\"photo\"
-      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52894798448_5c782e7a49_s.jpg\"
+      page=\"1\" pages=\"427\" perpage=\"100\" total=\"42645\">\n\t<photo id=\"53333554795\"
+      owner=\"90184323@N05\" secret=\"2d435c7332\" server=\"65535\" farm=\"66\" title=\"\U0001F49C\"
+      ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" ownername=\"Gabriel Pimienta\"
+      dateadded=\"1700025609\" license=\"0\" safety_level=\"0\" dateupload=\"1700025461\"
+      datetaken=\"2023-11-14 23:02:33\" datetakengranularity=\"0\" datetakenunknown=\"0\"
+      realname=\"gabriel  pimienta\" tags=\"photography photooftheday ph montevideo
+      art uruguay iphone artonflickr flickr colors colores cores artista foto retrato
+      2023 november noviembre catsonflickr picoftheday ahsoka jedi starwars padawan
+      gata gatos ligthroom study cat\" originalsecret=\"92bf535e28\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53333554795_2d435c7332_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53333554795_2d435c7332_t.jpg\"
+      height_t=\"100\" width_t=\"69\" url_s=\"https://live.staticflickr.com/65535/53333554795_2d435c7332_m.jpg\"
+      height_s=\"240\" width_s=\"167\" url_m=\"https://live.staticflickr.com/65535/53333554795_2d435c7332.jpg\"
+      height_m=\"500\" width_m=\"347\" url_o=\"https://live.staticflickr.com/65535/53333554795_92bf535e28_o.jpg\"
+      height_o=\"3669\" width_o=\"2549\" url_q=\"https://live.staticflickr.com/65535/53333554795_2d435c7332_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/53333554795_2d435c7332_b.jpg\"
+      height_l=\"1024\" width_l=\"711\">\n\t\t<description />\n\t</photo>\n\t<photo
+      id=\"52894798448\" owner=\"26128697@N07\" secret=\"5c782e7a49\" server=\"65535\"
+      farm=\"66\" title=\"Capilla de Cella, Canelones\" ispublic=\"1\" isfriend=\"0\"
+      isfamily=\"0\" ownername=\"Luiz Filipe Varella\" dateadded=\"1699873079\" license=\"0\"
+      safety_level=\"0\" dateupload=\"1683985195\" datetaken=\"2023-05-13 06:01:38\"
+      datetakengranularity=\"0\" datetakenunknown=\"1\" realname=\"\" tags=\"\" originalsecret=\"cdc2dff94c\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52894798448_5c782e7a49_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52894798448_5c782e7a49_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52894798448_5c782e7a49_m.jpg\"
       height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/52894798448_5c782e7a49.jpg\"
@@ -87,7 +105,8 @@ interactions:
       de San Carlos\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" ownername=\"Luiz
       Filipe Varella\" dateadded=\"1699873000\" license=\"0\" safety_level=\"0\" dateupload=\"1683985178\"
       datetaken=\"2023-05-13 06:06:58\" datetakengranularity=\"0\" datetakenunknown=\"1\"
-      realname=\"\" originalsecret=\"257564f6bf\" originalformat=\"jpg\" media=\"photo\"
+      realname=\"\" tags=\"\" originalsecret=\"257564f6bf\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
       media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52894745145_4e7356f642_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52894745145_4e7356f642_t.jpg\"
       height_t=\"66\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52894745145_4e7356f642_m.jpg\"
@@ -101,7 +120,8 @@ interactions:
       de San Carlos\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" ownername=\"Luiz
       Filipe Varella\" dateadded=\"1699873000\" license=\"0\" safety_level=\"0\" dateupload=\"1683985182\"
       datetaken=\"2023-05-13 06:06:48\" datetakengranularity=\"0\" datetakenunknown=\"1\"
-      realname=\"\" originalsecret=\"0e37756a87\" originalformat=\"jpg\" media=\"photo\"
+      realname=\"\" tags=\"\" originalsecret=\"0e37756a87\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
       media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52894352081_7d65ea21a4_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52894352081_7d65ea21a4_t.jpg\"
       height_t=\"100\" width_t=\"69\" url_s=\"https://live.staticflickr.com/65535/52894352081_7d65ea21a4_m.jpg\"
@@ -115,8 +135,11 @@ interactions:
       ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" ownername=\"Gabriel Pimienta\"
       dateadded=\"1699857485\" license=\"0\" safety_level=\"0\" dateupload=\"1699857340\"
       datetaken=\"2023-11-12 02:35:12\" datetakengranularity=\"0\" datetakenunknown=\"0\"
-      realname=\"gabriel  pimienta\" originalsecret=\"ce35d4998b\" originalformat=\"jpg\"
-      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53329005909_fd85dab535_s.jpg\"
+      realname=\"gabriel  pimienta\" tags=\"photography photooftheday ph montevideo
+      art uruguay iphone artonflickr flickr colors colores cores artista foto retrato
+      2023 november noviembre coffe cafe\" originalsecret=\"ce35d4998b\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53329005909_fd85dab535_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53329005909_fd85dab535_t.jpg\"
       height_t=\"100\" width_t=\"79\" url_s=\"https://live.staticflickr.com/65535/53329005909_fd85dab535_m.jpg\"
       height_s=\"240\" width_s=\"191\" url_m=\"https://live.staticflickr.com/65535/53329005909_fd85dab535.jpg\"
@@ -128,8 +151,12 @@ interactions:
       farm=\"66\" title=\"Studing \U0001F4DA\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Gabriel Pimienta\" dateadded=\"1699799013\" license=\"0\" safety_level=\"0\"
       dateupload=\"1699798825\" datetaken=\"2023-11-12 02:27:11\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" realname=\"gabriel  pimienta\" originalsecret=\"7601083841\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53325883967_331c9839f5_s.jpg\"
+      datetakenunknown=\"0\" realname=\"gabriel  pimienta\" tags=\"photography photooftheday
+      ph montevideo art uruguay iphone artonflickr flickr colors colores cores artista
+      foto retrato 2023 november noviembre cat catsonflickr picoftheday ahsoka jedi
+      starwars padawan gata gatos ligthroom study student studing\" originalsecret=\"7601083841\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53325883967_331c9839f5_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53325883967_331c9839f5_t.jpg\"
       height_t=\"100\" width_t=\"76\" url_s=\"https://live.staticflickr.com/65535/53325883967_331c9839f5_m.jpg\"
       height_s=\"240\" width_s=\"182\" url_m=\"https://live.staticflickr.com/65535/53325883967_331c9839f5.jpg\"
@@ -141,7 +168,8 @@ interactions:
       farm=\"66\" title=\"Punta Ballena\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Luiz Filipe Varella\" dateadded=\"1699797061\" license=\"0\" safety_level=\"0\"
       dateupload=\"1683587549\" datetaken=\"2023-05-08 16:02:20\" datetakengranularity=\"0\"
-      datetakenunknown=\"1\" realname=\"\" originalsecret=\"c4142c73ec\" originalformat=\"jpg\"
+      datetakenunknown=\"1\" realname=\"\" tags=\"\" originalsecret=\"c4142c73ec\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
       media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52882533808_f5155cf8cf_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52882533808_f5155cf8cf_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52882533808_f5155cf8cf_m.jpg\"
@@ -155,7 +183,8 @@ interactions:
       ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" ownername=\"Luiz Filipe Varella\"
       dateadded=\"1699797001\" license=\"0\" safety_level=\"0\" dateupload=\"1684111425\"
       datetaken=\"2023-05-02 13:45:41\" datetakengranularity=\"0\" datetakenunknown=\"0\"
-      realname=\"\" originalsecret=\"f447a36c93\" originalformat=\"jpg\" media=\"photo\"
+      realname=\"\" tags=\"\" originalsecret=\"f447a36c93\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
       media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52898823250_e0d23315cf_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52898823250_e0d23315cf_t.jpg\"
       height_t=\"100\" width_t=\"67\" url_s=\"https://live.staticflickr.com/65535/52898823250_e0d23315cf_m.jpg\"
@@ -168,8 +197,9 @@ interactions:
       farm=\"66\" title=\"Treinta y tres, Uruguay\" ispublic=\"1\" isfriend=\"0\"
       isfamily=\"0\" ownername=\"Luiz Filipe Varella\" dateadded=\"1699797001\" license=\"0\"
       safety_level=\"0\" dateupload=\"1684111426\" datetaken=\"2023-05-02 13:48:31\"
-      datetakengranularity=\"0\" datetakenunknown=\"0\" realname=\"\" originalsecret=\"c80e845afc\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52898597964_409720c273_s.jpg\"
+      datetakengranularity=\"0\" datetakenunknown=\"0\" realname=\"\" tags=\"\" originalsecret=\"c80e845afc\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52898597964_409720c273_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52898597964_409720c273_t.jpg\"
       height_t=\"100\" width_t=\"67\" url_s=\"https://live.staticflickr.com/65535/52898597964_409720c273_m.jpg\"
       height_s=\"240\" width_s=\"161\" url_m=\"https://live.staticflickr.com/65535/52898597964_409720c273.jpg\"
@@ -182,9 +212,11 @@ interactions:
       URUGUAY.\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" ownername=\"tupacarballo\"
       dateadded=\"1699755594\" license=\"0\" safety_level=\"0\" dateupload=\"1219628226\"
       datetaken=\"2008-08-24 12:24:30\" datetakengranularity=\"0\" datetakenunknown=\"0\"
-      realname=\"H\xC9CTOR ATILIO CARBALLO\" media=\"photo\" media_status=\"ready\"
-      url_sq=\"https://live.staticflickr.com/3134/2794968086_ca8570a71e_s.jpg\" height_sq=\"75\"
-      width_sq=\"75\" url_t=\"https://live.staticflickr.com/3134/2794968086_ca8570a71e_t.jpg\"
+      realname=\"H\xC9CTOR ATILIO CARBALLO\" tags=\"aniversario canon uruguay rojo
+      gorro flor montevideo clavel fusil vestimenta festejo charretera republicadelaparvadomus\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/3134/2794968086_ca8570a71e_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/3134/2794968086_ca8570a71e_t.jpg\"
       height_t=\"100\" width_t=\"54\" url_s=\"https://live.staticflickr.com/3134/2794968086_ca8570a71e_m.jpg\"
       height_s=\"240\" width_s=\"129\" url_m=\"https://live.staticflickr.com/3134/2794968086_ca8570a71e.jpg\"
       height_m=\"500\" width_m=\"269\" url_q=\"https://live.staticflickr.com/3134/2794968086_ca8570a71e_q.jpg\"
@@ -195,8 +227,10 @@ interactions:
       isfriend=\"0\" isfamily=\"0\" ownername=\"Jonas de Carvalho\" dateadded=\"1699751863\"
       license=\"0\" safety_level=\"0\" dateupload=\"1680047008\" datetaken=\"2023-02-18
       19:23:53\" datetakengranularity=\"0\" datetakenunknown=\"0\" realname=\"Jonas
-      \ de Carvalho\" originalsecret=\"54d3e45754\" originalformat=\"jpg\" media=\"photo\"
-      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52777526907_6b6cc55171_s.jpg\"
+      \ de Carvalho\" tags=\"\" originalsecret=\"54d3e45754\" originalformat=\"jpg\"
+      latitude=\"-34.914470\" longitude=\"-56.167564\" accuracy=\"16\" context=\"0\"
+      place_id=\"\" woeid=\"10098238\" geo_is_public=\"1\" geo_is_contact=\"0\" geo_is_friend=\"0\"
+      geo_is_family=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52777526907_6b6cc55171_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52777526907_6b6cc55171_t.jpg\"
       height_t=\"46\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52777526907_6b6cc55171_m.jpg\"
       height_s=\"111\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/52777526907_6b6cc55171.jpg\"
@@ -209,8 +243,10 @@ interactions:
       isfriend=\"0\" isfamily=\"0\" ownername=\"Jonas de Carvalho\" dateadded=\"1699751862\"
       license=\"0\" safety_level=\"0\" dateupload=\"1680047008\" datetaken=\"2023-02-18
       19:17:16\" datetakengranularity=\"0\" datetakenunknown=\"0\" realname=\"Jonas
-      \ de Carvalho\" originalsecret=\"8f86ff33c3\" originalformat=\"jpg\" media=\"photo\"
-      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52778537093_9433187d9e_s.jpg\"
+      \ de Carvalho\" tags=\"\" originalsecret=\"8f86ff33c3\" originalformat=\"jpg\"
+      latitude=\"-34.912873\" longitude=\"-56.166034\" accuracy=\"16\" context=\"0\"
+      place_id=\"\" woeid=\"10098238\" geo_is_public=\"1\" geo_is_contact=\"0\" geo_is_friend=\"0\"
+      geo_is_family=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52778537093_9433187d9e_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52778537093_9433187d9e_t.jpg\"
       height_t=\"46\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52778537093_9433187d9e_m.jpg\"
       height_s=\"111\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/52778537093_9433187d9e.jpg\"
@@ -223,8 +259,10 @@ interactions:
       isfriend=\"0\" isfamily=\"0\" ownername=\"Jonas de Carvalho\" dateadded=\"1699751862\"
       license=\"0\" safety_level=\"0\" dateupload=\"1680047008\" datetaken=\"2023-02-18
       19:23:44\" datetakengranularity=\"0\" datetakenunknown=\"0\" realname=\"Jonas
-      \ de Carvalho\" originalsecret=\"272277e477\" originalformat=\"jpg\" media=\"photo\"
-      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52778054261_9bb5e866da_s.jpg\"
+      \ de Carvalho\" tags=\"\" originalsecret=\"272277e477\" originalformat=\"jpg\"
+      latitude=\"-34.914470\" longitude=\"-56.167581\" accuracy=\"16\" context=\"0\"
+      place_id=\"\" woeid=\"10098238\" geo_is_public=\"1\" geo_is_contact=\"0\" geo_is_friend=\"0\"
+      geo_is_family=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52778054261_9bb5e866da_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52778054261_9bb5e866da_t.jpg\"
       height_t=\"46\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52778054261_9bb5e866da_m.jpg\"
       height_s=\"111\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/52778054261_9bb5e866da.jpg\"
@@ -236,8 +274,12 @@ interactions:
       farm=\"66\" title=\"Ahsoka \U0001F49C\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Gabriel Pimienta\" dateadded=\"1699720991\" license=\"0\" safety_level=\"0\"
       dateupload=\"1699720850\" datetaken=\"2023-11-10 22:54:01\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" realname=\"gabriel  pimienta\" originalsecret=\"ba2ff5b309\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53325018004_d1270ff9c0_s.jpg\"
+      datetakenunknown=\"0\" realname=\"gabriel  pimienta\" tags=\"photography photooftheday
+      art ph montevideo uruguay iphone artonflickr flickr colors colores cores artista
+      foto retrato 2023 november noviembre cat catsonflickr picoftheday ahsoka jedi
+      starwars padawan gata gatos\" originalsecret=\"ba2ff5b309\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53325018004_d1270ff9c0_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53325018004_d1270ff9c0_t.jpg\"
       height_t=\"100\" width_t=\"75\" url_s=\"https://live.staticflickr.com/65535/53325018004_d1270ff9c0_m.jpg\"
       height_s=\"240\" width_s=\"180\" url_m=\"https://live.staticflickr.com/65535/53325018004_d1270ff9c0.jpg\"
@@ -250,7 +292,10 @@ interactions:
       isfriend=\"0\" isfamily=\"0\" ownername=\"tupacarballo\" dateadded=\"1699656281\"
       license=\"0\" safety_level=\"0\" dateupload=\"1219882838\" datetaken=\"2008-05-20
       12:24:54\" datetakengranularity=\"0\" datetakenunknown=\"0\" realname=\"H\xC9CTOR
-      ATILIO CARBALLO\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/3206/2803869539_5f7cd58109_s.jpg\"
+      ATILIO CARBALLO\" tags=\"rio canon puerto uruguay muelle ventanas amarillo marron
+      cartel soga coloniadelsacramento operarios amarra chalecosalvavidas tupacarballo\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/3206/2803869539_5f7cd58109_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/3206/2803869539_5f7cd58109_t.jpg\"
       height_t=\"92\" width_t=\"100\" url_s=\"https://live.staticflickr.com/3206/2803869539_5f7cd58109_m.jpg\"
       height_s=\"220\" width_s=\"240\" url_m=\"https://live.staticflickr.com/3206/2803869539_5f7cd58109.jpg\"
@@ -261,7 +306,9 @@ interactions:
       farm=\"66\" title=\"threatening\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Marcelo C.F.\" dateadded=\"1699617880\" license=\"0\" safety_level=\"0\"
       dateupload=\"1699617856\" datetaken=\"2021-02-14 18:03:17\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" realname=\"Marcelo Fern\xE1ndez\" media=\"photo\" media_status=\"ready\"
+      datetakenunknown=\"0\" realname=\"Marcelo Fern\xE1ndez\" tags=\"nubes clouds
+      blancoynegro blackandwhite bw byn bn monochrome threatening building\" latitude=\"0\"
+      longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\" media_status=\"ready\"
       url_sq=\"https://live.staticflickr.com/65535/53322403488_fc7cc0b412_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53322403488_fc7cc0b412_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53322403488_fc7cc0b412_m.jpg\"
@@ -273,8 +320,9 @@ interactions:
       farm=\"66\" title=\"intense eye\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Marcelo C.F.\" dateadded=\"1699541851\" license=\"0\" safety_level=\"0\"
       dateupload=\"1699541805\" datetaken=\"2023-11-04 11:29:34\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" realname=\"Marcelo Fern\xE1ndez\" media=\"photo\" media_status=\"ready\"
-      url_sq=\"https://live.staticflickr.com/65535/53320859740_c16c2f7fe5_s.jpg\"
+      datetakenunknown=\"0\" realname=\"Marcelo Fern\xE1ndez\" tags=\"cats pet pets
+      cat eye selectivefocus\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53320859740_c16c2f7fe5_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53320859740_c16c2f7fe5_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53320859740_c16c2f7fe5_m.jpg\"
       height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53320859740_c16c2f7fe5.jpg\"
@@ -286,7 +334,9 @@ interactions:
       ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" ownername=\"fabiankoehnlein\" dateadded=\"1699528224\"
       license=\"0\" safety_level=\"0\" dateupload=\"1699527917\" datetaken=\"2023-11-09
       11:03:46\" datetakengranularity=\"0\" datetakenunknown=\"1\" realname=\"Fabian
-      Koehnlein\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53320401384_8f5affd4f6_s.jpg\"
+      Koehnlein\" tags=\"haze hazy hazymorning muelledemailhos puntadeleste uruguay\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53320401384_8f5affd4f6_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53320401384_8f5affd4f6_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53320401384_8f5affd4f6_m.jpg\"
       height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53320401384_8f5affd4f6.jpg\"
@@ -298,9 +348,10 @@ interactions:
       DEL ESTE. URUGUAY.\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" ownername=\"tupacarballo\"
       dateadded=\"1699470227\" license=\"0\" safety_level=\"0\" dateupload=\"1220059136\"
       datetaken=\"2006-06-23 15:04:23\" datetakengranularity=\"0\" datetakenunknown=\"0\"
-      realname=\"H\xC9CTOR ATILIO CARBALLO\" media=\"photo\" media_status=\"ready\"
-      url_sq=\"https://live.staticflickr.com/3219/2809306595_f2fa1e0ae4_s.jpg\" height_sq=\"75\"
-      width_sq=\"75\" url_t=\"https://live.staticflickr.com/3219/2809306595_f2fa1e0ae4_t.jpg\"
+      realname=\"H\xC9CTOR ATILIO CARBALLO\" tags=\"azul canon uruguay atardecer solar
+      amarillo reloj norte oceano maldonado puntadeleste\" latitude=\"0\" longitude=\"0\"
+      accuracy=\"0\" context=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/3219/2809306595_f2fa1e0ae4_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/3219/2809306595_f2fa1e0ae4_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/3219/2809306595_f2fa1e0ae4_m.jpg\"
       height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/3219/2809306595_f2fa1e0ae4.jpg\"
       height_m=\"333\" width_m=\"500\" url_q=\"https://live.staticflickr.com/3219/2809306595_f2fa1e0ae4_q.jpg\"
@@ -311,7 +362,9 @@ interactions:
       isfriend=\"0\" isfamily=\"0\" ownername=\"tupacarballo\" dateadded=\"1699404034\"
       license=\"0\" safety_level=\"0\" dateupload=\"1220150479\" datetaken=\"2008-01-28
       12:52:54\" datetakengranularity=\"0\" datetakenunknown=\"0\" realname=\"H\xC9CTOR
-      ATILIO CARBALLO\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/3054/2812982866_6c653066d5_s.jpg\"
+      ATILIO CARBALLO\" tags=\"puntadeleste maldonado uruguay crucero costavictoria
+      anclado turismo oceano canon blanco\" latitude=\"0\" longitude=\"0\" accuracy=\"0\"
+      context=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/3054/2812982866_6c653066d5_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/3054/2812982866_6c653066d5_t.jpg\"
       height_t=\"52\" width_t=\"100\" url_s=\"https://live.staticflickr.com/3054/2812982866_6c653066d5_m.jpg\"
       height_s=\"124\" width_s=\"240\" url_m=\"https://live.staticflickr.com/3054/2812982866_6c653066d5.jpg\"
@@ -322,8 +375,9 @@ interactions:
       farm=\"66\" title=\"crep\xFAsculo de Piri\xE1polis\" ispublic=\"1\" isfriend=\"0\"
       isfamily=\"0\" ownername=\"Luiz Filipe Varella\" dateadded=\"1699383987\" license=\"0\"
       safety_level=\"0\" dateupload=\"1683813498\" datetaken=\"2023-05-11 06:51:59\"
-      datetakengranularity=\"0\" datetakenunknown=\"1\" realname=\"\" originalsecret=\"8a55a082e4\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52889198729_ccf00e8bf4_s.jpg\"
+      datetakengranularity=\"0\" datetakenunknown=\"1\" realname=\"\" tags=\"\" originalsecret=\"8a55a082e4\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52889198729_ccf00e8bf4_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52889198729_ccf00e8bf4_t.jpg\"
       height_t=\"66\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52889198729_ccf00e8bf4_m.jpg\"
       height_s=\"158\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/52889198729_ccf00e8bf4.jpg\"
@@ -336,7 +390,8 @@ interactions:
       ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" ownername=\"Luiz Filipe Varella\"
       dateadded=\"1699383987\" license=\"0\" safety_level=\"0\" dateupload=\"1683746103\"
       datetaken=\"2023-05-10 12:07:08\" datetakengranularity=\"0\" datetakenunknown=\"1\"
-      realname=\"\" originalsecret=\"a64eb73407\" originalformat=\"jpg\" media=\"photo\"
+      realname=\"\" tags=\"\" originalsecret=\"a64eb73407\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
       media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52887485750_f7660653d9_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52887485750_f7660653d9_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52887485750_f7660653d9_m.jpg\"
@@ -349,7 +404,8 @@ interactions:
       farm=\"66\" title=\"Muelle Stella Maris\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Luiz Filipe Varella\" dateadded=\"1699383987\" license=\"0\" safety_level=\"0\"
       dateupload=\"1683746100\" datetaken=\"2023-05-10 12:06:45\" datetakengranularity=\"0\"
-      datetakenunknown=\"1\" realname=\"\" originalsecret=\"4d8015215e\" originalformat=\"jpg\"
+      datetakenunknown=\"1\" realname=\"\" tags=\"\" originalsecret=\"4d8015215e\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
       media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52887101286_7f621a9a7a_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52887101286_7f621a9a7a_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52887101286_7f621a9a7a_m.jpg\"
@@ -363,7 +419,9 @@ interactions:
       ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" ownername=\"fabiankoehnlein\" dateadded=\"1699354479\"
       license=\"0\" safety_level=\"0\" dateupload=\"1699353963\" datetaken=\"2023-11-07
       10:44:51\" datetakengranularity=\"0\" datetakenunknown=\"1\" realname=\"Fabian
-      Koehnlein\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53315599431_5eea4bc553_s.jpg\"
+      Koehnlein\" tags=\"uruguay puntadeleste rockycoast atlantic roughwaves playadelosingleses
+      hugewaves\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53315599431_5eea4bc553_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53315599431_5eea4bc553_t.jpg\"
       height_t=\"100\" width_t=\"67\" url_s=\"https://live.staticflickr.com/65535/53315599431_5eea4bc553_m.jpg\"
       height_s=\"240\" width_s=\"160\" url_m=\"https://live.staticflickr.com/65535/53315599431_5eea4bc553.jpg\"
@@ -374,8 +432,12 @@ interactions:
       owner=\"49273060@N04\" secret=\"043cd55d31\" server=\"65535\" farm=\"66\" title=\"chispaci\xF3n\"
       ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" ownername=\"Nando.uy\" dateadded=\"1699279281\"
       license=\"1\" safety_level=\"0\" dateupload=\"1698245758\" datetaken=\"2023-10-15
-      00:07:21\" datetakengranularity=\"0\" datetakenunknown=\"0\" originalsecret=\"4053bbba19\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53283923647_043cd55d31_s.jpg\"
+      00:07:21\" datetakengranularity=\"0\" datetakenunknown=\"0\" tags=\"nandouy
+      minas lavalleja uruguay fireworks fuegos de artificio mirrorles panasonic lumix
+      gx85 explosion light\" originalsecret=\"4053bbba19\" originalformat=\"jpg\"
+      latitude=\"-34.376976\" longitude=\"-55.218604\" accuracy=\"16\" context=\"0\"
+      place_id=\"\" woeid=\"3441665\" geo_is_public=\"1\" geo_is_contact=\"0\" geo_is_friend=\"0\"
+      geo_is_family=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53283923647_043cd55d31_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53283923647_043cd55d31_t.jpg\"
       height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53283923647_043cd55d31_m.jpg\"
       height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53283923647_043cd55d31.jpg\"
@@ -388,7 +450,9 @@ interactions:
       isfriend=\"0\" isfamily=\"0\" ownername=\"Marcelo C.F.\" dateadded=\"1699186962\"
       license=\"0\" safety_level=\"0\" dateupload=\"1699186942\" datetaken=\"2022-12-27
       18:52:48\" datetakengranularity=\"0\" datetakenunknown=\"0\" realname=\"Marcelo
-      Fern\xE1ndez\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53311139725_e563d6722e_s.jpg\"
+      Fern\xE1ndez\" tags=\"ship oceancruiser kayak sea two tranquillity\" latitude=\"0\"
+      longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\" media_status=\"ready\"
+      url_sq=\"https://live.staticflickr.com/65535/53311139725_e563d6722e_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53311139725_e563d6722e_t.jpg\"
       height_t=\"56\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53311139725_e563d6722e_m.jpg\"
       height_s=\"135\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53311139725_e563d6722e.jpg\"
@@ -399,7 +463,8 @@ interactions:
       farm=\"66\" title=\"Montevideo Uruguay 68\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"donnebryant\" dateadded=\"1699130574\" license=\"0\" safety_level=\"0\"
       dateupload=\"1689978037\" datetaken=\"2023-07-21 15:20:14\" datetakengranularity=\"0\"
-      datetakenunknown=\"1\" originalsecret=\"6dd6bba79b\" originalformat=\"png\"
+      datetakenunknown=\"1\" tags=\"montevideo capital uruguay\" originalsecret=\"6dd6bba79b\"
+      originalformat=\"png\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
       media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53062652543_7d45d8c5cb_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53062652543_7d45d8c5cb_t.jpg\"
       height_t=\"74\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53062652543_7d45d8c5cb_m.jpg\"
@@ -413,7 +478,11 @@ interactions:
       del Sacramento, Uruguay\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" ownername=\"donnebryant\"
       dateadded=\"1699130532\" license=\"0\" safety_level=\"0\" dateupload=\"1690058826\"
       datetaken=\"2022-12-29 00:20:56\" datetakengranularity=\"0\" datetakenunknown=\"1\"
-      originalsecret=\"b590928979\" originalformat=\"jpg\" media=\"photo\" media_status=\"ready\"
+      tags=\"colonia del sacramento uruguay historic unesco world heritage site colonial
+      south america barrio colorful coloniadelsacramento\" originalsecret=\"b590928979\"
+      originalformat=\"jpg\" latitude=\"-34.471014\" longitude=\"-57.851523\" accuracy=\"14\"
+      context=\"0\" place_id=\"\" woeid=\"3443013\" geo_is_public=\"1\" geo_is_contact=\"0\"
+      geo_is_friend=\"0\" geo_is_family=\"0\" media=\"photo\" media_status=\"ready\"
       url_sq=\"https://live.staticflickr.com/65535/53064554723_d0dae620fc_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53064554723_d0dae620fc_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53064554723_d0dae620fc_m.jpg\"
@@ -448,8 +517,11 @@ interactions:
       farm=\"66\" title=\"Montevideo Uruguay 73\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"donnebryant\" dateadded=\"1699130532\" license=\"0\" safety_level=\"0\"
       dateupload=\"1689978040\" datetaken=\"2023-07-21 15:18:27\" datetakengranularity=\"0\"
-      datetakenunknown=\"1\" originalsecret=\"a61947d6bc\" originalformat=\"png\"
-      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53062161031_245032999a_s.jpg\"
+      datetakenunknown=\"1\" tags=\"montevideo capital uruguay beach\" originalsecret=\"a61947d6bc\"
+      originalformat=\"png\" latitude=\"-34.911568\" longitude=\"-56.145904\" accuracy=\"13\"
+      context=\"0\" place_id=\"\" woeid=\"3441011\" geo_is_public=\"1\" geo_is_contact=\"0\"
+      geo_is_friend=\"0\" geo_is_family=\"0\" media=\"photo\" media_status=\"ready\"
+      url_sq=\"https://live.staticflickr.com/65535/53062161031_245032999a_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53062161031_245032999a_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53062161031_245032999a_m.jpg\"
       height_s=\"161\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53062161031_245032999a.jpg\"
@@ -462,8 +534,9 @@ interactions:
       del Sacramento - UY\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" ownername=\"Rafael
       Peixe\" dateadded=\"1699092297\" license=\"0\" safety_level=\"0\" dateupload=\"1699092281\"
       datetaken=\"2019-01-08 13:56:35\" datetakengranularity=\"0\" datetakenunknown=\"0\"
-      originalsecret=\"d375fc2d22\" originalformat=\"jpg\" media=\"photo\" media_status=\"ready\"
-      url_sq=\"https://live.staticflickr.com/65535/53308786719_d580caffb9_s.jpg\"
+      tags=\"tree coloniadelsacramaento uruguai uruguay arvore\" originalsecret=\"d375fc2d22\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53308786719_d580caffb9_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53308786719_d580caffb9_t.jpg\"
       height_t=\"56\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53308786719_d580caffb9_m.jpg\"
       height_s=\"135\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53308786719_d580caffb9.jpg\"
@@ -475,8 +548,12 @@ interactions:
       farm=\"66\" title=\"Caloi \U0001F6B4\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Gabriel Pimienta\" dateadded=\"1699066820\" license=\"0\" safety_level=\"0\"
       dateupload=\"1699066646\" datetaken=\"2022-12-08 18:33:56\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" realname=\"gabriel  pimienta\" originalsecret=\"d523893f3d\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53308046006_71bf5eb4b3_s.jpg\"
+      datetakenunknown=\"0\" realname=\"gabriel  pimienta\" tags=\"photography photooftheday
+      art ph montevideo uruguay iphone artonflickr flickr colors colores cores artista
+      foto retrato 2023 november noviembre bike bicicleta biker ciclismo retro caloi
+      red rojo portraitonflickr\" originalsecret=\"d523893f3d\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53308046006_71bf5eb4b3_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53308046006_71bf5eb4b3_t.jpg\"
       height_t=\"88\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53308046006_71bf5eb4b3_m.jpg\"
       height_s=\"211\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53308046006_71bf5eb4b3.jpg\"
@@ -488,8 +565,10 @@ interactions:
       farm=\"66\" title=\"concentric circles\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Marcelo C.F.\" dateadded=\"1699022805\" license=\"0\" safety_level=\"0\"
       dateupload=\"1699022777\" datetaken=\"2021-11-13 22:51:13\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" realname=\"Marcelo Fern\xE1ndez\" media=\"photo\" media_status=\"ready\"
-      url_sq=\"https://live.staticflickr.com/65535/53307302779_b202a5d129_s.jpg\"
+      datetakenunknown=\"0\" realname=\"Marcelo Fern\xE1ndez\" tags=\"concentriccircles
+      circles curvas curvelines blancoynegro blackandwhite bw byn bn monochrome monocrom\xE1tico
+      squareformat diagonal line texture minimalism\" latitude=\"0\" longitude=\"0\"
+      accuracy=\"0\" context=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53307302779_b202a5d129_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53307302779_b202a5d129_t.jpg\"
       height_t=\"100\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53307302779_b202a5d129_m.jpg\"
       height_s=\"240\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53307302779_b202a5d129.jpg\"
@@ -501,7 +580,8 @@ interactions:
       isfamily=\"0\" ownername=\"Marcelo C.F.\" dateadded=\"1699022805\" license=\"0\"
       safety_level=\"0\" dateupload=\"1699022777\" datetaken=\"2021-06-17 18:06:15\"
       datetakengranularity=\"0\" datetakenunknown=\"0\" realname=\"Marcelo Fern\xE1ndez\"
-      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53306899216_f9f43afd58_s.jpg\"
+      tags=\"sun sky clouds city shapes\" latitude=\"0\" longitude=\"0\" accuracy=\"0\"
+      context=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53306899216_f9f43afd58_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53306899216_f9f43afd58_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53306899216_f9f43afd58_m.jpg\"
       height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53306899216_f9f43afd58.jpg\"
@@ -512,7 +592,8 @@ interactions:
       farm=\"66\" title=\"Los dedos\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Luiz Filipe Varella\" dateadded=\"1698975012\" license=\"0\" safety_level=\"0\"
       dateupload=\"1683924116\" datetaken=\"2023-04-30 10:29:50\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" realname=\"\" originalsecret=\"8bbb6dc592\" originalformat=\"jpg\"
+      datetakenunknown=\"0\" realname=\"\" tags=\"\" originalsecret=\"8bbb6dc592\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
       media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52892111252_a53f7b8263_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52892111252_a53f7b8263_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52892111252_a53f7b8263_m.jpg\"
@@ -527,7 +608,8 @@ interactions:
       ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" ownername=\"Luiz Filipe Varella\"
       dateadded=\"1698974936\" license=\"0\" safety_level=\"0\" dateupload=\"1683934177\"
       datetaken=\"2023-05-12 16:23:45\" datetakengranularity=\"0\" datetakenunknown=\"1\"
-      realname=\"\" originalsecret=\"8aafb63817\" originalformat=\"jpg\" media=\"photo\"
+      realname=\"\" tags=\"\" originalsecret=\"8aafb63817\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
       media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52893403675_8f0f2ddef4_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52893403675_8f0f2ddef4_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52893403675_8f0f2ddef4_m.jpg\"
@@ -540,8 +622,9 @@ interactions:
       farm=\"66\" title=\"Ermita Virgen de la candelaria\" ispublic=\"1\" isfriend=\"0\"
       isfamily=\"0\" ownername=\"Luiz Filipe Varella\" dateadded=\"1698974936\" license=\"0\"
       safety_level=\"0\" dateupload=\"1683918144\" datetaken=\"2023-05-12 11:57:14\"
-      datetakengranularity=\"0\" datetakenunknown=\"1\" realname=\"\" originalsecret=\"1120544405\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52892602464_72d080b5a0_s.jpg\"
+      datetakengranularity=\"0\" datetakenunknown=\"1\" realname=\"\" tags=\"\" originalsecret=\"1120544405\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52892602464_72d080b5a0_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52892602464_72d080b5a0_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52892602464_72d080b5a0_m.jpg\"
       height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/52892602464_72d080b5a0.jpg\"
@@ -554,7 +637,8 @@ interactions:
       \xE0 baleia-franca\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" ownername=\"Luiz
       Filipe Varella\" dateadded=\"1698968741\" license=\"0\" safety_level=\"0\" dateupload=\"1683371730\"
       datetaken=\"2023-05-06 03:57:59\" datetakengranularity=\"0\" datetakenunknown=\"1\"
-      realname=\"\" originalsecret=\"013077f023\" originalformat=\"jpg\" media=\"photo\"
+      realname=\"\" tags=\"\" originalsecret=\"013077f023\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
       media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52874605709_af8800d54a_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52874605709_af8800d54a_t.jpg\"
       height_t=\"65\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52874605709_af8800d54a_m.jpg\"
@@ -567,8 +651,9 @@ interactions:
       farm=\"66\" title=\"Punta del Este, Uruguay\" ispublic=\"1\" isfriend=\"0\"
       isfamily=\"0\" ownername=\"Luiz Filipe Varella\" dateadded=\"1698968661\" license=\"0\"
       safety_level=\"0\" dateupload=\"1683338565\" datetaken=\"2023-05-05 18:58:58\"
-      datetakengranularity=\"0\" datetakenunknown=\"1\" realname=\"\" originalsecret=\"09bb899662\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52874104953_d9297be432_s.jpg\"
+      datetakengranularity=\"0\" datetakenunknown=\"1\" realname=\"\" tags=\"\" originalsecret=\"09bb899662\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52874104953_d9297be432_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52874104953_d9297be432_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52874104953_d9297be432_m.jpg\"
       height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/52874104953_d9297be432.jpg\"
@@ -580,8 +665,9 @@ interactions:
       farm=\"66\" title=\"gaivota-maria-velha (Chroicocephalus maculipennis)\" ispublic=\"1\"
       isfriend=\"0\" isfamily=\"0\" ownername=\"Luiz Filipe Varella\" dateadded=\"1698968661\"
       license=\"0\" safety_level=\"0\" dateupload=\"1683321380\" datetaken=\"2023-05-05
-      14:07:35\" datetakengranularity=\"0\" datetakenunknown=\"1\" realname=\"\" originalsecret=\"d1602bb42f\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52872601957_574342c4a8_s.jpg\"
+      14:07:35\" datetakengranularity=\"0\" datetakenunknown=\"1\" realname=\"\" tags=\"\"
+      originalsecret=\"d1602bb42f\" originalformat=\"jpg\" latitude=\"0\" longitude=\"0\"
+      accuracy=\"0\" context=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52872601957_574342c4a8_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52872601957_574342c4a8_t.jpg\"
       height_t=\"65\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52872601957_574342c4a8_m.jpg\"
       height_s=\"157\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/52872601957_574342c4a8.jpg\"
@@ -594,7 +680,9 @@ interactions:
       isfriend=\"0\" isfamily=\"0\" ownername=\"fabiankoehnlein\" dateadded=\"1698933909\"
       license=\"0\" safety_level=\"0\" dateupload=\"1698933717\" datetaken=\"2023-11-02
       14:00:53\" datetakengranularity=\"0\" datetakenunknown=\"1\" realname=\"Fabian
-      Koehnlein\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53303881922_6f84123cc1_s.jpg\"
+      Koehnlein\" tags=\"sunset goldensunset mansabeach puntadeleste uruguay playamansa\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53303881922_6f84123cc1_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53303881922_6f84123cc1_t.jpg\"
       height_t=\"100\" width_t=\"67\" url_s=\"https://live.staticflickr.com/65535/53303881922_6f84123cc1_m.jpg\"
       height_s=\"240\" width_s=\"160\" url_m=\"https://live.staticflickr.com/65535/53303881922_6f84123cc1.jpg\"
@@ -606,7 +694,9 @@ interactions:
       ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" ownername=\"fabiankoehnlein\" dateadded=\"1698933413\"
       license=\"0\" safety_level=\"0\" dateupload=\"1698933124\" datetaken=\"2023-11-02
       13:49:34\" datetakengranularity=\"0\" datetakenunknown=\"1\" realname=\"Fabian
-      Koehnlein\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53303862402_781b07f2a3_s.jpg\"
+      Koehnlein\" tags=\"sunrise goldensunrise foam bravabeach playabrava puntadeleste
+      uruguay seaside sea roughsea\" latitude=\"0\" longitude=\"0\" accuracy=\"0\"
+      context=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53303862402_781b07f2a3_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53303862402_781b07f2a3_t.jpg\"
       height_t=\"100\" width_t=\"67\" url_s=\"https://live.staticflickr.com/65535/53303862402_781b07f2a3_m.jpg\"
       height_s=\"240\" width_s=\"160\" url_m=\"https://live.staticflickr.com/65535/53303862402_781b07f2a3.jpg\"
@@ -618,8 +708,10 @@ interactions:
       farm=\"66\" title=\"horse shape\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Marcelo C.F.\" dateadded=\"1698930017\" license=\"0\" safety_level=\"0\"
       dateupload=\"1698929986\" datetaken=\"2021-03-14 15:57:58\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" realname=\"Marcelo Fern\xE1ndez\" media=\"photo\" media_status=\"ready\"
-      url_sq=\"https://live.staticflickr.com/65535/53304629521_bfd17d04de_s.jpg\"
+      datetakenunknown=\"0\" realname=\"Marcelo Fern\xE1ndez\" tags=\"framed form
+      horse blancoynegro blackandwhite bw byn bn monochrome monocrom\xE1tico squareformat\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53304629521_bfd17d04de_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53304629521_bfd17d04de_t.jpg\"
       height_t=\"100\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53304629521_bfd17d04de_m.jpg\"
       height_s=\"240\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53304629521_bfd17d04de.jpg\"
@@ -630,8 +722,9 @@ interactions:
       farm=\"66\" title=\"cumbia2\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" ownername=\"terrano.spb\"
       dateadded=\"1698888794\" license=\"0\" safety_level=\"0\" dateupload=\"1698888780\"
       datetaken=\"2023-10-21 18:36:22\" datetakengranularity=\"0\" datetakenunknown=\"0\"
-      realname=\"Dmitrii Markov\" originalsecret=\"0b1c3196b1\" originalformat=\"jpg\"
-      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53304072268_82768d6376_s.jpg\"
+      realname=\"Dmitrii Markov\" tags=\"\" originalsecret=\"0b1c3196b1\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53304072268_82768d6376_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53304072268_82768d6376_t.jpg\"
       height_t=\"100\" width_t=\"67\" url_s=\"https://live.staticflickr.com/65535/53304072268_82768d6376_m.jpg\"
       height_s=\"240\" width_s=\"160\" url_m=\"https://live.staticflickr.com/65535/53304072268_82768d6376.jpg\"
@@ -643,8 +736,9 @@ interactions:
       farm=\"66\" title=\"cumbia1\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" ownername=\"terrano.spb\"
       dateadded=\"1698888794\" license=\"0\" safety_level=\"0\" dateupload=\"1698888780\"
       datetaken=\"2023-10-21 18:35:21\" datetakengranularity=\"0\" datetakenunknown=\"0\"
-      realname=\"Dmitrii Markov\" originalsecret=\"b498390831\" originalformat=\"jpg\"
-      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53302965022_83096b85e0_s.jpg\"
+      realname=\"Dmitrii Markov\" tags=\"\" originalsecret=\"b498390831\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53302965022_83096b85e0_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53302965022_83096b85e0_t.jpg\"
       height_t=\"100\" width_t=\"67\" url_s=\"https://live.staticflickr.com/65535/53302965022_83096b85e0_m.jpg\"
       height_s=\"240\" width_s=\"160\" url_m=\"https://live.staticflickr.com/65535/53302965022_83096b85e0.jpg\"
@@ -656,8 +750,9 @@ interactions:
       farm=\"66\" title=\"cumbia0\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" ownername=\"terrano.spb\"
       dateadded=\"1698888793\" license=\"0\" safety_level=\"0\" dateupload=\"1698888779\"
       datetaken=\"2023-10-21 18:29:45\" datetakengranularity=\"0\" datetakenunknown=\"0\"
-      realname=\"Dmitrii Markov\" originalsecret=\"3299281a5f\" originalformat=\"jpg\"
-      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53304194584_f53d87ab08_s.jpg\"
+      realname=\"Dmitrii Markov\" tags=\"\" originalsecret=\"3299281a5f\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53304194584_f53d87ab08_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53304194584_f53d87ab08_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53304194584_f53d87ab08_m.jpg\"
       height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53304194584_f53d87ab08.jpg\"
@@ -670,8 +765,12 @@ interactions:
       isfamily=\"0\" ownername=\"Gabriel Pimienta\" dateadded=\"1698815549\" license=\"0\"
       safety_level=\"0\" dateupload=\"1698815356\" datetaken=\"2023-10-31 16:52:08\"
       datetakengranularity=\"0\" datetakenunknown=\"1\" realname=\"gabriel  pimienta\"
-      originalsecret=\"30328434e2\" originalformat=\"jpg\" media=\"photo\" media_status=\"ready\"
-      url_sq=\"https://live.staticflickr.com/65535/53301866543_f2c55f8242_s.jpg\"
+      tags=\"photography photooftheday art ph montevideo uruguay iphone artonflickr
+      flickr colors colores cores portraitonflickr artista foto retrato 2023 octubre
+      october saw juegodelmiedo halloween 3110 halloweenday halloweenonflickr pintura
+      picsart portrait mascara mask terror pelicula film saw2 happyhalloween\" originalsecret=\"30328434e2\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53301866543_f2c55f8242_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53301866543_f2c55f8242_t.jpg\"
       height_t=\"100\" width_t=\"75\" url_s=\"https://live.staticflickr.com/65535/53301866543_f2c55f8242_m.jpg\"
       height_s=\"240\" width_s=\"180\" url_m=\"https://live.staticflickr.com/65535/53301866543_f2c55f8242.jpg\"
@@ -683,8 +782,9 @@ interactions:
       farm=\"66\" title=\"Punta del Este, Uruguay\" ispublic=\"1\" isfriend=\"0\"
       isfamily=\"0\" ownername=\"Luiz Filipe Varella\" dateadded=\"1698668363\" license=\"0\"
       safety_level=\"0\" dateupload=\"1683319354\" datetaken=\"2023-05-05 13:39:18\"
-      datetakengranularity=\"0\" datetakenunknown=\"1\" realname=\"\" originalsecret=\"6ef245d49f\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52872540602_00e1a4d3ce_s.jpg\"
+      datetakengranularity=\"0\" datetakenunknown=\"1\" realname=\"\" tags=\"\" originalsecret=\"6ef245d49f\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52872540602_00e1a4d3ce_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52872540602_00e1a4d3ce_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52872540602_00e1a4d3ce_m.jpg\"
       height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/52872540602_00e1a4d3ce.jpg\"
@@ -696,8 +796,9 @@ interactions:
       farm=\"66\" title=\"Punta del Este, Uruguay\" ispublic=\"1\" isfriend=\"0\"
       isfamily=\"0\" ownername=\"Luiz Filipe Varella\" dateadded=\"1698668300\" license=\"0\"
       safety_level=\"0\" dateupload=\"1683319342\" datetaken=\"2023-05-05 13:38:47\"
-      datetakengranularity=\"0\" datetakenunknown=\"1\" realname=\"\" originalsecret=\"b21957a4da\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52873559113_17c46987c0_s.jpg\"
+      datetakengranularity=\"0\" datetakenunknown=\"1\" realname=\"\" tags=\"\" originalsecret=\"b21957a4da\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52873559113_17c46987c0_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52873559113_17c46987c0_t.jpg\"
       height_t=\"66\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52873559113_17c46987c0_m.jpg\"
       height_s=\"159\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/52873559113_17c46987c0.jpg\"
@@ -709,8 +810,9 @@ interactions:
       farm=\"66\" title=\"Punta del Este, Uruguay\" ispublic=\"1\" isfriend=\"0\"
       isfamily=\"0\" ownername=\"Luiz Filipe Varella\" dateadded=\"1698668300\" license=\"0\"
       safety_level=\"0\" dateupload=\"1683319344\" datetaken=\"2023-05-05 13:39:50\"
-      datetakengranularity=\"0\" datetakenunknown=\"1\" realname=\"\" originalsecret=\"f179c1da27\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52872541637_75fa28c701_s.jpg\"
+      datetakengranularity=\"0\" datetakenunknown=\"1\" realname=\"\" tags=\"\" originalsecret=\"f179c1da27\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52872541637_75fa28c701_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52872541637_75fa28c701_t.jpg\"
       height_t=\"69\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52872541637_75fa28c701_m.jpg\"
       height_s=\"165\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/52872541637_75fa28c701.jpg\"
@@ -722,8 +824,13 @@ interactions:
       farm=\"66\" title=\"Halloween Mode On\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Gabriel Pimienta\" dateadded=\"1698647229\" license=\"0\" safety_level=\"0\"
       dateupload=\"1698646903\" datetaken=\"2023-10-30 02:56:09\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" realname=\"gabriel  pimienta\" originalsecret=\"8049ede119\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53295732447_bdbc98bcee_s.jpg\"
+      datetakenunknown=\"0\" realname=\"gabriel  pimienta\" tags=\"photography photooftheday
+      art ph montevideo uruguay iphone artonflickr flickr colors colores cores portraitonflickr
+      artista foto retrato 2023 octubre october saw juegodelmiedo halloween 3110 halloweenday
+      halloweenonflickr pintura picsart portrait artattack manualidad mascara mask
+      terror pelicula film saw2\" originalsecret=\"8049ede119\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53295732447_bdbc98bcee_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53295732447_bdbc98bcee_t.jpg\"
       height_t=\"100\" width_t=\"75\" url_s=\"https://live.staticflickr.com/65535/53295732447_bdbc98bcee_m.jpg\"
       height_s=\"240\" width_s=\"180\" url_m=\"https://live.staticflickr.com/65535/53295732447_bdbc98bcee.jpg\"
@@ -735,8 +842,13 @@ interactions:
       farm=\"66\" title=\"Halloween Mode On\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Gabriel Pimienta\" dateadded=\"1698647073\" license=\"0\" safety_level=\"0\"
       dateupload=\"1698646904\" datetaken=\"2023-10-29 22:52:51\" datetakengranularity=\"0\"
-      datetakenunknown=\"1\" realname=\"gabriel  pimienta\" originalsecret=\"0b39a3d282\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53296986129_b104580eda_s.jpg\"
+      datetakenunknown=\"1\" realname=\"gabriel  pimienta\" tags=\"photography photooftheday
+      art ph montevideo uruguay iphone artonflickr flickr colors colores cores portraitonflickr
+      artista foto retrato 2023 octubre october saw juegodelmiedo halloween 3110 halloweenday
+      halloweenonflickr pintura picsart portrait artattack manualidad mascara mask
+      terror pelicula film saw2\" originalsecret=\"0b39a3d282\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53296986129_b104580eda_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53296986129_b104580eda_t.jpg\"
       height_t=\"100\" width_t=\"75\" url_s=\"https://live.staticflickr.com/65535/53296986129_b104580eda_m.jpg\"
       height_s=\"240\" width_s=\"180\" url_m=\"https://live.staticflickr.com/65535/53296986129_b104580eda.jpg\"
@@ -748,8 +860,12 @@ interactions:
       farm=\"66\" title=\"Ahsoka \u2764\uFE0F\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Gabriel Pimienta\" dateadded=\"1698563394\" license=\"0\" safety_level=\"0\"
       dateupload=\"1698563227\" datetaken=\"2023-10-28 02:44:01\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" realname=\"gabriel  pimienta\" originalsecret=\"66eaa56a80\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53294012753_d742fe3176_s.jpg\"
+      datetakenunknown=\"0\" realname=\"gabriel  pimienta\" tags=\"photography photooftheday
+      art ph montevideo uruguay iphone artonflickr flickr colors colores cores portraitonflickr
+      artista foto retrato 2023 octubre october cat gata gato gatos cata catsonflickr
+      gatosenflockr ahsoka starwars jedi\" originalsecret=\"66eaa56a80\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53294012753_d742fe3176_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53294012753_d742fe3176_t.jpg\"
       height_t=\"100\" width_t=\"70\" url_s=\"https://live.staticflickr.com/65535/53294012753_d742fe3176_m.jpg\"
       height_s=\"240\" width_s=\"168\" url_m=\"https://live.staticflickr.com/65535/53294012753_d742fe3176.jpg\"
@@ -761,8 +877,10 @@ interactions:
       farm=\"66\" title=\"ROU 11\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" ownername=\"Marcelo
       Campi Amateur photographer\" dateadded=\"1698349982\" license=\"5\" safety_level=\"0\"
       dateupload=\"1698349910\" datetaken=\"2023-10-26 16:50:12\" datetakengranularity=\"0\"
-      datetakenunknown=\"1\" realname=\"Marcelo Campi\" originalsecret=\"e10a2cc915\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53286947622_4defefb92e_s.jpg\"
+      datetakenunknown=\"1\" realname=\"Marcelo Campi\" tags=\"marina rou 11 rio negro
+      montevideo uruguay armadanacional armada ship\" originalsecret=\"e10a2cc915\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53286947622_4defefb92e_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53286947622_4defefb92e_t.jpg\"
       height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53286947622_4defefb92e_m.jpg\"
       height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53286947622_4defefb92e.jpg\"
@@ -774,8 +892,9 @@ interactions:
       farm=\"66\" title=\"Punta del Este, Uruguay\" ispublic=\"1\" isfriend=\"0\"
       isfamily=\"0\" ownername=\"Luiz Filipe Varella\" dateadded=\"1698349093\" license=\"0\"
       safety_level=\"0\" dateupload=\"1683338564\" datetaken=\"2023-05-05 18:59:02\"
-      datetakengranularity=\"0\" datetakenunknown=\"1\" realname=\"\" originalsecret=\"15ece4a293\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52874105053_b5d51af31a_s.jpg\"
+      datetakengranularity=\"0\" datetakenunknown=\"1\" realname=\"\" tags=\"\" originalsecret=\"15ece4a293\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52874105053_b5d51af31a_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52874105053_b5d51af31a_t.jpg\"
       height_t=\"66\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52874105053_b5d51af31a_m.jpg\"
       height_s=\"158\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/52874105053_b5d51af31a.jpg\"
@@ -787,7 +906,8 @@ interactions:
       farm=\"66\" title=\"Isla de Lobos\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Luiz Filipe Varella\" dateadded=\"1698349032\" license=\"0\" safety_level=\"0\"
       dateupload=\"1683934175\" datetaken=\"2023-05-12 16:23:46\" datetakengranularity=\"0\"
-      datetakenunknown=\"1\" realname=\"\" originalsecret=\"17bd908aca\" originalformat=\"jpg\"
+      datetakenunknown=\"1\" realname=\"\" tags=\"\" originalsecret=\"17bd908aca\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
       media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52893469878_672bb5fbae_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52893469878_672bb5fbae_t.jpg\"
       height_t=\"65\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52893469878_672bb5fbae_m.jpg\"
@@ -800,7 +920,8 @@ interactions:
       farm=\"66\" title=\"Isla de Lobos\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Luiz Filipe Varella\" dateadded=\"1698349032\" license=\"0\" safety_level=\"0\"
       dateupload=\"1683934176\" datetaken=\"2023-05-12 16:23:42\" datetakengranularity=\"0\"
-      datetakenunknown=\"1\" realname=\"\" originalsecret=\"d91713f77a\" originalformat=\"jpg\"
+      datetakenunknown=\"1\" realname=\"\" tags=\"\" originalsecret=\"d91713f77a\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
       media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52893469693_d1521bd702_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52893469693_d1521bd702_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52893469693_d1521bd702_m.jpg\"
@@ -813,8 +934,12 @@ interactions:
       farm=\"66\" title=\"Lectura\U0001F4D6\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Gabriel Pimienta\" dateadded=\"1698301900\" license=\"0\" safety_level=\"0\"
       dateupload=\"1698301551\" datetaken=\"2023-10-26 03:23:38\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" realname=\"gabriel  pimienta\" originalsecret=\"3fdfd0d706\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53286744834_ddf6f12620_s.jpg\"
+      datetakenunknown=\"0\" realname=\"gabriel  pimienta\" tags=\"photography photooftheday
+      art ph montevideo uruguay iphone artonflickr flickr colors colores cores portraitonflickr
+      artista foto retrato 2023 octubre october libro book booksonflickr lectura literatura
+      indiosolari pr pateiciorey patricioreyysusredonditosdericota los redondos\"
+      originalsecret=\"3fdfd0d706\" originalformat=\"jpg\" latitude=\"0\" longitude=\"0\"
+      accuracy=\"0\" context=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53286744834_ddf6f12620_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53286744834_ddf6f12620_t.jpg\"
       height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53286744834_ddf6f12620_m.jpg\"
       height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53286744834_ddf6f12620.jpg\"
@@ -826,8 +951,9 @@ interactions:
       farm=\"66\" title=\"Coro black &amp; white\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Marcelo C.F.\" dateadded=\"1698270554\" license=\"0\" safety_level=\"0\"
       dateupload=\"1698270527\" datetaken=\"2023-10-25 15:20:29\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" realname=\"Marcelo Fern\xE1ndez\" media=\"photo\" media_status=\"ready\"
-      url_sq=\"https://live.staticflickr.com/65535/53285691576_12c0e7825a_s.jpg\"
+      datetakenunknown=\"0\" realname=\"Marcelo Fern\xE1ndez\" tags=\"blancoynegro
+      byn bw blackwhite cat cats pet pets\" latitude=\"0\" longitude=\"0\" accuracy=\"0\"
+      context=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53285691576_12c0e7825a_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53285691576_12c0e7825a_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53285691576_12c0e7825a_m.jpg\"
       height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53285691576_12c0e7825a.jpg\"
@@ -838,8 +964,9 @@ interactions:
       farm=\"66\" title=\"palillos bajo el cielo\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Marcelo C.F.\" dateadded=\"1698270203\" license=\"0\" safety_level=\"0\"
       dateupload=\"1698270187\" datetaken=\"2023-10-25 15:19:15\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" realname=\"Marcelo Fern\xE1ndez\" media=\"photo\" media_status=\"ready\"
-      url_sq=\"https://live.staticflickr.com/65535/53285928038_7bd973b070_s.jpg\"
+      datetakenunknown=\"0\" realname=\"Marcelo Fern\xE1ndez\" tags=\"planonadir nadirplane
+      palillosderopa clothespeg vertical lines colours\" latitude=\"0\" longitude=\"0\"
+      accuracy=\"0\" context=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53285928038_7bd973b070_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53285928038_7bd973b070_t.jpg\"
       height_t=\"100\" width_t=\"77\" url_s=\"https://live.staticflickr.com/65535/53285928038_7bd973b070_m.jpg\"
       height_s=\"240\" width_s=\"185\" url_m=\"https://live.staticflickr.com/65535/53285928038_7bd973b070.jpg\"
@@ -850,8 +977,12 @@ interactions:
       farm=\"66\" title=\"Anakin \u2764\uFE0F\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Gabriel Pimienta\" dateadded=\"1698212100\" license=\"0\" safety_level=\"0\"
       dateupload=\"1698211867\" datetaken=\"2023-10-24 00:47:43\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" realname=\"gabriel  pimienta\" originalsecret=\"6b0b7605e1\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53283068202_085d9659b3_s.jpg\"
+      datetakenunknown=\"0\" realname=\"gabriel  pimienta\" tags=\"photography photooftheday
+      art ph montevideo uruguay iphone artonflickr flickr colors colores cores portraitonflickr
+      artista foto retrato portrait 2023 octubre october ligths ligth cat cats catsonflickr
+      gato gatos anakin star wars anakinskywalker darthvader jedi shit\" originalsecret=\"6b0b7605e1\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53283068202_085d9659b3_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53283068202_085d9659b3_t.jpg\"
       height_t=\"100\" width_t=\"75\" url_s=\"https://live.staticflickr.com/65535/53283068202_085d9659b3_m.jpg\"
       height_s=\"240\" width_s=\"180\" url_m=\"https://live.staticflickr.com/65535/53283068202_085d9659b3.jpg\"
@@ -863,8 +994,13 @@ interactions:
       farm=\"66\" title=\"Rain in Montevideo\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Gabriel Pimienta\" dateadded=\"1698123038\" license=\"0\" safety_level=\"0\"
       dateupload=\"1698122904\" datetaken=\"2023-10-24 00:30:50\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" realname=\"gabriel  pimienta\" originalsecret=\"c0edd21181\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53281883320_3a1aa2309e_s.jpg\"
+      datetakenunknown=\"0\" realname=\"gabriel  pimienta\" tags=\"photography photooftheday
+      art ph montevideo uruguay iphone artonflickr flickr colors colores cores artista
+      foto retrato portrait portraitonflickr 2023 octubre october ligth ligths stars
+      lluvia rain rainonflickr street car bw bike biker bicicleta ciclismo ciclista
+      ruta ciudad calle paisaje\" originalsecret=\"c0edd21181\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53281883320_3a1aa2309e_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53281883320_3a1aa2309e_t.jpg\"
       height_t=\"100\" width_t=\"80\" url_s=\"https://live.staticflickr.com/65535/53281883320_3a1aa2309e_m.jpg\"
       height_s=\"240\" width_s=\"192\" url_m=\"https://live.staticflickr.com/65535/53281883320_3a1aa2309e.jpg\"
@@ -876,8 +1012,9 @@ interactions:
       farm=\"66\" title=\"destino inesperado\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Marcelo C.F.\" dateadded=\"1698102917\" license=\"0\" safety_level=\"0\"
       dateupload=\"1698102912\" datetaken=\"2022-12-27 17:35:20\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" realname=\"Marcelo Fern\xE1ndez\" media=\"photo\" media_status=\"ready\"
-      url_sq=\"https://live.staticflickr.com/65535/53279990267_23a86b5bc2_s.jpg\"
+      datetakenunknown=\"0\" realname=\"Marcelo Fern\xE1ndez\" tags=\"v\xEDas traintracks
+      tree trees\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53279990267_23a86b5bc2_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53279990267_23a86b5bc2_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53279990267_23a86b5bc2_m.jpg\"
       height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53279990267_23a86b5bc2.jpg\"
@@ -889,7 +1026,8 @@ interactions:
       isfriend=\"0\" isfamily=\"0\" ownername=\"Jonas de Carvalho\" dateadded=\"1698006476\"
       license=\"0\" safety_level=\"0\" dateupload=\"1680047036\" datetaken=\"2023-03-28
       20:10:41\" datetakengranularity=\"0\" datetakenunknown=\"1\" realname=\"Jonas
-      \ de Carvalho\" originalsecret=\"abdf24c419\" originalformat=\"jpg\" media=\"photo\"
+      \ de Carvalho\" tags=\"\" originalsecret=\"abdf24c419\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
       media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52778532053_609178cc28_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52778532053_609178cc28_t.jpg\"
       height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52778532053_609178cc28_m.jpg\"
@@ -903,7 +1041,8 @@ interactions:
       isfriend=\"0\" isfamily=\"0\" ownername=\"Jonas de Carvalho\" dateadded=\"1698006476\"
       license=\"0\" safety_level=\"0\" dateupload=\"1680047037\" datetaken=\"2023-02-18
       19:33:15\" datetakengranularity=\"0\" datetakenunknown=\"0\" realname=\"Jonas
-      \ de Carvalho\" originalsecret=\"cbb37c194b\" originalformat=\"jpg\" media=\"photo\"
+      \ de Carvalho\" tags=\"\" originalsecret=\"cbb37c194b\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
       media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52778528018_d11b88ea89_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52778528018_d11b88ea89_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52778528018_d11b88ea89_m.jpg\"
@@ -917,7 +1056,8 @@ interactions:
       isfriend=\"0\" isfamily=\"0\" ownername=\"Jonas de Carvalho\" dateadded=\"1698006476\"
       license=\"0\" safety_level=\"0\" dateupload=\"1680047037\" datetaken=\"2023-03-28
       20:10:40\" datetakengranularity=\"0\" datetakenunknown=\"1\" realname=\"Jonas
-      \ de Carvalho\" originalsecret=\"4116146280\" originalformat=\"jpg\" media=\"photo\"
+      \ de Carvalho\" tags=\"\" originalsecret=\"4116146280\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
       media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52777522432_87c027b02d_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52777522432_87c027b02d_t.jpg\"
       height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52777522432_87c027b02d_m.jpg\"
@@ -930,8 +1070,12 @@ interactions:
       farm=\"66\" title=\"Anakin ligth\u2019s\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Gabriel Pimienta\" dateadded=\"1697942206\" license=\"0\" safety_level=\"0\"
       dateupload=\"1697941990\" datetaken=\"2023-10-21 01:23:10\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" realname=\"gabriel  pimienta\" originalsecret=\"b687c8b46c\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53275801043_df03b44076_s.jpg\"
+      datetakenunknown=\"0\" realname=\"gabriel  pimienta\" tags=\"photography photooftheday
+      art ph montevideo uruguay iphone artonflickr flickr colors colores cores artista
+      foto retrato portrait portraitonflickr 2023 octubre october ligth ligths stars
+      cat cats catonflickr catsonflickr\" originalsecret=\"b687c8b46c\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53275801043_df03b44076_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53275801043_df03b44076_t.jpg\"
       height_t=\"100\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53275801043_df03b44076_m.jpg\"
       height_s=\"240\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53275801043_df03b44076.jpg\"
@@ -943,8 +1087,11 @@ interactions:
       farm=\"66\" title=\"portrait..\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Gabriel Pimienta\" dateadded=\"1697845336\" license=\"0\" safety_level=\"0\"
       dateupload=\"1697845265\" datetaken=\"2023-10-20 20:27:24\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" realname=\"gabriel  pimienta\" originalsecret=\"c1ae4fb896\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53273545410_643c7e4c4d_s.jpg\"
+      datetakenunknown=\"0\" realname=\"gabriel  pimienta\" tags=\"photography photooftheday
+      art ph montevideo uruguay iphone artonflickr flickr colors colores cores artista
+      foto retrato portrait portraitonflickr bw\" originalsecret=\"c1ae4fb896\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53273545410_643c7e4c4d_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53273545410_643c7e4c4d_t.jpg\"
       height_t=\"100\" width_t=\"68\" url_s=\"https://live.staticflickr.com/65535/53273545410_643c7e4c4d_m.jpg\"
       height_s=\"240\" width_s=\"163\" url_m=\"https://live.staticflickr.com/65535/53273545410_643c7e4c4d.jpg\"
@@ -956,7 +1103,10 @@ interactions:
       farm=\"66\" title=\"Bike\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" ownername=\"Gabriel
       Pimienta\" dateadded=\"1697844901\" license=\"0\" safety_level=\"0\" dateupload=\"1697844798\"
       datetaken=\"2023-10-20 20:03:11\" datetakengranularity=\"0\" datetakenunknown=\"0\"
-      realname=\"gabriel  pimienta\" originalsecret=\"a4bed57519\" originalformat=\"jpg\"
+      realname=\"gabriel  pimienta\" tags=\"photography photooftheday art ph montevideo
+      uruguay iphone artonflickr flickr colors colores cores artista foto retrato
+      bike biker bicicleta ciclismo ciclista ruta ciudad street calle paisaje\" originalsecret=\"a4bed57519\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
       media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53273353158_ff843fb58f_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53273353158_ff843fb58f_t.jpg\"
       height_t=\"100\" width_t=\"75\" url_s=\"https://live.staticflickr.com/65535/53273353158_ff843fb58f_m.jpg\"
@@ -969,7 +1119,8 @@ interactions:
       farm=\"66\" title=\"Colonia del Sacramento\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Luiz Filipe Varella\" dateadded=\"1697760453\" license=\"0\" safety_level=\"0\"
       dateupload=\"1684027188\" datetaken=\"2023-05-13 18:19:43\" datetakengranularity=\"0\"
-      datetakenunknown=\"1\" realname=\"\" originalsecret=\"85e4d99104\" originalformat=\"jpg\"
+      datetakenunknown=\"1\" realname=\"\" tags=\"\" originalsecret=\"85e4d99104\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
       media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52896179620_b0f205a0cd_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52896179620_b0f205a0cd_t.jpg\"
       height_t=\"70\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52896179620_b0f205a0cd_m.jpg\"
@@ -982,7 +1133,8 @@ interactions:
       farm=\"66\" title=\"Colonia del Sacramento\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Luiz Filipe Varella\" dateadded=\"1697760453\" license=\"0\" safety_level=\"0\"
       dateupload=\"1684027189\" datetaken=\"2023-05-13 18:19:43\" datetakengranularity=\"0\"
-      datetakenunknown=\"1\" realname=\"\" originalsecret=\"9a25af5d7c\" originalformat=\"jpg\"
+      datetakenunknown=\"1\" realname=\"\" tags=\"\" originalsecret=\"9a25af5d7c\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
       media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52895959809_6a6ecf1299_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52895959809_6a6ecf1299_t.jpg\"
       height_t=\"72\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52895959809_6a6ecf1299_m.jpg\"
@@ -995,7 +1147,8 @@ interactions:
       farm=\"66\" title=\"Colonia del Sacramento\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Luiz Filipe Varella\" dateadded=\"1697760453\" license=\"0\" safety_level=\"0\"
       dateupload=\"1684027190\" datetaken=\"2023-05-13 18:19:43\" datetakengranularity=\"0\"
-      datetakenunknown=\"1\" realname=\"\" originalsecret=\"d33e21d2a1\" originalformat=\"jpg\"
+      datetakenunknown=\"1\" realname=\"\" tags=\"\" originalsecret=\"d33e21d2a1\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
       media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52895219507_4c8dce0722_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52895219507_4c8dce0722_t.jpg\"
       height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52895219507_4c8dce0722_m.jpg\"
@@ -1008,8 +1161,10 @@ interactions:
       farm=\"66\" title=\"Puerto de Montevideo\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"matiasdossantos210\" dateadded=\"1697750742\" license=\"0\" safety_level=\"0\"
       dateupload=\"1697750739\" datetaken=\"2023-10-08 12:17:52\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" realname=\"\" originalsecret=\"fc13f50339\" originalformat=\"jpg\"
-      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53270570551_291ec837ce_s.jpg\"
+      datetakenunknown=\"0\" realname=\"\" tags=\"montevideo puente gate viaducto
+      lumix g9 panasonic1235 uruguay argentina\" originalsecret=\"fc13f50339\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53270570551_291ec837ce_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53270570551_291ec837ce_t.jpg\"
       height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53270570551_291ec837ce_m.jpg\"
       height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53270570551_291ec837ce.jpg\"
@@ -1022,8 +1177,10 @@ interactions:
       isfriend=\"0\" isfamily=\"0\" ownername=\"Jonas de Carvalho\" dateadded=\"1697673239\"
       license=\"0\" safety_level=\"0\" dateupload=\"1680046991\" datetaken=\"2023-02-18
       19:46:27\" datetakengranularity=\"0\" datetakenunknown=\"0\" realname=\"Jonas
-      \ de Carvalho\" originalsecret=\"da3032db1c\" originalformat=\"jpg\" media=\"photo\"
-      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52778465835_574ce1fa92_s.jpg\"
+      \ de Carvalho\" tags=\"\" originalsecret=\"da3032db1c\" originalformat=\"jpg\"
+      latitude=\"-34.916100\" longitude=\"-56.168139\" accuracy=\"16\" context=\"0\"
+      place_id=\"\" woeid=\"10098238\" geo_is_public=\"1\" geo_is_contact=\"0\" geo_is_friend=\"0\"
+      geo_is_family=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52778465835_574ce1fa92_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52778465835_574ce1fa92_t.jpg\"
       height_t=\"46\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52778465835_574ce1fa92_m.jpg\"
       height_s=\"111\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/52778465835_574ce1fa92.jpg\"
@@ -1036,8 +1193,10 @@ interactions:
       isfriend=\"0\" isfamily=\"0\" ownername=\"Jonas de Carvalho\" dateadded=\"1697673239\"
       license=\"0\" safety_level=\"0\" dateupload=\"1680046991\" datetaken=\"2023-02-18
       19:45:32\" datetakengranularity=\"0\" datetakenunknown=\"0\" realname=\"Jonas
-      \ de Carvalho\" originalsecret=\"23885757fc\" originalformat=\"jpg\" media=\"photo\"
-      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52778308469_70fa5504f5_s.jpg\"
+      \ de Carvalho\" tags=\"\" originalsecret=\"23885757fc\" originalformat=\"jpg\"
+      latitude=\"-34.916162\" longitude=\"-56.168225\" accuracy=\"16\" context=\"0\"
+      place_id=\"\" woeid=\"10098238\" geo_is_public=\"1\" geo_is_contact=\"0\" geo_is_friend=\"0\"
+      geo_is_family=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52778308469_70fa5504f5_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52778308469_70fa5504f5_t.jpg\"
       height_t=\"46\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52778308469_70fa5504f5_m.jpg\"
       height_s=\"111\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/52778308469_70fa5504f5.jpg\"
@@ -1049,8 +1208,10 @@ interactions:
       farm=\"66\" title=\"ROU 4\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" ownername=\"Marcelo
       Campi Amateur photographer\" dateadded=\"1697667140\" license=\"5\" safety_level=\"0\"
       dateupload=\"1697500193\" datetaken=\"2023-10-16 20:48:50\" datetakengranularity=\"0\"
-      datetakenunknown=\"1\" realname=\"Marcelo Campi\" originalsecret=\"1668603e96\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53264136580_d25764e385_s.jpg\"
+      datetakenunknown=\"1\" realname=\"Marcelo Campi\" tags=\"rou army armadanacional
+      ship buque gralartigas\" originalsecret=\"1668603e96\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53264136580_d25764e385_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53264136580_d25764e385_t.jpg\"
       height_t=\"100\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53264136580_d25764e385_m.jpg\"
       height_s=\"240\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53264136580_d25764e385.jpg\"
@@ -1063,8 +1224,11 @@ interactions:
       ownername=\"Marcelo Campi Amateur photographer\" dateadded=\"1697594032\" license=\"5\"
       safety_level=\"0\" dateupload=\"1697594001\" datetaken=\"2023-10-17 22:48:57\"
       datetakengranularity=\"0\" datetakenunknown=\"1\" realname=\"Marcelo Campi\"
-      originalsecret=\"622c7d90e1\" originalformat=\"jpg\" media=\"photo\" media_status=\"ready\"
-      url_sq=\"https://live.staticflickr.com/65535/53266692048_ba0168422d_s.jpg\"
+      tags=\"teatro montevideo urbanexploraci\xF3n uruguay landscape lights noche
+      luces carnaval carnival funfear\" originalsecret=\"622c7d90e1\" originalformat=\"jpg\"
+      latitude=\"-34.919965\" longitude=\"-56.170091\" accuracy=\"16\" context=\"0\"
+      place_id=\"\" woeid=\"3440942\" geo_is_public=\"1\" geo_is_contact=\"0\" geo_is_friend=\"0\"
+      geo_is_family=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53266692048_ba0168422d_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53266692048_ba0168422d_t.jpg\"
       height_t=\"56\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53266692048_ba0168422d_m.jpg\"
       height_s=\"135\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53266692048_ba0168422d.jpg\"
@@ -1077,7 +1241,9 @@ interactions:
       ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" ownername=\"fabiankoehnlein\" dateadded=\"1697575382\"
       license=\"0\" safety_level=\"0\" dateupload=\"1697575179\" datetaken=\"2023-10-17
       21:37:55\" datetakengranularity=\"0\" datetakenunknown=\"1\" realname=\"Fabian
-      Koehnlein\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53266217758_f6e9454cb1_s.jpg\"
+      Koehnlein\" tags=\"lowkey selfportrait puntadeleste muellelapastora foggyevening
+      lowkeyportrait portrait foggy\" latitude=\"0\" longitude=\"0\" accuracy=\"0\"
+      context=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53266217758_f6e9454cb1_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53266217758_f6e9454cb1_t.jpg\"
       height_t=\"100\" width_t=\"67\" url_s=\"https://live.staticflickr.com/65535/53266217758_f6e9454cb1_m.jpg\"
       height_s=\"240\" width_s=\"160\" url_m=\"https://live.staticflickr.com/65535/53266217758_f6e9454cb1.jpg\"
@@ -1089,8 +1255,10 @@ interactions:
       isfriend=\"0\" isfamily=\"0\" ownername=\"Gabriel Pimienta\" dateadded=\"1697438753\"
       license=\"0\" safety_level=\"0\" dateupload=\"1697438671\" datetaken=\"2023-10-16
       02:18:16\" datetakengranularity=\"0\" datetakenunknown=\"0\" realname=\"gabriel
-      \ pimienta\" originalsecret=\"2de69c491d\" originalformat=\"jpg\" media=\"photo\"
-      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53262147515_4c8d7139c0_s.jpg\"
+      \ pimienta\" tags=\"photography photooftheday art ph montevideo uruguay iphone
+      artonflickr flickr colors colores cores artista foto retrato\" originalsecret=\"2de69c491d\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53262147515_4c8d7139c0_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53262147515_4c8d7139c0_t.jpg\"
       height_t=\"77\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53262147515_4c8d7139c0_m.jpg\"
       height_s=\"184\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53262147515_4c8d7139c0.jpg\"
@@ -1102,8 +1270,10 @@ interactions:
       farm=\"66\" title=\"ROU 4\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" ownername=\"Marcelo
       Campi Amateur photographer\" dateadded=\"1697421663\" license=\"5\" safety_level=\"0\"
       dateupload=\"1697421658\" datetaken=\"2023-10-15 22:58:35\" datetakengranularity=\"0\"
-      datetakenunknown=\"1\" realname=\"Marcelo Campi\" originalsecret=\"5edde8755b\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53261535993_538fc15ef8_s.jpg\"
+      datetakenunknown=\"1\" realname=\"Marcelo Campi\" tags=\"armada rou marina montevideo
+      uruguay puerto cerro\" originalsecret=\"5edde8755b\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53261535993_538fc15ef8_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53261535993_538fc15ef8_t.jpg\"
       height_t=\"56\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53261535993_538fc15ef8_m.jpg\"
       height_s=\"135\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53261535993_538fc15ef8.jpg\"
@@ -1115,7 +1285,8 @@ interactions:
       farm=\"66\" title=\"_DSC5405_1\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"ondc\" dateadded=\"1697416895\" license=\"0\" safety_level=\"0\"
       dateupload=\"1697416694\" datetaken=\"2023-10-14 17:08:05\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53261394738_bfff8198e8_s.jpg\"
+      datetakenunknown=\"0\" tags=\"\" latitude=\"0\" longitude=\"0\" accuracy=\"0\"
+      context=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53261394738_bfff8198e8_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53261394738_bfff8198e8_t.jpg\"
       height_t=\"66\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53261394738_bfff8198e8_m.jpg\"
       height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53261394738_bfff8198e8.jpg\"
@@ -1126,8 +1297,11 @@ interactions:
       farm=\"66\" title=\"Ahsoka\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" ownername=\"Gabriel
       Pimienta\" dateadded=\"1697309373\" license=\"0\" safety_level=\"0\" dateupload=\"1697309310\"
       datetaken=\"2023-10-14 15:06:56\" datetakengranularity=\"0\" datetakenunknown=\"0\"
-      realname=\"gabriel  pimienta\" originalsecret=\"dcedf5de45\" originalformat=\"jpg\"
-      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53257751571_5ced1c05d7_s.jpg\"
+      realname=\"gabriel  pimienta\" tags=\"photography photooftheday art ph montevideo
+      uruguay iphone artonflickr flickr cat gata catsonflickr gatos cats retrato colors
+      color colores cores\" originalsecret=\"dcedf5de45\" originalformat=\"jpg\" latitude=\"0\"
+      longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\" media_status=\"ready\"
+      url_sq=\"https://live.staticflickr.com/65535/53257751571_5ced1c05d7_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53257751571_5ced1c05d7_t.jpg\"
       height_t=\"100\" width_t=\"75\" url_s=\"https://live.staticflickr.com/65535/53257751571_5ced1c05d7_m.jpg\"
       height_s=\"240\" width_s=\"180\" url_m=\"https://live.staticflickr.com/65535/53257751571_5ced1c05d7.jpg\"
@@ -1140,8 +1314,11 @@ interactions:
       isfamily=\"0\" ownername=\"Gabriel Pimienta\" dateadded=\"1697307671\" license=\"0\"
       safety_level=\"0\" dateupload=\"1697307590\" datetaken=\"2023-10-01 15:34:32\"
       datetakengranularity=\"0\" datetakenunknown=\"1\" realname=\"gabriel  pimienta\"
-      originalsecret=\"32e7e977e8\" originalformat=\"jpg\" media=\"photo\" media_status=\"ready\"
-      url_sq=\"https://live.staticflickr.com/65535/53257694491_9b07c53c9c_s.jpg\"
+      tags=\"photography photooftheday art ph montevideo uruguay iphone artonflickr
+      flickr musica music indiosolari patriciorey pr patricioreyysusredonditosdericota
+      literatura literary colors colores\" originalsecret=\"32e7e977e8\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53257694491_9b07c53c9c_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53257694491_9b07c53c9c_t.jpg\"
       height_t=\"100\" width_t=\"86\" url_s=\"https://live.staticflickr.com/65535/53257694491_9b07c53c9c_m.jpg\"
       height_s=\"240\" width_s=\"207\" url_m=\"https://live.staticflickr.com/65535/53257694491_9b07c53c9c.jpg\"
@@ -1153,7 +1330,9 @@ interactions:
       farm=\"66\" title=\"Anakin\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" ownername=\"Gabriel
       Pimienta\" dateadded=\"1697307277\" license=\"0\" safety_level=\"0\" dateupload=\"1697307201\"
       datetaken=\"2023-10-14 14:30:39\" datetakengranularity=\"0\" datetakenunknown=\"0\"
-      realname=\"gabriel  pimienta\" originalsecret=\"3198bf6d67\" originalformat=\"jpg\"
+      realname=\"gabriel  pimienta\" tags=\"cat photography photooftheday art ph montevideo
+      uruguay iphone artonflickr flickr catsonflickr gato gatosenflockr\" originalsecret=\"3198bf6d67\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
       media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53256803632_64941274bd_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53256803632_64941274bd_t.jpg\"
       height_t=\"100\" width_t=\"64\" url_s=\"https://live.staticflickr.com/65535/53256803632_64941274bd_m.jpg\"
@@ -1166,8 +1345,9 @@ interactions:
       farm=\"66\" title=\"Rambla Montevideo Uruguay\" ispublic=\"1\" isfriend=\"0\"
       isfamily=\"0\" ownername=\"matiasdossantos210\" dateadded=\"1697217525\" license=\"0\"
       safety_level=\"0\" dateupload=\"1697217497\" datetaken=\"2023-07-22 21:41:20\"
-      datetakengranularity=\"0\" datetakenunknown=\"0\" realname=\"\" originalsecret=\"c79ec59d94\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53255935160_bcc0ec8504_s.jpg\"
+      datetakengranularity=\"0\" datetakenunknown=\"0\" realname=\"\" tags=\"\" originalsecret=\"c79ec59d94\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53255935160_bcc0ec8504_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53255935160_bcc0ec8504_t.jpg\"
       height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53255935160_bcc0ec8504_m.jpg\"
       height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53255935160_bcc0ec8504.jpg\"
@@ -1179,8 +1359,10 @@ interactions:
       farm=\"66\" title=\"dirty door\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"matiasdossantos210\" dateadded=\"1697217220\" license=\"0\" safety_level=\"0\"
       dateupload=\"1697217203\" datetaken=\"2023-07-22 21:46:24\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" realname=\"\" originalsecret=\"0ee9b6df19\" originalformat=\"jpg\"
-      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53255926325_3c418e3516_s.jpg\"
+      datetakenunknown=\"0\" realname=\"\" tags=\"dirty door lumixg9 panasonic camera
+      canon nikon montevideo uruguay matias dos santos long exposure night shoot\"
+      originalsecret=\"0ee9b6df19\" originalformat=\"jpg\" latitude=\"0\" longitude=\"0\"
+      accuracy=\"0\" context=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53255926325_3c418e3516_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53255926325_3c418e3516_t.jpg\"
       height_t=\"100\" width_t=\"72\" url_s=\"https://live.staticflickr.com/65535/53255926325_3c418e3516_m.jpg\"
       height_s=\"240\" width_s=\"173\" url_m=\"https://live.staticflickr.com/65535/53255926325_3c418e3516.jpg\"
@@ -1192,8 +1374,10 @@ interactions:
       farm=\"66\" title=\"ROU 23\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" ownername=\"Marcelo
       Campi Amateur photographer\" dateadded=\"1697215870\" license=\"5\" safety_level=\"0\"
       dateupload=\"1697215838\" datetaken=\"2023-10-13 13:45:57\" datetakengranularity=\"0\"
-      datetakenunknown=\"1\" realname=\"Marcelo Campi\" originalsecret=\"7cd83891cd\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53255675453_fdbab97cbd_s.jpg\"
+      datetakenunknown=\"1\" realname=\"Marcelo Campi\" tags=\"ship boat armada panoramiccity
+      fuerza de mar uruguay urbanexploration sea bay\" originalsecret=\"7cd83891cd\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53255675453_fdbab97cbd_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53255675453_fdbab97cbd_t.jpg\"
       height_t=\"65\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53255675453_fdbab97cbd_m.jpg\"
       height_s=\"156\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53255675453_fdbab97cbd.jpg\"
@@ -1206,7 +1390,9 @@ interactions:
       ownername=\"Marcelo Campi Amateur photographer\" dateadded=\"1697215341\" license=\"5\"
       safety_level=\"0\" dateupload=\"1697215310\" datetaken=\"2023-10-13 13:37:31\"
       datetakengranularity=\"0\" datetakenunknown=\"1\" realname=\"Marcelo Campi\"
-      originalsecret=\"209ae81b16\" originalformat=\"jpg\" media=\"photo\" media_status=\"ready\"
+      tags=\"buque escuela nightphotography exposure exploration sea darksky uruguay
+      armada\" originalsecret=\"209ae81b16\" originalformat=\"jpg\" latitude=\"0\"
+      longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\" media_status=\"ready\"
       url_sq=\"https://live.staticflickr.com/65535/53255658838_9467fc08c4_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53255658838_9467fc08c4_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53255658838_9467fc08c4_m.jpg\"
@@ -1220,8 +1406,10 @@ interactions:
       ownername=\"Marcelo Campi Amateur photographer\" dateadded=\"1697214892\" license=\"5\"
       safety_level=\"0\" dateupload=\"1697214859\" datetaken=\"2023-10-13 13:26:01\"
       datetakengranularity=\"0\" datetakenunknown=\"1\" realname=\"Marcelo Campi\"
-      originalsecret=\"a35138ac0d\" originalformat=\"jpg\" media=\"photo\" media_status=\"ready\"
-      url_sq=\"https://live.staticflickr.com/65535/53255697084_c0c4b323d5_s.jpg\"
+      tags=\"rou sea atardecer evening sunset lights trending armada fuerza de mar
+      14 15 longexposure uruguay\" originalsecret=\"a35138ac0d\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53255697084_c0c4b323d5_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53255697084_c0c4b323d5_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53255697084_c0c4b323d5_m.jpg\"
       height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53255697084_c0c4b323d5.jpg\"
@@ -1233,7 +1421,8 @@ interactions:
       farm=\"66\" title=\"Chuy, Uruguay\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Luiz Filipe Varella\" dateadded=\"1697159442\" license=\"0\" safety_level=\"0\"
       dateupload=\"1683287939\" datetaken=\"2023-04-28 16:42:56\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" realname=\"\" originalsecret=\"415ff171b3\" originalformat=\"jpg\"
+      datetakenunknown=\"0\" realname=\"\" tags=\"\" originalsecret=\"415ff171b3\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
       media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52872207749_e7d68d9f43_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52872207749_e7d68d9f43_t.jpg\"
       height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52872207749_e7d68d9f43_m.jpg\"
@@ -1246,7 +1435,8 @@ interactions:
       farm=\"66\" title=\"Pueblo 19 de Abril\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Luiz Filipe Varella\" dateadded=\"1697159442\" license=\"0\" safety_level=\"0\"
       dateupload=\"1683287944\" datetaken=\"2023-04-28 17:50:03\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" realname=\"\" originalsecret=\"150053c8fc\" originalformat=\"jpg\"
+      datetakenunknown=\"0\" realname=\"\" tags=\"\" originalsecret=\"150053c8fc\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
       media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52872195829_8951b628f4_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52872195829_8951b628f4_t.jpg\"
       height_t=\"66\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52872195829_8951b628f4_m.jpg\"
@@ -1259,8 +1449,9 @@ interactions:
       secret=\"8d26d3c79b\" server=\"65535\" farm=\"66\" title=\"Chuy, Uruguay\" ispublic=\"1\"
       isfriend=\"0\" isfamily=\"0\" ownername=\"Luiz Filipe Varella\" dateadded=\"1697159442\"
       license=\"0\" safety_level=\"0\" dateupload=\"1683287935\" datetaken=\"2023-04-28
-      16:21:52\" datetakengranularity=\"0\" datetakenunknown=\"0\" realname=\"\" originalsecret=\"b9dc2b2315\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52871457352_8d26d3c79b_s.jpg\"
+      16:21:52\" datetakengranularity=\"0\" datetakenunknown=\"0\" realname=\"\" tags=\"\"
+      originalsecret=\"b9dc2b2315\" originalformat=\"jpg\" latitude=\"0\" longitude=\"0\"
+      accuracy=\"0\" context=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52871457352_8d26d3c79b_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52871457352_8d26d3c79b_t.jpg\"
       height_t=\"70\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52871457352_8d26d3c79b_m.jpg\"
       height_s=\"167\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/52871457352_8d26d3c79b.jpg\"
@@ -1272,8 +1463,9 @@ interactions:
       farm=\"66\" title=\"Colonia de Sacramento\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Der_Fotomaton\" dateadded=\"1697051036\" license=\"0\" safety_level=\"0\"
       dateupload=\"1696433495\" datetaken=\"2020-02-14 18:23:55\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" realname=\"Christoph Achterberg\" originalsecret=\"0eb74c3e68\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53234520680_5d45ef1f14_s.jpg\"
+      datetakenunknown=\"0\" realname=\"Christoph Achterberg\" tags=\"\" originalsecret=\"0eb74c3e68\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53234520680_5d45ef1f14_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53234520680_5d45ef1f14_t.jpg\"
       height_t=\"100\" width_t=\"67\" url_s=\"https://live.staticflickr.com/65535/53234520680_5d45ef1f14_m.jpg\"
       height_s=\"240\" width_s=\"160\" url_m=\"https://live.staticflickr.com/65535/53234520680_5d45ef1f14.jpg\"
@@ -1285,8 +1477,9 @@ interactions:
       farm=\"66\" title=\"Montevideo\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Der_Fotomaton\" dateadded=\"1697051036\" license=\"0\" safety_level=\"0\"
       dateupload=\"1696433498\" datetaken=\"2020-02-10 10:23:04\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" realname=\"Christoph Achterberg\" originalsecret=\"77b8107b91\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53234321138_82fbc91918_s.jpg\"
+      datetakenunknown=\"0\" realname=\"Christoph Achterberg\" tags=\"\" originalsecret=\"77b8107b91\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53234321138_82fbc91918_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53234321138_82fbc91918_t.jpg\"
       height_t=\"40\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53234321138_82fbc91918_m.jpg\"
       height_s=\"96\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53234321138_82fbc91918.jpg\"
@@ -1298,8 +1491,9 @@ interactions:
       farm=\"66\" title=\"Montevideo\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Der_Fotomaton\" dateadded=\"1697051036\" license=\"0\" safety_level=\"0\"
       dateupload=\"1696433498\" datetaken=\"2020-02-10 09:46:58\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" realname=\"Christoph Achterberg\" originalsecret=\"a2a8a4b2f3\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53234021336_a3050412df_s.jpg\"
+      datetakenunknown=\"0\" realname=\"Christoph Achterberg\" tags=\"\" originalsecret=\"a2a8a4b2f3\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53234021336_a3050412df_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53234021336_a3050412df_t.jpg\"
       height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53234021336_a3050412df_m.jpg\"
       height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53234021336_a3050412df.jpg\"
@@ -1313,8 +1507,11 @@ interactions:
       isfriend=\"0\" isfamily=\"0\" ownername=\"Gabriel Pimienta\" dateadded=\"1696996400\"
       license=\"0\" safety_level=\"0\" dateupload=\"1696996314\" datetaken=\"2023-10-11
       00:45:27\" datetakengranularity=\"0\" datetakenunknown=\"0\" realname=\"gabriel
-      \ pimienta\" originalsecret=\"9e68f4108b\" originalformat=\"jpg\" media=\"photo\"
-      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53249884281_9c4bb4a8b6_s.jpg\"
+      \ pimienta\" tags=\"photography photooftheday art ph montevideo uruguay iphone
+      artonflickr flickr blackandwhite blackwhite byn bw artblackwhite blancoynegro
+      retrato musica music guitarra guitar amateur\" originalsecret=\"9e68f4108b\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53249884281_9c4bb4a8b6_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53249884281_9c4bb4a8b6_t.jpg\"
       height_t=\"100\" width_t=\"67\" url_s=\"https://live.staticflickr.com/65535/53249884281_9c4bb4a8b6_m.jpg\"
       height_s=\"240\" width_s=\"161\" url_m=\"https://live.staticflickr.com/65535/53249884281_9c4bb4a8b6.jpg\"
@@ -1326,7 +1523,9 @@ interactions:
       farm=\"66\" title=\"\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" ownername=\"Gabriel
       Pimienta\" dateadded=\"1696995684\" license=\"0\" safety_level=\"0\" dateupload=\"1696995610\"
       datetaken=\"2023-10-08 18:35:34\" datetakengranularity=\"0\" datetakenunknown=\"0\"
-      realname=\"gabriel  pimienta\" originalsecret=\"2108e67309\" originalformat=\"jpg\"
+      realname=\"gabriel  pimienta\" tags=\"photooftheday bar art ph photography montevideo
+      uruguay iphone colores colors cores artonflickr flickr\" originalsecret=\"2108e67309\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
       media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53250373455_aa6e5a7e1e_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53250373455_aa6e5a7e1e_t.jpg\"
       height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53250373455_aa6e5a7e1e_m.jpg\"
@@ -1339,8 +1538,9 @@ interactions:
       farm=\"66\" title=\"Palacio Legislativo Montevideo\" ispublic=\"1\" isfriend=\"0\"
       isfamily=\"0\" ownername=\"matiasdossantos210\" dateadded=\"1696822019\" license=\"0\"
       safety_level=\"0\" dateupload=\"1696822018\" datetaken=\"2023-10-08 11:44:11\"
-      datetakengranularity=\"0\" datetakenunknown=\"0\" realname=\"\" originalsecret=\"9b7fb766ba\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53244996088_20d5b530cd_s.jpg\"
+      datetakengranularity=\"0\" datetakenunknown=\"0\" realname=\"\" tags=\"\" originalsecret=\"9b7fb766ba\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53244996088_20d5b530cd_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53244996088_20d5b530cd_t.jpg\"
       height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53244996088_20d5b530cd_m.jpg\"
       height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53244996088_20d5b530cd.jpg\"
@@ -1352,8 +1552,11 @@ interactions:
       farm=\"66\" title=\"Hielo y lim\xF3n\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
       ownername=\"Gabriel Pimienta\" dateadded=\"1696803345\" license=\"0\" safety_level=\"0\"
       dateupload=\"1696803291\" datetaken=\"2023-10-08 18:33:28\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" realname=\"gabriel  pimienta\" originalsecret=\"ac0f222e25\"
-      originalformat=\"jpg\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53244664755_94a9abd048_s.jpg\"
+      datetakenunknown=\"0\" realname=\"gabriel  pimienta\" tags=\"photooftheday bar
+      art ph photography montevideo uruguay colors colores iphone cores artonflickr
+      flickr\" originalsecret=\"ac0f222e25\" originalformat=\"jpg\" latitude=\"0\"
+      longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\" media_status=\"ready\"
+      url_sq=\"https://live.staticflickr.com/65535/53244664755_94a9abd048_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53244664755_94a9abd048_t.jpg\"
       height_t=\"100\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53244664755_94a9abd048_m.jpg\"
       height_s=\"240\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53244664755_94a9abd048.jpg\"
@@ -1366,8 +1569,10 @@ interactions:
       isfamily=\"0\" ownername=\"Gabriel Pimienta\" dateadded=\"1696803050\" license=\"0\"
       safety_level=\"0\" dateupload=\"1696802926\" datetaken=\"2023-10-08 18:28:09\"
       datetakengranularity=\"0\" datetakenunknown=\"0\" realname=\"gabriel  pimienta\"
-      originalsecret=\"dd7cd44a7a\" originalformat=\"jpg\" media=\"photo\" media_status=\"ready\"
-      url_sq=\"https://live.staticflickr.com/65535/53244652345_cde99ba2c4_s.jpg\"
+      tags=\"photooftheday bar art ph photography montevideo uruguay colors colores
+      iphone juego tiempo time game cores artonflickr flickr\" originalsecret=\"dd7cd44a7a\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53244652345_cde99ba2c4_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53244652345_cde99ba2c4_t.jpg\"
       height_t=\"100\" width_t=\"75\" url_s=\"https://live.staticflickr.com/65535/53244652345_cde99ba2c4_m.jpg\"
       height_s=\"240\" width_s=\"180\" url_m=\"https://live.staticflickr.com/65535/53244652345_cde99ba2c4.jpg\"
@@ -1380,7 +1585,9 @@ interactions:
       isfamily=\"0\" ownername=\"Gabriel Pimienta\" dateadded=\"1696511270\" license=\"0\"
       safety_level=\"0\" dateupload=\"1696511162\" datetaken=\"2023-10-04 17:30:26\"
       datetakengranularity=\"0\" datetakenunknown=\"1\" realname=\"gabriel  pimienta\"
-      originalsecret=\"cd05b0d202\" originalformat=\"jpg\" media=\"photo\" media_status=\"ready\"
+      tags=\"bar art ph photography photooftheday montevideo uruguay barfacal colors
+      colores iphone\" originalsecret=\"cd05b0d202\" originalformat=\"jpg\" latitude=\"0\"
+      longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\" media_status=\"ready\"
       url_sq=\"https://live.staticflickr.com/65535/53236049661_fd2b9f6f21_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53236049661_fd2b9f6f21_t.jpg\"
       height_t=\"100\" width_t=\"56\" url_s=\"https://live.staticflickr.com/65535/53236049661_fd2b9f6f21_m.jpg\"
@@ -1388,33 +1595,20 @@ interactions:
       height_m=\"500\" width_m=\"281\" url_o=\"https://live.staticflickr.com/65535/53236049661_cd05b0d202_o.jpg\"
       height_o=\"1600\" width_o=\"900\" url_q=\"https://live.staticflickr.com/65535/53236049661_fd2b9f6f21_q.jpg\"
       height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/53236049661_fd2b9f6f21_b.jpg\"
-      height_l=\"1024\" width_l=\"576\">\n\t\t<description />\n\t</photo>\n\t<photo
-      id=\"52918525018\" owner=\"26128697@N07\" secret=\"54b00ac0e4\" server=\"65535\"
-      farm=\"66\" title=\"Casapueblo\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
-      ownername=\"Luiz Filipe Varella\" dateadded=\"1696260812\" license=\"0\" safety_level=\"0\"
-      dateupload=\"1684791257\" datetaken=\"2023-04-29 12:12:39\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" realname=\"\" originalsecret=\"85fe58b93d\" originalformat=\"jpg\"
-      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52918525018_54b00ac0e4_s.jpg\"
-      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52918525018_54b00ac0e4_t.jpg\"
-      height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52918525018_54b00ac0e4_m.jpg\"
-      height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/52918525018_54b00ac0e4.jpg\"
-      height_m=\"333\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/52918525018_85fe58b93d_o.jpg\"
-      height_o=\"3648\" width_o=\"5472\" url_q=\"https://live.staticflickr.com/65535/52918525018_54b00ac0e4_q.jpg\"
-      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/52918525018_54b00ac0e4_b.jpg\"
-      height_l=\"683\" width_l=\"1024\">\n\t\t<description>Punta Ballena, Uruguay</description>\n\t</photo>\n</photos>\n</rsp>\n"
+      height_l=\"1024\" width_l=\"576\">\n\t\t<description />\n\t</photo>\n</photos>\n</rsp>\n"
     headers:
       Connection:
       - keep-alive
       Content-Length:
-      - '13748'
+      - '16193'
       Content-Type:
       - text/xml; charset=utf-8
       Date:
-      - Tue, 14 Nov 2023 17:34:39 GMT
+      - Wed, 15 Nov 2023 18:26:43 GMT
       Via:
-      - 1.1 2ddd948d1ec2ebdb41f08585eb5b0876.cloudfront.net (CloudFront)
+      - 1.1 663e9700db88d7dfc36171ed7a7061bc.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - TX4UD42R1Xma5lu5uK0UkJ5zcdOXP9unWRc7Oz0U1MDiml5IKxNgTw==
+      - fy2KT5WISigOYO4F6nzZ9VqnYYxJgYjZIE0E0TsCPARpZi8jLK0Saw==
       X-Amz-Cf-Pop:
       - EZE50-P1
       X-Cache:
@@ -1422,10 +1616,10 @@ interactions:
       content-encoding:
       - gzip
       server:
-      - Apache/2.4.57 (Ubuntu)
+      - Apache/2.4.58 (Ubuntu)
       set-cookie:
       - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
-        expires=Thu, 14-Dec-2023 17:34:39 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+        expires=Fri, 15-Dec-2023 18:26:42 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       vary:
       - Accept-Encoding
       x-frame-options:
@@ -1475,11 +1669,11 @@ interactions:
       Content-Type:
       - text/xml; charset=utf-8
       Date:
-      - Tue, 14 Nov 2023 17:34:40 GMT
+      - Wed, 15 Nov 2023 18:26:43 GMT
       Via:
-      - 1.1 2ddd948d1ec2ebdb41f08585eb5b0876.cloudfront.net (CloudFront)
+      - 1.1 663e9700db88d7dfc36171ed7a7061bc.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - RlzzqB2-BITMlARMpwKaw5AqpxCY9oh-17nHWH6MTc8j7J4oqNP37w==
+      - TDXx9ePEpKJ6mtxsnBIq_v-4x_OtEzW4U3pD5ffTEGXXq30ig3dA4w==
       X-Amz-Cf-Pop:
       - EZE50-P1
       X-Cache:
@@ -1487,10 +1681,10 @@ interactions:
       content-encoding:
       - gzip
       server:
-      - Apache/2.4.57 (Ubuntu)
+      - Apache/2.4.58 (Ubuntu)
       set-cookie:
       - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
-        expires=Thu, 14-Dec-2023 17:34:40 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+        expires=Fri, 15-Dec-2023 18:26:43 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       vary:
       - Accept-Encoding
       x-frame-options:
