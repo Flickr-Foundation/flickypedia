@@ -224,6 +224,8 @@ def test_create_sdc_claims_for_flickr_photo_without_date_taken(
         },
         "safety_level": "safe",
         "original_format": "jpg",
+        "tags": [],
+        "location": None,
     }
 
     actual = create_sdc_claims_for_flickr_photo(
@@ -272,6 +274,8 @@ def test_create_sdc_claims_for_flickr_photo_with_date_taken(
         },
         "safety_level": "safe",
         "original_format": "jpg",
+        "tags": [],
+        "location": None,
     }
 
     actual = create_sdc_claims_for_flickr_photo(
