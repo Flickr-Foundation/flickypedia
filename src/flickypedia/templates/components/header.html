@@ -17,7 +17,7 @@
         {% if messages %}
           ✅ OK, <a href="{{ current_user.profile_url }}">{{ current_user.name }}</a>.
           {% for msg in messages %}
-            <span class="highlight">{{ msg }}</span>
+            <span class="next_step">{{ msg }}</span>
           {% endfor %}
         {% else %}
           <a href="{{ current_user.profile_url }}">{{ current_user.name }}</a>
