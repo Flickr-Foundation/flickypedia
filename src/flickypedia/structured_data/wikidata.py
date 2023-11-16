@@ -24,6 +24,7 @@ class WikidataProperties:
     DescribedAtUrl = "P973"
     DeterminationMethod = "P459"
     AuthorName = "P2093"
+    CoordinatesOfThePointOfView = "P1259"
     FlickrPhotoId = "P12120"
     FlickrUserId = "P3267"
     Url = "P2699"

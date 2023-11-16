@@ -1,0 +1,17 @@
+{
+  "type": "statement",
+  "mainsnak": {
+    "property": "P1259",
+    "snaktype": "value",
+    "datavalue": {
+      "type": "globecoordinate",
+      "value": {
+        "latitude": 9.135158,
+        "longitude": 40.083811,
+        "precision": 1.0e-05,
+        "globe": "http://www.wikidata.org/entity/Q2",
+        "altitude": null
+      }
+    }
+  }
+}

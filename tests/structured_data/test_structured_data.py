@@ -2,7 +2,12 @@ import datetime
 import os
 
 from flask import Flask
-from flickr_photos_api import LocationInfo, SinglePhoto, TakenGranularity, User as FlickrUser
+from flickr_photos_api import (
+    LocationInfo,
+    SinglePhoto,
+    TakenGranularity,
+    User as FlickrUser,
+)
 import pytest
 
 from flickypedia.structured_data import (
@@ -192,6 +197,36 @@ def test_create_date_taken_statement_fails_on_unrecognised_granularity() -> None
 class TestCreateLocationStatement:
     def test_empty_location_is_no_statement(self) -> None:
         assert create_location_statement(location=None) is None
+
+    def test_accuracy_zero_means_no_statement(self) -> None:
+        statement = create_location_statement(
+            location={"latitude": 8.079310, "longitude": 77.550004, "accuracy": 0}
+        )
+
+        assert statement is None
+
+    def test_unrecognised_location_accuracy_is_error(self) -> None:
+        with pytest.raises(ValueError, match="Unrecognised location accuracy"):
+            create_location_statement(
+                location={"latitude": 8.079310, "longitude": 77.550004, "accuracy": -1}
+            )
+
+    @pytest.mark.parametrize(
+        ["location", "filename"],
+        [
+            (
+                {"latitude": 9.135158, "longitude": 40.083811, "accuracy": 16},
+                "location_ethiopia.json",
+            ),
+        ],
+    )
+    def test_create_location_statement(
+        self, location: LocationInfo, filename: str
+    ) -> None:
+        actual = create_location_statement(location=location)
+        expected = get_statement_fixture(filename)
+
+        assert actual == expected
 
 
 def test_create_sdc_claims_for_flickr_photo_without_date_taken(
