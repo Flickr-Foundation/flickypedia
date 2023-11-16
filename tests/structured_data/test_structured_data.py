@@ -10,6 +10,7 @@ from flickr_photos_api import (
 )
 import pytest
 
+from flickypedia.apis.flickr import SinglePhotoData
 from flickypedia.structured_data import (
     create_copyright_status_statement,
     create_date_taken_statement,
@@ -227,6 +228,32 @@ class TestCreateLocationStatement:
         expected = get_statement_fixture(filename)
 
         assert actual == expected
+
+    def test_omits_location_statement_if_photo_has_no_location_data(self) -> None:
+        data = get_typed_fixture(
+            path="flickr_api/single_photo-32812033543.json", model=SinglePhotoData
+        )
+
+        sdc = create_sdc_claims_for_flickr_photo(
+            photo=data["photos"][0], retrieved_at=data["retrieved_at"]
+        )
+
+        assert not any(
+            statement["mainsnak"]["property"] == "P1259" for statement in sdc["claims"]
+        )
+
+    def test_includes_location_statement_if_photo_has_location_data(self) -> None:
+        data = get_typed_fixture(
+            path="flickr_api/single_photo-52994452213.json", model=SinglePhotoData
+        )
+
+        sdc = create_sdc_claims_for_flickr_photo(
+            photo=data["photos"][0], retrieved_at=data["retrieved_at"]
+        )
+
+        assert any(
+            statement["mainsnak"]["property"] == "P1259" for statement in sdc["claims"]
+        )
 
 
 def test_create_sdc_claims_for_flickr_photo_without_date_taken(
