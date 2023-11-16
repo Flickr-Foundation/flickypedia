@@ -157,25 +157,6 @@
           "type": "wikibase-entityid"
         }
       },
-      "qualifiers": {
-        "P459": [
-          {
-            "datavalue": {
-              "type": "wikibase-entityid",
-              "value": {
-                "id": "Q61045577",
-                "numeric-id": 61045577,
-                "entity-type": "item"
-              }
-            },
-            "property": "P459",
-            "snaktype": "value"
-          }
-        ]
-      },
-      "qualifiers-order": [
-        "P459"
-      ],
       "type": "statement"
     },
     {
