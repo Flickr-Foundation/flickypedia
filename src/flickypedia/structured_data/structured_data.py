@@ -225,24 +225,12 @@ def create_license_statement(license_id: str) -> NewStatement:
     except KeyError:
         raise ValueError(f"Unrecognised license ID: {license_id!r}")
 
-    qualifier_values: List[QualifierValues] = [
-        {
-            "property": WikidataProperties.DeterminationMethod,
-            "entity_id": WikidataEntities.StatedByCopyrightHolderAtSourceWebsite,
-            "type": "entity",
-        },
-    ]
-
     return {
         "mainsnak": {
             "snaktype": "value",
             "property": WikidataProperties.CopyrightLicense,
             "datavalue": to_wikidata_entity_value(entity_id=wikidata_license_id),
         },
-        "qualifiers": create_qualifiers(qualifier_values),
-        "qualifiers-order": [
-            WikidataProperties.DeterminationMethod,
-        ],
         "type": "statement",
     }
 

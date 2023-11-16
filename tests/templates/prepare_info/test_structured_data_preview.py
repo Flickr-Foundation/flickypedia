@@ -198,11 +198,6 @@ def test_shows_license_statement(app: Flask, vcr_cassette: str) -> None:
           <dt>copyright license:</dt>
           <dd class="snak-value">
             Creative Commons Attribution 2.0 Generic (Q19125117)
-            <ul class="sdc_qualifiers plain_list">
-             <li>
-              determination method: stated by copyright holder at source website (Q61045577)
-             </li>
-            </ul>
           </dd>
         </dl>
         """
