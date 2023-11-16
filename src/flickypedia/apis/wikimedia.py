@@ -246,7 +246,6 @@ class WikimediaApi:
         else:  # pragma: no cover
             raise WikimediaApiException(f"Unexpected response: {resp}")
 
-    # TODO: This method should take a page ID instead of a filename.
     def get_structured_data(self, *, filename: str) -> ExistingClaims:
         """
         Retrieve the structured data for a file on Wikimedia Commons.
