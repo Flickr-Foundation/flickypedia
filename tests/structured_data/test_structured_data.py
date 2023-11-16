@@ -2,14 +2,21 @@ import datetime
 import os
 
 from flask import Flask
-from flickr_photos_api import SinglePhoto, TakenGranularity, User as FlickrUser
+from flickr_photos_api import (
+    LocationInfo,
+    SinglePhoto,
+    TakenGranularity,
+    User as FlickrUser,
+)
 import pytest
 
+from flickypedia.apis.flickr import SinglePhotoData
 from flickypedia.structured_data import (
     create_copyright_status_statement,
     create_date_taken_statement,
     create_flickr_creator_statement,
     create_license_statement,
+    create_location_statement,
     create_posted_to_flickr_statement,
     create_sdc_claims_for_flickr_photo,
     create_source_data_for_photo,
@@ -185,6 +192,67 @@ def test_create_date_taken_statement_fails_on_unrecognised_granularity() -> None
                 "granularity": -1,  # type: ignore
                 "unknown": False,
             }
+        )
+
+
+class TestCreateLocationStatement:
+    def test_empty_location_is_no_statement(self) -> None:
+        assert create_location_statement(location=None) is None
+
+    def test_accuracy_zero_means_no_statement(self) -> None:
+        statement = create_location_statement(
+            location={"latitude": 8.079310, "longitude": 77.550004, "accuracy": 0}
+        )
+
+        assert statement is None
+
+    def test_unrecognised_location_accuracy_is_error(self) -> None:
+        with pytest.raises(ValueError, match="Unrecognised location accuracy"):
+            create_location_statement(
+                location={"latitude": 8.079310, "longitude": 77.550004, "accuracy": -1}
+            )
+
+    @pytest.mark.parametrize(
+        ["location", "filename"],
+        [
+            (
+                {"latitude": 9.135158, "longitude": 40.083811, "accuracy": 16},
+                "location_ethiopia.json",
+            ),
+        ],
+    )
+    def test_create_location_statement(
+        self, location: LocationInfo, filename: str
+    ) -> None:
+        actual = create_location_statement(location=location)
+        expected = get_statement_fixture(filename)
+
+        assert actual == expected
+
+    def test_omits_location_statement_if_photo_has_no_location_data(self) -> None:
+        data = get_typed_fixture(
+            path="flickr_api/single_photo-32812033543.json", model=SinglePhotoData
+        )
+
+        sdc = create_sdc_claims_for_flickr_photo(
+            photo=data["photos"][0], retrieved_at=data["retrieved_at"]
+        )
+
+        assert not any(
+            statement["mainsnak"]["property"] == "P1259" for statement in sdc["claims"]
+        )
+
+    def test_includes_location_statement_if_photo_has_location_data(self) -> None:
+        data = get_typed_fixture(
+            path="flickr_api/single_photo-52994452213.json", model=SinglePhotoData
+        )
+
+        sdc = create_sdc_claims_for_flickr_photo(
+            photo=data["photos"][0], retrieved_at=data["retrieved_at"]
+        )
+
+        assert any(
+            statement["mainsnak"]["property"] == "P1259" for statement in sdc["claims"]
         )
 
 
