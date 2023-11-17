@@ -252,7 +252,9 @@ class TestCreateLocationStatement:
         )
 
         location_statements = [
-            statement["mainsnak"]["property"] == "P1259" for statement in sdc["claims"]
+            statement
+            for statement in sdc["claims"]
+            if statement["mainsnak"]["property"] == "P1259"
         ]
 
         assert len(location_statements) == 1
