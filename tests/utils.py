@@ -9,7 +9,11 @@ from cryptography.fernet import Fernet
 from flask import session
 from flask_login import login_user
 
-from flickypedia.auth import user_db, WikimediaUserSession, SESSION_ENCRYPTION_KEY
+from flickypedia.uploadr.auth import (
+    user_db,
+    WikimediaUserSession,
+    SESSION_ENCRYPTION_KEY,
+)
 from flickypedia.utils import DatetimeDecoder, encrypt_string, validate_typeddict
 
 

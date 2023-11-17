@@ -88,7 +88,7 @@ import httpx
 
 from flickypedia.apis.wikimedia import WikimediaApi
 from flickypedia.utils import decrypt_string, encrypt_string
-from flickypedia.views._types import ViewResponse
+from .views._types import ViewResponse
 
 
 user_db = SQLAlchemy()

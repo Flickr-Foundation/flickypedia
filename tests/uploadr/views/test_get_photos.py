@@ -1,8 +1,8 @@
 from flask.testing import FlaskClient
 from flask_login import FlaskLoginClient
 
-from flickypedia import create_app
-from flickypedia.auth import WikimediaUserSession
+from flickypedia.uploadr import create_app
+from flickypedia.uploadr.auth import WikimediaUserSession
 
 
 def test_renders_basic_page(logged_in_client: FlaskClient) -> None:

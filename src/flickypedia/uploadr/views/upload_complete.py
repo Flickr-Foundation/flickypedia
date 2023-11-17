@@ -1,7 +1,7 @@
 from flask import render_template
 from flask_login import login_required
 
-from flickypedia.tasks import get_status
+from ..tasks import get_status
 from ._types import ViewResponse
 
 

@@ -21,7 +21,7 @@ def main() -> None:  # pragma: no cover
 )
 @click.option("--debug", help="Run the web app in debug mode.", is_flag=True)
 def run_dev_server(port: int, host: str, debug: bool) -> None:
-    from flickypedia import create_app
+    from flickypedia.uploadr import create_app
 
     app = create_app(data_directory="data", debug=debug)
 
@@ -36,8 +36,8 @@ def run_dev_server(port: int, host: str, debug: bool) -> None:
 
 @main.command(help="Run the Celery background worker.")
 def run_celery_worker() -> None:
-    from flickypedia import create_app
-    from flickypedia.tasks import celery_init_app
+    from flickypedia.uploadr import create_app
+    from flickypedia.uploadr.tasks import celery_init_app
 
     app = create_app()
     celery = celery_init_app(app)

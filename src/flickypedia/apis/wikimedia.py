@@ -16,7 +16,7 @@ from xml.etree import ElementTree as ET
 import httpx
 
 from flickypedia.utils import validate_typeddict
-from flickypedia.structured_data import ExistingClaims, NewClaims
+from flickypedia.apis.structured_data import ExistingClaims, NewClaims
 
 
 class UserInfo(TypedDict):

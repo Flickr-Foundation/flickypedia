@@ -251,9 +251,11 @@ class TestCreateLocationStatement:
             photo=data["photos"][0], retrieved_at=data["retrieved_at"]
         )
 
-        assert any(
+        location_statements = [
             statement["mainsnak"]["property"] == "P1259" for statement in sdc["claims"]
-        )
+        ]
+
+        assert len(location_statements) == 1
 
 
 def test_create_sdc_claims_for_flickr_photo_without_date_taken(
