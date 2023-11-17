@@ -9,7 +9,10 @@ from flask import current_app
 from flickr_photos_api import SinglePhoto, Size
 
 from flickypedia.duplicates import find_duplicates, DuplicateInfo
-from flickypedia.structured_data import create_sdc_claims_for_flickr_photo, NewClaims
+from flickypedia.apis.structured_data import (
+    create_sdc_claims_for_flickr_photo,
+    NewClaims,
+)
 
 
 def size_at(sizes: List[Size], *, desired_size: str) -> Size:

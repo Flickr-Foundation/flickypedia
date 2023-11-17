@@ -5,7 +5,7 @@ import uuid
 from flask import Flask
 import pytest
 
-from flickypedia.tasks import ProgressTracker
+from flickypedia.uploadr.tasks import ProgressTracker
 
 
 @pytest.fixture

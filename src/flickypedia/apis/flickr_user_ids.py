@@ -43,7 +43,7 @@ from typing import Dict, Optional, TypedDict
 from flickr_photos_api import User as FlickrUser
 import httpx
 
-from flickypedia.structured_data.wikidata import WikidataProperties
+from flickypedia.apis.structured_data.wikidata import WikidataProperties
 
 
 def lookup_flickr_user_in_wikidata(user: FlickrUser) -> Optional[str]:

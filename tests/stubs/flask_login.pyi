@@ -3,7 +3,7 @@ from typing import Any, Callable
 from flask import Flask
 from flask.testing import FlaskClient
 
-from flickypedia.auth import WikimediaUserSession
+from flickypedia.uploadr.auth import WikimediaUserSession
 
 current_user: WikimediaUserSession
 

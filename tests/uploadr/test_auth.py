@@ -7,7 +7,7 @@ from flask import Flask, session
 from flask.testing import FlaskClient
 from flask_login import current_user
 
-from flickypedia.auth import (
+from flickypedia.uploadr.auth import (
     load_user,
     user_db,
     WikimediaUserSession,

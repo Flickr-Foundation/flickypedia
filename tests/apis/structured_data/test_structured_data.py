@@ -11,7 +11,7 @@ from flickr_photos_api import (
 import pytest
 
 from flickypedia.apis.flickr import SinglePhotoData
-from flickypedia.structured_data import (
+from flickypedia.apis.structured_data import (
     create_copyright_status_statement,
     create_date_taken_statement,
     create_flickr_creator_statement,
@@ -251,9 +251,13 @@ class TestCreateLocationStatement:
             photo=data["photos"][0], retrieved_at=data["retrieved_at"]
         )
 
-        assert any(
-            statement["mainsnak"]["property"] == "P1259" for statement in sdc["claims"]
-        )
+        location_statements = [
+            statement
+            for statement in sdc["claims"]
+            if statement["mainsnak"]["property"] == "P1259"
+        ]
+
+        assert len(location_statements) == 1
 
 
 def test_create_sdc_claims_for_flickr_photo_without_date_taken(

@@ -2,7 +2,7 @@ import json
 
 import pytest
 
-from flickypedia.structured_data._types import ExistingClaims, Snak
+from flickypedia.apis.structured_data._types import ExistingClaims, Snak
 from flickypedia.utils import validate_typeddict
 
 

@@ -7,7 +7,7 @@ from flask import Flask, render_template
 from flickr_photos_api import DateTaken, User as FlickrUser
 import pytest
 
-from flickypedia.structured_data import (
+from flickypedia.apis.structured_data import (
     create_copyright_status_statement,
     create_date_taken_statement,
     create_flickr_creator_statement,
