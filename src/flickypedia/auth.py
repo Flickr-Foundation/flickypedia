@@ -158,6 +158,7 @@ class WikimediaUserSession(UserMixin, user_db.Model):  # type: ignore
         """
         headers = {"User-Agent": current_app.config["USER_AGENT"]}
 
+        # Should we rotate the key here also?
         def update_token(token: OAuth2Token, refresh_token: str) -> None:
             self.encrypted_token = encrypt_string(
                 key=session[SESSION_ENCRYPTION_KEY], plaintext=json.dumps(token)
