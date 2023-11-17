@@ -24,14 +24,14 @@ from wtforms import FormField, HiddenField, SelectField, StringField, SubmitFiel
 from wtforms.validators import DataRequired, Length, ValidationError
 from wtforms.widgets import TextArea
 
+from flickypedia.apis.structured_data import NewClaims
 from flickypedia.photos import (
     CategorisedPhotos,
     EnrichedPhoto,
     enrich_photo,
     categorise_photos,
 )
-from flickypedia.structured_data import NewClaims
-from flickypedia.uploads import UploadRequest, begin_upload
+from ..uploads import UploadRequest, begin_upload
 from .select_photos import get_cached_photos_data, remove_cached_photos_data
 from ._types import ViewResponse
 

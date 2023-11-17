@@ -11,7 +11,7 @@ from flickr_photos_api import (
 import pytest
 
 from flickypedia.apis.flickr import SinglePhotoData
-from flickypedia.structured_data import (
+from flickypedia.apis.structured_data import (
     create_copyright_status_statement,
     create_date_taken_statement,
     create_flickr_creator_statement,

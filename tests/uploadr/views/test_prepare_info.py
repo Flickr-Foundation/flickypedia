@@ -3,8 +3,8 @@ from flask.testing import FlaskClient
 import pytest
 
 from flickypedia.apis.flickr import SinglePhotoData, PhotosInAlbumData
-from flickypedia.views.select_photos import save_cached_photos_data
-from flickypedia.views import truncate_description
+from flickypedia.uploadr.views.select_photos import save_cached_photos_data
+from flickypedia.uploadr.views import truncate_description
 from utils import minify, get_typed_fixture
 
 

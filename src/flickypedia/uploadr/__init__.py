@@ -6,22 +6,22 @@ from flask import Flask, request
 from jinja2 import StrictUndefined
 import sass
 
-from flickypedia.auth import (
+from .auth import (
     login,
     logout,
     oauth2_authorize_wikimedia,
     oauth2_callback_wikimedia,
     user_db,
 )
-from flickypedia.config import create_config, get_directories
+from .config import create_config, get_directories
 from flickypedia.duplicates import create_link_to_commons
 from flickypedia.photos import size_at
-from flickypedia.structured_data.wikidata import (
+from flickypedia.apis.structured_data.wikidata import (
     get_entity_label,
     get_property_name,
     render_wikidata_date,
 )
-from flickypedia.views import (
+from .views import (
     about,
     bookmarklet,
     find_matching_categories_api,
@@ -36,7 +36,7 @@ from flickypedia.views import (
     wait_for_upload,
     upload_complete,
 )
-from flickypedia.tasks import celery_init_app
+from .tasks import celery_init_app
 from flickypedia.utils import create_bookmarklet
 
 

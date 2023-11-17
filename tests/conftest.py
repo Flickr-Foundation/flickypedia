@@ -13,9 +13,9 @@ import pytest
 from pytest import FixtureRequest
 import vcr
 
-from flickypedia import create_app
-from flickypedia.auth import WikimediaUserSession
+from flickypedia.uploadr import create_app
 from flickypedia.apis.wikimedia import WikimediaApi
+from flickypedia.uploadr.auth import WikimediaUserSession
 from utils import store_user
 
 

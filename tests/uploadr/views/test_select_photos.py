@@ -5,7 +5,7 @@ from flickr_photos_api import FlickrPhotosApi
 import pytest
 
 from flickypedia.apis.flickr import PhotosInAlbumData, SinglePhotoData
-from flickypedia.views.select_photos import save_cached_photos_data
+from flickypedia.uploadr.views.select_photos import save_cached_photos_data
 from utils import minify, get_typed_fixture
 
 
