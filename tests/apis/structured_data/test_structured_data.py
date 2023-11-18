@@ -15,6 +15,7 @@ from flickypedia.apis.structured_data import (
     create_copyright_status_statement,
     create_date_taken_statement,
     create_flickr_creator_statement,
+    create_flickr_photo_id_statement,
     create_license_statement,
     create_location_statement,
     create_posted_to_flickr_statement,
@@ -258,6 +259,19 @@ class TestCreateLocationStatement:
         ]
 
         assert len(location_statements) == 1
+
+
+def test_create_flickr_photo_id_statement() -> None:
+    statement = create_flickr_photo_id_statement(photo_id="1234567")
+
+    assert statement == {
+        "mainsnak": {
+            "datavalue": {"value": "1234567", "type": "string"},
+            "property": "P12120",
+            "snaktype": "value",
+        },
+        "type": "statement",
+    }
 
 
 def test_create_sdc_claims_for_flickr_photo_without_date_taken(

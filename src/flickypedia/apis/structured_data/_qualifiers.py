@@ -38,7 +38,11 @@ import datetime
 from typing import Dict, List, Literal, TypedDict, Union
 
 from ._types import DataValue, Snak
-from .wikidata import to_wikidata_date_value, to_wikidata_entity_value
+from .wikidata import (
+    to_wikidata_date_value,
+    to_wikidata_entity_value,
+    to_wikidata_string_value,
+)
 
 
 class QualifierValueTypes:
@@ -75,7 +79,7 @@ def create_qualifiers(qualifier_values: List[QualifierValues]) -> Dict[str, List
         datavalue: DataValue
 
         if qualifier["type"] == "string":
-            datavalue = {"type": "string", "value": qualifier["value"]}
+            datavalue = to_wikidata_string_value(value=qualifier["value"])
         elif qualifier["type"] == "entity":
             datavalue = to_wikidata_entity_value(entity_id=qualifier["entity_id"])
         else:

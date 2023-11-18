@@ -38,6 +38,7 @@ from ._types import NewStatement, NewClaims
 from .wikidata import (
     to_wikidata_date_value,
     to_wikidata_entity_value,
+    to_wikidata_string_value,
     WikidataEntities,
     WikidataProperties,
 )
@@ -173,11 +174,6 @@ def create_source_data_for_photo(
     """
     qualifier_values: List[QualifierValues] = [
         {
-            "property": WikidataProperties.FlickrPhotoId,
-            "value": photo_id,
-            "type": "string",
-        },
-        {
             "property": WikidataProperties.DescribedAtUrl,
             "value": photo_url,
             "type": "string",
@@ -206,7 +202,6 @@ def create_source_data_for_photo(
         },
         "qualifiers": create_qualifiers(qualifier_values),
         "qualifiers-order": [
-            WikidataProperties.FlickrPhotoId,
             WikidataProperties.DescribedAtUrl,
             WikidataProperties.Operator,
             WikidataProperties.Url,
@@ -439,6 +434,23 @@ def create_date_taken_statement(date_taken: DateTaken) -> NewStatement:
         }
 
 
+def create_flickr_photo_id_statement(photo_id: str) -> NewStatement:
+    """
+    Creates a Flickr Photo ID statement for a Flickr photo.
+
+    This is a main statement rather than a qualifier on another statement;
+    this is to match the convention of e.g. YouTube video ID.
+    """
+    return {
+        "mainsnak": {
+            "datavalue": to_wikidata_string_value(value=photo_id),
+            "property": WikidataProperties.FlickrPhotoId,
+            "snaktype": "value",
+        },
+        "type": "statement",
+    }
+
+
 def create_sdc_claims_for_flickr_photo(
     photo: SinglePhoto, retrieved_at: datetime.datetime
 ) -> NewClaims:
@@ -447,6 +459,8 @@ def create_sdc_claims_for_flickr_photo(
 
     This is the main entry point into this file for the rest of Flickypedia.
     """
+    photo_id_statement = create_flickr_photo_id_statement(photo_id=photo["id"])
+
     creator_statement = create_flickr_creator_statement(user=photo["owner"])
 
     copyright_statement = create_copyright_status_statement(
@@ -477,6 +491,7 @@ def create_sdc_claims_for_flickr_photo(
     )
 
     statements = [
+        photo_id_statement,
         creator_statement,
         copyright_statement,
         source_statement,
