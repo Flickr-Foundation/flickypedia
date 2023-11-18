@@ -1,3 +1,5 @@
+import json
+
 from flask.testing import FlaskClient
 
 
@@ -20,3 +22,14 @@ def test_wait_for_upload_waits_if_in_progress(
 
     assert resp.status_code == 200
     assert b"1 of 1" in resp.data
+
+
+def test_wait_for_upload_api(logged_in_client: FlaskClient, celery_dir: None) -> None:
+    resp = logged_in_client.get(
+        "/wait_for_upload/e358876e-f3d6-439b-85fa-1ed1e46338ec/status"
+    )
+
+    data = json.loads(resp.data)
+
+    assert not data["ready"]
+    assert len(data["progress"]) == 1
