@@ -1,3 +1,5 @@
+import os
+
 import bs4
 from flask import Flask
 from flask.testing import FlaskClient
@@ -183,7 +185,7 @@ def test_no_photo_selection_is_error(
     """
     If you POST a form without a selection, you get an error.
     """
-    flickr_url = "https://www.flickr.com/photos/schlesinger_library/13270291833/"
+    flickr_url = "https://www.flickr.com/photos/199246608@N02/albums/72177720311959907"
 
     resp = logged_in_client.post(f"/select_photos?flickr_url={flickr_url}")
 
@@ -252,3 +254,20 @@ def test_you_cant_select_a_restricted_image(
     resp = logged_in_client.get(f"/select_photos?flickr_url={flickr_url}")
 
     assert "This photo can’t be used." in resp.data.decode("utf8")
+
+
+def test_removes_api_cache_if_no_available_photos(
+    app: Flask, logged_in_client: FlaskClient, flickr_api: FlickrPhotosApi
+) -> None:
+    """
+    If we look up a photo which can't be used (e.g. if it's a duplicate of
+    file already on WMC), we don't need to save a copy of the Flickr API
+    response in our response cache.
+    """
+    assert len(os.listdir(app.config["FLICKR_API_RESPONSE_CACHE"])) == 0
+
+    logged_in_client.get(
+        "/select_photos?flickr_url=https://www.flickr.com/photos/fotnmc/9999819294/"
+    )
+
+    assert len(os.listdir(app.config["FLICKR_API_RESPONSE_CACHE"])) == 0

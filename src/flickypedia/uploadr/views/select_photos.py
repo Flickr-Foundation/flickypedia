@@ -193,11 +193,24 @@ def select_photos() -> ViewResponse:
             )
         )
 
-    # TODO: If we know there are no photos available, then we can
-    # delete the cached API response
+    # If there aren't any photos available, then we don't need to worry
+    # about building the photos form or keeping an API response cache.
+    if not sorted_photos["available"]:
+        remove_cached_photos_data(cache_id)  # type: ignore
 
-    # At this point we know all the photos that should be in the list.
-    # Go ahead and build the full form.
+        return render_template(
+            "select_photos/index.html",
+            flickr_url=flickr_url,
+            parsed_url=parsed_url,
+            photo_url_form=FlickrPhotoURLForm(),
+            # TODO: Explain what's going on here.
+            photo_data={k: v for k, v in photo_data.items() if k != "photos"},
+            current_step="get_photos",
+            photos=sorted_photos,
+        )
+
+    # Otherwise, we know that there are photos that the user can pick
+    # from, and we know what they are.  Go ahead and build the full form.
     select_photos_form = create_select_photos_form(photos=sorted_photos["available"])
 
     select_photos_form.cache_id.data = cache_id
