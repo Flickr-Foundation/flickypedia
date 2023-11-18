@@ -24,15 +24,10 @@ TODO:
 
 """
 
-import datetime
-import json
-import os
-from typing import List
-import uuid
+from typing import cast, List
 
 from flask import (
     abort,
-    current_app,
     flash,
     redirect,
     render_template,
@@ -40,7 +35,7 @@ from flask import (
     session,
     url_for,
 )
-from flask_login import current_user, login_required
+from flask_login import login_required
 from flickr_photos_api import (
     ResourceNotFound,
     SinglePhoto,
@@ -54,10 +49,14 @@ from flask_wtf import FlaskForm
 from wtforms import BooleanField, HiddenField, SubmitField
 from wtforms.validators import DataRequired
 
-from flickypedia.apis.flickr import get_photos_from_flickr, GetPhotosData
-from flickypedia.utils import DatetimeDecoder, DatetimeEncoder
+from flickypedia.apis.flickr import get_photos_from_flickr
 from flickypedia.photos import categorise_photos
 from .get_photos import FlickrPhotoURLForm
+from ..caching import (
+    get_cached_photos_data,
+    remove_cached_photos_data,
+    save_cached_photos_data,
+)
 from ._types import ViewResponse
 
 
@@ -136,11 +135,9 @@ def select_photos() -> ViewResponse:
     base_form = BaseSelectForm()
 
     if base_form.validate_on_submit():
-        photo_data = get_cached_photos_data(
-            response_id=base_form.cache_id.data  # type: ignore
-        )
+        cache_id = cast(str, base_form.cache_id.data)
 
-        cache_id = base_form.cache_id.data
+        photo_data = get_cached_photos_data(cache_id=cache_id)
 
     # If this is the first time somebody is visiting the page or
     # we don't have a cached API response, then load the photos
@@ -193,11 +190,24 @@ def select_photos() -> ViewResponse:
             )
         )
 
-    # TODO: If we know there are no photos available, then we can
-    # delete the cached API response
+    # If there aren't any photos available, then we don't need to worry
+    # about building the photos form or keeping an API response cache.
+    if not sorted_photos["available"]:
+        remove_cached_photos_data(cache_id)
 
-    # At this point we know all the photos that should be in the list.
-    # Go ahead and build the full form.
+        return render_template(
+            "select_photos/index.html",
+            flickr_url=flickr_url,
+            parsed_url=parsed_url,
+            photo_url_form=FlickrPhotoURLForm(),
+            # TODO: Explain what's going on here.
+            photo_data={k: v for k, v in photo_data.items() if k != "photos"},
+            current_step="get_photos",
+            photos=sorted_photos,
+        )
+
+    # Otherwise, we know that there are photos that the user can pick
+    # from, and we know what they are.  Go ahead and build the full form.
     select_photos_form = create_select_photos_form(photos=sorted_photos["available"])
 
     select_photos_form.cache_id.data = cache_id
@@ -232,46 +242,3 @@ def select_photos() -> ViewResponse:
         current_step="get_photos",
         photos=sorted_photos,
     )
-
-
-def get_cached_photos_data(response_id: str) -> GetPhotosData:
-    """
-    Retrieve some cached photos data.
-    """
-    cache_dir = current_app.config["FLICKR_API_RESPONSE_CACHE"]
-
-    with open(os.path.join(cache_dir, response_id + ".json")) as infile:
-        cached_data = json.load(infile, cls=DatetimeDecoder)
-
-    return cached_data["value"]  # type: ignore
-
-
-def save_cached_photos_data(response: GetPhotosData) -> str:
-    """
-    Save a cached API response.  Returns an ID which can be used to
-    retrieve this response now.
-    """
-    cache_dir = current_app.config["FLICKR_API_RESPONSE_CACHE"]
-    response_id = str(uuid.uuid4())
-
-    os.makedirs(cache_dir, exist_ok=True)
-
-    out_data = {
-        "user": current_user.name,
-        "now": datetime.datetime.now(),
-        "value": response,
-    }
-
-    with open(os.path.join(cache_dir, response_id + ".json"), "w") as outfile:
-        outfile.write(json.dumps(out_data, cls=DatetimeEncoder))
-
-    return response_id
-
-
-def remove_cached_photos_data(response_id: str) -> None:
-    """
-    Remove a cached API response.
-    """
-    cache_dir = current_app.config["FLICKR_API_RESPONSE_CACHE"]
-
-    os.unlink(os.path.join(cache_dir, response_id + ".json"))
