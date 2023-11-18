@@ -197,6 +197,13 @@ def to_wikidata_entity_value(*, entity_id: str) -> DataValueTypes.WikibaseEntity
     }
 
 
+def to_wikidata_string_value(*, value: str) -> DataValueTypes.String:
+    """
+    Create a datavalue for a literal string.
+    """
+    return {"value": value, "type": "string"}
+
+
 def render_wikidata_date(value: Value.Time) -> str:
     """
     Given a Wikidata date from the SDC, render it as text.

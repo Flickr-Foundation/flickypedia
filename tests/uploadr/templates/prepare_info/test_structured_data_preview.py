@@ -164,9 +164,6 @@ def test_shows_source_data(app: Flask, vcr_cassette: str) -> None:
             file available on the internet (Q74228490)
             <ul class="sdc_qualifiers plain_list">
               <li>
-                flickr photo id: 53248015596
-              </li>
-              <li>
                 described at url: https://www.flickr.com/photos/199246608@N02/53248015596/
               </li>
               <li>

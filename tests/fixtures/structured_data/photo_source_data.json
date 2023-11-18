@@ -12,16 +12,6 @@
     }
   },
   "qualifiers": {
-    "P12120": [
-      {
-        "datavalue": {
-          "type": "string",
-          "value": "53248015596"
-        },
-        "property": "P12120",
-        "snaktype": "value"
-      }
-    ],
     "P137": [
       {
         "datavalue": {
@@ -75,7 +65,6 @@
     ]
   },
   "qualifiers-order": [
-    "P12120",
     "P973",
     "P137",
     "P2699",
