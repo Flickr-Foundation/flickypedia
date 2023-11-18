@@ -32,7 +32,7 @@ from flickypedia.photos import (
     categorise_photos,
 )
 from ..uploads import UploadRequest, begin_upload
-from .select_photos import get_cached_photos_data, remove_cached_photos_data
+from ..caching import get_cached_photos_data, remove_cached_photos_data
 from ._types import ViewResponse
 
 
