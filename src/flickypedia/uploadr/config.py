@@ -12,6 +12,7 @@ def create_config(data_directory: str) -> Dict[str, Any]:
     celery_directory = os.path.join(data_directory, "celery")
 
     celery_config = {
+        "base_dir": celery_directory,
         "result_backend": f"file://{celery_directory}/results",
         "broker_url": "filesystem://",
         "broker_transport_options": {

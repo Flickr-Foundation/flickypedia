@@ -190,3 +190,17 @@ def logged_in_client(app: Flask) -> Generator[FlaskClient, None, None]:
             assert current_user == user
 
             yield client
+
+
+@pytest.fixture
+def celery_dir(app: Flask) -> None:
+    """
+    Creates a Celery directory which is pre-populated with some task files.
+    """
+    shutil.copytree(
+        src="tests/fixtures/celery",
+        dst=app.config["CELERY"]["base_dir"],
+        dirs_exist_ok=True,
+    )
+
+    return None
