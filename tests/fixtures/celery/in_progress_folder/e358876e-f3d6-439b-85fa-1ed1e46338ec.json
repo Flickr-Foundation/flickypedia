@@ -1,0 +1,370 @@
+[
+  {
+    "req": {
+      "photo": {
+        "id": "53340605524",
+        "title": "IMG_5928",
+        "description": null,
+        "owner": {
+          "id": "199246608@N02",
+          "username": "cefarrjf87",
+          "realname": "Alex Chan",
+          "path_alias": null,
+          "photos_url": "https://www.flickr.com/photos/199246608@N02/",
+          "profile_url": "https://www.flickr.com/people/199246608@N02/"
+        },
+        "date_posted": {
+          "type": "datetime.datetime",
+          "value": "2023-11-18T20:15:37+00:00"
+        },
+        "date_taken": {
+          "value": {
+            "type": "datetime.datetime",
+            "value": "2023-11-18T09:16:35"
+          },
+          "granularity": "second",
+          "unknown": false
+        },
+        "safety_level": "safe",
+        "license": {
+          "id": "cc-by-2.0",
+          "label": "CC BY 2.0",
+          "url": "https://creativecommons.org/licenses/by/2.0/"
+        },
+        "url": "https://www.flickr.com/photos/199246608@N02/53340605524/",
+        "sizes": [
+          {
+            "label": "Square",
+            "width": 75,
+            "height": 75,
+            "media": "photo",
+            "source": "https://live.staticflickr.com/65535/53340605524_611387bfb0_s.jpg"
+          },
+          {
+            "label": "Large Square",
+            "width": 150,
+            "height": 150,
+            "media": "photo",
+            "source": "https://live.staticflickr.com/65535/53340605524_611387bfb0_q.jpg"
+          },
+          {
+            "label": "Thumbnail",
+            "width": 100,
+            "height": 75,
+            "media": "photo",
+            "source": "https://live.staticflickr.com/65535/53340605524_611387bfb0_t.jpg"
+          },
+          {
+            "label": "Small",
+            "width": 240,
+            "height": 180,
+            "media": "photo",
+            "source": "https://live.staticflickr.com/65535/53340605524_611387bfb0_m.jpg"
+          },
+          {
+            "label": "Small 320",
+            "width": 320,
+            "height": 240,
+            "media": "photo",
+            "source": "https://live.staticflickr.com/65535/53340605524_611387bfb0_n.jpg"
+          },
+          {
+            "label": "Small 400",
+            "width": 400,
+            "height": 300,
+            "media": "photo",
+            "source": "https://live.staticflickr.com/65535/53340605524_611387bfb0_w.jpg"
+          },
+          {
+            "label": "Medium",
+            "width": 500,
+            "height": 375,
+            "media": "photo",
+            "source": "https://live.staticflickr.com/65535/53340605524_611387bfb0.jpg"
+          },
+          {
+            "label": "Medium 640",
+            "width": 640,
+            "height": 480,
+            "media": "photo",
+            "source": "https://live.staticflickr.com/65535/53340605524_611387bfb0_z.jpg"
+          },
+          {
+            "label": "Medium 800",
+            "width": 800,
+            "height": 600,
+            "media": "photo",
+            "source": "https://live.staticflickr.com/65535/53340605524_611387bfb0_c.jpg"
+          },
+          {
+            "label": "Large",
+            "width": 1024,
+            "height": 768,
+            "media": "photo",
+            "source": "https://live.staticflickr.com/65535/53340605524_611387bfb0_b.jpg"
+          },
+          {
+            "label": "Large 1600",
+            "width": 1600,
+            "height": 1200,
+            "media": "photo",
+            "source": "https://live.staticflickr.com/65535/53340605524_8d055e2a42_h.jpg"
+          },
+          {
+            "label": "Large 2048",
+            "width": 2048,
+            "height": 1536,
+            "media": "photo",
+            "source": "https://live.staticflickr.com/65535/53340605524_6f764b40cc_k.jpg"
+          },
+          {
+            "label": "Original",
+            "width": 4032,
+            "height": 3024,
+            "media": "photo",
+            "source": "https://live.staticflickr.com/65535/53340605524_aa32d80aa9_o.jpg"
+          }
+        ],
+        "original_format": "jpg",
+        "tags": [
+
+        ],
+        "location": null
+      },
+      "sdc": {
+        "claims": [
+          {
+            "mainsnak": {
+              "snaktype": "somevalue",
+              "property": "P170"
+            },
+            "qualifiers": {
+              "P2093": [
+                {
+                  "datavalue": {
+                    "type": "string",
+                    "value": "Alex Chan"
+                  },
+                  "property": "P2093",
+                  "snaktype": "value"
+                }
+              ],
+              "P2699": [
+                {
+                  "datavalue": {
+                    "type": "string",
+                    "value": "https://www.flickr.com/people/199246608@N02/"
+                  },
+                  "property": "P2699",
+                  "snaktype": "value"
+                }
+              ],
+              "P3267": [
+                {
+                  "datavalue": {
+                    "type": "string",
+                    "value": "199246608@N02"
+                  },
+                  "property": "P3267",
+                  "snaktype": "value"
+                }
+              ]
+            },
+            "qualifiers-order": [
+              "P3267",
+              "P2093",
+              "P2699"
+            ],
+            "type": "statement"
+          },
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P6216",
+              "datavalue": {
+                "value": {
+                  "id": "Q50423863",
+                  "entity-type": "item",
+                  "numeric-id": 50423863
+                },
+                "type": "wikibase-entityid"
+              }
+            },
+            "type": "statement"
+          },
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P7482",
+              "datavalue": {
+                "value": {
+                  "id": "Q74228490",
+                  "entity-type": "item",
+                  "numeric-id": 74228490
+                },
+                "type": "wikibase-entityid"
+              }
+            },
+            "qualifiers": {
+              "P12120": [
+                {
+                  "datavalue": {
+                    "type": "string",
+                    "value": "53340605524"
+                  },
+                  "property": "P12120",
+                  "snaktype": "value"
+                }
+              ],
+              "P973": [
+                {
+                  "datavalue": {
+                    "type": "string",
+                    "value": "https://www.flickr.com/photos/199246608@N02/53340605524/"
+                  },
+                  "property": "P973",
+                  "snaktype": "value"
+                }
+              ],
+              "P137": [
+                {
+                  "datavalue": {
+                    "value": {
+                      "id": "Q103204",
+                      "entity-type": "item",
+                      "numeric-id": 103204
+                    },
+                    "type": "wikibase-entityid"
+                  },
+                  "property": "P137",
+                  "snaktype": "value"
+                }
+              ],
+              "P2699": [
+                {
+                  "datavalue": {
+                    "type": "string",
+                    "value": "https://live.staticflickr.com/65535/53340605524_aa32d80aa9_o.jpg"
+                  },
+                  "property": "P2699",
+                  "snaktype": "value"
+                }
+              ],
+              "P813": [
+                {
+                  "datavalue": {
+                    "value": {
+                      "time": "+2023-11-18T00:00:00Z",
+                      "precision": 11,
+                      "timezone": 0,
+                      "before": 0,
+                      "after": 0,
+                      "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                    },
+                    "type": "time"
+                  },
+                  "property": "P813",
+                  "snaktype": "value"
+                }
+              ]
+            },
+            "qualifiers-order": [
+              "P12120",
+              "P973",
+              "P137",
+              "P2699",
+              "P813"
+            ],
+            "type": "statement"
+          },
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P275",
+              "datavalue": {
+                "value": {
+                  "id": "Q19125117",
+                  "entity-type": "item",
+                  "numeric-id": 19125117
+                },
+                "type": "wikibase-entityid"
+              }
+            },
+            "type": "statement"
+          },
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1433",
+              "datavalue": {
+                "value": {
+                  "id": "Q103204",
+                  "entity-type": "item",
+                  "numeric-id": 103204
+                },
+                "type": "wikibase-entityid"
+              }
+            },
+            "qualifiers": {
+              "P577": [
+                {
+                  "datavalue": {
+                    "value": {
+                      "time": "+2023-11-18T00:00:00Z",
+                      "precision": 11,
+                      "timezone": 0,
+                      "before": 0,
+                      "after": 0,
+                      "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                    },
+                    "type": "time"
+                  },
+                  "property": "P577",
+                  "snaktype": "value"
+                }
+              ]
+            },
+            "qualifiers-order": [
+              "P577"
+            ],
+            "type": "statement"
+          },
+          {
+            "mainsnak": {
+              "datavalue": {
+                "value": {
+                  "time": "+2023-11-18T00:00:00Z",
+                  "precision": 11,
+                  "timezone": 0,
+                  "before": 0,
+                  "after": 0,
+                  "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                },
+                "type": "time"
+              },
+              "property": "P571",
+              "snaktype": "value"
+            },
+            "type": "statement"
+          }
+        ]
+      },
+      "title": "Produce market in Montevideo.jpg",
+      "caption": {
+        "language": "en",
+        "text": "An open-air market in Montevideo, where different stalls are selling fresh fruit and vegetables. There are wooden boxes with different types of produce (carrots, tomatoes, and cauliflowers near the front), and prices on small signs."
+      },
+      "categories": [
+        "Uploads using Flickypedia",
+        "Uploads by User:Alexwlchan",
+        "Flickr photos by cefarrjf87",
+        "Markets in Uruguay"
+      ]
+    },
+    "last_update": {
+      "type": "datetime.datetime",
+      "value": "2023-11-18T17:17:02.881412"
+    },
+    "status": "in_progress"
+  }
+]
