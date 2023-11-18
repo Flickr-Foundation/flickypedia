@@ -23,6 +23,7 @@ def test_homepage_shows_user_info_if_logged_in(logged_in_client: FlaskClient) ->
         "/logout",
         "/get_photos",
         "/select_photos",
+        "/say_thanks/1234",
     ],
 )
 def test_redirected_to_homepage_for_pages_requiring_login(

@@ -44,7 +44,7 @@
     {% if current_user.is_anonymous %}
       your public upload history
     {% else %}
-      <a href="{{ current_user.uploads_url }}">your public upload history</a>
+      <a href="{{ current_user.uploads_url | safe }}">your public upload history</a>
     {% endif %}
     on Wikimedia Commons.
   </p>

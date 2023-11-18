@@ -249,7 +249,7 @@ def load_user(userid: str) -> Optional[WikimediaUserSession]:
     See https://flask-login.readthedocs.io/en/latest/#flask_login.LoginManager.user_loader
     """
     if current_app.config.get("TESTING"):
-        return WikimediaUserSession(id=-1, userid=-1, name="example")
+        return WikimediaUserSession(id=-1, userid=-1, name="Example")
     else:
         user = user_db.session.get(WikimediaUserSession, userid)
 
