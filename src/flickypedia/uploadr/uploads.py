@@ -68,7 +68,7 @@ def upload_batch_of_photos(
         }
     )
 
-    api = WikimediaApi(client=client)  # noqa
+    api = WikimediaApi(client=client)
 
     for idx, req in enumerate(upload_requests):
         progress_data[idx]["status"] = "in_progress"
