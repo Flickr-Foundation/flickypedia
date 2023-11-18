@@ -95,7 +95,7 @@ def create_app(data_directory: str = "data", debug: bool = False) -> Flask:
 
     compile_scss(static_folder)
 
-    if debug:
+    if debug:  # pragma: no cover
 
         @app.before_request
         def recompile_css() -> None:
