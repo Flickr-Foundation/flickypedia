@@ -168,7 +168,7 @@ def logged_in_client(app: Flask) -> Generator[FlaskClient, None, None]:
     app.test_client_class = FlaskLoginClient
 
     user = WikimediaUserSession(
-        id="-1", userid="-1", name="example", encrypted_token=b"<sekrit>"
+        id="-1", userid="-1", name="Example", encrypted_token=b"<sekrit>"
     )
 
     # Note: we have to enter the request context before we enter
