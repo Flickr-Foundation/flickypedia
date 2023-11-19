@@ -21,22 +21,45 @@
 
 ## Context
 
-*   Flickypedia needs to act on behalf of users in WMC
-    *   Can't allow anonymous uploads; too much potential for spam/vandalism
-    *   Uploads should be associated with user a/c, not Flickypedia
-*   Need a way to auth with WMC
+When Flickypedia uploads a photo to Wikimedia Commons (WMC), that upload should be associated with a WMC user.
+This is better for users (who can see their uploads in their upload history) and prevents any risks associated with anonymous uploads (spam, vandalism, license washing).
+
+Flickypedia needs a way for a user to authenticate with WMC, and to upload photos on their behalf.
+
+
 
 ## Desirable outcomes
 
-*   Users can log in to WMC
-*   Users can log out of Flickypedia and remove all access
-*   Minimal perms
-    *   Flickypedia only needs to upload photos and edit some metadata
-    *   No need for extensive perms
-*   Minimal risk of impersonation
-    *   if somebody logs into Flickypedia, doesn't open door to future edits on their a/c
-    *   Flickypedia shouldn't be potential point of compromise
-*   Don't want to roll our own crypto etc
+There are some basic functional requirements for Flickypedia to work correctly:
+
+*   Users can log in to Flickypedia, allowing it to perform uploads on their behalf.
+*   Users can easily log out, and revoke Flickypedia's access.
+
+There are also several technical requirements which we want from a security perspective:
+
+*   We don't want Flickypedia to be used to compromise Wikimedia user accounts.
+    For example, we're going to get permission to make edits on a user's behalf – we don't want this permission to be misused to make vandal edits in their name.
+*   This needs to work when Flickypedia only runs on a single instance.
+    We're going to run Flickypedia on a Mac Mini server in our London office, so we can't e.g. rely on the existence of some external "secure database" which is separate from the web server.
+*   We only have a single developer, and no dedicated security team, so we need to keep it simple.
+    That means no rolling our own crypto, inventing new token schemes, or other "clever ideas" – we should stick to existing approaches.
+
+## Decisions
+
+### OAuth 1.0a or OAuth 2?
+
+MediaWiki supports [both OAuth 1.0a and OAuth 2.0][mediawiki_oauth].
+
+The [Wikimedia API docs about Authentication][wikimedia_auth] recommend using the OAuth 2.0 authorization code flow:
+
+> To allow your app to interact with and access content on behalf of a user, use the OAuth 2.0 authorization code flow.
+> This provides a secure process for users to log in with their Wikimedia account and authorize your app.
+> The OAuth 2.0 authorization code workflow can be used by server-side, client-side, and installed apps.
+
+This is a well-trodden approach to authentication
+
+[mediawiki_oauth]: https://www.mediawiki.org/wiki/OAuth/For_Developers
+[wikimedia_auth]: https://api.wikimedia.org/wiki/Authentication
 
 ## Technical thinking
 
