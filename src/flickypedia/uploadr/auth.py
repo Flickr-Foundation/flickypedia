@@ -68,6 +68,7 @@ it should be accessing it via ``current_user``.
 
 import datetime
 import json
+import textwrap
 from typing import Optional
 import uuid
 
@@ -321,10 +322,47 @@ def oauth2_callback_wikimedia() -> ViewResponse:
     if not current_user.is_anonymous:
         return redirect(url_for("get_photos"))
 
-    # Exchange the authorization response for an access token
+    # Exchange the authorization response for an access token.
+    #
+    # This should always be present.
     try:
         state = session.pop("oauth_authorize_state")
     except KeyError:
+        # This branch is just to help devs who are running locally
+        # and open the wrong URL; there's nothing useful to test here.
+        #
+        # The reason you might end up here is because Flask prints the
+        # following message when you start the dev server:
+        #
+        #     * Running on http://127.0.0.1:5000
+        #     * Running on http://10.10.30.166:5000
+        #
+        # and if I copy/paste that URL into my browser, I'll run into
+        # this issue as soon as I try to log in.
+        if request.url.startswith("http://localhost:5000/"):  # pragma: no cover
+            print(
+                textwrap.dedent(
+                    """
+                ***
+                Unable to retrieve oauth_authorize_state from your session.
+
+                This can occur when you start your login from one domain, but get
+                redirected to a different domain.  In particular, if you start by
+                opening http://127.0.0.1:5000 and logging into WMC, then you get
+                redirected to http://localhost:5000, the latter won't have the same
+                session cookie.
+
+                The fix is to open http://localhost:5000 (not 127.0.0.1) and do
+                a new login from there.
+                ***
+            """
+                ).strip()
+            )
+            flash(
+                "You need to log in from http://localhost:5000/, not http://127.0.0.1:5000/"
+            )
+            return redirect(url_for("homepage"))
+
         print("Unable to retrieve oauth_authorize_state from user's session")
         abort(401)
 
