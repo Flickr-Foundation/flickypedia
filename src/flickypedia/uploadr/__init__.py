@@ -1,5 +1,6 @@
 import html
 import os
+import pathlib
 import uuid
 
 from flask import Flask, request
@@ -40,7 +41,9 @@ from .tasks import celery_init_app
 from flickypedia.utils import create_bookmarklet
 
 
-def create_app(data_directory: str = "data", debug: bool = False) -> Flask:
+def create_app(
+    data_directory: pathlib.Path = pathlib.Path("data"), debug: bool = False
+) -> Flask:
     app = Flask(__name__)
 
     config = create_config(data_directory)

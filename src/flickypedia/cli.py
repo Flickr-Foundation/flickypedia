@@ -1,3 +1,4 @@
+import pathlib
 import sys
 
 import click
@@ -23,7 +24,7 @@ def main() -> None:  # pragma: no cover
 def run_dev_server(port: int, host: str, debug: bool) -> None:
     from flickypedia.uploadr import create_app
 
-    app = create_app(data_directory="data", debug=debug)
+    app = create_app(data_directory=pathlib.Path("data"), debug=debug)
 
     if app.config["OAUTH2_PROVIDERS"]["wikimedia"]["client_id"] is None:
         sys.exit("No Wikimedia client ID provided! Set WIKIMEDIA_CLIENT_ID.")

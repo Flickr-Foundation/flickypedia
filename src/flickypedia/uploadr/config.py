@@ -1,30 +1,31 @@
 import os
+import pathlib
 from typing import Any, Dict, List
 
 
-def create_config(data_directory: str) -> Dict[str, Any]:
+def create_config(data_directory: pathlib.Path) -> Dict[str, Any]:
     """
     Create the config for Flickypedia.
 
     Flickypedia writes a number of temporary files as part of its work.
     The ``data_directory`` is their root.
     """
-    celery_directory = os.path.join(data_directory, "celery")
+    celery_directory = data_directory / "celery"
 
     celery_config = {
         "base_dir": celery_directory,
         "result_backend": f"file://{celery_directory}/results",
         "broker_url": "filesystem://",
         "broker_transport_options": {
-            "data_folder_in": os.path.join(celery_directory, "queue"),
-            "data_folder_out": os.path.join(celery_directory, "queue"),
-            "processed_folder": os.path.join(celery_directory, "processed"),
+            "data_folder_in": celery_directory / "queue",
+            "data_folder_out": celery_directory / "queue",
+            "processed_folder": celery_directory / "processed",
             #
             # This isn't a Celery config option, but it's used by
             # Celery in our app for tracking in-progress work.
             #
             # We store it here for convenience.
-            "in_progress_folder": os.path.join(celery_directory, "in_progress_folder"),
+            "in_progress_folder": celery_directory / "in_progress_folder",
             #
             # The processed tasks include the original arguments passed
             # to Celery, which has the user's OAuth credentials in
@@ -38,18 +39,18 @@ def create_config(data_directory: str) -> Dict[str, Any]:
         "FLICKR_API_KEY": os.environ.get("FLICKR_API_KEY", "<UNKNOWN>"),
         #
         # TODO: Get this into the data directory.
-        "SQLALCHEMY_DATABASE_URI": f"sqlite:///{os.path.abspath(data_directory)}/db.sqlite",
+        "SQLALCHEMY_DATABASE_URI": f"sqlite:///{data_directory.absolute()}/db.sqlite",
         #
         # Used as a temporary cache for responses from the Flickr API.
         #
         # We can save results in here, and pass the filename around in the
         # user session.  This is just public data from the Flickr API,
         # so there's nothing sensitive in here.
-        "FLICKR_API_RESPONSE_CACHE": os.path.join(data_directory, "flickr_api_cache"),
+        "FLICKR_API_RESPONSE_CACHE": data_directory / "flickr_api_cache",
         #
         # Used as a directory to find SQLite databases which contain information
         # about duplicates.
-        "DUPLICATE_DATABASE_DIRECTORY": os.path.join(data_directory, "duplicates"),
+        "DUPLICATE_DATABASE_DIRECTORY": data_directory / "duplicates",
         "OAUTH2_PROVIDERS": {
             # Implementation note: although these URLs are currently hard-coded,
             # there is a beta cluster we might use in the future.  It's currently
