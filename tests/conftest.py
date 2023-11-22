@@ -1,5 +1,6 @@
 import datetime
 import os
+import pathlib
 import shutil
 from typing import Generator
 
@@ -117,16 +118,16 @@ def flickr_api(
 
 
 @pytest.fixture()
-def app(user_agent: str, tmpdir: str) -> Generator[Flask, None, None]:
+def app(user_agent: str, tmp_path: pathlib.Path) -> Generator[Flask, None, None]:
     """
     Creates an instance of the app for use in testing.
 
     See https://flask.palletsprojects.com/en/3.0.x/testing/#fixtures
     """
-    app = create_app(data_directory=tmpdir)
+    app = create_app(data_directory=tmp_path)
     app.config["TESTING"] = True
 
-    app.config["DUPLICATE_DATABASE_DIRECTORY"] = os.path.join(tmpdir, "duplicates")
+    app.config["DUPLICATE_DATABASE_DIRECTORY"] = os.path.join(tmp_path, "duplicates")
     shutil.copyfile(
         "tests/fixtures/duplicates/flickr_ids_from_sdc_for_testing.sqlite",
         os.path.join(
