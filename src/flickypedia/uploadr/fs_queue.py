@@ -1,3 +1,18 @@
+"""
+This file provides a basic implementation of a task queue.
+
+At one point we were using Celery [1], which is a very powerful and
+well-established job queue for Python, but it's way more than we need
+for Flickypedia -- and somewhat tricky to debug.
+
+If we need to extend or modify this module, we should reconsider the
+decision to do a DIY task queue rather than using a prebuilt library --
+but for now this seems good enough for our purposes.
+
+[1]: https://docs.celeryq.dev/en/stable/
+
+"""
+
 import abc
 import datetime
 import json
