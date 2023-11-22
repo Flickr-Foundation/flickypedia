@@ -19,7 +19,7 @@ class AddingQueue(AbstractFilesystemTaskQueue):
         task["data"] = sum(task["data"])
         task["state"] = "completed"
 
-        self.record_task_event(task, event='Added two integers together!')
+        self.record_task_event(task, event="Added two integers together!")
 
         self.write_task(task)
 
@@ -28,6 +28,7 @@ class FailingQueue(AbstractFilesystemTaskQueue):
     """
     A queue that throws an exception rather than do anything.
     """
+
     def process_individual_task(self, task: Task) -> None:
         raise ValueError("BOOM!")
 
@@ -47,8 +48,13 @@ def test_can_process_a_single_message(queue: AddingQueue) -> None:
     assert task["state"] == "completed"
     assert task["data"] == 6
 
-    descriptions = [ev['description'] for ev in task['events']]
-    assert descriptions == ['Task created', 'Task started', 'Added two integers together!', 'Task completed without exception']
+    descriptions = [ev["description"] for ev in task["events"]]
+    assert descriptions == [
+        "Task created",
+        "Task started",
+        "Added two integers together!",
+        "Task completed without exception",
+    ]
 
 
 def test_no_available_tasks_is_fine(queue: AddingQueue) -> None:
@@ -59,21 +65,20 @@ def test_multiple_workers_on_same_queue_is_fine(queue: AddingQueue) -> None:
     queue.start_task(task_input=[1, 2, 3])
 
     with concurrent.futures.ThreadPoolExecutor() as executor:
-        futures = {
-            executor.submit(queue.process_single_task)
-            for _ in range(10)
-        }
+        futures = {executor.submit(queue.process_single_task) for _ in range(10)}
 
         done, not_done = concurrent.futures.wait(futures)
         assert len(not_done) == 0
         assert all(fut.done() for fut in done)
-        assert all(fut.exception() is None for fut in done), [fut.exception() for fut in done]
+        assert all(fut.exception() is None for fut in done), [
+            fut.exception() for fut in done
+        ]
 
 
 def test_handles_failure_in_the_process_method(tmp_path: pathlib.Path) -> None:
     failing_queue = FailingQueue(base_dir=tmp_path)
 
-    task_id = failing_queue.start_task(task_input='Hello world')
+    task_id = failing_queue.start_task(task_input="Hello world")
 
     failing_queue.process_single_task()
 
@@ -83,6 +88,9 @@ def test_handles_failure_in_the_process_method(tmp_path: pathlib.Path) -> None:
     assert task["state"] == "failed"
     assert task["data"] == "Hello world"
 
-    descriptions = [ev['description'] for ev in task['events']]
-    assert descriptions == ['Task created', 'Task started', 'Task failed with an exception: BOOM!']
-
+    descriptions = [ev["description"] for ev in task["events"]]
+    assert descriptions == [
+        "Task created",
+        "Task started",
+        "Task failed with an exception: BOOM!",
+    ]

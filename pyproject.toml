@@ -45,6 +45,7 @@ exclude_also = [
   "from typing import",
   "from typing_extensions import",
   "raise NotImplementedError",
+  "@abc.abstractmethod",
 ]
 
 [tool.pytest.ini_options]

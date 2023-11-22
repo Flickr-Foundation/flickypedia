@@ -176,7 +176,9 @@ class AbstractFilesystemTaskQueue(abc.ABC):
 
         return task_id
 
-    def record_task_event(self, task: Task, *, state: Optional[State] = None, event: str) -> None:
+    def record_task_event(
+        self, task: Task, *, state: Optional[State] = None, event: str
+    ) -> None:
         if state is not None:
             task["state"] = state
 
@@ -193,10 +195,9 @@ class AbstractFilesystemTaskQueue(abc.ABC):
 
         for filename in os.listdir(self.waiting_dir):
             try:
-                candidates.append((
-                    filename,
-                    os.path.getmtime(self.waiting_dir / filename)
-                ))
+                candidates.append(
+                    (filename, os.path.getmtime(self.waiting_dir / filename))
+                )
             except FileNotFoundError:
                 pass
 
