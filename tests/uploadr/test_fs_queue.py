@@ -1,52 +1,31 @@
-import contextlib
-import concurrent.futures
-import os
 import pathlib
-import subprocess
-import textwrap
-import time
-import uuid
 
-from flickypedia.uploadr.fs_queue import AddingQueue
+from flickypedia.uploadr.fs_queue import AbstractFilesystemTaskQueue, Task
 
 
-@contextlib.contextmanager
-def queue_worker(tmp_path: pathlib.Path):
-    out_path = tmp_path / f"worker-{uuid.uuid4()}.py"
+class AddingQueue(AbstractFilesystemTaskQueue):
+    """
+    A simple queue that takes a list of integers as inputs and adds
+    them together.
+    """
 
-    with open(out_path, "w") as out_file:
-        out_file.write(
-            textwrap.dedent(
-                """
-        from pathlib import *
-        from flickypedia.uploadr.fs_queue import AddingQueue
+    def start_task(self, task_input: list[int]) -> str:
+        return super().start_task(task_input)
 
-        q = AddingQueue(base_dir=%r)
-        q.process_tasks()
-        """
-                % tmp_path
-            ).strip()
-        )
-
-    proc = subprocess.Popen(["python3", out_path])
-
-    yield proc
-
-    proc.terminate()
-    proc.wait(timeout=1)
-
-
-from multiprocessing import Process
+    def process_individual_task(self, task: Task) -> None:
+        task["data"] = sum(task["data"])
+        task["state"] = "completed"
+        self.write_task(task)
 
 
 def test_queue(tmp_path: pathlib.Path) -> None:
     q = AddingQueue(base_dir=tmp_path)
 
-    task_id = q.start_task(task_input=[1,2,3])
+    task_id = q.start_task(task_input=[1, 2, 3])
     q.process_single_task()
 
     task = q.read_task(task_id=task_id)
 
-    assert task['id'] == task_id
-    assert task['state'] == 'completed'
-    assert task['data'] == 6
+    assert task["id"] == task_id
+    assert task["state"] == "completed"
+    assert task["data"] == 6

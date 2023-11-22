@@ -133,7 +133,7 @@ class AbstractFilesystemTaskQueue(abc.ABC):
         else:
             os.rename(tmp_path, out_path)
 
-    def read_task(self, task_id: str) -> Optional[Task]:
+    def read_task(self, task_id: str) -> Task:
         """
         Return the state of a currently running task.
         """
@@ -150,7 +150,7 @@ class AbstractFilesystemTaskQueue(abc.ABC):
             except FileNotFoundError:
                 pass
 
-        return None
+        raise ValueError(f"Could not find task with ID {task_id}")
 
     def start_task(self, task_input: Any) -> str:
         """
@@ -250,25 +250,8 @@ class AbstractFilesystemTaskQueue(abc.ABC):
         self.logger.info("Starting looking for tasks in the queue...")
 
         while True:
-            process_single_task()
+            self.process_single_task()
 
     @abc.abstractmethod
     def process_individual_task(self, t: Task) -> None:
         pass
-
-
-class AddingQueue(AbstractFilesystemTaskQueue):
-    """
-    A simple queue that takes a list of integers as inputs and adds
-    them together.
-
-    This queue exists for testing purposes only.
-    """
-
-    def start_task(self, task_input: list[int]) -> str:
-        return super().start_task(task_input)
-
-    def process_individual_task(self, task: Task) -> None:
-        task["data"] = sum(task["data"])
-        task["state"] = "completed"
-        self.write_task(task)
