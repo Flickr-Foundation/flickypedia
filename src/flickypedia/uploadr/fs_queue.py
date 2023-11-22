@@ -3,6 +3,7 @@ import datetime
 import json
 import logging
 import os
+import pathlib
 import time
 from typing import Any, List, Literal, Optional, TypedDict
 import uuid
@@ -59,7 +60,7 @@ class AbstractFilesystemTaskQueue(abc.ABC):
 
     """
 
-    def __init__(self, *, base_dir: str) -> None:
+    def __init__(self, *, base_dir: pathlib.Path) -> None:
         self.base_dir = base_dir
 
         for dirname in self.directories:
@@ -67,8 +68,8 @@ class AbstractFilesystemTaskQueue(abc.ABC):
 
         self.pid = os.getpid()
 
-        self.logger = logging.getLogger(base_dir)
-        self.logger.setLevel(level=logging.INFO)
+        self.logger = logging.getLogger(name=str(base_dir))
+        self.logger.setLevel(level=logging.DEBUG)
 
         handler = logging.FileHandler(filename=os.path.join(base_dir, "queue.log"))
         handler.setFormatter(
@@ -80,7 +81,7 @@ class AbstractFilesystemTaskQueue(abc.ABC):
         self.logger.addHandler(handler)
 
     @property
-    def directories(self) -> set[str]:
+    def directories(self) -> set[pathlib.Path]:
         return {
             self.waiting_dir,
             self.in_progress_dir,
@@ -90,24 +91,24 @@ class AbstractFilesystemTaskQueue(abc.ABC):
         }
 
     @property
-    def waiting_dir(self) -> str:
-        return os.path.join(self.base_dir, "waiting")
+    def waiting_dir(self) -> pathlib.Path:
+        return self.base_dir / "waiting"
 
     @property
-    def in_progress_dir(self) -> str:
-        return os.path.join(self.base_dir, "in_progress")
+    def in_progress_dir(self) -> pathlib.Path:
+        return self.base_dir / "in_progress"
 
     @property
-    def failed_dir(self) -> str:
-        return os.path.join(self.base_dir, "failed")
+    def failed_dir(self) -> pathlib.Path:
+        return self.base_dir / "failed"
 
     @property
-    def completed_dir(self) -> str:
-        return os.path.join(self.base_dir, "completed")
+    def completed_dir(self) -> pathlib.Path:
+        return self.base_dir / "completed"
 
     @property
-    def tmp_dir(self) -> str:
-        return os.path.join(self.base_dir, "tmp")
+    def tmp_dir(self) -> pathlib.Path:
+        return self.base_dir / "tmp"
 
     def write_task(self, task: Task) -> None:
         """
@@ -115,8 +116,8 @@ class AbstractFilesystemTaskQueue(abc.ABC):
         """
         filename = task["id"]
 
-        tmp_path = os.path.join(self.tmp_dir, filename)
-        out_path = os.path.join(self.base_dir, task["state"], filename)
+        tmp_path = self.tmp_dir / filename
+        out_path = self.base_dir / task["state"] / filename
 
         with open(tmp_path, "x") as tmp_file:
             tmp_file.write(json.dumps(task, cls=DatetimeEncoder))
@@ -126,7 +127,7 @@ class AbstractFilesystemTaskQueue(abc.ABC):
         prior_task = self.read_task(task_id=task["id"])
 
         if prior_task is not None and prior_task["state"] != task["state"]:
-            prior_path = os.path.join(self.base_dir, prior_task["state"], filename)
+            prior_path = self.base_dir / prior_task["state"] / filename
             os.rename(tmp_path, prior_path)
             os.rename(prior_path, out_path)
         else:
@@ -163,7 +164,7 @@ class AbstractFilesystemTaskQueue(abc.ABC):
             task={
                 "id": task_id,
                 "events": [
-                    {"time": datetime.datetime.now(), "description": "task created"}
+                    {"time": datetime.datetime.now(), "description": "Task created"}
                 ],
                 "state": "waiting",
                 "data": task_input,
@@ -172,6 +173,14 @@ class AbstractFilesystemTaskQueue(abc.ABC):
 
         return task_id
 
+    def record_task_event(self, task: Task, state: Optional[State], event: str) -> None:
+        if state is not None:
+            task["state"] = state
+
+        task["events"].append({"time": datetime.datetime.now(), "description": event})
+
+        self.write_task(task)
+
     def _next_available_task(self) -> Optional[str]:
         """
         Returns the ID of the next available task (if any).
@@ -179,12 +188,60 @@ class AbstractFilesystemTaskQueue(abc.ABC):
         try:
             return min(
                 os.listdir(self.waiting_dir),
-                key=lambda filename: os.path.getmtime(
-                    os.path.join(self.waiting_dir, filename)
-                ),
+                key=lambda filename: os.path.getmtime(self.waiting_dir / filename),
             )
         except ValueError:
             return None
+
+    def process_single_task(self) -> None:
+        this_task_id = self._next_available_task()
+
+        # If there wasn't a next task, we assume the queue is empty
+        # and wait for 1 second before looking again.
+        if this_task_id is None:
+            self.logger.debug("No tasks found, sleeping for 1 second...")
+            time.sleep(1)
+            return
+
+        # Atomically move the task from "waiting" to "in progress".
+        # This will make the task unavailable for other processes
+        # and only available to this process.
+        self.logger.info("Task %s: starting work", this_task_id)
+
+        try:
+            os.rename(
+                src=self.waiting_dir / this_task_id,
+                dst=self.in_progress_dir / this_task_id,
+            )
+        except FileNotFoundError:
+            self.logger.warn(
+                "Task %s: file not found, assuming picked up by another worker",
+                this_task_id,
+            )
+            return
+
+        # Now read the contents of the task, and actually start
+        # working on it.
+        task = self.read_task(task_id=this_task_id)
+
+        self.record_task_event(task, state="in_progress", event="Task started")
+
+        try:
+            self.process_individual_task(task)
+        except Exception as exc:
+            self.logger.error(
+                "Task %s: task failed with exception %r", this_task_id, exc
+            )
+
+            self.record_task_event(
+                task, state="failed", event=f"Task failed with an exception: {exc}"
+            )
+        else:
+            self.logger.info("Task %s: task completed without exception", this_task_id)
+
+            self.record_task_event(
+                task, state="completed", event="Task completed without exception"
+            )
 
     def process_tasks(self) -> None:
         """
@@ -193,56 +250,7 @@ class AbstractFilesystemTaskQueue(abc.ABC):
         self.logger.info("Starting looking for tasks in the queue...")
 
         while True:
-            this_task_id = self._next_available_task()
-
-            # If there wasn't a next task, we assume the queue is empty
-            # and wait for 1 second before looking again.
-            if this_task_id is None:
-                self.logger.debug("No tasks found, sleeping for 1 second...")
-                time.sleep(1)
-                continue
-
-            # Atomically move the task from "waiting" to "in progress".
-            # This will make the task unavailable for other processes
-            # and only available to this process.
-            self.logger.info("Task %s: starting work", this_task_id)
-
-            try:
-                os.rename(
-                    src=os.path.join(self.waiting_dir, this_task_id),
-                    dst=os.path.join(self.in_progress_dir, this_task_id),
-                )
-            except FileNotFoundError:
-                self.logger.warn(
-                    "Task %s: file not found, assuming picked up by another worker",
-                    this_task_id,
-                )
-                continue
-
-            # Now read the contents of the task, and actually start
-            # working on it.
-            task = self.read_task(task_id=this_task_id)
-
-            try:
-                self.process_individual_task(task)
-            except Exception as exc:
-                self.logger.error(
-                    "Task %s: task failed with exception %r", this_task_id, exc
-                )
-                task["events"].append(
-                    {
-                        "time": datetime.datetime.now(),
-                        "event": f"Task failed with an exception: {exc}",
-                    }
-                )
-                task["state"] = "failed"
-                self.write_task(task)
-            else:
-                self.logger.info(
-                    "Task %s: task completed without exception", this_task_id
-                )
-                task["state"] = "completed"
-                self.write_task(task)
+            process_single_task()
 
     @abc.abstractmethod
     def process_individual_task(self, t: Task) -> None:
@@ -257,7 +265,7 @@ class AddingQueue(AbstractFilesystemTaskQueue):
     This queue exists for testing purposes only.
     """
 
-    def start_task(task_input: list[int]) -> str:
+    def start_task(self, task_input: list[int]) -> str:
         return super().start_task(task_input)
 
     def process_individual_task(self, task: Task) -> None:
