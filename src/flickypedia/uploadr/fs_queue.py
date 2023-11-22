@@ -124,7 +124,10 @@ class AbstractFilesystemTaskQueue(abc.ABC):
 
         # If the task already exists, we need to update the existing
         # file in-place first.
-        prior_task = self.read_task(task_id=task["id"])
+        try:
+            prior_task = self.read_task(task_id=task["id"])
+        except ValueError:
+            prior_task = None
 
         if prior_task is not None and prior_task["state"] != task["state"]:
             prior_path = self.base_dir / prior_task["state"] / filename
@@ -173,7 +176,7 @@ class AbstractFilesystemTaskQueue(abc.ABC):
 
         return task_id
 
-    def record_task_event(self, task: Task, state: Optional[State], event: str) -> None:
+    def record_task_event(self, task: Task, *, state: Optional[State] = None, event: str) -> None:
         if state is not None:
             task["state"] = state
 
@@ -185,11 +188,21 @@ class AbstractFilesystemTaskQueue(abc.ABC):
         """
         Returns the ID of the next available task (if any).
         """
+        # A list of tuples (filename, modified time)
+        candidates = []
+
+        for filename in os.listdir(self.waiting_dir):
+            try:
+                candidates.append((
+                    filename,
+                    os.path.getmtime(self.waiting_dir / filename)
+                ))
+            except FileNotFoundError:
+                pass
+
         try:
-            return min(
-                os.listdir(self.waiting_dir),
-                key=lambda filename: os.path.getmtime(self.waiting_dir / filename),
-            )
+            filename, _ = min(candidates, key=lambda fm: fm[1])
+            return filename
         except ValueError:
             return None
 
@@ -214,14 +227,13 @@ class AbstractFilesystemTaskQueue(abc.ABC):
                 dst=self.in_progress_dir / this_task_id,
             )
         except FileNotFoundError:
-            self.logger.warn(
+            self.logger.warning(
                 "Task %s: file not found, assuming picked up by another worker",
                 this_task_id,
             )
-            return
+            return None
 
-        # Now read the contents of the task, and actually start
-        # working on it.
+        # Now actually start working on the task.
         task = self.read_task(task_id=this_task_id)
 
         self.record_task_event(task, state="in_progress", event="Task started")
@@ -243,7 +255,7 @@ class AbstractFilesystemTaskQueue(abc.ABC):
                 task, state="completed", event="Task completed without exception"
             )
 
-    def process_tasks(self) -> None:
+    def process_tasks(self) -> None:  # pragma: no cover
         """
         Keep looking for new tasks, and when found, start working on them.
         """
