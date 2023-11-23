@@ -1,3 +1,7 @@
+"""
+Manage the process of uploading photos to Wikimedia.
+"""
+
 from typing import Dict, List, Literal, TypedDict, Union
 import uuid
 
@@ -53,6 +57,15 @@ UploadBatchResults = Dict[str, Union[SuccessfulUpload, FailedUpload, PendingUplo
 
 
 class PhotoUploadQueue(AbstractFilesystemTaskQueue[UploadBatch, UploadBatchResults]):
+    """
+    A task queue for uploading photos.
+
+    The ``task_input`` contains:
+
+    -   A keyring ID which can be used to retrieve the OAuth access token
+        for this user.
+
+    """
     def process_individual_task(
         self,
         task: Task[UploadBatch, UploadBatchResults],
@@ -72,6 +85,7 @@ class PhotoUploadQueue(AbstractFilesystemTaskQueue[UploadBatch, UploadBatchResul
         client = httpx.Client(headers={"Authorization": f"Bearer {access_token}"})
         api = WikimediaApi(client=client)
 
+        # Now go through the upload requests one-by-one.
         for upload_request in task["task_input"]["requests"]:
             photo_id = upload_request["photo"]["id"]
 
