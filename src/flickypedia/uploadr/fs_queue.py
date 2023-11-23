@@ -99,9 +99,7 @@ class AbstractFilesystemTaskQueue(abc.ABC, Generic[In, Out]):
 
         handler = logging.FileHandler(filename=os.path.join(base_dir, "queue.log"))
         handler.setFormatter(
-            fmt=logging.Formatter(
-                f"%(asctime)s - {pid} - %(levelname)s - %(message)s"
-            )
+            fmt=logging.Formatter(f"%(asctime)s - {pid} - %(levelname)s - %(message)s")
         )
 
         self.logger.addHandler(handler)
