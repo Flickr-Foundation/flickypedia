@@ -1,9 +1,7 @@
-import datetime
-from typing import Any, Dict, Generator, List, Literal, TypedDict, Union
+import contextlib
+from typing import Dict, Generator, List, Literal, TypedDict, Union
 import uuid
 
-from celery import current_task, shared_task
-from flask import current_app
 from flask_login import current_user
 from flickr_photos_api import SinglePhoto
 import httpx
@@ -19,6 +17,7 @@ from flickypedia.uploadr.fs_queue import AbstractFilesystemTaskQueue
 
 # Types for upload requests.
 
+
 class UploadRequest(TypedDict):
     photo: SinglePhoto
     sdc: NewClaims
@@ -31,30 +30,26 @@ class UploadBatch(TypedDict):
     keyring_id: str
     requests: list[UploadRequest]
 
+
 # Types for upload results.
+
 
 class SuccessfulUpload(TypedDict):
     id: str
     title: str
-    state: Literal['succeeded']
+    state: Literal["succeeded"]
 
 
 class FailedUpload(TypedDict):
-    state: Literal['failed']
+    state: Literal["failed"]
     error: str
 
 
 class PendingUpload(TypedDict):
-    state: Literal['waiting', 'in_progress']
+    state: Literal["waiting", "in_progress"]
 
 
-UploadBatchResults = Dict[
-    str,
-    Union[SuccessfulUpload, FailedUpload, PendingUpload]
-]
-
-
-import contextlib
+UploadBatchResults = Dict[str, Union[SuccessfulUpload, FailedUpload, PendingUpload]]
 
 
 @contextlib.contextmanager
@@ -68,38 +63,42 @@ def expiring_password(servicename: str, username: str) -> Generator[str, None, N
 
 class PhotoUploadQueue(AbstractFilesystemTaskQueue[UploadBatch, UploadBatchResults]):
     def process_individual_task(self, task: UploadBatch) -> None:
-        print(task['id'])
+        print(task["id"])
 
-        q.record_task_event(task, state='in_progress', event='Starting to upload photos')
+        q.record_task_event(
+            task, state="in_progress", event="Starting to upload photos"
+        )
 
-        keyring_id = task['task_input']['keyring_id']
+        keyring_id = task["task_input"]["keyring_id"]
 
-        with expiring_password('flickypedia', keyring_id) as access_token:
+        with expiring_password("flickypedia", keyring_id) as access_token:
             client = httpx.Client(headers={"Authorization": f"Bearer {access_token}"})
             api = WikimediaApi(client=client)
 
-            for upload_request in task['task_input']['requests']:
-                photo_id = upload_request['photo']['id']
+            for upload_request in task["task_input"]["requests"]:
+                photo_id = upload_request["photo"]["id"]
 
-                task['task_output'][photo_id] = {'state': 'in_progress'}
-                q.record_task_event(task, event=f'Uploading photo {photo_id}')
+                task["task_output"][photo_id] = {"state": "in_progress"}
+                q.record_task_event(task, event=f"Uploading photo {photo_id}")
 
                 try:
                     upload_result = upload_single_image(api, upload_request)
                 except Exception as exc:
-                    task['task_output'][photo_id] = {
-                        'state': 'failed',
-                        'error': str(exc)
+                    task["task_output"][photo_id] = {
+                        "state": "failed",
+                        "error": str(exc),
                     }
                 else:
-                    task['task_output'][photo_id] = {
-                        'state': 'succeeded',
-                        'id': upload_result['id'],
-                        'title': upload_result['title']
+                    task["task_output"][photo_id] = {
+                        "state": "succeeded",
+                        "id": upload_result["id"],
+                        "title": upload_result["title"],
                     }
 
-                q.record_task_event(task, event=f"Finished photo {photo_id} ({task['task_output'][photo_id]['state']})")
-
+                q.record_task_event(
+                    task,
+                    event=f"Finished photo {photo_id} ({task['task_output'][photo_id]['state']})",
+                )
 
     # for idx, req in enumerate(upload_requests):
     #     progress_data[idx]["status"] = "in_progress"
@@ -119,12 +118,12 @@ class PhotoUploadQueue(AbstractFilesystemTaskQueue[UploadBatch, UploadBatchResul
     #     print(task)
 
 
-
 def begin_upload(upload_requests: List[UploadRequest]) -> str:
     """
     Trigger an upload task to run in the background.
     """
     import pathlib
+
     q = PhotoUploadQueue(base_dir=pathlib.Path("queue/uploads"))
 
     upload_id = str(uuid.uuid4())
@@ -137,18 +136,14 @@ def begin_upload(upload_requests: List[UploadRequest]) -> str:
     # in plaintext on the disk.
     current_user.refresh_token()
 
-    keyring_id = f'user-{current_user.id}-id-{upload_id}'
-    keyring.set_password('flickypedia', keyring_id, password=current_user.token()['access_token'])
+    keyring_id = f"user-{current_user.id}-id-{upload_id}"
+    keyring.set_password(
+        "flickypedia", keyring_id, password=current_user.token()["access_token"]
+    )
 
-    task_input = {
-        'keyring_id': keyring_id,
-        'requests': upload_requests
-    }
+    task_input = {"keyring_id": keyring_id, "requests": upload_requests}
 
-    task_output = {
-        req['photo']['id']: {'state': 'waiting'}
-        for req in upload_requests
-    }
+    task_output = {req["photo"]["id"]: {"state": "waiting"} for req in upload_requests}
 
     q.start_task(task_input=task_input, task_output=task_output, task_id=upload_id)
 
@@ -206,7 +201,7 @@ def upload_single_image(api: WikimediaApi, request: UploadRequest) -> Successful
     return {"id": wikimedia_page_id, "title": wikimedia_page_title}
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     from flickypedia.uploadr import create_app
     import pathlib
 

@@ -198,7 +198,12 @@ class AbstractFilesystemTaskQueue(abc.ABC, Generic[In, Out]):
 
         raise ValueError(f"Could not find task with ID {task_id}")
 
-    def start_task(self, task_input: In, task_output: Optional[Out] = None, task_id: Optional[str] = None) -> str:
+    def start_task(
+        self,
+        task_input: In,
+        task_output: Optional[Out] = None,
+        task_id: Optional[str] = None,
+    ) -> str:
         """
         Creates a new task.  Returns the task ID.
         """

@@ -28,12 +28,14 @@ which can be used to report progress updates as you're going along.
 
 import json
 import os
+import pathlib
 from typing import Any, Literal, TypedDict, Union
 
 from celery import Celery, Task
 from celery.result import AsyncResult
 from flask import Flask, current_app
 
+from .uploads import PhotoUploadQueue
 from flickypedia.utils import DatetimeDecoder, DatetimeEncoder
 
 
@@ -106,6 +108,12 @@ def get_status(task_id: str) -> Union[SuccessfulStatus, PendingStatus]:
     """
     Retrieve the status of a Celery task.
     """
+    q = PhotoUploadQueue(base_dir=pathlib.Path("queue/uploads"))
+
+    from pprint import pprint
+
+    pprint(q.read_task(task_id))
+
     result = AsyncResult(task_id)
 
     if result.ready():
