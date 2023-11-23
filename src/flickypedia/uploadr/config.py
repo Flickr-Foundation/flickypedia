@@ -41,6 +41,9 @@ def create_config(data_directory: pathlib.Path) -> Dict[str, Any]:
         # TODO: Get this into the data directory.
         "SQLALCHEMY_DATABASE_URI": f"sqlite:///{data_directory.absolute()}/db.sqlite",
         #
+        # The directory for the upload queue.
+        "UPLOAD_QUEUE_DIRECTORY": data_directory / "queue" / "uploads",
+        #
         # Used as a temporary cache for responses from the Flickr API.
         #
         # We can save results in here, and pass the filename around in the

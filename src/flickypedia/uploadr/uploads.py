@@ -1,5 +1,5 @@
-import contextlib
-from typing import Dict, Generator, List, Literal, TypedDict, Union
+import pathlib
+from typing import Dict, List, Literal, TypedDict, Union
 import uuid
 
 from flask_login import current_user
@@ -52,15 +52,6 @@ class PendingUpload(TypedDict):
 UploadBatchResults = Dict[str, Union[SuccessfulUpload, FailedUpload, PendingUpload]]
 
 
-@contextlib.contextmanager
-def expiring_password(servicename: str, username: str) -> Generator[str, None, None]:
-    password = keyring.get_password(servicename, username)
-
-    yield password
-
-    keyring.delete_password(servicename, username)
-
-
 class PhotoUploadQueue(AbstractFilesystemTaskQueue[UploadBatch, UploadBatchResults]):
     def process_individual_task(self, task: UploadBatch) -> None:
         print(task["id"])
@@ -71,60 +62,46 @@ class PhotoUploadQueue(AbstractFilesystemTaskQueue[UploadBatch, UploadBatchResul
 
         keyring_id = task["task_input"]["keyring_id"]
 
-        with expiring_password("flickypedia", keyring_id) as access_token:
-            client = httpx.Client(headers={"Authorization": f"Bearer {access_token}"})
-            api = WikimediaApi(client=client)
+        # Read the access token from the system keychain, then immediately
+        # purge it.  This ensures that the access token is single use,
+        # and can't be reused later.
+        access_token = keyring.get_password("flickypedia", keyring_id)
+        keyring.delete_password("flickypedia", keyring_id)
 
-            for upload_request in task["task_input"]["requests"]:
-                photo_id = upload_request["photo"]["id"]
+        client = httpx.Client(headers={"Authorization": f"Bearer {access_token}"})
+        api = WikimediaApi(client=client)
 
-                task["task_output"][photo_id] = {"state": "in_progress"}
-                q.record_task_event(task, event=f"Uploading photo {photo_id}")
+        for upload_request in task["task_input"]["requests"]:
+            photo_id = upload_request["photo"]["id"]
 
-                try:
-                    upload_result = upload_single_image(api, upload_request)
-                except Exception as exc:
-                    task["task_output"][photo_id] = {
-                        "state": "failed",
-                        "error": str(exc),
-                    }
-                else:
-                    task["task_output"][photo_id] = {
-                        "state": "succeeded",
-                        "id": upload_result["id"],
-                        "title": upload_result["title"],
-                    }
+            task["task_output"][photo_id] = {"state": "in_progress"}
+            q.record_task_event(task, event=f"Uploading photo {photo_id}")
 
-                q.record_task_event(
-                    task,
-                    event=f"Finished photo {photo_id} ({task['task_output'][photo_id]['state']})",
-                )
+            try:
+                upload_result = upload_single_image(api, upload_request)
+            except Exception as exc:
+                task["task_output"][photo_id] = {
+                    "state": "failed",
+                    "error": str(exc),
+                }
+            else:
+                task["task_output"][photo_id] = {
+                    "state": "succeeded",
+                    "id": upload_result["id"],
+                    "title": upload_result["title"],
+                }
 
-    # for idx, req in enumerate(upload_requests):
-    #     progress_data[idx]["status"] = "in_progress"
-    #     tracker.record_progress(data=progress_data)
-    #
-    #     try:
-    #         progress_data[idx]["upload_result"] = upload_single_image(api, req)
-    #     except Exception as exc:
-    #         progress_data[idx]["status"] = "failed"
-    #         progress_data[idx]["error"] = str(exc)
-    #     else:
-    #         progress_data[idx]["status"] = "succeeded"
-    #
-    #     tracker.record_progress(data=progress_data)
-    #
-    #
-    #     print(task)
+            q.record_task_event(
+                task,
+                event=f"Finished photo {photo_id} ({task['task_output'][photo_id]['state']})",
+            )
 
 
 def begin_upload(upload_requests: List[UploadRequest]) -> str:
     """
     Trigger an upload task to run in the background.
     """
-    import pathlib
-
-    q = PhotoUploadQueue(base_dir=pathlib.Path("queue/uploads"))
+    q = uploads_queue()
 
     upload_id = str(uuid.uuid4())
 
@@ -199,6 +176,14 @@ def upload_single_image(api: WikimediaApi, request: UploadRequest) -> Successful
     )
 
     return {"id": wikimedia_page_id, "title": wikimedia_page_title}
+
+
+def uploads_queue() -> PhotoUploadQueue:
+    """
+    Return an instance of the PhotoUploadQueue that's tied to the
+    current Flask app.
+    """
+    return PhotoUploadQueue(base_dir=current_app.config["UPLOAD_QUEUE_DIRECTORY"])
 
 
 if __name__ == "__main__":
