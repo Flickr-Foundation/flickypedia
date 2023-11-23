@@ -35,12 +35,13 @@ def run_dev_server(port: int, host: str, debug: bool) -> None:
     app.run(debug=debug, port=port, host=host)
 
 
-@main.command(help="Run the Celery background worker.")
-def run_celery_worker() -> None:
+@main.command(help="Run the background worker for uploads.")
+def run_background_worker() -> None:
     from flickypedia.uploadr import create_app
-    from flickypedia.uploadr.tasks import celery_init_app
+    from flickypedia.uploadr.uploads import uploads_queue
 
     app = create_app()
-    celery = celery_init_app(app)
-    worker = celery.Worker()
-    worker.start()
+
+    with app.app_context():
+        q = uploads_queue()
+        q.process_tasks()

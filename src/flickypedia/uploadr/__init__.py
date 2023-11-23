@@ -37,7 +37,6 @@ from .views import (
     wait_for_upload,
     upload_complete,
 )
-from .tasks import celery_init_app
 from flickypedia.utils import create_bookmarklet
 
 
@@ -52,7 +51,6 @@ def create_app(
 
     user_db.init_app(app)
     login.init_app(app)
-    celery_init_app(app)
 
     with app.app_context():
         user_db.create_all()

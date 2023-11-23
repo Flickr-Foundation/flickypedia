@@ -46,7 +46,7 @@ class Task(TypedDict, Generic[In, Out]):
     events: List[TaskEvent]
     state: State
     task_input: In
-    task_output: Optional[Out]
+    task_output: Out
 
 
 class AbstractFilesystemTaskQueue(abc.ABC, Generic[In, Out]):
@@ -94,12 +94,16 @@ class AbstractFilesystemTaskQueue(abc.ABC, Generic[In, Out]):
         self.logger = logging.getLogger(name=str(base_dir))
         self.configure_logger()
 
+    @property
+    def logfile_path(self) -> pathlib.Path:
+        return self.base_dir / "queue.log"
+
     def configure_logger(self) -> None:
         self.logger.setLevel(level=logging.DEBUG)
 
         pid = os.getpid()
 
-        handler = logging.FileHandler(filename=os.path.join(self.base_dir, "queue.log"))
+        handler = logging.FileHandler(filename=self.logfile_path)
         handler.setFormatter(
             fmt=logging.Formatter(f"%(asctime)s - {pid} - %(levelname)s - %(message)s")
         )
@@ -198,11 +202,16 @@ class AbstractFilesystemTaskQueue(abc.ABC, Generic[In, Out]):
 
         raise ValueError(f"Could not find task with ID {task_id}")
 
-    def start_task(self, task_input: In) -> str:
+    def start_task(
+        self,
+        task_input: In,
+        task_output: Out,
+        task_id: Optional[str] = None,
+    ) -> str:
         """
         Creates a new task.  Returns the task ID.
         """
-        task_id = str(uuid.uuid4())
+        task_id = task_id or str(uuid.uuid4())
 
         self.logger.info("Creating task %s", task_id)
 
@@ -214,7 +223,7 @@ class AbstractFilesystemTaskQueue(abc.ABC, Generic[In, Out]):
                 ],
                 "state": "waiting",
                 "task_input": task_input,
-                "task_output": None,
+                "task_output": task_output,
             }
         )
 
@@ -327,6 +336,9 @@ class AbstractFilesystemTaskQueue(abc.ABC, Generic[In, Out]):
         """
         Keep looking for new tasks, and when found, start working on them.
         """
+        print(f"Looking for tasks in {self.base_dir}...")
+        print(f"Follow the log at {self.logfile_path}")
+
         self.logger.info("Starting looking for tasks in the queue...")
 
         while True:

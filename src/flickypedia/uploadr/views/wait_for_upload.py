@@ -47,27 +47,34 @@ When the upload completes, we redirect the user to the next page.
 from flask import jsonify, redirect, render_template, url_for
 from flask_login import login_required
 
-from ..tasks import get_status
+from ..uploads import uploads_queue
 from ._types import ViewResponse
 
 
 @login_required
 def wait_for_upload(task_id: str) -> ViewResponse:
-    status = get_status(task_id)
+    q = uploads_queue()
+    task = q.read_task(task_id)
 
-    if status["ready"]:
+    if task["state"] in {"completed", "failed"}:
         return redirect(url_for("upload_complete", task_id=task_id))
 
     return render_template(
         "wait_for_upload.html",
         task_id=task_id,
         current_step="upload_to_wikimedia",
-        status=status,
+        task=task,
     )
 
 
 @login_required
 def get_upload_status(task_id: str) -> ViewResponse:
-    status = get_status(task_id)
+    q = uploads_queue()
+    task = q.read_task(task_id)
 
-    return jsonify(status)
+    return jsonify(
+        [
+            {"photo_id": photo_id, "state": output["state"]}
+            for photo_id, output in task["task_output"].items()
+        ]
+    )

@@ -1,18 +1,20 @@
 <ul class="plain_list upload_progress">
-  {% for item in status.progress %}
-    {% with photo = item.req.photo %}
-    <li data-id="{{ photo.id }}" data-status="{{ item.status }}">
-      <div class="container">
-        {% set large_size = photo.sizes|size_at(desired_size='Large') %}
-        <img src="{{ large_size.source }}">
+  {% for request in task.task_input.requests %}
+    {% with photo = request.photo %}
+    {% with state = task.task_output[photo.id].state %}    
+      <li data-id="{{ photo.id }}" data-status="{{ state }}">
+        <div class="container">
+          {% set large_size = photo.sizes|size_at(desired_size='Large') %}
+          <img src="{{ large_size.source }}">
         
-        {% if item.status == "succeeded" %}
-          <div class="text">DONE</div>
-        {% elif item.status == "failed" %}
-          <div class="text">NOT DONE</div>
-        {% endif %}
-      </div>
-    </li>
+          {% if state == "succeeded" %}
+            <div class="text">DONE</div>
+          {% elif state == "failed" %}
+            <div class="text">NOT DONE</div>
+          {% endif %}
+        </div>
+      </li>
+    {% endwith %}
     {% endwith %}
   {% endfor %}
 </ul>
