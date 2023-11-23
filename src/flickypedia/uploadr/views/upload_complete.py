@@ -10,7 +10,7 @@ def upload_complete(task_id: str) -> ViewResponse:
     q = uploads_queue()
     task = q.read_task(task_id)
 
-    assert task["state"] in {"completed", "failed"}
+    assert task["state"] == "completed"
     assert all(
         item["state"] in {"succeeded", "failed"}
         for item in task["task_output"].values()
