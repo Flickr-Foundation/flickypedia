@@ -20,10 +20,14 @@ import logging
 import os
 import pathlib
 import time
-from typing import Any, List, Literal, Optional, TypedDict
+from typing import Generic, List, Literal, Optional, TypedDict, TypeVar
 import uuid
 
 from flickypedia.utils import DatetimeDecoder, DatetimeEncoder, validate_typeddict
+
+
+In = TypeVar("In")
+Out = TypeVar("Out")
 
 
 State = Literal["waiting", "in_progress", "failed", "completed"]
@@ -34,14 +38,15 @@ class TaskEvent(TypedDict):
     description: str
 
 
-class Task(TypedDict):
+class Task(TypedDict, Generic[In, Out]):
     id: str
     events: List[TaskEvent]
     state: State
-    data: Any
+    task_input: In
+    task_output: Optional[Out]
 
 
-class AbstractFilesystemTaskQueue(abc.ABC):
+class AbstractFilesystemTaskQueue(abc.ABC, Generic[In, Out]):
     """
     A basic task queue based on the file system.
 
@@ -125,7 +130,7 @@ class AbstractFilesystemTaskQueue(abc.ABC):
     def tmp_dir(self) -> pathlib.Path:
         return self.base_dir / "tmp"
 
-    def write_task(self, task: Task) -> None:
+    def write_task(self, task: Task[In, Out]) -> None:
         """
         Persist information about a task to disk.
         """
@@ -151,7 +156,7 @@ class AbstractFilesystemTaskQueue(abc.ABC):
         else:
             os.rename(tmp_path, out_path)
 
-    def read_task(self, task_id: str) -> Task:
+    def read_task(self, task_id: str) -> Task[In, Out]:
         """
         Return the state of a currently running task.
         """
@@ -164,13 +169,13 @@ class AbstractFilesystemTaskQueue(abc.ABC):
             try:
                 with open(os.path.join(dirname, task_id)) as in_file:
                     t = json.load(in_file, cls=DatetimeDecoder)
-                    return validate_typeddict(t, model=Task)
+                    return validate_typeddict(t, model=Task[In, Out])
             except FileNotFoundError:
                 pass
 
         raise ValueError(f"Could not find task with ID {task_id}")
 
-    def start_task(self, task_input: Any) -> str:
+    def start_task(self, task_input: In) -> str:
         """
         Creates a new task.  Returns the task ID.
         """
@@ -185,14 +190,15 @@ class AbstractFilesystemTaskQueue(abc.ABC):
                     {"time": datetime.datetime.now(), "description": "Task created"}
                 ],
                 "state": "waiting",
-                "data": task_input,
+                "task_input": task_input,
+                "task_output": None,
             }
         )
 
         return task_id
 
     def record_task_event(
-        self, task: Task, *, state: Optional[State] = None, event: str
+        self, task: Task[In, Out], *, state: Optional[State] = None, event: str
     ) -> None:
         if state is not None:
             task["state"] = state
@@ -281,5 +287,5 @@ class AbstractFilesystemTaskQueue(abc.ABC):
             self.process_single_task()
 
     @abc.abstractmethod
-    def process_individual_task(self, t: Task) -> None:
+    def process_individual_task(self, t: Task[In, Out]) -> None:
         pass

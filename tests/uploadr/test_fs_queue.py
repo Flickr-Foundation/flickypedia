@@ -6,7 +6,11 @@ import pytest
 from flickypedia.uploadr.fs_queue import AbstractFilesystemTaskQueue, Task
 
 
-class AddingQueue(AbstractFilesystemTaskQueue):
+NumberTask = Task[list[int], int]
+NumberQueue = AbstractFilesystemTaskQueue[list[int], int]
+
+
+class AddingQueue(NumberQueue):
     """
     A simple queue that takes a list of integers as inputs and adds
     them together.
@@ -15,8 +19,8 @@ class AddingQueue(AbstractFilesystemTaskQueue):
     def start_task(self, task_input: list[int]) -> str:
         return super().start_task(task_input)
 
-    def process_individual_task(self, task: Task) -> None:
-        task["data"] = sum(task["data"])
+    def process_individual_task(self, task: NumberTask) -> None:
+        task["task_output"] = sum(task["task_input"])
         task["state"] = "completed"
 
         self.record_task_event(task, event="Added two integers together!")
@@ -24,12 +28,12 @@ class AddingQueue(AbstractFilesystemTaskQueue):
         self.write_task(task)
 
 
-class FailingQueue(AbstractFilesystemTaskQueue):
+class FailingQueue(NumberQueue):
     """
     A queue that throws an exception rather than do anything.
     """
 
-    def process_individual_task(self, task: Task) -> None:
+    def process_individual_task(self, task: NumberTask) -> None:
         raise ValueError("BOOM!")
 
 
@@ -46,7 +50,7 @@ def test_can_process_a_single_message(queue: AddingQueue) -> None:
 
     assert task["id"] == task_id
     assert task["state"] == "completed"
-    assert task["data"] == 6
+    assert task["task_output"] == 6
 
     descriptions = [ev["description"] for ev in task["events"]]
     assert descriptions == [
@@ -78,7 +82,7 @@ def test_multiple_workers_on_same_queue_is_fine(queue: AddingQueue) -> None:
 def test_handles_failure_in_the_process_method(tmp_path: pathlib.Path) -> None:
     failing_queue = FailingQueue(base_dir=tmp_path)
 
-    task_id = failing_queue.start_task(task_input="Hello world")
+    task_id = failing_queue.start_task(task_input=[1, 2, 3])
 
     failing_queue.process_single_task()
 
@@ -86,7 +90,7 @@ def test_handles_failure_in_the_process_method(tmp_path: pathlib.Path) -> None:
 
     assert task["id"] == task_id
     assert task["state"] == "failed"
-    assert task["data"] == "Hello world"
+    assert task["task_output"] is None
 
     descriptions = [ev["description"] for ev in task["events"]]
     assert descriptions == [
