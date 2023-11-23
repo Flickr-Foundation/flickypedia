@@ -80,8 +80,12 @@ itsdangerous==2.1.2
     # via
     #   flask
     #   flask-wtf
+jaraco-classes==3.3.0
+    # via keyring
 jinja2==3.1.2
     # via flask
+keyring==24.3.0
+    # via -r requirements.in
 kombu==5.3.3
     # via celery
 libsass==0.22.0
@@ -91,6 +95,8 @@ markupsafe==2.1.3
     #   jinja2
     #   werkzeug
     #   wtforms
+more-itertools==10.1.0
+    # via jaraco-classes
 prompt-toolkit==3.0.41
     # via click-repl
 pycparser==2.21
