@@ -1,99 +1,146 @@
 {
-  "status": "SUCCESS",
-  "result": [
+  "events": [
     {
-      "req": {
+      "description": "Task created",
+      "time": {
+        "type": "datetime.datetime",
+        "value": "2023-11-23T10:38:18.216313"
+      }
+    }
+  ],
+  "id": "e358876e-f3d6-439b-85fa-1ed1e46338ec",
+  "state": "in_progress",
+  "task_input": {
+    "keyring_id": "user-d2c15434-9d89-4625-baa5-bfc0ea2e57a1-id-e358876e-f3d6-439b-85fa-1ed1e46338ec",
+    "requests": [
+      {
         "photo": {
-          "id": "53336388053",
-          "title": "Lisbon evening stroll",
-          "description": "DraGOOGLa strikes again ",
+          "id": "53340605524",
+          "title": "IMG_5928",
+          "description": null,
+          "owner": {
+            "id": "199246608@N02",
+            "username": "cefarrjf87",
+            "realname": "Alex Chan",
+            "path_alias": null,
+            "photos_url": "https://www.flickr.com/photos/199246608@N02/",
+            "profile_url": "https://www.flickr.com/people/199246608@N02/"
+          },
           "date_posted": {
-            "__type__": "datetime",
-            "__value__": "2023-11-16T18:52:56+00:00"
+            "type": "datetime.datetime",
+            "value": "2023-11-18T20:15:37+00:00"
           },
           "date_taken": {
             "value": {
-              "__type__": "datetime",
-              "__value__": "2023-11-14T18:57:02"
+              "type": "datetime.datetime",
+              "value": "2023-11-18T09:16:35"
             },
             "granularity": "second",
             "unknown": false
           },
+          "safety_level": "safe",
           "license": {
-            "id": "cc0-1.0",
-            "label": "CC0 1.0",
-            "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+            "id": "cc-by-2.0",
+            "label": "CC BY 2.0",
+            "url": "https://creativecommons.org/licenses/by/2.0/"
           },
+          "url": "https://www.flickr.com/photos/199246608@N02/53340605524/",
           "sizes": [
             {
-              "height": 75,
-              "width": 75,
               "label": "Square",
-              "media": "photo",
-              "source": "https://live.staticflickr.com/65535/53336388053_04f9cf52e7_s.jpg"
-            },
-            {
-              "height": 150,
-              "width": 150,
-              "label": "Large Square",
-              "media": "photo",
-              "source": "https://live.staticflickr.com/65535/53336388053_04f9cf52e7_q.jpg"
-            },
-            {
-              "height": 100,
               "width": 75,
+              "height": 75,
+              "media": "photo",
+              "source": "https://live.staticflickr.com/65535/53340605524_611387bfb0_s.jpg"
+            },
+            {
+              "label": "Large Square",
+              "width": 150,
+              "height": 150,
+              "media": "photo",
+              "source": "https://live.staticflickr.com/65535/53340605524_611387bfb0_q.jpg"
+            },
+            {
               "label": "Thumbnail",
+              "width": 100,
+              "height": 75,
               "media": "photo",
-              "source": "https://live.staticflickr.com/65535/53336388053_04f9cf52e7_t.jpg"
+              "source": "https://live.staticflickr.com/65535/53340605524_611387bfb0_t.jpg"
             },
             {
-              "height": 240,
-              "width": 180,
               "label": "Small",
+              "width": 240,
+              "height": 180,
               "media": "photo",
-              "source": "https://live.staticflickr.com/65535/53336388053_04f9cf52e7_m.jpg"
+              "source": "https://live.staticflickr.com/65535/53340605524_611387bfb0_m.jpg"
             },
             {
-              "height": 500,
-              "width": 375,
+              "label": "Small 320",
+              "width": 320,
+              "height": 240,
+              "media": "photo",
+              "source": "https://live.staticflickr.com/65535/53340605524_611387bfb0_n.jpg"
+            },
+            {
+              "label": "Small 400",
+              "width": 400,
+              "height": 300,
+              "media": "photo",
+              "source": "https://live.staticflickr.com/65535/53340605524_611387bfb0_w.jpg"
+            },
+            {
               "label": "Medium",
+              "width": 500,
+              "height": 375,
               "media": "photo",
-              "source": "https://live.staticflickr.com/65535/53336388053_04f9cf52e7.jpg"
+              "source": "https://live.staticflickr.com/65535/53340605524_611387bfb0.jpg"
             },
             {
-              "height": 1024,
-              "width": 768,
+              "label": "Medium 640",
+              "width": 640,
+              "height": 480,
+              "media": "photo",
+              "source": "https://live.staticflickr.com/65535/53340605524_611387bfb0_z.jpg"
+            },
+            {
+              "label": "Medium 800",
+              "width": 800,
+              "height": 600,
+              "media": "photo",
+              "source": "https://live.staticflickr.com/65535/53340605524_611387bfb0_c.jpg"
+            },
+            {
               "label": "Large",
+              "width": 1024,
+              "height": 768,
               "media": "photo",
-              "source": "https://live.staticflickr.com/65535/53336388053_04f9cf52e7_b.jpg"
+              "source": "https://live.staticflickr.com/65535/53340605524_611387bfb0_b.jpg"
             },
             {
-              "height": 3024,
-              "width": 4032,
-              "label": "Original",
+              "label": "Large 1600",
+              "width": 1600,
+              "height": 1200,
               "media": "photo",
-              "source": "https://live.staticflickr.com/65535/53336388053_c5b229811a_o.jpg"
+              "source": "https://live.staticflickr.com/65535/53340605524_8d055e2a42_h.jpg"
+            },
+            {
+              "label": "Large 2048",
+              "width": 2048,
+              "height": 1536,
+              "media": "photo",
+              "source": "https://live.staticflickr.com/65535/53340605524_6f764b40cc_k.jpg"
+            },
+            {
+              "label": "Original",
+              "width": 4032,
+              "height": 3024,
+              "media": "photo",
+              "source": "https://live.staticflickr.com/65535/53340605524_aa32d80aa9_o.jpg"
             }
           ],
           "original_format": "jpg",
-          "safety_level": "safe",
-          "owner": {
-            "id": "34427469121@N01",
-            "username": "George",
-            "realname": "George Oates",
-            "path_alias": "george",
-            "photos_url": "https://www.flickr.com/photos/george/",
-            "profile_url": "https://www.flickr.com/people/george/"
-          },
-          "url": "https://www.flickr.com/photos/george/53336388053/",
           "tags": [
-            "paste",
-            "poster",
-            "dracula",
-            "flyer",
-            "google",
-            "bw",
-            "montevideo"
+
           ],
           "location": null
         },
@@ -101,17 +148,46 @@
           "claims": [
             {
               "mainsnak": {
-                "snaktype": "value",
-                "property": "P170",
-                "datavalue": {
-                  "value": {
-                    "id": "Q23415483",
-                    "entity-type": "item",
-                    "numeric-id": 23415483
-                  },
-                  "type": "wikibase-entityid"
-                }
+                "snaktype": "somevalue",
+                "property": "P170"
               },
+              "qualifiers": {
+                "P2093": [
+                  {
+                    "datavalue": {
+                      "type": "string",
+                      "value": "Alex Chan"
+                    },
+                    "property": "P2093",
+                    "snaktype": "value"
+                  }
+                ],
+                "P2699": [
+                  {
+                    "datavalue": {
+                      "type": "string",
+                      "value": "https://www.flickr.com/people/199246608@N02/"
+                    },
+                    "property": "P2699",
+                    "snaktype": "value"
+                  }
+                ],
+                "P3267": [
+                  {
+                    "datavalue": {
+                      "type": "string",
+                      "value": "199246608@N02"
+                    },
+                    "property": "P3267",
+                    "snaktype": "value"
+                  }
+                ]
+              },
+              "qualifiers-order": [
+                "P3267",
+                "P2093",
+                "P2699"
+              ],
               "type": "statement"
             },
             {
@@ -120,9 +196,9 @@
                 "property": "P6216",
                 "datavalue": {
                   "value": {
-                    "id": "Q88088423",
+                    "id": "Q50423863",
                     "entity-type": "item",
-                    "numeric-id": 88088423
+                    "numeric-id": 50423863
                   },
                   "type": "wikibase-entityid"
                 }
@@ -147,7 +223,7 @@
                   {
                     "datavalue": {
                       "type": "string",
-                      "value": "53336388053"
+                      "value": "53340605524"
                     },
                     "property": "P12120",
                     "snaktype": "value"
@@ -157,7 +233,7 @@
                   {
                     "datavalue": {
                       "type": "string",
-                      "value": "https://www.flickr.com/photos/george/53336388053/"
+                      "value": "https://www.flickr.com/photos/199246608@N02/53340605524/"
                     },
                     "property": "P973",
                     "snaktype": "value"
@@ -181,7 +257,7 @@
                   {
                     "datavalue": {
                       "type": "string",
-                      "value": "https://live.staticflickr.com/65535/53336388053_c5b229811a_o.jpg"
+                      "value": "https://live.staticflickr.com/65535/53340605524_aa32d80aa9_o.jpg"
                     },
                     "property": "P2699",
                     "snaktype": "value"
@@ -191,7 +267,7 @@
                   {
                     "datavalue": {
                       "value": {
-                        "time": "+2023-11-16T00:00:00Z",
+                        "time": "+2023-11-18T00:00:00Z",
                         "precision": 11,
                         "timezone": 0,
                         "before": 0,
@@ -220,9 +296,9 @@
                 "property": "P275",
                 "datavalue": {
                   "value": {
-                    "id": "Q6938433",
+                    "id": "Q19125117",
                     "entity-type": "item",
-                    "numeric-id": 6938433
+                    "numeric-id": 19125117
                   },
                   "type": "wikibase-entityid"
                 }
@@ -247,7 +323,7 @@
                   {
                     "datavalue": {
                       "value": {
-                        "time": "+2023-11-16T00:00:00Z",
+                        "time": "+2023-11-18T00:00:00Z",
                         "precision": 11,
                         "timezone": 0,
                         "before": 0,
@@ -270,7 +346,7 @@
               "mainsnak": {
                 "datavalue": {
                   "value": {
-                    "time": "+2023-11-14T00:00:00Z",
+                    "time": "+2023-11-18T00:00:00Z",
                     "precision": 11,
                     "timezone": 0,
                     "before": 0,
@@ -286,34 +362,23 @@
             }
           ]
         },
-        "title": "Dragoogla sign in Montevideo.jpg",
+        "title": "Produce market in Montevideo.jpg",
         "caption": {
           "language": "en",
-          "text": "A black and white print of a sign saying “Dragoogla” and a vampire biting somebody’s neck, on a wall in Montevideo."
+          "text": "An open-air market in Montevideo, where different stalls are selling fresh fruit and vegetables. There are wooden boxes with different types of produce (carrots, tomatoes, and cauliflowers near the front), and prices on small signs."
         },
         "categories": [
           "Uploads using Flickypedia",
           "Uploads by User:Alexwlchan",
-          "Flickr photos by George",
-          "Art in Uruguay",
-          "Street art in Uruguay"
+          "Flickr photos by cefarrjf87",
+          "Markets in Uruguay"
         ]
-      },
-      "last_update": {
-        "__type__": "datetime",
-        "__value__": "2023-11-16T16:41:08.849077"
-      },
-      "status": "succeeded",
-      "upload_result": {
-        "id": "M140914491",
-        "title": "File:Dragoogla_sign_in_Montevideo.jpg"
       }
+    ]
+  },
+  "task_output": {
+    "53340605524": {
+      "state": "in_progress"
     }
-  ],
-  "traceback": null,
-  "children": [
-
-  ],
-  "date_done": "2023-11-16T19:41:21.701223",
-  "task_id": "7bb77a24-ae46-4196-8269-392cfa9e1df3"
+  }
 }
