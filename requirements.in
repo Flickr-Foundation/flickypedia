@@ -9,6 +9,7 @@ Flask-SQLAlchemy
 flickr-photos-api
 flickr-url-parser
 httpx
+keyring
 libsass
 pydantic
 

@@ -83,12 +83,6 @@ def test_multiple_workers_on_same_queue_is_fine(queue: AddingQueue) -> None:
         assert len(not_done) == 0
         assert all(fut.done() for fut in done)
 
-        for fut in done:
-            if fut.exception() is not None:
-                import traceback
-
-                print(traceback.print_exception(fut.exception()))
-
         assert all(fut.exception() is None for fut in done), [
             fut.exception() for fut in done
         ]
