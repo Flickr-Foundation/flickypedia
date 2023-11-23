@@ -48,7 +48,6 @@ from flask import jsonify, redirect, render_template, url_for
 from flask_login import login_required
 
 from ..uploads import uploads_queue
-from ..tasks import get_status
 from ._types import ViewResponse
 
 
@@ -57,7 +56,7 @@ def wait_for_upload(task_id: str) -> ViewResponse:
     q = uploads_queue()
     task = q.read_task(task_id)
 
-    if task['state'] in {'completed', 'failed'}:
+    if task["state"] in {"completed", "failed"}:
         return redirect(url_for("upload_complete", task_id=task_id))
 
     return render_template(
@@ -75,7 +74,7 @@ def get_upload_status(task_id: str) -> ViewResponse:
 
     return jsonify(
         [
-            {'photo_id': photo_id, 'state': output['state']}
-            for photo_id, output in task['task_output'].items()
+            {"photo_id": photo_id, "state": output["state"]}
+            for photo_id, output in task["task_output"].items()
         ]
     )
