@@ -10,30 +10,6 @@ def create_config(data_directory: pathlib.Path) -> Dict[str, Any]:
     Flickypedia writes a number of temporary files as part of its work.
     The ``data_directory`` is their root.
     """
-    celery_directory = data_directory / "celery"
-
-    celery_config = {
-        "base_dir": celery_directory,
-        "result_backend": f"file://{celery_directory}/results",
-        "broker_url": "filesystem://",
-        "broker_transport_options": {
-            "data_folder_in": celery_directory / "queue",
-            "data_folder_out": celery_directory / "queue",
-            "processed_folder": celery_directory / "processed",
-            #
-            # This isn't a Celery config option, but it's used by
-            # Celery in our app for tracking in-progress work.
-            #
-            # We store it here for convenience.
-            "in_progress_folder": celery_directory / "in_progress_folder",
-            #
-            # The processed tasks include the original arguments passed
-            # to Celery, which has the user's OAuth credentials in
-            # plain text, so we don't want to keep them around.
-            "store_processed": False,
-        },
-    }
-
     return {
         "SECRET_KEY": os.environ.get("SECRET_KEY") or "you-will-never-guess",
         "FLICKR_API_KEY": os.environ.get("FLICKR_API_KEY", "<UNKNOWN>"),
@@ -68,7 +44,6 @@ def create_config(data_directory: pathlib.Path) -> Dict[str, Any]:
                 "token_url": "https://meta.wikimedia.org/w/rest.php/oauth2/access_token",
             }
         },
-        "CELERY": celery_config,
         #
         # The IDs of licenses that we can upload to Flickypedia.
         "ALLOWED_LICENSES": {"cc-by-2.0", "cc-by-sa-2.0", "usgov", "cc0-1.0", "pdm"},
@@ -88,9 +63,4 @@ def get_directories(config: Dict[str, Any]) -> List[str]:
     return [
         config["FLICKR_API_RESPONSE_CACHE"],
         config["DUPLICATE_DATABASE_DIRECTORY"],
-        config["CELERY"]["result_backend"].replace("file://", ""),
-        config["CELERY"]["broker_transport_options"]["data_folder_in"],
-        config["CELERY"]["broker_transport_options"]["data_folder_out"],
-        config["CELERY"]["broker_transport_options"]["processed_folder"],
-        config["CELERY"]["broker_transport_options"]["in_progress_folder"],
     ]
