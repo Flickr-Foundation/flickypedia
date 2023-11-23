@@ -190,7 +190,7 @@ class AbstractFilesystemTaskQueue(abc.ABC, Generic[In, Out]):
             self.completed_dir,
         ]:
             try:
-                with open(os.path.join(dirname, task_id)) as in_file:
+                with open(dirname / task_id) as in_file:
                     t = json.load(in_file, cls=DatetimeDecoder)
                     return validate_typeddict(t, model=Task[In, Out])
             except FileNotFoundError:
