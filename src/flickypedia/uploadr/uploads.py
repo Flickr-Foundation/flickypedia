@@ -1,5 +1,5 @@
 import datetime
-from typing import Any, List, TypedDict
+from typing import Any, Dict, Generator, List, Literal, TypedDict, Union
 import uuid
 
 from celery import current_task, shared_task
@@ -7,51 +7,153 @@ from flask import current_app
 from flask_login import current_user
 from flickr_photos_api import SinglePhoto
 import httpx
+import keyring
 
 from flickypedia.apis.structured_data import NewClaims
 from flickypedia.apis.wikimedia import ShortCaption, WikimediaApi
 from flickypedia.apis.wikitext import create_wikitext
 from flickypedia.duplicates import record_file_created_by_flickypedia
 from flickypedia.photos import size_at
-from .tasks import ProgressTracker
+from flickypedia.uploadr.fs_queue import AbstractFilesystemTaskQueue
+from flickypedia.uploadr.tasks import ProgressTracker
 
+
+# Types for upload requests.
 
 class UploadRequest(TypedDict):
     photo: SinglePhoto
     sdc: NewClaims
     title: str
     caption: ShortCaption
-    categories: List[str]
+    categories: list[str]
+
+
+class UploadBatch(TypedDict):
+    keyring_id: str
+    requests: list[UploadRequest]
+
+# Types for upload results.
+
+class SuccessfulUpload(TypedDict):
+    id: str
+    title: str
+    state: Literal['succeeded']
+
+
+class FailedUpload(TypedDict):
+    state: Literal['failed']
+    error: str
+
+
+class PendingUpload(TypedDict):
+    state: Literal['waiting', 'in_progress']
+
+
+UploadBatchResults = Dict[
+    str,
+    Union[SuccessfulUpload, FailedUpload, PendingUpload]
+]
+
+
+import contextlib
+
+
+@contextlib.contextmanager
+def expiring_password(servicename: str, username: str) -> Generator[str, None, None]:
+    password = keyring.get_password(servicename, username)
+
+    yield password
+
+    keyring.delete_password(servicename, username)
+
+
+class PhotoUploadQueue(AbstractFilesystemTaskQueue[UploadBatch, UploadBatchResults]):
+    def process_individual_task(self, task: UploadBatch) -> None:
+        print(task['id'])
+
+        q.record_task_event(task, state='in_progress', event='Starting to upload photos')
+
+        keyring_id = task['task_input']['keyring_id']
+
+        with expiring_password('flickypedia', keyring_id) as access_token:
+            client = httpx.Client(headers={"Authorization": f"Bearer {access_token}"})
+            api = WikimediaApi(client=client)
+
+            for upload_request in task['task_input']['requests']:
+                photo_id = upload_request['photo']['id']
+
+                task['task_output'][photo_id] = {'state': 'in_progress'}
+                q.record_task_event(task, event=f'Uploading photo {photo_id}')
+
+                try:
+                    upload_result = upload_single_image(api, upload_request)
+                except Exception as exc:
+                    task['task_output'][photo_id] = {
+                        'state': 'failed',
+                        'error': str(exc)
+                    }
+                else:
+                    task['task_output'][photo_id] = {
+                        'state': 'succeeded',
+                        'id': upload_result['id'],
+                        'title': upload_result['title']
+                    }
+
+                q.record_task_event(task, event=f"Finished photo {photo_id} ({task['task_output'][photo_id]['state']})")
+
+
+    # for idx, req in enumerate(upload_requests):
+    #     progress_data[idx]["status"] = "in_progress"
+    #     tracker.record_progress(data=progress_data)
+    #
+    #     try:
+    #         progress_data[idx]["upload_result"] = upload_single_image(api, req)
+    #     except Exception as exc:
+    #         progress_data[idx]["status"] = "failed"
+    #         progress_data[idx]["error"] = str(exc)
+    #     else:
+    #         progress_data[idx]["status"] = "succeeded"
+    #
+    #     tracker.record_progress(data=progress_data)
+    #
+    #
+    #     print(task)
+
 
 
 def begin_upload(upload_requests: List[UploadRequest]) -> str:
     """
     Trigger an upload task to run in the background.
     """
-    task_id = str(uuid.uuid4())
+    import pathlib
+    q = PhotoUploadQueue(base_dir=pathlib.Path("queue/uploads"))
 
-    # Start by recording some progress data about the request -- this
-    # will allow us to render a progress screen immediately.
-    tracker = ProgressTracker(task_id=task_id)
-    progress_data = [
-        {"req": req, "last_update": datetime.datetime.now(), "status": "waiting"}
-        for req in upload_requests
-    ]
-    tracker.record_progress(data=progress_data)
+    upload_id = str(uuid.uuid4())
 
     # Get a fresh token for the user, so we know we have the full
     # four hours before the access token expires.
+    #
+    # We store this token in the system keychain -- this allows us
+    # to pass it securely between processes without it being saved
+    # in plaintext on the disk.
     current_user.refresh_token()
 
-    upload_batch_of_photos.apply_async(  # type: ignore
-        kwargs={
-            "access_token": current_user.token()["access_token"],
-            "upload_requests": upload_requests,
-        },
-        task_id=task_id,
-    )
+    keyring_id = f'user-{current_user.id}-id-{upload_id}'
+    keyring.set_password('flickypedia', keyring_id, password=current_user.token()['access_token'])
 
-    return task_id
+    task_input = {
+        'keyring_id': keyring_id,
+        'requests': upload_requests
+    }
+
+    task_output = {
+        req['photo']['id']: {'state': 'waiting'}
+        for req in upload_requests
+    }
+
+    q.start_task(task_input=task_input, task_output=task_output, task_id=upload_id)
+
+    return upload_id
 
 
 @shared_task
@@ -87,12 +189,7 @@ def upload_batch_of_photos(
     return progress_data
 
 
-class UploadResult(TypedDict):
-    id: str
-    title: str
-
-
-def upload_single_image(api: WikimediaApi, request: UploadRequest) -> UploadResult:
+def upload_single_image(api: WikimediaApi, request: UploadRequest) -> SuccessfulUpload:
     """
     Upload a photo from Flickr to Wikimedia Commons.
 
@@ -103,7 +200,6 @@ def upload_single_image(api: WikimediaApi, request: UploadRequest) -> UploadResu
     -   Adding the structured data to the photo
 
     """
-
     wikitext = create_wikitext(license_id=request["photo"]["license"]["id"])
 
     original_size = size_at(request["photo"]["sizes"], desired_size="Original")
@@ -142,3 +238,9 @@ def upload_single_image(api: WikimediaApi, request: UploadRequest) -> UploadResu
     )
 
     return {"id": wikimedia_page_id, "title": wikimedia_page_title}
+
+
+if __name__ == '__main__':
+    import pathlib
+    q = PhotoUploadQueue(base_dir=pathlib.Path("queue/uploads"))
+    q.process_single_task()

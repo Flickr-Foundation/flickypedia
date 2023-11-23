@@ -198,11 +198,11 @@ class AbstractFilesystemTaskQueue(abc.ABC, Generic[In, Out]):
 
         raise ValueError(f"Could not find task with ID {task_id}")
 
-    def start_task(self, task_input: In) -> str:
+    def start_task(self, task_input: In, task_output: Optional[Out] = None, task_id: Optional[str] = None) -> str:
         """
         Creates a new task.  Returns the task ID.
         """
-        task_id = str(uuid.uuid4())
+        task_id = task_id or str(uuid.uuid4())
 
         self.logger.info("Creating task %s", task_id)
 
@@ -214,7 +214,7 @@ class AbstractFilesystemTaskQueue(abc.ABC, Generic[In, Out]):
                 ],
                 "state": "waiting",
                 "task_input": task_input,
-                "task_output": None,
+                "task_output": task_output,
             }
         )
 
