@@ -15,7 +15,6 @@ from flickypedia.apis.wikitext import create_wikitext
 from flickypedia.duplicates import record_file_created_by_flickypedia
 from flickypedia.photos import size_at
 from flickypedia.uploadr.fs_queue import AbstractFilesystemTaskQueue
-from flickypedia.uploadr.tasks import ProgressTracker
 
 
 # Types for upload requests.
@@ -156,39 +155,6 @@ def begin_upload(upload_requests: List[UploadRequest]) -> str:
     return upload_id
 
 
-@shared_task
-def upload_batch_of_photos(
-    access_token: str, upload_requests: List[UploadRequest]
-) -> Any:
-    tracker = ProgressTracker(task_id=current_task.request.id)
-    progress_data = tracker.get_progress()
-
-    client = httpx.Client(
-        headers={
-            "Authorization": f"Bearer {access_token}",
-            "User-Agent": current_app.config["USER_AGENT"],
-        }
-    )
-
-    api = WikimediaApi(client=client)
-
-    for idx, req in enumerate(upload_requests):
-        progress_data[idx]["status"] = "in_progress"
-        tracker.record_progress(data=progress_data)
-
-        try:
-            progress_data[idx]["upload_result"] = upload_single_image(api, req)
-        except Exception as exc:
-            progress_data[idx]["status"] = "failed"
-            progress_data[idx]["error"] = str(exc)
-        else:
-            progress_data[idx]["status"] = "succeeded"
-
-        tracker.record_progress(data=progress_data)
-
-    return progress_data
-
-
 def upload_single_image(api: WikimediaApi, request: UploadRequest) -> SuccessfulUpload:
     """
     Upload a photo from Flickr to Wikimedia Commons.
@@ -241,6 +207,11 @@ def upload_single_image(api: WikimediaApi, request: UploadRequest) -> Successful
 
 
 if __name__ == '__main__':
+    from flickypedia.uploadr import create_app
     import pathlib
-    q = PhotoUploadQueue(base_dir=pathlib.Path("queue/uploads"))
-    q.process_single_task()
+
+    app = create_app(data_directory=pathlib.Path("data"))
+
+    with app.app_context():
+        q = PhotoUploadQueue(base_dir=pathlib.Path("queue/uploads"))
+        q.process_single_task()
