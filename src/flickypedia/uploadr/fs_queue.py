@@ -81,6 +81,8 @@ class AbstractFilesystemTaskQueue(abc.ABC, Generic[In, Out]):
     folder.  When the task is being worked on, it moves to "in progress".
     Finally, it moves to "completed/failed" depending on its final state.
 
+    This class writes logs to ``queue.log`` inside the base directory.
+
     """
 
     def __init__(self, *, base_dir: pathlib.Path) -> None:
@@ -97,7 +99,7 @@ class AbstractFilesystemTaskQueue(abc.ABC, Generic[In, Out]):
 
         pid = os.getpid()
 
-        handler = logging.FileHandler(filename=os.path.join(base_dir, "queue.log"))
+        handler = logging.FileHandler(filename=os.path.join(self.base_dir, "queue.log"))
         handler.setFormatter(
             fmt=logging.Formatter(f"%(asctime)s - {pid} - %(levelname)s - %(message)s")
         )
