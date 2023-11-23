@@ -36,7 +36,7 @@ There are some basic functional requirements for Flickypedia to work correctly:
 *   Users can log in to Flickypedia, allowing it to perform uploads on their behalf.
 *   Users can easily log out, and revoke Flickypedia's access.
 
-We want Flickypedia to be a secure user of the Wikimedia APIs:
+We also want Flickypedia to be a secure user of the Wikimedia APIs:
 
 *   We don't want Flickypedia to be used to compromise Wikimedia user accounts.
     For example, we're going to get permission to make edits on a user's behalf – we don't want this permission to be misused to make vandal edits in their name.
@@ -59,7 +59,7 @@ This is a pretty standard pattern for authentication on the web, and one that I'
 There are plenty of guides for implementing OAuth 2.0 in a secure way.
 
 **We're going to use OAuth 2.0 with the authorization code flow.**
-I discussed this with some devs at the Wikimedia Foundation, who agreed that this is the right approach to use.
+I also discussed this with some devs at the Wikimedia Foundation, who agreed that this is the right approach to use.
 
 Alternatives considered:
 
@@ -147,7 +147,7 @@ I considered a couple of options:
     If you could compromise that database, you get all the tokens.
     Eek!
 
-    And because we're going to run Flickypedia on a single machine, this doesn't seem too unfeasible – the token database and Flickypedia app will run on that machine, which means the encryption key has to live there as well.
+    And because we're going to run Flickypedia on a single machine, this feels like a plausible risk – the token database and Flickypedia app will run on that machine, which means the encryption key has to live there as well.
 
     It wouldn't be hard for me as the sysadmin to get into that database, and that makes me uncomfortable – even if I know I'm nice and I wouldn't do anything evil, it would be better if I *couldn't*.
 
