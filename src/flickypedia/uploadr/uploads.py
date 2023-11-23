@@ -2,6 +2,7 @@ import pathlib
 from typing import Dict, List, Literal, TypedDict, Union
 import uuid
 
+from flask import current_app
 from flask_login import current_user
 from flickr_photos_api import SinglePhoto
 import httpx
@@ -188,7 +189,6 @@ def uploads_queue() -> PhotoUploadQueue:
 
 if __name__ == "__main__":
     from flickypedia.uploadr import create_app
-    import pathlib
 
     app = create_app(data_directory=pathlib.Path("data"))
 
