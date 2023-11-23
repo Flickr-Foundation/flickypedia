@@ -1,11 +1,4 @@
 """
-Everything related to user authentication.
-
-In particular, this file should contain all the code related to users
-authenticating with the Wikimedia and Flickr APIs.  The goal is to keep
-this all in one place so it can be considered and reviewed as a single
-unit -- this is the most sensitive code in the app.
-
 == Design notes ==
 
 We use Wikimedia's OAuth 2.0 user credentials flow.
@@ -87,8 +80,8 @@ from flask_sqlalchemy import SQLAlchemy
 import httpx
 
 from flickypedia.apis.wikimedia import WikimediaApi
+from flickypedia.uploadr.views._types import ViewResponse
 from flickypedia.utils import decrypt_string, encrypt_string
-from .views._types import ViewResponse
 
 
 user_db = SQLAlchemy()
