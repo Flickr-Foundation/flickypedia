@@ -223,6 +223,11 @@ class AbstractFilesystemTaskQueue(abc.ABC, Generic[In, Out]):
     def record_task_event(
         self, task: Task[In, Out], *, state: Optional[State] = None, event: str
     ) -> None:
+        """
+        Record some event occurring on a task.
+
+        This is useful for per-task logging.
+        """
         if state is not None:
             task["state"] = state
 
