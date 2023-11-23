@@ -139,17 +139,34 @@ class AbstractFilesystemTaskQueue(abc.ABC, Generic[In, Out]):
     def write_task(self, task: Task[In, Out]) -> None:
         """
         Persist information about a task to disk.
+
+        Tasks are saved as JSON files.  We write and rename the files
+        atomically, which means there's always a single, valid file
+        describing the task on disk.
         """
         filename = task["id"]
 
         tmp_path = self.tmp_dir / filename
         out_path = self.base_dir / task["state"] / filename
 
+        # The use of exclusive file mode "x" means we'll throw if this
+        # tmp file already exists -- this seems unlikely, but might
+        # indicate another process is working on this file.
         with open(tmp_path, "x") as tmp_file:
             tmp_file.write(json.dumps(task, cls=DatetimeEncoder))
 
-        # If the task already exists, we need to update the existing
-        # file in-place first.
+        # If the task is changing state, we need to make sure we remove
+        # the task in the previous folder.
+        #
+        # e.g. if the task is going from 'waiting' to 'in progress',
+        # we first update the file in 'waiting', then we move that file
+        # into 'in progress'.
+        #
+        # If the task isn't changing state, we just update the file
+        # in the current folder.
+        #
+        # Note that ``os.rename()`` is atomic, which is how we get
+        # atomic-like file writes.
         try:
             prior_task = self.read_task(task_id=task["id"])
         except ValueError:
