@@ -17,9 +17,6 @@ class AddingQueue(NumberQueue):
     them together.
     """
 
-    def start_task(self, task_input: list[int]) -> str:
-        return super().start_task(task_input)
-
     def process_individual_task(self, task: NumberTask) -> None:
         task["task_output"] = sum(task["task_input"])
         task["state"] = "completed"
@@ -44,7 +41,7 @@ def queue(tmp_path: pathlib.Path) -> AddingQueue:
 
 
 def test_can_process_a_single_message(queue: AddingQueue) -> None:
-    task_id = queue.start_task(task_input=[1, 2, 3])
+    task_id = queue.start_task(task_input=[1, 2, 3], task_output=-1)
     queue.process_single_task()
 
     task = queue.read_task(task_id=task_id)
@@ -74,7 +71,7 @@ def test_multiple_workers_on_same_queue_is_fine(queue: AddingQueue) -> None:
     The others should either miss it, or decline when they find its
     "locked" by the other process.
     """
-    task_id = queue.start_task(task_input=[1, 2, 3])
+    task_id = queue.start_task(task_input=[1, 2, 3], task_output=-1)
 
     with concurrent.futures.ThreadPoolExecutor() as executor:
         futures = {executor.submit(queue.process_single_task) for _ in range(10)}
@@ -101,7 +98,7 @@ def test_multiple_workers_on_same_queue_is_fine(queue: AddingQueue) -> None:
 def test_handles_failure_in_the_process_method(tmp_path: pathlib.Path) -> None:
     failing_queue = FailingQueue(base_dir=tmp_path)
 
-    task_id = failing_queue.start_task(task_input=[1, 2, 3])
+    task_id = failing_queue.start_task(task_input=[1, 2, 3], task_output=-1)
 
     failing_queue.process_single_task()
 
@@ -109,7 +106,7 @@ def test_handles_failure_in_the_process_method(tmp_path: pathlib.Path) -> None:
 
     assert task["id"] == task_id
     assert task["state"] == "failed"
-    assert task["task_output"] is None
+    assert task["task_output"] == -1
 
     descriptions = [ev["description"] for ev in task["events"]]
     assert descriptions == [

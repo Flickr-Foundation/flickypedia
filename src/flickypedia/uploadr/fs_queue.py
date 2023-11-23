@@ -46,7 +46,7 @@ class Task(TypedDict, Generic[In, Out]):
     events: List[TaskEvent]
     state: State
     task_input: In
-    task_output: Optional[Out]
+    task_output: Out
 
 
 class AbstractFilesystemTaskQueue(abc.ABC, Generic[In, Out]):
@@ -201,7 +201,7 @@ class AbstractFilesystemTaskQueue(abc.ABC, Generic[In, Out]):
     def start_task(
         self,
         task_input: In,
-        task_output: Optional[Out] = None,
+        task_output: Out,
         task_id: Optional[str] = None,
     ) -> str:
         """

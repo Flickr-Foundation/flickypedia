@@ -13,7 +13,7 @@ from flickypedia.apis.wikimedia import ShortCaption, WikimediaApi
 from flickypedia.apis.wikitext import create_wikitext
 from flickypedia.duplicates import record_file_created_by_flickypedia
 from flickypedia.photos import size_at
-from flickypedia.uploadr.fs_queue import AbstractFilesystemTaskQueue
+from flickypedia.uploadr.fs_queue import AbstractFilesystemTaskQueue, Task
 
 
 # Types for upload requests.
@@ -54,9 +54,10 @@ UploadBatchResults = Dict[str, Union[SuccessfulUpload, FailedUpload, PendingUplo
 
 
 class PhotoUploadQueue(AbstractFilesystemTaskQueue[UploadBatch, UploadBatchResults]):
-    def process_individual_task(self, task: UploadBatch) -> None:
-        print(task["id"])
-
+    def process_individual_task(
+        self,
+        task: Task[UploadBatch, UploadBatchResults],
+    ) -> None:
         q.record_task_event(
             task, state="in_progress", event="Starting to upload photos"
         )
@@ -119,9 +120,11 @@ def begin_upload(upload_requests: List[UploadRequest]) -> str:
         "flickypedia", keyring_id, password=current_user.token()["access_token"]
     )
 
-    task_input = {"keyring_id": keyring_id, "requests": upload_requests}
+    task_input: UploadBatch = {"keyring_id": keyring_id, "requests": upload_requests}
 
-    task_output = {req["photo"]["id"]: {"state": "waiting"} for req in upload_requests}
+    task_output: UploadBatchResults = {
+        req["photo"]["id"]: {"state": "waiting"} for req in upload_requests
+    }
 
     q.start_task(task_input=task_input, task_output=task_output, task_id=upload_id)
 
@@ -176,7 +179,11 @@ def upload_single_image(api: WikimediaApi, request: UploadRequest) -> Successful
         wikimedia_page_id=wikimedia_page_id,
     )
 
-    return {"id": wikimedia_page_id, "title": wikimedia_page_title}
+    return {
+        "id": wikimedia_page_id,
+        "title": wikimedia_page_title,
+        "state": "succeeded",
+    }
 
 
 def uploads_queue() -> PhotoUploadQueue:
