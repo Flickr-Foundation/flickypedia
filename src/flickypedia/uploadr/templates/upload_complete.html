@@ -45,43 +45,47 @@
   
   <ul class="plain_list upload_progress">
     {% for item in failed_requests %}
-      {% with photo = item.req.photo %}
-      <li data-status="{{ item.status }}">
-        {% set large_size = photo.sizes|size_at(desired_size='Large') %}
-        <div class="container">
-          <img src="{{ large_size.source }}">
-          <div class="text">NOT DONE</div>
-        </div>
-      </li>
-      <li class="error_info">
-        <dl>
-          <dt>URL</dt>
-          <dd>{{ photo.url }}</dd>
+      {% with photo = item.photo %}
+      {% with result = task.task_output[photo.id] %}    
+        <li data-status="{{ result.state }}">
+          {% set large_size = photo.sizes|size_at(desired_size='Large') %}
+          <div class="container">
+            <img src="{{ large_size.source }}">
+            <div class="text">NOT DONE</div>
+          </div>
+        </li>
+        <li class="error_info">
+          <dl>
+            <dt>URL</dt>
+            <dd>{{ photo.url }}</dd>
 
-          <dt>title</dt>
-          <dd>{{ item.req.title }}</dd>
+            <dt>title</dt>
+            <dd>{{ item.title }}</dd>
 
-          <dt>short caption</dt>
-          <dd>{{ item.req.caption.text }}</dd>
+            <dt>short caption</dt>
+            <dd>{{ item.caption.text }}</dd>
 
-          <dt>error</dt>
-          <dd>{{ item.error or '<unknown>' }}</dt>
-        </dl>
-      </li>
+            <dt>error</dt>
+            <dd>{{ result.error or '<unknown>' }}</dt>
+          </dl>
+        </li>
+      {% endwith %}
       {% endwith %}
     {% endfor %}
     
     {% for item in successful_requests %}
-      {% with photo = item.req.photo %}
-      <li data-status="{{ item.status }}">
-        <a href="https://commons.wikimedia.org/wiki/{{ item.upload_result.title }}">
-          <div class="container">
-            {% set large_size = photo.sizes|size_at(desired_size='Large') %}
-            <img src="{{ large_size.source }}">
-            <div class="text">DONE</div>
-          </div>
-        </a>
-      </li>
+      {% with photo = item.photo %}
+      {% with result = task.task_output[photo.id] %}    
+        <li data-status="{{ result.state }}">
+          <a href="https://commons.wikimedia.org/wiki/{{ result.title }}">
+            <div class="container">
+              {% set large_size = photo.sizes|size_at(desired_size='Large') %}
+              <img src="{{ large_size.source }}">
+              <div class="text">DONE</div>
+            </div>
+          </a>
+        </li>
+      {% endwith %}
       {% endwith %}
     {% endfor %}
   </ul>

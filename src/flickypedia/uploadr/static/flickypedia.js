@@ -364,6 +364,15 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm) {
  *
  * This function is called once per second on the "wait for upload"
  * screen.  It adds the "Done" or "Not Done" labels to photos.
+ *
+ * This calls the /status endpoint, which it expects to return a
+ * list of entries of the form:
+ *
+ *    [
+ *      {"photo_id": "1234", "state": "waiting|in_progress|failed|succeeded"},
+ *      …,
+ *    ]
+ *
  */
 function updatePhotosWithUploadProgress() {
   fetch(`${window.location}/status`)
