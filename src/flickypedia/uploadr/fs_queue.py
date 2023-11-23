@@ -94,12 +94,16 @@ class AbstractFilesystemTaskQueue(abc.ABC, Generic[In, Out]):
         self.logger = logging.getLogger(name=str(base_dir))
         self.configure_logger()
 
+    @property
+    def logfile_path(self) -> pathlib.Path:
+        return self.base_dir / "queue.log"
+
     def configure_logger(self) -> None:
         self.logger.setLevel(level=logging.DEBUG)
 
         pid = os.getpid()
 
-        handler = logging.FileHandler(filename=os.path.join(self.base_dir, "queue.log"))
+        handler = logging.FileHandler(filename=self.logfile_path)
         handler.setFormatter(
             fmt=logging.Formatter(f"%(asctime)s - {pid} - %(levelname)s - %(message)s")
         )
@@ -332,6 +336,9 @@ class AbstractFilesystemTaskQueue(abc.ABC, Generic[In, Out]):
         """
         Keep looking for new tasks, and when found, start working on them.
         """
+        print(f"Looking for tasks in {self.base_dir}...")
+        print(f"Follow the log at {self.logfile_path}")
+
         self.logger.info("Starting looking for tasks in the queue...")
 
         while True:

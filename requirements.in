@@ -1,5 +1,4 @@
 authlib
-celery
 click
 cryptography
 flask

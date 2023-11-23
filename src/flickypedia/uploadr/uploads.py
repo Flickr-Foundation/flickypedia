@@ -1,4 +1,3 @@
-import pathlib
 from typing import Dict, List, Literal, TypedDict, Union
 import uuid
 
@@ -58,7 +57,7 @@ class PhotoUploadQueue(AbstractFilesystemTaskQueue[UploadBatch, UploadBatchResul
         self,
         task: Task[UploadBatch, UploadBatchResults],
     ) -> None:
-        q.record_task_event(
+        self.record_task_event(
             task, state="in_progress", event="Starting to upload photos"
         )
 
@@ -77,7 +76,7 @@ class PhotoUploadQueue(AbstractFilesystemTaskQueue[UploadBatch, UploadBatchResul
             photo_id = upload_request["photo"]["id"]
 
             task["task_output"][photo_id] = {"state": "in_progress"}
-            q.record_task_event(task, event=f"Uploading photo {photo_id}")
+            self.record_task_event(task, event=f"Uploading photo {photo_id}")
 
             try:
                 upload_result = upload_single_image(api, upload_request)
@@ -93,7 +92,7 @@ class PhotoUploadQueue(AbstractFilesystemTaskQueue[UploadBatch, UploadBatchResul
                     "title": upload_result["title"],
                 }
 
-            q.record_task_event(
+            self.record_task_event(
                 task,
                 event=f"Finished photo {photo_id} ({task['task_output'][photo_id]['state']})",
             )
@@ -192,13 +191,3 @@ def uploads_queue() -> PhotoUploadQueue:
     current Flask app.
     """
     return PhotoUploadQueue(base_dir=current_app.config["UPLOAD_QUEUE_DIRECTORY"])
-
-
-if __name__ == "__main__":
-    from flickypedia.uploadr import create_app
-
-    app = create_app(data_directory=pathlib.Path("data"))
-
-    with app.app_context():
-        q = PhotoUploadQueue(base_dir=pathlib.Path("queue/uploads"))
-        q.process_single_task()
