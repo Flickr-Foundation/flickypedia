@@ -66,6 +66,7 @@ class PhotoUploadQueue(AbstractFilesystemTaskQueue[UploadBatch, UploadBatchResul
         for this user.
 
     """
+
     def process_individual_task(
         self,
         task: Task[UploadBatch, UploadBatchResults],
