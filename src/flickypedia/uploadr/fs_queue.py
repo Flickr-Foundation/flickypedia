@@ -9,6 +9,9 @@ If we need to extend or modify this module, we should reconsider the
 decision to do a DIY task queue rather than using a prebuilt library --
 but for now this seems good enough for our purposes.
 
+Note: the locking in this module is somewhat primitive, and relies on
+the filesystem.  See the comments in ``process_single_task()``.
+
 [1]: https://docs.celeryq.dev/en/stable/
 
 """
@@ -228,7 +231,12 @@ class AbstractFilesystemTaskQueue(abc.ABC, Generic[In, Out]):
         except ValueError:
             return None
 
-    def process_single_task(self) -> None:
+    def process_single_task(self) -> Optional[str]:
+        """
+        Process the next available task.
+
+        Returns the ID of the task that was processed, if any.
+        """
         this_task_id = self._next_available_task()
 
         # If there wasn't a next task, we assume the queue is empty
@@ -236,11 +244,22 @@ class AbstractFilesystemTaskQueue(abc.ABC, Generic[In, Out]):
         if this_task_id is None:
             self.logger.debug("No tasks found, sleeping for 1 second...")
             time.sleep(1)
-            return
+            return None
 
         # Atomically move the task from "waiting" to "in progress".
         # This will make the task unavailable for other processes
         # and only available to this process.
+        #
+        # If two processes try to rename the same file at once, only
+        # one of them will succeed in doing so -- the other will get
+        # a FileNotFoundError.
+        #
+        # This is a basic locking system -- only one process can own
+        # the rename, and that's the process that "locks" this task.
+        #
+        # We may need something more sophisticated eventually, but I've
+        # used this approach pretty successfully for large queues on
+        # single machines before.
         self.logger.info("Task %s: starting work", this_task_id)
 
         try:
@@ -276,6 +295,8 @@ class AbstractFilesystemTaskQueue(abc.ABC, Generic[In, Out]):
             self.record_task_event(
                 task, state="completed", event="Task completed without exception"
             )
+
+        return task["id"]
 
     def process_tasks(self) -> None:  # pragma: no cover
         """

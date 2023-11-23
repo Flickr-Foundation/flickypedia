@@ -1,3 +1,4 @@
+import collections
 import concurrent.futures
 import pathlib
 
@@ -66,7 +67,14 @@ def test_no_available_tasks_is_fine(queue: AddingQueue) -> None:
 
 
 def test_multiple_workers_on_same_queue_is_fine(queue: AddingQueue) -> None:
-    queue.start_task(task_input=[1, 2, 3])
+    """
+    If multiple workers are processing the same queue, and a message
+    arrives, exactly one of them should pick it up.
+
+    The others should either miss it, or decline when they find its
+    "locked" by the other process.
+    """
+    task_id = queue.start_task(task_input=[1, 2, 3])
 
     with concurrent.futures.ThreadPoolExecutor() as executor:
         futures = {executor.submit(queue.process_single_task) for _ in range(10)}
@@ -77,6 +85,16 @@ def test_multiple_workers_on_same_queue_is_fine(queue: AddingQueue) -> None:
         assert all(fut.exception() is None for fut in done), [
             fut.exception() for fut in done
         ]
+
+        # The process_single_task() method returns the ID of the task
+        # it processed, if any.
+        #
+        # Exactly one of the processes should claim to have processed
+        # this task.
+        assert collections.Counter(fut.result() for fut in done) == {
+            task_id: 1,
+            None: 9,
+        }
 
 
 def test_handles_failure_in_the_process_method(tmp_path: pathlib.Path) -> None:
