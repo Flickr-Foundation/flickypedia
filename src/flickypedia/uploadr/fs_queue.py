@@ -89,15 +89,18 @@ class AbstractFilesystemTaskQueue(abc.ABC, Generic[In, Out]):
         for dirname in self.directories:
             os.makedirs(dirname, exist_ok=True)
 
-        self.pid = os.getpid()
-
         self.logger = logging.getLogger(name=str(base_dir))
+        self.configure_logger()
+
+    def configure_logger(self) -> None:
         self.logger.setLevel(level=logging.DEBUG)
+
+        pid = os.getpid()
 
         handler = logging.FileHandler(filename=os.path.join(base_dir, "queue.log"))
         handler.setFormatter(
             fmt=logging.Formatter(
-                f"%(asctime)s - {self.pid} - %(levelname)s - %(message)s"
+                f"%(asctime)s - {pid} - %(levelname)s - %(message)s"
             )
         )
 
