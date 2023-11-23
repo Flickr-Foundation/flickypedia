@@ -1,6 +1,13 @@
 <img src="logo.svg" alt="Flickypedia, by Flickr.org">
 
-Flickypedia is a tool to copy openly licensed photos from Flickr to Wikimedia Commons.
+Flickypedia is a bridge between photos on Flickr and files on Wikimedia Commons.
+It includes:
+
+*   A web app for copying openly licensed photos from Flickr to Wikimedia Commons ("uploadr")
+*   A bot for improving the [structured data][sdc] for Flickr photos which are already in Wikimedia Commons ("backfillr")
+*   A tool for getting data and statistics about Flickr photos in Wikimedia Commons ("extractr")
+
+[sdc]: https://commons.wikimedia.org/wiki/Commons:Structured_data
 
 ## Key pieces
 
