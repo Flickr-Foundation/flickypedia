@@ -14,6 +14,7 @@ from .auth import (
     oauth2_callback_wikimedia,
     user_db,
 )
+from .cli import uploadr as uploadr_cli
 from .config import create_config, get_directories
 from flickypedia.duplicates import create_link_to_commons
 from flickypedia.photos import size_at
@@ -134,3 +135,6 @@ def compile_scss(static_folder: str) -> None:
         out_file.write(sass.compile(filename=sass_path))
 
     os.rename(tmp_path, css_path)
+
+
+__all__ = ["create_all", "uploadr_cli"]

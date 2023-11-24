@@ -8,6 +8,7 @@ from authlib.oauth2.rfc6749.wrappers import OAuth2Token
 from cryptography.fernet import Fernet
 from flask import session
 from flask_login import login_user
+import keyring
 
 from flickypedia.uploadr.auth import (
     user_db,
@@ -76,3 +77,26 @@ def get_typed_fixture(path: str, model: type[T]) -> T:
     """
     with open(os.path.join("tests/fixtures", path)) as f:
         return validate_typeddict(json.load(f, cls=DatetimeDecoder), model)
+
+
+class InMemoryKeyring(keyring.backend.KeyringBackend):
+    """
+    A keyring implementation which stores passwords in a dictionary.
+
+    This is for testing only.
+    """
+
+    def __init__(self, passwords: dict[tuple[str, str], str]) -> None:
+        self.passwords = passwords
+
+    def priority(self) -> int:
+        return 1
+
+    def set_password(self, servicename: str, username: str, password: str) -> None:
+        self.passwords[(servicename, username)] = password
+
+    def get_password(self, servicename: str, username: str) -> str | None:
+        return self.passwords.get((servicename, username))
+
+    def delete_password(self, servicename: str, username: str) -> None:
+        del self.passwords[(servicename, username)]

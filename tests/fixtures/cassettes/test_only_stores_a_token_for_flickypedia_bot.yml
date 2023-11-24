@@ -1,0 +1,62 @@
+interactions:
+
+# Step 1: Getting a Request Token.
+#
+# I changed the values of ``oauth_token`` and ``oauth_token_secret``
+# in the response.
+- request:
+    body: ''
+    headers:
+      host:
+      - www.flickr.com
+    method: POST
+    uri: https://www.flickr.com/services/oauth/request_token?oauth_callback=oob
+  response:
+    content: oauth_callback_confirmed=true&oauth_token=OAUTH_TOKEN_123&oauth_token_secret=OAUTH_TOKEN_SECRET_456
+    headers:
+      Content-Type:
+      - text/plain;charset=UTF-8
+      Date:
+      - Fri, 24 Nov 2023 09:51:29 GMT
+    http_version: HTTP/1.1
+    status_code: 200
+
+# Step 3: Exchanging the Request Token for an Access Token.
+#
+# This is the call to ``client.fetch_access_token()``
+- request:
+    body: ''
+    headers:
+      host:
+      - www.flickr.com
+    method: POST
+    uri: https://www.flickr.com/services/oauth/access_token
+  response:
+    content: fullname=Flickypedia%20Bot&oauth_token=FLICKYPEDIA_OAUTH_TOKEN_123&oauth_token_secret=FLICKYPEDIA_OAUTH_SECRET_456&user_nsid=199561775%40N05&username=flickypedia
+    headers:
+      Content-Type:
+      - text/plain;charset=UTF-8
+      Date:
+      - Fri, 24 Nov 2023 09:53:53 GMT
+    http_version: HTTP/1.1
+    status_code: 200
+
+# This is the call to the ``flickr.test.login`` endpoint.
+- request:
+    body: ''
+    headers:
+      host:
+      - www.flickr.com
+    method: GET
+    uri: https://www.flickr.com/services/rest?method=flickr.test.login
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<user
+      id=\"123456789@N05\" path_alias=\"example\">\n\t<username>example</username>\n</user>\n</rsp>\n"
+    headers:
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Fri, 24 Nov 2023 09:53:53 GMT
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

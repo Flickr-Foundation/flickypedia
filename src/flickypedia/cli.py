@@ -3,6 +3,8 @@ import sys
 
 import click
 
+from flickypedia.uploadr import uploadr_cli
+
 
 @click.group()
 def main() -> None:  # pragma: no cover
@@ -45,3 +47,6 @@ def run_background_worker() -> None:
     with app.app_context():
         q = uploads_queue()
         q.process_tasks()
+
+
+main.add_command(uploadr_cli)
