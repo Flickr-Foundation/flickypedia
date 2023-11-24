@@ -1,4 +1,4 @@
-from typing import List, TypedDict
+from typing import TypedDict
 
 import bs4
 from flask import Flask, render_template
@@ -19,10 +19,10 @@ EMPTY_DATA: CategorisedPhotos = {
 ParagraphData = TypedDict("ParagraphData", {"class": str, "text": str})
 
 
-def get_paragraphs(html: str) -> List[ParagraphData]:
+def get_paragraphs(html: str) -> list[ParagraphData]:
     soup = bs4.BeautifulSoup(html, "html.parser")
 
-    result: List[ParagraphData] = []
+    result: list[ParagraphData] = []
 
     for paragraph in soup.find_all("p"):
         p_class = paragraph.attrs["class"][0]
@@ -189,7 +189,7 @@ def test_shows_correct_message_when_all_restricted(
     ],
 )
 def test_shows_correct_combination_of_licenses(
-    app: Flask, licenses: List[str], expected_text: str
+    app: Flask, licenses: list[str], expected_text: str
 ) -> None:
     html = render_template(
         "select_photos/which_photos_can_be_uploaded.html",

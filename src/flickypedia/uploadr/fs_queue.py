@@ -23,7 +23,7 @@ import logging
 import os
 import pathlib
 import time
-from typing import Generic, List, Literal, Optional, TypedDict, TypeVar
+from typing import Generic, Literal, TypedDict, TypeVar
 import uuid
 
 from flickypedia.utils import DatetimeDecoder, DatetimeEncoder, validate_typeddict
@@ -43,7 +43,7 @@ class TaskEvent(TypedDict):
 
 class Task(TypedDict, Generic[In, Out]):
     id: str
-    events: List[TaskEvent]
+    events: list[TaskEvent]
     state: State
     task_input: In
     task_output: Out
@@ -206,7 +206,7 @@ class AbstractFilesystemTaskQueue(abc.ABC, Generic[In, Out]):
         self,
         task_input: In,
         task_output: Out,
-        task_id: Optional[str] = None,
+        task_id: str | None = None,
     ) -> str:
         """
         Creates a new task.  Returns the task ID.
@@ -230,7 +230,7 @@ class AbstractFilesystemTaskQueue(abc.ABC, Generic[In, Out]):
         return task_id
 
     def record_task_event(
-        self, task: Task[In, Out], *, state: Optional[State] = None, event: str
+        self, task: Task[In, Out], *, state: State | None = None, event: str
     ) -> None:
         """
         Record some event occurring on a task.
@@ -244,7 +244,7 @@ class AbstractFilesystemTaskQueue(abc.ABC, Generic[In, Out]):
 
         self.write_task(task)
 
-    def _next_available_task(self) -> Optional[str]:
+    def _next_available_task(self) -> str | None:
         """
         Returns the ID of the next available task (if any).
         """
@@ -265,7 +265,7 @@ class AbstractFilesystemTaskQueue(abc.ABC, Generic[In, Out]):
         except ValueError:
             return None
 
-    def process_single_task(self) -> Optional[str]:
+    def process_single_task(self) -> str | None:
         """
         Process the next available task.
 

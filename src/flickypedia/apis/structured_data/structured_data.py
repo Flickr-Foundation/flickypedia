@@ -28,7 +28,6 @@ is supporting that function.
 """
 
 import datetime
-from typing import List, Optional
 
 from flickr_photos_api import DateTaken, LocationInfo, User as FlickrUser, SinglePhoto
 
@@ -66,7 +65,7 @@ def create_flickr_creator_statement(user: FlickrUser) -> NewStatement:
             "type": "statement",
         }
     else:
-        qualifier_values: List[QualifierValues] = [
+        qualifier_values: list[QualifierValues] = [
             {
                 "property": WikidataProperties.AuthorName,
                 "value": user["realname"] or user["username"],
@@ -115,7 +114,7 @@ def create_copyright_status_statement(license_id: str) -> NewStatement:
             "type": "statement",
         }
     elif license_id == "usgov":
-        qualifier_values: List[QualifierValues] = [
+        qualifier_values: list[QualifierValues] = [
             {
                 "property": WikidataProperties.AppliesToJurisdiction,
                 "entity_id": WikidataEntities.UnitedStatesOfAmerica,
@@ -172,7 +171,7 @@ def create_source_data_for_photo(
     """
     Create a structured data statement for a Flickr photo.
     """
-    qualifier_values: List[QualifierValues] = [
+    qualifier_values: list[QualifierValues] = [
         {
             "property": WikidataProperties.DescribedAtUrl,
             "value": photo_url,
@@ -230,9 +229,7 @@ def create_license_statement(license_id: str) -> NewStatement:
     }
 
 
-def create_location_statement(
-    location: Optional[LocationInfo],
-) -> Optional[NewStatement]:
+def create_location_statement(location: LocationInfo | None) -> NewStatement | None:
     """
     Creates a structured data statement for the "coordinates of
     the point of view" statement.
@@ -352,7 +349,7 @@ def create_posted_to_flickr_statement(date_posted: datetime.datetime) -> NewStat
     """
     Create a structured data statement for date posted to Flickr.
     """
-    qualifier_values: List[QualifierValues] = [
+    qualifier_values: list[QualifierValues] = [
         {
             "property": WikidataProperties.PublicationDate,
             "date": date_posted,
@@ -412,7 +409,7 @@ def create_date_taken_statement(date_taken: DateTaken) -> NewStatement:
     else:
         assert flickr_granularity == "circa"
 
-        qualifier_values: List[QualifierValues] = [
+        qualifier_values: list[QualifierValues] = [
             {
                 "property": WikidataProperties.SourcingCircumstances,
                 "entity_id": WikidataEntities.Circa,

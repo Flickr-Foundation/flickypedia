@@ -38,7 +38,7 @@ the program.
 
 import functools
 import re
-from typing import Dict, Optional, TypedDict
+from typing import TypedDict
 
 from flickr_photos_api import User as FlickrUser
 import httpx
@@ -46,7 +46,7 @@ import httpx
 from flickypedia.apis.structured_data.wikidata import WikidataProperties
 
 
-def lookup_flickr_user_in_wikidata(user: FlickrUser) -> Optional[str]:
+def lookup_flickr_user_in_wikidata(user: FlickrUser) -> str | None:
     """
     If this Flickr user is linked to a Wikidata entity, return the
     Q-ID of that Wikidata entity.
@@ -84,8 +84,8 @@ def is_flickr_user_id(s: str) -> bool:
 
 
 class WikidataEntityLookup(TypedDict):
-    by_user_id: Dict[str, str]
-    by_pathalias: Dict[str, str]
+    by_user_id: dict[str, str]
+    by_pathalias: dict[str, str]
 
 
 @functools.cache

@@ -10,7 +10,7 @@ See https://api.wikimedia.org/wiki/Authentication
 
 import json
 import re
-from typing import Any, Dict, List, Literal, Optional, TypedDict, Union
+from typing import Any, Literal, TypedDict
 from xml.etree import ElementTree as ET
 
 import httpx
@@ -40,7 +40,7 @@ class TitleValidationResult:
     )
 
 
-TitleValidation = Union[TitleValidationResult.Ok, TitleValidationResult.Failed]
+TitleValidation = TitleValidationResult.Ok | TitleValidationResult.Failed
 
 
 class WikimediaApi:
@@ -51,9 +51,9 @@ class WikimediaApi:
         self,
         *,
         method: str,
-        params: Optional[Dict[str, Union[str, int, bool]]] = None,
-        data: Optional[Dict[str, Union[str, bool]]] = None,
-        timeout: Optional[int] = None,
+        params: dict[str, str] | None = None,
+        data: dict[str, str] | None = None,
+        timeout: int | None = None,
     ) -> Any:
         resp = self.client.request(
             method,
@@ -81,12 +81,10 @@ class WikimediaApi:
 
         return resp.json()
 
-    def _get(self, params: Dict[str, Union[str, int, bool]]) -> Any:
+    def _get(self, params: dict[str, str]) -> Any:
         return self._request(method="GET", params={**params, "format": "json"})
 
-    def _post(
-        self, data: Dict[str, Union[str, bool]], timeout: Optional[int] = None
-    ) -> Any:
+    def _post(self, data: dict[str, str], timeout: int | None = None) -> Any:
         return self._request(
             method="POST",
             data={**data, "format": "json", "token": self.get_csrf_token()},
@@ -480,7 +478,7 @@ class WikimediaApi:
 
         return {"result": "ok"}
 
-    def find_matching_categories(self, query: str) -> List[str]:
+    def find_matching_categories(self, query: str) -> list[str]:
         """
         Return a list of categories that might match this query.
 
@@ -561,7 +559,7 @@ class WikimediaApi:
                 "action": "query",
                 "prop": "revisions",
                 "titles": f"File:{filename}",
-                "rvlimit": 1,
+                "rvlimit": "1",
                 "rvslots": "main",
                 "rvprop": "content",
             }
@@ -593,7 +591,7 @@ class WikimediaApi:
 
         return wikitext
 
-    def add_categories_to_page(self, filename: str, categories: List[str]) -> None:
+    def add_categories_to_page(self, filename: str, categories: list[str]) -> None:
         """
         Append a list of categories to a page on Wikimedia.
 
@@ -623,7 +621,7 @@ class WikimediaApi:
                     "action": "edit",
                     "site": "commonswiki",
                     "title": f"File:{filename}",
-                    "nocreate": True,
+                    "nocreate": "true",
                     "appendtext": new_text,
                 }
             )

@@ -1,6 +1,6 @@
 import datetime
 import re
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 import bs4
 from flask import Flask, render_template
@@ -18,7 +18,7 @@ from flickypedia.apis.structured_data import (
 )
 
 
-def prettify_html(html: str, find_kwargs: Optional[Dict[str, Any]] = None) -> str:
+def prettify_html(html: str, find_kwargs: dict[str, Any] | None = None) -> str:
     soup = bs4.BeautifulSoup(html, features="html.parser")
 
     if find_kwargs:
@@ -27,7 +27,7 @@ def prettify_html(html: str, find_kwargs: Optional[Dict[str, Any]] = None) -> st
     return soup.prettify(formatter="html")
 
 
-def get_html(claims: List[NewStatement]) -> str:
+def get_html(claims: list[NewStatement]) -> str:
     html = render_template(
         "prepare_info/structured_data_preview.html", structured_data={"claims": claims}
     )

@@ -14,7 +14,7 @@ trying to replace Wikidata validation, just allow ourselves to
 write sensible validation logic.
 """
 
-from typing import Dict, List, Literal, NotRequired, TypedDict, Union
+from typing import Literal, NotRequired, TypedDict
 
 
 # Definitions for the Wikidata entities that we create as part of
@@ -113,14 +113,14 @@ class DataValueTypes:
     )
 
 
-DataValue = Union[
-    DataValueTypes.WikibaseEntityId,
-    DataValueTypes.String,
-    DataValueTypes.Time,
-    DataValueTypes.GlobeCoordinate,
-    DataValueTypes.Quantity,
-    DataValueTypes.MonolingualText,
-]
+DataValue = (
+    DataValueTypes.WikibaseEntityId
+    | DataValueTypes.String
+    | DataValueTypes.Time
+    | DataValueTypes.GlobeCoordinate
+    | DataValueTypes.Quantity
+    | DataValueTypes.MonolingualText
+)
 
 
 # -> snak
@@ -156,8 +156,8 @@ NewStatement = TypedDict(
     {
         "type": Literal["statement"],
         "mainsnak": Snak,
-        "qualifiers-order": NotRequired[List[str]],
-        "qualifiers": NotRequired[Dict[str, List[Snak]]],
+        "qualifiers-order": NotRequired[list[str]],
+        "qualifiers": NotRequired[dict[str, list[Snak]]],
     },
 )
 
@@ -168,7 +168,7 @@ class ExistingStatement(NewStatement):
 
 
 class NewClaims(TypedDict):
-    claims: List[NewStatement]
+    claims: list[NewStatement]
 
 
-ExistingClaims = Dict[str, List[ExistingStatement]]
+ExistingClaims = dict[str, list[ExistingStatement]]

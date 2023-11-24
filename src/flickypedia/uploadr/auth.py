@@ -69,7 +69,6 @@ it should be accessing it via ``current_user``.
 import datetime
 import json
 import textwrap
-from typing import Optional
 import uuid
 
 from authlib.integrations.httpx_client.oauth2_client import OAuth2Client
@@ -240,7 +239,7 @@ class WikimediaUserSession(UserMixin, user_db.Model):  # type: ignore
 
 
 @login.user_loader
-def load_user(userid: str) -> Optional[WikimediaUserSession]:
+def load_user(userid: str) -> WikimediaUserSession | None:
     """
     Load a user.  This includes checking that we still have valid
     Wikimedia credentials for them.

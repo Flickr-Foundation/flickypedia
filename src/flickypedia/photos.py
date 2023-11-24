@@ -3,7 +3,7 @@ Some methods for working with collections of photos.
 """
 
 import datetime
-from typing import Dict, List, Set, TypedDict
+from typing import TypedDict
 
 from flask import current_app
 from flickr_photos_api import SinglePhoto, Size
@@ -15,7 +15,7 @@ from flickypedia.apis.structured_data import (
 )
 
 
-def size_at(sizes: List[Size], *, desired_size: str) -> Size:
+def size_at(sizes: list[Size], *, desired_size: str) -> Size:
     """
     Given a list of sizes of Flickr photo, return the info about
     the desired size.
@@ -40,13 +40,13 @@ def size_at(sizes: List[Size], *, desired_size: str) -> Size:
 
 
 class CategorisedPhotos(TypedDict):
-    duplicates: Dict[str, DuplicateInfo]
-    disallowed_licenses: Dict[str, str]
-    restricted: Set[str]
-    available: List[SinglePhoto]
+    duplicates: dict[str, DuplicateInfo]
+    disallowed_licenses: dict[str, str]
+    restricted: set[str]
+    available: list[SinglePhoto]
 
 
-def categorise_photos(all_photos: List[SinglePhoto]) -> CategorisedPhotos:
+def categorise_photos(all_photos: list[SinglePhoto]) -> CategorisedPhotos:
     """
     Given a list of photos from the Flickr API, split them into
     three lists:
@@ -102,10 +102,10 @@ def categorise_photos(all_photos: List[SinglePhoto]) -> CategorisedPhotos:
 class EnrichedPhoto(TypedDict):
     photo: SinglePhoto
     sdc: NewClaims
-    default_categories: List[str]
+    default_categories: list[str]
 
 
-def create_default_categories(photo: SinglePhoto, wikimedia_username: str) -> List[str]:
+def create_default_categories(photo: SinglePhoto, wikimedia_username: str) -> list[str]:
     """
     Create the list of default categories that we're populating for
     the user.
@@ -118,12 +118,12 @@ def create_default_categories(photo: SinglePhoto, wikimedia_username: str) -> Li
 
 
 def enrich_photo(
-    photos: List[SinglePhoto], wikimedia_username: str, retrieved_at: datetime.datetime
-) -> List[EnrichedPhoto]:
+    photos: list[SinglePhoto], wikimedia_username: str, retrieved_at: datetime.datetime
+) -> list[EnrichedPhoto]:
     """
     Create a list of photos which includes their structured data.
     """
-    result: List[EnrichedPhoto] = []
+    result: list[EnrichedPhoto] = []
 
     for p in photos:
         result.append(

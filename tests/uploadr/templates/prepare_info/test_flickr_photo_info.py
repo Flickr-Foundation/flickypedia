@@ -1,5 +1,5 @@
 import re
-from typing import Any, List, Optional, TypedDict
+from typing import Any, TypedDict
 
 import bs4
 from flask import Flask, render_template
@@ -21,17 +21,17 @@ EMPTY_INFO: Any = {
 
 class MetadataEntry(TypedDict):
     key: str
-    value: Optional[str]
+    value: str | None
 
 
-def get_metadata(photo: Any) -> List[MetadataEntry]:
+def get_metadata(photo: Any) -> list[MetadataEntry]:
     html = render_template(
         "prepare_info/flickr_photo_info.html", photo={**EMPTY_INFO, **photo}
     )
 
     soup = bs4.BeautifulSoup(html, "html.parser")
 
-    result: List[MetadataEntry] = []
+    result: list[MetadataEntry] = []
 
     for elem in soup.find("dl").children:  # type: ignore
         if elem == "\n":

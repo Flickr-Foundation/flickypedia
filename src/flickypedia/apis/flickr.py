@@ -6,7 +6,7 @@ later be saved as part of the SDC on Wikimedia.
 """
 
 import datetime
-from typing import List, TypedDict, Union
+from typing import TypedDict
 
 from flask import current_app
 from flickr_photos_api import (
@@ -26,7 +26,7 @@ class RetrievedAtMixin(TypedDict):
 
 
 class SinglePhotoData(RetrievedAtMixin):
-    photos: List[SinglePhoto]
+    photos: list[SinglePhoto]
     owner: FlickrUser
 
 
@@ -50,14 +50,14 @@ class PhotosInUserPhotostreamData(CollectionsOfPhotoData):
     owner: FlickrUser
 
 
-GetPhotosData = Union[
-    SinglePhotoData,
-    CollectionsOfPhotoData,
-    PhotosInAlbumData,
-    PhotosInGalleryData,
-    PhotosInGroupData,
-    PhotosInUserPhotostreamData,
-]
+GetPhotosData = (
+    SinglePhotoData
+    | CollectionsOfPhotoData
+    | PhotosInAlbumData
+    | PhotosInGalleryData
+    | PhotosInGroupData
+    | PhotosInUserPhotostreamData
+)
 
 
 def get_photos_from_flickr(parsed_url: ParseResult) -> GetPhotosData:
