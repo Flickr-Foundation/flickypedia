@@ -7,6 +7,8 @@ import click
 from flickr_photos_api.utils import find_required_elem, find_required_text
 import keyring
 
+from flickypedia.utils import get_required_password
+
 
 def store_flickypedia_user_oauth_token() -> None:
     """
@@ -19,11 +21,8 @@ def store_flickypedia_user_oauth_token() -> None:
     This follows the procedure described at
     https://www.flickr.com/services/api/auth.oauth.html
     """
-    api_key = keyring.get_password("flickypedia", "api_key")
-    api_secret = keyring.get_password("flickypedia", "api_secret")
-
-    assert isinstance(api_key, str)
-    assert isinstance(api_secret, str)
+    api_key = get_required_password("flickypedia", "api_key")
+    api_secret = get_required_password("flickypedia", "api_secret")
 
     client = OAuth1Client(
         client_id=api_key, client_secret=api_secret, signature_type="QUERY"

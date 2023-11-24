@@ -2,7 +2,7 @@ import datetime
 import json
 import os
 import re
-from typing import Dict, TypeVar
+from typing import TypeVar
 
 from authlib.oauth2.rfc6749.wrappers import OAuth2Token
 from cryptography.fernet import Fernet
@@ -86,7 +86,7 @@ class InMemoryKeyring(keyring.backend.KeyringBackend):
     This is for testing only.
     """
 
-    def __init__(self, passwords: Dict[tuple[str, str], str]) -> None:
+    def __init__(self, passwords: dict[tuple[str, str], str]) -> None:
         self.passwords = passwords
 
     def priority(self) -> int:

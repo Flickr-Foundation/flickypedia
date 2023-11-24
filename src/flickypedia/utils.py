@@ -12,6 +12,7 @@ from urllib.parse import quote as urlquote, urlparse
 
 from cryptography.fernet import Fernet
 from flask import render_template, request
+import keyring
 from pydantic import ConfigDict, TypeAdapter
 
 
@@ -117,3 +118,15 @@ def validate_typeddict(t: Any, model: type[T]) -> T:
 
     TypedDictValidator = TypeAdapter(model)
     return TypedDictValidator.validate_python(t, strict=True)
+
+
+def get_required_password(servicename: str, username: str) -> str:
+    """
+    Retrieve a password from the keychain, or throw if it's missing.
+    """
+    password = keyring.get_password(servicename, username)
+
+    if password is None:
+        raise RuntimeError(f"Could not retrieve password {(servicename, username)}")
+
+    return password
