@@ -1,11 +1,9 @@
-from typing import List
-
 from flickr_photos_api import Size
 
 from flickypedia.photos import size_at
 
 
-SIZES: List[Size] = [
+SIZES: list[Size] = [
     {
         "label": "Square",
         "width": 75,

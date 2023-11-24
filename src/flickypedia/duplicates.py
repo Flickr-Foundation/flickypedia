@@ -26,7 +26,7 @@ These databases can come from two places:
 
 import os
 import sqlite3
-from typing import Dict, List, TypedDict
+from typing import TypedDict
 
 from flask import current_app
 
@@ -36,7 +36,7 @@ class DuplicateInfo(TypedDict):
     title: str
 
 
-def find_duplicates(flickr_photo_ids: List[str]) -> Dict[str, DuplicateInfo]:
+def find_duplicates(flickr_photo_ids: list[str]) -> dict[str, DuplicateInfo]:
     """
     Given a list of Flickr photo IDs, return the duplicates files found
     on Wikimedia Commons.
@@ -56,7 +56,7 @@ def find_duplicates(flickr_photo_ids: List[str]) -> Dict[str, DuplicateInfo]:
 
     duplicate_dir = current_app.config["DUPLICATE_DATABASE_DIRECTORY"]
 
-    result: Dict[str, DuplicateInfo] = {}
+    result: dict[str, DuplicateInfo] = {}
 
     for name in os.listdir(duplicate_dir):
         if name.endswith((".db", ".sqlite")):
@@ -91,7 +91,7 @@ def find_duplicates(flickr_photo_ids: List[str]) -> Dict[str, DuplicateInfo]:
     return result
 
 
-def create_link_to_commons(duplicates: List[DuplicateInfo]) -> str:
+def create_link_to_commons(duplicates: list[DuplicateInfo]) -> str:
     """
     Given a collection of duplicates from ``find_duplicates``, create
     a link to find those images on Wikimedia Commons.

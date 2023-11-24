@@ -1,8 +1,8 @@
+from collections.abc import Generator
 import datetime
 import os
 import pathlib
 import shutil
-from typing import Generator
 
 from authlib.oauth2.rfc6749.wrappers import OAuth2Token
 from flask import Flask

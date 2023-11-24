@@ -110,6 +110,10 @@ def validate_typeddict(t: Any, model: type[T]) -> T:
 
     See https://stackoverflow.com/a/77386216/1558022
     """
-    model.__pydantic_config__ = ConfigDict(extra="forbid")  # type: ignore
+    try:
+        model.__pydantic_config__ = ConfigDict(extra="forbid")  # type: ignore
+    except AttributeError:
+        pass
+
     TypedDictValidator = TypeAdapter(model)
     return TypedDictValidator.validate_python(t, strict=True)

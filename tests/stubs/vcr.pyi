@@ -1,9 +1,8 @@
 import contextlib
-from typing import List, Optional
 
 def use_cassette(
     cassette_name: str,
     cassette_library_dir: str,
-    filter_headers: Optional[List[str]] = None,
-    filter_query_parameters: Optional[List[str]] = None,
+    filter_headers: list[str] | None = None,
+    filter_query_parameters: list[str] | None = None,
 ) -> contextlib.AbstractContextManager[None]: ...

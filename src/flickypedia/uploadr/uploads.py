@@ -2,7 +2,7 @@
 Manage the process of uploading photos to Wikimedia.
 """
 
-from typing import Dict, List, Literal, TypedDict, Union
+from typing import Literal, TypedDict
 import uuid
 
 from flask import current_app
@@ -53,7 +53,9 @@ class PendingUpload(TypedDict):
     state: Literal["waiting", "in_progress"]
 
 
-UploadBatchResults = Dict[str, Union[SuccessfulUpload, FailedUpload, PendingUpload]]
+IndividualUploadResult = SuccessfulUpload | FailedUpload | PendingUpload
+
+UploadBatchResults = dict[str, IndividualUploadResult]
 
 
 class PhotoUploadQueue(AbstractFilesystemTaskQueue[UploadBatch, UploadBatchResults]):
@@ -113,7 +115,7 @@ class PhotoUploadQueue(AbstractFilesystemTaskQueue[UploadBatch, UploadBatchResul
             )
 
 
-def begin_upload(upload_requests: List[UploadRequest]) -> str:
+def begin_upload(upload_requests: list[UploadRequest]) -> str:
     """
     Trigger an upload task to run in the background.
     """

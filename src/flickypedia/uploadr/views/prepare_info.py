@@ -14,7 +14,7 @@ This page gets two arguments as query parameters:
 """
 
 import datetime
-from typing import cast, Any, Dict, List, TypedDict
+from typing import cast, Any, TypedDict
 
 from flask import abort, redirect, render_template, request, url_for
 from flask_wtf import FlaskForm, Form
@@ -71,7 +71,7 @@ class WikiFieldsForm(Form):
             raise ValidationError(validation["text"])
 
 
-def create_prepare_info_form(photos: List[EnrichedPhoto]) -> FlaskForm:
+def create_prepare_info_form(photos: list[EnrichedPhoto]) -> FlaskForm:
     """
     Create a Flask form with a PhotoInfoForm (list of fields) for each
     photo in the list.  This allows us to render a form like:
@@ -132,7 +132,7 @@ class PhotoForUpload(TypedDict):
     id: str
     title: str
     short_caption: ShortCaption
-    categories: List[str]
+    categories: list[str]
     license_id: str
     date_taken: DateTaken
     date_posted: datetime.datetime
@@ -143,9 +143,9 @@ class PhotoForUpload(TypedDict):
 
 
 def create_upload_requests(
-    photos: List[EnrichedPhoto], form_data: Dict[str, Any]
-) -> List[UploadRequest]:
-    upload_requests: List[UploadRequest] = []
+    photos: list[EnrichedPhoto], form_data: dict[str, Any]
+) -> list[UploadRequest]:
+    upload_requests: list[UploadRequest] = []
 
     for enriched_photo in photos:
         photo = enriched_photo["photo"]

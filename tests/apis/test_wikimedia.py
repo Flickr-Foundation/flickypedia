@@ -1,4 +1,4 @@
-from typing import Any, Dict
+from typing import Any
 
 from authlib.integrations.httpx_client.oauth2_client import OAuth2Client
 from authlib.oauth2.rfc6749.wrappers import OAuth2Token
@@ -38,7 +38,7 @@ def test_get_userinfo(wikimedia_api: WikimediaApi) -> None:
     ],
 )
 def test_call_api_with_bad_token(
-    vcr_cassette: str, method_name: str, kwargs: Dict[str, Any]
+    vcr_cassette: str, method_name: str, kwargs: dict[str, Any]
 ) -> None:
     client = OAuth2Client(
         token=OAuth2Token(

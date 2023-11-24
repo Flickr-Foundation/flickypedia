@@ -35,7 +35,7 @@ the required JSON.
 """
 
 import datetime
-from typing import Dict, List, Literal, TypedDict, Union
+from typing import Literal, TypedDict
 
 from ._types import DataValue, Snak
 from .wikidata import (
@@ -63,15 +63,13 @@ class QualifierValueTypes:
     )
 
 
-QualifierValues = Union[
-    QualifierValueTypes.String,
-    QualifierValueTypes.Entity,
-    QualifierValueTypes.Date,
-]
+QualifierValues = (
+    QualifierValueTypes.String | QualifierValueTypes.Entity | QualifierValueTypes.Date
+)
 
 
-def create_qualifiers(qualifier_values: List[QualifierValues]) -> Dict[str, List[Snak]]:
-    result: Dict[str, List[Snak]] = {}
+def create_qualifiers(qualifier_values: list[QualifierValues]) -> dict[str, list[Snak]]:
+    result: dict[str, list[Snak]] = {}
 
     for qualifier in qualifier_values:
         property_id = qualifier["property"]

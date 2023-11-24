@@ -1,7 +1,6 @@
 import datetime
 import functools
 import re
-from typing import Optional
 
 from flask import current_app
 import httpx
@@ -92,7 +91,7 @@ def get_property_name(code: str) -> str:
 
 
 @functools.lru_cache
-def get_entity_label(entity_id: str) -> Optional[str]:
+def get_entity_label(entity_id: str) -> str | None:
     """
     Look up the name of a Wikidata entity.
 

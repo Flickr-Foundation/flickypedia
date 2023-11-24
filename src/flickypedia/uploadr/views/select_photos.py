@@ -24,7 +24,7 @@ TODO:
 
 """
 
-from typing import cast, List
+from typing import cast
 
 from flask import (
     abort,
@@ -70,11 +70,11 @@ class BaseSelectForm(FlaskForm):
     cache_id = HiddenField("cache_id", validators=[DataRequired()])
     submit = SubmitField("PREPARE INFO")
 
-    def selected_photo_ids(self) -> List[str]:
+    def selected_photo_ids(self) -> list[str]:
         raise NotImplementedError
 
 
-def create_select_photos_form(photos: List[SinglePhoto]) -> BaseSelectForm:
+def create_select_photos_form(photos: list[SinglePhoto]) -> BaseSelectForm:
     """
     Create a Flask form with a boolean field (checkbox) for each photo
     on the list.  This allows us to render a form like:
@@ -103,7 +103,7 @@ def create_select_photos_form(photos: List[SinglePhoto]) -> BaseSelectForm:
     """
 
     class CustomForm(BaseSelectForm):
-        def selected_photo_ids(self) -> List[str]:
+        def selected_photo_ids(self) -> list[str]:
             return [
                 name.replace("photo_", "")
                 for name, value in self.data.items()

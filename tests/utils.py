@@ -2,7 +2,7 @@ import datetime
 import json
 import os
 import re
-from typing import TypeVar, Union
+from typing import TypeVar
 
 from authlib.oauth2.rfc6749.wrappers import OAuth2Token
 from cryptography.fernet import Fernet
@@ -20,7 +20,7 @@ from flickypedia.utils import DatetimeDecoder, encrypt_string, validate_typeddic
 T = TypeVar("T")
 
 
-def minify(text: Union[str, bytes]) -> str:
+def minify(text: str | bytes) -> str:
     """
     Minify an HTML string.  This means compacting long runs of whitespace,
     e.g.
