@@ -95,10 +95,12 @@ def store_flickypedia_user_oauth_token() -> None:
     username = find_required_text(xml, path=".//username")
 
     if user_id != "199561775@N05" or username != "flickypedia":
+        print()
         print(
-            "This is only meant to be used to fetch credentials for the flickypedia account!",
+            "This is only meant to be used to fetch credentials for the Flickypedia bot account!",
             file=sys.stderr,
         )
+        print(f"You logged in as {username!r}!", file=sys.stderr)
         sys.exit(1)
 
     keyring.set_password("flickypedia", "oauth_token", json.dumps(client.token))
