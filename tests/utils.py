@@ -89,7 +89,7 @@ class InMemoryKeyring(keyring.backend.KeyringBackend):
     def __init__(self, passwords: dict[tuple[str, str], str]) -> None:
         self.passwords = passwords
 
-    def priority(self) -> int:
+    def priority(self) -> int:  # pragma: no cover
         return 1
 
     def set_password(self, servicename: str, username: str, password: str) -> None:
