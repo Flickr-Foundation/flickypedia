@@ -6,10 +6,10 @@ from flickr_photos_api import SinglePhoto
 from flickypedia.apis.wikimedia import WikimediaApi
 from flickypedia.duplicates import find_duplicates
 from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
-from flickypedia.uploadr.uploads import upload_single_image
+from flickypedia.uploadr.uploads import upload_single_photo
 
 
-def test_upload_single_image(app: Flask, wikimedia_api: WikimediaApi) -> None:
+def test_upload_single_photo(app: Flask, wikimedia_api: WikimediaApi) -> None:
     before_duplicates = find_duplicates(flickr_photo_ids=["53268016608"])
     assert before_duplicates == {}
 
@@ -52,7 +52,7 @@ def test_upload_single_image(app: Flask, wikimedia_api: WikimediaApi) -> None:
         "location": None,
     }
 
-    upload_single_image(
+    upload_single_photo(
         wikimedia_api,
         request={
             "photo": photo,
