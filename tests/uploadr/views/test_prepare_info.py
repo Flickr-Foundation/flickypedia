@@ -120,6 +120,26 @@ def test_blocks_uploads_with_a_too_long_caption(
     assert resp.status_code == 200
 
 
+def test_creates_upload_task_for_successful_form_post(logged_in_client: FlaskClient, app: Flask, vcr_cassette: str) -> None:
+    get_photos_data = get_typed_fixture(
+        path="flickr_api/single_photo-32812033543.json", model=SinglePhotoData
+    )
+
+    cache_id = save_cached_photos_data(get_photos_data)
+
+    resp = logged_in_client.post(
+        f"/prepare_info?selected_photo_ids=32812033543&cache_id={cache_id}",
+        data={
+            "language": "en",
+            "photo_32812033543-title": "A photo with a reasonable title",
+            "photo_32812033543-short_caption": "A photo with an appropriate-length caption",
+            "photo_32812033543-categories": "",
+        },
+    )
+
+    assert resp.status_code == 302
+
+
 @pytest.mark.parametrize(
     ["original", "truncated"],
     [
