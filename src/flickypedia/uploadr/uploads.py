@@ -96,7 +96,7 @@ class PhotoUploadQueue(AbstractFilesystemTaskQueue[UploadBatch, UploadBatchResul
             self.record_task_event(task, event=f"Uploading photo {photo_id}")
 
             try:
-                upload_result = upload_single_image(api, upload_request)
+                upload_result = self.upload_single_photo(api, upload_request)
             except Exception as exc:
                 task["task_output"][photo_id] = {
                     "state": "failed",
@@ -113,6 +113,13 @@ class PhotoUploadQueue(AbstractFilesystemTaskQueue[UploadBatch, UploadBatchResul
                 task,
                 event=f"Finished photo {photo_id} ({task['task_output'][photo_id]['state']})",
             )
+
+    def upload_single_photo(
+        self, api: WikimediaApi, request: UploadRequest
+    ) -> SuccessfulUpload:
+        # This is a thin shim around the ``upload_single_photo`` function
+        # that allows us to mock it for testing.
+        return upload_single_photo(api, request)
 
 
 def begin_upload(upload_requests: list[UploadRequest]) -> str:
@@ -147,7 +154,7 @@ def begin_upload(upload_requests: list[UploadRequest]) -> str:
     return upload_id
 
 
-def upload_single_image(api: WikimediaApi, request: UploadRequest) -> SuccessfulUpload:
+def upload_single_photo(api: WikimediaApi, request: UploadRequest) -> SuccessfulUpload:
     """
     Upload a photo from Flickr to Wikimedia Commons.
 
