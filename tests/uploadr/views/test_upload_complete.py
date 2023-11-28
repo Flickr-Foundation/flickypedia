@@ -6,3 +6,12 @@ def test_upload_complete(logged_in_client: FlaskClient, queue_dir: None) -> None
 
     assert resp.status_code == 200
     assert b"Upload complete!" in resp.data
+
+
+def test_upload_complete_if_upload_filaed(
+    logged_in_client: FlaskClient, queue_dir: None
+) -> None:
+    resp = logged_in_client.get("/upload_complete/a23be662-4f3f-41fa-8f86-ac21ddb50e58")
+
+    assert resp.status_code == 200
+    assert b"Upload failed!" in resp.data
