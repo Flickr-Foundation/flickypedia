@@ -132,8 +132,12 @@ def order_language_list(query: str, results: dict[str, str]) -> list[LanguageMat
 
     assert len(has_label_match + no_label_match) == len(matching_languages)
 
-    has_label_match.sort(key=lambda m: LANGUAGE_FREQUENCIES.get(m["id"], 0), reverse=True)
-    no_label_match.sort(key=lambda m: LANGUAGE_FREQUENCIES.get(m["id"], 0), reverse=True)
+    has_label_match.sort(
+        key=lambda m: LANGUAGE_FREQUENCIES.get(m["id"], 0), reverse=True
+    )
+    no_label_match.sort(
+        key=lambda m: LANGUAGE_FREQUENCIES.get(m["id"], 0), reverse=True
+    )
 
     return has_label_match + no_label_match
 
