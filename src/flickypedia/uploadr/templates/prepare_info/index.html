@@ -92,9 +92,7 @@
 
           {% include "prepare_info/flickr_photo_info.html" %}
 
-          {% with default_categories = field.label.text.default_categories %}
-            {% include "prepare_info/wiki_fields_form.html" %}
-          {% endwith %}
+          {% include "prepare_info/wiki_fields_form.html" %}
 
           <details class="sdc">
             <summary>More details</summary>
