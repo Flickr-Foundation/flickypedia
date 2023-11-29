@@ -13,7 +13,7 @@ def test_privacy_policy_links_to_logged_in_users_uploads(
     resp = logged_in_client.get("/about/")
 
     assert (
-        b'<a href="https://commons.wikimedia.org/w/index.php?title=Special:ListFiles/example&ilshowall=1">your public upload history</a>'
+        b'<a href="https://commons.wikimedia.org/w/index.php?title=Special:ListFiles/FlickypediaTestingUser&ilshowall=1">your public upload history</a>'
         in resp.data
     )
 
