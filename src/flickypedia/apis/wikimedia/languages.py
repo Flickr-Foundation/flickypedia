@@ -116,19 +116,12 @@ def order_language_list(query: str, results: dict[str, str]) -> list[LanguageMat
     #
     # This gives priority to people typing a language in its native name,
     # and should make the results somewhat explicable.
-    # fmt: off
     has_label_match = [
-        m
-        for m in matching_languages
-        if query.lower() in m["label"].lower()
+        m for m in matching_languages if query.lower() in m["label"].lower()
     ]
-
     no_label_match = [
-        m
-        for m in matching_languages
-        if query.lower() not in m["label"].lower()
+        m for m in matching_languages if query.lower() not in m["label"].lower()
     ]
-    # fmt: on
 
     assert len(has_label_match + no_label_match) == len(matching_languages)
 
