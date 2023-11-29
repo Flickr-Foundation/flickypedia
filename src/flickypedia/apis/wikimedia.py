@@ -580,7 +580,7 @@ class WikimediaApi:
 
         this_page = list(resp["query"]["pages"].values())[0]
 
-        # The data abotu the individual page is in turn wrapped in
+        # The data about the individual page is in turn wrapped in
         # a response like:
         #
         #     {'ns': 6,
