@@ -165,7 +165,9 @@ def upload_single_photo(api: WikimediaApi, request: UploadRequest) -> Successful
     -   Adding the structured data to the photo
 
     """
-    wikitext = create_wikitext(license_id=request["photo"]["license"]["id"])
+    wikitext = create_wikitext(
+        photo=request["photo"], wikimedia_user_name=current_user.name
+    )
 
     original_size = size_at(request["photo"]["sizes"], desired_size="Original")
 

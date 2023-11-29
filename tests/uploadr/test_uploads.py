@@ -1,6 +1,7 @@
 import datetime
 
 from flask import Flask
+from flask.testing import FlaskClient
 from flickr_photos_api import SinglePhoto
 
 from flickypedia.apis.wikimedia import WikimediaApi
@@ -9,7 +10,9 @@ from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
 from flickypedia.uploadr.uploads import upload_single_photo
 
 
-def test_upload_single_photo(app: Flask, wikimedia_api: WikimediaApi) -> None:
+def test_upload_single_photo(
+    logged_in_client: FlaskClient, app: Flask, wikimedia_api: WikimediaApi
+) -> None:
     before_duplicates = find_duplicates(flickr_photo_ids=["53268016608"])
     assert before_duplicates == {}
 
