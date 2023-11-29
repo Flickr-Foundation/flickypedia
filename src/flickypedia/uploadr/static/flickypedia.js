@@ -336,8 +336,6 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm) {
   }
 
   inputElement.addEventListener("keydown", function(event) {
-    console.log(event.key);
-
     if (event.key === "ArrowDown") {
       currentFocus++;
       updateFocusedItem();
@@ -346,7 +344,6 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm) {
       updateFocusedItem();
     } else if (event.key === "Enter") {
       if (currentFocus > -1) {
-
         inputElement.value =
           autocompleteContainer
             .querySelector(".autocomplete-items")
