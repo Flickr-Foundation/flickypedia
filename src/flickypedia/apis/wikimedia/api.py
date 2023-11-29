@@ -10,7 +10,7 @@ See https://api.wikimedia.org/wiki/Authentication
 
 import json
 import re
-from typing import Any, Literal, TypedDict
+from typing import Any
 from xml.etree import ElementTree as ET
 
 import httpx
