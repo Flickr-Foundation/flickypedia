@@ -10,37 +10,21 @@ See https://api.wikimedia.org/wiki/Authentication
 
 import json
 import re
-from typing import Any, Literal, TypedDict
+from typing import Any
 from xml.etree import ElementTree as ET
 
 import httpx
 
 from flickypedia.utils import validate_typeddict
 from flickypedia.apis.structured_data import ExistingClaims, NewClaims
-
-
-class UserInfo(TypedDict):
-    id: str
-    name: str
-
-
-class ShortCaption(TypedDict):
-    language: str
-    text: str
-
-
-class TitleValidationResult:
-    Ok = TypedDict("Ok", {"result": Literal["ok"]})
-    Failed = TypedDict(
-        "Failed",
-        {
-            "result": Literal["blacklisted", "duplicate", "invalid", "too_long"],
-            "text": str,
-        },
-    )
-
-
-TitleValidation = TitleValidationResult.Ok | TitleValidationResult.Failed
+from .exceptions import (
+    WikimediaApiException,
+    UnknownWikimediaApiException,
+    InvalidAccessTokenException,
+    DuplicateFilenameUploadException,
+    DuplicatePhotoUploadException,
+)
+from ._types import UserInfo, ShortCaption, TitleValidation
 
 
 class WikimediaApi:
@@ -203,6 +187,8 @@ class WikimediaApi:
         See https://www.wikidata.org/w/api.php?modules=wbsetlabel&action=help
 
         """
+        assert not filename.startswith("File:")
+
         resp = self._post(
             data={
                 "action": "wbsetlabel",
@@ -578,7 +564,7 @@ class WikimediaApi:
 
         this_page = list(resp["query"]["pages"].values())[0]
 
-        # The data abotu the individual page is in turn wrapped in
+        # The data about the individual page is in turn wrapped in
         # a response like:
         #
         #     {'ns': 6,
@@ -625,50 +611,3 @@ class WikimediaApi:
                     "appendtext": new_text,
                 }
             )
-
-
-class WikimediaApiException(Exception):
-    pass
-
-
-class UnknownWikimediaApiException(WikimediaApiException):
-    def __init__(self, resp: httpx.Response) -> None:
-        error_info = resp.json()["error"]
-
-        self.code = error_info.get("code")
-        self.error_info = error_info
-        super().__init__(error_info["info"])
-
-
-class InvalidAccessTokenException(WikimediaApiException):
-    """
-    Thrown when we have invalid access credentials.
-    """
-
-    pass
-
-
-class DuplicateFilenameUploadException(WikimediaApiException):
-    """
-    Thrown when somebody tries to upload a photo which has the same
-    file as a file already on Wikimedia Commons.
-    """
-
-    def __init__(self, filename: str) -> None:
-        self.filename = filename
-        super().__init__(
-            f"There is already a photo on Wikimedia Commons called {filename}"
-        )
-
-
-class DuplicatePhotoUploadException(WikimediaApiException):
-    """
-    Thrown when somebody tries to upload a photo which is identical to
-    an existing photo.
-    """
-
-    def __init__(self, filename: str) -> None:
-        self.filename = filename
-        super().__init__(
-            f"There is already an identical photo on Wikimedia Commons ({filename})"
-        )
