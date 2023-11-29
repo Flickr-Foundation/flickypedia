@@ -14,10 +14,10 @@ def test_order_language_list() -> None:
         "str": "estrechos — salish de los estrechos",
     }
 
-    language_list = order_language_list(query="e", results=results)
+    language_list = order_language_list(query="es", results=results)
 
     assert language_list == [
-        {"id": "es", "label": "español", "match_text": "es – spanish"},
+        {"id": "es", "label": "español", "match_text": None},
         {"id": "eo", "label": "Esperanto", "match_text": None},
         {"id": "es-formal", "label": "español (formal)", "match_text": None},
         {"id": "sk", "label": "slovenčina", "match_text": "esiruwaku"},
