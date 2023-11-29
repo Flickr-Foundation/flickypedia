@@ -18,7 +18,7 @@ def test_order_language_list() -> None:
 
     assert language_list == [
         {"id": "es", "label": "español", "match_text": "es – spanish"},
-        {"id": "eo", "label": "Esperanto", "match_text": "esperanto"},
+        {"id": "eo", "label": "Esperanto", "match_text": None},
         {"id": "es-formal", "label": "español (formal)", "match_text": None},
         {"id": "sk", "label": "slovenčina", "match_text": "esiruwaku"},
         {"id": "sl", "label": "slovenščina", "match_text": "esiruwenu"},

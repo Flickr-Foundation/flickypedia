@@ -84,7 +84,7 @@ def order_language_list(query: str, results: dict[str, str]) -> list[LanguageMat
         except KeyError:
             continue
 
-        if match_text == label:
+        if match_text.lower() == label.lower():
             matching_languages.append(
                 {"id": lang_id, "label": label, "match_text": None}
             )
