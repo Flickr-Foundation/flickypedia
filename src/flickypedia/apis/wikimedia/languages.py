@@ -1,6 +1,10 @@
 """
-This file contains a lsit of languages and labels which can be set
+This file contains a list of languages and labels which can be set
 on captions for files on Wikimedia Commons.
+
+There are two variables in this file.
+
+== SUPPORTED_LANGUAGES ==
 
 I got this list by opening the language picker in my browser, and running
 the following JS in my browser dev tools:
@@ -14,6 +18,9 @@ the following JS in my browser dev tools:
         });
 
     console.log(JSON.stringify(Array.from(new Set(languages))));
+
+Having this list allows us to build a UI similar to the one on
+Wikimedia Commons.
 
 We use the wbsetlabel API to set file captions, and its documentation has
 a list of supported languages [1], but this list doesn't match what's
@@ -32,7 +39,111 @@ API to create a caption with language ``bqz``, that same ID shows in the UI.
 [2]: https://en.wikipedia.org/wiki/Manenguba_languages
 [3]: https://iso639-3.sil.org/code/bqz
 
+== LANGUAGE_FREQUENCIES ==
+
+This is a tally of the languages used in a sample of ~45k captions, taken
+from a Wikimedia Commons snapshot.  It's not meant to be wholly indicative,
+more to give us a way to loosely order language results.
+
 """
+
+
+from typing import TypedDict
+
+
+class LanguageMatch(TypedDict):
+    id: str
+    label: str
+    match_text: str | None
+
+
+def order_language_list(query: str, results: dict[str, str]) -> list[LanguageMatch]:
+    """
+    Given a list of matching languages returned from the Wikimedia
+    ``languagesearch`` API, sort them into an ordered list of results
+    to show in a language picker.
+
+    This API allows us to search by the different labels for a language,
+    e.g. you could search "español" or "spanish" and get the same result.
+
+    When a user types in a query, we want to show them a list of languages
+    which is useful, and where it's somewhat obvious to them why that
+    list has been selected.
+    """
+    matching_languages: list[LanguageMatch] = []
+
+    # First we filter for languages which can be used for captions on
+    # WMC files.
+    #
+    # e.g. the languagesearch API can return an "en-simple" language,
+    # which is "Simple English", but you can't create captions in that
+    # language, so we don't want it here.
+    for lang_id, match_text in results.items():
+        try:
+            label = SUPPORTED_LANGUAGES[lang_id]
+        except KeyError:
+            continue
+
+        if match_text == label:
+            matching_languages.append(
+                {"id": lang_id, "label": label, "match_text": None}
+            )
+        else:
+            matching_languages.append(
+                {"id": lang_id, "label": label, "match_text": match_text}
+            )
+
+    # Next, divide the languages into three buckets:
+    #
+    #   1.  When the label starts with the query text (a "prefix match").
+    #       e.g. "esperanto" starts with the query "es".
+    #
+    #   2.  When the label contains the query, but not at the beginning
+    #       of the label.
+    #       e.g. "eesti" contains the query "es"
+    #
+    #   3.  Everything else -- this usually means the query is somewhere
+    #       in the match text.
+    #
+    #       Note that the languagesearch API will usually pull out key words
+    #       at the beginning, e.g. "esiya — èdè esiya" for a query "es".
+    #       I haven't seen examples where there isn't a query at the beginning
+    #       of the match text.
+    #
+    # Then we sort by frequency within these buckets, so most widely-used
+    # languages float to the top.
+    #
+    # This gives priority to people typing a language in its native name,
+    # and should make the results somewhat explicable.
+    # fmt: off
+    bucket_1 = [
+        m
+        for m in matching_languages
+        if m["label"].lower().startswith(query.lower())
+    ]
+
+    bucket_2 = [
+        m
+        for m in matching_languages
+        if query.lower() in m["label"].lower()
+        and not m["label"].lower().startswith(query.lower())
+    ]
+
+    bucket_3 = [
+        m
+        for m in matching_languages
+        if query.lower() not in m["label"].lower()
+    ]
+    # fmt: on
+
+    assert len(bucket_1 + bucket_2 + bucket_3) == len(matching_languages)
+
+    bucket_1.sort(key=lambda m: LANGUAGE_FREQUENCIES.get(m["id"], 0), reverse=True)
+    bucket_2.sort(key=lambda m: LANGUAGE_FREQUENCIES.get(m["id"], 0), reverse=True)
+    bucket_3.sort(key=lambda m: LANGUAGE_FREQUENCIES.get(m["id"], 0), reverse=True)
+
+    return bucket_1 + bucket_2 + bucket_3
+
 
 SUPPORTED_LANGUAGES = dict(
     [
@@ -674,3 +785,263 @@ SUPPORTED_LANGUAGES = dict(
         ["ban-bali", "ᬩᬲᬩᬮᬶ"],
     ]
 )
+
+LANGUAGE_FREQUENCIES = dict(
+    [
+        ("en", 20354),
+        ("de", 6585),
+        ("fr", 2726),
+        ("ru", 1741),
+        ("es", 1421),
+        ("nl", 1087),
+        ("it", 1036),
+        ("ar", 849),
+        ("pl", 619),
+        ("fa", 465),
+        ("tr", 451),
+        ("pt", 432),
+        ("sv", 349),
+        ("uk", 348),
+        ("ja", 330),
+        ("he", 265),
+        ("eo", 250),
+        ("cs", 245),
+        ("en-gb", 235),
+        ("id", 227),
+        ("hi", 221),
+        ("ca", 190),
+        ("bn", 175),
+        ("vi", 167),
+        ("hu", 152),
+        ("ko", 127),
+        ("zh-hans", 103),
+        ("pt-br", 96),
+        ("ro", 92),
+        ("el", 88),
+        ("fi", 87),
+        ("zh-hant", 85),
+        ("gl", 84),
+        ("nb", 77),
+        ("ta", 75),
+        ("zh", 70),
+        ("da", 67),
+        ("sr", 66),
+        ("ig", 62),
+        ("az", 61),
+        ("ml", 57),
+        ("sk", 48),
+        ("te", 46),
+        ("my", 46),
+        ("ur", 44),
+        ("be", 41),
+        ("th", 39),
+        ("es-formal", 38),
+        ("la", 37),
+        ("mr", 36),
+        ("hsb", 36),
+        ("uz", 34),
+        ("eu", 32),
+        ("tl", 29),
+        ("simple", 28),
+        ("zh-tw", 27),
+        ("bg", 26),
+        ("lt", 25),
+        ("es-419", 25),
+        ("af", 25),
+        ("gu", 25),
+        ("ms", 24),
+        ("ka", 23),
+        ("si", 23),
+        ("yi", 23),
+        ("hr", 22),
+        ("kn", 21),
+        ("mk", 21),
+        ("de-at", 21),
+        ("tg", 20),
+        ("zh-cn", 19),
+        ("tt", 19),
+        ("en-us", 19),
+        ("kk", 17),
+        ("ne", 16),
+        ("nqo", 16),
+        ("sw", 16),
+        ("sl", 16),
+        ("et", 16),
+        ("de-ch", 16),
+        ("ku", 15),
+        ("am", 15),
+        ("ban", 15),
+        ("ha", 15),
+        ("sq", 14),
+        ("ckb", 14),
+        ("de-formal", 13),
+        ("hy", 13),
+        ("lv", 13),
+        ("nn", 12),
+        ("ga", 12),
+        ("szy", 12),
+        ("sd", 12),
+        ("as", 11),
+        ("or", 11),
+        ("pa", 11),
+        ("ti", 10),
+        ("be-tarask", 10),
+        ("oc", 9),
+        ("yo", 9),
+        ("bs", 9),
+        ("frc", 9),
+        ("br", 8),
+        ("nan", 8),
+        ("zh-hk", 7),
+        ("cy", 7),
+        ("zh-yue", 7),
+        ("als", 7),
+        ("tzm", 7),
+        ("bar", 7),
+        ("lb", 7),
+        ("zgh", 6),
+        ("ug", 6),
+        ("rsk", 6),
+        ("sa", 6),
+        ("jv", 6),
+        ("zu", 6),
+        ("zh-my", 5),
+        ("nl-informal", 5),
+        ("hyw", 5),
+        ("mn", 5),
+        ("no", 5),
+        ("ary", 5),
+        ("rue", 5),
+        ("wa", 5),
+        ("en-ca", 4),
+        ("vec", 4),
+        ("shi-tfng", 4),
+        ("arz", 4),
+        ("pdc", 4),
+        ("yue", 4),
+        ("ks", 3),
+        ("anp", 3),
+        ("gsw", 3),
+        ("su", 3),
+        ("km", 3),
+        ("is", 3),
+        ("kw", 3),
+        ("mt", 3),
+        ("arq", 3),
+        ("ku-arab", 3),
+        ("ky", 3),
+        ("nds", 3),
+        ("sn", 3),
+        ("ff", 3),
+        ("io", 3),
+        ("ast", 3),
+        ("li", 3),
+        ("syl", 3),
+        ("pnb", 3),
+        ("gpe", 3),
+        ("aa", 3),
+        ("ps", 3),
+        ("sc", 2),
+        ("zh-sg", 2),
+        ("rmy", 2),
+        ("an", 2),
+        ("tcy", 2),
+        ("cv", 2),
+        ("tk", 2),
+        ("hu-formal", 2),
+        ("ht", 2),
+        ("sh", 2),
+        ("sah", 2),
+        ("ami", 2),
+        ("ia", 2),
+        ("ace", 2),
+        ("aln", 2),
+        ("bug", 2),
+        ("frp", 2),
+        ("sdc", 2),
+        ("gn", 2),
+        ("hif", 2),
+        ("lo", 2),
+        ("vls", 2),
+        ("aeb", 2),
+        ("ug-arab", 2),
+        ("mni", 2),
+        ("zh-mo", 1),
+        ("tg-latn", 1),
+        ("hak", 1),
+        ("ve", 1),
+        ("xh", 1),
+        ("lg", 1),
+        ("haw", 1),
+        ("din", 1),
+        ("ny", 1),
+        ("lld", 1),
+        ("nap", 1),
+        ("xmf", 1),
+        ("gag", 1),
+        ("se-no", 1),
+        ("be-x-old", 1),
+        ("krc", 1),
+        ("se-se", 1),
+        ("cu", 1),
+        ("se-fi", 1),
+        ("cbk-zam", 1),
+        ("dtp", 1),
+        ("skr-arab", 1),
+        ("sm", 1),
+        ("new", 1),
+        ("ku-latn", 1),
+        ("tok", 1),
+        ("bbc-latn", 1),
+        ("ota", 1),
+        ("fy", 1),
+        ("sco", 1),
+        ("ak", 1),
+        ("ay", 1),
+        ("ce", 1),
+        ("szl", 1),
+        ("tly-cyrl", 1),
+        ("co", 1),
+        ("ug-latn", 1),
+        ("azb", 1),
+        ("ase", 1),
+        ("shn", 1),
+        ("ms-arab", 1),
+        ("roa-tara", 1),
+        ("so", 1),
+        ("inh", 1),
+        ("mo", 1),
+        ("ba", 1),
+        ("udm", 1),
+        ("grc", 1),
+        ("bew", 1),
+        ("avk", 1),
+        ("lij", 1),
+        ("ie", 1),
+        ("lzh", 1),
+        ("mzn", 1),
+        ("glk", 1),
+        ("scn", 1),
+        ("nds-nl", 1),
+        ("ab", 1),
+        ("jbo", 1),
+        ("myv", 1),
+        ("sat", 1),
+        ("tn", 1),
+        ("lfn", 1),
+        ("sr-ec", 1),
+        ("tly", 1),
+        ("shi", 1),
+        ("lad", 1),
+        ("rwr", 1),
+        ("sr-el", 1),
+        ("gan", 1),
+        ("mnw", 1),
+        ("ryu", 1),
+        ("pam", 1),
+        ("bm", 1),
+        ("kab", 1),
+        ("bho", 1),
+    ]
+)
+print(sum(LANGUAGE_FREQUENCIES.values()))

@@ -1,0 +1,32 @@
+from flickypedia.apis.wikimedia.languages import order_language_list
+
+
+def test_order_language_list() -> None:
+    results = {
+        "es": "es – spanish",
+        "eo": "esperanto",
+        "sco": "escocès",
+        "es-formal": "español (formal)",
+        "sk": "esiruwaku",
+        "sl": "esiruwenu",
+        "myv": "esiya — èdè esiya",
+        "de-ch": "esiyi-high — isijamani esiyi-high swiss",
+        "str":"estrechos — salish de los estrechos",
+    }
+
+    language_list = order_language_list(query="e", results=results)
+
+    assert language_list == [
+        {"id": "es", "label": "español", "match_text": "es – spanish"},
+        {"id": "eo", "label": "Esperanto", "match_text": "esperanto"},
+        {"id": "es-formal", "label": "español (formal)", "match_text": None},
+        {"id": "sk", "label": "slovenčina", "match_text": "esiruwaku"},
+        {"id": "sl", "label": "slovenščina", "match_text": "esiruwenu"},
+        {
+            "id": "de-ch",
+            "label": "Schweizer Hochdeutsch",
+            "match_text": "esiyi-high — isijamani esiyi-high swiss",
+        },
+        {"id": "sco", "label": "Scots", "match_text": "escocès"},
+        {"id": "myv", "label": "эрзянь", "match_text": "esiya — èdè esiya"},
+    ]
