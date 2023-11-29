@@ -551,6 +551,14 @@ class WikimediaApi:
             "slovenčina [esiruwaku]"
             "slovenščina [esiruwenu]"
 
+        This API is aware of many labels for languages, so you can can
+        search by alternative names for the same language:
+
+            >>> find_matching_languages(query="spani")
+            "spanish / español"
+            "spanish (formal address) / español (formal)"
+            "spanishgbe (latin america) / español de América Latina"
+
         """
         # I found this API action by observing the network traffic in
         # the Upload Wizard when you search for languages while editing
