@@ -377,3 +377,7 @@ def test_find_matching_languages(wikimedia_api: WikimediaApi) -> None:
     ]
 
     assert actual == expected
+
+
+def test_handles_no_matching_languages(wikimedia_api: WikimediaApi) -> None:
+    assert wikimedia_api.find_matching_languages(query="ymr") == []

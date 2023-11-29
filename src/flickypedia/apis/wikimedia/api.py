@@ -14,6 +14,7 @@ from typing import Any
 from xml.etree import ElementTree as ET
 
 import httpx
+from flickr_photos_api.utils import find_required_elem
 
 from flickypedia.utils import validate_typeddict
 from flickypedia.apis.structured_data import ExistingClaims, NewClaims
@@ -556,15 +557,27 @@ class WikimediaApi:
         # the file caption.
         #
         # See https://www.mediawiki.org/wiki/API:Languagesearch
-        resp = self._get(
+        resp = self.client.request(
+            "GET",
+            url="https://commons.wikimedia.org/w/api.php",
             params={
                 "action": "languagesearch",
-                "formatversion": "2",
+                "format": "xml",
                 "search": query,
-            }
+            },
         )
 
-        return order_language_list(query=query, results=resp["languagesearch"])
+        xml = ET.fromstring(resp.text)
+
+        # The response is a block of XML of the form:
+        #
+        #     <api>
+        #       <languagesearch gu="gujarati" gaa="ga" gcr="guianan creole" …/>
+        #     </api>
+        #
+        languagesearch = find_required_elem(xml, path=".//languagesearch")
+
+        return order_language_list(query=query, results=languagesearch.attrib)
 
     def get_existing_wikitext(self, filename: str) -> str:
         """
