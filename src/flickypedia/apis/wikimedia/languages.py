@@ -1044,4 +1044,3 @@ LANGUAGE_FREQUENCIES = dict(
         ("bho", 1),
     ]
 )
-print(sum(LANGUAGE_FREQUENCIES.values()))
