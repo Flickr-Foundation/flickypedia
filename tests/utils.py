@@ -45,10 +45,20 @@ def minify(text: str | bytes) -> str:
     return text
 
 
-def store_user(token: OAuth2Token) -> WikimediaUserSession:
+def store_user(token: OAuth2Token | None = None) -> WikimediaUserSession:
     """
     Create a user and store them in the database.
     """
+    oauth2_token = token or OAuth2Token(
+        {
+            "token_type": "Bearer",
+            "expires_in": 14400,
+            "access_token": "[ACCESS_TOKEN...sqfLY]",
+            "refresh_token": "[REFRESH_TOKEN...8f34f]",
+            "expires_at": 1699322615,
+        }
+    )
+
     key = Fernet.generate_key()
 
     session[SESSION_ENCRYPTION_KEY] = key
@@ -57,7 +67,7 @@ def store_user(token: OAuth2Token) -> WikimediaUserSession:
         id="example",
         userid="-1",
         name="example",
-        encrypted_token=encrypt_string(key, plaintext=json.dumps(token)),
+        encrypted_token=encrypt_string(key, plaintext=json.dumps(oauth2_token)),
         first_login=datetime.datetime.now(),
     )
     user_db.session.add(user)

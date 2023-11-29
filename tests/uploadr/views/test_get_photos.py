@@ -4,7 +4,7 @@ from flask.testing import FlaskClient
 from flask_login import FlaskLoginClient
 
 from flickypedia.uploadr import create_app
-from flickypedia.uploadr.auth import WikimediaUserSession
+from utils import store_user
 
 
 def test_renders_basic_page(logged_in_client: FlaskClient) -> None:
@@ -66,10 +66,10 @@ def test_preserves_photo_if_csrf_bad(tmp_path: pathlib.Path) -> None:
 
     app.test_client_class = FlaskLoginClient
 
-    user = WikimediaUserSession(id=-1, userid=-1, name="example")
+    with app.test_request_context():
+        with app.test_client() as client:
+            store_user()
 
-    with app.app_context():
-        with app.test_client(user=user) as client:
             resp = client.post(
                 "/get_photos",
                 data={
