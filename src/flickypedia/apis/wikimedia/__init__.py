@@ -6,6 +6,7 @@ from .exceptions import (
     DuplicateFilenameUploadException,
     DuplicatePhotoUploadException,
 )
+from .languages import top_n_languages
 from ._types import UserInfo, ShortCaption, TitleValidation
 
 
@@ -19,4 +20,5 @@ __all__ = [
     "UserInfo",
     "WikimediaApi",
     "WikimediaApiException",
+    "top_n_languages",
 ]

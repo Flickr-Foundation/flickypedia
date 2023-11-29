@@ -27,6 +27,7 @@ from .views import (
     about,
     bookmarklet,
     find_matching_categories_api,
+    find_matching_languages_api,
     get_photos,
     get_upload_status,
     homepage,
@@ -79,6 +80,9 @@ def create_app(
     app.add_url_rule("/api/validate_title", view_func=validate_title_api)
     app.add_url_rule(
         "/api/find_matching_categories", view_func=find_matching_categories_api
+    )
+    app.add_url_rule(
+        "/api/find_matching_languages", view_func=find_matching_languages_api
     )
 
     app.jinja_env.filters["html_unescape"] = html.unescape
