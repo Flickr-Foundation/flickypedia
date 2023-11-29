@@ -24,6 +24,39 @@ form#prepare_info {
     font-weight: normal;
   }
 
+  .hidden {
+    opacity: 0.5;
+    background: #ccc;
+  }
+
+  fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .no_js_language {
+    p {
+      color: $grey;
+      font-size: small;
+      margin-top: 5px;
+      margin-bottom: 0;
+    }
+  }
+
+  .js_language {
+    display: none;
+
+    /* This ensures the input field fills the page */
+    .autocomplete {
+      width: 100%;
+    }
+
+    .secondary {
+      color: $grey;
+    }
+  }
+
   /* Styles for the photo preview area.
     *
     * If there's more than one photo on the page, we show a 1 of N indicator
@@ -212,13 +245,14 @@ form#prepare_info {
         }
       }
     }
+  }
 
-    .autocomplete {
-      /*the container must be positioned relative:*/
-      position: relative;
-      display: inline-block;
-    }
-      .autocomplete-items {
+  .autocomplete {
+    /*the container must be positioned relative:*/
+    position: relative;
+    display: inline-block;
+
+    .autocomplete-items {
       position: absolute;
       border: 1px solid #d4d4d4;
       border-bottom: none;
@@ -228,17 +262,21 @@ form#prepare_info {
       top: 100%;
       left:  0;
       right: 0;
+      box-shadow: 0px 3px 5px -2px $grey;
+
+      div {
+        padding: 10px;
+        cursor: pointer;
+        background-color: #fff;
+        border-bottom: 1px solid #d4d4d4;
+      }
+
+      div:hover {
+        /*when hovering an item:*/
+        background-color: #e9e9e9;
+      }
     }
-    .autocomplete-items div {
-      padding: 10px;
-      cursor: pointer;
-      background-color: #fff;
-      border-bottom: 1px solid #d4d4d4;
-    }
-    .autocomplete-items div:hover {
-      /*when hovering an item:*/
-      background-color: #e9e9e9;
-    }
+
     .autocomplete-focused {
       /*when navigating through the items using the arrow keys:*/
       background-color: $pink !important;

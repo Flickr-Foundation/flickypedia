@@ -34,6 +34,8 @@
         .forEach(categoriesElement =>
            addInteractiveCategoriesTo(categoriesElement, parentForm, apiUrls["find_matching_categories"])
         );
+
+      addInteractiveLanguages();
     }
   </script>
 {% endblock %}
@@ -54,7 +56,18 @@
       <span class="next_step">First</span>, please set the language you’ll be using to write your caption{% if photo_fields|length > 1 %}s{% endif %}:
     </h3>
 
-    {{ prepare_info_form.language() }}
+    {{ prepare_info_form.js_enabled(style="display: none") }}
+
+    <fieldset class="no_js_language">
+      {{ prepare_info_form.no_js_language(required="") }}
+      <p>
+        For a full list of languages, please enable JavaScript.
+      </p>
+    </fieldset>
+
+    <fieldset class="js_language">
+      {{ prepare_info_form.js_language(style="display: none") }}
+    </fieldset>
 
     <h3>
       <span class="next_step">Next</span>, please add
