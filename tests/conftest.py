@@ -17,7 +17,6 @@ import vcr
 from flickypedia.uploadr import create_app
 from flickypedia.uploadr.auth import SESSION_ENCRYPTION_KEY
 from flickypedia.apis.wikimedia import WikimediaApi
-from flickypedia.uploadr.auth import WikimediaUserSession
 from utils import store_user
 
 
@@ -169,10 +168,6 @@ def logged_in_client(app: Flask) -> Generator[FlaskClient, None, None]:
     """
     app.test_client_class = FlaskLoginClient
 
-    user = WikimediaUserSession(
-        id="-1", userid="-1", name="Example", encrypted_token=b"<sekrit>"
-    )
-
     token = OAuth2Token(
         {
             "token_type": "Bearer",
@@ -187,7 +182,7 @@ def logged_in_client(app: Flask) -> Generator[FlaskClient, None, None]:
     # the test client context.  This took me a while to figure
     # out; see https://stackoverflow.com/a/69961887/1558022
     with app.test_request_context():
-        with app.test_client(user=user) as client:
+        with app.test_client() as client:
             user = store_user(token=token)
 
             assert SESSION_ENCRYPTION_KEY in session
