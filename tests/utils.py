@@ -48,6 +48,20 @@ def minify(text: str | bytes) -> str:
 def store_user(token: OAuth2Token | None = None) -> WikimediaUserSession:
     """
     Create a user and store them in the database.
+
+    This simulates a "real" login and is the preferred way to create
+    logged-in users during tests – once you do this, the rest of
+    the app code should treat this just like a real user.
+
+    This minimises the need to include this sort of conditional in
+    our auth code:
+
+        if app.config["TESTING"]:
+            # do thing which bypasses regular auth
+
+    which is nice, because then there's no risk of those lower-security
+    branches being inadvertently run in prod code.
+
     """
     oauth2_token = token or OAuth2Token(
         {
@@ -63,10 +77,12 @@ def store_user(token: OAuth2Token | None = None) -> WikimediaUserSession:
 
     session[SESSION_ENCRYPTION_KEY] = key
 
+    # (I haven't actually checked this, but I'm pretty sure user IDs
+    # in Wikimedia are all positive integers.)
     user = WikimediaUserSession(
-        id="example",
+        id="-1",
         userid="-1",
-        name="example",
+        name="FlickypediaTestingUser",
         encrypted_token=encrypt_string(key, plaintext=json.dumps(oauth2_token)),
         first_login=datetime.datetime.now(),
     )
