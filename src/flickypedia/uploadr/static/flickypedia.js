@@ -153,6 +153,7 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm) {
 
   const inputElement = document.createElement("input");
   inputElement.type = "text";
+  inputElement.placeholder = "Type to search for categories";
 
   autocompleteContainer.appendChild(inputElement);
   categoryInputs.appendChild(autocompleteContainer);
