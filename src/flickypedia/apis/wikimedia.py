@@ -203,6 +203,8 @@ class WikimediaApi:
         See https://www.wikidata.org/w/api.php?modules=wbsetlabel&action=help
 
         """
+        assert not filename.startswith("File:")
+
         resp = self._post(
             data={
                 "action": "wbsetlabel",
