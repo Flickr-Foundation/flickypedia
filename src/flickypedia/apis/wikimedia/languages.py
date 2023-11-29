@@ -93,56 +93,49 @@ def order_language_list(query: str, results: dict[str, str]) -> list[LanguageMat
                 {"id": lang_id, "label": label, "match_text": match_text}
             )
 
-    # Next, divide the languages into three buckets:
+    # Every language has a "canonical" label (usually how it's named in
+    # itself) and then alternative labels in other languages.
     #
-    #   1.  When the label starts with the query text (a "prefix match").
-    #       e.g. "esperanto" starts with the query "es".
+    # Two examples:
     #
-    #   2.  When the label contains the query, but not at the beginning
-    #       of the label.
-    #       e.g. "eesti" contains the query "es"
+    #   * the canonical label for Danish is "dansk", but it's also
+    #     known as "deens" (in Dutch) or "kideni" (in Swahili)
+    #   * the canonical label for German is "deutsch", but it's also
+    #     known as "allemand" (in French) or "tedesca" (in Italian)
     #
-    #   3.  Everything else -- this usually means the query is somewhere
-    #       in the match text.
+    # The Wikimedia API will search across all these fields, so that
+    # you could find Danish by searching for "dansk" or "deens".
     #
-    #       Note that the languagesearch API will usually pull out key words
-    #       at the beginning, e.g. "esiya — èdè esiya" for a query "es".
-    #       I haven't seen examples where there isn't a query at the beginning
-    #       of the match text.
+    # We want to prioritise matches in the canonical label over the
+    # alternative labels.  e.g. if you search for "de", we should
+    # boost "deutsch" over "deens".
     #
-    # Then we sort by frequency within these buckets, so most widely-used
-    # languages float to the top.
+    # After boosting for matches in the canonical label, we sort by
+    # descending frequency, so the most widely-used languages float
+    # to the top.
     #
     # This gives priority to people typing a language in its native name,
     # and should make the results somewhat explicable.
     # fmt: off
-    bucket_1 = [
-        m
-        for m in matching_languages
-        if m["label"].lower().startswith(query.lower())
-    ]
-
-    bucket_2 = [
+    has_label_match = [
         m
         for m in matching_languages
         if query.lower() in m["label"].lower()
-        and not m["label"].lower().startswith(query.lower())
     ]
 
-    bucket_3 = [
+    no_label_match = [
         m
         for m in matching_languages
         if query.lower() not in m["label"].lower()
     ]
     # fmt: on
 
-    assert len(bucket_1 + bucket_2 + bucket_3) == len(matching_languages)
+    assert len(has_label_match + no_label_match) == len(matching_languages)
 
-    bucket_1.sort(key=lambda m: LANGUAGE_FREQUENCIES.get(m["id"], 0), reverse=True)
-    bucket_2.sort(key=lambda m: LANGUAGE_FREQUENCIES.get(m["id"], 0), reverse=True)
-    bucket_3.sort(key=lambda m: LANGUAGE_FREQUENCIES.get(m["id"], 0), reverse=True)
+    has_label_match.sort(key=lambda m: LANGUAGE_FREQUENCIES.get(m["id"], 0), reverse=True)
+    no_label_match.sort(key=lambda m: LANGUAGE_FREQUENCIES.get(m["id"], 0), reverse=True)
 
-    return bucket_1 + bucket_2 + bucket_3
+    return has_label_match + no_label_match
 
 
 SUPPORTED_LANGUAGES = dict(
