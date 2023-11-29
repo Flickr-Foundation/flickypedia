@@ -276,12 +276,13 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm) {
   inputElement.addEventListener("focus", () => openAutocompleteMenu());
 
   /* When somebody switches or clicks away from the input, close the
-   * autocomplete menu -- unless they clicked on an autocomplete suggestion,
-   * in which case apply that first. */
+   * autocomplete menu -- unless they clicked on one of the suggestions
+   * in the autocomplete menu, in which case add that category first. */
   inputElement.addEventListener("blur", function(event) {
     if (event.relatedTarget !== null &&
         event.relatedTarget.classList.contains("suggestion")) {
       inputElement.value = event.relatedTarget.innerHTML;
+      addCategory();
     }
 
     closeAutocompleteMenus();
