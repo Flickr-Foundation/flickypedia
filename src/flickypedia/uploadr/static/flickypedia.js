@@ -262,6 +262,10 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm) {
    *
    * This is loosely based on code from
    * https://www.w3schools.com/howto/howto_js_autocomplete.asp
+   *
+   * The `currentFocus` variable records the index of the currently
+   * selected item in the autocomplete menu, or -1 if there's
+   * nothing selected right now.
    */
   var currentFocus = -1;
 
@@ -367,9 +371,9 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm) {
 
     for (var i = 0; i < items.length; i++) {
       if (i === currentFocus) {
-        items[i].classList.add("autocomplete-active");
+        items[i].classList.add("autocomplete-focused");
       } else {
-        items[i].classList.remove("autocomplete-active");
+        items[i].classList.remove("autocomplete-focused");
       }
     }
   }
