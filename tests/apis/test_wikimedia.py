@@ -363,3 +363,17 @@ def test_can_add_categories_to_page(wikimedia_api: WikimediaApi) -> None:
         filename="Thameslink_Class_700_in_Pride_livery.jpg"
     )
     assert updated_text == updated_text_final
+
+
+def test_find_matching_languages(wikimedia_api: WikimediaApi) -> None:
+    actual = wikimedia_api.find_matching_languages(query="des")
+    expected = [
+        {"id": "da", "label": "dansk", "match_text": "dens"},
+        {
+            "id": "ase",
+            "label": "American sign language",
+            "match_text": "des — langue des signes américaine",
+        },
+    ]
+
+    assert actual == expected

@@ -11,7 +11,7 @@ def test_order_language_list() -> None:
         "sl": "esiruwenu",
         "myv": "esiya — èdè esiya",
         "de-ch": "esiyi-high — isijamani esiyi-high swiss",
-        "str":"estrechos — salish de los estrechos",
+        "str": "estrechos — salish de los estrechos",
     }
 
     language_list = order_language_list(query="e", results=results)

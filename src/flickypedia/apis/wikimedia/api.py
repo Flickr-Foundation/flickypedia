@@ -24,6 +24,7 @@ from .exceptions import (
     DuplicateFilenameUploadException,
     DuplicatePhotoUploadException,
 )
+from .languages import LanguageMatch, order_language_list
 from ._types import UserInfo, ShortCaption, TitleValidation
 
 
@@ -533,6 +534,37 @@ class WikimediaApi:
             re.sub(r"^Category:", "", text_elem.text)  # type: ignore
             for text_elem in xml.findall(".//Text", namespaces=namespaces)
         ]
+
+    def find_matching_languages(self, query: str) -> list[LanguageMatch]:
+        """
+        Return a list of languages that might match the query.
+
+        This can be used to build an autocomplete interface for languages,
+        e.g. if the user types "es" we can suggest languages that
+        include the text "es":
+
+            >>> find_matching_languages(query="es")
+            "español"
+            "Esperanto"
+            "español (formal)"
+            "slovenčina [esiruwaku]"
+            "slovenščina [esiruwenu]"
+
+        """
+        # I found this API action by observing the network traffic in
+        # the Upload Wizard when you search for languages while editing
+        # the file caption.
+        #
+        # See https://www.mediawiki.org/wiki/API:Languagesearch
+        resp = self._get(
+            params={
+                "action": "languagesearch",
+                "formatversion": "2",
+                "search": query,
+            }
+        )
+
+        return order_language_list(query=query, results=resp["languagesearch"])
 
     def get_existing_wikitext(self, filename: str) -> str:
         """
