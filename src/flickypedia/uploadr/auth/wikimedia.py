@@ -241,27 +241,24 @@ def load_user(userid: str) -> WikimediaUserSession | None:
 
     See https://flask-login.readthedocs.io/en/latest/#flask_login.LoginManager.user_loader
     """
-    if current_app.config.get("TESTING"):
-        return WikimediaUserSession(id=-1, userid=-1, name="Example")
+    user = user_db.session.get(WikimediaUserSession, userid)
+
+    if user is None:
+        return None
+
+    # Ensure the user has a OAuth token which is still active -- either
+    # created recently enough that it's still valid, or we have a valid
+    # refresh token we can use to get a new token.
+    #
+    # If this fails for some reason, we should log the user out.
+    try:
+        user.ensure_active_token()
+    except Exception as exc:
+        print(f"Unable to ensure active token for {user}: {exc}")
+        user.delete()
+        return None
     else:
-        user = user_db.session.get(WikimediaUserSession, userid)
-
-        if user is None:
-            return None
-
-        # Ensure the user has a OAuth token which is still active -- either
-        # created recently enough that it's still valid, or we have a valid
-        # refresh token we can use to get a new token.
-        #
-        # If this fails for some reason, we should log the user out.
-        try:
-            user.ensure_active_token()
-        except Exception as exc:
-            print(f"Unable to ensure active token for {user}: {exc}")
-            user.delete()
-            return None
-        else:
-            return user
+        return user
 
 
 @login_required
