@@ -397,7 +397,7 @@ def oauth2_callback_wikimedia() -> ViewResponse:
             return redirect(url_for("homepage"))
 
         print("Unable to retrieve oauth_authorize_state from user's session")
-        abort(401)
+        abort(402)
 
     config = current_app.config["OAUTH_PROVIDERS"]["wikimedia"]
     token_client = OAuth2Client(
@@ -414,7 +414,7 @@ def oauth2_callback_wikimedia() -> ViewResponse:
         )
     except Exception as exc:
         print(f"Error exchanging authorization code for token: {exc}")
-        abort(401)
+        abort(403)
 
     # Get info about the logged in user
     wiki_client = httpx.Client(
