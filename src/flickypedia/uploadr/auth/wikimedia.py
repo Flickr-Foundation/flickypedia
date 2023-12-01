@@ -61,6 +61,7 @@ it should be accessing it via ``current_user``.
 
 import datetime
 import json
+import logging
 import textwrap
 import uuid
 
@@ -413,7 +414,7 @@ def oauth2_callback_wikimedia() -> ViewResponse:
             state=state,
         )
     except Exception as exc:
-        print(f"Error exchanging authorization code for token: {exc}")
+        logging.warning(f"Error exchanging authorization code for token: {exc}")
         abort(403)
 
     # Get info about the logged in user
