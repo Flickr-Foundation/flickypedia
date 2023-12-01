@@ -10,6 +10,31 @@ def create_config(data_directory: pathlib.Path) -> dict[str, Any]:
     Flickypedia writes a number of temporary files as part of its work.
     The ``data_directory`` is their root.
     """
+    # Implementation note: although these URLs are currently hard-coded,
+    # there is a beta cluster we might use in the future.  It's currently
+    # broken, so we're not adding support for it yet, but we could if
+    # it ever gets fixed.
+    #
+    # See https://github.com/Flickr-Foundation/flickypedia/issues/4
+    wikimedia_oauth2 = {
+        "client_id": os.environ.get("WIKIMEDIA_CLIENT_ID"),
+        "client_secret": os.environ.get("WIKIMEDIA_CLIENT_SECRET"),
+        "authorize_url": "https://meta.wikimedia.org/w/rest.php/oauth2/authorize",
+        "token_url": "https://meta.wikimedia.org/w/rest.php/oauth2/access_token",
+    }
+
+    flickr_oauth1 = {
+        "client_id": os.environ.get("FLICKR_CLIENT_ID"),
+        "client_secret": os.environ.get("FLICKR_CLIENT_SECRET"),
+        "request_url": "https://www.flickr.com/services/oauth/request_token",
+        "token_url": "https://www.flickr.com/services/oauth/access_token",
+    }
+
+    empty_values = {k for k, v in wikimedia_oauth2.items() if not v}
+
+    if empty_values:
+        sys.exit(f"Empty values in Wikimedia OAuth 2 config: {empty_values.join(', ')}")
+
     return {
         "SECRET_KEY": os.environ.get("SECRET_KEY") or "you-will-never-guess",
         "FLICKR_API_KEY": os.environ.get("FLICKR_API_KEY", "<UNKNOWN>"),
@@ -30,25 +55,11 @@ def create_config(data_directory: pathlib.Path) -> dict[str, Any]:
         # Used as a directory to find SQLite databases which contain information
         # about duplicates.
         "DUPLICATE_DATABASE_DIRECTORY": data_directory / "duplicates",
+        #
+        # Hard-coded values for OAuth 2 providers.
         "OAUTH_PROVIDERS": {
-            # Implementation note: although these URLs are currently hard-coded,
-            # there is a beta cluster we might use in the future.  It's currently
-            # broken, so we're not adding support for it yet, but we could if
-            # it ever gets fixed.
-            #
-            # See https://github.com/Flickr-Foundation/flickypedia/issues/4
-            "wikimedia": {
-                "client_id": os.environ.get("WIKIMEDIA_CLIENT_ID"),
-                "client_secret": os.environ.get("WIKIMEDIA_CLIENT_SECRET"),
-                "authorize_url": "https://meta.wikimedia.org/w/rest.php/oauth2/authorize",
-                "token_url": "https://meta.wikimedia.org/w/rest.php/oauth2/access_token",
-            },
-            "flickr": {
-                "client_id": os.environ.get("FLICKR_CLIENT_ID"),
-                "client_secret": os.environ.get("FLICKR_CLIENT_SECRET"),
-                "request_url": "https://www.flickr.com/services/oauth/request_token",
-                "token_url": "https://www.flickr.com/services/oauth/access_token",
-            },
+            "wikimedia": wikimedia_oauth2
+            "flickr": flickr_oauth1,
         },
         #
         # The IDs of licenses that we can upload to Flickypedia.
