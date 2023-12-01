@@ -34,7 +34,7 @@ def create_config(data_directory: pathlib.Path) -> dict[str, Any]:
     empty_values = {k for k, v in wikimedia_oauth2.items() if not v}
 
     if empty_values:
-        sys.exit(f"Empty values in Wikimedia OAuth 2 config: {empty_values.join(', ')}")
+        sys.exit(f"Empty values in Wikimedia OAuth 2 config: {', '.join(empty_values)}")
 
     return {
         "SECRET_KEY": os.environ.get("SECRET_KEY") or "you-will-never-guess",
