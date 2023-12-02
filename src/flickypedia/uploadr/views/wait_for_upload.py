@@ -73,8 +73,11 @@ def get_upload_status(task_id: str) -> ViewResponse:
     task = q.read_task(task_id)
 
     return jsonify(
-        [
-            {"photo_id": photo_id, "state": output["state"]}
-            for photo_id, output in task["task_output"].items()
-        ]
+        {
+            "state": task["state"],
+            "photos": [
+                {"photo_id": photo_id, "state": output["state"]}
+                for photo_id, output in task["task_output"].items()
+            ],
+        }
     )

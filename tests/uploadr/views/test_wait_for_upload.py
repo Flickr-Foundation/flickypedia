@@ -29,6 +29,7 @@ def test_wait_for_upload_api(logged_in_client: FlaskClient, queue_dir: None) -> 
         "/wait_for_upload/e358876e-f3d6-439b-85fa-1ed1e46338ec/status"
     )
 
-    assert json.loads(resp.data) == [
-        {"photo_id": "53340605524", "state": "in_progress"}
-    ]
+    assert json.loads(resp.data) == {
+        "state": "in_progress",
+        "photos": [{"photo_id": "53340605524", "state": "in_progress"}],
+    }
