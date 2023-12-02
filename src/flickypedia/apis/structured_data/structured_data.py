@@ -327,16 +327,6 @@ def create_location_statement(location: LocationInfo) -> NewStatement:
         "type": "statement",
     }
 
-    # I made some rough
-    # guesses using the editor in Wikimedia:
-    #
-    #   1.  Create a new property for "coordinates of the point of view"
-    #   Flickr accuracy level
-
-    #   16 ~ 50m / ±0.0001° / 1e-06
-
-    # 16 = 50 m on Flickr, /
-
 
 def create_posted_to_flickr_statement(date_posted: datetime.datetime) -> NewStatement:
     """
