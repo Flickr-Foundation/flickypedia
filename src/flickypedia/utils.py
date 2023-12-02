@@ -1,13 +1,6 @@
 import datetime
 import json
-from typing import (
-    Any,
-    Dict,
-    Literal,
-    TypedDict,
-    TypeVar,
-    Union,
-)
+from typing import Any, Literal, TypedDict, TypeVar
 from urllib.parse import quote as urlquote, urlparse
 
 from cryptography.fernet import Fernet
@@ -52,7 +45,7 @@ class DatetimeEncoder(json.JSONEncoder):
 
     """
 
-    def default(self, t: T) -> Union[T, EncodedDate]:
+    def default(self, t: T) -> T | EncodedDate:
         if isinstance(t, datetime.datetime):
             return {"type": "datetime.datetime", "value": t.isoformat()}
         else:  # pragma: no cover
@@ -74,9 +67,7 @@ class DatetimeDecoder(json.JSONDecoder):
     def __init__(self) -> None:
         super().__init__(object_hook=self.dict_to_object)
 
-    def dict_to_object(
-        self, d: Dict[str, Any]
-    ) -> Union[Dict[str, Any], datetime.datetime]:
+    def dict_to_object(self, d: dict[str, Any]) -> dict[str, Any] | datetime.datetime:
         if d.get("type") == "datetime.datetime":
             return datetime.datetime.fromisoformat(d["value"])
         else:
