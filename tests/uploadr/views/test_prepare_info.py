@@ -162,8 +162,8 @@ def test_creates_upload_task_for_successful_form_post(
 
     assert upload_request["categories"] == [
         "Uploads using Flickypedia",
-        "Uploads by " "User:FlickypediaTestingUser",
-        "Flickr photos by U.S. Coast " "Guard",
+        "Uploads by User:FlickypediaTestingUser",
+        "Flickr photos by U.S. Coast Guard",
         "Fish",
         "Cats",
         "Animals",
