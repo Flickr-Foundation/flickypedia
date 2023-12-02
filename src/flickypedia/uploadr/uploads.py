@@ -30,8 +30,13 @@ class UploadRequest(TypedDict):
     categories: list[str]
 
 
+class KeyringId(TypedDict):
+    service_name: str
+    username: str
+
+
 class UploadBatch(TypedDict):
-    keyring_id: str
+    keyring_id: KeyringId
     requests: list[UploadRequest]
 
 
@@ -82,8 +87,8 @@ class PhotoUploadQueue(AbstractFilesystemTaskQueue[UploadBatch, UploadBatchResul
         # Read the access token from the system keychain, then immediately
         # purge it.  This ensures that the access token is single use,
         # and can't be reused later.
-        access_token = keyring.get_password("flickypedia", keyring_id)
-        keyring.delete_password("flickypedia", keyring_id)
+        access_token = keyring.get_password(**keyring_id)
+        keyring.delete_password(**keyring_id)
 
         client = httpx.Client(headers={"Authorization": f"Bearer {access_token}"})
         api = WikimediaApi(client=client)
@@ -138,10 +143,12 @@ def begin_upload(upload_requests: list[UploadRequest]) -> str:
     # in plaintext on the disk.
     current_user.refresh_token()
 
-    keyring_id = f"user-{current_user.id}-id-{upload_id}"
-    keyring.set_password(
-        "flickypedia", keyring_id, password=current_user.token()["access_token"]
-    )
+    keyring_id: KeyringId = {
+        "service_name": "flickypedia",
+        "username": f"user-{current_user.id}-id-{upload_id}",
+    }
+
+    keyring.set_password(**keyring_id, password=current_user.token()["access_token"])
 
     task_input: UploadBatch = {"keyring_id": keyring_id, "requests": upload_requests}
 
