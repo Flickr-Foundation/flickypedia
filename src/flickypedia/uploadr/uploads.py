@@ -146,11 +146,6 @@ def begin_upload(upload_requests: list[UploadRequest]) -> str:
         "username": f"user-{current_user.id}-id-{upload_id}",
     }
 
-    keyring_id: KeyringId = {
-        "service_name": "flickypedia.tmp",
-        "username": f"user-{current_user.id}-id-{upload_id}",
-    }
-
     if not current_app.config["TESTING"]:
         current_user.refresh_token()
         keyring.set_password(
