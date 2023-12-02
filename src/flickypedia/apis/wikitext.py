@@ -12,6 +12,11 @@ need to put in much text ourself.
 
 """
 
+import datetime
+
+from flickypedia.apis.flickr_photos_api import SinglePhoto
+
+
 # This maps our license IDs into the names of Wikimedia templates.
 LICENSE_TEMPLATE_MAPPING = {
     # https://commons.wikimedia.org/wiki/Template:Cc-by-2.0
@@ -26,18 +31,51 @@ LICENSE_TEMPLATE_MAPPING = {
 }
 
 
-def create_wikitext(license_id: str) -> str:
+def create_wikitext(
+    photo: SinglePhoto, wikimedia_username: str, new_categories: list[str]
+) -> str:
     """
     Creates the Wikitext for a Flickr photo being uploaded to Wiki Commons.
     """
-    license_template_name = LICENSE_TEMPLATE_MAPPING[license_id]
+    # Add the Information template.  We don't need to set any values
+    # here, because it'll be populated by the structured data.
+    # See https://commons.wikimedia.org/wiki/Template:Information
+    # fmt: off
+    information = (
+        "=={{int:filedesc}}==\n"
+        "{{Information}}"
+    )
+    # fmt: on
 
-    lines = [
-        "=={{int:filedesc}}==",
-        "{{Information}}",
-        "",
-        "=={{int:license-header}}==",
-        "{{%s}}" % license_template_name,
-    ]
+    # Add a license heading and license info box.  This will be
+    # internationalised as appropriate.
+    # See https://commons.wikimedia.org/wiki/Template:License-header
+    license = (
+        "=={{int:license-header}}==\n"
+        "{{%s}}" % LICENSE_TEMPLATE_MAPPING[photo["license"]["id"]]
+    )
 
-    return "\n".join(lines)
+    # Add an info box about using Flickypedia.
+    # See https://commons.wikimedia.org/wiki/Template:Uploaded_with_Flickypedia
+    flickypedia = (
+        "{{Uploaded with Flickypedia\n"
+        "|user=%s\n"
+        "|date=%s\n"
+        "|flickrUser=%s\n"
+        "|flickrUserUrl=%s\n"
+        "|flickrPhotoUrl=%s\n"
+        "}}"
+    ) % (
+        wikimedia_username,
+        datetime.datetime.now().strftime("%Y-%m-%d"),
+        photo["owner"]["username"],
+        photo["owner"]["profile_url"],
+        photo["url"],
+    )
+
+    # Add a list of user-defined categories.
+    categories = "\n".join(
+        f"[[Category:{category_name}]]" for category_name in new_categories
+    )
+
+    return "\n\n".join([information, license, flickypedia, categories]).strip()

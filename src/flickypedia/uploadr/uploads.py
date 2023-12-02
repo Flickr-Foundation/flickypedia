@@ -28,6 +28,7 @@ class UploadRequest(TypedDict):
     title: str
     caption: ShortCaption
     categories: list[str]
+    username: str
 
 
 class KeyringId(TypedDict):
@@ -174,7 +175,11 @@ def upload_single_photo(api: WikimediaApi, request: UploadRequest) -> Successful
     -   Adding the structured data to the photo
 
     """
-    wikitext = create_wikitext(license_id=request["photo"]["license"]["id"])
+    wikitext = create_wikitext(
+        photo=request["photo"],
+        wikimedia_username=request["username"],
+        new_categories=request["categories"],
+    )
 
     original_size = size_at(request["photo"]["sizes"], desired_size="Original")
 
@@ -187,21 +192,7 @@ def upload_single_photo(api: WikimediaApi, request: UploadRequest) -> Successful
     )
 
     api.add_structured_data(filename=request["title"], data=request["sdc"])
-
-    # Now we add the categories to the Wikitext.
-    #
-    # It might seem strange to add these separately, when we could add
-    # the text as part of the initial upload -- but what we're doing
-    # here is forcing a re-render of the Lua-driven {{Information}}
-    # template in the Wikitext.
-    #
-    # It's populated by the structured data, but that structured data
-    # wasn't present for the initial upload, so the template appears
-    # empty.  It's not until the text changes that it gets filled in
-    # with the SDC.
-    api.add_categories_to_page(
-        filename=request["title"], categories=request["categories"]
-    )
+    api.force_sdc_rerender(filename=request["title"])
 
     wikimedia_page_title = f"File:{wikimedia_page_title}"
 

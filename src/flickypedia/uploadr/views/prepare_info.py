@@ -151,10 +151,7 @@ def create_upload_requests(
         photo = enriched_photo["photo"]
         this_photo_form_data = form_data[f"photo_{photo['id']}"]
 
-        categories = (
-            enriched_photo["default_categories"]
-            + this_photo_form_data["categories"].strip().splitlines()
-        )
+        categories = this_photo_form_data["categories"].strip().splitlines()
 
         upload_requests.append(
             {
@@ -166,6 +163,7 @@ def create_upload_requests(
                     "text": this_photo_form_data["short_caption"],
                 },
                 "categories": categories,
+                "username": current_user.name,
             }
         )
 

@@ -102,19 +102,6 @@ def categorise_photos(all_photos: list[SinglePhoto]) -> CategorisedPhotos:
 class EnrichedPhoto(TypedDict):
     photo: SinglePhoto
     sdc: NewClaims
-    default_categories: list[str]
-
-
-def create_default_categories(photo: SinglePhoto, wikimedia_username: str) -> list[str]:
-    """
-    Create the list of default categories that we're populating for
-    the user.
-    """
-    return [
-        "Uploads using Flickypedia",
-        f"Uploads by User:{wikimedia_username}",
-        f"Flickr photos by {photo['owner']['username']}",
-    ]
 
 
 def enrich_photo(
@@ -130,9 +117,6 @@ def enrich_photo(
             {
                 "photo": p,
                 "sdc": create_sdc_claims_for_flickr_photo(p, retrieved_at=retrieved_at),
-                "default_categories": create_default_categories(
-                    p, wikimedia_username=wikimedia_username
-                ),
             }
         )
 

@@ -8,11 +8,10 @@
       Alex Chan
       CC BY 2.0
 
-  This template takes three variables:
-  
+  This template takes two variables:
+
   - ``photo``, which should contain the photo metadata
   - ``field``, which should be an instance of the ``WikiFieldsForm`` class
-  - ``default_categories``, which is a list of the auto-populated categories
 
 #}
 
@@ -61,9 +60,9 @@
      We need to ask the user for a list of categories, and we
      want to pass those as a list in the <textarea> element,
      one category for line.
-     
+
      For users without JS, we just show them the plain <textarea>.
-     
+
      For users with JS, we hide the <textarea> and show them a
      one-line <input> field.  We can then offer them suggestions
      on categories from the Wikimedia API, and when they add/remove
@@ -73,13 +72,5 @@
     <label for="{{ field.categories.id }}">Add a Wikimedia Commons category</label>
     {{ field.categories() }}
   </div>
-  
-  <p>
-    We’ll add these categories too:
-    <ul>
-      {% for category in default_categories %}
-      <li>{{ category }}</li>
-      {% endfor %}
-    </ul>
-  </p>
+
 </div>
