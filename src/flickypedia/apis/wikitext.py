@@ -12,6 +12,7 @@ need to put in much text ourself.
 
 """
 
+
 # This maps our license IDs into the names of Wikimedia templates.
 LICENSE_TEMPLATE_MAPPING = {
     # https://commons.wikimedia.org/wiki/Template:Cc-by-2.0
@@ -26,18 +27,18 @@ LICENSE_TEMPLATE_MAPPING = {
 }
 
 
-def create_wikitext(license_id: str) -> str:
+def create_wikitext(license_id: str, new_categories: list[str]) -> str:
     """
     Creates the Wikitext for a Flickr photo being uploaded to Wiki Commons.
     """
-    license_template_name = LICENSE_TEMPLATE_MAPPING[license_id]
+    information = "=={{int:filedesc}}==\n" "{{Information}}"
 
-    lines = [
-        "=={{int:filedesc}}==",
-        "{{Information}}",
-        "",
-        "=={{int:license-header}}==",
-        "{{%s}}" % license_template_name,
-    ]
+    license = (
+        "=={{int:license-header}}==\n" "{{%s}}" % LICENSE_TEMPLATE_MAPPING[license_id]
+    )
 
-    return "\n".join(lines)
+    categories = "\n".join(
+        f"[[Category:{category_name}]]" for category_name in new_categories
+    )
+
+    return "\n\n".join([information, license, categories]).strip()

@@ -629,37 +629,33 @@ class WikimediaApi:
 
         return wikitext
 
-    def add_categories_to_page(self, filename: str, categories: list[str]) -> None:
+    def force_sdc_rerender(self, filename: str) -> None:
         """
-        Append a list of categories to a page on Wikimedia.
+        Force Wikimedia to re-render the SDC in the page.
 
-        This method is idempotent; it will only add categories once.
-        If a page already has all the categories specified, this is a no-op.
+        We use the Lua-driven {{Information}} template in the Wikitext,
+        which is populated by structured data -- but the timing can
+        cause some confusing behaviour:
 
-        See https://www.wikidata.org/w/api.php?modules=edit&action=help
+        1.  We upload the initial photo.  This includes the {{Information}}
+            template, but it's empty because there's no SDC yet.
+        2.  We set some SDC on the photo.  This puts a job on a background
+            queue to re-render the {{Information}} template, but this can
+            take a while.
+        3.  The user clicks to see their new photo, but the Information table
+            on the page is empty because it hasn't been re-rendered with
+            the SDC yet.  What happened?!
+
+        This function does a no-op edit to force an immediate re-render
+        of the page, including the SDC-driven templates.
         """
-        existing_text = self.get_existing_wikitext(filename=filename)
-
-        formatted_categories = [
-            f"[[Category:{category_name}]]" for category_name in categories
-        ]
-
-        new_categories = [c for c in formatted_categories if c not in existing_text]
-
-        # Prepend a newline, so the new categories appear on newlines,
-        # and don't get bunched up with existing categories.
-        #
-        # TODO: it would be nice to skip this newline if the Wikitext already
-        # ends in a newline, but I'm not sure if that's possible.
-        new_text = "\n" + "\n".join(new_categories)
-
-        if new_categories:
-            self._post(
-                data={
-                    "action": "edit",
-                    "site": "commonswiki",
-                    "title": f"File:{filename}",
-                    "nocreate": "true",
-                    "appendtext": new_text,
-                }
-            )
+        self._post(
+            data={
+                "action": "edit",
+                "site": "commonswiki",
+                "title": f"File:{filename}",
+                "nocreate": "true",
+                "summary": "Flickypedia no-op edit to trigger re-render of {{Information}} template with new SDC",
+                "appendtext": "\n",
+            }
+        )
