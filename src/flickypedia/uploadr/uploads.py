@@ -144,7 +144,7 @@ def begin_upload(upload_requests: list[UploadRequest]) -> str:
     current_user.refresh_token()
 
     keyring_id: KeyringId = {
-        "service_name": "flickypedia",
+        "service_name": "flickypedia.tmp",
         "username": f"user-{current_user.id}-id-{upload_id}",
     }
 
