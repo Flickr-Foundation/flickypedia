@@ -120,13 +120,13 @@ def validate_typeddict(t: Any, model: type[T]) -> T:
     return TypedDictValidator.validate_python(t, strict=True)
 
 
-def get_required_password(servicename: str, username: str) -> str:
+def get_required_password(service_name: str, username: str) -> str:
     """
     Retrieve a password from the keychain, or throw if it's missing.
     """
-    password = keyring.get_password(servicename, username)
+    password = keyring.get_password(service_name, username)
 
     if password is None:
-        raise RuntimeError(f"Could not retrieve password {(servicename, username)}")
+        raise RuntimeError(f"Could not retrieve password {(service_name, username)}")
 
     return password
