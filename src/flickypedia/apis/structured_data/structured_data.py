@@ -29,7 +29,12 @@ is supporting that function.
 
 import datetime
 
-from flickr_photos_api import DateTaken, LocationInfo, User as FlickrUser, SinglePhoto
+from flickypedia.apis.flickr_photos_api import (
+    DateTaken,
+    LocationInfo,
+    User as FlickrUser,
+    SinglePhoto,
+)
 
 from flickypedia.apis.flickr_user_ids import lookup_flickr_user_in_wikidata
 from ._qualifiers import create_qualifiers as create_qualifiers, QualifierValues

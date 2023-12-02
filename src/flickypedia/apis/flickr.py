@@ -9,7 +9,9 @@ import datetime
 from typing import TypedDict
 
 from flask import current_app
-from flickr_photos_api import (
+from flickr_url_parser import ParseResult
+
+from .flickr_photos_api import (
     CollectionOfPhotos,
     FlickrPhotosApi,
     PhotosInAlbum,
@@ -18,7 +20,6 @@ from flickr_photos_api import (
     SinglePhoto,
     User as FlickrUser,
 )
-from flickr_url_parser import ParseResult
 
 
 class RetrievedAtMixin(TypedDict):

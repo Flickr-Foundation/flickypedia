@@ -7,11 +7,11 @@ import uuid
 
 from flask import current_app
 from flask_login import current_user
-from flickr_photos_api import SinglePhoto
 import httpx
 import keyring
 
 from flickypedia.apis.structured_data import NewClaims
+from flickypedia.apis.flickr_photos_api import SinglePhoto
 from flickypedia.apis.wikimedia import ShortCaption, WikimediaApi
 from flickypedia.apis.wikitext import create_wikitext
 from flickypedia.duplicates import record_file_created_by_flickypedia

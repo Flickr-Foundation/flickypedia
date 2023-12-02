@@ -4,7 +4,10 @@ from xml.etree import ElementTree as ET
 
 from authlib.integrations.httpx_client import OAuth1Client
 import click
-from flickr_photos_api.utils import find_required_elem, find_required_text
+from flickypedia.apis.flickr_photos_api.utils import (
+    find_required_elem,
+    find_required_text,
+)
 import keyring
 
 from flickypedia.utils import get_required_password

@@ -1,7 +1,7 @@
 import datetime
 
 from flask import Flask
-from flickr_photos_api import SinglePhoto
+from flickypedia.apis.flickr_photos_api import SinglePhoto
 
 from flickypedia.apis.wikimedia import WikimediaApi
 from flickypedia.duplicates import find_duplicates

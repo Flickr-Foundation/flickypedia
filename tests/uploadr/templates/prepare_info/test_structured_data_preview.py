@@ -4,7 +4,7 @@ from typing import Any
 
 import bs4
 from flask import Flask, render_template
-from flickr_photos_api import DateTaken, User as FlickrUser
+from flickypedia.apis.flickr_photos_api import DateTaken, User as FlickrUser
 import pytest
 
 from flickypedia.apis.structured_data import (

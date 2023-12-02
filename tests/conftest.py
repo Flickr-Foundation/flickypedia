@@ -6,7 +6,7 @@ import shutil
 from flask import Flask, session
 from flask.testing import FlaskClient
 from flask_login import FlaskLoginClient, current_user
-from flickr_photos_api import FlickrPhotosApi
+from flickypedia.apis.flickr_photos_api import FlickrPhotosApi
 import httpx
 import pytest
 from pytest import FixtureRequest
