@@ -5,7 +5,6 @@ flask
 flask-login
 flask-wtf
 Flask-SQLAlchemy
-flickr-photos-api
 flickr-url-parser
 httpx
 keyring

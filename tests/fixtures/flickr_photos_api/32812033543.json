@@ -1,0 +1,136 @@
+{
+  "date_posted": {"type": "datetime.datetime", "value": "2017-03-24T17:27:52+00:00"},
+  "date_taken": {
+    "granularity": "second",
+    "unknown": false,
+    "value": {"type": "datetime.datetime", "value": "2017-02-17T00:00:00"}
+  },
+  "description": "Seaman Nina Bowen shows some love to Chief Bert, Station Elizabeth City, N.C.'s mascot, near the boathouse at the station, Feb. 17, 2017. Chief Bert is a retired explosive detection dog who worked for six years with the Maritime Safety and Security Team in Gavelston, Texas. U.S. Coast Guard photo by Petty Officer 2nd Class Nate Littlejohn.",
+  "id": "32812033543",
+  "license": {
+    "id": "usgov",
+    "label": "United States Government Work",
+    "url": "http://www.usa.gov/copyright.shtml"
+  },
+  "location": null,
+  "original_format": "jpg",
+  "owner": {
+    "id": "30884892@N08",
+    "path_alias": "coast_guard",
+    "photos_url": "https://www.flickr.com/photos/coast_guard/",
+    "profile_url": "https://www.flickr.com/people/coast_guard/",
+    "realname": "Coast Guard",
+    "username": "U.S. Coast Guard"
+  },
+  "safety_level": "safe",
+  "sizes": [
+    {
+      "height": 75,
+      "label": "Square",
+      "media": "photo",
+      "source": "https://live.staticflickr.com/2903/32812033543_c1b3784192_s.jpg",
+      "width": 75
+    },
+    {
+      "height": 150,
+      "label": "Large Square",
+      "media": "photo",
+      "source": "https://live.staticflickr.com/2903/32812033543_c1b3784192_q.jpg",
+      "width": 150
+    },
+    {
+      "height": 61,
+      "label": "Thumbnail",
+      "media": "photo",
+      "source": "https://live.staticflickr.com/2903/32812033543_c1b3784192_t.jpg",
+      "width": 100
+    },
+    {
+      "height": 146,
+      "label": "Small",
+      "media": "photo",
+      "source": "https://live.staticflickr.com/2903/32812033543_c1b3784192_m.jpg",
+      "width": 240
+    },
+    {
+      "height": 195,
+      "label": "Small 320",
+      "media": "photo",
+      "source": "https://live.staticflickr.com/2903/32812033543_c1b3784192_n.jpg",
+      "width": 320
+    },
+    {
+      "height": 243,
+      "label": "Small 400",
+      "media": "photo",
+      "source": "https://live.staticflickr.com/2903/32812033543_c1b3784192_w.jpg",
+      "width": 400
+    },
+    {
+      "height": 304,
+      "label": "Medium",
+      "media": "photo",
+      "source": "https://live.staticflickr.com/2903/32812033543_c1b3784192.jpg",
+      "width": 500
+    },
+    {
+      "height": 389,
+      "label": "Medium 640",
+      "media": "photo",
+      "source": "https://live.staticflickr.com/2903/32812033543_c1b3784192_z.jpg",
+      "width": 640
+    },
+    {
+      "height": 486,
+      "label": "Medium 800",
+      "media": "photo",
+      "source": "https://live.staticflickr.com/2903/32812033543_c1b3784192_c.jpg",
+      "width": 800
+    },
+    {
+      "height": 623,
+      "label": "Large",
+      "media": "photo",
+      "source": "https://live.staticflickr.com/2903/32812033543_c1b3784192_b.jpg",
+      "width": 1024
+    },
+    {
+      "height": 973,
+      "label": "Large 1600",
+      "media": "photo",
+      "source": "https://live.staticflickr.com/2903/32812033543_c34e251a30_h.jpg",
+      "width": 1600
+    },
+    {
+      "height": 1245,
+      "label": "Large 2048",
+      "media": "photo",
+      "source": "https://live.staticflickr.com/2903/32812033543_04e9bcc8a2_k.jpg",
+      "width": 2048
+    },
+    {
+      "height": 3145,
+      "label": "Original",
+      "media": "photo",
+      "source": "https://live.staticflickr.com/2903/32812033543_41cc4e453a_o.jpg",
+      "width": 5172
+    }
+  ],
+  "tags": [
+    "mascot",
+    "chiefbert",
+    "germanshepherd",
+    "stationelizabethcity",
+    "weekinthelife2017",
+    "ninabowen",
+    "d5",
+    "midatlantic",
+    "northcarolina",
+    "elizabethcity",
+    "explosivedetectiondog",
+    "unitedstates",
+    "us"
+  ],
+  "title": "Puppy Kisses",
+  "url": "https://www.flickr.com/photos/coast_guard/32812033543/"
+}

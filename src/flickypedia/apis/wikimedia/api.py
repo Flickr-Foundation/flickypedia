@@ -14,9 +14,8 @@ from typing import Any
 from xml.etree import ElementTree as ET
 
 import httpx
-from flickr_photos_api.utils import find_required_elem
 
-from flickypedia.utils import validate_typeddict
+from flickypedia.utils import find_required_elem, validate_typeddict
 from flickypedia.apis.structured_data import ExistingClaims, NewClaims
 from .exceptions import (
     WikimediaApiException,

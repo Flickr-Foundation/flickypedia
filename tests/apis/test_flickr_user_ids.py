@@ -1,4 +1,4 @@
-from flickr_photos_api import User as FlickrUser
+from flickypedia.apis.flickr_photos_api import User as FlickrUser
 
 from flickypedia.apis.flickr_user_ids import lookup_flickr_user_in_wikidata
 
