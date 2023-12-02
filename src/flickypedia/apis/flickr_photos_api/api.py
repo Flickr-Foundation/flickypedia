@@ -5,11 +5,13 @@ import xml.etree.ElementTree as ET
 from flickr_url_parser import ParseResult, parse_flickr_url
 import httpx
 
-from .exceptions import FlickrApiException, LicenseNotFound, ResourceNotFound
-from .utils import (
+from flickypedia.utils import (
     find_optional_text,
     find_required_elem,
     find_required_text,
+)
+from .exceptions import FlickrApiException, LicenseNotFound, ResourceNotFound
+from .utils import (
     parse_date_posted,
     parse_date_taken,
     parse_date_taken_granularity,

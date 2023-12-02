@@ -16,6 +16,10 @@ from flickypedia.apis.flickr_photos_api import (
     PhotosInGallery,
     PhotosInGroup,
 )
+from flickypedia.apis.flickr_photos_api.utils import (
+    parse_date_taken_granularity,
+    parse_safety_level,
+)
 from utils import get_typed_fixture
 
 
@@ -586,3 +590,13 @@ def test_get_photos_from_flickr_url_is_paginated(
 def test_unrecognised_url_type_is_error(flickr_api: FlickrPhotosApi) -> None:
     with pytest.raises(TypeError, match="Unrecognised URL type"):
         flickr_api.get_photos_from_parsed_flickr_url(parsed_url={"type": "unknown"})  # type: ignore
+
+
+def test_unrecognised_safety_level_is_error() -> None:
+    with pytest.raises(ValueError, match="Unrecognised safety level"):
+        parse_safety_level("-1")
+
+
+def test_unrecognised_date_granularity_is_error() -> None:
+    with pytest.raises(ValueError, match="Unrecognised date granularity"):
+        parse_date_taken_granularity("-1")

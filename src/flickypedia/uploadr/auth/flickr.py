@@ -4,13 +4,13 @@ from xml.etree import ElementTree as ET
 
 from authlib.integrations.httpx_client import OAuth1Client
 import click
-from flickypedia.apis.flickr_photos_api.utils import (
-    find_required_elem,
-    find_required_text,
-)
 import keyring
 
-from flickypedia.utils import get_required_password
+from flickypedia.utils import (
+    find_required_elem,
+    find_required_text,
+    get_required_password,
+)
 
 
 def store_flickypedia_user_oauth_token() -> None:
