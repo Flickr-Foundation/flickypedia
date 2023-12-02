@@ -95,8 +95,3 @@ class GroupInfo(TypedDict):
 
 class PhotosInGroup(CollectionOfPhotos):
     group: GroupInfo
-
-
-PhotosFromUrl = (
-    SinglePhoto | CollectionOfPhotos | PhotosInAlbum | PhotosInGallery | PhotosInGroup
-)
