@@ -11,492 +11,6 @@ interactions:
       host:
       - query.wikidata.org
       user-agent:
-      - python-httpx/0.25.0
-    method: GET
-    uri: https://query.wikidata.org/sparql?format=json&query=PREFIX%20wdt%3A%20%3Chttp%3A%2F%2Fwww.wikidata.org%2Fprop%2Fdirect%2F%3E%0A%0A%20%20%20%20%20%20%20%20SELECT%20%3Fitem%20WHERE%20%7B%0A%20%20%20%20%20%20%20%20%20%20%7B%20%3Fitem%20wdt%3AP3267%20%22199246608%40N02%22%20.%20%7D%0A%20%20%20%20%20%20%20%20%20%20UNION%0A%20%20%20%20%20%20%20%20%20%20%7B%20%3Fitem%20wdt%3AP3267%20%22cefarrjf87%22%20.%20%7D%0A%20%20%20%20%20%20%20%20%7D
-  response:
-    content: "{\n  \"head\" : {\n    \"vars\" : [ \"item\" ]\n  },\n  \"results\"
-      : {\n    \"bindings\" : [ ]\n  }\n}"
-    headers:
-      accept-ranges:
-      - bytes
-      access-control-allow-origin:
-      - '*'
-      age:
-      - '133'
-      cache-control:
-      - public, max-age=300
-      content-length:
-      - '86'
-      content-type:
-      - application/sparql-results+json;charset=utf-8
-      date:
-      - Wed, 18 Oct 2023 16:14:47 GMT
-      nel:
-      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
-        0.0}'
-      report-to:
-      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
-        }] }'
-      server:
-      - nginx/1.18.0
-      server-timing:
-      - cache;desc="hit-local", host;desc="cp3066"
-      strict-transport-security:
-      - max-age=106384710; includeSubDomains; preload
-      vary:
-      - Accept
-      x-cache:
-      - cp3066 hit, cp3066 pass
-      x-cache-status:
-      - hit-local
-      x-client-ip:
-      - 81.131.37.170
-      x-first-solution-millis:
-      - '1'
-      x-served-by:
-      - wdqs1013
-    http_version: HTTP/1.1
-    status_code: 200
-- request:
-    body: ''
-    headers:
-      accept:
-      - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
-      - keep-alive
-      host:
-      - commons.wikimedia.org
-      user-agent:
-      - python-httpx/0.25.0
-    method: GET
-    uri: https://commons.wikimedia.org/w/api.php?action=query&meta=tokens&type=csrf&format=json
-  response:
-    content: '{"batchcomplete":"","query":{"tokens":{"csrftoken":"f0ae3c44f1fc6a3e213283f8433867cc653004fd+\\"}}}'
-    headers:
-      accept-ranges:
-      - bytes
-      age:
-      - '0'
-      cache-control:
-      - private, must-revalidate, max-age=0
-      content-disposition:
-      - inline; filename=api-result.json
-      content-length:
-      - '99'
-      content-type:
-      - application/json; charset=utf-8
-      date:
-      - Wed, 18 Oct 2023 16:17:01 GMT
-      nel:
-      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
-        0.0}'
-      report-to:
-      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
-        }] }'
-      server:
-      - mw1382.eqiad.wmnet
-      server-timing:
-      - cache;desc="pass", host;desc="cp3066"
-      set-cookie:
-      - WMF-Last-Access=18-Oct-2023;Path=/;HttpOnly;secure;Expires=Sun, 19 Nov 2023
-        12:00:00 GMT
-      - GeoIP=GB:ENG:Newark_on_Trent:53.07:-0.82:v4; Path=/; secure; Domain=.wikimedia.org
-      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
-      strict-transport-security:
-      - max-age=106384710; includeSubDomains; preload
-      vary:
-      - Accept-Encoding
-      x-cache:
-      - cp3066 pass, cp3066 pass
-      x-cache-status:
-      - pass
-      x-client-ip:
-      - 81.131.37.170
-      x-content-type-options:
-      - nosniff
-      x-frame-options:
-      - DENY
-    http_version: HTTP/1.1
-    status_code: 200
-- request:
-    body: action=upload&filename=Thameslink+Class+700+in+Pride+livery.jpg&url=https%3A%2F%2Flive.staticflickr.com%2F65535%2F53268016608_5b890124fd_o_d.jpg&text=%3D%3D%7B%7Bint%3Afiledesc%7D%7D%3D%3D%0A%7B%7BInformation%0A%7CSource%3Dhttps%3A%2F%2Fwww.flickr.com%2Fphotos%2F199246608%40N02%2F53268016608%2F%0A%7CDate%3D2023-09-12+19%3A54%3A32%0A%7CAuthor%3D%5Bhttps%3A%2F%2Fwww.flickr.com%2Fpeople%2F199246608%40N02+Alex+Chan%5D%0A%7CPermission%3D%0A%7Cother_versions%3D%0A%7D%7D%0A%0A%3D%3D%7B%7Bint%3Alicense-header%7D%7D%3D%3D%0A%7B%7Bcc-by-2.0%7D%7D%0A&format=json&token=f0ae3c44f1fc6a3e213283f8433867cc653004fd%2B%5C
-    headers:
-      accept:
-      - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
-      - keep-alive
-      content-length:
-      - '610'
-      content-type:
-      - application/x-www-form-urlencoded
-      cookie:
-      - GeoIP=GB:ENG:Newark_on_Trent:53.07:-0.82:v4; NetworkProbeLimit=0.001; WMF-Last-Access=18-Oct-2023
-      host:
-      - commons.wikimedia.org
-      user-agent:
-      - python-httpx/0.25.0
-    method: POST
-    uri: https://commons.wikimedia.org/w/api.php
-  response:
-    content: '{"upload":{"result":"Success","filename":"Thameslink_Class_700_in_Pride_livery.jpg","imageinfo":{"timestamp":"2023-10-18T16:17:08Z","user":"Alexwlchan","userid":829939,"size":3121958,"width":4032,"height":3024,"parsedcomment":"","comment":"","html":"<div>\n<figure
-      typeof=\"mw:Error mw:File/Thumb\"><a href=\"/w/index.php?title=Special:Upload&amp;wpDestFile=Thameslink_Class_700_in_Pride_livery.jpg\"
-      class=\"new\" title=\"File:Thameslink Class 700 in Pride livery.jpg\"><span
-      class=\"mw-file-element mw-broken-media\" data-width=\"100\">File:Thameslink
-      Class 700 in Pride livery.jpg</span></a><figcaption>Existing file</figcaption></figure>\n<p><span
-      id=\"wpUploadWarningFileexists\">A file with this name already exists; please
-      check <b><a class=\"mw-selflink selflink\">the existing file</a></b> if you
-      are not sure whether you want to change it. Please choose another filename,
-      unless you are uploading a technically improved version of the same file. <br
-      />Do not overwrite an image with a different one of the same topic (see <a href=\"/wiki/Commons:File_naming\"
-      title=\"Commons:File naming\">file naming</a>).</span>\n</p>\n<div style=\"clear:both;\"></div>\n</div>","canonicaltitle":"File:Thameslink
-      Class 700 in Pride livery.jpg","url":"https://upload.wikimedia.org/wikipedia/commons/f/ff/Thameslink_Class_700_in_Pride_livery.jpg","descriptionurl":"https://commons.wikimedia.org/wiki/File:Thameslink_Class_700_in_Pride_livery.jpg","sha1":"260b232c2fd20d209816e034747036b45e5e3e1f","metadata":[{"name":"Make","value":"Apple"},{"name":"Model","value":"iPhone
-      12 mini"},{"name":"Orientation","value":1},{"name":"XResolution","value":"72/1"},{"name":"YResolution","value":"72/1"},{"name":"ResolutionUnit","value":2},{"name":"Software","value":"16.6"},{"name":"DateTime","value":"2023:09:12
-      19:54:32"},{"name":"YCbCrPositioning","value":1},{"name":"ExposureTime","value":"1/50"},{"name":"FNumber","value":"8/5"},{"name":"ExposureProgram","value":2},{"name":"ISOSpeedRatings","value":400},{"name":"ExifVersion","value":"0232"},{"name":"DateTimeOriginal","value":"2023:09:12
-      19:54:32"},{"name":"DateTimeDigitized","value":"2023:09:12 19:54:32"},{"name":"ComponentsConfiguration","value":[{"name":0,"value":1},{"name":1,"value":2},{"name":2,"value":3},{"name":3,"value":0},{"name":"_type","value":"ol"}]},{"name":"ShutterSpeedValue","value":"59081/10469"},{"name":"ApertureValue","value":"14447/10653"},{"name":"BrightnessValue","value":"27461/42615"},{"name":"ExposureBiasValue","value":"0/1"},{"name":"MeteringMode","value":5},{"name":"Flash","value":16},{"name":"FocalLength","value":"21/5"},{"name":"SubSecTimeOriginal","value":"509"},{"name":"SubSecTimeDigitized","value":"509"},{"name":"FlashPixVersion","value":"0100"},{"name":"ColorSpace","value":65535},{"name":"SensingMethod","value":2},{"name":"SceneType","value":1},{"name":"ExposureMode","value":0},{"name":"WhiteBalance","value":0},{"name":"FocalLengthIn35mmFilm","value":26},{"name":"SceneCaptureType","value":0},{"name":"MEDIAWIKI_EXIF_VERSION","value":2}],"commonmetadata":[{"name":"Make","value":"Apple"},{"name":"Model","value":"iPhone
-      12 mini"},{"name":"Orientation","value":1},{"name":"XResolution","value":"72/1"},{"name":"YResolution","value":"72/1"},{"name":"ResolutionUnit","value":2},{"name":"Software","value":"16.6"},{"name":"DateTime","value":"2023:09:12
-      19:54:32"},{"name":"YCbCrPositioning","value":1},{"name":"ExposureTime","value":"1/50"},{"name":"FNumber","value":"8/5"},{"name":"ExposureProgram","value":2},{"name":"ISOSpeedRatings","value":400},{"name":"ExifVersion","value":"0232"},{"name":"DateTimeOriginal","value":"2023:09:12
-      19:54:32"},{"name":"DateTimeDigitized","value":"2023:09:12 19:54:32"},{"name":"ComponentsConfiguration","value":[{"name":0,"value":1},{"name":1,"value":2},{"name":2,"value":3},{"name":3,"value":0},{"name":"_type","value":"ol"}]},{"name":"ShutterSpeedValue","value":"59081/10469"},{"name":"ApertureValue","value":"14447/10653"},{"name":"BrightnessValue","value":"27461/42615"},{"name":"ExposureBiasValue","value":"0/1"},{"name":"MeteringMode","value":5},{"name":"Flash","value":16},{"name":"FocalLength","value":"21/5"},{"name":"SubSecTimeOriginal","value":"509"},{"name":"SubSecTimeDigitized","value":"509"},{"name":"FlashPixVersion","value":"0100"},{"name":"ColorSpace","value":65535},{"name":"SensingMethod","value":2},{"name":"SceneType","value":1},{"name":"ExposureMode","value":0},{"name":"WhiteBalance","value":0},{"name":"FocalLengthIn35mmFilm","value":26},{"name":"SceneCaptureType","value":0}],"extmetadata":{"DateTime":{"value":"2023-10-18
-      16:17:08","source":"mediawiki-metadata","hidden":""},"ObjectName":{"value":"Thameslink
-      Class 700 in Pride livery","source":"mediawiki-metadata"},"CommonsMetadataExtension":{"value":1.2,"source":"extension","hidden":""},"Categories":{"value":"","source":"commons-categories","hidden":""},"Assessments":{"value":"","source":"commons-categories","hidden":""}},"mime":"image/jpeg","mediatype":"BITMAP","bitdepth":8}}}'
-    headers:
-      accept-ranges:
-      - bytes
-      age:
-      - '14'
-      cache-control:
-      - private, max-age=0, s-maxage=0
-      content-disposition:
-      - inline; filename=api-result.json
-      content-encoding:
-      - gzip
-      content-type:
-      - application/json; charset=utf-8
-      date:
-      - Wed, 18 Oct 2023 16:17:01 GMT
-      nel:
-      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
-        0.0}'
-      report-to:
-      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
-        }] }'
-      server:
-      - mw2262.codfw.wmnet
-      server-timing:
-      - cache;desc="pass", host;desc="cp3066"
-      set-cookie:
-      - cpPosIndex=1%401697645828%231b5e5eb9377d3c687f9858a14d1dcc33; expires=Wed,
-        18-Oct-2023 16:17:18 GMT; Max-Age=10; path=/; secure; HttpOnly
-      - UseDC=master; expires=Wed, 18-Oct-2023 16:17:18 GMT; Max-Age=10; path=/; secure;
-        HttpOnly
-      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
-      strict-transport-security:
-      - max-age=106384710; includeSubDomains; preload
-      transfer-encoding:
-      - chunked
-      vary:
-      - Accept-Encoding
-      x-cache:
-      - cp3066 pass, cp3066 pass
-      x-cache-status:
-      - pass
-      x-client-ip:
-      - 81.131.37.170
-      x-content-type-options:
-      - nosniff
-      x-frame-options:
-      - DENY
-    http_version: HTTP/1.1
-    status_code: 200
-- request:
-    body: ''
-    headers:
-      accept:
-      - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
-      - keep-alive
-      cookie:
-      - GeoIP=GB:ENG:Newark_on_Trent:53.07:-0.82:v4; NetworkProbeLimit=0.001; UseDC=master;
-        WMF-Last-Access=18-Oct-2023; cpPosIndex=1%401697645828%231b5e5eb9377d3c687f9858a14d1dcc33
-      host:
-      - commons.wikimedia.org
-      user-agent:
-      - python-httpx/0.25.0
-    method: GET
-    uri: https://commons.wikimedia.org/w/api.php?action=query&meta=tokens&type=csrf&format=json
-  response:
-    content: '{"batchcomplete":"","query":{"tokens":{"csrftoken":"2b163554193f2a696054d80e943588dd65300504+\\"}}}'
-    headers:
-      accept-ranges:
-      - bytes
-      age:
-      - '0'
-      cache-control:
-      - private, must-revalidate, max-age=0
-      content-disposition:
-      - inline; filename=api-result.json
-      content-length:
-      - '99'
-      content-type:
-      - application/json; charset=utf-8
-      date:
-      - Wed, 18 Oct 2023 16:17:08 GMT
-      nel:
-      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
-        0.0}'
-      report-to:
-      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
-        }] }'
-      server:
-      - mw2298.codfw.wmnet
-      server-timing:
-      - cache;desc="pass", host;desc="cp3066"
-      set-cookie:
-      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
-      strict-transport-security:
-      - max-age=106384710; includeSubDomains; preload
-      vary:
-      - Accept-Encoding
-      x-cache:
-      - cp3066 pass, cp3066 pass
-      x-cache-status:
-      - pass
-      x-client-ip:
-      - 81.131.37.170
-      x-content-type-options:
-      - nosniff
-      x-frame-options:
-      - DENY
-    http_version: HTTP/1.1
-    status_code: 200
-- request:
-    body: action=wbsetlabel&site=commonswiki&title=File%3AThameslink_Class_700_in_Pride_livery.jpg&language=en&value=A+Thameslink+Class+700+train+in+the+rainbow+Pride+livery%2C+taken+at+night&format=json&token=2b163554193f2a696054d80e943588dd65300504%2B%5C
-    headers:
-      accept:
-      - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
-      - keep-alive
-      content-length:
-      - '246'
-      content-type:
-      - application/x-www-form-urlencoded
-      cookie:
-      - GeoIP=GB:ENG:Newark_on_Trent:53.07:-0.82:v4; NetworkProbeLimit=0.001; UseDC=master;
-        WMF-Last-Access=18-Oct-2023; cpPosIndex=1%401697645828%231b5e5eb9377d3c687f9858a14d1dcc33
-      host:
-      - commons.wikimedia.org
-      user-agent:
-      - python-httpx/0.25.0
-    method: POST
-    uri: https://commons.wikimedia.org/w/api.php
-  response:
-    content: '{"entity":{"labels":{"en":{"language":"en","value":"A Thameslink Class
-      700 train in the rainbow Pride livery, taken at night"}},"id":"M139134318","type":"mediainfo","lastrevid":812827205},"success":1}'
-    headers:
-      accept-ranges:
-      - bytes
-      age:
-      - '2'
-      cache-control:
-      - private, max-age=0, s-maxage=0
-      content-disposition:
-      - inline; filename=api-result.json
-      content-length:
-      - '200'
-      content-type:
-      - application/json; charset=utf-8
-      date:
-      - Wed, 18 Oct 2023 16:17:08 GMT
-      nel:
-      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
-        0.0}'
-      report-to:
-      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
-        }] }'
-      server:
-      - mw2397.codfw.wmnet
-      server-timing:
-      - cache;desc="pass", host;desc="cp3066"
-      set-cookie:
-      - cpPosIndex=2%401697645829%231b5e5eb9377d3c687f9858a14d1dcc33; expires=Wed,
-        18-Oct-2023 16:17:19 GMT; Max-Age=10; path=/; secure; HttpOnly
-      - UseDC=master; expires=Wed, 18-Oct-2023 16:17:19 GMT; Max-Age=10; path=/; secure;
-        HttpOnly
-      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
-      strict-transport-security:
-      - max-age=106384710; includeSubDomains; preload
-      vary:
-      - Accept-Encoding
-      x-cache:
-      - cp3066 pass, cp3066 pass
-      x-cache-status:
-      - pass
-      x-client-ip:
-      - 81.131.37.170
-      x-content-type-options:
-      - nosniff
-      x-frame-options:
-      - DENY
-    http_version: HTTP/1.1
-    status_code: 200
-- request:
-    body: ''
-    headers:
-      accept:
-      - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
-      - keep-alive
-      cookie:
-      - GeoIP=GB:ENG:Newark_on_Trent:53.07:-0.82:v4; NetworkProbeLimit=0.001; UseDC=master;
-        WMF-Last-Access=18-Oct-2023; cpPosIndex=2%401697645829%231b5e5eb9377d3c687f9858a14d1dcc33
-      host:
-      - commons.wikimedia.org
-      user-agent:
-      - python-httpx/0.25.0
-    method: GET
-    uri: https://commons.wikimedia.org/w/api.php?action=query&meta=tokens&type=csrf&format=json
-  response:
-    content: '{"batchcomplete":"","query":{"tokens":{"csrftoken":"8b236158ff4afa51d2e466841608ed8965300505+\\"}}}'
-    headers:
-      accept-ranges:
-      - bytes
-      age:
-      - '0'
-      cache-control:
-      - private, must-revalidate, max-age=0
-      content-disposition:
-      - inline; filename=api-result.json
-      content-length:
-      - '99'
-      content-type:
-      - application/json; charset=utf-8
-      date:
-      - Wed, 18 Oct 2023 16:17:09 GMT
-      nel:
-      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
-        0.0}'
-      report-to:
-      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
-        }] }'
-      server:
-      - mw2286.codfw.wmnet
-      server-timing:
-      - cache;desc="pass", host;desc="cp3066"
-      set-cookie:
-      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
-      strict-transport-security:
-      - max-age=106384710; includeSubDomains; preload
-      vary:
-      - Accept-Encoding
-      x-cache:
-      - cp3066 pass, cp3066 pass
-      x-cache-status:
-      - pass
-      x-client-ip:
-      - 81.131.37.170
-      x-content-type-options:
-      - nosniff
-      x-frame-options:
-      - DENY
-    http_version: HTTP/1.1
-    status_code: 200
-- request:
-    body: action=wbeditentity&site=commonswiki&title=File%3AThameslink_Class_700_in_Pride_livery.jpg&data=%7B%22claims%22%3A+%5B%7B%22mainsnak%22%3A+%7B%22snaktype%22%3A+%22somevalue%22%2C+%22property%22%3A+%22P170%22%7D%2C+%22qualifiers%22%3A+%7B%22P2093%22%3A+%5B%7B%22datavalue%22%3A+%7B%22type%22%3A+%22string%22%2C+%22value%22%3A+%22Alex+Chan%22%7D%2C+%22property%22%3A+%22P2093%22%2C+%22snaktype%22%3A+%22value%22%7D%5D%2C+%22P2699%22%3A+%5B%7B%22datavalue%22%3A+%7B%22type%22%3A+%22string%22%2C+%22value%22%3A+%22https%3A%2F%2Fwww.flickr.com%2Fphotos%2F199246608%40N02%2F%22%7D%2C+%22property%22%3A+%22P2699%22%2C+%22snaktype%22%3A+%22value%22%7D%5D%2C+%22P3267%22%3A+%5B%7B%22datavalue%22%3A+%7B%22type%22%3A+%22string%22%2C+%22value%22%3A+%22199246608%40N02%22%7D%2C+%22property%22%3A+%22P3267%22%2C+%22snaktype%22%3A+%22value%22%7D%5D%7D%2C+%22qualifiers-order%22%3A+%5B%22P3267%22%2C+%22P2093%22%2C+%22P2699%22%5D%2C+%22type%22%3A+%22statement%22%7D%2C+%7B%22mainsnak%22%3A+%7B%22snaktype%22%3A+%22value%22%2C+%22property%22%3A+%22P6216%22%2C+%22datavalue%22%3A+%7B%22type%22%3A+%22wikibase-entityid%22%2C+%22value%22%3A+%7B%22id%22%3A+%22Q50423863%22%7D%7D%7D%2C+%22type%22%3A+%22statement%22%7D%2C+%7B%22mainsnak%22%3A+%7B%22snaktype%22%3A+%22value%22%2C+%22property%22%3A+%22P7482%22%2C+%22datavalue%22%3A+%7B%22type%22%3A+%22wikibase-entityid%22%2C+%22value%22%3A+%7B%22id%22%3A+%22Q74228490%22%7D%7D%7D%2C+%22qualifiers%22%3A+%7B%22P973%22%3A+%5B%7B%22datavalue%22%3A+%7B%22type%22%3A+%22string%22%2C+%22value%22%3A+%22https%3A%2F%2Fwww.flickr.com%2Fphotos%2F199246608%40N02%2F53268016608%2F%22%7D%2C+%22property%22%3A+%22P973%22%2C+%22snaktype%22%3A+%22value%22%7D%5D%2C+%22P137%22%3A+%5B%7B%22snaktype%22%3A+%22value%22%2C+%22property%22%3A+%22P137%22%2C+%22datavalue%22%3A+%7B%22type%22%3A+%22wikibase-entityid%22%2C+%22value%22%3A+%7B%22id%22%3A+%22Q103204%22%7D%7D%7D%5D%2C+%22P2699%22%3A+%5B%7B%22datavalue%22%3A+%7B%22type%22%3A+%22string%22%2C+%22value%22%3A+%22https%3A%2F%2Flive.staticflickr.com%2F65535%2F53268016608_5b890124fd_o_d.jpg%22%7D%2C+%22property%22%3A+%22P2699%22%2C+%22snaktype%22%3A+%22value%22%7D%5D%7D%2C+%22qualifiers-order%22%3A+%5B%22P973%22%2C+%22P137%22%2C+%22P2699%22%5D%2C+%22type%22%3A+%22statement%22%7D%2C+%7B%22mainsnak%22%3A+%7B%22snaktype%22%3A+%22value%22%2C+%22property%22%3A+%22P275%22%2C+%22datavalue%22%3A+%7B%22type%22%3A+%22wikibase-entityid%22%2C+%22value%22%3A+%7B%22id%22%3A+%22Q19125117%22%7D%7D%7D%2C+%22type%22%3A+%22statement%22%7D%2C+%7B%22mainsnak%22%3A+%7B%22snaktype%22%3A+%22value%22%2C+%22property%22%3A+%22P1433%22%2C+%22datavalue%22%3A+%7B%22type%22%3A+%22wikibase-entityid%22%2C+%22value%22%3A+%7B%22id%22%3A+%22Q103204%22%7D%7D%7D%2C+%22qualifiers%22%3A+%7B%22P577%22%3A+%5B%7B%22datavalue%22%3A+%7B%22value%22%3A+%7B%22time%22%3A+%22%2B2023-10-18T00%3A00%3A00Z%22%2C+%22precision%22%3A+11%2C+%22timezone%22%3A+0%2C+%22before%22%3A+0%2C+%22after%22%3A+0%2C+%22calendarmodel%22%3A+%22http%3A%2F%2Fwww.wikidata.org%2Fentity%2FQ1985727%22%7D%2C+%22type%22%3A+%22time%22%7D%2C+%22property%22%3A+%22P577%22%2C+%22snaktype%22%3A+%22value%22%7D%5D%7D%2C+%22qualifiers-order%22%3A+%5B%22P577%22%5D%2C+%22type%22%3A+%22statement%22%7D%2C+%7B%22mainsnak%22%3A+%7B%22datavalue%22%3A+%7B%22value%22%3A+%7B%22time%22%3A+%22%2B2023-09-12T00%3A00%3A00Z%22%2C+%22precision%22%3A+11%2C+%22timezone%22%3A+0%2C+%22before%22%3A+0%2C+%22after%22%3A+0%2C+%22calendarmodel%22%3A+%22http%3A%2F%2Fwww.wikidata.org%2Fentity%2FQ1985727%22%7D%2C+%22type%22%3A+%22time%22%7D%2C+%22property%22%3A+%22P571%22%2C+%22snaktype%22%3A+%22value%22%7D%2C+%22type%22%3A+%22statement%22%7D%5D%7D&format=json&token=8b236158ff4afa51d2e466841608ed8965300505%2B%5C
-    headers:
-      accept:
-      - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
-      - keep-alive
-      content-length:
-      - '3689'
-      content-type:
-      - application/x-www-form-urlencoded
-      cookie:
-      - GeoIP=GB:ENG:Newark_on_Trent:53.07:-0.82:v4; NetworkProbeLimit=0.001; UseDC=master;
-        WMF-Last-Access=18-Oct-2023; cpPosIndex=2%401697645829%231b5e5eb9377d3c687f9858a14d1dcc33
-      host:
-      - commons.wikimedia.org
-      user-agent:
-      - python-httpx/0.25.0
-    method: POST
-    uri: https://commons.wikimedia.org/w/api.php
-  response:
-    content: '{"entity":{"type":"mediainfo","id":"M139134318","labels":{"en":{"language":"en","value":"A
-      Thameslink Class 700 train in the rainbow Pride livery, taken at night"}},"descriptions":{},"statements":{"P170":[{"mainsnak":{"snaktype":"somevalue","property":"P170","hash":"d3550e860f988c6675fff913440993f58f5c40c5"},"type":"statement","qualifiers":{"P3267":[{"snaktype":"value","property":"P3267","hash":"720421850357074e74457b9bdc5c93c477a1ab81","datavalue":{"value":"199246608@N02","type":"string"}}],"P2093":[{"snaktype":"value","property":"P2093","hash":"fab51479c0c03b1a3784816008ab10515b259301","datavalue":{"value":"Alex
-      Chan","type":"string"}}],"P2699":[{"snaktype":"value","property":"P2699","hash":"9bad7272b27927e7b6ea13142cd1800221cb8aa4","datavalue":{"value":"https://www.flickr.com/photos/199246608@N02/","type":"string"}}]},"qualifiers-order":["P3267","P2093","P2699"],"id":"M139134318$AD98EF78-5115-4DA0-8663-CDB77F27733B","rank":"normal"}],"P6216":[{"mainsnak":{"snaktype":"value","property":"P6216","hash":"5570347fdc76d2a80732f51ea10ee4b144a084e0","datavalue":{"value":{"entity-type":"item","numeric-id":50423863,"id":"Q50423863"},"type":"wikibase-entityid"}},"type":"statement","id":"M139134318$65C318C1-765D-459C-9AB1-D474D433B608","rank":"normal"}],"P7482":[{"mainsnak":{"snaktype":"value","property":"P7482","hash":"b82dd47222a210c6dc1f428b693c2fbf7b0e0d6e","datavalue":{"value":{"entity-type":"item","numeric-id":74228490,"id":"Q74228490"},"type":"wikibase-entityid"}},"type":"statement","qualifiers":{"P973":[{"snaktype":"value","property":"P973","hash":"256e2a1968b8b98ea39dbeac8fa7a49d5d457a4b","datavalue":{"value":"https://www.flickr.com/photos/199246608@N02/53268016608/","type":"string"}}],"P137":[{"snaktype":"value","property":"P137","hash":"3d8cd4c1ab91d3d9a14900210faaebf1a98b947b","datavalue":{"value":{"entity-type":"item","numeric-id":103204,"id":"Q103204"},"type":"wikibase-entityid"}}],"P2699":[{"snaktype":"value","property":"P2699","hash":"d67fd80560fa520b7fb4a1d8fb6489e4f53dd214","datavalue":{"value":"https://live.staticflickr.com/65535/53268016608_5b890124fd_o_d.jpg","type":"string"}}]},"qualifiers-order":["P973","P137","P2699"],"id":"M139134318$2786F193-D2AE-4506-B571-2CA6727B0BBD","rank":"normal"}],"P275":[{"mainsnak":{"snaktype":"value","property":"P275","hash":"82d5b402aa0a79040483a8c9264bd484c6c13f67","datavalue":{"value":{"entity-type":"item","numeric-id":19125117,"id":"Q19125117"},"type":"wikibase-entityid"}},"type":"statement","id":"M139134318$7DF22058-91EA-4074-B6DE-885385989279","rank":"normal"}],"P1433":[{"mainsnak":{"snaktype":"value","property":"P1433","hash":"42371a72aac2d430d87cc00de671b55cac1f5a79","datavalue":{"value":{"entity-type":"item","numeric-id":103204,"id":"Q103204"},"type":"wikibase-entityid"}},"type":"statement","qualifiers":{"P577":[{"snaktype":"value","property":"P577","hash":"040ac444cd11eeb55ebdeb56fafbe60c116c2a1a","datavalue":{"value":{"time":"+2023-10-18T00:00:00Z","timezone":0,"before":0,"after":0,"precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"},"type":"time"}}]},"qualifiers-order":["P577"],"id":"M139134318$AA30360C-404F-4C62-B7FD-1CF676FE6445","rank":"normal"}],"P571":[{"mainsnak":{"snaktype":"value","property":"P571","hash":"021b4ec52da275f13b26a624e5fbe91b534f870f","datavalue":{"value":{"time":"+2023-09-12T00:00:00Z","timezone":0,"before":0,"after":0,"precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"},"type":"time"}},"type":"statement","id":"M139134318$30288A2D-26A9-4E04-8EE2-6844D2088DF9","rank":"normal"}]},"lastrevid":812827206},"success":1}'
-    headers:
-      accept-ranges:
-      - bytes
-      age:
-      - '2'
-      cache-control:
-      - private, max-age=0, s-maxage=0
-      content-disposition:
-      - inline; filename=api-result.json
-      content-encoding:
-      - gzip
-      content-type:
-      - application/json; charset=utf-8
-      date:
-      - Wed, 18 Oct 2023 16:17:09 GMT
-      nel:
-      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
-        0.0}'
-      report-to:
-      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
-        }] }'
-      server:
-      - mw2319.codfw.wmnet
-      server-timing:
-      - cache;desc="pass", host;desc="cp3066"
-      set-cookie:
-      - cpPosIndex=3%401697645830%231b5e5eb9377d3c687f9858a14d1dcc33; expires=Wed,
-        18-Oct-2023 16:17:20 GMT; Max-Age=10; path=/; secure; HttpOnly
-      - UseDC=master; expires=Wed, 18-Oct-2023 16:17:20 GMT; Max-Age=10; path=/; secure;
-        HttpOnly
-      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
-      strict-transport-security:
-      - max-age=106384710; includeSubDomains; preload
-      transfer-encoding:
-      - chunked
-      vary:
-      - Accept-Encoding
-      x-cache:
-      - cp3066 pass, cp3066 pass
-      x-cache-status:
-      - pass
-      x-client-ip:
-      - 81.131.37.170
-      x-content-type-options:
-      - nosniff
-      x-frame-options:
-      - DENY
-    http_version: HTTP/1.1
-    status_code: 200
-- request:
-    body: ''
-    headers:
-      accept:
-      - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
-      - keep-alive
-      host:
-      - query.wikidata.org
-      user-agent:
       - python-httpx/0.25.1
     method: GET
     uri: https://query.wikidata.org/sparql?format=json&query=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20SELECT%20%3Fitem%20%3Fvalue%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20WHERE%20%7B%20%3Fitem%20wdt%3AP3267%20%3Fvalue%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20LIMIT%205000%0A%20%20%20%20%20%20%20%20%20%20%20%20
@@ -584,9 +98,6 @@ interactions:
       : \"http://www.wikidata.org/entity/Q380900\"\n      },\n      \"value\" : {\n
       \       \"type\" : \"literal\",\n        \"value\" : \"32613649@N06\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q376150\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"itupictures\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q455510\"\n      },\n      \"value\" : {\n
       \       \"type\" : \"literal\",\n        \"value\" : \"54366973@N04\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
@@ -664,9 +175,6 @@ interactions:
       : \"http://www.wikidata.org/entity/Q1326085\"\n      },\n      \"value\" : {\n
       \       \"type\" : \"literal\",\n        \"value\" : \"50608367@N06\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q1379228\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"evahoegl\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q1411688\"\n      },\n      \"value\" : {\n
       \       \"type\" : \"literal\",\n        \"value\" : \"37689793@N06\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
@@ -699,9 +207,6 @@ interactions:
       \       \"value\" : \"http://www.wikidata.org/entity/Q1579497\"\n      },\n
       \     \"value\" : {\n        \"type\" : \"literal\",\n        \"value\" : \"139068613@N03\"\n
       \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q1575274\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"hwk-koblenz\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q1575278\"\n      },\n      \"value\" : {\n
       \       \"type\" : \"literal\",\n        \"value\" : \"hwkbi\"\n      }\n    },
       {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\" : \"http://www.wikidata.org/entity/Q1634011\"\n
@@ -716,9 +221,6 @@ interactions:
       : \"http://www.wikidata.org/entity/Q1784303\"\n      },\n      \"value\" : {\n
       \       \"type\" : \"literal\",\n        \"value\" : \"schulzasche\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q1809949\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"lappeenranta-university-of-technology\"\n
-      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q1848918\"\n      },\n      \"value\" : {\n
       \       \"type\" : \"literal\",\n        \"value\" : \"186501806@N04\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
@@ -733,9 +235,6 @@ interactions:
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q1992595\"\n      },\n      \"value\" : {\n
       \       \"type\" : \"literal\",\n        \"value\" : \"9078261@N07\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q2096652\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"piratennrw\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q2327687\"\n      },\n      \"value\" : {\n
       \       \"type\" : \"literal\",\n        \"value\" : \"stadtmuseum-stuttgart\"\n
@@ -1443,9 +942,6 @@ interactions:
       : \"http://www.wikidata.org/entity/Q230654\"\n      },\n      \"value\" : {\n
       \       \"type\" : \"literal\",\n        \"value\" : \"34633535@N02\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q220945\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"partyofeuropeansocialists\"\n
-      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q252417\"\n      },\n      \"value\" : {\n
       \       \"type\" : \"literal\",\n        \"value\" : \"beamishmuseum\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
@@ -2105,9 +1601,6 @@ interactions:
       : \"http://www.wikidata.org/entity/Q104133022\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"thebishopstonsociety\"\n
       \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q104907558\"\n      },\n      \"value\" :
-      {\n        \"type\" : \"literal\",\n        \"value\" : \"newnoisemagazine\"\n
-      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q105552895\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"136749227@N06\"\n
       \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
@@ -2117,9 +1610,6 @@ interactions:
       : \"http://www.wikidata.org/entity/Q105703712\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"elpubconf\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q105945844\"\n      },\n      \"value\" :
-      {\n        \"type\" : \"literal\",\n        \"value\" : \"photos/hi_geo/albums/72157718641983796\"\n
-      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q106825932\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"67655174@N00\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
@@ -2146,9 +1636,6 @@ interactions:
       \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q110548787\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"11415966@N06\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q110558806\"\n      },\n      \"value\" :
-      {\n        \"type\" : \"literal\",\n        \"value\" : \"saperstein/\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q110867554\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"14266830@N02\"\n      }\n
@@ -2408,6 +1895,9 @@ interactions:
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q1739640\"\n      },\n      \"value\" : {\n
       \       \"type\" : \"literal\",\n        \"value\" : \"59597785@N05\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q1736748\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"SandiaLabs\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q1789649\"\n      },\n      \"value\" : {\n
       \       \"type\" : \"literal\",\n        \"value\" : \"mvep_rh\"\n      }\n
@@ -2929,9 +2419,6 @@ interactions:
       : \"http://www.wikidata.org/entity/Q101206169\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"unnika\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q103431328\"\n      },\n      \"value\" :
-      {\n        \"type\" : \"literal\",\n        \"value\" : \"equipethierrystump\"\n
-      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q104133348\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"ipsoc\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
@@ -2979,9 +2466,6 @@ interactions:
       \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q108881855\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"cocoloris\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q108939144\"\n      },\n      \"value\" :
-      {\n        \"type\" : \"literal\",\n        \"value\" : \"LABNL\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q110271783\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"84062121@N08\"\n      }\n
@@ -3835,9 +3319,6 @@ interactions:
       : \"http://www.wikidata.org/entity/Q99479522\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"eizenija\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q100320258\"\n      },\n      \"value\" :
-      {\n        \"type\" : \"literal\",\n        \"value\" : \"fpedrocalmon\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q104183620\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"90lovehome\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
@@ -3891,9 +3372,6 @@ interactions:
       \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q111189505\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"englandkorfball\"\n
-      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q111213006\"\n      },\n      \"value\" :
-      {\n        \"type\" : \"literal\",\n        \"value\" : \"warrenvilleparkdistrict\"\n
       \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q111356251\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"76233712@N05\"\n      }\n
@@ -4212,10 +3690,7 @@ interactions:
       : \"uri\",\n        \"value\" : \"http://www.wikidata.org/entity/Q2362881\"\n
       \     },\n      \"value\" : {\n        \"type\" : \"literal\",\n        \"value\"
       : \"africanunioncommission\"\n      }\n    }, {\n      \"item\" : {\n        \"type\"
-      : \"uri\",\n        \"value\" : \"http://www.wikidata.org/entity/Q2391059\"\n
-      \     },\n      \"value\" : {\n        \"type\" : \"literal\",\n        \"value\"
-      : \"https://www.flickr.com/photos/hope_dworaczyk_smith/\"\n      }\n    }, {\n
-      \     \"item\" : {\n        \"type\" : \"uri\",\n        \"value\" : \"http://www.wikidata.org/entity/Q2547650\"\n
+      : \"uri\",\n        \"value\" : \"http://www.wikidata.org/entity/Q2547650\"\n
       \     },\n      \"value\" : {\n        \"type\" : \"literal\",\n        \"value\"
       : \"waltraudwolff\"\n      }\n    }, {\n      \"item\" : {\n        \"type\"
       : \"uri\",\n        \"value\" : \"http://www.wikidata.org/entity/Q2606039\"\n
@@ -4419,9 +3894,6 @@ interactions:
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q10342495\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"125838468@N08\"\n
-      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q10320247\"\n      },\n      \"value\" :
-      {\n        \"type\" : \"literal\",\n        \"value\" : \"deputadaluciana\"\n
       \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q10304982\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"fotosbolsonaro\"\n
@@ -4789,9 +4261,6 @@ interactions:
       : \"http://www.wikidata.org/entity/Q108123100\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"194151111@N07\"\n
       \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q108805861\"\n      },\n      \"value\" :
-      {\n        \"type\" : \"literal\",\n        \"value\" : \"mariamoonviolin\"\n
-      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q109649391\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"30039701@N08\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
@@ -4804,9 +4273,6 @@ interactions:
       : \"http://www.wikidata.org/entity/Q110895100\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"60594606@N00\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q111106144\"\n      },\n      \"value\" :
-      {\n        \"type\" : \"literal\",\n        \"value\" : \"semabahia/albums\"\n
-      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q111134360\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"stevieart\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
@@ -4834,6 +4300,9 @@ interactions:
       : \"http://www.wikidata.org/entity/Q115674082\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"koreaculturedc\"\n
       \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q115667786\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"thethaotocdo\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q116448147\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"128941223@N02\"\n
       \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
@@ -4967,6 +4436,9 @@ interactions:
       : \"http://www.wikidata.org/entity/Q693032\"\n      },\n      \"value\" : {\n
       \       \"type\" : \"literal\",\n        \"value\" : \"64018555@N03\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q714439\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"oakridgelab\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q729048\"\n      },\n      \"value\" : {\n
       \       \"type\" : \"literal\",\n        \"value\" : \"148174486@N06\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
@@ -5002,18 +4474,20 @@ interactions:
       : \"http://www.wikidata.org/entity/Q1009084\"\n      },\n      \"value\" : {\n
       \       \"type\" : \"literal\",\n        \"value\" : \"60852899@N07\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q1020839\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"50736296@N06\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q1049334\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"30539067@N04\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q1102209\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"stratcomm\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q1151568\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"36600794@N03\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q1008895\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"bitkom\"\n      }\n    },
+      {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\" : \"http://www.wikidata.org/entity/Q1020839\"\n
+      \     },\n      \"value\" : {\n        \"type\" : \"literal\",\n        \"value\"
+      : \"50736296@N06\"\n      }\n    }, {\n      \"item\" : {\n        \"type\"
+      : \"uri\",\n        \"value\" : \"http://www.wikidata.org/entity/Q1049334\"\n
+      \     },\n      \"value\" : {\n        \"type\" : \"literal\",\n        \"value\"
+      : \"30539067@N04\"\n      }\n    }, {\n      \"item\" : {\n        \"type\"
+      : \"uri\",\n        \"value\" : \"http://www.wikidata.org/entity/Q1102209\"\n
+      \     },\n      \"value\" : {\n        \"type\" : \"literal\",\n        \"value\"
+      : \"stratcomm\"\n      }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n
+      \       \"value\" : \"http://www.wikidata.org/entity/Q1151568\"\n      },\n
+      \     \"value\" : {\n        \"type\" : \"literal\",\n        \"value\" : \"36600794@N03\"\n
+      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q1163453\"\n      },\n      \"value\" : {\n
       \       \"type\" : \"literal\",\n        \"value\" : \"40219129@N08\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
@@ -5551,9 +5025,6 @@ interactions:
       : \"http://www.wikidata.org/entity/Q89121186\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"58988872@N00\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q90536229\"\n      },\n      \"value\" :
-      {\n        \"type\" : \"literal\",\n        \"value\" : \"https://www.flickr.com/photos/ibai\"\n
-      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q92978565\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"brayanameth\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
@@ -5766,6 +5237,9 @@ interactions:
       : \"http://www.wikidata.org/entity/Q559549\"\n      },\n      \"value\" : {\n
       \       \"type\" : \"literal\",\n        \"value\" : \"49251707@N07\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q585777\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"brookhavenlab\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q631844\"\n      },\n      \"value\" : {\n
       \       \"type\" : \"literal\",\n        \"value\" : \"63857084@N07\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
@@ -5977,32 +5451,35 @@ interactions:
       : \"http://www.wikidata.org/entity/Q3752759\"\n      },\n      \"value\" : {\n
       \       \"type\" : \"literal\",\n        \"value\" : \"55724892@N05\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q4050928\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"hillcaitlin\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q4294583\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"119477561@N02\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q4333758\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"94072001@N00\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q4294620\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"ministeriodelaproduccion\"\n
+      : \"http://www.wikidata.org/entity/Q1314158\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"inl\"\n      }\n    },
+      {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\" : \"http://www.wikidata.org/entity/Q4050928\"\n
+      \     },\n      \"value\" : {\n        \"type\" : \"literal\",\n        \"value\"
+      : \"hillcaitlin\"\n      }\n    }, {\n      \"item\" : {\n        \"type\" :
+      \"uri\",\n        \"value\" : \"http://www.wikidata.org/entity/Q4294583\"\n
+      \     },\n      \"value\" : {\n        \"type\" : \"literal\",\n        \"value\"
+      : \"119477561@N02\"\n      }\n    }, {\n      \"item\" : {\n        \"type\"
+      : \"uri\",\n        \"value\" : \"http://www.wikidata.org/entity/Q4333758\"\n
+      \     },\n      \"value\" : {\n        \"type\" : \"literal\",\n        \"value\"
+      : \"94072001@N00\"\n      }\n    }, {\n      \"item\" : {\n        \"type\"
+      : \"uri\",\n        \"value\" : \"http://www.wikidata.org/entity/Q4294620\"\n
+      \     },\n      \"value\" : {\n        \"type\" : \"literal\",\n        \"value\"
+      : \"ministeriodelaproduccion\"\n      }\n    }, {\n      \"item\" : {\n        \"type\"
+      : \"uri\",\n        \"value\" : \"http://www.wikidata.org/entity/Q4547560\"\n
+      \     },\n      \"value\" : {\n        \"type\" : \"literal\",\n        \"value\"
+      : \"116acw\"\n      }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n
+      \       \"value\" : \"http://www.wikidata.org/entity/Q4836325\"\n      },\n
+      \     \"value\" : {\n        \"type\" : \"literal\",\n        \"value\" : \"132942701@N08\"\n
       \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q4547560\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"116acw\"\n      }\n    },
-      {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\" : \"http://www.wikidata.org/entity/Q4836325\"\n
-      \     },\n      \"value\" : {\n        \"type\" : \"literal\",\n        \"value\"
-      : \"132942701@N08\"\n      }\n    }, {\n      \"item\" : {\n        \"type\"
-      : \"uri\",\n        \"value\" : \"http://www.wikidata.org/entity/Q4976789\"\n
-      \     },\n      \"value\" : {\n        \"type\" : \"literal\",\n        \"value\"
-      : \"126782722@N07\"\n      }\n    }, {\n      \"item\" : {\n        \"type\"
-      : \"uri\",\n        \"value\" : \"http://www.wikidata.org/entity/Q5019402\"\n
-      \     },\n      \"value\" : {\n        \"type\" : \"literal\",\n        \"value\"
-      : \"fairphone\"\n      }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n
-      \       \"value\" : \"http://www.wikidata.org/entity/Q5020545\"\n      },\n
-      \     \"value\" : {\n        \"type\" : \"literal\",\n        \"value\" : \"hsrcagov\"\n
-      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q4976789\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"126782722@N07\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q5019402\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"fairphone\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q5020545\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"hsrcagov\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q5045024\"\n      },\n      \"value\" : {\n
       \       \"type\" : \"literal\",\n        \"value\" : \"142694579@N05\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
@@ -6056,9 +5533,6 @@ interactions:
       : \"uri\",\n        \"value\" : \"http://www.wikidata.org/entity/Q6773285\"\n
       \     },\n      \"value\" : {\n        \"type\" : \"literal\",\n        \"value\"
       : \"93410728@N03\"\n      }\n    }, {\n      \"item\" : {\n        \"type\"
-      : \"uri\",\n        \"value\" : \"http://www.wikidata.org/entity/Q6903280\"\n
-      \     },\n      \"value\" : {\n        \"type\" : \"literal\",\n        \"value\"
-      : \"liorschleien/\"\n      }\n    }, {\n      \"item\" : {\n        \"type\"
       : \"uri\",\n        \"value\" : \"http://www.wikidata.org/entity/Q7070706\"\n
       \     },\n      \"value\" : {\n        \"type\" : \"literal\",\n        \"value\"
       : \"nucisspace\"\n      }\n    }, {\n      \"item\" : {\n        \"type\" :
@@ -6679,9 +6153,6 @@ interactions:
       : \"http://www.wikidata.org/entity/Q1262015\"\n      },\n      \"value\" : {\n
       \       \"type\" : \"literal\",\n        \"value\" : \"kerstin_tack\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q1314158\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"60298196@N04\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q1325591\"\n      },\n      \"value\" : {\n
       \       \"type\" : \"literal\",\n        \"value\" : \"126729321@N02\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
@@ -6755,9 +6226,6 @@ interactions:
       : \"http://www.wikidata.org/entity/Q2738622\"\n      },\n      \"value\" : {\n
       \       \"type\" : \"literal\",\n        \"value\" : \"90816014@N08\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q2746800\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"https://www.flickr.com/photos/fundacioncajasol/\"\n
-      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q2784596\"\n      },\n      \"value\" : {\n
       \       \"type\" : \"literal\",\n        \"value\" : \"151637977@N06\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
@@ -7310,12 +6778,6 @@ interactions:
       : \"http://www.wikidata.org/entity/Q111023470\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"96733981@N03\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q111209760\"\n      },\n      \"value\" :
-      {\n        \"type\" : \"literal\",\n        \"value\" : \"plainfieldparkdistrict\"\n
-      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q111213095\"\n      },\n      \"value\" :
-      {\n        \"type\" : \"literal\",\n        \"value\" : \"woodridgeparks\"\n
-      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q111442554\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"formatc_artorg\"\n
       \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
@@ -7445,6 +6907,9 @@ interactions:
       : \"http://www.wikidata.org/entity/Q25062370\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"crmra\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q43302028\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"engagement-global\"\n
+      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q67805252\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"115503203@N02\"\n
       \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
@@ -7588,9 +7053,6 @@ interactions:
       : \"http://www.wikidata.org/entity/Q87253106\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"27304734\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q67624118\"\n      },\n      \"value\" :
-      {\n        \"type\" : \"literal\",\n        \"value\" : \"jmiba/\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q117639917\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"phguereta\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
@@ -7638,6 +7100,9 @@ interactions:
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q117824108\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"howiedewitt\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q117866109\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"mirod\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q17320511\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"27673812@N05\"\n      }\n
@@ -7953,129 +7418,6 @@ interactions:
       : \"http://www.wikidata.org/entity/Q103849074\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"131872805@N05\"\n
       \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q1754451\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"68041824@N04\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q94663647\"\n      },\n      \"value\" :
-      {\n        \"type\" : \"literal\",\n        \"value\" : \"190707040@N08\"\n
-      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q5302352\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"82328988@N00\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q94247203\"\n      },\n      \"value\" :
-      {\n        \"type\" : \"literal\",\n        \"value\" : \"78608842@N03\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q430518\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"187156828@N05\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q19753689\"\n      },\n      \"value\" :
-      {\n        \"type\" : \"literal\",\n        \"value\" : \"32549404@N00\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q6017461\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"68403596@N04\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q4885823\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"43335486@N00\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q5476145\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"46958463@N06\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q120548822\"\n      },\n      \"value\" :
-      {\n        \"type\" : \"literal\",\n        \"value\" : \"7940758@N07\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q120548770\"\n      },\n      \"value\" :
-      {\n        \"type\" : \"literal\",\n        \"value\" : \"198864910@N02\"\n
-      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q120647975\"\n      },\n      \"value\" :
-      {\n        \"type\" : \"literal\",\n        \"value\" : \"42167008@N04\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q25079\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"93003333@N04\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q3913043\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"25147146@N00\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q1649323\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"41474848@N06\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q123344390\"\n      },\n      \"value\" :
-      {\n        \"type\" : \"literal\",\n        \"value\" : \"59018734@N08\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q154387\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"50687766@N02\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q174747\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"63592766@N03\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q182836\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"55808103@N08\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q193218\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"27302644@N03\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q303814\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"94386094@N06\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q77596522\"\n      },\n      \"value\" :
-      {\n        \"type\" : \"literal\",\n        \"value\" : \"36278925@N00\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q325859\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"83918300@N02\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q338433\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"101988944@N08\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q386120\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"66522907@N02\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q566688\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"94934665@N08\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q944329\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"78037339@N03\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q651140\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"29892483@N03\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q624023\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"59202267@N08\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q1131014\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"81353858@N07\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q2023448\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"131677590@N02\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q3322260\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"43515365@N04\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q57226485\"\n      },\n      \"value\" :
-      {\n        \"type\" : \"literal\",\n        \"value\" : \"119087814@N07\"\n
-      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q67200581\"\n      },\n      \"value\" :
-      {\n        \"type\" : \"literal\",\n        \"value\" : \"131042553@N08\"\n
-      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q98148739\"\n      },\n      \"value\" :
-      {\n        \"type\" : \"literal\",\n        \"value\" : \"163559352@N07\"\n
-      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q76962234\"\n      },\n      \"value\" :
-      {\n        \"type\" : \"literal\",\n        \"value\" : \"185627482@N03\"\n
-      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q87540692\"\n      },\n      \"value\" :
-      {\n        \"type\" : \"literal\",\n        \"value\" : \"187608748@N06\"\n
-      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q112407628\"\n      },\n      \"value\" :
-      {\n        \"type\" : \"literal\",\n        \"value\" : \"194976449@N02\"\n
-      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q110952066\"\n      },\n      \"value\" :
-      {\n        \"type\" : \"literal\",\n        \"value\" : \"85642078@N06\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q796745\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"bmwstiftung\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q4283840\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"presidentam\"\n      }\n
-      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q121800021\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"182217318@N05\"\n
       \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
@@ -8351,9 +7693,6 @@ interactions:
       : \"http://www.wikidata.org/entity/Q123339474\"\n      },\n      \"value\" :
       {\n        \"type\" : \"literal\",\n        \"value\" : \"182869894@N06\"\n
       \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
-      : \"http://www.wikidata.org/entity/Q1005545\"\n      },\n      \"value\" : {\n
-      \       \"type\" : \"literal\",\n        \"value\" : \"bundesanstalt_fuer_wasserbau\"\n
-      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q807924\"\n      },\n      \"value\" : {\n
       \       \"type\" : \"literal\",\n        \"value\" : \"89082955@N04\"\n      }\n
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
@@ -8374,7 +7713,237 @@ interactions:
       \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
       : \"http://www.wikidata.org/entity/Q85662\"\n      },\n      \"value\" : {\n
       \       \"type\" : \"literal\",\n        \"value\" : \"61006104@N07\"\n      }\n
-      \   } ]\n  }\n}"
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q1754451\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"68041824@N04\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q94663647\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"190707040@N08\"\n
+      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q5302352\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"82328988@N00\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q94247203\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"78608842@N03\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q430518\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"187156828@N05\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q19753689\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"32549404@N00\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q6017461\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"68403596@N04\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q4885823\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"43335486@N00\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q5476145\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"46958463@N06\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q120548822\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"7940758@N07\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q120548770\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"198864910@N02\"\n
+      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q120647975\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"42167008@N04\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q25079\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"93003333@N04\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q3913043\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"25147146@N00\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q1649323\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"41474848@N06\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q123344390\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"59018734@N08\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q154387\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"50687766@N02\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q174747\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"63592766@N03\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q182836\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"55808103@N08\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q193218\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"27302644@N03\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q303814\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"94386094@N06\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q77596522\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"36278925@N00\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q325859\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"83918300@N02\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q338433\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"101988944@N08\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q386120\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"66522907@N02\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q566688\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"94934665@N08\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q944329\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"78037339@N03\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q651140\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"29892483@N03\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q624023\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"59202267@N08\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q1131014\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"81353858@N07\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q2023448\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"131677590@N02\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q3322260\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"43515365@N04\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q57226485\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"119087814@N07\"\n
+      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q67200581\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"131042553@N08\"\n
+      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q98148739\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"163559352@N07\"\n
+      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q76962234\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"185627482@N03\"\n
+      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q87540692\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"187608748@N06\"\n
+      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q112407628\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"194976449@N02\"\n
+      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q110952066\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"85642078@N06\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q796745\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"bmwstiftung\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q4283840\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"presidentam\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q2391059\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"193627840@N02\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q10320247\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"67695587@N05\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q2746800\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"129072575@N05\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q90536229\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"8877513@N08\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q67624118\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"76336965@N03\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q110558806\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"10086819@N04\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q109662395\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"josemaprietopart\"\n
+      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q6903280\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"140618381@N08\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q100320258\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"62469896@N03\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q1005545\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"64906758@N07\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q111106144\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"159279285@N08\"\n
+      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q103431328\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"69144800@N04\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q2096652\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"150936065@N07\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q1575274\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"54336256@N06\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q1379228\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"38091048@N08\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q376150\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"42121221@N07\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q1809949\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"68341869@N03\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q220945\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"62213859@N07\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q108805861\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"146299789@N06\"\n
+      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q108939144\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"193426812@N02\"\n
+      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q12362584\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"fennougria\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q821856\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"berlinerwasserbetriebe\"\n
+      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q251367\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"wuppertal-institut\"\n
+      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q111209760\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"142995020@N08\"\n
+      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q111213006\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"72167981@N07\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q111213095\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"55002166@N05\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q32506\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"syriancoalition\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q123511800\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"nicebastard\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q104907558\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"125630833@N08\"\n
+      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q1202899\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"dglr\"\n      }\n    },
+      {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\" : \"http://www.wikidata.org/entity/Q2705912\"\n
+      \     },\n      \"value\" : {\n        \"type\" : \"literal\",\n        \"value\"
+      : \"50928401@N00\"\n      }\n    }, {\n      \"item\" : {\n        \"type\"
+      : \"uri\",\n        \"value\" : \"http://www.wikidata.org/entity/Q48928141\"\n
+      \     },\n      \"value\" : {\n        \"type\" : \"literal\",\n        \"value\"
+      : \"sin62\"\n      }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n
+      \       \"value\" : \"http://www.wikidata.org/entity/Q1549254\"\n      },\n
+      \     \"value\" : {\n        \"type\" : \"literal\",\n        \"value\" : \"principatodiseborga\"\n
+      \     }\n    }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q5032877\"\n      },\n      \"value\" : {\n
+      \       \"type\" : \"literal\",\n        \"value\" : \"42841148@N02\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q123589839\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"69065404@N05\"\n      }\n
+      \   }, {\n      \"item\" : {\n        \"type\" : \"uri\",\n        \"value\"
+      : \"http://www.wikidata.org/entity/Q123594770\"\n      },\n      \"value\" :
+      {\n        \"type\" : \"literal\",\n        \"value\" : \"johannesgrunert\"\n
+      \     }\n    } ]\n  }\n}"
     headers:
       accept-ranges:
       - bytes
@@ -8389,7 +7958,7 @@ interactions:
       content-type:
       - application/sparql-results+json;charset=utf-8
       date:
-      - Mon, 13 Nov 2023 14:12:42 GMT
+      - Sat, 02 Dec 2023 16:15:23 GMT
       nel:
       - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
         0.0}'
@@ -8399,7 +7968,7 @@ interactions:
       server:
       - nginx/1.18.0
       server-timing:
-      - cache;desc="pass", host;desc="cp2031"
+      - cache;desc="pass", host;desc="cp3070"
       strict-transport-security:
       - max-age=106384710; includeSubDomains; preload
       transfer-encoding:
@@ -8407,15 +7976,15 @@ interactions:
       vary:
       - Accept, Accept-Encoding
       x-cache:
-      - cp2041 miss, cp2031 pass
+      - cp3070 miss, cp3070 pass
       x-cache-status:
       - pass
       x-client-ip:
-      - 179.27.180.231
+      - 92.13.36.200
       x-first-solution-millis:
-      - '2'
+      - '1'
       x-served-by:
-      - wdqs2009
+      - wdqs1015
     http_version: HTTP/1.1
     status_code: 200
 - request:
@@ -8427,18 +7996,14 @@ interactions:
       - gzip, deflate
       connection:
       - keep-alive
-      cookie:
-      - WMF-Last-Access=18-Oct-2023; NetworkProbeLimit=0.001; cpPosIndex=3%401697645830%231b5e5eb9377d3c687f9858a14d1dcc33;
-        UseDC=master; GeoIP=GB:ENG:Newark_on_Trent:53.07:-0.82:v4
       host:
       - commons.wikimedia.org
       user-agent:
-      - python-httpx/0.25.1
+      - flickypedia/dev
     method: GET
-    uri: https://commons.wikimedia.org/w/api.php?action=query&prop=revisions&titles=File%3AThameslink%20Class%20700%20in%20Pride%20livery&rvlimit=1&rvslots=main&rvprop=content&format=json
+    uri: https://commons.wikimedia.org/w/api.php?action=query&meta=tokens&type=csrf&format=json
   response:
-    content: '{"batchcomplete":"","query":{"pages":{"-1":{"ns":6,"title":"File:Thameslink
-      Class 700 in Pride livery","missing":""}}}}'
+    content: '{"batchcomplete":"","query":{"tokens":{"csrftoken":"1f7c342432768f27a0e77804576de42f656b581c+\\"}}}'
     headers:
       accept-ranges:
       - bytes
@@ -8449,11 +8014,11 @@ interactions:
       content-disposition:
       - inline; filename=api-result.json
       content-length:
-      - '119'
+      - '99'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Tue, 14 Nov 2023 11:18:06 GMT
+      - Sat, 02 Dec 2023 16:15:24 GMT
       nel:
       - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
         0.0}'
@@ -8461,23 +8026,115 @@ interactions:
       - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
         }] }'
       server:
-      - mw2350.codfw.wmnet
+      - mw1493.eqiad.wmnet
       server-timing:
-      - cache;desc="pass", host;desc="cp2041"
+      - cache;desc="pass", host;desc="cp3070"
       set-cookie:
-      - WMF-Last-Access=14-Nov-2023;Path=/;HttpOnly;secure;Expires=Sat, 16 Dec 2023
-        00:00:00 GMT
+      - WMF-Last-Access=02-Dec-2023;Path=/;HttpOnly;secure;Expires=Wed, 03 Jan 2024
+        12:00:00 GMT
+      - GeoIP=GB:ENG:Haverhill:52.05:0.42:v4; Path=/; secure; Domain=.wikimedia.org
       - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
       strict-transport-security:
       - max-age=106384710; includeSubDomains; preload
       vary:
-      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie
+      - Accept-Encoding
       x-cache:
-      - cp2031 pass, cp2041 pass
+      - cp3070 pass, cp3070 pass
       x-cache-status:
       - pass
       x-client-ip:
-      - 201.217.137.162
+      - 92.13.36.200
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: action=upload&filename=Floor+decoration+at+St+Giles+In+The+Fields.jpg&url=https%3A%2F%2Flive.staticflickr.com%2F65535%2F53370809793_dc5cb614ab_o_d.jpg&text=%3D%3D%7B%7Bint%3Afiledesc%7D%7D%3D%3D%0A%7B%7BInformation%7D%7D%0A%0A%3D%3D%7B%7Bint%3Alicense-header%7D%7D%3D%3D%0A%7B%7BCc-by-2.0%7D%7D%0A%0A%7B%7BUploaded+with+Flickypedia%7Cuser%3DAlexwlchan%0A%7Cdate%3D2023-12-02%0A%7CflickrUser%3DAlex+Chan%0A%7CflickrUserUrl%3Dhttps%3A%2F%2Fwww.flickr.com%2Fpeople%2F199246608%40N02%2F%0A%7CflickrPhotoUrl%3Dhttps%3A%2F%2Fwww.flickr.com%2Fphotos%2F199246608%40N02%2F53370809793%0A%7D%7D%0A%0A%5B%5BCategory%3AInteriors+of+churches%5D%5D&format=json&token=1f7c342432768f27a0e77804576de42f656b581c%2B%5C
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '698'
+      content-type:
+      - application/x-www-form-urlencoded
+      cookie:
+      - WMF-Last-Access=02-Dec-2023; NetworkProbeLimit=0.001; GeoIP=GB:ENG:Haverhill:52.05:0.42:v4
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - flickypedia/dev
+    method: POST
+    uri: https://commons.wikimedia.org/w/api.php
+  response:
+    content: '{"upload":{"result":"Success","filename":"Floor_decoration_at_St_Giles_In_The_Fields.jpg","imageinfo":{"timestamp":"2023-12-02T16:15:31Z","user":"Alexwlchan","userid":829939,"size":4264905,"width":3024,"height":4032,"parsedcomment":"","comment":"","html":"<div>\n<figure
+      typeof=\"mw:Error mw:File/Thumb\"><a href=\"/w/index.php?title=Special:Upload&amp;wpDestFile=Floor_decoration_at_St_Giles_In_The_Fields.jpg\"
+      class=\"new\" title=\"File:Floor decoration at St Giles In The Fields.jpg\"><span
+      class=\"mw-file-element mw-broken-media\" data-width=\"100\">File:Floor decoration
+      at St Giles In The Fields.jpg</span></a><figcaption>Existing file</figcaption></figure>\n<p><span
+      id=\"wpUploadWarningFileexists\">A file with this name already exists; please
+      check <b><a class=\"mw-selflink selflink\">the existing file</a></b> if you
+      are not sure whether you want to change it. Please choose another filename,
+      unless you are uploading a technically improved version of the same file. <br
+      />Do not overwrite an image with a different one of the same topic (see <a href=\"/wiki/Commons:File_naming\"
+      title=\"Commons:File naming\">file naming</a>).</span>\n</p>\n<div style=\"clear:both;\"></div>\n</div>","canonicaltitle":"File:Floor
+      decoration at St Giles In The Fields.jpg","url":"https://upload.wikimedia.org/wikipedia/commons/8/83/Floor_decoration_at_St_Giles_In_The_Fields.jpg","descriptionurl":"https://commons.wikimedia.org/wiki/File:Floor_decoration_at_St_Giles_In_The_Fields.jpg","sha1":"0e88e816db4c7442440028ae86d27bfc37031db0","metadata":[{"name":"Make","value":"Apple"},{"name":"Model","value":"iPhone
+      12 mini"},{"name":"Orientation","value":6},{"name":"XResolution","value":"72/1"},{"name":"YResolution","value":"72/1"},{"name":"ResolutionUnit","value":2},{"name":"Software","value":"14.8"},{"name":"DateTime","value":"2021:09:22
+      18:03:10"},{"name":"YCbCrPositioning","value":1},{"name":"ExposureTime","value":"1/25"},{"name":"FNumber","value":"8/5"},{"name":"ExposureProgram","value":2},{"name":"ISOSpeedRatings","value":500},{"name":"ExifVersion","value":"0232"},{"name":"DateTimeOriginal","value":"2021:09:22
+      18:03:10"},{"name":"DateTimeDigitized","value":"2021:09:22 18:03:10"},{"name":"ComponentsConfiguration","value":[{"name":0,"value":1},{"name":1,"value":2},{"name":2,"value":3},{"name":3,"value":0},{"name":"_type","value":"ol"}]},{"name":"ShutterSpeedValue","value":"46435/9999"},{"name":"ApertureValue","value":"14447/10653"},{"name":"BrightnessValue","value":"-24973/32293"},{"name":"ExposureBiasValue","value":"0/1"},{"name":"MeteringMode","value":5},{"name":"Flash","value":16},{"name":"FocalLength","value":"21/5"},{"name":"SubSecTimeOriginal","value":"776"},{"name":"SubSecTimeDigitized","value":"776"},{"name":"FlashPixVersion","value":"0100"},{"name":"ColorSpace","value":65535},{"name":"SensingMethod","value":2},{"name":"SceneType","value":1},{"name":"ExposureMode","value":0},{"name":"WhiteBalance","value":0},{"name":"FocalLengthIn35mmFilm","value":26},{"name":"SceneCaptureType","value":0},{"name":"MEDIAWIKI_EXIF_VERSION","value":2}],"commonmetadata":[{"name":"Make","value":"Apple"},{"name":"Model","value":"iPhone
+      12 mini"},{"name":"Orientation","value":6},{"name":"XResolution","value":"72/1"},{"name":"YResolution","value":"72/1"},{"name":"ResolutionUnit","value":2},{"name":"Software","value":"14.8"},{"name":"DateTime","value":"2021:09:22
+      18:03:10"},{"name":"YCbCrPositioning","value":1},{"name":"ExposureTime","value":"1/25"},{"name":"FNumber","value":"8/5"},{"name":"ExposureProgram","value":2},{"name":"ISOSpeedRatings","value":500},{"name":"ExifVersion","value":"0232"},{"name":"DateTimeOriginal","value":"2021:09:22
+      18:03:10"},{"name":"DateTimeDigitized","value":"2021:09:22 18:03:10"},{"name":"ComponentsConfiguration","value":[{"name":0,"value":1},{"name":1,"value":2},{"name":2,"value":3},{"name":3,"value":0},{"name":"_type","value":"ol"}]},{"name":"ShutterSpeedValue","value":"46435/9999"},{"name":"ApertureValue","value":"14447/10653"},{"name":"BrightnessValue","value":"-24973/32293"},{"name":"ExposureBiasValue","value":"0/1"},{"name":"MeteringMode","value":5},{"name":"Flash","value":16},{"name":"FocalLength","value":"21/5"},{"name":"SubSecTimeOriginal","value":"776"},{"name":"SubSecTimeDigitized","value":"776"},{"name":"FlashPixVersion","value":"0100"},{"name":"ColorSpace","value":65535},{"name":"SensingMethod","value":2},{"name":"SceneType","value":1},{"name":"ExposureMode","value":0},{"name":"WhiteBalance","value":0},{"name":"FocalLengthIn35mmFilm","value":26},{"name":"SceneCaptureType","value":0}],"extmetadata":{"DateTime":{"value":"2023-12-02
+      16:15:31","source":"mediawiki-metadata","hidden":""},"ObjectName":{"value":"Floor
+      decoration at St Giles In The Fields","source":"mediawiki-metadata"},"CommonsMetadataExtension":{"value":1.2,"source":"extension","hidden":""},"Categories":{"value":"","source":"commons-categories","hidden":""},"Assessments":{"value":"","source":"commons-categories","hidden":""}},"mime":"image/jpeg","mediatype":"BITMAP","bitdepth":8}}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '16'
+      cache-control:
+      - private, max-age=0, s-maxage=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Sat, 02 Dec 2023 16:15:24 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw2283.codfw.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3070"
+      set-cookie:
+      - cpPosIndex=1%401701533732%23001b65521f1285d5e6388027f57c9f0a; expires=Sat,
+        02-Dec-2023 16:15:42 GMT; Max-Age=10; path=/; secure; HttpOnly
+      - UseDC=master; expires=Sat, 02-Dec-2023 16:15:42 GMT; Max-Age=10; path=/; secure;
+        HttpOnly
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3070 pass, cp3070 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 92.13.36.200
       x-content-type-options:
       - nosniff
       x-frame-options:
@@ -8494,26 +8151,16 @@ interactions:
       connection:
       - keep-alive
       cookie:
-      - WMF-Last-Access=18-Oct-2023; NetworkProbeLimit=0.001; cpPosIndex=3%401697645830%231b5e5eb9377d3c687f9858a14d1dcc33;
-        UseDC=master; GeoIP=GB:ENG:Newark_on_Trent:53.07:-0.82:v4
+      - WMF-Last-Access=02-Dec-2023; NetworkProbeLimit=0.001; cpPosIndex=1%401701533732%23001b65521f1285d5e6388027f57c9f0a;
+        UseDC=master; GeoIP=GB:ENG:Haverhill:52.05:0.42:v4
       host:
       - commons.wikimedia.org
       user-agent:
-      - python-httpx/0.25.1
+      - flickypedia/dev
     method: GET
-    uri: https://commons.wikimedia.org/w/api.php?action=query&prop=revisions&titles=File%3AThameslink%20Class%20700%20in%20Pride%20livery.jpg&rvlimit=1&rvslots=main&rvprop=content&format=json
+    uri: https://commons.wikimedia.org/w/api.php?action=query&meta=tokens&type=csrf&format=json
   response:
-    content: '{"continue":{"rvcontinue":"20231114105048|821674400","continue":"||"},"query":{"pages":{"139134318":{"pageid":139134318,"ns":6,"title":"File:Thameslink
-      Class 700 in Pride livery.jpg","revisions":[{"slots":{"main":{"contentmodel":"wikitext","contentformat":"text/x-wiki","*":"The
-      structured data:\n\n{{Structured Data}}\n\n=={{int:filedesc}}==\n{{Information\n|Source=[https://www.flickr.com/photos/199246608@N02/53268016608/
-      IMG_4664]\n|Date={{taken on|location=United Kingdom|2023-09-12 19:54}}\n|Author=[https://www.flickr.com/people/199246608@N02
-      Alex Chan]\n|Permission=\n|other_versions=\n}}\n\n=={{int:license-header}}==\n{{cc-by-2.0}}\n{{FlickreviewR|status=passed|author=cefarrjf87|sourceurl=https://flickr.com/photos/199246608@N02/53268016608|archive=|reviewdate=2023-10-18
-      17:58:26|reviewlicense=cc-by-2.0|reviewer=FlickreviewR 2}}\n\n[[Category:British
-      Rail Class 700s in Thameslink Southern Great Northern Pride livery]]\n[[Category:Unidentified
-      locations in England]]\n[[Category:September 2023 in rail transport in the United
-      Kingdom]]\n[[Category:Railway photographs taken on 2023-09-12]]\n[[Category:UK
-      trains with unidentified locations]]\n[[Category:Uploads using Flickypedia]]\n[[Category:Uploads
-      by User:alexwlchan]]"}}}]}}}}'
+    content: '{"batchcomplete":"","query":{"tokens":{"csrftoken":"3b6415947c9438c5e2a9ddaa6d6a479a656b5824+\\"}}}'
     headers:
       accept-ranges:
       - bytes
@@ -8523,14 +8170,12 @@ interactions:
       - private, must-revalidate, max-age=0
       content-disposition:
       - inline; filename=api-result.json
-      content-encoding:
-      - gzip
       content-length:
-      - '679'
+      - '99'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Tue, 14 Nov 2023 11:18:47 GMT
+      - Sat, 02 Dec 2023 16:15:32 GMT
       nel:
       - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
         0.0}'
@@ -8538,23 +8183,366 @@ interactions:
       - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
         }] }'
       server:
-      - mw2396.codfw.wmnet
+      - mw2436.codfw.wmnet
       server-timing:
-      - cache;desc="pass", host;desc="cp2041"
+      - cache;desc="pass", host;desc="cp3070"
       set-cookie:
-      - WMF-Last-Access=14-Nov-2023;Path=/;HttpOnly;secure;Expires=Sat, 16 Dec 2023
-        00:00:00 GMT
       - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
       strict-transport-security:
       - max-age=106384710; includeSubDomains; preload
       vary:
-      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie
+      - Accept-Encoding
       x-cache:
-      - cp2033 pass, cp2041 pass
+      - cp3070 pass, cp3070 pass
       x-cache-status:
       - pass
       x-client-ip:
-      - 201.217.137.162
+      - 92.13.36.200
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: action=wbsetlabel&site=commonswiki&title=File%3AFloor+decoration+at+St+Giles+In+The+Fields.jpg&language=en&value=A+circular+floor+pattern+in+St+Giles+In+the+Fields+church%2C+in+London.&format=json&token=3b6415947c9438c5e2a9ddaa6d6a479a656b5824%2B%5C
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '249'
+      content-type:
+      - application/x-www-form-urlencoded
+      cookie:
+      - WMF-Last-Access=02-Dec-2023; NetworkProbeLimit=0.001; cpPosIndex=1%401701533732%23001b65521f1285d5e6388027f57c9f0a;
+        UseDC=master; GeoIP=GB:ENG:Haverhill:52.05:0.42:v4
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - flickypedia/dev
+    method: POST
+    uri: https://commons.wikimedia.org/w/api.php
+  response:
+    content: '{"entity":{"labels":{"en":{"language":"en","value":"A circular floor
+      pattern in St Giles In the Fields church, in London."}},"id":"M141641035","type":"mediainfo","lastrevid":827209390},"success":1}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, max-age=0, s-maxage=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-length:
+      - '197'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Sat, 02 Dec 2023 16:15:32 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw2437.codfw.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3070"
+      set-cookie:
+      - cpPosIndex=2%401701533732%23001b65521f1285d5e6388027f57c9f0a; expires=Sat,
+        02-Dec-2023 16:15:42 GMT; Max-Age=10; path=/; secure; HttpOnly
+      - UseDC=master; expires=Sat, 02-Dec-2023 16:15:42 GMT; Max-Age=10; path=/; secure;
+        HttpOnly
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3070 pass, cp3070 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 92.13.36.200
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - WMF-Last-Access=02-Dec-2023; NetworkProbeLimit=0.001; cpPosIndex=2%401701533732%23001b65521f1285d5e6388027f57c9f0a;
+        UseDC=master; GeoIP=GB:ENG:Haverhill:52.05:0.42:v4
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - flickypedia/dev
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=query&meta=tokens&type=csrf&format=json
+  response:
+    content: '{"batchcomplete":"","query":{"tokens":{"csrftoken":"315ff6909fe4a7a2b6ccefeb4934377e656b5825+\\"}}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '2'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-length:
+      - '99'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Sat, 02 Dec 2023 16:15:32 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw2403.codfw.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3070"
+      set-cookie:
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3070 pass, cp3070 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 92.13.36.200
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: action=wbeditentity&site=commonswiki&title=File%3AFloor+decoration+at+St+Giles+In+The+Fields.jpg&data=%7B%22claims%22%3A+%5B%7B%22mainsnak%22%3A+%7B%22datavalue%22%3A+%7B%22value%22%3A+%2253370809793%22%2C+%22type%22%3A+%22string%22%7D%2C+%22property%22%3A+%22P12120%22%2C+%22snaktype%22%3A+%22value%22%7D%2C+%22type%22%3A+%22statement%22%7D%2C+%7B%22mainsnak%22%3A+%7B%22snaktype%22%3A+%22somevalue%22%2C+%22property%22%3A+%22P170%22%7D%2C+%22qualifiers%22%3A+%7B%22P2093%22%3A+%5B%7B%22datavalue%22%3A+%7B%22value%22%3A+%22Alex+Chan%22%2C+%22type%22%3A+%22string%22%7D%2C+%22property%22%3A+%22P2093%22%2C+%22snaktype%22%3A+%22value%22%7D%5D%2C+%22P2699%22%3A+%5B%7B%22datavalue%22%3A+%7B%22value%22%3A+%22https%3A%2F%2Fwww.flickr.com%2Fpeople%2F199246608%40N02%2F%22%2C+%22type%22%3A+%22string%22%7D%2C+%22property%22%3A+%22P2699%22%2C+%22snaktype%22%3A+%22value%22%7D%5D%2C+%22P3267%22%3A+%5B%7B%22datavalue%22%3A+%7B%22value%22%3A+%22199246608%40N02%22%2C+%22type%22%3A+%22string%22%7D%2C+%22property%22%3A+%22P3267%22%2C+%22snaktype%22%3A+%22value%22%7D%5D%7D%2C+%22qualifiers-order%22%3A+%5B%22P3267%22%2C+%22P2093%22%2C+%22P2699%22%5D%2C+%22type%22%3A+%22statement%22%7D%2C+%7B%22mainsnak%22%3A+%7B%22snaktype%22%3A+%22value%22%2C+%22property%22%3A+%22P6216%22%2C+%22datavalue%22%3A+%7B%22value%22%3A+%7B%22id%22%3A+%22Q50423863%22%2C+%22entity-type%22%3A+%22item%22%2C+%22numeric-id%22%3A+50423863%7D%2C+%22type%22%3A+%22wikibase-entityid%22%7D%7D%2C+%22type%22%3A+%22statement%22%7D%2C+%7B%22mainsnak%22%3A+%7B%22snaktype%22%3A+%22value%22%2C+%22property%22%3A+%22P7482%22%2C+%22datavalue%22%3A+%7B%22value%22%3A+%7B%22id%22%3A+%22Q74228490%22%2C+%22entity-type%22%3A+%22item%22%2C+%22numeric-id%22%3A+74228490%7D%2C+%22type%22%3A+%22wikibase-entityid%22%7D%7D%2C+%22qualifiers%22%3A+%7B%22P973%22%3A+%5B%7B%22datavalue%22%3A+%7B%22value%22%3A+%22https%3A%2F%2Fwww.flickr.com%2Fphotos%2F199246608%40N02%2F53370809793%22%2C+%22type%22%3A+%22string%22%7D%2C+%22property%22%3A+%22P973%22%2C+%22snaktype%22%3A+%22value%22%7D%5D%2C+%22P137%22%3A+%5B%7B%22datavalue%22%3A+%7B%22value%22%3A+%7B%22id%22%3A+%22Q103204%22%2C+%22entity-type%22%3A+%22item%22%2C+%22numeric-id%22%3A+103204%7D%2C+%22type%22%3A+%22wikibase-entityid%22%7D%2C+%22property%22%3A+%22P137%22%2C+%22snaktype%22%3A+%22value%22%7D%5D%2C+%22P2699%22%3A+%5B%7B%22datavalue%22%3A+%7B%22value%22%3A+%22https%3A%2F%2Flive.staticflickr.com%2F65535%2F53370809793_dc5cb614ab_o_d.jpg%22%2C+%22type%22%3A+%22string%22%7D%2C+%22property%22%3A+%22P2699%22%2C+%22snaktype%22%3A+%22value%22%7D%5D%2C+%22P813%22%3A+%5B%7B%22datavalue%22%3A+%7B%22value%22%3A+%7B%22time%22%3A+%22%2B2023-12-02T00%3A00%3A00Z%22%2C+%22precision%22%3A+11%2C+%22timezone%22%3A+0%2C+%22before%22%3A+0%2C+%22after%22%3A+0%2C+%22calendarmodel%22%3A+%22http%3A%2F%2Fwww.wikidata.org%2Fentity%2FQ1985727%22%7D%2C+%22type%22%3A+%22time%22%7D%2C+%22property%22%3A+%22P813%22%2C+%22snaktype%22%3A+%22value%22%7D%5D%7D%2C+%22qualifiers-order%22%3A+%5B%22P973%22%2C+%22P137%22%2C+%22P2699%22%2C+%22P813%22%5D%2C+%22type%22%3A+%22statement%22%7D%2C+%7B%22mainsnak%22%3A+%7B%22snaktype%22%3A+%22value%22%2C+%22property%22%3A+%22P275%22%2C+%22datavalue%22%3A+%7B%22value%22%3A+%7B%22id%22%3A+%22Q19125117%22%2C+%22entity-type%22%3A+%22item%22%2C+%22numeric-id%22%3A+19125117%7D%2C+%22type%22%3A+%22wikibase-entityid%22%7D%7D%2C+%22type%22%3A+%22statement%22%7D%2C+%7B%22mainsnak%22%3A+%7B%22snaktype%22%3A+%22value%22%2C+%22property%22%3A+%22P1433%22%2C+%22datavalue%22%3A+%7B%22value%22%3A+%7B%22id%22%3A+%22Q103204%22%2C+%22entity-type%22%3A+%22item%22%2C+%22numeric-id%22%3A+103204%7D%2C+%22type%22%3A+%22wikibase-entityid%22%7D%7D%2C+%22qualifiers%22%3A+%7B%22P577%22%3A+%5B%7B%22datavalue%22%3A+%7B%22value%22%3A+%7B%22time%22%3A+%22%2B2023-12-02T00%3A00%3A00Z%22%2C+%22precision%22%3A+11%2C+%22timezone%22%3A+0%2C+%22before%22%3A+0%2C+%22after%22%3A+0%2C+%22calendarmodel%22%3A+%22http%3A%2F%2Fwww.wikidata.org%2Fentity%2FQ1985727%22%7D%2C+%22type%22%3A+%22time%22%7D%2C+%22property%22%3A+%22P577%22%2C+%22snaktype%22%3A+%22value%22%7D%5D%7D%2C+%22qualifiers-order%22%3A+%5B%22P577%22%5D%2C+%22type%22%3A+%22statement%22%7D%2C+%7B%22mainsnak%22%3A+%7B%22datavalue%22%3A+%7B%22value%22%3A+%7B%22time%22%3A+%22%2B2021-09-22T00%3A00%3A00Z%22%2C+%22precision%22%3A+11%2C+%22timezone%22%3A+0%2C+%22before%22%3A+0%2C+%22after%22%3A+0%2C+%22calendarmodel%22%3A+%22http%3A%2F%2Fwww.wikidata.org%2Fentity%2FQ1985727%22%7D%2C+%22type%22%3A+%22time%22%7D%2C+%22property%22%3A+%22P571%22%2C+%22snaktype%22%3A+%22value%22%7D%2C+%22type%22%3A+%22statement%22%7D%5D%7D&format=json&token=315ff6909fe4a7a2b6ccefeb4934377e656b5825%2B%5C
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '4645'
+      content-type:
+      - application/x-www-form-urlencoded
+      cookie:
+      - WMF-Last-Access=02-Dec-2023; NetworkProbeLimit=0.001; cpPosIndex=2%401701533732%23001b65521f1285d5e6388027f57c9f0a;
+        UseDC=master; GeoIP=GB:ENG:Haverhill:52.05:0.42:v4
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - flickypedia/dev
+    method: POST
+    uri: https://commons.wikimedia.org/w/api.php
+  response:
+    content: '{"entity":{"type":"mediainfo","id":"M141641035","labels":{"en":{"language":"en","value":"A
+      circular floor pattern in St Giles In the Fields church, in London."}},"descriptions":{},"statements":{"P12120":[{"mainsnak":{"snaktype":"value","property":"P12120","hash":"c3a85e4c8b27cc0e2ffa8c9996245e173da72bc8","datavalue":{"value":"53370809793","type":"string"}},"type":"statement","id":"M141641035$21E02E51-DC1D-40B6-B4B3-A704CDB5B44B","rank":"normal"}],"P170":[{"mainsnak":{"snaktype":"somevalue","property":"P170","hash":"d3550e860f988c6675fff913440993f58f5c40c5"},"type":"statement","qualifiers":{"P3267":[{"snaktype":"value","property":"P3267","hash":"720421850357074e74457b9bdc5c93c477a1ab81","datavalue":{"value":"199246608@N02","type":"string"}}],"P2093":[{"snaktype":"value","property":"P2093","hash":"fab51479c0c03b1a3784816008ab10515b259301","datavalue":{"value":"Alex
+      Chan","type":"string"}}],"P2699":[{"snaktype":"value","property":"P2699","hash":"e15c0058970e4aec4d4d4d3bb0ee3684e322c732","datavalue":{"value":"https://www.flickr.com/people/199246608@N02/","type":"string"}}]},"qualifiers-order":["P3267","P2093","P2699"],"id":"M141641035$EABFA04B-92D2-4745-9CC6-8BBC6115E95A","rank":"normal"}],"P6216":[{"mainsnak":{"snaktype":"value","property":"P6216","hash":"5570347fdc76d2a80732f51ea10ee4b144a084e0","datavalue":{"value":{"entity-type":"item","numeric-id":50423863,"id":"Q50423863"},"type":"wikibase-entityid"}},"type":"statement","id":"M141641035$73B9C5DE-8D94-47D5-AFBE-6F60F3E4B801","rank":"normal"}],"P7482":[{"mainsnak":{"snaktype":"value","property":"P7482","hash":"b82dd47222a210c6dc1f428b693c2fbf7b0e0d6e","datavalue":{"value":{"entity-type":"item","numeric-id":74228490,"id":"Q74228490"},"type":"wikibase-entityid"}},"type":"statement","qualifiers":{"P973":[{"snaktype":"value","property":"P973","hash":"0065ce3bf675ec95bf5062914acc7deebeab50eb","datavalue":{"value":"https://www.flickr.com/photos/199246608@N02/53370809793","type":"string"}}],"P137":[{"snaktype":"value","property":"P137","hash":"3d8cd4c1ab91d3d9a14900210faaebf1a98b947b","datavalue":{"value":{"entity-type":"item","numeric-id":103204,"id":"Q103204"},"type":"wikibase-entityid"}}],"P2699":[{"snaktype":"value","property":"P2699","hash":"35d1a1a7412fd551bc2439cde2d3618a5dd09c3b","datavalue":{"value":"https://live.staticflickr.com/65535/53370809793_dc5cb614ab_o_d.jpg","type":"string"}}],"P813":[{"snaktype":"value","property":"P813","hash":"5b8010edc091b2c3e2f4016e0126dcdad68b8444","datavalue":{"value":{"time":"+2023-12-02T00:00:00Z","timezone":0,"before":0,"after":0,"precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"},"type":"time"}}]},"qualifiers-order":["P973","P137","P2699","P813"],"id":"M141641035$8BD8C16F-54C1-4203-9D57-21DA76003571","rank":"normal"}],"P275":[{"mainsnak":{"snaktype":"value","property":"P275","hash":"82d5b402aa0a79040483a8c9264bd484c6c13f67","datavalue":{"value":{"entity-type":"item","numeric-id":19125117,"id":"Q19125117"},"type":"wikibase-entityid"}},"type":"statement","id":"M141641035$EDE59859-4506-45F3-9574-CDF64E727E9F","rank":"normal"}],"P1433":[{"mainsnak":{"snaktype":"value","property":"P1433","hash":"42371a72aac2d430d87cc00de671b55cac1f5a79","datavalue":{"value":{"entity-type":"item","numeric-id":103204,"id":"Q103204"},"type":"wikibase-entityid"}},"type":"statement","qualifiers":{"P577":[{"snaktype":"value","property":"P577","hash":"2633ea14b6b5fa205354a8d7dffe0da78f22c7fb","datavalue":{"value":{"time":"+2023-12-02T00:00:00Z","timezone":0,"before":0,"after":0,"precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"},"type":"time"}}]},"qualifiers-order":["P577"],"id":"M141641035$CD7785BB-4960-4914-B109-A0ACBB71E2C9","rank":"normal"}],"P571":[{"mainsnak":{"snaktype":"value","property":"P571","hash":"694d8a1696ba515571376cbb504546156f608689","datavalue":{"value":{"time":"+2021-09-22T00:00:00Z","timezone":0,"before":0,"after":0,"precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"},"type":"time"}},"type":"statement","id":"M141641035$0C4FF292-38B2-4501-ADF4-4055782620DC","rank":"normal"}]},"lastrevid":827209394},"success":1}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, max-age=0, s-maxage=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Sat, 02 Dec 2023 16:15:33 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw2423.codfw.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3070"
+      set-cookie:
+      - cpPosIndex=3%401701533733%23001b65521f1285d5e6388027f57c9f0a; expires=Sat,
+        02-Dec-2023 16:15:43 GMT; Max-Age=10; path=/; secure; HttpOnly
+      - UseDC=master; expires=Sat, 02-Dec-2023 16:15:43 GMT; Max-Age=10; path=/; secure;
+        HttpOnly
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3070 pass, cp3070 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 92.13.36.200
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - WMF-Last-Access=02-Dec-2023; NetworkProbeLimit=0.001; cpPosIndex=3%401701533733%23001b65521f1285d5e6388027f57c9f0a;
+        UseDC=master; GeoIP=GB:ENG:Haverhill:52.05:0.42:v4
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - flickypedia/dev
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=query&meta=tokens&type=csrf&format=json
+  response:
+    content: '{"batchcomplete":"","query":{"tokens":{"csrftoken":"315ff6909fe4a7a2b6ccefeb4934377e656b5825+\\"}}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-length:
+      - '99'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Sat, 02 Dec 2023 16:15:33 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw2370.codfw.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3070"
+      set-cookie:
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3070 pass, cp3070 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 92.13.36.200
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: action=edit&site=commonswiki&title=File%3AFloor+decoration+at+St+Giles+In+The+Fields.jpg&nocreate=true&summary=Flickypedia+no-op+edit+to+trigger+re-render+of+%7B%7BInformation%7D%7D+template+with+new+SDC&appendtext=%0A&format=json&token=315ff6909fe4a7a2b6ccefeb4934377e656b5825%2B%5C
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '283'
+      content-type:
+      - application/x-www-form-urlencoded
+      cookie:
+      - WMF-Last-Access=02-Dec-2023; NetworkProbeLimit=0.001; cpPosIndex=3%401701533733%23001b65521f1285d5e6388027f57c9f0a;
+        UseDC=master; GeoIP=GB:ENG:Haverhill:52.05:0.42:v4
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - flickypedia/dev
+    method: POST
+    uri: https://commons.wikimedia.org/w/api.php
+  response:
+    content: '{"warnings":{"main":{"*":"Unrecognized parameter: site."}},"edit":{"result":"Success","pageid":141641035,"title":"File:Floor
+      decoration at St Giles In The Fields.jpg","contentmodel":"wikitext","nochange":"","watched":""}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '2'
+      cache-control:
+      - private, max-age=0, s-maxage=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-length:
+      - '221'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Sat, 02 Dec 2023 16:15:33 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw2291.codfw.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3070"
+      set-cookie:
+      - cpPosIndex=4%401701533734%23001b65521f1285d5e6388027f57c9f0a; expires=Sat,
+        02-Dec-2023 16:15:44 GMT; Max-Age=10; path=/; secure; HttpOnly
+      - UseDC=master; expires=Sat, 02-Dec-2023 16:15:44 GMT; Max-Age=10; path=/; secure;
+        HttpOnly
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3070 pass, cp3070 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 92.13.36.200
       x-content-type-options:
       - nosniff
       x-frame-options:
