@@ -28,6 +28,7 @@ class UploadRequest(TypedDict):
     title: str
     caption: ShortCaption
     categories: list[str]
+    username: str
 
 
 class KeyringId(TypedDict):
@@ -175,7 +176,7 @@ def upload_single_photo(api: WikimediaApi, request: UploadRequest) -> Successful
 
     """
     wikitext = create_wikitext(
-        license_id=request["photo"]["license"]["id"],
+        photo=request['photo'],
         new_categories=request["categories"],
     )
 
