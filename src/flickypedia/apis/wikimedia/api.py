@@ -586,49 +586,6 @@ class WikimediaApi:
 
         return order_language_list(query=query, results=languagesearch.attrib)
 
-    def get_existing_wikitext(self, filename: str) -> str:
-        """
-        Get the Wikitext for an existing page on Wikimedia.
-
-        See https://www.mediawiki.org/wiki/API:Revisions
-        """
-        resp = self._get(
-            params={
-                "action": "query",
-                "prop": "revisions",
-                "titles": f"File:{filename}",
-                "rvlimit": "1",
-                "rvslots": "main",
-                "rvprop": "content",
-            }
-        )
-
-        # The response will be wrapped in a dict of the form:
-        #
-        #     {
-        #       'batchcomplete': '',
-        #       'query': {
-        #         'pages': {'[page ID]': { … data … }}
-        #       }
-        #     }
-        #
-        assert len(resp["query"]["pages"]) == 1
-
-        this_page = list(resp["query"]["pages"].values())[0]
-
-        # The data about the individual page is in turn wrapped in
-        # a response like:
-        #
-        #     {'ns': 6,
-        #      'pageid': 139134318,
-        #      'revisions': [{'slots': {'main': {'*': '… wikitext …'}}}]}
-        #
-        wikitext = this_page["revisions"][0]["slots"]["main"]["*"]
-
-        assert isinstance(wikitext, str)
-
-        return wikitext
-
     def force_sdc_rerender(self, filename: str) -> None:
         """
         Force Wikimedia to re-render the SDC in the page.
