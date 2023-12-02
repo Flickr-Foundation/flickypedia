@@ -388,13 +388,17 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm) {
  * This function is called once per second on the "wait for upload"
  * screen.  It adds the "Done" or "Not Done" labels to photos.
  *
- * This calls the /status endpoint, which it expects to return a
- * list of entries of the form:
+ * This calls the /status endpoint, which it expects to return an
+ * object of the form:
  *
- *    [
- *      {"photo_id": "1234", "state": "waiting|in_progress|failed|succeeded"},
- *      …,
- *    ]
+ *    {
+ *      "state": "completed|failed|…",
+ *      "photos": [
+ *        {"photo_id": "1234", "state": "waiting|in_progress|failed|succeeded"},
+ *        …,
+ *      ]
+ *    }
+ *
  *
  */
 function updatePhotosWithUploadProgress() {
@@ -404,13 +408,13 @@ function updatePhotosWithUploadProgress() {
       var processingCount = 0;
 
       /* If we're done, redirect the user to the next screen. */
-      if (json.ready) {
+      if (json.state === 'completed' || json.state === 'failed') {
         window.location.href = window.location.href.replace("/wait_for_upload/", "/upload_complete/")
       }
 
-      json.progress.forEach((progress) => {
-        const photoId = progress.req.photo.id;
-        const uploadStatus = progress.status;
+      json.photos.forEach((entry) => {
+        const photoId = entry.photo_id;
+        const uploadStatus = entry.state;
 
         const liElement = document
           .querySelector(`li[data-id="${photoId}"]`);
@@ -443,6 +447,6 @@ function updatePhotosWithUploadProgress() {
 
       document
         .querySelector('.image_counter')
-        .innerHTML = `${processingCount} of ${json.progress.length}`;
+        .innerHTML = `${processingCount} of ${json.photos.length}`;
     });
 }
