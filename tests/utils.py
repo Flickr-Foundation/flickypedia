@@ -118,11 +118,11 @@ class InMemoryKeyring(keyring.backend.KeyringBackend):
     def priority(self) -> int:  # pragma: no cover
         return 1
 
-    def set_password(self, servicename: str, username: str, password: str) -> None:
-        self.passwords[(servicename, username)] = password
+    def set_password(self, service_name: str, username: str, password: str) -> None:
+        self.passwords[(service_name, username)] = password
 
-    def get_password(self, servicename: str, username: str) -> str | None:
-        return self.passwords.get((servicename, username))
+    def get_password(self, service_name: str, username: str) -> str | None:
+        return self.passwords.get((service_name, username))
 
-    def delete_password(self, servicename: str, username: str) -> None:
-        del self.passwords[(servicename, username)]
+    def delete_password(self, service_name: str, username: str) -> None:
+        del self.passwords[(service_name, username)]
