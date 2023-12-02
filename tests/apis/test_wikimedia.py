@@ -12,7 +12,6 @@ from flickypedia.apis.wikimedia import (
     InvalidAccessTokenException,
     UnknownWikimediaApiException,
 )
-from flickypedia.apis.wikitext import create_wikitext
 
 
 def test_get_userinfo(wikimedia_api: WikimediaApi) -> None:
@@ -64,16 +63,16 @@ def test_can_get_a_csrf_token(wikimedia_api: WikimediaApi) -> None:
 
 
 class TestUploadImage:
-    # def test_can_upload_an_image(self, wikimedia_api: WikimediaApi) -> None:
-    #     text = create_wikitext(license_id="cc-by-2.0", new_categories=[])
-    #
-    #     resp = wikimedia_api.upload_image(
-    #         filename="Silver Blue Fish In Boston Aquarium.jpg",
-    #         original_url="https://live.staticflickr.com/8338/8273352482_50cb58a54f_o_d.jpg",
-    #         text=text,
-    #     )
-    #
-    #     assert resp == "Silver_Blue_Fish_In_Boston_Aquarium.jpg"
+    def test_can_upload_an_image(self, wikimedia_api: WikimediaApi) -> None:
+        text = "=={{int:filedesc}}==\n{{Information}}\n\n=={{int:license-header}}==\n{{cc-by-2.0}}\n"
+
+        resp = wikimedia_api.upload_image(
+            filename="Silver Blue Fish In Boston Aquarium.jpg",
+            original_url="https://live.staticflickr.com/8338/8273352482_50cb58a54f_o_d.jpg",
+            text=text,
+        )
+
+        assert resp == "Silver_Blue_Fish_In_Boston_Aquarium.jpg"
 
     def test_fails_if_uploading_image_from_disallowed_domain(
         self, wikimedia_api: WikimediaApi
