@@ -1,4 +1,27 @@
 /*
+ * Look at a URL in a URL element, and prepend "https" if necessary.
+ *
+ * This is used on the "get photos" form, when we ask the user to enter
+ * a Flickr URL.  Because it's a URL input field, the browser wants to
+ * user to enter a complete URL, including the http(s) prefix.
+ *
+ * If we detect the user has entered something which doesn't start with
+ * https, but does look like a flickr.com URL, we go ahead and prepend
+ * the protocol to pass browser validation.
+ */
+function prependHttpsToFormValue(inputElement) {
+  const value = inputElement.value;
+
+  if (inputElement.value.startsWith('http')) {
+    return;
+  }
+
+  if (inputElement.value.indexOf('flickr.com') === 0 || inputElement.value.indexOf('www.flickr.com') === 0) {
+    inputElement.value = 'https://' + inputElement.value;
+  }
+}
+
+/*
  * Add a title validator to an input field.
  *
  * When the user finishes typing in the field and clicks away (which
