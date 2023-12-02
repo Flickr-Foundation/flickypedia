@@ -12,6 +12,7 @@ from flickypedia.apis.structured_data import (
     create_date_taken_statement,
     create_flickr_creator_statement,
     create_license_statement,
+    create_location_statement,
     create_posted_to_flickr_statement,
     create_source_data_for_photo,
     NewStatement,
@@ -221,6 +222,27 @@ def test_shows_posted_statement(app: Flask, vcr_cassette: str) -> None:
                 publication date: 12 October 2023
               </li>
             </ul>
+          </dd>
+        </dl>
+        """
+    )
+
+    assert actual == expected
+
+
+def test_shows_location_statement(app: Flask, vcr_cassette: str) -> None:
+    location_claim = create_location_statement(
+        location={"longitude": 7.845047, "latitude": 49.968063, "accuracy": 16}
+    )
+
+    actual = get_html(claims=[location_claim])
+
+    expected = prettify_html(
+        """
+        <dl class="structured_data_preview">
+          <dt>coordinates of the point of view:</dt>
+          <dd class="snak-value">
+            7.845047&deg;E, 49.968063&deg;N
           </dd>
         </dl>
         """

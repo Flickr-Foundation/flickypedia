@@ -28,6 +28,9 @@
 {% elif datavalue.type == "time" %}
   {{ datavalue.value | wikidata_date }}
 
+{% elif datavalue.type == "globecoordinate" %}
+  {{ datavalue.value.longitude }}&deg;E, {{ datavalue.value.latitude }}&deg;N
+
 {% else %}
   {{ datavalue }}
 {% endif %}
