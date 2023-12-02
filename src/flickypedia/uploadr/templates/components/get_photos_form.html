@@ -15,7 +15,8 @@
     {{
       photo_url_form.flickr_url(
         value=flickr_url,
-        placeholder="https://www.flickr.com/photos/…"
+        placeholder="https://www.flickr.com/photos/…",
+        onchange="prependHttpsToFormValue(this);"
       )
     }}
 
