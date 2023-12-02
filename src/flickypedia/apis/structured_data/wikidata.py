@@ -80,6 +80,12 @@ def get_property_name(code: str) -> str:
         "author name"
 
     """
+    if code == "P571":
+        return "date created"
+
+    if code == "P1259":
+        return "location"
+
     for attr in dir(WikidataProperties):
         if getattr(WikidataProperties, attr) == code:
             return " ".join(re.findall("[A-Z][^A-Z]*", attr)).lower()
@@ -218,12 +224,12 @@ def render_wikidata_date(value: Value.Time) -> str:
     # See https://www.wikidata.org/wiki/Help:Dates#Precision
     if value["precision"] == 11:
         d = datetime.datetime.strptime(value["time"], "+%Y-%m-%dT00:00:00Z")
-        return "%s (precision: day, calendar: Gregorian)" % d.strftime("%-d %B %Y")
+        return d.strftime("%-d %B %Y")
     elif value["precision"] == 10:
         d = datetime.datetime.strptime(value["time"], "+%Y-%m-00T00:00:00Z")
-        return "%s (precision: month, calendar: Gregorian)" % d.strftime("%B %Y")
+        return d.strftime("%B %Y")
     elif value["precision"] == 9:
         d = datetime.datetime.strptime(value["time"], "+%Y-00-00T00:00:00Z")
-        return "%s (precision: year, calendar: Gregorian)" % d.strftime("%Y")
+        return d.strftime("%Y")
     else:  # pragma: no cover
         assert False
