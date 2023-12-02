@@ -1,3 +1,4 @@
+import datetime
 import pathlib
 import textwrap
 
@@ -13,10 +14,12 @@ def tidy(s: str) -> str:
     return textwrap.dedent(s).strip()
 
 
+def today() -> str:
+    return datetime.datetime.now().strftime("%Y-%m-%d")
+
+
 def test_create_wikitext_for_photo() -> None:
-    photo = get_typed_fixture(
-        "flickr_api/single_photo-4452100167.json", model=SinglePhoto
-    )
+    photo = get_typed_fixture("flickr_photos_api/32812033543.json", model=SinglePhoto)
     photo["license"]["id"] = "cc-by-2.0"
 
     actual = create_wikitext(photo, wikimedia_username="TestUser", new_categories=[])
@@ -27,16 +30,23 @@ def test_create_wikitext_for_photo() -> None:
 
         =={{int:license-header}}==
         {{Cc-by-2.0}}
+
+        {{Uploaded with Flickypedia
+        |user=TestUser
+        |date=%s
+        |flickrUser=Coast Guard
+        |flickrUserUrl=https://www.flickr.com/people/coast_guard/
+        |flickrPhotoUrl=https://www.flickr.com/photos/coast_guard/32812033543/
+        }}
     """
+        % today()
     )
 
     assert actual == expected
 
 
 def test_adds_categories_to_wikitext() -> None:
-    photo = get_typed_fixture(
-        "flickr_api/single_photo-4452100167.json", model=SinglePhoto
-    )
+    photo = get_typed_fixture("flickr_photos_api/32812033543.json", model=SinglePhoto)
 
     actual = create_wikitext(
         photo,
@@ -50,11 +60,20 @@ def test_adds_categories_to_wikitext() -> None:
         {{Information}}
 
         =={{int:license-header}}==
-        {{Cc-by-2.0}}
+        {{PD-USGov}}
+
+        {{Uploaded with Flickypedia
+        |user=TestUser
+        |date=%s
+        |flickrUser=Coast Guard
+        |flickrUserUrl=https://www.flickr.com/people/coast_guard/
+        |flickrPhotoUrl=https://www.flickr.com/photos/coast_guard/32812033543/
+        }}
 
         [[Category:Pictures of fish]]
         [[Category:Pictures of fish in England]]
     """
+        % today()
     )
 
     assert actual == expected
@@ -65,9 +84,7 @@ config = create_config(data_directory=pathlib.Path("data"))
 
 @pytest.mark.parametrize("license_id", config["ALLOWED_LICENSES"])
 def test_can_create_wikitext_for_all_allowed_licenses(license_id: str) -> None:
-    photo = get_typed_fixture(
-        "flickr_api/single_photo-4452100167.json", model=SinglePhoto
-    )
+    photo = get_typed_fixture("flickr_photos_api/32812033543.json", model=SinglePhoto)
     photo["license"]["id"] = license_id
 
     create_wikitext(photo, wikimedia_username="TestUser", new_categories=[])

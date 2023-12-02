@@ -58,7 +58,7 @@ def create_wikitext(
     # Add an info box about using Flickypedia.
     # See https://commons.wikimedia.org/wiki/Template:Uploaded_with_Flickypedia
     flickypedia = (
-        "{{Uploaded with Flickypedia"
+        "{{Uploaded with Flickypedia\n"
         "|user=%s\n"
         "|date=%s\n"
         "|flickrUser=%s\n"
