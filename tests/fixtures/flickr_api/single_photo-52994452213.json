@@ -21,8 +21,7 @@
           "type": "datetime.datetime",
           "value": "2021-05-16T12:16:36"
         },
-        "granularity": "second",
-        "unknown": false
+        "granularity": "second"
       },
       "safety_level": "safe",
       "license": {

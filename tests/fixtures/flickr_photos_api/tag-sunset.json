@@ -4,9 +4,7 @@
     {
       "date_posted": {"type": "datetime.datetime", "value": "2023-01-07T09:32:39+00:00"},
       "date_taken": {
-        "granularity": "second",
-        "unknown": false,
-        "value": {"type": "datetime.datetime", "value": "2023-01-07T23:14:00"}
+        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2023-01-07T23:14:00"}
       },
       "description": "EXPLORE\nUruguay: a peaceful, beautiful and pure nature country.\n\nRegal dels Reis Mags\n\n\u2022Birds flying \n\u2022Free nature \n\u2022MOON\n\u2022Marine buoy with green light and another with red light that indicate the entrance to the port.\n\n\n\u25cf W E A T H E R:\n\u25cf Summer\n\u25cf 16 kts Wind   (  ENE 74 \u00b0 )\n\u25cf 24\u00b0 C\n\u25cf 75\u00b0 F\n\n\nUPLOAD:\n1/7/2022                           6 A.M.\n8/12/2023                         6 P.M.\n50583\n2622\n257\n\n\nEXPLORE (place 14) - [17 day's]\nSATURDAY 1/7/2022 6 A.M.\nExplore! \u2b50 Saturday, January 7, 2023.  1 A.M 1/8/2023 (Sunday)",
       "id": "52611651477",
@@ -105,9 +103,7 @@
     {
       "date_posted": {"type": "datetime.datetime", "value": "2021-10-02T04:43:43+00:00"},
       "date_taken": {
-        "granularity": "second",
-        "unknown": false,
-        "value": {"type": "datetime.datetime", "value": "2021-10-01T18:19:43"}
+        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2021-10-01T18:19:43"}
       },
       "description": "\u201cCome, gentle night; come, loving, black-browed night;\nGive me my Romeo; and, when I shall die,\nTake him and cut him out in little stars,\nAnd he will make the face of heaven so fine\nThat all the world will be in love with night...\u201d \n\u2015 William Shakespeare, Romeo and Juliet",
       "id": "51540860321",
@@ -257,9 +253,7 @@
     {
       "date_posted": {"type": "datetime.datetime", "value": "2020-08-04T09:22:44+00:00"},
       "date_taken": {
-        "granularity": "second",
-        "unknown": false,
-        "value": {"type": "datetime.datetime", "value": "2020-07-25T21:13:47"}
+        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2020-07-25T21:13:47"}
       },
       "description": ".. on Lake Constance .. for Crazy Tuesday .. Minimalist .. HCT :)",
       "id": "50187213808",
@@ -368,9 +362,7 @@
     {
       "date_posted": {"type": "datetime.datetime", "value": "2020-06-16T10:39:50+00:00"},
       "date_taken": {
-        "granularity": "second",
-        "unknown": false,
-        "value": {"type": "datetime.datetime", "value": "2020-06-13T18:24:57"}
+        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2020-06-13T18:24:57"}
       },
       "description": "Drzewica and Drzewiczka river.\n\nHitech ND 0.9 ( x8 ) GRAD SOFT (85x110) .",
       "id": "50012182441",
@@ -489,9 +481,7 @@
     {
       "date_posted": {"type": "datetime.datetime", "value": "2017-04-27T19:10:59+00:00"},
       "date_taken": {
-        "granularity": "second",
-        "unknown": false,
-        "value": {"type": "datetime.datetime", "value": "2016-07-06T14:19:29"}
+        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2016-07-06T14:19:29"}
       },
       "description": "Il lago d'Antorno \u00e8 un piccolo specchio d'acqua, situato a 1866 metri s.l.m., incastonato tra boschi secolari e picchi maestosi. Il lago \u00e8 raggiungibile percorrendo la strada che da Misurina porta alle Tre Cime di Lavaredo.\n\nIn questo luogo incantato potrete ammirare, oltre a diversi fiori caratteristici dell'habitat alpino, numerose specie vegetali rare, come la lingua d'acqua, Potamogeton natans, chiamata cos\u00ec perch\u00e9 le sue foglie ovali e lanceolate poggiano sul lago. \n\nIn inverno il manto nevoso che ricopre ogni cosa crea un ambiente fiabesco e indimenticabile.\n\n\n<a href=\"https://www.youtube.com/watch?v=NZ3pFow81Vs\" rel=\"nofollow\">www.youtube.com/watch?v=NZ3pFow81Vs</a>\n",
       "id": "34265174086",
@@ -592,9 +582,7 @@
     {
       "date_posted": {"type": "datetime.datetime", "value": "2017-03-09T15:01:32+00:00"},
       "date_taken": {
-        "granularity": "second",
-        "unknown": false,
-        "value": {"type": "datetime.datetime", "value": "2017-03-05T18:39:47"}
+        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2017-03-05T18:39:47"}
       },
       "description": "Een blauw uurtje geschoten tijdens mn laatste weekendje weg in Rome",
       "id": "33341956935",
@@ -699,9 +687,7 @@
     {
       "date_posted": {"type": "datetime.datetime", "value": "2017-03-06T18:08:23+00:00"},
       "date_taken": {
-        "granularity": "second",
-        "unknown": false,
-        "value": {"type": "datetime.datetime", "value": "2016-08-26T20:06:06"}
+        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2016-08-26T20:06:06"}
       },
       "description": "Kenai Fjords National Park | Alaska\nFrom photo reportage for the travel magazine &quot;Dove&quot;.\n\u00a9 Dove Viaggi | <a href=\"http://www.chiarasalvadori.com\" rel=\"nofollow\">www.chiarasalvadori.com</a>",
       "id": "33133935262",
@@ -808,9 +794,7 @@
     {
       "date_posted": {"type": "datetime.datetime", "value": "2014-05-16T08:28:46+00:00"},
       "date_taken": {
-        "granularity": "second",
-        "unknown": false,
-        "value": {"type": "datetime.datetime", "value": "2014-04-22T19:18:58"}
+        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-04-22T19:18:58"}
       },
       "description": null,
       "id": "14197191475",
@@ -909,9 +893,7 @@
     {
       "date_posted": {"type": "datetime.datetime", "value": "2013-11-22T15:08:04+00:00"},
       "date_taken": {
-        "granularity": "second",
-        "unknown": false,
-        "value": {"type": "datetime.datetime", "value": "2013-10-06T11:03:38"}
+        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2013-10-06T11:03:38"}
       },
       "description": "Captured on Foreland Heights, Derrybeg, Gweedore, County Donegal, Ireland",
       "id": "10993715623",
@@ -1056,9 +1038,7 @@
     {
       "date_posted": {"type": "datetime.datetime", "value": "2013-10-16T11:59:58+00:00"},
       "date_taken": {
-        "granularity": "second",
-        "unknown": false,
-        "value": {"type": "datetime.datetime", "value": "2012-12-29T14:06:44"}
+        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2012-12-29T14:06:44"}
       },
       "description": "<a href=\"https://www.facebook.com/Photokairos?ref=hl\" target=\"_blank\" rel=\"nofollow\">Photokair\u00f3s mi p\u00e1gina en Facebook</a>\n<a href=\"https://www.facebook.com/Photokairos?ref=hl\" target=\"_blank\" rel=\"nofollow\">Photokair\u00f3s my page in Facebook</a>\n<a href=\"http://www.photographyblogger.net/20-great-cityscape-photos-from-manuel-savariz-santos/\" target=\"_blank\" rel=\"nofollow\">photographyblogger</a>\n\n",
       "id": "10308653944",

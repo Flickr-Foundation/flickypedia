@@ -13,8 +13,7 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:31:57"
         },
-        "granularity": "second",
-        "unknown": false
+        "granularity": "second"
       },
       "safety_level": "safe",
       "license": {
@@ -101,8 +100,7 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:34:36"
         },
-        "granularity": "second",
-        "unknown": false
+        "granularity": "second"
       },
       "safety_level": "safe",
       "license": {
@@ -189,8 +187,7 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:35:04"
         },
-        "granularity": "second",
-        "unknown": false
+        "granularity": "second"
       },
       "safety_level": "safe",
       "license": {
@@ -277,8 +274,7 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:36:42"
         },
-        "granularity": "second",
-        "unknown": false
+        "granularity": "second"
       },
       "safety_level": "safe",
       "license": {
@@ -365,8 +361,7 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:36:46"
         },
-        "granularity": "second",
-        "unknown": false
+        "granularity": "second"
       },
       "safety_level": "safe",
       "license": {
@@ -453,8 +448,7 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:39:07"
         },
-        "granularity": "second",
-        "unknown": false
+        "granularity": "second"
       },
       "safety_level": "safe",
       "license": {
@@ -541,8 +535,7 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:40:07"
         },
-        "granularity": "second",
-        "unknown": false
+        "granularity": "second"
       },
       "safety_level": "safe",
       "license": {
@@ -629,8 +622,7 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:40:50"
         },
-        "granularity": "second",
-        "unknown": false
+        "granularity": "second"
       },
       "safety_level": "safe",
       "license": {
@@ -717,8 +709,7 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:41:15"
         },
-        "granularity": "second",
-        "unknown": false
+        "granularity": "second"
       },
       "safety_level": "safe",
       "license": {
@@ -805,8 +796,7 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:41:41"
         },
-        "granularity": "second",
-        "unknown": false
+        "granularity": "second"
       },
       "safety_level": "safe",
       "license": {
@@ -893,8 +883,7 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:42:14"
         },
-        "granularity": "second",
-        "unknown": false
+        "granularity": "second"
       },
       "safety_level": "safe",
       "license": {
@@ -981,8 +970,7 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:42:23"
         },
-        "granularity": "second",
-        "unknown": false
+        "granularity": "second"
       },
       "safety_level": "safe",
       "license": {
@@ -1069,8 +1057,7 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:42:25"
         },
-        "granularity": "second",
-        "unknown": false
+        "granularity": "second"
       },
       "safety_level": "safe",
       "license": {
@@ -1157,8 +1144,7 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:43:00"
         },
-        "granularity": "second",
-        "unknown": false
+        "granularity": "second"
       },
       "safety_level": "safe",
       "license": {
@@ -1245,8 +1231,7 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:43:20"
         },
-        "granularity": "second",
-        "unknown": false
+        "granularity": "second"
       },
       "safety_level": "safe",
       "license": {
@@ -1333,8 +1318,7 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:43:42"
         },
-        "granularity": "second",
-        "unknown": false
+        "granularity": "second"
       },
       "safety_level": "safe",
       "license": {
@@ -1421,8 +1405,7 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:43:50"
         },
-        "granularity": "second",
-        "unknown": false
+        "granularity": "second"
       },
       "safety_level": "safe",
       "license": {
@@ -1509,8 +1492,7 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:43:58"
         },
-        "granularity": "second",
-        "unknown": false
+        "granularity": "second"
       },
       "safety_level": "safe",
       "license": {
@@ -1597,8 +1579,7 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:44:02"
         },
-        "granularity": "second",
-        "unknown": false
+        "granularity": "second"
       },
       "safety_level": "safe",
       "license": {
@@ -1685,8 +1666,7 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:44:16"
         },
-        "granularity": "second",
-        "unknown": false
+        "granularity": "second"
       },
       "safety_level": "safe",
       "license": {
@@ -1773,8 +1753,7 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:44:28"
         },
-        "granularity": "second",
-        "unknown": false
+        "granularity": "second"
       },
       "safety_level": "safe",
       "license": {
@@ -1861,8 +1840,7 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:44:52"
         },
-        "granularity": "second",
-        "unknown": false
+        "granularity": "second"
       },
       "safety_level": "safe",
       "license": {
@@ -1949,8 +1927,7 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:44:58"
         },
-        "granularity": "second",
-        "unknown": false
+        "granularity": "second"
       },
       "safety_level": "safe",
       "license": {
@@ -2037,8 +2014,7 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:45:18"
         },
-        "granularity": "second",
-        "unknown": false
+        "granularity": "second"
       },
       "safety_level": "safe",
       "license": {
@@ -2125,8 +2101,7 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:45:20"
         },
-        "granularity": "second",
-        "unknown": false
+        "granularity": "second"
       },
       "safety_level": "safe",
       "license": {
@@ -2213,8 +2188,7 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:45:26"
         },
-        "granularity": "second",
-        "unknown": false
+        "granularity": "second"
       },
       "safety_level": "safe",
       "license": {
@@ -2301,8 +2275,7 @@
           "type": "datetime.datetime",
           "value": "2023-10-25T09:46:12"
         },
-        "granularity": "second",
-        "unknown": false
+        "granularity": "second"
       },
       "safety_level": "safe",
       "license": {

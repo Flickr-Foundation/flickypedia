@@ -27,9 +27,7 @@
               "__type__": "datetime",
               "__value__": "2023-11-14T18:57:02"
             },
-            "granularity": "second",
-            "unknown": false
-          },
+            "granularity": "second"          },
           "license": {
             "id": "cc0-1.0",
             "label": "CC0 1.0",

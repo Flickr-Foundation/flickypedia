@@ -228,13 +228,12 @@ class TestGetSinglePhoto:
         assert info["date_taken"] == {
             "value": datetime.datetime(1950, 1, 1, 0, 0, 0),
             "granularity": "year",
-            "unknown": False,
         }
 
     def test_sets_date_unknown_on_date_taken(self, flickr_api: FlickrPhotosApi) -> None:
         info = flickr_api.get_single_photo(photo_id="25868667441")
 
-        assert info["date_taken"] == {"unknown": True}
+        assert info["date_taken"] is None
 
     def test_gets_photo_description(self, flickr_api: FlickrPhotosApi) -> None:
         photo = flickr_api.get_single_photo(photo_id="53248070597")
@@ -335,9 +334,7 @@ class TestCollectionsPhotoResponse:
             album_id="72157664284840282",
         )
 
-        assert resp["photos"][0]["date_taken"] == {
-            "unknown": True,
-        }
+        assert resp["photos"][0]["date_taken"] is None
 
     def test_only_gets_publicly_available_sizes(
         self, flickr_api: FlickrPhotosApi

@@ -232,7 +232,7 @@ class FlickrPhotosApi(BaseApi):
 
     def _get_date_taken(
         self, *, value: str, granularity: str, unknown: bool
-    ) -> DateTaken:
+    ) -> DateTaken | None:
         # Note: we intentionally omit sending any 'date taken' information
         # to callers if it's unknown.
         #
@@ -244,12 +244,11 @@ class FlickrPhotosApi(BaseApi):
         # the risk of somebody skipping the ``unknown`` parameter and using
         # the value in the wrong place.
         if unknown:
-            return {"unknown": True}
+            return None
         else:
             return {
                 "value": parse_date_taken(value),
                 "granularity": parse_date_taken_granularity(granularity),
-                "unknown": False,
             }
 
     def get_single_photo(self, *, photo_id: str) -> SinglePhoto:

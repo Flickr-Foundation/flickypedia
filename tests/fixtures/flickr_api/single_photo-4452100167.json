@@ -21,8 +21,7 @@
           "type": "datetime.datetime",
           "value": "2007-03-01T00:00:00"
         },
-        "granularity": "month",
-        "unknown": false
+        "granularity": "month"
       },
       "safety_level": "safe",
       "license": {
