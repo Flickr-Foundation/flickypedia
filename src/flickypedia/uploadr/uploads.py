@@ -176,7 +176,8 @@ def upload_single_photo(api: WikimediaApi, request: UploadRequest) -> Successful
 
     """
     wikitext = create_wikitext(
-        photo=request['photo'],
+        photo=request["photo"],
+        wikimedia_username=request["username"],
         new_categories=request["categories"],
     )
 
