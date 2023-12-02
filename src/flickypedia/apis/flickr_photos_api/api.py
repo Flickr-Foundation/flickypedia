@@ -394,11 +394,24 @@ class FlickrPhotosApi(BaseApi):
         # The <location> tag is only present in photos which have
         # location data; if the user hasn't made location available to
         # public users, it'll be missing.
+        #
+        # The accuracy parameter in the Flickr API response tells us
+        # the precision of the location information (15 November 2023):
+        #
+        #     Recorded accuracy level of the location information.
+        #     World level is 1, Country is ~3, Region ~6, City ~11, Street ~16.
+        #     Current range is 1-16.
+        #
+        # But some photos have an accuracy of 0!  It's unclear what this
+        # means or how we should map this -- lower numbers mean less accurate,
+        # so this location information might be completely useless.
+        #
+        # Discard it rather than risk writing bad data into Wikimedia.
         location_elem = photo_elem.find(path="location")
 
         location: LocationInfo | None
 
-        if location_elem is not None:
+        if location_elem is not None and location_elem.attrib["accuracy"] != "0":
             location = {
                 "latitude": float(location_elem.attrib["latitude"]),
                 "longitude": float(location_elem.attrib["longitude"]),
@@ -498,9 +511,16 @@ class FlickrPhotosApi(BaseApi):
             # We have to use the presence of geo permissions on the
             # <photo> element to determine if there's actually location
             # information here, or if we're getting the defaults.
+            #
+            # We discard location information with an accuracy of "0";
+            # see comment in the ``get_single_photo()`` method for an
+            # explanation of why this is so unhelpful as to be useless.
             location: LocationInfo | None
 
-            if photo_elem.attrib.get("geo_is_public") == "1":
+            if (
+                photo_elem.attrib.get("geo_is_public") == "1"
+                and photo_elem.attrib["accuracy"] != "0"
+            ):
                 location = {
                     "latitude": float(photo_elem.attrib["latitude"]),
                     "longitude": float(photo_elem.attrib["longitude"]),

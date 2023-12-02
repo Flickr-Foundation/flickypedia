@@ -197,16 +197,6 @@ def test_create_date_taken_statement_fails_on_unrecognised_granularity() -> None
 
 
 class TestCreateLocationStatement:
-    def test_empty_location_is_no_statement(self) -> None:
-        assert create_location_statement(location=None) is None
-
-    def test_accuracy_zero_means_no_statement(self) -> None:
-        statement = create_location_statement(
-            location={"latitude": 8.079310, "longitude": 77.550004, "accuracy": 0}
-        )
-
-        assert statement is None
-
     def test_unrecognised_location_accuracy_is_error(self) -> None:
         with pytest.raises(ValueError, match="Unrecognised location accuracy"):
             create_location_statement(

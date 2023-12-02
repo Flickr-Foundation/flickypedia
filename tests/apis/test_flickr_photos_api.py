@@ -277,18 +277,26 @@ class TestGetSinglePhoto:
         assert photo["tags"] == []
 
     def test_gets_location_for_photo(self, flickr_api: FlickrPhotosApi) -> None:
-        photo = flickr_api.get_single_photo(photo_id="52578982111")
+        photo = flickr_api.get_single_photo(photo_id="52994452213")
 
         assert photo["location"] == {
-            "latitude": 8.079310,
-            "longitude": 77.550004,
-            "accuracy": 0,
+            "latitude": 9.135158,
+            "longitude": 40.083811,
+            "accuracy": 16,
         }
 
     def test_get_empty_location_for_photo_without_geo(
         self, flickr_api: FlickrPhotosApi
     ) -> None:
         photo = flickr_api.get_single_photo(photo_id="53305573272")
+
+        assert photo["location"] is None
+
+    def test_it_discards_location_if_accuracy_is_zero(
+        self, flickr_api: FlickrPhotosApi
+    ) -> None:
+        # This is an photo with some geo/location information, but the accuracy parameter is 0, which we treat as so low as to be unusable.
+        photo = flickr_api.get_single_photo(photo_id="52578982111")
 
         assert photo["location"] is None
 
@@ -361,6 +369,30 @@ class TestCollectionsPhotoResponse:
         )
 
         assert all(photo["original_format"] is None for photo in resp["photos"])
+
+    def test_gets_location_on_collection_photos(
+        self, flickr_api: FlickrPhotosApi
+    ) -> None:
+        resp = flickr_api.get_photos_in_album(
+            user_url="https://www.flickr.com/photos/150102727@N06/",
+            album_id="72157700908640782",
+        )
+
+        assert any(photo["location"] is None for photo in resp["photos"])
+
+    def test_discards_location_if_accuracy_zero(
+        self, flickr_api: FlickrPhotosApi
+    ) -> None:
+        # This is an album where every photo has some geo/location information,
+        # but the accuracy parameter is 0, which we treat as such low accuracy
+        # as to be unusable.
+        resp = flickr_api.get_photos_in_album(
+            user_url="https://www.flickr.com/photos/rudrpeter/",
+            album_id="72157633859840285",
+            per_page=1,
+        )
+
+        assert all(photo["location"] is None for photo in resp["photos"])
 
 
 class TestGetAlbum:
