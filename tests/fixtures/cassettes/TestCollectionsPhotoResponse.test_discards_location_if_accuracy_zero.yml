@@ -1,0 +1,325 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - api.flickr.com
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.urls.lookupUser&url=https%3A%2F%2Fwww.flickr.com%2Fphotos%2Frudrpeter%2F
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<user
+      id=\"52568942@N05\">\n\t<username>Rudr Peter | Smile to the world |</username>\n</user>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '148'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Sat, 02 Dec 2023 20:19:09 GMT
+      Via:
+      - 1.1 2198d73d723eb37fb611b71c9a3c8382.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - wgunbYZRz5Y2qunG7xq9QLr-tMT-lWXI2b5vJ7CaW6iBVNA9F96g_w==
+      X-Amz-Cf-Pop:
+      - LHR50-P8
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.58 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Mon, 01-Jan-2024 20:19:09 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Mon, 01-Jan-2024 20:19:09 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.people.getInfo&user_id=52568942%40N05
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<person
+      id=\"52568942@N05\" nsid=\"52568942@N05\" ispro=\"1\" is_deleted=\"0\" iconserver=\"65535\"
+      iconfarm=\"66\" path_alias=\"rudrpeter\" has_stats=\"0\" pro_badge=\"standard\"
+      expire=\"0\" has_adfree=\"0\" has_free_standard_shipping=\"0\" has_free_educational_resources=\"0\">\n\t<username>Rudr
+      Peter | Smile to the world |</username>\n\t<realname>Rudr Peter</realname>\n\t<description>&lt;a
+      href=&quot;http://www.flickriver.com/photos/rudrpeter/popular-interesting/&quot;
+      rel=&quot;noreferrer nofollow&quot;&gt;&lt;img loading=&#039;lazy&#039; class=&#039;notsowide&#039;
+      src=&quot;https://flimg.flickr.com/?url=http%3A%2F%2Fwww.flickriver.com%2Fbadge%2Fuser%2Fall%2Finteresting%2Fshuffle%2Fmedium-horiz%2Fffffff%2F333333%2F52568942%40N05.jpg&amp;h=3e8e8c382d8e483efb27d9de8efa290910c0abd5bc5a2a945c18ff45864095e4&quot;
+      alt=&quot;Rudr Peter - View my most interesting photos on Flickriver&quot; title=&quot;Rudr
+      Peter - View my most interesting photos on Flickriver&quot; /&gt;&lt;/a&gt;</description>\n\t<photosurl>https://www.flickr.com/photos/rudrpeter/</photosurl>\n\t<profileurl>https://www.flickr.com/people/rudrpeter/</profileurl>\n\t<mobileurl>https://m.flickr.com/photostream.gne?id=52563602</mobileurl>\n\t<photos>\n\t\t<firstdatetaken>2009-06-22
+      21:47:21</firstdatetaken>\n\t\t<firstdate>1282574286</firstdate>\n\t\t<count>1128</count>\n\t</photos>\n</person>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '708'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Sat, 02 Dec 2023 20:19:09 GMT
+      Via:
+      - 1.1 2198d73d723eb37fb611b71c9a3c8382.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - vVL-62yyqHBSQ7q6IZ5jd-BjmNkyuq6Pb8wG_1Pw6esSv7G5FmjdjQ==
+      X-Amz-Cf-Pop:
+      - LHR50-P8
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.58 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Mon, 01-Jan-2024 20:19:09 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?extras=license%2Cdate_upload%2Cdate_taken%2Cmedia%2Coriginal_format%2Cowner_name%2Curl_sq%2Curl_t%2Curl_s%2Curl_m%2Curl_o%2Ctags%2Cgeo%2Curl_q%2Curl_l%2Cdescription%2Csafety_level%2Crealname&method=flickr.photosets.getPhotos&page=1&per_page=1&photoset_id=72157633859840285&user_id=52568942%40N05
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<photoset
+      id=\"72157633859840285\" primary=\"8914348608\" owner=\"52568942@N05\" ownername=\"Rudr
+      Peter | Smile to the world |\" page=\"1\" per_page=\"1\" perpage=\"1\" pages=\"29\"
+      title=\"India\" total=\"29\">\n\t<photo id=\"8914348608\" secret=\"7519bf916c\"
+      server=\"3736\" farm=\"4\" title=\"Gateway of India\" isprimary=\"0\" ispublic=\"1\"
+      isfriend=\"0\" isfamily=\"0\" license=\"0\" safety_level=\"0\" dateupload=\"1370114405\"
+      datetaken=\"2013-05-24 21:18:25\" datetakengranularity=\"0\" datetakenunknown=\"0\"
+      ownername=\"Rudr Peter | Smile to the world |\" realname=\"Rudr Peter\" tags=\"india
+      nikon jetty bombay mumbai maharastra viceroy gatewayofindia vicroy britisheastindiacompany
+      britishraj chatrapatishivaji indianhistory d5000 tajmahalpalace rudrpeter britishgovernors
+      stateguests\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/3736/8914348608_7519bf916c_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/3736/8914348608_7519bf916c_t.jpg\"
+      height_t=\"66\" width_t=\"100\" url_s=\"https://live.staticflickr.com/3736/8914348608_7519bf916c_m.jpg\"
+      height_s=\"159\" width_s=\"240\" url_m=\"https://live.staticflickr.com/3736/8914348608_7519bf916c.jpg\"
+      height_m=\"332\" width_m=\"500\" url_q=\"https://live.staticflickr.com/3736/8914348608_7519bf916c_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/3736/8914348608_7519bf916c_b.jpg\"
+      height_l=\"680\" width_l=\"1024\">\n\t\t<description>The Gateway of India is
+      a monument built during the British Raj in Mumbai (formerly Bombay), India.
+      \ It is located on the waterfront in the Apollo Bunder area, South Mumbai and
+      overlooks the Arabian Sea.  The structure is a basalt arch, 26 metres (85 feet)
+      high. It lies at the end of Chhatrapati Shivaji Marg at the water&#039;s edge
+      in Mumbai Harbour.  It was a crude jetty used by the fishing community which
+      was later renovated and used as a landing place for British governors and other
+      prominent people. In earlier times, it would have been the first structure that
+      visitors arriving by boat in Mumbai would have seen.  The Gateway has also been
+      referred to as the Taj Mahal of Mumbai, and is the city&#039;s top tourist attraction.\n\nThe
+      structure was erected to commemorate the landing of their Majesties King George
+      V and Queen Mary at Apollo Bunder, when they visited India in 1911. Built in
+      Indo-Saracenic style, the foundation stone for the Gateway of India was laid
+      on 31 March 1911. The final design of George Wittet was sanctioned in 1914 and
+      the construction of the monument was completed in 1924. The Gateway was later
+      the ceremonial entrance to India for Viceroys and the new Governors of Bombay.
+      \ It served to allow entry and access to India.\n\nThe monument has faced three
+      terror attacks from the beginning of the 21st century; twice in 2003 and it
+      was also the disembarkation point in 2008 when four gunmen attacked the Taj
+      Mahal Palace &amp;amp; Tower.\n\nData Courtesy: &lt;a href=&quot;http://en.wikipedia.org/wiki/Gateway_of_India&quot;
+      rel=&quot;nofollow&quot;&gt;en.wikipedia.org/wiki/Gateway_of_India&lt;/a&gt;</description>\n\t</photo>\n</photoset>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1493'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Sat, 02 Dec 2023 20:19:10 GMT
+      Via:
+      - 1.1 2198d73d723eb37fb611b71c9a3c8382.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - qBvfjR4f0FFF7wXJYW6vPpJDNumhBpVJgej4TrlfO-lkNg5yZ7llqA==
+      X-Amz-Cf-Pop:
+      - LHR50-P8
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.58 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Mon, 01-Jan-2024 20:19:09 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.licenses.getInfo
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<licenses>\n\t<license
+      id=\"0\" name=\"All Rights Reserved\" url=\"\" />\n\t<license id=\"4\" name=\"Attribution
+      License\" url=\"https://creativecommons.org/licenses/by/2.0/\" />\n\t<license
+      id=\"6\" name=\"Attribution-NoDerivs License\" url=\"https://creativecommons.org/licenses/by-nd/2.0/\"
+      />\n\t<license id=\"3\" name=\"Attribution-NonCommercial-NoDerivs License\"
+      url=\"https://creativecommons.org/licenses/by-nc-nd/2.0/\" />\n\t<license id=\"2\"
+      name=\"Attribution-NonCommercial License\" url=\"https://creativecommons.org/licenses/by-nc/2.0/\"
+      />\n\t<license id=\"1\" name=\"Attribution-NonCommercial-ShareAlike License\"
+      url=\"https://creativecommons.org/licenses/by-nc-sa/2.0/\" />\n\t<license id=\"5\"
+      name=\"Attribution-ShareAlike License\" url=\"https://creativecommons.org/licenses/by-sa/2.0/\"
+      />\n\t<license id=\"7\" name=\"No known copyright restrictions\" url=\"https://www.flickr.com/commons/usage/\"
+      />\n\t<license id=\"8\" name=\"United States Government Work\" url=\"http://www.usa.gov/copyright.shtml\"
+      />\n\t<license id=\"9\" name=\"Public Domain Dedication (CC0)\" url=\"https://creativecommons.org/publicdomain/zero/1.0/\"
+      />\n\t<license id=\"10\" name=\"Public Domain Mark\" url=\"https://creativecommons.org/publicdomain/mark/1.0/\"
+      />\n</licenses>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '395'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Sat, 02 Dec 2023 20:19:10 GMT
+      Via:
+      - 1.1 2198d73d723eb37fb611b71c9a3c8382.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - gZZoOdEC6LSyLIpcoXYI5oPKFWhE70h17bOfI1lnmaa3Fd3B5KF3ow==
+      X-Amz-Cf-Pop:
+      - LHR50-P8
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.58 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Mon, 01-Jan-2024 20:19:10 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photosets.getInfo&photoset_id=72157633859840285&user_id=52568942%40N05
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<photoset
+      id=\"72157633859840285\" owner=\"52568942@N05\" username=\"Rudr Peter | Smile
+      to the world |\" primary=\"8914348608\" secret=\"7519bf916c\" server=\"3736\"
+      farm=\"4\" count_views=\"12\" count_comments=\"0\" count_photos=\"29\" count_videos=\"0\"
+      can_comment=\"0\" date_create=\"1370114405\" date_update=\"1691999358\" photos=\"29\"
+      visibility_can_see_set=\"1\" needs_interstitial=\"0\">\n\t<title>India</title>\n\t<description
+      />\n</photoset>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '337'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Sat, 02 Dec 2023 20:19:10 GMT
+      Via:
+      - 1.1 2198d73d723eb37fb611b71c9a3c8382.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - M49VTNu3vzFiJ-y4YeJJYCrZeAdnYxFL0sugZCas5oOiowJmPj9VXg==
+      X-Amz-Cf-Pop:
+      - LHR50-P8
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.58 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Mon, 01-Jan-2024 20:19:10 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

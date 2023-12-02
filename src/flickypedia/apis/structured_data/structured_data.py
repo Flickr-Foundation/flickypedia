@@ -234,7 +234,7 @@ def create_license_statement(license_id: str) -> NewStatement:
     }
 
 
-def create_location_statement(location: LocationInfo | None) -> NewStatement | None:
+def create_location_statement(location: LocationInfo) -> NewStatement:
     """
     Creates a structured data statement for the "coordinates of
     the point of view" statement.
@@ -245,9 +245,6 @@ def create_location_statement(location: LocationInfo | None) -> NewStatement | N
 
     See https://flickrfoundation.slack.com/archives/C05AVC1JYL9/p1696947242703349
     """
-    if location is None:
-        return None
-
     # The accuracy parameter in the Flickr API response tells us
     # the precision of the location information (15 November 2023):
     #
@@ -255,15 +252,6 @@ def create_location_statement(location: LocationInfo | None) -> NewStatement | N
     #     World level is 1, Country is ~3, Region ~6, City ~11, Street ~16.
     #     Current range is 1-16.
     #
-    # But some photos have an accuracy of 0!  It's unclear what this
-    # means or how we should map this -- lower numbers mean less accurate,
-    # so this location information might be completely useless.
-    #
-    # We prefer to omit information of unknown accuracy, rather than
-    # write bad data into Wikimedia.
-    if location["accuracy"] == 0:
-        return None
-
     # Flickr doesn't publish any definitive stats on how their accuracy
     # levels map to absolute position on the Earth, so I had to make
     # some rough guesses.  This information is already approximate, so
@@ -502,8 +490,7 @@ def create_sdc_claims_for_flickr_photo(
     if photo["date_taken"] is not None:
         statements.append(create_date_taken_statement(date_taken=photo["date_taken"]))
 
-    location_statement = create_location_statement(location=photo["location"])
-    if location_statement is not None:
-        statements.append(location_statement)
+    if photo["location"] is not None:
+        statements.append(create_location_statement(location=photo["location"]))
 
     return {"claims": statements}
