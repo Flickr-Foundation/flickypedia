@@ -64,6 +64,7 @@ def test_upload_single_photo(app: Flask, wikimedia_api: WikimediaApi) -> None:
                 "text": "A Thameslink Class 700 train in the rainbow Pride livery, taken at night",
             },
             "categories": [],
+            "username": "TestUser",
         },
     )
 

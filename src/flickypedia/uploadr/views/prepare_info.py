@@ -163,6 +163,7 @@ def create_upload_requests(
                     "text": this_photo_form_data["short_caption"],
                 },
                 "categories": categories,
+                "username": current_user.name,
             }
         )
 
