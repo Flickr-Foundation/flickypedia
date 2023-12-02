@@ -4,9 +4,7 @@
     {
       "date_posted": {"type": "datetime.datetime", "value": "2023-11-05T12:53:56+00:00"},
       "date_taken": {
-        "granularity": "second",
-        "unknown": false,
-        "value": {"type": "datetime.datetime", "value": "2023-11-04T16:21:45"}
+        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2023-11-04T16:21:45"}
       },
       "description": "Took a little ferry shuttle across the Thames yesterday.",
       "id": "53310991033",
@@ -89,9 +87,7 @@
     {
       "date_posted": {"type": "datetime.datetime", "value": "2023-10-24T12:57:28+00:00"},
       "date_taken": {
-        "granularity": "second",
-        "unknown": false,
-        "value": {"type": "datetime.datetime", "value": "2023-10-19T19:20:10"}
+        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2023-10-19T19:20:10"}
       },
       "description": null,
       "id": "53282436419",
@@ -174,9 +170,7 @@
     {
       "date_posted": {"type": "datetime.datetime", "value": "2023-10-05T17:58:16+00:00"},
       "date_taken": {
-        "granularity": "second",
-        "unknown": false,
-        "value": {"type": "datetime.datetime", "value": "2023-10-03T13:16:01"}
+        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2023-10-03T13:16:01"}
       },
       "description": null,
       "id": "53237018379",
@@ -254,9 +248,7 @@
     {
       "date_posted": {"type": "datetime.datetime", "value": "2023-08-07T19:15:39+00:00"},
       "date_taken": {
-        "granularity": "second",
-        "unknown": false,
-        "value": {"type": "datetime.datetime", "value": "2023-08-06T17:08:01"}
+        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2023-08-06T17:08:01"}
       },
       "description": "View from good pub spot on the river.",
       "id": "53100996733",
@@ -333,9 +325,7 @@
     },
     {
       "date_posted": {"type": "datetime.datetime", "value": "2023-06-07T10:55:00+00:00"},
-      "date_taken": {
-        "unknown": true
-      },
+      "date_taken": null,
       "description": "The grass was renewed.",
       "id": "52957366694",
       "license": {
@@ -420,9 +410,7 @@
     {
       "date_posted": {"type": "datetime.datetime", "value": "2023-06-07T10:54:59+00:00"},
       "date_taken": {
-        "granularity": "second",
-        "unknown": false,
-        "value": {"type": "datetime.datetime", "value": "2023-06-07T03:50:50"}
+        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2023-06-07T03:50:50"}
       },
       "description": "The grass was renewed.\n\n<a href=\"https://commons.wikimedia.org/wiki/File:A_few_weeks_after_the_fire.jpg\" rel=\"noreferrer nofollow\">commons.wikimedia.org/wiki/File:A_few_weeks_after_the_fir...</a>",
       "id": "52957605480",
@@ -499,9 +487,7 @@
     },
     {
       "date_posted": {"type": "datetime.datetime", "value": "2023-06-07T10:54:59+00:00"},
-      "date_taken": {
-        "unknown": true
-      },
+      "date_taken": null,
       "description": "The grass was renewed.",
       "id": "52956623732",
       "license": {
@@ -577,9 +563,7 @@
     },
     {
       "date_posted": {"type": "datetime.datetime", "value": "2023-06-07T10:54:58+00:00"},
-      "date_taken": {
-        "unknown": true
-      },
+      "date_taken": null,
       "description": "An event in the South Parklands, burning grass gently and precisely. ",
       "id": "52957602825",
       "license": {
@@ -664,9 +648,7 @@
     },
     {
       "date_posted": {"type": "datetime.datetime", "value": "2023-06-07T10:54:58+00:00"},
-      "date_taken": {
-        "unknown": true
-      },
+      "date_taken": null,
       "description": "An event in the South Parklands, burning grass gently and precisely. ",
       "id": "52956620847",
       "license": {
@@ -751,9 +733,7 @@
     },
     {
       "date_posted": {"type": "datetime.datetime", "value": "2023-06-07T10:54:57+00:00"},
-      "date_taken": {
-        "unknown": true
-      },
+      "date_taken": null,
       "description": "An event in the South Parklands, burning grass gently and precisely. ",
       "id": "52957218821",
       "license": {

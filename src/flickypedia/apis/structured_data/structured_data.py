@@ -386,8 +386,6 @@ def create_date_taken_statement(date_taken: DateTaken) -> NewStatement:
     Here ``granularity`` comes from the Flickr API: see "Photo Dates".
     https://www.flickr.com/services/api/misc.dates.html
     """
-    assert not date_taken["unknown"]
-
     flickr_granularity = date_taken["granularity"]
 
     try:
@@ -501,7 +499,7 @@ def create_sdc_claims_for_flickr_photo(
         date_posted_statement,
     ]
 
-    if not photo["date_taken"]["unknown"]:
+    if photo["date_taken"] is not None:
         statements.append(create_date_taken_statement(date_taken=photo["date_taken"]))
 
     location_statement = create_location_statement(location=photo["location"])

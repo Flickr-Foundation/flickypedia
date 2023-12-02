@@ -178,7 +178,7 @@ def test_create_date_taken_statement(
     date_taken: datetime.datetime, granularity: TakenGranularity, filename: str
 ) -> None:
     actual = create_date_taken_statement(
-        date_taken={"value": date_taken, "granularity": granularity, "unknown": False}
+        date_taken={"value": date_taken, "granularity": granularity}
     )
     expected = get_statement_fixture(filename)
 
@@ -305,9 +305,7 @@ def test_create_sdc_claims_for_flickr_photo_without_date_taken(
             "url": "https://creativecommons.org/licenses/by/2.0/",
         },
         "date_posted": datetime.datetime.fromtimestamp(1696939706),
-        "date_taken": {
-            "unknown": True,
-        },
+        "date_taken": None,
         "safety_level": "safe",
         "original_format": "jpg",
         "tags": [],
@@ -355,7 +353,6 @@ def test_create_sdc_claims_for_flickr_photo_with_date_taken(
         "date_posted": datetime.datetime.fromtimestamp(1696421915),
         "date_taken": {
             "value": datetime.datetime(2023, 10, 3, 5, 45, 0),
-            "unknown": False,
             "granularity": "second",
         },
         "safety_level": "safe",

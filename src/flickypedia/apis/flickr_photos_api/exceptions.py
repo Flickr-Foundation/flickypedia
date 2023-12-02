@@ -1,6 +1,3 @@
-from typing import Dict, Optional, Union
-
-
 class FlickrApiException(Exception):
     """
     Base class for all exceptions thrown from the Flickr API.
@@ -14,7 +11,7 @@ class ResourceNotFound(FlickrApiException):
     Thrown when you try to look up a resource that doesn't exist.
     """
 
-    def __init__(self, method: str, params: Optional[Dict[str, Union[str, int]]]):
+    def __init__(self, method: str, params: dict[str, str] | None):
         super().__init__(
             f"Unable to find resource at {method} with properties {params}"
         )

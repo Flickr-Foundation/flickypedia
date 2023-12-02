@@ -20,8 +20,7 @@
           "type": "datetime.datetime",
           "value": "2017-02-17T00:00:00"
         },
-        "granularity": "second",
-        "unknown": false
+        "granularity": "second"
       },
       "safety_level": "safe",
       "license": {

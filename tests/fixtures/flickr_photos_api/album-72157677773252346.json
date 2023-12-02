@@ -15,9 +15,7 @@
     {
       "date_posted": {"type": "datetime.datetime", "value": "2016-09-26T06:13:00+00:00"},
       "date_taken": {
-        "granularity": "second",
-        "unknown": false,
-        "value": {"type": "datetime.datetime", "value": "2015-05-18T16:11:59"}
+        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2015-05-18T16:11:59"}
       },
       "description": null,
       "id": "18250964001",
@@ -99,9 +97,7 @@
     },
     {
       "date_posted": {"type": "datetime.datetime", "value": "2015-07-22T08:52:55+00:00"},
-      "date_taken": {
-        "unknown": true
-      },
+      "date_taken": null,
       "description": null,
       "id": "19722996319",
       "license": {
@@ -181,9 +177,7 @@
     {
       "date_posted": {"type": "datetime.datetime", "value": "2015-07-24T09:49:34+00:00"},
       "date_taken": {
-        "granularity": "second",
-        "unknown": false,
-        "value": {"type": "datetime.datetime", "value": "2015-07-22T19:48:40"}
+        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2015-07-22T19:48:40"}
       },
       "description": null,
       "id": "19777368608",
@@ -260,9 +254,7 @@
     },
     {
       "date_posted": {"type": "datetime.datetime", "value": "2015-08-16T08:38:15+00:00"},
-      "date_taken": {
-        "unknown": true
-      },
+      "date_taken": null,
       "description": null,
       "id": "19995531304",
       "license": {
@@ -345,9 +337,7 @@
     },
     {
       "date_posted": {"type": "datetime.datetime", "value": "2015-08-16T12:11:21+00:00"},
-      "date_taken": {
-        "unknown": true
-      },
+      "date_taken": null,
       "description": null,
       "id": "20434367760",
       "license": {
@@ -431,9 +421,7 @@
     },
     {
       "date_posted": {"type": "datetime.datetime", "value": "2015-08-18T13:29:04+00:00"},
-      "date_taken": {
-        "unknown": true
-      },
+      "date_taken": null,
       "description": null,
       "id": "20671286152",
       "license": {
@@ -516,9 +504,7 @@
     },
     {
       "date_posted": {"type": "datetime.datetime", "value": "2015-08-27T03:54:30+00:00"},
-      "date_taken": {
-        "unknown": true
-      },
+      "date_taken": null,
       "description": null,
       "id": "20889037076",
       "license": {
@@ -602,9 +588,7 @@
     },
     {
       "date_posted": {"type": "datetime.datetime", "value": "2015-08-28T21:30:15+00:00"},
-      "date_taken": {
-        "unknown": true
-      },
+      "date_taken": null,
       "description": null,
       "id": "20967567081",
       "license": {
@@ -687,9 +671,7 @@
     },
     {
       "date_posted": {"type": "datetime.datetime", "value": "2015-08-29T09:01:55+00:00"},
-      "date_taken": {
-        "unknown": true
-      },
+      "date_taken": null,
       "description": null,
       "id": "20351005903",
       "license": {
@@ -774,9 +756,7 @@
     },
     {
       "date_posted": {"type": "datetime.datetime", "value": "2015-09-01T03:00:45+00:00"},
-      "date_taken": {
-        "unknown": true
-      },
+      "date_taken": null,
       "description": null,
       "id": "20428374183",
       "license": {

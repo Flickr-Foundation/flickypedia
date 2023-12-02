@@ -44,7 +44,6 @@ def test_upload_single_photo(app: Flask, wikimedia_api: WikimediaApi) -> None:
         "date_taken": {
             "value": datetime.datetime(2023, 9, 12, 19, 54, 32),
             "granularity": "second",
-            "unknown": False,
         },
         "safety_level": "safe",
         "original_format": "jpg",
