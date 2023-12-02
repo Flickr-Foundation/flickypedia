@@ -1,13 +1,16 @@
 {
   "claims": [
     {
-            "mainsnak": {
-                "datavalue": {"value": "53248015596", "type": "string"},
-                "property": "P12120",
-                "snaktype": "value"
-            },
-            "type": "statement"
+      "mainsnak": {
+        "datavalue": {
+          "value": "53248015596",
+          "type": "string"
         },
+        "property": "P12120",
+        "snaktype": "value"
+      },
+      "type": "statement"
+    },
     {
       "mainsnak": {
         "snaktype": "somevalue",
@@ -51,21 +54,6 @@
         "P2093",
         "P2699"
       ]
-    },
-    {
-      "mainsnak": {
-        "snaktype": "value",
-        "property": "P6216",
-        "datavalue": {
-          "value": {
-            "id": "Q50423863",
-            "numeric-id": 50423863,
-            "entity-type": "item"
-          },
-          "type": "wikibase-entityid"
-        }
-      },
-      "type": "statement"
     },
     {
       "mainsnak": {
@@ -149,6 +137,21 @@
           "value": {
             "id": "Q19125117",
             "numeric-id": 19125117,
+            "entity-type": "item"
+          },
+          "type": "wikibase-entityid"
+        }
+      },
+      "type": "statement"
+    },
+    {
+      "mainsnak": {
+        "snaktype": "value",
+        "property": "P6216",
+        "datavalue": {
+          "value": {
+            "id": "Q50423863",
+            "numeric-id": 50423863,
             "entity-type": "item"
           },
           "type": "wikibase-entityid"
