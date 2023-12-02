@@ -1,0 +1,252 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - api.flickr.com
+      user-agent:
+      - flickr-photos-api/dev (https://github.com/Flickr-Foundation/flickr-photos-api;
+        hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&photo_id=5240741057
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<photo
+      id=\"5240741057\" secret=\"09a033b71f\" server=\"5161\" farm=\"6\" dateuploaded=\"1291733411\"
+      isfavorite=\"0\" license=\"7\" safety_level=\"0\" rotation=\"0\" originalsecret=\"8cdce283d1\"
+      originalformat=\"jpg\" views=\"25075\" media=\"photo\">\n\t<owner nsid=\"31575009@N05\"
+      username=\"The National Archives UK\" realname=\"\" location=\"\" iconserver=\"65535\"
+      iconfarm=\"66\" path_alias=\"nationalarchives\">\n\t\t<gift gift_eligible=\"\"
+      new_flow=\"1\" />\n\t</owner>\n\t<title>Christmas underground</title>\n\t<description>&lt;b&gt;Description&lt;/b&gt;:
+      Miners singing Christmas carols underground at Bersham Colliery, Rhostyllen,
+      Wrexham\n\n&lt;b&gt;Date:&lt;/b&gt; 1950\n\n&lt;b&gt;Our Catalogue Reference:&lt;/b&gt;
+      &lt;a href=&quot;http://www.nationalarchives.gov.uk/catalogue/displaycataloguedetails.asp?CATLN=7&amp;amp;CATID=-6176559&amp;amp;SearchInit=4&amp;amp;SearchType=6&amp;amp;CATREF=coal+80/97/30&quot;
+      rel=&quot;noreferrer nofollow&quot;&gt;COAL 80/97/30&lt;/a&gt;\n\nThis image
+      is from the collections of The National Archives. Feel free to share it within
+      the spirit of the Commons.\n\nFor high quality reproductions of any item from
+      our collection please contact our &lt;a href=&quot;http://www.nationalarchives.gov.uk/imagelibrary&quot;
+      rel=&quot;noreferrer nofollow&quot;&gt;image library&lt;/a&gt;.</description>\n\t<visibility
+      ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" />\n\t<dates posted=\"1291733411\"
+      taken=\"1950-01-01 00:00:00\" takengranularity=\"6\" takenunknown=\"0\" lastupdate=\"1482082473\"
+      />\n\t<editability cancomment=\"0\" canaddmeta=\"0\" />\n\t<publiceditability
+      cancomment=\"1\" canaddmeta=\"1\" />\n\t<usage candownload=\"1\" canblog=\"0\"
+      canprint=\"0\" canshare=\"1\" />\n\t<comments>7</comments>\n\t<notes />\n\t<people
+      haspeople=\"0\" />\n\t<tags>\n\t\t<tag id=\"31569669-5240741057-30835915\" author=\"31575009@N05\"
+      authorname=\"The National Archives UK\" raw=\"The National Archives (UK)\" machine_tag=\"0\">thenationalarchivesuk</tag>\n\t\t<tag
+      id=\"31569669-5240741057-28423\" author=\"31575009@N05\" authorname=\"The National
+      Archives UK\" raw=\"coal\" machine_tag=\"0\">coal</tag>\n\t\t<tag id=\"31569669-5240741057-1160\"
+      author=\"31575009@N05\" authorname=\"The National Archives UK\" raw=\"Wales\"
+      machine_tag=\"0\">wales</tag>\n\t\t<tag id=\"31569669-5240741057-10798\" author=\"31575009@N05\"
+      authorname=\"The National Archives UK\" raw=\"mining\" machine_tag=\"0\">mining</tag>\n\t\t<tag
+      id=\"31569669-5240741057-116298\" author=\"31575009@N05\" authorname=\"The National
+      Archives UK\" raw=\"miners\" machine_tag=\"0\">miners</tag>\n\t\t<tag id=\"31569669-5240741057-4062\"
+      author=\"31575009@N05\" authorname=\"The National Archives UK\" raw=\"singing\"
+      machine_tag=\"0\">singing</tag>\n\t\t<tag id=\"31569669-5240741057-37776\" author=\"31575009@N05\"
+      authorname=\"The National Archives UK\" raw=\"brass\" machine_tag=\"0\">brass</tag>\n\t\t<tag
+      id=\"31569669-5240741057-33393\" author=\"31575009@N05\" authorname=\"The National
+      Archives UK\" raw=\"trumpets\" machine_tag=\"0\">trumpets</tag>\n\t\t<tag id=\"31569669-5240741057-30122\"
+      author=\"31575009@N05\" authorname=\"The National Archives UK\" raw=\"carols\"
+      machine_tag=\"0\">carols</tag>\n\t\t<tag id=\"31569669-5240741057-82\" author=\"31575009@N05\"
+      authorname=\"The National Archives UK\" raw=\"Christmas\" machine_tag=\"0\">christmas</tag>\n\t\t<tag
+      id=\"31569669-5240741057-108885476\" author=\"31575009@N05\" authorname=\"The
+      National Archives UK\" raw=\"tna:PieceReference=COAL80p97\" machine_tag=\"1\">tna:piecereference=coal80p97</tag>\n\t\t<tag
+      id=\"31569669-5240741057-108885478\" author=\"31575009@N05\" authorname=\"The
+      National Archives UK\" raw=\"tna:SubseriesReference=COAL80ss1\" machine_tag=\"1\">tna:subseriesreference=coal80ss1</tag>\n\t\t<tag
+      id=\"31569669-5240741057-108877737\" author=\"31575009@N05\" authorname=\"The
+      National Archives UK\" raw=\"tna:IAID=C10645355\" machine_tag=\"1\">tna:iaid=c10645355</tag>\n\t\t<tag
+      id=\"31569669-5240741057-108877739\" author=\"31575009@N05\" authorname=\"The
+      National Archives UK\" raw=\"tna:ItemReference=COAL80p97i30\" machine_tag=\"1\">tna:itemreference=coal80p97i30</tag>\n\t\t<tag
+      id=\"31569669-5240741057-108885482\" author=\"31575009@N05\" authorname=\"The
+      National Archives UK\" raw=\"tna:SeriesReference=COAL80\" machine_tag=\"1\">tna:seriesreference=coal80</tag>\n\t\t<tag
+      id=\"31569669-5240741057-108885484\" author=\"31575009@N05\" authorname=\"The
+      National Archives UK\" raw=\"tna:DivisionReference=COALd8\" machine_tag=\"1\">tna:divisionreference=coald8</tag>\n\t\t<tag
+      id=\"31569669-5240741057-108885486\" author=\"31575009@N05\" authorname=\"The
+      National Archives UK\" raw=\"tna:DepartmentReference=COAL\" machine_tag=\"1\">tna:departmentreference=coal</tag>\n\t\t<tag
+      id=\"31569669-5240741057-321297896\" author=\"43854658@N00\" authorname=\"Pixel
+      Wrangler\" raw=\"Christmas Across the Commons\" machine_tag=\"0\">christmasacrossthecommons</tag>\n\t</tags>\n\t<location
+      latitude=\"53.035568\" longitude=\"-3.029119\" accuracy=\"11\" context=\"0\">\n\t\t<locality
+      woeid=\"12434\">Bersham</locality>\n\t\t<county woeid=\"12602232\">Wrexham County
+      Borough</county>\n\t\t<region woeid=\"12578049\">Wales</region>\n\t\t<country
+      woeid=\"23424975\">United Kingdom</country>\n\t\t<neighbourhood woeid=\"0\"
+      />\n\t</location>\n\t<geoperms ispublic=\"1\" iscontact=\"0\" isfriend=\"0\"
+      isfamily=\"0\" />\n\t<urls>\n\t\t<url type=\"photopage\">https://www.flickr.com/photos/nationalarchives/5240741057/</url>\n\t</urls>\n</photo>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1603'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Sun, 05 Nov 2023 13:52:56 GMT
+      Via:
+      - 1.1 dd1211d51ecc66d1523e03934a660f3a.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - 1B2aHhd0PVcX8c9mNGepTO_l5bMUckGzEu78oI90sGERd1tT7-Y3cQ==
+      X-Amz-Cf-Pop:
+      - LHR50-P8
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.57 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Tue, 05-Dec-2023 13:52:56 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Tue, 05-Dec-2023 13:52:56 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - flickr-photos-api/dev (https://github.com/Flickr-Foundation/flickr-photos-api;
+        hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&photo_id=5240741057
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<sizes
+      canblog=\"0\" canprint=\"0\" candownload=\"1\">\n\t<size label=\"Square\" width=\"75\"
+      height=\"75\" source=\"https://live.staticflickr.com/5161/5240741057_09a033b71f_s.jpg\"
+      url=\"https://www.flickr.com/photos/nationalarchives/5240741057/sizes/sq/\"
+      media=\"photo\" />\n\t<size label=\"Large Square\" width=\"150\" height=\"150\"
+      source=\"https://live.staticflickr.com/5161/5240741057_09a033b71f_q.jpg\" url=\"https://www.flickr.com/photos/nationalarchives/5240741057/sizes/q/\"
+      media=\"photo\" />\n\t<size label=\"Thumbnail\" width=\"100\" height=\"80\"
+      source=\"https://live.staticflickr.com/5161/5240741057_09a033b71f_t.jpg\" url=\"https://www.flickr.com/photos/nationalarchives/5240741057/sizes/t/\"
+      media=\"photo\" />\n\t<size label=\"Small\" width=\"240\" height=\"192\" source=\"https://live.staticflickr.com/5161/5240741057_09a033b71f_m.jpg\"
+      url=\"https://www.flickr.com/photos/nationalarchives/5240741057/sizes/s/\" media=\"photo\"
+      />\n\t<size label=\"Small 320\" width=\"320\" height=\"256\" source=\"https://live.staticflickr.com/5161/5240741057_09a033b71f_n.jpg\"
+      url=\"https://www.flickr.com/photos/nationalarchives/5240741057/sizes/n/\" media=\"photo\"
+      />\n\t<size label=\"Small 400\" width=\"400\" height=\"319\" source=\"https://live.staticflickr.com/5161/5240741057_09a033b71f_w.jpg\"
+      url=\"https://www.flickr.com/photos/nationalarchives/5240741057/sizes/w/\" media=\"photo\"
+      />\n\t<size label=\"Medium\" width=\"500\" height=\"399\" source=\"https://live.staticflickr.com/5161/5240741057_09a033b71f.jpg\"
+      url=\"https://www.flickr.com/photos/nationalarchives/5240741057/sizes/m/\" media=\"photo\"
+      />\n\t<size label=\"Medium 640\" width=\"640\" height=\"511\" source=\"https://live.staticflickr.com/5161/5240741057_09a033b71f_z.jpg\"
+      url=\"https://www.flickr.com/photos/nationalarchives/5240741057/sizes/z/\" media=\"photo\"
+      />\n\t<size label=\"Medium 800\" width=\"750\" height=\"599\" source=\"https://live.staticflickr.com/5161/5240741057_09a033b71f_c.jpg\"
+      url=\"https://www.flickr.com/photos/nationalarchives/5240741057/sizes/c/\" media=\"photo\"
+      />\n\t<size label=\"Original\" width=\"750\" height=\"599\" source=\"https://live.staticflickr.com/5161/5240741057_8cdce283d1_o.jpg\"
+      url=\"https://www.flickr.com/photos/nationalarchives/5240741057/sizes/o/\" media=\"photo\"
+      />\n</sizes>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '427'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Sun, 05 Nov 2023 13:52:56 GMT
+      Via:
+      - 1.1 dd1211d51ecc66d1523e03934a660f3a.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - yhl0lmw-giSa1mG4_a5o53y4Z3a4aXLSMRpLiVMO5xTiY7zzmyoNvg==
+      X-Amz-Cf-Pop:
+      - LHR50-P8
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.57 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Tue, 05-Dec-2023 13:52:56 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - flickr-photos-api/dev (https://github.com/Flickr-Foundation/flickr-photos-api;
+        hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.licenses.getInfo
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<licenses>\n\t<license
+      id=\"0\" name=\"All Rights Reserved\" url=\"\" />\n\t<license id=\"4\" name=\"Attribution
+      License\" url=\"https://creativecommons.org/licenses/by/2.0/\" />\n\t<license
+      id=\"6\" name=\"Attribution-NoDerivs License\" url=\"https://creativecommons.org/licenses/by-nd/2.0/\"
+      />\n\t<license id=\"3\" name=\"Attribution-NonCommercial-NoDerivs License\"
+      url=\"https://creativecommons.org/licenses/by-nc-nd/2.0/\" />\n\t<license id=\"2\"
+      name=\"Attribution-NonCommercial License\" url=\"https://creativecommons.org/licenses/by-nc/2.0/\"
+      />\n\t<license id=\"1\" name=\"Attribution-NonCommercial-ShareAlike License\"
+      url=\"https://creativecommons.org/licenses/by-nc-sa/2.0/\" />\n\t<license id=\"5\"
+      name=\"Attribution-ShareAlike License\" url=\"https://creativecommons.org/licenses/by-sa/2.0/\"
+      />\n\t<license id=\"7\" name=\"No known copyright restrictions\" url=\"https://www.flickr.com/commons/usage/\"
+      />\n\t<license id=\"8\" name=\"United States Government Work\" url=\"http://www.usa.gov/copyright.shtml\"
+      />\n\t<license id=\"9\" name=\"Public Domain Dedication (CC0)\" url=\"https://creativecommons.org/publicdomain/zero/1.0/\"
+      />\n\t<license id=\"10\" name=\"Public Domain Mark\" url=\"https://creativecommons.org/publicdomain/mark/1.0/\"
+      />\n</licenses>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '395'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Sun, 05 Nov 2023 13:52:56 GMT
+      Via:
+      - 1.1 dd1211d51ecc66d1523e03934a660f3a.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - kBQdh_9w5kFrXHe-abGWyqfWidkJ0N1ayUAgJQSFrCQkcHh1e2reHw==
+      X-Amz-Cf-Pop:
+      - LHR50-P8
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.57 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Tue, 05-Dec-2023 13:52:56 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

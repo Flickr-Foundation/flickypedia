@@ -1,0 +1,388 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - api.flickr.com
+      user-agent:
+      - flickr-photos-api/dev (https://github.com/Flickr-Foundation/flickr-photos-api;
+        hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.urls.lookupUser&url=https%3A%2F%2Fwww.flickr.com%2Fphotos%2Fgeorge
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<user
+      id=\"34427469121@N01\">\n\t<username>George</username>\n</user>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '128'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Wed, 15 Nov 2023 16:47:24 GMT
+      Via:
+      - 1.1 53d49718a7680ca68c2936c1e210f48a.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - iF4LQ9x9LNZ1W7e1dRoDjl4RV118pTiGaVtdlmac56sw5ojFu-lDmQ==
+      X-Amz-Cf-Pop:
+      - EZE50-P1
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.58 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Fri, 15-Dec-2023 16:47:24 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - flickr-photos-api/dev (https://github.com/Flickr-Foundation/flickr-photos-api;
+        hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.people.getInfo&user_id=34427469121%40N01
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<person
+      id=\"34427469121@N01\" nsid=\"34427469121@N01\" ispro=\"1\" is_deleted=\"0\"
+      iconserver=\"1\" iconfarm=\"1\" path_alias=\"george\" has_stats=\"0\" pro_badge=\"standard\"
+      expire=\"0\" has_adfree=\"0\" has_free_standard_shipping=\"0\" has_free_educational_resources=\"0\">\n\t<username>George</username>\n\t<realname>George
+      Oates</realname>\n\t<mbox_sha1sum>7304ec23d42e12e43d7b2f682708333b5dac5533</mbox_sha1sum>\n\t<location>London,
+      United Kingdom</location>\n\t<timezone label=\"Pacific Time (US &amp; Canada);
+      Tijuana\" offset=\"-08:00\" timezone_id=\"PST8PDT\" timezone=\"5\" />\n\t<description>&lt;b&gt;&lt;i&gt;It&#039;s
+      very important to be astonished by everything.&lt;/i&gt;&lt;/b&gt;\n\nHello.
+      I work here. I&#039;m heading up the new &lt;a href=&quot;https://flickr.org&quot;
+      rel=&quot;noreferrer nofollow&quot;&gt;Flickr Foundation&lt;/a&gt;. \n\nA lot
+      of my photos on Flickr have a Creative Commons license attached to them, so
+      if you happen to stumble on one of those that you could make use of under that
+      license, please go ahead! I&#039;ve chosen to reserve all rights on most of
+      the photos I&#039;ve taken of family and friends in a personal or candid setting.</description>\n\t<photosurl>https://www.flickr.com/photos/george/</photosurl>\n\t<profileurl>https://www.flickr.com/people/george/</profileurl>\n\t<mobileurl>https://m.flickr.com/photostream.gne?id=5704</mobileurl>\n\t<photos>\n\t\t<firstdatetaken>1907-01-01
+      00:00:00</firstdatetaken>\n\t\t<firstdate>1076118193</firstdate>\n\t\t<count>7812</count>\n\t</photos>\n</person>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '870'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Wed, 15 Nov 2023 16:47:24 GMT
+      Via:
+      - 1.1 53d49718a7680ca68c2936c1e210f48a.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - Q-ZM-GtE7RqB_UoJPBNA4gU5mj4uEpCxFtYM0MJkgyFIbOLbKkXHeA==
+      X-Amz-Cf-Pop:
+      - EZE50-P1
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.58 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Fri, 15-Dec-2023 16:47:24 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - flickr-photos-api/dev (https://github.com/Flickr-Foundation/flickr-photos-api;
+        hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?extras=license%2Cdate_upload%2Cdate_taken%2Cmedia%2Coriginal_format%2Cowner_name%2Curl_sq%2Curl_t%2Curl_s%2Curl_m%2Curl_o%2Ctags%2Cgeo%2Curl_q%2Curl_l%2Cdescription%2Csafety_level%2Crealname&method=flickr.people.getPublicPhotos&page=1&per_page=10&user_id=34427469121%40N01
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<photos
+      page=\"1\" pages=\"782\" perpage=\"10\" total=\"7812\">\n\t<photo id=\"53310991033\"
+      owner=\"34427469121@N01\" secret=\"05bb562937\" server=\"65535\" farm=\"66\"
+      title=\"Canary Wharf dusk\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"0\"
+      safety_level=\"0\" dateupload=\"1699188836\" datetaken=\"2023-11-04 16:21:45\"
+      datetakengranularity=\"0\" datetakenunknown=\"0\" ownername=\"George\" realname=\"George
+      Oates\" tags=\"london ferry dusk canarywharf\" originalsecret=\"16814783a9\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53310991033_05bb562937_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53310991033_05bb562937_t.jpg\"
+      height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53310991033_05bb562937_m.jpg\"
+      height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53310991033_05bb562937.jpg\"
+      height_m=\"375\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/53310991033_16814783a9_o.jpg\"
+      height_o=\"3024\" width_o=\"4032\" url_q=\"https://live.staticflickr.com/65535/53310991033_05bb562937_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/53310991033_05bb562937_b.jpg\"
+      height_l=\"768\" width_l=\"1024\">\n\t\t<description>Took a little ferry shuttle
+      across the Thames yesterday.</description>\n\t</photo>\n\t<photo id=\"53282436419\"
+      owner=\"34427469121@N01\" secret=\"363c6cf811\" server=\"65535\" farm=\"66\"
+      title=\"Tower Bridge alla noche\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
+      license=\"9\" safety_level=\"0\" dateupload=\"1698152248\" datetaken=\"2023-10-19
+      19:20:10\" datetakengranularity=\"0\" datetakenunknown=\"0\" ownername=\"George\"
+      realname=\"George Oates\" tags=\"towerbridge night atnight riverthames\" originalsecret=\"474c66ea1b\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53282436419_363c6cf811_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53282436419_363c6cf811_t.jpg\"
+      height_t=\"100\" width_t=\"75\" url_s=\"https://live.staticflickr.com/65535/53282436419_363c6cf811_m.jpg\"
+      height_s=\"240\" width_s=\"180\" url_m=\"https://live.staticflickr.com/65535/53282436419_363c6cf811.jpg\"
+      height_m=\"500\" width_m=\"375\" url_o=\"https://live.staticflickr.com/65535/53282436419_474c66ea1b_o.jpg\"
+      height_o=\"3024\" width_o=\"4032\" url_q=\"https://live.staticflickr.com/65535/53282436419_363c6cf811_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/53282436419_363c6cf811_b.jpg\"
+      height_l=\"1024\" width_l=\"768\">\n\t\t<description />\n\t</photo>\n\t<photo
+      id=\"53237018379\" owner=\"34427469121@N01\" secret=\"ab0a485064\" server=\"65535\"
+      farm=\"66\" title=\"Borough before a shower\" ispublic=\"1\" isfriend=\"0\"
+      isfamily=\"0\" license=\"4\" safety_level=\"0\" dateupload=\"1696528696\" datetaken=\"2023-10-03
+      13:16:01\" datetakengranularity=\"0\" datetakenunknown=\"0\" ownername=\"George\"
+      realname=\"George Oates\" tags=\"\" originalsecret=\"e77e160e9a\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53237018379_ab0a485064_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53237018379_ab0a485064_t.jpg\"
+      height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53237018379_ab0a485064_m.jpg\"
+      height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53237018379_ab0a485064.jpg\"
+      height_m=\"375\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/53237018379_e77e160e9a_o.jpg\"
+      height_o=\"3024\" width_o=\"4032\" url_q=\"https://live.staticflickr.com/65535/53237018379_ab0a485064_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/53237018379_ab0a485064_b.jpg\"
+      height_l=\"768\" width_l=\"1024\">\n\t\t<description />\n\t</photo>\n\t<photo
+      id=\"53100996733\" owner=\"34427469121@N01\" secret=\"99ffbffac7\" server=\"65535\"
+      farm=\"66\" title=\"The City of London appears to be generating weather\" ispublic=\"1\"
+      isfriend=\"0\" isfamily=\"0\" license=\"1\" safety_level=\"0\" dateupload=\"1691435739\"
+      datetaken=\"2023-08-06 17:08:01\" datetakengranularity=\"0\" datetakenunknown=\"0\"
+      ownername=\"George\" realname=\"George Oates\" tags=\"\" originalsecret=\"c381e8d3de\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53100996733_99ffbffac7_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53100996733_99ffbffac7_t.jpg\"
+      height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53100996733_99ffbffac7_m.jpg\"
+      height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53100996733_99ffbffac7.jpg\"
+      height_m=\"375\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/53100996733_c381e8d3de_o.jpg\"
+      height_o=\"3024\" width_o=\"4032\" url_q=\"https://live.staticflickr.com/65535/53100996733_99ffbffac7_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/53100996733_99ffbffac7_b.jpg\"
+      height_l=\"768\" width_l=\"1024\">\n\t\t<description>View from good pub spot
+      on the river.</description>\n\t</photo>\n\t<photo id=\"52957366694\" owner=\"34427469121@N01\"
+      secret=\"1b9d7de1cc\" server=\"65535\" farm=\"66\" title=\"A few weeks after
+      the fire\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"4\" safety_level=\"0\"
+      dateupload=\"1686135300\" datetaken=\"2023-06-07 03:50:50\" datetakengranularity=\"0\"
+      datetakenunknown=\"1\" ownername=\"George\" realname=\"George Oates\" tags=\"cultureburn
+      australia australiaaustralian renewal grass indigenousknowledge adelaide\" originalsecret=\"76f1887840\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52957366694_1b9d7de1cc_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52957366694_1b9d7de1cc_t.jpg\"
+      height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52957366694_1b9d7de1cc_m.jpg\"
+      height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/52957366694_1b9d7de1cc.jpg\"
+      height_m=\"375\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/52957366694_76f1887840_o.jpg\"
+      height_o=\"768\" width_o=\"1024\" url_q=\"https://live.staticflickr.com/65535/52957366694_1b9d7de1cc_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/52957366694_1b9d7de1cc_b.jpg\"
+      height_l=\"768\" width_l=\"1024\">\n\t\t<description>The grass was renewed.</description>\n\t</photo>\n\t<photo
+      id=\"52957605480\" owner=\"34427469121@N01\" secret=\"3576c93a42\" server=\"65535\"
+      farm=\"66\" title=\"A few weeks after the fire\" ispublic=\"1\" isfriend=\"0\"
+      isfamily=\"0\" license=\"4\" safety_level=\"0\" dateupload=\"1686135299\" datetaken=\"2023-06-07
+      03:50:50\" datetakengranularity=\"0\" datetakenunknown=\"0\" ownername=\"George\"
+      realname=\"George Oates\" tags=\"\" originalsecret=\"5a4b6f94b8\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52957605480_3576c93a42_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52957605480_3576c93a42_t.jpg\"
+      height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52957605480_3576c93a42_m.jpg\"
+      height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/52957605480_3576c93a42.jpg\"
+      height_m=\"375\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/52957605480_5a4b6f94b8_o.jpg\"
+      height_o=\"768\" width_o=\"1024\" url_q=\"https://live.staticflickr.com/65535/52957605480_3576c93a42_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/52957605480_3576c93a42_b.jpg\"
+      height_l=\"768\" width_l=\"1024\">\n\t\t<description>The grass was renewed.\n\n&lt;a
+      href=&quot;https://commons.wikimedia.org/wiki/File:A_few_weeks_after_the_fire.jpg&quot;
+      rel=&quot;noreferrer nofollow&quot;&gt;commons.wikimedia.org/wiki/File:A_few_weeks_after_the_fir...&lt;/a&gt;</description>\n\t</photo>\n\t<photo
+      id=\"52956623732\" owner=\"34427469121@N01\" secret=\"85231f55f3\" server=\"65535\"
+      farm=\"66\" title=\"A few weeks after the fire\" ispublic=\"1\" isfriend=\"0\"
+      isfamily=\"0\" license=\"0\" safety_level=\"0\" dateupload=\"1686135299\" datetaken=\"2023-06-07
+      03:50:50\" datetakengranularity=\"0\" datetakenunknown=\"1\" ownername=\"George\"
+      realname=\"George Oates\" tags=\"\" originalsecret=\"a6f3d9ee83\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52956623732_85231f55f3_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52956623732_85231f55f3_t.jpg\"
+      height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52956623732_85231f55f3_m.jpg\"
+      height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/52956623732_85231f55f3.jpg\"
+      height_m=\"375\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/52956623732_a6f3d9ee83_o.jpg\"
+      height_o=\"768\" width_o=\"1024\" url_q=\"https://live.staticflickr.com/65535/52956623732_85231f55f3_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/52956623732_85231f55f3_b.jpg\"
+      height_l=\"768\" width_l=\"1024\">\n\t\t<description>The grass was renewed.</description>\n\t</photo>\n\t<photo
+      id=\"52957602825\" owner=\"34427469121@N01\" secret=\"581fdf3211\" server=\"65535\"
+      farm=\"66\" title=\"Culture Burn, Adelaide\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
+      license=\"4\" safety_level=\"0\" dateupload=\"1686135298\" datetaken=\"2023-06-07
+      03:47:51\" datetakengranularity=\"0\" datetakenunknown=\"1\" ownername=\"George\"
+      realname=\"George Oates\" tags=\"cultureburn indigenousknowledge australian
+      australia victorsteffensen audience crowd fire\" originalsecret=\"473eb21e4f\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52957602825_581fdf3211_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52957602825_581fdf3211_t.jpg\"
+      height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52957602825_581fdf3211_m.jpg\"
+      height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/52957602825_581fdf3211.jpg\"
+      height_m=\"375\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/52957602825_473eb21e4f_o.jpg\"
+      height_o=\"768\" width_o=\"1024\" url_q=\"https://live.staticflickr.com/65535/52957602825_581fdf3211_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/52957602825_581fdf3211_b.jpg\"
+      height_l=\"768\" width_l=\"1024\">\n\t\t<description>An event in the South Parklands,
+      burning grass gently and precisely. </description>\n\t</photo>\n\t<photo id=\"52956620847\"
+      owner=\"34427469121@N01\" secret=\"dc15721c73\" server=\"65535\" farm=\"66\"
+      title=\"Culture Burn, Adelaide\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
+      license=\"4\" safety_level=\"0\" dateupload=\"1686135298\" datetaken=\"2023-06-07
+      03:47:51\" datetakengranularity=\"0\" datetakenunknown=\"1\" ownername=\"George\"
+      realname=\"George Oates\" tags=\"cultureburn indigenousknowledge australian
+      australia victorsteffensen audience crowd fire\" originalsecret=\"2eea8ddd3a\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52956620847_dc15721c73_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52956620847_dc15721c73_t.jpg\"
+      height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52956620847_dc15721c73_m.jpg\"
+      height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/52956620847_dc15721c73.jpg\"
+      height_m=\"375\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/52956620847_2eea8ddd3a_o.jpg\"
+      height_o=\"768\" width_o=\"1024\" url_q=\"https://live.staticflickr.com/65535/52956620847_dc15721c73_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/52956620847_dc15721c73_b.jpg\"
+      height_l=\"768\" width_l=\"1024\">\n\t\t<description>An event in the South Parklands,
+      burning grass gently and precisely. </description>\n\t</photo>\n\t<photo id=\"52957218821\"
+      owner=\"34427469121@N01\" secret=\"3aaa92f320\" server=\"65535\" farm=\"66\"
+      title=\"Culture Burn, Adelaide\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
+      license=\"4\" safety_level=\"0\" dateupload=\"1686135297\" datetaken=\"2023-06-07
+      03:47:52\" datetakengranularity=\"0\" datetakenunknown=\"1\" ownername=\"George\"
+      realname=\"George Oates\" tags=\"cultureburn indigenousknowledge australian
+      australia victorsteffensen audience crowd fire\" originalsecret=\"d308598570\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/52957218821_3aaa92f320_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/52957218821_3aaa92f320_t.jpg\"
+      height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/52957218821_3aaa92f320_m.jpg\"
+      height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/52957218821_3aaa92f320.jpg\"
+      height_m=\"375\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/52957218821_d308598570_o.jpg\"
+      height_o=\"768\" width_o=\"1024\" url_q=\"https://live.staticflickr.com/65535/52957218821_3aaa92f320_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/52957218821_3aaa92f320_b.jpg\"
+      height_l=\"768\" width_l=\"1024\">\n\t\t<description>An event in the South Parklands,
+      burning grass gently and precisely. </description>\n\t</photo>\n</photos>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1852'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Wed, 15 Nov 2023 16:47:25 GMT
+      Via:
+      - 1.1 53d49718a7680ca68c2936c1e210f48a.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - 2quNYQQUMn5ec60LUDkYqQ9s0V9bsQqdFDk1jd5kGlQfjzxCXUjP_Q==
+      X-Amz-Cf-Pop:
+      - EZE50-P1
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.58 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Fri, 15-Dec-2023 16:47:25 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - flickr-photos-api/dev (https://github.com/Flickr-Foundation/flickr-photos-api;
+        hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.licenses.getInfo
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<licenses>\n\t<license
+      id=\"0\" name=\"All Rights Reserved\" url=\"\" />\n\t<license id=\"4\" name=\"Attribution
+      License\" url=\"https://creativecommons.org/licenses/by/2.0/\" />\n\t<license
+      id=\"6\" name=\"Attribution-NoDerivs License\" url=\"https://creativecommons.org/licenses/by-nd/2.0/\"
+      />\n\t<license id=\"3\" name=\"Attribution-NonCommercial-NoDerivs License\"
+      url=\"https://creativecommons.org/licenses/by-nc-nd/2.0/\" />\n\t<license id=\"2\"
+      name=\"Attribution-NonCommercial License\" url=\"https://creativecommons.org/licenses/by-nc/2.0/\"
+      />\n\t<license id=\"1\" name=\"Attribution-NonCommercial-ShareAlike License\"
+      url=\"https://creativecommons.org/licenses/by-nc-sa/2.0/\" />\n\t<license id=\"5\"
+      name=\"Attribution-ShareAlike License\" url=\"https://creativecommons.org/licenses/by-sa/2.0/\"
+      />\n\t<license id=\"7\" name=\"No known copyright restrictions\" url=\"https://www.flickr.com/commons/usage/\"
+      />\n\t<license id=\"8\" name=\"United States Government Work\" url=\"http://www.usa.gov/copyright.shtml\"
+      />\n\t<license id=\"9\" name=\"Public Domain Dedication (CC0)\" url=\"https://creativecommons.org/publicdomain/zero/1.0/\"
+      />\n\t<license id=\"10\" name=\"Public Domain Mark\" url=\"https://creativecommons.org/publicdomain/mark/1.0/\"
+      />\n</licenses>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '395'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Wed, 15 Nov 2023 16:47:25 GMT
+      Via:
+      - 1.1 53d49718a7680ca68c2936c1e210f48a.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - TO-2oQAsH39RytzciTzSKwJnjnWvpsry3skK_0AV9SBVibJPbe7QAg==
+      X-Amz-Cf-Pop:
+      - EZE50-P1
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.58 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Fri, 15-Dec-2023 16:47:25 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

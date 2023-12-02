@@ -1,0 +1,453 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - api.flickr.com
+      user-agent:
+      - flickr-photos-api/dev (https://github.com/Flickr-Foundation/flickr-photos-api;
+        hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.urls.lookupUser&url=https%3A%2F%2Fwww.flickr.com%2Fphotos%2Fjoshuatreenp%2F
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<user
+      id=\"115357548@N08\">\n\t<username>Joshua Tree National Park</username>\n</user>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '143'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Wed, 15 Nov 2023 16:46:02 GMT
+      Via:
+      - 1.1 0e0ad29313cce66bcaa3fd8596e1b5de.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - tKIn55VvKBd6oetzsSi3YpyX8M7-x8ru1-lh93ySJYoKPnEg8bbKxw==
+      X-Amz-Cf-Pop:
+      - EZE50-P1
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.58 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Fri, 15-Dec-2023 16:46:02 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - flickr-photos-api/dev (https://github.com/Flickr-Foundation/flickr-photos-api;
+        hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.people.getInfo&user_id=115357548%40N08
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<person
+      id=\"115357548@N08\" nsid=\"115357548@N08\" ispro=\"1\" is_deleted=\"0\" iconserver=\"5529\"
+      iconfarm=\"6\" path_alias=\"joshuatreenp\" has_stats=\"0\" pro_badge=\"standard\"
+      expire=\"0\" has_adfree=\"0\" has_free_standard_shipping=\"0\" has_free_educational_resources=\"0\">\n\t<username>Joshua
+      Tree National Park</username>\n\t<mbox_sha1sum>bc016533f61a5ed79e878efb9423c88d7458e893</mbox_sha1sum>\n\t<location
+      />\n\t<timezone label=\"Pacific Time (US &amp; Canada); Tijuana\" offset=\"-08:00\"
+      timezone_id=\"PST8PDT\" timezone=\"5\" />\n\t<description>Welcome to Joshua
+      Tree National Park&#039;s images on flickr. Images are free and available to
+      download for personal and educational use. All we ask is that you credit the
+      photographer and the National Park Service (NPS) like this: NPS photo by &amp;quot;photographer
+      name&amp;quot;. If you would like to our photos for commercial use, please contact
+      the park at JOTR.socialmedia@gmail.com with links to the photos you would like
+      to use and a detailed description of how they would be used.</description>\n\t<photosurl>https://www.flickr.com/photos/joshuatreenp/</photosurl>\n\t<profileurl>https://www.flickr.com/people/joshuatreenp/</profileurl>\n\t<mobileurl>https://m.flickr.com/photostream.gne?id=115264735</mobileurl>\n\t<photos>\n\t\t<firstdatetaken>2000-01-01
+      00:00:35</firstdatetaken>\n\t\t<firstdate>1392248012</firstdate>\n\t\t<count>7052</count>\n\t</photos>\n</person>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '778'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Wed, 15 Nov 2023 16:46:02 GMT
+      Via:
+      - 1.1 0e0ad29313cce66bcaa3fd8596e1b5de.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - y_a7A2uJhbCXI5FXZaCidOoLI6ngKtOCMxxLSi5_BumknxguWhgdJg==
+      X-Amz-Cf-Pop:
+      - EZE50-P1
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.58 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Fri, 15-Dec-2023 16:46:02 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - flickr-photos-api/dev (https://github.com/Flickr-Foundation/flickr-photos-api;
+        hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?extras=license%2Cdate_upload%2Cdate_taken%2Cmedia%2Coriginal_format%2Cowner_name%2Curl_sq%2Curl_t%2Curl_s%2Curl_m%2Curl_o%2Ctags%2Cgeo%2Curl_q%2Curl_l%2Cdescription%2Csafety_level%2Crealname&method=flickr.photosets.getPhotos&page=1&per_page=10&photoset_id=72157640898611483&user_id=115357548%40N08
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<photoset
+      id=\"72157640898611483\" primary=\"40750084443\" owner=\"115357548@N08\" ownername=\"Joshua
+      Tree National Park\" page=\"1\" per_page=\"10\" perpage=\"10\" pages=\"36\"
+      title=\"Birds\" total=\"357\">\n\t<photo id=\"49021434741\" secret=\"1f8bf237c2\"
+      server=\"65535\" farm=\"66\" title=\"Sleepy Barn Owl (Tyto alba)\" isprimary=\"0\"
+      ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"10\" safety_level=\"0\"
+      dateupload=\"1573001718\" datetaken=\"2019-10-29 16:59:38\" datetakengranularity=\"0\"
+      datetakenunknown=\"0\" ownername=\"Joshua Tree National Park\" tags=\"joshuatree
+      joshuatreenationalpark nationalpark owl oasisofmara palmtree barnowl wildlife
+      bird birding birdwatching\" originalsecret=\"eeb224640e\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/49021434741_1f8bf237c2_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/49021434741_1f8bf237c2_t.jpg\"
+      height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/49021434741_1f8bf237c2_m.jpg\"
+      height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/49021434741_1f8bf237c2.jpg\"
+      height_m=\"333\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/49021434741_eeb224640e_o.jpg\"
+      height_o=\"2943\" width_o=\"4414\" url_q=\"https://live.staticflickr.com/65535/49021434741_1f8bf237c2_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/49021434741_1f8bf237c2_b.jpg\"
+      height_l=\"683\" width_l=\"1024\">\n\t\t<description>NPS / Hannah Schwalbe\n\nAlt
+      Text: An owl with closed eyes near the top of a palm tree.</description>\n\t</photo>\n\t<photo
+      id=\"49020912923\" secret=\"e2c2305913\" server=\"65535\" farm=\"66\" title=\"Sleepy
+      Barn Owl\" isprimary=\"0\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"10\"
+      safety_level=\"0\" dateupload=\"1573001718\" datetaken=\"2019-10-29 16:51:32\"
+      datetakengranularity=\"0\" datetakenunknown=\"0\" ownername=\"Joshua Tree National
+      Park\" tags=\"joshuatree joshuatreenationalpark nationalpark owl oasisofmara
+      palmtree barnowl wildlife bird birding birdwatching\" originalsecret=\"61fca6d638\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/49020912923_e2c2305913_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/49020912923_e2c2305913_t.jpg\"
+      height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/49020912923_e2c2305913_m.jpg\"
+      height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/49020912923_e2c2305913.jpg\"
+      height_m=\"333\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/49020912923_61fca6d638_o.jpg\"
+      height_o=\"3370\" width_o=\"5055\" url_q=\"https://live.staticflickr.com/65535/49020912923_e2c2305913_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/49020912923_e2c2305913_b.jpg\"
+      height_l=\"683\" width_l=\"1024\">\n\t\t<description>NPS / Hannah Schwalbe\n\nAlt
+      Text: An owl near the top of a palm tree.</description>\n\t</photo>\n\t<photo
+      id=\"49021639582\" secret=\"f567a31b86\" server=\"65535\" farm=\"66\" title=\"Juvenile
+      Barn Owl\" isprimary=\"0\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"10\"
+      safety_level=\"0\" dateupload=\"1573001717\" datetaken=\"2019-10-29 16:47:41\"
+      datetakengranularity=\"0\" datetakenunknown=\"0\" ownername=\"Joshua Tree National
+      Park\" tags=\"joshuatree joshuatreenationalpark nationalpark owl oasisofmara
+      palmtree barnowl wildlife bird birding birdwatching\" originalsecret=\"4f48a7db33\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/49021639582_f567a31b86_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/49021639582_f567a31b86_t.jpg\"
+      height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/49021639582_f567a31b86_m.jpg\"
+      height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/49021639582_f567a31b86.jpg\"
+      height_m=\"333\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/49021639582_4f48a7db33_o.jpg\"
+      height_o=\"2869\" width_o=\"4304\" url_q=\"https://live.staticflickr.com/65535/49021639582_f567a31b86_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/49021639582_f567a31b86_b.jpg\"
+      height_l=\"683\" width_l=\"1024\">\n\t\t<description>NPS / Hannah Schwalbe\n\nAlt
+      Text: An owl near the top of a palm tree.</description>\n\t</photo>\n\t<photo
+      id=\"49021436591\" secret=\"afd3cf75d3\" server=\"65535\" farm=\"66\" title=\"Juvenile
+      Barn Owl\" isprimary=\"0\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"10\"
+      safety_level=\"0\" dateupload=\"1573001717\" datetaken=\"2019-10-29 16:36:08\"
+      datetakengranularity=\"0\" datetakenunknown=\"0\" ownername=\"Joshua Tree National
+      Park\" tags=\"joshuatree joshuatreenationalpark nationalpark owl oasisofmara
+      palmtree barnowl wildlife bird birding birdwatching\" originalsecret=\"b784f1fbbc\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/49021436591_afd3cf75d3_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/49021436591_afd3cf75d3_t.jpg\"
+      height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/49021436591_afd3cf75d3_m.jpg\"
+      height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/49021436591_afd3cf75d3.jpg\"
+      height_m=\"333\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/49021436591_b784f1fbbc_o.jpg\"
+      height_o=\"2927\" width_o=\"4391\" url_q=\"https://live.staticflickr.com/65535/49021436591_afd3cf75d3_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/49021436591_afd3cf75d3_b.jpg\"
+      height_l=\"683\" width_l=\"1024\">\n\t\t<description>NPS / Hannah Schwalbe\n\nAlt
+      Text: An owl near the top of a palm tree.</description>\n\t</photo>\n\t<photo
+      id=\"49020914453\" secret=\"d155dfcc7b\" server=\"65535\" farm=\"66\" title=\"Sleepy
+      Barn Owl\" isprimary=\"0\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"10\"
+      safety_level=\"0\" dateupload=\"1573001717\" datetaken=\"2019-10-29 16:31:56\"
+      datetakengranularity=\"0\" datetakenunknown=\"0\" ownername=\"Joshua Tree National
+      Park\" tags=\"joshuatree joshuatreenationalpark nationalpark owl oasisofmara
+      palmtree barnowl wildlife bird birding birdwatching\" originalsecret=\"73dc88e07b\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/49020914453_d155dfcc7b_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/49020914453_d155dfcc7b_t.jpg\"
+      height_t=\"100\" width_t=\"67\" url_s=\"https://live.staticflickr.com/65535/49020914453_d155dfcc7b_m.jpg\"
+      height_s=\"240\" width_s=\"160\" url_m=\"https://live.staticflickr.com/65535/49020914453_d155dfcc7b.jpg\"
+      height_m=\"500\" width_m=\"333\" url_o=\"https://live.staticflickr.com/65535/49020914453_73dc88e07b_o.jpg\"
+      height_o=\"4543\" width_o=\"3029\" url_q=\"https://live.staticflickr.com/65535/49020914453_d155dfcc7b_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/49020914453_d155dfcc7b_b.jpg\"
+      height_l=\"1024\" width_l=\"683\">\n\t\t<description>NPS / Hannah Schwalbe\n\nAlt
+      Text: An owl with closed eyes near the top of a palm tree.</description>\n\t</photo>\n\t<photo
+      id=\"48992137491\" secret=\"29648ce09d\" server=\"65535\" farm=\"66\" title=\"Juvenile
+      barn owl (Tyto alba)\" isprimary=\"0\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
+      license=\"10\" safety_level=\"0\" dateupload=\"1572548119\" datetaken=\"2019-10-29
+      15:09:01\" datetakengranularity=\"0\" datetakenunknown=\"0\" ownername=\"Joshua
+      Tree National Park\" tags=\"joshuatreenationalpark nationalpark bird owl barnowl
+      oasisofmara oasisvisitorcenter wildlife\" originalsecret=\"c32f43b8ec\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/48992137491_29648ce09d_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/48992137491_29648ce09d_t.jpg\"
+      height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/48992137491_29648ce09d_m.jpg\"
+      height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/48992137491_29648ce09d.jpg\"
+      height_m=\"334\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/48992137491_c32f43b8ec_o.jpg\"
+      height_o=\"2279\" width_o=\"3414\" url_q=\"https://live.staticflickr.com/65535/48992137491_29648ce09d_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/48992137491_29648ce09d_b.jpg\"
+      height_l=\"684\" width_l=\"1024\">\n\t\t<description>NPS / Alessandra Puig-Santana\n\nAlt
+      text: A barn owl (Tyto alba) with his head looking back near the top of a palm
+      tree.</description>\n\t</photo>\n\t<photo id=\"48992335797\" secret=\"28950db2bb\"
+      server=\"65535\" farm=\"66\" title=\"Juvenile barn owl (Tyto alba)\" isprimary=\"0\"
+      ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"10\" safety_level=\"0\"
+      dateupload=\"1572548118\" datetaken=\"2019-10-29 15:01:19\" datetakengranularity=\"0\"
+      datetakenunknown=\"0\" ownername=\"Joshua Tree National Park\" tags=\"joshuatreenationalpark
+      nationalpark bird owl barnowl oasisofmara oasisvisitorcenter wildlife\" originalsecret=\"db4294733c\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/48992335797_28950db2bb_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/48992335797_28950db2bb_t.jpg\"
+      height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/48992335797_28950db2bb_m.jpg\"
+      height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/48992335797_28950db2bb.jpg\"
+      height_m=\"334\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/48992335797_db4294733c_o.jpg\"
+      height_o=\"2530\" width_o=\"3790\" url_q=\"https://live.staticflickr.com/65535/48992335797_28950db2bb_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/48992335797_28950db2bb_b.jpg\"
+      height_l=\"684\" width_l=\"1024\">\n\t\t<description>NPS / Alessandra Puig-Santana\n\nAlt
+      text: An owl with closed eyes near the top of a palm tree.</description>\n\t</photo>\n\t<photo
+      id=\"40733986283\" secret=\"35169f18e5\" server=\"65535\" farm=\"66\" title=\"Sparrow
+      nestlings in cholla nest\" isprimary=\"0\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
+      license=\"10\" safety_level=\"0\" dateupload=\"1556236013\" datetaken=\"2019-04-16
+      16:28:22\" datetakengranularity=\"0\" datetakenunknown=\"0\" ownername=\"Joshua
+      Tree National Park\" tags=\"cholla nest nestling sparrow\" originalsecret=\"ca4ea42010\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/40733986283_35169f18e5_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/40733986283_35169f18e5_t.jpg\"
+      height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/40733986283_35169f18e5_m.jpg\"
+      height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/40733986283_35169f18e5.jpg\"
+      height_m=\"333\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/40733986283_ca4ea42010_o.jpg\"
+      height_o=\"2975\" width_o=\"4462\" url_q=\"https://live.staticflickr.com/65535/40733986283_35169f18e5_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/40733986283_35169f18e5_b.jpg\"
+      height_l=\"683\" width_l=\"1024\">\n\t\t<description>NPS / Renata Harrison\n\nAlt
+      text: Small baby birds nestle in a round nest made of twigs within a spiky cholla
+      cactus.</description>\n\t</photo>\n\t<photo id=\"32757107117\" secret=\"b8c41702ff\"
+      server=\"65535\" farm=\"66\" title=\"Sparrow nestlings in cholla nest\" isprimary=\"0\"
+      ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"10\" safety_level=\"0\"
+      dateupload=\"1556236014\" datetaken=\"2019-04-16 16:28:16\" datetakengranularity=\"0\"
+      datetakenunknown=\"0\" ownername=\"Joshua Tree National Park\" tags=\"cholla
+      nest nestling sparrow\" originalsecret=\"3036dcacd6\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/32757107117_b8c41702ff_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/32757107117_b8c41702ff_t.jpg\"
+      height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/32757107117_b8c41702ff_m.jpg\"
+      height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/32757107117_b8c41702ff.jpg\"
+      height_m=\"333\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/32757107117_3036dcacd6_o.jpg\"
+      height_o=\"3744\" width_o=\"5616\" url_q=\"https://live.staticflickr.com/65535/32757107117_b8c41702ff_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/32757107117_b8c41702ff_b.jpg\"
+      height_l=\"683\" width_l=\"1024\">\n\t\t<description>NPS / Renata Harrison</description>\n\t</photo>\n\t<photo
+      id=\"47647261722\" secret=\"57f7d82c7a\" server=\"65535\" farm=\"66\" title=\"Sparrow
+      nestlings in cholla nest\" isprimary=\"0\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
+      license=\"10\" safety_level=\"0\" dateupload=\"1556236014\" datetaken=\"2019-04-08
+      19:28:49\" datetakengranularity=\"0\" datetakenunknown=\"0\" ownername=\"Joshua
+      Tree National Park\" tags=\"cholla nest nestling sparrow\" originalsecret=\"c93d9543cb\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/47647261722_57f7d82c7a_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/47647261722_57f7d82c7a_t.jpg\"
+      height_t=\"67\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/47647261722_57f7d82c7a_m.jpg\"
+      height_s=\"160\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/47647261722_57f7d82c7a.jpg\"
+      height_m=\"333\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/47647261722_c93d9543cb_o.jpg\"
+      height_o=\"2743\" width_o=\"4114\" url_q=\"https://live.staticflickr.com/65535/47647261722_57f7d82c7a_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/47647261722_57f7d82c7a_b.jpg\"
+      height_l=\"683\" width_l=\"1024\">\n\t\t<description>NPS / Renata Harrison</description>\n\t</photo>\n</photoset>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1818'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Wed, 15 Nov 2023 16:46:03 GMT
+      Via:
+      - 1.1 0e0ad29313cce66bcaa3fd8596e1b5de.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - ncgImbLLnwJ6dluEmL3f8cPIOFD2iarnpKG3eyaVV0BBlfkVvvUh0w==
+      X-Amz-Cf-Pop:
+      - EZE50-P1
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.58 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Fri, 15-Dec-2023 16:46:03 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - flickr-photos-api/dev (https://github.com/Flickr-Foundation/flickr-photos-api;
+        hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.licenses.getInfo
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<licenses>\n\t<license
+      id=\"0\" name=\"All Rights Reserved\" url=\"\" />\n\t<license id=\"4\" name=\"Attribution
+      License\" url=\"https://creativecommons.org/licenses/by/2.0/\" />\n\t<license
+      id=\"6\" name=\"Attribution-NoDerivs License\" url=\"https://creativecommons.org/licenses/by-nd/2.0/\"
+      />\n\t<license id=\"3\" name=\"Attribution-NonCommercial-NoDerivs License\"
+      url=\"https://creativecommons.org/licenses/by-nc-nd/2.0/\" />\n\t<license id=\"2\"
+      name=\"Attribution-NonCommercial License\" url=\"https://creativecommons.org/licenses/by-nc/2.0/\"
+      />\n\t<license id=\"1\" name=\"Attribution-NonCommercial-ShareAlike License\"
+      url=\"https://creativecommons.org/licenses/by-nc-sa/2.0/\" />\n\t<license id=\"5\"
+      name=\"Attribution-ShareAlike License\" url=\"https://creativecommons.org/licenses/by-sa/2.0/\"
+      />\n\t<license id=\"7\" name=\"No known copyright restrictions\" url=\"https://www.flickr.com/commons/usage/\"
+      />\n\t<license id=\"8\" name=\"United States Government Work\" url=\"http://www.usa.gov/copyright.shtml\"
+      />\n\t<license id=\"9\" name=\"Public Domain Dedication (CC0)\" url=\"https://creativecommons.org/publicdomain/zero/1.0/\"
+      />\n\t<license id=\"10\" name=\"Public Domain Mark\" url=\"https://creativecommons.org/publicdomain/mark/1.0/\"
+      />\n</licenses>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '395'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Wed, 15 Nov 2023 16:46:03 GMT
+      Via:
+      - 1.1 0e0ad29313cce66bcaa3fd8596e1b5de.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - KSvp-q8Jfwa3sNT60eVBqggMPwbJQD99bHhO_WqVPLBU_N4wMaTgHQ==
+      X-Amz-Cf-Pop:
+      - EZE50-P1
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.58 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Fri, 15-Dec-2023 16:46:03 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - flickr-photos-api/dev (https://github.com/Flickr-Foundation/flickr-photos-api;
+        hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photosets.getInfo&photoset_id=72157640898611483&user_id=115357548%40N08
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<photoset
+      id=\"72157640898611483\" owner=\"115357548@N08\" username=\"Joshua Tree National
+      Park\" primary=\"40750084443\" secret=\"6f4957a282\" server=\"65535\" farm=\"66\"
+      count_views=\"14098\" count_comments=\"0\" count_photos=\"357\" count_videos=\"0\"
+      can_comment=\"0\" date_create=\"1392248190\" date_update=\"1700016115\" photos=\"357\"
+      visibility_can_see_set=\"1\" needs_interstitial=\"0\">\n\t<title>Birds</title>\n\t<description>Bird
+      species of Joshua Tree National Park.</description>\n</photoset>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '348'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Wed, 15 Nov 2023 16:46:03 GMT
+      Via:
+      - 1.1 0e0ad29313cce66bcaa3fd8596e1b5de.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - IwZdsVBFQ9XLKZlJZfe2cxbj7MModE4V1zAlI1RWadGGhJIeAXNcGg==
+      X-Amz-Cf-Pop:
+      - EZE50-P1
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.58 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Fri, 15-Dec-2023 16:46:03 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

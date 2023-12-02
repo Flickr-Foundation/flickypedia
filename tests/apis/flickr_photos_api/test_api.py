@@ -1,16 +1,22 @@
 import datetime
-from typing import Dict
+import os
+from typing import Dict, TypeVar
 
 import pytest
 
-from flickr_photos_api import FlickrPhotosApi
-from flickr_photos_api.exceptions import (
+from flickypedia.apis.flickr_photos_api import (
+    FlickrPhotosApi,
     FlickrApiException,
     LicenseNotFound,
     ResourceNotFound,
+    User,
+    SinglePhoto,
+    CollectionOfPhotos,
+    PhotosInAlbum,
+    PhotosInGallery,
+    PhotosInGroup,
 )
-from flickr_photos_api._types import User
-from utils import get_fixture, jsonify
+from utils import get_typed_fixture
 
 
 @pytest.mark.parametrize(
@@ -60,24 +66,24 @@ from utils import get_fixture, jsonify
     ],
 )
 def test_methods_fail_if_not_found(
-    api: FlickrPhotosApi, method: str, params: Dict[str, str]
+    flickr_api: FlickrPhotosApi, method: str, params: Dict[str, str]
 ) -> None:
-    api_method = getattr(api, method)
+    api_method = getattr(flickr_api, method)
 
     with pytest.raises(ResourceNotFound):
         api_method(**params)
 
 
 def test_it_throws_if_bad_auth(vcr_cassette: str, user_agent: str) -> None:
-    api = FlickrPhotosApi(api_key="doesnotexist", user_agent=user_agent)
+    flickr_api = FlickrPhotosApi(api_key="doesnotexist", user_agent=user_agent)
 
     with pytest.raises(FlickrApiException):
-        api.lookup_user_by_url(url="https://www.flickr.com/photos/flickr/")
+        flickr_api.lookup_user_by_url(url="https://www.flickr.com/photos/flickr/")
 
 
 class TestLicenses:
-    def test_get_licenses(self, api: FlickrPhotosApi) -> None:
-        assert api.get_licenses() == {
+    def test_get_licenses(self, flickr_api: FlickrPhotosApi) -> None:
+        assert flickr_api.get_licenses() == {
             "0": {"id": "in-copyright", "label": "All Rights Reserved", "url": None},
             "1": {
                 "id": "cc-by-nc-sa-2.0",
@@ -131,16 +137,18 @@ class TestLicenses:
             },
         }
 
-    def test_lookup_license_by_id(self, api: FlickrPhotosApi) -> None:
-        assert api.lookup_license_by_id(id="0") == {
+    def test_lookup_license_by_id(self, flickr_api: FlickrPhotosApi) -> None:
+        assert flickr_api.lookup_license_by_id(id="0") == {
             "id": "in-copyright",
             "label": "All Rights Reserved",
             "url": None,
         }
 
-    def test_throws_license_not_found_for_bad_id(self, api: FlickrPhotosApi) -> None:
+    def test_throws_license_not_found_for_bad_id(
+        self, flickr_api: FlickrPhotosApi
+    ) -> None:
         with pytest.raises(LicenseNotFound, match="ID -1"):
-            api.lookup_license_by_id(id="-1")
+            flickr_api.lookup_license_by_id(id="-1")
 
 
 @pytest.mark.parametrize(
@@ -191,23 +199,27 @@ class TestLicenses:
         ),
     ],
 )
-def test_lookup_user_by_url(api: FlickrPhotosApi, url: str, user: User) -> None:
-    assert api.lookup_user_by_url(url=url) == user
+def test_lookup_user_by_url(flickr_api: FlickrPhotosApi, url: str, user: User) -> None:
+    assert flickr_api.lookup_user_by_url(url=url) == user
 
 
 class TestGetSinglePhoto:
-    def test_can_get_single_photo(self, api: FlickrPhotosApi) -> None:
-        resp = api.get_single_photo(photo_id="32812033543")
+    def test_can_get_single_photo(self, flickr_api: FlickrPhotosApi) -> None:
+        actual = flickr_api.get_single_photo(photo_id="32812033543")
 
-        assert jsonify(resp) == get_fixture(filename="32812033543.json")
+        expected = get_typed_fixture(
+            "flickr_photos_api/32812033543.json", model=SinglePhoto
+        )
 
-    def test_sets_realname_to_none_if_empty(self, api: FlickrPhotosApi) -> None:
-        info = api.get_single_photo(photo_id="31073485032")
+        assert actual == expected
+
+    def test_sets_realname_to_none_if_empty(self, flickr_api: FlickrPhotosApi) -> None:
+        info = flickr_api.get_single_photo(photo_id="31073485032")
 
         assert info["owner"]["realname"] is None
 
-    def test_sets_granularity_on_date_taken(self, api: FlickrPhotosApi) -> None:
-        info = api.get_single_photo(photo_id="5240741057")
+    def test_sets_granularity_on_date_taken(self, flickr_api: FlickrPhotosApi) -> None:
+        info = flickr_api.get_single_photo(photo_id="5240741057")
 
         assert info["date_taken"] == {
             "value": datetime.datetime(1950, 1, 1, 0, 0, 0),
@@ -215,25 +227,25 @@ class TestGetSinglePhoto:
             "unknown": False,
         }
 
-    def test_sets_date_unknown_on_date_taken(self, api: FlickrPhotosApi) -> None:
-        info = api.get_single_photo(photo_id="25868667441")
+    def test_sets_date_unknown_on_date_taken(self, flickr_api: FlickrPhotosApi) -> None:
+        info = flickr_api.get_single_photo(photo_id="25868667441")
 
         assert info["date_taken"] == {"unknown": True}
 
-    def test_gets_photo_description(self, api: FlickrPhotosApi) -> None:
-        photo = api.get_single_photo(photo_id="53248070597")
+    def test_gets_photo_description(self, flickr_api: FlickrPhotosApi) -> None:
+        photo = flickr_api.get_single_photo(photo_id="53248070597")
         assert photo["description"] == "Paris Montmartre"
 
-    def test_empty_photo_description_is_none(self, api: FlickrPhotosApi) -> None:
-        photo = api.get_single_photo(photo_id="5536044022")
+    def test_empty_photo_description_is_none(self, flickr_api: FlickrPhotosApi) -> None:
+        photo = flickr_api.get_single_photo(photo_id="5536044022")
         assert photo["description"] is None
 
-    def test_gets_photo_title(self, api: FlickrPhotosApi) -> None:
-        photo_with_title = api.get_single_photo(photo_id="20428374183")
+    def test_gets_photo_title(self, flickr_api: FlickrPhotosApi) -> None:
+        photo_with_title = flickr_api.get_single_photo(photo_id="20428374183")
         assert photo_with_title["title"] == "Hapjeong"
 
-    def test_empty_photo_title_is_none(self, api: FlickrPhotosApi) -> None:
-        photo_without_title = api.get_single_photo(photo_id="20967567081")
+    def test_empty_photo_title_is_none(self, flickr_api: FlickrPhotosApi) -> None:
+        photo_without_title = flickr_api.get_single_photo(photo_id="20967567081")
         assert photo_without_title["title"] is None
 
     @pytest.mark.parametrize(
@@ -246,21 +258,25 @@ class TestGetSinglePhoto:
         ],
     )
     def test_gets_original_format(
-        self, api: FlickrPhotosApi, photo_id: str, original_format: str
+        self, flickr_api: FlickrPhotosApi, photo_id: str, original_format: str
     ) -> None:
-        photo = api.get_single_photo(photo_id=photo_id)
+        photo = flickr_api.get_single_photo(photo_id=photo_id)
         assert photo["original_format"] == original_format
 
-    def test_sets_human_readable_safety_level(self, api: FlickrPhotosApi) -> None:
-        photo = api.get_single_photo(photo_id="53248070597")
+    def test_sets_human_readable_safety_level(
+        self, flickr_api: FlickrPhotosApi
+    ) -> None:
+        photo = flickr_api.get_single_photo(photo_id="53248070597")
         assert photo["safety_level"] == "safe"
 
-    def test_get_empty_tags_for_untagged_photo(self, api: FlickrPhotosApi) -> None:
-        photo = api.get_single_photo(photo_id="53331717974")
+    def test_get_empty_tags_for_untagged_photo(
+        self, flickr_api: FlickrPhotosApi
+    ) -> None:
+        photo = flickr_api.get_single_photo(photo_id="53331717974")
         assert photo["tags"] == []
 
-    def test_gets_location_for_photo(self, api: FlickrPhotosApi) -> None:
-        photo = api.get_single_photo(photo_id="52578982111")
+    def test_gets_location_for_photo(self, flickr_api: FlickrPhotosApi) -> None:
+        photo = flickr_api.get_single_photo(photo_id="52578982111")
 
         assert photo["location"] == {
             "latitude": 8.079310,
@@ -269,9 +285,9 @@ class TestGetSinglePhoto:
         }
 
     def test_get_empty_location_for_photo_without_geo(
-        self, api: FlickrPhotosApi
+        self, flickr_api: FlickrPhotosApi
     ) -> None:
-        photo = api.get_single_photo(photo_id="53305573272")
+        photo = flickr_api.get_single_photo(photo_id="53305573272")
 
         assert photo["location"] is None
 
@@ -285,8 +301,10 @@ class TestCollectionsPhotoResponse:
     how it affects the final response.
     """
 
-    def test_sets_owner_and_url_on_collection(self, api: FlickrPhotosApi) -> None:
-        resp = api.get_photos_in_album(
+    def test_sets_owner_and_url_on_collection(
+        self, flickr_api: FlickrPhotosApi
+    ) -> None:
+        resp = flickr_api.get_photos_in_album(
             user_url="https://www.flickr.com/photos/joshuatreenp/",
             album_id="72157640898611483",
         )
@@ -306,9 +324,9 @@ class TestCollectionsPhotoResponse:
         )
 
     def test_sets_date_unknown_on_date_taken_in_collection(
-        self, api: FlickrPhotosApi
+        self, flickr_api: FlickrPhotosApi
     ) -> None:
-        resp = api.get_photos_in_album(
+        resp = flickr_api.get_photos_in_album(
             user_url="https://www.flickr.com/photos/nationalarchives/",
             album_id="72157664284840282",
         )
@@ -317,11 +335,13 @@ class TestCollectionsPhotoResponse:
             "unknown": True,
         }
 
-    def test_only_gets_publicly_available_sizes(self, api: FlickrPhotosApi) -> None:
+    def test_only_gets_publicly_available_sizes(
+        self, flickr_api: FlickrPhotosApi
+    ) -> None:
         # This user doesn't allow downloading of their original photos,
         # so when we try to look up an album of their photos in the API,
         # we shouldn't get an Original size.
-        resp = api.get_photos_in_album(
+        resp = flickr_api.get_photos_in_album(
             user_url="https://www.flickr.com/photos/mary_faith/",
             album_id="72157711742505183",
         )
@@ -331,12 +351,12 @@ class TestCollectionsPhotoResponse:
         )
 
     def test_sets_originalformat_to_none_if_no_downloads(
-        self, api: FlickrPhotosApi
+        self, flickr_api: FlickrPhotosApi
     ) -> None:
         # This user doesn't allow downloading of their original photos,
         # so when we try to look up an album of their photos in the API,
         # we shouldn't get an Original size.
-        resp = api.get_photos_in_album(
+        resp = flickr_api.get_photos_in_album(
             user_url="https://www.flickr.com/photos/mary_faith/",
             album_id="72157711742505183",
         )
@@ -345,16 +365,20 @@ class TestCollectionsPhotoResponse:
 
 
 class TestGetAlbum:
-    def test_can_get_album(self, api: FlickrPhotosApi) -> None:
-        resp = api.get_photos_in_album(
+    def test_can_get_album(self, flickr_api: FlickrPhotosApi) -> None:
+        actual = flickr_api.get_photos_in_album(
             user_url="https://www.flickr.com/photos/spike_yun/",
             album_id="72157677773252346",
         )
 
-        assert jsonify(resp) == get_fixture(filename="album-72157677773252346.json")
+        expected = get_typed_fixture(
+            "flickr_photos_api/album-72157677773252346.json", model=PhotosInAlbum
+        )
 
-    def test_empty_album_title_is_none(self, api: FlickrPhotosApi) -> None:
-        album = api.get_photos_in_album(
+        assert actual == expected
+
+    def test_empty_album_title_is_none(self, flickr_api: FlickrPhotosApi) -> None:
+        album = flickr_api.get_photos_in_album(
             user_url="https://www.flickr.com/photos/spike_yun/",
             album_id="72157677773252346",
         )
@@ -362,8 +386,8 @@ class TestGetAlbum:
         assert album["photos"][0]["title"] == "Seoul"
         assert album["photos"][7]["title"] is None
 
-    def test_empty_album_description_is_none(self, api: FlickrPhotosApi) -> None:
-        album_without_desc = api.get_photos_in_album(
+    def test_empty_album_description_is_none(self, flickr_api: FlickrPhotosApi) -> None:
+        album_without_desc = flickr_api.get_photos_in_album(
             user_url="https://www.flickr.com/photos/aljazeeraenglish/",
             album_id="72157626164453131",
         )
@@ -372,7 +396,7 @@ class TestGetAlbum:
             photo["description"] is None for photo in album_without_desc["photos"]
         )
 
-        album_with_desc = api.get_photos_in_album(
+        album_with_desc = flickr_api.get_photos_in_album(
             user_url="https://www.flickr.com/photos/zeeyolqpictures/",
             album_id="72157631707062493",
         )
@@ -382,32 +406,48 @@ class TestGetAlbum:
         )
 
 
-def test_get_gallery_from_id(api: FlickrPhotosApi) -> None:
-    resp = api.get_photos_in_gallery(gallery_id="72157720932863274")
+def test_get_gallery_from_id(flickr_api: FlickrPhotosApi) -> None:
+    actual = flickr_api.get_photos_in_gallery(gallery_id="72157720932863274")
 
-    assert jsonify(resp) == get_fixture(filename="gallery-72157677773252346.json")
+    expected = get_typed_fixture(
+        "flickr_photos_api/gallery-72157677773252346.json", model=PhotosInGallery
+    )
+
+    assert actual == expected
 
 
-def test_get_public_photos_by_user(api: FlickrPhotosApi) -> None:
-    resp = api.get_public_photos_by_user(
+def test_get_public_photos_by_user(flickr_api: FlickrPhotosApi) -> None:
+    actual = flickr_api.get_public_photos_by_user(
         user_url="https://www.flickr.com/photos/george"
     )
 
-    assert jsonify(resp) == get_fixture(filename="user-george.json")
+    expected = get_typed_fixture(
+        "flickr_photos_api/user-george.json", model=CollectionOfPhotos
+    )
+
+    assert actual == expected
 
 
-def test_get_photos_in_group_pool(api: FlickrPhotosApi) -> None:
-    resp = api.get_photos_in_group_pool(
+def test_get_photos_in_group_pool(flickr_api: FlickrPhotosApi) -> None:
+    actual = flickr_api.get_photos_in_group_pool(
         group_url="https://www.flickr.com/groups/slovenia/pool/"
     )
 
-    assert jsonify(resp) == get_fixture(filename="group-slovenia.json")
+    expected = get_typed_fixture(
+        "flickr_photos_api/group-slovenia.json", model=PhotosInGroup
+    )
+
+    assert actual == expected
 
 
-def test_get_photos_with_tag(api: FlickrPhotosApi) -> None:
-    resp = api.get_photos_with_tag(tag="sunset")
+def test_get_photos_with_tag(flickr_api: FlickrPhotosApi) -> None:
+    actual = flickr_api.get_photos_with_tag(tag="sunset")
 
-    assert jsonify(resp) == get_fixture(filename="tag-sunset.json")
+    expected = get_typed_fixture(
+        "flickr_photos_api/tag-sunset.json", model=CollectionOfPhotos
+    )
+
+    assert actual == expected
 
 
 @pytest.mark.parametrize(
@@ -442,9 +482,9 @@ def test_get_photos_with_tag(api: FlickrPhotosApi) -> None:
     ],
 )
 def test_get_collection_methods_are_paginated(
-    api: FlickrPhotosApi, method: str, kwargs: Dict[str, str]
+    flickr_api: FlickrPhotosApi, method: str, kwargs: Dict[str, str]
 ) -> None:
-    api_method = getattr(api, method)
+    api_method = getattr(flickr_api, method)
 
     all_resp = api_method(**kwargs, page=1)
 
@@ -458,48 +498,64 @@ def test_get_collection_methods_are_paginated(
     assert individual_resp["photos"][0] == all_resp["photos"][4]
 
 
+T = TypeVar("T")
+
+
 @pytest.mark.parametrize(
-    ["url", "filename"],
+    ["url", "filename", "model"],
     [
         pytest.param(
             "https://www.flickr.com/photos/coast_guard/32812033543",
             "32812033543.json",
+            SinglePhoto,
             id="single_photo",
         ),
         pytest.param(
             "https://www.flickr.com/photos/joshuatreenp/albums/72157640898611483",
             "album-72157640898611483.json",
+            PhotosInAlbum,
             id="album",
         ),
         pytest.param(
             "https://www.flickr.com/photos/joshuatreenp/albums/72157640898611483/page2",
             "album-72157640898611483-page2.json",
+            PhotosInAlbum,
             id="album-page2",
         ),
         pytest.param(
-            "https://www.flickr.com/photos/spike_yun/", "user-spike_yun.json", id="user"
+            "https://www.flickr.com/photos/spike_yun/",
+            "user-spike_yun.json",
+            CollectionOfPhotos,
+            id="user",
         ),
         pytest.param(
             "https://www.flickr.com/photos/meldaniel/galleries/72157716953066942/",
             "gallery-72157716953066942.json",
+            PhotosInGallery,
             id="gallery",
         ),
         pytest.param(
             "https://www.flickr.com/groups/geologists/",
             "group-geologists.json",
+            PhotosInGroup,
             id="group",
         ),
         pytest.param(
-            "https://www.flickr.com/photos/tags/botany", "tag-botany.json", id="tag"
+            "https://www.flickr.com/photos/tags/botany",
+            "tag-botany.json",
+            CollectionOfPhotos,
+            id="tag",
         ),
     ],
 )
 def test_get_photos_from_flickr_url(
-    api: FlickrPhotosApi, url: str, filename: str
+    flickr_api: FlickrPhotosApi, url: str, filename: str, model: type[T]
 ) -> None:
-    resp = api.get_photos_from_flickr_url(url)
+    resp = flickr_api.get_photos_from_flickr_url(url)
 
-    assert jsonify(resp) == get_fixture(filename)
+    assert resp == get_typed_fixture(
+        path=os.path.join("flickr_photos_api", filename), model=model
+    )
 
 
 @pytest.mark.parametrize(
@@ -519,14 +575,14 @@ def test_get_photos_from_flickr_url(
     ],
 )
 def test_get_photos_from_flickr_url_is_paginated(
-    api: FlickrPhotosApi, url: str
+    flickr_api: FlickrPhotosApi, url: str
 ) -> None:
-    first_resp = api.get_photos_from_flickr_url(url)
-    second_resp = api.get_photos_from_flickr_url(url + "/page2")
+    first_resp = flickr_api.get_photos_from_flickr_url(url)
+    second_resp = flickr_api.get_photos_from_flickr_url(url + "/page2")
 
     assert first_resp["photos"] != second_resp["photos"]  # type: ignore
 
 
-def test_unrecognised_url_type_is_error(api: FlickrPhotosApi) -> None:
+def test_unrecognised_url_type_is_error(flickr_api: FlickrPhotosApi) -> None:
     with pytest.raises(TypeError, match="Unrecognised URL type"):
-        api.get_photos_from_parsed_flickr_url(parsed_url={"type": "unknown"})  # type: ignore
+        flickr_api.get_photos_from_parsed_flickr_url(parsed_url={"type": "unknown"})  # type: ignore
