@@ -141,14 +141,16 @@ def begin_upload(upload_requests: list[UploadRequest]) -> str:
     # We store this token in the system keychain -- this allows us
     # to pass it securely between processes without it being saved
     # in plaintext on the disk.
-    current_user.refresh_token()
-
     keyring_id: KeyringId = {
-        "service_name": "flickypedia.tmp",
+        "service_name": "flickypedia.user",
         "username": f"user-{current_user.id}-id-{upload_id}",
     }
 
-    keyring.set_password(**keyring_id, password=current_user.token()["access_token"])
+    if not current_app.config["TESTING"]:
+        current_user.refresh_token()
+        keyring.set_password(
+            **keyring_id, password=current_user.token()["access_token"]
+        )
 
     task_input: UploadBatch = {"keyring_id": keyring_id, "requests": upload_requests}
 

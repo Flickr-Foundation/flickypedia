@@ -4,6 +4,7 @@ import pytest
 
 from flickypedia.apis.flickr import SinglePhotoData, PhotosInAlbumData
 from flickypedia.uploadr.caching import save_cached_photos_data
+from flickypedia.uploadr.uploads import uploads_queue
 from flickypedia.uploadr.views import truncate_description
 from utils import minify, get_typed_fixture
 
@@ -118,6 +119,64 @@ def test_blocks_uploads_with_a_too_long_caption(
     )
 
     assert resp.status_code == 200
+
+
+def test_creates_upload_task_for_successful_form_post(
+    logged_in_client: FlaskClient, app: Flask, vcr_cassette: str
+) -> None:
+    get_photos_data = get_typed_fixture(
+        path="flickr_api/single_photo-32812033543.json", model=SinglePhotoData
+    )
+
+    cache_id = save_cached_photos_data(get_photos_data)
+
+    resp = logged_in_client.post(
+        f"/prepare_info?selected_photo_ids=32812033543&cache_id={cache_id}",
+        data={
+            "language": "en",
+            "photo_32812033543-title": "A photo with a reasonable title",
+            "photo_32812033543-short_caption": "A photo with an appropriate-length caption",
+            "photo_32812033543-categories": "Fish\nCats\nAnimals",
+        },
+    )
+
+    # If the task is created successfully, we should be redirected to
+    # the "wait for upload" screen, which has a URL something like:
+    #
+    #     /wait_for_upload/ebe113ed-8c65-42b0-961b-71472064b2e0
+    #
+    assert resp.status_code == 302
+    assert resp.headers["location"].startswith("/wait_for_upload/")
+
+    task_id = resp.headers["location"].split("/")[2]
+
+    # Now retrieve the task from the uploads queue, and check it was
+    # created correctly.
+    queue = uploads_queue()
+    task = queue.read_task(task_id=task_id)
+
+    assert task["state"] == "waiting"
+    assert len(task["task_input"]["requests"]) == 1
+
+    upload_request = task["task_input"]["requests"][0]
+
+    assert upload_request["categories"] == [
+        "Uploads using Flickypedia",
+        "Uploads by User:FlickypediaTestingUser",
+        "Flickr photos by U.S. Coast Guard",
+        "Fish",
+        "Cats",
+        "Animals",
+    ]
+
+    assert upload_request["caption"] == {
+        "language": "en",
+        "text": "A photo with an " "appropriate-length caption",
+    }
+
+    assert upload_request["photo"] == get_photos_data["photos"][0]
+
+    assert upload_request["title"] == "A photo with a reasonable title.jpg"
 
 
 @pytest.mark.parametrize(
