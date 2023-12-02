@@ -68,7 +68,7 @@ def create_wikitext(
     ) % (
         wikimedia_username,
         datetime.datetime.now().strftime("%Y-%m-%d"),
-        photo["owner"]["realname"] or photo["owner"]["username"],
+        photo["owner"]["username"],
         photo["owner"]["profile_url"],
         photo["url"],
     )

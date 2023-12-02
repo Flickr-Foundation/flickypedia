@@ -34,7 +34,7 @@ def test_create_wikitext_for_photo() -> None:
         {{Uploaded with Flickypedia
         |user=TestUser
         |date=%s
-        |flickrUser=Coast Guard
+        |flickrUser=U.S. Coast Guard
         |flickrUserUrl=https://www.flickr.com/people/coast_guard/
         |flickrPhotoUrl=https://www.flickr.com/photos/coast_guard/32812033543/
         }}
@@ -65,7 +65,7 @@ def test_adds_categories_to_wikitext() -> None:
         {{Uploaded with Flickypedia
         |user=TestUser
         |date=%s
-        |flickrUser=Coast Guard
+        |flickrUser=U.S. Coast Guard
         |flickrUserUrl=https://www.flickr.com/people/coast_guard/
         |flickrPhotoUrl=https://www.flickr.com/photos/coast_guard/32812033543/
         }}
