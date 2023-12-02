@@ -1,19 +1,11 @@
 import datetime
-import sys
-from typing import List, Optional, Union
-
-# See https://mypy.readthedocs.io/en/stable/runtime_troubles.html#using-new-additions-to-the-typing-module
-# See https://github.com/python/mypy/issues/8520
-if sys.version_info >= (3, 8):
-    from typing import Literal, TypedDict
-else:
-    from typing_extensions import Literal, TypedDict
+from typing import Literal, TypedDict
 
 
 class License(TypedDict):
     id: str
     label: str
-    url: Optional[str]
+    url: str | None
 
 
 class LocationInfo(TypedDict):
@@ -25,8 +17,8 @@ class LocationInfo(TypedDict):
 class User(TypedDict):
     id: str
     username: str
-    realname: Optional[str]
-    path_alias: Optional[str]
+    realname: str | None
+    path_alias: str | None
     photos_url: str
     profile_url: str
 
@@ -47,7 +39,7 @@ class UnknownDateTaken(TypedDict):
     unknown: Literal[True]
 
 
-DateTaken = Union[KnownDateTaken, UnknownDateTaken]
+DateTaken = KnownDateTaken | UnknownDateTaken
 
 
 class Size(TypedDict):
@@ -66,24 +58,24 @@ SafetyLevel = Literal["safe", "moderate", "restricted"]
 
 class SinglePhoto(TypedDict):
     id: str
-    title: Optional[str]
-    description: Optional[str]
+    title: str | None
+    description: str | None
     owner: User
     date_posted: datetime.datetime
     date_taken: DateTaken
     safety_level: SafetyLevel
     license: License
     url: str
-    sizes: List[Size]
-    original_format: Optional[str]
-    tags: List[str]
-    location: Optional[LocationInfo]
+    sizes: list[Size]
+    original_format: str | None
+    tags: list[str]
+    location: LocationInfo | None
 
 
 class CollectionOfPhotos(TypedDict):
     page_count: int
     total_photos: int
-    photos: List[SinglePhoto]
+    photos: list[SinglePhoto]
 
 
 class AlbumInfo(TypedDict):
@@ -113,6 +105,6 @@ class PhotosInGroup(CollectionOfPhotos):
     group: GroupInfo
 
 
-PhotosFromUrl = Union[
-    SinglePhoto, CollectionOfPhotos, PhotosInAlbum, PhotosInGallery, PhotosInGroup
-]
+PhotosFromUrl = (
+    SinglePhoto | CollectionOfPhotos | PhotosInAlbum | PhotosInGallery | PhotosInGroup
+)
