@@ -6,7 +6,7 @@ from .exceptions import (
     DuplicateFilenameUploadException,
     DuplicatePhotoUploadException,
 )
-from .languages import top_n_languages
+from .languages import top_n_languages, LanguageMatch
 from ._types import UserInfo, ShortCaption, TitleValidation
 
 
@@ -14,6 +14,7 @@ __all__ = [
     "DuplicateFilenameUploadException",
     "DuplicatePhotoUploadException",
     "InvalidAccessTokenException",
+    "LanguageMatch",
     "ShortCaption",
     "TitleValidation",
     "UnknownWikimediaApiException",

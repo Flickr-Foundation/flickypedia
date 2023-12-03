@@ -1,7 +1,9 @@
+import functools
+
 from flask import abort, jsonify, request
 from flask_login import current_user, login_required
 
-from flickypedia.apis.wikimedia import top_n_languages
+from flickypedia.apis.wikimedia import top_n_languages, LanguageMatch
 from ._types import ViewResponse
 
 
@@ -27,6 +29,18 @@ def validate_title_api() -> ViewResponse:
     return jsonify(result)
 
 
+@functools.lru_cache(maxsize=128)
+def find_matching_categories(query: str) -> list[str]:
+    """
+    Find matching categories.  Because this is a read-only query on the
+    global Wikimedia namespace, we cache the results of this lookup across
+    all Flickypedia users.
+    """
+    api = current_user.wikimedia_api()
+    result = api.find_matching_categories(query)
+    return result
+
+
 @login_required
 def find_matching_categories_api() -> ViewResponse:
     """
@@ -38,10 +52,21 @@ def find_matching_categories_api() -> ViewResponse:
     if not query:
         abort(400)
 
-    api = current_user.wikimedia_api()
-    result = api.find_matching_categories(query)
+    result = find_matching_categories(query)
 
     return jsonify(result)
+
+
+@functools.lru_cache(maxsize=128)
+def find_matching_languages(query: str) -> list[LanguageMatch]:
+    """
+    Find matching languages.  Because this is a read-only query on the
+    global Wikimedia namespace, we cache the results of this lookup across
+    all Flickypedia users.
+    """
+    api = current_user.wikimedia_api()
+    result = api.find_matching_languages(query)
+    return result
 
 
 def find_matching_languages_api() -> ViewResponse:
@@ -59,8 +84,6 @@ def find_matching_languages_api() -> ViewResponse:
             ]
         )
 
-    api = current_user.wikimedia_api()
-
-    result = api.find_matching_languages(query)[:10]
+    result = find_matching_languages(query)
 
     return jsonify(result)
