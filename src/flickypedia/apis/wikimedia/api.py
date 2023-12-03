@@ -561,6 +561,8 @@ class WikimediaApi:
             "spanishgbe (latin america) / español de América Latina"
 
         """
+        assert len(query) > 0
+
         # I found this API action by observing the network traffic in
         # the Upload Wizard when you search for languages while editing
         # the file caption.
