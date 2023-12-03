@@ -153,6 +153,7 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm) {
 
   const inputElement = document.createElement("input");
   inputElement.type = "text";
+  inputElement.placeholder = "Type to search for categories";
 
   autocompleteContainer.appendChild(inputElement);
   categoryInputs.appendChild(autocompleteContainer);
@@ -262,6 +263,10 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm) {
    *
    * This is loosely based on code from
    * https://www.w3schools.com/howto/howto_js_autocomplete.asp
+   *
+   * The `currentFocus` variable records the index of the currently
+   * selected item in the autocomplete menu, or -1 if there's
+   * nothing selected right now.
    */
   var currentFocus = -1;
 
@@ -271,12 +276,13 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm) {
   inputElement.addEventListener("focus", () => openAutocompleteMenu());
 
   /* When somebody switches or clicks away from the input, close the
-   * autocomplete menu -- unless they clicked on an autocomplete suggestion,
-   * in which case apply that first. */
+   * autocomplete menu -- unless they clicked on one of the suggestions
+   * in the autocomplete menu, in which case add that category first. */
   inputElement.addEventListener("blur", function(event) {
     if (event.relatedTarget !== null &&
         event.relatedTarget.classList.contains("suggestion")) {
       inputElement.value = event.relatedTarget.innerHTML;
+      addCategory();
     }
 
     closeAutocompleteMenus();
@@ -332,8 +338,6 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm) {
   }
 
   inputElement.addEventListener("keydown", function(event) {
-    console.log(event.key);
-
     if (event.key === "ArrowDown") {
       currentFocus++;
       updateFocusedItem();
@@ -342,7 +346,6 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm) {
       updateFocusedItem();
     } else if (event.key === "Enter") {
       if (currentFocus > -1) {
-
         inputElement.value =
           autocompleteContainer
             .querySelector(".autocomplete-items")
@@ -367,9 +370,9 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm) {
 
     for (var i = 0; i < items.length; i++) {
       if (i === currentFocus) {
-        items[i].classList.add("autocomplete-active");
+        items[i].classList.add("autocomplete-focused");
       } else {
-        items[i].classList.remove("autocomplete-active");
+        items[i].classList.remove("autocomplete-focused");
       }
     }
   }
