@@ -2,7 +2,7 @@
   If it's a Wikidata entity, we display the label (if available) or
   the plain entity ID:
 
-    copyrighted (Q50423863)
+    copyrighted
     Q74228490
 
 #}
@@ -11,7 +11,7 @@
   {% set label = entity_id | wikidata_entity_label %}
 
   {% if label != None %}
-    {{ label }} ({{ entity_id }})
+    {{ label }}
   {% else %}
     {{ entity_id }}
   {% endif %}

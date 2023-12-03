@@ -54,7 +54,7 @@ def get_html(claims: list[NewStatement]) -> str:
             """
             <dt>creator:</dt>
             <dd class="snak-value">
-              West Northamptonshire Development Corporation (Q7986087)
+              West Northamptonshire Development Corporation
             </dd>
             """,
             id="user_who_is_wikidata_entity",
@@ -137,7 +137,7 @@ def test_shows_copyright_status(app: Flask, vcr_cassette: str) -> None:
         <dl class="structured_data_preview">
           <dt>copyright status:</dt>
           <dd class="snak-value">
-            copyrighted (Q50423863)
+            copyrighted
           </dd>
         </dl>
         """
@@ -161,19 +161,19 @@ def test_shows_source_data(app: Flask, vcr_cassette: str) -> None:
         <dl class="structured_data_preview">
           <dt>source of file:</dt>
           <dd class="snak-value">
-            file available on the internet (Q74228490)
+            file available on the internet
             <ul class="sdc_qualifiers plain_list">
               <li>
                 described at url: https://www.flickr.com/photos/199246608@N02/53248015596/
               </li>
               <li>
-                operator: Flickr (Q103204)
+                operator: Flickr
               </li>
               <li>
                 url: https://live.staticflickr.com/65535/53248015596_c03f8123cf_o_d.jpg
               </li>
               <li>
-                retrieved: 14 November 2023 (precision: day, calendar: Gregorian)
+                retrieved: 14 November 2023
               </li>
             </ul>
           </dd>
@@ -194,7 +194,7 @@ def test_shows_license_statement(app: Flask, vcr_cassette: str) -> None:
         <dl class="structured_data_preview">
           <dt>copyright license:</dt>
           <dd class="snak-value">
-            Creative Commons Attribution 2.0 Generic (Q19125117)
+            Creative Commons Attribution 2.0 Generic
           </dd>
         </dl>
         """
@@ -215,10 +215,10 @@ def test_shows_posted_statement(app: Flask, vcr_cassette: str) -> None:
         <dl class="structured_data_preview">
           <dt>published in:</dt>
           <dd class="snak-value">
-            Flickr (Q103204)
+            Flickr
             <ul class="sdc_qualifiers plain_list">
               <li>
-                publication date: 12 October 2023 (precision: day, calendar: Gregorian)
+                publication date: 12 October 2023
               </li>
             </ul>
           </dd>
@@ -238,7 +238,7 @@ def test_shows_posted_statement(app: Flask, vcr_cassette: str) -> None:
                 "granularity": "second",
                 "unknown": False,
             },
-            "12 October 2023 (precision: day, calendar: Gregorian)",
+            "12 October 2023",
             id="day_precision",
         ),
         pytest.param(
@@ -247,7 +247,7 @@ def test_shows_posted_statement(app: Flask, vcr_cassette: str) -> None:
                 "granularity": "second",
                 "unknown": False,
             },
-            "1 October 2023 (precision: day, calendar: Gregorian)",
+            "1 October 2023",
             id="day_precision_with_single_digit_day",
         ),
         pytest.param(
@@ -256,7 +256,7 @@ def test_shows_posted_statement(app: Flask, vcr_cassette: str) -> None:
                 "granularity": "month",
                 "unknown": False,
             },
-            "October 2023 (precision: month, calendar: Gregorian)",
+            "October 2023",
             id="month_precision",
         ),
         pytest.param(
@@ -265,7 +265,7 @@ def test_shows_posted_statement(app: Flask, vcr_cassette: str) -> None:
                 "granularity": "year",
                 "unknown": False,
             },
-            "2023 (precision: year, calendar: Gregorian)",
+            "2023",
             id="year_precision",
         ),
         pytest.param(
@@ -275,10 +275,10 @@ def test_shows_posted_statement(app: Flask, vcr_cassette: str) -> None:
                 "unknown": False,
             },
             """
-            2023 (precision: year, calendar: Gregorian)
+            2023
             <ul class="sdc_qualifiers plain_list">
               <li>
-                sourcing circumstances: circa (Q5727902)
+                sourcing circumstances: circa
               </li>
             </ul>
             """,
@@ -296,7 +296,7 @@ def test_shows_date_taken_statement_in_html(
     expected = prettify_html(
         f"""
         <dl class="structured_data_preview">
-          <dt>inception:</dt>
+          <dt>date created:</dt>
           <dd class="snak-value">
             {inception}
           </dd>
