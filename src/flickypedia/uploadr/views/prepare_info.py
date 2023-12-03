@@ -105,10 +105,13 @@ class PrepareInfoFormBase(FlaskForm):
 
     def get_js_language(self) -> LanguageMatch | None:
         try:
-            data = json.loads(self.js_language.data)
-            return validate_typeddict(data, model=LanguageMatch)
+            if isinstance(self.js_language.data, str):
+                data = json.loads(self.js_language.data)
+                return validate_typeddict(data, model=LanguageMatch)
         except Exception:
-            return None
+            pass
+
+        return None
 
     def validate_no_js_language(self, field: SelectField) -> None:
         if self.get_js_language() is None and self.no_js_language.data == "":

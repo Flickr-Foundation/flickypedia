@@ -1,7 +1,7 @@
 from flask import Flask
 from flask.testing import FlaskClient
-import httpx
 import pytest
+from werkzeug.test import TestResponse
 
 from flickypedia.apis.flickr import SinglePhotoData, PhotosInAlbumData
 from flickypedia.uploadr.caching import save_cached_photos_data
@@ -119,7 +119,7 @@ def test_blocks_uploads_with_a_too_long_caption(
 
 
 def get_upload_requests_from_wait_for_upload_resp(
-    resp: httpx.Response,
+    resp: TestResponse,
 ) -> list[UploadRequest]:
     """
     Given a successful POST response to /prepare_info, return the list
@@ -186,7 +186,7 @@ def test_creates_upload_task_for_successful_form_post(
 class TestLanguageSelection:
     def get_language_from_form_submission(
         self, logged_in_client: FlaskClient, language_data: dict[str, str]
-    ):
+    ) -> list[UploadRequest]:
         cache_id = get_single_photo_cache_id()
 
         resp = logged_in_client.post(
