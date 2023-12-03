@@ -197,6 +197,7 @@ class WikimediaApi:
                 "title": f"File:{filename}",
                 "language": caption["language"],
                 "value": caption["text"],
+                "summary": "Flickypedia edit (add caption)",
             }
         )
 
@@ -337,6 +338,7 @@ class WikimediaApi:
                 "site": "commonswiki",
                 "title": f"File:{filename}",
                 "data": json.dumps(data),
+                "summary": "Flickypedia edit (add structured data statements)",
             }
         )
 
@@ -612,7 +614,7 @@ class WikimediaApi:
                 "site": "commonswiki",
                 "title": f"File:{filename}",
                 "nocreate": "true",
-                "summary": "Flickypedia no-op edit to trigger re-render of {{Information}} template with new SDC",
+                "summary": "Flickypedia edit (null edit; force re-render of {{Information}} template with new structured data)",
                 "appendtext": "\n",
             }
         )
