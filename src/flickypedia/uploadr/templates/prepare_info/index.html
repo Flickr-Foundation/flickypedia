@@ -6,10 +6,17 @@
   <script src="{{ url_for('static', filename='flickypedia.js') }}"></script>
 
   <script>
+    /*
+     * Note: we pass the API URLs as a variable from the page so we can
+     * use the `url_for()` helper in Flask to get URLs in our JavaScript --
+     * this avoids hard-coding them and stuff breaking if we rearrange URLs.
+     */
+    const apiUrls = {{ api_urls | tojson }};
+
     window.onload = function() {
       document
         .querySelectorAll('input[data-type="title"]')
-        .forEach(input => addTitleValidatorTo(input));
+        .forEach(input => addTitleValidatorTo(input, apiUrls["validate_title"]));
 
       document
         .querySelectorAll('textarea[data-type="short_caption"]')
@@ -25,7 +32,7 @@
       document
         .querySelectorAll('.categories')
         .forEach(categoriesElement =>
-           addInteractiveCategoriesTo(categoriesElement, parentForm)
+           addInteractiveCategoriesTo(categoriesElement, parentForm, apiUrls["find_matching_categories"])
         );
     }
   </script>
