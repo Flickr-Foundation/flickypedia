@@ -6,7 +6,10 @@ from werkzeug.test import TestResponse
 from flickypedia.apis.flickr import SinglePhotoData, PhotosInAlbumData
 from flickypedia.uploadr.caching import save_cached_photos_data
 from flickypedia.uploadr.uploads import uploads_queue, UploadRequest
-from flickypedia.uploadr.views import truncate_description
+from flickypedia.uploadr.views.prepare_info import (
+    truncate_description,
+    TruncationResult,
+)
 from utils import minify, get_typed_fixture
 
 
@@ -259,33 +262,42 @@ class TestLanguageSelection:
     ["original", "truncated"],
     [
         # A description which is split across many lines
-        ("1\n2\n3\n4\n5\n6\n7\n", "1\n2\n3\n4\n5…"),
+        ("1\n2\n3\n4\n5\n6\n7\n", {"text": "1\n2\n3\n4\n5", "truncated": True}),
+        # A description which is split across many lines, and where even
+        # the first five lines need truncating.
+        (
+            ("abcdefghi " * 140 + "\n") * 10,
+            {"text": "abcdefghi " * 16 + "abcdefghi", "truncated": True},
+        ),
         # A description which is short enough to be returned unmodified
-        ("A blue train in a green field", "A blue train in a green field"),
+        (
+            "A blue train in a green field",
+            {"text": "A blue train in a green field", "truncated": False},
+        ),
         # A description which is around the target length
-        ("a" * 161, "a" * 161),
-        ("a" * 170, "a" * 170),
+        ("a" * 161, {"text": "a" * 161, "truncated": False}),
+        ("a" * 170, {"text": "a" * 170, "truncated": False}),
         # A description which is comfortably over the target length, truncated
         # at the right word.
         (
             "a" * 150 + " and now we have some words to push us towards the end",
-            "a" * 150 + " and now we have some…",
+            {"text": "a" * 150 + " and now we have some", "truncated": True},
         ),
         # A description which is comfortably over the target length, truncated
         # just before a line break.
         (
             "a" * 150 + " and now we have\nsome words to push us towards the end",
-            "a" * 150 + " and now we have…",
+            {"text": "a" * 150 + " and now we have", "truncated": True},
         ),
         # A description which is comfortably over the target length, truncated
         # well after a line break.
         (
             "a" * 140 + " and now we have\nsome words to push us towards the end",
-            "a" * 140 + " and now we have\nsome words to…",
+            {"text": "a" * 140 + " and now we have\nsome words to", "truncated": True},
         ),
     ],
 )
-def test_truncate_description(original: str, truncated: str) -> None:
+def test_truncate_description(original: str, truncated: TruncationResult) -> None:
     assert truncate_description(original) == truncated
 
 

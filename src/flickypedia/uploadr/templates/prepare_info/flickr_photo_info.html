@@ -30,12 +30,14 @@
   {% endif %}
 
   {% if photo.description %}
-    {% set is_excerpt =
-        photo.description | truncate_description | length <
-        photo.description | length %}
-    <dt>Description{% if is_excerpt %} (excerpt){% endif %}:</dt>
-    <dd class="flickr_description">
-      {{- photo.description | truncate_description | html_unescape -}}
-    </dd>
+    {% with display_description = photo.description|truncate_description %}
+      <dt>Description{% if display_description.truncated %} (excerpt){% endif %}:</dt>
+      <dd class="flickr_description">
+        {{- display_description.text | html_unescape -}}
+        {% if display_description.truncated %}
+          <span class="truncated_indicator">[…]</span>
+        {% endif %}
+      </dd>
+    {% endwith %}
   {% endif %}
 </dl>
