@@ -158,6 +158,10 @@ form#prepare_info {
      * in the rendered output. */
     .flickr_description {
       white-space: pre-line;
+
+      .truncated_indicator {
+        color: $grey;
+      }
     }
   }
 

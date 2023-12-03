@@ -300,7 +300,12 @@ def prepare_info() -> ViewResponse:
     )
 
 
-def truncate_description(d: str) -> str:
+class TruncationResult(TypedDict):
+    text: str
+    truncated: bool
+
+
+def truncate_description(d: str) -> TruncationResult:
     """
     Given a complete description from Flickr, truncate it so it's suitable
     for description on the "prepare info" screen.
@@ -310,7 +315,10 @@ def truncate_description(d: str) -> str:
     # Heuristic #1: because we preserve line breaks in the description,
     # make sure we don't display a silly number of lines.
     if len(d.splitlines()) > 5:
-        return truncate_description("\n".join(d.splitlines()[:5])) + "…"
+        return {
+            "text": truncate_description("\n".join(d.splitlines()[:5]))["text"],
+            "truncated": True,
+        }
 
     # Heuristic #2: try to cut it about a target number of characters.
     #
@@ -321,7 +329,7 @@ def truncate_description(d: str) -> str:
     #
     # Allow a little bit of slop here.
     if len(d) <= target_length + 20:
-        return d
+        return {"text": d, "truncated": False}
 
     # Okay, so now truncate to the target length plus our slop.
     #
@@ -342,4 +350,4 @@ def truncate_description(d: str) -> str:
         if len(last_line) <= 10:
             d = remainder
 
-    return d.strip() + "…"
+    return {"text": d.strip(), "truncated": True}
