@@ -471,16 +471,17 @@ def create_sdc_claims_for_flickr_photo(
     statements = [
         photo_id_statement,
         creator_statement,
-        copyright_statement,
         source_statement,
         license_statement,
-        date_posted_statement,
+        copyright_statement,
     ]
+
+    if photo["location"] is not None:
+        statements.append(create_location_statement(location=photo["location"]))
 
     if photo["date_taken"] is not None:
         statements.append(create_date_taken_statement(date_taken=photo["date_taken"]))
 
-    if photo["location"] is not None:
-        statements.append(create_location_statement(location=photo["location"]))
+    statements.append(date_posted_statement)
 
     return {"claims": statements}
