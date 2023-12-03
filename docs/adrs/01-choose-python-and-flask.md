@@ -15,7 +15,7 @@
   </tr>
   <tr>
     <th>Status</th>
-    <td>Accepted</td>
+    <td>Implemented</td>
   </tr>
 </table>
 
