@@ -1,10 +1,11 @@
 from flask import Flask
 from flask.testing import FlaskClient
+import httpx
 import pytest
 
 from flickypedia.apis.flickr import SinglePhotoData, PhotosInAlbumData
 from flickypedia.uploadr.caching import save_cached_photos_data
-from flickypedia.uploadr.uploads import uploads_queue
+from flickypedia.uploadr.uploads import uploads_queue, UploadRequest
 from flickypedia.uploadr.views import truncate_description
 from utils import minify, get_typed_fixture
 
@@ -121,25 +122,13 @@ def test_blocks_uploads_with_a_too_long_caption(
     assert resp.status_code == 200
 
 
-def test_creates_upload_task_for_successful_form_post(
-    logged_in_client: FlaskClient, app: Flask, vcr_cassette: str
-) -> None:
-    get_photos_data = get_typed_fixture(
-        path="flickr_api/single_photo-32812033543.json", model=SinglePhotoData
-    )
-
-    cache_id = save_cached_photos_data(get_photos_data)
-
-    resp = logged_in_client.post(
-        f"/prepare_info?selected_photo_ids=32812033543&cache_id={cache_id}",
-        data={
-            "language": "en",
-            "photo_32812033543-title": "A photo with a reasonable title",
-            "photo_32812033543-short_caption": "A photo with an appropriate-length caption",
-            "photo_32812033543-categories": "Fish\nCats\nAnimals",
-        },
-    )
-
+def get_upload_requests_from_wait_for_upload_resp(
+    resp: httpx.Response,
+) -> list[UploadRequest]:
+    """
+    Given a successful POST response to /prepare_info, return the list
+    of upload requests created as part of the new task.
+    """
     # If the task is created successfully, we should be redirected to
     # the "wait for upload" screen, which has a URL something like:
     #
@@ -158,18 +147,96 @@ def test_creates_upload_task_for_successful_form_post(
     assert task["state"] == "waiting"
     assert len(task["task_input"]["requests"]) == 1
 
-    upload_request = task["task_input"]["requests"][0]
+    return task["task_input"]["requests"]
 
-    assert upload_request["categories"] == ["Fish", "Cats", "Animals"]
 
-    assert upload_request["caption"] == {
+def test_creates_upload_task_for_successful_form_post(
+    logged_in_client: FlaskClient, app: Flask, vcr_cassette: str
+) -> None:
+    get_photos_data = get_typed_fixture(
+        path="flickr_api/single_photo-32812033543.json", model=SinglePhotoData
+    )
+
+    cache_id = save_cached_photos_data(get_photos_data)
+
+    resp = logged_in_client.post(
+        f"/prepare_info?selected_photo_ids=32812033543&cache_id={cache_id}",
+        data={
+            "js_enabled": "false",
+            "no_js_language": "en",
+            "photo_32812033543-title": "A photo with a reasonable title",
+            "photo_32812033543-short_caption": "A photo with an appropriate-length caption",
+            "photo_32812033543-categories": "Fish\nCats\nAnimals",
+        },
+    )
+
+    upload_requests = get_upload_requests_from_wait_for_upload_resp(resp)
+    assert len(upload_requests) == 1
+
+    this_upload_request = upload_requests[0]
+
+    assert this_upload_request["categories"] == ["Fish", "Cats", "Animals"]
+
+    assert this_upload_request["caption"] == {
         "language": "en",
         "text": "A photo with an " "appropriate-length caption",
     }
 
-    assert upload_request["photo"] == get_photos_data["photos"][0]
+    assert this_upload_request["photo"] == get_photos_data["photos"][0]
 
-    assert upload_request["title"] == "A photo with a reasonable title.jpg"
+    assert this_upload_request["title"] == "A photo with a reasonable title.jpg"
+
+
+class TestLanguageSelection:
+    def get_language_from_form_submission(
+        self, logged_in_client: FlaskClient, language_data: dict[str, str]
+    ):
+        get_photos_data = get_typed_fixture(
+            path="flickr_api/single_photo-32812033543.json", model=SinglePhotoData
+        )
+
+        cache_id = save_cached_photos_data(get_photos_data)
+
+        resp = logged_in_client.post(
+            f"/prepare_info?selected_photo_ids=32812033543&cache_id={cache_id}",
+            data={
+                **language_data,
+                "photo_32812033543-title": "A photo with a reasonable title",
+                "photo_32812033543-short_caption": "A photo with an appropriate-length caption",
+                "photo_32812033543-categories": "",
+            },
+        )
+
+        return get_upload_requests_from_wait_for_upload_resp(resp)
+
+    def test_gets_no_js_language(
+        self, logged_in_client: FlaskClient, app: Flask, vcr_cassette: str
+    ):
+        upload_requests = self.get_language_from_form_submission(
+            logged_in_client,
+            {
+                "js_enabled": "false",
+                "no_js_language": "de",
+                "js_language": "",
+            },
+        )
+
+        assert len(upload_requests) == 1
+        assert upload_requests[0]["caption"]["language"] == "de"
+
+    def test_gets_js_language(
+        self, logged_in_client: FlaskClient, app: Flask, vcr_cassette: str
+    ):
+        upload_requests = self.get_language_from_form_submission(
+            logged_in_client,
+            {
+                "js_enabled": "true",
+                "no_js_language": "",
+                "js_language": '{"id":"es","label":"español","match_text":null}',
+            },
+        )
+        assert len(upload_requests) == 1
+        assert upload_requests[0]["caption"]["language"] == "es"
 
 
 @pytest.mark.parametrize(
