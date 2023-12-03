@@ -47,6 +47,13 @@ def create_wikitext(
     )
     # fmt: on
 
+    # If there's location information on the photo, there'll be location
+    # information in the structured data.  This template will render it
+    # as part of the Information box.
+    # See https://commons.wikimedia.org/wiki/Template:Location
+    if photo["location"] is not None:
+        information += "\n{{Location}}"
+
     # Add a license heading and license info box.  This will be
     # internationalised as appropriate.
     # See https://commons.wikimedia.org/wiki/Template:License-header
