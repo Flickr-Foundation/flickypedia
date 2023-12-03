@@ -79,6 +79,19 @@ def test_adds_categories_to_wikitext() -> None:
     assert actual == expected
 
 
+def test_adds_location_to_wikitext() -> None:
+    photo = get_typed_fixture("flickr_photos_api/32812033543.json", model=SinglePhoto)
+    photo["location"] = {"latitude": 50.0, "longitude": 50.0, "accuracy": 16}
+
+    wikitext = create_wikitext(
+        photo,
+        wikimedia_username="TestUser",
+        new_categories=[],
+    )
+
+    assert "{{Information}}\n{{Location}}\n" in wikitext
+
+
 config = create_config(data_directory=pathlib.Path("data"))
 
 
