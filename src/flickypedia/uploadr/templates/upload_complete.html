@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 
+{% if successful_requests %}
+  {% set title = "Upload complete!" %}
+{% else %}
+  {% set title = "Upload failed!" %}
+{% endif %}
+
 {% set page_id = "upload_complete" %}
 
 {% block content %}
@@ -16,7 +22,7 @@
 
   <!-- TODO: There should be a link here -->
 
-  {% if successful_requests %}  
+  {% if successful_requests %}
     <p>
       <a href="{{ upload_results|link_to_commons }}">Review your work</a>
       on Wikimedia Commons?
@@ -26,7 +32,7 @@
   {% if failed_requests %}
     <p>
       {% set all_photos_failed = failed_requests and not successful_requests %}
-      
+
       <span class="highlight red">
         {% if all_photos_failed and failed_requests|length == 1 %}
           Your photo didn’t upload
@@ -36,17 +42,17 @@
           None of your photos uploaded
         {% else %}
           {{ failed_requests|length }} of your photos didn’t upload
-        {% endif %}        
+        {% endif %}
       </span>
       We recommend you try uploading {% if failed_requests|length > 1 %}them{% else %}it{% endif %} again later.
       You can make a copy of the title{% if failed_requests|length > 1 %}s{% endif %} and caption{% if failed_requests|length > 1 %}s{% endif %} you wrote for your next attempt.
     </p>
   {% endif %}
-  
+
   <ul class="plain_list upload_progress">
     {% for item in failed_requests %}
       {% with photo = item.photo %}
-      {% with result = task.task_output[photo.id] %}    
+      {% with result = task.task_output[photo.id] %}
         <li data-status="{{ result.state }}">
           {% set large_size = photo.sizes|size_at(desired_size='Large') %}
           <div class="container">
@@ -72,10 +78,10 @@
       {% endwith %}
       {% endwith %}
     {% endfor %}
-    
+
     {% for item in successful_requests %}
       {% with photo = item.photo %}
-      {% with result = task.task_output[photo.id] %}    
+      {% with result = task.task_output[photo.id] %}
         <li data-status="{{ result.state }}">
           <a href="https://commons.wikimedia.org/wiki/{{ result.title }}">
             <div class="container">
