@@ -37,7 +37,7 @@ def test_rejects_pages_with_bad_query_params(
 
 
 def test_renders_form_for_single_photo(
-    logged_in_client: FlaskClient, app: Flask, vcr_cassette: str
+    logged_in_client: FlaskClient, vcr_cassette: str
 ) -> None:
     cache_id = get_single_photo_cache_id()
 
@@ -57,7 +57,7 @@ def test_renders_form_for_single_photo(
 
 
 def test_renders_form_for_multiple_photo(
-    logged_in_client: FlaskClient, app: Flask, vcr_cassette: str
+    logged_in_client: FlaskClient, vcr_cassette: str
 ) -> None:
     get_photos_data = get_typed_fixture(
         path="flickr_api/album-72177720312192106.json", model=PhotosInAlbumData
@@ -84,7 +84,7 @@ def test_renders_form_for_multiple_photo(
 
 
 def test_blocks_uploads_with_an_invalid_title(
-    logged_in_client: FlaskClient, app: Flask, vcr_cassette: str
+    logged_in_client: FlaskClient, vcr_cassette: str
 ) -> None:
     cache_id = get_single_photo_cache_id()
 
@@ -102,7 +102,7 @@ def test_blocks_uploads_with_an_invalid_title(
 
 
 def test_blocks_uploads_with_a_too_long_caption(
-    logged_in_client: FlaskClient, app: Flask, vcr_cassette: str
+    logged_in_client: FlaskClient, vcr_cassette: str
 ) -> None:
     cache_id = get_single_photo_cache_id()
 
@@ -147,7 +147,7 @@ def get_upload_requests_from_wait_for_upload_resp(
 
 
 def test_creates_upload_task_for_successful_form_post(
-    logged_in_client: FlaskClient, app: Flask, vcr_cassette: str
+    logged_in_client: FlaskClient, vcr_cassette: str
 ) -> None:
     get_photos_data = get_typed_fixture(
         path="flickr_api/single_photo-32812033543.json", model=SinglePhotoData
@@ -202,7 +202,7 @@ class TestLanguageSelection:
         return get_upload_requests_from_wait_for_upload_resp(resp)
 
     def test_gets_no_js_language(
-        self, logged_in_client: FlaskClient, app: Flask, vcr_cassette: str
+        self, logged_in_client: FlaskClient, vcr_cassette: str
     ) -> None:
         upload_requests = self.get_language_from_form_submission(
             logged_in_client,
@@ -241,7 +241,7 @@ class TestLanguageSelection:
         assert resp.status_code != 302
 
     def test_gets_js_language(
-        self, logged_in_client: FlaskClient, app: Flask, vcr_cassette: str
+        self, logged_in_client: FlaskClient, vcr_cassette: str
     ) -> None:
         upload_requests = self.get_language_from_form_submission(
             logged_in_client,
@@ -289,7 +289,7 @@ def test_truncate_description(original: str, truncated: str) -> None:
     assert truncate_description(original) == truncated
 
 
-def test_escapes_html_in_description(logged_in_client: FlaskClient, app: Flask) -> None:
+def test_escapes_html_in_description(logged_in_client: FlaskClient) -> None:
     """
     Flickr photos can contain HTML tags.
 

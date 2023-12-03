@@ -194,7 +194,7 @@ def test_no_photo_selection_is_error(
 
 
 def test_selecting_photo_redirects_you_to_prepare_info(
-    logged_in_client: FlaskClient, app: Flask, flickr_api: FlickrPhotosApi
+    logged_in_client: FlaskClient, flickr_api: FlickrPhotosApi
 ) -> None:
     flickr_url = "https://www.flickr.com/photos/coast_guard/32812033543/"
 
@@ -217,7 +217,7 @@ def test_selecting_photo_redirects_you_to_prepare_info(
 
 
 def test_selecting_multiple_photo_redirects_you_to_prepare_info(
-    logged_in_client: FlaskClient, app: Flask, flickr_api: FlickrPhotosApi
+    logged_in_client: FlaskClient, flickr_api: FlickrPhotosApi
 ) -> None:
     flickr_url = "https://www.flickr.com/photos/icann/albums/72177720312192106"
 
