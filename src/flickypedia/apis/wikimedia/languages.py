@@ -152,7 +152,7 @@ def top_n_languages(n: int) -> list[tuple[str, str]]:
 
 SUPPORTED_LANGUAGES = dict(
     [
-        ["en", "english"],
+        ["en", "English"],
         ["es", "español"],
         ["es-formal", "español (formal)"],
         ["eo", "Esperanto"],
