@@ -1,44 +1,46 @@
 {% extends "base.html" %}
 
+{% set title = "About Flickypedia" %}
+
 {% block content %}
   {% include "components/header.html" %}
 
   <h2>About Flickypedia</h2>
-  
+
   <p>
     Flickypedia was built by the US 501(c)(3) <a href="https://www.flickr.org">Flickr Foundation</a> in 2023 in partnership with the Culture and Heritage team at the <a href="https://wikimediafoundation.org/">Wikimedia Foundation</a>.
   </p>
-  
+
   <p>
     It is largely based on a tool called Flickr2Commons which was built by Magnus Manske.
     Thank you for everything you do for the Wikimedia community, Magnus.
   </p>
-  
+
   <p>
     We hope you enjoy using Flickypedia.
     Our wish is that it results in higher quality records in Wikimedia Commons, with better connected data, better descriptive information, and more notifications for Flickr photographers who’ve shared their photographs under a Creative Commons license.
   </p>
-  
+
   <p>
     If you would like to find out more, please visit the <a href="https://commons.wikimedia.org/wiki/Commons:Flickypedia">Flickypedia page on Wikimedia Commons</a>, the <a href="https://diff.wikimedia.org/2023/07/07/flickr-foundation-is-building-a-new-bridge-between-flickr-and-wikimedia-commons/">Wikimedia Foundation Diff blog</a>, or our <a href="https://www.flickr.org/flickypedia-our-partnership-with-wikimedia-commons/">post on the Flickr.org blog</a>.
   </p>
-  
+
   <p>
     If you’re code-interested, we have put the repo on <a href="https://github.com/Flickr-Foundation/flickypedia">GitHub</a>.
     You can leave us a bug report there, if you have a GitHub account.
     There’s also <a href="{{ url_for('bookmarklet')}}">a bookmarklet available</a> for very fast Flickr photo-getting.
   </p>
-  
+
   <p>
     And finally, our heartfelt thanks to the Danish Dad & Daughter team who created <a href="https://flickypedia.com">flickypedia.com</a>, a fun way for kids to explore Wikipedia, and gave us their permission to share the name.
   </p>
-  
+
   <h3 id="privacy">Privacy policy</h3>
-  
+
   <p>
     The primary purpose of Flickypedia is to help you upload photos from Flickr to Wikimedia Commons.
   </p>
-  
+
   <p>
     All the photos and metadata you upload are recorded in
     {% if current_user.is_anonymous %}
@@ -48,7 +50,7 @@
     {% endif %}
     on Wikimedia Commons.
   </p>
-  
+
   <p>
     We use cookies to keep you logged in to Wikimedia Commons and Flickr.
     We don’t use any analytics or tracking cookies.
