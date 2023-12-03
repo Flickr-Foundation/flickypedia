@@ -40,7 +40,10 @@ def get_metadata(photo: Any) -> list[MetadataEntry]:
         if elem.name == "dt":  # type: ignore
             result.append({"key": elem.text.strip(), "value": None})
         elif elem.name == "dd":  # type: ignore
-            result[-1]["value"] = re.sub(r"\s*\n\s*", "\n", elem.text.strip())
+            text = elem.text.strip()
+            text = re.sub(r"\s*\n\s*", "\n", text)
+            text = re.sub(r"\s+", " ", text)
+            result[-1]["value"] = text
         else:  # pragma: no cover
             raise ValueError(f"unrecognised element: {elem}")
 
@@ -110,7 +113,7 @@ class Description(TypedDict):
         {
             "input": "a" * 150 + " and now we have some words to push us over",
             "expected_key": "Description (excerpt):",
-            "expected_value": "a" * 150 + " and now we have some…",
+            "expected_value": "a" * 150 + " and now we have some […]",
         },
     ],
 )
