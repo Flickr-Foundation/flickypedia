@@ -239,6 +239,10 @@ def prepare_info() -> ViewResponse:
         photo_fields=[
             field for field in prepare_info_form if field.id.startswith("photo_")
         ],
+        api_urls={
+            "validate_title": url_for("validate_title_api"),
+            "find_matching_categories": url_for("find_matching_categories_api"),
+        },
     )
 
 

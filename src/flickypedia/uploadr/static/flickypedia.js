@@ -32,7 +32,7 @@ function prependHttpsToFormValue(inputElement) {
  * If the title is rejected, we add visible red text below the box
  * and a validation prompt, so the form can't be submitted.
  */
-function addTitleValidatorTo(inputElement) {
+function addTitleValidatorTo(inputElement, titleValidatorUrl) {
   const errorElement = document.querySelector(`p[for="${inputElement.id}"]`);
 
   inputElement.addEventListener("blur", function () {
@@ -54,7 +54,7 @@ function addTitleValidatorTo(inputElement) {
     const originalFormat = inputElement.getAttribute("data-originalformat");
     const title = `File:${inputElement.value}.${originalFormat}`;
 
-    fetch(`/api/validate_title?title=${title}`)
+    fetch(`${titleValidatorUrl}?title=${title}`)
       .then((response) => response.json())
       .then(function (json) {
 
@@ -137,7 +137,7 @@ function addCharCounterTo(inputElement, counterElement) {
  * We hide the <textarea> and insert an <input> field that will have
  * an associated autocomplete function.
  */
-function addInteractiveCategoriesTo(categoriesElement, parentForm) {
+function addInteractiveCategoriesTo(categoriesElement, parentForm, findMatchingCategoriesUrl) {
   const textAreaElement = categoriesElement.querySelector("textarea");
 
   /* Hide the original <textarea> */
@@ -309,7 +309,7 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm) {
 
     autocompleteContainer.appendChild(autocompleteElement);
 
-    fetch(`/api/find_matching_categories?query=${inputElement.value}`)
+    fetch(`${findMatchingCategoriesUrl}?query=${inputElement.value}`)
       .then((response) => response.json())
       .then(function (json) {
         for (i = 0; i < json.length; i++) {
