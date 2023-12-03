@@ -216,15 +216,20 @@ class TestLanguageSelection:
         assert len(upload_requests) == 1
         assert upload_requests[0]["caption"]["language"] == "de"
 
-    def test_blocks_empty_no_js_language(
-        self, logged_in_client: FlaskClient, app: Flask, vcr_cassette: str
+    @pytest.mark.parametrize("js_enabled", ["true", "false"])
+    def test_blocks_empty_language(
+        self,
+        logged_in_client: FlaskClient,
+        app: Flask,
+        vcr_cassette: str,
+        js_enabled: str,
     ) -> None:
         cache_id = get_single_photo_cache_id()
 
         resp = logged_in_client.post(
             f"/prepare_info?selected_photo_ids=32812033543&cache_id={cache_id}",
             data={
-                "js_enabled": "false",
+                "js_enabled": js_enabled,
                 "no_js_language": "",
                 "js_language": "",
                 "photo_32812033543-title": "A photo with a reasonable title",
