@@ -4,9 +4,13 @@ from typing import Any
 
 import bs4
 from flask import Flask, render_template
-from flickypedia.apis.flickr_photos_api import DateTaken, User as FlickrUser
 import pytest
 
+from flickypedia.apis.flickr_photos_api import (
+    DateTaken,
+    LocationInfo,
+    User as FlickrUser,
+)
 from flickypedia.apis.structured_data import (
     create_copyright_status_statement,
     create_date_taken_statement,
@@ -230,19 +234,42 @@ def test_shows_posted_statement(app: Flask, vcr_cassette: str) -> None:
     assert actual == expected
 
 
-def test_shows_location_statement(app: Flask, vcr_cassette: str) -> None:
-    location_claim = create_location_statement(
-        location={"longitude": 7.845047, "latitude": 49.968063, "accuracy": 16}
-    )
-
-    actual = get_html(claims=[location_claim])
+@pytest.mark.parametrize(
+    ["location", "expected_value"],
+    [
+        pytest.param(
+            {"latitude": 49.968063, "longitude": 7.845047, "accuracy": 16},
+            "49.968063&deg;N, 7.845047&deg;E",
+            id="north_east",
+        ),
+        pytest.param(
+            {"latitude": 40.696168, "longitude": -74.019446, "accuracy": 16},
+            "40.696168&deg;N, 74.019446&deg;W",
+            id="north_west",
+        ),
+        pytest.param(
+            {"latitude": -12.507242, "longitude": 130.992966, "accuracy": 16},
+            "12.507242&deg;S, 130.992966&deg;E",
+            id="south_east",
+        ),
+        pytest.param(
+            {"latitude": -25.683322, "longitude": -54.454829, "accuracy": 16},
+            "25.683322&deg;S, 54.454829&deg;W",
+            id="south_west",
+        ),
+    ],
+)
+def test_shows_location_statement(
+    app: Flask, vcr_cassette: str, location: LocationInfo, expected_value: str
+) -> None:
+    actual = get_html(claims=[create_location_statement(location=location)])
 
     expected = prettify_html(
-        """
+        f"""
         <dl class="structured_data_preview">
-          <dt>coordinates of the point of view:</dt>
+          <dt>location:</dt>
           <dd class="snak-value">
-            7.845047&deg;E, 49.968063&deg;N
+            {expected_value}
           </dd>
         </dl>
         """
