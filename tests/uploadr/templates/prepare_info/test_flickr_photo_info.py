@@ -42,7 +42,8 @@ def get_metadata(photo: Any) -> list[MetadataEntry]:
         elif elem.name == "dd":  # type: ignore
             text = elem.text.strip()
             text = re.sub(r"\s*\n\s*", "\n", text)
-            text = re.sub(r"\s+", " ", text)
+            while "  " in text:
+                text = text.replace("  ", " ")
             result[-1]["value"] = text
         else:  # pragma: no cover
             raise ValueError(f"unrecognised element: {elem}")
