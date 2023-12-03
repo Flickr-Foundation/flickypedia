@@ -386,6 +386,176 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm, findMatchingC
 }
 
 /*
+ * Add interactive languages.
+ *
+ * We hide the no-JS version and insert an <input> field that will have
+ * an associated autocomplete function.
+ */
+function addInteractiveLanguages() {
+  /* Start by hiding the no-JS element. */
+  document.querySelector("fieldset.no_js_language").style.display = "none";
+  document.querySelector('select[name="no_js_language"]').removeAttribute("required");
+
+  /* Update the hidden "js_enabled" checkbox.  This allows the server
+   * to know it should look at the JS field in the form data.
+   */
+  document.querySelector("#js_enabled").checked = true;
+
+  /* Make the JS selector visible. */
+  document.querySelector('fieldset.js_language').style.display = "block";
+
+  /* Bind the actual input element which will be sent to the server as
+   * part of the form. */
+  const underlyingInputElement = document.querySelector('input[name="js_language"]')
+
+  /* Create a new inputElement where the user can search for languages. */
+  const languagesInputElement = document.createElement("input");
+  languagesInputElement.type = "text";
+  languagesInputElement.placeholder = "Search for languages";
+
+  const autocompleteContainer = document.createElement("div");
+  autocompleteContainer.classList.add("autocomplete");
+
+  autocompleteContainer.appendChild(languagesInputElement);
+  document.querySelector("fieldset.js_language").appendChild(autocompleteContainer);
+
+  /* If there's already some data in the field, don't lose it. */
+  if (underlyingInputElement.value !== "") {
+    languagesInputElement.value = JSON.parse(underlyingInputElement.value).label;
+  }
+
+  /* As somebody starts typing in this form, query the Wikimedia API
+   * and offer an autocomplete menu for languages.
+   *
+   * This is loosely based on code from
+   * https://www.w3schools.com/howto/howto_js_autocomplete.asp
+   *
+   * The `currentFocus` variable records the index of the currently
+   * selected item in the autocomplete menu, or -1 if there's
+   * nothing selected right now.
+   */
+  var currentFocus = -1;
+
+  /* When somebody starts typing or switches to this field, open
+   * the autocomplete menu. */
+  languagesInputElement.addEventListener("input", () => openAutocompleteMenu());
+  languagesInputElement.addEventListener("focus", () => openAutocompleteMenu());
+
+  /* When somebody switches or clicks away from the input, close the
+   * autocomplete menu -- unless they clicked on an autocomplete suggestion,
+   * in which case apply that first. */
+  languagesInputElement.addEventListener("blur", function(event) {
+    const clickedElement = event.relatedTarget;
+
+    if (clickedElement !== null && clickedElement.classList.contains("suggestion")) {
+      underlyingInputElement.value = clickedElement.getAttribute("data-json");
+      languagesInputElement.value = clickedElement.innerText;
+    }
+
+    closeAutocompleteMenus();
+  });
+
+  /* An attempt to disable browser autocomplete from interfering. */
+  languagesInputElement.autocomplete = "off";
+
+  /* Open the autocomplete menu -- query the Flickypedia API to get a
+   * list of language suggestions, then put them in a list. */
+  function openAutocompleteMenu() {
+    closeAutocompleteMenus();
+
+    currentFocus = -1;
+
+    languagesInputElement.classList.add("thinking");
+
+    const autocompleteElement = document.createElement("div");
+    autocompleteElement.classList.add("autocomplete-items");
+
+    autocompleteContainer.appendChild(autocompleteElement);
+
+    fetch(`/api/find_matching_languages?query=${languagesInputElement.value}`)
+      .then((response) => response.json())
+      .then(function (json) {
+        for (i = 0; i < json.length; i++) {
+          var suggestion = json[i];
+          const suggestionElement = document.createElement("div");
+          suggestionElement.classList.add("suggestion");
+
+          suggestionElement.setAttribute("data-json", JSON.stringify(suggestion));
+
+          if (suggestion.match_text !== null) {
+            suggestionElement.innerHTML = `${suggestion.match_text}</span> <span class="secondary">[${suggestion.label}]</span>`;
+          } else {
+            suggestionElement.innerHTML = suggestion.label;
+          }
+
+          /* This allows the element to receive focus.
+           *
+           * In turn, when the blur event fires on the 'input' element
+           * (somebody has clicked elsewhere), we can detect if:
+           *
+           *    - they clicked on this suggestion, in which case we should
+           *      apply it, or
+           *    - they clicked somewhere else, in which case we should just
+           *      close the autocomplete menu.
+           */
+          suggestionElement.tabIndex = "-1";
+
+          autocompleteElement.appendChild(suggestionElement);
+        }
+
+        languagesInputElement.classList.remove("thinking");
+      });
+  }
+
+  languagesInputElement.addEventListener("keydown", function(event) {
+    if (event.key === "ArrowDown") {
+      currentFocus++;
+      updateFocusedItem();
+    } else if (event.key === "ArrowUp") {
+      currentFocus--;
+      updateFocusedItem();
+    } else if (event.key === "Enter") {
+      if (currentFocus > -1) {
+        const selectedElement =
+          autocompleteContainer
+            .querySelector(".autocomplete-items")
+            .children[currentFocus];
+
+        underlyingInputElement.value = selectedElement.getAttribute("data-json");
+        languagesInputElement.value = selectedElement.innerText;
+
+        closeAutocompleteMenus();
+        event.preventDefault();
+      }
+    } else if (event.key === "Escape") {
+      closeAutocompleteMenus();
+    }
+  });
+
+  function updateFocusedItem() {
+    const items =
+      autocompleteContainer
+        .querySelector(".autocomplete-items")
+        .children;
+
+    for (var i = 0; i < items.length; i++) {
+      if (i === currentFocus) {
+        items[i].classList.add("autocomplete-focused");
+      } else {
+        items[i].classList.remove("autocomplete-focused");
+      }
+    }
+  }
+
+  function closeAutocompleteMenus() {
+    currentFocus = -1;
+    document
+      .querySelectorAll(".autocomplete-items")
+      .forEach((item) => item.remove());
+  }
+}
+
+/*
  * Update the state of currently-being-uploaded photos.
  *
  * This function is called once per second on the "wait for upload"

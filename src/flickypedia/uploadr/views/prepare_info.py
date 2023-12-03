@@ -14,23 +14,33 @@ This page gets two arguments as query parameters:
 """
 
 import datetime
+import json
 from typing import cast, Any, TypedDict
 
 from flask import abort, redirect, render_template, request, url_for
 from flask_wtf import FlaskForm, Form
 from flask_login import current_user, login_required
-from flickypedia.apis.flickr_photos_api import DateTaken, User as FlickrUser
-from wtforms import FormField, HiddenField, SelectField, StringField, SubmitField
+from wtforms import (
+    BooleanField,
+    FormField,
+    HiddenField,
+    SelectField,
+    StringField,
+    SubmitField,
+)
 from wtforms.validators import DataRequired, Length, ValidationError
 from wtforms.widgets import TextArea
 
+from flickypedia.apis.flickr_photos_api import DateTaken, User as FlickrUser
 from flickypedia.apis.structured_data import NewClaims
+from flickypedia.apis.wikimedia.languages import top_n_languages, LanguageMatch
 from flickypedia.photos import (
     CategorisedPhotos,
     EnrichedPhoto,
     enrich_photo,
     categorise_photos,
 )
+from flickypedia.utils import validate_typeddict
 from ..uploads import UploadRequest, begin_upload
 from ..caching import get_cached_photos_data, remove_cached_photos_data
 from ._types import ViewResponse
@@ -71,7 +81,55 @@ class WikiFieldsForm(Form):
             raise ValidationError(validation["text"])
 
 
-def create_prepare_info_form(photos: list[EnrichedPhoto]) -> FlaskForm:
+class PrepareInfoFormBase(FlaskForm):
+    cache_id = HiddenField("cache_id")
+    upload = SubmitField("UPLOAD")
+
+    # For language selection we have two user interfaces:
+    #
+    #     * For no-JS users, we have a <select> field with a dropdown of
+    #       the ten most commonly-used languages on Commons.
+    #     * For JS users, we have an <input type="text"> field where they
+    #       can search for languages.
+    #
+    # These are two separate fields.
+    #
+    # We need to know which of the two fields to look at, so we include
+    # a hidden checkbox which gets ticked by the JavaScript that sets up
+    # language search on the JS-enabled field.
+    js_enabled = BooleanField("js_enabled")
+    no_js_language = SelectField(
+        "no_js_language", choices=[("", "")] + top_n_languages(n=10)
+    )
+    js_language = StringField("js_language")
+
+    def get_js_language(self) -> LanguageMatch | None:
+        try:
+            if isinstance(self.js_language.data, str):
+                data = json.loads(self.js_language.data)
+                return validate_typeddict(data, model=LanguageMatch)
+        except Exception:
+            pass
+
+        return None
+
+    def validate_no_js_language(self, field: SelectField) -> None:
+        if self.get_js_language() is None and self.no_js_language.data == "":
+            raise ValidationError
+
+    @property
+    def language(self) -> str:
+        if self.js_enabled.data:
+            language = self.get_js_language()
+            if language is None:
+                raise ValidationError
+            return language["id"]
+        else:
+            assert isinstance(self.no_js_language.data, str)
+            return self.no_js_language.data
+
+
+def create_prepare_info_form(photos: list[EnrichedPhoto]) -> PrepareInfoFormBase:
     """
     Create a Flask form with a PhotoInfoForm (list of fields) for each
     photo in the list.  This allows us to render a form like:
@@ -97,14 +155,8 @@ def create_prepare_info_form(photos: list[EnrichedPhoto]) -> FlaskForm:
     which can be used to render nice previews/labels.
     """
 
-    class CustomForm(FlaskForm):
-        cache_id = HiddenField("cache_id")
-        upload = SubmitField("UPLOAD")
-
-        # TODO: Get a proper list of languages here
-        language = SelectField(
-            "language", choices=[("en", "English"), ("de", "Deutsch")]
-        )
+    class CustomForm(PrepareInfoFormBase):
+        pass
 
     for p in photos:
 
@@ -143,7 +195,7 @@ class PhotoForUpload(TypedDict):
 
 
 def create_upload_requests(
-    photos: list[EnrichedPhoto], form_data: dict[str, Any]
+    photos: list[EnrichedPhoto], form_data: dict[str, Any], language: str
 ) -> list[UploadRequest]:
     upload_requests: list[UploadRequest] = []
 
@@ -159,7 +211,7 @@ def create_upload_requests(
                 "sdc": enriched_photo["sdc"],
                 "title": this_photo_form_data["title"] + "." + photo["original_format"],
                 "caption": {
-                    "language": form_data["language"],
+                    "language": language,
                     "text": this_photo_form_data["short_caption"],
                 },
                 "categories": categories,
@@ -222,8 +274,10 @@ def prepare_info() -> ViewResponse:
     prepare_info_form = create_prepare_info_form(photos=enriched_photos)
 
     if prepare_info_form.validate_on_submit():
+        language = prepare_info_form.language
+
         upload_requests = create_upload_requests(
-            enriched_photos, form_data=prepare_info_form.data
+            enriched_photos, form_data=prepare_info_form.data, language=language
         )
 
         task_id = begin_upload(upload_requests=upload_requests)

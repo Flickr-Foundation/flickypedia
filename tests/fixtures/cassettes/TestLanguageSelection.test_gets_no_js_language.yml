@@ -1,0 +1,128 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.1
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=query&titles=File%3AA%20photo%20with%20a%20reasonable%20title.jpg&prop=info&format=json
+  response:
+    content: '{"batchcomplete":"","query":{"pages":{"-1":{"ns":6,"title":"File:A photo
+      with a reasonable title.jpg","missing":"","contentmodel":"wikitext","pagelanguage":"en","pagelanguagehtmlcode":"en","pagelanguagedir":"ltr"}}}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-length:
+      - '216'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Sun, 03 Dec 2023 12:21:56 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1402.eqiad.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3070"
+      set-cookie:
+      - WMF-Last-Access=03-Dec-2023;Path=/;HttpOnly;secure;Expires=Thu, 04 Jan 2024
+        12:00:00 GMT
+      - GeoIP=GB:ENG:Haverhill:52.05:0.42:v4; Path=/; secure; Domain=.wikimedia.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie
+      x-cache:
+      - cp3070 miss, cp3070 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 92.13.36.200
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - WMF-Last-Access=03-Dec-2023; NetworkProbeLimit=0.001; GeoIP=GB:ENG:Haverhill:52.05:0.42:v4
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.1
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=titleblacklist&tbaction=create&tbtitle=File%3AA%20photo%20with%20a%20reasonable%20title.jpg&format=json
+  response:
+    content: '{"titleblacklist":{"result":"ok"}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-length:
+      - '34'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Sun, 03 Dec 2023 12:21:56 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1424.eqiad.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3070"
+      set-cookie:
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3070 miss, cp3070 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 92.13.36.200
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1
