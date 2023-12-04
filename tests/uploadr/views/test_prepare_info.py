@@ -277,19 +277,19 @@ class TestLanguageSelection:
         # at the right word.
         (
             "a" * 110 + " and now we have some words to push us towards the end",
-            {"text": "a" * 110 + " and now we have some", "truncated": True},
+            {"text": "a" * 110 + " and now we have some words to push us", "truncated": True},
         ),
         # A description which is comfortably over the target length, truncated
         # just before a line break.
         (
-            "a" * 110 + " and now we have\nsome words to push us towards the end",
-            {"text": "a" * 110 + " and now we have", "truncated": True},
+            "a" * 115 + " and now we have\nsome words to push us towards the end",
+            {"text": "a" * 115 + " and now we have", "truncated": True},
         ),
         # A description which is comfortably over the target length, truncated
         # well after a line break.
         (
             "a" * 110 + " and now we have\nsome words to push us towards the end",
-            {"text": "a" * 110 + " and now we have\nsome words to", "truncated": True},
+            {"text": "a" * 110 + " and now we have\nsome words to push us", "truncated": True},
         ),
     ],
 )
