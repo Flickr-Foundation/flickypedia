@@ -67,12 +67,12 @@ def test_shows_correct_message_when_all_available(
 @pytest.mark.parametrize(
     ["count", "expected_text"],
     [
-        (1, "Your work is done! This photo is already in Wikimedia Commons. W00t!"),
-        (2, "Your work is done! Both photos are already in Wikimedia Commons. W00t!"),
-        (3, "Your work is done! All 3 photos are already in Wikimedia Commons. W00t!"),
+        (1, "Your work is done! This photo is already on Wikimedia Commons. W00t!"),
+        (2, "Your work is done! Both photos are already on Wikimedia Commons. W00t!"),
+        (3, "Your work is done! All 3 photos are already on Wikimedia Commons. W00t!"),
         (
             10,
-            "Your work is done! All 10 photos are already in Wikimedia Commons. W00t!",
+            "Your work is done! All 10 photos are already on Wikimedia Commons. W00t!",
         ),
     ],
 )
@@ -226,19 +226,19 @@ def test_shows_correct_combination_of_licenses(
         (0, None),
         (
             1,
-            "Some of your work is done! One photo is already in Wikimedia Commons. W00t!",
+            "Some of your work is done! One photo is already on Wikimedia Commons. W00t!",
         ),
         (
             2,
-            "Some of your work is done! 2 photos are already in Wikimedia Commons. W00t!",
+            "Some of your work is done! 2 photos are already on Wikimedia Commons. W00t!",
         ),
         (
             3,
-            "Some of your work is done! 3 photos are already in Wikimedia Commons. W00t!",
+            "Some of your work is done! 3 photos are already on Wikimedia Commons. W00t!",
         ),
         (
             10,
-            "Some of your work is done! 10 photos are already in Wikimedia Commons. W00t!",
+            "Some of your work is done! 10 photos are already on Wikimedia Commons. W00t!",
         ),
     ],
 )

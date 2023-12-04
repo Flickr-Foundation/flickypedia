@@ -57,7 +57,7 @@
   {% set nav_steps = [
     {"id": "get_photos", "label": "Get Flickr photos"},
     {"id": "prepare_info", "label": "Prepare info"},
-    {"id": "upload_to_wikimedia", "label": "Upload to Wikimedia"},
+    {"id": "upload_to_wikimedia", "label": "Upload"},
     {"id": "say_thanks", "label": "Say thanks"}
   ] %}
   

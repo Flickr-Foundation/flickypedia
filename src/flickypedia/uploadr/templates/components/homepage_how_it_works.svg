@@ -113,12 +113,7 @@
   <rect x="302" y="35" width="80" height="50" class="step"/>
   
   <svg x="302">
-    <svg y="35">
-      <text x="40" y="25">
-        <tspan x="40" dy="-6">Upload to</tspan>
-        <tspan x="40" dy="1.3em">Wikimedia</tspan>
-      </text>
-    </svg>
+    <text x="40" y="25">Upload</text>
 
     <path d="M 40 35 C 40 -5, 140 -5, 140 27"/>
     <polygon points="140,33 145,26 140,28 135,26"/>
