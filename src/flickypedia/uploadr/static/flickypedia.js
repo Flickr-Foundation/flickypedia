@@ -391,7 +391,7 @@ function addInteractiveCategoriesTo(categoriesElement, parentForm, findMatchingC
  * We hide the no-JS version and insert an <input> field that will have
  * an associated autocomplete function.
  */
-function addInteractiveLanguages() {
+function addInteractiveLanguages(findMatchingLanguagesUrl) {
   /* Start by hiding the no-JS element. */
   document.querySelector("fieldset.no_js_language").style.display = "none";
   document.querySelector('select[name="no_js_language"]').removeAttribute("required");
@@ -472,7 +472,7 @@ function addInteractiveLanguages() {
 
     autocompleteContainer.appendChild(autocompleteElement);
 
-    fetch(`/api/find_matching_languages?query=${languagesInputElement.value}`)
+    fetch(`${findMatchingLanguagesUrl}?query=${languagesInputElement.value}`)
       .then((response) => response.json())
       .then(function (json) {
         for (i = 0; i < json.length; i++) {

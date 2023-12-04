@@ -297,6 +297,7 @@ def prepare_info() -> ViewResponse:
         api_urls={
             "validate_title": url_for("validate_title_api"),
             "find_matching_categories": url_for("find_matching_categories_api"),
+            "find_matching_languages": url_for("find_matching_languages_api"),
         },
     )
 
