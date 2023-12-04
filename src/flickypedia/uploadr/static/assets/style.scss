@@ -63,6 +63,9 @@ footer {
     display: inline-block;
   }
 
+  li:not(:last-child)  a { margin-right: 2px; }
+  li:not(:first-child) a { margin-left:  2px; }
+
   li:not(:last-child):after {
     content: "| ";
     white-space: pre;
