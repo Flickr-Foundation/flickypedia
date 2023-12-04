@@ -101,18 +101,21 @@ def test_shows_correct_message_when_all_duplicates(
 @pytest.mark.parametrize(
     ["count", "expected_text"],
     [
-        (1, "This photo can’t be used because it has a CC BY-NC 2.0 license."),
+        (
+            1,
+            "This photo can’t be used because it has a license that Wikimedia Commons doesn’t accept.",
+        ),
         (
             2,
-            "Neither of these photos can be used because they have CC BY-NC 2.0 licenses.",
+            "Neither of these photos can be used because they have licenses that Wikimedia Commons doesn’t accept.",
         ),
         (
             3,
-            "None of these photos can be used because they have CC BY-NC 2.0 licenses.",
+            "None of these photos can be used because they have licenses that Wikimedia Commons doesn’t accept.",
         ),
         (
             10,
-            "None of these photos can be used because they have CC BY-NC 2.0 licenses.",
+            "None of these photos can be used because they have licenses that Wikimedia Commons doesn’t accept.",
         ),
     ],
 )
@@ -131,11 +134,7 @@ def test_shows_correct_message_when_all_disallowed(
     )
 
     assert get_paragraphs(html) == [
-        {
-            "class": "message_disallowed",
-            "text": f"{expected_text} "
-            + "Wikimedia Commons only accepts CC0, CC BY, CC BY-SA, and Public Domain photos that are also public and safe on Flickr.",
-        },
+        {"class": "message_disallowed", "text": expected_text}
     ]
 
 
@@ -151,62 +150,16 @@ def test_shows_correct_message_when_all_disallowed(
 def test_shows_correct_message_when_all_restricted(
     app: Flask, count: int, expected_text: str
 ) -> None:
-    """
-    Every photo has a CC-BY 2.0 license which isn't allowed on Commons.
-    """
     html = render_template(
         "select_photos/which_photos_can_be_uploaded.html",
         photos={
             **EMPTY_DATA,
-            "restricted": {f"photo-{i}": "CC BY-NC 2.0" for i in range(count)},
+            "restricted": {f"photo-{i}" for i in range(count)},
         },
     )
 
     assert get_paragraphs(html) == [
-        {
-            "class": "message_disallowed",
-            "text": expected_text
-            + " Wikimedia Commons only accepts CC0, CC BY, CC BY-SA, and Public Domain photos that are also public and safe on Flickr.",
-        },
-    ]
-
-
-@pytest.mark.parametrize(
-    ["licenses", "expected_text"],
-    [
-        (
-            ["CC BY-NC 2.0", "CC BY-ND 2.0", "CC BY-NC 2.0"],
-            "None of these photos can be used because they have CC BY-NC 2.0 and CC BY-ND 2.0 licenses.",
-        ),
-        (
-            ["All Rights Reserved"],
-            "This photo can’t be used because it has an All Rights Reserved license.",
-        ),
-        (
-            ["All Rights Reserved", "CC BY-NC 2.0", "CC BY-ND 2.0"],
-            "None of these photos can be used because they have All Rights Reserved, CC BY-NC 2.0 and CC BY-ND 2.0 licenses.",
-        ),
-    ],
-)
-def test_shows_correct_combination_of_licenses(
-    app: Flask, licenses: list[str], expected_text: str
-) -> None:
-    html = render_template(
-        "select_photos/which_photos_can_be_uploaded.html",
-        photos={
-            **EMPTY_DATA,
-            "disallowed_licenses": {
-                f"photo-{i}": lic for i, lic in enumerate(licenses)
-            },
-        },
-    )
-
-    assert get_paragraphs(html) == [
-        {
-            "class": "message_disallowed",
-            "text": expected_text
-            + " Wikimedia Commons only accepts CC0, CC BY, CC BY-SA, and Public Domain photos that are also public and safe on Flickr.",
-        },
+        {"class": "message_disallowed", "text": expected_text}
     ]
 
 
@@ -246,10 +199,22 @@ def test_shows_correct_combination_of_licenses(
     ["disallowed_licenses", "expected_disallowed_licenses_text"],
     [
         (0, None),
-        (1, "One photo can’t be used because it has a CC BY-NC 2.0 license."),
-        (2, "2 photos can’t be used because they have CC BY-NC 2.0 licenses."),
-        (3, "3 photos can’t be used because they have CC BY-NC 2.0 licenses."),
-        (10, "10 photos can’t be used because they have CC BY-NC 2.0 licenses."),
+        (
+            1,
+            "One photo can’t be used because it has a license that Wikimedia Commons doesn’t accept.",
+        ),
+        (
+            2,
+            "2 photos can’t be used because they have licenses that Wikimedia Commons doesn’t accept.",
+        ),
+        (
+            3,
+            "3 photos can’t be used because they have licenses that Wikimedia Commons doesn’t accept.",
+        ),
+        (
+            10,
+            "10 photos can’t be used because they have licenses that Wikimedia Commons doesn’t accept.",
+        ),
     ],
 )
 @pytest.mark.parametrize("restricted", [0, 1])
@@ -310,8 +275,7 @@ def test_shows_correct_message(
             [
                 {
                     "class": "message_disallowed",
-                    "text": expected_disallowed_licenses_text
-                    + " Wikimedia Commons only accepts CC0, CC BY, CC BY-SA, and Public Domain photos that are also public and safe on Flickr.",
+                    "text": expected_disallowed_licenses_text,
                 },
             ]
         )

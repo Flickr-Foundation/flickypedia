@@ -73,7 +73,8 @@ form#prepare_info {
     /* This ensures that a landscape 4:3 photo will display at full size and fill
      * the screen, but portrait images will be resized. */
     &, img {
-      max-height: calc(100vw * 3 / 4);
+      height: calc(100vw * 3 / 4);
+      max-height: 637.5px;
     }
 
     img {
@@ -139,7 +140,6 @@ form#prepare_info {
    * This contains a <dl> with Flickr metadata; no interactive elements.
    */
   .flickr_info {
-    font-size: small;
     margin-top: 4px;
 
     dt {
@@ -285,6 +285,10 @@ form#prepare_info {
       /*when navigating through the items using the arrow keys:*/
       background-color: $pink !important;
       color: #ffffff;
+
+      .secondary {
+        color: $cream;
+      }
     }
   }
 

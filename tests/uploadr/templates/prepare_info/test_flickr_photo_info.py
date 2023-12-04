@@ -112,9 +112,9 @@ class Description(TypedDict):
         },
         # A test for truncation
         {
-            "input": "a" * 150 + " and now we have some words to push us over",
+            "input": "a" * 130 + " and now we have some words to push us over",
             "expected_key": "Description (excerpt):",
-            "expected_value": "a" * 150 + " and now we have some […]",
+            "expected_value": "a" * 130 + " and now we have some […]",
         },
     ],
 )

@@ -18,6 +18,7 @@
     /* This causes the error information to fill all the remaining columns.
      * See https://stackoverflow.com/a/50612664/1558022 */
     grid-column: 2 / -1;
+    max-width: 100%;
 
     dl {
       font-family: monospace;
