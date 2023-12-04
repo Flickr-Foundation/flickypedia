@@ -26,6 +26,7 @@ from flickypedia.apis.structured_data.wikidata import (
 from .views import (
     about,
     bookmarklet,
+    faqs,
     find_matching_categories_api,
     find_matching_languages_api,
     get_photos,
@@ -76,6 +77,7 @@ def create_app(
 
     app.add_url_rule("/about/", view_func=about)
     app.add_url_rule("/bookmarklet/", view_func=bookmarklet)
+    app.add_url_rule("/faqs/", view_func=faqs)
 
     app.add_url_rule("/api/validate_title", view_func=validate_title_api)
     app.add_url_rule(
