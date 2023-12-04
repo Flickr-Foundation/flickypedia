@@ -3,6 +3,10 @@
 {% set title = "Select photos to upload" %}
 {% set page_id = "select_photos" %}
 
+{% block head %}
+  <script src="{{ url_for('static', filename='flickypedia.js') }}"></script>
+{% endblock %}
+
 {% block content %}
   {% include "components/header.html" %}
 
