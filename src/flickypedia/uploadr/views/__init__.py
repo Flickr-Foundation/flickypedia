@@ -26,9 +26,14 @@ def bookmarklet() -> ViewResponse:
     return render_template("bookmarklet.html", current_step=None)
 
 
+def faqs() -> ViewResponse:
+    return render_template("faqs.html", current_step=None)
+
+
 __all__ = [
     "about",
     "bookmarklet",
+    "faqs",
     "find_matching_categories_api",
     "find_matching_languages_api",
     "get_photos",

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% set title = "FAQs" %}
+
+{% set questions = [
+  {
+    "id": "how-do-i-get-my-flickr-photos-on-to-wikimedia-commons",
+    "title": "How do I get my Flickr photos on to Wikimedia Commons?",
+    "text": """
+    <p>
+      Why, using Flickypedia, of course! It's useful to know that Wikimedia Commons only accepts photos with particular, open licenses. If you share your photos using CC BY, CC BY SA, CC0, PDM, or US Government Work licenses, they will show up as options here, in Flickypedia, for people upload to Wikimedia Commons.
+    </p>
+
+    <p>
+      So, if you have a Flickr account, and photographs that suit the Wikimedia Commons subject matter rules—like, no selfies or other personal photos, but photos that have a place as reference works for, e.g., Wikipedia articles)— <strong><em>and</em></strong> you use one of those Creative Commons licenses above, you or someone else will be able to get your Flickr photos on Wikimedia Commons.
+    </p>
+
+    <p>
+      (You can also use the in-built <a href='https://commons.wikimedia.org/wiki/Special:UploadWizard'>Upload Wizard</a> on Wikimedia Commons, if you prefer.)
+    </p>
+    """
+  },
+] %}
+
+{% block head %}
+  <style>
+    .question {
+      margin-top: 3em;
+      margin-bottom: 2em;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+  {% include "components/header.html" %}
+
+  <h1>Frequently Asked Questions</h1>
+
+  <ul id="contents">
+    {% for q in questions %}
+    <li><a href="#{{ q.id }}">{{ q.title }}</a></li>
+    {% endfor %}
+  </ul>
+
+  {% for q in questions %}
+  <div class="question">
+    <h2 id="{{ q.id }}">{{ q.title }} <a href="#{{ q.id }}">#</a></h2>
+
+    {{ q.text|safe }}
+  </div>
+  {% endfor %}
+{% endblock %}

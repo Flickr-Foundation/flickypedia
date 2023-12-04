@@ -4,7 +4,7 @@ from flask.testing import FlaskClient
 def test_can_load_about_page(client: FlaskClient) -> None:
     resp = client.get("/about/")
 
-    assert b"<h2>About Flickypedia</h2>" in resp.data
+    assert b"<h1>About Flickypedia</h1>" in resp.data
 
 
 def test_privacy_policy_links_to_logged_in_users_uploads(
@@ -21,4 +21,10 @@ def test_privacy_policy_links_to_logged_in_users_uploads(
 def test_can_load_bookmarklet(client: FlaskClient) -> None:
     resp = client.get("/bookmarklet/")
 
-    assert b"<h2>Flickypedia bookmarklet</h2>" in resp.data
+    assert b"<h1>Flickypedia bookmarklet</h1>" in resp.data
+
+
+def test_can_load_faqs(client: FlaskClient) -> None:
+    resp = client.get("/faqs/")
+
+    assert b"<h1>Frequently Asked Questions</h1>" in resp.data
