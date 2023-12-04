@@ -29,17 +29,17 @@
   {% if photos.available %}
     <p class="message_available">
       <span class="highlight green">
-        {% if photos.available|length == 1 and all_photos_available %}
+        {%- if photos.available|length == 1 and all_photos_available -%}
           This photo
-        {% elif photos.available|length == 1 %}
+        {%- elif photos.available|length == 1 -%}
           One of these photos
-        {% elif photos.available|length == 2 and all_photos_available %}
+        {%- elif photos.available|length == 2 and all_photos_available -%}
           Both photos
-        {% elif all_photos_available %}
+        {%- elif all_photos_available -%}
           All {{ photos.available|length }} photos
-        {% else %}
+        {%- else -%}
           {{ photos.available|length }} of these photos
-        {% endif %}
+        {%- endif -%}
       </span>
       can be uploaded to Wikimedia Commons.
       Yay!
@@ -49,29 +49,19 @@
   {% if photos.duplicates %}
     <p class="message_duplicate{% if all_photos_duplicates %} all_photos_duplicates{% endif %}">
       {% if photos.duplicates|length == 1 and all_photos_duplicates %}
-        <span class="highlight pink">
-          Your work is done!
-        </span>
+        <span class="highlight pink">Your work is done!</span>
         This photo is
       {% elif photos.duplicates|length == 1 %}
-        <span class="highlight lightgreen">
-          Some of your work is done!
-        </span>
+        <span class="highlight lightgreen">Some of your work is done!</span>
         One photo is
       {% elif photos.duplicates|length == 2 and all_photos_duplicates %}
-        <span class="highlight pink">
-          Your work is done!
-        </span>
+        <span class="highlight pink">Your work is done!</span>
         Both photos are
       {% elif all_photos_duplicates %}
-        <span class="highlight pink">
-          Your work is done!
-        </span>
+        <span class="highlight pink">Your work is done!</span>
         All {{ photos.duplicates|length }} photos are
       {% else %}
-        <span class="highlight lightgreen">
-          Some of your work is done!
-        </span>
+        <span class="highlight lightgreen">Some of your work is done!</span>
         {{ photos.duplicates|length }} photos are
       {% endif %}
       <a href="{{ photos.duplicates.values()|list | link_to_commons }}"> already on Wikimedia Commons</a>.
@@ -81,27 +71,19 @@
 
   {% if photos.disallowed_licenses %}
     <p class="message_disallowed">
-      {% if photos.disallowed_licenses|length == 1 and all_photos_disallowed_licenses %}
-        <span class="highlight red">
+      <span class="highlight red">
+        {%- if photos.disallowed_licenses|length == 1 and all_photos_disallowed_licenses -%}        
           This photo can’t be used
-        </span>
-      {% elif photos.disallowed_licenses|length == 1 %}
-        <span class="highlight red">
+        {%- elif photos.disallowed_licenses|length == 1 -%}
           One photo can’t be used
-        </span>
-      {% elif photos.disallowed_licenses|length == 2 and all_photos_disallowed_licenses %}
-        <span class="highlight red">
+        {%- elif photos.disallowed_licenses|length == 2 and all_photos_disallowed_licenses -%}
           Neither of these photos can be used
-        </span>
-      {% elif all_photos_disallowed_licenses %}
-        <span class="highlight red">
+        {%- elif all_photos_disallowed_licenses -%}
           None of these photos can be used
-        </span>
-      {% else %}
-        <span class="highlight red">
+        {%- else -%}
           {{ photos.disallowed_licenses|length }} photos can’t be used
-        </span>
-      {% endif %}
+        {%- endif -%}
+      </span>
       because
       {% if photos.disallowed_licenses|length == 1 %}
         it has a license
@@ -122,19 +104,15 @@
 
   {% if all_photos_restricted %}
     <p class="message_disallowed">
-      {% if photos.restricted|length == 1 %}
-        <span class="highlight red">
+      <span class="highlight red">
+        {%- if photos.restricted|length == 1 -%}
           This photo can’t be used.
-        </span>
-      {% elif photos.restricted|length == 2 %}
-        <span class="highlight red">
+        {%- elif photos.restricted|length == 2 -%}
           Neither of these photos can be used.
-        </span>
-      {% else %}
-        <span class="highlight red">
+        {%- else -%}
           None of these photos can be used.
-        </span>
-      {% endif %}
+        {%- endif -%}
+      </span>
     </p>
   {% endif %}
 </div>
