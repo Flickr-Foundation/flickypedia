@@ -3,6 +3,10 @@
     margin-bottom: 5px;
   }
 
+  h3 {
+    font-size: 1em;
+  }
+
   form#select_photos {
     ul {
       display: grid;
@@ -105,5 +109,8 @@
   #summary {
     /* Make the numeral bold in "2 photos selected" */
     .count { font-weight: bold; }
+
+    /* Add some space between "2 photos selected" and the "Prepare Info" button */
+    #selectedPhotosSummary { margin-right: 5px; }
   }
 }
