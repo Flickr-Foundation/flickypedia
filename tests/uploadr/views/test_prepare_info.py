@@ -285,8 +285,8 @@ class TestLanguageSelection:
         # A description which is comfortably over the target length, truncated
         # just before a line break.
         (
-            "a" * 115 + " and now we have\nsome words to push us towards the end",
-            {"text": "a" * 115 + " and now we have", "truncated": True},
+            "a" * 130 + " and now we have\nsome words to push us towards the end",
+            {"text": "a" * 130 + " and now we have", "truncated": True},
         ),
         # A description which is comfortably over the target length, truncated
         # well after a line break.
