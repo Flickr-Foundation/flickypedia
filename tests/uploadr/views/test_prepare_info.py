@@ -53,9 +53,7 @@ def test_renders_form_for_single_photo(
 
     assert b"1 of 1" in resp.data
 
-    assert "please set the language you’ll be using to write your caption:" in minify(
-        resp.data
-    )
+    assert "please choose your language:" in minify(resp.data)
     assert "please add a title and short caption" in minify(resp.data)
 
 
@@ -80,9 +78,7 @@ def test_renders_form_for_multiple_photo(
     assert b"1 of 2" in resp.data
     assert b"2 of 2" in resp.data
 
-    assert "please set the language you’ll be using to write your captions:" in minify(
-        resp.data
-    )
+    assert "please choose your language:" in minify(resp.data)
     assert "please add titles and captions for each photo" in minify(resp.data)
 
 
@@ -262,12 +258,12 @@ class TestLanguageSelection:
     ["original", "truncated"],
     [
         # A description which is split across many lines
-        ("1\n2\n3\n4\n5\n6\n7\n", {"text": "1\n2\n3\n4\n5", "truncated": True}),
+        ("1\n2\n3\n4\n5\n6\n7\n", {"text": "1\n2\n3\n4", "truncated": True}),
         # A description which is split across many lines, and where even
         # the first five lines need truncating.
         (
-            ("abcdefghi " * 140 + "\n") * 10,
-            {"text": "abcdefghi " * 16 + "abcdefghi", "truncated": True},
+            ("abcdefghi " * 110 + "\n") * 10,
+            {"text": "abcdefghi " * 14 + "abcdefghi", "truncated": True},
         ),
         # A description which is short enough to be returned unmodified
         (
@@ -275,25 +271,25 @@ class TestLanguageSelection:
             {"text": "A blue train in a green field", "truncated": False},
         ),
         # A description which is around the target length
-        ("a" * 161, {"text": "a" * 161, "truncated": False}),
-        ("a" * 170, {"text": "a" * 170, "truncated": False}),
+        ("a" * 121, {"text": "a" * 121, "truncated": False}),
+        ("a" * 130, {"text": "a" * 130, "truncated": False}),
         # A description which is comfortably over the target length, truncated
         # at the right word.
         (
-            "a" * 150 + " and now we have some words to push us towards the end",
-            {"text": "a" * 150 + " and now we have some", "truncated": True},
+            "a" * 110 + " and now we have some words to push us towards the end",
+            {"text": "a" * 110 + " and now we have some", "truncated": True},
         ),
         # A description which is comfortably over the target length, truncated
         # just before a line break.
         (
-            "a" * 150 + " and now we have\nsome words to push us towards the end",
-            {"text": "a" * 150 + " and now we have", "truncated": True},
+            "a" * 110 + " and now we have\nsome words to push us towards the end",
+            {"text": "a" * 110 + " and now we have", "truncated": True},
         ),
         # A description which is comfortably over the target length, truncated
         # well after a line break.
         (
-            "a" * 140 + " and now we have\nsome words to push us towards the end",
-            {"text": "a" * 140 + " and now we have\nsome words to", "truncated": True},
+            "a" * 110 + " and now we have\nsome words to push us towards the end",
+            {"text": "a" * 110 + " and now we have\nsome words to", "truncated": True},
         ),
     ],
 )

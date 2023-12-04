@@ -316,7 +316,7 @@ def truncate_description(d: str) -> TruncationResult:
     # make sure we don't display a silly number of lines.
     if len(d.splitlines()) > 4:
         return {
-            "text": truncate_description("\n".join(d.splitlines()[:5]))["text"],
+            "text": truncate_description("\n".join(d.splitlines()[:4]))["text"],
             "truncated": True,
         }
 
