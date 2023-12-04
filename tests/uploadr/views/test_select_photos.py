@@ -253,7 +253,7 @@ def test_you_cant_select_a_restricted_image(
 
     resp = logged_in_client.get(f"/select_photos?flickr_url={flickr_url}")
 
-    assert "This photo can’t be used." in resp.data.decode("utf8")
+    assert "This photo can’t be used" in resp.data.decode("utf8")
 
 
 def test_removes_api_cache_if_no_available_photos(
