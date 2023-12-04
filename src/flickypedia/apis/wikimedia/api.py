@@ -617,6 +617,6 @@ class WikimediaApi:
                 "title": f"File:{filename}",
                 "nocreate": "true",
                 "summary": "Flickypedia edit (null edit; force re-render of {{Information}} template with new structured data)",
-                "appendtext": "\n",
+                "appendtext": "\n<!-- Null edit to force re-render of {{Information}} template -->",
             }
         )
