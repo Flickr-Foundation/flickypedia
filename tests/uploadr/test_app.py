@@ -6,7 +6,7 @@ import pytest
 
 def test_homepage(client: FlaskClient) -> None:
     resp = client.get("/")
-    assert b"Flickypedia helps you put Flickr photos in Wikimedia Commons" in resp.data
+    assert b"Flickypedia helps you put Flickr photos on Wikimedia Commons" in resp.data
 
     assert b"Log in" in resp.data
     assert b"to Wikimedia Commons" in resp.data
