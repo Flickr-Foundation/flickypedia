@@ -314,7 +314,7 @@ def truncate_description(d: str) -> TruncationResult:
     """
     # Heuristic #1: because we preserve line breaks in the description,
     # make sure we don't display a silly number of lines.
-    if len(d.splitlines()) > 5:
+    if len(d.splitlines()) > 4:
         return {
             "text": truncate_description("\n".join(d.splitlines()[:5]))["text"],
             "truncated": True,
@@ -323,7 +323,7 @@ def truncate_description(d: str) -> TruncationResult:
     # Heuristic #2: try to cut it about a target number of characters.
     #
     # The target length is a loose number, not a hard upper limit.
-    target_length = 160
+    target_length = 140
 
     # If we're already under the target length, we're already good.
     #
