@@ -1,23 +1,24 @@
-<!-- TODO: Tighten up the whitespace in this component -->
-
 <div class="which_photos_can_be_uploaded">
   {% set
       all_photos_available =
       photos.available
       and not photos.disallowed_licenses
-      and not photos.duplicates %}
+      and not photos.duplicates
+      and not photos.restricted %}
 
   {% set
       all_photos_duplicates =
       photos.duplicates
       and not photos.available
-      and not photos.disallowed_licenses %}
+      and not photos.disallowed_licenses
+      and not photos.restricted %}
 
   {% set
       all_photos_disallowed_licenses =
       photos.disallowed_licenses
       and not photos.duplicates
-      and not photos.available %}
+      and not photos.available
+      and not photos.restricted %}
 
   {% set
       all_photos_restricted =
@@ -26,53 +27,10 @@
       and not photos.duplicates
       and not photos.disallowed_licenses %}
 
-  {% if photos.available %}
-    <p class="message_available">
-      <span class="highlight green">
-        {%- if photos.available|length == 1 and all_photos_available -%}
-          This photo
-        {%- elif photos.available|length == 1 -%}
-          One of these photos
-        {%- elif photos.available|length == 2 and all_photos_available -%}
-          Both photos
-        {%- elif all_photos_available -%}
-          All {{ photos.available|length }} photos
-        {%- else -%}
-          {{ photos.available|length }} of these photos
-        {%- endif -%}
-      </span>
-      can be uploaded to Wikimedia Commons.
-      Yay!
-    </p>
-  {% endif %}
-
-  {% if photos.duplicates %}
-    <p class="message_duplicate{% if all_photos_duplicates %} all_photos_duplicates{% endif %}">
-      {% if photos.duplicates|length == 1 and all_photos_duplicates %}
-        <span class="highlight pink">Your work is done!</span>
-        This photo is
-      {% elif photos.duplicates|length == 1 %}
-        <span class="highlight lightgreen">Some of your work is done!</span>
-        One photo is
-      {% elif photos.duplicates|length == 2 and all_photos_duplicates %}
-        <span class="highlight pink">Your work is done!</span>
-        Both photos are
-      {% elif all_photos_duplicates %}
-        <span class="highlight pink">Your work is done!</span>
-        All {{ photos.duplicates|length }} photos are
-      {% else %}
-        <span class="highlight lightgreen">Some of your work is done!</span>
-        {{ photos.duplicates|length }} photos are
-      {% endif %}
-      <a href="{{ photos.duplicates.values()|list | link_to_commons }}"> already on Wikimedia Commons</a>.
-      W00t!
-    </p>
-  {% endif %}
-
   {% if photos.disallowed_licenses %}
     <p class="message_disallowed">
       <span class="highlight red">
-        {%- if photos.disallowed_licenses|length == 1 and all_photos_disallowed_licenses -%}        
+        {%- if photos.disallowed_licenses|length == 1 and all_photos_disallowed_licenses -%}
           This photo can’t be used
         {%- elif photos.disallowed_licenses|length == 1 -%}
           One photo can’t be used
@@ -93,26 +51,70 @@
       that Wikimedia Commons doesn’t accept.
     </p>
   {% endif %}
-
-  {#
-    We don't want to acknowledge the existence of restricted photos -- if
-    there are other photos in the mix, we show the user those messages instead.
-
-    This is only for the case where every/the only image is restricted,
-    in which case we need to provide some sort of explanation.
-  #}
-
-  {% if all_photos_restricted %}
-    <p class="message_disallowed">
+  
+  {% if photos.restricted %}
+    <p class="message_restricted">
       <span class="highlight red">
-        {%- if photos.restricted|length == 1 -%}
-          This photo can’t be used.
-        {%- elif photos.restricted|length == 2 -%}
-          Neither of these photos can be used.
+        {%- if photos.restricted|length == 1 and all_photos_restricted -%}
+          This photo can’t be used
+        {%- elif photos.restricted|length == 1 -%}
+          One photo can’t be used
+        {%- elif photos.restricted|length == 2 and all_photos_restricted -%}
+          Neither of these photos can be used
+        {%- elif all_photos_restricted -%}
+          None of these photos can be used
         {%- else -%}
-          None of these photos can be used.
+          {{ photos.restricted|length }} photos can’t be used
         {%- endif -%}
       </span>
+      because 
+      {% if photos.restricted|length > 1 %}
+        they’re
+      {% else %}
+        it’s
+      {% endif %}
+      not set as Safe on Flickr.
+    </p>
+  {% endif %}
+
+  {% if photos.duplicates %}
+    <p class="message_duplicate{% if all_photos_duplicates %} all_photos_duplicates{% endif %}">
+      {% if photos.duplicates|length == 1 and all_photos_duplicates %}
+        <span class="highlight pink">Your work is done!</span>
+        This photo is already
+      {% elif photos.duplicates|length == 1 %}
+        <span class="highlight lightgreen">One photo is already up</span>
+      {% elif photos.duplicates|length == 2 and all_photos_duplicates %}
+        <span class="highlight pink">Your work is done!</span>
+        Both photos are already
+      {% elif all_photos_duplicates %}
+        <span class="highlight pink">Your work is done!</span>
+        All {{ photos.duplicates|length }} photos are already
+      {% else %}
+        <span class="highlight lightgreen">{{ photos.duplicates|length }} photos are already up</span>
+      {% endif %}
+      <a href="{{ photos.duplicates.values()|list | link_to_commons }}">on Wikimedia Commons</a>.
+      Nice.
+    </p>
+  {% endif %}
+
+  {% if photos.available %}
+    <p class="message_available">
+      <span class="highlight green">
+        {%- if photos.available|length == 1 and all_photos_available -%}
+          This photo
+        {%- elif photos.available|length == 1 -%}
+          The photo below
+        {%- elif photos.available|length == 2 and all_photos_available -%}
+          Both photos
+        {%- elif all_photos_available -%}
+          All {{ photos.available|length }} photos
+        {%- else -%}
+          The {{ photos.available|length }} photos below
+        {%- endif -%}
+      </span>
+      can be uploaded.
+      Go for it!
     </p>
   {% endif %}
 </div>

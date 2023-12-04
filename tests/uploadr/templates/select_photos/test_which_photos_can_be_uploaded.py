@@ -36,10 +36,10 @@ def get_paragraphs(html: str) -> list[ParagraphData]:
 @pytest.mark.parametrize(
     ["count", "expected_text"],
     [
-        (1, "This photo can be uploaded to Wikimedia Commons. Yay!"),
-        (2, "Both photos can be uploaded to Wikimedia Commons. Yay!"),
-        (3, "All 3 photos can be uploaded to Wikimedia Commons. Yay!"),
-        (10, "All 10 photos can be uploaded to Wikimedia Commons. Yay!"),
+        (1, "This photo can be uploaded. Go for it!"),
+        (2, "Both photos can be uploaded. Go for it!"),
+        (3, "All 3 photos can be uploaded. Go for it!"),
+        (10, "All 10 photos can be uploaded. Go for it!"),
     ],
 )
 def test_shows_correct_message_when_all_available(
@@ -67,12 +67,18 @@ def test_shows_correct_message_when_all_available(
 @pytest.mark.parametrize(
     ["count", "expected_text"],
     [
-        (1, "Your work is done! This photo is already on Wikimedia Commons. W00t!"),
-        (2, "Your work is done! Both photos are already on Wikimedia Commons. W00t!"),
-        (3, "Your work is done! All 3 photos are already on Wikimedia Commons. W00t!"),
+        (1, "Your work is done! This photo is already on Wikimedia Commons. Nice."),
+        (
+            2,
+            "Your work is done! Both photos are already on Wikimedia Commons. Nice.",
+        ),
+        (
+            3,
+            "Your work is done! All 3 photos are already on Wikimedia Commons. Nice.",
+        ),
         (
             10,
-            "Your work is done! All 10 photos are already on Wikimedia Commons. W00t!",
+            "Your work is done! All 10 photos are already on Wikimedia Commons. Nice.",
         ),
     ],
 )
@@ -141,10 +147,19 @@ def test_shows_correct_message_when_all_disallowed(
 @pytest.mark.parametrize(
     ["count", "expected_text"],
     [
-        (1, "This photo can’t be used."),
-        (2, "Neither of these photos can be used."),
-        (3, "None of these photos can be used."),
-        (10, "None of these photos can be used."),
+        (1, "This photo can’t be used because it’s not set as Safe on Flickr."),
+        (
+            2,
+            "Neither of these photos can be used because they’re not set as Safe on Flickr.",
+        ),
+        (
+            3,
+            "None of these photos can be used because they’re not set as Safe on Flickr.",
+        ),
+        (
+            10,
+            "None of these photos can be used because they’re not set as Safe on Flickr.",
+        ),
     ],
 )
 def test_shows_correct_message_when_all_restricted(
@@ -159,7 +174,7 @@ def test_shows_correct_message_when_all_restricted(
     )
 
     assert get_paragraphs(html) == [
-        {"class": "message_disallowed", "text": expected_text}
+        {"class": "message_restricted", "text": expected_text}
     ]
 
 
@@ -167,10 +182,10 @@ def test_shows_correct_message_when_all_restricted(
     ["available", "expected_available_text"],
     [
         (0, None),
-        (1, "One of these photos can be uploaded to Wikimedia Commons. Yay!"),
-        (2, "2 of these photos can be uploaded to Wikimedia Commons. Yay!"),
-        (3, "3 of these photos can be uploaded to Wikimedia Commons. Yay!"),
-        (10, "10 of these photos can be uploaded to Wikimedia Commons. Yay!"),
+        (1, "The photo below can be uploaded. Go for it!"),
+        (2, "The 2 photos below can be uploaded. Go for it!"),
+        (3, "The 3 photos below can be uploaded. Go for it!"),
+        (10, "The 10 photos below can be uploaded. Go for it!"),
     ],
 )
 @pytest.mark.parametrize(
@@ -179,19 +194,19 @@ def test_shows_correct_message_when_all_restricted(
         (0, None),
         (
             1,
-            "Some of your work is done! One photo is already on Wikimedia Commons. W00t!",
+            "One photo is already up on Wikimedia Commons. Nice.",
         ),
         (
             2,
-            "Some of your work is done! 2 photos are already on Wikimedia Commons. W00t!",
+            "2 photos are already up on Wikimedia Commons. Nice.",
         ),
         (
             3,
-            "Some of your work is done! 3 photos are already on Wikimedia Commons. W00t!",
+            "3 photos are already up on Wikimedia Commons. Nice.",
         ),
         (
             10,
-            "Some of your work is done! 10 photos are already on Wikimedia Commons. W00t!",
+            "10 photos are already up on Wikimedia Commons. Nice.",
         ),
     ],
 )
@@ -217,7 +232,15 @@ def test_shows_correct_message_when_all_restricted(
         ),
     ],
 )
-@pytest.mark.parametrize("restricted", [0, 1])
+@pytest.mark.parametrize(
+    ["restricted", "expected_restricted_text"],
+    [
+        (0, None),
+        (1, "One photo can’t be used because it’s not set as Safe on Flickr."),
+        (5, "5 photos can’t be used because they’re not set as Safe on Flickr."),
+        (10, "10 photos can’t be used because they’re not set as Safe on Flickr."),
+    ],
+)
 def test_shows_correct_message(
     app: Flask,
     available: int,
@@ -227,14 +250,16 @@ def test_shows_correct_message(
     expected_available_text: str,
     expected_duplicate_text: str,
     expected_disallowed_licenses_text: str,
+    expected_restricted_text: str,
 ) -> None:
     # This test is explicitly for cases where we have a mixed collection
     # of photos; any time the parameters give us a single type of photo,
     # we want to skip.
     if (
-        (available == 0 and duplicates == 0)
-        or (duplicates == 0 and disallowed_licenses == 0)
-        or (disallowed_licenses == 0 and available == 0)
+        [available, duplicates, disallowed_licenses] == [0, 0, 0]
+        or [duplicates, disallowed_licenses, restricted] == [0, 0, 0]
+        or [disallowed_licenses, restricted, available] == [0, 0, 0]
+        or [restricted, available, duplicates] == [0, 0, 0]
     ):
         pytest.skip("invalid parameter combination")
 
@@ -255,12 +280,19 @@ def test_shows_correct_message(
 
     expected = []
 
-    if available > 0:
-        expected.append(
-            {
-                "class": "message_available",
-                "text": expected_available_text,
-            }
+    if disallowed_licenses > 0:
+        expected.extend(
+            [
+                {
+                    "class": "message_disallowed",
+                    "text": expected_disallowed_licenses_text,
+                },
+            ]
+        )
+
+    if restricted > 0:
+        expected.extend(
+            [{"class": "message_restricted", "text": expected_restricted_text}]
         )
 
     if duplicates > 0:
@@ -270,14 +302,12 @@ def test_shows_correct_message(
             ]
         )
 
-    if disallowed_licenses > 0:
-        expected.extend(
-            [
-                {
-                    "class": "message_disallowed",
-                    "text": expected_disallowed_licenses_text,
-                },
-            ]
+    if available > 0:
+        expected.append(
+            {
+                "class": "message_available",
+                "text": expected_available_text,
+            }
         )
 
     assert get_paragraphs(html) == expected
