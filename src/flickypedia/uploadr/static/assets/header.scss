@@ -2,6 +2,8 @@ header {
   display: grid;
   grid-template-columns: 1fr 30px auto;
   grid-gap: 10px;
+  margin-top:   10px;
+  margin-bottom: 6px;
 
   &, div {
     height: 80px;
