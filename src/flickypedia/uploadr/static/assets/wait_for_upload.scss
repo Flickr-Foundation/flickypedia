@@ -2,6 +2,8 @@ ul.upload_progress {
   display: grid;
   grid-gap: 2em;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  margin-bottom: 4em;
+  margin-top: 2em;
 
   li {
     display: inline-block;

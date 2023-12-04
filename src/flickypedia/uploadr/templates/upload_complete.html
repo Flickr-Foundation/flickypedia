@@ -33,16 +33,16 @@
     <p>
       {% set all_photos_failed = failed_requests and not successful_requests %}
 
-      <span class="highlight red">
-        {% if all_photos_failed and failed_requests|length == 1 %}
+      <span class="highlight red" style="margin-right: 0;">
+        {%- if all_photos_failed and failed_requests|length == 1 -%}
           Your photo didn’t upload
-        {% elif all_photos_failed and failed_requests|length == 2 %}
+        {%- elif all_photos_failed and failed_requests|length == 2 -%}
           Neither of your photos uploaded
-        {% elif all_photos_failed %}
+        {%- elif all_photos_failed -%}
           None of your photos uploaded
-        {% else %}
+        {%- else -%}
           {{ failed_requests|length }} of your photos didn’t upload
-        {% endif %}
+        {%- endif -%}
       </span>
       We recommend you try uploading {% if failed_requests|length > 1 %}them{% else %}it{% endif %} again later.
       You can make a copy of the title{% if failed_requests|length > 1 %}s{% endif %} and caption{% if failed_requests|length > 1 %}s{% endif %} you wrote for your next attempt.
