@@ -197,6 +197,10 @@ ul.two_column_actions {
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;
 
+  @media screen and (max-width: 500px) {
+    grid-template-columns: auto;
+  }
+
   li {
     text-align: center;
   }
