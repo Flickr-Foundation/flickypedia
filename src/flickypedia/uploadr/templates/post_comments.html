@@ -21,7 +21,12 @@
         We’ll post on your behalf as Flickypedia Bot.
       </p>
     {% else %}
-      LOGGED IN AS USER
+      {% with token = current_user.flickr_token() %}
+        <img src="{{ url_for('buddy_icon', user_id=token.user_nsid) }}">
+        <p>
+          You’re logged into Flickr as {{ token.fullname or token.username }}.
+        </p>
+      {% endwith %}
     {% endif %}
   </div>
 

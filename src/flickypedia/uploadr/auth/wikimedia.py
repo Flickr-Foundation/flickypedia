@@ -80,8 +80,9 @@ from flask_sqlalchemy import SQLAlchemy
 import httpx
 
 from flickypedia.apis.wikimedia import WikimediaApi
+from flickypedia.types import FlickrOAuthToken
 from flickypedia.types.views import ViewResponse
-from flickypedia.utils import decrypt_string, encrypt_string
+from flickypedia.utils import decrypt_string, encrypt_string, validate_typeddict
 
 
 user_db = SQLAlchemy()
@@ -214,10 +215,19 @@ class WikimediaUserSession(UserMixin, user_db.Model):  # type: ignore
         """
         Store the credentials for a Flickr user authorising with the db.
         """
+        validate_typeddict(token, model=FlickrOAuthToken)
         self.encrypted_flickr_token = encrypt_string(
             key=session[SESSION_ENCRYPTION_KEY], plaintext=json.dumps(token)
         )
         user_db.session.commit()
+
+    def flickr_token(self) -> FlickrOAuthToken:
+        """
+        Returns the user's Flickr OAuth token.
+        """
+        return json.loads(decrypt_string(
+            key=session[SESSION_ENCRYPTION_KEY], ciphertext=self.encrypted_flickr_token
+        ))
 
     def delete(self) -> None:
         """
