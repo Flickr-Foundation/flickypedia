@@ -105,12 +105,30 @@ def store_flickypedia_user_oauth_token() -> None:
         print(f"You logged in as {username!r}!", file=sys.stderr)
         sys.exit(1)
 
-    keyring.set_password("flickypedia", "oauth_token", json.dumps(client.token))
+    keyring.set_password("flickypedia.bot", "oauth_token", json.dumps(client.token))
 
     print("Successfully stored an OAuth token for the Flickypedia bot user!")
     print()
     print("You can access this token like so:")
     print()
     print("     import keyring")
-    print("     keyring.get_password('flickypedia', 'oauth_token')")
+    print("     keyring.get_password('flickypedia.bot', 'oauth_token')")
     print()
+
+
+def get_flickypedia_bot_oauth_client() -> OAuth1Client:
+    """
+    Creates an OAuth1Client which is authorised to post comments to the
+    Flickr API as the Flickypedia bot user.
+    """
+    api_key = get_required_password("flickypedia", "api_key")
+    api_secret = get_required_password("flickypedia", "api_secret")
+    stored_token = json.loads(get_required_password("flickypedia.bot", "oauth_token"))
+
+    client = OAuth1Client(
+        client_id=api_key, client_secret=api_secret, signature_type="QUERY",
+        token=stored_token['oauth_token'],
+        token_secret=stored_token['oauth_token_secret']
+    )
+
+    return client

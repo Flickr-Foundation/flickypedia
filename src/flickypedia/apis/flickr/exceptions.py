@@ -20,3 +20,8 @@ class ResourceNotFound(FlickrApiException):
 class LicenseNotFound(FlickrApiException):
     def __init__(self, license_id: str):
         super().__init__(f"Unable to find license with ID {license_id}")
+
+
+class InsufficientPermissionsToComment(FlickrApiException):
+    def __init__(self):
+        super().__init__(f"Insufficient permissions to comment on this photo")
