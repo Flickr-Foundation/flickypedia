@@ -10,7 +10,9 @@ import sass
 from .auth import (
     login,
     logout,
+    oauth2_authorize_flickr,
     oauth2_authorize_wikimedia,
+    oauth2_callback_flickr,
     oauth2_callback_wikimedia,
     user_db,
 )
@@ -70,6 +72,9 @@ def create_app(
     app.add_url_rule("/logout", view_func=logout)
     app.add_url_rule("/authorize/wikimedia", view_func=oauth2_authorize_wikimedia)
     app.add_url_rule("/callback/wikimedia", view_func=oauth2_callback_wikimedia)
+
+    app.add_url_rule("/authorize/flickr", view_func=oauth2_authorize_flickr)
+    app.add_url_rule("/callback/flickr", view_func=oauth2_callback_flickr)
 
     app.add_url_rule("/get_photos", view_func=get_photos, methods=["GET", "POST"])
     app.add_url_rule("/select_photos", view_func=select_photos, methods=["GET", "POST"])
