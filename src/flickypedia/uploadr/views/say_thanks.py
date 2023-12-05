@@ -20,6 +20,8 @@ def get_completed_task(task_id: str):
 
 @login_required
 def say_thanks(task_id: str) -> ViewResponse:
-    task = get_completed_task(task_id)
+    get_completed_task(task_id)
 
-    return render_template("say_thanks.html", current_step="say_thanks", task_id=task_id)
+    return render_template(
+        "say_thanks.html", current_step="say_thanks", task_id=task_id
+    )

@@ -1,7 +1,6 @@
 from flask import abort, jsonify, render_template, request, url_for
 from flask_login import current_user, login_required
 
-from ..uploads import uploads_queue
 from .say_thanks import get_completed_task
 from ._types import ViewResponse
 
@@ -23,7 +22,7 @@ def post_comments(task_id: str) -> ViewResponse:
         current_step="say_thanks",
         task=task,
         successful_requests=successful_requests,
-        api_url=url_for("post_bot_comment_api")
+        api_url=url_for("post_bot_comment_api"),
     )
 
 
@@ -46,6 +45,8 @@ def post_bot_comment_api() -> ViewResponse:
 
     wikimedia_page_title = task["task_output"][photo_id]["title"]
 
-    comment_id = post_bot_comment(user=current_user, photo_id=photo_id, wikimedia_page_title=wikimedia_page_title)
+    comment_id = post_bot_comment(
+        user=current_user, photo_id=photo_id, wikimedia_page_title=wikimedia_page_title
+    )
 
     return jsonify({"comment_id": comment_id})

@@ -2,7 +2,6 @@
 This file has some code for posting comments to Flickr.
 """
 
-import pathlib
 import textwrap
 import xml.etree.ElementTree as ET
 
@@ -11,7 +10,7 @@ import httpx
 from flickypedia.uploadr.auth import WikimediaUserSession
 from flickypedia.uploadr.auth.flickr import get_flickypedia_bot_oauth_client
 from flickypedia.utils import find_required_elem
-from .exceptions import InsufficientPermissionsToComment
+from .exceptions import FlickrApiException, InsufficientPermissionsToComment
 
 
 class FlickrCommentsApi:
@@ -29,8 +28,8 @@ class FlickrCommentsApi:
             params={
                 "method": "flickr.photos.comments.addComment",
                 "photo_id": photo_id,
-                "comment_text": comment_text
-            }
+                "comment_text": comment_text,
+            },
         )
 
         # Note: the xml.etree.ElementTree is not secure against maliciously
@@ -65,16 +64,20 @@ def get_bot_comment_text(user: WikimediaUserSession, wikimedia_page_title: str) 
     """
     Creates the comment posted by Flickypedia Bot.
     """
-    return textwrap.dedent(f"""
+    return textwrap.dedent(
+        f"""
         Hi, I’m <a href="https://www.flickr.com/people/flickypedia">Flickypedia Bot</a>.
 
         A Wikimedia Commons user named <a href="{user.profile_url}">{user.name}</a> has uploaded your photo to <a href="https://commons.wikimedia.org/wiki/Main_Page">Wikimedia Commons</a>.
 
         <a href="https://commons.wikimedia.org/wiki/{wikimedia_page_title}">Would you like to see</a>? We hope you like it!
-    """).strip()
+    """
+    ).strip()
 
 
-def post_bot_comment(user: WikimediaUserSession, photo_id: str, wikimedia_page_title: str):
+def post_bot_comment(
+    user: WikimediaUserSession, photo_id: str, wikimedia_page_title: str
+):
     """
     Post a comment as Flickypedia bot.
 
