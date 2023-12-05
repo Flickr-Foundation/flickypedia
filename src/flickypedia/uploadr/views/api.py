@@ -69,6 +69,7 @@ def find_matching_languages(query: str) -> list[LanguageMatch]:
     return result
 
 
+@login_required
 def find_matching_languages_api() -> ViewResponse:
     """
     A basic API for looking up matching languages that can be called
