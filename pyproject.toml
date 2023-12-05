@@ -63,20 +63,6 @@ filterwarnings = [
   # When we upgrade to a version of flask-login that includes
   # this fix (>0.6.2), we can remove this filter.
   "ignore::DeprecationWarning:flask_login*:",
-
-  # This hides a deprecation warnings in python-dateutil on Python 3.12:
-  #
-  #     DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated
-  #     and scheduled for removal in a future version. Use timezone-aware objects
-  #     to represent datetimes in UTC:
-  #     datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
-  #
-  # There's a fix for this in python-dateutil, but there's no new version yet:
-  # https://github.com/dateutil/dateutil/issues/1284
-  #
-  # When we upgrade to a version of python-dateutil that includes
-  # this fix (>2.8.2), we can remove this filter.
-  "ignore::DeprecationWarning:dateutil*:",
 ]
 
 [tool.mypy]
