@@ -41,10 +41,20 @@ def create_wikitext(
     # here, because it'll be populated by the structured data.
     # See https://commons.wikimedia.org/wiki/Template:Information
     # fmt: off
-    information = (
-        "=={{int:filedesc}}==\n"
-        "{{Information}}"
-    )
+    if photo['tags']:
+        tag_text = '|'.join(photo['tags'])
+        information = (
+            "=={{int:filedesc}}==\n"
+            "{{Information\n"
+            "|other fields=\n"
+            "{{Flickr Tags 2|%s}}\n"
+            "}}"
+        ) % tag_text
+    else:
+        information = (
+            "=={{int:filedesc}}==\n"
+            "{{Information}}"
+        )
     # fmt: on
 
     # If there's location information on the photo, there'll be location
