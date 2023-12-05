@@ -122,7 +122,7 @@ class PrepareInfoFormBase(FlaskForm):
     def language(self) -> str:
         if self.js_enabled.data:
             language = self.get_js_language()
-            if language is None:
+            if language is None:  # pragma: no cover
                 raise ValidationError
             return language["id"]
         else:
