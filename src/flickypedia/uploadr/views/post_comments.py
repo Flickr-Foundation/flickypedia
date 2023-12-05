@@ -32,7 +32,6 @@ def post_comments(task_id: str) -> ViewResponse:
         user=user,
         task=task,
         api_url=url_for("post_bot_comment_api"),
-        user=user,
     )
 
 
