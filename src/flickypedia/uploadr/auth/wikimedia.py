@@ -225,9 +225,12 @@ class WikimediaUserSession(UserMixin, user_db.Model):  # type: ignore
         """
         Returns the user's Flickr OAuth token.
         """
-        return json.loads(decrypt_string(
-            key=session[SESSION_ENCRYPTION_KEY], ciphertext=self.encrypted_flickr_token
-        ))
+        stored_token = decrypt_string(
+            key=session[SESSION_ENCRYPTION_KEY],
+            ciphertext=self.encrypted_flickr_token,
+        )
+
+        return validate_typeddict(json.loads(stored_token), model=FlickrOAuthToken)
 
     def delete(self) -> None:
         """

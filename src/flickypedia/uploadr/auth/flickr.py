@@ -2,18 +2,11 @@ import json
 import sys
 from xml.etree import ElementTree as ET
 
-from authlib.integrations.flask_client import OAuth
 from authlib.integrations.httpx_client import OAuth1Client
-from authlib.integrations.requests_client import OAuth1Session
-from authlib.integrations.requests_client.oauth1_session import OAuth1Auth as ROauth1AuthR
-from authlib.integrations.httpx_client.oauth1_client import OAuth1Auth
-from authlib.oauth1.rfc5849.client_auth import ClientAuth
 import click
 from flask import abort, redirect, request, session, url_for
 from flask_login import current_user, login_required
 import keyring
-
-from requests_oauthlib import OAuth1Session
 
 from flickypedia.types.views import ViewResponse
 from flickypedia.utils import (
@@ -21,55 +14,6 @@ from flickypedia.utils import (
     find_required_text,
     get_required_password,
 )
-
-
-class FixedClientAuth(ROauth1AuthR):
-    def sign(self, method, uri, headers, body):
-        from authlib.oauth1.rfc5849.client_auth import generate_nonce, generate_timestamp
-
-        print(f"@@AWLC entering this method {method} {uri} {headers} {body}")
-        """Sign the HTTP request, add OAuth parameters and signature.
-
-        :param method: HTTP method of the request.
-        :param uri:  URI of the HTTP request.
-        :param body: Body payload of the HTTP request.
-        :param headers: Headers of the HTTP request.
-        :return: uri, headers, body
-        """
-        nonce = generate_nonce()
-        timestamp = generate_timestamp()
-        if body is None:
-            body = b''
-
-        # transform int to str
-        timestamp = str(timestamp)
-
-        if headers is None:
-            headers = {}
-
-        oauth_params = self.get_oauth_params(nonce, timestamp)
-
-        # https://datatracker.ietf.org/doc/html/draft-eaton-oauth-bodyhash-00.html
-        # include oauth_body_hash
-        if body and headers.get('Content-Type') != CONTENT_TYPE_FORM_URLENCODED:
-            oauth_body_hash = base64.b64encode(hashlib.sha1(body).digest())
-            oauth_params.append(('oauth_body_hash', oauth_body_hash.decode('utf-8')))
-
-        # uri, headers, body = self._render(uri, headers, body, oauth_params)
-
-        sig = self.get_oauth_signature(method, uri, headers, body)
-        oauth_params.append(('oauth_signature', sig))
-
-        uri, headers, body = self._render(uri, headers, body, oauth_params)
-        return uri, headers, body
-
-
-class FixedOAuth1Client(OAuth1Client):
-    auth_class = FixedClientAuth
-
-
-class FixedOAuth1Session(OAuth1Session):
-    auth_class = FixedClientAuth
 
 
 def store_flickypedia_user_oauth_token() -> None:
@@ -205,7 +149,7 @@ def oauth2_authorize_flickr() -> ViewResponse:
     """
     # Where should the user be redirected when they've logged into Flickr?
     try:
-        next_url = request.args['next_url']
+        next_url = request.args["next_url"]
     except KeyError:
         abort(400)
 
@@ -223,17 +167,17 @@ def oauth2_authorize_flickr() -> ViewResponse:
     # Note: we could put the next_url parameter in here, but this
     # causes issues with the OAuth 1.0a signatures, so I'm passing that
     # in the Flask session instead.
-    redirect_url = url_for('oauth2_callback_flickr', _external=True)
+    redirect_url = url_for("oauth2_callback_flickr", _external=True)
 
     request_token_resp = client.fetch_request_token(
         url="https://www.flickr.com/services/oauth/request_token",
-        params={"oauth_callback":redirect_url }
+        params={"oauth_callback": redirect_url},
     )
 
     request_token = request_token_resp["oauth_token"]
 
-    session['flickr_oauth_next_url'] = next_url
-    session['flickr_oauth_request_token'] = json.dumps(request_token_resp)
+    session["flickr_oauth_next_url"] = next_url
+    session["flickr_oauth_request_token"] = json.dumps(request_token_resp)
 
     # Step 2: Getting the User Authorization
     #
@@ -258,15 +202,15 @@ def oauth2_callback_flickr() -> ViewResponse:
     api_secret = get_required_password("flickypedia", "api_secret")
 
     try:
-        request_token = json.loads(session.pop('flickr_oauth_request_token'))
+        request_token = json.loads(session.pop("flickr_oauth_request_token"))
     except ValueError:
         abort(400)
 
     client = OAuth1Client(
         client_id=api_key,
         client_secret=api_secret,
-        token=request_token['oauth_token'],
-        token_secret=request_token['oauth_token_secret']
+        token=request_token["oauth_token"],
+        token_secret=request_token["oauth_token_secret"],
     )
 
     client.parse_authorization_response(request.url)
@@ -286,7 +230,7 @@ def oauth2_callback_flickr() -> ViewResponse:
     current_user.store_flickr_oauth_token(token=token)
 
     try:
-        next_url = session.pop('flickr_oauth_next_url')
+        next_url = session.pop("flickr_oauth_next_url")
     except KeyError:
         abort(400)
 

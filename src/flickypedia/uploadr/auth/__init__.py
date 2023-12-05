@@ -7,7 +7,12 @@ this all in one place so it can be considered and reviewed as a single
 unit -- this is the most sensitive code in the app.
 """
 
-from .flickr import get_flickypedia_bot_oauth_client, oauth2_authorize_flickr, oauth2_callback_flickr, store_flickypedia_user_oauth_token
+from .flickr import (
+    get_flickypedia_bot_oauth_client,
+    oauth2_authorize_flickr,
+    oauth2_callback_flickr,
+    store_flickypedia_user_oauth_token,
+)
 from .wikimedia import (
     load_user,
     login,
