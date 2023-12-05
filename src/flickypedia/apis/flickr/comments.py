@@ -7,7 +7,11 @@ import xml.etree.ElementTree as ET
 import httpx
 
 from flickypedia.utils import find_required_elem
-from .exceptions import FlickrApiException, InsufficientPermissionsToComment
+from .exceptions import (
+    FlickrApiException,
+    InsufficientPermissionsToComment,
+    ResourceNotFound,
+)
 
 
 class FlickrCommentsApi:
@@ -25,14 +29,21 @@ class FlickrCommentsApi:
         the same comment twice, Flickr silently discards the second and
         returns the ID of the original comment.
         """
+        params = {
+            "method": "flickr.photos.comments.addComment",
+            "photo_id": photo_id,
+            "comment_text": comment_text,
+        }
+
         resp = self.client.post(
             "https://api.flickr.com/services/rest/",
-            params={
-                "method": "flickr.photos.comments.addComment",
-                "photo_id": photo_id,
-                "comment_text": comment_text,
-            },
+            params=params,
         )
+
+        if resp.text.startswith("oauth_problem="):
+            raise FlickrApiException(
+                f"Unexpected problem with the OAuth signature: {resp.text}"
+            )
 
         # Note: the xml.etree.ElementTree is not secure against maliciously
         # constructed data (see warning in the Python docs [1]), but that's
@@ -56,6 +67,8 @@ class FlickrCommentsApi:
 
             if errors["code"] == "99":
                 raise InsufficientPermissionsToComment()
+            elif errors["code"] == "1":
+                raise ResourceNotFound(params["method"], params)
             else:
                 raise FlickrApiException(errors)
 
