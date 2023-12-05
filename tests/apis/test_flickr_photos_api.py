@@ -539,3 +539,24 @@ def test_unrecognised_safety_level_is_error() -> None:
 def test_unrecognised_date_granularity_is_error() -> None:
     with pytest.raises(ValueError, match="Unrecognised date granularity"):
         parse_date_taken_granularity("-1")
+
+
+@pytest.mark.parametrize(
+    ["user_id", "expected_url"],
+    [
+        pytest.param(
+            "199246608@N02",
+            "https://www.flickr.com/images/buddyicon.gif",
+            id="user_with_no_buddyicon",
+        ),
+        pytest.param(
+            "28660070@N07",
+            "https://farm6.staticflickr.com/5556/buddyicons/28660070@N07.jpg",
+            id="user_with_buddyicon",
+        ),
+    ],
+)
+def test_get_buddy_icon_url(
+    flickr_api: FlickrPhotosApi, user_id: str, expected_url: str
+) -> None:
+    assert flickr_api.get_buddy_icon_url(user_id=user_id) == expected_url

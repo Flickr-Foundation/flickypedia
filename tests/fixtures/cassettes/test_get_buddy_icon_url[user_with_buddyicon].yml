@@ -1,0 +1,59 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - api.flickr.com
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.people.getInfo&user_id=28660070%40N07
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<person
+      id=\"28660070@N07\" nsid=\"28660070@N07\" ispro=\"1\" is_deleted=\"0\" iconserver=\"5556\"
+      iconfarm=\"6\" path_alias=\"icann\" has_stats=\"0\" pro_badge=\"standard\" expire=\"0\"
+      has_adfree=\"0\" has_free_standard_shipping=\"0\" has_free_educational_resources=\"0\">\n\t<username>icannphotos</username>\n\t<realname
+      />\n\t<location />\n\t<description>The Internet Corporation for Assigned Names
+      and Numbers, ICANN</description>\n\t<photosurl>https://www.flickr.com/photos/icann/</photosurl>\n\t<profileurl>https://www.flickr.com/people/icann/</profileurl>\n\t<mobileurl>https://m.flickr.com/photostream.gne?id=28638740</mobileurl>\n\t<photos>\n\t\t<firstdatetaken>2000-01-01
+      00:00:02</firstdatetaken>\n\t\t<firstdate>1216267277</firstdate>\n\t\t<count>45429</count>\n\t</photos>\n</person>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '450'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Tue, 05 Dec 2023 14:30:02 GMT
+      Via:
+      - 1.1 a4c64c314f30fb6bc19d124f0560996e.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - pcZKZYzQFt93IcoczODE4SEOHuCwI7lNb4U8M3IUSUhVJ4TB32XKJg==
+      X-Amz-Cf-Pop:
+      - LHR5-P1
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.58 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Thu, 04-Jan-2024 14:30:02 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Thu, 04-Jan-2024 14:30:02 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

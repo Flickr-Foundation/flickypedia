@@ -731,3 +731,21 @@ class FlickrPhotosApi(BaseApi):
         return self._parse_collection_of_photos_response(
             find_required_elem(resp, path=".//photos")
         )
+
+    def get_buddy_icon_url(self, user_id: str) -> str:
+        """
+        Returns the URL of a user's "buddy icon".
+
+        See https://www.flickr.com/services/api/misc.buddyicons.html
+        """
+        resp = self.call(method="flickr.people.getInfo", params={"user_id": user_id})
+
+        person_elem = find_required_elem(resp, path="person")
+
+        iconserver = int(person_elem.attrib["iconserver"])
+        iconfarm = int(person_elem.attrib["iconfarm"])
+
+        if iconserver > 0:
+            return f"https://farm{iconfarm}.staticflickr.com/{iconserver}/buddyicons/{user_id}.jpg"
+        else:
+            return "https://www.flickr.com/images/buddyicon.gif"
