@@ -1,3 +1,7 @@
+"""
+This file has some code for posting comments to Flickr.
+"""
+
 import pathlib
 import textwrap
 import xml.etree.ElementTree as ET
@@ -11,9 +15,6 @@ from .exceptions import InsufficientPermissionsToComment
 
 
 class FlickrCommentsApi:
-    """
-    This is a client
-    """
     def __init__(self, client: httpx.Client) -> None:
         self.client = client
 
@@ -49,8 +50,6 @@ class FlickrCommentsApi:
         #           />
         #       </rsp>
         #
-        # Different API endpoints have different codes, and so we just throw
-        # and let calling functions decide how to handle it.
         if xml.attrib["stat"] == "fail":
             errors = find_required_elem(xml, path=".//err").attrib
 
@@ -65,8 +64,6 @@ class FlickrCommentsApi:
 def get_bot_comment_text(user: WikimediaUserSession, wikimedia_page_title: str) -> str:
     """
     Creates the comment posted by Flickypedia Bot.
-
-    We don't allow users to change this text.
     """
     return textwrap.dedent(f"""
         Hi, I’m <a href="https://www.flickr.com/people/flickypedia">Flickypedia Bot</a>.
@@ -78,6 +75,13 @@ def get_bot_comment_text(user: WikimediaUserSession, wikimedia_page_title: str) 
 
 
 def post_bot_comment(user: WikimediaUserSession, photo_id: str, wikimedia_page_title: str):
+    """
+    Post a comment as Flickypedia bot.
+
+    We don't allow users to change this text, so we just take a few
+    parameters and build it from a template, rather than taking text
+    passed from the page itself.
+    """
     client = get_flickypedia_bot_oauth_client()
     api = FlickrCommentsApi(client)
 
