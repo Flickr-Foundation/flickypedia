@@ -635,9 +635,13 @@ function postBotComment(buttonElement, postBotCommentApiUrl, taskId, photoId) {
     { method: "POST" }
   )
     .then((response) => response.json())
-    .then(() => {
+    .then((json) => {
+      if (json.commentId) {
+        buttonElement.parentElement.innerHTML = '<p>Posted! ✅</p>';
+      } else {
+        buttonElement.parentElement.innerHTML = `<p><strong>BZZT!</strong> Something went wrong while posting the comment: ${json.error}</p>`
+      }
+
       buttonElement.classList.remove("thinking");
-      buttonElement.parentElement.innerHTML = '<p>Posted! ✅</p>';
-      buttonElement.disabled = true;
     });
 }

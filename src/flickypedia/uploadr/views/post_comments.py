@@ -55,11 +55,14 @@ def post_bot_comment_api() -> ViewResponse:
     assert output["state"] == "succeeded"
     wikimedia_page_title = output["title"]
 
-    comment_id = post_bot_comment(
-        user_name=current_user.name,
-        user_url=current_user.profile_url,
-        photo_id=photo_id,
-        wikimedia_page_title=wikimedia_page_title,
-    )
+    try:
+        comment_id = post_bot_comment(
+            user_name=current_user.name,
+            user_url=current_user.profile_url,
+            photo_id=photo_id,
+            wikimedia_page_title=wikimedia_page_title,
+        )
 
-    return jsonify({"comment_id": comment_id})
+        return jsonify({"comment_id": comment_id})
+    except Exception as exc:
+        return jsonify({"error": str(exc)})
