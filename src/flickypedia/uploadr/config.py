@@ -59,7 +59,7 @@ def create_config(data_directory: pathlib.Path) -> dict[str, Any]:
         #
         # Hard-coded values for OAuth 2 providers.
         "OAUTH_PROVIDERS": {
-            "wikimedia": wikimedia_oauth2
+            "wikimedia": wikimedia_oauth2,
             "flickr": flickr_oauth1,
         },
         #
