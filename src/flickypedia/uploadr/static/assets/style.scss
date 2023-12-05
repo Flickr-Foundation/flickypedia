@@ -213,6 +213,52 @@ ul.two_column_actions {
   margin:  0;
 }
 
+/* These two selectors add a "barberpole" animation to any input field
+ * which is "thinking" (making an API request which hasn't returned yet).
+ *
+ * It's a basic progress indicator, similar to the one found in the
+ * Wikimedia Commons Upload Wizard interface.
+ *
+ * You can get a funky edge appear when the lines don't quite match up;
+ * the hope is that we're not "thinking" long enough for this to be
+ * noticeable!
+ *
+ * Based on https://css-tricks.com/books/fundamental-css-tactics/striped-barberpole-animation/
+ * Note that I've tweaked the background-position to go left-to-right,
+ * whereas the code in that article goes right-to-left.
+ */
+input.thinking {
+  animation: barberpole 21s linear infinite;
+  background-size: 200% 200%;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba($brown, 0.3),
+    rgba($brown, 0.3) 10px,
+    rgba($brown, 0.5) 10px,
+    rgba($brown, 0.5) 20px
+  );
+  background-position: 250% 100%;
+}
+
+.pink_button.thinking {
+  animation: barberpole 15s linear infinite;
+  background-size: 500% 500%;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    $pink,
+    $pink 10px,
+    darken($pink, 8%) 10px,
+    darken($pink, 8%) 20px
+  );
+  background-position: 250% 100%;
+}
+
+@keyframes barberpole {
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
 @import "header.scss";
 
 @import "homepage.scss";
