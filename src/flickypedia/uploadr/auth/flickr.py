@@ -155,10 +155,6 @@ def oauth2_authorize_flickr() -> ViewResponse:
 
     oauth_config = current_app.config["OAUTH_PROVIDERS"]["flickr"]
 
-    from pprint import pprint
-
-    pprint(oauth_config)
-
     client = OAuth1Client(
         client_id=oauth_config["client_id"],
         client_secret=oauth_config["client_secret"],
