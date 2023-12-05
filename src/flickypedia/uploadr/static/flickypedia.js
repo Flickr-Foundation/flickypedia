@@ -654,6 +654,8 @@ function postUserComment(buttonElement, postUserCommentApiUrl, taskId, photoId) 
 
   const textAreaElement = document.querySelector(`textarea#comment-${photoId}`);
 
+  textAreaElement.disabled = true;
+
   fetch(
     `${postUserCommentApiUrl}?task_id=${taskId}&photo_id=${photoId}`,
     { method: "POST", body: JSON.stringify(textAreaElement.value) }
