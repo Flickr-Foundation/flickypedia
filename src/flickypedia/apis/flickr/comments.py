@@ -6,7 +6,7 @@ import httpx
 
 from flickypedia.uploadr.auth import WikimediaUserSession
 from flickypedia.uploadr.auth.flickr import get_flickypedia_bot_oauth_client
-from flickypedia.utils import find_required_text
+from flickypedia.utils import find_required_elem
 from .exceptions import InsufficientPermissionsToComment
 
 
@@ -59,10 +59,10 @@ class FlickrCommentsApi:
             else:
                 raise FlickrApiException(errors)
 
-        return find_required_elem(resp, match=".//comment").attrib["id"]
+        return find_required_elem(xml, path=".//comment").attrib["id"]
 
 
-def get_bot_comment_text(user: WikimediaUserSession, photo_id: str, wikimedia_title: str) -> str:
+def get_bot_comment_text(user: WikimediaUserSession, wikimedia_page_title: str) -> str:
     """
     Creates the comment posted by Flickypedia Bot.
 
@@ -73,17 +73,16 @@ def get_bot_comment_text(user: WikimediaUserSession, photo_id: str, wikimedia_ti
 
         A Wikimedia Commons user named <a href="{user.profile_url}">{user.name}</a> has uploaded your photo to <a href="https://commons.wikimedia.org/wiki/Main_Page">Wikimedia Commons</a>.
 
-        <a href="https://commons.wikimedia.org/wiki/File:{wikimedia_title}">Would you like to see</a>? We hope you like it!
+        <a href="https://commons.wikimedia.org/wiki/{wikimedia_page_title}">Would you like to see</a>? We hope you like it!
     """).strip()
 
 
-def post_bot_comment():
+def post_bot_comment(user: WikimediaUserSession, photo_id: str, wikimedia_page_title: str):
     client = get_flickypedia_bot_oauth_client()
     api = FlickrCommentsApi(client)
 
-    comment_id = api.post_comment(
-        photo_id='53374767803',
-        comment_text='This is yet another comment posted by Flickypedia bot'
-    )
+    comment_text = get_bot_comment_text(user, wikimedia_page_title)
+
+    comment_id = api.post_comment(photo_id=photo_id, comment_text=comment_text)
 
     return comment_id

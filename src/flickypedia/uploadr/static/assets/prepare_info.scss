@@ -340,3 +340,23 @@ input.thinking {
     background-position: 100% 100%;
   }
 }
+
+.pink_button.thinking {
+  animation: barberpole 15s linear infinite;
+  background-size: 500% 500%;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    $pink,
+    $pink 10px,
+    darken($pink, 8%) 10px,
+    darken($pink, 8%) 20px
+  );
+  background-position: 250% 100%;
+}
+
+@keyframes barberpole {
+  100% {
+    background-position: 100% 100%;
+  }
+}
+

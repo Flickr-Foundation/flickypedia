@@ -23,6 +23,22 @@
     }
   </style>
 
+  <script>
+    function postBotComment(buttonElement, taskId, photoId) {
+      buttonElement.classList.add("thinking");
+
+      fetch(
+        `{{api_url}}?task_id=${taskId}&photo_id=${photoId}`,
+        { method: "POST" }
+      )
+        .then((response) => response.json())
+        .then(() => {
+          buttonElement.classList.remove("thinking");
+          buttonElement.parentElement.innerHTML = '<p>Posted! ✅</p>';
+        });
+    }
+  </script>
+
   <h1>
     Say thanks
   </h1>
@@ -41,15 +57,15 @@
         </li>
         <li class="comment_info">
           <p>
-            To <a href="{{ photo.owner.profile_url }}">{{ photo.owner.realname or photo.owner.username }}</a>
+            To <a href="{{ photo.url }}">{{ photo.owner.realname or photo.owner.username }}</a>
           </p>
 
           <div class="comment_text">
-            {{- current_user|bot_comment_text(photo.id, result.title)|safe -}}
+            {{- current_user|bot_comment_text(result.title)|safe -}}
           </div>
 
           <p>
-            <button class="pink_button">POST</button>
+            <button class="pink_button" onclick='postBotComment(this, {{ task.id|tojson }}, {{ photo.id|tojson }})'>POST</button>
           </p>
 
 
