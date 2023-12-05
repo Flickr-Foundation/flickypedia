@@ -623,3 +623,20 @@ function updatePhotosWithUploadProgress() {
         .innerHTML = `${processingCount} of ${json.photos.length}`;
     });
 }
+
+/*
+ * Post a "Say thanks" comment as Flickypedia bot.
+ */
+function postBotComment(buttonElement, postBotCommentApiUrl, taskId, photoId) {
+  buttonElement.classList.add("thinking");
+
+  fetch(
+    `${postBotCommentApiUrl}?task_id=${taskId}&photo_id=${photoId}`,
+    { method: "POST" }
+  )
+    .then((response) => response.json())
+    .then(() => {
+      buttonElement.classList.remove("thinking");
+      buttonElement.parentElement.innerHTML = '<p>Posted! ✅</p>';
+    });
+}
