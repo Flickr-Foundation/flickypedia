@@ -33,6 +33,7 @@ from .views import (
     get_photos,
     get_upload_status,
     homepage,
+    post_bot_comment_api,
     post_comments,
     prepare_info,
     say_thanks,
@@ -88,6 +89,9 @@ def create_app(
     )
     app.add_url_rule(
         "/api/find_matching_languages", view_func=find_matching_languages_api
+    )
+    app.add_url_rule(
+        "/api/post_bot_comment", view_func=post_bot_comment_api, methods=["POST"]
     )
 
     app.jinja_env.filters["html_unescape"] = html.unescape

@@ -32,11 +32,11 @@
           </p>
 
           <div class="comment_text">
-            {{- current_user.name|bot_comment_text(current_user.profile_url, photo.id, result.title)|safe -}}
+            {{- current_user.name|bot_comment_text(current_user.profile_url, result.title)|safe -}}
           </div>
 
           <p>
-            <button class="pink_button" onclick="postBotComment(this, {{ api_url|tojson }}, {{task['id']|tojson}}, {{ photo['id']|tojson}} )">POST</button>
+            <button class="pink_button" onclick='postBotComment(this, {{ api_url|tojson }}, {{task['id']|tojson}}, {{ photo['id']|tojson}} )'>POST</button>
           </p>
 
 

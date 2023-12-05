@@ -7,6 +7,7 @@ import xml.etree.ElementTree as ET
 
 import httpx
 
+from flickypedia.uploadr.auth import get_flickypedia_bot_oauth_client
 from flickypedia.utils import find_required_elem
 from .exceptions import (
     FlickrApiException,
@@ -76,7 +77,7 @@ class FlickrCommentsApi:
         return find_required_elem(xml, path=".//comment").attrib["id"]
 
 
-def create_bot_comment_text(user_name: str, user_url: str, photo_id: str, wikimedia_title: str) -> str:
+def create_bot_comment_text(user_name: str, user_url: str, wikimedia_page_title: str) -> str:
     """
     Creates the comment posted by Flickypedia Bot.
 
@@ -87,5 +88,25 @@ def create_bot_comment_text(user_name: str, user_url: str, photo_id: str, wikime
 
         A Wikimedia Commons user named <a href="{user_url}">{user_name}</a> has uploaded your photo to <a href="https://commons.wikimedia.org/wiki/Main_Page">Wikimedia Commons</a>.
 
-        <a href="https://commons.wikimedia.org/wiki/File:{wikimedia_title}">Would you like to see</a>? We hope you like it!
+        <a href="https://commons.wikimedia.org/wiki/File:{wikimedia_page_title}">Would you like to see</a>? We hope you like it!
     """).strip()
+
+
+def post_bot_comment(
+    user_name: str, user_url: str, photo_id: str, wikimedia_page_title: str
+) -> str:
+    """
+    Post a comment as Flickypedia bot.
+
+    We don't allow users to change this text, so we just take a few
+    parameters and build it from a template, rather than taking text
+    passed from the page itself.
+    """
+    client = get_flickypedia_bot_oauth_client()
+    api = FlickrCommentsApi(client)
+
+    comment_text = create_bot_comment_text(user_name=user_name, user_url=user_url, wikimedia_page_title=wikimedia_page_title)
+
+    comment_id = api.post_comment(photo_id=photo_id, comment_text=comment_text)
+
+    return comment_id
