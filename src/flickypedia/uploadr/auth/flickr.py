@@ -220,6 +220,9 @@ def oauth2_authorize_flickr() -> ViewResponse:
     #
     # See https://www.flickr.com/services/api/auth.oauth.html#request_token
     #
+    # Note: we could put the next_url parameter in here, but this
+    # causes issues with the OAuth 1.0a signatures, so I'm passing that
+    # in the Flask session instead.
     redirect_url = url_for('oauth2_callback_flickr', _external=True)
 
     request_token_resp = client.fetch_request_token(
