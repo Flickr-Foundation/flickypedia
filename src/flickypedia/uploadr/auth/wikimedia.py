@@ -108,6 +108,8 @@ class WikimediaUserSession(UserMixin, user_db.Model):  # type: ignore
     encrypted_token = user_db.Column(user_db.LargeBinary, nullable=False)
     first_login = user_db.Column(user_db.DateTime, nullable=False)
 
+    encrypted_flickr_token = user_db.Column(user_db.LargeBinary, nullable=True)
+
     def get_id(self) -> str:
         """
         This method is used by Flask-Login to identify the user's session.
@@ -207,6 +209,15 @@ class WikimediaUserSession(UserMixin, user_db.Model):  # type: ignore
             client = httpx.Client()
 
         return WikimediaApi(client=client)
+
+    def store_flickr_oauth_token(self, token: str) -> None:
+        """
+        Store the credentials for a Flickr user authorising with the db.
+        """
+        self.encrypted_flickr_token = encrypt_string(
+            key=session[SESSION_ENCRYPTION_KEY], plaintext=json.dumps(token)
+        )
+        user_db.session.commit()
 
     def delete(self) -> None:
         """

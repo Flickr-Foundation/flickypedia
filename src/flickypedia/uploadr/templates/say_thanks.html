@@ -44,7 +44,10 @@
         <span class="next_step">You</span> can leave a comment on Flickr
       </p>
 
-      <a href="{{ url_for('oauth2_authorize_flickr') }}" class="pink_button">
+      <a href="{{
+        url_for('oauth2_authorize_flickr',
+          next_url=url_for('post_comments', task_id=task['id'], user='self')
+        ) }}" class="pink_button">
         Log in to Flickr
       </a>
     </li>
