@@ -13,10 +13,17 @@
   <h1>
     Say thanks
   </h1>
-
-  <p>
-    We’ll post on your behalf as Flickypedia Bot.
-  </p>
+  
+  <div class="which_user">
+    {% if user == 'bot' %}
+      <img src="{{ url_for('buddy_icon', user_id='199561775@N05') }}">
+      <p>
+        We’ll post on your behalf as Flickypedia Bot.
+      </p>
+    {% else %}
+      LOGGED IN AS USER
+    {% endif %}
+  </div>
 
   <ul class="plain_list upload_progress">
     {% for item in successful_requests %}

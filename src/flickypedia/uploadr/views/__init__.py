@@ -1,5 +1,8 @@
-from flask import render_template
+from flask import current_app, redirect, render_template
+from flask_login import login_required
+from werkzeug.wrappers.response import Response as WerkzeugResponse
 
+from flickypedia.apis.flickr import FlickrPhotosApi
 from .api import (
     find_matching_categories_api,
     find_matching_languages_api,
@@ -30,9 +33,22 @@ def faqs() -> str:
     return render_template("faqs.html", current_step=None)
 
 
+@login_required
+def buddy_icon(user_id: str) -> WerkzeugResponse:
+    api = FlickrPhotosApi(
+        api_key=current_app.config["FLICKR_API_KEY"],
+        user_agent=current_app.config["USER_AGENT"],
+    )
+
+    url = api.get_buddy_icon_url(user_id=user_id)
+
+    return redirect(url)
+
+
 __all__ = [
     "about",
     "bookmarklet",
+    "buddy_icon",
     "faqs",
     "find_matching_categories_api",
     "find_matching_languages_api",
