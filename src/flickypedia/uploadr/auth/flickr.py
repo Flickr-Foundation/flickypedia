@@ -126,9 +126,11 @@ def get_flickypedia_bot_oauth_client() -> OAuth1Client:
     stored_token = json.loads(get_required_password("flickypedia.bot", "oauth_token"))
 
     client = OAuth1Client(
-        client_id=api_key, client_secret=api_secret, signature_type="QUERY",
-        token=stored_token['oauth_token'],
-        token_secret=stored_token['oauth_token_secret']
+        client_id=api_key,
+        client_secret=api_secret,
+        signature_type="QUERY",
+        token=stored_token["oauth_token"],
+        token_secret=stored_token["oauth_token_secret"],
     )
 
     return client
