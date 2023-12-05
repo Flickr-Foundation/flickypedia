@@ -4,7 +4,7 @@ from xml.etree import ElementTree as ET
 
 from authlib.integrations.httpx_client import OAuth1Client
 import click
-from flask import abort, redirect, request, session, url_for
+from flask import abort, current_app, redirect, request, session, url_for
 from flask_login import current_user, login_required
 import keyring
 
@@ -153,11 +153,16 @@ def oauth2_authorize_flickr() -> ViewResponse:
     except KeyError:
         abort(400)
 
-    api_key = get_required_password("flickypedia", "api_key")
-    api_secret = get_required_password("flickypedia", "api_secret")
+    oauth_config = current_app.config["OAUTH_PROVIDERS"]["flickr"]
+
+    from pprint import pprint
+
+    pprint(oauth_config)
 
     client = OAuth1Client(
-        client_id=api_key, client_secret=api_secret, signature_type="QUERY"
+        client_id=oauth_config["client_id"],
+        client_secret=oauth_config["client_secret"],
+        signature_type="QUERY",
     )
 
     # Step 1: Getting a Request Token
@@ -170,15 +175,11 @@ def oauth2_authorize_flickr() -> ViewResponse:
     redirect_url = url_for("oauth2_callback_flickr", _external=True)
 
     request_token_resp = client.fetch_request_token(
-        url="https://www.flickr.com/services/oauth/request_token",
+        url=oauth_config["request_url"],
         params={"oauth_callback": redirect_url},
     )
 
     request_token = request_token_resp["oauth_token"]
-
-    from pprint import pprint
-
-    pprint(session)
 
     session["flickr_oauth_next_url"] = next_url
     session["flickr_oauth_request_token"] = json.dumps(request_token_resp)
@@ -202,8 +203,7 @@ def oauth2_callback_flickr() -> ViewResponse:
     """
     Handle an authorization callback from Flickr.
     """
-    api_key = get_required_password("flickypedia", "api_key")
-    api_secret = get_required_password("flickypedia", "api_secret")
+    oauth_config = current_app.config["OAUTH_PROVIDERS"]["flickr"]
 
     try:
         request_token = json.loads(session.pop("flickr_oauth_request_token"))
@@ -211,8 +211,8 @@ def oauth2_callback_flickr() -> ViewResponse:
         abort(400)
 
     client = OAuth1Client(
-        client_id=api_key,
-        client_secret=api_secret,
+        client_id=oauth_config["client_id"],
+        client_secret=oauth_config["client_secret"],
         token=request_token["oauth_token"],
         token_secret=request_token["oauth_token_secret"],
     )
@@ -225,9 +225,7 @@ def oauth2_callback_flickr() -> ViewResponse:
     # to inspect the response directly.
     #
     # See https://www.flickr.com/services/api/auth.oauth.html#access_token
-    token = client.fetch_access_token(
-        url="https://www.flickr.com/services/oauth/access_token"
-    )
+    token = client.fetch_access_token(url=oauth_config["token_url"])
 
     # Store the token in our database, so we can access it later, then
     # redirect the user back to the page.

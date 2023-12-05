@@ -161,7 +161,7 @@ class WikimediaUserSession(UserMixin, user_db.Model):  # type: ignore
             )
             user_db.session.commit()
 
-        config = current_app.config["OAUTH2_PROVIDERS"]["wikimedia"]
+        config = current_app.config["OAUTH_PROVIDERS"]["wikimedia"]
 
         return OAuth2Client(
             client_id=config["client_id"],
@@ -192,7 +192,7 @@ class WikimediaUserSession(UserMixin, user_db.Model):  # type: ignore
         a new token -- this will ensure the current access token is valid
         for another four hours.
         """
-        config = current_app.config["OAUTH2_PROVIDERS"]["wikimedia"]
+        config = current_app.config["OAUTH_PROVIDERS"]["wikimedia"]
 
         client = self._oauth2_client()
         client.refresh_token(url=config["token_url"])
@@ -321,7 +321,7 @@ def oauth2_authorize_wikimedia() -> ViewResponse:
     #
     # This is the URL described in step 2 of
     # https://api.wikimedia.org/wiki/Authentication#2._Request_authorization
-    config = current_app.config["OAUTH2_PROVIDERS"]["wikimedia"]
+    config = current_app.config["OAUTH_PROVIDERS"]["wikimedia"]
 
     client = OAuth2Client(client_id=config["client_id"])
 
@@ -385,7 +385,7 @@ def oauth2_callback_wikimedia() -> ViewResponse:
         print("Unable to retrieve oauth_authorize_state from user's session")
         abort(401)
 
-    config = current_app.config["OAUTH2_PROVIDERS"]["wikimedia"]
+    config = current_app.config["OAUTH_PROVIDERS"]["wikimedia"]
     token_client = OAuth2Client(
         client_id=config["client_id"],
         client_secret=config["client_secret"],

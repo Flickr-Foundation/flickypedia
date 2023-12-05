@@ -1,9 +1,21 @@
+import os
+
 from flask.testing import FlaskClient
 from flask_login import current_user
+import pytest
+
+
+@pytest.fixture
+def oauth_env_vars() -> None:
+    os.environ.setdefault("FLICKR_CLIENT_ID", "123")
+    os.environ.setdefault("FLICKR_CLIENT_SECRET", "456")
 
 
 def test_can_get_token_from_flickr(
-    logged_in_client: FlaskClient, vcr_cassette: str, user_agent: str
+    oauth_env_vars: None,
+    logged_in_client: FlaskClient,
+    vcr_cassette: str,
+    user_agent: str,
 ) -> None:
     """
     This test verifies that our login code works.
@@ -26,6 +38,8 @@ def test_can_get_token_from_flickr(
     4.  I redacted the secrets from the URL and the VCR cassette.
 
     """
+    os.environ.setdefault("FLICKR_CLIENT_ID", "123")
+    os.environ.setdefault("FLICKR_CLIENT_SECRET", "456")
 
     # Check that we aren't currently logged in to Flickr.
     assert current_user.encrypted_flickr_token is None

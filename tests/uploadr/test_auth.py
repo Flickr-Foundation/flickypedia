@@ -72,7 +72,7 @@ def store_user(token: OAuth2Token | None = None) -> WikimediaUserSession:
 
 class TestOAuth2AuthorizeWikimedia:
     def test_new_user_is_redirected_to_wikimedia(self, app: Flask) -> None:
-        app.config["OAUTH2_PROVIDERS"]["wikimedia"]["client_id"] = "example1234"
+        app.config["OAUTH_PROVIDERS"]["wikimedia"]["client_id"] = "example1234"
 
         with app.test_client() as client:
             resp = client.get("/authorize/wikimedia")
@@ -175,7 +175,7 @@ class TestOAuth2CallbackWikimedia:
     def test_bad_token_from_wikimedia_is_error(
         self, app: Flask, vcr_cassette: str
     ) -> None:
-        app.config["OAUTH2_PROVIDERS"]["wikimedia"].update(
+        app.config["OAUTH_PROVIDERS"]["wikimedia"].update(
             {
                 "client_id": "client1234",
                 "client_secret": "client1234",
