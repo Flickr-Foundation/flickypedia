@@ -1,6 +1,7 @@
 from flask import abort, jsonify, render_template, request, url_for
 from flask_login import current_user, login_required
 
+from flickypedia.apis.flickr import FlickrCommentsApi
 from flickypedia.types.views import ViewResponse
 from .upload_complete import get_completed_task
 
@@ -31,7 +32,10 @@ def post_comments(task_id: str) -> ViewResponse:
         successful_requests=successful_requests,
         user=user,
         task=task,
-        api_url=url_for("post_bot_comment_api"),
+        api_urls={
+            'bot_comment': url_for("post_bot_comment_api"),
+            "user_comment": url_for("post_user_comment_api"),
+        },
     )
 
 
@@ -67,3 +71,36 @@ def post_bot_comment_api() -> ViewResponse:
         return jsonify({"comment_id": comment_id})
     except Exception as exc:
         return jsonify({"error": str(exc)})
+
+
+@login_required
+def post_user_comment_api() -> ViewResponse:
+    assert request.method == "POST"
+
+    try:
+        task_id = request.args["task_id"]
+        photo_id = request.args["photo_id"]
+        comment_text = request.args["text"]
+    except KeyError:
+        abort(400)
+
+    task = get_completed_task(task_id)
+    output = task["task_output"][photo_id]
+
+    if output["state"] != "succeeded":
+        abort(400)
+
+    assert output["state"] == "succeeded"
+
+    client = current_user.flickr_oauth_client()
+    api = FlickrCommentsApi(client)
+
+    try:
+        comment_id = api.post_comment(photo_id=photo_id, comment_text=comment_text)
+
+        return jsonify({"comment_id": comment_id})
+    except Exception as exc:
+        raise
+        print(exc)
+        return jsonify({"error": str(exc)})
+

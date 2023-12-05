@@ -636,7 +636,30 @@ function postBotComment(buttonElement, postBotCommentApiUrl, taskId, photoId) {
   )
     .then((response) => response.json())
     .then((json) => {
-      if (json.commentId) {
+      if (json.comment_id) {
+        buttonElement.parentElement.innerHTML = '<p>Posted! ✅</p>';
+      } else {
+        buttonElement.parentElement.innerHTML = `<p><strong>BZZT!</strong> Something went wrong while posting the comment: ${json.error}</p>`
+      }
+
+      buttonElement.classList.remove("thinking");
+    });
+}
+
+/*
+ * Post a "Say thanks" comment as a Flickr user.
+ */
+function postUserComment(buttonElement, postUserCommentApiUrl, taskId, photoId) {
+  buttonElement.classList.add("thinking");
+
+  const textAreaElement = document.querySelector(`textarea#comment-${photoId}`);
+
+  fetch(
+    `${postUserCommentApiUrl}?task_id=${taskId}&photo_id=${photoId}&text=${textAreaElement.value}`,
+    { method: "POST" }
+  ).then((response) => response.json())
+    .then((json) => {
+      if (json.comment_id) {
         buttonElement.parentElement.innerHTML = '<p>Posted! ✅</p>';
       } else {
         buttonElement.parentElement.innerHTML = `<p><strong>BZZT!</strong> Something went wrong while posting the comment: ${json.error}</p>`

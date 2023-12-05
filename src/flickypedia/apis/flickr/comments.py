@@ -97,6 +97,21 @@ def create_bot_comment_text(
     ).strip()
 
 
+def create_default_user_comment_text(wikimedia_page_title: str) -> str:
+    """
+    Creates the default text for a user's comment.
+    """
+    assert wikimedia_page_title.startswith("File:")
+
+    return textwrap.dedent(
+        f"""
+        Hi, I’ve uploaded your photo to <a href="https://commons.wikimedia.org/wiki/Main_Page">Wikimedia Commons</a>. <a href="https://commons.wikimedia.org/wiki/{wikimedia_page_title}">Would you like to see</a>?
+
+        I hope you like it!
+    """
+    ).strip()
+
+
 def post_bot_comment(
     user_name: str, user_url: str, photo_id: str, wikimedia_page_title: str
 ) -> str:
