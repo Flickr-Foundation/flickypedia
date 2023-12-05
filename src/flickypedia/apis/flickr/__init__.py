@@ -5,7 +5,13 @@ from .by_url import (
     PhotosInAlbumData,
     SinglePhotoData,
 )
-from .exceptions import FlickrApiException, ResourceNotFound, LicenseNotFound
+from .comments import FlickrCommentsApi
+from .exceptions import (
+    FlickrApiException,
+    ResourceNotFound,
+    LicenseNotFound,
+    InsufficientPermissionsToComment,
+)
 from ._types import (
     AlbumInfo,
     CollectionOfPhotos,
@@ -31,10 +37,12 @@ __all__ = [
     "CollectionOfPhotos",
     "DateTaken",
     "FlickrApiException",
+    "FlickrCommentsApi",
     "FlickrPhotosApi",
     "GetPhotosData",
     "get_photos_from_flickr",
     "GroupInfo",
+    "InsufficientPermissionsToComment",
     "License",
     "LicenseNotFound",
     "LocationInfo",

@@ -1,0 +1,56 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '0'
+      host:
+      - api.flickr.com
+      user-agent:
+      - python-httpx/0.25.1
+    method: POST
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.comments.addComment&photo_id=-1&comment_text=This%20is%20a%20comment%20on%20a%20non-existent%20photo
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"fail\">\n\t<err
+      code=\"1\" msg=\"Photo not found\" />\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '114'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Tue, 05 Dec 2023 10:47:27 GMT
+      Via:
+      - 1.1 56d50c15e83a778a8a2df6031ec29098.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - WzXu8AvGAPCeD7VosFzc3QwU3sx7w04sOe7smM1mSlwM18jFYHQOGA==
+      X-Amz-Cf-Pop:
+      - LHR5-P1
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.58 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Thu, 04-Jan-2024 10:47:27 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Thu, 04-Jan-2024 10:47:27 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1
