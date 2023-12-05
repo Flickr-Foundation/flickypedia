@@ -732,6 +732,7 @@ class FlickrPhotosApi(BaseApi):
             find_required_elem(resp, path=".//photos")
         )
 
+    @functools.lru_cache(maxsize=128)
     def get_buddy_icon_url(self, user_id: str) -> str:
         """
         Returns the URL of a user's "buddy icon".

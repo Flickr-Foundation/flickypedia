@@ -27,6 +27,7 @@ from flickypedia.apis.structured_data.wikidata import (
 from .views import (
     about,
     bookmarklet,
+    buddy_icon,
     faqs,
     find_matching_categories_api,
     find_matching_languages_api,
@@ -93,6 +94,7 @@ def create_app(
     app.add_url_rule(
         "/api/post_bot_comment", view_func=post_bot_comment_api, methods=["POST"]
     )
+    app.add_url_rule("/api/buddy_icon/<user_id>", view_func=buddy_icon)
 
     app.jinja_env.filters["html_unescape"] = html.unescape
     app.jinja_env.filters["size_at"] = size_at
