@@ -1,8 +1,8 @@
 from flask import abort, jsonify, render_template, request, url_for
 from flask_login import current_user, login_required
 
+from flickypedia.types.views import ViewResponse
 from .upload_complete import get_completed_task
-from ._types import ViewResponse
 
 
 @login_required
