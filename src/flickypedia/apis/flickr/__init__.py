@@ -14,7 +14,6 @@ __all__ = [
     "FlickrCommentsApi",
     "FlickrPhotosApi",
     "get_photos_from_flickr",
-    "GroupInfo",
     "InsufficientPermissionsToComment",
     "LicenseNotFound",
     "ResourceNotFound",
