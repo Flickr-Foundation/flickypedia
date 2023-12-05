@@ -23,5 +23,5 @@ class LicenseNotFound(FlickrApiException):
 
 
 class InsufficientPermissionsToComment(FlickrApiException):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__("Insufficient permissions to comment on this photo")

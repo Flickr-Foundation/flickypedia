@@ -39,11 +39,13 @@ def post_bot_comment_api() -> ViewResponse:
         abort(400)
 
     task = get_completed_task(task_id)
+    output = task["task_output"][photo_id]
 
-    if task["task_output"][photo_id]["state"] != "succeeded":
+    if output["state"] != "succeeded":
         abort(400)
 
-    wikimedia_page_title = task["task_output"][photo_id]["title"]
+    assert output["state"] == "succeeded"
+    wikimedia_page_title = output["title"]
 
     comment_id = post_bot_comment(
         user=current_user, photo_id=photo_id, wikimedia_page_title=wikimedia_page_title

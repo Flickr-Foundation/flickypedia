@@ -77,7 +77,7 @@ def get_bot_comment_text(user: WikimediaUserSession, wikimedia_page_title: str) 
 
 def post_bot_comment(
     user: WikimediaUserSession, photo_id: str, wikimedia_page_title: str
-):
+) -> str:
     """
     Post a comment as Flickypedia bot.
 
