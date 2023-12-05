@@ -176,6 +176,10 @@ def oauth2_authorize_flickr() -> ViewResponse:
 
     request_token = request_token_resp["oauth_token"]
 
+    from pprint import pprint
+
+    pprint(session)
+
     session["flickr_oauth_next_url"] = next_url
     session["flickr_oauth_request_token"] = json.dumps(request_token_resp)
 

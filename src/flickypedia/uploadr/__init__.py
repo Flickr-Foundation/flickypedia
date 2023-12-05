@@ -3,7 +3,7 @@ import os
 import pathlib
 import uuid
 
-from flask import Flask, request
+from flask import current_app, Flask, request
 from jinja2 import StrictUndefined
 import sass
 
@@ -20,7 +20,7 @@ from .cli import uploadr as uploadr_cli
 from .config import create_config, get_directories
 from flickypedia.duplicates import create_link_to_commons
 from flickypedia.photos import size_at
-from flickypedia.apis.flickr import create_bot_comment_text
+from flickypedia.apis.flickr import create_bot_comment_text, FlickrPhotosApi
 from flickypedia.apis.structured_data.wikidata import (
     get_entity_label,
     get_property_name,
@@ -29,7 +29,6 @@ from flickypedia.apis.structured_data.wikidata import (
 from .views import (
     about,
     bookmarklet,
-    buddy_icon,
     faqs,
     find_matching_categories_api,
     find_matching_languages_api,
@@ -47,6 +46,15 @@ from .views import (
     upload_complete,
 )
 from flickypedia.utils import create_bookmarklet
+
+
+def buddy_icon(user_id: str) -> str:
+    api = FlickrPhotosApi(
+        api_key=current_app.config["FLICKR_API_KEY"],
+        user_agent=current_app.config["USER_AGENT"],
+    )
+
+    return api.get_buddy_icon_url(user_id=user_id)
 
 
 def create_app(
@@ -99,7 +107,6 @@ def create_app(
     app.add_url_rule(
         "/api/post_bot_comment", view_func=post_bot_comment_api, methods=["POST"]
     )
-    app.add_url_rule("/api/buddy_icon/<user_id>", view_func=buddy_icon)
 
     app.jinja_env.filters["html_unescape"] = html.unescape
     app.jinja_env.filters["size_at"] = size_at
@@ -112,6 +119,7 @@ def create_app(
     app.jinja_env.filters["wikidata_date"] = render_wikidata_date
 
     app.jinja_env.filters["bot_comment_text"] = create_bot_comment_text
+    app.jinja_env.filters["buddy_icon"] = buddy_icon
 
     # Compile the CSS.  If we're running in debug mode, rebuild it on
     # every request for convenience.

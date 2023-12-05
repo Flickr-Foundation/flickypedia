@@ -180,6 +180,9 @@ class WikimediaUserSession(UserMixin, user_db.Model):  # type: ignore
         Check that the user's token is active, and if not, use the refresh token
         to update it.
         """
+        from pprint import pprint
+
+        pprint(session)
         client = self._oauth2_client()
         client.ensure_active_token(token=self.token())
 
@@ -216,6 +219,9 @@ class WikimediaUserSession(UserMixin, user_db.Model):  # type: ignore
         Store the credentials for a Flickr user authorising with the db.
         """
         validate_typeddict(token, model=FlickrOAuthToken)
+        from pprint import pprint
+
+        pprint(session)
         self.encrypted_flickr_token = encrypt_string(
             key=session[SESSION_ENCRYPTION_KEY], plaintext=json.dumps(token)
         )

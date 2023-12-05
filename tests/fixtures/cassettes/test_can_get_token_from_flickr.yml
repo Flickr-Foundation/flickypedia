@@ -1,0 +1,110 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '0'
+      host:
+      - www.flickr.com
+      user-agent:
+      - python-httpx/0.25.1
+    method: POST
+    uri: https://www.flickr.com/services/oauth/request_token?oauth_callback=http%3A%2F%2Flocalhost%2Fcallback%2Fflickr
+  response:
+    content: oauth_callback_confirmed=true&oauth_token=REQUEST_OAUTH_TOKEN_7e2&oauth_token_secret=REQUEST_OAUTH_TOKEN_SECRET_90c
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '110'
+      Content-Type:
+      - text/plain;charset=UTF-8
+      Date:
+      - Tue, 05 Dec 2023 15:03:44 GMT
+      Via:
+      - 1.1 ac0dbffb7a8577e06e873c0fe3eaab42.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - GCVyOWkqkgfRwTxWg7_WfyOn0rNnD6eWp2LpuVF2a_JC58rbVtjWeg==
+      X-Amz-Cf-Pop:
+      - LHR5-P1
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.58 (Ubuntu)
+      set-cookie:
+      - xb=644582; expires=Fri, 02-Dec-2033 15:03:44 GMT; Max-Age=315360000; path=/;
+        domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Thu, 04-Jan-2024 15:03:44 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Thu, 04-Jan-2024 15:03:44 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '0'
+      host:
+      - www.flickr.com
+      user-agent:
+      - python-httpx/0.25.1
+    method: POST
+    uri: https://www.flickr.com/services/oauth/access_token
+  response:
+    content: fullname=Alex%20Chan&oauth_token=ACCESS_TOKEN_0b3&oauth_token_secret=ACCESS_TOKEN_SECRET_f04&user_nsid=199246608%40N02&username=cefarrjf87
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '141'
+      Content-Type:
+      - text/plain;charset=UTF-8
+      Date:
+      - Tue, 05 Dec 2023 15:05:44 GMT
+      Via:
+      - 1.1 55bef38e734117ff8ff4a83214717dc8.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - gt2txPdxEa0IJ6VSVvCYOdHK9T8X_OHgy_FNuMnuUN6Mto6ZZLgh5A==
+      X-Amz-Cf-Pop:
+      - LHR5-P1
+      X-Cache:
+      - Miss from cloudfront
+      access-control-allow-origin:
+      - '*'
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.58 (Ubuntu)
+      set-cookie:
+      - xb=828450; expires=Fri, 02-Dec-2033 15:05:44 GMT; Max-Age=315360000; path=/;
+        domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Thu, 04-Jan-2024 15:05:44 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Thu, 04-Jan-2024 15:05:44 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

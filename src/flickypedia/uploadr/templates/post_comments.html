@@ -16,13 +16,13 @@
   
   <div class="which_user">
     {% if user == 'bot' %}
-      <img src="{{ url_for('buddy_icon', user_id='199561775@N05') }}">
+      <img src="{{ '199561775@N05'|buddy_icon }}">
       <p>
         We’ll post on your behalf as Flickypedia Bot.
       </p>
     {% else %}
       {% with token = current_user.flickr_token() %}
-        <img src="{{ url_for('buddy_icon', user_id=token.user_nsid) }}">
+        <img src="{{ token.user_nsid|buddy_icon }}">
         <p>
           You’re logged into Flickr as {{ token.fullname or token.username }}.
         </p>

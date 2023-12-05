@@ -3,9 +3,10 @@ import json
 import os
 
 from authlib.oauth2.rfc6749.wrappers import OAuth2Token
+from cryptography.fernet import Fernet
 from flask import Flask, session
 from flask.testing import FlaskClient
-from flask_login import current_user
+from flask_login import current_user, login_user
 
 from flickypedia.uploadr.auth import (
     load_user,
@@ -13,7 +14,60 @@ from flickypedia.uploadr.auth import (
     WikimediaUserSession,
     SESSION_ENCRYPTION_KEY,
 )
-from utils import store_user
+from flickypedia.utils import encrypt_string
+
+
+def store_user(token: OAuth2Token | None = None) -> WikimediaUserSession:
+    """
+    Create a user and store them in the database.
+
+    This simulates a "real" login and is the preferred way to create
+    logged-in users during tests – once you do this, the rest of
+    the app code should treat this just like a real user.
+
+    This minimises the need to include this sort of conditional in
+    our auth code:
+
+        if app.config["TESTING"]:
+            # do thing which bypasses regular auth
+
+    which is nice, because then there's no risk of those lower-security
+    branches being inadvertently run in prod code.
+
+    Note: this is a close duplicate of a function with the same name in
+    ``utils.py``; having divergent implementations has been easier than
+    trying to wrangle sessions correctly across all the uses.
+
+    """
+    oauth2_token = token or OAuth2Token(
+        {
+            "token_type": "Bearer",
+            "expires_in": 14400,
+            "access_token": "[ACCESS_TOKEN...sqfLY]",
+            "refresh_token": "[REFRESH_TOKEN...8f34f]",
+            "expires_at": 2299322615,
+        }
+    )
+
+    key = Fernet.generate_key()
+
+    session[SESSION_ENCRYPTION_KEY] = key
+
+    # (I haven't actually checked this, but I'm pretty sure user IDs
+    # in Wikimedia are all positive integers.)
+    user = WikimediaUserSession(
+        id="-4",
+        userid="-4",
+        name="FlickypediaTestingUser",
+        encrypted_token=encrypt_string(key, plaintext=json.dumps(oauth2_token)),
+        first_login=datetime.datetime.now(),
+    )
+    user_db.session.add(user)
+    user_db.session.commit()
+
+    login_user(user)
+
+    return user
 
 
 class TestOAuth2AuthorizeWikimedia:
@@ -134,6 +188,13 @@ class TestOAuth2CallbackWikimedia:
         assert resp.status_code == 401
 
 
+class TestOAuth2AuthorizeFlickr:
+    def test_missing_next_url_is_error(self, logged_in_client: FlaskClient) -> None:
+        resp = logged_in_client.get("/authorize/flickr")
+
+        assert resp.status_code == 400
+
+
 def test_token_is_saved_to_database_when_refreshed(
     app: Flask, client: FlaskClient, vcr_cassette: str
 ) -> None:
@@ -164,7 +225,7 @@ def test_token_is_saved_to_database_when_refreshed(
         token["expires_at"] = int(datetime.datetime.now().timestamp() - 1)
 
         # Now save a user with this token to the database.
-        user = store_user(token)
+        user = store_user(token=token)
 
         # Check that if we retrieve the token, it's the one that was stored.
         assert user.token() == token
@@ -193,7 +254,7 @@ class TestLoadUser:
             assert load_user(userid="-1") is None
 
     def test_user_with_inactive_token_is_no_user(
-        self, app: Flask, vcr_cassette: str
+        self, app: Flask, client: FlaskClient, vcr_cassette: str
     ) -> None:
         app.config["TESTING"] = False
 
@@ -208,7 +269,7 @@ class TestLoadUser:
         )
 
         with app.test_request_context():
-            user = store_user(token)
+            user = store_user(token=token)
 
             assert load_user(userid=user.id) is None
 

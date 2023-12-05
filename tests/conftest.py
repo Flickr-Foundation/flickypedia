@@ -3,7 +3,7 @@ import os
 import pathlib
 import shutil
 
-from flask import Flask, session
+from flask import Flask
 from flask.testing import FlaskClient
 from flask_login import FlaskLoginClient, current_user
 from flickypedia.apis.flickr import FlickrPhotosApi
@@ -171,9 +171,11 @@ def logged_in_client(app: Flask) -> Generator[FlaskClient, None, None]:
     # out; see https://stackoverflow.com/a/69961887/1558022
     with app.test_request_context():
         with app.test_client() as client:
-            user = store_user()
+            user = store_user(client)
 
-            assert SESSION_ENCRYPTION_KEY in session
+            with client.session_transaction() as session:
+                assert SESSION_ENCRYPTION_KEY in session
+
             assert current_user == user
 
             yield client

@@ -32,7 +32,7 @@ def test_can_get_token_from_wikimedia(
     # user, but I haven't got that working with Flask-Login and tests.
     assert current_user == None  # noqa: E711
 
-    # Take the user to the loign endpoint.  See where we get redirected.
+    # Take the user to the login endpoint.  See where we get redirected.
     authorize_resp = client.get("/authorize/wikimedia")
     location = authorize_resp.headers["location"]
 
