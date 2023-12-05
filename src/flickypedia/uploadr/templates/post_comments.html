@@ -24,7 +24,7 @@
       {% with token = current_user.flickr_token() %}
         <img src="{{ token.user_nsid|buddy_icon }}">
         <p>
-          You’re logged into Flickr as {{ token.fullname or token.username }}.
+          <span class="highlight green" style="margin-right: 0;">You’re logged into Flickr</span> as <a href="https://www.flickr.com/people/{{ token.user_nsid }}/">{{ token.fullname or token.username }}</a>.
         </p>
       {% endwith %}
     {% endif %}
