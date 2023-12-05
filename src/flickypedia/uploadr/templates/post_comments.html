@@ -3,6 +3,10 @@
 {% set title = "Say thanks!" %}
 {% set page_id = "post_comments" %}
 
+{% block head %}
+  <script src="{{ url_for('static', filename='flickypedia.js') }}"></script>
+{% endblock %}
+
 {% block content %}
   {% include "components/header.html" %}
 
@@ -32,7 +36,7 @@
           </div>
 
           <p>
-            <button class="pink_button">POST</button>
+            <button class="pink_button" onclick="postBotComment(this, {{ api_url|tojson }}, {{task['id']|tojson}}, {{ photo['id']|tojson}} )">POST</button>
           </p>
 
 
