@@ -124,5 +124,7 @@ class InMemoryKeyring(keyring.backend.KeyringBackend):
     def get_password(self, service_name: str, username: str) -> str | None:
         return self.passwords.get((service_name, username))
 
-    def delete_password(self, service_name: str, username: str) -> None:
+    # This function isn't currently used as part of the tests, but we
+    # need it to construct an instance of KeyringBackend.
+    def delete_password(self, service_name: str, username: str) -> None:  # pragma: no cover
         del self.passwords[(service_name, username)]
