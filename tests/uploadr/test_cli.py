@@ -30,7 +30,7 @@ def test_store_flickypedia_bot_token(vcr_cassette: None) -> None:
     )
     assert result.exit_code == 0
 
-    stored_token = keyring.get_password("flickypedia", "oauth_token")
+    stored_token = keyring.get_password("flickypedia.bot", "oauth_token")
     assert stored_token is not None
 
     assert json.loads(stored_token) == {
