@@ -655,8 +655,8 @@ function postUserComment(buttonElement, postUserCommentApiUrl, taskId, photoId) 
   const textAreaElement = document.querySelector(`textarea#comment-${photoId}`);
 
   fetch(
-    `${postUserCommentApiUrl}?task_id=${taskId}&photo_id=${photoId}&text=${textAreaElement.value}`,
-    { method: "POST" }
+    `${postUserCommentApiUrl}?task_id=${taskId}&photo_id=${photoId}`,
+    { method: "POST", body: JSON.stringify(textAreaElement.value) }
   ).then((response) => response.json())
     .then((json) => {
       if (json.comment_id) {

@@ -1,3 +1,5 @@
+import json
+
 from flask import abort, jsonify, render_template, request, url_for
 from flask_login import current_user, login_required
 
@@ -80,7 +82,7 @@ def post_user_comment_api() -> ViewResponse:
     try:
         task_id = request.args["task_id"]
         photo_id = request.args["photo_id"]
-        comment_text = request.args["text"]
+        comment_text = json.loads(request.data)
     except KeyError:
         abort(400)
 
