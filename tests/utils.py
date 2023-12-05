@@ -6,7 +6,7 @@ from typing import TypeVar
 
 from authlib.oauth2.rfc6749.wrappers import OAuth2Token
 from cryptography.fernet import Fernet
-from flask import session
+from flask.testing import FlaskClient
 from flask_login import login_user
 import keyring
 
@@ -45,7 +45,9 @@ def minify(text: str | bytes) -> str:
     return text
 
 
-def store_user(token: OAuth2Token | None = None) -> WikimediaUserSession:
+def store_user(
+    client: FlaskClient, token: OAuth2Token | None = None
+) -> WikimediaUserSession:
     """
     Create a user and store them in the database.
 
@@ -69,19 +71,20 @@ def store_user(token: OAuth2Token | None = None) -> WikimediaUserSession:
             "expires_in": 14400,
             "access_token": "[ACCESS_TOKEN...sqfLY]",
             "refresh_token": "[REFRESH_TOKEN...8f34f]",
-            "expires_at": 1699322615,
+            "expires_at": 2299322615,
         }
     )
 
     key = Fernet.generate_key()
 
-    session[SESSION_ENCRYPTION_KEY] = key
+    with client.session_transaction() as session:
+        session[SESSION_ENCRYPTION_KEY] = key
 
     # (I haven't actually checked this, but I'm pretty sure user IDs
     # in Wikimedia are all positive integers.)
     user = WikimediaUserSession(
-        id="-1",
-        userid="-1",
+        id="-3",
+        userid="-3",
         name="FlickypediaTestingUser",
         encrypted_token=encrypt_string(key, plaintext=json.dumps(oauth2_token)),
         first_login=datetime.datetime.now(),

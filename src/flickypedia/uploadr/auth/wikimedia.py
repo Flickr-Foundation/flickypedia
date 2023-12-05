@@ -80,8 +80,9 @@ from flask_sqlalchemy import SQLAlchemy
 import httpx
 
 from flickypedia.apis.wikimedia import WikimediaApi
+from flickypedia.types import FlickrOAuthToken
 from flickypedia.types.views import ViewResponse
-from flickypedia.utils import decrypt_string, encrypt_string
+from flickypedia.utils import decrypt_string, encrypt_string, validate_typeddict
 
 
 user_db = SQLAlchemy()
@@ -107,6 +108,8 @@ class WikimediaUserSession(UserMixin, user_db.Model):  # type: ignore
     name = user_db.Column(user_db.String(64), nullable=False)
     encrypted_token = user_db.Column(user_db.LargeBinary, nullable=False)
     first_login = user_db.Column(user_db.DateTime, nullable=False)
+
+    encrypted_flickr_token = user_db.Column(user_db.LargeBinary, nullable=True)
 
     def get_id(self) -> str:
         """
@@ -158,7 +161,7 @@ class WikimediaUserSession(UserMixin, user_db.Model):  # type: ignore
             )
             user_db.session.commit()
 
-        config = current_app.config["OAUTH2_PROVIDERS"]["wikimedia"]
+        config = current_app.config["OAUTH_PROVIDERS"]["wikimedia"]
 
         return OAuth2Client(
             client_id=config["client_id"],
@@ -186,7 +189,7 @@ class WikimediaUserSession(UserMixin, user_db.Model):  # type: ignore
         a new token -- this will ensure the current access token is valid
         for another four hours.
         """
-        config = current_app.config["OAUTH2_PROVIDERS"]["wikimedia"]
+        config = current_app.config["OAUTH_PROVIDERS"]["wikimedia"]
 
         client = self._oauth2_client()
         client.refresh_token(url=config["token_url"])
@@ -207,6 +210,28 @@ class WikimediaUserSession(UserMixin, user_db.Model):  # type: ignore
             client = httpx.Client()
 
         return WikimediaApi(client=client)
+
+    def store_flickr_oauth_token(self, token: str) -> None:
+        """
+        Store the credentials for a Flickr user authorising with the db.
+        """
+        validate_typeddict(token, model=FlickrOAuthToken)
+
+        self.encrypted_flickr_token = encrypt_string(
+            key=session[SESSION_ENCRYPTION_KEY], plaintext=json.dumps(token)
+        )
+        user_db.session.commit()
+
+    def flickr_token(self) -> FlickrOAuthToken:
+        """
+        Returns the user's Flickr OAuth token.
+        """
+        stored_token = decrypt_string(
+            key=session[SESSION_ENCRYPTION_KEY],
+            ciphertext=self.encrypted_flickr_token,
+        )
+
+        return validate_typeddict(json.loads(stored_token), model=FlickrOAuthToken)
 
     def delete(self) -> None:
         """
@@ -291,7 +316,7 @@ def oauth2_authorize_wikimedia() -> ViewResponse:
     #
     # This is the URL described in step 2 of
     # https://api.wikimedia.org/wiki/Authentication#2._Request_authorization
-    config = current_app.config["OAUTH2_PROVIDERS"]["wikimedia"]
+    config = current_app.config["OAUTH_PROVIDERS"]["wikimedia"]
 
     client = OAuth2Client(client_id=config["client_id"])
 
@@ -355,7 +380,7 @@ def oauth2_callback_wikimedia() -> ViewResponse:
         print("Unable to retrieve oauth_authorize_state from user's session")
         abort(401)
 
-    config = current_app.config["OAUTH2_PROVIDERS"]["wikimedia"]
+    config = current_app.config["OAUTH_PROVIDERS"]["wikimedia"]
     token_client = OAuth2Client(
         client_id=config["client_id"],
         client_secret=config["client_secret"],

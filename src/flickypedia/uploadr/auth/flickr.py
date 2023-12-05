@@ -4,8 +4,11 @@ from xml.etree import ElementTree as ET
 
 from authlib.integrations.httpx_client import OAuth1Client
 import click
+from flask import abort, current_app, redirect, request, session, url_for
+from flask_login import current_user, login_required
 import keyring
 
+from flickypedia.types.views import ViewResponse
 from flickypedia.utils import (
     find_required_elem,
     find_required_text,
@@ -134,3 +137,99 @@ def get_flickypedia_bot_oauth_client() -> OAuth1Client:
     )
 
     return client
+
+
+@login_required
+def oauth2_authorize_flickr() -> ViewResponse:
+    """
+    Authorize the user with the Flickr APIs.
+
+    This is a named route which redirects so we can access it
+    with ``url_for()`` in templates.
+    """
+    # Where should the user be redirected when they've logged into Flickr?
+    try:
+        next_url = request.args["next_url"]
+    except KeyError:
+        abort(400)
+
+    oauth_config = current_app.config["OAUTH_PROVIDERS"]["flickr"]
+
+    client = OAuth1Client(
+        client_id=oauth_config["client_id"],
+        client_secret=oauth_config["client_secret"],
+        signature_type="QUERY",
+    )
+
+    # Step 1: Getting a Request Token
+    #
+    # See https://www.flickr.com/services/api/auth.oauth.html#request_token
+    #
+    # Note: we could put the next_url parameter in here, but this
+    # causes issues with the OAuth 1.0a signatures, so I'm passing that
+    # in the Flask session instead.
+    redirect_url = url_for("oauth2_callback_flickr", _external=True)
+
+    request_token_resp = client.fetch_request_token(
+        url=oauth_config["request_url"],
+        params={"oauth_callback": redirect_url},
+    )
+
+    request_token = request_token_resp["oauth_token"]
+
+    session["flickr_oauth_next_url"] = next_url
+    session["flickr_oauth_request_token"] = json.dumps(request_token_resp)
+
+    # Step 2: Getting the User Authorization
+    #
+    # This creates an authorization URL on flickr.com, where the user
+    # can choose to authorize the app (or not).
+    #
+    # See https://www.flickr.com/services/api/auth.oauth.html#request_token
+    authorization_url = client.create_authorization_url(
+        url="https://www.flickr.com/services/oauth/authorize",
+        request_token=request_token,
+    )
+
+    return redirect(authorization_url)
+
+
+@login_required
+def oauth2_callback_flickr() -> ViewResponse:
+    """
+    Handle an authorization callback from Flickr.
+    """
+    oauth_config = current_app.config["OAUTH_PROVIDERS"]["flickr"]
+
+    try:
+        request_token = json.loads(session.pop("flickr_oauth_request_token"))
+    except (KeyError, ValueError):
+        abort(400)
+
+    client = OAuth1Client(
+        client_id=oauth_config["client_id"],
+        client_secret=oauth_config["client_secret"],
+        token=request_token["oauth_token"],
+        token_secret=request_token["oauth_token_secret"],
+    )
+
+    client.parse_authorization_response(request.url)
+
+    # Step 3: Exchanging the Request Token for an Access Token
+    #
+    # This token gets saved in the OAuth1Client, so we don't need
+    # to inspect the response directly.
+    #
+    # See https://www.flickr.com/services/api/auth.oauth.html#access_token
+    token = client.fetch_access_token(url=oauth_config["token_url"])
+
+    # Store the token in our database, so we can access it later, then
+    # redirect the user back to the page.
+    current_user.store_flickr_oauth_token(token=token)
+
+    try:
+        next_url = session.pop("flickr_oauth_next_url")
+    except KeyError:
+        abort(400)
+
+    return redirect(next_url)

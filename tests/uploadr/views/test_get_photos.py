@@ -68,7 +68,7 @@ def test_preserves_photo_if_csrf_bad(tmp_path: pathlib.Path) -> None:
 
     with app.test_request_context():
         with app.test_client() as client:
-            store_user()
+            store_user(client)
 
             resp = client.post(
                 "/get_photos",

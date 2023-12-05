@@ -30,7 +30,7 @@ def create_config(data_directory: pathlib.Path) -> dict[str, Any]:
         # Used as a directory to find SQLite databases which contain information
         # about duplicates.
         "DUPLICATE_DATABASE_DIRECTORY": data_directory / "duplicates",
-        "OAUTH2_PROVIDERS": {
+        "OAUTH_PROVIDERS": {
             # Implementation note: although these URLs are currently hard-coded,
             # there is a beta cluster we might use in the future.  It's currently
             # broken, so we're not adding support for it yet, but we could if
@@ -42,7 +42,13 @@ def create_config(data_directory: pathlib.Path) -> dict[str, Any]:
                 "client_secret": os.environ.get("WIKIMEDIA_CLIENT_SECRET"),
                 "authorize_url": "https://meta.wikimedia.org/w/rest.php/oauth2/authorize",
                 "token_url": "https://meta.wikimedia.org/w/rest.php/oauth2/access_token",
-            }
+            },
+            "flickr": {
+                "client_id": os.environ.get("FLICKR_CLIENT_ID"),
+                "client_secret": os.environ.get("FLICKR_CLIENT_SECRET"),
+                "request_url": "https://www.flickr.com/services/oauth/request_token",
+                "token_url": "https://www.flickr.com/services/oauth/access_token",
+            },
         },
         #
         # The IDs of licenses that we can upload to Flickypedia.
