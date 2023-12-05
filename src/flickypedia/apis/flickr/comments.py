@@ -2,6 +2,7 @@
 This file has some code for posting comments to Flickr.
 """
 
+import textwrap
 import xml.etree.ElementTree as ET
 
 import httpx
@@ -73,3 +74,18 @@ class FlickrCommentsApi:
                 raise FlickrApiException(errors)
 
         return find_required_elem(xml, path=".//comment").attrib["id"]
+
+
+def create_bot_comment_text(user_name: str, user_url: str, photo_id: str, wikimedia_title: str) -> str:
+    """
+    Creates the comment posted by Flickypedia Bot.
+
+    We don't allow users to change this text.
+    """
+    return textwrap.dedent(f"""
+        Hi, I’m <a href="https://www.flickr.com/people/flickypedia">Flickypedia Bot</a>.
+
+        A Wikimedia Commons user named <a href="{user_url}">{user_name}</a> has uploaded your photo to <a href="https://commons.wikimedia.org/wiki/Main_Page">Wikimedia Commons</a>.
+
+        <a href="https://commons.wikimedia.org/wiki/File:{wikimedia_title}">Would you like to see</a>? We hope you like it!
+    """).strip()

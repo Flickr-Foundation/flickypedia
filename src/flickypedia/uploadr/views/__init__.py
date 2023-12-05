@@ -6,6 +6,7 @@ from .api import (
     validate_title_api,
 )
 from .get_photos import get_photos
+from .post_comments import post_comments
 from .prepare_info import prepare_info, truncate_description
 from .say_thanks import say_thanks
 from .select_photos import select_photos
@@ -38,6 +39,7 @@ __all__ = [
     "get_photos",
     "get_upload_status",
     "homepage",
+    "post_comments",
     "prepare_info",
     "say_thanks",
     "select_photos",

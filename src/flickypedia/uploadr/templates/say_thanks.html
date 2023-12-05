@@ -61,7 +61,7 @@
         Our <span class="next_step">robot</span> can do it for you
       </p>
 
-      <a href="#" class="grey_button"onclick="javascript:alert('Sorry, this feature doesn’t work yet!')">
+      <a href="{{ url_for('post_comments', task_id=task['id'], user='bot') }}" class="grey_button">
         Robot can say thanks
       </a>
     </li>
