@@ -6,7 +6,7 @@ from flask.testing import FlaskClient
 from flickypedia.apis.flickr import FlickrPhotosApi
 import pytest
 
-from flickypedia.apis.flickr import PhotosInAlbumData, SinglePhotoData
+from flickypedia.types.flickr import PhotosInAlbumData, SinglePhotoData
 from flickypedia.uploadr.caching import save_cached_photos_data
 from utils import minify, get_typed_fixture
 

@@ -1,7 +1,7 @@
 import datetime
 import xml.etree.ElementTree as ET
 
-from ._types import SafetyLevel, Size, TakenGranularity
+from flickypedia.types.flickr import SafetyLevel, Size, TakenGranularity
 
 
 def parse_date_posted(p: str) -> datetime.datetime:

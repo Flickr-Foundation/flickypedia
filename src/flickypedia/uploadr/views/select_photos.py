@@ -36,10 +36,6 @@ from flask import (
     url_for,
 )
 from flask_login import login_required
-from flickypedia.apis.flickr import (
-    ResourceNotFound,
-    SinglePhoto,
-)
 from flickr_url_parser import (
     parse_flickr_url,
     NotAFlickrUrl,
@@ -49,15 +45,16 @@ from flask_wtf import FlaskForm
 from wtforms import BooleanField, HiddenField, SubmitField
 from wtforms.validators import DataRequired
 
-from flickypedia.apis.flickr import get_photos_from_flickr
+from flickypedia.apis.flickr import get_photos_from_flickr, ResourceNotFound
 from flickypedia.photos import categorise_photos
+from flickypedia.types.flickr import SinglePhoto
+from flickypedia.types.views import ViewResponse
 from .get_photos import FlickrPhotoURLForm
 from ..caching import (
     get_cached_photos_data,
     remove_cached_photos_data,
     save_cached_photos_data,
 )
-from ._types import ViewResponse
 
 
 class BaseSelectForm(FlaskForm):

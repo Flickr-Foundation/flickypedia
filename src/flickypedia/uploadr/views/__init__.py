@@ -11,22 +11,21 @@ from .say_thanks import say_thanks
 from .select_photos import select_photos
 from .wait_for_upload import get_upload_status, wait_for_upload
 from .upload_complete import upload_complete
-from ._types import ViewResponse
 
 
-def homepage() -> ViewResponse:
+def homepage() -> str:
     return render_template("homepage.html")
 
 
-def about() -> ViewResponse:
+def about() -> str:
     return render_template("about.html", current_step=None)
 
 
-def bookmarklet() -> ViewResponse:
+def bookmarklet() -> str:
     return render_template("bookmarklet.html", current_step=None)
 
 
-def faqs() -> ViewResponse:
+def faqs() -> str:
     return render_template("faqs.html", current_step=None)
 
 

@@ -1,9 +1,10 @@
 from flask import render_template
 from flask_login import login_required
 
+from flickypedia.types.uploads import UploadBatch, UploadBatchResults
+from flickypedia.types.views import ViewResponse
 from flickypedia.uploadr.fs_queue import Task
-from flickypedia.uploadr.uploads import uploads_queue, UploadBatch, UploadBatchResults
-from ._types import ViewResponse
+from flickypedia.uploadr.uploads import uploads_queue
 
 
 def get_completed_task(task_id: str) -> Task[UploadBatch, UploadBatchResults]:

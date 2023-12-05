@@ -3,6 +3,19 @@ import xml.etree.ElementTree as ET
 
 import httpx
 
+from flickypedia.types.flickr import (
+    CollectionOfPhotos,
+    DateTaken,
+    GroupInfo,
+    License,
+    LocationInfo,
+    PhotosInAlbum,
+    PhotosInGallery,
+    PhotosInGroup,
+    SinglePhoto,
+    Size,
+    User,
+)
 from flickypedia.utils import (
     find_optional_text,
     find_required_elem,
@@ -15,19 +28,6 @@ from .utils import (
     parse_date_taken_granularity,
     parse_safety_level,
     parse_sizes,
-)
-from ._types import (
-    CollectionOfPhotos,
-    DateTaken,
-    GroupInfo,
-    License,
-    LocationInfo,
-    PhotosInAlbum,
-    PhotosInGallery,
-    PhotosInGroup,
-    SinglePhoto,
-    Size,
-    User,
 )
 
 

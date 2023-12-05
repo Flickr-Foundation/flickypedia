@@ -4,7 +4,7 @@ from typing import TypedDict
 import pytest
 
 from flickypedia.apis.structured_data.wikidata import to_wikidata_date_value
-from flickypedia.apis.structured_data._types import DataValueTypes
+from flickypedia.types.structured_data import DataValueTypes
 
 
 ToWikidateArgs = TypedDict("ToWikidateArgs", {"d": datetime.datetime, "precision": str})

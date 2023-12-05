@@ -3,9 +3,10 @@ from flask.testing import FlaskClient
 import pytest
 from werkzeug.test import TestResponse
 
-from flickypedia.apis.flickr import SinglePhotoData, PhotosInAlbumData
+from flickypedia.types.flickr import SinglePhotoData, PhotosInAlbumData
+from flickypedia.types.uploads import UploadRequest
 from flickypedia.uploadr.caching import save_cached_photos_data
-from flickypedia.uploadr.uploads import uploads_queue, UploadRequest
+from flickypedia.uploadr.uploads import uploads_queue
 from flickypedia.uploadr.views.prepare_info import (
     truncate_description,
     TruncationResult,

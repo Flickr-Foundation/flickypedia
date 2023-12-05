@@ -29,16 +29,15 @@ is supporting that function.
 
 import datetime
 
-from flickypedia.apis.flickr import (
+from flickypedia.apis.flickr_user_ids import lookup_flickr_user_in_wikidata
+from flickypedia.types.flickr import (
     DateTaken,
     LocationInfo,
     User as FlickrUser,
     SinglePhoto,
 )
-
-from flickypedia.apis.flickr_user_ids import lookup_flickr_user_in_wikidata
+from flickypedia.types.structured_data import NewStatement, NewClaims
 from ._qualifiers import create_qualifiers as create_qualifiers, QualifierValues
-from ._types import NewStatement, NewClaims
 from .wikidata import (
     to_wikidata_date_value,
     to_wikidata_entity_value,

@@ -47,8 +47,8 @@ When the upload completes, we redirect the user to the next page.
 from flask import jsonify, redirect, render_template, url_for
 from flask_login import login_required
 
+from flickypedia.types.views import ViewResponse
 from ..uploads import uploads_queue
-from ._types import ViewResponse
 
 
 @login_required

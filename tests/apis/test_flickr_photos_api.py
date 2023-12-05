@@ -7,16 +7,18 @@ from flickypedia.apis.flickr import (
     FlickrApiException,
     LicenseNotFound,
     ResourceNotFound,
+)
+from flickypedia.apis.flickr.utils import (
+    parse_date_taken_granularity,
+    parse_safety_level,
+)
+from flickypedia.types.flickr import (
     User,
     SinglePhoto,
     CollectionOfPhotos,
     PhotosInAlbum,
     PhotosInGallery,
     PhotosInGroup,
-)
-from flickypedia.apis.flickr.utils import (
-    parse_date_taken_granularity,
-    parse_safety_level,
 )
 from utils import get_typed_fixture
 

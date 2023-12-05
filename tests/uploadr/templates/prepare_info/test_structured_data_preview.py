@@ -6,11 +6,6 @@ import bs4
 from flask import Flask, render_template
 import pytest
 
-from flickypedia.apis.flickr import (
-    DateTaken,
-    LocationInfo,
-    User as FlickrUser,
-)
 from flickypedia.apis.structured_data import (
     create_copyright_status_statement,
     create_date_taken_statement,
@@ -19,8 +14,13 @@ from flickypedia.apis.structured_data import (
     create_location_statement,
     create_posted_to_flickr_statement,
     create_source_data_for_photo,
-    NewStatement,
 )
+from flickypedia.types.flickr import (
+    DateTaken,
+    LocationInfo,
+    User as FlickrUser,
+)
+from flickypedia.types.structured_data import NewStatement
 
 
 def prettify_html(html: str, find_kwargs: dict[str, Any] | None = None) -> str:

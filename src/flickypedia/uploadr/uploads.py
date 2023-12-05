@@ -2,7 +2,6 @@
 Manage the process of uploading photos to Wikimedia.
 """
 
-from typing import Literal, TypedDict
 import uuid
 
 from flask import current_app
@@ -10,58 +9,18 @@ from flask_login import current_user
 import httpx
 import keyring
 
-from flickypedia.apis.structured_data import NewClaims
-from flickypedia.apis.flickr import SinglePhoto
-from flickypedia.apis.wikimedia import ShortCaption, WikimediaApi
+from flickypedia.apis.wikimedia import WikimediaApi
 from flickypedia.apis.wikitext import create_wikitext
 from flickypedia.duplicates import record_file_created_by_flickypedia
 from flickypedia.photos import size_at
+from flickypedia.types.uploads import (
+    KeyringId,
+    SuccessfulUpload,
+    UploadBatch,
+    UploadBatchResults,
+    UploadRequest,
+)
 from flickypedia.uploadr.fs_queue import AbstractFilesystemTaskQueue, Task
-
-
-# Types for upload requests.
-
-
-class UploadRequest(TypedDict):
-    photo: SinglePhoto
-    sdc: NewClaims
-    title: str
-    caption: ShortCaption
-    categories: list[str]
-    username: str
-
-
-class KeyringId(TypedDict):
-    service_name: str
-    username: str
-
-
-class UploadBatch(TypedDict):
-    keyring_id: KeyringId
-    requests: list[UploadRequest]
-
-
-# Types for upload results.
-
-
-class SuccessfulUpload(TypedDict):
-    id: str
-    title: str
-    state: Literal["succeeded"]
-
-
-class FailedUpload(TypedDict):
-    state: Literal["failed"]
-    error: str
-
-
-class PendingUpload(TypedDict):
-    state: Literal["waiting", "in_progress"]
-
-
-IndividualUploadResult = SuccessfulUpload | FailedUpload | PendingUpload
-
-UploadBatchResults = dict[str, IndividualUploadResult]
 
 
 class PhotoUploadQueue(AbstractFilesystemTaskQueue[UploadBatch, UploadBatchResults]):

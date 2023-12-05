@@ -5,7 +5,7 @@ from flickr_url_parser import parse_flickr_url, NotAFlickrUrl, UnrecognisedUrl
 from wtforms import URLField, SubmitField
 from wtforms.validators import DataRequired
 
-from ._types import ViewResponse
+from flickypedia.types.views import ViewResponse
 
 
 @login_required

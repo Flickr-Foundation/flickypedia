@@ -37,7 +37,7 @@ the required JSON.
 import datetime
 from typing import Literal, TypedDict
 
-from ._types import DataValue, Snak
+from flickypedia.types.structured_data import DataValue, Snak
 from .wikidata import (
     to_wikidata_date_value,
     to_wikidata_entity_value,

@@ -4,7 +4,7 @@ from flask import abort, jsonify, request
 from flask_login import current_user, login_required
 
 from flickypedia.apis.wikimedia import top_n_languages, LanguageMatch
-from ._types import ViewResponse
+from flickypedia.types.views import ViewResponse
 
 
 @login_required
