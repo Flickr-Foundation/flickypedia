@@ -13,7 +13,7 @@
   <h1>
     Say thanks
   </h1>
-  
+
   <div class="which_user">
     {% if user == 'bot' %}
       <img src="{{ '199561775@N05'|buddy_icon }}">
@@ -24,7 +24,7 @@
       {% with token = current_user.flickr_token() %}
         <img src="{{ token.user_nsid|buddy_icon }}">
         <p>
-          You’re logged into Flickr as {{ token.fullname or token.username }}.
+          <span class="highlight green" style="margin-right: 0;">You’re logged into Flickr</span> as <a href="https://www.flickr.com/people/{{ token.user_nsid }}/">{{ token.fullname or token.username }}</a>.
         </p>
       {% endwith %}
     {% endif %}
@@ -43,13 +43,24 @@
             To <a href="{{ photo.owner.profile_url }}">{{ photo.owner.realname or photo.owner.username }}</a>
           </p>
 
-          <div class="comment_text">
-            {{- current_user.name|bot_comment_text(current_user.profile_url, result.title)|safe -}}
-          </div>
+          {% if user == 'bot' %}
 
-          <p>
-            <button class="pink_button" onclick='postBotComment(this, {{ api_url|tojson }}, {{task.id|tojson}}, {{ photo.id|tojson}} )'>POST</button>
-          </p>
+            <div class="comment_text">
+              {{- current_user.name|bot_comment_text(current_user.profile_url, result.title)|safe -}}
+            </div>
+
+            <p>
+              <button class="pink_button" onclick='postBotComment(this, {{ api_urls.bot_comment|tojson }}, {{task.id|tojson}}, {{ photo.id|tojson}} )'>POST</button>
+            </p>
+          {% else %}
+            <textarea id="comment-{{ photo.id }}" rows="7">
+              {{- result.title|default_user_comment_text|safe -}}
+            </textarea>
+
+            <p>
+              <button class="pink_button" onclick='postUserComment(this, {{ api_urls.user_comment|tojson }}, {{task.id|tojson}}, {{ photo.id|tojson}} )'>POST</button>
+            </p>
+          {% endif %}
 
 
         </li>

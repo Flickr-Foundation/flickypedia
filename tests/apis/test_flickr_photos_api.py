@@ -380,7 +380,10 @@ class TestCollectionsPhotoResponse:
             album_id="72157700908640782",
         )
 
-        assert any(photo["location"] is None for photo in resp["photos"])
+        has_location = [
+            photo for photo in resp["photos"] if photo["location"] is not None
+        ]
+        assert len(has_location) > 0
 
     def test_discards_location_if_accuracy_zero(
         self, flickr_api: FlickrPhotosApi

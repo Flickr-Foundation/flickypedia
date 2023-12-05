@@ -64,7 +64,7 @@ import json
 import textwrap
 import uuid
 
-from authlib.integrations.httpx_client.oauth2_client import OAuth2Client
+from authlib.integrations.httpx_client import OAuth1Client, OAuth2Client
 from authlib.oauth2.rfc6749.wrappers import OAuth2Token
 from cryptography.fernet import Fernet
 from flask import abort, current_app, flash, redirect, request, session, url_for
@@ -232,6 +232,25 @@ class WikimediaUserSession(UserMixin, user_db.Model):  # type: ignore
         )
 
         return validate_typeddict(json.loads(stored_token), model=FlickrOAuthToken)
+
+    def flickr_oauth_client(self) -> OAuth1Client:
+        """
+        Returns an OAuth client authorised to post comments on behalf of
+        the logged-in Flickr user.
+        """
+        stored_token = self.flickr_token()
+
+        oauth_config = current_app.config["OAUTH_PROVIDERS"]["flickr"]
+
+        client = OAuth1Client(
+            client_id=oauth_config["client_id"],
+            client_secret=oauth_config["client_secret"],
+            signature_type="QUERY",
+            token=stored_token["oauth_token"],
+            token_secret=stored_token["oauth_token_secret"],
+        )
+
+        return client
 
     def delete(self) -> None:
         """
