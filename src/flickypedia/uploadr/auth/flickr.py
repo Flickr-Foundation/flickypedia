@@ -207,7 +207,7 @@ def oauth2_callback_flickr() -> ViewResponse:
 
     try:
         request_token = json.loads(session.pop("flickr_oauth_request_token"))
-    except ValueError:
+    except (KeyError, ValueError):
         abort(400)
 
     client = OAuth1Client(

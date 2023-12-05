@@ -195,6 +195,15 @@ class TestOAuth2AuthorizeFlickr:
         assert resp.status_code == 400
 
 
+class TestOAuth2CallbackFlickr:
+    def test_missing_request_token_in_session_is_error(
+        self, logged_in_client: FlaskClient
+    ) -> None:
+        resp = logged_in_client.get("/callback/flickr?oauth_token=123")
+
+        assert resp.status_code == 400
+
+
 def test_token_is_saved_to_database_when_refreshed(
     app: Flask, client: FlaskClient, vcr_cassette: str
 ) -> None:
