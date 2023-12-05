@@ -3,6 +3,10 @@
 {% set title = "Say thanks!" %}
 {% set page_id = "upload_complete" %}
 
+{% block head %}
+  <script src="{{ url_for('static', filename='flickypedia.js') }}"></script>
+{% endblock %}
+
 {% block content %}
   {% include "components/header.html" %}
 
