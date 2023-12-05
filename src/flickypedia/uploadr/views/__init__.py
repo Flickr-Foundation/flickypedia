@@ -7,7 +7,7 @@ from .api import (
 )
 from .get_photos import get_photos
 from .prepare_info import prepare_info, truncate_description
-from .say_thanks import say_thanks
+from .say_thanks import say_thanks, post_comments
 from .select_photos import select_photos
 from .wait_for_upload import get_upload_status, wait_for_upload
 from .upload_complete import upload_complete
@@ -39,6 +39,7 @@ __all__ = [
     "get_photos",
     "get_upload_status",
     "homepage",
+    "post_comments",
     "prepare_info",
     "say_thanks",
     "select_photos",

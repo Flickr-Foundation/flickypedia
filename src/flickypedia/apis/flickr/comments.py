@@ -1,4 +1,5 @@
 import pathlib
+import textwrap
 import xml.etree.ElementTree as ET
 
 import httpx
@@ -61,13 +62,13 @@ class FlickrCommentsApi:
         return find_required_elem(resp, match=".//comment").attrib["id"]
 
 
-def create_bot_comment(user: WikimediaUserSession, photo_id: str, wikimedia_title: str) -> str:
+def get_bot_comment_text(user: WikimediaUserSession, photo_id: str, wikimedia_title: str) -> str:
     """
     Creates the comment posted by Flickypedia Bot.
 
     We don't allow users to change this text.
     """
-    return textwrap.dedent("""
+    return textwrap.dedent(f"""
         Hi, I’m <a href="https://www.flickr.com/people/flickypedia">Flickypedia Bot</a>.
 
         A Wikimedia Commons user named <a href="{user.profile_url}">{user.name}</a> has uploaded your photo to <a href="https://commons.wikimedia.org/wiki/Main_Page">Wikimedia Commons</a>.

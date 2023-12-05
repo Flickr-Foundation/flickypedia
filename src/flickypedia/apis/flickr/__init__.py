@@ -23,9 +23,6 @@ from ._types import (
 )
 
 
-__version__ = "1.3.1"
-
-
 __all__ = [
     "AlbumInfo",
     "CollectionOfPhotos",

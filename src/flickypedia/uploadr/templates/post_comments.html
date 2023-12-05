@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% set title = "Say thanks!" %}
+{% set page_id = "upload_complete" %}
+
+{% block content %}
+  {% include "components/header.html" %}
+
+  <style>
+    .comment_info {
+      grid-column: 2 / -1;
+      max-width: 100% !important;
+    }
+
+    .comment_info p:first-child {
+      margin-top: 0;
+    }
+
+    .comment_text {
+      font-family: monospace;
+      line-height: 1.3em;
+      white-space: pre-line;
+    }
+  </style>
+
+  <h1>
+    Say thanks
+  </h1>
+
+  <p>
+    We’ll post on your behalf as Flickypedia Bot.
+  </p>
+
+  <ul class="plain_list upload_progress">
+    {% for item in successful_requests %}
+      {% with photo = item.photo %}
+      {% with result = task.task_output[photo.id] %}
+        <li>
+          {% set large_size = photo.sizes|size_at(desired_size='Large') %}
+          <img src="{{ large_size.source }}">
+        </li>
+        <li class="comment_info">
+          <p>
+            To <a href="{{ photo.owner.profile_url }}">{{ photo.owner.realname or photo.owner.username }}</a>
+          </p>
+
+          <div class="comment_text">
+            {{- current_user|bot_comment_text(photo.id, result.title)|safe -}}
+          </div>
+
+          <p>
+            <button class="pink_button">POST</button>
+          </p>
+
+
+        </li>
+      {% endwith %}
+      {% endwith %}
+    {% endfor %}
+  </ul>
+{% endblock %}
