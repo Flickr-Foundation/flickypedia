@@ -4,7 +4,7 @@ import textwrap
 
 import pytest
 
-from flickypedia.apis.flickr_photos_api import SinglePhoto
+from flickypedia.apis.flickr import SinglePhoto
 from flickypedia.apis.wikitext import create_wikitext
 from flickypedia.uploadr.config import create_config
 from utils import get_typed_fixture

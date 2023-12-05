@@ -11,7 +11,7 @@ import httpx
 import keyring
 
 from flickypedia.apis.structured_data import NewClaims
-from flickypedia.apis.flickr_photos_api import SinglePhoto
+from flickypedia.apis.flickr import SinglePhoto
 from flickypedia.apis.wikimedia import ShortCaption, WikimediaApi
 from flickypedia.apis.wikitext import create_wikitext
 from flickypedia.duplicates import record_file_created_by_flickypedia

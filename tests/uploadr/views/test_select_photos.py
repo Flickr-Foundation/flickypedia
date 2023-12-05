@@ -3,7 +3,7 @@ import os
 import bs4
 from flask import Flask
 from flask.testing import FlaskClient
-from flickypedia.apis.flickr_photos_api import FlickrPhotosApi
+from flickypedia.apis.flickr import FlickrPhotosApi
 import pytest
 
 from flickypedia.apis.flickr import PhotosInAlbumData, SinglePhotoData

@@ -1,24 +1,17 @@
-"""
-Get a collection of photos from Flickr.
-
-We record when we call the Flickr API, because that information will
-later be saved as part of the SDC on Wikimedia.
-"""
-
 import datetime
 from typing import TypedDict
 
 from flask import current_app
 from flickr_url_parser import ParseResult
 
-from .flickr_photos_api import (
+from .api import FlickrPhotosApi
+from ._types import (
     CollectionOfPhotos,
-    FlickrPhotosApi,
     PhotosInAlbum,
     PhotosInGallery,
     PhotosInGroup,
     SinglePhoto,
-    User as FlickrUser,
+    User,
 )
 
 
@@ -28,7 +21,7 @@ class RetrievedAtMixin(TypedDict):
 
 class SinglePhotoData(RetrievedAtMixin):
     photos: list[SinglePhoto]
-    owner: FlickrUser
+    owner: User
 
 
 class CollectionsOfPhotoData(CollectionOfPhotos, RetrievedAtMixin):
@@ -48,7 +41,7 @@ class PhotosInGroupData(PhotosInGroup, RetrievedAtMixin):
 
 
 class PhotosInUserPhotostreamData(CollectionsOfPhotoData):
-    owner: FlickrUser
+    owner: User
 
 
 GetPhotosData = (

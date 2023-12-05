@@ -2,7 +2,7 @@ import datetime
 import os
 
 from flask import Flask
-from flickypedia.apis.flickr_photos_api import (
+from flickypedia.apis.flickr import (
     LocationInfo,
     SinglePhoto,
     TakenGranularity,
