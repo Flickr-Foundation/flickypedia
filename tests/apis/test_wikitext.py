@@ -26,7 +26,10 @@ def test_create_wikitext_for_photo() -> None:
     expected = tidy(
         """
         =={{int:filedesc}}==
-        {{Information}}
+        {{Information
+        |other fields=
+        {{Flickr Tags 2|mascot|chiefbert|germanshepherd|stationelizabethcity|weekinthelife2017|ninabowen|d5|midatlantic|northcarolina|elizabethcity|explosivedetectiondog|unitedstates|us}}
+        }}
 
         =={{int:license-header}}==
         {{Cc-by-2.0}}
@@ -57,7 +60,10 @@ def test_adds_categories_to_wikitext() -> None:
     expected = tidy(
         """
         =={{int:filedesc}}==
-        {{Information}}
+        {{Information
+        |other fields=
+        {{Flickr Tags 2|mascot|chiefbert|germanshepherd|stationelizabethcity|weekinthelife2017|ninabowen|d5|midatlantic|northcarolina|elizabethcity|explosivedetectiondog|unitedstates|us}}
+        }}
 
         =={{int:license-header}}==
         {{PD-USGov}}
@@ -81,6 +87,7 @@ def test_adds_categories_to_wikitext() -> None:
 
 def test_adds_location_to_wikitext() -> None:
     photo = get_typed_fixture("flickr_photos_api/32812033543.json", model=SinglePhoto)
+    photo["tags"] = []
     photo["location"] = {"latitude": 50.0, "longitude": 50.0, "accuracy": 16}
 
     wikitext = create_wikitext(
@@ -90,6 +97,20 @@ def test_adds_location_to_wikitext() -> None:
     )
 
     assert "{{Information}}\n{{Location}}\n" in wikitext
+
+
+def test_it_skips_tags_if_none_on_photo() -> None:
+    photo = get_typed_fixture("flickr_photos_api/32812033543.json", model=SinglePhoto)
+    photo["tags"] = []
+
+    wikitext = create_wikitext(
+        photo,
+        wikimedia_username="TestUser",
+        new_categories=[],
+    )
+
+    assert "Flickr Tags 2" not in wikitext
+    assert "{{Information}}" in wikitext
 
 
 config = create_config(data_directory=pathlib.Path("data"))
