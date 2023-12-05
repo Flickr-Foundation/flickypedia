@@ -15,8 +15,9 @@ from xml.etree import ElementTree as ET
 
 import httpx
 
+from flickypedia.types.structured_data import ExistingClaims, NewClaims
+from flickypedia.types.wikimedia import UserInfo, ShortCaption, TitleValidation
 from flickypedia.utils import find_required_elem, validate_typeddict
-from flickypedia.apis.structured_data import ExistingClaims, NewClaims
 from .exceptions import (
     WikimediaApiException,
     UnknownWikimediaApiException,
@@ -25,7 +26,6 @@ from .exceptions import (
     DuplicatePhotoUploadException,
 )
 from .languages import LanguageMatch, order_language_list
-from ._types import UserInfo, ShortCaption, TitleValidation
 
 
 class WikimediaApi:

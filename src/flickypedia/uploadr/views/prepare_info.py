@@ -31,8 +31,6 @@ from wtforms import (
 from wtforms.validators import DataRequired, Length, ValidationError
 from wtforms.widgets import TextArea
 
-from flickypedia.apis.flickr import DateTaken, User as FlickrUser
-from flickypedia.apis.structured_data import NewClaims
 from flickypedia.apis.wikimedia.languages import top_n_languages, LanguageMatch
 from flickypedia.photos import (
     CategorisedPhotos,
@@ -40,10 +38,13 @@ from flickypedia.photos import (
     enrich_photo,
     categorise_photos,
 )
+from flickypedia.types.flickr import DateTaken, User as FlickrUser
+from flickypedia.types.structured_data import NewClaims
+from flickypedia.types.views import ViewResponse
+from flickypedia.types.uploads import UploadRequest
 from flickypedia.utils import validate_typeddict
-from ..uploads import UploadRequest, begin_upload
+from ..uploads import begin_upload
 from ..caching import get_cached_photos_data, remove_cached_photos_data
-from ._types import ViewResponse
 
 
 class WikiFieldsForm(Form):

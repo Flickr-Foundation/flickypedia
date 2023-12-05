@@ -95,3 +95,46 @@ class GroupInfo(TypedDict):
 
 class PhotosInGroup(CollectionOfPhotos):
     group: GroupInfo
+
+
+# These mixins are used in ``by_url.py`` and represent some data retrieved
+# from Flickr at a particular point-in-time.
+
+
+class RetrievedAtMixin(TypedDict):
+    retrieved_at: datetime.datetime
+
+
+class SinglePhotoData(RetrievedAtMixin):
+    photos: list[SinglePhoto]
+    owner: User
+
+
+class CollectionsOfPhotoData(CollectionOfPhotos, RetrievedAtMixin):
+    pass
+
+
+class PhotosInAlbumData(PhotosInAlbum, RetrievedAtMixin):
+    pass
+
+
+class PhotosInGalleryData(PhotosInGallery, RetrievedAtMixin):
+    pass
+
+
+class PhotosInGroupData(PhotosInGroup, RetrievedAtMixin):
+    pass
+
+
+class PhotosInUserPhotostreamData(CollectionsOfPhotoData):
+    owner: User
+
+
+GetPhotosData = (
+    SinglePhotoData
+    | CollectionsOfPhotoData
+    | PhotosInAlbumData
+    | PhotosInGalleryData
+    | PhotosInGroupData
+    | PhotosInUserPhotostreamData
+)

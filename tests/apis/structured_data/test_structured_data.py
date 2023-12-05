@@ -2,15 +2,8 @@ import datetime
 import os
 
 from flask import Flask
-from flickypedia.apis.flickr import (
-    LocationInfo,
-    SinglePhoto,
-    TakenGranularity,
-    User as FlickrUser,
-)
 import pytest
 
-from flickypedia.apis.flickr import SinglePhotoData
 from flickypedia.apis.structured_data import (
     create_copyright_status_statement,
     create_date_taken_statement,
@@ -21,9 +14,15 @@ from flickypedia.apis.structured_data import (
     create_posted_to_flickr_statement,
     create_sdc_claims_for_flickr_photo,
     create_source_data_for_photo,
-    NewClaims,
-    NewStatement,
 )
+from flickypedia.types.flickr import (
+    SinglePhotoData,
+    LocationInfo,
+    SinglePhoto,
+    TakenGranularity,
+    User as FlickrUser,
+)
+from flickypedia.types.structured_data import NewClaims, NewStatement
 from utils import get_typed_fixture
 
 

@@ -5,7 +5,7 @@ import re
 from flask import current_app
 import httpx
 
-from ._types import DataValueTypes, Value
+from flickypedia.types.structured_data import DataValueTypes, Value
 
 
 class WikidataProperties:

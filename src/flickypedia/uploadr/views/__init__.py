@@ -11,7 +11,7 @@ from .say_thanks import say_thanks
 from .select_photos import select_photos
 from .wait_for_upload import get_upload_status, wait_for_upload
 from .upload_complete import upload_complete
-from ._types import ViewResponse
+from flickypedia.types.views import ViewResponse
 
 
 def homepage() -> ViewResponse:

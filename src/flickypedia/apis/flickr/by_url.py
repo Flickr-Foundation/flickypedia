@@ -1,57 +1,10 @@
 import datetime
-from typing import TypedDict
 
 from flask import current_app
 from flickr_url_parser import ParseResult
 
+from flickypedia.types.flickr import GetPhotosData
 from .api import FlickrPhotosApi
-from ._types import (
-    CollectionOfPhotos,
-    PhotosInAlbum,
-    PhotosInGallery,
-    PhotosInGroup,
-    SinglePhoto,
-    User,
-)
-
-
-class RetrievedAtMixin(TypedDict):
-    retrieved_at: datetime.datetime
-
-
-class SinglePhotoData(RetrievedAtMixin):
-    photos: list[SinglePhoto]
-    owner: User
-
-
-class CollectionsOfPhotoData(CollectionOfPhotos, RetrievedAtMixin):
-    pass
-
-
-class PhotosInAlbumData(PhotosInAlbum, RetrievedAtMixin):
-    pass
-
-
-class PhotosInGalleryData(PhotosInGallery, RetrievedAtMixin):
-    pass
-
-
-class PhotosInGroupData(PhotosInGroup, RetrievedAtMixin):
-    pass
-
-
-class PhotosInUserPhotostreamData(CollectionsOfPhotoData):
-    owner: User
-
-
-GetPhotosData = (
-    SinglePhotoData
-    | CollectionsOfPhotoData
-    | PhotosInAlbumData
-    | PhotosInGalleryData
-    | PhotosInGroupData
-    | PhotosInUserPhotostreamData
-)
 
 
 def get_photos_from_flickr(parsed_url: ParseResult) -> GetPhotosData:

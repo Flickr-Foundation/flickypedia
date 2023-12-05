@@ -20,7 +20,7 @@ import uuid
 
 from flask import current_app
 
-from flickypedia.apis.flickr import GetPhotosData
+from flickypedia.types.flickr import GetPhotosData
 from flickypedia.utils import DatetimeDecoder, DatetimeEncoder
 
 

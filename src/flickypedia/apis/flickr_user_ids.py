@@ -40,7 +40,7 @@ import functools
 import re
 from typing import TypedDict
 
-from flickypedia.apis.flickr import User as FlickrUser
+from flickypedia.types.flickr import User as FlickrUser
 import httpx
 
 from flickypedia.apis.structured_data.wikidata import WikidataProperties

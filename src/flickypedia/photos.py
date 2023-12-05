@@ -6,13 +6,11 @@ import datetime
 from typing import TypedDict
 
 from flask import current_app
-from flickypedia.apis.flickr import SinglePhoto, Size
 
+from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
 from flickypedia.duplicates import find_duplicates, DuplicateInfo
-from flickypedia.apis.structured_data import (
-    create_sdc_claims_for_flickr_photo,
-    NewClaims,
-)
+from flickypedia.types.flickr import SinglePhoto, Size
+from flickypedia.types.structured_data import NewClaims
 
 
 def size_at(sizes: list[Size], *, desired_size: str) -> Size:

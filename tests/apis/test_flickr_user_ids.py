@@ -1,6 +1,5 @@
-from flickypedia.apis.flickr import User as FlickrUser
-
 from flickypedia.apis.flickr_user_ids import lookup_flickr_user_in_wikidata
+from flickypedia.types.flickr import User as FlickrUser
 
 
 def test_can_find_user_by_user_id(vcr_cassette: str) -> None:

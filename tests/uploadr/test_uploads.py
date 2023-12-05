@@ -1,11 +1,11 @@
 import datetime
 
 from flask import Flask
-from flickypedia.apis.flickr import SinglePhoto
 
+from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
 from flickypedia.apis.wikimedia import WikimediaApi
 from flickypedia.duplicates import find_duplicates
-from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
+from flickypedia.types.flickr import SinglePhoto
 from flickypedia.uploadr.uploads import upload_single_photo
 
 
