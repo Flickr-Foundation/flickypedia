@@ -81,7 +81,12 @@ def test_multiple_workers_on_same_queue_is_fine(queue: AddingQueue) -> None:
         assert len(not_done) == 0
         assert all(fut.done() for fut in done)
 
-        for fut in done:
+        # This isn't part of the test, but I've seen the following assertion
+        # fail a few times with an unexpected FileNotFoundError.
+        #
+        # If/when that recurs, this branch is meant to provide debugging
+        # information so I can isolate and properly fix that exception.
+        for fut in done:  # pragma: no cover
             if fut.exception() is not None:
                 print(traceback.print_exception(fut.exception()))
 
