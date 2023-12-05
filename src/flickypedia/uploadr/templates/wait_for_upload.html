@@ -4,13 +4,9 @@
 {% set page_id = "wait_for_upload" %}
 
 {% block head %}
-<noscript>
-  <meta http-equiv="refresh" content="10">
-</noscript>
-{% endblock %}
-
-{% block content %}
-  {% include "components/header.html" %}
+  <noscript>
+    <meta http-equiv="refresh" content="10">
+  </noscript>
 
   <script src="{{ url_for('static', filename='flickypedia.js') }}"></script>
   <script>
@@ -18,6 +14,10 @@
       setInterval(updatePhotosWithUploadProgress, 1000);
     };
   </script>
+{% endblock %}
+
+{% block content %}
+  {% include "components/header.html" %}
 
   <div class="title_container" style="position: relative;">
     <h2 class="animated_uploading">Uploading<span class="ellipsis">.....</span></h2>

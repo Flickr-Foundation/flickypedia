@@ -1,12 +1,12 @@
 from flask import render_template
 from flask_login import login_required
 
-from ..uploads import uploads_queue
+from flickypedia.uploadr.fs_queue import Task
+from flickypedia.uploadr.uploads import uploads_queue, UploadBatch, UploadBatchResults
 from ._types import ViewResponse
 
 
-@login_required
-def upload_complete(task_id: str) -> ViewResponse:
+def get_completed_task(task_id: str) -> Task[UploadBatch, UploadBatchResults]:
     q = uploads_queue()
     task = q.read_task(task_id)
 
@@ -15,6 +15,13 @@ def upload_complete(task_id: str) -> ViewResponse:
         item["state"] in {"succeeded", "failed"}
         for item in task["task_output"].values()
     )
+
+    return task
+
+
+@login_required
+def upload_complete(task_id: str) -> ViewResponse:
+    task = get_completed_task(task_id)
 
     successful_requests = []
     failed_requests = []

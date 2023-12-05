@@ -105,12 +105,12 @@ def store_flickypedia_user_oauth_token() -> None:
         print(f"You logged in as {username!r}!", file=sys.stderr)
         sys.exit(1)
 
-    keyring.set_password("flickypedia", "oauth_token", json.dumps(client.token))
+    keyring.set_password("flickypedia.bot", "oauth_token", json.dumps(client.token))
 
     print("Successfully stored an OAuth token for the Flickypedia bot user!")
     print()
     print("You can access this token like so:")
     print()
     print("     import keyring")
-    print("     keyring.get_password('flickypedia', 'oauth_token')")
+    print("     keyring.get_password('flickypedia.bot', 'oauth_token')")
     print()
