@@ -35,7 +35,7 @@ def post_comments(task_id: str) -> ViewResponse:
         user=user,
         task=task,
         api_urls={
-            'bot_comment': url_for("post_bot_comment_api"),
+            "bot_comment": url_for("post_bot_comment_api"),
             "user_comment": url_for("post_user_comment_api"),
         },
     )
@@ -105,4 +105,3 @@ def post_user_comment_api() -> ViewResponse:
         raise
         print(exc)
         return jsonify({"error": str(exc)})
-

@@ -1,6 +1,6 @@
 from typing import Any
 
-from authlib.integrations.httpx_client.oauth2_client import OAuth2Client
+from authlib.integrations.httpx_client import OAuth2Client
 from authlib.oauth2.rfc6749.wrappers import OAuth2Token
 import pytest
 

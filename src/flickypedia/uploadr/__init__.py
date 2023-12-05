@@ -20,7 +20,11 @@ from .cli import uploadr as uploadr_cli
 from .config import create_config, get_directories
 from flickypedia.duplicates import create_link_to_commons
 from flickypedia.photos import size_at
-from flickypedia.apis.flickr import create_bot_comment_text, create_default_user_comment_text, FlickrPhotosApi
+from flickypedia.apis.flickr import (
+    create_bot_comment_text,
+    create_default_user_comment_text,
+    FlickrPhotosApi,
+)
 from flickypedia.apis.structured_data.wikidata import (
     get_entity_label,
     get_property_name,
@@ -123,7 +127,9 @@ def create_app(
     app.jinja_env.filters["wikidata_date"] = render_wikidata_date
 
     app.jinja_env.filters["bot_comment_text"] = create_bot_comment_text
-    app.jinja_env.filters["default_user_comment_text"] = create_default_user_comment_text
+    app.jinja_env.filters[
+        "default_user_comment_text"
+    ] = create_default_user_comment_text
     app.jinja_env.filters["buddy_icon"] = buddy_icon
 
     # Compile the CSS.  If we're running in debug mode, rebuild it on
