@@ -31,7 +31,7 @@ from wtforms import (
 from wtforms.validators import DataRequired, Length, ValidationError
 from wtforms.widgets import TextArea
 
-from flickypedia.apis.flickr_photos_api import DateTaken, User as FlickrUser
+from flickypedia.apis.flickr import DateTaken, User as FlickrUser
 from flickypedia.apis.structured_data import NewClaims
 from flickypedia.apis.wikimedia.languages import top_n_languages, LanguageMatch
 from flickypedia.photos import (

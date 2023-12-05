@@ -2,7 +2,7 @@ import datetime
 
 import pytest
 
-from flickypedia.apis.flickr_photos_api import (
+from flickypedia.apis.flickr import (
     FlickrPhotosApi,
     FlickrApiException,
     LicenseNotFound,
@@ -14,7 +14,7 @@ from flickypedia.apis.flickr_photos_api import (
     PhotosInGallery,
     PhotosInGroup,
 )
-from flickypedia.apis.flickr_photos_api.utils import (
+from flickypedia.apis.flickr.utils import (
     parse_date_taken_granularity,
     parse_safety_level,
 )

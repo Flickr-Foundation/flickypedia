@@ -36,7 +36,7 @@ from flask import (
     url_for,
 )
 from flask_login import login_required
-from flickypedia.apis.flickr_photos_api import (
+from flickypedia.apis.flickr import (
     ResourceNotFound,
     SinglePhoto,
 )

@@ -6,7 +6,7 @@ import bs4
 from flask import Flask, render_template
 import pytest
 
-from flickypedia.apis.flickr_photos_api import (
+from flickypedia.apis.flickr import (
     DateTaken,
     LocationInfo,
     User as FlickrUser,
