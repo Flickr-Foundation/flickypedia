@@ -7,7 +7,6 @@ import xml.etree.ElementTree as ET
 
 import httpx
 
-from flickypedia.uploadr.auth.flickr import get_flickypedia_bot_oauth_client
 from flickypedia.utils import find_required_elem
 from .exceptions import (
     FlickrApiException,
@@ -106,6 +105,10 @@ def post_bot_comment(
     parameters and build it from a template, rather than taking text
     passed from the page itself.
     """
+    # Note: this is here rather than at the top-level to avoid issues
+    # with circular imports.
+    from flickypedia.uploadr.auth.flickr import get_flickypedia_bot_oauth_client
+
     client = get_flickypedia_bot_oauth_client()
     api = FlickrCommentsApi(client)
 
