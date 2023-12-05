@@ -1,6 +1,6 @@
 from .api import FlickrPhotosApi
 from .by_url import get_photos_from_flickr
-from .comments import FlickrCommentsApi
+from .comments import FlickrCommentsApi, create_bot_comment_text
 from .exceptions import (
     FlickrApiException,
     ResourceNotFound,
@@ -10,6 +10,7 @@ from .exceptions import (
 
 
 __all__ = [
+    "create_bot_comment_text",
     "FlickrApiException",
     "FlickrCommentsApi",
     "FlickrPhotosApi",

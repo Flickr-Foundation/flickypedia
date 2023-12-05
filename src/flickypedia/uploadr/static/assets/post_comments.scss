@@ -1,0 +1,16 @@
+#page-post_comments {
+  .comment_info {
+    grid-column: 2 / -1;
+    max-width: 100% !important;
+  }
+
+  .comment_info p:first-child {
+    margin-top: 0;
+  }
+
+  .comment_text {
+    font-family: monospace;
+    line-height: 1.3em;
+    white-space: pre-line;
+  }
+}
