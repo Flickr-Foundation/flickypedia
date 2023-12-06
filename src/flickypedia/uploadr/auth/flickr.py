@@ -153,6 +153,12 @@ def oauth2_authorize_flickr() -> ViewResponse:
     except KeyError:
         abort(400)
 
+    # If the user is already logged in to Flickr, we don't need to send
+    # them back through Flickr's OAuth flow -- the tokens we get don't
+    # expire, so we can presume they're still good.
+    if current_user.encrypted_flickr_token is not None:
+        return redirect(next_url)
+
     oauth_config = current_app.config["OAUTH_PROVIDERS"]["flickr"]
 
     client = OAuth1Client(
