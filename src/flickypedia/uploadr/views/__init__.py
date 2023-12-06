@@ -6,6 +6,7 @@ from .api import (
     validate_title_api,
 )
 from .get_photos import get_photos
+from .keep_going import keep_going
 from .post_comments import post_comments, post_bot_comment_api, post_user_comment_api
 from .prepare_info import prepare_info, truncate_description
 from .say_thanks import say_thanks
@@ -40,6 +41,7 @@ __all__ = [
     "get_photos",
     "get_upload_status",
     "homepage",
+    "keep_going",
     "post_bot_comment_api",
     "post_user_comment_api",
     "post_comments",

@@ -22,6 +22,7 @@
         fill: var(--brown);
       }
       
+      {% if current_step is defined %}
       #step-{{ current_step }} rect {
         fill: currentColor;
       }
@@ -30,6 +31,7 @@
         fill: var(--cream) !important;
         font-weight: bold;
       }
+      {% endif %}
       
       path {
         fill: transparent;
@@ -69,7 +71,7 @@
         {{ step.label }}
       </text>
     
-      {% if current_step != None %}
+      {% if current_step is defined %}
       <svg x="120">
         <path d="M 2 14 L 40 14"/>
         <polygon points="40,14 38,9 45,14 38,19"/>

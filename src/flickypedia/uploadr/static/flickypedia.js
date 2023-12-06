@@ -627,7 +627,7 @@ function updatePhotosWithUploadProgress() {
 /*
  * Post a "Say thanks" comment as Flickypedia bot.
  */
-function postBotComment(buttonElement, postBotCommentApiUrl, taskId, photoId) {
+function postBotComment(buttonElement, postBotCommentApiUrl, keepGoingUrl, taskId, photoId) {
   buttonElement.classList.add("thinking");
 
   fetch(
@@ -638,6 +638,7 @@ function postBotComment(buttonElement, postBotCommentApiUrl, taskId, photoId) {
     .then((json) => {
       if (json.comment_id) {
         buttonElement.parentElement.innerHTML = '<p>Posted! ✅</p>';
+        recordSuccessfulComment(keepGoingUrl, photoId);
       } else {
         buttonElement.parentElement.innerHTML = `<p><strong>BZZT!</strong> Something went wrong while posting the comment: ${json.error}</p>`
       }
@@ -649,7 +650,7 @@ function postBotComment(buttonElement, postBotCommentApiUrl, taskId, photoId) {
 /*
  * Post a "Say thanks" comment as a Flickr user.
  */
-function postUserComment(buttonElement, postUserCommentApiUrl, taskId, photoId) {
+function postUserComment(buttonElement, postUserCommentApiUrl, keepGoingUrl, taskId, photoId) {
   buttonElement.classList.add("thinking");
 
   const textAreaElement = document.querySelector(`textarea#comment-${photoId}`);
@@ -663,10 +664,26 @@ function postUserComment(buttonElement, postUserCommentApiUrl, taskId, photoId) 
     .then((json) => {
       if (json.comment_id) {
         buttonElement.parentElement.innerHTML = '<p>Posted! ✅</p>';
+        recordSuccessfulComment(keepGoingUrl, photoId);
       } else {
         buttonElement.parentElement.innerHTML = `<p><strong>BZZT!</strong> Something went wrong while posting the comment: ${json.error}</p>`
       }
 
       buttonElement.classList.remove("thinking");
     });
+}
+
+function recordSuccessfulComment(keepGoingUrl, photoId) {
+  document
+    .querySelector(`#photo-${photoId}`)
+    .setAttribute("data-comment-state", "comment-posted");
+
+  const allCommentsPosted =
+    Array.from(document.querySelectorAll('li.comment_info'))
+      .every(liElement => liElement.getAttribute("data-comment-state") === "comment-posted");
+
+  setTimeout(
+    function() { window.location = keepGoingUrl; },
+    1000
+  );
 }

@@ -39,7 +39,11 @@
           {% set large_size = photo.sizes|size_at(desired_size='Large') %}
           <img src="{{ large_size.source }}">
         </li>
-        <li class="comment_info">
+        <li
+          class="comment_info"
+          id="photo-{{ photo.id }}"
+          data-comment-state="no-comment"
+        >
           <p>
             To <a href="{{ photo.owner.profile_url }}">{{ photo.owner.realname or photo.owner.username }}</a>
           </p>
@@ -51,7 +55,7 @@
             </div>
 
             <p>
-              <button class="pink_button" onclick='postBotComment(this, {{ api_urls.bot_comment|tojson }}, {{task.id|tojson}}, {{ photo.id|tojson}} )'>POST</button>
+              <button class="pink_button" onclick='postBotComment(this, {{ api_urls.bot_comment|tojson }}, {{ url_for("keep_going")|tojson }}, {{task.id|tojson}}, {{ photo.id|tojson}} )'>POST</button>
             </p>
           {% else %}
             <textarea id="comment-{{ photo.id }}" rows="7">
@@ -59,7 +63,7 @@
             </textarea>
 
             <p>
-              <button class="pink_button" onclick='postUserComment(this, {{ api_urls.user_comment|tojson }}, {{task.id|tojson}}, {{ photo.id|tojson}} )'>POST</button>
+              <button class="pink_button" onclick='postUserComment(this, {{ api_urls.user_comment|tojson }}, {{ url_for("keep_going")|tojson }}, {{task.id|tojson}}, {{ photo.id|tojson}} )'>POST</button>
             </p>
           {% endif %}
 
@@ -69,4 +73,6 @@
       {% endwith %}
     {% endfor %}
   </ul>
+
+  <p>
 {% endblock %}

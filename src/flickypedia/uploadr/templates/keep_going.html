@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% set title = "Keep going" %}
+{% set show_nav = True %}
+
+{% block content %}
+  {% include "components/header.html" %}
+
+  <p>
+    <span class="highlight green" style="margin-right: 0;">Hooray!</span>
+    All done.
+    Thanks <a href="{{ current_user.profile_url }}">{{ current_user.name }}</a>.
+  </p>
+
+  <h2>Would you like to keep going?</h2>
+
+  {% include "components/get_photos_form.html" %}
+{% endblock %}

@@ -39,6 +39,7 @@ from .views import (
     get_photos,
     get_upload_status,
     homepage,
+    keep_going,
     post_bot_comment_api,
     post_user_comment_api,
     post_comments,
@@ -97,6 +98,7 @@ def create_app(
     app.add_url_rule("/upload_complete/<task_id>", view_func=upload_complete)
     app.add_url_rule("/say_thanks/<task_id>", view_func=say_thanks)
     app.add_url_rule("/post_comments/<task_id>", view_func=post_comments)
+    app.add_url_rule("/keep_going", view_func=keep_going)
 
     app.add_url_rule("/about/", view_func=about)
     app.add_url_rule("/bookmarklet/", view_func=bookmarklet)
