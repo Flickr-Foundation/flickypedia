@@ -8,4 +8,6 @@ from .get_photos import FlickrPhotoURLForm
 def keep_going() -> str:
     photo_url_form = FlickrPhotoURLForm()
 
-    return render_template("keep_going.html", photo_url_form=photo_url_form, flickr_url="")
+    return render_template(
+        "keep_going.html", photo_url_form=photo_url_form, flickr_url=""
+    )
