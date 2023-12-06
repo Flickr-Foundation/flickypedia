@@ -65,4 +65,11 @@
       font-weight: bold;
     }
   }
+
+  .portrait { display: none; }
+
+  @media screen and (max-width: 500px) {
+    .landscape { display: none; }
+    .portrait  { display: block; }
+  }
 }

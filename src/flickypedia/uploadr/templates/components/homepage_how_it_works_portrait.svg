@@ -1,0 +1,140 @@
+<!--
+  This renders the series of boxes that illustrate the Flickypedia flow:
+
+  [Log in] -> [Get Flickr photos] -> [Check info] -> [Upload] -> [Thank you]
+
+  We change the diagram slightly based on whether the user is already
+  logged in.  For new users, the first step is "Log in".  For users who
+  are already logged in, the first step is "Get Flickr photos".
+ -->
+
+<svg viewBox="0 0 204 330" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      rect.next_step {
+        fill: currentColor;
+      }
+
+      rect.next_step:hover {
+        opacity: 0.8;
+      }
+
+      rect.step {
+        fill: var(--brown);
+      }
+
+      path {
+        fill: transparent;
+        stroke-width: 1;
+        stroke: currentColor;
+        stroke-dasharray: 3 2;
+      }
+
+      polygon {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        corner-radius: 2px;
+        stroke: currentColor;
+        fill: currentColor;
+      }
+
+      line {
+        stroke: #222;
+        stroke-width: 1.5;
+        stroke-linecap: round;
+      }
+
+      text, tspan {
+        fill: currentColor;
+        stroke: none;
+				font-size: 12px;
+				text-anchor: middle;
+				dominant-baseline: middle;
+			}
+    </style>
+  </defs>
+
+  <!-- Log in -->
+  {% if current_user.is_anonymous %}
+  <a href="{{ url_for('oauth2_authorize_wikimedia') }}">
+  {% endif %}
+  <rect
+    x="62" width="80" height="50"
+    class="{% if current_user.is_anonymous %}next_step{% else %}step{% endif %}"
+  />
+
+  <svg x="2">
+    <text x="100" y="25">
+      Log in
+    </text>
+
+    <polygon points="59,95 52,90 54,95 52,100"/>
+    <path d="M 62 25 C 2 25, 2 95, 58 95"/>
+  </svg>
+  {% if current_user.is_anonymous %}
+  </a>
+  {% endif %}
+
+  <!-- Get Flickr photos -->
+  <svg y="70">
+    {% if not current_user.is_anonymous %}
+    <a href="{{ url_for('get_photos') }}">
+    {% endif %}
+    <rect
+      x="62" width="80" height="50"
+      class="{% if current_user.is_anonymous %}step{% else %}next_step{% endif %}"
+    />
+
+    <svg x="62">
+      <text x="40" y="25">
+        <tspan x="40" dy="-6">Get Flickr</tspan><!--
+        --><tspan x="40" dy="1.3em">photos</tspan>
+      </text>
+    </svg>
+
+    {% if not current_user.is_anonymous %}
+    </a>
+    {% endif %}
+
+    <polygon points="145,95 152,90 150,95 152,100"/>
+    <path d="M 142 25 C 202 25, 202 95, 146 95"/>
+  </svg>
+
+  <!-- Check info -->
+  <svg y="140">
+    <rect x="62" width="80" height="50" class="step"/>
+
+    <svg x="62">
+      <text x="40" y="25">Check info</text>
+    </svg>
+
+    <polygon points="59,95 52,90 54,95 52,100"/>
+    <path d="M 62 25 C 2 25, 2 95, 58 95"/>
+  </svg>
+
+  <!-- Upload to Wikimedia -->
+  <svg y="210">
+    <rect x="62" width="80" height="50" class="step"/>
+
+    <svg x="62">
+      <svg>
+        <text x="40" y="25">Upload</text>
+      </svg>
+    </svg>
+
+    <polygon points="145,95 152,90 150,95 152,100"/>
+    <path d="M 142 25 C 202 25, 202 95, 146 95"/>
+  </svg>
+
+  <!-- Leave a thank you -->
+  <svg y="280">
+    <rect x="62" width="80" height="50" class="step"/>
+
+    <svg x="62">
+      <text x="40" y="25">
+        <tspan x="40" dy="-5">Leave a</tspan>
+        <tspan x="40" dy="1.2em">thank you</tspan>
+      </text>
+    </svg>
+  </svg>
+</svg>
