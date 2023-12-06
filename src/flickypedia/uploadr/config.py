@@ -1,6 +1,5 @@
 import os
 import pathlib
-import sys
 from typing import Any
 
 
@@ -30,11 +29,6 @@ def create_config(data_directory: pathlib.Path) -> dict[str, Any]:
         "request_url": "https://www.flickr.com/services/oauth/request_token",
         "token_url": "https://www.flickr.com/services/oauth/access_token",
     }
-
-    empty_values = {k for k, v in wikimedia_oauth2.items() if not v}
-
-    if empty_values:
-        sys.exit(f"Empty values in Wikimedia OAuth 2 config: {', '.join(empty_values)}")
 
     return {
         "SECRET_KEY": os.environ.get("SECRET_KEY") or "you-will-never-guess",
