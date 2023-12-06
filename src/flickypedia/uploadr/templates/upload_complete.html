@@ -72,7 +72,33 @@
             <dd>{{ item.caption.text }}</dd>
 
             <dt>error</dt>
-            <dd>{{ result.error or '<unknown>' }}</dt>
+            <dd>
+              {#
+                This branch is to handle errors of the form
+                
+                    {
+                        "code": "abusefilter-warning",
+                        "info": "abusefilter-warning-copyv2",
+                        "abusefilter": {
+                            "id": "156",
+                            "description": "Small jpeg's uploaded by users with low editcount",
+                            "actions": ["warn"],
+                        },
+                        "filekey": "1ajpz6wsbm38.53lkc.808449.",
+                        "sessionkey": "1ajpz6wsbm38.53lkc.808449.",
+                        "*": "See https://commons.wikimedia.org/w/api.php for API usage. Subscribe to the mediawiki-api-announce mailing list at &lt;https://lists.wikimedia.org/postorius/lists/mediawiki- api-announce.lists.wikimedia.org/&gt; for notice of API deprecations and breaking changes.",
+                    }
+
+                #}
+              {% if result.error.code == "abusefilter-warning"
+                 and result.error.abusefilter.description %}
+                This upload has been blocked by an abuse filter on Wikimedia Commons:<br/><br/>
+                
+                {{ result.error.abusefilter.description }}
+              {% else %}
+                {{ result.error or '<unknown>' }}
+              {% endif %}
+            </dt>
           </dl>
         </li>
       {% endwith %}
