@@ -90,7 +90,8 @@
                     }
 
                 #}
-              {% if result.error.code == "abusefilter-warning"
+              {% if result.error is mapping
+                 and result.error.code == "abusefilter-warning"
                  and result.error.abusefilter.description %}
                 This upload has been blocked by an abuse filter on Wikimedia Commons:<br/><br/>
                 
