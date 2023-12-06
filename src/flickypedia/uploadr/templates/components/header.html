@@ -28,6 +28,8 @@
   </p>
 </header>
 
-<nav>
-  {% include "components/header_how_it_works.svg" %}
-</nav>
+{% if show_nav is defined and show_nav %}
+  <nav>
+    {% include "components/header_how_it_works.svg" %}
+  </nav>
+{% endif %}
