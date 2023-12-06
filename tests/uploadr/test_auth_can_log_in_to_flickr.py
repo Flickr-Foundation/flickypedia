@@ -73,3 +73,14 @@ def test_can_get_token_from_flickr(
         "user_nsid": "199246608@N02",
         "username": "cefarrjf87",
     }
+
+    # Now check that if I try to log in a second time, I'm sent directly
+    # to my target, not back to Flickr's OAuth.
+    second_login_resp = logged_in_client.get(
+        "/authorize/flickr?next_url=http://localhost:5000/post_comments"
+    )
+
+    assert second_login_resp.status_code == 302
+    assert (
+        second_login_resp.headers["location"] == "http://localhost:5000/post_comments"
+    )
