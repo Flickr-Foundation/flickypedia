@@ -6,6 +6,7 @@ flask-login
 flask-wtf
 Flask-SQLAlchemy
 flickr-url-parser
+gunicorn
 httpx
 keyring
 libsass

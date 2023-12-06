@@ -65,10 +65,8 @@ flask-wtf==1.2.1
     # via -r requirements.txt
 flickr-url-parser==1.3.0
     # via -r requirements.txt
-greenlet==3.0.1
-    # via
-    #   -r requirements.txt
-    #   sqlalchemy
+gunicorn==21.2.0
+    # via -r requirements.txt
 h11==0.14.0
     # via
     #   -r requirements.txt
@@ -134,8 +132,10 @@ mypy-extensions==1.0.0
     #   mypy
 packaging==23.2
     # via
+    #   -r requirements.txt
     #   black
     #   build
+    #   gunicorn
     #   pytest
 pathspec==0.11.2
     # via black

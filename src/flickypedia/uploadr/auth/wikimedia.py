@@ -413,7 +413,9 @@ def oauth2_callback_wikimedia() -> ViewResponse:
             state=state,
         )
     except Exception as exc:
-        print(f"Error exchanging authorization code for token: {exc}")
+        current_app.logger.error(
+            f"Error exchanging authorization code for token: {exc}"
+        )
         abort(401)
 
     # Get info about the logged in user
