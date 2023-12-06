@@ -61,7 +61,6 @@ it should be accessing it via ``current_user``.
 
 import datetime
 import json
-import logging
 import textwrap
 import uuid
 
