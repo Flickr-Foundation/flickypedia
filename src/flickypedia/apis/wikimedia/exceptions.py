@@ -11,7 +11,7 @@ class UnknownWikimediaApiException(WikimediaApiException):
 
         self.code = error_info.get("code")
         self.error_info = error_info
-        super().__init__(error_info["info"])
+        super().__init__(error_info)
 
 
 class InvalidAccessTokenException(WikimediaApiException):
