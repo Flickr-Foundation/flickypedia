@@ -43,11 +43,18 @@ main {
   padding-left:  1em;
   padding-right: 1em;
   margin-bottom: 1em;
+
+  /* This forces the footer to the bottom of the page, even if there's
+   * not very much in the body.
+   *
+   * It's a bit of a fudge but it seems to work? */
+  min-height: calc(100vh - 6em);
 }
 
 footer {
   margin-top: 1em;
   padding: 1em;
+  height: 1.6em;
 
   background: $black;
   text-align: center;
