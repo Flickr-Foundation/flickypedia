@@ -1,4 +1,4 @@
-from .structured_data import (
+from .create_structured_data import (
     create_copyright_status_statement,
     create_date_taken_statement,
     create_flickr_creator_statement,
