@@ -68,9 +68,7 @@ QualifierValues = (
 )
 
 
-def create_qualifiers(
-    qualifier_values: list[QualifierValues],
-) -> dict[str, list[Snak]]:
+def create_qualifiers(qualifier_values: list[QualifierValues]) -> dict[str, list[Snak]]:
     result: dict[str, list[Snak]] = {}
 
     for qualifier in qualifier_values:
