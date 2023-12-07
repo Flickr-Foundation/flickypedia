@@ -51,7 +51,6 @@ def find_flickr_photo_id(sdc: ExistingClaims) -> str | None:
     # Look for URLs in the "Source" field, which might point to
     # a Flickr photo.
     for statement in sdc.get(WikidataProperties.SourceOfFile, []):
-
         # First check if the Operator is "Flickr".  If it's not, this
         # isn't a Flickr source and we can skip it.
         operator = get_single_qualifier(
@@ -71,24 +70,26 @@ def find_flickr_photo_id(sdc: ExistingClaims) -> str | None:
         # Now look at the "URL" and "Published at" qualifiers.  Either of
         # them could contain a Flickr URL.
         url = get_single_qualifier(statement, property_id=WikidataProperties.Url)
-        published_at = get_single_qualifier(statement, property_id=WikidataProperties.DescribedAtUrl)
+        published_at = get_single_qualifier(
+            statement, property_id=WikidataProperties.DescribedAtUrl
+        )
 
         for u in (url, published_at):
             if u is None:
                 assert 0
                 continue
 
-            if u['datavalue']['type'] != 'string':
+            if u["datavalue"]["type"] != "string":
                 assert 0
                 continue
 
             try:
-                parsed_url = parse_flickr_url(u['datavalue']['value'])
-            except (UnrecognisedUrl, NotAFlickrUrl) as e:
+                parsed_url = parse_flickr_url(u["datavalue"]["value"])
+            except (UnrecognisedUrl, NotAFlickrUrl):
                 pass
             else:
-                if parsed_url['type'] == 'single_photo':
-                    candidates.add(parsed_url['photo_id'])
+                if parsed_url["type"] == "single_photo":
+                    candidates.add(parsed_url["photo_id"])
                 else:
                     assert 0
 
