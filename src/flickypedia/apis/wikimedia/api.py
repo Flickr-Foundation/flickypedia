@@ -245,6 +245,8 @@ class WikimediaApi:
         See https://www.wikidata.org/w/api.php?modules=wbgetentities&action=help
 
         """
+        assert not filename.startswith("File:")
+
         resp = self._get(
             params={
                 "action": "wbgetentities",
