@@ -35,6 +35,7 @@ def get_single_qualifier(
     snak_list = qualifiers.get(property_id, [])
 
     if len(snak_list) != 1:
+        assert 0
         return None
 
     return snak_list[0]
@@ -58,11 +59,13 @@ def find_flickr_photo_id(sdc: ExistingClaims) -> str | None:
         )
 
         if operator is None:
+            assert 0
             continue
 
         if operator["datavalue"] != to_wikidata_entity_value(
             entity_id=WikidataEntities.Flickr
         ):
+            assert 0
             continue
 
         # Now look at the "URL" and "Published at" qualifiers.  Either of
@@ -72,9 +75,11 @@ def find_flickr_photo_id(sdc: ExistingClaims) -> str | None:
 
         for u in (url, published_at):
             if u is None:
+                assert 0
                 continue
 
             if u['datavalue']['type'] != 'string':
+                assert 0
                 continue
 
             try:
@@ -84,6 +89,8 @@ def find_flickr_photo_id(sdc: ExistingClaims) -> str | None:
             else:
                 if parsed_url['type'] == 'single_photo':
                     candidates.add(parsed_url['photo_id'])
+                else:
+                    assert 0
 
     if len(candidates) == 1:
         return candidates.pop()
