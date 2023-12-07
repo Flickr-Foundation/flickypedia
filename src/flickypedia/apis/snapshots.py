@@ -16,6 +16,11 @@ from flickypedia.types.structured_data import ExistingClaims
 from flickypedia.utils import validate_typeddict
 
 
+class Label(TypedDict):
+    language: str
+    value: str
+
+
 SnapshotEntry = TypedDict(
     "SnapshotEntry",
     {
@@ -27,7 +32,7 @@ SnapshotEntry = TypedDict(
         "lastrevid": int,
         "modified": "str",
         "statements": ExistingClaims,
-        "labels": dict[str, str],
+        "labels": dict[str, Label],
         "descriptions": dict[str, str],
     },
 )
@@ -55,6 +60,9 @@ def parse_sdc_snapshot(path: pathlib.Path) -> Generator[SnapshotEntry, None, Non
                 continue
 
             data = json.loads(line.replace(b",\n", b""))
+
+            if data['descriptions']:
+                pprint(data['descriptions'])
 
             try:
                 yield validate_typeddict(data, model=SnapshotEntry)
