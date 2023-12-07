@@ -131,4 +131,74 @@ interactions:
       - DENY
     http_version: HTTP/1.1
     status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - GeoIP=GB:ENG:Southwark:51.50:-0.09:v4; NetworkProbeLimit=0.001
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.1
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=opensearch&format=xml&limit=10&search=&namespace=6
+  response:
+    content: <?xml version="1.0"?><api servedby="mw1448"><error code="missingparam"
+      info="The &quot;search&quot; parameter must be set." xml:space="preserve">See
+      https://commons.wikimedia.org/w/api.php for API usage. Subscribe to the mediawiki-api-announce
+      mailing list at &amp;lt;https://lists.wikimedia.org/postorius/lists/mediawiki-api-announce.lists.wikimedia.org/&amp;gt;
+      for notice of API deprecations and breaking changes.</error></api>
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.xml
+      content-length:
+      - '430'
+      content-type:
+      - text/xml; charset=utf-8
+      date:
+      - Thu, 07 Dec 2023 10:52:35 GMT
+      mediawiki-api-error:
+      - missingparam
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1448.eqiad.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3070"
+      set-cookie:
+      - WMF-Last-Access=07-Dec-2023;Path=/;HttpOnly;secure;Expires=Mon, 08 Jan 2024
+        00:00:00 GMT
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3070 miss, cp3070 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 92.13.36.200
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
 version: 1

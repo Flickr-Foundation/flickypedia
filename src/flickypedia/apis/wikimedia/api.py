@@ -409,6 +409,67 @@ class WikimediaApi:
                 ),
             }
 
+        # Do a match for other pages with an equivalent filename -- the
+        # title search in the previous test is case-sensitive.
+        #
+        # e.g. if there's an existing file called "Cat.JPG", then you can't
+        # upload a new file called "Cat.jpg".
+        #
+        # Note that we do a slightly different search from the Wikimedia
+        # Upload Wizard -- it uses the ``query`` action, but we use the
+        # ``opensearch`` action to do case insensitive searches.
+        #
+        # See https://en.wikipedia.org/wiki/Wikipedia:File_names
+        #
+        base_title, _ = title.replace("File:", "").rsplit(".", 1)
+        print(repr(base_title))
+        opensearch_resp = self.client.request(
+            "GET",
+            url="https://commons.wikimedia.org/w/api.php",
+            params={
+                "action": "opensearch",
+                "format": "xml",
+                "limit": "10",
+                "search": base_title,
+                # Here "14" is the namespace for categories; see
+                # https://commons.wikimedia.org/wiki/Help:Namespaces
+                "namespace": "6",
+            },
+        )
+
+        xml = ET.fromstring(opensearch_resp.text)
+
+        # The XML response is of the form:
+        #
+        #     <SearchSuggestion xmlns="http://opensearch.org/searchsuggest2" version="2.0">
+        #       <Query xml:space="preserve">tower Bridge at Night</Query>
+        #       <Section>
+        #         <Item>
+        #           <Text xml:space="preserve">File:Tower Bridge at night (32658848243).jpg</Text>
+        #           …
+        #         </Item>
+        #         <Item>…</Item>
+        #         <Item>…</Item>
+        #
+        # We're interested in looking for <Text> elements with a filename
+        # that matches ours, but case-insensitive.
+        namespaces = {"": "http://opensearch.org/searchsuggest2"}
+
+        for text_elem in xml.findall(".//Text", namespaces=namespaces):
+            this_filename = text_elem.text
+
+            if this_filename is None:
+                continue
+
+            if this_filename.lower() == title.lower():
+                return {
+                    "result": "duplicate",
+                    "text": (
+                        "Please choose a different title. "
+                        f"There is already a file <a href='https://commons.wikimedia.org/wiki/{this_filename}'>{this_filename.replace('File:', '')}</a> on Commons."
+                    ),
+                }
+
         # Second check to see if the title is blocked.
         #
         # This could be if e.g. the title is too long, or too short, or

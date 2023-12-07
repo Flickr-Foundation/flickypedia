@@ -276,6 +276,28 @@ def test_validate_title_links_to_duplicates(wikimedia_api: WikimediaApi) -> None
     }
 
 
+def test_validate_title_links_to_normalised_duplicates(
+    wikimedia_api: WikimediaApi,
+) -> None:
+    result = wikimedia_api.validate_title(title="File:Tower Bridge at Night.jpg")
+
+    assert result == {
+        "result": "duplicate",
+        "text": "Please choose a different title. There is already a file <a href='https://commons.wikimedia.org/wiki/File:Tower Bridge at Night.JPG'>Tower Bridge at Night.JPG</a> on Commons.",
+    }
+
+
+def test_validate_title_links_to_case_insensitive_duplicates(
+    wikimedia_api: WikimediaApi,
+) -> None:
+    result = wikimedia_api.validate_title(title="File:tower bridge at night.jpg")
+
+    assert result == {
+        "result": "duplicate",
+        "text": "Please choose a different title. There is already a file <a href='https://commons.wikimedia.org/wiki/File:Tower Bridge at Night.JPG'>Tower Bridge at Night.JPG</a> on Commons.",
+    }
+
+
 def test_find_matching_categories(wikimedia_api: WikimediaApi) -> None:
     result = wikimedia_api.find_matching_categories(query="a")
 

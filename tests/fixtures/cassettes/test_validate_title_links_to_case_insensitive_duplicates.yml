@@ -1,0 +1,168 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.1
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=query&titles=File%3Atower%20bridge%20at%20night.jpg&prop=info&format=json
+  response:
+    content: '{"batchcomplete":"","query":{"normalized":[{"from":"File:tower bridge
+      at night.jpg","to":"File:Tower bridge at night.jpg"}],"pages":{"-1":{"ns":6,"title":"File:Tower
+      bridge at night.jpg","missing":"","contentmodel":"wikitext","pagelanguage":"en","pagelanguagehtmlcode":"en","pagelanguagedir":"ltr"}}}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-length:
+      - '301'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Thu, 07 Dec 2023 10:52:35 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1448.eqiad.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3070"
+      set-cookie:
+      - WMF-Last-Access=07-Dec-2023;Path=/;HttpOnly;secure;Expires=Mon, 08 Jan 2024
+        00:00:00 GMT
+      - GeoIP=GB:ENG:Haverhill:52.05:0.42:v4; Path=/; secure; Domain=.wikimedia.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie
+      x-cache:
+      - cp3070 miss, cp3070 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 92.13.36.200
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - WMF-Last-Access=07-Dec-2023; NetworkProbeLimit=0.001; GeoIP=GB:ENG:Haverhill:52.05:0.42:v4
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.1
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=opensearch&format=xml&limit=10&search=tower%20bridge%20at%20night&namespace=6
+  response:
+    content: <?xml version="1.0"?><SearchSuggestion version="2.0" xmlns="http://opensearch.org/searchsuggest2"><Query
+      xml:space="preserve">tower bridge at night</Query><Section><Item><Text xml:space="preserve">File:Tower
+      Bridge at Night.JPG</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/File:Tower_Bridge_at_Night.JPG</Url><Image
+      source="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Tower_Bridge_at_Night.JPG/50px-Tower_Bridge_at_Night.JPG"
+      width="50" height="33" /></Item><Item><Text xml:space="preserve">File:Tower
+      Bridge at night (32658848243).jpg</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/File:Tower_Bridge_at_night_(32658848243).jpg</Url><Image
+      source="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Tower_Bridge_at_night_%2832658848243%29.jpg/50px-Tower_Bridge_at_night_%2832658848243%29.jpg"
+      width="50" height="33" /></Item><Item><Text xml:space="preserve">File:Tower
+      Bridge at Night - geograph.org.uk - 40072.jpg</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/File:Tower_Bridge_at_Night_-_geograph.org.uk_-_40072.jpg</Url><Image
+      source="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Tower_Bridge_at_Night_-_geograph.org.uk_-_40072.jpg/50px-Tower_Bridge_at_Night_-_geograph.org.uk_-_40072.jpg"
+      width="50" height="32" /></Item><Item><Text xml:space="preserve">File:Tower
+      Bridge at night (32658741713).jpg</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/File:Tower_Bridge_at_night_(32658741713).jpg</Url><Image
+      source="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Tower_Bridge_at_night_%2832658741713%29.jpg/50px-Tower_Bridge_at_night_%2832658741713%29.jpg"
+      width="50" height="33" /></Item><Item><Text xml:space="preserve">File:Tower
+      Bridge at night - geograph.org.uk - 2192346.jpg</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/File:Tower_Bridge_at_night_-_geograph.org.uk_-_2192346.jpg</Url><Image
+      source="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Tower_Bridge_at_night_-_geograph.org.uk_-_2192346.jpg/50px-Tower_Bridge_at_night_-_geograph.org.uk_-_2192346.jpg"
+      width="50" height="38" /></Item><Item><Text xml:space="preserve">File:Tower
+      Bridge at night (32658746213).jpg</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/File:Tower_Bridge_at_night_(32658746213).jpg</Url><Image
+      source="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Tower_Bridge_at_night_%2832658746213%29.jpg/50px-Tower_Bridge_at_night_%2832658746213%29.jpg"
+      width="50" height="33" /></Item><Item><Text xml:space="preserve">File:Tower
+      Bridge at night, 2010-2.jpg</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/File:Tower_Bridge_at_night,_2010-2.jpg</Url><Image
+      source="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Tower_Bridge_at_night%2C_2010-2.jpg/50px-Tower_Bridge_at_night%2C_2010-2.jpg"
+      width="50" height="75" /></Item><Item><Text xml:space="preserve">File:Tower
+      Bridge at night - geograph.org.uk - 1502591.jpg</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/File:Tower_Bridge_at_night_-_geograph.org.uk_-_1502591.jpg</Url><Image
+      source="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Tower_Bridge_at_night_-_geograph.org.uk_-_1502591.jpg/50px-Tower_Bridge_at_night_-_geograph.org.uk_-_1502591.jpg"
+      width="50" height="38" /></Item><Item><Text xml:space="preserve">File:Tower
+      Bridge at Night - Sacramento (25379096373).jpg</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/File:Tower_Bridge_at_Night_-_Sacramento_(25379096373).jpg</Url><Image
+      source="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Tower_Bridge_at_Night_-_Sacramento_%2825379096373%29.jpg/50px-Tower_Bridge_at_Night_-_Sacramento_%2825379096373%29.jpg"
+      width="50" height="33" /></Item><Item><Text xml:space="preserve">File:Tower
+      Bridge at night, 2010-3.jpg</Text><Url xml:space="preserve">https://commons.wikimedia.org/wiki/File:Tower_Bridge_at_night,_2010-3.jpg</Url><Image
+      source="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Tower_Bridge_at_night%2C_2010-3.jpg/50px-Tower_Bridge_at_night%2C_2010-3.jpg"
+      width="50" height="75" /></Item></Section></SearchSuggestion>
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '2'
+      cache-control:
+      - max-age=10800, s-maxage=10800, public
+      content-disposition:
+      - inline; filename=api-result.xml
+      content-encoding:
+      - gzip
+      content-type:
+      - text/xml; charset=utf-8
+      date:
+      - Thu, 07 Dec 2023 10:52:35 GMT
+      expires:
+      - Thu, 07 Dec 2023 13:52:36 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1383.eqiad.wmnet
+      server-timing:
+      - cache;desc="miss", host;desc="cp3070"
+      set-cookie:
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie
+      x-cache:
+      - cp3070 miss, cp3070 miss
+      x-cache-status:
+      - miss
+      x-client-ip:
+      - 92.13.36.200
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-opensearch-type:
+      - prefix
+      x-search-id:
+      - 6ik76rredm5c4lcdu7jx25yp
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1
