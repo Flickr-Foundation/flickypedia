@@ -61,6 +61,9 @@ def parse_sdc_snapshot(path: pathlib.Path) -> Generator[SnapshotEntry, None, Non
 
             data = json.loads(line.replace(b",\n", b""))
 
+            # I've never actually seen what these look like, so I'm not
+            # sure I'm modelling them correctly -- so if/when I get
+            # an example, log it for inspection.
             if data["descriptions"]:
                 pprint(data["descriptions"])
 
