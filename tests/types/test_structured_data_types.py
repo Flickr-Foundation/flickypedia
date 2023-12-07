@@ -2,8 +2,8 @@ import json
 
 import pytest
 
+from flickypedia.types import validate_typeddict
 from flickypedia.types.structured_data import ExistingClaims, Snak
-from flickypedia.utils import validate_typeddict
 
 
 def test_snak_type_matches() -> None:
