@@ -1,4 +1,7 @@
 import click
+import httpx
+
+from flickypedia.apis.wikimedia import WikimediaApi
 
 
 @click.group(
@@ -18,4 +21,13 @@ def update_single_file(url: str) -> None:
         )
 
     filename = url.replace("https://commons.wikimedia.org/wiki/File:", "")
+
+    api = WikimediaApi(client=httpx.Client())
+
+    existing_sdc = api.get_structured_data(filename=filename)
+
+    from pprint import pprint
+
+    pprint(existing_sdc)
+
     print(f"Detected filename as {filename!r}")
