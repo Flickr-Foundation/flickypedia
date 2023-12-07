@@ -129,11 +129,35 @@ DataValue = (
 #    -> snaktype: value / somevalue / novalue
 #    -> (datavalue) ->
 #
-class Snak(TypedDict):
+class NewSnak(TypedDict):
     property: str
     snaktype: Literal["value", "somevalue", "novalue"]
     datavalue: NotRequired[DataValue]
-    hash: NotRequired[str]
+
+
+class ExistingSnak(NewSnak):
+    hash: str
+
+
+# -> references
+#
+#   hash
+#   snaks-order
+#     0..*
+#       pxx
+#   snaks
+#     pxx
+#       0..*
+#         -> snak
+#
+NewReference = TypedDict(
+    "NewReference", {"snaks-order": list[str], "snaks": dict[str, list[NewSnak]]}
+)
+
+ExistingReference = TypedDict(
+    "ExistingReference",
+    {"hash": str, "snaks-order": list[str], "snaks": dict[str, list[ExistingSnak]]},
+)
 
 
 # -> claims
@@ -148,23 +172,29 @@ class Snak(TypedDict):
 #     (qualifiers)
 #     (references)
 #
-# We don't use references for Flickr SDC, but we should make sure we never
-# delete references which have been saved by other users/tools.
-#
 NewStatement = TypedDict(
     "NewStatement",
     {
         "type": Literal["statement"],
-        "mainsnak": Snak,
+        "mainsnak": NewSnak,
         "qualifiers-order": NotRequired[list[str]],
-        "qualifiers": NotRequired[dict[str, list[Snak]]],
+        "qualifiers": NotRequired[dict[str, list[NewSnak]]],
+        "references": NotRequired[list[NewReference]],
     },
 )
 
-
-class ExistingStatement(NewStatement):
-    id: str
-    rank: str
+ExistingStatement = TypedDict(
+    "ExistingStatement",
+    {
+        "type": Literal["statement"],
+        "mainsnak": ExistingSnak,
+        "qualifiers-order": NotRequired[list[str]],
+        "qualifiers": NotRequired[dict[str, list[ExistingSnak]]],
+        "id": str,
+        "rank": Literal["normal"],
+        "references": NotRequired[list[ExistingReference]],
+    },
+)
 
 
 class NewClaims(TypedDict):

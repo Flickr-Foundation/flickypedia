@@ -8,7 +8,7 @@ from collections.abc import Generator
 import json
 import pathlib
 from pprint import pprint
-from typing import Any, Literal, TypedDict
+from typing import Literal, TypedDict
 
 from pydantic import ValidationError
 
@@ -61,8 +61,8 @@ def parse_sdc_snapshot(path: pathlib.Path) -> Generator[SnapshotEntry, None, Non
 
             data = json.loads(line.replace(b",\n", b""))
 
-            if data['descriptions']:
-                pprint(data['descriptions'])
+            if data["descriptions"]:
+                pprint(data["descriptions"])
 
             try:
                 yield validate_typeddict(data, model=SnapshotEntry)

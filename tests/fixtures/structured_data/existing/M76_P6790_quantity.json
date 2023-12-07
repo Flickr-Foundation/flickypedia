@@ -1,8 +1,10 @@
 {
   "P6790": [
     {
-      "id": "M76$71C303E3-1E8C-4C79-90D1-BB277551FBF5",
+      "type": "statement",
       "mainsnak": {
+        "property": "P6790",
+        "snaktype": "value",
         "datavalue": {
           "type": "quantity",
           "value": {
@@ -10,11 +12,10 @@
             "unit": "1"
           }
         },
-        "property": "P6790",
-        "snaktype": "value"
+        "hash": "0010c6bafae2a2230456e59c702f259e9c1fdfcb"
       },
-      "rank": "normal",
-      "type": "statement"
+      "id": "M76$71C303E3-1E8C-4C79-90D1-BB277551FBF5",
+      "rank": "normal"
     }
   ]
 }
