@@ -73,7 +73,7 @@ form#prepare_info {
     /* This ensures that a landscape 4:3 photo will display at full size and fill
      * the screen, but portrait images will be resized. */
     &, img {
-      height: calc(100vw * 3 / 4);
+      max-width: 100%;
       max-height: 637.5px;
     }
 
