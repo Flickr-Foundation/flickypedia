@@ -62,6 +62,7 @@ it should be accessing it via ``current_user``.
 import datetime
 import json
 import textwrap
+from typing import TypedDict
 import uuid
 
 from authlib.integrations.httpx_client import OAuth1Client, OAuth2Client
@@ -80,9 +81,9 @@ from flask_sqlalchemy import SQLAlchemy
 import httpx
 
 from flickypedia.apis.wikimedia import WikimediaApi
-from flickypedia.types import FlickrOAuthToken
+from flickypedia.types import validate_typeddict
 from flickypedia.types.views import ViewResponse
-from flickypedia.utils import decrypt_string, encrypt_string, validate_typeddict
+from flickypedia.utils import decrypt_string, encrypt_string
 
 
 user_db = SQLAlchemy()
@@ -93,6 +94,14 @@ login.login_view = "homepage"
 
 # This is the name of the encryption key which is stored in the user session.
 SESSION_ENCRYPTION_KEY = "oauth_key_wikimedia"
+
+
+class FlickrOAuthToken(TypedDict):
+    fullname: str | None
+    oauth_token: str
+    oauth_token_secret: str
+    user_nsid: str
+    username: str
 
 
 class WikimediaUserSession(UserMixin, user_db.Model):  # type: ignore

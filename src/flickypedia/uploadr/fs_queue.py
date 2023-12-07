@@ -26,7 +26,8 @@ import time
 from typing import Generic, Literal, TypedDict, TypeVar
 import uuid
 
-from flickypedia.utils import DatetimeDecoder, DatetimeEncoder, validate_typeddict
+from flickypedia.types import validate_typeddict
+from flickypedia.utils import DatetimeDecoder, DatetimeEncoder
 
 
 In = TypeVar("In")

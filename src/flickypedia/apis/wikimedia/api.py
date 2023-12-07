@@ -15,9 +15,10 @@ from xml.etree import ElementTree as ET
 
 import httpx
 
+from flickypedia.types import validate_typeddict
 from flickypedia.types.structured_data import ExistingClaims, NewClaims
 from flickypedia.types.wikimedia import UserInfo, ShortCaption, TitleValidation
-from flickypedia.utils import find_required_elem, validate_typeddict
+from flickypedia.utils import find_required_elem
 from .exceptions import (
     WikimediaApiException,
     UnknownWikimediaApiException,

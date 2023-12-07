@@ -38,11 +38,11 @@ from flickypedia.photos import (
     enrich_photo,
     categorise_photos,
 )
+from flickypedia.types import validate_typeddict
 from flickypedia.types.flickr import DateTaken, User as FlickrUser
 from flickypedia.types.structured_data import NewClaims
 from flickypedia.types.views import ViewResponse
 from flickypedia.types.uploads import UploadRequest
-from flickypedia.utils import validate_typeddict
 from ..uploads import begin_upload
 from ..caching import get_cached_photos_data, remove_cached_photos_data
 

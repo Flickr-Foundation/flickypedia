@@ -15,7 +15,8 @@ from flickypedia.uploadr.auth import (
     WikimediaUserSession,
     SESSION_ENCRYPTION_KEY,
 )
-from flickypedia.utils import DatetimeDecoder, encrypt_string, validate_typeddict
+from flickypedia.types import validate_typeddict
+from flickypedia.utils import DatetimeDecoder, encrypt_string
 
 
 T = TypeVar("T")

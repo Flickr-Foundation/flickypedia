@@ -7,7 +7,6 @@ import xml.etree.ElementTree as ET
 from cryptography.fernet import Fernet
 from flask import render_template, request
 import keyring
-from pydantic import ConfigDict, TypeAdapter
 
 
 def encrypt_string(key: bytes, plaintext: str) -> bytes:
@@ -91,25 +90,6 @@ def create_bookmarklet(filename: str) -> str:
     wrapped_js = """(function() { %s })();""" % js
 
     return urlquote(wrapped_js)
-
-
-def validate_typeddict(t: Any, model: type[T]) -> T:
-    """
-    Check that some data matches a TypedDict.
-
-    We use this to check that the structured data we receive
-    from Wikimedia matches our definitions, so we can use it
-    in type-checked Python.
-
-    See https://stackoverflow.com/a/77386216/1558022
-    """
-    try:
-        model.__pydantic_config__ = ConfigDict(extra="forbid")  # type: ignore
-    except AttributeError:
-        pass
-
-    TypedDictValidator = TypeAdapter(model)
-    return TypedDictValidator.validate_python(t, strict=True)
 
 
 def get_required_password(service_name: str, username: str) -> str:
