@@ -35,7 +35,7 @@ def test_snak_type_matches() -> None:
         #
         # M68208 = Turner, J. M. W. - The Grand Canal - Venice.jpg
         # Retrieved 7 December 2023
-        "M68208_P180_references",
+        "M68208_P180_references.json",
     ],
 )
 def test_existing_claims_match_type(filename: str) -> None:
