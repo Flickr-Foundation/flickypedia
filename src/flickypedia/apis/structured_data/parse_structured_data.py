@@ -92,6 +92,10 @@ def find_flickr_photo_id(sdc: ExistingClaims) -> str | None:
                 else:
                     assert 0
 
+    # Look for a photo ID in the "Flickr Photo ID" field.
+    for statement in sdc.get(WikidataProperties.FlickrPhotoId, []):
+        assert 0
+
     if len(candidates) == 1:
         return candidates.pop()
     elif len(candidates) > 1:
