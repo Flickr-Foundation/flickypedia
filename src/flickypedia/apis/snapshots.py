@@ -12,8 +12,8 @@ from typing import Literal, TypedDict
 
 from pydantic import ValidationError
 
+from flickypedia.types import validate_typeddict
 from flickypedia.types.structured_data import ExistingClaims
-from flickypedia.utils import validate_typeddict
 
 
 class Label(TypedDict):
