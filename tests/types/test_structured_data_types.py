@@ -23,10 +23,19 @@ def test_snak_type_matches() -> None:
 @pytest.mark.parametrize(
     "filename",
     [
+        # M76 = Bustaxi.jpg
+        # Retrieved 7 December 2023
         "M76_P1071_entityid.json",
         "M76_P1259_globecoordinate.json",
         "M76_P6790_quantity.json",
+        #
+        # M74469 = De Havilland Canada DHC-1 Chipmunk (WB671).jpg
+        # Retrieved 7 December 2023
         "M74469_P180_monolingualtext.json",
+        #
+        # M68208 = Turner, J. M. W. - The Grand Canal - Venice.jpg
+        # Retrieved 7 December 2023
+        "M68208_P180_references.json",
     ],
 )
 def test_existing_claims_match_type(filename: str) -> None:

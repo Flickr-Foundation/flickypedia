@@ -1,0 +1,79 @@
+{
+  "P180": [
+    {
+      "id": "M68208$2203DCFE-CB1B-4EC7-B07B-87AD252EEFF3",
+      "mainsnak": {
+        "datavalue": {
+          "type": "wikibase-entityid",
+          "value": {
+            "entity-type": "item",
+            "id": "Q41176",
+            "numeric-id": 41176
+          }
+        },
+        "property": "P180",
+        "snaktype": "value"
+      },
+      "qualifiers": {
+        "P459": [
+          {
+            "datavalue": {
+              "type": "wikibase-entityid",
+              "value": {
+                "entity-type": "item",
+                "id": "Q106429444",
+                "numeric-id": 106429444
+              }
+            },
+            "hash": "4db454aac50b6716547327621134b08c2591b8a8",
+            "property": "P459",
+            "snaktype": "value"
+          }
+        ]
+      },
+      "qualifiers-order": [
+        "P459"
+      ],
+      "rank": "normal",
+      "references": [
+        {
+          "hash": "362d6c1a458def70e5b3b9368d6169d35fc46245",
+          "snaks": {
+            "P813": [
+              {
+                "datavalue": {
+                  "type": "time",
+                  "value": {
+                    "after": 0,
+                    "before": 0,
+                    "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+                    "precision": 11,
+                    "time": "+2022-04-26T00:00:00Z",
+                    "timezone": 0
+                  }
+                },
+                "property": "P813",
+                "snaktype": "value"
+              }
+            ],
+            "P854": [
+              {
+                "datavalue": {
+                  "type": "string",
+                  "value": "https://collectionapi.metmuseum.org/public/collection/v1/objects/437853"
+                },
+                "property": "P854",
+                "snaktype": "value"
+              }
+            ]
+          },
+          "snaks-order": [
+            "P813",
+            "P854"
+          ]
+        }
+      ],
+      "type": "statement"
+    }
+  ]
+}

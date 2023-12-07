@@ -1,8 +1,10 @@
 {
   "P1071": [
     {
-      "id": "M76$FF29D275-B2A1-436E-B649-89A6175F7666",
+      "type": "statement",
       "mainsnak": {
+        "property": "P1071",
+        "snaktype": "value",
         "datavalue": {
           "type": "wikibase-entityid",
           "value": {
@@ -11,11 +13,10 @@
             "numeric-id": 49280472
           }
         },
-        "property": "P1071",
-        "snaktype": "value"
+        "hash": "fb3f93d8c7c717ecca4b1745c15963a99f3f29da"
       },
-      "rank": "normal",
-      "type": "statement"
+      "id": "M76$FF29D275-B2A1-436E-B649-89A6175F7666",
+      "rank": "normal"
     }
   ]
 }

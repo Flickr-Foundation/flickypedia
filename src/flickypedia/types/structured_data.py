@@ -136,6 +136,27 @@ class Snak(TypedDict):
     hash: NotRequired[str]
 
 
+# -> references
+#
+#   hash
+#   snaks-order
+#     0..*
+#       pxx
+#   snaks
+#     pxx
+#       0..*
+#         -> snak
+#
+NewReference = TypedDict(
+    "NewReference", {"snaks-order": list[str], "snaks": dict[str, list[Snak]]}
+)
+
+ExistingReference = TypedDict(
+    "ExistingReference",
+    {"hash": str, "snaks-order": list[str], "snaks": dict[str, list[Snak]]},
+)
+
+
 # -> claims
 #
 # pxx
@@ -148,11 +169,8 @@ class Snak(TypedDict):
 #     (qualifiers)
 #     (references)
 #
-# We don't use references for Flickr SDC, but we should make sure we never
-# delete references which have been saved by other users/tools.
-#
-NewStatement = TypedDict(
-    "NewStatement",
+BaseStatement = TypedDict(
+    "BaseStatement",
     {
         "type": Literal["statement"],
         "mainsnak": Snak,
@@ -162,9 +180,14 @@ NewStatement = TypedDict(
 )
 
 
-class ExistingStatement(NewStatement):
+class NewStatement(BaseStatement):
+    references: NotRequired[list[NewReference]]
+
+
+class ExistingStatement(BaseStatement):
+    references: NotRequired[list[ExistingReference]]
     id: str
-    rank: str
+    rank: Literal["deprecated", "normal", "preferred"]
 
 
 class NewClaims(TypedDict):
