@@ -32,7 +32,12 @@ def update_single_file(url: str) -> None:
 
     filename = url.replace("https://commons.wikimedia.org/wiki/File:", "")
 
-    wikimedia_api = WikimediaApi(client=httpx.Client())
+    api_token = keyring.get_password(
+        'flickypedia_backfillr_bot', 'api_token'
+    )
+
+    wikimedia_api = WikimediaApi(
+    client=httpx.Client(headers={'Authorization': f'Bearer {api_token}'}))
 
     existing_sdc = wikimedia_api.get_structured_data(filename=filename)
 
@@ -52,11 +57,25 @@ def update_single_file(url: str) -> None:
     photo = flickr_api.get_single_photo(photo_id=photo_id)
 
     new_sdc = create_sdc_claims_for_flickr_photo(
-        photo, retrieved_at=datetime.datetime.now()
+        photo, retrieved_at=None
     )
 
     actions = create_actions(existing_sdc, new_sdc)
 
-    from pprint import pprint
+    for a in actions:
+        print(a['property_id'], '\t', a['action'])
 
-    pprint(actions)
+        # if a['action'] == 'add_missing':
+        #     wikimedia_api.add_structured_data(
+        #         filename=filename,
+        #         data={'claims': [a['statement']]},
+        #         summary=f'Backfill {a["property_id"]} statement in structured data'
+        #     )
+        # elif a['action'] == 'add_qualifiers':
+        #     wikimedia_api.add_structured_data(
+        #         filename=filename,
+        #         data={'claims': [
+        #             {'id': a['statement_id'], **a['statement']}
+        #         ]},
+        #         summary=f'Backfill extra qualifiers to {a["property_id"]} statement in structured data'
+        #     )

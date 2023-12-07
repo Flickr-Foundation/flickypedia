@@ -1,6 +1,7 @@
 import copy
 from typing import Literal, TypedDict
 
+from flickypedia.apis.structured_data.wikidata import WikidataProperties
 from flickypedia.types.structured_data import (
     ExistingClaims,
     ExistingStatement,
@@ -32,7 +33,7 @@ class Unknown(TypedDict):
     action: Literal["unknown"]
 
 
-Action = DoNothing | AddMissing | AddQualifiers
+Action = DoNothing | AddMissing | AddQualifiers | Unknown
 
 
 def normalise(statement: ExistingStatement) -> NewStatement:
@@ -70,13 +71,25 @@ def create_actions(existing_sdc: ExistingClaims, new_sdc: NewClaims) -> list[Act
             continue
 
         for statement in existing_statements:
+
+            from pprint import pprint; pprint(statement)
+
             normalised_statement = normalise(statement)
+
+            print("---")
+
+            from pprint import pprint; pprint(normalised_statement)
+            from pprint import pprint; pprint(new_statement)
+
+            print("---")
 
             # If there's an equivalent statement in the existing SDC,
             # then we don't need to do anything.
             if normalised_statement == new_statement:
                 actions.append(DoNothing(property_id=property_id, action="do_nothing"))
                 break
+
+            # If this is the "coordinates"
 
             # If the existing statement has the same mainsnak and a subset
             # of the qualifiers, then we need to update it.
@@ -90,7 +103,21 @@ def create_actions(existing_sdc: ExistingClaims, new_sdc: NewClaims) -> list[Act
                 for q in normalised_statement["qualifiers"]
             )
 
-            if has_same_mainsnak and has_subset_of_new_qualifiers:
+            if new_statement['qualifiers-order'] == [
+            WikidataProperties.DescribedAtUrl,
+            WikidataProperties.Operator,
+            WikidataProperties.Url,
+            WikidataProperties.Retrieved,
+        ] and normalised_statement['qualifiers-order'] == [
+            WikidataProperties.DescribedAtUrl,
+            WikidataProperties.Operator,
+            WikidataProperties.Url] and property_id == WikidataProperties.SourceOfFile:
+                actions.append(
+                    DoNothing(property_id=property_id, action='do_nothing')
+                )
+                break
+
+            elif has_same_mainsnak and has_subset_of_new_qualifiers:
                 actions.append(
                     AddQualifiers(
                         property_id=property_id,

@@ -34,6 +34,9 @@ def get_single_qualifier(
 
     snak_list = qualifiers.get(property_id, [])
 
+    if len(snak_list) == 0:
+        return None
+
     if len(snak_list) != 1:
         assert 0
         return None
@@ -76,7 +79,6 @@ def find_flickr_photo_id(sdc: ExistingClaims) -> str | None:
 
         for u in (url, published_at):
             if u is None:
-                assert 0
                 continue
 
             if u["datavalue"]["type"] != "string":
@@ -95,7 +97,10 @@ def find_flickr_photo_id(sdc: ExistingClaims) -> str | None:
 
     # Look for a photo ID in the "Flickr Photo ID" field.
     for statement in sdc.get(WikidataProperties.FlickrPhotoId, []):
-        assert 0
+        if statement['mainsnak']['datavalue']['type'] == 'string':
+            candidates.add(statement['mainsnak']['datavalue']['value'])
+        else:
+            assert 0
 
     if len(candidates) == 1:
         return candidates.pop()

@@ -275,7 +275,7 @@ class WikimediaApi:
         else:
             return validate_typeddict(statements, model=ExistingClaims)
 
-    def add_structured_data(self, *, filename: str, data: NewClaims) -> None:
+    def add_structured_data(self, *, filename: str, data: NewClaims, summary: str = "Flickypedia edit (add structured data statements)") -> None:
         """
         Add some structured data to a file on Wikimedia Commons.
 
@@ -308,6 +308,8 @@ class WikimediaApi:
         See https://www.wikidata.org/w/api.php?modules=wbeditentity&action=help
 
         """
+        assert not filename.startswith("File:")
+
         # Do some basic validation of the input format here -- if you
         # pass the wrong data into the Wikimedia API, the error message
         # is utterly unhelpful.
@@ -340,7 +342,7 @@ class WikimediaApi:
                 "site": "commonswiki",
                 "title": f"File:{filename}",
                 "data": json.dumps(data),
-                "summary": "Flickypedia edit (add structured data statements)",
+                "summary": summary,
             }
         )
 

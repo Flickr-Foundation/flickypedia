@@ -170,7 +170,7 @@ def create_copyright_status_statement(license_id: str) -> NewStatement:
 
 
 def create_source_data_for_photo(
-    photo_id: str, photo_url: str, original_url: str, retrieved_at: datetime.datetime
+    photo_id: str, photo_url: str, original_url: str, retrieved_at: datetime.datetime | None
 ) -> NewStatement:
     """
     Create a structured data statement for a Flickr photo.
@@ -187,15 +187,20 @@ def create_source_data_for_photo(
             "type": "entity",
         },
         {"property": WikidataProperties.Url, "value": original_url, "type": "string"},
-        {
-            "property": WikidataProperties.Retrieved,
-            "date": retrieved_at,
-            "precision": "day",
-            "type": "date",
-        },
+
     ]
 
-    return {
+    if retrieved_at:
+        qualifier_values.append(
+            {
+                "property": WikidataProperties.Retrieved,
+                "date": retrieved_at,
+                "precision": "day",
+                "type": "date",
+            },
+        )
+
+    result = {
         "mainsnak": {
             "snaktype": "value",
             "property": WikidataProperties.SourceOfFile,
@@ -208,10 +213,14 @@ def create_source_data_for_photo(
             WikidataProperties.DescribedAtUrl,
             WikidataProperties.Operator,
             WikidataProperties.Url,
-            WikidataProperties.Retrieved,
         ],
         "type": "statement",
     }
+
+    if retrieved_at:
+        result['qualifiers-order'].append(WikidataProperties.Retrieved)
+
+    return result
 
 
 def create_license_statement(license_id: str) -> NewStatement:
@@ -429,7 +438,7 @@ def create_flickr_photo_id_statement(photo_id: str) -> NewStatement:
 
 
 def create_sdc_claims_for_flickr_photo(
-    photo: SinglePhoto, retrieved_at: datetime.datetime
+    photo: SinglePhoto, retrieved_at: datetime.datetime | None
 ) -> NewClaims:
     """
     Creates a complete structured data claim for a Flickr photo.
