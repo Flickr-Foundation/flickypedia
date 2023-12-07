@@ -37,7 +37,7 @@ the required JSON.
 import datetime
 from typing import Literal, TypedDict
 
-from flickypedia.types.structured_data import DataValue, NewSnak
+from flickypedia.types.structured_data import DataValue, Snak
 from .wikidata import (
     to_wikidata_date_value,
     to_wikidata_entity_value,
@@ -70,8 +70,8 @@ QualifierValues = (
 
 def create_qualifiers(
     qualifier_values: list[QualifierValues],
-) -> dict[str, list[NewSnak]]:
-    result: dict[str, list[NewSnak]] = {}
+) -> dict[str, list[Snak]]:
+    result: dict[str, list[Snak]] = {}
 
     for qualifier in qualifier_values:
         property_id = qualifier["property"]

@@ -17,7 +17,7 @@ def test_snak_type_matches() -> None:
         },
     }
 
-    validate_typeddict(data, model=ExistingSnak)
+    validate_typeddict(data, model=Snak)
 
 
 @pytest.mark.parametrize(

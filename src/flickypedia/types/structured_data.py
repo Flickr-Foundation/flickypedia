@@ -129,14 +129,11 @@ DataValue = (
 #    -> snaktype: value / somevalue / novalue
 #    -> (datavalue) ->
 #
-class NewSnak(TypedDict):
+class Snak(TypedDict):
     property: str
     snaktype: Literal["value", "somevalue", "novalue"]
     datavalue: NotRequired[DataValue]
-
-
-class ExistingSnak(NewSnak):
-    hash: str
+    hash: NotRequired[str]
 
 
 # -> references
@@ -151,12 +148,12 @@ class ExistingSnak(NewSnak):
 #         -> snak
 #
 NewReference = TypedDict(
-    "NewReference", {"snaks-order": list[str], "snaks": dict[str, list[NewSnak]]}
+    "NewReference", {"snaks-order": list[str], "snaks": dict[str, list[Snak]]}
 )
 
 ExistingReference = TypedDict(
     "ExistingReference",
-    {"hash": str, "snaks-order": list[str], "snaks": dict[str, list[ExistingSnak]]},
+    {"hash": str, "snaks-order": list[str], "snaks": dict[str, list[Snak]]},
 )
 
 
@@ -172,29 +169,25 @@ ExistingReference = TypedDict(
 #     (qualifiers)
 #     (references)
 #
-NewStatement = TypedDict(
-    "NewStatement",
+BaseStatement = TypedDict(
+    "BaseStatement",
     {
         "type": Literal["statement"],
-        "mainsnak": NewSnak,
+        "mainsnak": Snak,
         "qualifiers-order": NotRequired[list[str]],
-        "qualifiers": NotRequired[dict[str, list[NewSnak]]],
-        "references": NotRequired[list[NewReference]],
+        "qualifiers": NotRequired[dict[str, list[Snak]]],
     },
 )
 
-ExistingStatement = TypedDict(
-    "ExistingStatement",
-    {
-        "type": Literal["statement"],
-        "mainsnak": ExistingSnak,
-        "qualifiers-order": NotRequired[list[str]],
-        "qualifiers": NotRequired[dict[str, list[ExistingSnak]]],
-        "id": str,
-        "rank": Literal["normal"],
-        "references": NotRequired[list[ExistingReference]],
-    },
-)
+
+class NewStatement(BaseStatement):
+    references: NotRequired[list[NewReference]]
+
+
+class ExistingStatement(BaseStatement):
+    references: NotRequired[list[ExistingReference]]
+    id: str
+    rank: Literal["deprecated", "normal", "preferred"]
 
 
 class NewClaims(TypedDict):
