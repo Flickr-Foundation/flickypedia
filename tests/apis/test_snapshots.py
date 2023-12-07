@@ -1,7 +1,7 @@
 import pathlib
 
 from flickypedia.apis.snapshots import parse_sdc_snapshot, SnapshotEntry
-from flickypedia.utils import validate_typeddict
+from flickypedia.types import validate_typeddict
 
 
 def test_parse_sdc_snapshot() -> None:
