@@ -6,13 +6,12 @@ as downloaded from https://dumps.wikimedia.org/other/wikibase/commonswiki/
 import bz2
 from collections.abc import Generator
 import json
-import pathlib
 from pprint import pprint
 from typing import Literal, TypedDict
 
 from pydantic import ValidationError
 
-from flickypedia.types import validate_typeddict
+from flickypedia.types import Path, validate_typeddict
 from flickypedia.types.structured_data import ExistingClaims
 
 
@@ -38,7 +37,7 @@ SnapshotEntry = TypedDict(
 )
 
 
-def parse_sdc_snapshot(path: pathlib.Path) -> Generator[SnapshotEntry, None, None]:
+def parse_sdc_snapshot(path: Path) -> Generator[SnapshotEntry, None, None]:
     """
     Given a snapshot of SDC from Wikimedia Commons, generate every entry.
     """
