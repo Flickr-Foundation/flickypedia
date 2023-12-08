@@ -1,4 +1,6 @@
+import bz2
 import csv
+import json
 import re
 
 import click
@@ -9,6 +11,7 @@ from flickypedia.apis.structured_data import (
     AmbiguousStructuredData,
     find_flickr_photo_id,
 )
+from flickypedia.apis.structured_data.wikidata import WikidataProperties
 from flickypedia.apis.snapshots import parse_sdc_snapshot
 from flickypedia.apis.wikimedia import WikimediaApi
 
@@ -75,3 +78,28 @@ def get_list_of_photos(snapshot_path: str) -> None:
                 )
 
     print(csv_path)
+
+
+@extractr.command(help="Create a snapshot with a reduced set of fields.")
+@click.argument("SNAPSHOT_PATH")
+@click.option("--fields")
+def create_reduced_snapshot(snapshot_path: str, fields: str) -> None:
+    out_path = snapshot_path.replace(".json.bz2", "." + fields + ".json.bz2")
+    assert out_path != snapshot_path
+
+    matched_fields = set(
+        getattr(WikidataProperties, f.strip())
+        for f in fields.split(",")
+    )
+
+    print(f"Detected property IDs as {matched_fields}")
+
+    with bz2.open(out_path, "w") as out_file:
+        for entry in tqdm.tqdm(parse_sdc_snapshot(snapshot_path)):
+            entry['statements'] = {k: v for k, v in entry['statements'].items() if k in matched_fields}
+            if not entry['statements']:
+                continue
+
+            out_file.write(json.dumps(entry).encode("utf8") + b'\n')
+
+    print(out_path)
