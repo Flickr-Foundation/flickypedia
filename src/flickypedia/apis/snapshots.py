@@ -4,6 +4,7 @@ as downloaded from https://dumps.wikimedia.org/other/wikibase/commonswiki/
 """
 
 import bz2
+import gzip
 from collections.abc import Generator
 import json
 from pprint import pprint
@@ -53,7 +54,7 @@ def parse_sdc_snapshot(path: Path) -> Generator[SnapshotEntry, None, None]:
     #
     # So if we go line-by-line, we can stream the file without having
     # to load it all into memory.
-    with bz2.open(path) as in_file:
+    with gzip.open(path) as in_file:
         for line in in_file:
             if line.strip() in {b"[", b"]"}:
                 continue

@@ -84,7 +84,8 @@ def get_list_of_photos(snapshot_path: str) -> None:
 @click.argument("SNAPSHOT_PATH")
 @click.option("--fields")
 def create_reduced_snapshot(snapshot_path: str, fields: str) -> None:
-    out_path = snapshot_path.replace(".json.bz2", "." + fields + ".json.bz2")
+    out_path = snapshot_path.replace(".json.bz2", "." + fields + ".json.bz2").replace(".json.gz", "." + fields + ".json.gz")
+
     assert out_path != snapshot_path
 
     matched_fields = set(
@@ -94,7 +95,7 @@ def create_reduced_snapshot(snapshot_path: str, fields: str) -> None:
 
     print(f"Detected property IDs as {matched_fields}")
 
-    with bz2.open(out_path, "w") as out_file:
+    with bz2.open(out_path, "x") as out_file:
         for entry in tqdm.tqdm(parse_sdc_snapshot(snapshot_path)):
             entry['statements'] = {k: v for k, v in entry['statements'].items() if k in matched_fields}
             if not entry['statements']:
