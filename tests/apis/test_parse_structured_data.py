@@ -2,7 +2,10 @@ import pathlib
 
 import pytest
 
-from flickypedia.apis.structured_data import AmbiguousStructuredData, find_flickr_photo_id
+from flickypedia.apis.structured_data import (
+    AmbiguousStructuredData,
+    find_flickr_photo_id,
+)
 from flickypedia.types.structured_data import ExistingClaims
 from utils import get_typed_fixture
 

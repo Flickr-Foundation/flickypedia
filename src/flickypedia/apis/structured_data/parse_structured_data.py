@@ -8,7 +8,9 @@ class AmbiguousStructuredData(Exception):
     pass
 
 
-def get_single_qualifier(statement: ExistingStatement, *, property_id: str) -> Snak | None:
+def get_single_qualifier(
+    statement: ExistingStatement, *, property_id: str
+) -> Snak | None:
     """
     A statement can have qualifiers:
 
@@ -40,7 +42,9 @@ def get_single_qualifier(statement: ExistingStatement, *, property_id: str) -> S
         return None
 
     if len(snak_list) != 1:
-        raise AmbiguousStructuredData(f"Unexpected multiple qualifiers in {statement['id']}")
+        raise AmbiguousStructuredData(
+            f"Unexpected multiple qualifiers in {statement['id']}"
+        )
 
     return snak_list[0]
 
@@ -97,7 +101,9 @@ def find_flickr_photo_id(sdc: ExistingClaims) -> str | None:
                 if parsed_url["type"] == "single_photo":
                     candidates.add(parsed_url["photo_id"])
                 else:
-                    raise AmbiguousStructuredData(f"Ambiguous Flickr URL: {u['datavalue']['value']}")
+                    raise AmbiguousStructuredData(
+                        f"Ambiguous Flickr URL: {u['datavalue']['value']}"
+                    )
 
     # Look for a photo ID in the "Flickr Photo ID" field.
     for statement in sdc.get(WikidataProperties.FlickrPhotoId, []):
