@@ -1,4 +1,33 @@
-from flickypedia.types.structured_data import ExistingStatement, NewStatement
+from flickypedia.types.structured_data import ExistingStatement, NewStatement, Snak
+
+
+def are_equivalent_snaks(existing_snak: Snak, new_snak: Snak) -> bool:
+    if existing_snak["property"] != new_snak["property"]:
+        return False
+
+    if existing_snak["snaktype"] != new_snak["snaktype"]:
+        return False
+
+    existing_datavalue = existing_snak["datavalue"]
+    new_datavalue = new_snak["datavalue"]
+
+    if existing_datavalue["type"] != new_datavalue["type"]:
+        return False
+
+    if existing_datavalue["type"] == "globecoordinate":
+        assert new_datavalue["type"] == "globecoordinate"
+
+        existing_value = existing_datavalue["value"]
+        new_value = new_datavalue["value"]
+
+        return (
+            new_value["altitude"] == existing_value["altitude"]
+            and new_value["globe"] == existing_value["globe"]
+            and new_value["latitude"] == existing_value["latitude"]
+            and new_value["longitude"] == existing_value["longitude"]
+        )
+    else:
+        return new_datavalue == existing_datavalue
 
 
 def are_equivalent_statements(
@@ -17,39 +46,12 @@ def are_equivalent_statements(
         "qualifiers" not in existing_statement and "qualifiers" not in new_statement
     )
 
-    # First check the type of the datavalue -- if it's not the same, these
-    # definitely can't be equivalent statements.
-    has_same_datavalue_type = (
-        new_statement["mainsnak"]["datavalue"]["type"]
-        == existing_statement["mainsnak"]["datavalue"]["type"]
-    )
-
-    if not has_same_datavalue_type:
-        return False
-
-    datavalue_type = new_statement["mainsnak"]["datavalue"]["type"]
-
     # If they're globe coordinates, we want to check that the key values
     # are correct, but we'll allow some fudging on the precision -- that's
     # a bit inexact and I'm not too fussed about it.
-    if datavalue_type == "globecoordinate" and has_no_qualifiers:
-        new_datavalue = new_statement["mainsnak"]["datavalue"]
-        existing_datavalue = existing_statement["mainsnak"]["datavalue"]
-
-        assert new_datavalue["type"] == "globecoordinate"
-        assert existing_datavalue["type"] == "globecoordinate"
-
-        new_value = new_datavalue["value"]
-        existing_value = existing_datavalue["value"]
-
-        if (
-            new_value["altitude"] == existing_value["altitude"]
-            and new_value["globe"] == existing_value["globe"]
-            and new_value["latitude"] == existing_value["latitude"]
-            and new_value["longitude"] == existing_value["longitude"]
-        ):
-            return True
-        else:
-            return False
+    if has_no_qualifiers and are_equivalent_snaks(
+        existing_snak=existing_statement["mainsnak"], new_snak=new_statement["mainsnak"]
+    ):
+        return True
 
     return False
