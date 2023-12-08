@@ -27,7 +27,7 @@ class TestFindFlickrPhotoId:
         # Retrieved 7 December 2023
         sdc = get_statement_fixture("M138765382_P12120.json")
 
-        assert find_flickr_photo_id(sdc) == '53253175319'
+        assert find_flickr_photo_id(sdc) == "53253175319"
 
     def test_can_find_flickr_id_with_no_url_in_source(self) -> None:
         # M27512034 = Addicott Electrics (HL08 AEL) DAF CF rigid flatbed with crane, 23 March 2012.jpg
@@ -37,4 +37,4 @@ class TestFindFlickrPhotoId:
         # but no "URL" qualifier.
         sdc = get_statement_fixture("M27512034_P7482.json")
 
-        assert find_flickr_photo_id(sdc) == '6868541110'
+        assert find_flickr_photo_id(sdc) == "6868541110"

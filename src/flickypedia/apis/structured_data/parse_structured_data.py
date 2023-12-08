@@ -48,6 +48,11 @@ def find_flickr_photo_id(sdc: ExistingClaims) -> str | None:
     """
     Given the structured data for a file on Wikimedia Commons, guess
     what Flickr photo ID this is associated with (if any).
+
+    Note: there are a bunch of `assert 0`'s littered through this code,
+    which are branches I haven't tested because I haven't encountered
+    them in practice yet.  If you hit one of these in practice, use it
+    as an example to write a test!
     """
     candidates = set()
 
