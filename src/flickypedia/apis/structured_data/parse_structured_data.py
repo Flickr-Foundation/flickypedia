@@ -44,7 +44,11 @@ def get_single_qualifier(
     return snak_list[0]
 
 
-def find_flickr_photo_id(sdc: ExistingClaims) -> str | None:
+class AmbiguousFlickrUrl(Exception):
+    pass
+
+
+def find_flickr_photo_id(page_id: str, sdc: ExistingClaims) -> str | None:
     """
     Given the structured data for a file on Wikimedia Commons, guess
     what Flickr photo ID this is associated with (if any).
@@ -96,7 +100,7 @@ def find_flickr_photo_id(sdc: ExistingClaims) -> str | None:
                 if parsed_url["type"] == "single_photo":
                     candidates.add(parsed_url["photo_id"])
                 else:
-                    assert 0
+                    raise AmbiguousFlickrUrl(f"Ambiguous URL in {page_id}: {u['datavalue']['value']}")
 
     # Look for a photo ID in the "Flickr Photo ID" field.
     for statement in sdc.get(WikidataProperties.FlickrPhotoId, []):

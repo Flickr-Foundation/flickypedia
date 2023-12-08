@@ -31,22 +31,30 @@ def get_list_of_photos(snapshot_path: str) -> None:
         csv_path = f"flickr_ids_from_sdc.{date_match.group(1)}.csv"
 
     with open(csv_path, "w") as out_file:
-        writer = csv.DictWriter(out_file, fieldnames=["flickr_photo_id", "wikimedia_page_id", "wikimedia_page_title"])
+        writer = csv.DictWriter(
+            out_file,
+            fieldnames=["flickr_photo_id", "wikimedia_page_id", "wikimedia_page_title"],
+        )
         writer.writeheader()
 
         for entry in tqdm.tqdm(parse_sdc_snapshot(snapshot_path)):
             try:
-                flickr_photo_id = find_flickr_photo_id(entry['statements'])
+                flickr_photo_id = find_flickr_photo_id(
+                    page_id=entry["id"], sdc=entry["statements"]
+                )
             except Exception:
                 import json
-                from pprint import pprint; print(json.dumps(entry['statements']))
+
+                print(json.dumps(entry["statements"]))
                 raise
 
             if flickr_photo_id is not None:
-                writer.writerow({
-                    "flickr_photo_id": flickr_photo_id,
-                    "wikimedia_page_id": entry['id'],
-                    'wikimedia_page_title': entry['title']
-                })
+                writer.writerow(
+                    {
+                        "flickr_photo_id": flickr_photo_id,
+                        "wikimedia_page_id": entry["id"],
+                        "wikimedia_page_title": entry["title"],
+                    }
+                )
 
     print(csv_path)
