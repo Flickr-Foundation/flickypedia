@@ -32,3 +32,28 @@ class TestSnapshotEntryType:
         }
 
         validate_typeddict(entry, model=SnapshotEntry)
+
+    def test_handles_descriptions(self) -> None:
+        entry = {
+            "descriptions": {
+                "de": {
+                    "language": "de",
+                    "value": "Marienkapelle neben Haus Visbeck in der Bauerschaft Dernekamp, Kirchspiel, Dülmen, Nordrhein-Westfalen, Deutschland",
+                },
+                "en": {
+                    "language": "en",
+                    "value": "St Mary’s Chapel next to Visbeck manor in the Dernekamp hamlet, Kirchspiel, Dülmen, North Rhine-Westphalia, Germany",
+                },
+            },
+            "id": "M25872413",
+            "labels": {},
+            "lastrevid": 795294648,
+            "modified": "2023-08-23T09:59:31Z",
+            "ns": 6,
+            "pageid": 25872413,
+            "statements": {},
+            "title": "File:Kirchspiel (Dülmen), Visbeck, Marienkapelle -- 2010.jpg",
+            "type": "mediainfo",
+        }
+
+        validate_typeddict(entry, model=SnapshotEntry)

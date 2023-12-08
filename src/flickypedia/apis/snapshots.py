@@ -15,7 +15,7 @@ from flickypedia.types import Path, validate_typeddict
 from flickypedia.types.structured_data import ExistingClaims
 
 
-class Label(TypedDict):
+class MonolingualValue(TypedDict):
     language: str
     value: str
 
@@ -31,8 +31,8 @@ SnapshotEntry = TypedDict(
         "lastrevid": int,
         "modified": "str",
         "statements": ExistingClaims,
-        "labels": dict[str, Label],
-        "descriptions": dict[str, str],
+        "labels": dict[str, MonolingualValue],
+        "descriptions": dict[str, MonolingualValue],
     },
 )
 
@@ -59,12 +59,6 @@ def parse_sdc_snapshot(path: Path) -> Generator[SnapshotEntry, None, None]:
                 continue
 
             data = json.loads(line.replace(b",\n", b""))
-
-            # I've never actually seen what these look like, so I'm not
-            # sure I'm modelling them correctly -- so if/when I get
-            # an example, log it for inspection.
-            if data["descriptions"]:
-                pprint(data["descriptions"])
 
             try:
                 yield validate_typeddict(data, model=SnapshotEntry)

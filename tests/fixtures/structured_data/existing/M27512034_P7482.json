@@ -1,0 +1,54 @@
+{
+  "P7482": [
+    {
+      "id": "M27512034$30E1E2ED-B2A5-4A10-ADCC-221B648B7097",
+      "mainsnak": {
+        "datavalue": {
+          "type": "wikibase-entityid",
+          "value": {
+            "entity-type": "item",
+            "id": "Q74228490",
+            "numeric-id": 74228490
+          }
+        },
+        "hash": "b82dd47222a210c6dc1f428b693c2fbf7b0e0d6e",
+        "property": "P7482",
+        "snaktype": "value"
+      },
+      "qualifiers": {
+        "P137": [
+          {
+            "datavalue": {
+              "type": "wikibase-entityid",
+              "value": {
+                "entity-type": "item",
+                "id": "Q103204",
+                "numeric-id": 103204
+              }
+            },
+            "hash": "3d8cd4c1ab91d3d9a14900210faaebf1a98b947b",
+            "property": "P137",
+            "snaktype": "value"
+          }
+        ],
+        "P973": [
+          {
+            "datavalue": {
+              "type": "string",
+              "value": "https://www.flickr.com/photos/16179216@N07/6868541110/"
+            },
+            "hash": "aae70127522d35b2f10f4298b516bd81f3205d16",
+            "property": "P973",
+            "snaktype": "value"
+          }
+        ]
+      },
+      "qualifiers-order": [
+        "P973",
+        "P137"
+      ],
+      "rank": "normal",
+      "type": "statement"
+    }
+  ]
+}
