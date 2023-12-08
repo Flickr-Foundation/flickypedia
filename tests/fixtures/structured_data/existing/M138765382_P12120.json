@@ -1,0 +1,18 @@
+{
+  "P12120": [
+    {
+      "id": "M138765382$ECB592B8-1328-427C-880D-E741D631C109",
+      "mainsnak": {
+        "datavalue": {
+          "type": "string",
+          "value": "53253175319"
+        },
+        "hash": "33a66ab2dbc997e9a70e7f73eb6c213d68caa4bf",
+        "property": "P12120",
+        "snaktype": "value"
+      },
+      "rank": "normal",
+      "type": "statement"
+    }
+  ]
+}
