@@ -33,12 +33,20 @@ def are_equivalent_statements(
     # are correct, but we'll allow some fudging on the precision -- that's
     # a bit inexact and I'm not too fussed about it.
     if datavalue_type == "globecoordinate" and has_no_qualifiers:
-        new_value = new_statement["mainsnak"]["datavalue"]["value"]
-        existing_value = existing_statement["mainsnak"]["datavalue"]["value"]
+        new_datavalue = new_statement["mainsnak"]["datavalue"]
+        existing_datavalue = existing_statement["mainsnak"]["datavalue"]
 
-        if all(
-            new_value[k] == existing_value[k]
-            for k in {"altitude", "globe", "latitude", "longitude"}
+        assert new_datavalue["type"] == "globecoordinate"
+        assert existing_datavalue["type"] == "globecoordinate"
+
+        new_value = new_datavalue["value"]
+        existing_value = existing_datavalue["value"]
+
+        if (
+            new_value["altitude"] == existing_value["altitude"]
+            and new_value["globe"] == existing_value["globe"]
+            and new_value["latitude"] == existing_value["latitude"]
+            and new_value["longitude"] == existing_value["longitude"]
         ):
             return True
         else:
