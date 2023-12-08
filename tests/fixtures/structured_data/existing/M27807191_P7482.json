@@ -1,0 +1,104 @@
+{
+  "P7482": [
+    {
+      "type": "statement",
+      "mainsnak": {
+        "property": "P7482",
+        "snaktype": "value",
+        "datavalue": {
+          "type": "wikibase-entityid",
+          "value": {
+            "entity-type": "item",
+            "id": "Q74228490",
+            "numeric-id": 74228490
+          }
+        },
+        "hash": "b82dd47222a210c6dc1f428b693c2fbf7b0e0d6e"
+      },
+      "qualifiers-order": [
+        "P137",
+        "P973"
+      ],
+      "qualifiers": {
+        "P137": [
+          {
+            "property": "P137",
+            "snaktype": "value",
+            "datavalue": {
+              "type": "wikibase-entityid",
+              "value": {
+                "entity-type": "item",
+                "id": "Q103204",
+                "numeric-id": 103204
+              }
+            },
+            "hash": "3d8cd4c1ab91d3d9a14900210faaebf1a98b947b"
+          }
+        ],
+        "P973": [
+          {
+            "property": "P973",
+            "snaktype": "value",
+            "datavalue": {
+              "type": "string",
+              "value": "https://www.flickr.com/photos/normanbleventhalmapcenter/2675972715"
+            },
+            "hash": "142622a1ae2c2b14bb789d8b0b1962c015b4f49f"
+          }
+        ]
+      },
+      "id": "M27807191$E0C39333-07BD-4C36-980C-13CC07926B30",
+      "rank": "normal"
+    },
+    {
+      "type": "statement",
+      "mainsnak": {
+        "property": "P7482",
+        "snaktype": "value",
+        "datavalue": {
+          "type": "wikibase-entityid",
+          "value": {
+            "entity-type": "item",
+            "id": "Q74228490",
+            "numeric-id": 74228490
+          }
+        },
+        "hash": "b82dd47222a210c6dc1f428b693c2fbf7b0e0d6e"
+      },
+      "qualifiers-order": [
+        "P137",
+        "P973"
+      ],
+      "qualifiers": {
+        "P137": [
+          {
+            "property": "P137",
+            "snaktype": "value",
+            "datavalue": {
+              "type": "wikibase-entityid",
+              "value": {
+                "entity-type": "item",
+                "id": "Q894583",
+                "numeric-id": 894583
+              }
+            },
+            "hash": "4dac8125a4779432890df9df74db2a956f10b6be"
+          }
+        ],
+        "P973": [
+          {
+            "property": "P973",
+            "snaktype": "value",
+            "datavalue": {
+              "type": "string",
+              "value": "https://collections.leventhalmap.org/search/commonwealth:3f4638568"
+            },
+            "hash": "e4a929772e86550e7d1f92cf637bf4490361cef9"
+          }
+        ]
+      },
+      "id": "M27807191$0362deb8-40ad-264e-934a-a621744a0dd3",
+      "rank": "normal"
+    }
+  ]
+}

@@ -38,6 +38,12 @@ def get_statement_fixture(filename: str) -> ExistingClaims:
         # The "source of file" field has a non-Flickr value in
         # the "Operator" qualifier
         ("M423_P7482.json", None),
+        #
+        # M27807191 = Nationalist government of Nanking - nominally ruling over entire China, 1930 (2675972715).jpg
+        # Retrieved 8 December 2023
+        #
+        # There are two "source of file" fields, one of which is a Flickr URL.
+        ("M27807191_P7482.json", "2675972715"),
     ],
 )
 def test_find_flickr_photo_id(
@@ -45,11 +51,11 @@ def test_find_flickr_photo_id(
 ) -> None:
     sdc = get_statement_fixture(filename)
 
-    assert find_flickr_photo_id(page_id="-1", sdc=sdc) == expected_flickr_photo_id
+    assert find_flickr_photo_id(sdc) == expected_flickr_photo_id
 
 
 def test_empty_sdc_means_no_flickr_id() -> None:
-    assert find_flickr_photo_id(page_id="-1", sdc={}) is None
+    assert find_flickr_photo_id(sdc={}) is None
 
 
 def test_ambiguous_flickr_url_is_error() -> None:
@@ -61,7 +67,7 @@ def test_ambiguous_flickr_url_is_error() -> None:
     sdc = get_statement_fixture("M620184_P7482.json")
 
     with pytest.raises(AmbiguousStructuredData):
-        find_flickr_photo_id(page_id="M620184", sdc=sdc)
+        find_flickr_photo_id(sdc)
 
 
 def test_ambiguous_qualifier_is_error() -> None:
@@ -77,4 +83,4 @@ def test_ambiguous_qualifier_is_error() -> None:
     sdc = get_statement_fixture("M15393706_P7482.json")
 
     with pytest.raises(AmbiguousStructuredData):
-        find_flickr_photo_id(page_id="M15393706", sdc=sdc)
+        find_flickr_photo_id(sdc)
