@@ -71,7 +71,6 @@ def find_flickr_photo_id(sdc: ExistingClaims) -> str | None:
         if operator["datavalue"] != to_wikidata_entity_value(
             entity_id=WikidataEntities.Flickr
         ):
-            assert 0
             continue
 
         # Now look at the "URL" and "Published at" qualifiers.  Either of

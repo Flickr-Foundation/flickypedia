@@ -31,6 +31,13 @@ def get_statement_fixture(filename: str) -> ExistingClaims:
     # M76 = Bustaxi.jpg
     # Retrieved 24 November 2023
     ("M76_P7482.json", None),
+    #
+    # M423 = Fabritius-vink.jpg
+    # Retrieved 24 November 2023
+    #
+    # The "source of file" field has a non-Flickr value in
+    # the "Operator" qualifier
+    ("M423_P7482.json", None),
 ])
 def test_find_flickr_photo_id(filename: str, expected_flickr_photo_id: str | None) -> None:
     sdc = get_statement_fixture(filename)
