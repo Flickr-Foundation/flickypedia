@@ -4,6 +4,10 @@ from .wikidata import WikidataEntities, WikidataProperties, to_wikidata_entity_v
 from flickypedia.types.structured_data import ExistingClaims, ExistingStatement, Snak
 
 
+class AmbiguousStructuredData(Exception):
+    pass
+
+
 def get_single_qualifier(
     statement: ExistingStatement, *, property_id: str
 ) -> Snak | None:
@@ -38,8 +42,9 @@ def get_single_qualifier(
         return None
 
     if len(snak_list) != 1:
-        assert 0
-        return None
+        raise AmbiguousStructuredData(
+            f"Unexpected multiple qualifiers in {statement['id']}"
+        )
 
     return snak_list[0]
 
@@ -66,13 +71,11 @@ def find_flickr_photo_id(sdc: ExistingClaims) -> str | None:
         )
 
         if operator is None:
-            assert 0
             continue
 
         if operator["datavalue"] != to_wikidata_entity_value(
             entity_id=WikidataEntities.Flickr
         ):
-            assert 0
             continue
 
         # Now look at the "URL" and "Published at" qualifiers.  Either of
@@ -98,7 +101,9 @@ def find_flickr_photo_id(sdc: ExistingClaims) -> str | None:
                 if parsed_url["type"] == "single_photo":
                     candidates.add(parsed_url["photo_id"])
                 else:
-                    assert 0
+                    raise AmbiguousStructuredData(
+                        f"Ambiguous Flickr URL: {u['datavalue']['value']}"
+                    )
 
     # Look for a photo ID in the "Flickr Photo ID" field.
     for statement in sdc.get(WikidataProperties.FlickrPhotoId, []):

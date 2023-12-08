@@ -65,10 +65,6 @@ flask-wtf==1.2.1
     # via -r requirements.txt
 flickr-url-parser==1.5.0
     # via -r requirements.txt
-greenlet==3.0.1
-    # via
-    #   -r requirements.txt
-    #   sqlalchemy
 gunicorn==21.2.0
     # via -r requirements.txt
 h11==0.14.0
@@ -185,11 +181,15 @@ sqlalchemy==2.0.23
     #   -r requirements.txt
     #   flask-sqlalchemy
 tqdm==4.66.1
-    # via -r dev_requirements.in
+    # via
+    #   -r dev_requirements.in
+    #   -r requirements.txt
 types-beautifulsoup4==4.12.0.7
     # via -r dev_requirements.in
 types-html5lib==1.1.11.15
     # via types-beautifulsoup4
+types-tqdm==4.66.0.5
+    # via -r dev_requirements.in
 types-wtforms==3.1.0.0
     # via -r dev_requirements.in
 typing-extensions==4.8.0

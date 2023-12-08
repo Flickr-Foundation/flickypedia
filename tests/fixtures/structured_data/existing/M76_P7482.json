@@ -1,0 +1,21 @@
+{
+  "P7482": [
+    {
+      "type": "statement",
+      "mainsnak": {
+        "property": "P7482",
+        "snaktype": "value",
+        "datavalue": {
+          "type": "wikibase-entityid",
+          "value": {
+            "entity-type": "item",
+            "id": "Q66458942",
+            "numeric-id": 66458942
+          }
+        }
+      },
+      "id": "M76$C9E51947-96ED-4CCD-AB57-51949F4C8870",
+      "rank": "normal"
+    }
+  ]
+}
