@@ -3,7 +3,8 @@ import sys
 
 import click
 
-from flickypedia.uploadr import uploadr_cli
+from .backfillr import backfillr_cli
+from .uploadr import uploadr_cli
 
 
 @click.group()
@@ -49,4 +50,5 @@ def run_background_worker() -> None:
         q.process_tasks()
 
 
+main.add_command(backfillr_cli)
 main.add_command(uploadr_cli)
