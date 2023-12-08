@@ -1,7 +1,11 @@
 import functools
+import pathlib
 from typing import Any, Hashable, TypeVar
 
 from pydantic import ConfigDict, TypeAdapter
+
+
+Path = pathlib.Path | str
 
 
 T = TypeVar("T")
