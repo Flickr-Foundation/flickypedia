@@ -191,6 +191,7 @@ class TestAddStructuredData:
         wikimedia_api.add_structured_data(
             filename="PrintedLibraryOfCongressSubjectHeadings.jpg",
             data={"claims": [create_license_statement(license_id="cc-by-2.0")]},
+            summary="Flickypedia edit (add structured data statements)",
         )
 
         after_statements = wikimedia_api.get_structured_data(
@@ -225,6 +226,7 @@ class TestAddStructuredData:
             wikimedia_api.add_structured_data(
                 filename="!!!.jpg",
                 data={"claims": [create_license_statement(license_id="cc-by-2.0")]},
+                summary="Flickypedia edit (add structured data statements)",
             )
 
         assert exc.value.code == "no-such-entity-link"
@@ -234,6 +236,7 @@ class TestAddStructuredData:
             wikimedia_api.add_structured_data(
                 filename="example.jpg",
                 data=[create_license_statement(license_id="cc-by-2.0")],  # type: ignore
+                summary="Flickypedia edit (add structured data statements)",
             )
 
 

@@ -274,7 +274,9 @@ class WikimediaApi:
         else:
             return validate_typeddict(statements, model=ExistingClaims)
 
-    def add_structured_data(self, *, filename: str, data: NewClaims) -> None:
+    def add_structured_data(
+        self, *, filename: str, data: NewClaims, summary: str
+    ) -> None:
         """
         Add some structured data to a file on Wikimedia Commons.
 
@@ -339,7 +341,7 @@ class WikimediaApi:
                 "site": "commonswiki",
                 "title": f"File:{filename}",
                 "data": json.dumps(data),
-                "summary": "Flickypedia edit (add structured data statements)",
+                "summary": summary,
             }
         )
 
