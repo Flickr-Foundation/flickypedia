@@ -61,15 +61,15 @@ def update_single_file(url: str) -> None:
     for a in actions:
         print(a["property_id"], "\t", a["action"])
 
-        if a["action"] == "add_missing":
-            wikimedia_api.add_structured_data(
-                filename=filename,
-                data={"claims": [a["statement"]]},
-                summary=f'Backfill {a["property_id"]} statement in structured data',
-            )
-        elif a["action"] == "add_qualifiers":
-            wikimedia_api.add_structured_data(
-                filename=filename,
-                data={"claims": [{"id": a["statement_id"], **a["statement"]}]},
-                summary=f'Backfill extra qualifiers to {a["property_id"]} statement in structured data',
-            )
+        # if a["action"] == "add_missing":
+        #     wikimedia_api.add_structured_data(
+        #         filename=filename,
+        #         data={"claims": [a["statement"]]},
+        #         summary=f'Backfill {a["property_id"]} statement in structured data',
+        #     )
+        # elif a["action"] == "add_qualifiers":
+        #     wikimedia_api.add_structured_data(
+        #         filename=filename,
+        #         data={"claims": [{"id": a["statement_id"], **a["statement"]}]},
+        #         summary=f'Backfill extra qualifiers to {a["property_id"]} statement in structured data',
+        #     )
