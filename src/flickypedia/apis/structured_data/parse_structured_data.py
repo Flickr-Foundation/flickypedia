@@ -66,7 +66,6 @@ def find_flickr_photo_id(sdc: ExistingClaims) -> str | None:
         )
 
         if operator is None:
-            assert 0
             continue
 
         if operator["datavalue"] != to_wikidata_entity_value(
