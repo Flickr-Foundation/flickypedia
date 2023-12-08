@@ -212,12 +212,7 @@ class TestAreEquivalentSnaks:
 
         assert are_equivalent_snaks(snak_with_numeric_id, snak_with_path_alias)
 
-    @pytest.mark.parametrize(
-        "property_id",
-        [
-            "P973",
-        ],
-    )
+    @pytest.mark.parametrize("property_id", ["P973", "P2699"])
     def test_properties_block_different_flickr_urls(self, property_id: str) -> None:
         snak1 = create_string_snak(
             property_id=property_id,
