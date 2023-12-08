@@ -11,6 +11,7 @@ httpx
 keyring
 libsass
 pydantic
+tqdm
 
 # This pin is because of an ImportError in flask-login caused by
 # a newer version of Werkzeug.

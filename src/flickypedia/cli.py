@@ -4,6 +4,7 @@ import sys
 import click
 
 from .backfillr import backfillr_cli
+from .extractr import extractr_cli
 from .uploadr import uploadr_cli
 
 
@@ -51,4 +52,5 @@ def run_background_worker() -> None:
 
 
 main.add_command(backfillr_cli)
+main.add_command(extractr_cli)
 main.add_command(uploadr_cli)
