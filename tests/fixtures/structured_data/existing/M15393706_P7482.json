@@ -1,0 +1,75 @@
+{
+  "P7482": [
+    {
+      "type": "statement",
+      "mainsnak": {
+        "property": "P7482",
+        "snaktype": "value",
+        "datavalue": {
+          "type": "wikibase-entityid",
+          "value": {
+            "entity-type": "item",
+            "id": "Q74228490",
+            "numeric-id": 74228490
+          }
+        }
+      },
+      "qualifiers-order": [
+        "P973",
+        "P137"
+      ],
+      "qualifiers": {
+        "P973": [
+          {
+            "property": "P973",
+            "snaktype": "value",
+            "datavalue": {
+              "type": "string",
+              "value": "https://resolver.kb.nl/resolve?urn=urn:gvn:MAU01:0605"
+            },
+            "hash": "7c9d8028d2dd9690e48e108400cd67fc0ca11afa"
+          },
+          {
+            "property": "P973",
+            "snaktype": "value",
+            "datavalue": {
+              "type": "string",
+              "value": "https://www.wga.hu/html/f/fabritiu/carel/goldfinc.html"
+            },
+            "hash": "12d73338be3e9bbb78845b1c8165e9adcce11fc0"
+          }
+        ],
+        "P137": [
+          {
+            "property": "P137",
+            "snaktype": "value",
+            "datavalue": {
+              "type": "wikibase-entityid",
+              "value": {
+                "entity-type": "item",
+                "id": "Q105080966",
+                "numeric-id": 105080966
+              }
+            },
+            "hash": "2d35a98773febc2c4e6cfedab803d51c8807441e"
+          },
+          {
+            "property": "P137",
+            "snaktype": "value",
+            "datavalue": {
+              "type": "wikibase-entityid",
+              "value": {
+                "entity-type": "item",
+                "id": "Q1464063",
+                "numeric-id": 1464063
+              }
+            },
+            "hash": "98a02681cdcad37d19eb4fb782fbc58835c49be1"
+          }
+        ]
+      },
+      "id": "M15393706$C62B10AA-6E17-4661-81A6-D71EBB8742F3",
+      "rank": "normal"
+    }
+  ]
+}

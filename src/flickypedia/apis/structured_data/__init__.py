@@ -9,10 +9,10 @@ from .create_structured_data import (
     create_sdc_claims_for_flickr_photo,
     create_source_data_for_photo,
 )
-from .parse_structured_data import AmbiguousFlickrUrl, find_flickr_photo_id
+from .parse_structured_data import AmbiguousStructuredData, find_flickr_photo_id
 
 __all__ = [
-    "AmbiguousFlickrUrl",
+    "AmbiguousStructuredData",
     "create_copyright_status_statement",
     "create_date_taken_statement",
     "create_flickr_creator_statement",

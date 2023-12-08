@@ -4,7 +4,7 @@ import re
 import click
 import tqdm
 
-from flickypedia.apis.structured_data import find_flickr_photo_id
+from flickypedia.apis.structured_data import AmbiguousStructuredData, find_flickr_photo_id
 from flickypedia.apis.snapshots import parse_sdc_snapshot
 
 
@@ -42,6 +42,9 @@ def get_list_of_photos(snapshot_path: str) -> None:
                 flickr_photo_id = find_flickr_photo_id(
                     page_id=entry["id"], sdc=entry["statements"]
                 )
+            except AmbiguousStructuredData as exc:
+                print(exc)
+                continue
             except Exception:
                 import json
 

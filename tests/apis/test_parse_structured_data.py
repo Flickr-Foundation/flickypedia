@@ -2,7 +2,7 @@ import pathlib
 
 import pytest
 
-from flickypedia.apis.structured_data import AmbiguousFlickrUrl, find_flickr_photo_id
+from flickypedia.apis.structured_data import AmbiguousStructuredData, find_flickr_photo_id
 from flickypedia.types.structured_data import ExistingClaims
 from utils import get_typed_fixture
 
@@ -60,5 +60,21 @@ def test_ambiguous_flickr_url_is_error() -> None:
     # than the individual photo in the "URL" qualifier.
     sdc = get_statement_fixture("M620184_P7482.json")
 
-    with pytest.raises(AmbiguousFlickrUrl):
+    with pytest.raises(AmbiguousStructuredData):
         find_flickr_photo_id(page_id="M620184", sdc=sdc)
+
+
+def test_ambiguous_qualifier_is_error() -> None:
+    # M15393706 = Carel Fabritius - The Goldfinch - WGA7721.jpg
+    # Retrieved 24 November 2023
+    #
+    # The "source of file" field has multiple values for the "Operator"
+    # and "Described at URL" qualifier.
+    #
+    # I fixed the qualifiers in the Wikimedia data by splitting them
+    # into two statements, but we need to make sure we don't crash
+    # when this occurs.
+    sdc = get_statement_fixture("M15393706_P7482.json")
+
+    with pytest.raises(AmbiguousStructuredData):
+        find_flickr_photo_id(page_id="M15393706", sdc=sdc)

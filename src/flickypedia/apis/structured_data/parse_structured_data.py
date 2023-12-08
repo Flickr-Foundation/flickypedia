@@ -4,8 +4,12 @@ from .wikidata import WikidataEntities, WikidataProperties, to_wikidata_entity_v
 from flickypedia.types.structured_data import ExistingClaims, ExistingStatement, Snak
 
 
+class AmbiguousStructuredData(Exception):
+    pass
+
+
 def get_single_qualifier(
-    statement: ExistingStatement, *, property_id: str
+    page_id: str, statement: ExistingStatement, *, property_id: str
 ) -> Snak | None:
     """
     A statement can have qualifiers:
@@ -38,17 +42,12 @@ def get_single_qualifier(
         return None
 
     if len(snak_list) != 1:
-        assert 0
-        return None
+        raise AmbiguousStructuredData(f"Unexpected multiple qualifiers on {page_id} / {statement['id']}")
 
     return snak_list[0]
 
 
-class AmbiguousFlickrUrl(Exception):
-    pass
-
-
-def find_flickr_photo_id(page_id: str, sdc: ExistingClaims) -> str | None:
+def find_flickr_photo_id(page_id: str,sdc: ExistingClaims) -> str | None:
     """
     Given the structured data for a file on Wikimedia Commons, guess
     what Flickr photo ID this is associated with (if any).
@@ -66,7 +65,7 @@ def find_flickr_photo_id(page_id: str, sdc: ExistingClaims) -> str | None:
         # First check if the Operator is "Flickr".  If it's not, this
         # isn't a Flickr source and we can skip it.
         operator = get_single_qualifier(
-            statement, property_id=WikidataProperties.Operator
+            page_id, statement, property_id=WikidataProperties.Operator
         )
 
         if operator is None:
@@ -79,9 +78,9 @@ def find_flickr_photo_id(page_id: str, sdc: ExistingClaims) -> str | None:
 
         # Now look at the "URL" and "Published at" qualifiers.  Either of
         # them could contain a Flickr URL.
-        url = get_single_qualifier(statement, property_id=WikidataProperties.Url)
+        url = get_single_qualifier(page_id, statement, property_id=WikidataProperties.Url)
         published_at = get_single_qualifier(
-            statement, property_id=WikidataProperties.DescribedAtUrl
+            page_id, statement, property_id=WikidataProperties.DescribedAtUrl
         )
 
         for u in (url, published_at):
@@ -100,7 +99,7 @@ def find_flickr_photo_id(page_id: str, sdc: ExistingClaims) -> str | None:
                 if parsed_url["type"] == "single_photo":
                     candidates.add(parsed_url["photo_id"])
                 else:
-                    raise AmbiguousFlickrUrl(f"Ambiguous URL in {page_id}: {u['datavalue']['value']}")
+                    raise AmbiguousStructuredData(f"Ambiguous URL in {page_id}: {u['datavalue']['value']}")
 
     # Look for a photo ID in the "Flickr Photo ID" field.
     for statement in sdc.get(WikidataProperties.FlickrPhotoId, []):
