@@ -1,6 +1,6 @@
 import datetime
 import json
-import os
+import pathlib
 import re
 from typing import TypeVar
 
@@ -15,7 +15,7 @@ from flickypedia.uploadr.auth import (
     WikimediaUserSession,
     SESSION_ENCRYPTION_KEY,
 )
-from flickypedia.types import validate_typeddict
+from flickypedia.types import validate_typeddict, Path
 from flickypedia.utils import DatetimeDecoder, encrypt_string
 
 
@@ -98,14 +98,16 @@ def store_user(
     return user
 
 
-def get_typed_fixture(path: str, model: type[T]) -> T:
+def get_typed_fixture(path: Path, model: type[T]) -> T:
     """
     Read a JSON fixture from the ``tests/fixtures`` directory.
 
     This function will validate that the JSON fixture matches the
     specified model.
     """
-    with open(os.path.join("tests/fixtures", path)) as f:
+    fixtures_dir = pathlib.Path("tests/fixtures")
+
+    with open(fixtures_dir / path) as f:
         return validate_typeddict(json.load(f, cls=DatetimeDecoder), model)
 
 
