@@ -1,4 +1,17 @@
+from flickr_url_parser import parse_flickr_url
+
+from flickypedia.apis.structured_data.wikidata import WikidataProperties
 from flickypedia.types.structured_data import ExistingStatement, NewStatement, Snak
+
+
+def are_equivalent_flickr_urls(url1: str, url2: str) -> bool:
+    try:
+        parsed_url_1 = parse_flickr_url(url1)
+        parsed_url_2 = parse_flickr_url(url2)
+    except Exception:
+        return False
+
+    return parsed_url_1 == parsed_url_2
 
 
 def are_equivalent_snaks(existing_snak: Snak, new_snak: Snak) -> bool:
@@ -7,6 +20,14 @@ def are_equivalent_snaks(existing_snak: Snak, new_snak: Snak) -> bool:
 
     if existing_snak["snaktype"] != new_snak["snaktype"]:
         return False
+
+    # If they have the same property and snaktype, and those are the
+    # only two fields, then these snaks are equivalent.
+    if existing_snak.keys() == {"property", "snaktype", "hash"} and new_snak.keys() == {
+        "property",
+        "snaktype",
+    }:
+        return True
 
     existing_datavalue = existing_snak["datavalue"]
     new_datavalue = new_snak["datavalue"]
@@ -26,6 +47,29 @@ def are_equivalent_snaks(existing_snak: Snak, new_snak: Snak) -> bool:
             and new_value["latitude"] == existing_value["latitude"]
             and new_value["longitude"] == existing_value["longitude"]
         )
+
+    # If we're looking at the "Described At URL" field and they have two
+    # equivalent Flickr URLs, we can treat these as equivalent.
+    elif (
+        existing_datavalue["type"] == "string"
+        and new_datavalue["type"] == "string"
+        and existing_snak["property"] == WikidataProperties.DescribedAtUrl
+    ):
+        return are_equivalent_flickr_urls(
+            existing_datavalue["value"], new_datavalue["value"]
+        )
+
+    # If we're looking at the "URL" field and they have two
+    # equivalent Flickr URLs, we can treat these as equivalent.
+    elif (
+        existing_datavalue["type"] == "string"
+        and new_datavalue["type"] == "string"
+        and existing_snak["property"] == WikidataProperties.Url
+    ):
+        return are_equivalent_flickr_urls(
+            existing_datavalue["value"], new_datavalue["value"]
+        )
+
     else:
         return new_datavalue == existing_datavalue
 
