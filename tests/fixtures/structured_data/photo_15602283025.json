@@ -58,6 +58,51 @@
     {
       "mainsnak": {
         "datavalue": {
+          "type": "wikibase-entityid",
+          "value": {
+            "entity-type": "item",
+            "id": "Q74228490",
+            "numeric-id": 74228490
+          }
+        },
+        "property": "P7482",
+        "snaktype": "value"
+      },
+      "qualifiers": {
+        "P137": [
+          {
+            "datavalue": {
+              "type": "wikibase-entityid",
+              "value": {
+                "entity-type": "item",
+                "id": "Q103204",
+                "numeric-id": 103204
+              }
+            },
+            "property": "P137",
+            "snaktype": "value"
+          }
+        ],
+        "P973": [
+          {
+            "datavalue": {
+              "type": "string",
+              "value": "https://www.flickr.com/photos/golfking1/15602283025/"
+            },
+            "property": "P973",
+            "snaktype": "value"
+          }
+        ]
+      },
+      "qualifiers-order": [
+        "P973",
+        "P137"
+      ],
+      "type": "statement"
+    },
+    {
+      "mainsnak": {
+        "datavalue": {
           "value": {
             "time": "+2014-07-14T00:00:00Z",
             "precision": 11,

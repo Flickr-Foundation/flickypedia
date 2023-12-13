@@ -173,7 +173,7 @@ def create_copyright_status_statement(license_id: str) -> NewStatement:
 def create_source_data_for_photo(
     photo_id: str,
     photo_url: str,
-    original_url: str,
+    original_url: str | None,
     retrieved_at: datetime.datetime | None,
 ) -> NewStatement:
     """
@@ -190,14 +190,24 @@ def create_source_data_for_photo(
             "entity_id": WikidataEntities.Flickr,
             "type": "entity",
         },
-        {"property": WikidataProperties.Url, "value": original_url, "type": "string"},
     ]
+
+    if original_url is not None:
+        qualifier_values.append(
+            {
+                "property": WikidataProperties.Url,
+                "value": original_url,
+                "type": "string",
+            }
+        )
 
     qualifiers_order = [
         WikidataProperties.DescribedAtUrl,
         WikidataProperties.Operator,
-        WikidataProperties.Url,
     ]
+
+    if original_url is not None:
+        qualifiers_order.append(WikidataProperties.Url)
 
     if retrieved_at is not None:
         qualifier_values.append(
@@ -471,6 +481,15 @@ def _create_sdc_claims_for_flickr_photo(
     except IndexError:
         if mode == "new_photo":  # pragma: no cover
             raise
+
+        source_statement = create_source_data_for_photo(
+            photo_id=photo["id"],
+            photo_url=photo["url"],
+            original_url=None,
+            retrieved_at=None,
+        )
+
+        statements.append(source_statement)
     else:
         source_statement = create_source_data_for_photo(
             photo_id=photo["id"],
