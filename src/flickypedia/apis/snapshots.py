@@ -62,6 +62,11 @@ def parse_sdc_snapshot(path: Path) -> Generator[SnapshotEntry, None, None]:
 
             try:
                 yield validate_typeddict(data, model=SnapshotEntry)
+
+            # This doesn't happen with current snapshots (20231124) so
+            # it suggests our model is pretty complete, but we leave
+            # this here as a defensive measure in case the snapshot
+            # format changes at some point.
             except ValidationError:
                 pprint(data)
                 raise

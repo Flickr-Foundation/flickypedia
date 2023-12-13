@@ -1,4 +1,8 @@
+import bz2
 import pathlib
+
+from pydantic import ValidationError
+import pytest
 
 from flickypedia.apis.snapshots import parse_sdc_snapshot, SnapshotEntry
 from flickypedia.types import validate_typeddict
@@ -14,6 +18,18 @@ def test_parse_sdc_snapshot() -> None:
     )
 
     assert len(list(parse_sdc_snapshot(snapshot_path))) == 2
+
+
+def test_parse_busted_sdc_snapshot_is_error(tmp_path: pathlib.Path) -> None:
+    """
+    If there's a line which doesn't match our ``SnapshotEntry`` type,
+    we throw an error rather than continuing.
+    """
+    with bz2.open(tmp_path, "wb") as out_file:
+        out_file.write("""[\n{"data in": "the wrong format"}\n]""".encode("utf8"))
+
+    with pytest.raises(ValidationError):
+        list(parse_sdc_snapshot(tmp_path))
 
 
 class TestSnapshotEntryType:
