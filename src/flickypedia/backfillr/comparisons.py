@@ -5,6 +5,10 @@ from flickypedia.types.structured_data import ExistingStatement, NewStatement, S
 
 
 def are_equivalent_flickr_urls(url1: str, url2: str) -> bool:
+    """
+    Returns True if two URLs point to equivalent pages on Flickr,
+    False otherwise.
+    """
     try:
         parsed_url_1 = parse_flickr_url(url1)
         parsed_url_2 = parse_flickr_url(url2)
@@ -74,6 +78,27 @@ def are_equivalent_snaks(existing_snak: Snak, new_snak: Snak) -> bool:
         return new_datavalue == existing_datavalue
 
 
+def are_equivalent_qualifiers(
+    existing_qualifiers: dict[str, list[Snak]], new_qualifiers: dict[str, list[Snak]]
+) -> bool:
+    # If we're not trying to write any qualifiers, then any existing
+    # qualifiers are trivially equivalent.
+    if not new_qualifiers:
+        return True
+
+    for property_id, list_of_snaks in new_qualifiers.items():
+        assert len(list_of_snaks) == 1
+        new_snak = list_of_snaks[0]
+
+        if not any(
+            are_equivalent_snaks(snak, new_snak)
+            for snak in existing_qualifiers.get(property_id, [])
+        ):
+            return False
+
+    return True
+
+
 def are_equivalent_statements(
     existing_statement: ExistingStatement, new_statement: NewStatement
 ) -> bool:
@@ -86,16 +111,13 @@ def are_equivalent_statements(
     If the two statements aren't equivalent, then we **might** need to do
     something, but what we do is beyond the scope of this function.
     """
-    has_no_qualifiers = (
-        "qualifiers" not in existing_statement and "qualifiers" not in new_statement
+
+    main_snaks_match = are_equivalent_snaks(
+        existing_snak=existing_statement["mainsnak"], new_snak=new_statement["mainsnak"]
+    )
+    qualifiers_match = are_equivalent_qualifiers(
+        existing_qualifiers=existing_statement.get("qualifiers", {}),
+        new_qualifiers=new_statement.get("qualifiers", {}),
     )
 
-    # If they're globe coordinates, we want to check that the key values
-    # are correct, but we'll allow some fudging on the precision -- that's
-    # a bit inexact and I'm not too fussed about it.
-    if has_no_qualifiers and are_equivalent_snaks(
-        existing_snak=existing_statement["mainsnak"], new_snak=new_statement["mainsnak"]
-    ):
-        return True
-
-    return False
+    return qualifiers_match and main_snaks_match

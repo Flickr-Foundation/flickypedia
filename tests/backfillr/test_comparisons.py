@@ -1,6 +1,7 @@
 import pytest
 
 from flickypedia.backfillr.comparisons import (
+    are_equivalent_flickr_urls,
     are_equivalent_snaks,
     are_equivalent_statements,
 )
@@ -195,7 +196,7 @@ class TestAreEquivalentSnaks:
 
         assert not are_equivalent_snaks(snak1, snak2)
 
-    @pytest.mark.parametrize("property_id", ["P973"])
+    @pytest.mark.parametrize("property_id", ["P973", "P2699"])
     def test_properties_allow_equivalent_flickr_urls(self, property_id: str) -> None:
         snak_with_numeric_id = create_string_snak(
             property_id=property_id,
@@ -209,7 +210,12 @@ class TestAreEquivalentSnaks:
 
         assert are_equivalent_snaks(snak_with_numeric_id, snak_with_path_alias)
 
-    @pytest.mark.parametrize("property_id", ["P973"])
+    @pytest.mark.parametrize(
+        "property_id",
+        [
+            "P973",
+        ],
+    )
     def test_properties_block_different_flickr_urls(self, property_id: str) -> None:
         snak1 = create_string_snak(
             property_id=property_id,
@@ -342,3 +348,10 @@ def test_globe_coordinates_with_different_values_are_different() -> None:
     }
 
     assert not are_equivalent_statements(existing_statement, new_statement)
+
+
+def test_non_flickr_urls_arent_equivalent() -> None:
+    assert not are_equivalent_flickr_urls(
+        url1="https://www.flickr.com/photos/29904699@N00/16100150",
+        url2="https://www.example.net/",
+    )
