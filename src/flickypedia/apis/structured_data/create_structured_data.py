@@ -438,8 +438,10 @@ def create_flickr_photo_id_statement(photo_id: str) -> NewStatement:
     }
 
 
-def create_sdc_claims_for_flickr_photo(
-    photo: SinglePhoto, retrieved_at: datetime.datetime | None
+def _create_sdc_claims_for_flickr_photo(
+    photo: SinglePhoto,
+    retrieved_at: datetime.datetime | None,
+    include_license: bool = False,
 ) -> NewClaims:
     """
     Creates a complete structured data claim for a Flickr photo.
@@ -449,10 +451,6 @@ def create_sdc_claims_for_flickr_photo(
     photo_id_statement = create_flickr_photo_id_statement(photo_id=photo["id"])
 
     creator_statement = create_flickr_creator_statement(user=photo["owner"])
-
-    copyright_statement = create_copyright_status_statement(
-        license_id=photo["license"]["id"]
-    )
 
     # Note: the "Original" size is not guaranteed to be available
     # for all Flickr photos (in particular those who've disabled
@@ -471,8 +469,6 @@ def create_sdc_claims_for_flickr_photo(
         retrieved_at=retrieved_at,
     )
 
-    license_statement = create_license_statement(license_id=photo["license"]["id"])
-
     date_posted_statement = create_posted_to_flickr_statement(
         date_posted=photo["date_posted"]
     )
@@ -481,9 +477,16 @@ def create_sdc_claims_for_flickr_photo(
         photo_id_statement,
         creator_statement,
         source_statement,
-        license_statement,
-        copyright_statement,
     ]
+
+    if include_license:
+        license_statement = create_license_statement(license_id=photo["license"]["id"])
+
+        copyright_statement = create_copyright_status_statement(
+            license_id=photo["license"]["id"]
+        )
+
+        statements.extend([license_statement, copyright_statement])
 
     if photo["location"] is not None:
         statements.append(create_location_statement(location=photo["location"]))
@@ -494,3 +497,32 @@ def create_sdc_claims_for_flickr_photo(
     statements.append(date_posted_statement)
 
     return {"claims": statements}
+
+
+def create_sdc_claims_for_new_flickr_photo(photo: SinglePhoto, retrieved_at: datetime.datetime) -> NewClaims:
+    """
+    Create the SDC claims for a new upload to Wikimedia Commons.
+    """
+    return _create_sdc_claims_for_flickr_photo(
+        photo, retrieved_at=retrieved_at, include_license=True
+    )
+
+
+def create_sdc_claims_for_existing_flickr_photo(photo: SinglePhoto) -> NewClaims:
+    """
+    Create the SDC claims for a photo which has already been uploaded to WMC.
+
+    This is slightly different to the SDC we create for new uploads:
+
+    *   We don't write a "retrieved at" qualifier, because it would tell
+        you when the bot ran rather than when the photo was uploaded to Commons.
+
+    *   We don't include a copyright license/status statement.  Flickr users
+        often change their license after it was copied to Commons, and then
+        the backfillr bot gets confused because it doesn't know how to map
+        the new license, or it doesn't know how to reconcile the conflicting SDC.
+
+    """
+    return _create_sdc_claims_for_flickr_photo(
+        photo, retrieved_at=None, include_license=False
+    )
