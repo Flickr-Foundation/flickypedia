@@ -9,7 +9,7 @@ from flickypedia.apis.structured_data import (
     create_sdc_claims_for_flickr_photo,
     find_flickr_photo_id,
 )
-from flickypedia.apis.wikimedia import WikimediaApi
+from flickypedia.apis.wikimedia import WikimediaApi, get_filename_from_url
 from .actions import create_actions
 
 
@@ -24,12 +24,12 @@ def backfillr() -> None:
 @backfillr.command(help="Fix the SDC for a single file.")
 @click.argument("URL")
 def update_single_file(url: str) -> None:
-    if not url.startswith("https://commons.wikimedia.org/wiki/File:"):
+    try:
+        filename = get_filename_from_url(url)
+    except ValueError:
         raise click.UsageError(
             f"Expected a URL like https://commons.wikimedia.org/wiki/File:<filename>, got {url!r}"
         )
-
-    filename = url.replace("https://commons.wikimedia.org/wiki/File:", "")
 
     api_token = keyring.get_password("flickypedia_backfillr_bot", "api_token")
 
