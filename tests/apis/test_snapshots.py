@@ -25,11 +25,13 @@ def test_parse_busted_sdc_snapshot_is_error(tmp_path: pathlib.Path) -> None:
     If there's a line which doesn't match our ``SnapshotEntry`` type,
     we throw an error rather than continuing.
     """
-    with bz2.open(tmp_path, "wb") as out_file:
+    snapshot_path = tmp_path / "snapshot.json.bz2"
+
+    with bz2.open(snapshot_path, "xb") as out_file:
         out_file.write("""[\n{"data in": "the wrong format"}\n]""".encode("utf8"))
 
     with pytest.raises(ValidationError):
-        list(parse_sdc_snapshot(tmp_path))
+        list(parse_sdc_snapshot(snapshot_path))
 
 
 class TestSnapshotEntryType:
