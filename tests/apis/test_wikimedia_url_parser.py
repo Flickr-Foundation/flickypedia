@@ -28,6 +28,10 @@ def test_it_rejects_non_file_urls(url: str) -> None:
             "https://commons.wikimedia.org/wiki/File:%225_April_2017_-_The_Culture_defense_(34175959031).jpg",
             '"5_April_2017_-_The_Culture_defense_(34175959031).jpg',
         ),
+        (
+            "https://commons.m.wikimedia.org/wiki/File:%22Christmas_wishes%22_-_Christmas_card._Nellie_Murrell_Collection,_Australia_c._1900s.jpg",
+            '"Christmas_wishes"_-_Christmas_card._Nellie_Murrell_Collection,_Australia_c._1900s.jpg',
+        ),
     ],
 )
 def test_it_gets_filename_from_url(url: str, filename: str) -> None:
