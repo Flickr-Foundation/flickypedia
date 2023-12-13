@@ -1,6 +1,8 @@
 import pytest
 
 from flickypedia.backfillr.comparisons import (
+    are_equivalent_flickr_urls,
+    are_equivalent_qualifiers,
     are_equivalent_snaks,
     are_equivalent_statements,
 )
@@ -13,6 +15,18 @@ from flickypedia.types.structured_data import (
 )
 
 
+def create_string_snak(property_id: str, value: str) -> Snak:
+    return {
+        "datavalue": {
+            "type": "string",
+            "value": value,
+        },
+        "hash": "1234567890",
+        "property": property_id,
+        "snaktype": "value",
+    }
+
+
 class TestAreEquivalentSnaks:
     def test_a_snak_is_equivalent_to_itself(self) -> None:
         snak: Snak = {
@@ -23,6 +37,16 @@ class TestAreEquivalentSnaks:
         }
 
         assert are_equivalent_snaks(snak, snak)
+
+    def test_two_samevalue_snaks_are_equivalent(self) -> None:
+        existing_snak: Snak = {
+            "hash": "d3550e860f988c6675fff913440993f58f5c40c5",
+            "property": "P170",
+            "snaktype": "somevalue",
+        }
+        new_snak: Snak = {"property": "P170", "snaktype": "somevalue"}
+
+        assert are_equivalent_snaks(existing_snak, new_snak)
 
     def test_snaks_for_different_properties_are_not_equivalent(self) -> None:
         datavalue: DataValueTypes.String = {"type": "string", "value": "ABC"}
@@ -168,15 +192,84 @@ class TestAreEquivalentSnaks:
         assert not are_equivalent_snaks(this_snak, other_snak)
 
     def test_snaks_with_different_values_are_not_equivalent(self) -> None:
-        datavalue1: DataValueTypes.String = {"type": "string", "value": "11111"}
-        datavalue2: DataValueTypes.String = {"type": "string", "value": "22222"}
-
-        # fmt: off
-        snak1: Snak = {"datavalue": datavalue1, "snaktype": "value", "property": "P1"}
-        snak2: Snak = {"datavalue": datavalue2, "snaktype": "value", "property": "P1"}
-        # fmt: on
+        snak1 = create_string_snak(property_id="P1", value="11111")
+        snak2 = create_string_snak(property_id="P1", value="22222")
 
         assert not are_equivalent_snaks(snak1, snak2)
+
+    @pytest.mark.parametrize("property_id", ["P973", "P2699"])
+    def test_properties_allow_equivalent_flickr_urls(self, property_id: str) -> None:
+        snak_with_numeric_id = create_string_snak(
+            property_id=property_id,
+            value="https://www.flickr.com/photos/29904699@N00/16100150",
+        )
+
+        snak_with_path_alias = create_string_snak(
+            property_id=property_id,
+            value="https://www.flickr.com/photos/eiriknewth/16100150/",
+        )
+
+        assert are_equivalent_snaks(snak_with_numeric_id, snak_with_path_alias)
+
+    @pytest.mark.parametrize(
+        "property_id",
+        [
+            "P973",
+        ],
+    )
+    def test_properties_block_different_flickr_urls(self, property_id: str) -> None:
+        snak1 = create_string_snak(
+            property_id=property_id,
+            value="https://www.flickr.com/photos/29904699@N00/16100150",
+        )
+
+        snak2 = create_string_snak(
+            property_id=property_id,
+            value="https://www.flickr.com/photos/eiriknewth/",
+        )
+
+        assert not are_equivalent_snaks(snak1, snak2)
+
+
+class TestAreEquivalentQualifiers:
+    @pytest.mark.parametrize(
+        "existing_qualifiers",
+        [{}, {"P123": [create_string_snak(property_id="P123", value="Hello world")]}],
+    )
+    def test_empty_qualifiers_are_equivalent(
+        self, existing_qualifiers: dict[str, list[Snak]]
+    ) -> None:
+        assert are_equivalent_qualifiers(existing_qualifiers, new_qualifiers={})
+
+    def test_qualifiers_with_matching_snaks_are_equivalent(self) -> None:
+        existing_qualifiers = {
+            "P123": [
+                create_string_snak(property_id="P123", value="hello world"),
+                create_string_snak(property_id="P123", value="bonjour monde"),
+            ],
+            "P456": [create_string_snak(property_id="P456", value="jane smith")],
+        }
+
+        new_qualifiers = {
+            "P123": [create_string_snak(property_id="P123", value="hello world")]
+        }
+
+        assert are_equivalent_qualifiers(existing_qualifiers, new_qualifiers)
+
+    def test_qualifiers_with_different_snaks_are_not_equivalent(self) -> None:
+        existing_qualifiers = {
+            "P123": [
+                create_string_snak(property_id="P123", value="hello world"),
+                create_string_snak(property_id="P123", value="bonjour monde"),
+            ],
+            "P456": [create_string_snak(property_id="P456", value="jane smith")],
+        }
+
+        new_qualifiers = {
+            "P123": [create_string_snak(property_id="P123", value="ahoj svet")]
+        }
+
+        assert not are_equivalent_qualifiers(existing_qualifiers, new_qualifiers)
 
 
 def test_different_types_are_not_equivalent() -> None:
@@ -297,3 +390,10 @@ def test_globe_coordinates_with_different_values_are_different() -> None:
     }
 
     assert not are_equivalent_statements(existing_statement, new_statement)
+
+
+def test_non_flickr_urls_arent_equivalent() -> None:
+    assert not are_equivalent_flickr_urls(
+        url1="https://www.flickr.com/photos/29904699@N00/16100150",
+        url2="https://www.example.net/",
+    )
