@@ -387,21 +387,17 @@ def test_it_creates_sdc_for_photo_with_in_copyright_license(vcr_cassette: str) -
         "description": None,
         "sizes": [
             {
-                "label": "Original",
-                "source": "https://live.staticflickr.com/65535/53234140350_93579322a9_o_d.jpg",
+                "label": "Large 1024",
+                "source": "https://live.staticflickr.com/3943/15602283025_fd7d8b0dd9_b.jpg",
                 "media": "photo",
-                "width": 6192,
-                "height": 4128,
+                "width": 1024,
+                "height": 839,
             }
         ],
-        "license": {
-            "id": "cc-by-2.0",
-            "label": "CC BY 2.0",
-            "url": "https://creativecommons.org/licenses/by/2.0/",
-        },
-        "date_posted": datetime.datetime.fromtimestamp(1696421915),
+        "license": {"id": "in-copyright", "label": "All Rights Reserved", "url": None},
+        "date_posted": datetime.datetime.fromtimestamp(1414001923),
         "date_taken": {
-            "value": datetime.datetime(2023, 10, 3, 5, 45, 0),
+            "value": datetime.datetime(2014, 7, 14, 7, 56, 51),
             "granularity": "second",
         },
         "safety_level": "safe",
@@ -410,8 +406,7 @@ def test_it_creates_sdc_for_photo_with_in_copyright_license(vcr_cassette: str) -
         "location": None,
     }
 
-    actual = create_sdc_claims_for_existing_flickr_photo(
-        photo=photo, retrieved_at=datetime.datetime(2023, 11, 14, 16, 15, 0)
-    )
-    expected = get_claims_fixture("photo_53234140350.json")
+    actual = create_sdc_claims_for_existing_flickr_photo(photo)
+    expected = get_claims_fixture("photo_15602283025.json")
 
+    assert actual == expected
