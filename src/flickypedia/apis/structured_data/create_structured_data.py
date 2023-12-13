@@ -499,7 +499,9 @@ def _create_sdc_claims_for_flickr_photo(
     return {"claims": statements}
 
 
-def create_sdc_claims_for_new_flickr_photo(photo: SinglePhoto, retrieved_at: datetime.datetime) -> NewClaims:
+def create_sdc_claims_for_new_flickr_photo(
+    photo: SinglePhoto, retrieved_at: datetime.datetime
+) -> NewClaims:
     """
     Create the SDC claims for a new upload to Wikimedia Commons.
     """

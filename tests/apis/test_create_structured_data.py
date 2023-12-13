@@ -12,7 +12,8 @@ from flickypedia.apis.structured_data import (
     create_license_statement,
     create_location_statement,
     create_posted_to_flickr_statement,
-    create_sdc_claims_for_flickr_photo,
+    create_sdc_claims_for_existing_flickr_photo,
+    create_sdc_claims_for_new_flickr_photo,
     create_source_data_for_photo,
 )
 from flickypedia.types.flickr import (
@@ -236,7 +237,7 @@ class TestCreateLocationStatement:
             path="flickr_api/single_photo-32812033543.json", model=SinglePhotoData
         )
 
-        sdc = create_sdc_claims_for_flickr_photo(
+        sdc = create_sdc_claims_for_new_flickr_photo(
             photo=data["photos"][0], retrieved_at=data["retrieved_at"]
         )
 
@@ -249,7 +250,7 @@ class TestCreateLocationStatement:
             path="flickr_api/single_photo-52994452213.json", model=SinglePhotoData
         )
 
-        sdc = create_sdc_claims_for_flickr_photo(
+        sdc = create_sdc_claims_for_new_flickr_photo(
             photo=data["photos"][0], retrieved_at=data["retrieved_at"]
         )
 
@@ -313,7 +314,7 @@ def test_create_sdc_claims_for_flickr_photo_without_date_taken(
         "location": None,
     }
 
-    actual = create_sdc_claims_for_flickr_photo(
+    actual = create_sdc_claims_for_new_flickr_photo(
         photo=photo, retrieved_at=datetime.datetime(2023, 11, 14, 16, 15, 0)
     )
     expected = get_claims_fixture("photo_53248015596.json")
@@ -362,9 +363,55 @@ def test_create_sdc_claims_for_flickr_photo_with_date_taken(
         "location": None,
     }
 
-    actual = create_sdc_claims_for_flickr_photo(
+    actual = create_sdc_claims_for_new_flickr_photo(
         photo=photo, retrieved_at=datetime.datetime(2023, 11, 14, 16, 15, 0)
     )
     expected = get_claims_fixture("photo_53234140350.json")
 
     assert actual == expected
+
+
+def test_it_creates_sdc_for_photo_with_in_copyright_license(vcr_cassette: str) -> None:
+    photo: SinglePhoto = {
+        "id": "15602283025",
+        "url": "https://www.flickr.com/photos/golfking1/15602283025/",
+        "owner": {
+            "id": "57778372@N04",
+            "username": "airplanes_uk",
+            "realname": "Jonathan Palombo",
+            "path_alias": "golfking1",
+            "photos_url": "https://www.flickr.com/photos/golfking1/",
+            "profile_url": "https://www.flickr.com/people/golfking1/",
+        },
+        "title": "EI-DYY",
+        "description": None,
+        "sizes": [
+            {
+                "label": "Original",
+                "source": "https://live.staticflickr.com/65535/53234140350_93579322a9_o_d.jpg",
+                "media": "photo",
+                "width": 6192,
+                "height": 4128,
+            }
+        ],
+        "license": {
+            "id": "cc-by-2.0",
+            "label": "CC BY 2.0",
+            "url": "https://creativecommons.org/licenses/by/2.0/",
+        },
+        "date_posted": datetime.datetime.fromtimestamp(1696421915),
+        "date_taken": {
+            "value": datetime.datetime(2023, 10, 3, 5, 45, 0),
+            "granularity": "second",
+        },
+        "safety_level": "safe",
+        "original_format": "jpg",
+        "tags": [],
+        "location": None,
+    }
+
+    actual = create_sdc_claims_for_existing_flickr_photo(
+        photo=photo, retrieved_at=datetime.datetime(2023, 11, 14, 16, 15, 0)
+    )
+    expected = get_claims_fixture("photo_53234140350.json")
+

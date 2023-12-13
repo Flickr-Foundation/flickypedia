@@ -2,7 +2,7 @@ import datetime
 
 from flask import Flask
 
-from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
+from flickypedia.apis.structured_data import create_sdc_claims_for_new_flickr_photo
 from flickypedia.apis.wikimedia import WikimediaApi
 from flickypedia.duplicates import find_duplicates
 from flickypedia.types.flickr import SinglePhoto
@@ -55,7 +55,7 @@ def test_upload_single_photo(app: Flask, wikimedia_api: WikimediaApi) -> None:
         wikimedia_api,
         request={
             "photo": photo,
-            "sdc": create_sdc_claims_for_flickr_photo(
+            "sdc": create_sdc_claims_for_new_flickr_photo(
                 photo, retrieved_at=datetime.datetime(2023, 12, 2, 16, 2, 0)
             ),
             "title": "Floor decoration at St Giles In The Fields.jpg",

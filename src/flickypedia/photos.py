@@ -7,7 +7,7 @@ from typing import TypedDict
 
 from flask import current_app
 
-from flickypedia.apis.structured_data import create_sdc_claims_for_flickr_photo
+from flickypedia.apis.structured_data import create_sdc_claims_for_new_flickr_photo
 from flickypedia.duplicates import find_duplicates, DuplicateInfo
 from flickypedia.types.flickr import SinglePhoto, Size
 from flickypedia.types.structured_data import NewClaims
@@ -114,7 +114,9 @@ def enrich_photo(
         result.append(
             {
                 "photo": p,
-                "sdc": create_sdc_claims_for_flickr_photo(p, retrieved_at=retrieved_at),
+                "sdc": create_sdc_claims_for_new_flickr_photo(
+                    p, retrieved_at=retrieved_at
+                ),
             }
         )
 
