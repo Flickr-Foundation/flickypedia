@@ -6,7 +6,7 @@ import keyring
 
 from flickypedia.apis.flickr import FlickrPhotosApi
 from flickypedia.apis.structured_data import (
-    create_sdc_claims_for_flickr_photo,
+    create_sdc_claims_for_existing_flickr_photo,
     find_flickr_photo_id,
 )
 from flickypedia.apis.wikimedia import WikimediaApi, get_filename_from_url
@@ -54,7 +54,7 @@ def update_single_file(url: str) -> None:
 
     photo = flickr_api.get_single_photo(photo_id=photo_id)
 
-    new_sdc = create_sdc_claims_for_flickr_photo(photo, retrieved_at=None)
+    new_sdc = create_sdc_claims_for_existing_flickr_photo(photo)
 
     actions = create_actions(existing_sdc, new_sdc)
 
