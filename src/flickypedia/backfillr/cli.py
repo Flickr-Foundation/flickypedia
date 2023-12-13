@@ -58,18 +58,21 @@ def update_single_file(url: str) -> None:
 
     actions = create_actions(existing_sdc, new_sdc)
 
+    claims = []
+    affected_properties = []
+
     for a in actions:
         print(a["property_id"], "\t", a["action"])
 
         if a["action"] == "add_missing":
-            wikimedia_api.add_structured_data(
-                filename=filename,
-                data={"claims": [a["statement"]]},
-                summary=f'Backfill {a["property_id"]} statement in structured data',
-            )
+            affected_properties.append(a['property_id'])
+            claims.append(a['statement'])
         elif a["action"] == "add_qualifiers":
-            wikimedia_api.add_structured_data(
-                filename=filename,
-                data={"claims": [{"id": a["statement_id"], **a["statement"]}]},
-                summary=f'Backfill extra qualifiers to {a["property_id"]} statement in structured data',
-            )
+            claims.append({"id": a["statement_id"], **a["statement"]})
+            affected_properties.append(a['property_id'])
+
+    wikimedia_api.add_structured_data(
+        filename=filename,
+        data={"claims": claims},
+        summary=f'Update the {", ".join(sorted(affected_properties))} properties in the [[Commons:Structured data|structured data]] based on metadata from Flickr',
+    )
