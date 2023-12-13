@@ -7,22 +7,33 @@ It includes:
 *   A bot for improving the [structured data][sdc] for Flickr photos which are already on Wikimedia Commons ("backfillr")
 *   A tool for getting data and statistics about Flickr photos on Wikimedia Commons ("extractr")
 
+Our goal is that it results in higher quality records on Wikimedia Commons, with better connected data, better descriptive information, and makes it easier for Flickr photographers to see how their photos are being used.
+
+Flickypedia was built by the US 501(c)(3) [Flickr Foundation] in 2023 in partnership with the Culture and Heritage team at [the Wikimedia Foundation].
+
 [sdc]: https://commons.wikimedia.org/wiki/Commons:Structured_data
+[Flickr Foundation]: https://www.flickr.org/
+[the Wikimedia Foundation]: https://wikimediafoundation.org/
 
-## Key pieces
+## Usage
 
-*   Wikimedia OAuth 2.0
-*   Wikimedia APIs for upload
-*   Flickr APIs for download
-*   Celery for background processing
+If you want to copy some photos from Flickr to Wikimedia Commons, you can use the web app at <https://www.flickr.org/tools/flickypedia/>
 
-## How to understand the codebase
+If you want to use the `backfillr` or `extractr` tools, you need to clone the repo and install dependencies:
 
-* __init__.py
-* views
-* templates
-  * everything is named after URL paths
-  * show steps as a Mermaid diagram
+```console
+$ git clone https://github.com/Flickr-Foundation/flickypedia.git
+$ cd flinumeratr
+$ python3 -m venv .venv
+$ source .venv/bin/activate
+$ pip install -e .
+```
+
+Then run the `flickypedia` CLI, which has help text that will explain what to do next:
+
+```console
+$ flickypedia --help
+```
 
 ## Development
 
@@ -45,11 +56,4 @@ $ coverage run -m pytest tests
 $ coverage report
 ```
 
-* What keys do you need?
-* How do you run the app?
 
-## How to run the background worker
-
-```console
-$ celery --app flickypedia.celery_app worker --loglevel INFO
-```
