@@ -425,7 +425,6 @@ class WikimediaApi:
         # See https://en.wikipedia.org/wiki/Wikipedia:File_names
         #
         base_title, _ = title.replace("File:", "").rsplit(".", 1)
-        print(repr(base_title))
         opensearch_resp = self.client.request(
             "GET",
             url="https://commons.wikimedia.org/w/api.php",
