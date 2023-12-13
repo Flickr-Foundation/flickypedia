@@ -1,0 +1,114 @@
+{
+  "claims": [
+    {
+      "mainsnak": {
+        "datavalue": {
+          "value": "15602283025",
+          "type": "string"
+        },
+        "property": "P12120",
+        "snaktype": "value"
+      },
+      "type": "statement"
+    },
+    {
+      "mainsnak": {
+        "snaktype": "somevalue",
+        "property": "P170"
+      },
+      "qualifiers": {
+        "P2093": [
+          {
+            "datavalue": {
+              "value": "Jonathan Palombo",
+              "type": "string"
+            },
+            "property": "P2093",
+            "snaktype": "value"
+          }
+        ],
+        "P2699": [
+          {
+            "datavalue": {
+              "value": "https://www.flickr.com/people/golfking1/",
+              "type": "string"
+            },
+            "property": "P2699",
+            "snaktype": "value"
+          }
+        ],
+        "P3267": [
+          {
+            "datavalue": {
+              "value": "57778372@N04",
+              "type": "string"
+            },
+            "property": "P3267",
+            "snaktype": "value"
+          }
+        ]
+      },
+      "qualifiers-order": [
+        "P3267",
+        "P2093",
+        "P2699"
+      ],
+      "type": "statement"
+    },
+    {
+      "mainsnak": {
+        "datavalue": {
+          "value": {
+            "time": "+2014-07-14T00:00:00Z",
+            "precision": 11,
+            "timezone": 0,
+            "before": 0,
+            "after": 0,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+        },
+        "property": "P571",
+        "snaktype": "value"
+      },
+      "type": "statement"
+    },
+    {
+      "mainsnak": {
+        "snaktype": "value",
+        "property": "P1433",
+        "datavalue": {
+          "value": {
+            "id": "Q103204",
+            "entity-type": "item",
+            "numeric-id": 103204
+          },
+          "type": "wikibase-entityid"
+        }
+      },
+      "qualifiers": {
+        "P577": [
+          {
+            "datavalue": {
+              "value": {
+                "time": "+2014-10-22T00:00:00Z",
+                "precision": 11,
+                "timezone": 0,
+                "before": 0,
+                "after": 0,
+                "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+              },
+              "type": "time"
+            },
+            "property": "P577",
+            "snaktype": "value"
+          }
+        ]
+      },
+      "qualifiers-order": [
+        "P577"
+      ],
+      "type": "statement"
+    }
+  ]
+}
