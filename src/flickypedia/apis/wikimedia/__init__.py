@@ -7,11 +7,13 @@ from .exceptions import (
     DuplicatePhotoUploadException,
 )
 from .languages import top_n_languages, LanguageMatch
+from .url_parser import get_filename_from_url
 
 
 __all__ = [
     "DuplicateFilenameUploadException",
     "DuplicatePhotoUploadException",
+    "get_filename_from_url",
     "InvalidAccessTokenException",
     "LanguageMatch",
     "UnknownWikimediaApiException",
