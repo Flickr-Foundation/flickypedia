@@ -2,6 +2,7 @@ import pytest
 
 from flickypedia.backfillr.comparisons import (
     are_equivalent_flickr_urls,
+    are_equivalent_qualifiers,
     are_equivalent_snaks,
     are_equivalent_statements,
 )
@@ -228,6 +229,47 @@ class TestAreEquivalentSnaks:
         )
 
         assert not are_equivalent_snaks(snak1, snak2)
+
+
+class TestAreEquivalentQualifiers:
+    @pytest.mark.parametrize(
+        "existing_qualifiers",
+        [{}, {"P123": [create_string_snak(property_id="P123", value="Hello world")]}],
+    )
+    def test_empty_qualifiers_are_equivalent(
+        self, existing_qualifiers: dict[str, list[Snak]]
+    ) -> None:
+        assert are_equivalent_qualifiers(existing_qualifiers, new_qualifiers={})
+
+    def test_qualifiers_with_matching_snaks_are_equivalent(self) -> None:
+        existing_qualifiers = {
+            "P123": [
+                create_string_snak(property_id="P123", value="hello world"),
+                create_string_snak(property_id="P123", value="bonjour monde"),
+            ],
+            "P456": [create_string_snak(property_id="P456", value="jane smith")],
+        }
+
+        new_qualifiers = {
+            "P123": [create_string_snak(property_id="P123", value="hello world")]
+        }
+
+        assert are_equivalent_qualifiers(existing_qualifiers, new_qualifiers)
+
+    def test_qualifiers_with_different_snaks_are_not_equivalent(self) -> None:
+        existing_qualifiers = {
+            "P123": [
+                create_string_snak(property_id="P123", value="hello world"),
+                create_string_snak(property_id="P123", value="bonjour monde"),
+            ],
+            "P456": [create_string_snak(property_id="P456", value="jane smith")],
+        }
+
+        new_qualifiers = {
+            "P123": [create_string_snak(property_id="P123", value="ahoj svet")]
+        }
+
+        assert not are_equivalent_qualifiers(existing_qualifiers, new_qualifiers)
 
 
 def test_different_types_are_not_equivalent() -> None:

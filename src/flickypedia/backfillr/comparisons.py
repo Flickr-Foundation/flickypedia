@@ -115,6 +115,7 @@ def are_equivalent_statements(
     main_snaks_match = are_equivalent_snaks(
         existing_snak=existing_statement["mainsnak"], new_snak=new_statement["mainsnak"]
     )
+
     qualifiers_match = are_equivalent_qualifiers(
         existing_qualifiers=existing_statement.get("qualifiers", {}),
         new_qualifiers=new_statement.get("qualifiers", {}),
