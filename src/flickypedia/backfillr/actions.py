@@ -1,0 +1,119 @@
+from typing import Literal, TypedDict
+
+from flickypedia.apis.structured_data.wikidata import WikidataProperties
+from flickypedia.types.structured_data import (
+    ExistingClaims,
+    ExistingStatement,
+    NewClaims,
+    NewStatement,
+)
+from .comparisons import are_equivalent_snaks, are_equivalent_statements
+
+
+class DoNothing(TypedDict):
+    property_id: str
+    action: Literal["do_nothing"]
+
+
+class AddMissing(TypedDict):
+    property_id: str
+    action: Literal["add_missing"]
+    statement: NewStatement
+
+
+class AddQualifiers(TypedDict):
+    property_id: str
+    action: Literal["add_qualifiers"]
+    statement_id: str
+    statement: NewStatement
+
+
+class Unknown(TypedDict):
+    property_id: str
+    action: Literal["unknown"]
+
+
+Action = DoNothing | AddMissing | AddQualifiers | Unknown
+
+
+def has_subset_of_new_qualifiers(
+    existing_statement: ExistingStatement, new_statement: NewStatement
+) -> bool:
+    for property_id, existing_qualifier_list in existing_statement.get(
+        "qualifiers", {}
+    ).items():
+        try:
+            new_qualifier_list = new_statement["qualifiers"][property_id]
+            assert len(new_qualifier_list) == 1
+            new_qualifier = new_qualifier_list[0]
+        except KeyError:
+            return False
+
+        # I don't have test cases for this or the following line yet,
+        # so leaving assertions -- I'll come back and add test cases later.
+        if len(existing_qualifier_list) != 1:
+            assert 0
+            return False
+
+        existing_qualifier = existing_qualifier_list[0]
+
+        if not are_equivalent_snaks(existing_qualifier, new_qualifier):
+            assert 0
+            return False
+
+    return True
+
+
+def create_actions(existing_sdc: ExistingClaims, new_sdc: NewClaims) -> list[Action]:
+    actions: list[Action] = []
+
+    for new_statement in new_sdc["claims"]:
+        property_id = new_statement["mainsnak"]["property"]
+        existing_statements = existing_sdc.get(property_id, [])
+
+        # If there are no statements with this property on the
+        # existing SDC, then we just need to add it.
+        #
+        # What if license has changed?
+        if (
+            not existing_statements
+            and property_id != WikidataProperties.CopyrightLicense
+        ):
+            actions.append(
+                AddMissing(
+                    property_id=property_id,
+                    action="add_missing",
+                    statement=new_statement,
+                )
+            )
+            continue
+
+        for statement in existing_statements:
+            # If there's an equivalent statement in the existing SDC,
+            # then we don't need to do anything.
+            if are_equivalent_statements(statement, new_statement):
+                actions.append(DoNothing(property_id=property_id, action="do_nothing"))
+                break
+
+            # If the existing statement has the same mainsnak and a subset
+            # of the qualifiers, then we need to update it.
+            has_same_mainsnak = are_equivalent_snaks(
+                existing_snak=statement["mainsnak"], new_snak=new_statement["mainsnak"]
+            )
+
+            if has_same_mainsnak and has_subset_of_new_qualifiers(
+                statement, new_statement
+            ):
+                actions.append(
+                    AddQualifiers(
+                        property_id=property_id,
+                        action="add_qualifiers",
+                        statement_id=statement["id"],
+                        statement=new_statement,
+                    )
+                )
+                break
+        else:  # no break
+            actions.append(Unknown(property_id=property_id, action="unknown"))
+
+    return actions
