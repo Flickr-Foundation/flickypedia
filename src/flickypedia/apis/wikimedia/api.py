@@ -275,8 +275,6 @@ class WikimediaApi:
         if "missing" in page:
             raise MissingFileException(filename)
 
-        print(resp["entities"].keys())
-
         statements = list(resp["entities"].values())[0]["statements"]
 
         if statements == []:
