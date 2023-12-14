@@ -68,9 +68,11 @@ def are_equivalent_times(time1: Value.Time, time2: Value.Time) -> bool:
 
 def are_equivalent_snaks(existing_snak: Snak, new_snak: Snak) -> bool:
     if existing_snak["property"] != new_snak["property"]:
+        print("1")
         return False
 
     if existing_snak["snaktype"] != new_snak["snaktype"]:
+        print("2")
         return False
 
     # If they have the same property and snaktype, and those are the
@@ -85,6 +87,7 @@ def are_equivalent_snaks(existing_snak: Snak, new_snak: Snak) -> bool:
     new_datavalue = new_snak["datavalue"]
 
     if existing_datavalue["type"] != new_datavalue["type"]:
+        print("3")
         return False
 
     if existing_datavalue["type"] == "globecoordinate":
@@ -128,6 +131,9 @@ def are_equivalent_snaks(existing_snak: Snak, new_snak: Snak) -> bool:
         )
 
     else:
+        print("4")
+        print(new_datavalue)
+        print(existing_datavalue)
         return new_datavalue == existing_datavalue
 
 
@@ -173,6 +179,8 @@ def are_equivalent_statements(
         existing_qualifiers=existing_statement.get("qualifiers", {}),
         new_qualifiers=new_statement.get("qualifiers", {}),
     )
+
+    print("main_snaks_match", main_snaks_match)
 
     return qualifiers_match and main_snaks_match
 
