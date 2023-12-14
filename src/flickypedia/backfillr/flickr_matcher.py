@@ -1,7 +1,3 @@
-import httpx
-
-from flickypedia.apis.wikimedia import WikimediaApi
-from flickypedia.apis.flickr import FlickrPhotosApi
 from flickr_url_parser import (
     find_flickr_urls_in_text,
     parse_flickr_url,
@@ -9,21 +5,9 @@ from flickr_url_parser import (
     UnrecognisedUrl,
 )
 
-
-def compare_urls(url1, url2):
-    try:
-        response1 = httpx.get(url1)
-        response1.raise_for_status()
-        content1 = response1.text
-
-        response2 = httpx.get(url2)
-        response2.raise_for_status()
-        content2 = response2.text
-
-        return content1 == content2
-
-    except Exception:
-        return False
+from flickypedia.apis.wikimedia import WikimediaApi
+from flickypedia.apis.flickr import FlickrPhotosApi
+from .comparisons import urls_have_same_contents
 
 
 def find_flickr_photo_id_for_file(
@@ -56,4 +40,7 @@ def find_flickr_photo_id_for_file(
     flickr_url = original_size["source"]
     wikimedia_url = wikimedia_api.get_image_url(filename)
 
-    return compare_urls(flickr_url, wikimedia_url)
+    if urls_have_same_contents(flickr_url, wikimedia_url):
+        return photo_id
+    else:
+        return None

@@ -1,4 +1,5 @@
 from flickr_url_parser import parse_flickr_url
+import httpx
 
 from flickypedia.apis.structured_data.wikidata import WikidataProperties
 from flickypedia.types.structured_data import (
@@ -127,3 +128,26 @@ def are_equivalent_statements(
     )
 
     return qualifiers_match and main_snaks_match
+
+
+def urls_have_same_contents(url1: str, url2: str) -> bool:
+    """
+    Fetch two URLs, and return True/False based on whether they have
+    the same contents.
+
+    Note: this function only expects to be called with small files that
+    fit comfortably in memory.
+    """
+    try:
+        response1 = httpx.get(url1)
+        response1.raise_for_status()
+        content1 = response1.text
+
+        response2 = httpx.get(url2)
+        response2.raise_for_status()
+        content2 = response2.text
+
+        return content1 == content2
+
+    except Exception:
+        return False
