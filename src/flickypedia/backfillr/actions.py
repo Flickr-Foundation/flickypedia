@@ -49,12 +49,16 @@ def has_subset_of_new_qualifiers(
         except KeyError:
             return False
 
+        # I don't have test cases for this or the following line yet,
+        # so leaving assertions -- I'll come back and add test cases later.
         if len(existing_qualifier_list) != 1:
+            assert 0
             return False
 
         existing_qualifier = existing_qualifier_list[0]
 
         if not are_equivalent_snaks(existing_qualifier, new_qualifier):
+            assert 0
             return False
 
     return True
