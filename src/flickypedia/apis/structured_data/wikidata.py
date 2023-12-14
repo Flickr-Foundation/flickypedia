@@ -1,6 +1,7 @@
 import datetime
 import functools
 import re
+from typing import Literal
 
 from flask import current_app
 import httpx
@@ -68,6 +69,18 @@ class WikidataEntities:
     }
 
 
+class WikidataDatePrecision:
+    """
+    Named constants for precision in the Wikidata model.
+
+    See https://www.wikidata.org/wiki/Help:Dates#Precision
+    """
+
+    Year = 9
+    Month = 10
+    Day = 11
+
+
 @functools.lru_cache
 def get_property_name(code: str) -> str:
     """
@@ -118,15 +131,14 @@ def get_entity_label(entity_id: str) -> str | None:
 
 
 def to_wikidata_date_value(
-    d: datetime.datetime, *, precision: str
+    d: datetime.datetime, *, precision: Literal["day", "month", "year"]
 ) -> DataValueTypes.Time:
     """
     Convert a Python native-datetime to the Wikidata data model.
 
     See https://www.wikidata.org/wiki/Help:Dates#Precision
     """
-    if precision not in ("day", "month", "year"):
-        raise ValueError("Unrecognised precision: {precision}")
+    assert precision in ("day", "month", "year")
 
     # This is the timestamp, e.g. ``+2023-10-11T00:00:00Z``.
     #
@@ -139,16 +151,21 @@ def to_wikidata_date_value(
     #
     # If Wikidata ever relaxes this restriction, we could revisit
     # this decision.
+    #
+    # Note: the decision to zero the unused fields is to match the
+    # behaviour of the SDC visual editor in the browser -- if you
+    # set a value with e.g. month precision, the day is set to "00".
     time_str = {
         "day": d.strftime("+%Y-%m-%dT00:00:00Z"),
         "month": d.strftime("+%Y-%m-00T00:00:00Z"),
         "year": d.strftime("+%Y-00-00T00:00:00Z"),
     }[precision]
 
-    # This is the numeric value of precision used in the Wikidata model.
-    #
-    # See https://www.wikidata.org/wiki/Help:Dates#Precision
-    precision_value = {"day": 11, "month": 10, "year": 9}[precision]
+    precision_value = {
+        "day": WikidataDatePrecision.Day,
+        "month": WikidataDatePrecision.Month,
+        "year": WikidataDatePrecision.Year,
+    }[precision]
 
     # This is the numeric offset from UTC in minutes.  All the timestamps
     # we get from Flickr are in UTC, so we can default this to 0.

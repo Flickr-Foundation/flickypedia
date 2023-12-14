@@ -386,13 +386,15 @@ def create_date_taken_statement(date_taken: DateTaken) -> NewStatement:
     """
     flickr_granularity = date_taken["granularity"]
 
+    precision_lookup: dict[str, Literal["day", "month", "year"]] = {
+        "second": "day",
+        "month": "month",
+        "year": "year",
+        "circa": "year",
+    }
+
     try:
-        wikidata_precision = {
-            "second": "day",
-            "month": "month",
-            "year": "year",
-            "circa": "year",
-        }[flickr_granularity]
+        wikidata_precision = precision_lookup[flickr_granularity]
     except KeyError:
         raise ValueError(f"Unrecognised taken_granularity: {flickr_granularity!r}")
 

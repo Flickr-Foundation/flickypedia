@@ -1,5 +1,5 @@
 import datetime
-from typing import TypedDict
+from typing import Literal, TypedDict
 
 import pytest
 
@@ -7,7 +7,10 @@ from flickypedia.apis.structured_data.wikidata import to_wikidata_date_value
 from flickypedia.types.structured_data import DataValueTypes
 
 
-ToWikidateArgs = TypedDict("ToWikidateArgs", {"d": datetime.datetime, "precision": str})
+ToWikidateArgs = TypedDict(
+    "ToWikidateArgs",
+    {"d": datetime.datetime, "precision": Literal["day", "month", "year"]},
+)
 
 
 @pytest.mark.parametrize(
@@ -61,8 +64,3 @@ def test_to_wikidata_date_value(
     kwargs: ToWikidateArgs, expected: DataValueTypes.Time
 ) -> None:
     assert to_wikidata_date_value(**kwargs) == expected
-
-
-def test_to_wikidata_date_value_fails_with_unexpected_precision() -> None:
-    with pytest.raises(ValueError, match="Unrecognised precision"):
-        to_wikidata_date_value(d=datetime.datetime(2023, 10, 12), precision="second")

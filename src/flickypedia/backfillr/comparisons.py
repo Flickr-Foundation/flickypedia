@@ -1,12 +1,18 @@
+import re
+
 from flickr_url_parser import parse_flickr_url
 import httpx
 
-from flickypedia.apis.structured_data.wikidata import WikidataProperties
+from flickypedia.apis.structured_data.wikidata import (
+    WikidataDatePrecision,
+    WikidataProperties,
+)
 from flickypedia.types.structured_data import (
     ExistingStatement,
     NewStatement,
     Qualifiers,
     Snak,
+    Value,
 )
 
 
@@ -22,6 +28,42 @@ def are_equivalent_flickr_urls(url1: str, url2: str) -> bool:
         return False
 
     return parsed_url_1 == parsed_url_2
+
+
+def are_equivalent_times(time1: Value.Time, time2: Value.Time) -> bool:
+    """
+    Compare two time values.
+
+    Note that we allow a certain amount of slop based on the precision,
+    e.g. if you're using year-level precision, then 2001-00-00 and 2001-01-01
+    are equivalent.
+    """
+    for key in ("precision", "before", "after", "timezone", "calendarmodel"):
+        if time1[key] != time2[key]:  # type: ignore
+            return False
+
+    # e.g. +1896-01-01T00:00:00Z
+    time_format = re.compile(
+        r"^\+[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+    )
+
+    value1 = time1["time"]
+    value2 = time2["time"]
+
+    if not time_format.match(value1) or not time_format.match(value2):
+        return False
+
+    if time1["precision"] == WikidataDatePrecision.Year:
+        return value1[: len("+1896")] == value2[: len("+1896")]
+    elif time1["precision"] == WikidataDatePrecision.Month:
+        return value1[: len("+1896-01")] == value2[: len("+1896-01")]
+    elif time1["precision"] == WikidataDatePrecision.Day:
+        return value1[: len("+1896-01-02")] == value2[: len("+1896-01-02")]
+
+    # We only write day/month/year statements in our code, so we should
+    # never get here in practice, but we include it defensively.
+    else:  # pragma: no cover
+        raise ValueError(f'Unrecognised precision: {time1["precision"]}')
 
 
 def are_equivalent_snaks(existing_snak: Snak, new_snak: Snak) -> bool:
@@ -78,6 +120,11 @@ def are_equivalent_snaks(existing_snak: Snak, new_snak: Snak) -> bool:
     ):
         return are_equivalent_flickr_urls(
             existing_datavalue["value"], new_datavalue["value"]
+        )
+
+    elif existing_datavalue["type"] == "time" and new_datavalue["type"] == "time":
+        return are_equivalent_times(
+            time1=existing_datavalue["value"], time2=new_datavalue["value"]
         )
 
     else:

@@ -58,7 +58,7 @@ class QualifierValueTypes:
             "type": Literal["date"],
             "property": str,
             "date": datetime.datetime,
-            "precision": str,
+            "precision": Literal["day", "month", "year"],
         },
     )
 
