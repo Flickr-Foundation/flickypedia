@@ -342,6 +342,8 @@ class WikimediaApi:
                 "title": f"File:{filename}",
                 "data": json.dumps(data),
                 "summary": summary,
+                "tags": "BotSDC",
+                "maxlag": "2",
             }
         )
 
