@@ -50,10 +50,6 @@ def update_single_file(url: str) -> None:
 
     existing_sdc = wikimedia_api.get_structured_data(filename=filename)
 
-    import json
-
-    print(json.dumps(existing_sdc))
-
     photo_id = find_flickr_photo_id(existing_sdc)
 
     if photo_id is None:
