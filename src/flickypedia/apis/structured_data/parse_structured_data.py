@@ -91,7 +91,6 @@ def find_flickr_urls(sdc: ExistingClaims) -> list[tuple[str, ParseResult]]:
                 continue
 
             if u["datavalue"]["type"] != "string":
-                assert 0
                 continue
 
             value = u["datavalue"]["value"]
@@ -129,8 +128,6 @@ def find_flickr_photo_id(sdc: ExistingClaims) -> str | None:
     for statement in sdc.get(WikidataProperties.FlickrPhotoId, []):
         if statement["mainsnak"]["datavalue"]["type"] == "string":
             candidates.add(statement["mainsnak"]["datavalue"]["value"])
-        else:
-            assert 0
 
     if len(candidates) == 1:
         return candidates.pop()

@@ -47,6 +47,21 @@ def get_statement_fixture(filename: str) -> ExistingClaims:
         #
         # There are two "source of file" fields, one of which is a Flickr URL.
         ("M27807191_P7482.json", "2675972715"),
+        #
+        # M-1 = a made-up record which has a non-string value in the
+        # P973 qualifier.  As of the 20231124 snapshot, this never happens
+        # in practice, but we want to make sure we handle it all the same.
+        ("M-1_P7482_nostring.json", None),
+        #
+        # M-1 = a made-up record which has a non-Flickr URL in the
+        # P973 qualifier.  As of the 20231124 snapshot, this never happens
+        # in practice, but we want to make sure we handle it all the same.
+        ("M-1_P7482_badurl.json", None),
+        #
+        # M-1 = a made-up record which has a non-string value in the
+        # P12120 property.  As of the 20231124 snapshot, this never happens
+        # in practice, but we want to make sure we handle it all the same.
+        ("M-1_P12120_nostring.json", None),
     ],
 )
 def test_find_flickr_photo_id(
@@ -59,6 +74,16 @@ def test_find_flickr_photo_id(
 
 def test_empty_sdc_means_no_flickr_id() -> None:
     assert find_flickr_photo_id(sdc={}) is None
+
+
+def test_ambiguous_sdc_is_error() -> None:
+    sdc_P7482 = get_statement_fixture("M27512034_P7482.json")
+    sdc_P12120 = get_statement_fixture("M138765382_P12120.json")
+
+    sdc = {"P12120": sdc_P12120["P12120"], "P7482": sdc_P7482["P7482"]}
+
+    with pytest.raises(ValueError, match="Ambiguous set of Flickr photo IDs:"):
+        find_flickr_photo_id(sdc=sdc)
 
 
 def test_ambiguous_flickr_url_is_error() -> None:

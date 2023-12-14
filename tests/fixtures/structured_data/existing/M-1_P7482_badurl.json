@@ -1,0 +1,53 @@
+{
+  "P7482": [
+    {
+      "type": "statement",
+      "mainsnak": {
+        "property": "P7482",
+        "snaktype": "value",
+        "datavalue": {
+          "type": "wikibase-entityid",
+          "value": {
+            "entity-type": "item",
+            "id": "Q74228490",
+            "numeric-id": 74228490
+          }
+        }
+      },
+      "qualifiers-order": [
+        "P137",
+        "P973"
+      ],
+      "qualifiers": {
+        "P137": [
+          {
+            "property": "P137",
+            "snaktype": "value",
+            "datavalue": {
+              "type": "wikibase-entityid",
+              "value": {
+                "entity-type": "item",
+                "id": "Q103204",
+                "numeric-id": 103204
+              }
+            },
+            "hash": "3d8cd4c1ab91d3d9a14900210faaebf1a98b947b"
+          }
+        ],
+        "P973": [
+          {
+            "property": "P973",
+            "snaktype": "value",
+            "datavalue": {
+              "type": "string",
+              "value": "https://www.example.net/photo.jpg"
+            },
+            "hash": "33726a316a3f621291843f5ad0521df09f2e7e5a"
+          }
+        ]
+      },
+      "id": "M620184$F55A05DB-551B-427B-8DD9-595DFFB040C3",
+      "rank": "normal"
+    }
+  ]
+}
