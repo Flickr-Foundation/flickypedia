@@ -5,6 +5,7 @@ from .exceptions import (
     InvalidAccessTokenException,
     DuplicateFilenameUploadException,
     DuplicatePhotoUploadException,
+    MissingFileException,
 )
 from .languages import top_n_languages, LanguageMatch
 from .url_parser import get_filename_from_url
@@ -16,6 +17,7 @@ __all__ = [
     "get_filename_from_url",
     "InvalidAccessTokenException",
     "LanguageMatch",
+    "MissingFileException",
     "UnknownWikimediaApiException",
     "WikimediaApi",
     "WikimediaApiException",

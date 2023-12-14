@@ -2,7 +2,12 @@ import httpx
 
 from flickypedia.apis.wikimedia import WikimediaApi
 from flickypedia.apis.flickr import FlickrPhotosApi
-from flickr_url_parser import find_flickr_urls_in_text, parse_flickr_url, NotAFlickrUrl, UnrecognisedUrl
+from flickr_url_parser import (
+    find_flickr_urls_in_text,
+    parse_flickr_url,
+    NotAFlickrUrl,
+    UnrecognisedUrl,
+)
 
 
 def compare_urls(url1, url2):
@@ -21,11 +26,10 @@ def compare_urls(url1, url2):
         return False
 
 
-
-def find_flickr_photo_id_for_file(wikimedia_api: WikimediaApi, flickr_api: FlickrPhotosApi, filename: str) -> str | None:
+def find_flickr_photo_id_for_file(
+    wikimedia_api: WikimediaApi, flickr_api: FlickrPhotosApi, filename: str
+) -> str | None:
     wikitext = wikimedia_api.get_wikitext(filename)
-
-    urls = find_flickr_urls_in_text(wikitext)
 
     candidates = set()
 
@@ -35,8 +39,8 @@ def find_flickr_photo_id_for_file(wikimedia_api: WikimediaApi, flickr_api: Flick
         except (NotAFlickrUrl, UnrecognisedUrl):
             continue
 
-        if parsed_url['type'] == 'single_photo':
-            candidates.add(parsed_url['photo_id'])
+        if parsed_url["type"] == "single_photo":
+            candidates.add(parsed_url["photo_id"])
 
     if len(candidates) != 1:
         return None
@@ -49,7 +53,7 @@ def find_flickr_photo_id_for_file(wikimedia_api: WikimediaApi, flickr_api: Flick
     except IndexError:
         return None
 
-    flickr_url = original_size['source']
+    flickr_url = original_size["source"]
     wikimedia_url = wikimedia_api.get_image_url(filename)
 
     return compare_urls(flickr_url, wikimedia_url)

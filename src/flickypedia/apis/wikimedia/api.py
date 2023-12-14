@@ -18,23 +18,16 @@ import httpx
 from flickypedia.types import validate_typeddict
 from flickypedia.types.structured_data import ExistingClaims, NewClaims
 from flickypedia.types.wikimedia import UserInfo, ShortCaption, TitleValidation
-from flickypedia.utils import find_required_elem
+from flickypedia.utils import find_required_elem, find_required_text
 from .exceptions import (
     WikimediaApiException,
     UnknownWikimediaApiException,
     InvalidAccessTokenException,
     DuplicateFilenameUploadException,
     DuplicatePhotoUploadException,
+    MissingFileException,
 )
 from .languages import LanguageMatch, order_language_list
-
-
-def _get_single_query_result(resp: Any) -> Any:
-    if len(resp['query']['pages']) == 1:
-        values = list(resp['query']['pages'].values())
-        return values.pop()
-    else:
-        return None
 
 
 class WikimediaApi:
@@ -663,7 +656,7 @@ class WikimediaApi:
 
         return order_language_list(query=query, results=languagesearch.attrib)
 
-    def get_wikitext(self, filename: str) -> None:
+    def get_wikitext(self, filename: str) -> str:
         """
         Return the Wikitext for this page, if it exists.
         """
@@ -678,7 +671,7 @@ class WikimediaApi:
                 "prop": "revisions",
                 "titles": filename,
                 "rvslots": "*",
-                "rvprop": "content"
+                "rvprop": "content",
             },
         )
 
@@ -700,7 +693,12 @@ class WikimediaApi:
         #                     =={{int:filedesc}}==
         #
         # We want the contents of that <slot>.
-        return xml.find(".//slot").text
+        page = find_required_elem(xml, path=".//page")
+
+        if "missing" in page.attrib:
+            raise MissingFileException(filename)
+        else:
+            return find_required_text(page, path=".//slot")
 
     def get_image_url(self, filename: str) -> str:
         """
@@ -708,16 +706,38 @@ class WikimediaApi:
         """
         assert filename.startswith("File:")
 
-        resp = self._get(params={
-            'action': 'query',
-            'titles': filename,
-            'prop': 'imageinfo',
-            'iiprop': 'url'
-        })
+        resp = self.client.request(
+            "GET",
+            url="https://commons.wikimedia.org/w/api.php",
+            params={
+                "action": "query",
+                "format": "xml",
+                "prop": "imageinfo",
+                "titles": filename,
+                "iiprop": "url",
+            },
+        )
 
-        page = _get_single_query_result(resp)
+        xml = ET.fromstring(resp.text)
 
-        return page['imageinfo'][0]['url']
+        # The rough shape of the response is:
+        #
+        #     <?xml version="1.0"?>
+        #     <api>
+        #       <query>
+        #         <pages>
+        #           <page pageid="135569232" …>
+        #             <imageinfo>
+        #               <ii url="https://upload.wikimedia.org/…">
+        #
+        # We want the contents of that <ii> url attribute.
+        page = find_required_elem(xml, path=".//page")
+
+        if "missing" in page.attrib:
+            raise MissingFileException(filename)
+        else:
+            ii_elem = find_required_elem(page, path=".//ii")
+            return ii_elem.attrib["url"]
 
     def force_sdc_rerender(self, filename: str) -> None:
         """
