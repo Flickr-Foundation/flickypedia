@@ -318,6 +318,81 @@ class TestHasSubsetOfNewQualifiers:
 
         assert has_subset_of_new_qualifiers(existing_statement, new_statement)
 
+    def test_distinct_snaks_are_not_equivalent(self) -> None:
+        existing_statement: ExistingStatement = {
+            "type": "statement",
+            "mainsnak": {
+                "property": "P170",
+                "snaktype": "somevalue",
+                "hash": "d3550e860f988c6675fff913440993f58f5c40c5",
+            },
+            "qualifiers-order": ["P2093", "P3267", "P2699"],
+            "qualifiers": {
+                "P2093": [
+                    {
+                        "property": "P2093",
+                        "snaktype": "value",
+                        "datavalue": {"type": "string", "value": "gailhampshire"},
+                        "hash": "34107f837004c0d4b2df516c3804e0f7b1a84f7a",
+                    }
+                ],
+                "P3267": [
+                    {
+                        "property": "P3267",
+                        "snaktype": "value",
+                        "datavalue": {"type": "string", "value": "43272765@N04"},
+                        "hash": "ffeb5297cca6e61917a550bf0d851d751a66a6bf",
+                    }
+                ],
+                "P2699": [
+                    {
+                        "property": "P2699",
+                        "snaktype": "value",
+                        "datavalue": {
+                            "type": "string",
+                            "value": "https://www.flickr.com/people/43272765@N04",
+                        },
+                        "hash": "2fb3055120dabbe2af867f82e9846dd55fbb1a42",
+                    }
+                ],
+            },
+            "id": "M49978218$3A484C4A-A1B8-4CD0-A853-F6E0DB7DDF09",
+            "rank": "normal",
+        }
+        new_statement: NewStatement = {
+            "mainsnak": {"snaktype": "somevalue", "property": "P170"},
+            "qualifiers": {
+                "P2093": [
+                    {
+                        "datavalue": {"value": "gailhampshire", "type": "string"},
+                        "property": "P2093",
+                        "snaktype": "value",
+                    }
+                ],
+                "P2699": [
+                    {
+                        "datavalue": {
+                            "value": "https://www.flickr.com/people/gails_pictures/",
+                            "type": "string",
+                        },
+                        "property": "P2699",
+                        "snaktype": "value",
+                    }
+                ],
+                "P3267": [
+                    {
+                        "datavalue": {"value": "43272765@N04", "type": "string"},
+                        "property": "P3267",
+                        "snaktype": "value",
+                    }
+                ],
+            },
+            "qualifiers-order": ["P3267", "P2093", "P2699"],
+            "type": "statement",
+        }
+
+        assert not has_subset_of_new_qualifiers(existing_statement, new_statement)
+
 
 def test_test_does_not_qualifiers_if_existing_are_disjoint_from_new() -> None:
     existing_sdc: ExistingClaims = {
