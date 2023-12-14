@@ -62,6 +62,13 @@ def get_statement_fixture(filename: str) -> ExistingClaims:
         # P12120 property.  As of the 20231124 snapshot, this never happens
         # in practice, but we want to make sure we handle it all the same.
         ("M-1_P12120_nostring.json", None),
+        #
+        # M16767898 = "Adormirea Sf.Ana - Batiste" - 2.jpg
+        # Retrieved 14 December 2023
+        #
+        # This has a Flickr URL in the "Described at URL" qualifier on P7482,
+        # but no "Source" qualifier that tells us it's Flickr.
+        ("M16767898_P7482.json", "5902112330"),
     ],
 )
 def test_find_flickr_photo_id(
