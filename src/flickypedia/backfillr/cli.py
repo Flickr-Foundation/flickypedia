@@ -15,6 +15,7 @@ from flickypedia.apis.structured_data import (
 )
 from flickypedia.apis.wikimedia import WikimediaApi, get_filename_from_url
 from .actions import create_actions
+from .flickr_matcher import find_flickr_photo_id_from_wikitext
 
 
 @click.group(
@@ -41,9 +42,19 @@ def update_single_file(url: str) -> None:
         client=httpx.Client(headers={"Authorization": f"Bearer {api_token}"})
     )
 
+    flickr_api = FlickrPhotosApi(
+        api_key=keyring.get_password("flickr_api", "key"),
+        user_agent="Flickypedia Backfillr <hello@flickr.org>",
+    )
+
     existing_sdc = wikimedia_api.get_structured_data(filename=filename)
 
     photo_id = find_flickr_photo_id(existing_sdc)
+
+    if photo_id is None:
+        photo_id = find_flickr_photo_id_from_wikitext(
+            wikimedia_api, flickr_api, filename=f"File:{filename}"
+        )
 
     if photo_id is None:
         print("Could not find a Flickr photo ID in the existing SDC!")
@@ -51,39 +62,43 @@ def update_single_file(url: str) -> None:
 
     print(f"Found the Flickr photo ID {photo_id}")
 
-    flickr_api = FlickrPhotosApi(
-        api_key=keyring.get_password("flickr_api", "key"),
-        user_agent="Flickypedia Backfillr <hello@flickr.org>",
-    )
-
     try:
         photo = flickr_api.get_single_photo(photo_id=photo_id)
 
         new_sdc = create_sdc_claims_for_existing_flickr_photo(photo)
     except ResourceNotFound:
-        urls = [u for u, parsed_url in find_flickr_urls(existing_sdc) if parsed_url['type'] == 'single_photo']
+        urls = [
+            u
+            for u, parsed_url in find_flickr_urls(existing_sdc)
+            if parsed_url["type"] == "single_photo"
+        ]
 
-        if len(urls) == 1 and urls[0].startswith('https://www.flickr.com/photos/'):
-            user_url = 'https://www.flickr.com/photos/' + urls[0][len('https://www.flickr.com/photos/'):].split("/")[0] + '/'
+        if len(urls) == 1 and urls[0].startswith("https://www.flickr.com/photos/"):
+            prefix_len = len("https://www.flickr.com/photos/")
+            user_url = (
+                "https://www.flickr.com/photos/"
+                + urls[0][prefix_len:].split("/")[0]
+                + "/"
+            )
 
             try:
                 creator = {
-                    'https://www.flickr.com/photos/sejmrp/': {
-                        'id': '141152160@N02',
-                        'username': 'Kancelaria Sejmu',
-                        'realname': 'Sejm RP',
-                        'photos_url': 'https://www.flickr.com/photos/sejmrp/',
-                        'profile_url': 'https://www.flickr.com/people/sejmrp/',
-                        'path_alias': 'sejmrp',
+                    "https://www.flickr.com/photos/sejmrp/": {
+                        "id": "141152160@N02",
+                        "username": "Kancelaria Sejmu",
+                        "realname": "Sejm RP",
+                        "photos_url": "https://www.flickr.com/photos/sejmrp/",
+                        "profile_url": "https://www.flickr.com/people/sejmrp/",
+                        "path_alias": "sejmrp",
                     },
-                    'https://www.flickr.com/photos/usaidafghanistan/': {
-                        'id': '49045206@N03',
-                        'username': 'USAID Afghanistan',
-                        'realname': None,
-                        'path_alias': 'usaidafghanistan',
-                        'photos_url': 'https://www.flickr.com/photos/usaidafghanistan/',
-                        'profile_url': 'https://www.flickr.com/people/usaidafghanistan/',
-                    }
+                    "https://www.flickr.com/photos/usaidafghanistan/": {
+                        "id": "49045206@N03",
+                        "username": "USAID Afghanistan",
+                        "realname": None,
+                        "path_alias": "usaidafghanistan",
+                        "photos_url": "https://www.flickr.com/photos/usaidafghanistan/",
+                        "profile_url": "https://www.flickr.com/people/usaidafghanistan/",
+                    },
                 }[user_url]
             except KeyError:
                 raise
@@ -91,19 +106,22 @@ def update_single_file(url: str) -> None:
             photo_url = f'https://www.flickr.com/photos/{creator["path_alias"] or creator["id"]}/{photo_id}/'
 
             new_sdc = {
-                'claims': [
+                "claims": [
                     create_flickr_photo_id_statement(photo_id=photo_id),
                     create_flickr_creator_statement(user=creator),
                     create_source_data_for_photo(
                         photo_id=photo_id,
                         photo_url=photo_url,
                         original_url=None,
-                        retrieved_at=None
-                    )
+                        retrieved_at=None,
+                    ),
                 ]
             }
         else:
             raise
+
+    print(existing_sdc)
+    print(new_sdc)
 
     actions = create_actions(existing_sdc, new_sdc)
 
@@ -114,11 +132,11 @@ def update_single_file(url: str) -> None:
         print(a["property_id"], "\t", a["action"])
 
         if a["action"] == "add_missing":
-            affected_properties.append(a['property_id'])
-            claims.append(a['statement'])
+            affected_properties.append(a["property_id"])
+            claims.append(a["statement"])
         elif a["action"] == "add_qualifiers":
             claims.append({"id": a["statement_id"], **a["statement"]})
-            affected_properties.append(a['property_id'])
+            affected_properties.append(a["property_id"])
 
     if claims:
         wikimedia_api.add_structured_data(
