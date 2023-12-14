@@ -61,5 +61,7 @@ def find_flickr_photo_id_from_wikitext(
 
         if urls_have_same_contents(flickr_url, wikimedia_url):
             return photo_id
+        else:
+            print(photo_id, "files don't match!")
 
     return None
