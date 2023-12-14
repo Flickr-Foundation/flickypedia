@@ -48,6 +48,8 @@ def find_flickr_photo_id_from_wikitext(
         if parsed_url["type"] == "single_photo":
             candidates.add(parsed_url["photo_id"])
 
+    print(candidates)
+
     for photo_id in sorted(candidates):
         photo = flickr_api.get_single_photo(photo_id=photo_id)
 
@@ -61,5 +63,7 @@ def find_flickr_photo_id_from_wikitext(
 
         if urls_have_same_contents(flickr_url, wikimedia_url):
             return photo_id
+        else:
+            print(photo_id, "nope")
 
     return None
