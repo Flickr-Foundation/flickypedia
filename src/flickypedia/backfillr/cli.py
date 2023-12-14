@@ -3,6 +3,7 @@ import sys
 import click
 import httpx
 import keyring
+import termcolor
 
 from flickypedia.apis.flickr import FlickrPhotosApi, ResourceNotFound
 from flickypedia.apis.structured_data import (
@@ -120,16 +121,16 @@ def update_single_file(url: str) -> None:
         else:
             raise
 
-    print(existing_sdc)
-    print(new_sdc)
-
     actions = create_actions(existing_sdc, new_sdc)
 
     claims = []
     affected_properties = []
 
     for a in actions:
-        print(a["property_id"], "\t", a["action"])
+        if a['action'] == 'unknown':
+            print(a["property_id"], "\t", termcolor.colored(a["action"], 'red'))
+        else:
+            print(a["property_id"], "\t", a["action"])
 
         if a["action"] == "add_missing":
             affected_properties.append(a["property_id"])
