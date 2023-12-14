@@ -10,6 +10,7 @@ from flickypedia.apis.wikimedia import (
     DuplicateFilenameUploadException,
     DuplicatePhotoUploadException,
     InvalidAccessTokenException,
+    MissingFileException,
     UnknownWikimediaApiException,
 )
 
@@ -350,3 +351,38 @@ def test_find_matching_languages(wikimedia_api: WikimediaApi) -> None:
 
 def test_handles_no_matching_languages(wikimedia_api: WikimediaApi) -> None:
     assert wikimedia_api.find_matching_languages(query="ymr") == []
+
+
+def test_get_wikitext(wikimedia_api: WikimediaApi) -> None:
+    actual = wikimedia_api.get_wikitext(
+        filename="File:The main Flickr photo storage server.jpg"
+    )
+
+    with open(
+        "tests/fixtures/wikitext/The_main_Flickr_photo_storage_server.txt"
+    ) as infile:
+        expected = infile.read()
+
+    assert actual == expected
+
+
+def test_get_wikitext_for_missing_file(wikimedia_api: WikimediaApi) -> None:
+    with pytest.raises(MissingFileException):
+        wikimedia_api.get_wikitext(filename="File:DefinitelyDoesNotExist.jpg")
+
+
+def test_get_image_url(wikimedia_api: WikimediaApi) -> None:
+    actual = wikimedia_api.get_image_url(filename="File:Example.jpg")
+    expected = "https://upload.wikimedia.org/wikipedia/commons/a/a9/Example.jpg"
+
+    assert actual == expected
+
+
+def test_get_image_url_for_missing_file(wikimedia_api: WikimediaApi) -> None:
+    with pytest.raises(MissingFileException):
+        wikimedia_api.get_image_url(filename="File:DefinitelyDoesNotExist.jpg")
+
+
+def test_get_structured_data_for_missing_file(wikimedia_api: WikimediaApi) -> None:
+    with pytest.raises(MissingFileException):
+        wikimedia_api.get_structured_data(filename="DefinitelyDoesNotExist.jpg")

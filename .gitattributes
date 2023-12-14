@@ -6,4 +6,5 @@ tests/fixtures/flickr_api/*.json linguist-generated=true
 tests/fixtures/flickr_photos_api/*.json linguist-generated=true
 tests/fixtures/structured_data/*.json linguist-generated=true
 tests/fixtures/structured_data/existing/*.json linguist-generated=true
+tests/fixtures/wikitext/*.txt linguist-generated=true
 
