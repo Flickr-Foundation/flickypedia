@@ -20,7 +20,7 @@ def get_single_qualifier(
     A statement can have qualifiers:
 
         statement: {
-            qualifiers: dict[str, list[Snak]]
+            qualifiers: Qualifiers
             ...
         }
 

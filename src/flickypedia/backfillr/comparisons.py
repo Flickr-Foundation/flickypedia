@@ -1,7 +1,12 @@
 from flickr_url_parser import parse_flickr_url
 
 from flickypedia.apis.structured_data.wikidata import WikidataProperties
-from flickypedia.types.structured_data import ExistingStatement, NewStatement, Snak
+from flickypedia.types.structured_data import (
+    ExistingStatement,
+    NewStatement,
+    Qualifiers,
+    Snak,
+)
 
 
 def are_equivalent_flickr_urls(url1: str, url2: str) -> bool:
@@ -79,7 +84,7 @@ def are_equivalent_snaks(existing_snak: Snak, new_snak: Snak) -> bool:
 
 
 def are_equivalent_qualifiers(
-    existing_qualifiers: dict[str, list[Snak]], new_qualifiers: dict[str, list[Snak]]
+    existing_qualifiers: Qualifiers, new_qualifiers: Qualifiers
 ) -> bool:
     # If we're not trying to write any qualifiers, then any existing
     # qualifiers are trivially equivalent.
