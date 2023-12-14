@@ -1,3 +1,18 @@
+"""
+This allows us to find Flickr photos from Wikitext alone.
+
+This should help us to expose the ~1M photos which link to Flickr somewhere
+in their Wikitext, but not in the structured data.
+
+How it works:
+
+*   We scan the Wikitext for anything that looks for a Flickr photo URL
+*   Then we go and ask Flickr for each of those photos, and we compare it
+    to the file on Commons
+*   If they're a byte-for-byte match, we know we've found the original photo!
+
+"""
+
 from flickr_url_parser import (
     find_flickr_urls_in_text,
     parse_flickr_url,
