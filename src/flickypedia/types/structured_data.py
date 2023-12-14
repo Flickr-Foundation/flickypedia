@@ -169,13 +169,15 @@ ExistingReference = TypedDict(
 #     (qualifiers)
 #     (references)
 #
+Qualifiers = dict[str, list[Snak]]
+
 BaseStatement = TypedDict(
     "BaseStatement",
     {
         "type": Literal["statement"],
         "mainsnak": Snak,
         "qualifiers-order": NotRequired[list[str]],
-        "qualifiers": NotRequired[dict[str, list[Snak]]],
+        "qualifiers": NotRequired[Qualifiers],
     },
 )
 

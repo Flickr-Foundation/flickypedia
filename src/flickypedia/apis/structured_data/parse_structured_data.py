@@ -1,4 +1,9 @@
-from flickr_url_parser import parse_flickr_url, NotAFlickrUrl, UnrecognisedUrl
+from flickr_url_parser import (
+    parse_flickr_url,
+    NotAFlickrUrl,
+    ParseResult,
+    UnrecognisedUrl,
+)
 
 from .wikidata import WikidataEntities, WikidataProperties, to_wikidata_entity_value
 from flickypedia.types.structured_data import ExistingClaims, ExistingStatement, Snak
@@ -15,7 +20,7 @@ def get_single_qualifier(
     A statement can have qualifiers:
 
         statement: {
-            qualifiers: dict[str, list[Snak]]
+            qualifiers: Qualifiers
             ...
         }
 
@@ -49,17 +54,13 @@ def get_single_qualifier(
     return snak_list[0]
 
 
-def find_flickr_photo_id(sdc: ExistingClaims) -> str | None:
+def find_flickr_urls(sdc: ExistingClaims) -> list[tuple[str, ParseResult]]:
     """
-    Given the structured data for a file on Wikimedia Commons, guess
-    what Flickr photo ID this is associated with (if any).
+    Return a list of Flickr URLs which were found in the SDC.
 
-    Note: there are a bunch of `assert 0`'s littered through this code,
-    which are branches I haven't tested because I haven't encountered
-    them in practice yet.  If you hit one of these in practice, use it
-    as an example to write a test!
+    These are guaranteed to be parseable using flickr-url-parser.
     """
-    candidates = set()
+    result: list[tuple[str, ParseResult]] = []
 
     # Look for URLs in the "Source" field, which might point to
     # a Flickr photo.
@@ -90,27 +91,43 @@ def find_flickr_photo_id(sdc: ExistingClaims) -> str | None:
                 continue
 
             if u["datavalue"]["type"] != "string":
-                assert 0
                 continue
 
+            value = u["datavalue"]["value"]
+
             try:
-                parsed_url = parse_flickr_url(u["datavalue"]["value"])
+                parsed_url = parse_flickr_url(value)
             except (UnrecognisedUrl, NotAFlickrUrl):
                 pass
             else:
-                if parsed_url["type"] == "single_photo":
-                    candidates.add(parsed_url["photo_id"])
-                else:
-                    raise AmbiguousStructuredData(
-                        f"Ambiguous Flickr URL: {u['datavalue']['value']}"
-                    )
+                result.append((value, parsed_url))
+
+    return result
+
+
+def find_flickr_photo_id(sdc: ExistingClaims) -> str | None:
+    """
+    Given the structured data for a file on Wikimedia Commons, guess
+    what Flickr photo ID this is associated with (if any).
+
+    Note: there are a bunch of `assert 0`'s littered through this code,
+    which are branches I haven't tested because I haven't encountered
+    them in practice yet.  If you hit one of these in practice, use it
+    as an example to write a test!
+    """
+    candidates = set()
+
+    # Look for Flickr URLs in the "Source" field.
+    for url, parsed_url in find_flickr_urls(sdc):
+        if parsed_url["type"] == "single_photo":
+            candidates.add(parsed_url["photo_id"])
+        else:
+            raise AmbiguousStructuredData(f"Ambiguous Flickr URL: {url}")
 
     # Look for a photo ID in the "Flickr Photo ID" field.
     for statement in sdc.get(WikidataProperties.FlickrPhotoId, []):
         if statement["mainsnak"]["datavalue"]["type"] == "string":
             candidates.add(statement["mainsnak"]["datavalue"]["value"])
-        else:
-            assert 0
 
     if len(candidates) == 1:
         return candidates.pop()

@@ -1,0 +1,21 @@
+{
+  "P12120": [
+    {
+      "id": "M138765382$ECB592B8-1328-427C-880D-E741D631C109",
+      "mainsnak": {
+        "property": "P12120",
+        "snaktype": "value",
+        "datavalue": {
+          "type": "wikibase-entityid",
+          "value": {
+            "entity-type": "item",
+            "id": "Q74228490",
+            "numeric-id": 74228490
+          }
+        }
+      },
+      "rank": "normal",
+      "type": "statement"
+    }
+  ]
+}

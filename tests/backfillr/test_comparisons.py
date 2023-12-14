@@ -10,6 +10,7 @@ from flickypedia.types.structured_data import (
     DataValueTypes,
     ExistingStatement,
     NewStatement,
+    Qualifiers,
     Snak,
     Value,
 )
@@ -237,7 +238,7 @@ class TestAreEquivalentQualifiers:
         [{}, {"P123": [create_string_snak(property_id="P123", value="Hello world")]}],
     )
     def test_empty_qualifiers_are_equivalent(
-        self, existing_qualifiers: dict[str, list[Snak]]
+        self, existing_qualifiers: Qualifiers
     ) -> None:
         assert are_equivalent_qualifiers(existing_qualifiers, new_qualifiers={})
 
