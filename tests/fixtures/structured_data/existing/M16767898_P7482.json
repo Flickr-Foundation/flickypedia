@@ -1,0 +1,38 @@
+{
+  "P7482": [
+    {
+      "type": "statement",
+      "mainsnak": {
+        "property": "P7482",
+        "snaktype": "value",
+        "datavalue": {
+          "type": "wikibase-entityid",
+          "value": {
+            "entity-type": "item",
+            "id": "Q74228490",
+            "numeric-id": 74228490
+          }
+        },
+        "hash": "b82dd47222a210c6dc1f428b693c2fbf7b0e0d6e"
+      },
+      "qualifiers-order": [
+        "P973"
+      ],
+      "qualifiers": {
+        "P973": [
+          {
+            "property": "P973",
+            "snaktype": "value",
+            "datavalue": {
+              "type": "string",
+              "value": "https://www.flickr.com/photos/claudiunh/5902112330/"
+            },
+            "hash": "02f129d5c14263dffd9a4bd46addf5fa969ec39f"
+          }
+        ]
+      },
+      "id": "M16767898$546CD3B8-6203-4164-A894-C5A73C475F80",
+      "rank": "normal"
+    }
+  ]
+}
