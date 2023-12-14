@@ -50,6 +50,10 @@ def update_single_file(url: str) -> None:
 
     existing_sdc = wikimedia_api.get_structured_data(filename=filename)
 
+    import json
+
+    print(json.dumps(existing_sdc))
+
     photo_id = find_flickr_photo_id(existing_sdc)
 
     if photo_id is None:
@@ -127,8 +131,8 @@ def update_single_file(url: str) -> None:
     affected_properties = []
 
     for a in actions:
-        if a['action'] == 'unknown':
-            print(a["property_id"], "\t", termcolor.colored(a["action"], 'red'))
+        if a["action"] == "unknown":
+            print(a["property_id"], "\t", termcolor.colored(a["action"], "red"))
         else:
             print(a["property_id"], "\t", a["action"])
 
