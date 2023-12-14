@@ -1,6 +1,7 @@
 import pytest
 
 from flickypedia.backfillr.comparisons import (
+    are_equivalent_times,
     are_equivalent_flickr_urls,
     are_equivalent_qualifiers,
     are_equivalent_snaks,
@@ -27,6 +28,105 @@ def create_string_snak(property_id: str, value: str) -> Snak:
         "property": property_id,
         "snaktype": "value",
     }
+
+
+class TestAreEquivalentTimes:
+    def create_value(self, precision: int, time_str: str) -> Value.Time:
+        return {
+            "time": time_str,
+            "precision": precision,
+            "timezone": 0,
+            "before": 0,
+            "after": 0,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+        }
+
+    @pytest.mark.parametrize("precision", [11, 10, 9])
+    @pytest.mark.parametrize(
+        "time_str",
+        [
+            "+2012-02-03T12:34:56Z",
+            "+1896-01-00T00:00:00Z",
+        ],
+    )
+    def test_time_is_equivalent_to_itself(self, precision: int, time_str: str) -> None:
+        assert are_equivalent_times(
+            time1=self.create_value(precision, time_str),
+            time2=self.create_value(precision, time_str),
+        )
+
+    @pytest.mark.parametrize(
+        ["precision", "time_str1", "time_str2"],
+        [
+            # Year-level precision
+            (9, "+2001-01-01T01:01:01Z", "+2001-01-01T02:02:02Z"),
+            (9, "+2001-01-01T01:01:01Z", "+2001-02-02T02:02:02Z"),
+            # Month-level precision
+            (10, "+2001-01-01T01:01:01Z", "+2001-01-01T02:02:02Z"),
+            (10, "+2001-01-01T01:01:01Z", "+2001-01-02T02:02:02Z"),
+            # Day-level precision
+            (11, "+2001-01-01T01:01:01Z", "+2001-01-01T02:02:02Z"),
+            (11, "+2001-01-01T01:01:01Z", "+2001-01-01T03:04:02Z"),
+        ],
+    )
+    def test_times_are_equivalent_up_to_precision(
+        self, precision: int, time_str1: str, time_str2: str
+    ) -> None:
+        assert are_equivalent_times(
+            time1=self.create_value(precision=precision, time_str=time_str1),
+            time2=self.create_value(precision=precision, time_str=time_str2),
+        )
+
+    @pytest.mark.parametrize(
+        ["precision", "time_str1", "time_str2"],
+        [
+            # Two completely different times
+            (9, "+2012-02-03T12:34:56Z", "+2065-12-25T23:45:34Z"),
+            # Same in everything but year, year precision
+            (9, "+2001-01-01T01:01:01Z", "+2099-01-01T01:01:01Z"),
+            # Month precision, different in just year/just month/both
+            (10, "+2002-01-01T01:01:01Z", "+2001-01-01T02:02:02Z"),
+            (10, "+2001-01-01T01:01:01Z", "+2001-02-01T02:02:02Z"),
+            (10, "+2002-01-01T01:01:01Z", "+2001-02-01T02:02:02Z"),
+            # Day precision
+            (11, "+2001-01-01T01:01:01Z", "+2002-01-01T01:01:01Z"),
+            (11, "+2001-01-01T01:01:01Z", "+2001-02-01T01:01:01Z"),
+            (11, "+2001-01-01T01:01:01Z", "+2001-01-02T01:01:01Z"),
+            # Weird value in one of the fields
+            (9, "nope", "+2001-01-01T01:01:01Z"),
+            (9, "+2001-01-01T01:01:01Z", "nope"),
+        ],
+    )
+    def test_different_times_are_different(
+        self, precision: int, time_str1: str, time_str2: str
+    ) -> None:
+        assert not are_equivalent_times(
+            time1=self.create_value(precision=precision, time_str=time_str1),
+            time2=self.create_value(precision=precision, time_str=time_str2),
+        )
+
+    @pytest.mark.parametrize("int_field", ["precision", "before", "after", "timezone"])
+    def test_differing_in_a_single_property_means_different(
+        self, int_field: str
+    ) -> None:
+        time_str = "+2012-02-03T12:34:56Z"
+
+        time1 = self.create_value(precision=9, time_str=time_str)
+        time2 = self.create_value(precision=9, time_str=time_str)
+
+        time2[int_field] += 1  # type: ignore
+
+        assert not are_equivalent_times(time1, time2)
+
+    def test_different_in_calendarmodel_means_different(self) -> None:
+        time_str = "+2012-02-03T12:34:56Z"
+
+        time1 = self.create_value(precision=9, time_str=time_str)
+        time2 = self.create_value(precision=9, time_str=time_str)
+
+        time2["calendarmodel"] = "http://www.wikidata.org/entity/Q0"
+
+        assert not are_equivalent_times(time1, time2)
 
 
 class TestAreEquivalentSnaks:
@@ -226,6 +326,45 @@ class TestAreEquivalentSnaks:
         )
 
         assert not are_equivalent_snaks(snak1, snak2)
+
+    def test_times_which_are_same_up_to_precision_are_equivalent(self) -> None:
+        # This is based on an existing Commons file:
+        # https://commons.wikimedia.org/wiki/File:%22Ada,_31_years._Jan_1896%22_Brockton,_Mass._-_Minette_size%3F_(5458241141).jpg
+        # Retrieved 14 December 2023
+        existing_snak: Snak = {
+            "datavalue": {
+                "type": "time",
+                "value": {
+                    "after": 0,
+                    "before": 0,
+                    "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+                    "precision": 10,
+                    "time": "+1896-01-01T00:00:00Z",
+                    "timezone": 0,
+                },
+            },
+            "hash": "ac360f594d8e5eb8fdbda877255349094ac83592",
+            "property": "P571",
+            "snaktype": "value",
+        }
+
+        new_snak: Snak = {
+            "datavalue": {
+                "type": "time",
+                "value": {
+                    "after": 0,
+                    "before": 0,
+                    "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+                    "precision": 10,
+                    "time": "+1896-01-00T00:00:00Z",
+                    "timezone": 0,
+                },
+            },
+            "property": "P571",
+            "snaktype": "value",
+        }
+
+        assert are_equivalent_snaks(existing_snak, new_snak)
 
 
 class TestAreEquivalentQualifiers:
