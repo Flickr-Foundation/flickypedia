@@ -381,3 +381,8 @@ def test_get_image_url(wikimedia_api: WikimediaApi) -> None:
 def test_get_image_url_for_missing_file(wikimedia_api: WikimediaApi) -> None:
     with pytest.raises(MissingFileException):
         wikimedia_api.get_image_url(filename="File:DefinitelyDoesNotExist.jpg")
+
+
+def test_get_structured_data_for_missing_file(wikimedia_api: WikimediaApi) -> None:
+    with pytest.raises(MissingFileException):
+        wikimedia_api.get_structured_data(filename="DefinitelyDoesNotExist.jpg")

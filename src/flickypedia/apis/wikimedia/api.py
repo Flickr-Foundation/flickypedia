@@ -247,6 +247,8 @@ class WikimediaApi:
         See https://www.wikidata.org/w/api.php?modules=wbgetentities&action=help
 
         """
+        assert not filename.startswith("File:")
+
         resp = self._get(
             params={
                 "action": "wbgetentities",
@@ -267,6 +269,11 @@ class WikimediaApi:
         #
         # We're only interested in the list of statements for now.
         assert len(resp["entities"]) == 1
+
+        page = list(resp["entities"].values())[0]
+
+        if "missing" in page:
+            raise MissingFileException(filename)
 
         statements = list(resp["entities"].values())[0]["statements"]
 
