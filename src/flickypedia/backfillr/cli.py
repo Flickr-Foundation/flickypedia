@@ -61,7 +61,7 @@ def update_single_file(url: str) -> None:
 
         new_sdc = create_sdc_claims_for_existing_flickr_photo(photo)
     except ResourceNotFound:
-        urls = list(find_flickr_urls(existing_sdc))
+        urls = [u for u, parsed_url in find_flickr_urls(existing_sdc) if parsed_url['type'] == 'single_photo']
 
         if len(urls) == 1 and urls[0].startswith('https://www.flickr.com/photos/'):
             user_url = 'https://www.flickr.com/photos/' + urls[0][len('https://www.flickr.com/photos/'):].split("/")[0] + '/'
@@ -75,6 +75,14 @@ def update_single_file(url: str) -> None:
                         'photos_url': 'https://www.flickr.com/photos/sejmrp/',
                         'profile_url': 'https://www.flickr.com/people/sejmrp/',
                         'path_alias': 'sejmrp',
+                    },
+                    'https://www.flickr.com/photos/usaidafghanistan/': {
+                        'id': '49045206@N03',
+                        'username': 'USAID Afghanistan',
+                        'realname': None,
+                        'path_alias': 'usaidafghanistan',
+                        'photos_url': 'https://www.flickr.com/photos/usaidafghanistan/',
+                        'profile_url': 'https://www.flickr.com/people/usaidafghanistan/',
                     }
                 }[user_url]
             except KeyError:
