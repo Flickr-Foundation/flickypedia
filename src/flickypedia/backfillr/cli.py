@@ -54,7 +54,7 @@ def run_with(list_of_filenames: list[str]):
 
         if photo_id is None:
             print("Could not find a Flickr photo ID in the existing SDC!")
-            sys.exit(0)
+            continue
 
         print(f"Found the Flickr photo ID {photo_id}")
 
@@ -62,7 +62,7 @@ def run_with(list_of_filenames: list[str]):
             photo = flickr_api.get_single_photo(photo_id=photo_id)
 
             new_sdc = create_sdc_claims_for_existing_flickr_photo(photo)
-        except ResourceNotFound:
+        except ResourceNotFound as e:
             urls = [
                 u
                 for u, parsed_url in find_flickr_urls(existing_sdc)
@@ -95,6 +95,14 @@ def run_with(list_of_filenames: list[str]):
                             "photos_url": "https://www.flickr.com/photos/usaidafghanistan/",
                             "profile_url": "https://www.flickr.com/people/usaidafghanistan/",
                         },
+                        'https://www.flickr.com/photos/paukrus/': {
+                            'id': '26244825@N05',
+                            'username': 'paukrus',
+                            'realname': None,
+                            'path_alias': 'paukrus',
+                            'photos_url': 'https://www.flickr.com/photos/paukrus/',
+                            'profile_url': 'https://www.flickr.com/people/paukrus/',
+                        }
                     }[user_url]
                 except KeyError:
                     raise
@@ -160,4 +168,29 @@ def update_single_file(url: str) -> None:
 @backfillr.command(help="Fix the SDC for multiple files.")
 @click.argument("N")
 def update_multiple_files(n: int) -> None:
-    print(n)
+    seen_titles = set(line.strip() for line in open('seen_titles.txt'))
+
+    i = 0
+
+    import json
+
+    new_titles = []
+
+    for line in open('commonswiki-20231001-flickr_urls3.json'):
+        data = json.loads(line)
+
+        if data['title'] in seen_titles:
+            continue
+        else:
+            new_titles.append(data['title'])
+            i += 1
+
+        if i >= int(n):
+            break
+
+    print(new_titles)
+    run_with(list_of_filenames=new_titles)
+
+    for t in new_titles:
+        with open('seen_titles.txt', 'a') as outfile:
+            outfile.write(t + '\n')
