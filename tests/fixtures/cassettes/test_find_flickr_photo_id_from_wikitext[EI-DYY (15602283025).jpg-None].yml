@@ -1,0 +1,294 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.1
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=query&format=xml&prop=revisions&rvprop=content&rvslots=%2A&titles=File%3AEI-DYY+%2815602283025%29.jpg
+  response:
+    content: "<?xml version=\"1.0\"?><api batchcomplete=\"\"><query><pages><page _idx=\"37800788\"
+      pageid=\"37800788\" ns=\"6\" title=\"File:EI-DYY (15602283025).jpg\"><revisions><rev><slots><slot
+      contentmodel=\"wikitext\" contentformat=\"text/x-wiki\" role=\"main\" xml:space=\"preserve\">==
+      {{int:filedesc}} ==\n{{Information\n| Description = EI-DYY\n| Source      =
+      [https://www.flickr.com/photos/golfking1/15602283025/ EI-DYY]\n| Date        =
+      2014-07-14 07:56\n| Author      = [https://www.flickr.com/people/57778372@N04
+      Jonathan Palombo]\n| Permission  = \n| other_versions=\n}}\n{{Location dec|53.370322|-2.280521|source:Flickr}}\n\n==
+      {{int:license-header}} ==\n{{cc-by-2.0}}\n{{User:FlickreviewR/reviewed-pass|Jonathan
+      Palombo Photography|https://www.flickr.com/photos/57778372@N04/15602283025|2015-01-11
+      11:05:17|cc-by-2.0|}}\n{{Flickr-change-of-license}}\n\n[[Category:Boeing 737-800
+      of Ryanair at Manchester Airport]]\n[[Category:Photographs by Jonathan Palombo]]\n\n[[Category:EI-DYY
+      (aircraft)]]\n[[Category:2014 at Manchester Airport]]</slot><slot contentmodel=\"wikibase-mediainfo\"
+      contentformat=\"application/json\" role=\"mediainfo\" xml:space=\"preserve\">{\"type\":\"mediainfo\",\"id\":\"M37800788\",\"labels\":[],\"descriptions\":[],\"statements\":{\"P571\":[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P571\",\"hash\":\"543faada9f7e2359a2e76726fd873d3bc5aa0f47\",\"datavalue\":{\"value\":{\"time\":\"+2014-07-14T00:00:00Z\",\"timezone\":0,\"before\":0,\"after\":0,\"precision\":11,\"calendarmodel\":\"http:\\/\\/www.wikidata.org\\/entity\\/Q1985727\"},\"type\":\"time\"}},\"type\":\"statement\",\"id\":\"M37800788$822F3532-C1A2-4D5B-95C9-A6084782FFE8\",\"rank\":\"normal\"}],\"P1259\":[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P1259\",\"hash\":\"5910a6bbc2def5f0d64c66e9a2e5aa280af5621d\",\"datavalue\":{\"value\":{\"latitude\":53.370322,\"longitude\":-2.280521,\"altitude\":null,\"precision\":1.0e-6,\"globe\":\"http:\\/\\/www.wikidata.org\\/entity\\/Q2\"},\"type\":\"globecoordinate\"}},\"type\":\"statement\",\"id\":\"M37800788$97AB3E7B-9754-4463-B565-C162045A8322\",\"rank\":\"normal\"}],\"P4082\":[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P4082\",\"hash\":\"d5840776cdb1d4e97feeb802a64c0e8b3e10a3f0\",\"datavalue\":{\"value\":{\"entity-type\":\"item\",\"numeric-id\":66176,\"id\":\"Q66176\"},\"type\":\"wikibase-entityid\"}},\"type\":\"statement\",\"id\":\"M37800788$CA5AD8FB-9EB9-4EF4-BC13-6DD3764F4EBF\",\"rank\":\"normal\"}],\"P6216\":[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P6216\",\"hash\":\"5570347fdc76d2a80732f51ea10ee4b144a084e0\",\"datavalue\":{\"value\":{\"entity-type\":\"item\",\"numeric-id\":50423863,\"id\":\"Q50423863\"},\"type\":\"wikibase-entityid\"}},\"type\":\"statement\",\"id\":\"M37800788$009BDCDF-FDAA-456B-8DC0-67101C66ABE0\",\"rank\":\"normal\"}],\"P275\":[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P275\",\"hash\":\"82d5b402aa0a79040483a8c9264bd484c6c13f67\",\"datavalue\":{\"value\":{\"entity-type\":\"item\",\"numeric-id\":19125117,\"id\":\"Q19125117\"},\"type\":\"wikibase-entityid\"}},\"type\":\"statement\",\"id\":\"M37800788$8E47DAE9-A781-440B-920A-C31711EB88C3\",\"rank\":\"normal\"}],\"P7482\":[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P7482\",\"hash\":\"b82dd47222a210c6dc1f428b693c2fbf7b0e0d6e\",\"datavalue\":{\"value\":{\"entity-type\":\"item\",\"numeric-id\":74228490,\"id\":\"Q74228490\"},\"type\":\"wikibase-entityid\"}},\"type\":\"statement\",\"qualifiers\":{\"P973\":[{\"snaktype\":\"value\",\"property\":\"P973\",\"hash\":\"506c9e26bd3ac8795b4361a5a5df9ce46ff27123\",\"datavalue\":{\"value\":\"https:\\/\\/www.flickr.com\\/photos\\/golfking1\\/15602283025\\/\",\"type\":\"string\"}}],\"P137\":[{\"snaktype\":\"value\",\"property\":\"P137\",\"hash\":\"3d8cd4c1ab91d3d9a14900210faaebf1a98b947b\",\"datavalue\":{\"value\":{\"entity-type\":\"item\",\"numeric-id\":103204,\"id\":\"Q103204\"},\"type\":\"wikibase-entityid\"}}]},\"qualifiers-order\":[\"P973\",\"P137\"],\"id\":\"M37800788$BB9923C2-0F56-4BC6-ABB9-E600096B8F1A\",\"rank\":\"normal\"}],\"P170\":[{\"mainsnak\":{\"snaktype\":\"somevalue\",\"property\":\"P170\",\"hash\":\"d3550e860f988c6675fff913440993f58f5c40c5\"},\"type\":\"statement\",\"qualifiers\":{\"P2093\":[{\"snaktype\":\"value\",\"property\":\"P2093\",\"hash\":\"f2c787d81760400ee97fea480fad02cf81819632\",\"datavalue\":{\"value\":\"Jonathan
+      Palombo\",\"type\":\"string\"}}],\"P3267\":[{\"snaktype\":\"value\",\"property\":\"P3267\",\"hash\":\"142b1975c3643e0e8dfdd5353bee11160f66a56c\",\"datavalue\":{\"value\":\"57778372@N04\",\"type\":\"string\"}}],\"P2699\":[{\"snaktype\":\"value\",\"property\":\"P2699\",\"hash\":\"e6f28fa2de9ee4cb977920b4f944f3aef8e7fb0b\",\"datavalue\":{\"value\":\"https:\\/\\/www.flickr.com\\/people\\/57778372@N04\",\"type\":\"string\"}}]},\"qualifiers-order\":[\"P2093\",\"P3267\",\"P2699\"],\"id\":\"M37800788$54BA7821-6FFD-4FD4-8FB6-752D52C0A408\",\"rank\":\"normal\"}],\"P1163\":[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P1163\",\"hash\":\"723d30b878d4a8deb968b0db429888e5353661a2\",\"datavalue\":{\"value\":\"image\\/jpeg\",\"type\":\"string\"}},\"type\":\"statement\",\"id\":\"M37800788$28F7895F-59C9-4A71-9B8B-6E51E9A555EF\",\"rank\":\"normal\"}]}}</slot></slots></rev></revisions></page></pages></query></api>"
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.xml
+      content-encoding:
+      - gzip
+      content-type:
+      - text/xml; charset=utf-8
+      date:
+      - Thu, 14 Dec 2023 14:19:00 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1422.eqiad.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - WMF-Last-Access=14-Dec-2023;Path=/;HttpOnly;secure;Expires=Mon, 15 Jan 2024
+        12:00:00 GMT
+      - GeoIP=GB:ENG:Southwark:51.50:-0.09:v4; Path=/; secure; Domain=.wikimedia.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie
+      x-cache:
+      - cp3066 miss, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - api.flickr.com
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&photo_id=15602283025
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<photo
+      id=\"15602283025\" secret=\"fd7d8b0dd9\" server=\"3943\" farm=\"4\" dateuploaded=\"1414001923\"
+      isfavorite=\"0\" license=\"0\" safety_level=\"0\" rotation=\"0\" views=\"217\"
+      media=\"photo\">\n\t<owner nsid=\"57778372@N04\" username=\"airplanes_uk\" realname=\"Jonathan
+      Palombo\" location=\"\" iconserver=\"65535\" iconfarm=\"66\" path_alias=\"golfking1\">\n\t\t<gift
+      gift_eligible=\"1\" new_flow=\"1\">\n\t\t\t<eligible_durations />\n\t\t\t<eligible_durations
+      />\n\t\t\t<eligible_durations />\n\t\t</gift>\n\t</owner>\n\t<title>EI-DYY</title>\n\t<description
+      />\n\t<visibility ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" />\n\t<dates
+      posted=\"1414001923\" taken=\"2014-07-14 07:56:51\" takengranularity=\"0\" takenunknown=\"0\"
+      lastupdate=\"1592760396\" />\n\t<editability cancomment=\"0\" canaddmeta=\"0\"
+      />\n\t<publiceditability cancomment=\"1\" canaddmeta=\"0\" />\n\t<usage candownload=\"0\"
+      canblog=\"0\" canprint=\"0\" canshare=\"1\" />\n\t<comments>0</comments>\n\t<notes
+      />\n\t<people haspeople=\"0\" />\n\t<tags>\n\t\t<tag id=\"57746233-15602283025-5867\"
+      author=\"57778372@N04\" authorname=\"airplanes_uk\" raw=\"Aviation\" machine_tag=\"0\">aviation</tag>\n\t\t<tag
+      id=\"57746233-15602283025-466\" author=\"57778372@N04\" authorname=\"airplanes_uk\"
+      raw=\"MAN\" machine_tag=\"0\">man</tag>\n\t\t<tag id=\"57746233-15602283025-117531\"
+      author=\"57778372@N04\" authorname=\"airplanes_uk\" raw=\"ManchesterAirport\"
+      machine_tag=\"0\">manchesterairport</tag>\n\t\t<tag id=\"57746233-15602283025-16333\"
+      author=\"57778372@N04\" authorname=\"airplanes_uk\" raw=\"Planes\" machine_tag=\"0\">planes</tag>\n\t\t<tag
+      id=\"57746233-15602283025-2317\" author=\"57778372@N04\" authorname=\"airplanes_uk\"
+      raw=\"flying\" machine_tag=\"0\">flying</tag>\n\t\t<tag id=\"57746233-15602283025-33055395\"
+      author=\"57778372@N04\" authorname=\"airplanes_uk\" raw=\"EI-DYY\" machine_tag=\"0\">eidyy</tag>\n\t</tags>\n\t<location
+      latitude=\"53.370322\" longitude=\"-2.280521\" accuracy=\"12\" context=\"0\">\n\t\t<locality
+      woeid=\"43887\">Etrop Green</locality>\n\t\t<county woeid=\"12602158\">Greater
+      Manchester</county>\n\t\t<region woeid=\"24554868\">England</region>\n\t\t<country
+      woeid=\"23424975\">United Kingdom</country>\n\t\t<neighbourhood woeid=\"0\"
+      />\n\t</location>\n\t<geoperms ispublic=\"1\" iscontact=\"0\" isfriend=\"0\"
+      isfamily=\"0\" />\n\t<urls>\n\t\t<url type=\"photopage\">https://www.flickr.com/photos/golfking1/15602283025/</url>\n\t</urls>\n</photo>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Thu, 14 Dec 2023 14:19:00 GMT
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 40b76fea3127a1d583fbc11b2e091fc2.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - i1pneCalMn0SoQbCQaOsMVSPw7eoAEgk35vvyWiBrsUoJUyBljbGnA==
+      X-Amz-Cf-Pop:
+      - LHR5-P1
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - openresty
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Sat, 13-Jan-2024 14:19:00 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - noindex
+      x-server:
+      - serverless-proxy-10.78.22.71
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&photo_id=15602283025
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<sizes
+      canblog=\"0\" canprint=\"0\" candownload=\"0\">\n\t<size label=\"Square\" width=\"75\"
+      height=\"75\" source=\"https://live.staticflickr.com/3943/15602283025_fd7d8b0dd9_s.jpg\"
+      url=\"https://www.flickr.com/photos/golfking1/15602283025/sizes/sq/\" media=\"photo\"
+      />\n\t<size label=\"Large Square\" width=\"150\" height=\"150\" source=\"https://live.staticflickr.com/3943/15602283025_fd7d8b0dd9_q.jpg\"
+      url=\"https://www.flickr.com/photos/golfking1/15602283025/sizes/q/\" media=\"photo\"
+      />\n\t<size label=\"Thumbnail\" width=\"100\" height=\"82\" source=\"https://live.staticflickr.com/3943/15602283025_fd7d8b0dd9_t.jpg\"
+      url=\"https://www.flickr.com/photos/golfking1/15602283025/sizes/t/\" media=\"photo\"
+      />\n\t<size label=\"Small\" width=\"240\" height=\"197\" source=\"https://live.staticflickr.com/3943/15602283025_fd7d8b0dd9_m.jpg\"
+      url=\"https://www.flickr.com/photos/golfking1/15602283025/sizes/s/\" media=\"photo\"
+      />\n\t<size label=\"Small 320\" width=\"320\" height=\"262\" source=\"https://live.staticflickr.com/3943/15602283025_fd7d8b0dd9_n.jpg\"
+      url=\"https://www.flickr.com/photos/golfking1/15602283025/sizes/n/\" media=\"photo\"
+      />\n\t<size label=\"Small 400\" width=\"400\" height=\"328\" source=\"https://live.staticflickr.com/3943/15602283025_fd7d8b0dd9_w.jpg\"
+      url=\"https://www.flickr.com/photos/golfking1/15602283025/sizes/w/\" media=\"photo\"
+      />\n\t<size label=\"Medium\" width=\"500\" height=\"410\" source=\"https://live.staticflickr.com/3943/15602283025_fd7d8b0dd9.jpg\"
+      url=\"https://www.flickr.com/photos/golfking1/15602283025/sizes/m/\" media=\"photo\"
+      />\n\t<size label=\"Medium 640\" width=\"640\" height=\"524\" source=\"https://live.staticflickr.com/3943/15602283025_fd7d8b0dd9_z.jpg\"
+      url=\"https://www.flickr.com/photos/golfking1/15602283025/sizes/z/\" media=\"photo\"
+      />\n\t<size label=\"Medium 800\" width=\"800\" height=\"655\" source=\"https://live.staticflickr.com/3943/15602283025_fd7d8b0dd9_c.jpg\"
+      url=\"https://www.flickr.com/photos/golfking1/15602283025/sizes/c/\" media=\"photo\"
+      />\n\t<size label=\"Large\" width=\"1024\" height=\"839\" source=\"https://live.staticflickr.com/3943/15602283025_fd7d8b0dd9_b.jpg\"
+      url=\"https://www.flickr.com/photos/golfking1/15602283025/sizes/l/\" media=\"photo\"
+      />\n</sizes>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Thu, 14 Dec 2023 14:19:00 GMT
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 40b76fea3127a1d583fbc11b2e091fc2.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - NX7IR2LJC8MK_jgpgcfkAJ0_rJJF6Lre0rwSRql-elTysdN7obFHSA==
+      X-Amz-Cf-Pop:
+      - LHR5-P1
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - openresty
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Sat, 13-Jan-2024 14:19:00 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - noindex
+      x-server:
+      - serverless-proxy-10.78.5.43
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.licenses.getInfo
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<licenses>\n\t<license
+      id=\"0\" name=\"All Rights Reserved\" url=\"\" />\n\t<license id=\"4\" name=\"Attribution
+      License\" url=\"https://creativecommons.org/licenses/by/2.0/\" />\n\t<license
+      id=\"6\" name=\"Attribution-NoDerivs License\" url=\"https://creativecommons.org/licenses/by-nd/2.0/\"
+      />\n\t<license id=\"3\" name=\"Attribution-NonCommercial-NoDerivs License\"
+      url=\"https://creativecommons.org/licenses/by-nc-nd/2.0/\" />\n\t<license id=\"2\"
+      name=\"Attribution-NonCommercial License\" url=\"https://creativecommons.org/licenses/by-nc/2.0/\"
+      />\n\t<license id=\"1\" name=\"Attribution-NonCommercial-ShareAlike License\"
+      url=\"https://creativecommons.org/licenses/by-nc-sa/2.0/\" />\n\t<license id=\"5\"
+      name=\"Attribution-ShareAlike License\" url=\"https://creativecommons.org/licenses/by-sa/2.0/\"
+      />\n\t<license id=\"7\" name=\"No known copyright restrictions\" url=\"https://www.flickr.com/commons/usage/\"
+      />\n\t<license id=\"8\" name=\"United States Government Work\" url=\"http://www.usa.gov/copyright.shtml\"
+      />\n\t<license id=\"9\" name=\"Public Domain Dedication (CC0)\" url=\"https://creativecommons.org/publicdomain/zero/1.0/\"
+      />\n\t<license id=\"10\" name=\"Public Domain Mark\" url=\"https://creativecommons.org/publicdomain/mark/1.0/\"
+      />\n</licenses>\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '395'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Thu, 14 Dec 2023 14:19:00 GMT
+      Via:
+      - 1.1 40b76fea3127a1d583fbc11b2e091fc2.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - KIuijVvSq-vPr6gcF7g7Wysgow-i02B-yc0fwcoXVS8DvLG9lBKQug==
+      X-Amz-Cf-Pop:
+      - LHR5-P1
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.58 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Sat, 13-Jan-2024 14:19:00 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

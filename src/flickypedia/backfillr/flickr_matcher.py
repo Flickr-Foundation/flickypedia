@@ -10,9 +10,16 @@ from flickypedia.apis.flickr import FlickrPhotosApi
 from .comparisons import urls_have_same_contents
 
 
-def find_flickr_photo_id_for_file(
+def find_flickr_photo_id_from_wikitext(
     wikimedia_api: WikimediaApi, flickr_api: FlickrPhotosApi, filename: str
 ) -> str | None:
+    """
+    Given the name of a file on Wikimedia Commons, look for Flickr URLs
+    in the Wikitext.  This looks for Flickr URLs in the Wikitext, then
+    compares the file on Commons to the file on Flickr.
+
+    Only matching files are returned.
+    """
     wikitext = wikimedia_api.get_wikitext(filename)
 
     candidates = set()
@@ -26,21 +33,18 @@ def find_flickr_photo_id_for_file(
         if parsed_url["type"] == "single_photo":
             candidates.add(parsed_url["photo_id"])
 
-    if len(candidates) != 1:
-        return None
+    for photo_id in sorted(candidates):
+        photo = flickr_api.get_single_photo(photo_id=photo_id)
 
-    photo_id = candidates.pop()
-    photo = flickr_api.get_single_photo(photo_id=photo_id)
+        try:
+            original_size = [s for s in photo["sizes"] if s["label"] == "Original"][0]
+        except IndexError:
+            return None
 
-    try:
-        original_size = [s for s in photo["sizes"] if s["label"] == "Original"][0]
-    except IndexError:
-        return None
+        flickr_url = original_size["source"]
+        wikimedia_url = wikimedia_api.get_image_url(filename)
 
-    flickr_url = original_size["source"]
-    wikimedia_url = wikimedia_api.get_image_url(filename)
+        if urls_have_same_contents(flickr_url, wikimedia_url):
+            return photo_id
 
-    if urls_have_same_contents(flickr_url, wikimedia_url):
-        return photo_id
-    else:
-        return None
+    return None
