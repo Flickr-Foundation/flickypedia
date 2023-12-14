@@ -29,6 +29,14 @@ from .exceptions import (
 from .languages import LanguageMatch, order_language_list
 
 
+def _get_single_query_result(resp: Any) -> Any:
+    if len(resp['query']['pages']) == 1:
+        values = list(resp['query']['pages'].values())
+        return values.pop()
+    else:
+        return None
+
+
 class WikimediaApi:
     def __init__(self, client: httpx.Client) -> None:
         self.client = client
@@ -654,6 +662,62 @@ class WikimediaApi:
         languagesearch = find_required_elem(xml, path=".//languagesearch")
 
         return order_language_list(query=query, results=languagesearch.attrib)
+
+    def get_wikitext(self, filename: str) -> None:
+        """
+        Return the Wikitext for this page, if it exists.
+        """
+        assert filename.startswith("File:")
+
+        resp = self.client.request(
+            "GET",
+            url="https://commons.wikimedia.org/w/api.php",
+            params={
+                "action": "query",
+                "format": "xml",
+                "prop": "revisions",
+                "titles": filename,
+                "rvslots": "*",
+                "rvprop": "content"
+            },
+        )
+
+        resp.raise_for_status()
+
+        xml = ET.fromstring(resp.text)
+
+        # The rough shape of the response is:
+        #
+        #     <?xml version="1.0"?>
+        #     <api batchcomplete="">
+        #       <query>
+        #         <pages>
+        #           <page pageid="135569232" …>
+        #             <revisions>
+        #               <rev>
+        #                 <slots>
+        #                   <slot contentmodel="wikitext"…>
+        #                     =={{int:filedesc}}==
+        #
+        # We want the contents of that <slot>.
+        return xml.find(".//slot").text
+
+    def get_image_url(self, filename: str) -> str:
+        """
+        Get the URL for a full-sized photo on Wikimedia Commons.
+        """
+        assert filename.startswith("File:")
+
+        resp = self._get(params={
+            'action': 'query',
+            'titles': filename,
+            'prop': 'imageinfo',
+            'iiprop': 'url'
+        })
+
+        page = _get_single_query_result(resp)
+
+        return page['imageinfo'][0]['url']
 
     def force_sdc_rerender(self, filename: str) -> None:
         """
