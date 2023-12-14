@@ -500,3 +500,72 @@ def test_test_does_not_qualifiers_if_existing_are_disjoint_from_new() -> None:
             "action": "unknown",
         }
     ]
+
+
+def test_a_null_creator_statement_is_replaced() -> None:
+    existing_statement: ExistingStatement = {
+        "type": "statement",
+        "mainsnak": {
+            "property": "P170",
+            "snaktype": "somevalue",
+            "hash": "d3550e860f988c6675fff913440993f58f5c40c5",
+        },
+        "qualifiers-order": ["P2093"],
+        "qualifiers": {
+            "P2093": [
+                {
+                    "property": "P2093",
+                    "snaktype": "value",
+                    "datavalue": {"type": "string", "value": "null"},
+                    "hash": "d869bebb956d8c4512616ca1f2ef7907d7ed9705",
+                }
+            ]
+        },
+        "id": "M26828$E5B1DA53-7604-4B6F-B07A-21BC098CEEC9",
+        "rank": "normal",
+    }
+    statement: NewStatement = {
+        "mainsnak": {"snaktype": "somevalue", "property": "P170"},
+        "qualifiers": {
+            "P2093": [
+                {
+                    "datavalue": {"value": "StrangeInterlude", "type": "string"},
+                    "property": "P2093",
+                    "snaktype": "value",
+                }
+            ],
+            "P2699": [
+                {
+                    "datavalue": {
+                        "value": "https://www.flickr.com/people/strangeinterlude/",
+                        "type": "string",
+                    },
+                    "property": "P2699",
+                    "snaktype": "value",
+                }
+            ],
+            "P3267": [
+                {
+                    "datavalue": {"value": "44124472424@N01", "type": "string"},
+                    "property": "P3267",
+                    "snaktype": "value",
+                }
+            ],
+        },
+        "qualifiers-order": ["P3267", "P2093", "P2699"],
+        "type": "statement",
+    }
+
+    existing_sdc: ExistingClaims = {"P170": [existing_statement]}
+    new_sdc: NewClaims = {"claims": [statement]}
+
+    actions = create_actions(existing_sdc, new_sdc)
+
+    assert actions == [
+        {
+            "property_id": "P170",
+            "action": "replace_statement",
+            "statement_id": "M26828$E5B1DA53-7604-4B6F-B07A-21BC098CEEC9",
+            "statement": statement,
+        }
+    ]
