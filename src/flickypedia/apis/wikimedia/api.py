@@ -318,6 +318,8 @@ class WikimediaApi:
         See https://www.wikidata.org/w/api.php?modules=wbeditentity&action=help
 
         """
+        assert not filename.startswith("File:")
+
         # Do some basic validation of the input format here -- if you
         # pass the wrong data into the Wikimedia API, the error message
         # is utterly unhelpful.
