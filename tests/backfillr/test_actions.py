@@ -394,7 +394,7 @@ class TestHasSubsetOfNewQualifiers:
         assert not has_subset_of_new_qualifiers(existing_statement, new_statement)
 
 
-def test_test_does_not_qualifiers_if_existing_are_disjoint_from_new() -> None:
+def test_does_not_qualifiers_if_existing_are_disjoint_from_new() -> None:
     existing_sdc: ExistingClaims = {
         "P7482": [
             {
