@@ -145,7 +145,15 @@ def run_with(list_of_filenames: list[str]):
                             "path_alias": "eugeniayjulian",
                             "photos_url": "https://www.flickr.com/photos/eugeniayjulian/",
                             "profile_url": "https://www.flickr.com/people/eugeniayjulian/"
-                        }
+                        },
+                        "https://www.flickr.com/photos/62179309@N00/": {
+                            "id": "62179309@N00",
+                            "username": "steveC_T",
+                            "realname": None,
+                            "path_alias": None,
+                            "photos_url": "https://www.flickr.com/photos/62179309@N00/",
+                            "profile_url": "https://www.flickr.com/people/62179309@N00/",
+                        },
                     }[user_url]
                 except KeyError:
                     creator = flickr_api.lookup_user_by_url(url=user_url)
