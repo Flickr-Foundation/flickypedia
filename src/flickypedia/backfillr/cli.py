@@ -89,8 +89,6 @@ def run_with(list_of_filenames: list[str]):
                     + "/"
                 )
 
-
-
                 try:
                     creator = {
                         "https://www.flickr.com/photos/sejmrp/": {
