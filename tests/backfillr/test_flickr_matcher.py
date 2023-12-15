@@ -2,10 +2,10 @@ import pathlib
 
 import pytest
 
-from flickypedia.apis.structured_data import AmbiguousStructuredData
 from flickypedia.apis.wikimedia import WikimediaApi
 from flickypedia.apis.flickr import FlickrPhotosApi
 from flickypedia.backfillr.flickr_matcher import (
+    AmbiguousStructuredData,
     FindResult,
     find_flickr_photo_id_from_sdc,
     find_flickr_photo_id_from_wikitext,
