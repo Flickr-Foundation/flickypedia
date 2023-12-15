@@ -7,7 +7,7 @@ from flickypedia.types.structured_data import (
     NewClaims,
     NewStatement,
 )
-from .comparisons import are_equivalent_snaks, are_equivalent_statements
+from .comparisons import are_equivalent_qualifiers, are_equivalent_snaks, are_equivalent_statements
 
 
 class DoNothing(TypedDict):
@@ -28,12 +28,19 @@ class AddQualifiers(TypedDict):
     statement: NewStatement
 
 
+class ReplaceStatement(TypedDict):
+    property_id: str
+    action: Literal["replace_statement"]
+    statement_id: str
+    statement: NewStatement
+
+
 class Unknown(TypedDict):
     property_id: str
     action: Literal["unknown"]
 
 
-Action = DoNothing | AddMissing | AddQualifiers | Unknown
+Action = DoNothing | AddMissing | AddQualifiers | ReplaceStatement | Unknown
 
 
 def has_subset_of_new_qualifiers(
@@ -88,6 +95,65 @@ def create_actions(existing_sdc: ExistingClaims, new_sdc: NewClaims) -> list[Act
             if are_equivalent_statements(statement, new_statement):
                 actions.append(DoNothing(property_id=property_id, action="do_nothing"))
                 break
+
+            # I've noticed a number of files where the only statement for
+            # "Creator" is the single string "null".
+            #
+            # This looks like a mistake introduced by another tool; in this
+            # case we're happy to overwrite it.
+            if property_id == WikidataProperties.Creator:
+                print(statement)
+                print(new_statement)
+
+                null_statement: ExistingStatement = {
+                    "type": "statement",
+                    "mainsnak": {
+                        "property": "P170",
+                        "snaktype": "somevalue",
+                    },
+                    "qualifiers-order": ["P2093"],
+                    "qualifiers": {
+                        "P2093": [
+                            {
+                                "property": "P2093",
+                                "snaktype": "value",
+                                "datavalue": {"type": "string", "value": "null"},
+                            }
+                        ]
+                    },
+                }
+
+                if are_equivalent_statements(statement, null_statement):
+                    actions.append(
+                        ReplaceStatement(
+                            property_id=property_id,
+                            action="replace_statement",
+                            statement_id=statement["id"],
+                            statement=new_statement,
+                        )
+                    )
+                    break
+
+            # fmt: off
+            if (
+                property_id == WikidataProperties.Creator
+                and set(statement["qualifiers-order"]) == set(new_statement["qualifiers-order"])
+                and are_equivalent_snaks(statement["mainsnak"], new_statement["mainsnak"])
+                and are_equivalent_qualifiers(
+                    existing_qualifiers={WikidataProperties.FlickrUserId: statement["qualifiers"][WikidataProperties.FlickrUserId]},
+                    new_qualifiers={WikidataProperties.FlickrUserId: new_statement["qualifiers"][WikidataProperties.FlickrUserId]},
+                )
+            ):
+                actions.append(
+                    ReplaceStatement(
+                        property_id=property_id,
+                        action="replace_statement",
+                        statement_id=statement["id"],
+                        statement=new_statement,
+                    )
+                )
+                break
+            # fmt: on
 
             # If the existing statement has the same mainsnak and a subset
             # of the qualifiers, then we need to update it.
