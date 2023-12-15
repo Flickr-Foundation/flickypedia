@@ -14,7 +14,11 @@ from flickypedia.apis.structured_data import (
     create_flickr_photo_id_statement,
     create_source_data_for_photo,
 )
-from flickypedia.apis.wikimedia import WikimediaApi, get_filename_from_url, MissingFileException
+from flickypedia.apis.wikimedia import (
+    WikimediaApi,
+    get_filename_from_url,
+    MissingFileException,
+)
 from .actions import create_actions
 from .flickr_matcher import find_flickr_photo_id_from_wikitext
 
@@ -122,10 +126,17 @@ def run_with(list_of_filenames: list[str]):
                             "username": "deVos",
                             "realname": "Kees de Vos",
                             "path_alias": "devos",
-
                             "photos_url": "https://www.flickr.com/photos/devos/",
                             "profile_url": "https://www.flickr.com/people/devos/",
-                        }
+                        },
+                        "https://www.flickr.com/photos/stewart/": {
+                            "id": "12037949632@N01",
+                            "username": "Stewart",
+                            "realname": "Stewart Butterfield",
+                            "path_alias": "stewart",
+                            "photos_url": "https://www.flickr.com/photos/stewart/",
+                            "profile_url": "https://www.flickr.com/people/stewart/",
+                        },
                     }[user_url]
                 except KeyError:
                     raise
