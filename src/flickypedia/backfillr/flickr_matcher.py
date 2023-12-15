@@ -1,16 +1,11 @@
 """
-This allows us to find Flickr photos from Wikitext alone.
+Match existing Wikimedia Commons files to photos on Flickr.
 
-This should help us to expose the ~1M photos which link to Flickr somewhere
-in their Wikitext, but not in the structured data.
+This looks for information that points to the original Flickr photo
+in the structured data and Wikitext.
 
-How it works:
-
-*   We scan the Wikitext for anything that looks for a Flickr photo URL
-*   Then we go and ask Flickr for each of those photos, and we compare it
-    to the file on Commons
-*   If they're a byte-for-byte match, we know we've found the original photo!
-
+We prefer looking in the structured data over Wikitext, because we have
+to rely on heuristics rather than explicit machine-readable data.
 """
 
 import collections
@@ -279,3 +274,21 @@ def find_flickr_photo_id_from_sdc(sdc: ExistingClaims) -> FindResult | None:
     else:
         candidates[photo_id].discard(None)
         return {"photo_id": photo_id, "url": candidates[photo_id].pop()}
+
+
+def find_flickr_photo(
+    wikimedia_api: WikimediaApi,
+    flickr_api: FlickrPhotosApi,
+    existing_sdc: ExistingClaims,
+    filename: str,
+) -> FindResult | None:
+    find_result = find_flickr_photo_id_from_sdc(existing_sdc)
+
+    if find_result is not None:
+        return find_result
+
+    find_result = find_flickr_photo_id_from_wikitext(
+        wikimedia_api, flickr_api, filename=f"File:{filename}"
+    )
+
+    return find_result
