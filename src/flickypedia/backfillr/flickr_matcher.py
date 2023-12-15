@@ -145,7 +145,6 @@ def find_flickr_photo_id_from_wikitext(
         try:
             original_size = [s for s in photo["sizes"] if s["label"] == "Original"][0]
         except IndexError:
-            assert 0
             continue
 
         flickr_url = original_size["source"]
