@@ -1,0 +1,40 @@
+{
+    "type": "statement",
+    "mainsnak": {
+        "property": "P170",
+        "snaktype": "somevalue",
+        "hash": "d3550e860f988c6675fff913440993f58f5c40c5"
+    },
+    "qualifiers-order": ["P2093", "P2699", "P3267"],
+    "qualifiers": {
+        "P2093": [
+            {
+                "property": "P2093",
+                "snaktype": "value",
+                "datavalue": {"type": "string", "value": "Kees de Vos"},
+                "hash": "85a24bae1a98643d2154b499c91f24ebbeba44d0"
+            }
+        ],
+        "P2699": [
+            {
+                "property": "P2699",
+                "snaktype": "value",
+                "datavalue": {
+                    "type": "string",
+                    "value": "https://www.flickr.com/people/44124385307@N01"
+                },
+                "hash": "250e71f3bf5197be3d633cb05c609569c0f42be9"
+            }
+        ],
+        "P3267": [
+            {
+                "property": "P3267",
+                "snaktype": "value",
+                "datavalue": {"type": "string", "value": "44124385307@N01"},
+                "hash": "83fb108438c2f02e2880f351e49e8755a8efe23c"
+            }
+        ]
+    },
+    "id": "M34511$CED32069-F156-4478-87A8-106E4FF5A398",
+    "rank": "normal"
+}

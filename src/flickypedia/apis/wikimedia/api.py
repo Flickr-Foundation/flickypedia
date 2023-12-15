@@ -18,7 +18,7 @@ import httpx
 from flickypedia.types import validate_typeddict
 from flickypedia.types.structured_data import ExistingClaims, NewClaims
 from flickypedia.types.wikimedia import UserInfo, ShortCaption, TitleValidation
-from flickypedia.utils import find_required_elem, find_required_text
+from flickypedia.utils import find_required_elem
 from .exceptions import (
     WikimediaApiException,
     UnknownWikimediaApiException,
@@ -669,15 +669,22 @@ class WikimediaApi:
         """
         assert filename.startswith("File:")
 
-        resp = self._get(
-            params={
-                "action": "parse",
-                "page": filename,
-                "prop": "text",
-            },
-        )
+        try:
+            resp = self._get(
+                params={
+                    "action": "parse",
+                    "page": filename,
+                    "prop": "text",
+                },
+            )
+        except UnknownWikimediaApiException as exc:
+            if exc.code == "missingtitle":
+                raise MissingFileException(filename)
 
-        return resp["parse"]["text"]["*"]
+        text = resp["parse"]["text"]["*"]
+        assert isinstance(text, str)
+
+        return text
 
     def get_image_url(self, filename: str) -> str:
         """
