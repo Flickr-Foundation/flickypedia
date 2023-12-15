@@ -102,9 +102,6 @@ def create_actions(existing_sdc: ExistingClaims, new_sdc: NewClaims) -> list[Act
             # This looks like a mistake introduced by another tool; in this
             # case we're happy to overwrite it.
             if property_id == WikidataProperties.Creator:
-                print(statement)
-                print(new_statement)
-
                 null_statement: ExistingStatement = {
                     "type": "statement",
                     "mainsnak": {
