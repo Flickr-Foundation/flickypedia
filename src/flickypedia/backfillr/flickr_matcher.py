@@ -91,6 +91,18 @@ def find_flickr_photo_id_from_wikitext(
             if photo_id is not None:
                 return photo_id
 
+    # Now look for any links which are explicitly labelled as
+    # "Source: <URL>" in the Wikitext.  For example:
+    #
+    #     Source: https://www.flickr.com/photos/justinaugust/3731022/
+    #
+    for anchor_tag in soup.find_all("a"):
+        url = anchor_tag.attrs['href']
+        photo_id = get_flickr_photo_id_from_url(url)
+        if photo_id is not None:
+            if anchor_tag.parent.text == f'Source: {url}':
+                return photo_id
+
     # Then look for all the Flickr URLs, and try to find a URL which has
     # a JPEG that matches the file in Wikimedia Commons.
     #

@@ -44,6 +44,10 @@ from flickypedia.backfillr.flickr_matcher import find_flickr_photo_id_from_wikit
         # This has a Flickr URL in the Wikitext, and it points to a
         # file which is byte-for-byte identical to the file on Commons.
         ("Dustpuppy-Autobahn.jpg", "1574718"),
+        #
+        # This has a Flickr URL in the Wikitext, which is clearly
+        # identified as the Source in a paragraph that labels it as such.
+        ("Dan Potthast.jpg", "3731022"),
     ],
 )
 def test_find_flickr_photo_id_from_wikitext(
