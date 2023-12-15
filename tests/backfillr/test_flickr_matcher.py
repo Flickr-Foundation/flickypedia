@@ -99,6 +99,17 @@ from utils import get_typed_fixture
                 "url": "https://www.flickr.com/photos/justinaugust/3731022/",
             },
         ),
+        #
+        # Another Flickr URL in the Wikitext, clearly identified as
+        # the source URL in the text.  There's a newline inside the
+        # associated <p> tag which we need to account for.
+        (
+            "Vinyl albums.jpg",
+            {
+                "photo_id": "3874334",
+                "url": "https://www.flickr.com/photos/metalphoenix/3874334/",
+            },
+        ),
     ],
 )
 def test_find_flickr_photo_id_from_wikitext(
