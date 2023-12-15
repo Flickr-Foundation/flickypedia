@@ -120,6 +120,13 @@ from utils import get_typed_fixture
                 "url": "https://www.flickr.com/photos/saudi/4101549/",
             },
         ),
+        #
+        # Two Flickr URLs in the "Source" field, one is the user and
+        # one is the source.
+        (
+            "Varanasi 3.jpg",
+            None,
+        ),
     ],
 )
 def test_find_flickr_photo_id_from_wikitext(
