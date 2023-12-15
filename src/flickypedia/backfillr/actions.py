@@ -7,7 +7,11 @@ from flickypedia.types.structured_data import (
     NewClaims,
     NewStatement,
 )
-from .comparisons import are_equivalent_snaks, are_equivalent_statements
+from .comparisons import (
+    are_equivalent_qualifiers,
+    are_equivalent_snaks,
+    are_equivalent_statements,
+)
 
 
 class DoNothing(TypedDict):
@@ -130,6 +134,27 @@ def create_actions(existing_sdc: ExistingClaims, new_sdc: NewClaims) -> list[Act
                         )
                     )
                     break
+
+            # fmt: off
+            if (
+                property_id == WikidataProperties.Creator
+                and set(statement["qualifiers-order"]) == set(new_statement["qualifiers-order"])
+                and are_equivalent_snaks(statement["mainsnak"], new_statement["mainsnak"])
+                and are_equivalent_qualifiers(
+                    existing_qualifiers={WikidataProperties.FlickrUserId: statement["qualifiers"][WikidataProperties.FlickrUserId]},
+                    new_qualifiers={WikidataProperties.FlickrUserId: new_statement["qualifiers"][WikidataProperties.FlickrUserId]},
+                )
+            ):
+                actions.append(
+                    ReplaceStatement(
+                        property_id=property_id,
+                        action="replace_statement",
+                        statement_id=statement["id"],
+                        statement=new_statement,
+                    )
+                )
+                break
+            # fmt: on
 
             # If the existing statement has the same mainsnak and a subset
             # of the qualifiers, then we need to update it.
