@@ -13,6 +13,7 @@ How it works:
 
 """
 
+import collections
 from typing import TypedDict
 
 import bs4
@@ -22,8 +23,14 @@ from flickr_url_parser import (
     UnrecognisedUrl,
 )
 
+from flickypedia.apis.structured_data import (
+    AmbiguousStructuredData,
+    find_flickr_urls_in_sdc,
+)
+from flickypedia.apis.structured_data.wikidata import WikidataProperties
 from flickypedia.apis.wikimedia import WikimediaApi
 from flickypedia.apis.flickr import FlickrPhotosApi, ResourceNotFound
+from flickypedia.types.structured_data import ExistingClaims
 from .comparisons import urls_have_same_contents
 
 
@@ -138,3 +145,43 @@ def find_flickr_photo_id_from_wikitext(
             return {"photo_id": photo_id, "url": url}
 
     return None
+
+
+def find_flickr_photo_id_from_sdc(sdc: ExistingClaims) -> FindResult | None:
+    """
+    Given the structured data for a file on Wikimedia Commons, guess
+    what Flickr photo ID this is associated with (if any).
+
+    Note: there are a bunch of `assert 0`'s littered through this code,
+    which are branches I haven't tested because I haven't encountered
+    them in practice yet.  If you hit one of these in practice, use it
+    as an example to write a test!
+    """
+    candidates: dict[str, set[str | None]] = collections.defaultdict(set)
+
+    # Look for Flickr URLs in the "Source" field.
+    for url, parsed_url in find_flickr_urls_in_sdc(sdc):
+        if parsed_url["type"] == "single_photo":
+            candidates[parsed_url["photo_id"]].add(url)
+        else:
+            raise AmbiguousStructuredData(f"Ambiguous Flickr URL: {url}")
+
+    # Look for a photo ID in the "Flickr Photo ID" field.
+    for statement in sdc.get(WikidataProperties.FlickrPhotoId, []):
+        if statement["mainsnak"]["datavalue"]["type"] == "string":
+            photo_id = statement["mainsnak"]["datavalue"]["value"]
+            candidates[photo_id].add(None)
+
+    if len(candidates) > 1:
+        raise ValueError(f"Ambiguous set of Flickr photo IDs: {candidates}")
+
+    if not candidates:
+        return None
+
+    photo_id = list(candidates.keys())[0]
+
+    if candidates[photo_id] == {None}:
+        return {"photo_id": photo_id, "url": None}
+    else:
+        candidates[photo_id].discard(None)
+        return {"photo_id": photo_id, "url": candidates[photo_id].pop()}

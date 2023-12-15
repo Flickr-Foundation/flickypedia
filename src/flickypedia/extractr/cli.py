@@ -5,10 +5,8 @@ import click
 import httpx
 import tqdm
 
-from flickypedia.apis.structured_data import (
-    AmbiguousStructuredData,
-    find_flickr_photo_id,
-)
+from flickypedia.backfillr.flickr_matcher import find_flickr_photo_id_from_sdc
+from flickypedia.apis.structured_data import AmbiguousStructuredData
 from flickypedia.apis.snapshots import parse_sdc_snapshot
 from flickypedia.apis.wikimedia import WikimediaApi
 
@@ -46,14 +44,14 @@ def get_list_of_photos(snapshot_path: str) -> None:
 
         for entry in tqdm.tqdm(parse_sdc_snapshot(snapshot_path)):
             try:
-                flickr_photo_id = find_flickr_photo_id(sdc=entry["statements"])
+                flickr_photo_id = find_flickr_photo_id_from_sdc(sdc=entry["statements"])
             except AmbiguousStructuredData:
                 fresh_sdc = api.get_structured_data(
                     filename=entry["title"].replace("File:", "")
                 )
 
                 try:
-                    flickr_photo_id = find_flickr_photo_id(sdc=fresh_sdc)
+                    flickr_photo_id = find_flickr_photo_id_from_sdc(sdc=fresh_sdc)
                 except AmbiguousStructuredData as exc:
                     print(
                         f'Ambiguity in https://commons.wikimedia.org/?curid={entry["pageid"]}: {exc}'

@@ -9,10 +9,6 @@ from .wikidata import WikidataEntities, WikidataProperties, to_wikidata_entity_v
 from flickypedia.types.structured_data import ExistingClaims, ExistingStatement, Snak
 
 
-class AmbiguousStructuredData(Exception):
-    pass
-
-
 def get_single_qualifier(
     statement: ExistingStatement, *, property_id: str
 ) -> Snak | None:
@@ -54,7 +50,11 @@ def get_single_qualifier(
     return snak_list[0]
 
 
-def find_flickr_urls(sdc: ExistingClaims) -> list[tuple[str, ParseResult]]:
+class AmbiguousStructuredData(Exception):
+    pass
+
+
+def find_flickr_urls_in_sdc(sdc: ExistingClaims) -> list[tuple[str, ParseResult]]:
     """
     Return a list of Flickr URLs which were found in the SDC.
 
@@ -100,35 +100,3 @@ def find_flickr_urls(sdc: ExistingClaims) -> list[tuple[str, ParseResult]]:
                 result.append((value, parsed_url))
 
     return result
-
-
-def find_flickr_photo_id(sdc: ExistingClaims) -> str | None:
-    """
-    Given the structured data for a file on Wikimedia Commons, guess
-    what Flickr photo ID this is associated with (if any).
-
-    Note: there are a bunch of `assert 0`'s littered through this code,
-    which are branches I haven't tested because I haven't encountered
-    them in practice yet.  If you hit one of these in practice, use it
-    as an example to write a test!
-    """
-    candidates = set()
-
-    # Look for Flickr URLs in the "Source" field.
-    for url, parsed_url in find_flickr_urls(sdc):
-        if parsed_url["type"] == "single_photo":
-            candidates.add(parsed_url["photo_id"])
-        else:
-            raise AmbiguousStructuredData(f"Ambiguous Flickr URL: {url}")
-
-    # Look for a photo ID in the "Flickr Photo ID" field.
-    for statement in sdc.get(WikidataProperties.FlickrPhotoId, []):
-        if statement["mainsnak"]["datavalue"]["type"] == "string":
-            candidates.add(statement["mainsnak"]["datavalue"]["value"])
-
-    if len(candidates) == 1:
-        return candidates.pop()
-    elif len(candidates) > 1:
-        raise ValueError(f"Ambiguous set of Flickr photo IDs: {candidates}")
-    else:
-        return None
