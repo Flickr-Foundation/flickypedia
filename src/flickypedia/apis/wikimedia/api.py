@@ -709,6 +709,8 @@ class WikimediaApi:
         except UnknownWikimediaApiException as exc:
             if exc.code == "missingtitle":
                 raise MissingFileException(filename)
+            else:
+                raise
 
         text = resp["parse"]["text"]["*"]
         assert isinstance(text, str)

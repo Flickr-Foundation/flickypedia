@@ -8,8 +8,6 @@ import termcolor
 from flickypedia.apis.flickr import FlickrPhotosApi, ResourceNotFound
 from flickypedia.apis.structured_data import (
     create_sdc_claims_for_existing_flickr_photo,
-    find_flickr_photo_id,
-    find_flickr_urls,
     create_flickr_creator_statement,
     create_flickr_photo_id_statement,
     create_source_data_for_photo,
@@ -20,7 +18,7 @@ from flickypedia.apis.wikimedia import (
     MissingFileException,
 )
 from .actions import create_actions
-from .flickr_matcher import find_flickr_photo_id_from_wikitext
+from .flickr_matcher import find_flickr_photo
 
 
 @click.group(
@@ -52,19 +50,15 @@ def run_with(list_of_filenames: list[str]):
         except MissingFileException:
             existing_sdc = {}
 
-        photo_id = find_flickr_photo_id(existing_sdc)
+        original_photo = find_flickr_photo(
+            wikimedia_api, flickr_api, existing_sdc, filename
+        )
 
-        if photo_id is None:
-            try:
-                photo_id = find_flickr_photo_id_from_wikitext(
-                    wikimedia_api, flickr_api, filename=f"File:{filename}"
-                )
-            except ResourceNotFound as e:
-                pass
-
-        if photo_id is None:
+        if original_photo is None:
             print("Could not find a Flickr photo ID in the existing SDC!")
             continue
+
+        photo_id = original_photo['photo_id']
 
         print(f"Found the Flickr photo ID {photo_id}")
 
@@ -73,100 +67,99 @@ def run_with(list_of_filenames: list[str]):
 
             new_sdc = create_sdc_claims_for_existing_flickr_photo(photo)
         except ResourceNotFound as e:
-            urls = [
-                u
-                for u, parsed_url in find_flickr_urls(existing_sdc)
-                if parsed_url["type"] == "single_photo"
-            ]
+            raise
+            # urls = [
+            #     u
+            #     for u, parsed_url in find_flickr_urls(existing_sdc)
+            #     if parsed_url["type"] == "single_photo"
+            # ]
 
-            print(urls)
+            # print(urls)
+#
+#             if len(urls) == 1 and urls[0].startswith(("https://www.flickr.com/photos/", "http://www.flickr.com/photos/")):
+#                 prefix_len = len("https://www.flickr.com/photos/")
+#                 user_url = (
+#                     "https://www.flickr.com/photos/"
+#                     + urls[0].replace("https://www.flickr.com/photos/", "").replace("http://www.flickr.com/photos/", "").split("/")[0]
+#                     + "/"
+#                 )
+#
+#                 try:
+#                     creator = {
+#                         "https://www.flickr.com/photos/sejmrp/": {
+#                             "id": "141152160@N02",
+#                             "username": "Kancelaria Sejmu",
+#                             "realname": "Sejm RP",
+#                             "photos_url": "https://www.flickr.com/photos/sejmrp/",
+#                             "profile_url": "https://www.flickr.com/people/sejmrp/",
+#                             "path_alias": "sejmrp",
+#                         },
+#                         "https://www.flickr.com/photos/usaidafghanistan/": {
+#                             "id": "49045206@N03",
+#                             "username": "USAID Afghanistan",
+#                             "realname": None,
+#                             "path_alias": "usaidafghanistan",
+#                             "photos_url": "https://www.flickr.com/photos/usaidafghanistan/",
+#                             "profile_url": "https://www.flickr.com/people/usaidafghanistan/",
+#                         },
+#                         "https://www.flickr.com/photos/paukrus/": {
+#                             "id": "26244825@N05",
+#                             "username": "paukrus",
+#                             "realname": None,
+#                             "path_alias": "paukrus",
+#                             "photos_url": "https://www.flickr.com/photos/paukrus/",
+#                             "profile_url": "https://www.flickr.com/people/paukrus/",
+#                         },
+#                         "https://www.flickr.com/photos/tomharpel/": {
+#                             "id": "41894142129@N01",
+#                             "username": "Tom Harpel",
+#                             "realname": None,
+#                             "path_alias": "tomharpel",
+#                             "photos_url": "https://www.flickr.com/photos/tomharpel/",
+#                             "profile_url": "https://www.flickr.com/photos/tomharpel/",
+#                         },
+#                         "https://www.flickr.com/photos/devos/": {
+#                             "id": "44124385307@N01",
+#                             "username": "deVos",
+#                             "realname": "Kees de Vos",
+#                             "path_alias": "devos",
+#                             "photos_url": "https://www.flickr.com/photos/devos/",
+#                             "profile_url": "https://www.flickr.com/people/devos/",
+#                         },
+#                         "https://www.flickr.com/photos/stewart/": {
+#                             "id": "12037949632@N01",
+#                             "username": "Stewart",
+#                             "realname": "Stewart Butterfield",
+#                             "path_alias": "stewart",
+#                             "photos_url": "https://www.flickr.com/photos/stewart/",
+#                             "profile_url": "https://www.flickr.com/people/stewart/",
+#                         },
+#                         "https://www.flickr.com/photos/jpvargas/": {
+#                             "id": "73556205@N00",
+#                             "username": "jpvargas",
+#                             "realname": None,
+#                             "path_alias": "jpvargas",
+#                             "photos_url": "https://www.flickr.com/photos/jpvargas/",
+#                             "profile_url": "https://www.flickr.com/people/jpvargas/"
+#                         },
+#                     }[user_url]
+#                 except KeyError:
+#                     creator = flickr_api.lookup_user_by_url(url=user_url)
+#
+#                 photo_url = f'https://www.flickr.com/photos/{creator["path_alias"] or creator["id"]}/{photo_id}/'
 
-            if len(urls) == 1 and urls[0].startswith(("https://www.flickr.com/photos/", "http://www.flickr.com/photos/")):
-                prefix_len = len("https://www.flickr.com/photos/")
-                user_url = (
-                    "https://www.flickr.com/photos/"
-                    + urls[0].replace("https://www.flickr.com/photos/", "").replace("http://www.flickr.com/photos/", "").split("/")[0]
-                    + "/"
-                )
-
-                try:
-                    creator = {
-                        "https://www.flickr.com/photos/sejmrp/": {
-                            "id": "141152160@N02",
-                            "username": "Kancelaria Sejmu",
-                            "realname": "Sejm RP",
-                            "photos_url": "https://www.flickr.com/photos/sejmrp/",
-                            "profile_url": "https://www.flickr.com/people/sejmrp/",
-                            "path_alias": "sejmrp",
-                        },
-                        "https://www.flickr.com/photos/usaidafghanistan/": {
-                            "id": "49045206@N03",
-                            "username": "USAID Afghanistan",
-                            "realname": None,
-                            "path_alias": "usaidafghanistan",
-                            "photos_url": "https://www.flickr.com/photos/usaidafghanistan/",
-                            "profile_url": "https://www.flickr.com/people/usaidafghanistan/",
-                        },
-                        "https://www.flickr.com/photos/paukrus/": {
-                            "id": "26244825@N05",
-                            "username": "paukrus",
-                            "realname": None,
-                            "path_alias": "paukrus",
-                            "photos_url": "https://www.flickr.com/photos/paukrus/",
-                            "profile_url": "https://www.flickr.com/people/paukrus/",
-                        },
-                        "https://www.flickr.com/photos/tomharpel/": {
-                            "id": "41894142129@N01",
-                            "username": "Tom Harpel",
-                            "realname": None,
-                            "path_alias": "tomharpel",
-                            "photos_url": "https://www.flickr.com/photos/tomharpel/",
-                            "profile_url": "https://www.flickr.com/photos/tomharpel/",
-                        },
-                        "https://www.flickr.com/photos/devos/": {
-                            "id": "44124385307@N01",
-                            "username": "deVos",
-                            "realname": "Kees de Vos",
-                            "path_alias": "devos",
-                            "photos_url": "https://www.flickr.com/photos/devos/",
-                            "profile_url": "https://www.flickr.com/people/devos/",
-                        },
-                        "https://www.flickr.com/photos/stewart/": {
-                            "id": "12037949632@N01",
-                            "username": "Stewart",
-                            "realname": "Stewart Butterfield",
-                            "path_alias": "stewart",
-                            "photos_url": "https://www.flickr.com/photos/stewart/",
-                            "profile_url": "https://www.flickr.com/people/stewart/",
-                        },
-                        "https://www.flickr.com/photos/jpvargas/": {
-                            "id": "73556205@N00",
-                            "username": "jpvargas",
-                            "realname": None,
-                            "path_alias": "jpvargas",
-                            "photos_url": "https://www.flickr.com/photos/jpvargas/",
-                            "profile_url": "https://www.flickr.com/people/jpvargas/"
-                        },
-                    }[user_url]
-                except KeyError:
-                    creator = flickr_api.lookup_user_by_url(url=user_url)
-
-                photo_url = f'https://www.flickr.com/photos/{creator["path_alias"] or creator["id"]}/{photo_id}/'
-
-                new_sdc = {
-                    "claims": [
-                        create_flickr_photo_id_statement(photo_id=photo_id),
-                        create_flickr_creator_statement(user=creator),
-                        create_source_data_for_photo(
-                            photo_id=photo_id,
-                            photo_url=photo_url,
-                            original_url=None,
-                            retrieved_at=None,
-                        ),
-                    ]
-                }
-            else:
-                raise
+            new_sdc = {
+                "claims": [
+                    create_flickr_photo_id_statement(photo_id=photo_id),
+                    create_flickr_creator_statement(user=creator),
+                    create_source_data_for_photo(
+                        photo_id=photo_id,
+                        photo_url=photo_url,
+                        original_url=None,
+                        retrieved_at=None,
+                    ),
+                ]
+            }
 
         actions = create_actions(existing_sdc, new_sdc)
 
