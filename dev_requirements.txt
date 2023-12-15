@@ -15,7 +15,9 @@ anyio==4.0.0
 authlib==1.2.1
     # via -r requirements.txt
 beautifulsoup4==4.12.2
-    # via bs4
+    # via
+    #   -r requirements.txt
+    #   bs4
 black==23.10.0
     # via -r dev_requirements.in
 blinker==1.7.0
@@ -23,7 +25,9 @@ blinker==1.7.0
     #   -r requirements.txt
     #   flask
 bs4==0.0.1
-    # via -r dev_requirements.in
+    # via
+    #   -r dev_requirements.in
+    #   -r requirements.txt
 build==1.0.3
     # via pip-tools
 certifi==2023.7.22
@@ -175,7 +179,9 @@ sniffio==1.3.0
     #   anyio
     #   httpx
 soupsieve==2.5
-    # via beautifulsoup4
+    # via
+    #   -r requirements.txt
+    #   beautifulsoup4
 sqlalchemy==2.0.23
     # via
     #   -r requirements.txt

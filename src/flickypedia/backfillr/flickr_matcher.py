@@ -13,6 +13,7 @@ How it works:
 
 """
 
+import bs4
 from flickr_url_parser import (
     find_flickr_urls_in_text,
     parse_flickr_url,
@@ -21,8 +22,24 @@ from flickr_url_parser import (
 )
 
 from flickypedia.apis.wikimedia import WikimediaApi
-from flickypedia.apis.flickr import FlickrPhotosApi
+from flickypedia.apis.flickr import FlickrPhotosApi, ResourceNotFound
 from .comparisons import urls_have_same_contents
+
+
+def get_flickr_photo_id_from_url(url: str) -> str | None:
+    """
+    Given a URL, return the photo ID (if it points to a Flickr photo)
+    or None otherwise.
+    """
+    try:
+        parsed_url = parse_flickr_url(url)
+    except (NotAFlickrUrl, UnrecognisedUrl):
+        return None
+    else:
+        if parsed_url['type'] == 'single_photo':
+            return parsed_url['photo_id']
+        else:
+            return None
 
 
 def find_flickr_photo_id_from_wikitext(
@@ -37,24 +54,65 @@ def find_flickr_photo_id_from_wikitext(
     """
     wikitext = wikimedia_api.get_wikitext(filename)
 
-    candidates = set()
+    soup = bs4.BeautifulSoup(wikitext, "html.parser")
 
-    for url in find_flickr_urls_in_text(wikitext):
-        try:
-            parsed_url = parse_flickr_url(url)
-        except (NotAFlickrUrl, UnrecognisedUrl):
-            continue
+    information_template = soup.find("table", attrs={"class": "fileinfotpl-type-information"})
 
-        if parsed_url["type"] == "single_photo":
-            candidates.add(parsed_url["photo_id"])
+    # Look for an Information table in the Wikitext.
+    #
+    # This may link to the Flickr photo in the "Source" field.  Here's
+    # an example of what this table should look like:
+    #
+    #     <table class="fileinfotpl-type-information">
+    #       …
+    #       <tr>
+    #         <td id="fileinfotpl_src" class="fileinfo-paramfield" lang="en">Source</td>
+    #         <td>
+    #           <a rel="nofollow" href="http://www.flickr.com/photos/stewart/253009/">Flickr</a>
+    #         </td>
+    #       </tr>
+    #
+    information_source_elems = soup.find_all("td", attrs={"id": "fileinfotpl_src"})
+
+    if len(information_source_elems) == 1:
+        information_source_td = information_source_elems[0]
+
+        row = information_source_td.parent
+
+        # Now look for a single <a> tag inside the <td>.  We look at
+        # the href attribute, because the text is sometimes a human-readable
+        # label rather than the URL.
+        anchor_tags = row.find_all("a")
+
+        if len(anchor_tags) == 1:
+            url = anchor_tags[0].attrs['href']
+
+            photo_id = get_flickr_photo_id_from_url(url)
+            if photo_id is not None:
+                return photo_id
+
+    # Then look for all the Flickr URLs, and try to find a URL which has
+    # a JPEG that matches the file in Wikimedia Commons.
+    #
+    # We can look for the URLs in all the anchor tags.
+    candidates = set(
+        get_flickr_photo_id_from_url(a_tag.attrs['href'])
+        for a_tag in soup.find_all("a")
+    )
+
+    candidates.discard(None)
 
     for photo_id in sorted(candidates):
-        photo = flickr_api.get_single_photo(photo_id=photo_id)
+        try:
+            photo = flickr_api.get_single_photo(photo_id=photo_id)
+        except ResourceNotFound:
+            continue
 
         try:
             original_size = [s for s in photo["sizes"] if s["label"] == "Original"][0]
         except IndexError:
-            return None
+            assert 0
+            continue
 
         flickr_url = original_size["source"]
         wikimedia_url = wikimedia_api.get_image_url(filename)

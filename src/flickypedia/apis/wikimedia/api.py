@@ -669,43 +669,15 @@ class WikimediaApi:
         """
         assert filename.startswith("File:")
 
-        resp = self.client.request(
-            "GET",
-            url="https://commons.wikimedia.org/w/api.php",
+        resp = self._get(
             params={
-                "action": "query",
-                "format": "xml",
-                "prop": "revisions",
-                "titles": filename,
-                "rvslots": "*",
-                "rvprop": "content",
+                "action": "parse",
+                "page": filename,
+                "prop": "text",
             },
         )
 
-        resp.raise_for_status()
-
-        xml = ET.fromstring(resp.text)
-
-        # The rough shape of the response is:
-        #
-        #     <?xml version="1.0"?>
-        #     <api batchcomplete="">
-        #       <query>
-        #         <pages>
-        #           <page pageid="135569232" …>
-        #             <revisions>
-        #               <rev>
-        #                 <slots>
-        #                   <slot contentmodel="wikitext"…>
-        #                     =={{int:filedesc}}==
-        #
-        # We want the contents of that <slot>.
-        page = find_required_elem(xml, path=".//page")
-
-        if "missing" in page.attrib:
-            raise MissingFileException(filename)
-        else:
-            return find_required_text(page, path=".//slot")
+        return resp["parse"]["text"]["*"]
 
     def get_image_url(self, filename: str) -> str:
         """

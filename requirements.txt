@@ -10,8 +10,12 @@ anyio==4.0.0
     # via httpx
 authlib==1.2.1
     # via -r requirements.in
+beautifulsoup4==4.12.2
+    # via bs4
 blinker==1.7.0
     # via flask
+bs4==0.0.1
+    # via -r requirements.in
 certifi==2023.7.22
     # via
     #   httpcore
@@ -88,6 +92,8 @@ sniffio==1.3.0
     # via
     #   anyio
     #   httpx
+soupsieve==2.5
+    # via beautifulsoup4
 sqlalchemy==2.0.23
     # via flask-sqlalchemy
 tqdm==4.66.1

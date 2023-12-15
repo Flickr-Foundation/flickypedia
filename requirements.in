@@ -1,4 +1,5 @@
 authlib
+bs4
 click
 cryptography
 flask
