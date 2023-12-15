@@ -5,8 +5,10 @@ import click
 import httpx
 import tqdm
 
-from flickypedia.backfillr.flickr_matcher import find_flickr_photo_id_from_sdc
-from flickypedia.apis.structured_data import AmbiguousStructuredData
+from flickypedia.backfillr.flickr_matcher import (
+    AmbiguousStructuredData,
+    find_flickr_photo_id_from_sdc,
+)
 from flickypedia.apis.snapshots import parse_sdc_snapshot
 from flickypedia.apis.wikimedia import WikimediaApi
 
