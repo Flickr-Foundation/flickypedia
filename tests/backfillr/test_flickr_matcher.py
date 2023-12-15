@@ -110,6 +110,12 @@ from utils import get_typed_fixture
                 "url": "https://www.flickr.com/photos/metalphoenix/3874334/",
             },
         ),
+        #
+        # Another Flickr URL in the Wikitext, where the link label
+        # is just "Flickr".
+        (
+        "Wild-wadi.jpg", {"photo_id": "4101549", "url": "https://www.flickr.com/photos/saudi/4101549/"}
+        )
     ],
 )
 def test_find_flickr_photo_id_from_wikitext(
