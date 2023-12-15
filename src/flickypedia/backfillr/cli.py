@@ -70,11 +70,13 @@ def run_with(list_of_filenames: list[str]):
             if original_photo['url'] is None:
                 raise
 
-            if original_photo['url'].startswith(("https://www.flickr.com/photos/", "http://www.flickr.com/photos/")):
+            print(original_photo['url'])
+
+            if original_photo['url'].startswith(("https://www.flickr.com/photos/", "http://www.flickr.com/photos/", "https://flickr.com/photos/")):
                 prefix_len = len("https://www.flickr.com/photos/")
                 user_url = (
                     "https://www.flickr.com/photos/"
-                    + original_photo['url'].replace("https://www.flickr.com/photos/", "").replace("http://www.flickr.com/photos/", "").split("/")[0]
+                    + original_photo['url'].replace("https://www.flickr.com/photos/", "").replace("http://www.flickr.com/photos/", "").replace("https://flickr.com/photos/", "").split("/")[0]
                     + "/"
                 )
 
@@ -136,6 +138,14 @@ def run_with(list_of_filenames: list[str]):
                             "photos_url": "https://www.flickr.com/photos/jpvargas/",
                             "profile_url": "https://www.flickr.com/people/jpvargas/"
                         },
+                        "https://www.flickr.com/photos/eugeniayjulian/": {
+                            "id": "41574033@N00",
+                            "username": "Eugenia_y_Julian",
+                            "realname": None,
+                            "path_alias": "eugeniayjulian",
+                            "photos_url": "https://www.flickr.com/photos/eugeniayjulian/",
+                            "profile_url": "https://www.flickr.com/people/eugeniayjulian/"
+                        }
                     }[user_url]
                 except KeyError:
                     creator = flickr_api.lookup_user_by_url(url=user_url)
