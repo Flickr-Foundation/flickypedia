@@ -30,6 +30,19 @@ from flickypedia.types.structured_data import ExistingClaims, ExistingStatement,
 from .comparisons import urls_have_same_contents
 
 
+def pick_best_url(urls: set[str | None]) -> str:
+    """
+    Given a list of URLs which all represent the same Flickr photo,
+    pick the "best" one.
+    """
+    string_urls = {u for u in urls if u is not None}
+    assert len(string_urls) > 0
+
+    # We sort alphabetically and pick the last one, which prioritises
+    # URLs from www.flickr.com over the various staticflickr.com subdomains.
+    return sorted(string_urls)[-1]
+
+
 class FindResult(TypedDict):
     photo_id: str
     url: str | None
@@ -272,8 +285,7 @@ def find_flickr_photo_id_from_sdc(sdc: ExistingClaims) -> FindResult | None:
     if candidates[photo_id] == {None}:
         return {"photo_id": photo_id, "url": None}
     else:
-        candidates[photo_id].discard(None)
-        return {"photo_id": photo_id, "url": candidates[photo_id].pop()}
+        return {"photo_id": photo_id, "url": pick_best_url(candidates[photo_id])}
 
 
 def find_flickr_photo(
