@@ -79,13 +79,17 @@ def run_with(list_of_filenames: list[str]):
                 if parsed_url["type"] == "single_photo"
             ]
 
-            if len(urls) == 1 and urls[0].startswith("https://www.flickr.com/photos/"):
+            print(urls)
+
+            if len(urls) == 1 and urls[0].startswith(("https://www.flickr.com/photos/", "http://www.flickr.com/photos/")):
                 prefix_len = len("https://www.flickr.com/photos/")
                 user_url = (
                     "https://www.flickr.com/photos/"
-                    + urls[0][prefix_len:].split("/")[0]
+                    + urls[0].replace("https://www.flickr.com/photos/", "").replace("http://www.flickr.com/photos/", "").split("/")[0]
                     + "/"
                 )
+
+
 
                 try:
                     creator = {
@@ -137,9 +141,17 @@ def run_with(list_of_filenames: list[str]):
                             "photos_url": "https://www.flickr.com/photos/stewart/",
                             "profile_url": "https://www.flickr.com/people/stewart/",
                         },
+                        "https://www.flickr.com/photos/jpvargas/": {
+                            "id": "73556205@N00",
+                            "username": "jpvargas",
+                            "realname": None,
+                            "path_alias": "jpvargas",
+                            "photos_url": "https://www.flickr.com/photos/jpvargas/",
+                            "profile_url": "https://www.flickr.com/people/jpvargas/"
+                        },
                     }[user_url]
                 except KeyError:
-                    raise
+                    creator = flickr_api.lookup_user_by_url(url=user_url)
 
                 photo_url = f'https://www.flickr.com/photos/{creator["path_alias"] or creator["id"]}/{photo_id}/'
 
