@@ -18,7 +18,7 @@ import httpx
 from flickypedia.types import validate_typeddict
 from flickypedia.types.structured_data import ExistingClaims, NewClaims
 from flickypedia.types.wikimedia import UserInfo, ShortCaption, TitleValidation
-from flickypedia.utils import find_required_elem, find_required_text
+from flickypedia.utils import find_required_elem
 from .exceptions import (
     WikimediaApiException,
     UnknownWikimediaApiException,
@@ -669,43 +669,22 @@ class WikimediaApi:
         """
         assert filename.startswith("File:")
 
-        resp = self.client.request(
-            "GET",
-            url="https://commons.wikimedia.org/w/api.php",
-            params={
-                "action": "query",
-                "format": "xml",
-                "prop": "revisions",
-                "titles": filename,
-                "rvslots": "*",
-                "rvprop": "content",
-            },
-        )
+        try:
+            resp = self._get(
+                params={
+                    "action": "parse",
+                    "page": filename,
+                    "prop": "text",
+                },
+            )
+        except UnknownWikimediaApiException as exc:
+            if exc.code == "missingtitle":
+                raise MissingFileException(filename)
 
-        resp.raise_for_status()
+        text = resp["parse"]["text"]["*"]
+        assert isinstance(text, str)
 
-        xml = ET.fromstring(resp.text)
-
-        # The rough shape of the response is:
-        #
-        #     <?xml version="1.0"?>
-        #     <api batchcomplete="">
-        #       <query>
-        #         <pages>
-        #           <page pageid="135569232" …>
-        #             <revisions>
-        #               <rev>
-        #                 <slots>
-        #                   <slot contentmodel="wikitext"…>
-        #                     =={{int:filedesc}}==
-        #
-        # We want the contents of that <slot>.
-        page = find_required_elem(xml, path=".//page")
-
-        if "missing" in page.attrib:
-            raise MissingFileException(filename)
-        else:
-            return find_required_text(page, path=".//slot")
+        return text
 
     def get_image_url(self, filename: str) -> str:
         """

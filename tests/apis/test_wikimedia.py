@@ -359,7 +359,7 @@ def test_get_wikitext(wikimedia_api: WikimediaApi) -> None:
     )
 
     with open(
-        "tests/fixtures/wikitext/The_main_Flickr_photo_storage_server.txt"
+        "tests/fixtures/wikitext/The_main_Flickr_photo_storage_server.html"
     ) as infile:
         expected = infile.read()
 

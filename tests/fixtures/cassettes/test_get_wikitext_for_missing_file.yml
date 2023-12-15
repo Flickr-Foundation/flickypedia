@@ -13,10 +13,12 @@ interactions:
       user-agent:
       - python-httpx/0.25.1
     method: GET
-    uri: https://commons.wikimedia.org/w/api.php?action=query&format=xml&prop=revisions&titles=File%3ADefinitelyDoesNotExist.jpg&rvslots=%2A&rvprop=content
+    uri: https://commons.wikimedia.org/w/api.php?action=parse&page=File%3ADefinitelyDoesNotExist.jpg&prop=text&format=json
   response:
-    content: <?xml version="1.0"?><api batchcomplete=""><query><pages><page _idx="-1"
-      ns="6" title="File:DefinitelyDoesNotExist.jpg" missing="" /></pages></query></api>
+    content: '{"error":{"code":"missingtitle","info":"The page you specified doesn''t
+      exist.","*":"See https://commons.wikimedia.org/w/api.php for API usage. Subscribe
+      to the mediawiki-api-announce mailing list at &lt;https://lists.wikimedia.org/postorius/lists/mediawiki-api-announce.lists.wikimedia.org/&gt;
+      for notice of API deprecations and breaking changes."},"servedby":"mw1392"}'
     headers:
       accept-ranges:
       - bytes
@@ -25,13 +27,15 @@ interactions:
       cache-control:
       - private, must-revalidate, max-age=0
       content-disposition:
-      - inline; filename=api-result.xml
+      - inline; filename=api-result.json
       content-length:
-      - '155'
+      - '370'
       content-type:
-      - text/xml; charset=utf-8
+      - application/json; charset=utf-8
       date:
-      - Thu, 14 Dec 2023 13:54:54 GMT
+      - Fri, 15 Dec 2023 14:12:42 GMT
+      mediawiki-api-error:
+      - missingtitle
       nel:
       - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
         0.0}'
@@ -39,18 +43,18 @@ interactions:
       - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
         }] }'
       server:
-      - mw1448.eqiad.wmnet
+      - mw1392.eqiad.wmnet
       server-timing:
       - cache;desc="pass", host;desc="cp3066"
       set-cookie:
-      - WMF-Last-Access=14-Dec-2023;Path=/;HttpOnly;secure;Expires=Mon, 15 Jan 2024
+      - WMF-Last-Access=15-Dec-2023;Path=/;HttpOnly;secure;Expires=Tue, 16 Jan 2024
         12:00:00 GMT
-      - GeoIP=GB:ENG:Southwark:51.50:-0.09:v4; Path=/; secure; Domain=.wikimedia.org
+      - GeoIP=GB:ENG:Southwark:51.50:-0.07:v4; Path=/; secure; Domain=.wikimedia.org
       - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
       strict-transport-security:
       - max-age=106384710; includeSubDomains; preload
       vary:
-      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie
+      - Accept-Encoding
       x-cache:
       - cp3066 miss, cp3066 pass
       x-cache-status:

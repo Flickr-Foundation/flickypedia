@@ -1,11 +1,12 @@
 authlib
+bs4
 click
 cryptography
 flask
 flask-login
 flask-wtf
 Flask-SQLAlchemy
-flickr-url-parser>=1.6.0
+flickr-url-parser>=1.6.1
 gunicorn
 httpx
 keyring

@@ -13,18 +13,170 @@ interactions:
       user-agent:
       - python-httpx/0.25.1
     method: GET
-    uri: https://commons.wikimedia.org/w/api.php?action=query&format=xml&prop=revisions&titles=File%3AThe%20main%20Flickr%20photo%20storage%20server.jpg&rvslots=%2A&rvprop=content
+    uri: https://commons.wikimedia.org/w/api.php?action=parse&page=File%3AThe%20main%20Flickr%20photo%20storage%20server.jpg&prop=text&format=json
   response:
-    content: "<?xml version=\"1.0\"?><api batchcomplete=\"\"><query><pages><page _idx=\"329391\"
-      pageid=\"329391\" ns=\"6\" title=\"File:The main Flickr photo storage server.jpg\"><revisions><rev><slots><slot
-      contentmodel=\"wikitext\" contentformat=\"text/x-wiki\" role=\"main\" xml:space=\"preserve\">{{Information\n|Description
-      = {{en|The main [[:en:Flickr|Flickr]] photo storage server: 8 x 250 GB ATA drives
-      in Raid 10 for 1 TB of usable storage.}}\n|Source      = https://www.flickr.com/photos/12037949632\n|Date
-      \       = 2004-02-08 03:22:13\n|Author      = [https://www.flickr.com/photos/12037949632@N01
-      Stewart Butterfield] from San Francisco, USA\n|Permission  = {{Cc-by-1.0}}\n{{flickrreview|FlickrLickr|5
-      June 2007|changed=}}\n|other_versions = \n}}\n\n\n[[Category:Server hardware]]\n[[Category:FlickrLickr
-      images]]\n[[Category:Files from Flickr| ]]</slot><slot contentmodel=\"wikibase-mediainfo\"
-      contentformat=\"application/json\" role=\"mediainfo\" xml:space=\"preserve\">{\"type\":\"mediainfo\",\"id\":\"M329391\",\"labels\":[],\"descriptions\":[],\"statements\":{\"P571\":[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P571\",\"hash\":\"7cbf61f89f5d961653632dbe4a872f9b213f4d64\",\"datavalue\":{\"value\":{\"time\":\"+2004-02-08T00:00:00Z\",\"timezone\":0,\"before\":0,\"after\":0,\"precision\":11,\"calendarmodel\":\"http:\\/\\/www.wikidata.org\\/entity\\/Q1985727\"},\"type\":\"time\"}},\"type\":\"statement\",\"id\":\"M329391$B1C7F746-31FD-49AE-A60F-7040215A493F\",\"rank\":\"normal\"}],\"P275\":[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P275\",\"hash\":\"018d38b0e8013d912434b491da7e648f05efeef7\",\"datavalue\":{\"value\":{\"entity-type\":\"item\",\"numeric-id\":30942811,\"id\":\"Q30942811\"},\"type\":\"wikibase-entityid\"}},\"type\":\"statement\",\"id\":\"M329391$5DAE015C-CE93-41A2-9A97-3587DF705BF9\",\"rank\":\"normal\"}],\"P6216\":[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P6216\",\"hash\":\"5570347fdc76d2a80732f51ea10ee4b144a084e0\",\"datavalue\":{\"value\":{\"entity-type\":\"item\",\"numeric-id\":50423863,\"id\":\"Q50423863\"},\"type\":\"wikibase-entityid\"}},\"type\":\"statement\",\"id\":\"M329391$EBB9C8B2-1823-43C1-9CA3-98447D8920B1\",\"rank\":\"normal\"}]}}</slot></slots></rev></revisions></page></pages></query></api>"
+    content: '{"parse":{"title":"File:The main Flickr photo storage server.jpg","pageid":329391,"text":{"*":"<div
+      class=\"mw-content-ltr mw-parser-output\" lang=\"en\" dir=\"ltr\"><div class=\"hproduct
+      commons-file-information-table\">\n<style data-mw-deduplicate=\"TemplateStyles:r773143704\">.mw-parser-output
+      table.commons-file-information-table,.mw-parser-output .fileinfotpl-type-information,.mw-parser-output
+      .fileinfotpl-type-artwork{border:1px solid #a2a9b1;background-color:#f8f9fa;padding:5px;font-size:95%;border-spacing:2px;box-sizing:border-box;margin:0;width:100%}.mw-parser-output
+      table.commons-file-information-table>tbody>tr,.mw-parser-output .fileinfotpl-type-information>tbody>tr,.mw-parser-output
+      .fileinfotpl-type-artwork>tbody>tr{vertical-align:top}.mw-parser-output table.commons-file-information-table>tbody>tr>td,.mw-parser-output
+      table.commons-file-information-table>tbody>tr>th,.mw-parser-output .fileinfotpl-type-information>tbody>tr>td,.mw-parser-output
+      .fileinfotpl-type-information>tbody>tr>th,.mw-parser-output .fileinfotpl-type-artwork>tbody>tr>td,.mw-parser-output
+      .fileinfotpl-type-artwork>tbody>tr>th{padding:4px}.mw-parser-output .fileinfo-paramfield{background:#ccf;text-align:right;padding-right:0.4em;width:15%;font-weight:bold}.mw-parser-output
+      .commons-file-information-table+table.commons-file-information-table,.mw-parser-output
+      .commons-file-information-table+div.commons-file-information-table>table{border-top:0;padding-top:0;margin-top:-8px}@media
+      only screen and (max-width:719px){.mw-parser-output table.commons-file-information-table,.mw-parser-output
+      .commons-file-information-table .fileinfotpl-type-information,.mw-parser-output
+      .commons-file-information-table .fileinfotpl-type-artwork{border-spacing:0;padding:0;word-break:break-word;width:100%!important}.mw-parser-output
+      .commons-file-information-table>tbody,.mw-parser-output .fileinfotpl-type-information>tbody,.mw-parser-output
+      .fileinfotpl-type-artwork>tbody{display:block}.mw-parser-output .commons-file-information-table>tbody>tr>td,.mw-parser-output
+      .commons-file-information-table>tbody>tr>th,.mw-parser-output .fileinfotpl-type-information>tbody>tr>td,.mw-parser-output
+      .fileinfotpl-type-information>tbody>tr>th,.mw-parser-output .fileinfotpl-type-artwork>tbody>tr>td,.mw-parser-output
+      .fileinfotpl-type-artwork>tbody>tr>th{padding:0.2em 0.4em;text-align:left;text-align:start}.mw-parser-output
+      .commons-file-information-table>tbody>tr,.mw-parser-output .fileinfotpl-type-information>tbody>tr,.mw-parser-output
+      .fileinfotpl-type-artwork>tbody>tr{display:flex;flex-direction:column}.mw-parser-output
+      .commons-file-information-table+table.commons-file-information-table,.mw-parser-output
+      .commons-file-information-table+div.commons-file-information-table>table{margin-top:-1px}.mw-parser-output
+      .fileinfo-paramfield{box-sizing:border-box;flex:1 0 100%;width:100%}}</style>\n<table
+      class=\"fileinfotpl-type-information vevent mw-content-ltr\" style=\"direction:
+      ltr;\">\n\n<tbody><tr>\n<td id=\"fileinfotpl_desc\" class=\"fileinfo-paramfield\"
+      lang=\"en\">Description<span class=\"summary fn\" style=\"display:none\">The
+      main Flickr photo storage server.jpg</span></td>\n<td class=\"description\">\n<div
+      class=\"description mw-content-ltr en\" dir=\"ltr\" lang=\"en\"><span class=\"language
+      en\" title=\"English\"><b>English&#58; </b></span> The main <a href=\"https://en.wikipedia.org/wiki/Flickr\"
+      class=\"extiw\" title=\"en:Flickr\">Flickr</a> photo storage server: 8 x 250
+      GB ATA drives in Raid 10 for 1 TB of usable storage.</div></td>\n</tr>\n\n<tr>\n<td
+      id=\"fileinfotpl_date\" class=\"fileinfo-paramfield\" lang=\"en\">Date</td>\n<td
+      lang=\"en\">\n<time class=\"dtstart\" datetime=\"2004-02-08 03:22:13\" lang=\"en\"
+      dir=\"ltr\" style=\"white-space:nowrap\">8 February 2004, 03:22:13</time></td>\n</tr>\n\n<tr>\n<td
+      id=\"fileinfotpl_src\" class=\"fileinfo-paramfield\" lang=\"en\">Source</td>\n<td>\n<a
+      rel=\"nofollow\" class=\"external free\" href=\"https://www.flickr.com/photos/12037949632\">https://www.flickr.com/photos/12037949632</a></td>\n</tr>\n\n<tr>\n<td
+      id=\"fileinfotpl_aut\" class=\"fileinfo-paramfield\" lang=\"en\">Author</td>\n<td>\n<a
+      rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/photos/12037949632@N01\">Stewart
+      Butterfield</a> from San Francisco, USA</td>\n</tr>\n\n<tr>\n<td id=\"fileinfotpl_perm\"
+      class=\"fileinfo-paramfield\" lang=\"en\">Permission<br /><small>(<a href=\"/wiki/Commons:Reusing_content_outside_Wikimedia\"
+      title=\"Commons:Reusing content outside Wikimedia\">Reusing this file</a>)</small></td>\n<td>\n<style
+      data-mw-deduplicate=\"TemplateStyles:r666199556\">.mw-parser-output .responsive-license-cc{clear:both;text-align:center;box-sizing:border-box;width:100%;justify-content:space-around;align-items:center;margin:0.5em
+      auto;background-color:#f9f9f9;border:2px solid #e0e0e0;border-spacing:8px;display:flex}.mw-parser-output
+      .responsive-license-cc div{margin:4px}.mw-parser-output .rlicense-text div{margin:0.5em
+      auto}@media screen and (max-width:640px){.mw-parser-output .responsive-license-cc{flex-flow:column}.mw-parser-output
+      .rlicense-text{order:1}}</style><div class=\"responsive-license-cc layouttemplate
+      licensetpl mw-content-ltr\" lang=\"en\"><div class=\"rlicense-icons\"><span
+      typeof=\"mw:File\"><span title=\"w:en:Creative Commons\"><img alt=\"w:en:Creative
+      Commons\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/CC_some_rights_reserved.svg/90px-CC_some_rights_reserved.svg.png\"
+      decoding=\"async\" width=\"90\" height=\"36\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/CC_some_rights_reserved.svg/135px-CC_some_rights_reserved.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/CC_some_rights_reserved.svg/180px-CC_some_rights_reserved.svg.png
+      2x\" data-file-width=\"744\" data-file-height=\"300\" /></span></span><br />\n<span
+      typeof=\"mw:File\"><span title=\"attribution\"><img alt=\"attribution\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Cc-by_new_white.svg/24px-Cc-by_new_white.svg.png\"
+      decoding=\"async\" width=\"24\" height=\"24\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Cc-by_new_white.svg/36px-Cc-by_new_white.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Cc-by_new_white.svg/48px-Cc-by_new_white.svg.png
+      2x\" data-file-width=\"64\" data-file-height=\"64\" /></span></span></div><div
+      class=\"rlicense-text\"><div class=\"rlicense-declaration\">This file is licensed
+      under the <a href=\"https://en.wikipedia.org/wiki/en:Creative_Commons\" class=\"extiw\"
+      title=\"w:en:Creative Commons\">Creative Commons</a> <a rel=\"nofollow\" class=\"external
+      text\" href=\"https://creativecommons.org/licenses/by/1.0/deed.en\">Attribution
+      1.0 Generic</a> license.</div><div class=\"rlicense-desc\" style=\"text-align:left;\"
+      lang=\"en\">\n<dl><dd>You are free:\n<ul><li><b>to share</b> \u2013 to copy,
+      distribute and transmit the work</li>\n<li><b>to remix</b> \u2013 to adapt the
+      work</li></ul></dd>\n<dd>Under the following conditions:\n<ul><li><b>attribution</b>
+      \u2013 You must give appropriate credit, provide a link to the license, and
+      indicate if changes were made. You may do so in any reasonable manner, but not
+      in any way that suggests the licensor endorses you or your use.</li></ul></dd></dl>\n</div><span
+      class=\"licensetpl_link\" style=\"display:none;\">https://creativecommons.org/licenses/by/1.0</span><span
+      class=\"licensetpl_short\" style=\"display:none;\">CC BY 1.0 </span><span class=\"licensetpl_long\"
+      style=\"display:none;\">Creative Commons Attribution 1.0 </span><span class=\"licensetpl_link_req\"
+      style=\"display:none;\">true</span><span class=\"licensetpl_attr_req\" style=\"display:none;\">true</span></div></div>\n<table
+      id=\"FlickrReview\" class=\"layouttemplate\" style=\"width:100%; margin:0.5em
+      auto; background: #eeffee; padding: 5px; border: 1px solid #aaaa88; direction:
+      ltr;\" lang=\"en\">\n\n<tbody><tr>\n<td><span typeof=\"mw:File\"><span><img
+      src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Checked_copyright_icon.svg/50px-Checked_copyright_icon.svg.png\"
+      decoding=\"async\" width=\"50\" height=\"48\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Checked_copyright_icon.svg/75px-Checked_copyright_icon.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Checked_copyright_icon.svg/100px-Checked_copyright_icon.svg.png
+      2x\" data-file-width=\"160\" data-file-height=\"153\" /></span></span>\n</td>\n<td>This
+      image, originally posted to <b><a href=\"/wiki/Commons:Flickr\" class=\"mw-redirect\"
+      title=\"Commons:Flickr\">Flickr</a></b>, was reviewed on 5 June 2007 by the
+      <a href=\"/wiki/Commons:A\" class=\"mw-redirect\" title=\"Commons:A\">administrator</a>
+      or <a href=\"/wiki/Commons:License_review\" title=\"Commons:License review\">reviewer</a>
+      <b><a href=\"/wiki/User:FlickrLickr\" title=\"User:FlickrLickr\">FlickrLickr</a></b>,
+      who confirmed that it was available on Flickr under the stated license on that
+      date.\n</td></tr></tbody></table></td>\n</tr>\n\n\n</tbody></table>\n</div><h1
+      class=\"mw-slot-header\"><mediainfoslotheader /></h1><mediainfoview style=\"display:
+      none\"><mediainfoviewcaptions><div class=''wbmi-entityview-captionsPanel oo-ui-layout
+      oo-ui-panelLayout oo-ui-panelLayout-framed''><h3 class=''wbmi-entityview-captions-header''>Captions</h3><div
+      class=''wbmi-entityview-caption oo-ui-layout oo-ui-horizontalLayout''><label
+      class=''wbmi-language-label oo-ui-widget oo-ui-widget-enabled oo-ui-labelElement-label
+      oo-ui-labelElement oo-ui-labelWidget''>English</label><div lang=''en'' dir=''ltr''
+      class=''wbmi-caption-value wbmi-entityview-emptyCaption''>Add a one-line explanation
+      of what this file represents</div></div></div></mediainfoviewcaptions><mediainfoviewstatements><div
+      id=''P180'' data-property=''P180'' data-statements=''[]'' data-formatvalue=''[]''
+      class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P180
+      oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+      class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h3
+      class=''wbmi-statements-title''>Items portrayed in this file</h3><h4 class=''wbmi-entity-label''><bdi><a
+      target=\"_blank\" title=\"d:Special:EntityPage/P180\" href=\"https://www.wikidata.org/wiki/Special:EntityPage/P180\">depicts</a></bdi></h4></div></div></div><div
+      class=''wbmi-content-items-group''></div></div></div><div id=''P6216'' data-property=''P6216''
+      data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P6216\",\"hash\":\"5570347fdc76d2a80732f51ea10ee4b144a084e0\",\"datavalue\":{\"value\":{\"entity-type\":\"item\",\"numeric-id\":50423863,\"id\":\"Q50423863\"},\"type\":\"wikibase-entityid\"}},\"type\":\"statement\",\"id\":\"M329391$EBB9C8B2-1823-43C1-9CA3-98447D8920B1\",\"rank\":\"normal\"}]''
+      data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":6216,\\\"id\\\":\\\"P6216\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P6216\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P6216\\\"&gt;copyright
+      status&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"copyright status\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"item\\\",\\\"numeric-id\\\":50423863,\\\"id\\\":\\\"Q50423863\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"P6216\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/Q50423863\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/Q50423863\\\"&gt;copyrighted&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"P6216\":\"copyrighted\"}}}}''
+      class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P6216
+      oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+      class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P6216\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/P6216\">copyright status</a></bdi></h4></div></div></div><div
+      class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+      data-guid=''M329391$EBB9C8B2-1823-43C1-9CA3-98447D8920B1'' class=''wbmi-item-container''><div
+      class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/Q50423863\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/Q50423863\">copyrighted</a></bdi></h4></div></div></div></div></div></div></div></div><div
+      id=''P275'' data-property=''P275'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P275\",\"hash\":\"018d38b0e8013d912434b491da7e648f05efeef7\",\"datavalue\":{\"value\":{\"entity-type\":\"item\",\"numeric-id\":30942811,\"id\":\"Q30942811\"},\"type\":\"wikibase-entityid\"}},\"type\":\"statement\",\"id\":\"M329391$5DAE015C-CE93-41A2-9A97-3587DF705BF9\",\"rank\":\"normal\"}]''
+      data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":275,\\\"id\\\":\\\"P275\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P275\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P275\\\"&gt;copyright
+      license&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"copyright license\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"item\\\",\\\"numeric-id\\\":30942811,\\\"id\\\":\\\"Q30942811\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"P275\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/Q30942811\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/Q30942811\\\"&gt;Creative
+      Commons Attribution 1.0 Generic&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"P275\":\"Creative
+      Commons Attribution 1.0 Generic\"}}}}'' class=''wbmi-entityview-statementsGroup
+      wbmi-entityview-statementsGroup-P275 oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div
+      class=''wbmi-statements-widget''><div class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div
+      class=''wbmi-entity-title''><h4 class=''wbmi-entity-label''><bdi><a target=\"_blank\"
+      title=\"d:Special:EntityPage/P275\" href=\"https://www.wikidata.org/wiki/Special:EntityPage/P275\">copyright
+      license</a></bdi></h4></div></div></div><div class=''wbmi-content-items-group''><div
+      class=''wbmi-item wbmi-item-read''><div data-guid=''M329391$5DAE015C-CE93-41A2-9A97-3587DF705BF9''
+      class=''wbmi-item-container''><div class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div
+      class=''wbmi-entity-title''><h4 class=''wbmi-entity-label''><bdi><a target=\"_blank\"
+      title=\"d:Special:EntityPage/Q30942811\" href=\"https://www.wikidata.org/wiki/Special:EntityPage/Q30942811\">Creative
+      Commons Attribution 1.0 Generic</a></bdi></h4></div></div></div></div></div></div></div></div><div
+      id=''P571'' data-property=''P571'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P571\",\"hash\":\"7cbf61f89f5d961653632dbe4a872f9b213f4d64\",\"datavalue\":{\"value\":{\"time\":\"+2004-02-08T00:00:00Z\",\"timezone\":0,\"before\":0,\"after\":0,\"precision\":11,\"calendarmodel\":\"http:\\/\\/www.wikidata.org\\/entity\\/Q1985727\"},\"type\":\"time\"}},\"type\":\"statement\",\"id\":\"M329391$B1C7F746-31FD-49AE-A60F-7040215A493F\",\"rank\":\"normal\"}]''
+      data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":571,\\\"id\\\":\\\"P571\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P571\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P571\\\"&gt;inception&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"inception\"}}},\"{\\\"value\\\":{\\\"time\\\":\\\"+2004-02-08T00:00:00Z\\\",\\\"timezone\\\":0,\\\"before\\\":0,\\\"after\\\":0,\\\"precision\\\":11,\\\"calendarmodel\\\":\\\"http:\\\\\\/\\\\\\/www.wikidata.org\\\\\\/entity\\\\\\/Q1985727\\\"},\\\"type\\\":\\\"time\\\"}\":{\"text\\/html\":{\"en\":{\"P571\":\"8
+      February 2004\"}},\"text\\/plain\":{\"en\":{\"P571\":\"8 February 2004\"}}}}''
+      class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P571
+      oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+      class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P571\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/P571\">inception</a></bdi></h4></div></div></div><div
+      class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+      data-guid=''M329391$B1C7F746-31FD-49AE-A60F-7040215A493F'' class=''wbmi-item-container''><div
+      class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi>8 February 2004</bdi></h4></div></div></div></div></div></div></div></div></mediainfoviewstatements></mediainfoview>\n<!--
+      \nNewPP limit report\nParsed by mw1496\nCached time: 20231128022455\nCache expiry:
+      1814400\nReduced expiry: false\nComplications: []\nCPU time usage: 0.084\nReal
+      time usage: 0.128\nPreprocessor visited node count: 1042\nPost\u2010expand include
+      size: 15630\nTemplate argument size: 1261\nHighest expansion depth: 14\nExpensive
+      parser function count: 2\nUnstrip recursion depth: 0\nUnstrip post\u2010expand
+      size: 3301\nLua time usage: 0.044\nLua memory usage: 1472491\nNumber of Wikibase
+      entities loaded: 1\n-->\n<!--\nTransclusion expansion time report (%,ms,calls,template)\n100.00%  112.211      1
+      -total\n100.00%  112.211      1 Template:Information\n 26.76%   30.023      1
+      Template:Cc-by-1.0\n 22.40%   25.136      1 Template:Flickrreview\n 22.34%   25.072      1
+      Template:Cc-by-layout\n 13.38%   15.019      5 Template:SDC_statement_exist\n
+      12.25%   13.750      1 Template:Autotranslate\n  8.50%    9.540      1 Template:Iffile\n  5.75%    6.450      1
+      Template:En\n  4.74%    5.316      1 Template:Description\n-->\n\n<!-- Saved
+      in parser cache with key commonswiki:pcache:idhash:329391-0!wb=3!wbMobile=0
+      and timestamp 20231128022455 and revision id 447784412. Rendering was triggered
+      because: page-view\n -->\n</div>"}}}'
     headers:
       accept-ranges:
       - bytes
@@ -33,13 +185,13 @@ interactions:
       cache-control:
       - private, must-revalidate, max-age=0
       content-disposition:
-      - inline; filename=api-result.xml
+      - inline; filename=api-result.json
       content-encoding:
       - gzip
       content-type:
-      - text/xml; charset=utf-8
+      - application/json; charset=utf-8
       date:
-      - Thu, 14 Dec 2023 13:50:07 GMT
+      - Fri, 15 Dec 2023 14:12:42 GMT
       nel:
       - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
         0.0}'
@@ -47,13 +199,13 @@ interactions:
       - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
         }] }'
       server:
-      - mw1360.eqiad.wmnet
+      - mw1491.eqiad.wmnet
       server-timing:
       - cache;desc="pass", host;desc="cp3066"
       set-cookie:
-      - WMF-Last-Access=14-Dec-2023;Path=/;HttpOnly;secure;Expires=Mon, 15 Jan 2024
+      - WMF-Last-Access=15-Dec-2023;Path=/;HttpOnly;secure;Expires=Tue, 16 Jan 2024
         12:00:00 GMT
-      - GeoIP=GB:ENG:Southwark:51.50:-0.09:v4; Path=/; secure; Domain=.wikimedia.org
+      - GeoIP=GB:ENG:Southwark:51.50:-0.07:v4; Path=/; secure; Domain=.wikimedia.org
       - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
       strict-transport-security:
       - max-age=106384710; includeSubDomains; preload
