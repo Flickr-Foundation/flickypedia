@@ -145,6 +145,16 @@ from utils import get_typed_fixture
                 "url": "https://www.flickr.com/photos/67082487@N00/1526395",
             },
         ),
+        #
+        # Two URLs in the "Source" field, one is the photo page and one
+        # is a link to the Wikipedia page for Flickr.
+        (
+            "Kerala_Fish_Curry.jpg",
+            {
+                "photo_id": "1410974",
+                "url": "https://www.flickr.com/photos/blackmoon/1410974"
+            }
+        )
     ],
 )
 def test_find_flickr_photo_id_from_wikitext(

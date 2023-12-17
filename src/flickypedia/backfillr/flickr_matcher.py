@@ -74,6 +74,69 @@ def get_flickr_photo_id_from_url(url: str) -> str | None:
             return None
 
 
+def find_flickr_photo_id_from_source_field(row_element: bs4.element.Tag) -> FindResult | None:
+    """
+    Given the <td> element for the "Source" field in the "Information" table,
+    try to work out which Flickr photo this points to.
+
+    The goal is not to provide a complete matching of all Flickr URLs
+    in this field, but to handle any "obvious" patterns that a human
+    would reasonably trust to be a link to the source photo.
+    """
+    urls = [
+        a_tag.attrs['href']
+        for a_tag in row_element.find_all("a")
+    ]
+
+    # If there's a single URL that points to a Flickr photo, we can assume
+    # that's the original Flickr photo. e.g.
+    #
+    #     Source: [link to Flickr photo]
+    #
+    if len(urls) == 1:
+        single_url = urls[0]
+
+        photo_id = get_flickr_photo_id_from_url(single_url)
+        if photo_id is not None:
+            return {"photo_id": photo_id, "url": single_url}
+
+    # If there are two URLs and the first one points to the Wikipedia page
+    # for Flickr and the second to the Flickr photo, we can assume that's
+    # the original Flickr photo. e.g.
+    #
+    #     Source: This image was originally posted to [Flickr] as [photo]
+    #
+    elif len(urls) == 2 and urls[0] == "https://en.wikipedia.org/wiki/Flickr":
+        single_url = urls[1]
+
+        photo_id = get_flickr_photo_id_from_url(single_url)
+        if photo_id is not None:
+            return {"photo_id": photo_id, "url": single_url}
+
+    # If there are two URLs and the first one points to the Flickr homepage
+    # and the second to a Flickr photo, we can assume that's the original
+    # Flickr photo. e.g.
+    #
+    #      [Flickr.com]: [link to individual photo]
+    #
+    elif len(urls) == 2:
+        try:
+            parsed_url0 = parse_flickr_url(urls[0])
+            parsed_url1 = parse_flickr_url(urls[1])
+        except (NotAFlickrUrl, UnrecognisedUrl):
+            assert 0
+            pass
+        else:
+            if (
+                parsed_url0["type"] == "homepage"
+                and parsed_url1["type"] == "single_photo"
+            ):
+                return {"photo_id": parsed_url1["photo_id"], "url": urls[1]}
+            else:
+                assert 0
+
+
+
 def find_flickr_photo_id_from_wikitext(
     wikitext: str, filename: str
 ) -> FindResult | None:
@@ -107,63 +170,9 @@ def find_flickr_photo_id_from_wikitext(
 
         row = information_source_td.parent
 
-        # Now look for a single <a> tag inside the <td>.  We look at
-        # the href attribute, because the text is sometimes a human-readable
-        # label rather than the URL.
-        anchor_tags = row.find_all("a")
-        urls = [a_tag.attrs.get("href") for a_tag in anchor_tags]
-
-        if len(urls) == 1:
-            url = urls[0]
-
-            photo_id = get_flickr_photo_id_from_url(url)
-            if photo_id is not None:
-                return {"photo_id": photo_id, "url": url}
-
-        # Now look for two <a> tags; a common pattern is for somebody to
-        # link to both Flickr.com and the individual photo page.
-        #
-        # For example:
-        #
-        #     <td>
-        #       <a href="https://www.flickr.com/">Flickr.com</a> -
-        #       <a href="https://www.flickr.com/photos/51035573370@N01/869031">
-        #         image description page
-        #       </a>
-        #     </td>
-        #
-        if len(anchor_tags) == 2 and is_flickr_homepage(urls[0]):
-            url = urls[1]
-
-            photo_id = get_flickr_photo_id_from_url(url)
-            if photo_id is not None:
-                return {"photo_id": photo_id, "url": url}
-
-        # Look for two <a> tags inside the <td>
-        #
-        # Sometimes people link to both the Flickr homepage and the
-        # Flickr photo in the source text, e.g.
-        #
-        #      [Flickr.com]: [link to individual photo]
-        #
-        elif len(anchor_tags) == 2:
-            url0 = anchor_tags[0].attrs["href"]
-            url1 = anchor_tags[1].attrs["href"]
-
-            try:
-                parsed_url0 = parse_flickr_url(url0)
-                parsed_url1 = parse_flickr_url(url1)
-            except (NotAFlickrUrl, UnrecognisedUrl):
-                assert 0
-                pass
-            else:
-                if (
-                    parsed_url0["type"] == "homepage"
-                    and parsed_url1["type"] == "single_photo"
-                ):
-                    return {"photo_id": parsed_url1["photo_id"], "url": url1}
-                else:
-                    assert 0
+        find_result = find_flickr_photo_id_from_source_field(row)
+        if find_result is not None:
+            return find_result
 
     # Now look for any links which are explicitly labelled as
     # "Source: <URL>" in the Wikitext.  For example:
