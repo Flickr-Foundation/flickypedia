@@ -154,7 +154,14 @@ from utils import get_typed_fixture
                 "photo_id": "1410974",
                 "url": "https://www.flickr.com/photos/blackmoon/1410974"
             }
-        )
+        ),
+        (
+        "Lime sorbet.jpg",
+        {
+            "photo_id": "34737111",
+            "url": "https://www.flickr.com/photos/jenniewoo/34737111/",
+        }
+        ),
     ],
 )
 def test_find_flickr_photo_id_from_wikitext(

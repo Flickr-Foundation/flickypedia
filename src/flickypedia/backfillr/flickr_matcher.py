@@ -106,7 +106,7 @@ def find_flickr_photo_id_from_source_field(row_element: bs4.element.Tag) -> Find
     #
     #     Source: This image was originally posted to [Flickr] as [photo]
     #
-    elif len(urls) == 2 and urls[0] == "https://en.wikipedia.org/wiki/Flickr":
+    elif len(urls) == 2 and urls[0] in {"https://en.wikipedia.org/wiki/Flickr", "/wiki/Flickr"}:
         single_url = urls[1]
 
         photo_id = get_flickr_photo_id_from_url(single_url)
