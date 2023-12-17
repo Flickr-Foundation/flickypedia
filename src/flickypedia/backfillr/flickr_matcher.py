@@ -74,7 +74,9 @@ def get_flickr_photo_id_from_url(url: str) -> str | None:
             return None
 
 
-def find_flickr_photo_id_from_source_field(row_element: bs4.element.Tag) -> FindResult | None:
+def find_flickr_photo_id_from_source_field(
+    row_element: bs4.element.Tag,
+) -> FindResult | None:
     """
     Given the <td> element for the "Source" field in the "Information" table,
     try to work out which Flickr photo this points to.
@@ -83,10 +85,7 @@ def find_flickr_photo_id_from_source_field(row_element: bs4.element.Tag) -> Find
     in this field, but to handle any "obvious" patterns that a human
     would reasonably trust to be a link to the source photo.
     """
-    urls = [
-        a_tag.attrs['href']
-        for a_tag in row_element.find_all("a")
-    ]
+    urls = [a_tag.attrs["href"] for a_tag in row_element.find_all("a")]
 
     # If there's a single URL that points to a Flickr photo, we can assume
     # that's the original Flickr photo. e.g.
@@ -106,7 +105,10 @@ def find_flickr_photo_id_from_source_field(row_element: bs4.element.Tag) -> Find
     #
     #     Source: This image was originally posted to [Flickr] as [photo]
     #
-    elif len(urls) == 2 and urls[0] in {"https://en.wikipedia.org/wiki/Flickr", "/wiki/Flickr"}:
+    elif len(urls) == 2 and urls[0] in {
+        "https://en.wikipedia.org/wiki/Flickr",
+        "/wiki/Flickr",
+    }:
         single_url = urls[1]
 
         photo_id = get_flickr_photo_id_from_url(single_url)
@@ -134,7 +136,6 @@ def find_flickr_photo_id_from_source_field(row_element: bs4.element.Tag) -> Find
                 return {"photo_id": parsed_url1["photo_id"], "url": urls[1]}
             else:
                 assert 0
-
 
 
 def find_flickr_photo_id_from_wikitext(
@@ -183,13 +184,13 @@ def find_flickr_photo_id_from_wikitext(
     for anchor_tag in soup.find_all("a"):
         url = anchor_tag.attrs["href"]
         photo_id = get_flickr_photo_id_from_url(url)
-        if photo_id is not None:
-            if anchor_tag.parent.text.strip() in {
-                f"Source: {url}",
-                "Source: Flickr",
-                "Source: Flickr.",
-            }:
-                return {"photo_id": photo_id, "url": url}
+        if photo_id is not None and anchor_tag.parent.text.strip() in {
+            f"Source: {url}",
+            "Source: Flickr",
+            "Source: Flickr.",
+            f"Original photo {anchor_tag.text}",
+        }:
+            return {"photo_id": photo_id, "url": url}
 
     return None
 

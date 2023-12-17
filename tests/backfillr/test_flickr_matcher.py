@@ -95,6 +95,20 @@ from utils import get_typed_fixture
             },
             id="3731022",
         ),
+        (
+            "Milano-La Scala.jpg",
+            {
+                "photo_id": "37950030",
+                "url": "https://www.flickr.com/photo_zoom.gne?id=37950030",
+            },
+        ),
+        (
+            "Milano-via dante.jpg",
+            {
+                "photo_id": "37950857",
+                "url": "https://www.flickr.com/photo_zoom.gne?id=37950857",
+            },
+        ),
         #
         # Another Flickr URL in the Wikitext, clearly identified as
         # the source URL in the text.  There's a newline inside the
@@ -152,15 +166,15 @@ from utils import get_typed_fixture
             "Kerala_Fish_Curry.jpg",
             {
                 "photo_id": "1410974",
-                "url": "https://www.flickr.com/photos/blackmoon/1410974"
-            }
+                "url": "https://www.flickr.com/photos/blackmoon/1410974",
+            },
         ),
         (
-        "Lime sorbet.jpg",
-        {
-            "photo_id": "34737111",
-            "url": "https://www.flickr.com/photos/jenniewoo/34737111/",
-        }
+            "Lime sorbet.jpg",
+            {
+                "photo_id": "34737111",
+                "url": "https://www.flickr.com/photos/jenniewoo/34737111/",
+            },
         ),
     ],
 )
