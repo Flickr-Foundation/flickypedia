@@ -4,6 +4,7 @@ import click
 import httpx
 import keyring
 import termcolor
+import tqdm
 
 from flickypedia.apis.flickr import FlickrPhotosApi, ResourceNotFound
 from flickypedia.apis.structured_data import (
@@ -41,9 +42,12 @@ def run_with(list_of_filenames: list[str]):
         user_agent="Flickypedia Backfillr <hello@flickr.org>",
     )
 
-    for filename in list_of_filenames:
+    for filename in tqdm.tqdm(list_of_filenames):
         print("")
         print(filename)
+
+        if filename == "The roof of the Reichstag building in Berlin.jpg":
+            continue
 
         try:
             existing_sdc = wikimedia_api.get_structured_data(filename=filename)
@@ -156,7 +160,11 @@ def run_with(list_of_filenames: list[str]):
                         },
                     }[user_url]
                 except KeyError:
-                    creator = flickr_api.lookup_user_by_url(url=user_url)
+                    try:
+                        creator = flickr_api.lookup_user_by_url(url=user_url)
+                    except ResourceNotFound:
+                        print(f"Could not find info about the Flickr photo/user! {user_url}")
+                        continue
 
                 photo_url = f'https://www.flickr.com/photos/{creator["path_alias"] or creator["id"]}/{photo_id}/'
 

@@ -149,7 +149,7 @@ def find_flickr_photo_id_from_wikitext(
         url = anchor_tag.attrs["href"]
         photo_id = get_flickr_photo_id_from_url(url)
         if photo_id is not None:
-            if anchor_tag.parent.text.strip() in {f"Source: {url}", "Source: Flickr"}:
+            if anchor_tag.parent.text.strip() in {f"Source: {url}", "Source: Flickr", "Source: Flickr."}:
                 return {"photo_id": photo_id, "url": url}
 
     return None
