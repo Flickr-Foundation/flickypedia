@@ -136,6 +136,15 @@ from utils import get_typed_fixture
         #
         # Two URLs in the "Source" field, neither of them from Flickr.
         pytest.param("Pierre Riel de Beurnonville (1792).jpg", None, id="pierre_riel"),
+        # Two Flickr URLs in the "Source" field, one is the photo page
+        # and one is a generic Flickr URL.
+        (
+            "Aalborg_boulevard.jpg",
+            {
+                "photo_id": "1526395",
+                "url": "https://www.flickr.com/photos/67082487@N00/1526395",
+            },
+        ),
     ],
 )
 def test_find_flickr_photo_id_from_wikitext(

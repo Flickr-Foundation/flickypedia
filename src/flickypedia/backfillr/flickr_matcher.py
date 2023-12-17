@@ -139,6 +139,32 @@ def find_flickr_photo_id_from_wikitext(
             if photo_id is not None:
                 return {"photo_id": photo_id, "url": url}
 
+        # Look for two <a> tags inside the <td>
+        #
+        # Sometimes people link to both the Flickr homepage and the
+        # Flickr photo in the source text, e.g.
+        #
+        #      [Flickr.com]: [link to individual photo]
+        #
+        elif len(anchor_tags) == 2:
+            url0 = anchor_tags[0].attrs["href"]
+            url1 = anchor_tags[1].attrs["href"]
+
+            try:
+                parsed_url0 = parse_flickr_url(url0)
+                parsed_url1 = parse_flickr_url(url1)
+            except (NotAFlickrUrl, UnrecognisedUrl):
+                assert 0
+                pass
+            else:
+                if (
+                    parsed_url0["type"] == "homepage"
+                    and parsed_url1["type"] == "single_photo"
+                ):
+                    return {"photo_id": parsed_url1["photo_id"], "url": url1}
+                else:
+                    assert 0
+
     # Now look for any links which are explicitly labelled as
     # "Source: <URL>" in the Wikitext.  For example:
     #
@@ -149,7 +175,11 @@ def find_flickr_photo_id_from_wikitext(
         url = anchor_tag.attrs["href"]
         photo_id = get_flickr_photo_id_from_url(url)
         if photo_id is not None:
-            if anchor_tag.parent.text.strip() in {f"Source: {url}", "Source: Flickr", "Source: Flickr."}:
+            if anchor_tag.parent.text.strip() in {
+                f"Source: {url}",
+                "Source: Flickr",
+                "Source: Flickr.",
+            }:
                 return {"photo_id": photo_id, "url": url}
 
     return None

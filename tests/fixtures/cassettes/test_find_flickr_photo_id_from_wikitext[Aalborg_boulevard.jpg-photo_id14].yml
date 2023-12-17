@@ -1,0 +1,461 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.1
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=parse&format=json&page=File%3AAalborg_boulevard.jpg&prop=text
+  response:
+    content: '{"parse":{"title":"File:Aalborg boulevard.jpg","pageid":341420,"text":{"*":"<div
+      class=\"mw-content-ltr mw-parser-output\" lang=\"en\" dir=\"ltr\"><h2><span
+      class=\"mw-headline\" id=\"Summary\">Summary</span><span class=\"mw-editsection\"><span
+      class=\"mw-editsection-bracket\">[</span><a href=\"/w/index.php?title=File:Aalborg_boulevard.jpg&amp;action=edit&amp;section=1\"
+      title=\"Edit section: Summary\"><span>edit</span></a><span class=\"mw-editsection-bracket\">]</span></span></h2>\n<div
+      class=\"hproduct commons-file-information-table\">\n<style data-mw-deduplicate=\"TemplateStyles:r773143704\">.mw-parser-output
+      table.commons-file-information-table,.mw-parser-output .fileinfotpl-type-information,.mw-parser-output
+      .fileinfotpl-type-artwork{border:1px solid #a2a9b1;background-color:#f8f9fa;padding:5px;font-size:95%;border-spacing:2px;box-sizing:border-box;margin:0;width:100%}.mw-parser-output
+      table.commons-file-information-table>tbody>tr,.mw-parser-output .fileinfotpl-type-information>tbody>tr,.mw-parser-output
+      .fileinfotpl-type-artwork>tbody>tr{vertical-align:top}.mw-parser-output table.commons-file-information-table>tbody>tr>td,.mw-parser-output
+      table.commons-file-information-table>tbody>tr>th,.mw-parser-output .fileinfotpl-type-information>tbody>tr>td,.mw-parser-output
+      .fileinfotpl-type-information>tbody>tr>th,.mw-parser-output .fileinfotpl-type-artwork>tbody>tr>td,.mw-parser-output
+      .fileinfotpl-type-artwork>tbody>tr>th{padding:4px}.mw-parser-output .fileinfo-paramfield{background:#ccf;text-align:right;padding-right:0.4em;width:15%;font-weight:bold}.mw-parser-output
+      .commons-file-information-table+table.commons-file-information-table,.mw-parser-output
+      .commons-file-information-table+div.commons-file-information-table>table{border-top:0;padding-top:0;margin-top:-8px}@media
+      only screen and (max-width:719px){.mw-parser-output table.commons-file-information-table,.mw-parser-output
+      .commons-file-information-table .fileinfotpl-type-information,.mw-parser-output
+      .commons-file-information-table .fileinfotpl-type-artwork{border-spacing:0;padding:0;word-break:break-word;width:100%!important}.mw-parser-output
+      .commons-file-information-table>tbody,.mw-parser-output .fileinfotpl-type-information>tbody,.mw-parser-output
+      .fileinfotpl-type-artwork>tbody{display:block}.mw-parser-output .commons-file-information-table>tbody>tr>td,.mw-parser-output
+      .commons-file-information-table>tbody>tr>th,.mw-parser-output .fileinfotpl-type-information>tbody>tr>td,.mw-parser-output
+      .fileinfotpl-type-information>tbody>tr>th,.mw-parser-output .fileinfotpl-type-artwork>tbody>tr>td,.mw-parser-output
+      .fileinfotpl-type-artwork>tbody>tr>th{padding:0.2em 0.4em;text-align:left;text-align:start}.mw-parser-output
+      .commons-file-information-table>tbody>tr,.mw-parser-output .fileinfotpl-type-information>tbody>tr,.mw-parser-output
+      .fileinfotpl-type-artwork>tbody>tr{display:flex;flex-direction:column}.mw-parser-output
+      .commons-file-information-table+table.commons-file-information-table,.mw-parser-output
+      .commons-file-information-table+div.commons-file-information-table>table{margin-top:-1px}.mw-parser-output
+      .fileinfo-paramfield{box-sizing:border-box;flex:1 0 100%;width:100%}}</style>\n<table
+      class=\"fileinfotpl-type-information vevent mw-content-ltr\" style=\"direction:
+      ltr;\">\n\n<tbody><tr>\n<td id=\"fileinfotpl_desc\" class=\"fileinfo-paramfield\"
+      lang=\"en\">Description<span class=\"summary fn\" style=\"display:none\">Aalborg
+      boulevard.jpg</span></td>\n<td class=\"description\">\nAalborg, Denmark. The
+      Boulevard.</td>\n</tr>\n\n<tr>\n<td id=\"fileinfotpl_date\" class=\"fileinfo-paramfield\"
+      lang=\"en\">Date</td>\n<td lang=\"en\">\n<time class=\"dtstart\" datetime=\"2004-04-28
+      17:32:50\" lang=\"en\" dir=\"ltr\" style=\"white-space:nowrap\">28 April 2004,
+      17:32:50</time></td>\n</tr>\n\n<tr>\n<td id=\"fileinfotpl_src\" class=\"fileinfo-paramfield\"
+      lang=\"en\">Source</td>\n<td>\n<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/\">Flickr.com</a>
+      - <a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/photos/67082487@N00/1526395\">image
+      description page</a></td>\n</tr>\n\n<tr>\n<td id=\"fileinfotpl_aut\" class=\"fileinfo-paramfield\"
+      lang=\"en\">Author</td>\n<td>\n<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/photos/67082487@N00\">Nichlas
+      Hummelsberger</a> from Aalborg, Denmark</td>\n</tr>\n\n\n</tbody></table>\n</div>\n<h2><span
+      class=\"mw-headline\" id=\"Licensing\">Licensing</span><span class=\"mw-editsection\"><span
+      class=\"mw-editsection-bracket\">[</span><a href=\"/w/index.php?title=File:Aalborg_boulevard.jpg&amp;action=edit&amp;section=2\"
+      title=\"Edit section: Licensing\"><span>edit</span></a><span class=\"mw-editsection-bracket\">]</span></span></h2>\n<style
+      data-mw-deduplicate=\"TemplateStyles:r666199556\">.mw-parser-output .responsive-license-cc{clear:both;text-align:center;box-sizing:border-box;width:100%;justify-content:space-around;align-items:center;margin:0.5em
+      auto;background-color:#f9f9f9;border:2px solid #e0e0e0;border-spacing:8px;display:flex}.mw-parser-output
+      .responsive-license-cc div{margin:4px}.mw-parser-output .rlicense-text div{margin:0.5em
+      auto}@media screen and (max-width:640px){.mw-parser-output .responsive-license-cc{flex-flow:column}.mw-parser-output
+      .rlicense-text{order:1}}</style><div class=\"responsive-license-cc layouttemplate
+      licensetpl mw-content-ltr\" lang=\"en\"><div class=\"rlicense-icons\"><span
+      typeof=\"mw:File\"><span title=\"w:en:Creative Commons\"><img alt=\"w:en:Creative
+      Commons\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/CC_some_rights_reserved.svg/90px-CC_some_rights_reserved.svg.png\"
+      decoding=\"async\" width=\"90\" height=\"36\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/CC_some_rights_reserved.svg/135px-CC_some_rights_reserved.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/CC_some_rights_reserved.svg/180px-CC_some_rights_reserved.svg.png
+      2x\" data-file-width=\"744\" data-file-height=\"300\" /></span></span><br />\n<span
+      typeof=\"mw:File\"><span title=\"attribution\"><img alt=\"attribution\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Cc-by_new_white.svg/24px-Cc-by_new_white.svg.png\"
+      decoding=\"async\" width=\"24\" height=\"24\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Cc-by_new_white.svg/36px-Cc-by_new_white.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Cc-by_new_white.svg/48px-Cc-by_new_white.svg.png
+      2x\" data-file-width=\"64\" data-file-height=\"64\" /></span></span></div><div
+      class=\"rlicense-text\"><div class=\"rlicense-declaration\">This file is licensed
+      under the <a href=\"https://en.wikipedia.org/wiki/en:Creative_Commons\" class=\"extiw\"
+      title=\"w:en:Creative Commons\">Creative Commons</a> <a rel=\"nofollow\" class=\"external
+      text\" href=\"https://creativecommons.org/licenses/by/2.0/deed.en\">Attribution
+      2.0 Generic</a> license.</div><div class=\"rlicense-desc\" style=\"text-align:left;\"
+      lang=\"en\">\n<dl><dd>You are free:\n<ul><li><b>to share</b> \u2013 to copy,
+      distribute and transmit the work</li>\n<li><b>to remix</b> \u2013 to adapt the
+      work</li></ul></dd>\n<dd>Under the following conditions:\n<ul><li><b>attribution</b>
+      \u2013 You must give appropriate credit, provide a link to the license, and
+      indicate if changes were made. You may do so in any reasonable manner, but not
+      in any way that suggests the licensor endorses you or your use.</li></ul></dd></dl>\n</div><span
+      class=\"licensetpl_link\" style=\"display:none;\">https://creativecommons.org/licenses/by/2.0</span><span
+      class=\"licensetpl_short\" style=\"display:none;\">CC BY 2.0 </span><span class=\"licensetpl_long\"
+      style=\"display:none;\">Creative Commons Attribution 2.0 </span><span class=\"licensetpl_link_req\"
+      style=\"display:none;\">true</span><span class=\"licensetpl_attr_req\" style=\"display:none;\">true</span></div></div>\n<table
+      id=\"FlickrReview\" style=\"width:100%; margin:0.3em auto; text-align: start;
+      background: #eeffee; padding: 3px; border: 1px solid #aaaa88;\" class=\"mw-content-ltr\"
+      dir=\"ltr\" lang=\"en\">\n\n<tbody><tr>\n<td><span typeof=\"mw:File\"><span><img
+      src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Checked_copyright_icon.svg/50px-Checked_copyright_icon.svg.png\"
+      decoding=\"async\" width=\"50\" height=\"48\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Checked_copyright_icon.svg/75px-Checked_copyright_icon.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Checked_copyright_icon.svg/100px-Checked_copyright_icon.svg.png
+      2x\" data-file-width=\"160\" data-file-height=\"153\" /></span></span>\n</td>\n<td>This
+      image was originally posted to <b><a href=\"https://en.wikipedia.org/wiki/Flickr\"
+      class=\"extiw\" title=\"en:Flickr\">Flickr</a></b> by nichlas at <a rel=\"nofollow\"
+      class=\"external free\" href=\"https://www.flickr.com/photos/nichlas/1526395/\">https://www.flickr.com/photos/nichlas/1526395/</a>.
+      It was reviewed on 18 February 2007 by <b><span id=\"flickr_upload_bot_reviewer\"><a
+      href=\"/wiki/User:FlickreviewR\" title=\"User:FlickreviewR\">FlickreviewR</a></span></b>
+      and was confirmed to be licensed under the terms of the cc-by-2.0.\n</td></tr></tbody></table><p><span
+      style=\"display:none\">18 February 2007</span></p><h1 class=\"mw-slot-header\"><mediainfoslotheader
+      /></h1><mediainfoview style=\"display: none\"><mediainfoviewcaptions><div class=''wbmi-entityview-captionsPanel
+      oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><h3 class=''wbmi-entityview-captions-header''>Captions</h3><div
+      class=''wbmi-entityview-caption oo-ui-layout oo-ui-horizontalLayout''><label
+      class=''wbmi-language-label oo-ui-widget oo-ui-widget-enabled oo-ui-labelElement-label
+      oo-ui-labelElement oo-ui-labelWidget''>English</label><div lang=''en'' dir=''ltr''
+      class=''wbmi-caption-value wbmi-entityview-emptyCaption''>Add a one-line explanation
+      of what this file represents</div></div></div></mediainfoviewcaptions><mediainfoviewstatements><div
+      id=''P180'' data-property=''P180'' data-statements=''[]'' data-formatvalue=''[]''
+      class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P180
+      oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+      class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h3
+      class=''wbmi-statements-title''>Items portrayed in this file</h3><h4 class=''wbmi-entity-label''><bdi><a
+      target=\"_blank\" title=\"d:Special:EntityPage/P180\" href=\"https://www.wikidata.org/wiki/Special:EntityPage/P180\">depicts</a></bdi></h4></div></div></div><div
+      class=''wbmi-content-items-group''></div></div></div><div id=''P6216'' data-property=''P6216''
+      data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P6216\",\"hash\":\"5570347fdc76d2a80732f51ea10ee4b144a084e0\",\"datavalue\":{\"value\":{\"entity-type\":\"item\",\"numeric-id\":50423863,\"id\":\"Q50423863\"},\"type\":\"wikibase-entityid\"}},\"type\":\"statement\",\"id\":\"M341420$66129845-CE2D-4EF4-93F5-CF416EF532FC\",\"rank\":\"normal\"}]''
+      data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":6216,\\\"id\\\":\\\"P6216\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P6216\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P6216\\\"&gt;copyright
+      status&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"copyright status\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"item\\\",\\\"numeric-id\\\":50423863,\\\"id\\\":\\\"Q50423863\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"P6216\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/Q50423863\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/Q50423863\\\"&gt;copyrighted&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"P6216\":\"copyrighted\"}}}}''
+      class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P6216
+      oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+      class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P6216\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/P6216\">copyright status</a></bdi></h4></div></div></div><div
+      class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+      data-guid=''M341420$66129845-CE2D-4EF4-93F5-CF416EF532FC'' class=''wbmi-item-container''><div
+      class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/Q50423863\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/Q50423863\">copyrighted</a></bdi></h4></div></div></div></div></div></div></div></div><div
+      id=''P275'' data-property=''P275'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P275\",\"hash\":\"82d5b402aa0a79040483a8c9264bd484c6c13f67\",\"datavalue\":{\"value\":{\"entity-type\":\"item\",\"numeric-id\":19125117,\"id\":\"Q19125117\"},\"type\":\"wikibase-entityid\"}},\"type\":\"statement\",\"id\":\"M341420$92817FC9-F8C0-46C0-A109-E01857DC991B\",\"rank\":\"normal\"}]''
+      data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":275,\\\"id\\\":\\\"P275\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P275\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P275\\\"&gt;copyright
+      license&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"copyright license\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"item\\\",\\\"numeric-id\\\":19125117,\\\"id\\\":\\\"Q19125117\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"P275\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/Q19125117\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/Q19125117\\\"&gt;Creative
+      Commons Attribution 2.0 Generic&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"P275\":\"Creative
+      Commons Attribution 2.0 Generic\"}}}}'' class=''wbmi-entityview-statementsGroup
+      wbmi-entityview-statementsGroup-P275 oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div
+      class=''wbmi-statements-widget''><div class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div
+      class=''wbmi-entity-title''><h4 class=''wbmi-entity-label''><bdi><a target=\"_blank\"
+      title=\"d:Special:EntityPage/P275\" href=\"https://www.wikidata.org/wiki/Special:EntityPage/P275\">copyright
+      license</a></bdi></h4></div></div></div><div class=''wbmi-content-items-group''><div
+      class=''wbmi-item wbmi-item-read''><div data-guid=''M341420$92817FC9-F8C0-46C0-A109-E01857DC991B''
+      class=''wbmi-item-container''><div class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div
+      class=''wbmi-entity-title''><h4 class=''wbmi-entity-label''><bdi><a target=\"_blank\"
+      title=\"d:Special:EntityPage/Q19125117\" href=\"https://www.wikidata.org/wiki/Special:EntityPage/Q19125117\">Creative
+      Commons Attribution 2.0 Generic</a></bdi></h4></div></div></div></div></div></div></div></div><div
+      id=''P571'' data-property=''P571'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P571\",\"hash\":\"69d887006a1ea4f9b09ff6f21e588ca452672cf8\",\"datavalue\":{\"value\":{\"time\":\"+2004-04-28T00:00:00Z\",\"timezone\":0,\"before\":0,\"after\":0,\"precision\":11,\"calendarmodel\":\"http:\\/\\/www.wikidata.org\\/entity\\/Q1985727\"},\"type\":\"time\"}},\"type\":\"statement\",\"id\":\"M341420$BAADFC51-290E-4206-9372-59F4EA244B78\",\"rank\":\"normal\"}]''
+      data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":571,\\\"id\\\":\\\"P571\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P571\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P571\\\"&gt;inception&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"inception\"}}},\"{\\\"value\\\":{\\\"time\\\":\\\"+2004-04-28T00:00:00Z\\\",\\\"timezone\\\":0,\\\"before\\\":0,\\\"after\\\":0,\\\"precision\\\":11,\\\"calendarmodel\\\":\\\"http:\\\\\\/\\\\\\/www.wikidata.org\\\\\\/entity\\\\\\/Q1985727\\\"},\\\"type\\\":\\\"time\\\"}\":{\"text\\/html\":{\"en\":{\"P571\":\"28
+      April 2004\"}},\"text\\/plain\":{\"en\":{\"P571\":\"28 April 2004\"}}}}'' class=''wbmi-entityview-statementsGroup
+      wbmi-entityview-statementsGroup-P571 oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div
+      class=''wbmi-statements-widget''><div class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div
+      class=''wbmi-entity-title''><h4 class=''wbmi-entity-label''><bdi><a target=\"_blank\"
+      title=\"d:Special:EntityPage/P571\" href=\"https://www.wikidata.org/wiki/Special:EntityPage/P571\">inception</a></bdi></h4></div></div></div><div
+      class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+      data-guid=''M341420$BAADFC51-290E-4206-9372-59F4EA244B78'' class=''wbmi-item-container''><div
+      class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi>28 April 2004</bdi></h4></div></div></div></div></div></div></div></div><div
+      id=''P4082'' data-property=''P4082'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P4082\",\"hash\":\"517f42416c7526ab38c3fb6e86f6850bcbc1a4af\",\"datavalue\":{\"value\":{\"entity-type\":\"item\",\"numeric-id\":10887012,\"id\":\"Q10887012\"},\"type\":\"wikibase-entityid\"}},\"type\":\"statement\",\"id\":\"M341420$F5B1128D-974A-4440-874A-61FA201CBE04\",\"rank\":\"normal\"}]''
+      data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":4082,\\\"id\\\":\\\"P4082\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P4082\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P4082\\\"&gt;captured
+      with&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"captured with\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"item\\\",\\\"numeric-id\\\":10887012,\\\"id\\\":\\\"Q10887012\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"P4082\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/Q10887012\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/Q10887012\\\"&gt;Canon
+      Digital IXUS i&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"P4082\":\"Canon Digital
+      IXUS i\"}}}}'' class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P4082
+      oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+      class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P4082\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/P4082\">captured with</a></bdi></h4></div></div></div><div
+      class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+      data-guid=''M341420$F5B1128D-974A-4440-874A-61FA201CBE04'' class=''wbmi-item-container''><div
+      class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/Q10887012\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/Q10887012\">Canon Digital
+      IXUS i</a></bdi></h4></div></div></div></div></div></div></div></div><div id=''P6757''
+      data-property=''P6757'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P6757\",\"hash\":\"73689978b7d7d9dd52924cf18bf5a817f6bdcfce\",\"datavalue\":{\"value\":{\"amount\":\"+0.004\",\"unit\":\"http:\\/\\/www.wikidata.org\\/entity\\/Q11574\"},\"type\":\"quantity\"}},\"type\":\"statement\",\"id\":\"M341420$1C7E7C77-4B66-4862-BF48-039DF79F08EE\",\"rank\":\"normal\"}]''
+      data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":6757,\\\"id\\\":\\\"P6757\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P6757\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P6757\\\"&gt;exposure
+      time&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"exposure time\"}}},\"{\\\"value\\\":{\\\"amount\\\":\\\"+0.004\\\",\\\"unit\\\":\\\"http:\\\\\\/\\\\\\/www.wikidata.org\\\\\\/entity\\\\\\/Q11574\\\"},\\\"type\\\":\\\"quantity\\\"}\":{\"text\\/html\":{\"en\":{\"P6757\":\"0.004
+      &lt;span class=\\\"wb-unit\\\"&gt;second&lt;\\/span&gt;\"}},\"text\\/plain\":{\"en\":{\"P6757\":\"0.004
+      second\"}}}}'' class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P6757
+      oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+      class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P6757\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/P6757\">exposure time</a></bdi></h4></div></div></div><div
+      class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+      data-guid=''M341420$1C7E7C77-4B66-4862-BF48-039DF79F08EE'' class=''wbmi-item-container''><div
+      class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi>0.004 <span class=\"wb-unit\">second</span></bdi></h4></div></div></div></div></div></div></div></div><div
+      id=''P6790'' data-property=''P6790'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P6790\",\"hash\":\"7e6187af800cf4d85b7217afac31dc36cd69dd48\",\"datavalue\":{\"value\":{\"amount\":\"+5.6\",\"unit\":\"1\"},\"type\":\"quantity\"}},\"type\":\"statement\",\"id\":\"M341420$3DCA9290-CEB9-4798-AC3E-640F06C1A05B\",\"rank\":\"normal\"}]''
+      data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":6790,\\\"id\\\":\\\"P6790\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P6790\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P6790\\\"&gt;f-number&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"f-number\"}}},\"{\\\"value\\\":{\\\"amount\\\":\\\"+5.6\\\",\\\"unit\\\":\\\"1\\\"},\\\"type\\\":\\\"quantity\\\"}\":{\"text\\/html\":{\"en\":{\"P6790\":\"5.6\"}},\"text\\/plain\":{\"en\":{\"P6790\":\"5.6\"}}}}''
+      class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P6790
+      oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+      class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P6790\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/P6790\">f-number</a></bdi></h4></div></div></div><div
+      class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+      data-guid=''M341420$3DCA9290-CEB9-4798-AC3E-640F06C1A05B'' class=''wbmi-item-container''><div
+      class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi>5.6</bdi></h4></div></div></div></div></div></div></div></div><div
+      id=''P2151'' data-property=''P2151'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P2151\",\"hash\":\"006515bc4f20c481a1c403d5faf560280a06cd13\",\"datavalue\":{\"value\":{\"amount\":\"+6.40625\",\"unit\":\"http:\\/\\/www.wikidata.org\\/entity\\/Q174789\"},\"type\":\"quantity\"}},\"type\":\"statement\",\"id\":\"M341420$2F504C79-0031-411B-B046-64FA04DE9002\",\"rank\":\"normal\"}]''
+      data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":2151,\\\"id\\\":\\\"P2151\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P2151\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P2151\\\"&gt;focal
+      length&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"focal length\"}}},\"{\\\"value\\\":{\\\"amount\\\":\\\"+6.40625\\\",\\\"unit\\\":\\\"http:\\\\\\/\\\\\\/www.wikidata.org\\\\\\/entity\\\\\\/Q174789\\\"},\\\"type\\\":\\\"quantity\\\"}\":{\"text\\/html\":{\"en\":{\"P2151\":\"6.40625
+      &lt;span class=\\\"wb-unit\\\"&gt;millimetre&lt;\\/span&gt;\"}},\"text\\/plain\":{\"en\":{\"P2151\":\"6.40625
+      millimetre\"}}}}'' class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P2151
+      oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+      class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P2151\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/P2151\">focal length</a></bdi></h4></div></div></div><div
+      class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+      data-guid=''M341420$2F504C79-0031-411B-B046-64FA04DE9002'' class=''wbmi-item-container''><div
+      class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi>6.40625 <span class=\"wb-unit\">millimetre</span></bdi></h4></div></div></div></div></div></div></div></div><div
+      id=''P1163'' data-property=''P1163'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P1163\",\"hash\":\"723d30b878d4a8deb968b0db429888e5353661a2\",\"datavalue\":{\"value\":\"image\\/jpeg\",\"type\":\"string\"}},\"type\":\"statement\",\"id\":\"M341420$BBACB8C4-28F6-4243-BD93-9E61FEFD99B5\",\"rank\":\"normal\"}]''
+      data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":1163,\\\"id\\\":\\\"P1163\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P1163\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P1163\\\"&gt;MIME
+      type&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"MIME type\"}}},\"{\\\"value\\\":\\\"image\\\\\\/jpeg\\\",\\\"type\\\":\\\"string\\\"}\":{\"text\\/html\":{\"en\":{\"P1163\":\"image\\/jpeg\"}},\"text\\/plain\":{\"en\":{\"P1163\":\"image\\/jpeg\"}}}}''
+      class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P1163
+      oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+      class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P1163\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/P1163\">MIME type</a></bdi></h4></div></div></div><div
+      class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+      data-guid=''M341420$BBACB8C4-28F6-4243-BD93-9E61FEFD99B5'' class=''wbmi-item-container''><div
+      class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi>image/jpeg</bdi></h4></div></div></div></div></div></div></div></div><div
+      id=''P4092'' data-property=''P4092'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P4092\",\"hash\":\"1b53202d08e04720f79c7b7c0510c023aa801d8d\",\"datavalue\":{\"value\":\"79551f95922e813bc6d35d4d4c5b1992a2d8b97a\",\"type\":\"string\"}},\"type\":\"statement\",\"qualifiers\":{\"P459\":[{\"snaktype\":\"value\",\"property\":\"P459\",\"hash\":\"75dff03c151b13fbab93742164121c16a6aa0de1\",\"datavalue\":{\"value\":{\"entity-type\":\"item\",\"numeric-id\":13414952,\"id\":\"Q13414952\"},\"type\":\"wikibase-entityid\"}}]},\"qualifiers-order\":[\"P459\"],\"id\":\"M341420$7994A710-0EC3-494A-9016-896DB45E9A7E\",\"rank\":\"normal\"}]''
+      data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":4092,\\\"id\\\":\\\"P4092\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P4092\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P4092\\\"&gt;checksum&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"checksum\"}}},\"{\\\"value\\\":\\\"79551f95922e813bc6d35d4d4c5b1992a2d8b97a\\\",\\\"type\\\":\\\"string\\\"}\":{\"text\\/html\":{\"en\":{\"P4092\":\"79551f95922e813bc6d35d4d4c5b1992a2d8b97a\"}},\"text\\/plain\":{\"en\":{\"P4092\":\"79551f95922e813bc6d35d4d4c5b1992a2d8b97a\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":459,\\\"id\\\":\\\"P459\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P459\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P459\\\"&gt;determination
+      method&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"determination method\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"item\\\",\\\"numeric-id\\\":13414952,\\\"id\\\":\\\"Q13414952\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"P459\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/Q13414952\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/Q13414952\\\"&gt;SHA-1&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"P459\":\"SHA-1\"}}}}''
+      class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P4092
+      oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+      class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P4092\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/P4092\">checksum</a></bdi></h4></div></div></div><div
+      class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+      data-guid=''M341420$7994A710-0EC3-494A-9016-896DB45E9A7E'' class=''wbmi-item-container''><div
+      class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi>79551f95922e813bc6d35d4d4c5b1992a2d8b97a</bdi></h4></div></div></div><div
+      class=''wbmi-item-qualifiers''><div class=''wbmi-snaklist-container''><div class=''wbmi-snaklist-content''><div
+      class=''wbmi-snak''><div class=''wbmi-snak-value''><a target=\"_blank\" title=\"d:Special:EntityPage/P459\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/P459\">determination
+      method</a><span class=''wbmi-snak-value-separator''>: </span><span class=''wbmi-snak-value--value''><a
+      target=\"_blank\" title=\"d:Special:EntityPage/Q13414952\" href=\"https://www.wikidata.org/wiki/Special:EntityPage/Q13414952\">SHA-1</a></span></div></div></div></div></div></div></div></div></div></div><div
+      id=''P3575'' data-property=''P3575'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P3575\",\"hash\":\"2c3a5cd76bed4fd2772f1c917442e3f594ce9a2b\",\"datavalue\":{\"value\":{\"amount\":\"+592923\",\"unit\":\"http:\\/\\/www.wikidata.org\\/entity\\/Q8799\"},\"type\":\"quantity\"}},\"type\":\"statement\",\"id\":\"M341420$BA299988-2497-4223-8604-3D737E9ECA21\",\"rank\":\"normal\"}]''
+      data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":3575,\\\"id\\\":\\\"P3575\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P3575\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P3575\\\"&gt;data
+      size&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"data size\"}}},\"{\\\"value\\\":{\\\"amount\\\":\\\"+592923\\\",\\\"unit\\\":\\\"http:\\\\\\/\\\\\\/www.wikidata.org\\\\\\/entity\\\\\\/Q8799\\\"},\\\"type\\\":\\\"quantity\\\"}\":{\"text\\/html\":{\"en\":{\"P3575\":\"592,923
+      &lt;span class=\\\"wb-unit\\\"&gt;byte&lt;\\/span&gt;\"}},\"text\\/plain\":{\"en\":{\"P3575\":\"592,923
+      byte\"}}}}'' class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P3575
+      oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+      class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P3575\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/P3575\">data size</a></bdi></h4></div></div></div><div
+      class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+      data-guid=''M341420$BA299988-2497-4223-8604-3D737E9ECA21'' class=''wbmi-item-container''><div
+      class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi>592,923 <span class=\"wb-unit\">byte</span></bdi></h4></div></div></div></div></div></div></div></div><div
+      id=''P2048'' data-property=''P2048'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P2048\",\"hash\":\"509a11aea408d516f244321a2c0135cd296340e3\",\"datavalue\":{\"value\":{\"amount\":\"+1200\",\"unit\":\"http:\\/\\/www.wikidata.org\\/entity\\/Q355198\"},\"type\":\"quantity\"}},\"type\":\"statement\",\"id\":\"M341420$DAAAD8D8-2B89-4553-9FA3-5109ADBA75C7\",\"rank\":\"normal\"}]''
+      data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":2048,\\\"id\\\":\\\"P2048\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P2048\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P2048\\\"&gt;height&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"height\"}}},\"{\\\"value\\\":{\\\"amount\\\":\\\"+1200\\\",\\\"unit\\\":\\\"http:\\\\\\/\\\\\\/www.wikidata.org\\\\\\/entity\\\\\\/Q355198\\\"},\\\"type\\\":\\\"quantity\\\"}\":{\"text\\/html\":{\"en\":{\"P2048\":\"1,200
+      &lt;span class=\\\"wb-unit\\\"&gt;pixel&lt;\\/span&gt;\"}},\"text\\/plain\":{\"en\":{\"P2048\":\"1,200
+      pixel\"}}}}'' class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P2048
+      oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+      class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P2048\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/P2048\">height</a></bdi></h4></div></div></div><div
+      class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+      data-guid=''M341420$DAAAD8D8-2B89-4553-9FA3-5109ADBA75C7'' class=''wbmi-item-container''><div
+      class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi>1,200 <span class=\"wb-unit\">pixel</span></bdi></h4></div></div></div></div></div></div></div></div><div
+      id=''P2049'' data-property=''P2049'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P2049\",\"hash\":\"b5495c07ced8e04f71298729e59c4b0c03df3b99\",\"datavalue\":{\"value\":{\"amount\":\"+1600\",\"unit\":\"http:\\/\\/www.wikidata.org\\/entity\\/Q355198\"},\"type\":\"quantity\"}},\"type\":\"statement\",\"id\":\"M341420$02AE967D-149F-46F3-B7C7-9A3C46E0E7B5\",\"rank\":\"normal\"}]''
+      data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":2049,\\\"id\\\":\\\"P2049\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P2049\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P2049\\\"&gt;width&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"width\"}}},\"{\\\"value\\\":{\\\"amount\\\":\\\"+1600\\\",\\\"unit\\\":\\\"http:\\\\\\/\\\\\\/www.wikidata.org\\\\\\/entity\\\\\\/Q355198\\\"},\\\"type\\\":\\\"quantity\\\"}\":{\"text\\/html\":{\"en\":{\"P2049\":\"1,600
+      &lt;span class=\\\"wb-unit\\\"&gt;pixel&lt;\\/span&gt;\"}},\"text\\/plain\":{\"en\":{\"P2049\":\"1,600
+      pixel\"}}}}'' class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P2049
+      oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+      class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P2049\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/P2049\">width</a></bdi></h4></div></div></div><div
+      class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+      data-guid=''M341420$02AE967D-149F-46F3-B7C7-9A3C46E0E7B5'' class=''wbmi-item-container''><div
+      class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi>1,600 <span class=\"wb-unit\">pixel</span></bdi></h4></div></div></div></div></div></div></div></div></mediainfoviewstatements></mediainfoview>\n<!--
+      \nNewPP limit report\nParsed by mw1399\nCached time: 20231127104302\nCache expiry:
+      1814400\nReduced expiry: false\nComplications: []\nCPU time usage: 0.091\nReal
+      time usage: 0.123\nPreprocessor visited node count: 1404\nPost\u2010expand include
+      size: 10812\nTemplate argument size: 1476\nHighest expansion depth: 16\nExpensive
+      parser function count: 2\nUnstrip recursion depth: 0\nUnstrip post\u2010expand
+      size: 3301\nLua time usage: 0.043\nLua memory usage: 1332983\nNumber of Wikibase
+      entities loaded: 1\n-->\n<!--\nTransclusion expansion time report (%,ms,calls,template)\n100.00%  110.226      1
+      -total\n 51.16%   56.391      1 Template:Information\n 29.43%   32.445      1
+      User:FlickreviewR/reviewed-pass\n 26.70%   29.430      1 Template:FlickreviewR\n
+      19.13%   21.083      1 Template:Cc-by-2.0\n 15.33%   16.903      1 Template:FlickreviewR/pass\n
+      14.99%   16.528      1 Template:Cc-by-layout\n 12.57%   13.855      1 Template:Flickrreview/template\n  8.79%    9.685      1
+      Template:LangSwitch\n  8.23%    9.075      1 Template:Iffile\n-->\n\n<!-- Saved
+      in parser cache with key commonswiki:pcache:idhash:341420-0!wb=3!wbMobile=0
+      and timestamp 20231127104302 and revision id 779247000. Rendering was triggered
+      because: page-view\n -->\n</div>"}}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Sun, 17 Dec 2023 08:50:57 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1493.eqiad.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3068"
+      set-cookie:
+      - WMF-Last-Access=17-Dec-2023;Path=/;HttpOnly;secure;Expires=Thu, 18 Jan 2024
+        00:00:00 GMT
+      - GeoIP=GB:ENG:Stowmarket:52.28:1.04:v4; Path=/; secure; Domain=.wikimedia.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie
+      x-cache:
+      - cp3068 miss, cp3068 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 92.30.89.207
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - api.flickr.com
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&photo_id=1526395
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"fail\">\n\t<err
+      code=\"1\" msg=\"Photo &quot;1526395&quot; not found (invalid ID)\" />\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '143'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Sun, 17 Dec 2023 08:50:57 GMT
+      Via:
+      - 1.1 b1e5e18d3663c842a7617d7893ff405e.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - 96lrcwLV_sHWv-WCdqbaNjDS3BxHvYszmFPrn8d_-_E8T499wUiqPQ==
+      X-Amz-Cf-Pop:
+      - LHR5-P1
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.58 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Tue, 16-Jan-2024 08:50:57 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Tue, 16-Jan-2024 08:50:57 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&photo_id=1526395
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"fail\">\n\t<err
+      code=\"1\" msg=\"Photo &quot;1526395&quot; not found (invalid ID)\" />\n</rsp>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '143'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Sun, 17 Dec 2023 08:50:58 GMT
+      Via:
+      - 1.1 b1e5e18d3663c842a7617d7893ff405e.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - 1J3h-nQtPyIyLHTuIgiK4nPIE4zusKGjg5LpAebFMeDKelV2fGEQnw==
+      X-Amz-Cf-Pop:
+      - LHR5-P1
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - Apache/2.4.58 (Ubuntu)
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Tue, 16-Jan-2024 08:50:58 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - SAMEORIGIN
+      x-robots-tag:
+      - noindex
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1
