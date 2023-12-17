@@ -176,6 +176,13 @@ from utils import get_typed_fixture
                 "url": "https://www.flickr.com/photos/jenniewoo/34737111/",
             },
         ),
+        (
+            "Sudan Meroe Pyramids Ornament 30sep2005.jpg",
+            {
+                "photo_id": "48325237",
+                "url": "https://www.flickr.com/photos/81919133@N00/48325237/in/set-962906/",
+            },
+        ),
     ],
 )
 def test_find_flickr_photo_id_from_wikitext(

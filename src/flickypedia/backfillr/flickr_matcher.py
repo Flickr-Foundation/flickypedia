@@ -108,8 +108,20 @@ def find_flickr_photo_id_from_source_field(
     elif len(urls) == 2 and urls[0] in {
         "https://en.wikipedia.org/wiki/Flickr",
         "/wiki/Flickr",
+        "/wiki/Commons:FLICKR",
     }:
         single_url = urls[1]
+
+        photo_id = get_flickr_photo_id_from_url(single_url)
+        if photo_id is not None:
+            return {"photo_id": photo_id, "url": single_url}
+
+    elif len(urls) == 2 and urls[1] in {
+        "https://en.wikipedia.org/wiki/Flickr",
+        "/wiki/Flickr",
+        "/wiki/Commons:FLICKR",
+    }:
+        single_url = urls[0]
 
         photo_id = get_flickr_photo_id_from_url(single_url)
         if photo_id is not None:

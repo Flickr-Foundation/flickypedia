@@ -7,7 +7,11 @@ from flickypedia.types.structured_data import (
     NewClaims,
     NewStatement,
 )
-from .comparisons import are_equivalent_qualifiers, are_equivalent_snaks, are_equivalent_statements
+from .comparisons import (
+    are_equivalent_qualifiers,
+    are_equivalent_snaks,
+    are_equivalent_statements,
+)
 
 
 class DoNothing(TypedDict):

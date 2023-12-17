@@ -46,7 +46,10 @@ def run_with(list_of_filenames: list[str]):
         print("")
         print(filename)
 
-        if filename == "The roof of the Reichstag building in Berlin.jpg":
+        if filename in {
+            "The roof of the Reichstag building in Berlin.jpg",
+            "Venezia-Arsenale.jpg",
+        }:
             continue
 
         try:
@@ -54,15 +57,19 @@ def run_with(list_of_filenames: list[str]):
         except MissingFileException:
             existing_sdc = {}
 
-        original_photo = find_flickr_photo(
-            wikimedia_api, flickr_api, existing_sdc, filename
-        )
+        try:
+            original_photo = find_flickr_photo(
+                wikimedia_api, flickr_api, existing_sdc, filename
+            )
+        except AssertionError:
+            print(filename, file=sys.stderr)
+            continue
 
         if original_photo is None:
             print("Could not find a Flickr photo ID in the existing SDC!")
             continue
 
-        photo_id = original_photo['photo_id']
+        photo_id = original_photo["photo_id"]
 
         print(f"Found the Flickr photo ID {photo_id}")
 
@@ -71,16 +78,27 @@ def run_with(list_of_filenames: list[str]):
 
             new_sdc = create_sdc_claims_for_existing_flickr_photo(photo)
         except ResourceNotFound as e:
-            if original_photo['url'] is None:
-                raise
+            if original_photo["url"] is None:
+                print(e)
+                continue
 
-            print(original_photo['url'])
+            print(original_photo["url"])
 
-            if original_photo['url'].startswith(("https://www.flickr.com/photos/", "http://www.flickr.com/photos/", "https://flickr.com/photos/")):
+            if original_photo["url"].startswith(
+                (
+                    "https://www.flickr.com/photos/",
+                    "http://www.flickr.com/photos/",
+                    "https://flickr.com/photos/",
+                )
+            ):
                 prefix_len = len("https://www.flickr.com/photos/")
                 user_url = (
                     "https://www.flickr.com/photos/"
-                    + original_photo['url'].replace("https://www.flickr.com/photos/", "").replace("http://www.flickr.com/photos/", "").replace("https://flickr.com/photos/", "").split("/")[0]
+                    + original_photo["url"]
+                    .replace("https://www.flickr.com/photos/", "")
+                    .replace("http://www.flickr.com/photos/", "")
+                    .replace("https://flickr.com/photos/", "")
+                    .split("/")[0]
                     + "/"
                 )
 
@@ -140,7 +158,7 @@ def run_with(list_of_filenames: list[str]):
                             "realname": None,
                             "path_alias": "jpvargas",
                             "photos_url": "https://www.flickr.com/photos/jpvargas/",
-                            "profile_url": "https://www.flickr.com/people/jpvargas/"
+                            "profile_url": "https://www.flickr.com/people/jpvargas/",
                         },
                         "https://www.flickr.com/photos/eugeniayjulian/": {
                             "id": "41574033@N00",
@@ -148,7 +166,7 @@ def run_with(list_of_filenames: list[str]):
                             "realname": None,
                             "path_alias": "eugeniayjulian",
                             "photos_url": "https://www.flickr.com/photos/eugeniayjulian/",
-                            "profile_url": "https://www.flickr.com/people/eugeniayjulian/"
+                            "profile_url": "https://www.flickr.com/people/eugeniayjulian/",
                         },
                         "https://www.flickr.com/photos/62179309@N00/": {
                             "id": "62179309@N00",
@@ -158,12 +176,46 @@ def run_with(list_of_filenames: list[str]):
                             "photos_url": "https://www.flickr.com/photos/62179309@N00/",
                             "profile_url": "https://www.flickr.com/people/62179309@N00/",
                         },
+                        "https://www.flickr.com/photos/67082487@N00/": {
+                            "id": "67082487@N00",
+                            "username": "nichlas",
+                            "realname": None,
+                            "path_alias": "nichlas",
+                            "photos_url": "https://www.flickr.com/photos/nichlas/",
+                            "profile_url": "https://www.flickr.com/people/nichlas/",
+                        },
+                        "https://www.flickr.com/photos/blackmoon/": {
+                            "id": "69548447@N00",
+                            "username": "blackmoon",
+                            "realname": None,
+                            "path_alias": "blackmoon",
+                            "photos_url": "https://www.flickr.com/photos/blackmoon/",
+                            "profile_url": "https://www.flickr.com/people/blackmoon/",
+                        },
+                        "https://www.flickr.com/photos/41894142129@N01/": {
+                            "id": "41894142129@N01",
+                            "username": "Tom Harpel",
+                            "realname": None,
+                            "path_alias": "tomharpel",
+                            "photos_url": "https://www.flickr.com/photos/tomharpel/",
+                            "profile_url": "https://www.flickr.com/photos/tomharpel/",
+                        },
+                        "https://www.flickr.com/photos/35034346832@N01/": {
+                            "id": "35034346832@N01",
+                            "username": "Krisjohn",
+                            "realname": None,
+                            "path_alias": "krishaven",
+                            "photos_url": "https://www.flickr.com/photos/krishaven/",
+                            "profile_url": "https://www.flickr.com/people/krishaven/",
+                        },
                     }[user_url]
                 except KeyError:
                     try:
                         creator = flickr_api.lookup_user_by_url(url=user_url)
                     except ResourceNotFound:
-                        print(f"Could not find info about the Flickr photo/user! {user_url}")
+                        print(
+                            f"Could not find info about the Flickr photo/user! {user_url}"
+                        )
                         continue
 
                 photo_url = f'https://www.flickr.com/photos/{creator["path_alias"] or creator["id"]}/{photo_id}/'
@@ -181,7 +233,8 @@ def run_with(list_of_filenames: list[str]):
                     ]
                 }
             else:
-                raise
+                print(e)
+                continue
 
         actions = create_actions(existing_sdc, new_sdc)
 
@@ -230,9 +283,13 @@ def update_single_file(url: str) -> None:
 def update_multiple_files(n: int) -> None:
     seen_titles = set(line.strip() for line in open("seen_titles.txt"))
 
+    n = int(n)
+
+    multiplier = 10
+
     i = 0
 
-    import json
+    import json, random
 
     new_titles = []
 
@@ -245,8 +302,13 @@ def update_multiple_files(n: int) -> None:
             new_titles.append(data["title"])
             i += 1
 
-        if i >= int(n):
+        if i >= int(n) * multiplier:
             break
+
+
+    assert len(new_titles) == int(n) * multiplier
+    new_titles = random.sample(new_titles, n)
+    assert len(new_titles) == n
 
     print(new_titles)
     run_with(list_of_filenames=new_titles)
