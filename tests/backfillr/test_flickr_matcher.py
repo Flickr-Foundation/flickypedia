@@ -205,6 +205,12 @@ from utils import get_typed_fixture
                 "url": "https://www.flickr.com/photos/madaz1962/144008438/",
             },
         ),
+        (
+        "Kelly slater.jpg",
+        {
+            "photo_id": "167645751",
+            "url": "https://www.flickr.com/photos/hyunlab/167645751/"
+        })
     ],
 )
 def test_find_flickr_photo_id_from_wikitext(

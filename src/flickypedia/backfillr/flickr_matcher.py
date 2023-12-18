@@ -171,6 +171,13 @@ def find_flickr_photo_id_from_source_field(
                 and urls[1].startswith(urls[0])
             ):
                 return {"photo_id": parsed_url1["photo_id"], "url": urls[1]}
+            elif (
+                parsed_url1["type"] == "user"
+                and parsed_url0["type"] == "single_photo"
+                and urls[0].startswith(urls[1])
+            ):
+                return {"photo_id": parsed_url0["photo_id"], "url": urls[0]}
+
             else:
                 assert 0
 
