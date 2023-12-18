@@ -50,6 +50,14 @@ def run_with(list_of_filenames: list[str]):
             "The roof of the Reichstag building in Berlin.jpg",
             "Venezia-Arsenale.jpg",
             "Macintosh LC 500.jpg",
+            "Sfc9394 userpage icon 1.jpg",
+            "Sfc9394 userpage icon 4.jpg",
+            "Sfc9394 userpage icon 2.jpg",
+            "Sfc9394 userpage icon 5.jpg",
+            "Paul Kariya.jpg",
+            "Forte del SS.mo Salvatore.jpg",
+            "Martin Erat.jpg",
+            "Munich U1 Georg-Brauchle-Ring.jpg",
         }:
             continue
 
@@ -294,7 +302,7 @@ def update_multiple_files(n: int) -> None:
 
     n = int(n)
 
-    multiplier = 10
+    multiplier = 20
 
     i = 0
 
