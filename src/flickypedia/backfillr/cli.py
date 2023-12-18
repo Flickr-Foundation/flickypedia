@@ -49,6 +49,7 @@ def run_with(list_of_filenames: list[str]):
         if filename in {
             "The roof of the Reichstag building in Berlin.jpg",
             "Venezia-Arsenale.jpg",
+            "Macintosh LC 500.jpg",
         }:
             continue
 
@@ -208,6 +209,14 @@ def run_with(list_of_filenames: list[str]):
                             "photos_url": "https://www.flickr.com/photos/krishaven/",
                             "profile_url": "https://www.flickr.com/people/krishaven/",
                         },
+                        "https://www.flickr.com/photos/o2ma/": {
+                            "id": "44124414617@N01",
+                            "username": "o2ma",
+                            "realname": None,
+                            "path_alias": "o2ma",
+                            "photos_url": "https://www.flickr.com/photos/o2ma/",
+                            "profile_url": "https://www.flickr.com/people/o2ma/",
+                        },
                     }[user_url]
                 except KeyError:
                     try:
@@ -304,7 +313,6 @@ def update_multiple_files(n: int) -> None:
 
         if i >= int(n) * multiplier:
             break
-
 
     assert len(new_titles) == int(n) * multiplier
     new_titles = random.sample(new_titles, n)
