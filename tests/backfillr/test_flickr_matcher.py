@@ -183,6 +183,28 @@ from utils import get_typed_fixture
                 "url": "https://www.flickr.com/photos/81919133@N00/48325237/in/set-962906/",
             },
         ),
+        # More assorted test cases
+        (
+            "Jenny_Lewis,_March_2006.jpg",
+            {
+                "photo_id": "111001118",
+                "url": "https://www.flickr.com/photos/pinkbeltrage/111001118/",
+            },
+        ),
+        (
+            "Sunset rainbow over Langøytangen lighthouse, Norway.jpg",
+            {
+                "photo_id": "155826836",
+                "url": "https://www.flickr.com/photos/18484540@N00/155826836/",
+            },
+        ),
+        (
+            "Pedro de la Rosa 2006.jpg",
+            {
+                "photo_id": "144008438",
+                "url": "https://www.flickr.com/photos/madaz1962/144008438/",
+            },
+        ),
     ],
 )
 def test_find_flickr_photo_id_from_wikitext(

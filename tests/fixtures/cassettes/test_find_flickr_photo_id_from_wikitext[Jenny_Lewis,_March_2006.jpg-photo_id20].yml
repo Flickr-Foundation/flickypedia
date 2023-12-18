@@ -1,0 +1,466 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.1
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=parse&format=json&page=File%3AJenny_Lewis%2C_March_2006.jpg&prop=text
+  response:
+    content: '{"parse":{"title":"File:Jenny Lewis, March 2006.jpg","pageid":628904,"text":{"*":"<div
+      class=\"mw-content-ltr mw-parser-output\" lang=\"en\" dir=\"ltr\"><h2><span
+      class=\"mw-headline\" id=\"Summary\">Summary</span><span class=\"mw-editsection\"><span
+      class=\"mw-editsection-bracket\">[</span><a href=\"/w/index.php?title=File:Jenny_Lewis,_March_2006.jpg&amp;action=edit&amp;section=1\"
+      title=\"Edit section: Summary\"><span>edit</span></a><span class=\"mw-editsection-bracket\">]</span></span></h2>\n<div
+      class=\"hproduct commons-file-information-table\">\n<style data-mw-deduplicate=\"TemplateStyles:r773143704\">.mw-parser-output
+      table.commons-file-information-table,.mw-parser-output .fileinfotpl-type-information,.mw-parser-output
+      .fileinfotpl-type-artwork{border:1px solid #a2a9b1;background-color:#f8f9fa;padding:5px;font-size:95%;border-spacing:2px;box-sizing:border-box;margin:0;width:100%}.mw-parser-output
+      table.commons-file-information-table>tbody>tr,.mw-parser-output .fileinfotpl-type-information>tbody>tr,.mw-parser-output
+      .fileinfotpl-type-artwork>tbody>tr{vertical-align:top}.mw-parser-output table.commons-file-information-table>tbody>tr>td,.mw-parser-output
+      table.commons-file-information-table>tbody>tr>th,.mw-parser-output .fileinfotpl-type-information>tbody>tr>td,.mw-parser-output
+      .fileinfotpl-type-information>tbody>tr>th,.mw-parser-output .fileinfotpl-type-artwork>tbody>tr>td,.mw-parser-output
+      .fileinfotpl-type-artwork>tbody>tr>th{padding:4px}.mw-parser-output .fileinfo-paramfield{background:#ccf;text-align:right;padding-right:0.4em;width:15%;font-weight:bold}.mw-parser-output
+      .commons-file-information-table+table.commons-file-information-table,.mw-parser-output
+      .commons-file-information-table+div.commons-file-information-table>table{border-top:0;padding-top:0;margin-top:-8px}@media
+      only screen and (max-width:719px){.mw-parser-output table.commons-file-information-table,.mw-parser-output
+      .commons-file-information-table .fileinfotpl-type-information,.mw-parser-output
+      .commons-file-information-table .fileinfotpl-type-artwork{border-spacing:0;padding:0;word-break:break-word;width:100%!important}.mw-parser-output
+      .commons-file-information-table>tbody,.mw-parser-output .fileinfotpl-type-information>tbody,.mw-parser-output
+      .fileinfotpl-type-artwork>tbody{display:block}.mw-parser-output .commons-file-information-table>tbody>tr>td,.mw-parser-output
+      .commons-file-information-table>tbody>tr>th,.mw-parser-output .fileinfotpl-type-information>tbody>tr>td,.mw-parser-output
+      .fileinfotpl-type-information>tbody>tr>th,.mw-parser-output .fileinfotpl-type-artwork>tbody>tr>td,.mw-parser-output
+      .fileinfotpl-type-artwork>tbody>tr>th{padding:0.2em 0.4em;text-align:left;text-align:start}.mw-parser-output
+      .commons-file-information-table>tbody>tr,.mw-parser-output .fileinfotpl-type-information>tbody>tr,.mw-parser-output
+      .fileinfotpl-type-artwork>tbody>tr{display:flex;flex-direction:column}.mw-parser-output
+      .commons-file-information-table+table.commons-file-information-table,.mw-parser-output
+      .commons-file-information-table+div.commons-file-information-table>table{margin-top:-1px}.mw-parser-output
+      .fileinfo-paramfield{box-sizing:border-box;flex:1 0 100%;width:100%}}</style>\n<table
+      class=\"fileinfotpl-type-information vevent mw-content-ltr\" style=\"direction:
+      ltr;\">\n\n<tbody><tr>\n<td id=\"fileinfotpl_desc\" class=\"fileinfo-paramfield\"
+      lang=\"en\">Description<span class=\"summary fn\" style=\"display:none\">Jenny
+      Lewis, March 2006.jpg</span></td>\n<td class=\"description\">\n<a href=\"https://en.wikipedia.org/wiki/Jenny_Lewis\"
+      class=\"extiw\" title=\"w:Jenny Lewis\">Jenny Lewis</a></td>\n</tr>\n\n<tr>\n<td
+      id=\"fileinfotpl_date\" class=\"fileinfo-paramfield\" lang=\"en\">Date</td>\n<td
+      lang=\"en\">\nPhotographed 2006-03-04, uploaded to Flickr 2006-03-11</td>\n</tr>\n\n<tr>\n<td
+      id=\"fileinfotpl_src\" class=\"fileinfo-paramfield\" lang=\"en\">Source</td>\n<td>\n\"<a
+      rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/photos/pinkbeltrage/111001118/\">but
+      my mama never warned me about my own destructive appetite.</a>\" on <a rel=\"nofollow\"
+      class=\"external text\" href=\"https://www.flickr.com/\">Flickr</a></td>\n</tr>\n\n<tr>\n<td
+      id=\"fileinfotpl_aut\" class=\"fileinfo-paramfield\" lang=\"en\">Author</td>\n<td>\nFlickr
+      user <a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/pinkbeltrage/\">pinkbelt</a></td>\n</tr>\n\n<tr>\n<td
+      id=\"fileinfotpl_perm\" class=\"fileinfo-paramfield\" lang=\"en\">Permission<br
+      /><small>(<a href=\"/wiki/Commons:Reusing_content_outside_Wikimedia\" title=\"Commons:Reusing
+      content outside Wikimedia\">Reusing this file</a>)</small></td>\n<td>\nCreative
+      Commons Attribution-ShareAlike 2.0</td>\n</tr>\n\n\n</tbody></table>\n</div>\n<table
+      class=\"messagebox plainlinks layouttemplate en\" lang=\"en\" dir=\"ltr\" style=\"margin:2px
+      10%;width:auto;border:2px solid #aaa;color:#222;border-left-width:8px;border-collapse:collapse;border:2px
+      solid #ddd; padding:5px;\"><tbody><tr>\n<td class=\"mbox-image\" style=\"padding-left:.9em\"><span
+      typeof=\"mw:File\"><a href=\"/wiki/File:Extracted_image_icon.svg\" class=\"mw-file-description\"><img
+      alt=\"Image extraction process\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Extracted_image_icon.svg/48px-Extracted_image_icon.svg.png\"
+      decoding=\"async\" width=\"48\" height=\"69\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Extracted_image_icon.svg/72px-Extracted_image_icon.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Extracted_image_icon.svg/96px-Extracted_image_icon.svg.png
+      2x\" data-file-width=\"240\" data-file-height=\"343\" /></a></span></td><td
+      class=\"mbox-text\">This file has an <b>extracted image</b>: <a href=\"/wiki/File:Jenny_Lewis,_March_2006_(cropped).jpg\"
+      title=\"File:Jenny Lewis, March 2006 (cropped).jpg\">Jenny Lewis, March 2006
+      (cropped).jpg</a>.</td><td class=\"mbox-imageright\"><div class=\"wpImageAnnotatorControl
+      wpImageAnnotatorOff\"><span typeof=\"mw:File\"><a href=\"/wiki/File:Jenny_Lewis,_March_2006_(cropped).jpg\"
+      class=\"mw-file-description\" title=\"lang=en\"><img alt=\"lang=en\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Jenny_Lewis%2C_March_2006_%28cropped%29.jpg/128px-Jenny_Lewis%2C_March_2006_%28cropped%29.jpg\"
+      decoding=\"async\" width=\"128\" height=\"177\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Jenny_Lewis%2C_March_2006_%28cropped%29.jpg/192px-Jenny_Lewis%2C_March_2006_%28cropped%29.jpg
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Jenny_Lewis%2C_March_2006_%28cropped%29.jpg/256px-Jenny_Lewis%2C_March_2006_%28cropped%29.jpg
+      2x\" data-file-width=\"1107\" data-file-height=\"1534\" /></a></span>\n</div></td></tr></tbody></table>\n<h2><span
+      class=\"mw-headline\" id=\"Licensing\">Licensing</span><span class=\"mw-editsection\"><span
+      class=\"mw-editsection-bracket\">[</span><a href=\"/w/index.php?title=File:Jenny_Lewis,_March_2006.jpg&amp;action=edit&amp;section=2\"
+      title=\"Edit section: Licensing\"><span>edit</span></a><span class=\"mw-editsection-bracket\">]</span></span></h2>\n<style
+      data-mw-deduplicate=\"TemplateStyles:r666199556\">.mw-parser-output .responsive-license-cc{clear:both;text-align:center;box-sizing:border-box;width:100%;justify-content:space-around;align-items:center;margin:0.5em
+      auto;background-color:#f9f9f9;border:2px solid #e0e0e0;border-spacing:8px;display:flex}.mw-parser-output
+      .responsive-license-cc div{margin:4px}.mw-parser-output .rlicense-text div{margin:0.5em
+      auto}@media screen and (max-width:640px){.mw-parser-output .responsive-license-cc{flex-flow:column}.mw-parser-output
+      .rlicense-text{order:1}}</style><div class=\"responsive-license-cc layouttemplate
+      licensetpl mw-content-ltr\" lang=\"en\"><div class=\"rlicense-icons\"><span
+      typeof=\"mw:File\"><span title=\"w:en:Creative Commons\"><img alt=\"w:en:Creative
+      Commons\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/CC_some_rights_reserved.svg/90px-CC_some_rights_reserved.svg.png\"
+      decoding=\"async\" width=\"90\" height=\"36\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/CC_some_rights_reserved.svg/135px-CC_some_rights_reserved.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/CC_some_rights_reserved.svg/180px-CC_some_rights_reserved.svg.png
+      2x\" data-file-width=\"744\" data-file-height=\"300\" /></span></span><br />\n<span
+      typeof=\"mw:File\"><span title=\"attribution\"><img alt=\"attribution\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Cc-by_new_white.svg/24px-Cc-by_new_white.svg.png\"
+      decoding=\"async\" width=\"24\" height=\"24\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Cc-by_new_white.svg/36px-Cc-by_new_white.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Cc-by_new_white.svg/48px-Cc-by_new_white.svg.png
+      2x\" data-file-width=\"64\" data-file-height=\"64\" /></span></span> <span typeof=\"mw:File\"><span
+      title=\"share alike\"><img alt=\"share alike\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Cc-sa_white.svg/24px-Cc-sa_white.svg.png\"
+      decoding=\"async\" width=\"24\" height=\"24\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Cc-sa_white.svg/36px-Cc-sa_white.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Cc-sa_white.svg/48px-Cc-sa_white.svg.png
+      2x\" data-file-width=\"64\" data-file-height=\"64\" /></span></span></div><div
+      class=\"rlicense-text\"><div class=\"rlicense-declaration\">This file is licensed
+      under the <a href=\"https://en.wikipedia.org/wiki/en:Creative_Commons\" class=\"extiw\"
+      title=\"w:en:Creative Commons\">Creative Commons</a> <a rel=\"nofollow\" class=\"external
+      text\" href=\"https://creativecommons.org/licenses/by-sa/2.0/deed.en\">Attribution-Share
+      Alike 2.0 Generic</a> license.</div><div class=\"rlicense-desc\" style=\"text-align:left;\"
+      lang=\"en\">\n<dl><dd>You are free:\n<ul><li><b>to share</b> \u2013 to copy,
+      distribute and transmit the work</li>\n<li><b>to remix</b> \u2013 to adapt the
+      work</li></ul></dd>\n<dd>Under the following conditions:\n<ul><li><b>attribution</b>
+      \u2013 You must give appropriate credit, provide a link to the license, and
+      indicate if changes were made. You may do so in any reasonable manner, but not
+      in any way that suggests the licensor endorses you or your use.</li>\n<li><b>share
+      alike</b> \u2013 If you remix, transform, or build upon the material, you must
+      distribute your contributions under the <a rel=\"nofollow\" class=\"external
+      text\" href=\"https://creativecommons.org/share-your-work/licensing-considerations/compatible-licenses\">same
+      or compatible license</a> as the original.</li></ul></dd></dl></div><span class=\"licensetpl_link\"
+      style=\"display:none;\">https://creativecommons.org/licenses/by-sa/2.0</span><span
+      class=\"licensetpl_short\" style=\"display:none;\">CC BY-SA 2.0 </span><span
+      class=\"licensetpl_long\" style=\"display:none;\">Creative Commons Attribution-Share
+      Alike 2.0 </span><span class=\"licensetpl_link_req\" style=\"display:none;\">true</span><span
+      class=\"licensetpl_attr_req\" style=\"display:none;\">true</span></div></div>\n<table
+      id=\"FlickrReview\" class=\"layouttemplate\" style=\"width:100%; margin:0.5em
+      auto; background: #eeffee; padding: 5px; border: 1px solid #aaaa88; direction:
+      ltr;\" lang=\"en\">\n\n<tbody><tr>\n<td><span typeof=\"mw:File\"><span><img
+      src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Checked_copyright_icon.svg/50px-Checked_copyright_icon.svg.png\"
+      decoding=\"async\" width=\"50\" height=\"48\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Checked_copyright_icon.svg/75px-Checked_copyright_icon.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Checked_copyright_icon.svg/100px-Checked_copyright_icon.svg.png
+      2x\" data-file-width=\"160\" data-file-height=\"153\" /></span></span>\n</td>\n<td>This
+      image, originally posted to <b><a href=\"/wiki/Commons:Flickr\" class=\"mw-redirect\"
+      title=\"Commons:Flickr\">Flickr</a></b>, was reviewed on 00:33, 26 October 2006
+      (UTC) by the <a href=\"/wiki/Commons:A\" class=\"mw-redirect\" title=\"Commons:A\">administrator</a>
+      or <a href=\"/wiki/Commons:License_review\" title=\"Commons:License review\">reviewer</a>
+      <b><a href=\"/wiki/User:Mdd4696\" title=\"User:Mdd4696\">Mdd4696</a></b>, who
+      confirmed that it was available on Flickr under the stated license on that date.\n</td></tr></tbody></table>\n<h1
+      class=\"mw-slot-header\"><mediainfoslotheader /></h1><mediainfoview style=\"display:
+      none\"><mediainfoviewcaptions><div class=''wbmi-entityview-captionsPanel oo-ui-layout
+      oo-ui-panelLayout oo-ui-panelLayout-framed''><h3 class=''wbmi-entityview-captions-header''>Captions</h3><div
+      class=''wbmi-entityview-caption oo-ui-layout oo-ui-horizontalLayout''><label
+      class=''wbmi-language-label oo-ui-widget oo-ui-widget-enabled oo-ui-labelElement-label
+      oo-ui-labelElement oo-ui-labelWidget''>English</label><div lang=''en'' dir=''ltr''
+      class=''wbmi-caption-value wbmi-entityview-emptyCaption''>Add a one-line explanation
+      of what this file represents</div></div></div></mediainfoviewcaptions><mediainfoviewstatements><div
+      id=''P180'' data-property=''P180'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P180\",\"hash\":\"7de57740fe5781efa1f297377507ab80eff14fd6\",\"datavalue\":{\"value\":{\"entity-type\":\"item\",\"numeric-id\":435968,\"id\":\"Q435968\"},\"type\":\"wikibase-entityid\"}},\"type\":\"statement\",\"id\":\"M628904$652C5484-4758-439C-BA1F-48545AA83A14\",\"rank\":\"preferred\"}]''
+      data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":180,\\\"id\\\":\\\"P180\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P180\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P180\\\"&gt;depicts&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"depicts\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"item\\\",\\\"numeric-id\\\":435968,\\\"id\\\":\\\"Q435968\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"P180\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/Q435968\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/Q435968\\\"&gt;Jenny
+      Lewis&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"P180\":\"Jenny Lewis\"}}}}''
+      class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P180
+      oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+      class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h3
+      class=''wbmi-statements-title''>Items portrayed in this file</h3><h4 class=''wbmi-entity-label''><bdi><a
+      target=\"_blank\" title=\"d:Special:EntityPage/P180\" href=\"https://www.wikidata.org/wiki/Special:EntityPage/P180\">depicts</a></bdi></h4></div></div></div><div
+      class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+      data-guid=''M628904$652C5484-4758-439C-BA1F-48545AA83A14'' class=''wbmi-item-container''><div
+      class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/Q435968\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/Q435968\">Jenny Lewis</a></bdi></h4></div></div></div></div></div></div></div></div><div
+      id=''P170'' data-property=''P170'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"somevalue\",\"property\":\"P170\",\"hash\":\"d3550e860f988c6675fff913440993f58f5c40c5\"},\"type\":\"statement\",\"qualifiers\":{\"P3267\":[{\"snaktype\":\"value\",\"property\":\"P3267\",\"hash\":\"6cba7d38f8fe932d66ce71dfdacce32f62097fa8\",\"datavalue\":{\"value\":\"77758445@N00\",\"type\":\"string\"}}],\"P2093\":[{\"snaktype\":\"value\",\"property\":\"P2093\",\"hash\":\"a032f122353b0d54175f902ef62e1f4cb01ee8f3\",\"datavalue\":{\"value\":\"pinkbelt\",\"type\":\"string\"}}],\"P2699\":[{\"snaktype\":\"value\",\"property\":\"P2699\",\"hash\":\"5aa794b960c063be6613eeb2e7ff111413fed06f\",\"datavalue\":{\"value\":\"https:\\/\\/www.flickr.com\\/people\\/pinkbeltrage\\/\",\"type\":\"string\"}}]},\"qualifiers-order\":[\"P3267\",\"P2093\",\"P2699\"],\"id\":\"M628904$F33FCA63-18F2-49FB-96CC-C9D44657D34F\",\"rank\":\"normal\"}]''
+      data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":170,\\\"id\\\":\\\"P170\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P170\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P170\\\"&gt;creator&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"creator\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":3267,\\\"id\\\":\\\"P3267\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P3267\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P3267\\\"&gt;Flickr
+      user ID&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"Flickr user ID\"}}},\"{\\\"value\\\":\\\"77758445@N00\\\",\\\"type\\\":\\\"string\\\"}\":{\"text\\/html\":{\"en\":{\"P3267\":\"&lt;a
+      target=\\\"_blank\\\" class=\\\"wb-external-id external\\\" href=\\\"https:\\/\\/www.flickr.com\\/people\\/77758445%40N00\\\"
+      rel=\\\"nofollow\\\"&gt;77758445@N00&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"P3267\":\"77758445@N00\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":2093,\\\"id\\\":\\\"P2093\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P2093\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P2093\\\"&gt;author
+      name string&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"author name string\"}}},\"{\\\"value\\\":\\\"pinkbelt\\\",\\\"type\\\":\\\"string\\\"}\":{\"text\\/html\":{\"en\":{\"P2093\":\"pinkbelt\"}},\"text\\/plain\":{\"en\":{\"P2093\":\"pinkbelt\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":2699,\\\"id\\\":\\\"P2699\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P2699\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P2699\\\"&gt;URL&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"URL\"}}},\"{\\\"value\\\":\\\"https:\\\\\\/\\\\\\/www.flickr.com\\\\\\/people\\\\\\/pinkbeltrage\\\\\\/\\\",\\\"type\\\":\\\"string\\\"}\":{\"text\\/html\":{\"en\":{\"P2699\":\"&lt;a
+      target=\\\"_blank\\\" rel=\\\"nofollow\\\" class=\\\"external free\\\" href=\\\"https:\\/\\/www.flickr.com\\/people\\/pinkbeltrage\\/\\\"&gt;https:\\/\\/www.flickr.com\\/people\\/pinkbeltrage\\/&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"P2699\":\"https:\\/\\/www.flickr.com\\/people\\/pinkbeltrage\\/\"}}}}''
+      class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P170
+      oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+      class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P170\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/P170\">creator</a></bdi></h4></div></div></div><div
+      class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+      data-guid=''M628904$F33FCA63-18F2-49FB-96CC-C9D44657D34F'' class=''wbmi-item-container''><div
+      class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi>some value</bdi></h4></div></div></div><div
+      class=''wbmi-item-qualifiers''><div class=''wbmi-snaklist-container''><div class=''wbmi-snaklist-content''><div
+      class=''wbmi-snak''><div class=''wbmi-snak-value''><a target=\"_blank\" title=\"d:Special:EntityPage/P3267\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/P3267\">Flickr user
+      ID</a><span class=''wbmi-snak-value-separator''>: </span><span class=''wbmi-snak-value--value''><a
+      target=\"_blank\" class=\"wb-external-id external\" href=\"https://www.flickr.com/people/77758445%40N00\"
+      rel=\"nofollow\">77758445@N00</a></span></div></div><div class=''wbmi-snak''><div
+      class=''wbmi-snak-value''><a target=\"_blank\" title=\"d:Special:EntityPage/P2093\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/P2093\">author name
+      string</a><span class=''wbmi-snak-value-separator''>: </span><span class=''wbmi-snak-value--value''>pinkbelt</span></div></div><div
+      class=''wbmi-snak''><div class=''wbmi-snak-value''><a target=\"_blank\" title=\"d:Special:EntityPage/P2699\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/P2699\">URL</a><span
+      class=''wbmi-snak-value-separator''>: </span><span class=''wbmi-snak-value--value''><a
+      target=\"_blank\" rel=\"nofollow\" class=\"external free\" href=\"https://www.flickr.com/people/pinkbeltrage/\">https://www.flickr.com/people/pinkbeltrage/</a></span></div></div></div></div></div></div></div></div></div></div><div
+      id=''P1433'' data-property=''P1433'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P1433\",\"hash\":\"42371a72aac2d430d87cc00de671b55cac1f5a79\",\"datavalue\":{\"value\":{\"entity-type\":\"item\",\"numeric-id\":103204,\"id\":\"Q103204\"},\"type\":\"wikibase-entityid\"}},\"type\":\"statement\",\"qualifiers\":{\"P577\":[{\"snaktype\":\"value\",\"property\":\"P577\",\"hash\":\"b8e783ed53f2521f507966bb7910d4859d0a6b9d\",\"datavalue\":{\"value\":{\"time\":\"+2006-03-11T00:00:00Z\",\"timezone\":0,\"before\":0,\"after\":0,\"precision\":11,\"calendarmodel\":\"http:\\/\\/www.wikidata.org\\/entity\\/Q1985727\"},\"type\":\"time\"}}]},\"qualifiers-order\":[\"P577\"],\"id\":\"M628904$8D4FC83F-7169-48C7-A887-3B00AEB9EC72\",\"rank\":\"normal\"}]''
+      data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":1433,\\\"id\\\":\\\"P1433\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P1433\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P1433\\\"&gt;published
+      in&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"published in\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"item\\\",\\\"numeric-id\\\":103204,\\\"id\\\":\\\"Q103204\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"P1433\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/Q103204\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/Q103204\\\"&gt;Flickr&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"P1433\":\"Flickr\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":577,\\\"id\\\":\\\"P577\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P577\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P577\\\"&gt;publication
+      date&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"publication date\"}}},\"{\\\"value\\\":{\\\"time\\\":\\\"+2006-03-11T00:00:00Z\\\",\\\"timezone\\\":0,\\\"before\\\":0,\\\"after\\\":0,\\\"precision\\\":11,\\\"calendarmodel\\\":\\\"http:\\\\\\/\\\\\\/www.wikidata.org\\\\\\/entity\\\\\\/Q1985727\\\"},\\\"type\\\":\\\"time\\\"}\":{\"text\\/html\":{\"en\":{\"P577\":\"11
+      March 2006\"}},\"text\\/plain\":{\"en\":{\"P577\":\"11 March 2006\"}}}}'' class=''wbmi-entityview-statementsGroup
+      wbmi-entityview-statementsGroup-P1433 oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div
+      class=''wbmi-statements-widget''><div class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div
+      class=''wbmi-entity-title''><h4 class=''wbmi-entity-label''><bdi><a target=\"_blank\"
+      title=\"d:Special:EntityPage/P1433\" href=\"https://www.wikidata.org/wiki/Special:EntityPage/P1433\">published
+      in</a></bdi></h4></div></div></div><div class=''wbmi-content-items-group''><div
+      class=''wbmi-item wbmi-item-read''><div data-guid=''M628904$8D4FC83F-7169-48C7-A887-3B00AEB9EC72''
+      class=''wbmi-item-container''><div class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div
+      class=''wbmi-entity-title''><h4 class=''wbmi-entity-label''><bdi><a target=\"_blank\"
+      title=\"d:Special:EntityPage/Q103204\" href=\"https://www.wikidata.org/wiki/Special:EntityPage/Q103204\">Flickr</a></bdi></h4></div></div></div><div
+      class=''wbmi-item-qualifiers''><div class=''wbmi-snaklist-container''><div class=''wbmi-snaklist-content''><div
+      class=''wbmi-snak''><div class=''wbmi-snak-value''><a target=\"_blank\" title=\"d:Special:EntityPage/P577\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/P577\">publication date</a><span
+      class=''wbmi-snak-value-separator''>: </span><span class=''wbmi-snak-value--value''>11
+      March 2006</span></div></div></div></div></div></div></div></div></div></div><div
+      id=''P6216'' data-property=''P6216'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P6216\",\"hash\":\"5570347fdc76d2a80732f51ea10ee4b144a084e0\",\"datavalue\":{\"value\":{\"entity-type\":\"item\",\"numeric-id\":50423863,\"id\":\"Q50423863\"},\"type\":\"wikibase-entityid\"}},\"type\":\"statement\",\"id\":\"M628904$9FB8F343-9E8A-4F89-AC2D-78D03E93E3FC\",\"rank\":\"normal\"}]''
+      data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":6216,\\\"id\\\":\\\"P6216\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P6216\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P6216\\\"&gt;copyright
+      status&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"copyright status\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"item\\\",\\\"numeric-id\\\":50423863,\\\"id\\\":\\\"Q50423863\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"P6216\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/Q50423863\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/Q50423863\\\"&gt;copyrighted&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"P6216\":\"copyrighted\"}}}}''
+      class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P6216
+      oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+      class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P6216\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/P6216\">copyright status</a></bdi></h4></div></div></div><div
+      class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+      data-guid=''M628904$9FB8F343-9E8A-4F89-AC2D-78D03E93E3FC'' class=''wbmi-item-container''><div
+      class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/Q50423863\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/Q50423863\">copyrighted</a></bdi></h4></div></div></div></div></div></div></div></div><div
+      id=''P275'' data-property=''P275'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P275\",\"hash\":\"a62aa88e8696cafc169e9591e6d34b5d3ec5b93e\",\"datavalue\":{\"value\":{\"entity-type\":\"item\",\"numeric-id\":19068220,\"id\":\"Q19068220\"},\"type\":\"wikibase-entityid\"}},\"type\":\"statement\",\"id\":\"M628904$E4EF4C89-C1D9-4539-9C27-243ADD4CBC0E\",\"rank\":\"normal\"}]''
+      data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":275,\\\"id\\\":\\\"P275\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P275\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P275\\\"&gt;copyright
+      license&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"copyright license\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"item\\\",\\\"numeric-id\\\":19068220,\\\"id\\\":\\\"Q19068220\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"P275\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/Q19068220\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/Q19068220\\\"&gt;Creative
+      Commons Attribution-ShareAlike 2.0 Generic&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"P275\":\"Creative
+      Commons Attribution-ShareAlike 2.0 Generic\"}}}}'' class=''wbmi-entityview-statementsGroup
+      wbmi-entityview-statementsGroup-P275 oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div
+      class=''wbmi-statements-widget''><div class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div
+      class=''wbmi-entity-title''><h4 class=''wbmi-entity-label''><bdi><a target=\"_blank\"
+      title=\"d:Special:EntityPage/P275\" href=\"https://www.wikidata.org/wiki/Special:EntityPage/P275\">copyright
+      license</a></bdi></h4></div></div></div><div class=''wbmi-content-items-group''><div
+      class=''wbmi-item wbmi-item-read''><div data-guid=''M628904$E4EF4C89-C1D9-4539-9C27-243ADD4CBC0E''
+      class=''wbmi-item-container''><div class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div
+      class=''wbmi-entity-title''><h4 class=''wbmi-entity-label''><bdi><a target=\"_blank\"
+      title=\"d:Special:EntityPage/Q19068220\" href=\"https://www.wikidata.org/wiki/Special:EntityPage/Q19068220\">Creative
+      Commons Attribution-ShareAlike 2.0 Generic</a></bdi></h4></div></div></div></div></div></div></div></div><div
+      id=''P4082'' data-property=''P4082'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P4082\",\"hash\":\"98a0cb5854d082eeb07555397e6a1d66ead91a64\",\"datavalue\":{\"value\":{\"entity-type\":\"item\",\"numeric-id\":64072,\"id\":\"Q64072\"},\"type\":\"wikibase-entityid\"}},\"type\":\"statement\",\"id\":\"M628904$39AED382-C068-4644-89AC-83CEB180EA58\",\"rank\":\"normal\"}]''
+      data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":4082,\\\"id\\\":\\\"P4082\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P4082\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P4082\\\"&gt;captured
+      with&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"captured with\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"item\\\",\\\"numeric-id\\\":64072,\\\"id\\\":\\\"Q64072\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"P4082\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/Q64072\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/Q64072\\\"&gt;Canon
+      EOS 350D&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"P4082\":\"Canon EOS 350D\"}}}}''
+      class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P4082
+      oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+      class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P4082\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/P4082\">captured with</a></bdi></h4></div></div></div><div
+      class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+      data-guid=''M628904$39AED382-C068-4644-89AC-83CEB180EA58'' class=''wbmi-item-container''><div
+      class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/Q64072\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/Q64072\">Canon EOS 350D</a></bdi></h4></div></div></div></div></div></div></div></div><div
+      id=''P6757'' data-property=''P6757'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P6757\",\"hash\":\"49f120186c4b8f37679dbe8be400a80d09464310\",\"datavalue\":{\"value\":{\"amount\":\"+0.01666666666666666666\",\"unit\":\"http:\\/\\/www.wikidata.org\\/entity\\/Q11574\"},\"type\":\"quantity\"}},\"type\":\"statement\",\"id\":\"M628904$AB934C4F-37CF-4EB5-9A00-C51F00DBF0A7\",\"rank\":\"normal\"}]''
+      data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":6757,\\\"id\\\":\\\"P6757\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P6757\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P6757\\\"&gt;exposure
+      time&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"exposure time\"}}},\"{\\\"value\\\":{\\\"amount\\\":\\\"+0.01666666666666666666\\\",\\\"unit\\\":\\\"http:\\\\\\/\\\\\\/www.wikidata.org\\\\\\/entity\\\\\\/Q11574\\\"},\\\"type\\\":\\\"quantity\\\"}\":{\"text\\/html\":{\"en\":{\"P6757\":\"0.01666666666666666666
+      &lt;span class=\\\"wb-unit\\\"&gt;second&lt;\\/span&gt;\"}},\"text\\/plain\":{\"en\":{\"P6757\":\"0.01666666666666666666
+      second\"}}}}'' class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P6757
+      oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+      class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P6757\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/P6757\">exposure time</a></bdi></h4></div></div></div><div
+      class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+      data-guid=''M628904$AB934C4F-37CF-4EB5-9A00-C51F00DBF0A7'' class=''wbmi-item-container''><div
+      class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi>0.01666666666666666666 <span class=\"wb-unit\">second</span></bdi></h4></div></div></div></div></div></div></div></div><div
+      id=''P6790'' data-property=''P6790'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P6790\",\"hash\":\"bb2a604000a7694f8a3834185e53e404ab6439c8\",\"datavalue\":{\"value\":{\"amount\":\"+2\",\"unit\":\"1\"},\"type\":\"quantity\"}},\"type\":\"statement\",\"id\":\"M628904$6F223278-E5EE-424D-8368-1A28AE61C75F\",\"rank\":\"normal\"}]''
+      data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":6790,\\\"id\\\":\\\"P6790\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P6790\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P6790\\\"&gt;f-number&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"f-number\"}}},\"{\\\"value\\\":{\\\"amount\\\":\\\"+2\\\",\\\"unit\\\":\\\"1\\\"},\\\"type\\\":\\\"quantity\\\"}\":{\"text\\/html\":{\"en\":{\"P6790\":\"2\"}},\"text\\/plain\":{\"en\":{\"P6790\":\"2\"}}}}''
+      class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P6790
+      oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+      class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P6790\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/P6790\">f-number</a></bdi></h4></div></div></div><div
+      class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+      data-guid=''M628904$6F223278-E5EE-424D-8368-1A28AE61C75F'' class=''wbmi-item-container''><div
+      class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi>2</bdi></h4></div></div></div></div></div></div></div></div><div
+      id=''P2151'' data-property=''P2151'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P2151\",\"hash\":\"e682c8fff338c3adf77624acbad5b389bcc888b2\",\"datavalue\":{\"value\":{\"amount\":\"+50\",\"unit\":\"http:\\/\\/www.wikidata.org\\/entity\\/Q174789\"},\"type\":\"quantity\"}},\"type\":\"statement\",\"id\":\"M628904$3CC233A0-E783-471A-B159-6A462624D7F0\",\"rank\":\"normal\"}]''
+      data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":2151,\\\"id\\\":\\\"P2151\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P2151\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P2151\\\"&gt;focal
+      length&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"focal length\"}}},\"{\\\"value\\\":{\\\"amount\\\":\\\"+50\\\",\\\"unit\\\":\\\"http:\\\\\\/\\\\\\/www.wikidata.org\\\\\\/entity\\\\\\/Q174789\\\"},\\\"type\\\":\\\"quantity\\\"}\":{\"text\\/html\":{\"en\":{\"P2151\":\"50
+      &lt;span class=\\\"wb-unit\\\"&gt;millimetre&lt;\\/span&gt;\"}},\"text\\/plain\":{\"en\":{\"P2151\":\"50
+      millimetre\"}}}}'' class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P2151
+      oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+      class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P2151\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/P2151\">focal length</a></bdi></h4></div></div></div><div
+      class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+      data-guid=''M628904$3CC233A0-E783-471A-B159-6A462624D7F0'' class=''wbmi-item-container''><div
+      class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi>50 <span class=\"wb-unit\">millimetre</span></bdi></h4></div></div></div></div></div></div></div></div><div
+      id=''P6789'' data-property=''P6789'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P6789\",\"hash\":\"bcecc2e41692f5515c720e13f8f7effb3b4205b7\",\"datavalue\":{\"value\":{\"amount\":\"+800\",\"unit\":\"1\"},\"type\":\"quantity\"}},\"type\":\"statement\",\"id\":\"M628904$CA80B4D1-826D-427F-882D-DEDE7EDDC328\",\"rank\":\"normal\"}]''
+      data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":6789,\\\"id\\\":\\\"P6789\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P6789\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P6789\\\"&gt;ISO
+      speed&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"ISO speed\"}}},\"{\\\"value\\\":{\\\"amount\\\":\\\"+800\\\",\\\"unit\\\":\\\"1\\\"},\\\"type\\\":\\\"quantity\\\"}\":{\"text\\/html\":{\"en\":{\"P6789\":\"800\"}},\"text\\/plain\":{\"en\":{\"P6789\":\"800\"}}}}''
+      class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P6789
+      oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+      class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P6789\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/P6789\">ISO speed</a></bdi></h4></div></div></div><div
+      class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+      data-guid=''M628904$CA80B4D1-826D-427F-882D-DEDE7EDDC328'' class=''wbmi-item-container''><div
+      class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi>800</bdi></h4></div></div></div></div></div></div></div></div><div
+      id=''P31'' data-property=''P31'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P31\",\"hash\":\"78817782cf2abc9d185934ba3b526591e12840f2\",\"datavalue\":{\"value\":{\"entity-type\":\"item\",\"numeric-id\":125191,\"id\":\"Q125191\"},\"type\":\"wikibase-entityid\"}},\"type\":\"statement\",\"id\":\"M628904$FAFAD0A3-46EB-44E5-A520-8DEEFBD1B6F7\",\"rank\":\"normal\"}]''
+      data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":31,\\\"id\\\":\\\"P31\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P31\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P31\\\"&gt;instance
+      of&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"instance of\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"item\\\",\\\"numeric-id\\\":125191,\\\"id\\\":\\\"Q125191\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"P31\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/Q125191\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/Q125191\\\"&gt;photograph&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"P31\":\"photograph\"}}}}''
+      class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P31
+      oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+      class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P31\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/P31\">instance of</a></bdi></h4></div></div></div><div
+      class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+      data-guid=''M628904$FAFAD0A3-46EB-44E5-A520-8DEEFBD1B6F7'' class=''wbmi-item-container''><div
+      class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/Q125191\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/Q125191\">photograph</a></bdi></h4></div></div></div></div></div></div></div></div><div
+      id=''P1163'' data-property=''P1163'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P1163\",\"hash\":\"723d30b878d4a8deb968b0db429888e5353661a2\",\"datavalue\":{\"value\":\"image\\/jpeg\",\"type\":\"string\"}},\"type\":\"statement\",\"id\":\"M628904$17CAEE57-B79F-49AA-9AFE-D2A82EE9D87C\",\"rank\":\"normal\"}]''
+      data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":1163,\\\"id\\\":\\\"P1163\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P1163\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P1163\\\"&gt;MIME
+      type&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"MIME type\"}}},\"{\\\"value\\\":\\\"image\\\\\\/jpeg\\\",\\\"type\\\":\\\"string\\\"}\":{\"text\\/html\":{\"en\":{\"P1163\":\"image\\/jpeg\"}},\"text\\/plain\":{\"en\":{\"P1163\":\"image\\/jpeg\"}}}}''
+      class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P1163
+      oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+      class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P1163\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/P1163\">MIME type</a></bdi></h4></div></div></div><div
+      class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+      data-guid=''M628904$17CAEE57-B79F-49AA-9AFE-D2A82EE9D87C'' class=''wbmi-item-container''><div
+      class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi>image/jpeg</bdi></h4></div></div></div></div></div></div></div></div><div
+      id=''P12120'' data-property=''P12120'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P12120\",\"hash\":\"df30f8bd8becff945025bc63ff48872c18885eb9\",\"datavalue\":{\"value\":\"111001118\",\"type\":\"string\"}},\"type\":\"statement\",\"id\":\"M628904$2F949FB2-04E6-4366-863E-640575573A91\",\"rank\":\"normal\"}]''
+      data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":12120,\\\"id\\\":\\\"P12120\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P12120\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P12120\\\"&gt;\\u200eFlickr
+      photo ID&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"\\u200eFlickr photo
+      ID\"}}},\"{\\\"value\\\":\\\"111001118\\\",\\\"type\\\":\\\"string\\\"}\":{\"text\\/html\":{\"en\":{\"P12120\":\"&lt;a
+      target=\\\"_blank\\\" class=\\\"wb-external-id external\\\" href=\\\"https:\\/\\/www.flickr.com\\/photo.gne?id=111001118\\\"
+      rel=\\\"nofollow\\\"&gt;111001118&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"P12120\":\"111001118\"}}}}''
+      class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P12120
+      oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+      class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P12120\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/P12120\">\u200eFlickr
+      photo ID</a></bdi></h4></div></div></div><div class=''wbmi-content-items-group''><div
+      class=''wbmi-item wbmi-item-read''><div data-guid=''M628904$2F949FB2-04E6-4366-863E-640575573A91''
+      class=''wbmi-item-container''><div class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div
+      class=''wbmi-entity-title''><h4 class=''wbmi-entity-label''><bdi><a target=\"_blank\"
+      class=\"wb-external-id external\" href=\"https://www.flickr.com/photo.gne?id=111001118\"
+      rel=\"nofollow\">111001118</a></bdi></h4></div></div></div></div></div></div></div></div><div
+      id=''P7482'' data-property=''P7482'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P7482\",\"hash\":\"b82dd47222a210c6dc1f428b693c2fbf7b0e0d6e\",\"datavalue\":{\"value\":{\"entity-type\":\"item\",\"numeric-id\":74228490,\"id\":\"Q74228490\"},\"type\":\"wikibase-entityid\"}},\"type\":\"statement\",\"qualifiers\":{\"P973\":[{\"snaktype\":\"value\",\"property\":\"P973\",\"hash\":\"c446a12c8ac2014a60cc6b09e61263e25441563d\",\"datavalue\":{\"value\":\"https:\\/\\/www.flickr.com\\/photos\\/pinkbeltrage\\/111001118\\/\",\"type\":\"string\"}}],\"P137\":[{\"snaktype\":\"value\",\"property\":\"P137\",\"hash\":\"3d8cd4c1ab91d3d9a14900210faaebf1a98b947b\",\"datavalue\":{\"value\":{\"entity-type\":\"item\",\"numeric-id\":103204,\"id\":\"Q103204\"},\"type\":\"wikibase-entityid\"}}]},\"qualifiers-order\":[\"P973\",\"P137\"],\"id\":\"M628904$F9959F4B-BED8-4AB7-8073-0DFC17B18834\",\"rank\":\"normal\"}]''
+      data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":7482,\\\"id\\\":\\\"P7482\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P7482\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P7482\\\"&gt;source
+      of file&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"source of file\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"item\\\",\\\"numeric-id\\\":74228490,\\\"id\\\":\\\"Q74228490\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"P7482\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/Q74228490\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/Q74228490\\\"&gt;file
+      available on the internet&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"P7482\":\"file
+      available on the internet\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":973,\\\"id\\\":\\\"P973\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P973\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P973\\\"&gt;described
+      at URL&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"described at URL\"}}},\"{\\\"value\\\":\\\"https:\\\\\\/\\\\\\/www.flickr.com\\\\\\/photos\\\\\\/pinkbeltrage\\\\\\/111001118\\\\\\/\\\",\\\"type\\\":\\\"string\\\"}\":{\"text\\/html\":{\"en\":{\"P973\":\"&lt;a
+      target=\\\"_blank\\\" rel=\\\"nofollow\\\" class=\\\"external free\\\" href=\\\"https:\\/\\/www.flickr.com\\/photos\\/pinkbeltrage\\/111001118\\/\\\"&gt;https:\\/\\/www.flickr.com\\/photos\\/pinkbeltrage\\/111001118\\/&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"P973\":\"https:\\/\\/www.flickr.com\\/photos\\/pinkbeltrage\\/111001118\\/\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":137,\\\"id\\\":\\\"P137\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P137\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P137\\\"&gt;operator&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"operator\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"item\\\",\\\"numeric-id\\\":103204,\\\"id\\\":\\\"Q103204\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"P137\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/Q103204\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/Q103204\\\"&gt;Flickr&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"P137\":\"Flickr\"}}}}''
+      class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P7482
+      oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+      class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P7482\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/P7482\">source of file</a></bdi></h4></div></div></div><div
+      class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+      data-guid=''M628904$F9959F4B-BED8-4AB7-8073-0DFC17B18834'' class=''wbmi-item-container''><div
+      class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/Q74228490\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/Q74228490\">file available
+      on the internet</a></bdi></h4></div></div></div><div class=''wbmi-item-qualifiers''><div
+      class=''wbmi-snaklist-container''><div class=''wbmi-snaklist-content''><div
+      class=''wbmi-snak''><div class=''wbmi-snak-value''><a target=\"_blank\" title=\"d:Special:EntityPage/P973\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/P973\">described at
+      URL</a><span class=''wbmi-snak-value-separator''>: </span><span class=''wbmi-snak-value--value''><a
+      target=\"_blank\" rel=\"nofollow\" class=\"external free\" href=\"https://www.flickr.com/photos/pinkbeltrage/111001118/\">https://www.flickr.com/photos/pinkbeltrage/111001118/</a></span></div></div><div
+      class=''wbmi-snak''><div class=''wbmi-snak-value''><a target=\"_blank\" title=\"d:Special:EntityPage/P137\"
+      href=\"https://www.wikidata.org/wiki/Special:EntityPage/P137\">operator</a><span
+      class=''wbmi-snak-value-separator''>: </span><span class=''wbmi-snak-value--value''><a
+      target=\"_blank\" title=\"d:Special:EntityPage/Q103204\" href=\"https://www.wikidata.org/wiki/Special:EntityPage/Q103204\">Flickr</a></span></div></div></div></div></div></div></div></div></div></div><div
+      id=''P571'' data-property=''P571'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P571\",\"hash\":\"19892e2d6b66653b06ef67c43a09cfd1d0252daa\",\"datavalue\":{\"value\":{\"time\":\"+2006-03-04T00:00:00Z\",\"timezone\":0,\"before\":0,\"after\":0,\"precision\":11,\"calendarmodel\":\"http:\\/\\/www.wikidata.org\\/entity\\/Q1985727\"},\"type\":\"time\"}},\"type\":\"statement\",\"id\":\"M628904$C4367959-BD3A-43AD-8A60-736424B0C6BD\",\"rank\":\"normal\"}]''
+      data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":571,\\\"id\\\":\\\"P571\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+      target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P571\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P571\\\"&gt;inception&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"inception\"}}},\"{\\\"value\\\":{\\\"time\\\":\\\"+2006-03-04T00:00:00Z\\\",\\\"timezone\\\":0,\\\"before\\\":0,\\\"after\\\":0,\\\"precision\\\":11,\\\"calendarmodel\\\":\\\"http:\\\\\\/\\\\\\/www.wikidata.org\\\\\\/entity\\\\\\/Q1985727\\\"},\\\"type\\\":\\\"time\\\"}\":{\"text\\/html\":{\"en\":{\"P571\":\"4
+      March 2006\"}},\"text\\/plain\":{\"en\":{\"P571\":\"4 March 2006\"}}}}'' class=''wbmi-entityview-statementsGroup
+      wbmi-entityview-statementsGroup-P571 oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div
+      class=''wbmi-statements-widget''><div class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div
+      class=''wbmi-entity-title''><h4 class=''wbmi-entity-label''><bdi><a target=\"_blank\"
+      title=\"d:Special:EntityPage/P571\" href=\"https://www.wikidata.org/wiki/Special:EntityPage/P571\">inception</a></bdi></h4></div></div></div><div
+      class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+      data-guid=''M628904$C4367959-BD3A-43AD-8A60-736424B0C6BD'' class=''wbmi-item-container''><div
+      class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+      class=''wbmi-entity-label''><bdi>4 March 2006</bdi></h4></div></div></div></div></div></div></div></div></mediainfoviewstatements></mediainfoview>\n<!--
+      \nNewPP limit report\nParsed by mw1405\nCached time: 20231218073910\nCache expiry:
+      2592000\nReduced expiry: false\nComplications: []\nCPU time usage: 0.109\nReal
+      time usage: 0.163\nPreprocessor visited node count: 1787\nPost\u2010expand include
+      size: 15900\nTemplate argument size: 2442\nHighest expansion depth: 18\nExpensive
+      parser function count: 3\nUnstrip recursion depth: 0\nUnstrip post\u2010expand
+      size: 3301\nLua time usage: 0.062\nLua memory usage: 1505125\nNumber of Wikibase
+      entities loaded: 1\n-->\n<!--\nTransclusion expansion time report (%,ms,calls,template)\n100.00%  135.571      1
+      -total\n 43.74%   59.300      1 Template:Information\n 24.22%   32.839      1
+      Template:Image_extracted\n 22.66%   30.717      1 Template:Autotranslate/clone_1\n
+      16.43%   22.280      1 Template:Flickrreview\n 15.36%   20.818      1 Template:Cc-by-sa-2.0\n
+      10.96%   14.855      1 Template:Cc-by-sa-layout\n  9.18%   12.444      1 Template:Mbox\n  8.21%   11.136      1
+      Template:Autotranslate\n  6.80%    9.222      1 Template:Iffile\n-->\n\n<!--
+      Saved in parser cache with key commonswiki:pcache:idhash:628904-0!wb=3!wbMobile=0
+      and timestamp 20231218073910 and revision id 831780118. Rendering was triggered
+      because: page-view\n -->\n</div>"}}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Mon, 18 Dec 2023 07:40:20 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1423.eqiad.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3068"
+      set-cookie:
+      - WMF-Last-Access=18-Dec-2023;Path=/;HttpOnly;secure;Expires=Fri, 19 Jan 2024
+        00:00:00 GMT
+      - GeoIP=GB:ENG:Stowmarket:52.28:1.04:v4; Path=/; secure; Domain=.wikimedia.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie
+      x-cache:
+      - cp3068 miss, cp3068 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 92.30.89.207
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

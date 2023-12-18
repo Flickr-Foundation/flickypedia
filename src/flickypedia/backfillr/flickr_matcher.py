@@ -92,6 +92,8 @@ def find_flickr_photo_id_from_source_field(
     #
     #     Source: [link to Flickr photo]
     #
+    print(urls)
+
     if len(urls) == 1:
         single_url = urls[0]
 
@@ -109,6 +111,8 @@ def find_flickr_photo_id_from_source_field(
         "https://en.wikipedia.org/wiki/Flickr",
         "/wiki/Flickr",
         "/wiki/Commons:FLICKR",
+        "/wiki/Commons:Flickr",
+        "https://en.wikipedia.org/wiki/Wikipedia:Link_rot",
     }:
         single_url = urls[1]
 
@@ -120,6 +124,8 @@ def find_flickr_photo_id_from_source_field(
         "https://en.wikipedia.org/wiki/Flickr",
         "/wiki/Flickr",
         "/wiki/Commons:FLICKR",
+        "/wiki/Commons:Flickr",
+        "https://en.wikipedia.org/wiki/Wikipedia:Link_rot",
     }:
         single_url = urls[0]
 
@@ -134,6 +140,8 @@ def find_flickr_photo_id_from_source_field(
     #      [Flickr.com]: [link to individual photo]
     #
     elif len(urls) == 2:
+        print(urls)
+
         try:
             parsed_url0 = parse_flickr_url(urls[0])
             parsed_url1 = parse_flickr_url(urls[1])
@@ -144,6 +152,23 @@ def find_flickr_photo_id_from_source_field(
             if (
                 parsed_url0["type"] == "homepage"
                 and parsed_url1["type"] == "single_photo"
+            ):
+                return {"photo_id": parsed_url1["photo_id"], "url": urls[1]}
+            elif (
+                parsed_url0["type"] == "single_photo"
+                and parsed_url1["type"] == "homepage"
+            ):
+                return {"photo_id": parsed_url0["photo_id"], "url": urls[0]}
+            elif (
+                parsed_url0["type"] == "single_photo"
+                and parsed_url1["type"] == "single_photo"
+                and parsed_url0["photo_id"] == parsed_url1["photo_id"]
+            ):
+                return {"photo_id": parsed_url0["photo_id"], "url": urls[0]}
+            elif (
+                parsed_url0["type"] == "user"
+                and parsed_url1["type"] == "single_photo"
+                and urls[1].startswith(urls[0])
             ):
                 return {"photo_id": parsed_url1["photo_id"], "url": urls[1]}
             else:
@@ -200,7 +225,10 @@ def find_flickr_photo_id_from_wikitext(
             f"Source: {url}",
             "Source: Flickr",
             "Source: Flickr.",
+            f"Source: {anchor_tag.text}",
             f"Original photo {anchor_tag.text}",
+            f"Original URL: {anchor_tag.text}",
+            f"Foto: {anchor_tag.text}",
         }:
             return {"photo_id": photo_id, "url": url}
 
@@ -344,7 +372,13 @@ def find_flickr_photo(
     existing_sdc: ExistingClaims,
     filename: str,
 ) -> FindResult | None:
-    find_result = find_flickr_photo_id_from_sdc(existing_sdc)
+    try:
+        find_result = find_flickr_photo_id_from_sdc(existing_sdc)
+    except AmbiguousStructuredData:
+        import sys
+
+        print(filename, file=sys.stderr)
+        raise
 
     if find_result is not None:
         return find_result
