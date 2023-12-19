@@ -2,7 +2,6 @@ import pathlib
 
 import pytest
 
-from flickypedia.apis.wikimedia import WikimediaApi
 from flickypedia.backfillr.flickr_matcher import (
     AmbiguousStructuredData,
     FindResult,
@@ -119,11 +118,12 @@ from utils import get_typed_fixture
     ],
 )
 def test_find_flickr_photo_id_from_wikitext(
-    wikimedia_api: WikimediaApi,
     filename: str,
     photo_id: FindResult | None,
 ) -> None:
-    wikitext = wikimedia_api.get_wikitext(filename=f"File:{filename}")
+    with open(f"tests/fixtures/wikitext/{filename}.html") as infile:
+        wikitext = infile.read()
+
     assert photo_id == find_flickr_photo_id_from_wikitext(
         wikitext, filename=f"File:{filename}"
     )
