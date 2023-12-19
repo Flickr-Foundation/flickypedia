@@ -35,6 +35,28 @@ Then run the `flickypedia` CLI, which has help text that will explain what to do
 $ flickypedia --help
 ```
 
+## Architecture
+
+The Flickypedia code lives in the `src` folder, which is split into four main components:
+
+*   **External APIs (`apis`)** – code for interacting with external services, including Flickr, SDC, and Wikimedia Commons.
+    This is reasonably generic and not be too specific to Flickypedia.
+    If you're looking for pieces to reuse, this is a good place to start looking.
+
+*   **Uploadr** – a web app for copying openly-licensed photos from Flickr to Wikimedia Commons.
+    This is a Flask app.
+
+    The app is organised into a series of screens ("get photos", "select photos", "prepare info", and so on) – all the files associated with a screen are named to match the URL.
+    e.g. the "prepare info" screen is at `/prepare_info`, so the associated files are `prepare_info.py`, `prepare_info.html`, `prepare_info.scss`, and so on.
+
+*   **Backfillr** – a CLI for updating SDC for Flickr photos that have already been uploaded to Commons.
+    You can either run on a single file or many files at once.
+
+    It fetches the existing SDC for a photo, finds the Flickr ID, then calculates the "new" SDC for the photo (if it was uploaded with Flickypedia today).
+    It compares the new and existing SDC, and writes any missing statements back into Commons.
+
+*   **Extractr** – a CLI for getting data about existing Flickr photos on Commons from SDC snapshots.
+
 ## Development
 
 You can set up a local development environment by cloning the repo and installing dependencies:
