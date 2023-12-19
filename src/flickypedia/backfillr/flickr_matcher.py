@@ -12,7 +12,6 @@ import collections
 from typing import TypedDict
 
 import bs4
-from flickr_photos_api import FlickrPhotosApi, ResourceNotFound
 from flickr_url_parser import (
     parse_flickr_url,
     NotAFlickrUrl,
@@ -27,7 +26,6 @@ from flickypedia.apis.structured_data.wikidata import (
 )
 from flickypedia.apis.wikimedia import WikimediaApi
 from flickypedia.types.structured_data import ExistingClaims, ExistingStatement, Snak
-from .comparisons import urls_have_same_contents
 
 
 def pick_best_url(urls: set[str | None]) -> str:
@@ -65,7 +63,7 @@ def get_flickr_photo_id_from_url(url: str) -> str | None:
 
 
 def find_flickr_photo_id_from_wikitext(
-    wikimedia_api: WikimediaApi, flickr_api: FlickrPhotosApi, filename: str
+    wikitext: str, filename: str
 ) -> FindResult | None:
     """
     Given the name of a file on Wikimedia Commons, look for Flickr URLs
@@ -74,8 +72,6 @@ def find_flickr_photo_id_from_wikitext(
 
     Only matching files are returned.
     """
-    wikitext = wikimedia_api.get_wikitext(filename)
-
     soup = bs4.BeautifulSoup(wikitext, "html.parser")
 
     # Look for an Information table in the Wikitext.
@@ -123,35 +119,6 @@ def find_flickr_photo_id_from_wikitext(
         if photo_id is not None:
             if anchor_tag.parent.text.strip() in {f"Source: {url}", "Source: Flickr"}:
                 return {"photo_id": photo_id, "url": url}
-
-    # Then look for all the Flickr URLs, and try to find a URL which has
-    # a JPEG that matches the file in Wikimedia Commons.
-    #
-    # We can look for the URLs in all the anchor tags.
-    candidates = set(
-        (a_tag.attrs["href"], get_flickr_photo_id_from_url(a_tag.attrs["href"]))
-        for a_tag in soup.find_all("a")
-    )
-
-    for url, photo_id in sorted(candidates):
-        if photo_id is None:
-            continue
-
-        try:
-            photo = flickr_api.get_single_photo(photo_id=photo_id)
-        except ResourceNotFound:
-            continue
-
-        try:
-            original_size = [s for s in photo["sizes"] if s["label"] == "Original"][0]
-        except IndexError:
-            continue
-
-        flickr_url = original_size["source"]
-        wikimedia_url = wikimedia_api.get_image_url(filename)
-
-        if urls_have_same_contents(flickr_url, wikimedia_url):
-            return {"photo_id": photo_id, "url": url}
 
     return None
 
@@ -290,7 +257,6 @@ def find_flickr_photo_id_from_sdc(sdc: ExistingClaims) -> FindResult | None:
 
 def find_flickr_photo(
     wikimedia_api: WikimediaApi,
-    flickr_api: FlickrPhotosApi,
     existing_sdc: ExistingClaims,
     filename: str,
 ) -> FindResult | None:
@@ -299,8 +265,10 @@ def find_flickr_photo(
     if find_result is not None:
         return find_result
 
+    wikitext = wikimedia_api.get_wikitext(filename)
+
     find_result = find_flickr_photo_id_from_wikitext(
-        wikimedia_api, flickr_api, filename=f"File:{filename}"
+        wikitext, filename=f"File:{filename}"
     )
 
     return find_result
