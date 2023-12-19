@@ -6,7 +6,6 @@ from flickypedia.backfillr.comparisons import (
     are_equivalent_qualifiers,
     are_equivalent_snaks,
     are_equivalent_statements,
-    urls_have_same_contents,
 )
 from flickypedia.types.structured_data import (
     DataValueTypes,
@@ -533,20 +532,3 @@ def test_non_flickr_urls_arent_equivalent() -> None:
         url1="https://www.flickr.com/photos/29904699@N00/16100150",
         url2="https://www.example.net/",
     )
-
-
-class TestUrlsHaveSameContents:
-    def test_a_url_has_the_same_contents_as_itself(self, vcr_cassette: str) -> None:
-        assert urls_have_same_contents(
-            url1="https://www.example.net/", url2="https://www.example.net/"
-        )
-
-    def test_an_error_means_urls_are_not_equivalent(self, vcr_cassette: str) -> None:
-        assert not urls_have_same_contents(
-            url1="https://www.example.net/", url2="http://q4twryedhg/"
-        )
-
-    def test_different_urls_have_different_contents(self, vcr_cassette: str) -> None:
-        assert not urls_have_same_contents(
-            url1="https://www.example.net/", url2="https://www.flickr.com/"
-        )

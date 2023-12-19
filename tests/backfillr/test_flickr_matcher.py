@@ -1,6 +1,5 @@
 import pathlib
 
-from flickr_photos_api import FlickrPhotosApi
 import pytest
 
 from flickypedia.apis.wikimedia import WikimediaApi
@@ -80,16 +79,6 @@ from utils import get_typed_fixture
         # significant above others.
         ("Stewart-Baseball cropped.jpg", None),
         #
-        # This has a Flickr URL in the Wikitext, and it points to a
-        # file which is byte-for-byte identical to the file on Commons.
-        (
-            "Dustpuppy-Autobahn.jpg",
-            {
-                "photo_id": "1574718",
-                "url": "https://live.staticflickr.com/2/1574718_b83292bc7e_o.jpg",
-            },
-        ),
-        #
         # This has a Flickr URL in the Wikitext, which is clearly
         # identified as the Source in a paragraph that labels it as such.
         (
@@ -131,12 +120,12 @@ from utils import get_typed_fixture
 )
 def test_find_flickr_photo_id_from_wikitext(
     wikimedia_api: WikimediaApi,
-    flickr_api: FlickrPhotosApi,
     filename: str,
     photo_id: FindResult | None,
 ) -> None:
+    wikitext = wikimedia_api.get_wikitext(filename=f"File:{filename}")
     assert photo_id == find_flickr_photo_id_from_wikitext(
-        wikimedia_api, flickr_api, filename=f"File:{filename}"
+        wikitext, filename=f"File:{filename}"
     )
 
 
