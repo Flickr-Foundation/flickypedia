@@ -4,6 +4,7 @@ import pathlib
 import uuid
 
 from flask import current_app, Flask, request
+from flickr_photos_api import FlickrPhotosApi
 from jinja2 import StrictUndefined
 import sass
 
@@ -23,7 +24,6 @@ from flickypedia.photos import size_at
 from flickypedia.apis.flickr import (
     create_bot_comment_text,
     create_default_user_comment_text,
-    FlickrPhotosApi,
 )
 from flickypedia.apis.structured_data.wikidata import (
     get_entity_label,

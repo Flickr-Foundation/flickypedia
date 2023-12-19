@@ -2,12 +2,12 @@ import datetime
 
 from flickr_photos_api import (
     FlickrApiException,
+    FlickrPhotosApi,
     LicenseNotFound,
     ResourceNotFound,
 )
 import pytest
 
-from flickypedia.apis.flickr import FlickrPhotosApi
 from flickypedia.types.flickr import (
     User,
     SinglePhoto,

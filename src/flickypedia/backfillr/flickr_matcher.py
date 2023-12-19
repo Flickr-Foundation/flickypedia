@@ -12,7 +12,7 @@ import collections
 from typing import TypedDict
 
 import bs4
-from flickr_photos_api import ResourceNotFound
+from flickr_photos_api import FlickrPhotosApi, ResourceNotFound
 from flickr_url_parser import (
     parse_flickr_url,
     NotAFlickrUrl,
@@ -26,7 +26,6 @@ from flickypedia.apis.structured_data.wikidata import (
     to_wikidata_entity_value,
 )
 from flickypedia.apis.wikimedia import WikimediaApi
-from flickypedia.apis.flickr import FlickrPhotosApi
 from flickypedia.types.structured_data import ExistingClaims, ExistingStatement, Snak
 from .comparisons import urls_have_same_contents
 

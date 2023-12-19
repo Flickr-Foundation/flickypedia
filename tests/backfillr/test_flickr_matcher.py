@@ -1,9 +1,9 @@
 import pathlib
 
+from flickr_photos_api import FlickrPhotosApi
 import pytest
 
 from flickypedia.apis.wikimedia import WikimediaApi
-from flickypedia.apis.flickr import FlickrPhotosApi
 from flickypedia.backfillr.flickr_matcher import (
     AmbiguousStructuredData,
     FindResult,

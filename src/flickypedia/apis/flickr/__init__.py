@@ -1,4 +1,3 @@
-from .api import FlickrPhotosApi
 from .by_url import get_photos_from_flickr
 from .comments import (
     FlickrCommentsApi,
@@ -12,7 +11,6 @@ __all__ = [
     "create_bot_comment_text",
     "create_default_user_comment_text",
     "FlickrCommentsApi",
-    "FlickrPhotosApi",
     "get_photos_from_flickr",
     "InsufficientPermissionsToComment",
 ]
