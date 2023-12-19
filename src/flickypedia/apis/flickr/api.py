@@ -1,8 +1,8 @@
 import functools
 import xml.etree.ElementTree as ET
 
-from flickr_photos_api import FlickrApiException, LicenseNotFound, ResourceNotFound
-import httpx
+from flickr_photos_api import LicenseNotFound
+from flickr_photos_api.api import BaseApi
 
 from flickypedia.types.flickr import (
     CollectionOfPhotos,
@@ -29,66 +29,6 @@ from .utils import (
     parse_safety_level,
     parse_sizes,
 )
-
-
-class BaseApi:
-    """
-    This is a thin wrapper for calling the Flickr API.
-
-    It doesn't do much interesting stuff; the goal is just to reduce boilerplate
-    in the rest of the codebase, e.g. have the XML parsing in one place rather
-    than repeated everywhere.
-    """
-
-    def __init__(self, *, api_key: str, user_agent: str) -> None:
-        self.client = httpx.Client(
-            base_url="https://api.flickr.com/services/rest/",
-            params={"api_key": api_key},
-            headers={"User-Agent": user_agent},
-        )
-
-    def call(self, *, method: str, params: dict[str, str] | None = None) -> ET.Element:
-        if params is not None:
-            get_params = {"method": method, **params}
-        else:
-            get_params = {"method": method}
-
-        resp = self.client.get(url="", params=get_params, timeout=15)
-        resp.raise_for_status()
-
-        # Note: the xml.etree.ElementTree is not secure against maliciously
-        # constructed data (see warning in the Python docs [1]), but that's
-        # fine here -- we're only using it for responses from the Flickr API,
-        # which we trust.
-        #
-        # [1]: https://docs.python.org/3/library/xml.etree.elementtree.html
-        xml = ET.fromstring(resp.text)
-
-        # print(resp.text)
-
-        # If the Flickr API call fails, it will return a block of XML like:
-        #
-        #       <rsp stat="fail">
-        #       	<err
-        #               code="1"
-        #               msg="Photo &quot;1211111111111111&quot; not found (invalid ID)"
-        #           />
-        #       </rsp>
-        #
-        # Different API endpoints have different codes, and so we just throw
-        # and let calling functions decide how to handle it.
-        if xml.attrib["stat"] == "fail":
-            errors = find_required_elem(xml, path=".//err").attrib
-
-            # Although I haven't found any explicit documentation of this,
-            # it seems like a pretty common convention that error code "1"
-            # means "not found".
-            if errors["code"] == "1":
-                raise ResourceNotFound(method, params)
-            else:
-                raise FlickrApiException(errors)
-
-        return xml
 
 
 class FlickrPhotosApi(BaseApi):
