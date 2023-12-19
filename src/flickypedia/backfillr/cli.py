@@ -58,6 +58,13 @@ def run_with(list_of_filenames: list[str]):
             "Forte del SS.mo Salvatore.jpg",
             "Martin Erat.jpg",
             "Munich U1 Georg-Brauchle-Ring.jpg",
+            "Ted Strickland PICT7278.png",
+            "Daniel Dennett in Venice 2006.png",
+            "Jeff Corwin 2006 06 24.png",
+            "Jennifer Brunner 2006-03-22.png",
+            "Carlton Pearson speaking square crop.png",
+            "StGeorge.jpg",
+            "Seoul-Admiral.Lee-02.jpg",
         }:
             continue
 
