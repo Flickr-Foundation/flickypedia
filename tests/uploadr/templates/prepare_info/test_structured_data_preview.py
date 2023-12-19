@@ -4,6 +4,11 @@ from typing import Any
 
 import bs4
 from flask import Flask, render_template
+from flickr_photos_api import (
+    DateTaken,
+    LocationInfo,
+    User as FlickrUser,
+)
 import pytest
 
 from flickypedia.apis.structured_data import (
@@ -14,11 +19,6 @@ from flickypedia.apis.structured_data import (
     create_location_statement,
     create_posted_to_flickr_statement,
     create_source_data_for_photo,
-)
-from flickypedia.types.flickr import (
-    DateTaken,
-    LocationInfo,
-    User as FlickrUser,
 )
 from flickypedia.types.structured_data import NewStatement
 

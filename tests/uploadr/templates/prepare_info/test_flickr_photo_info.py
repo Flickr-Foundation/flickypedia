@@ -3,7 +3,7 @@ from typing import Any, TypedDict
 
 import bs4
 from flask import Flask, render_template
-from flickypedia.types.flickr import User as FlickrUser
+from flickr_photos_api import User as FlickrUser
 import pytest
 
 

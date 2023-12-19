@@ -14,7 +14,7 @@ need to put in much text ourself.
 
 import datetime
 
-from flickypedia.types.flickr import SinglePhoto
+from flickr_photos_api import SinglePhoto
 
 
 # This maps our license IDs into the names of Wikimedia templates.

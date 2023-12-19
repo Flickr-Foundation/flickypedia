@@ -30,13 +30,14 @@ is supporting that function.
 import datetime
 from typing import Literal
 
-from flickypedia.apis.flickr_user_ids import lookup_flickr_user_in_wikidata
-from flickypedia.types.flickr import (
+from flickr_photos_api import (
     DateTaken,
     LocationInfo,
     User as FlickrUser,
     SinglePhoto,
 )
+
+from flickypedia.apis.flickr_user_ids import lookup_flickr_user_in_wikidata
 from flickypedia.types.structured_data import NewStatement, NewClaims
 from ._qualifiers import create_qualifiers as create_qualifiers, QualifierValues
 from .wikidata import (

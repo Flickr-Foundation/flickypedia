@@ -1,6 +1,7 @@
 from typing import Literal, TypedDict
 
-from flickypedia.types.flickr import SinglePhoto
+from flickr_photos_api import SinglePhoto
+
 from flickypedia.types.structured_data import NewClaims
 from flickypedia.types.wikimedia import ShortCaption
 

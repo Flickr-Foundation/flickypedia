@@ -6,10 +6,10 @@ import datetime
 from typing import TypedDict
 
 from flask import current_app
+from flickr_photos_api import SinglePhoto, Size
 
 from flickypedia.apis.structured_data import create_sdc_claims_for_new_flickr_photo
 from flickypedia.duplicates import find_duplicates, DuplicateInfo
-from flickypedia.types.flickr import SinglePhoto, Size
 from flickypedia.types.structured_data import NewClaims
 
 

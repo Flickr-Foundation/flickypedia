@@ -1,5 +1,6 @@
+from flickr_photos_api import Size
+
 from flickypedia.photos import size_at
-from flickypedia.types.flickr import Size
 
 
 SIZES: list[Size] = [
