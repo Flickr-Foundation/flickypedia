@@ -2,10 +2,10 @@ import datetime
 import pathlib
 import textwrap
 
+from flickr_photos_api import SinglePhoto
 import pytest
 
 from flickypedia.apis.wikitext import create_wikitext
-from flickypedia.types.flickr import SinglePhoto
 from flickypedia.uploadr.config import create_config
 from utils import get_typed_fixture
 

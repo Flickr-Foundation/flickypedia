@@ -2,15 +2,14 @@ from collections.abc import Generator
 import json
 
 from authlib.integrations.httpx_client import OAuth1Client
+from flickr_photos_api import FlickrApiException, ResourceNotFound
 import keyring
 import pytest
 import vcr
 
 from flickypedia.apis.flickr import (
-    FlickrApiException,
     FlickrCommentsApi,
     InsufficientPermissionsToComment,
-    ResourceNotFound,
     create_bot_comment_text,
     create_default_user_comment_text,
 )

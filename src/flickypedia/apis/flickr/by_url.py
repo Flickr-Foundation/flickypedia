@@ -1,10 +1,10 @@
 import datetime
 
 from flask import current_app
+from flickr_photos_api import FlickrPhotosApi
 from flickr_url_parser import ParseResult
 
 from flickypedia.types.flickr import GetPhotosData
-from .api import FlickrPhotosApi
 
 
 def get_photos_from_flickr(parsed_url: ParseResult) -> GetPhotosData:

@@ -20,6 +20,7 @@ from typing import cast, Any, TypedDict
 from flask import abort, redirect, render_template, request, url_for
 from flask_wtf import FlaskForm, Form
 from flask_login import current_user, login_required
+from flickr_photos_api import DateTaken, User as FlickrUser
 from wtforms import (
     BooleanField,
     FormField,
@@ -39,7 +40,6 @@ from flickypedia.photos import (
     categorise_photos,
 )
 from flickypedia.types import validate_typeddict
-from flickypedia.types.flickr import DateTaken, User as FlickrUser
 from flickypedia.types.structured_data import NewClaims
 from flickypedia.types.views import ViewResponse
 from flickypedia.types.uploads import UploadRequest

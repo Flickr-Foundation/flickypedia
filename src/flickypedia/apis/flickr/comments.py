@@ -5,14 +5,15 @@ This file has some code for posting comments to Flickr.
 import textwrap
 import xml.etree.ElementTree as ET
 
+from flickr_photos_api import FlickrApiException, ResourceNotFound
 import httpx
 
 from flickypedia.utils import find_required_elem
-from .exceptions import (
-    FlickrApiException,
-    InsufficientPermissionsToComment,
-    ResourceNotFound,
-)
+
+
+class InsufficientPermissionsToComment(FlickrApiException):
+    def __init__(self) -> None:
+        super().__init__("Insufficient permissions to comment on this photo")
 
 
 class FlickrCommentsApi:

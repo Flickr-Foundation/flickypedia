@@ -1,6 +1,5 @@
 from flask.testing import FlaskClient
-
-from flickypedia.apis.flickr import FlickrPhotosApi
+from flickr_photos_api import FlickrPhotosApi
 
 
 def test_post_comments_page(

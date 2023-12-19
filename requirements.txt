@@ -42,8 +42,12 @@ flask-sqlalchemy==3.1.1
     # via -r requirements.in
 flask-wtf==1.2.1
     # via -r requirements.in
-flickr-url-parser==1.6.1
+flickr-photos-api==1.5.1
     # via -r requirements.in
+flickr-url-parser==1.6.1
+    # via flickr-photos-api
+greenlet==3.0.2
+    # via sqlalchemy
 gunicorn==21.2.0
     # via -r requirements.in
 h11==0.14.0
@@ -53,6 +57,7 @@ httpcore==1.0.2
 httpx==0.25.1
     # via
     #   -r requirements.in
+    #   flickr-photos-api
     #   flickr-url-parser
 hyperlink==21.0.0
     # via flickr-url-parser
