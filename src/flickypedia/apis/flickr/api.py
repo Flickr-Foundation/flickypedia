@@ -3,6 +3,13 @@ import xml.etree.ElementTree as ET
 
 from flickr_photos_api import LicenseNotFound
 from flickr_photos_api.api import BaseApi
+from flickr_photos_api.utils import (
+    parse_date_posted,
+    parse_date_taken,
+    parse_date_taken_granularity,
+    parse_safety_level,
+    parse_sizes,
+)
 
 from flickypedia.types.flickr import (
     CollectionOfPhotos,
@@ -21,13 +28,6 @@ from flickypedia.utils import (
     find_optional_text,
     find_required_elem,
     find_required_text,
-)
-from .utils import (
-    parse_date_posted,
-    parse_date_taken,
-    parse_date_taken_granularity,
-    parse_safety_level,
-    parse_sizes,
 )
 
 
