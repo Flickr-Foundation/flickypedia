@@ -1,13 +1,13 @@
 import datetime
 
-import pytest
-
-from flickypedia.apis.flickr import (
-    FlickrPhotosApi,
+from flickr_photos_api import (
     FlickrApiException,
     LicenseNotFound,
     ResourceNotFound,
 )
+import pytest
+
+from flickypedia.apis.flickr import FlickrPhotosApi
 from flickypedia.apis.flickr.utils import (
     parse_date_taken_granularity,
     parse_safety_level,

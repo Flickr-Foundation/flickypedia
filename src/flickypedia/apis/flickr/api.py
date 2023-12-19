@@ -1,6 +1,7 @@
 import functools
 import xml.etree.ElementTree as ET
 
+from flickr_photos_api import FlickrApiException, LicenseNotFound, ResourceNotFound
 import httpx
 
 from flickypedia.types.flickr import (
@@ -21,7 +22,6 @@ from flickypedia.utils import (
     find_required_elem,
     find_required_text,
 )
-from .exceptions import FlickrApiException, LicenseNotFound, ResourceNotFound
 from .utils import (
     parse_date_posted,
     parse_date_taken,
