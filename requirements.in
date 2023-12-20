@@ -11,6 +11,7 @@ gunicorn
 httpx
 keyring
 libsass
+mwxml
 pydantic
 tqdm
 

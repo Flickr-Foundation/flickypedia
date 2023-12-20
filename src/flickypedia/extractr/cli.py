@@ -1,7 +1,9 @@
 import bz2
 from collections.abc import Generator
 import csv
+import glob
 import re
+import sqlite3
 from typing import Any
 
 import click
@@ -93,6 +95,20 @@ def get_files_from_snapshot(snapshot_path: str) -> Generator[Any, None, None]:
             yield page
 
 
+def get_wikimedia_page_ids():
+    for path in glob.glob('data/duplicates/flickr_ids_from_sdc.*.sqlite'):
+        con = sqlite3.connect(path)
+        cur = con.cursor()
+        cur.execute("SELECT wikimedia_page_id from flickr_photos_on_wikimedia")
+
+        while True:
+            row = cur.fetchone()
+            if row is None:
+                break
+            yield row[0].replace('M', '')
+
+
+
 @extractr.command(help="Get a list of Flickr photos from Wikitext.")
 @click.argument("SNAPSHOT_PATH")
 def get_photos_from_wikitext(snapshot_path: str) -> None:
@@ -108,6 +124,10 @@ def get_photos_from_wikitext(snapshot_path: str) -> None:
     else:
         csv_path = f"flickr_ids_from_wikitext.{date_match.group(1)}.csv"
 
+    api = WikimediaApi(client=httpx.Client())
+
+    known_page_ids = get_wikimedia_page_ids()
+
     with open(csv_path, "w") as out_file:
         writer = csv.DictWriter(
             out_file,
@@ -116,7 +136,8 @@ def get_photos_from_wikitext(snapshot_path: str) -> None:
         writer.writeheader()
 
         for page in get_files_from_snapshot(snapshot_path):
-            print(page)
+            if page.id in known_page_ids:
+                continue
 
             last_revision = [
                 rev
@@ -124,11 +145,22 @@ def get_photos_from_wikitext(snapshot_path: str) -> None:
                 if rev.text is not None
             ][-1]
 
-            match = find_flickr_photo_id_from_wikitext(last_revision.text)
+            if 'flickr.com' not in last_revision.text:
+                continue
 
-            print(match)
+            wikitext = api.get_wikitext(filename=f"File:{page.title}")
 
-            break
+            match = find_flickr_photo_id_from_wikitext(wikitext, filename=page.title)
+
+            if match is not None:
+                writer.writerow(
+                    {
+                        "flickr_photo_id": match['photo_id'],
+                        "flickr_url": match['url'] or "",
+                        "wikimedia_page_id": page.id,
+                        "wikimedia_page_title": page.title,
+                    }
+                )
 
     #     for entry in tqdm.tqdm(parse_sdc_snapshot(snapshot_path)):
     #         try:
@@ -152,12 +184,5 @@ def get_photos_from_wikitext(snapshot_path: str) -> None:
     #             raise
     #
     #         if flickr_photo_id is not None:
-    #             writer.writerow(
-    #                 {
-    #                     "flickr_photo_id": flickr_photo_id,
-    #                     "wikimedia_page_id": entry["id"],
-    #                     "wikimedia_page_title": entry["title"],
-    #                 }
-    #             )
     #
     # print(csv_path)
