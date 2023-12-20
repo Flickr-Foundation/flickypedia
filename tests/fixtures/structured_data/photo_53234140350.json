@@ -13,17 +13,46 @@
     },
     {
       "mainsnak": {
-        "snaktype": "value",
-        "property": "P170",
-        "datavalue": {
-          "value": {
-            "id": "Q693032",
-            "numeric-id": 693032,
-            "entity-type": "item"
-          },
-          "type": "wikibase-entityid"
-        }
+        "snaktype": "somevalue",
+        "property": "P170"
       },
+      "qualifiers": {
+        "P2093": [
+          {
+            "datavalue": {
+              "type": "string",
+              "value": "Maryland GovPics"
+            },
+            "property": "P2093",
+            "snaktype": "value"
+          }
+        ],
+        "P2699": [
+          {
+            "datavalue": {
+              "type": "string",
+              "value": "https://www.flickr.com/people/mdgovpics/"
+            },
+            "property": "P2699",
+            "snaktype": "value"
+          }
+        ],
+        "P3267": [
+          {
+            "datavalue": {
+              "type": "string",
+              "value": "64018555@N03"
+            },
+            "property": "P3267",
+            "snaktype": "value"
+          }
+        ]
+      },
+      "qualifiers-order": [
+        "P3267",
+        "P2093",
+        "P2699"
+      ],
       "type": "statement"
     },
     {

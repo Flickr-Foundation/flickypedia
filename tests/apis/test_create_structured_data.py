@@ -42,7 +42,7 @@ def get_statement_fixture(filename: str) -> NewStatement:
 @pytest.mark.parametrize(
     ["user", "filename"],
     [
-        pytest.param(
+        (
             {
                 "id": "47397743@N05",
                 "username": None,
@@ -51,10 +51,9 @@ def get_statement_fixture(filename: str) -> NewStatement:
                 "photos_url": "https://www.flickr.com/photos/west_northamptonshire_development_corporation/",
                 "profile_url": "https://www.flickr.com/people/west_northamptonshire_development_corporation/",
             },
-            "creator_Q7986087.json",
-            id="47397743@N05",
+            "creator_WNDC.json",
         ),
-        pytest.param(
+        (
             {
                 "id": "199246608@N02",
                 "username": "Alex Chan",
@@ -64,9 +63,8 @@ def get_statement_fixture(filename: str) -> NewStatement:
                 "profile_url": "https://www.flickr.com/people/199246608@N02/",
             },
             "creator_AlexChan.json",
-            id="AlexChan",
         ),
-        pytest.param(
+        (
             {
                 "id": "35591378@N03",
                 "username": "Obama White House Archived",
@@ -76,13 +74,10 @@ def get_statement_fixture(filename: str) -> NewStatement:
                 "profile_url": "https://www.flickr.com/people/obamawhitehouse/",
             },
             "creator_ObamaWhiteHouse.json",
-            id="ObamaWhiteHouse",
         ),
     ],
 )
-def test_create_flickr_creator_statement(
-    app: Flask, vcr_cassette: str, user: FlickrUser, filename: str
-) -> None:
+def test_create_flickr_creator_statement(user: FlickrUser, filename: str) -> None:
     result = create_flickr_creator_statement(user)
     expected = get_statement_fixture(filename)
 
@@ -276,9 +271,7 @@ def test_create_flickr_photo_id_statement() -> None:
     }
 
 
-def test_create_sdc_claims_for_flickr_photo_without_date_taken(
-    app: Flask, vcr_cassette: str
-) -> None:
+def test_create_sdc_claims_for_flickr_photo_without_date_taken() -> None:
     photo: SinglePhoto = {
         "id": "53248015596",
         "url": "https://www.flickr.com/photos/199246608@N02/53248015596/",
@@ -322,9 +315,7 @@ def test_create_sdc_claims_for_flickr_photo_without_date_taken(
     assert actual == expected
 
 
-def test_create_sdc_claims_for_flickr_photo_with_date_taken(
-    app: Flask, vcr_cassette: str
-) -> None:
+def test_create_sdc_claims_for_flickr_photo_with_date_taken() -> None:
     photo: SinglePhoto = {
         "id": "53234140350",
         "url": "https://www.flickr.com/photos/mdgovpics/53234140350/",
@@ -371,7 +362,7 @@ def test_create_sdc_claims_for_flickr_photo_with_date_taken(
     assert actual == expected
 
 
-def test_it_creates_sdc_for_photo_with_in_copyright_license(vcr_cassette: str) -> None:
+def test_creates_sdc_for_photo_with_in_copyright_license() -> None:
     photo: SinglePhoto = {
         "id": "15602283025",
         "url": "https://www.flickr.com/photos/golfking1/15602283025/",
