@@ -24,6 +24,7 @@ These databases can come from two places:
 
 """
 
+import contextlib
 import os
 import sqlite3
 from typing import TypedDict
@@ -59,10 +60,19 @@ def find_duplicates(flickr_photo_ids: list[str]) -> dict[str, DuplicateInfo]:
     result: dict[str, DuplicateInfo] = {}
 
     for name in os.listdir(duplicate_dir):
-        if name.endswith((".db", ".sqlite")):
-            con = sqlite3.connect(
-                f"file:{os.path.join(duplicate_dir, name)}?mode=ro", uri=True
-            )
+        if name == ".DS_Store":
+            print(f"Ignoring file {name} which doesn't look like a SQLite database")
+            continue
+
+        if not name.endswith((".db", ".sqlite")):
+            continue
+
+        # Open a SQLite database in read-only mode, and close it when you're done.
+        #
+        # Note that the ``connect()`` context manager doesn't do this --
+        # see https://blog.rtwilson.com/a-python-sqlite3-context-manager-gotcha/
+        uri = f"file:{os.path.join(duplicate_dir, name)}?mode=ro"
+        with contextlib.closing(sqlite3.connect(uri, uri=True)) as con:
             cur = con.cursor()
 
             query = ",".join(flickr_photo_ids)
@@ -85,8 +95,6 @@ def find_duplicates(flickr_photo_ids: list[str]) -> dict[str, DuplicateInfo]:
                     "title": row["wikimedia_page_title"],
                     "id": row["wikimedia_page_id"],
                 }
-        elif name != ".DS_Store":  # pragma: no cover
-            print(f"Ignoring file {name} which doesn't look like a SQLite database")
 
     return result
 
