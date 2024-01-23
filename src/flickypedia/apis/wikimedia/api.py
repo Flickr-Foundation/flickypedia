@@ -397,6 +397,21 @@ class WikimediaApi:
                 "text": "This title is too long. Please choose a title which is less than 240 bytes.",
             }
 
+        # Check to see if the user has added their own suffix to the
+        # filename, as well as the one we've added automatically.
+        #
+        # Wikimedia Commons will reject a file named this way with a slightly
+        # unhelpful message; let's provide a better one.
+        base_name = title.replace("File:", "").rsplit(".", 1)[0]
+
+        if base_name.lower().endswith(
+            (".jpg", ".jpeg", ".png", ".gif", ".tif", ".tiff")
+        ):
+            return {
+                "result": "invalid",
+                "text": "Please remove the filename suffix; it will be added automatically.",
+            }
+
         # Check for other pages with this title -- are we going to
         # duplicate an existing file?
         #
