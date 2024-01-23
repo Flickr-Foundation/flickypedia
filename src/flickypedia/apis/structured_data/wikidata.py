@@ -172,7 +172,7 @@ def to_wikidata_date_value(
     timezone = 0
 
     # These are qualifiers for how many units before/after the given time
-    # we could be, execpt they're not actually used by Wikidata.
+    # we could be, except they're not actually used by Wikidata.
     # As of 12 October 2023:
     #
     #     We do not use before and after fields and use qualifiers

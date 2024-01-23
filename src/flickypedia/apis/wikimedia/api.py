@@ -569,7 +569,7 @@ class WikimediaApi:
         # the Upload Wizard.
         #
         # I changed the response format from JSON to XML to give better
-        # visiblity into the structure of the response -- the JSON
+        # visibility into the structure of the response -- the JSON
         # gives an opaque list of lists.
         #
         # See https://www.mediawiki.org/wiki/API:Opensearch
