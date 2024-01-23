@@ -302,6 +302,25 @@ def test_validate_title_links_to_case_insensitive_duplicates(
     }
 
 
+@pytest.mark.parametrize(
+    "title",
+    [
+        "Belgian President in 2023.jpg",
+        "Jam on a slice of bread.png",
+        "A shipping container full of bees.JPEG",
+    ],
+)
+def test_validate_title_rejects_image_suffix(
+    wikimedia_api: WikimediaApi, title: str
+) -> None:
+    result = wikimedia_api.validate_title(title=f"File:{title}.jpg")
+
+    assert result == {
+        "result": "invalid",
+        "text": "Please remove the filename suffix; it will be added automatically.",
+    }
+
+
 def test_find_matching_categories(wikimedia_api: WikimediaApi) -> None:
     result = wikimedia_api.find_matching_categories(query="a")
 
