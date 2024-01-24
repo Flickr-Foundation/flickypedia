@@ -38,6 +38,8 @@
       Choose the photos you want:
     </h3>
 
+    <p><a href="#" onclick="selectAll(event)">Select all</p>
+
     <form id="select_photos" action="{{ url_for('select_photos', flickr_url=flickr_url) }}" method="post">
       {{ select_photos_form.hidden_tag() }}
 
@@ -107,6 +109,17 @@
         }
 
         console.log(selectedPhotos);
+      }
+
+      function selectAll(event) {
+          event.preventDefault();
+          const checkboxes = document.querySelectorAll('#select_photos input[type=checkbox]');
+
+          checkboxes.forEach(checkbox => {
+              checkbox.checked = true;
+          });
+
+          highlightSelected();
       }
     </script>
   {% endif %}
