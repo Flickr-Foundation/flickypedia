@@ -412,6 +412,17 @@ class WikimediaApi:
                 "text": "Please remove the filename suffix; it will be added automatically.",
             }
 
+        # Check for illegal characters, as defined by the wgIllegalFileChars
+        # setting -- these are blocked by the Upload Wizard.
+        #
+        # See https://www.mediawiki.org/wiki/Manual:$wgIllegalFileChars
+        # See https://til.alexwlchan.net/wmc-allowed-title-characters/
+        if any(char in base_name for char in ":/\\"):
+            return {
+                "result": "invalid",
+                "text": "This title is invalid. Make sure to remove characters like square brackets, colons, slashes, comparison operators, pipes and curly brackets.",
+            }
+
         # Check for other pages with this title -- are we going to
         # duplicate an existing file?
         #

@@ -321,6 +321,20 @@ def test_validate_title_rejects_image_suffix(
     }
 
 
+@pytest.mark.parametrize(
+    "title", ["This:is:a:title:with:colons", "This/is\\a/title\\with/slashes"]
+)
+def test_validate_title_rejects_illegal_chars(
+    wikimedia_api: WikimediaApi, title: str
+) -> None:
+    result = wikimedia_api.validate_title(title=f"File:{title}.jpg")
+
+    assert result == {
+        "result": "invalid",
+        "text": "This title is invalid. Make sure to remove characters like square brackets, colons, slashes, comparison operators, pipes and curly brackets.",
+    }
+
+
 def test_find_matching_categories(wikimedia_api: WikimediaApi) -> None:
     result = wikimedia_api.find_matching_categories(query="a")
 
