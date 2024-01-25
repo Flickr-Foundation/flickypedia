@@ -119,6 +119,7 @@ class WikimediaApi:
                 "filename": filename,
                 "url": original_url,
                 "text": text,
+                "comment": "Copied photo from Flickr using Flickypedia",
             },
             # Note: this can fail with an httpx.ReadTimeout error with
             # the default timeout, so we increase it.
