@@ -441,6 +441,28 @@ function addInteractiveLanguages(findMatchingLanguagesUrl) {
   languagesInputElement.addEventListener("input", () => openAutocompleteMenu());
   languagesInputElement.addEventListener("focus", () => openAutocompleteMenu());
 
+  /* When somebody clicks or presses enter, record the language choice
+   * in both the user-visible and hidden field.  We store the value in
+   * localStorage, so we can recall it the next time the user comes to
+   * the app, and restore it.
+   */
+  function chooseLanguage(element) {
+    underlyingInputElement.value = element.getAttribute("data-json");
+    languagesInputElement.value = element.innerText;
+
+    localStorage.setItem(
+      'flickypedia.selectedLanguage',
+      element.getAttribute("data-json")
+    );
+  }
+
+  const storedLanguage = localStorage.getItem('flickypedia.selectedLanguage');
+
+  if (storedLanguage !== null) {
+    underlyingInputElement.value = storedLanguage;
+    languagesInputElement.value = JSON.parse(storedLanguage).label;
+  };
+
   /* When somebody switches or clicks away from the input, close the
    * autocomplete menu -- unless they clicked on an autocomplete suggestion,
    * in which case apply that first. */
@@ -448,8 +470,7 @@ function addInteractiveLanguages(findMatchingLanguagesUrl) {
     const clickedElement = event.relatedTarget;
 
     if (clickedElement !== null && clickedElement.classList.contains("suggestion")) {
-      underlyingInputElement.value = clickedElement.getAttribute("data-json");
-      languagesInputElement.value = clickedElement.innerText;
+      chooseLanguage(clickedElement);
     }
 
     closeAutocompleteMenus();
@@ -521,9 +542,7 @@ function addInteractiveLanguages(findMatchingLanguagesUrl) {
             .querySelector(".autocomplete-items")
             .children[currentFocus];
 
-        underlyingInputElement.value = selectedElement.getAttribute("data-json");
-        languagesInputElement.value = selectedElement.innerText;
-
+        chooseLanguage(selectedElement);
         closeAutocompleteMenus();
         event.preventDefault();
       }
