@@ -5,14 +5,25 @@
 {% set show_nav = True %}
 
 {% block head %}
-  <noscript>
-    <meta http-equiv="refresh" content="10">
-  </noscript>
-
   <script src="{{ url_for('static', filename='flickypedia.js') }}"></script>
+
+  <!--
+    We need to poll for updates to find out if the update has completed yet.
+
+    For most users, this will occur with JavaScript fetching data from the
+    API.  However, if there's a JS error or the user doesn't have JS-enabled,
+    we still want the user to progress to the next screen eventually, so
+    the <meta> tag will tell the browser to reload every 30 seconds.
+    
+    If you reload and the upload is complete, you'll be redirected to
+    the next screen.
+    -->
+  <meta http-equiv="refresh" content="30">
   <script>
     window.onload = function() {
-      setInterval(updatePhotosWithUploadProgress, 1000);
+      const ONE_SECOND = 1000;
+
+      setInterval(updatePhotosWithUploadProgress, ONE_SECOND);
     };
   </script>
 {% endblock %}
