@@ -46,6 +46,7 @@ def create_wikitext(
         information = (
             "=={{int:filedesc}}==\n"
             "{{Information\n"
+            "|description=\n"
             "|other fields=\n"
             "{{Flickr Tags 2|%s}}\n"
             "}}"
@@ -53,7 +54,9 @@ def create_wikitext(
     else:
         information = (
             "=={{int:filedesc}}==\n"
-            "{{Information}}"
+            "{{Information\n"
+            "|description=\n"
+            "}}"
         )
     # fmt: on
 
