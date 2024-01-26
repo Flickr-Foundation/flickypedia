@@ -27,6 +27,7 @@ def test_create_wikitext_for_photo() -> None:
         """
         =={{int:filedesc}}==
         {{Information
+        |description=
         |other fields=
         {{Flickr Tags 2|mascot|chiefbert|germanshepherd|stationelizabethcity|weekinthelife2017|ninabowen|d5|midatlantic|northcarolina|elizabethcity|explosivedetectiondog|unitedstates|us}}
         }}
@@ -61,6 +62,7 @@ def test_adds_categories_to_wikitext() -> None:
         """
         =={{int:filedesc}}==
         {{Information
+        |description=
         |other fields=
         {{Flickr Tags 2|mascot|chiefbert|germanshepherd|stationelizabethcity|weekinthelife2017|ninabowen|d5|midatlantic|northcarolina|elizabethcity|explosivedetectiondog|unitedstates|us}}
         }}
@@ -96,7 +98,7 @@ def test_adds_location_to_wikitext() -> None:
         new_categories=[],
     )
 
-    assert "{{Information}}\n{{Location}}\n" in wikitext
+    assert "{{Information\n|description=\n}}\n{{Location}}\n" in wikitext
 
 
 def test_it_skips_tags_if_none_on_photo() -> None:
@@ -110,7 +112,7 @@ def test_it_skips_tags_if_none_on_photo() -> None:
     )
 
     assert "Flickr Tags 2" not in wikitext
-    assert "{{Information}}" in wikitext
+    assert "{{Information\n|description=\n}}" in wikitext
 
 
 config = create_config(data_directory=pathlib.Path("data"))
