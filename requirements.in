@@ -12,6 +12,7 @@ httpx
 keyring
 libsass
 mwxml
+sqlite-utils
 pydantic
 tqdm
 

@@ -111,7 +111,7 @@ def get_wikimedia_page_ids():
 
 @extractr.command(help="Get a list of Flickr photos from Wikitext.")
 @click.argument("SNAPSHOT_PATH")
-def get_photos_from_wikitext(snapshot_path: str) -> None:
+def get_photos_from_revisions(snapshot_path: str) -> None:
     # The name of the snapshot is something like:
     #
     #     commonswiki-20231001-pages-articles-multistream.xml.bz2
@@ -120,9 +120,9 @@ def get_photos_from_wikitext(snapshot_path: str) -> None:
     # generate
     date_match = re.search(r"\-(\d+)\-", snapshot_path)
     if date_match is None:
-        csv_path = "flickr_ids_from_wikitext.csv"
+        csv_path = "flickr_ids_from_revisions.csv"
     else:
-        csv_path = f"flickr_ids_from_wikitext.{date_match.group(1)}.csv"
+        csv_path = f"flickr_ids_from_revisions.{date_match.group(1)}.csv"
 
     api = WikimediaApi(client=httpx.Client())
 
@@ -148,6 +148,7 @@ def get_photos_from_wikitext(snapshot_path: str) -> None:
             if 'flickr.com' not in last_revision.text:
                 continue
 
+            # We have to get the Wikitext so it can be rendered as raw HTML
             wikitext = api.get_wikitext(filename=f"File:{page.title}")
 
             match = find_flickr_photo_id_from_wikitext(wikitext, filename=page.title)
@@ -161,28 +162,3 @@ def get_photos_from_wikitext(snapshot_path: str) -> None:
                         "wikimedia_page_title": page.title,
                     }
                 )
-
-    #     for entry in tqdm.tqdm(parse_sdc_snapshot(snapshot_path)):
-    #         try:
-    #             flickr_photo_id = find_flickr_photo_id_from_sdc(sdc=entry["statements"])
-    #         except AmbiguousStructuredData:
-    #             fresh_sdc = api.get_structured_data(
-    #                 filename=entry["title"].replace("File:", "")
-    #             )
-    #
-    #             try:
-    #                 flickr_photo_id = find_flickr_photo_id_from_sdc(sdc=fresh_sdc)
-    #             except AmbiguousStructuredData as exc:
-    #                 print(
-    #                     f'Ambiguity in https://commons.wikimedia.org/?curid={entry["pageid"]}: {exc}'
-    #                 )
-    #                 continue
-    #         except Exception:
-    #             import json
-    #
-    #             print(json.dumps(entry["statements"]))
-    #             raise
-    #
-    #         if flickr_photo_id is not None:
-    #
-    # print(csv_path)
