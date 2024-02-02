@@ -54,8 +54,10 @@ flask-wtf==1.2.1
     # via -r requirements.in
 flickr-photos-api==1.5.1
     # via -r requirements.in
-flickr-url-parser==1.6.1
-    # via flickr-photos-api
+flickr-url-parser==1.8.1
+    # via
+    #   -r requirements.in
+    #   flickr-photos-api
 gunicorn==21.2.0
     # via -r requirements.in
 h11==0.14.0

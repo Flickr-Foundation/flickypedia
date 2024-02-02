@@ -2,6 +2,7 @@ import pathlib
 
 import pytest
 
+from flickypedia.apis.wikimedia import WikimediaApi
 from flickypedia.backfillr.flickr_matcher import (
     AmbiguousStructuredData,
     FindResult,
@@ -15,114 +16,131 @@ from utils import get_typed_fixture
 @pytest.mark.parametrize(
     ["filename", "photo_id"],
     [
-        ("Example.jpg", None),
+        pytest.param("Example.jpg", None, id="example"),
         #
         # This has a Flickr photo URL in the Wikitext
-        (
+        pytest.param(
             "A breezy day in Venice (1890s), by Ettore Tito.png",
             {
                 "photo_id": "49800608076",
                 "url": "https://www.flickr.com/photos/gandalfsgallery/49800608076/in/photostream/",
             },
+            id="49800608076",
         ),
         #
         # This has a Flickr URL in the Wikitext, but it links to
         # the author's profile rather than the photo
-        ("The main Flickr photo storage server.jpg", None),
+        pytest.param(
+            "The main Flickr photo storage server.jpg", None, id="flickr_server"
+        ),
         #
         # This has a Flickr photo ID in the "Source" row of the
         # "Information" table, so we can match it even though the original
         # photo can no longer be downloaded from Flickr.
-        (
+        pytest.param(
             "EI-DYY (15602283025).jpg",
             {
                 "photo_id": "15602283025",
                 "url": "https://www.flickr.com/photos/golfking1/15602283025/",
             },
+            id="15602283025",
         ),
         #
         # These have multiple Flickr photo URLs in the Wikitext, and only
         # one of them points to the original photo.
-        (
+        pytest.param(
             "Intel 8742 153056995.jpg",
             {
                 "photo_id": "153056995",
                 "url": "https://www.flickr.com/photos/biwook/153056995/",
             },
+            id="153056995",
         ),
-        (
+        pytest.param(
             "Taking photo.jpg",
             {
                 "photo_id": "9078889",
                 "url": "https://www.flickr.com/photos/48889110751@N01/9078889",
             },
+            id="9078889",
         ),
         #
         # This has Flickr photo URLs in the Wikitext, but they point to
         # different photos.
-        ("Graffiti Rosario - Darío y Maxi.jpg", None),
+        pytest.param("Graffiti Rosario - Darío y Maxi.jpg", None, id="graffiti_rosari"),
         #
         # This has a Flickr photo ID in the "Source" row of the
         # "Information" table, so we can match it even though the original
         # photo has been deleted from Flickr.
-        (
+        pytest.param(
             "Stewart-White line in the road spraying machine.jpg",
             {
                 "photo_id": "253009",
                 "url": "http://www.flickr.com/photos/stewart/253009/",
             },
+            id="253009",
         ),
         #
         # This has a Flickr URL in the Wikitext, but the original photo
         # has been deleted and there's nothing to tell us this URL is
         # significant above others.
-        ("Stewart-Baseball cropped.jpg", None),
-        #
+        pytest.param("Stewart-Baseball cropped.jpg", None, id="stewart-baseball"),
         # This has a Flickr URL in the Wikitext, which is clearly
         # identified as the Source in a paragraph that labels it as such.
-        (
+        pytest.param(
             "Dan Potthast.jpg",
             {
                 "photo_id": "3731022",
                 "url": "https://www.flickr.com/photos/justinaugust/3731022/",
             },
+            id="3731022",
         ),
         #
         # Another Flickr URL in the Wikitext, clearly identified as
         # the source URL in the text.  There's a newline inside the
         # associated <p> tag which we need to account for.
-        (
+        pytest.param(
             "Vinyl albums.jpg",
             {
                 "photo_id": "3874334",
                 "url": "https://www.flickr.com/photos/metalphoenix/3874334/",
             },
+            id="3874334",
         ),
         #
         # Another Flickr URL in the Wikitext, where the link label
         # is just "Flickr".
-        (
+        pytest.param(
             "Wild-wadi.jpg",
             {
                 "photo_id": "4101549",
                 "url": "https://www.flickr.com/photos/saudi/4101549/",
             },
+            id="4101549",
         ),
         #
         # Two Flickr URLs in the "Source" field, one is the user and
         # one is the source.
-        (
-            "Varanasi 3.jpg",
-            None,
+        pytest.param("Varanasi 3.jpg", None, id="varanasi_3"),
+        #
+        # Two Flickr URLs in the "Source" field, one is a raw Flickr URL
+        # and one is the source.
+        pytest.param(
+            "In Chinatown, San Francisco.jpg",
+            {
+                "photo_id": "869031",
+                "url": "https://www.flickr.com/photos/51035573370@N01/869031",
+            },
+            id="869031",
         ),
     ],
 )
 def test_find_flickr_photo_id_from_wikitext(
+    wikimedia_api: WikimediaApi,
     filename: str,
     photo_id: FindResult | None,
 ) -> None:
-    with open(f"tests/fixtures/wikitext/{filename}.html") as infile:
-        wikitext = infile.read()
+    wikitext = wikimedia_api.get_wikitext(filename=f"File:{filename}")
 
     assert photo_id == find_flickr_photo_id_from_wikitext(
         wikitext, filename=f"File:{filename}"
