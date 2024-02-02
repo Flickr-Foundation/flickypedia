@@ -1,0 +1,758 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.1
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=parse&page=File%3AExample.jpg&prop=text&format=json
+  response:
+    content: '{"parse":{"title":"File:Example.jpg","pageid":6428847,"text":{"*":"<div
+      class=\"mw-content-ltr mw-parser-output\" lang=\"en\" dir=\"ltr\">  <table class=\"protected\"
+      style=\"direction: ltr; background:#fff; border:1px solid #aaa; padding:.2em;
+      margin:.5em auto;\">\n  <tbody><tr>\n  <td style=\"padding-right:4px; padding-left:4px;\"><span
+      typeof=\"mw:File\"><a href=\"/wiki/Commons:P\" title=\"Protected\"><img alt=\"Protected\"
+      src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Full-protection-shackle-block.svg/40px-Full-protection-shackle-block.svg.png\"
+      decoding=\"async\" width=\"40\" height=\"40\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Full-protection-shackle-block.svg/60px-Full-protection-shackle-block.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Full-protection-shackle-block.svg/80px-Full-protection-shackle-block.svg.png
+      2x\" data-file-width=\"512\" data-file-height=\"512\" /></a></span></td>\n  <td><b>This
+      media file has been protected from editing to prevent vandalism.</b><br /><span
+      style=\"font-size:90%;\">Please discuss changes on the <a href=\"/wiki/File_talk:Example.jpg\"
+      title=\"File talk:Example.jpg\">talk page</a> or <a href=\"/wiki/Commons:AN/P\"
+      class=\"mw-redirect\" title=\"Commons:AN/P\">request unprotection</a>. </span></td>\n  </tr>\n  </tbody></table>\n<table
+      class=\"protected\" style=\"margin:.5em auto;background:#FFF;color:#333;border:1px
+      solid #AAA;padding:.2em\">\n\n<tbody><tr>\n<td style=\"padding:0 4px\"><span
+      typeof=\"mw:File\"><a href=\"/wiki/Special:MyLanguage/Commons:Page_protection\"
+      title=\"Protected\"><img alt=\"Protected\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Upload-protection-shackle.svg/20px-Upload-protection-shackle.svg.png\"
+      decoding=\"async\" width=\"20\" height=\"20\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Upload-protection-shackle.svg/30px-Upload-protection-shackle.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Upload-protection-shackle.svg/40px-Upload-protection-shackle.svg.png
+      2x\" data-file-width=\"512\" data-file-height=\"512\" /></a></span>\n</td>\n<td><b>This
+      file is protected because it has an inappropriate filename (<a href=\"/wiki/Special:MyLanguage/Commons:File_naming\"
+      title=\"Special:MyLanguage/Commons:File naming\">common title or imprecise</a>).</b>\n</td></tr></tbody></table>\n<h2><span
+      class=\"mw-headline\" id=\"Summary\">Summary</span><span class=\"mw-editsection\"><span
+      class=\"mw-editsection-bracket\">[</span><a href=\"/w/index.php?title=Template:Prohibited_name&amp;action=edit&amp;section=T-1\"
+      title=\"Edit section: Summary\"><span>edit</span></a><span class=\"mw-editsection-bracket\">]</span></span></h2>\n<div
+      class=\"hproduct commons-file-information-table\">\n<table class=\"fileinfotpl-type-information
+      vevent mw-content-ltr\" style=\"direction: ltr;\">\n\n<tbody><tr>\n<td id=\"fileinfotpl_desc\"
+      class=\"fileinfo-paramfield\" lang=\"en\">Description<span class=\"summary fn\"
+      style=\"display:none\">Example.jpg</span></td>\n<td class=\"description\">\n<div
+      class=\"multilingual\"><div class=\"description az lang-az\" lang=\"az\" dir=\"ltr\"
+      style=\"margin:.25em 0;line-height:normal;\"><span class=\"language langlabel-az\"
+      lang=\"az\" style=\"font-weight:bold;\"><bdi>Az\u0259rbaycanca</bdi>&#x3a;&#32;</span>
+      L\u00fctf\u0259n \u015f\u0259kiliniz \u00fc\u00e7\u00fcn daha d\u0259gig bir
+      ad se\u00e7in.</div><div class=\"description ca lang-ca\" lang=\"ca\" dir=\"ltr\"
+      style=\"margin:.25em 0;line-height:normal;\"><span class=\"language langlabel-ca\"
+      lang=\"ca\" style=\"font-weight:bold;\"><bdi>Catal\u00e0</bdi>&#x3a;&#32;</span>
+      Si us plau, feu servir un nom m\u00e9s prec\u00eds per la vostra imatge.</div><div
+      class=\"description cs lang-cs\" lang=\"cs\" dir=\"ltr\" style=\"margin:.25em
+      0;line-height:normal;\"><span class=\"language langlabel-cs\" lang=\"cs\" style=\"font-weight:bold;\"><bdi>\u010ce\u0161tina</bdi>&#x3a;&#32;</span>
+      Pros\u00edm, pojmenujte soubor p\u0159esn\u011bji.</div><div class=\"description
+      da lang-da\" lang=\"da\" dir=\"ltr\" style=\"margin:.25em 0;line-height:normal;\"><span
+      class=\"language langlabel-da\" lang=\"da\" style=\"font-weight:bold;\"><bdi>Dansk</bdi>&#x3a;&#32;</span>
+      V\u00e6lg venligst et andet, mere beskrivende filnavn.</div><div class=\"description
+      de lang-de\" lang=\"de\" dir=\"ltr\" style=\"margin:.25em 0;line-height:normal;\"><span
+      class=\"language langlabel-de\" lang=\"de\" style=\"font-weight:bold;\"><bdi>Deutsch</bdi>&#x3a;&#32;</span>
+      Bitte w\u00e4hle einen anderen, besser beschreibenden Dateinamen.</div><div
+      class=\"description en lang-en\" lang=\"en\" dir=\"ltr\" style=\"margin:.25em
+      0;line-height:normal;\"><span class=\"language langlabel-en\" lang=\"en\" style=\"font-weight:bold;\"><bdi>English</bdi>&#x3a;&#32;</span>
+      Please use a more precise name for your image.</div><div class=\"description
+      es lang-es\" lang=\"es\" dir=\"ltr\" style=\"margin:.25em 0;line-height:normal;\"><span
+      class=\"language langlabel-es\" lang=\"es\" style=\"font-weight:bold;\"><bdi>Espa\u00f1ol</bdi>&#x3a;&#32;</span>
+      Por favor utiliza un nombre m\u00e1s preciso para tu imagen.</div><div class=\"description
+      eo lang-eo\" lang=\"eo\" dir=\"ltr\" style=\"margin:.25em 0;line-height:normal;\"><span
+      class=\"language langlabel-eo\" lang=\"eo\" style=\"font-weight:bold;\"><bdi>Esperanto</bdi>&#x3a;&#32;</span>
+      Bonvolu elekti pli detalan nomon por via bildo.</div><div class=\"description
+      fr lang-fr\" lang=\"fr\" dir=\"ltr\" style=\"margin:.25em 0;line-height:normal;\"><span
+      class=\"language langlabel-fr\" lang=\"fr\" style=\"font-weight:bold;\"><bdi>Fran\u00e7ais</bdi>&#x202f;&#x3a;&#32;</span>
+      Veuillez utiliser un nom plus explicite pour votre image.</div><div class=\"description
+      it lang-it\" lang=\"it\" dir=\"ltr\" style=\"margin:.25em 0;line-height:normal;\"><span
+      class=\"language langlabel-it\" lang=\"it\" style=\"font-weight:bold;\"><bdi>Italiano</bdi>&#x3a;&#32;</span>
+      Per favore usa un nome pi\u00f9 preciso per la tua immagine.</div><div class=\"description
+      jbo lang-jbo\" lang=\"jbo\" dir=\"ltr\" style=\"margin:.25em 0;line-height:normal;\"><span
+      class=\"language langlabel-jbo\" lang=\"jbo\" style=\"font-weight:bold;\"><bdi>La
+      .lojban.</bdi>&#x3a;&#32;</span> e''o ko cuxna lo zenba lo ka satci cmene lo
+      vi pixra</div><div class=\"description nl lang-nl\" lang=\"nl\" dir=\"ltr\"
+      style=\"margin:.25em 0;line-height:normal;\"><span class=\"language langlabel-nl\"
+      lang=\"nl\" style=\"font-weight:bold;\"><bdi>Nederlands</bdi>&#x3a;&#32;</span>
+      Gebruik een naam met een betere omschrijving voor uw foto.</div><div class=\"description
+      nds lang-nds\" lang=\"nds\" dir=\"ltr\" style=\"margin:.25em 0;line-height:normal;\"><span
+      class=\"language langlabel-nds\" lang=\"nds\" style=\"font-weight:bold;\"><bdi>Plattd\u00fc\u00fctsch</bdi>&#x3a;&#32;</span>
+      Bruuk en Naam, de beter beschrieven deit, wat dat f\u00f6r en Datei is.</div><div
+      class=\"description pl lang-pl\" lang=\"pl\" dir=\"ltr\" style=\"margin:.25em
+      0;line-height:normal;\"><span class=\"language langlabel-pl\" lang=\"pl\" style=\"font-weight:bold;\"><bdi>Polski</bdi>&#x3a;&#32;</span>
+      Wybierz bardziej precyzyjn\u0105 nazw\u0119 pliku.</div><div class=\"description
+      pt lang-pt\" lang=\"pt\" dir=\"ltr\" style=\"margin:.25em 0;line-height:normal;\"><span
+      class=\"language langlabel-pt\" lang=\"pt\" style=\"font-weight:bold;\"><bdi>Portugu\u00eas</bdi>&#x3a;&#32;</span>
+      Por favor, escolha um nome mais preciso para essa imagem.</div><div class=\"description
+      ro lang-ro\" lang=\"ro\" dir=\"ltr\" style=\"margin:.25em 0;line-height:normal;\"><span
+      class=\"language langlabel-ro\" lang=\"ro\" style=\"font-weight:bold;\"><bdi>Rom\u00e2n\u0103</bdi>&#x3a;&#32;</span>
+      V\u0103 rug\u0103m s\u0103 alege\u021bi un nume mai sugestiv pentru acest fi\u0219ier.</div><div
+      class=\"description sl lang-sl\" lang=\"sl\" dir=\"ltr\" style=\"margin:.25em
+      0;line-height:normal;\"><span class=\"language langlabel-sl\" lang=\"sl\" style=\"font-weight:bold;\"><bdi>Sloven\u0161\u010dina</bdi>&#x3a;&#32;</span>
+      Prosimo, uporabite bolj dolo\u010dno ime slike.</div><div class=\"description
+      fi lang-fi\" lang=\"fi\" dir=\"ltr\" style=\"margin:.25em 0;line-height:normal;\"><span
+      class=\"language langlabel-fi\" lang=\"fi\" style=\"font-weight:bold;\"><bdi>Suomi</bdi>&#x3a;&#32;</span>
+      Valitse kuvallesi tarkempi nimi, kiitos.</div><div class=\"description sv lang-sv\"
+      lang=\"sv\" dir=\"ltr\" style=\"margin:.25em 0;line-height:normal;\"><span class=\"language
+      langlabel-sv\" lang=\"sv\" style=\"font-weight:bold;\"><bdi>Svenska</bdi>&#x3a;&#32;</span>
+      Var god anv\u00e4nd ett mer beskrivande filnamn.</div><div class=\"description
+      tl lang-tl\" lang=\"tl\" dir=\"ltr\" style=\"margin:.25em 0;line-height:normal;\"><span
+      class=\"language langlabel-tl\" lang=\"tl\" style=\"font-weight:bold;\"><bdi>Tagalog</bdi>&#x3a;&#32;</span>
+      Mangyaring gumamit ng mas tumpak na pangalan para sa iyong imahe.</div><div
+      class=\"description vi lang-vi\" lang=\"vi\" dir=\"ltr\" style=\"margin:.25em
+      0;line-height:normal;\"><span class=\"language langlabel-vi\" lang=\"vi\" style=\"font-weight:bold;\"><bdi>Ti\u1ebfng
+      Vi\u1ec7t</bdi>&#x3a;&#32;</span> Vui l\u00f2ng s\u1eed d\u1ee5ng m\u1ed9t t\u00ean
+      ch\u00ednh x\u00e1c h\u01a1n cho h\u00ecnh \u1ea3nh c\u1ee7a b\u1ea1n.</div><div
+      class=\"description tr lang-tr\" lang=\"tr\" dir=\"ltr\" style=\"margin:.25em
+      0;line-height:normal;\"><span class=\"language langlabel-tr\" lang=\"tr\" style=\"font-weight:bold;\"><bdi>T\u00fcrk\u00e7e</bdi>&#x3a;&#32;</span>
+      L\u00fctfen resiminiz i\u00e7in daha dakik bir isim se\u00e7iniz.</div><div
+      class=\"description be-tarask lang-be-tarask\" lang=\"be-tarask\" dir=\"ltr\"
+      style=\"margin:.25em 0;line-height:normal;\"><span class=\"language langlabel-be-tarask\"
+      lang=\"be-tarask\" style=\"font-weight:bold;\"><bdi>\u0411\u0435\u043b\u0430\u0440\u0443\u0441\u043a\u0430\u044f
+      (\u0442\u0430\u0440\u0430\u0448\u043a\u0435\u0432\u0456\u0446\u0430)</bdi>&#x3a;&#32;</span>
+      \u041a\u0430\u043b\u0456 \u043b\u0430\u0441\u043a\u0430, \u0430\u0431\u044f\u0440\u044b\u0446\u0435
+      \u0434\u043b\u044f \u0441\u0432\u0430\u0451\u0439 \u0432\u044b\u044f\u0432\u044b
+      \u0431\u043e\u043b\u044c\u0448 \u0434\u0430\u043a\u043b\u0430\u0434\u043d\u0443\u044e
+      \u043d\u0430\u0437\u0432\u0443.</div><div class=\"description bg lang-bg\" lang=\"bg\"
+      dir=\"ltr\" style=\"margin:.25em 0;line-height:normal;\"><span class=\"language
+      langlabel-bg\" lang=\"bg\" style=\"font-weight:bold;\"><bdi>\u0411\u044a\u043b\u0433\u0430\u0440\u0441\u043a\u0438</bdi>&#x3a;&#32;</span>
+      \u041c\u043e\u043b\u044f, \u0438\u0437\u043f\u043e\u043b\u0437\u0432\u0430\u0439\u0442\u0435
+      \u043f\u043e-\u043a\u043e\u043d\u043a\u0440\u0435\u0442\u043d\u043e \u043d\u0430\u0438\u043c\u0435\u043d\u043e\u0432\u0430\u043d\u0438\u0435
+      \u0437\u0430 \u0432\u0430\u0448\u0430\u0442\u0430 \u043a\u0430\u0440\u0442\u0438\u043d\u043a\u0430.</div><div
+      class=\"description mk lang-mk\" lang=\"mk\" dir=\"ltr\" style=\"margin:.25em
+      0;line-height:normal;\"><span class=\"language langlabel-mk\" lang=\"mk\" style=\"font-weight:bold;\"><bdi>\u041c\u0430\u043a\u0435\u0434\u043e\u043d\u0441\u043a\u0438</bdi>&#x3a;&#32;</span>
+      \u041e\u0434\u0431\u0435\u0440\u0435\u0442\u0435 \u043f\u043e\u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e
+      \u0438\u043c\u0435 \u0437\u0430 \u0412\u0430\u0448\u0430\u0442\u0430 \u0441\u043b\u0438\u043a\u0430.</div><div
+      class=\"description ru lang-ru\" lang=\"ru\" dir=\"ltr\" style=\"margin:.25em
+      0;line-height:normal;\"><span class=\"language langlabel-ru\" lang=\"ru\" style=\"font-weight:bold;\"><bdi>\u0420\u0443\u0441\u0441\u043a\u0438\u0439</bdi>&#x3a;&#32;</span>
+      \u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0432\u044b\u0431\u0435\u0440\u0438\u0442\u0435
+      \u0431\u043e\u043b\u0435\u0435 \u0442\u043e\u0447\u043d\u043e\u0435 \u0438\u043c\u044f
+      \u0434\u043b\u044f \u0412\u0430\u0448\u0435\u0439 \u043a\u0430\u0440\u0442\u0438\u043d\u043a\u0438.</div><div
+      class=\"description sr lang-sr\" lang=\"sr\" dir=\"ltr\" style=\"margin:.25em
+      0;line-height:normal;\"><span class=\"language langlabel-sr\" lang=\"sr\" style=\"font-weight:bold;\"><bdi>\u0421\u0440\u043f\u0441\u043a\u0438
+      / srpski</bdi>&#x3a;&#32;</span> \u041c\u043e\u043b\u0438\u043c\u043e \u0412\u0430\u0441
+      \u0434\u0430 \u043d\u0430\u0432\u0435\u0434\u0435\u0442\u0435 \u043e\u0434\u0440\u0435\u0452\u0435\u043d\u0438\u0458\u0435
+      \u0438\u043c\u0435 \u0437\u0430 \u0412\u0430\u0448\u0443 \u0441\u043b\u0438\u043a\u0443.</div><div
+      class=\"description uk lang-uk\" lang=\"uk\" dir=\"ltr\" style=\"margin:.25em
+      0;line-height:normal;\"><span class=\"language langlabel-uk\" lang=\"uk\" style=\"font-weight:bold;\"><bdi>\u0423\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0430</bdi>&#x3a;&#32;</span>
+      \u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u0432\u0438\u0431\u0435\u0440\u0456\u0442\u044c
+      \u0442\u043e\u0447\u043d\u0456\u0448\u0435 \u0456\u043c''\u044f \u0434\u043b\u044f
+      \u0441\u0432\u043e\u0433\u043e \u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f.</div><div
+      class=\"description ml lang-ml\" lang=\"ml\" dir=\"ltr\" style=\"margin:.25em
+      0;line-height:normal;\"><span class=\"language langlabel-ml\" lang=\"ml\" style=\"font-weight:bold;\"><bdi>\u0d2e\u0d32\u0d2f\u0d3e\u0d33\u0d02</bdi>&#160;&#x3a;&#32;</span>
+      \u0d15\u0d41\u0d31\u0d1a\u0d4d\u0d1a\u0d4d \u0d15\u0d42\u0d1f\u0d3f \u0d15\u0d43\u0d24\u0d4d\u0d2f\u0d2e\u0d3e\u0d2f
+      \u0d2e\u0d31\u0d4d\u0d31\u0d46\u0d28\u0d4d\u0d24\u0d46\u0d19\u0d4d\u0d15\u0d3f\u0d32\u0d41\u0d02
+      \u0d28\u0d3e\u0d2e\u0d02 \u0d09\u0d2a\u0d2f\u0d4b\u0d17\u0d3f\u0d15\u0d4d\u0d15\u0d41\u0d15</div><div
+      class=\"description th lang-th\" lang=\"th\" dir=\"ltr\" style=\"margin:.25em
+      0;line-height:normal;\"><span class=\"language langlabel-th\" lang=\"th\" style=\"font-weight:bold;\"><bdi>\u0e44\u0e17\u0e22</bdi>&#x3a;</span>
+      \u0e01\u0e23\u0e38\u0e13\u0e32\u0e43\u0e0a\u0e49\u0e0a\u0e37\u0e48\u0e2d\u0e44\u0e1f\u0e25\u0e4c\u0e17\u0e35\u0e48\u0e21\u0e35\u0e04\u0e27\u0e32\u0e21\u0e2b\u0e21\u0e32\u0e22\u0e21\u0e32\u0e01\u0e02\u0e36\u0e49\u0e19.</div><div
+      class=\"description ja lang-ja\" lang=\"ja\" dir=\"ltr\" style=\"margin:.25em
+      0;line-height:normal;\"><span class=\"language langlabel-ja\" lang=\"ja\" style=\"font-weight:bold;\"><bdi>\u65e5\u672c\u8a9e</bdi>&#xff1a;</span>
+      \u305d\u306e\u753b\u50cf\u3092\u3088\u308a\u8a73\u3057\u304f\u8868\u3059\u540d\u524d\u3092\u3064\u3051\u3066\u304f\u3060\u3055\u3044\u3002</div><div
+      class=\"description zh lang-zh\" lang=\"zh\" dir=\"ltr\" style=\"margin:.25em
+      0;line-height:normal;\"><span class=\"language langlabel-zh\" lang=\"zh\" style=\"font-weight:bold;\"><bdi>\u4e2d\u6587</bdi>&#xff1a;</span>
+      \u8bf7\u4ee5\u786e\u5207\u7684\u540d\u79f0\u6765\u4f5c\u6587\u4ef6\u540d\u3002</div><div
+      class=\"description he lang-he\" lang=\"he\" dir=\"rtl\" style=\"margin:.25em
+      0;line-height:normal;\"><span class=\"language langlabel-he\" lang=\"he\" style=\"font-weight:bold;\"><bdi>\u05e2\u05d1\u05e8\u05d9\u05ea</bdi>&#160;&#x3a;&#32;</span>
+      \u05e0\u05d0 \u05dc\u05d1\u05d7\u05d5\u05e8 \u05e9\u05dd \u05d0\u05d9\u05e0\u05e4\u05d5\u05e8\u05de\u05d8\u05d9\u05d1\u05d9
+      \u05d5\u05de\u05d3\u05d5\u05d9\u05e7 \u05d9\u05d5\u05ea\u05e8 \u05e2\u05d1\u05d5\u05e8
+      \u05d4\u05ea\u05de\u05d5\u05e0\u05d4 \u05e9\u05dc\u05da.</div></div></td>\n</tr>\n\n<tr>\n<td
+      id=\"fileinfotpl_date\" class=\"fileinfo-paramfield\" lang=\"en\">Date</td>\n<td
+      lang=\"en\">\n<time class=\"dtstart\" datetime=\"2024-02-02\" lang=\"en\" dir=\"ltr\"
+      style=\"white-space:nowrap\">2 February 2024</time></td>\n</tr>\n\n<tr>\n<td
+      id=\"fileinfotpl_src\" class=\"fileinfo-paramfield\" lang=\"en\">Source</td>\n<td>\n<span
+      class=\"int-own-work\" lang=\"en\">Own work</span></td>\n</tr>\n\n<tr>\n<td
+      id=\"fileinfotpl_aut\" class=\"fileinfo-paramfield\" lang=\"en\">Author</td>\n<td>\n<span
+      typeof=\"mw:File\"><span><img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Pictogram-voting_question.svg/15px-Pictogram-voting_question.svg.png\"
+      decoding=\"async\" width=\"15\" height=\"15\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Pictogram-voting_question.svg/23px-Pictogram-voting_question.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Pictogram-voting_question.svg/30px-Pictogram-voting_question.svg.png
+      2x\" data-file-width=\"250\" data-file-height=\"250\" /></span></span></td>\n</tr>\n\n<tr>\n<td
+      id=\"fileinfotpl_perm\" class=\"fileinfo-paramfield\" lang=\"en\">Permission<br
+      /><small>(<a href=\"/wiki/Commons:Reusing_content_outside_Wikimedia\" title=\"Commons:Reusing
+      content outside Wikimedia\">Reusing this file</a>)</small></td>\n<td>\n<table
+      class=\"licensetpl\" style=\"display:none\">\n<tbody><tr>\n<td><span class=\"licensetpl_short\">Public
+      domain</span><span class=\"licensetpl_long\">Public domain</span><span class=\"licensetpl_link_req\">false</span><span
+      class=\"licensetpl_attr_req\">false</span>\n</td></tr></tbody></table>\n<table
+      style=\"width:100%; clear:both; margin:0.5em auto; background-color:#f7f8ff;
+      border:2px solid #8888aa; direction: ltr; border-spacing: 8px; padding: 0px;\"
+      class=\"layouttemplate mw-content-ltr\" lang=\"en\">\n<tbody><tr>\n<td style=\"width:
+      70px;\"><span typeof=\"mw:File\"><span title=\"Public domain\"><img alt=\"Public
+      domain\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/PD-icon.svg/64px-PD-icon.svg.png\"
+      decoding=\"async\" width=\"64\" height=\"64\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/PD-icon.svg/96px-PD-icon.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/PD-icon.svg/128px-PD-icon.svg.png
+      2x\" data-file-width=\"196\" data-file-height=\"196\" /></span></span>\n</td>\n<td><div
+      lang=\"en\" dir=\"ltr\" class=\"description en\" style=\"display:inline;\"><i>The
+      depicted text is <b>ineligible for <a href=\"https://en.wikipedia.org/wiki/Copyrights\"
+      class=\"extiw\" title=\"w:Copyrights\">copyright</a></b> and therefore in the
+      <b><a href=\"https://en.wikipedia.org/wiki/public_domain\" class=\"extiw\" title=\"w:public
+      domain\">public domain</a></b> because it is not a \u201cliterary work\u201d
+      or other protected type in sense of the local copyright law. Facts, data, and
+      unoriginal information which is common property without sufficiently creative
+      authorship in a general typeface or basic handwriting, and simple geometric
+      shapes are not protected by copyright.</i>\n<small>This tag does not generally
+      apply to all images of texts. Particular countries can have different legal
+      definition of the \u201cliterary work\u201d as the subject of copyright and
+      different courts'' interpretation practices. Some countries protect almost every
+      written work, while other countries protect distinctively artistic or scientific
+      texts and databases only. Extent of creativeness, function and length of the
+      text can be relevant. The copyright protection can be limited to the literary
+      form \u2013 the included information itself can be excluded from protection.</small></div>\n</td></tr></tbody></table></td>\n</tr>\n\n\n</tbody></table>\n</div>\n<div
+      class=\"hproduct commons-file-information-table\">\n<table class=\"fileinfotpl-type-information
+      vevent mw-content-ltr\" style=\"direction: ltr;\">\n\n<tbody><tr>\n<td id=\"fileinfotpl_desc\"
+      class=\"fileinfo-paramfield\" lang=\"en\">Description<span class=\"summary fn\"
+      style=\"display:none\">Example.jpg</span></td>\n<td class=\"description\">\n<div
+      class=\"description mw-content-ltr en\" dir=\"ltr\" lang=\"en\"><span class=\"language
+      en\" title=\"English\"><b>English&#58; </b></span> Example image, used for tracking
+      test edits. \u2013 This file name (Example.jpg) is used by English language
+      and other language MediaWiki installations when you click the respective toolbar
+      button. (English language)</div></td>\n</tr>\n\n<tr>\n<td id=\"fileinfotpl_date\"
+      class=\"fileinfo-paramfield\" lang=\"en\">Date</td>\n<td lang=\"en\">\n<time
+      class=\"dtstart\" datetime=\"2005-07\" lang=\"en\" dir=\"ltr\" style=\"white-space:nowrap\">July
+      2005</time></td>\n</tr>\n\n<tr>\n<td id=\"fileinfotpl_src\" class=\"fileinfo-paramfield\"
+      lang=\"en\">Source</td>\n<td>\n<span class=\"int-own-work\" lang=\"en\">Own
+      work</span></td>\n</tr>\n\n<tr>\n<td id=\"fileinfotpl_aut\" class=\"fileinfo-paramfield\"
+      lang=\"en\">Author</td>\n<td>\n<a href=\"/wiki/User:Bdk\" title=\"User:Bdk\">bdk</a></td>\n</tr>\n\n<tr>\n<td
+      id=\"fileinfotpl_perm\" class=\"fileinfo-paramfield\" lang=\"en\">Permission<br
+      /><small>(<a href=\"/wiki/Commons:Reusing_content_outside_Wikimedia\" title=\"Commons:Reusing
+      content outside Wikimedia\">Reusing this file</a>)</small></td>\n<td>\n<table
+      class=\"licensetpl\" style=\"display:none\">\n<tbody><tr>\n<td><span class=\"licensetpl_short\">Public
+      domain</span><span class=\"licensetpl_long\">Public domain</span><span class=\"licensetpl_link_req\">false</span><span
+      class=\"licensetpl_attr_req\">false</span>\n</td></tr></tbody></table>\n<table
+      style=\"width:100%; clear:both; margin:0.5em auto; background-color:#f7f8ff;
+      border:2px solid #8888aa; direction: ltr; border-spacing: 8px; padding: 0px;\"
+      class=\"layouttemplate mw-content-ltr\" lang=\"en\">\n<tbody><tr>\n<td><span
+      typeof=\"mw:File\"><span><img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/PD-icon.svg/64px-PD-icon.svg.png\"
+      decoding=\"async\" width=\"64\" height=\"64\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/PD-icon.svg/96px-PD-icon.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/PD-icon.svg/128px-PD-icon.svg.png
+      2x\" data-file-width=\"196\" data-file-height=\"196\" /></span></span>\n</td>\n<td><i>This
+      work is <b>ineligible for <a href=\"https://en.wikipedia.org/wiki/copyrights\"
+      class=\"extiw\" title=\"w:copyrights\">copyright</a></b> and therefore in the
+      <b><a href=\"https://en.wikipedia.org/wiki/public_domain\" class=\"extiw\" title=\"w:public
+      domain\">public domain</a></b> because it consists entirely of information that
+      is <a href=\"/wiki/Commons:Threshold_of_originality\" title=\"Commons:Threshold
+      of originality\">common property and contains no original authorship</a>.</i>\n</td></tr></tbody></table></td>\n</tr>\n\n<tr>\n<td
+      id=\"fileinfotpl_ver\" class=\"fileinfo-paramfield\" lang=\"en\">Other versions</td>\n<td>\n<div
+      class=\"layouttemplate\" style=\"clear:both; direction: ltr\">\n<table style=\"width:100%;
+      margin:0.5em auto; border-spacing:8px; background: #f7f8ff; border: 2px solid
+      #5580b4\">\n<tbody><tr>\n<td><span typeof=\"mw:File\"><a href=\"/wiki/File:Gnome-x-office-drawing.svg\"
+      class=\"mw-file-description\"><img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gnome-x-office-drawing.svg/70px-Gnome-x-office-drawing.svg.png\"
+      decoding=\"async\" width=\"70\" height=\"70\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gnome-x-office-drawing.svg/105px-Gnome-x-office-drawing.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gnome-x-office-drawing.svg/140px-Gnome-x-office-drawing.svg.png
+      2x\" data-file-width=\"512\" data-file-height=\"512\" /></a></span>\n</td>\n<td><div
+      lang=\"en\" dir=\"ltr\" class=\"description en\" style=\"display:inline;\"><a
+      href=\"/wiki/File:Example_en.svg\" title=\"File:Example en.svg\">File:Example
+      en.svg</a> is a vector version of this file. It should be used in place of this
+      JPG file when not inferior.</div><div style=\"clear:both;\"></div>\n<hr />\n<div
+      style=\"margin-left:auto margin-right:auto; text-align:center; font-size:90%;\">File:Example.jpg
+      \u2192 <a href=\"/wiki/File:Example_en.svg\" title=\"File:Example en.svg\">File:Example
+      en.svg</a></div><span id=\"field-vva\" title=\"Example en.svg\"></span>\n<hr
+      />\n<div style=\"font-size:90%;\"><div lang=\"en\" dir=\"ltr\" class=\"description
+      en\" style=\"display:inline;\">For more information, see <a href=\"/wiki/Help:SVG\"
+      title=\"Help:SVG\">Help:SVG</a>.</div></div>\n<hr />\n<div lang=\"\">\n<table
+      class=\"mw-collapsible mw-collapsed\" style=\"clear:both;margin:2px auto;background:#FFF;color:#222;border:1px
+      solid #AAA;padding:1px;width:100%\">\n\n<tbody><tr>\n<th scope=\"col\" style=\"font-size:88%;background:#F0F2F5;border:none;color:#000;padding:0
+      .2em;text-align:center\"><span style=\"font-weight:normal\"><a href=\"/wiki/Template:Vector_version_available/lang\"
+      title=\"Template:Vector version available/lang\">In other languages</a></span>\n</th></tr>\n<tr>\n<td
+      class=\"mw-collapsible-content\" style=\"font-size:88%;border:none;padding:0;\"><span
+      style=\"font-size:small;line-height:1.4\" class=\"plainlinks noprint\"><a class=\"external
+      text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/gsw\"><bdi
+      class=\"language lang-gsw\" lang=\"gsw\">Alemannisch</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/id\"><bdi
+      class=\"language lang-id\" lang=\"id\">Bahasa Indonesia</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/ms\"><bdi
+      class=\"language lang-ms\" lang=\"ms\">Bahasa Melayu</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/en-gb\"><bdi
+      class=\"language lang-en-gb\" lang=\"en-gb\">British English</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/ca\"><bdi
+      class=\"language lang-ca\" lang=\"ca\">catal\u00e0</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/cs\"><bdi
+      class=\"language lang-cs\" lang=\"cs\">\u010de\u0161tina</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/da\"><bdi
+      class=\"language lang-da\" lang=\"da\">dansk</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/de\"><bdi
+      class=\"language lang-de\" lang=\"de\">Deutsch</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/et\"><bdi
+      class=\"language lang-et\" lang=\"et\">eesti</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/en\"><bdi
+      class=\"language lang-en\" lang=\"en\">English</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/es\"><bdi
+      class=\"language lang-es\" lang=\"es\">espa\u00f1ol</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/eo\"><bdi
+      class=\"language lang-eo\" lang=\"eo\">Esperanto</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/eu\"><bdi
+      class=\"language lang-eu\" lang=\"eu\">euskara</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/fr\"><bdi
+      class=\"language lang-fr\" lang=\"fr\">fran\u00e7ais</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/fy\"><bdi
+      class=\"language lang-fy\" lang=\"fy\">Frysk</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/gl\"><bdi
+      class=\"language lang-gl\" lang=\"gl\">galego</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/hr\"><bdi
+      class=\"language lang-hr\" lang=\"hr\">hrvatski</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/io\"><bdi
+      class=\"language lang-io\" lang=\"io\">Ido</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/it\"><bdi
+      class=\"language lang-it\" lang=\"it\">italiano</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/lt\"><bdi
+      class=\"language lang-lt\" lang=\"lt\">lietuvi\u0173</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/hu\"><bdi
+      class=\"language lang-hu\" lang=\"hu\">magyar</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/nl\"><bdi
+      class=\"language lang-nl\" lang=\"nl\">Nederlands</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/nb\"><bdi
+      class=\"language lang-nb\" lang=\"nb\">norsk bokm\u00e5l</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/nn\"><bdi
+      class=\"language lang-nn\" lang=\"nn\">norsk nynorsk</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/oc\"><bdi
+      class=\"language lang-oc\" lang=\"oc\">occitan</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/nds\"><bdi
+      class=\"language lang-nds\" lang=\"nds\">Plattd\u00fc\u00fctsch</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/pl\"><bdi
+      class=\"language lang-pl\" lang=\"pl\">polski</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/pt\"><bdi
+      class=\"language lang-pt\" lang=\"pt\">portugu\u00eas</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/pt-br\"><bdi
+      class=\"language lang-pt-br\" lang=\"pt-br\">portugu\u00eas do Brasil</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/ro\"><bdi
+      class=\"language lang-ro\" lang=\"ro\">rom\u00e2n\u0103</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/sco\"><bdi
+      class=\"language lang-sco\" lang=\"sco\">Scots</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/scn\"><bdi
+      class=\"language lang-scn\" lang=\"scn\">sicilianu</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/sk\"><bdi
+      class=\"language lang-sk\" lang=\"sk\">sloven\u010dina</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/sl\"><bdi
+      class=\"language lang-sl\" lang=\"sl\">sloven\u0161\u010dina</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/fi\"><bdi
+      class=\"language lang-fi\" lang=\"fi\">suomi</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/sv\"><bdi
+      class=\"language lang-sv\" lang=\"sv\">svenska</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/vi\"><bdi
+      class=\"language lang-vi\" lang=\"vi\">Ti\u1ebfng Vi\u1ec7t</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/tr\"><bdi
+      class=\"language lang-tr\" lang=\"tr\">T\u00fcrk\u00e7e</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/vec\"><bdi
+      class=\"language lang-vec\" lang=\"vec\">v\u00e8neto</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/el\"><bdi
+      class=\"language lang-el\" lang=\"el\">\u0395\u03bb\u03bb\u03b7\u03bd\u03b9\u03ba\u03ac</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/be-tarask\"><bdi
+      class=\"language lang-be-tarask\" lang=\"be-tarask\">\u0431\u0435\u043b\u0430\u0440\u0443\u0441\u043a\u0430\u044f
+      (\u0442\u0430\u0440\u0430\u0448\u043a\u0435\u0432\u0456\u0446\u0430)</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/bg\"><bdi
+      class=\"language lang-bg\" lang=\"bg\">\u0431\u044a\u043b\u0433\u0430\u0440\u0441\u043a\u0438</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/mk\"><bdi
+      class=\"language lang-mk\" lang=\"mk\">\u043c\u0430\u043a\u0435\u0434\u043e\u043d\u0441\u043a\u0438</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/ce\"><bdi
+      class=\"language lang-ce\" lang=\"ce\">\u043d\u043e\u0445\u0447\u0438\u0439\u043d</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/ru\"><bdi
+      class=\"language lang-ru\" lang=\"ru\">\u0440\u0443\u0441\u0441\u043a\u0438\u0439</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/sr\"><bdi
+      class=\"language lang-sr\" lang=\"sr\">\u0441\u0440\u043f\u0441\u043a\u0438
+      / srpski</bdi></a>&#160;<b>\u2219</b>&#32;<a class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/tt\"><bdi
+      class=\"language lang-tt\" lang=\"tt\">\u0442\u0430\u0442\u0430\u0440\u0447\u0430/tatar\u00e7a</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/uk\"><bdi
+      class=\"language lang-uk\" lang=\"uk\">\u0443\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0430</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/ka\"><bdi
+      class=\"language lang-ka\" lang=\"ka\">\u10e5\u10d0\u10e0\u10d7\u10e3\u10da\u10d8</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/hy\"><bdi
+      class=\"language lang-hy\" lang=\"hy\">\u0570\u0561\u0575\u0565\u0580\u0565\u0576</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/bn\"><bdi
+      class=\"language lang-bn\" lang=\"bn\">\u09ac\u09be\u0982\u09b2\u09be</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/ta\"><bdi
+      class=\"language lang-ta\" lang=\"ta\">\u0ba4\u0bae\u0bbf\u0bb4\u0bcd</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/ml\"><bdi
+      class=\"language lang-ml\" lang=\"ml\">\u0d2e\u0d32\u0d2f\u0d3e\u0d33\u0d02</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/th\"><bdi
+      class=\"language lang-th\" lang=\"th\">\u0e44\u0e17\u0e22</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/ko\"><bdi
+      class=\"language lang-ko\" lang=\"ko\">\ud55c\uad6d\uc5b4</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/ja\"><bdi
+      class=\"language lang-ja\" lang=\"ja\">\u65e5\u672c\u8a9e</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/zh-hans\"><bdi
+      class=\"language lang-zh-hans\" lang=\"zh-hans\">\u7b80\u4f53\u4e2d\u6587</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/zh-hant\"><bdi
+      class=\"language lang-zh-hant\" lang=\"zh-hant\">\u7e41\u9ad4\u4e2d\u6587</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/he\"><bdi
+      class=\"language lang-he\" lang=\"he\">\u05e2\u05d1\u05e8\u05d9\u05ea</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/ar\"><bdi
+      class=\"language lang-ar\" lang=\"ar\">\u0627\u0644\u0639\u0631\u0628\u064a\u0629</bdi></a>&#160;<b>\u2219</b>&#32;<a
+      class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Vector_version_available/fa\"><bdi
+      class=\"language lang-fa\" lang=\"fa\">\u0641\u0627\u0631\u0633\u06cc</bdi></a>&#160;<b>\u2219</b>&#32;<small
+      class=\"plainlinks\"><a class=\"external text\" href=\"https://commons.wikimedia.org/w/index.php?title=Template:Vector_version_available/lang&amp;action=edit\">+/\u2212</a></small></span>\n</td></tr></tbody></table></div>\n</td>\n<td
+      style=\"background:transparent; text-align:center; vertical-align:middle\"><div
+      class=\"wpImageAnnotatorControl wpImageAnnotatorOff\"><div class=\"com-checker\"
+      style=\"display:inline-block;box-shadow: 1px 3px 5px #888;\"><span typeof=\"mw:File\"><a
+      href=\"/wiki/File:Example_en.svg\" class=\"mw-file-description\" title=\"New
+      SVG image\"><img alt=\"New SVG image\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Example_en.svg/145px-Example_en.svg.png\"
+      decoding=\"async\" width=\"145\" height=\"150\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Example_en.svg/217px-Example_en.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Example_en.svg/290px-Example_en.svg.png
+      2x\" data-file-width=\"172\" data-file-height=\"178\" /></a></span></div></div>\n</td></tr></tbody></table>\n<p><span
+      class=\"layouttemplateargs\" style=\"display:none;speak:none;\" title=\"template=Vector+version+available
+      1%3DExample+en.svg 2%3D 3%3D\">&#160;</span>\n</p>\n</div><br /><span class=\"editsection\">[<span
+      class=\"noprint plainlinks\"><a class=\"external text\" href=\"https://commons.wikimedia.org/w/index.php?title=Template:Other_versions/Example&amp;action=edit\">edit</a></span>]</span><br
+      clear=\"all\" />\n<ul class=\"gallery mw-gallery-traditional\">\n\t\t<li class=\"gallerybox\"
+      style=\"width: 155px\">\n\t\t\t<div class=\"thumb\" style=\"width: 150px; height:
+      150px;\"><span typeof=\"mw:File\"><a href=\"/wiki/File:Example_i18n.svg\" class=\"mw-file-description\"
+      title=\"multilanguage\"><img alt=\"multilanguage\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Example_i18n.svg/116px-Example_i18n.svg.png\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Example_i18n.svg/174px-Example_i18n.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Example_i18n.svg/232px-Example_i18n.svg.png
+      2x\" data-file-width=\"172\" data-file-height=\"178\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Example_i18n.svg\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Example i18n.svg\">Example i18n.svg</a>\n<b>multilanguage</b></div>\n\t\t</li>\n\t\t<li
+      class=\"gallerybox\" style=\"width: 155px\">\n\t\t\t<div class=\"thumb\" style=\"width:
+      150px; height: 150px;\"><span typeof=\"mw:File\"><a href=\"/wiki/File:Example_en.svg\"
+      class=\"mw-file-description\" title=\"English\"><img alt=\"English\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Example_en.svg/116px-Example_en.svg.png\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Example_en.svg/174px-Example_en.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Example_en.svg/232px-Example_en.svg.png
+      2x\" data-file-width=\"172\" data-file-height=\"178\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Example_en.svg\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Example en.svg\">Example en.svg</a>\nEnglish</div>\n\t\t</li>\n\t\t<li
+      class=\"gallerybox\" style=\"width: 155px\">\n\t\t\t<div class=\"thumb\" style=\"width:
+      150px; height: 150px;\"><span typeof=\"mw:File\"><a href=\"/wiki/File:Example_ar.svg\"
+      class=\"mw-file-description\" title=\"Arabic\"><img alt=\"Arabic\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Example_ar.svg/116px-Example_ar.svg.png\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Example_ar.svg/174px-Example_ar.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Example_ar.svg/231px-Example_ar.svg.png
+      2x\" data-file-width=\"215\" data-file-height=\"223\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Example_ar.svg\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Example ar.svg\">Example ar.svg</a>\nArabic</div>\n\t\t</li>\n\t\t<li
+      class=\"gallerybox\" style=\"width: 155px\">\n\t\t\t<div class=\"thumb\" style=\"width:
+      150px; height: 150px;\"><span typeof=\"mw:File\"><a href=\"/wiki/File:Example_as.svg\"
+      class=\"mw-file-description\" title=\"Assamese\"><img alt=\"Assamese\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Example_as.svg/116px-Example_as.svg.png\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Example_as.svg/174px-Example_as.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Example_as.svg/232px-Example_as.svg.png
+      2x\" data-file-width=\"172\" data-file-height=\"178\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Example_as.svg\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Example as.svg\">Example as.svg</a>\nAssamese</div>\n\t\t</li>\n\t\t<li
+      class=\"gallerybox\" style=\"width: 155px\">\n\t\t\t<div class=\"thumb\" style=\"width:
+      150px; height: 150px;\"><span typeof=\"mw:File\"><a href=\"/wiki/File:Example_ba.svg\"
+      class=\"mw-file-description\" title=\"Bashkir\"><img alt=\"Bashkir\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Example_ba.svg/116px-Example_ba.svg.png\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Example_ba.svg/174px-Example_ba.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Example_ba.svg/232px-Example_ba.svg.png
+      2x\" data-file-width=\"172\" data-file-height=\"178\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Example_ba.svg\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Example ba.svg\">Example ba.svg</a>\nBashkir</div>\n\t\t</li>\n\t\t<li
+      class=\"gallerybox\" style=\"width: 155px\">\n\t\t\t<div class=\"thumb\" style=\"width:
+      150px; height: 150px;\"><span typeof=\"mw:File\"><a href=\"/wiki/File:Example_bn.svg\"
+      class=\"mw-file-description\" title=\"Bangla\"><img alt=\"Bangla\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Example_bn.svg/116px-Example_bn.svg.png\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Example_bn.svg/174px-Example_bn.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Example_bn.svg/232px-Example_bn.svg.png
+      2x\" data-file-width=\"172\" data-file-height=\"178\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Example_bn.svg\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Example bn.svg\">Example bn.svg</a>\nBangla</div>\n\t\t</li>\n\t\t<li
+      class=\"gallerybox\" style=\"width: 155px\">\n\t\t\t<div class=\"thumb\" style=\"width:
+      150px; height: 150px;\"><span typeof=\"mw:File\"><a href=\"/wiki/File:Example_de.svg\"
+      class=\"mw-file-description\" title=\"German\"><img alt=\"German\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Example_de.svg/116px-Example_de.svg.png\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Example_de.svg/174px-Example_de.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Example_de.svg/232px-Example_de.svg.png
+      2x\" data-file-width=\"172\" data-file-height=\"178\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Example_de.svg\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Example de.svg\">Example de.svg</a>\nGerman</div>\n\t\t</li>\n\t\t<li
+      class=\"gallerybox\" style=\"width: 155px\">\n\t\t\t<div class=\"thumb\" style=\"width:
+      150px; height: 150px;\"><span typeof=\"mw:File\"><a href=\"/wiki/File:Example_dsb.svg\"
+      class=\"mw-file-description\" title=\"Lower Sorbian\"><img alt=\"Lower Sorbian\"
+      src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Example_dsb.svg/116px-Example_dsb.svg.png\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Example_dsb.svg/174px-Example_dsb.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Example_dsb.svg/232px-Example_dsb.svg.png
+      2x\" data-file-width=\"172\" data-file-height=\"178\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Example_dsb.svg\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Example dsb.svg\">Example dsb.svg</a>\nLower
+      Sorbian</div>\n\t\t</li>\n\t\t<li class=\"gallerybox\" style=\"width: 155px\">\n\t\t\t<div
+      class=\"thumb\" style=\"width: 150px; height: 150px;\"><span typeof=\"mw:File\"><a
+      href=\"/wiki/File:Example_eo.svg\" class=\"mw-file-description\" title=\"Esperanto\"><img
+      alt=\"Esperanto\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Example_eo.svg/116px-Example_eo.svg.png\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Example_eo.svg/174px-Example_eo.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Example_eo.svg/232px-Example_eo.svg.png
+      2x\" data-file-width=\"172\" data-file-height=\"178\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Example_eo.svg\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Example eo.svg\">Example eo.svg</a>\nEsperanto</div>\n\t\t</li>\n\t\t<li
+      class=\"gallerybox\" style=\"width: 155px\">\n\t\t\t<div class=\"thumb\" style=\"width:
+      150px; height: 150px;\"><span typeof=\"mw:File\"><a href=\"/wiki/File:Example_es.svg\"
+      class=\"mw-file-description\" title=\"Spanish\"><img alt=\"Spanish\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Example_es.svg/116px-Example_es.svg.png\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Example_es.svg/174px-Example_es.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Example_es.svg/232px-Example_es.svg.png
+      2x\" data-file-width=\"172\" data-file-height=\"178\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Example_es.svg\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Example es.svg\">Example es.svg</a>\nSpanish</div>\n\t\t</li>\n\t\t<li
+      class=\"gallerybox\" style=\"width: 155px\">\n\t\t\t<div class=\"thumb\" style=\"width:
+      150px; height: 150px;\"><span typeof=\"mw:File\"><a href=\"/wiki/File:Example_fi.svg\"
+      class=\"mw-file-description\" title=\"Finnish\"><img alt=\"Finnish\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Example_fi.svg/116px-Example_fi.svg.png\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Example_fi.svg/174px-Example_fi.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Example_fi.svg/232px-Example_fi.svg.png
+      2x\" data-file-width=\"172\" data-file-height=\"178\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Example_fi.svg\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Example fi.svg\">Example fi.svg</a>\nFinnish</div>\n\t\t</li>\n\t\t<li
+      class=\"gallerybox\" style=\"width: 155px\">\n\t\t\t<div class=\"thumb\" style=\"width:
+      150px; height: 150px;\"><span typeof=\"mw:File\"><a href=\"/wiki/File:Example_hr.svg\"
+      class=\"mw-file-description\" title=\"Croatian\"><img alt=\"Croatian\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Example_hr.svg/116px-Example_hr.svg.png\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Example_hr.svg/174px-Example_hr.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Example_hr.svg/232px-Example_hr.svg.png
+      2x\" data-file-width=\"172\" data-file-height=\"178\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Example_hr.svg\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Example hr.svg\">Example hr.svg</a>\nCroatian</div>\n\t\t</li>\n\t\t<li
+      class=\"gallerybox\" style=\"width: 155px\">\n\t\t\t<div class=\"thumb\" style=\"width:
+      150px; height: 150px;\"><span typeof=\"mw:File\"><a href=\"/wiki/File:Example_hsb.svg\"
+      class=\"mw-file-description\" title=\"Upper Sorbian\"><img alt=\"Upper Sorbian\"
+      src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Example_hsb.svg/116px-Example_hsb.svg.png\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Example_hsb.svg/174px-Example_hsb.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Example_hsb.svg/232px-Example_hsb.svg.png
+      2x\" data-file-width=\"172\" data-file-height=\"178\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Example_hsb.svg\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Example hsb.svg\">Example hsb.svg</a>\nUpper
+      Sorbian</div>\n\t\t</li>\n\t\t<li class=\"gallerybox\" style=\"width: 155px\">\n\t\t\t<div
+      class=\"thumb\" style=\"width: 150px; height: 150px;\"><span typeof=\"mw:File\"><a
+      href=\"/wiki/File:Example_id.svg\" class=\"mw-file-description\" title=\"Indonesian\"><img
+      alt=\"Indonesian\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Example_id.svg/116px-Example_id.svg.png\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Example_id.svg/174px-Example_id.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Example_id.svg/232px-Example_id.svg.png
+      2x\" data-file-width=\"172\" data-file-height=\"178\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Example_id.svg\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Example id.svg\">Example id.svg</a>\nIndonesian</div>\n\t\t</li>\n\t\t<li
+      class=\"gallerybox\" style=\"width: 155px\">\n\t\t\t<div class=\"thumb\" style=\"width:
+      150px; height: 150px;\"><span typeof=\"mw:File\"><a href=\"/wiki/File:Example_ka.png\"
+      class=\"mw-file-description\" title=\"Georgian\"><img alt=\"Georgian\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Example_ka.png/116px-Example_ka.png\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/a/a4/Example_ka.png
+      1.5x\" data-file-width=\"172\" data-file-height=\"178\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Example_ka.png\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Example ka.png\">Example ka.png</a>\nGeorgian</div>\n\t\t</li>\n\t\t<li
+      class=\"gallerybox\" style=\"width: 155px\">\n\t\t\t<div class=\"thumb\" style=\"width:
+      150px; height: 150px;\"><span typeof=\"mw:File\"><a href=\"/wiki/File:Example_ko.png\"
+      class=\"mw-file-description\" title=\"Korean\"><img alt=\"Korean\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Example_ko.png/116px-Example_ko.png\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Example_ko.png/174px-Example_ko.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Example_ko.png/232px-Example_ko.png
+      2x\" data-file-width=\"989\" data-file-height=\"1024\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Example_ko.png\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Example ko.png\">Example ko.png</a>\nKorean</div>\n\t\t</li>\n\t\t<li
+      class=\"gallerybox\" style=\"width: 155px\">\n\t\t\t<div class=\"thumb\" style=\"width:
+      150px; height: 150px;\"><span typeof=\"mw:File\"><a href=\"/wiki/File:Example_ky.png\"
+      class=\"mw-file-description\" title=\"Kyrgyz\"><img alt=\"Kyrgyz\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Example_ky.png/116px-Example_ky.png\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Example_ky.png/174px-Example_ky.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Example_ky.png/232px-Example_ky.png
+      2x\" data-file-width=\"1024\" data-file-height=\"1059\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Example_ky.png\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Example ky.png\">Example ky.png</a>\nKyrgyz</div>\n\t\t</li>\n\t\t<li
+      class=\"gallerybox\" style=\"width: 155px\">\n\t\t\t<div class=\"thumb\" style=\"width:
+      150px; height: 150px;\"><span typeof=\"mw:File\"><a href=\"/wiki/File:Example_lt.svg\"
+      class=\"mw-file-description\" title=\"Lithuanian\"><img alt=\"Lithuanian\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Example_lt.svg/116px-Example_lt.svg.png\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Example_lt.svg/174px-Example_lt.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Example_lt.svg/232px-Example_lt.svg.png
+      2x\" data-file-width=\"172\" data-file-height=\"178\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Example_lt.svg\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Example lt.svg\">Example lt.svg</a>\nLithuanian</div>\n\t\t</li>\n\t\t<li
+      class=\"gallerybox\" style=\"width: 155px\">\n\t\t\t<div class=\"thumb\" style=\"width:
+      150px; height: 150px;\"><span typeof=\"mw:File\"><a href=\"/wiki/File:%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80.png\"
+      class=\"mw-file-description\" title=\"Macedonian and Bulgarian\"><img alt=\"Macedonian
+      and Bulgarian\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80.png/116px-%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80.png\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/e/e8/%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80.png
+      1.5x\" data-file-width=\"172\" data-file-height=\"178\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80.png\"
+      class=\"galleryfilename galleryfilename-truncate\" title=\"File:\u041f\u0440\u0438\u043c\u0435\u0440.png\">\u041f\u0440\u0438\u043c\u0435\u0440.png</a>\nMacedonian
+      and Bulgarian</div>\n\t\t</li>\n\t\t<li class=\"gallerybox\" style=\"width:
+      155px\">\n\t\t\t<div class=\"thumb\" style=\"width: 150px; height: 150px;\"><span
+      typeof=\"mw:File\"><a href=\"/wiki/File:Example_ms.svg\" class=\"mw-file-description\"
+      title=\"Malay\"><img alt=\"Malay\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Example_ms.svg/116px-Example_ms.svg.png\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Example_ms.svg/174px-Example_ms.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Example_ms.svg/232px-Example_ms.svg.png
+      2x\" data-file-width=\"172\" data-file-height=\"178\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Example_ms.svg\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Example ms.svg\">Example ms.svg</a>\nMalay</div>\n\t\t</li>\n\t\t<li
+      class=\"gallerybox\" style=\"width: 155px\">\n\t\t\t<div class=\"thumb\" style=\"width:
+      150px; height: 150px;\"><span typeof=\"mw:File\"><a href=\"/wiki/File:Voorbeeld_nl.png\"
+      class=\"mw-file-description\" title=\"Dutch\"><img alt=\"Dutch\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Voorbeeld_nl.png/120px-Voorbeeld_nl.png\"
+      decoding=\"async\" width=\"120\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Voorbeeld_nl.png/180px-Voorbeeld_nl.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Voorbeeld_nl.png/240px-Voorbeeld_nl.png
+      2x\" data-file-width=\"675\" data-file-height=\"675\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Voorbeeld_nl.png\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Voorbeeld nl.png\">Voorbeeld nl.png</a>\nDutch</div>\n\t\t</li>\n\t\t<li
+      class=\"gallerybox\" style=\"width: 155px\">\n\t\t\t<div class=\"thumb\" style=\"width:
+      150px; height: 150px;\"><span typeof=\"mw:File\"><a href=\"/wiki/File:Exemplo.svg\"
+      class=\"mw-file-description\" title=\"Portuguese\"><img alt=\"Portuguese\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Exemplo.svg/116px-Exemplo.svg.png\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Exemplo.svg/174px-Exemplo.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Exemplo.svg/232px-Exemplo.svg.png
+      2x\" data-file-width=\"172\" data-file-height=\"178\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Exemplo.svg\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Exemplo.svg\">Exemplo.svg</a>\nPortuguese</div>\n\t\t</li>\n\t\t<li
+      class=\"gallerybox\" style=\"width: 155px\">\n\t\t\t<div class=\"thumb\" style=\"width:
+      150px; height: 150px;\"><span typeof=\"mw:File\"><a href=\"/wiki/File:Example_ro.svg\"
+      class=\"mw-file-description\" title=\"Romanian\"><img alt=\"Romanian\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Example_ro.svg/116px-Example_ro.svg.png\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Example_ro.svg/174px-Example_ro.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Example_ro.svg/232px-Example_ro.svg.png
+      2x\" data-file-width=\"172\" data-file-height=\"178\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Example_ro.svg\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Example ro.svg\">Example ro.svg</a>\nRomanian</div>\n\t\t</li>\n\t\t<li
+      class=\"gallerybox\" style=\"width: 155px\">\n\t\t\t<div class=\"thumb\" style=\"width:
+      150px; height: 150px;\"><span typeof=\"mw:File\"><a href=\"/wiki/File:Example_ru.svg\"
+      class=\"mw-file-description\" title=\"Russian\"><img alt=\"Russian\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Example_ru.svg/116px-Example_ru.svg.png\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Example_ru.svg/174px-Example_ru.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Example_ru.svg/232px-Example_ru.svg.png
+      2x\" data-file-width=\"512\" data-file-height=\"530\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Example_ru.svg\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Example ru.svg\">Example ru.svg</a>\nRussian</div>\n\t\t</li>\n\t\t<li
+      class=\"gallerybox\" style=\"width: 155px\">\n\t\t\t<div class=\"thumb\" style=\"width:
+      150px; height: 150px;\"><span typeof=\"mw:File\"><a href=\"/wiki/File:Example_sl.svg\"
+      class=\"mw-file-description\" title=\"Slovenian\"><img alt=\"Slovenian\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Example_sl.svg/116px-Example_sl.svg.png\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Example_sl.svg/174px-Example_sl.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Example_sl.svg/232px-Example_sl.svg.png
+      2x\" data-file-width=\"172\" data-file-height=\"178\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Example_sl.svg\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Example sl.svg\">Example sl.svg</a>\nSlovenian</div>\n\t\t</li>\n\t\t<li
+      class=\"gallerybox\" style=\"width: 155px\">\n\t\t\t<div class=\"thumb\" style=\"width:
+      150px; height: 150px;\"><span typeof=\"mw:File\"><a href=\"/wiki/File:Example_sr.svg\"
+      class=\"mw-file-description\" title=\"Serbian (Cyr, ekav) and Bulgarian\"><img
+      alt=\"Serbian (Cyr, ekav) and Bulgarian\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Example_sr.svg/116px-Example_sr.svg.png\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Example_sr.svg/174px-Example_sr.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Example_sr.svg/232px-Example_sr.svg.png
+      2x\" data-file-width=\"172\" data-file-height=\"178\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Example_sr.svg\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Example sr.svg\">Example sr.svg</a>\nSerbian
+      (Cyr, ekav) and Bulgarian</div>\n\t\t</li>\n\t\t<li class=\"gallerybox\" style=\"width:
+      155px\">\n\t\t\t<div class=\"thumb\" style=\"width: 150px; height: 150px;\"><span
+      typeof=\"mw:File\"><a href=\"/wiki/File:Example_sr-ijek.svg\" class=\"mw-file-description\"
+      title=\"Serbian (Cyr, ijekav)\"><img alt=\"Serbian (Cyr, ijekav)\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Example_sr-ijek.svg/116px-Example_sr-ijek.svg.png\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Example_sr-ijek.svg/174px-Example_sr-ijek.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Example_sr-ijek.svg/232px-Example_sr-ijek.svg.png
+      2x\" data-file-width=\"172\" data-file-height=\"178\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Example_sr-ijek.svg\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Example sr-ijek.svg\">Example sr-ijek.svg</a>\nSerbian
+      (Cyr, ijekav)</div>\n\t\t</li>\n\t\t<li class=\"gallerybox\" style=\"width:
+      155px\">\n\t\t\t<div class=\"thumb\" style=\"width: 150px; height: 150px;\"><span
+      typeof=\"mw:File\"><a href=\"/wiki/File:Example_sr-lat.svg\" class=\"mw-file-description\"
+      title=\"Serbian (Lat, ekav)\"><img alt=\"Serbian (Lat, ekav)\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Example_sr-lat.svg/116px-Example_sr-lat.svg.png\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Example_sr-lat.svg/174px-Example_sr-lat.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Example_sr-lat.svg/232px-Example_sr-lat.svg.png
+      2x\" data-file-width=\"172\" data-file-height=\"178\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Example_sr-lat.svg\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Example sr-lat.svg\">Example sr-lat.svg</a>\nSerbian
+      (Lat, ekav)</div>\n\t\t</li>\n\t\t<li class=\"gallerybox\" style=\"width: 155px\">\n\t\t\t<div
+      class=\"thumb\" style=\"width: 150px; height: 150px;\"><span typeof=\"mw:File\"><a
+      href=\"/wiki/File:Example_sr-lat-ijek.svg\" class=\"mw-file-description\" title=\"Serbian
+      (Lat, ijekav)\"><img alt=\"Serbian (Lat, ijekav)\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Example_sr-lat-ijek.svg/116px-Example_sr-lat-ijek.svg.png\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Example_sr-lat-ijek.svg/174px-Example_sr-lat-ijek.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Example_sr-lat-ijek.svg/232px-Example_sr-lat-ijek.svg.png
+      2x\" data-file-width=\"172\" data-file-height=\"178\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Example_sr-lat-ijek.svg\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Example sr-lat-ijek.svg\">Example sr-lat-ijek.svg</a>\nSerbian
+      (Lat, ijekav)</div>\n\t\t</li>\n\t\t<li class=\"gallerybox\" style=\"width:
+      155px\">\n\t\t\t<div class=\"thumb\" style=\"width: 150px; height: 150px;\"><span
+      typeof=\"mw:File\"><a href=\"/wiki/File:Example_tr.svg\" class=\"mw-file-description\"
+      title=\"Turkish\"><img alt=\"Turkish\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Example_tr.svg/116px-Example_tr.svg.png\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Example_tr.svg/174px-Example_tr.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Example_tr.svg/232px-Example_tr.svg.png
+      2x\" data-file-width=\"172\" data-file-height=\"178\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Example_tr.svg\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Example tr.svg\">Example tr.svg</a>\nTurkish</div>\n\t\t</li>\n\t\t<li
+      class=\"gallerybox\" style=\"width: 155px\">\n\t\t\t<div class=\"thumb\" style=\"width:
+      150px; height: 150px;\"><span typeof=\"mw:File\"><a href=\"/wiki/File:%C3%96rnek.jpg\"
+      class=\"mw-file-description\" title=\"Turkish\"><img alt=\"Turkish\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/%C3%96rnek.jpg/116px-%C3%96rnek.jpg\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/6/6e/%C3%96rnek.jpg
+      1.5x\" data-file-width=\"172\" data-file-height=\"178\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:%C3%96rnek.jpg\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:\u00d6rnek.jpg\">\u00d6rnek.jpg</a>\nTurkish</div>\n\t\t</li>\n\t\t<li
+      class=\"gallerybox\" style=\"width: 155px\">\n\t\t\t<div class=\"thumb\" style=\"width:
+      150px; height: 150px;\"><span typeof=\"mw:File\"><a href=\"/wiki/File:Example_zh.svg\"
+      class=\"mw-file-description\" title=\"Chinese\"><img alt=\"Chinese\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Example_zh.svg/116px-Example_zh.svg.png\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Example_zh.svg/174px-Example_zh.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Example_zh.svg/232px-Example_zh.svg.png
+      2x\" data-file-width=\"172\" data-file-height=\"178\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Example_zh.svg\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Example zh.svg\">Example zh.svg</a>\nChinese</div>\n\t\t</li>\n\t\t<li
+      class=\"gallerybox\" style=\"width: 155px\">\n\t\t\t<div class=\"thumb\" style=\"width:
+      150px; height: 150px;\"><span typeof=\"mw:File\"><a href=\"/wiki/File:Example_hrx.svg\"
+      class=\"mw-file-description\" title=\"Hunsrik\"><img alt=\"Hunsrik\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Example_hrx.svg/116px-Example_hrx.svg.png\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Example_hrx.svg/174px-Example_hrx.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Example_hrx.svg/232px-Example_hrx.svg.png
+      2x\" data-file-width=\"172\" data-file-height=\"178\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Example_hrx.svg\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Example hrx.svg\">Example hrx.svg</a>\nHunsrik</div>\n\t\t</li>\n\t\t<li
+      class=\"gallerybox\" style=\"width: 155px\">\n\t\t\t<div class=\"thumb\" style=\"width:
+      150px; height: 150px;\"><span typeof=\"mw:File\"><a href=\"/wiki/File:Example_rotated_90_left.jpg\"
+      class=\"mw-file-description\" title=\"English\"><img alt=\"English\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Example_rotated_90_left.jpg/120px-Example_rotated_90_left.jpg\"
+      decoding=\"async\" width=\"120\" height=\"119\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/e/e9/Example_rotated_90_left.jpg
+      1.5x\" data-file-width=\"172\" data-file-height=\"170\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Example_rotated_90_left.jpg\" class=\"galleryfilename
+      galleryfilename-truncate\" title=\"File:Example rotated 90 left.jpg\">Example
+      rotated 90 left.jpg</a>\nEnglish</div>\n\t\t</li>\n\t\t<li class=\"gallerybox\"
+      style=\"width: 155px\">\n\t\t\t<div class=\"thumb\" style=\"width: 150px; height:
+      150px;\"><span typeof=\"mw:File\"><a href=\"/wiki/File:Example_dot_jaypeg_without_just_an.jpg\"
+      class=\"mw-file-description\" title=\"English\"><img alt=\"English\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Example_dot_jaypeg_without_just_an.jpg/116px-Example_dot_jaypeg_without_just_an.jpg\"
+      decoding=\"async\" width=\"116\" height=\"120\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/2/2d/Example_dot_jaypeg_without_just_an.jpg
+      1.5x\" data-file-width=\"172\" data-file-height=\"178\" /></a></span></div>\n\t\t\t<div
+      class=\"gallerytext\"><a href=\"/wiki/File:Example_dot_jaypeg_without_just_an.jpg\"
+      class=\"galleryfilename galleryfilename-truncate\" title=\"File:Example dot
+      jaypeg without just an.jpg\">Example dot jaypeg without just an.jpg</a>\nEnglish</div>\n\t\t</li>\n</ul></td>\n</tr>\n\n\n</tbody></table>\n</div>\n<h2><span
+      class=\"mw-headline\" id=\"See_also\">See also</span><span class=\"mw-editsection\"><span
+      class=\"mw-editsection-bracket\">[</span><a href=\"/w/index.php?title=File:Example.jpg&amp;action=edit&amp;section=1\"
+      title=\"Edit section: See also\"><span>edit</span></a><span class=\"mw-editsection-bracket\">]</span></span></h2>\n<ul><li><a
+      href=\"/wiki/Template:Edit\" title=\"Template:Edit\">Template:Edit</a></li></ul>\n<!--
+      \nNewPP limit report\nParsed by mw2439\nCached time: 20240202003531\nCache expiry:
+      84270\nReduced expiry: true\nComplications: []\nCPU time usage: 0.194 seconds\nReal
+      time usage: 0.263 seconds\nPreprocessor visited node count: 4680/1000000\nPost\u2010expand
+      include size: 168008/2097152 bytes\nTemplate argument size: 26406/2097152 bytes\nHighest
+      expansion depth: 16/100\nExpensive parser function count: 6/500\nUnstrip recursion
+      depth: 0/20\nUnstrip post\u2010expand size: 30337/5000000 bytes\nLua time usage:
+      0.081/10.000 seconds\nLua memory usage: 2414459/52428800 bytes\nNumber of Wikibase
+      entities loaded: 1/400\n-->\n<!--\nTransclusion expansion time report (%,ms,calls,template)\n100.00%  217.750      1
+      -total\n 87.38%  190.278      2 Template:Information\n 40.06%   87.221      1
+      Template:Prohibited_name\n 31.08%   67.671      1 Template:Other_versions/Example\n
+      22.50%   48.995      3 Template:Autotranslate\n 19.58%   42.625      1 Template:Mld\n
+      14.63%   31.866      1 Template:Vector_version_available\n 10.46%   22.778      1
+      Template:Vector_version_available/layout\n  9.91%   21.589     33 Template:Colon\n  6.96%   15.145      1
+      Template:PD-text\n-->\n\n<!-- Saved in parser cache with key commonswiki:pcache:idhash:6428847-0!canonical
+      and timestamp 20240202003530 and revision id 817442036. Rendering was triggered
+      because: page-view\n -->\n</div>"}}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Fri, 02 Feb 2024 09:49:34 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1422.eqiad.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3068"
+      set-cookie:
+      - WMF-Last-Access=02-Feb-2024;Path=/;HttpOnly;secure;Expires=Tue, 05 Mar 2024
+        00:00:00 GMT
+      - GeoIP=GB:ENG:Clacton-on-Sea:51.79:1.16:v4; Path=/; secure; Domain=.wikimedia.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie
+      x-cache:
+      - cp3068 miss, cp3068 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 92.30.89.207
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

@@ -1,0 +1,407 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.25.1
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=parse&page=File%3APierre%20Riel%20de%20Beurnonville%20%281792%29.jpg&prop=text&format=json
+  response:
+    content: '{"parse":{"title":"File:Pierre Riel de Beurnonville (1792).jpg","pageid":10314552,"text":{"*":"<div
+      class=\"mw-content-ltr mw-parser-output\" lang=\"en\" dir=\"ltr\"><h2><span
+      class=\"mw-headline\" id=\"Summary\">Summary</span><span class=\"mw-editsection\"><span
+      class=\"mw-editsection-bracket\">[</span><a href=\"/w/index.php?title=File:Pierre_Riel_de_Beurnonville_(1792).jpg&amp;action=edit&amp;section=1\"
+      title=\"Edit section: Summary\"><span>edit</span></a><span class=\"mw-editsection-bracket\">]</span></span></h2>\n<div
+      class=\"hproduct commons-file-information-table\">\n<style data-mw-deduplicate=\"TemplateStyles:r847266416\">.mw-parser-output
+      table.commons-file-information-table,.mw-parser-output .fileinfotpl-type-information,.mw-parser-output
+      .fileinfotpl-type-artwork{border:1px solid #a2a9b1;background-color:#f8f9fa;padding:5px;font-size:95%;border-spacing:2px;box-sizing:border-box;margin:0;width:100%}.mw-parser-output
+      table.commons-file-information-table>tbody>tr,.mw-parser-output .fileinfotpl-type-information>tbody>tr,.mw-parser-output
+      .fileinfotpl-type-artwork>tbody>tr{vertical-align:top}.mw-parser-output table.commons-file-information-table>tbody>tr>td,.mw-parser-output
+      table.commons-file-information-table>tbody>tr>th,.mw-parser-output .fileinfotpl-type-information>tbody>tr>td,.mw-parser-output
+      .fileinfotpl-type-information>tbody>tr>th,.mw-parser-output .fileinfotpl-type-artwork>tbody>tr>td,.mw-parser-output
+      .fileinfotpl-type-artwork>tbody>tr>th{padding:4px}.mw-parser-output .fileinfo-paramfield{background:#ccf;text-align:right;padding-right:0.4em;width:15%;font-weight:bold}.mw-parser-output
+      .commons-file-information-table+table.commons-file-information-table,.mw-parser-output
+      .commons-file-information-table+div.commons-file-information-table>table{border-top:0;padding-top:0;margin-top:-8px}@media
+      only screen and (max-width:719px){.mw-parser-output table.commons-file-information-table,.mw-parser-output
+      .commons-file-information-table .fileinfotpl-type-information,.mw-parser-output
+      .commons-file-information-table .fileinfotpl-type-artwork{border-spacing:0;padding:0;word-break:break-word;width:100%!important}.mw-parser-output
+      .commons-file-information-table>tbody,.mw-parser-output .fileinfotpl-type-information>tbody,.mw-parser-output
+      .fileinfotpl-type-artwork>tbody{display:block}.mw-parser-output .commons-file-information-table>tbody>tr>td,.mw-parser-output
+      .commons-file-information-table>tbody>tr>th,.mw-parser-output .fileinfotpl-type-information>tbody>tr>td,.mw-parser-output
+      .fileinfotpl-type-information>tbody>tr>th,.mw-parser-output .fileinfotpl-type-artwork>tbody>tr>td,.mw-parser-output
+      .fileinfotpl-type-artwork>tbody>tr>th{padding:0.2em 0.4em;text-align:left;text-align:start}.mw-parser-output
+      .commons-file-information-table>tbody>tr,.mw-parser-output .fileinfotpl-type-information>tbody>tr,.mw-parser-output
+      .fileinfotpl-type-artwork>tbody>tr{display:flex;flex-direction:column}.mw-parser-output
+      .commons-file-information-table+table.commons-file-information-table,.mw-parser-output
+      .commons-file-information-table+div.commons-file-information-table>table{margin-top:-1px}.mw-parser-output
+      .fileinfo-paramfield{box-sizing:border-box;flex:1 0 100%;width:100%}}</style>\n<table
+      class=\"fileinfotpl-type-artwork vevent mw-content-ltr\" dir=\"ltr\">\n<tbody><tr
+      valign=\"top\">\n<th colspan=\"2\" style=\"background-color:#ccf; font-weight:bold;
+      border:1px solid #aaa\"><span class=\"fn\" id=\"artwork\"><bdi><a href=\"https://en.wikipedia.org/wiki/en:Fran%C3%A7ois_Joseph_Heim\"
+      class=\"extiw\" title=\"w:en:Fran\u00e7ois Joseph Heim\"><span title=\"French
+      painter (1787-1865)\">Fran\u00e7ois Joseph Heim</span></a>: Fran\u00e7ais&#160;&#58;  Pierre
+      de Riel, marquis de Beurnonville, g\u00e9n\u00e9ral en chef de l''Arm\u00e9e
+      de la Moselle en 1792 (1752-1821)\n</bdi></span>&#160;&#160;(<span typeof=\"mw:File\"><a
+      href=\"https://www.wikidata.org/w/index.php?search=Fran%C3%A7ais%C2%A0%26%2358%3B++Pierre+de+Riel%2C+marquis+de+Beurnonville%2C+g%C3%A9n%C3%A9ral+en+chef+de+l%27Arm%C3%A9e+de+la+Moselle+en+1792+%281752-1821%29+haswbstatement%3AP31%3DQ3305213+haswbstatement%3AP195%3DQ2946+haswbstatement%3AP170%3DQ3083465&amp;title=Special:Search&amp;profile=advanced&amp;fulltext=1&amp;ns0=1\"
+      title=\"Wikidata search (Cirrus search)\"><img alt=\"Wikidata search (Cirrus
+      search)\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Wikidata_CheckUser.svg/15px-Wikidata_CheckUser.svg.png\"
+      decoding=\"async\" width=\"15\" height=\"15\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Wikidata_CheckUser.svg/23px-Wikidata_CheckUser.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Wikidata_CheckUser.svg/30px-Wikidata_CheckUser.svg.png
+      2x\" data-file-width=\"512\" data-file-height=\"512\" /></a></span> <span typeof=\"mw:File\"><a
+      href=\"https://query.wikidata.org/#SELECT%20%3Fitem%20%3FitemLabel%20%3Fimage%0AWHERE%20%7B%0A%20%3Fitem%20wdt%3AP31%20wd%3AQ3305213.%0A%20%3Fitem%20wdt%3AP195%20wd%3AQ2946.%0A%20%3Fitem%20wdt%3AP170%20wd%3AQ3083465.%0A%20OPTIONAL%20%7B%20%3Fitem%20wdt%3AP18%20%3Fimage%20%7D%20.%0A%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22en%22.%20%7D%0A%7D\"
+      title=\"Wikidata query (SPARQL)\"><img alt=\"Wikidata query (SPARQL)\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Wikidata_Query_Service_Favicon.svg/15px-Wikidata_Query_Service_Favicon.svg.png\"
+      decoding=\"async\" width=\"15\" height=\"15\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Wikidata_Query_Service_Favicon.svg/23px-Wikidata_Query_Service_Favicon.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Wikidata_Query_Service_Favicon.svg/30px-Wikidata_Query_Service_Favicon.svg.png
+      2x\" data-file-width=\"106\" data-file-height=\"106\" /></a></span>)</th>\n</tr>\n<tr>\n<td
+      id=\"fileinfotpl_aut\" class=\"fileinfo-paramfield\" lang=\"en\">Artist</td>\n<td>\n<div
+      class=\"fn value\">\n<div class=\"commons-creator vcard\">\n<style data-mw-deduplicate=\"TemplateStyles:r728533443\">.mw-parser-output
+      .commons-creator-table{background-color:#f0f0ff;box-sizing:border-box;font-size:95%;text-align:start}.mw-parser-output
+      .commons-creator-table>tbody>tr{vertical-align:top}.mw-parser-output .commons-creator-table>tbody>tr>th{background-color:#e0e0ee;font-weight:bold;text-align:start}@media(max-width:719px){.mw-parser-output
+      .commons-creator-table,.mw-parser-output .commons-creator-table>tbody{display:block;width:100%}.mw-parser-output
+      .commons-creator-table>tbody{border-right:1px solid #aaa;border-bottom:1px solid
+      #aaa}.mw-parser-output .commons-creator-table>tbody>tr{border-top:1px solid
+      #aaa;display:flex;flex-wrap:wrap}.mw-parser-output .commons-creator-table>tbody>tr>th{border-left:1px
+      solid #aaa;padding:2px;flex:1 1 100%}.mw-parser-output .commons-creator-table>tbody>tr>td{border-left:1px
+      solid #aaa;padding:2px;flex:1 1}}@media(min-width:720px){.mw-parser-output .commons-creator-table{border:1px
+      solid #aaa;border-collapse:collapse;border-spacing:0;padding:5px}.mw-parser-output
+      .commons-creator-table>tbody>tr>th,.mw-parser-output .commons-creator-table>tbody>tr>td{border:1px
+      solid #aaa;padding:2px}.mw-parser-output .commons-creator-table>tbody>tr>.halfwidth{max-width:10em}.mw-parser-output
+      .commons-creator-table>tbody>tr>.fullwidth{max-width:20em}}</style>\n<table
+      class=\"commons-creator-table mw-collapsible mw-collapsed mw-content-ltr\" dir=\"ltr\"
+      lang=\"en\">\n<tbody><tr>\n<th colspan=\"4\"><span class=\"fn\" id=\"creator\"><bdi><a
+      href=\"https://en.wikipedia.org/wiki/en:Fran%C3%A7ois_Joseph_Heim\" class=\"extiw\"
+      title=\"w:en:Fran\u00e7ois Joseph Heim\"><span title=\"French painter (1787-1865)\">Fran\u00e7ois
+      Joseph Heim</span></a>\n</bdi></span>&#160;(1787&#8211;1865)&#160;<span typeof=\"mw:File\"><a
+      href=\"/wiki/Creator:Fran%C3%A7ois-Joseph_Heim\" title=\"Creator:Fran\u00e7ois-Joseph
+      Heim\"><img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Blue_pencil.svg/15px-Blue_pencil.svg.png\"
+      decoding=\"async\" width=\"15\" height=\"15\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Blue_pencil.svg/23px-Blue_pencil.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Blue_pencil.svg/30px-Blue_pencil.svg.png
+      2x\" data-file-width=\"600\" data-file-height=\"600\" /></a></span>&#160;<span
+      typeof=\"mw:File\"><a href=\"https://www.wikidata.org/wiki/Q3083465\" title=\"wikidata:Q3083465\"><img
+      alt=\"wikidata:Q3083465\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Wikidata-logo.svg/20px-Wikidata-logo.svg.png\"
+      decoding=\"async\" width=\"20\" height=\"11\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Wikidata-logo.svg/30px-Wikidata-logo.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Wikidata-logo.svg/40px-Wikidata-logo.svg.png
+      2x\" data-file-width=\"1050\" data-file-height=\"590\" /></a></span> <div class=\"mw-collapsible-toggle
+      mw-collapsible-toggle-collapsed\"><span class=\"mw-collapsible-arrowtoggle\">&#160;</span></div></th>\n</tr>\n<tr>\n<td
+      rowspan=\"7\" style=\"width:120px\" id=\"fileinfotpl_creator_image\"><span class=\"wpImageAnnotatorControl
+      wpImageAnnotatorOff\"><span class=\"photo\" typeof=\"mw:File\"><a href=\"/wiki/File:Heim_Fran%C3%A7ois-Joseph_-_Carjat.jpg\"
+      class=\"mw-file-description\"><img alt=\"Fran\u00e7ois Joseph Heim\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Heim_Fran%C3%A7ois-Joseph_-_Carjat.jpg/120px-Heim_Fran%C3%A7ois-Joseph_-_Carjat.jpg\"
+      decoding=\"async\" width=\"120\" height=\"211\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Heim_Fran%C3%A7ois-Joseph_-_Carjat.jpg/180px-Heim_Fran%C3%A7ois-Joseph_-_Carjat.jpg
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Heim_Fran%C3%A7ois-Joseph_-_Carjat.jpg/240px-Heim_Fran%C3%A7ois-Joseph_-_Carjat.jpg
+      2x\" data-file-width=\"335\" data-file-height=\"588\" /></a></span></span></td>\n</tr>\n<tr>\n<th
+      scope=\"row\">Alternative names</th>\n<td colspan=\"2\" class=\"fullwidth\"
+      id=\"fileinfotpl_creator_alt-name_value\"><div class=\"nickname\">\nFrancois
+      Joseph Heim; Fran\u00e7ois-Joseph Heim</div></td></tr>\n<tr>\n<th scope=\"row\">Description</th>\n<td
+      colspan=\"2\" class=\"fullwidth\" id=\"fileinfotpl_creator_desc_value\">French
+      painter</td></tr>\n<tr>\n<th scope=\"row\">Date of birth/death</th>\n<td class=\"halfwidth\"
+      id=\"fileinfotpl_creator_birthdate_value\">\n16 December 1787&#160;<span class=\"mw-valign-text-top\"
+      typeof=\"mw:File/Frameless\"><a href=\"https://www.wikidata.org/wiki/Q3083465#P569\"
+      title=\"Edit this at Wikidata\"><img alt=\"Edit this at Wikidata\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/10px-OOjs_UI_icon_edit-ltr-progressive.svg.png\"
+      decoding=\"async\" width=\"10\" height=\"10\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/15px-OOjs_UI_icon_edit-ltr-progressive.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png
+      2x\" data-file-width=\"20\" data-file-height=\"20\" /></a></span></td><td class=\"halfwidth\"
+      id=\"fileinfotpl_creator_deathdate_value\">\n29 September 1865&#160;<span class=\"mw-valign-text-top\"
+      typeof=\"mw:File/Frameless\"><a href=\"https://www.wikidata.org/wiki/Q3083465#P570\"
+      title=\"Edit this at Wikidata\"><img alt=\"Edit this at Wikidata\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/10px-OOjs_UI_icon_edit-ltr-progressive.svg.png\"
+      decoding=\"async\" width=\"10\" height=\"10\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/15px-OOjs_UI_icon_edit-ltr-progressive.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png
+      2x\" data-file-width=\"20\" data-file-height=\"20\" /></a></span></td></tr>\n<tr>\n<th
+      scope=\"row\">Location of birth/death</th>\n<td class=\"halfwidth\" id=\"fileinfotpl_creator_birthloc_value\">\n<a
+      href=\"https://en.wikipedia.org/wiki/en:Belfort\" class=\"extiw\" title=\"w:en:Belfort\"><span
+      title=\"commune in Territoire de Belfort, France\">Belfort</span></a></td><td
+      class=\"halfwidth\" id=\"fileinfotpl_creator_deathloc_value\">\n<a href=\"https://www.wikidata.org/wiki/Q659373\"
+      class=\"extiw\" title=\"d:Q659373\"><span title=\"thoroughfare in Paris, France\">quai
+      de Conti</span></a></td></tr>\n<tr>\n<th scope=\"row\">Work location</th>\n<td
+      colspan=\"2\" class=\"fullwidth\" id=\"fileinfotpl_creator_work-location\"><div
+      class=\"locality\">\n<a href=\"https://en.wikipedia.org/wiki/en:Paris\" class=\"extiw\"
+      title=\"w:en:Paris\"><span title=\"capital of France\">Paris</span></a>&#160;<span
+      class=\"mw-valign-text-top\" typeof=\"mw:File/Frameless\"><a href=\"https://www.wikidata.org/wiki/Q3083465#P937\"
+      title=\"Edit this at Wikidata\"><img alt=\"Edit this at Wikidata\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/10px-OOjs_UI_icon_edit-ltr-progressive.svg.png\"
+      decoding=\"async\" width=\"10\" height=\"10\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/15px-OOjs_UI_icon_edit-ltr-progressive.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png
+      2x\" data-file-width=\"20\" data-file-height=\"20\" /></a></span></div></td></tr>\n<tr>\n<th
+      scope=\"row\"><a href=\"https://en.wikipedia.org/wiki/en:Authority_file\" class=\"extiw\"
+      title=\"w:en:Authority file\"><span title=\"collection of authority records,
+      where each record picks preferred heading, alternative heading and other information,
+      used for bibliographic information\">Authority file</span></a></th>\n<td colspan=\"2\"
+      class=\"fullwidth\" id=\"fileinfotpl_creator_authority_value\"><div class=\"hlist\">\n<ul><li><span
+      typeof=\"mw:File\"><a href=\"https://www.wikidata.org/wiki/Q3083465\" title=\"wikidata:Q3083465\"><img
+      alt=\"wikidata:Q3083465\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Wikidata-logo.svg/20px-Wikidata-logo.svg.png\"
+      decoding=\"async\" width=\"20\" height=\"11\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Wikidata-logo.svg/30px-Wikidata-logo.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Wikidata-logo.svg/40px-Wikidata-logo.svg.png
+      2x\" data-file-width=\"1050\" data-file-height=\"590\" /></a></span>: <a href=\"https://www.wikidata.org/wiki/Q3083465\"
+      class=\"extiw\" title=\"d:Q3083465\">Q3083465</a></li>\n<li><a href=\"https://en.wikipedia.org/wiki/en:Virtual_International_Authority_File\"
+      class=\"extiw\" title=\"w:en:Virtual International Authority File\">VIAF</a>:&#8201;<span
+      class=\"uid\"><span class=\"plainlinks\"><a href=\"https://viaf.org/viaf/76589839\"
+      class=\"extiw\" title=\"viaf:76589839\">76589839</a></span></span></li>\n<li><a
+      href=\"https://en.wikipedia.org/wiki/en:International_Standard_Name_Identifier\"
+      class=\"extiw\" title=\"w:en:International Standard Name Identifier\">ISNI</a>:&#8201;<span
+      class=\"uid\"><span class=\"plainlinks\"><a rel=\"nofollow\" class=\"external
+      text\" href=\"https://isni.oclc.org/cbs/DB=1.2//CMD?ACT=SRCH&amp;IKT=8006&amp;TRM=ISN%3A0000000066642939\">0000000066642939</a></span></span></li>\n<li><a
+      href=\"https://en.wikipedia.org/wiki/en:Union_List_of_Artist_Names\" class=\"extiw\"
+      title=\"w:en:Union List of Artist Names\">ULAN</a>:&#8201;<span class=\"uid\"><span
+      class=\"plainlinks\"><a rel=\"nofollow\" class=\"external text\" href=\"https://www.getty.edu/vow/ULANFullDisplay?find=&amp;role=&amp;nation=&amp;subjectid=500002586\">500002586</a></span></span></li>\n<li><a
+      href=\"https://en.wikipedia.org/wiki/en:Web_Gallery_of_Art\" class=\"extiw\"
+      title=\"w:en:Web Gallery of Art\">WGA</a>:&#8201;<span class=\"uid\"><span class=\"plainlinks\"><a
+      rel=\"nofollow\" class=\"external text\" href=\"https://www.wga.hu/frames-e.html?/html/h/heim\">h/heim</a></span></span></li>\n<li><a
+      href=\"https://en.wikipedia.org/wiki/en:GND_(identifier)\" class=\"extiw\" title=\"w:en:GND
+      (identifier)\">GND</a>:&#8201;<span class=\"uid\"><span class=\"plainlinks\"><a
+      rel=\"nofollow\" class=\"external text\" href=\"https://d-nb.info/gnd/116656034\">116656034</a></span></span></li></ul>\n</div></td></tr>\n</tbody></table>\n</div>\n<div
+      style=\"display: none;\">artist QS:P170,Q3083465</div></div></td>\n</tr>\n\n<tr>\n<td
+      id=\"fileinfotpl_art_title\" class=\"fileinfo-paramfield\" lang=\"en\">Title</td>\n<td>\n<div
+      class=\"fn\">\n<div class=\"description mw-content-ltr fr\" dir=\"ltr\" lang=\"fr\"><span
+      class=\"language fr\" title=\"French\"><b>Fran\u00e7ais&#160;&#58; </b></span>
+      Pierre de Riel, marquis de Beurnonville, g\u00e9n\u00e9ral en chef de l''Arm\u00e9e
+      de la Moselle en 1792 (1752-1821)</div></div></td>\n</tr>\n\n<tr>\n<td id=\"fileinfotpl_art_object_type\"
+      class=\"fileinfo-paramfield\" lang=\"en\">Object type</td>\n<td>\n<a href=\"https://en.wikipedia.org/wiki/en:Painting_(object)\"
+      class=\"extiw\" title=\"w:en:Painting (object)\"><span title=\"visual artwork,
+      surface artistically covered with paint\">painting</span></a><div style=\"display:
+      none;\">object_type QS:P31,Q3305213</div></td>\n</tr>\n\n<tr>\n<td id=\"fileinfotpl_desc\"
+      class=\"fileinfo-paramfield\" lang=\"en\">Description</td>\n<td>\n<div class=\"description\">\n<div
+      class=\"description mw-content-ltr fr\" dir=\"ltr\" lang=\"fr\"><span class=\"language
+      fr\" title=\"French\"><b>Fran\u00e7ais&#160;&#58; </b></span> Command\u00e9
+      par Louis-Philippe pour le mus\u00e9e historique de Versailles en 1834</div></div></td>\n</tr>\n\n<tr>\n<td
+      id=\"fileinfotpl_date\" class=\"fileinfo-paramfield\" lang=\"en\">Date</td>\n<td>\n1834<div
+      style=\"display: none;\">date QS:P571,+1834-00-00T00:00:00Z/9</div></td>\n</tr>\n\n<tr>\n<td
+      id=\"fileinfotpl_art_medium\" class=\"fileinfo-paramfield\" lang=\"en\">Medium</td>\n<td>\n<a
+      href=\"https://en.wikipedia.org/wiki/oil_on_canvas\" class=\"extiw\" title=\"en:oil
+      on canvas\">oil on canvas</a><div style=\"display: none;\">medium QS:P186,Q296955;P186,Q12321255,P518,Q861259</div></td>\n</tr>\n\n<tr>\n<td
+      id=\"fileinfotpl_art_dimensions\" class=\"fileinfo-paramfield\" lang=\"en\">Dimensions</td>\n<td>\nheight:
+      135 cm (53.1 in); width: 100 cm (39.3 in)<div style=\"display: none;\">dimensions
+      QS:P2048,135U174728</div><div style=\"display: none;\">dimensions QS:P2049,100U174728</div></td>\n</tr>\n\n<tr>\n<td
+      id=\"fileinfotpl_art_gallery\" class=\"fileinfo-paramfield\" lang=\"en\">Collection</td>\n<td>\n<div
+      class=\"vcard\">\n<table class=\"toccolours collapsible collapsed\" cellpadding=\"2\"
+      cellspacing=\"0\" dir=\"ltr\" style=\"text-align:left; border-collapse:collapse;
+      background:#f0f0ff; border:1px solid #aaa;\" lang=\"en\">\n<tbody><tr valign=\"top\">\n<th
+      colspan=\"4\" style=\"background-color:#e0e0ee; font-weight:bold; border:1px
+      solid #aaa;\"><span class=\"fn\" id=\"creator\"><bdi><a href=\"https://en.wikipedia.org/wiki/en:Palace_of_Versailles\"
+      class=\"extiw\" title=\"w:en:Palace of Versailles\"><span title=\"palace in
+      Versailles, France and location of the Museum of the History of France\">Palace
+      of Versailles</span></a>\n</bdi></span>&#160;<span typeof=\"mw:File\"><a href=\"/wiki/Institution:Ch%C3%A2teau_de_Versailles\"
+      title=\"Institution:Ch\u00e2teau de Versailles\"><img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Blue_pencil.svg/15px-Blue_pencil.svg.png\"
+      decoding=\"async\" width=\"15\" height=\"15\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Blue_pencil.svg/23px-Blue_pencil.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Blue_pencil.svg/30px-Blue_pencil.svg.png
+      2x\" data-file-width=\"600\" data-file-height=\"600\" /></a></span>&#160;<span
+      typeof=\"mw:File\"><a href=\"https://www.wikidata.org/wiki/Q2946\" title=\"wikidata:Q2946\"><img
+      alt=\"wikidata:Q2946\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Wikidata-logo.svg/20px-Wikidata-logo.svg.png\"
+      decoding=\"async\" width=\"20\" height=\"11\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Wikidata-logo.svg/30px-Wikidata-logo.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Wikidata-logo.svg/40px-Wikidata-logo.svg.png
+      2x\" data-file-width=\"1050\" data-file-height=\"590\" /></a></span></th>\n</tr>\n<tr
+      valign=\"top\">\n<td rowspan=\"8\" style=\"width:120px\" id=\"fileinfotpl_creator_image\"><span
+      class=\"wpImageAnnotatorControl wpImageAnnotatorOff\"><span class=\"photo\"
+      typeof=\"mw:File\"><a href=\"/wiki/File:Logo_Ch%C3%A2teau_de_Versailles_2017_(partenariat_Wikim%C3%A9dia).png\"
+      class=\"mw-file-description\"><img alt=\"Palace of Versailles\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Logo_Ch%C3%A2teau_de_Versailles_2017_%28partenariat_Wikim%C3%A9dia%29.png/200px-Logo_Ch%C3%A2teau_de_Versailles_2017_%28partenariat_Wikim%C3%A9dia%29.png\"
+      decoding=\"async\" width=\"200\" height=\"17\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Logo_Ch%C3%A2teau_de_Versailles_2017_%28partenariat_Wikim%C3%A9dia%29.png/300px-Logo_Ch%C3%A2teau_de_Versailles_2017_%28partenariat_Wikim%C3%A9dia%29.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Logo_Ch%C3%A2teau_de_Versailles_2017_%28partenariat_Wikim%C3%A9dia%29.png/400px-Logo_Ch%C3%A2teau_de_Versailles_2017_%28partenariat_Wikim%C3%A9dia%29.png
+      2x\" data-file-width=\"416\" data-file-height=\"35\" /></a></span></span></td>\n</tr>\n<tr
+      valign=\"top\">\n<td style=\"background-color:#e0e0ee; font-weight:bold; border:1px
+      solid #aaa;\">Native name</td>\n<td colspan=\"2\" style=\"word-break:break-word;border:1px
+      solid #aaa;\">Ch\u00e2teau de Versailles</td></tr>\n<tr valign=\"top\">\n<td
+      style=\"background-color:#e0e0ee; font-weight:bold; border:1px solid #aaa;\">Parent
+      institution</td>\n<td colspan=\"2\" style=\"word-break:break-word;border:1px
+      solid #aaa;\"><a href=\"https://www.wikidata.org/wiki/Q3034552\" class=\"extiw\"
+      title=\"d:Q3034552\">Palace and Park of Versailles</a>&#160;<span class=\"mw-valign-text-top\"
+      typeof=\"mw:File/Frameless\"><a href=\"https://www.wikidata.org/wiki/Q2946#P361\"
+      title=\"Edit this at Wikidata\"><img alt=\"Edit this at Wikidata\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/10px-OOjs_UI_icon_edit-ltr-progressive.svg.png\"
+      decoding=\"async\" width=\"10\" height=\"10\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/15px-OOjs_UI_icon_edit-ltr-progressive.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png
+      2x\" data-file-width=\"20\" data-file-height=\"20\" /></a></span></td></tr>\n<tr
+      valign=\"top\">\n<td style=\"background-color:#e0e0ee; font-weight:bold; border:1px
+      solid #aaa;\">Location</td>\n<td colspan=\"2\" style=\"word-break:break-word;border:1px
+      solid #aaa;\"><div class=\"locality\">Ch\u00e2teau de Versailles<br />Place
+      d\u2019Armes<br />78000&#32;<a href=\"https://en.wikipedia.org/wiki/en:Versailles,_Yvelines\"
+      class=\"extiw\" title=\"w:en:Versailles, Yvelines\"><span title=\"French commune
+      in Yvelines, \u00cele-de-France\">Versailles</span></a>,&#32;[[:Category:Yvelines|<b
+      class=\"error\">LangSwitch Error: no default</b>]]<br /><a href=\"https://en.wikipedia.org/wiki/en:France\"
+      class=\"extiw\" title=\"w:en:France\"><span title=\"country in Western Europe\">France</span></a></div></td></tr>\n<tr
+      valign=\"top\">\n<td style=\"background-color:#e0e0ee; font-weight:bold; border:1px
+      solid #aaa;\">Coordinates</td>\n<td colspan=\"2\" style=\"word-break:break-word;border:1px
+      solid #aaa;\">48\u00b0&#160;48\u2032&#160;17.3\u2033&#160;N, 2\u00b0&#160;07\u2032&#160;13.2\u2033&#160;E
+      <span class=\"wpImageAnnotatorControl wpImageAnnotatorOff\"><span typeof=\"mw:File\"><a
+      href=\"//www.openstreetmap.org/index.html?mlat=48.804805555556&amp;mlon=2.1203333333333&amp;zoom=17\"
+      title=\"Link to OpenStreetMap\" rel=\"nofollow\"><img alt=\"Link to OpenStreetMap\"
+      src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Openstreetmap_logo.svg/20px-Openstreetmap_logo.svg.png\"
+      decoding=\"async\" width=\"20\" height=\"20\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Openstreetmap_logo.svg/30px-Openstreetmap_logo.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Openstreetmap_logo.svg/40px-Openstreetmap_logo.svg.png
+      2x\" data-file-width=\"256\" data-file-height=\"256\" /></a></span></span> <span
+      class=\"wpImageAnnotatorControl wpImageAnnotatorOff\"><span typeof=\"mw:File\"><a
+      href=\"//maps.google.com/maps?hl=en&amp;q=48.804805555556,2.1203333333333&amp;tab=wl\"
+      title=\"Link to Google Maps\" rel=\"nofollow\"><img alt=\"Link to Google Maps\"
+      src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Google_Maps_icon_%282020%29.svg/14px-Google_Maps_icon_%282020%29.svg.png\"
+      decoding=\"async\" width=\"14\" height=\"20\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Google_Maps_icon_%282020%29.svg/21px-Google_Maps_icon_%282020%29.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Google_Maps_icon_%282020%29.svg/28px-Google_Maps_icon_%282020%29.svg.png
+      2x\" data-file-width=\"512\" data-file-height=\"734\" /></a></span></span>&#160;<span
+      class=\"mw-valign-text-top\" typeof=\"mw:File/Frameless\"><a href=\"https://www.wikidata.org/wiki/Q2946#P625\"
+      title=\"Edit this at Wikidata\"><img alt=\"Edit this at Wikidata\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/10px-OOjs_UI_icon_edit-ltr-progressive.svg.png\"
+      decoding=\"async\" width=\"10\" height=\"10\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/15px-OOjs_UI_icon_edit-ltr-progressive.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png
+      2x\" data-file-width=\"20\" data-file-height=\"20\" /></a></span></td></tr>\n<tr
+      valign=\"top\">\n<td style=\"background-color:#e0e0ee; font-weight:bold; border:1px
+      solid #aaa;\">Established</td>\n<td colspan=\"2\" style=\"word-break:break-word;border:1px
+      solid #aaa;\">from 1624 until 1790<div style=\"display: none;\">date QS:P,+1500-00-00T00:00:00Z/6,P580,+1624-00-00T00:00:00Z/9,P582,+1790-00-00T00:00:00Z/9</div>&#58;
+      &#32;built<br /> 1837&#58; &#32;opened to public</td></tr>\n<tr valign=\"top\">\n<td
+      style=\"background-color:#e0e0ee; font-weight:bold; border:1px solid #aaa;\">Website</td>\n<td
+      colspan=\"2\" style=\"word-break:break-word;border:1px solid #aaa;\"><a rel=\"nofollow\"
+      class=\"external text\" href=\"http://en.chateauversailles.fr/\">en.chateauversailles.fr</a>&#160;<span
+      class=\"mw-valign-text-top\" typeof=\"mw:File/Frameless\"><a href=\"https://www.wikidata.org/wiki/Q2946#P856\"
+      title=\"Edit this at Wikidata\"><img alt=\"Edit this at Wikidata\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/10px-OOjs_UI_icon_edit-ltr-progressive.svg.png\"
+      decoding=\"async\" width=\"10\" height=\"10\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/15px-OOjs_UI_icon_edit-ltr-progressive.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png
+      2x\" data-file-width=\"20\" data-file-height=\"20\" /></a></span></td></tr>\n<tr
+      valign=\"top\">\n<td style=\"background-color:#e0e0ee; font-weight:bold; border:1px
+      solid #aaa;\">Authority file</td>\n<td colspan=\"2\" style=\"word-break:break-word;border:1px
+      solid #aaa;\"><div class=\"hlist\">\n<ul><li><span typeof=\"mw:File\"><a href=\"https://www.wikidata.org/wiki/Q2946\"
+      title=\"wikidata:Q2946\"><img alt=\"wikidata:Q2946\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Wikidata-logo.svg/20px-Wikidata-logo.svg.png\"
+      decoding=\"async\" width=\"20\" height=\"11\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Wikidata-logo.svg/30px-Wikidata-logo.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Wikidata-logo.svg/40px-Wikidata-logo.svg.png
+      2x\" data-file-width=\"1050\" data-file-height=\"590\" /></a></span>: <a href=\"https://www.wikidata.org/wiki/Q2946\"
+      class=\"extiw\" title=\"d:Q2946\">Q2946</a></li>\n<li><a href=\"https://en.wikipedia.org/wiki/en:Virtual_International_Authority_File\"
+      class=\"extiw\" title=\"w:en:Virtual International Authority File\">VIAF</a>:&#8201;<span
+      class=\"uid\"><span class=\"plainlinks\"><a href=\"https://viaf.org/viaf/127977992\"
+      class=\"extiw\" title=\"viaf:127977992\">127977992</a></span></span></li>\n<li><a
+      href=\"https://en.wikipedia.org/wiki/en:International_Standard_Name_Identifier\"
+      class=\"extiw\" title=\"w:en:International Standard Name Identifier\">ISNI</a>:&#8201;<span
+      class=\"uid\"><span class=\"plainlinks\"><a rel=\"nofollow\" class=\"external
+      text\" href=\"https://isni.oclc.org/cbs/DB=1.2//CMD?ACT=SRCH&amp;IKT=8006&amp;TRM=ISN%3A0000000417949458\">0000000417949458</a></span></span></li>\n<li><a
+      href=\"https://en.wikipedia.org/wiki/en:Union_List_of_Artist_Names\" class=\"extiw\"
+      title=\"w:en:Union List of Artist Names\">ULAN</a>:&#8201;<span class=\"uid\"><span
+      class=\"plainlinks\"><a rel=\"nofollow\" class=\"external text\" href=\"https://www.getty.edu/vow/ULANFullDisplay?find=&amp;role=&amp;nation=&amp;subjectid=500312482\">500312482</a></span></span></li>\n<li><a
+      href=\"https://en.wikipedia.org/wiki/en:LCCN_(identifier)\" class=\"extiw\"
+      title=\"w:en:LCCN (identifier)\">LCCN</a>:&#8201;<span class=\"uid\"><span class=\"plainlinks\"><a
+      rel=\"nofollow\" class=\"external text\" href=\"https://id.loc.gov/authorities/n91058220\">n91058220</a></span></span></li>\n<li><a
+      href=\"https://en.wikipedia.org/wiki/en:NARA_(identifier)\" class=\"extiw\"
+      title=\"w:en:NARA (identifier)\">NAID</a>:&#8201;<span class=\"uid\"><span class=\"plainlinks\"><a
+      rel=\"nofollow\" class=\"external text\" href=\"https://catalog.archives.gov/id/10038353\">10038353</a></span></span></li>\n<li><span
+      class=\"uid\"><a rel=\"nofollow\" class=\"external text\" href=\"//www.worldcat.org/identities/lccn-n91058220\">WorldCat</a></span></li></ul>\n</div></td></tr>\n</tbody></table>\n</div>\n<div
+      style=\"display: none;\">institution QS:P195,Q2946</div></td>\n</tr>\n\n<tr>\n<td
+      id=\"fileinfotpl_art_location\" class=\"fileinfo-paramfield\" lang=\"en\">Current
+      location</td>\n<td>\n<div class=\"locality\">\nSalle 1792</div></td>\n</tr>\n\n<tr>\n<td
+      id=\"fileinfotpl_src\" class=\"fileinfo-paramfield\" lang=\"en\">Source/Photographer</td>\n<td>\n<a
+      href=\"https://en.wikipedia.org/wiki/Joconde\" class=\"extiw\" title=\"en:Joconde\">Joconde
+      database</a>&#58;  entry  <a rel=\"nofollow\" class=\"external text\" href=\"https://www.pop.culture.gouv.fr/notice/joconde/000PE005515\">000PE005515</a></td>\n</tr>\n\n<tr>\n<td
+      id=\"fileinfotpl_perm\" class=\"fileinfo-paramfield\" lang=\"en\">Permission<br
+      /><small>(<a href=\"/wiki/Commons:Reusing_content_outside_Wikimedia\" title=\"Commons:Reusing
+      content outside Wikimedia\">Reusing this file</a>)</small></td>\n<td>\nThis
+      image is in the <a href=\"/wiki/Public_domain\" class=\"mw-redirect\" title=\"Public
+      domain\">public domain</a> due to its age.</td>\n</tr>\n\n\n</tbody></table>\n</div>\n<h2><span
+      class=\"mw-headline\" id=\"Licensing\">Licensing</span><span class=\"mw-editsection\"><span
+      class=\"mw-editsection-bracket\">[</span><a href=\"/w/index.php?title=File:Pierre_Riel_de_Beurnonville_(1792).jpg&amp;action=edit&amp;section=2\"
+      title=\"Edit section: Licensing\"><span>edit</span></a><span class=\"mw-editsection-bracket\">]</span></span></h2>\n<table
+      cellspacing=\"8\" cellpadding=\"0\" style=\"clear:both; margin:0.5em auto; background-color:#f0f0f0;
+      border:2px solid #e0e0e0; width:100%;\" class=\"layouttemplate\" dir=\"ltr\"
+      lang=\"en\">\n<tbody><tr>\n<td>\n<div class=\"center\">This is a faithful photographic
+      reproduction of a two-dimensional, <a href=\"/wiki/Public_domain\" class=\"mw-redirect\"
+      title=\"Public domain\">public domain</a> work of art. The work of art itself
+      is in the public domain for the following reason:</div>\n<div dir=\"auto\">\n<table
+      class=\"licensetpl\" style=\"display:none\">\n<tbody><tr>\n<td><span class=\"licensetpl_short\">Public
+      domain</span><span class=\"licensetpl_long\">Public domain</span><span class=\"licensetpl_link_req\">false</span><span
+      class=\"licensetpl_attr_req\">false</span>\n</td></tr></tbody></table>\n<table
+      style=\"width:100%; clear:both; margin:0.5em auto; background-color:#f7f8ff;
+      border:2px solid #8888aa; direction: ltr; border-spacing: 8px; padding: 0px;\"
+      class=\"layouttemplate mw-content-ltr\" lang=\"en\">\n<tbody><tr>\n<td rowspan=\"2\"><span
+      typeof=\"mw:File\"><span title=\"Public domain\"><img alt=\"Public domain\"
+      src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/PD-icon.svg/64px-PD-icon.svg.png\"
+      decoding=\"async\" width=\"64\" height=\"64\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/PD-icon.svg/96px-PD-icon.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/PD-icon.svg/128px-PD-icon.svg.png
+      2x\" data-file-width=\"196\" data-file-height=\"196\" /></span></span>\n</td>\n<td>\n<p>This
+      work is in the <b><a href=\"https://en.wikipedia.org/wiki/public_domain\" class=\"extiw\"
+      title=\"en:public domain\">public domain</a></b> in its country of origin and
+      other countries and areas where the <a href=\"https://en.wikipedia.org/wiki/List_of_countries%27_copyright_lengths\"
+      class=\"extiw\" title=\"w:List of countries&#39; copyright lengths\">copyright
+      term</a> is the author''s <b>life plus 100 years or fewer</b>.\n</p>\n<hr /><span
+      typeof=\"mw:File\"><span><img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Dialog-warning.svg/25px-Dialog-warning.svg.png\"
+      decoding=\"async\" width=\"25\" height=\"25\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Dialog-warning.svg/38px-Dialog-warning.svg.png
+      1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Dialog-warning.svg/50px-Dialog-warning.svg.png
+      2x\" data-file-width=\"48\" data-file-height=\"48\" /></span></span> <small>You
+      must also include a <a href=\"/wiki/Commons:Copyright_tags/Country-specific_tags#United_States_of_America\"
+      title=\"Commons:Copyright tags/Country-specific tags\">United States public
+      domain tag</a> to indicate why this work is in the public domain in the United
+      States.</small>\n</td></tr>\n<tr>\n<td colspan=\"2\" style=\"text-align:center;font-size:x-small;line-height:140%;\"
+      class=\"plainlinks\"><a rel=\"nofollow\" class=\"external text\" href=\"https://creativecommons.org/publicdomain/mark/1.0/deed.en\">This
+      file has been identified as being free of known restrictions under copyright
+      law, including all related and neighboring rights.</a>\n</td></tr></tbody></table><span
+      class=\"licensetpl_link\" style=\"display:none;\">https://creativecommons.org/publicdomain/mark/1.0/</span><span
+      class=\"licensetpl_short\" style=\"display:none;\">PDM</span><span class=\"licensetpl_long\"
+      style=\"display:none;\">Creative Commons Public Domain Mark 1.0</span><span
+      class=\"licensetpl_link_req\" style=\"display:none;\">false</span><span class=\"licensetpl_attr_req\"
+      style=\"display:none;\">false</span>\n</div>\n<div class=\"center\">The official
+      position taken by the Wikimedia Foundation is that \"<i>faithful reproductions
+      of two-dimensional public domain works of art are public domain</i>\".<br /><b>This
+      photographic reproduction is therefore also considered to be in the public domain
+      in the United States.</b> In other jurisdictions, re-use of this content may
+      be restricted; <b>see <a href=\"/wiki/Commons:Reuse_of_PD-Art_photographs\"
+      title=\"Commons:Reuse of PD-Art photographs\">Reuse of PD-Art photographs</a>
+      for details.</b></div> \n</td></tr></tbody></table>\n<!-- \nNewPP limit report\nParsed
+      by mw\u2010api\u2010int.codfw.main\u201084d8c5fdb4\u20108jgzm\nCached time:
+      20240131204609\nCache expiry: 2592000\nReduced expiry: false\nComplications:
+      []\nCPU time usage: 0.430 seconds\nReal time usage: 0.624 seconds\nPreprocessor
+      visited node count: 3367/1000000\nPost\u2010expand include size: 79838/2097152
+      bytes\nTemplate argument size: 3237/2097152 bytes\nHighest expansion depth:
+      24/100\nExpensive parser function count: 14/500\nUnstrip recursion depth: 0/20\nUnstrip
+      post\u2010expand size: 4090/5000000 bytes\nLua time usage: 0.291/10.000 seconds\nLua
+      memory usage: 7893814/52428800 bytes\nNumber of Wikibase entities loaded: 5/400\n-->\n<!--\nTransclusion
+      expansion time report (%,ms,calls,template)\n100.00%  580.936      1 -total\n
+      92.83%  539.271      1 Template:Artwork\n 28.83%  167.471      1 Institution:Versailles\n
+      27.85%  161.767      1 Template:Institution\n 21.33%  123.917      1 Creator:Fran\u00e7ois-Joseph_Heim\n
+      20.93%  121.575      1 Template:Creator\n 13.54%   78.633      1 Template:Building_address\n
+      12.19%   70.835      9 Template:LangSwitch\n 11.05%   64.197      1 Template:Building_address/layout\n  7.11%   41.323      1
+      Template:PD-Art\n-->\n\n<!-- Saved in parser cache with key commonswiki:pcache:idhash:10314552-0!canonical
+      and timestamp 20240131204609 and revision id 337362781. Rendering was triggered
+      because: api-parse\n -->\n</div>"}}}'
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Fri, 02 Feb 2024 10:36:12 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw1410.eqiad.wmnet
+      server-timing:
+      - cache;desc="pass", host;desc="cp3068"
+      set-cookie:
+      - WMF-Last-Access=02-Feb-2024;Path=/;HttpOnly;secure;Expires=Tue, 05 Mar 2024
+        00:00:00 GMT
+      - GeoIP=GB:ENG:Clacton-on-Sea:51.79:1.16:v4; Path=/; secure; Domain=.wikimedia.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie
+      x-cache:
+      - cp3068 miss, cp3068 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 92.30.89.207
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

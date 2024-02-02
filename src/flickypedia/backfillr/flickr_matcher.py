@@ -46,6 +46,18 @@ class FindResult(TypedDict):
     url: str | None
 
 
+def is_flickr_homepage(url: str) -> bool:
+    """
+    Given a URL, check if it's the Flickr.com homepage.
+    """
+    try:
+        parsed_url = parse_flickr_url(url)
+    except (NotAFlickrUrl, UnrecognisedUrl):
+        return False
+    else:
+        return parsed_url["type"] == "homepage"
+
+
 def get_flickr_photo_id_from_url(url: str) -> str | None:
     """
     Given a URL, return the photo ID (if it points to a Flickr photo)
@@ -99,9 +111,29 @@ def find_flickr_photo_id_from_wikitext(
         # the href attribute, because the text is sometimes a human-readable
         # label rather than the URL.
         anchor_tags = row.find_all("a")
+        urls = [a_tag.attrs.get("href") for a_tag in anchor_tags]
 
-        if len(anchor_tags) == 1:
-            url = anchor_tags[0].attrs["href"]
+        if len(urls) == 1:
+            url = urls[0]
+
+            photo_id = get_flickr_photo_id_from_url(url)
+            if photo_id is not None:
+                return {"photo_id": photo_id, "url": url}
+
+        # Now look for two <a> tags; a common pattern is for somebody to
+        # link to both Flickr.com and the individual photo page.
+        #
+        # For example:
+        #
+        #     <td>
+        #       <a href="https://www.flickr.com/">Flickr.com</a> -
+        #       <a href="https://www.flickr.com/photos/51035573370@N01/869031">
+        #         image description page
+        #       </a>
+        #     </td>
+        #
+        if len(anchor_tags) == 2 and is_flickr_homepage(urls[0]):
+            url = urls[1]
 
             photo_id = get_flickr_photo_id_from_url(url)
             if photo_id is not None:
