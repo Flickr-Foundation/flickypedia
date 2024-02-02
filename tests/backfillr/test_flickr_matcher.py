@@ -133,6 +133,9 @@ from utils import get_typed_fixture
             },
             id="869031",
         ),
+        #
+        # Two URLs in the "Source" field, neither of them from Flickr.
+        pytest.param("Pierre Riel de Beurnonville (1792).jpg", None, id="pierre_riel"),
     ],
 )
 def test_find_flickr_photo_id_from_wikitext(
