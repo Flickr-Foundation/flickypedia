@@ -49,23 +49,6 @@ def get_html(claims: list[NewStatement]) -> str:
     [
         pytest.param(
             {
-                "id": "47397743@N05",
-                "username": None,
-                "realname": "WNDC",
-                "path_alias": "west_northamptonshire_development_corporation",
-                "photos_url": "https://www.flickr.com/photos/west_northamptonshire_development_corporation/",
-                "profile_url": "https://www.flickr.com/people/west_northamptonshire_development_corporation/",
-            },
-            """
-            <dt>creator:</dt>
-            <dd class="snak-value">
-              West Northamptonshire Development Corporation
-            </dd>
-            """,
-            id="user_who_is_wikidata_entity",
-        ),
-        pytest.param(
-            {
                 "id": "199246608@N02",
                 "username": "Alex Chan",
                 "realname": None,
@@ -89,7 +72,7 @@ def get_html(claims: list[NewStatement]) -> str:
               </ul>
             </dd>
             """,
-            id="user_who_is_not_wikidata_entity",
+            id="user_who_has_realname",
         ),
         pytest.param(
             {
@@ -120,9 +103,7 @@ def get_html(claims: list[NewStatement]) -> str:
         ),
     ],
 )
-def test_shows_creator(
-    app: Flask, vcr_cassette: str, user: FlickrUser, html: str
-) -> None:
+def test_shows_creator(app: Flask, user: FlickrUser, html: str) -> None:
     creator_claim = create_flickr_creator_statement(user=user)
 
     actual = get_html(claims=[creator_claim])

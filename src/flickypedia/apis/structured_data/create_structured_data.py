@@ -37,7 +37,6 @@ from flickr_photos_api import (
     SinglePhoto,
 )
 
-from flickypedia.apis.flickr_user_ids import lookup_flickr_user_in_wikidata
 from flickypedia.types.structured_data import NewStatement, NewClaims
 from ._qualifiers import create_qualifiers as create_qualifiers, QualifierValues
 from .wikidata import (
@@ -59,49 +58,37 @@ def create_flickr_creator_statement(user: FlickrUser) -> NewStatement:
     *   A collection of values that link to their profile page
 
     """
-    wikidata_id = lookup_flickr_user_in_wikidata(user)
+    qualifier_values: list[QualifierValues] = [
+        {
+            "property": WikidataProperties.AuthorName,
+            "value": user["realname"] or user["username"],
+            "type": "string",
+        },
+        {
+            "property": WikidataProperties.Url,
+            "value": user["profile_url"],
+            "type": "string",
+        },
+        {
+            "property": WikidataProperties.FlickrUserId,
+            "value": user["id"],
+            "type": "string",
+        },
+    ]
 
-    if wikidata_id is not None:
-        return {
-            "mainsnak": {
-                "snaktype": "value",
-                "property": WikidataProperties.Creator,
-                "datavalue": to_wikidata_entity_value(entity_id=wikidata_id),
-            },
-            "type": "statement",
-        }
-    else:
-        qualifier_values: list[QualifierValues] = [
-            {
-                "property": WikidataProperties.AuthorName,
-                "value": user["realname"] or user["username"],
-                "type": "string",
-            },
-            {
-                "property": WikidataProperties.Url,
-                "value": user["profile_url"],
-                "type": "string",
-            },
-            {
-                "property": WikidataProperties.FlickrUserId,
-                "value": user["id"],
-                "type": "string",
-            },
-        ]
-
-        return {
-            "mainsnak": {
-                "snaktype": "somevalue",
-                "property": WikidataProperties.Creator,
-            },
-            "qualifiers": create_qualifiers(qualifier_values),
-            "qualifiers-order": [
-                WikidataProperties.FlickrUserId,
-                WikidataProperties.AuthorName,
-                WikidataProperties.Url,
-            ],
-            "type": "statement",
-        }
+    return {
+        "mainsnak": {
+            "snaktype": "somevalue",
+            "property": WikidataProperties.Creator,
+        },
+        "qualifiers": create_qualifiers(qualifier_values),
+        "qualifiers-order": [
+            WikidataProperties.FlickrUserId,
+            WikidataProperties.AuthorName,
+            WikidataProperties.Url,
+        ],
+        "type": "statement",
+    }
 
 
 def create_copyright_status_statement(license_id: str) -> NewStatement:
