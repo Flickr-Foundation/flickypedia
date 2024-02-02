@@ -13,7 +13,7 @@ interactions:
       user-agent:
       - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
     method: GET
-    uri: https://api.flickr.com/services/rest/?method=flickr.urls.lookupUser&url=https%3A%2F%2Fwww.flickr.com%2Fphotos%2Fgeorge
+    uri: https://api.flickr.com/services/rest/?method=flickr.urls.lookupUser&url=https%3A%2F%2Fwww.flickr.com%2Fphotos%2Fgeorge%2F
   response:
     content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<user
       id=\"34427469121@N01\">\n\t<username>George</username>\n</user>\n</rsp>\n"
@@ -25,13 +25,13 @@ interactions:
       Content-Type:
       - text/xml; charset=utf-8
       Date:
-      - Wed, 15 Nov 2023 18:26:38 GMT
+      - Fri, 02 Feb 2024 10:32:20 GMT
       Via:
-      - 1.1 dfe38bddfe2e252d54a7cc2e361b6cb6.cloudfront.net (CloudFront)
+      - 1.1 b41bdb58da16b84a8ca199cd228c8cbe.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - _6aXeMEFhBut0HkmYWnh1lxjcldFsjhIXwSzFnZZxGte7xCJ82xmnQ==
+      - HhHglKhNmeOXOSi2bBgb_PdqDK2s1rRR26p6ixbiPV3CSKRXVHRLHA==
       X-Amz-Cf-Pop:
-      - EZE50-P1
+      - LHR5-P7
       X-Cache:
       - Miss from cloudfront
       content-encoding:
@@ -39,8 +39,10 @@ interactions:
       server:
       - Apache/2.4.58 (Ubuntu)
       set-cookie:
-      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
-        expires=Fri, 15-Dec-2023 18:26:38 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Sun, 03-Mar-2024 10:32:20 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Sun, 03-Mar-2024 10:32:20 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       vary:
       - Accept-Encoding
       x-frame-options:
@@ -59,7 +61,7 @@ interactions:
       connection:
       - keep-alive
       cookie:
-      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
       host:
       - api.flickr.com
       user-agent:
@@ -80,23 +82,23 @@ interactions:
       of my photos on Flickr have a Creative Commons license attached to them, so
       if you happen to stumble on one of those that you could make use of under that
       license, please go ahead! I&#039;ve chosen to reserve all rights on most of
-      the photos I&#039;ve taken of family and friends in a personal or candid setting.</description>\n\t<photosurl>https://www.flickr.com/photos/george/</photosurl>\n\t<profileurl>https://www.flickr.com/people/george/</profileurl>\n\t<mobileurl>https://m.flickr.com/photostream.gne?id=5704</mobileurl>\n\t<photos>\n\t\t<firstdatetaken>1907-01-01
-      00:00:00</firstdatetaken>\n\t\t<firstdate>1076118193</firstdate>\n\t\t<count>7812</count>\n\t</photos>\n</person>\n</rsp>\n"
+      the photos I&#039;ve taken of family and friends in a personal or candid setting.</description>\n\t<photosurl>https://www.flickr.com/photos/george/</photosurl>\n\t<profileurl>https://www.flickr.com/people/george/</profileurl>\n\t<mobileurl>https://www.flickr.com/photos/george/</mobileurl>\n\t<photos>\n\t\t<firstdatetaken>1907-01-01
+      00:00:00</firstdatetaken>\n\t\t<firstdate>1076118193</firstdate>\n\t\t<count>7813</count>\n\t</photos>\n</person>\n</rsp>\n"
     headers:
       Connection:
       - keep-alive
       Content-Length:
-      - '870'
+      - '855'
       Content-Type:
       - text/xml; charset=utf-8
       Date:
-      - Wed, 15 Nov 2023 18:26:38 GMT
+      - Fri, 02 Feb 2024 10:32:20 GMT
       Via:
-      - 1.1 dfe38bddfe2e252d54a7cc2e361b6cb6.cloudfront.net (CloudFront)
+      - 1.1 b41bdb58da16b84a8ca199cd228c8cbe.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - r3ROqblczSj9Az6vvG4ZeEkEyAtZzIFI1RwKsiLu41xRKtOJ2oKijA==
+      - oOnjGKmHxA4NkmRvGLYmMEIcbkwJciAeuG57qyn4luopfpKAu-O18A==
       X-Amz-Cf-Pop:
-      - EZE50-P1
+      - LHR5-P7
       X-Cache:
       - Miss from cloudfront
       content-encoding:
@@ -104,8 +106,8 @@ interactions:
       server:
       - Apache/2.4.58 (Ubuntu)
       set-cookie:
-      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
-        expires=Fri, 15-Dec-2023 18:26:38 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Sun, 03-Mar-2024 10:32:20 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       vary:
       - Accept-Encoding
       x-frame-options:
@@ -124,7 +126,7 @@ interactions:
       connection:
       - keep-alive
       cookie:
-      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
       host:
       - api.flickr.com
       user-agent:
@@ -133,14 +135,29 @@ interactions:
     uri: https://api.flickr.com/services/rest/?extras=license%2Cdate_upload%2Cdate_taken%2Cmedia%2Coriginal_format%2Cowner_name%2Curl_sq%2Curl_t%2Curl_s%2Curl_m%2Curl_o%2Ctags%2Cgeo%2Curl_q%2Curl_l%2Cdescription%2Csafety_level%2Crealname&method=flickr.people.getPublicPhotos&page=1&per_page=100&user_id=34427469121%40N01
   response:
     content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<photos
-      page=\"1\" pages=\"79\" perpage=\"100\" total=\"7812\">\n\t<photo id=\"53310991033\"
-      owner=\"34427469121@N01\" secret=\"05bb562937\" server=\"65535\" farm=\"66\"
-      title=\"Canary Wharf dusk\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"0\"
-      safety_level=\"0\" dateupload=\"1699188836\" datetaken=\"2023-11-04 16:21:45\"
-      datetakengranularity=\"0\" datetakenunknown=\"0\" ownername=\"George\" realname=\"George
-      Oates\" tags=\"london ferry dusk canarywharf\" originalsecret=\"16814783a9\"
-      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
-      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53310991033_05bb562937_s.jpg\"
+      page=\"1\" pages=\"79\" perpage=\"100\" total=\"7813\">\n\t<photo id=\"53336388053\"
+      owner=\"34427469121@N01\" secret=\"04f9cf52e7\" server=\"65535\" farm=\"66\"
+      title=\"Lisbon evening stroll\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\"
+      license=\"9\" safety_level=\"0\" dateupload=\"1700160776\" datetaken=\"2023-11-14
+      18:57:02\" datetakengranularity=\"0\" datetakenunknown=\"0\" ownername=\"George\"
+      realname=\"George Oates\" tags=\"paste poster dracula flyer google bw montevideo\"
+      originalsecret=\"c5b229811a\" originalformat=\"jpg\" latitude=\"0\" longitude=\"0\"
+      accuracy=\"0\" context=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53336388053_04f9cf52e7_s.jpg\"
+      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53336388053_04f9cf52e7_t.jpg\"
+      height_t=\"100\" width_t=\"75\" url_s=\"https://live.staticflickr.com/65535/53336388053_04f9cf52e7_m.jpg\"
+      height_s=\"240\" width_s=\"180\" url_m=\"https://live.staticflickr.com/65535/53336388053_04f9cf52e7.jpg\"
+      height_m=\"500\" width_m=\"375\" url_o=\"https://live.staticflickr.com/65535/53336388053_c5b229811a_o.jpg\"
+      height_o=\"3024\" width_o=\"4032\" url_q=\"https://live.staticflickr.com/65535/53336388053_04f9cf52e7_q.jpg\"
+      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/53336388053_04f9cf52e7_b.jpg\"
+      height_l=\"1024\" width_l=\"768\">\n\t\t<description>DraGOOGLa strikes again
+      </description>\n\t</photo>\n\t<photo id=\"53310991033\" owner=\"34427469121@N01\"
+      secret=\"05bb562937\" server=\"65535\" farm=\"66\" title=\"Canary Wharf dusk\"
+      ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"0\" safety_level=\"0\"
+      dateupload=\"1699188836\" datetaken=\"2023-11-04 16:21:45\" datetakengranularity=\"0\"
+      datetakenunknown=\"0\" ownername=\"George\" realname=\"George Oates\" tags=\"london
+      ferry dusk canarywharf\" originalsecret=\"16814783a9\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53310991033_05bb562937_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53310991033_05bb562937_t.jpg\"
       height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53310991033_05bb562937_m.jpg\"
       height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53310991033_05bb562937.jpg\"
@@ -1606,37 +1623,22 @@ interactions:
       height_m=\"130\" width_m=\"500\" url_o=\"https://live.staticflickr.com/4614/25873417218_0632b90c22_o.jpg\"
       height_o=\"2486\" width_o=\"9556\" url_q=\"https://live.staticflickr.com/4614/25873417218_d304e3fdc5_q.jpg\"
       height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/4614/25873417218_d304e3fdc5_b.jpg\"
-      height_l=\"266\" width_l=\"1024\">\n\t\t<description>Panoramic snapshot</description>\n\t</photo>\n\t<photo
-      id=\"39036210494\" owner=\"34427469121@N01\" secret=\"ae1c394e83\" server=\"4763\"
-      farm=\"5\" title=\"Good, Form &amp; Spectacle HQ\" ispublic=\"1\" isfriend=\"0\"
-      isfamily=\"0\" license=\"0\" safety_level=\"0\" dateupload=\"1516205774\" datetaken=\"2016-03-02
-      16:18:24\" datetakengranularity=\"0\" datetakenunknown=\"0\" ownername=\"George\"
-      realname=\"George Oates\" tags=\"gfns office panorama london bloomsbury\" originalsecret=\"34339a8348\"
-      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
-      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/4763/39036210494_ae1c394e83_s.jpg\"
-      height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/4763/39036210494_ae1c394e83_t.jpg\"
-      height_t=\"27\" width_t=\"100\" url_s=\"https://live.staticflickr.com/4763/39036210494_ae1c394e83_m.jpg\"
-      height_s=\"65\" width_s=\"240\" url_m=\"https://live.staticflickr.com/4763/39036210494_ae1c394e83.jpg\"
-      height_m=\"135\" width_m=\"500\" url_o=\"https://live.staticflickr.com/4763/39036210494_34339a8348_o.jpg\"
-      height_o=\"2466\" width_o=\"9112\" url_q=\"https://live.staticflickr.com/4763/39036210494_ae1c394e83_q.jpg\"
-      height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/4763/39036210494_ae1c394e83_b.jpg\"
-      height_l=\"277\" width_l=\"1024\">\n\t\t<description>Panoramic snapshot - the
-      day I got the keys</description>\n\t</photo>\n</photos>\n</rsp>\n"
+      height_l=\"266\" width_l=\"1024\">\n\t\t<description>Panoramic snapshot</description>\n\t</photo>\n</photos>\n</rsp>\n"
     headers:
       Connection:
       - keep-alive
       Content-Length:
-      - '11751'
+      - '11787'
       Content-Type:
       - text/xml; charset=utf-8
       Date:
-      - Wed, 15 Nov 2023 18:26:40 GMT
+      - Fri, 02 Feb 2024 10:32:21 GMT
       Via:
-      - 1.1 dfe38bddfe2e252d54a7cc2e361b6cb6.cloudfront.net (CloudFront)
+      - 1.1 b41bdb58da16b84a8ca199cd228c8cbe.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - v02pa3IS3IwTeVMAIKtGkoCRQgJ55J8T7IQJSOInBTn55aqDYCqH4A==
+      - CLAg0NVs869e03811bb4Zn5szTLK34Ibusc5gVzEi3OdDQ4OzwbTCw==
       X-Amz-Cf-Pop:
-      - EZE50-P1
+      - LHR5-P7
       X-Cache:
       - Miss from cloudfront
       content-encoding:
@@ -1644,8 +1646,8 @@ interactions:
       server:
       - Apache/2.4.58 (Ubuntu)
       set-cookie:
-      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
-        expires=Fri, 15-Dec-2023 18:26:39 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Sun, 03-Mar-2024 10:32:20 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       vary:
       - Accept-Encoding
       x-frame-options:
@@ -1664,7 +1666,7 @@ interactions:
       connection:
       - keep-alive
       cookie:
-      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
       host:
       - api.flickr.com
       user-agent:
@@ -1695,13 +1697,13 @@ interactions:
       Content-Type:
       - text/xml; charset=utf-8
       Date:
-      - Wed, 15 Nov 2023 18:26:40 GMT
+      - Fri, 02 Feb 2024 10:32:21 GMT
       Via:
-      - 1.1 dfe38bddfe2e252d54a7cc2e361b6cb6.cloudfront.net (CloudFront)
+      - 1.1 b41bdb58da16b84a8ca199cd228c8cbe.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - BPzIU2fIaAXjX4rSsI8XQeJwJj1kSZP6ZEq0MtwwnLT7XnPT5ooeSA==
+      - SvF0vK6cCLFEgJ8Nv07qZYbUNND7f_YCoRGlQHTee7JPXoHDnIxsuw==
       X-Amz-Cf-Pop:
-      - EZE50-P1
+      - LHR5-P7
       X-Cache:
       - Miss from cloudfront
       content-encoding:
@@ -1709,8 +1711,8 @@ interactions:
       server:
       - Apache/2.4.58 (Ubuntu)
       set-cookie:
-      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
-        expires=Fri, 15-Dec-2023 18:26:40 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Sun, 03-Mar-2024 10:32:21 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       vary:
       - Accept-Encoding
       x-frame-options:
