@@ -33,7 +33,7 @@ def get_database(path: str) -> Database:
         },
         pk="flickr_photo_id",
         not_null=["flickr_photo_id", "wikimedia_page_id", "wikimedia_page_title"],
-        if_not_exists=True
+        if_not_exists=True,
     )
 
     return db
@@ -49,7 +49,7 @@ def extractr() -> None:
 def get_page_id(sdc):
     for v in sdc.values():
         for s in v:
-            return s['id'].split('$')[0]
+            return s["id"].split("$")[0]
 
 
 @extractr.command(help="Get Flickr photo data from SDC for a single photo.")
@@ -62,38 +62,33 @@ def get_single_photo_from_sdc(title) -> None:
     assert not title.startswith("File:")
     sdc = api.get_structured_data(filename=title)
 
-
-
     try:
         flickr_photo_id = find_flickr_photo_id_from_sdc(sdc=sdc)
     except AmbiguousStructuredData as exc:
-        print(
-            f'Ambiguity in https://commons.wikimedia.org/wiki/File:{title}: {exc}'
-        )
+        print(f"Ambiguity in https://commons.wikimedia.org/wiki/File:{title}: {exc}")
         return
 
     page_id = get_page_id(sdc)
 
     if flickr_photo_id is not None:
         print(f'{title} ~> {flickr_photo_id["photo_id"]}')
-        db['flickr_photos_on_wikimedia'].upsert(
+        db["flickr_photos_on_wikimedia"].upsert(
             {
-                "flickr_photo_id": flickr_photo_id['photo_id'],
-                'flickr_photo_url': flickr_photo_id['url'],
+                "flickr_photo_id": flickr_photo_id["photo_id"],
+                "flickr_photo_url": flickr_photo_id["url"],
                 "wikimedia_page_id": page_id,
                 "wikimedia_page_title": title,
             },
-            pk='flickr_photo_id',
+            pk="flickr_photo_id",
             not_null=["flickr_photo_id", "wikimedia_page_id", "wikimedia_page_title"],
         )
     else:
-        print(f'??? https://commons.wikimedia.org/wiki/File:{title}')
+        print(f"??? https://commons.wikimedia.org/wiki/File:{title}")
 
 
 @extractr.command(help="Get a list of Flickr photos from SDC.")
 @click.argument("SNAPSHOT_PATH")
 def get_photos_from_sdc(snapshot_path: str) -> None:
-
     # The name of the snapshot is something like:
     #
     #     commons-20231009-mediainfo.json.bz2
@@ -108,12 +103,11 @@ def get_photos_from_sdc(snapshot_path: str) -> None:
     api = WikimediaApi(client=httpx.Client())
 
     known_page_ids = {
-        row['wikimedia_page_id']
-        for row in db['flickr_photos_on_wikimedia'].rows
+        row["wikimedia_page_id"] for row in db["flickr_photos_on_wikimedia"].rows
     }
 
     for entry in tqdm.tqdm(parse_sdc_snapshot(snapshot_path)):
-        if entry['id'] in known_page_ids:
+        if entry["id"] in known_page_ids:
             continue
 
         try:
@@ -137,15 +131,19 @@ def get_photos_from_sdc(snapshot_path: str) -> None:
             # raise
 
         if flickr_photo_id is not None:
-            db['flickr_photos_on_wikimedia'].upsert(
+            db["flickr_photos_on_wikimedia"].upsert(
                 {
-                    "flickr_photo_id": flickr_photo_id['photo_id'],
-                    'flickr_photo_url': flickr_photo_id['url'],
+                    "flickr_photo_id": flickr_photo_id["photo_id"],
+                    "flickr_photo_url": flickr_photo_id["url"],
                     "wikimedia_page_id": entry["id"],
                     "wikimedia_page_title": entry["title"],
                 },
-                pk='flickr_photo_id',
-                not_null=["flickr_photo_id", "wikimedia_page_id", "wikimedia_page_title"],
+                pk="flickr_photo_id",
+                not_null=[
+                    "flickr_photo_id",
+                    "wikimedia_page_id",
+                    "wikimedia_page_title",
+                ],
             )
 
     print(db_path)
@@ -208,18 +206,23 @@ def get_photos_from_revisions(snapshot_path: str) -> None:
         match = find_flickr_photo_id_from_wikitext(wikitext, filename=page.title)
 
         if match is not None:
-            db['flickr_photos_on_wikimedia'].upsert(
+            db["flickr_photos_on_wikimedia"].upsert(
                 {
                     "flickr_photo_id": match["photo_id"],
                     "flickr_photo_url": match["url"] or "",
                     "wikimedia_page_id": page.id,
                     "wikimedia_page_title": page.title,
                 },
-                pk='flickr_photo_id',
-                not_null=["flickr_photo_id", "wikimedia_page_id", "wikimedia_page_title"],
+                pk="flickr_photo_id",
+                not_null=[
+                    "flickr_photo_id",
+                    "wikimedia_page_id",
+                    "wikimedia_page_title",
+                ],
             )
         else:
             import subprocess
-            subprocess.call([
-                'flickypedia', 'extractr', 'get-single-photo-from-sdc', page.title
-            ])
+
+            subprocess.call(
+                ["flickypedia", "extractr", "get-single-photo-from-sdc", page.title]
+            )
