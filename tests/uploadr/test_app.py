@@ -1,3 +1,4 @@
+import json
 from urllib.parse import urlencode
 
 from flask.testing import FlaskClient
@@ -34,3 +35,11 @@ def test_redirected_to_homepage_for_pages_requiring_login(
 
     params = urlencode({"next": path})
     assert resp.headers["location"] == f"/?{params}"
+
+
+def test_gets_toolinfo_json(client: FlaskClient) -> None:
+    resp = client.get("/toolinfo.json")
+
+    json.loads(resp.data)
+
+    resp.close()
