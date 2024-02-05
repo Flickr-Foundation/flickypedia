@@ -3,7 +3,7 @@ import os
 import pathlib
 import uuid
 
-from flask import current_app, Flask, request
+from flask import current_app, Flask, request, send_file
 from flickr_photos_api import FlickrPhotosApi
 from jinja2 import StrictUndefined
 import sass
@@ -116,6 +116,10 @@ def create_app(
     )
     app.add_url_rule(
         "/api/post_user_comment", view_func=post_user_comment_api, methods=["POST"]
+    )
+
+    app.add_url_rule(
+        "/toolinfo.json", view_func=lambda: send_file("static/toolinfo.json")
     )
 
     app.jinja_env.filters["html_unescape"] = html.unescape

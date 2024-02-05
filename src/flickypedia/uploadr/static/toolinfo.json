@@ -1,0 +1,24 @@
+{
+  "$schema": "/toolinfo/1.2.2",
+  "$language": "en",
+  "name" : "Flickypedia",
+  "title": "Flickypedia",
+  "description": "Copy openly-licensed photos from Flickr to Wikimedia Commons",
+  "author": [
+    {"wiki_username": "Alexwlchan"},
+    {"wiki_username": "Ukglo"},
+    {"wiki_username": "Jessamyn"}
+  ],
+  "url": "https://www.flickr.org/tools/flickypedia",
+  "repository": "https://github.com/Flickr-Foundation/flickypedia",
+  "bot_username": "FlickypediaBackfillrBot",
+  "deprecated": false,
+  "experimental": false,
+  "available_ui_languages": "en",
+  "for_wikis": ["commons.wikimedia.org"],
+  "technology_used": [
+    "Python",
+    "Flask"
+  ],
+  "tool_type": "web_app"
+}
