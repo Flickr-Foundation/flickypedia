@@ -143,23 +143,24 @@ def record_file_created_by_flickypedia(
     assert wikimedia_page_title.startswith("File:")
 
     duplicate_dir = current_app.config["DUPLICATE_DATABASE_DIRECTORY"]
+    db_path = os.path.join(duplicate_dir, "flickypedia_uploads.db")
 
-    con = sqlite3.connect(os.path.join(duplicate_dir, "flickypedia_uploads.db"))
-    cur = con.cursor()
+    with contextlib.closing(sqlite3.connect(db_path)) as con:
+        cur = con.cursor()
 
-    cur.execute(
-        """
-        CREATE TABLE IF NOT EXISTS flickr_photos_on_wikimedia (
-            flickr_photo_id TEXT PRIMARY KEY,
-            wikimedia_page_title TEXT NOT NULL,
-            wikimedia_page_id TEXT NOT NULL
+        cur.execute(
+            """
+            CREATE TABLE IF NOT EXISTS flickr_photos_on_wikimedia (
+                flickr_photo_id TEXT PRIMARY KEY,
+                wikimedia_page_title TEXT NOT NULL,
+                wikimedia_page_id TEXT NOT NULL
+            )
+            """
         )
-        """
-    )
 
-    cur.execute(
-        "INSERT INTO flickr_photos_on_wikimedia VALUES(?, ?, ?)",
-        (flickr_photo_id, wikimedia_page_title, wikimedia_page_id),
-    )
+        cur.execute(
+            "INSERT INTO flickr_photos_on_wikimedia VALUES(?, ?, ?)",
+            (flickr_photo_id, wikimedia_page_title, wikimedia_page_id),
+        )
 
-    con.commit()
+        con.commit()
