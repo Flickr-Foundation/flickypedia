@@ -17,7 +17,11 @@ file we can add to the Git repo for testing.
 
 from flask.testing import FlaskClient
 
-from flickypedia.duplicates import create_link_to_commons, find_duplicates
+from flickypedia.duplicates import (
+    create_link_to_commons,
+    find_duplicates,
+    record_file_created_by_flickypedia,
+)
 
 
 def test_no_flickr_photo_ids_is_no_duplicates(client: FlaskClient) -> None:
@@ -88,3 +92,17 @@ def test_create_link_to_commons_for_multiple_ids(client: FlaskClient) -> None:
         create_link_to_commons(list(duplicates.values()))
         == "https://commons.wikimedia.org/wiki/Special:MediaSearch?type=image&search=pageid:29907038|29907062|29907327|29907338"
     )
+
+
+def test_records_files_uploaded_by_flickypedia(client: FlaskClient) -> None:
+    assert find_duplicates(flickr_photo_ids=["123"]) == {}
+
+    record_file_created_by_flickypedia(
+        flickr_photo_id="123",
+        wikimedia_page_title="File:Example.jpg",
+        wikimedia_page_id="M123",
+    )
+
+    assert find_duplicates(flickr_photo_ids=["123"]) == {
+        "123": {"id": "M123", "title": "File:Example.jpg"}
+    }
