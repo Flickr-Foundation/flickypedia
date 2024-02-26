@@ -404,6 +404,11 @@ def test_get_wikitext_for_missing_file(wikimedia_api: WikimediaApi) -> None:
         wikimedia_api.get_wikitext(filename="File:DefinitelyDoesNotExist.jpg")
 
 
+def test_bad_filename_is_exception(wikimedia_api: WikimediaApi) -> None:
+    with pytest.raises(UnknownWikimediaApiException):
+        wikimedia_api.get_wikitext(filename="File:")
+
+
 def test_get_image_url(wikimedia_api: WikimediaApi) -> None:
     actual = wikimedia_api.get_image_url(filename="File:Example.jpg")
     expected = "https://upload.wikimedia.org/wikipedia/commons/a/a9/Example.jpg"

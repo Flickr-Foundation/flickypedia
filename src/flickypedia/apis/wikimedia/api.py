@@ -720,6 +720,8 @@ class WikimediaApi:
     def get_wikitext(self, filename: str) -> str:
         """
         Return the Wikitext for this page, if it exists.
+
+        See https://www.mediawiki.org/wiki/API:Parsing_wikitext
         """
         assert filename.startswith("File:")
 
@@ -734,6 +736,8 @@ class WikimediaApi:
         except UnknownWikimediaApiException as exc:
             if exc.code == "missingtitle":
                 raise MissingFileException(filename)
+            else:
+                raise
 
         text = resp["parse"]["text"]["*"]
         assert isinstance(text, str)
