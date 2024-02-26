@@ -273,9 +273,36 @@ class WikimediaApi:
 
         page = list(resp["entities"].values())[0]
 
+        # If the file exists but it doesn't have any structured data, we'll
+        # get a response of the form:
+        #
+        #     {'id': 'M1004', 'missing': ''}
+        #
+        # Because Commons has been able to resolve this filename to an ID,
+        # we know the page exists, it just doesn't have any SDC statements.
+        # We can return an empty dict here.
+        if "missing" in page and "id" in page:
+            return {}
+
+        # If the file doesn't exist on Commons, we'll get a response of
+        # the form:
+        #
+        #     {'missing': '',
+        #      'site': 'commonswiki',
+        #      'title': 'File:DefinitelyDoesNotExist.jpg'}
+        #
         if "missing" in page:
             raise MissingFileException(filename)
 
+        # Otherwise, we got some statements back to Commons, which we
+        # need to turn into a useful response.
+        #
+        # Note that we can still get an empty list of statements here --
+        # I don't know how this is different from the "file exists but no SDC"
+        # case above, or why sometimes we get an error and sometimes an
+        # empty list.  :-/
+        #
+        # There are tests for both cases if you want to see example responses.
         statements = list(resp["entities"].values())[0]["statements"]
 
         if statements == []:
