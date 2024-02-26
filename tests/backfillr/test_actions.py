@@ -394,7 +394,7 @@ class TestHasSubsetOfNewQualifiers:
         assert not has_subset_of_new_qualifiers(existing_statement, new_statement)
 
 
-def test_test_does_not_qualifiers_if_existing_are_disjoint_from_new() -> None:
+def test_does_not_qualifiers_if_existing_are_disjoint_from_new() -> None:
     existing_sdc: ExistingClaims = {
         "P7482": [
             {
@@ -567,5 +567,93 @@ def test_a_null_creator_statement_is_replaced() -> None:
             "action": "replace_statement",
             "statement_id": "M26828$E5B1DA53-7604-4B6F-B07A-21BC098CEEC9",
             "statement": statement,
+        }
+    ]
+
+
+def test_a_creator_is_replaced_if_numeric_id_in_alias() -> None:
+    existing_statement: ExistingStatement = {
+        "type": "statement",
+        "mainsnak": {
+            "property": "P170",
+            "snaktype": "somevalue",
+            "hash": "d3550e860f988c6675fff913440993f58f5c40c5",
+        },
+        "qualifiers-order": ["P3267", "P2093", "P2699"],
+        "qualifiers": {
+            "P3267": [
+                {
+                    "property": "P3267",
+                    "snaktype": "value",
+                    "datavalue": {"type": "string", "value": "84108876@N00"},
+                    "hash": "fa5d6acd35ca6e50077b15e3c224124df6e28595",
+                }
+            ],
+            "P2093": [
+                {
+                    "property": "P2093",
+                    "snaktype": "value",
+                    "datavalue": {"type": "string", "value": "Jason Pratt"},
+                    "hash": "5208955c9216bddf416e4c58ce5a13ce1ab8d3fb",
+                }
+            ],
+            "P2699": [
+                {
+                    "property": "P2699",
+                    "snaktype": "value",
+                    "datavalue": {
+                        "type": "string",
+                        "value": "https://www.flickr.com/people/84108876@N00",
+                    },
+                    "hash": "0a168876994e47b9028659a4d67e692138556291",
+                }
+            ],
+        },
+        "id": "M34597$10AA104E-CFBD-44C2-8D43-FF8C48FE428A",
+        "rank": "normal",
+    }
+    new_statement: NewStatement = {
+        "mainsnak": {"snaktype": "somevalue", "property": "P170"},
+        "qualifiers": {
+            "P2093": [
+                {
+                    "datavalue": {"value": "Jason Pratt", "type": "string"},
+                    "property": "P2093",
+                    "snaktype": "value",
+                }
+            ],
+            "P2699": [
+                {
+                    "datavalue": {
+                        "value": "https://www.flickr.com/people/jasonpratt/",
+                        "type": "string",
+                    },
+                    "property": "P2699",
+                    "snaktype": "value",
+                }
+            ],
+            "P3267": [
+                {
+                    "datavalue": {"value": "84108876@N00", "type": "string"},
+                    "property": "P3267",
+                    "snaktype": "value",
+                }
+            ],
+        },
+        "qualifiers-order": ["P3267", "P2093", "P2699"],
+        "type": "statement",
+    }
+
+    existing_sdc: ExistingClaims = {"P170": [existing_statement]}
+    new_sdc: NewClaims = {"claims": [new_statement]}
+
+    actions = create_actions(existing_sdc, new_sdc)
+
+    assert actions == [
+        {
+            "property_id": "P170",
+            "action": "replace_statement",
+            "statement_id": "M34597$10AA104E-CFBD-44C2-8D43-FF8C48FE428A",
+            "statement": new_statement,
         }
     ]
