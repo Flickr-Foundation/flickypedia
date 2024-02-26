@@ -523,9 +523,7 @@ class WikimediaApi:
 
         for text_elem in xml.findall(".//Text", namespaces=namespaces):
             this_filename = text_elem.text
-
-            if this_filename is None:
-                continue
+            assert this_filename is not None
 
             if this_filename.lower() == title.lower():
                 return {
