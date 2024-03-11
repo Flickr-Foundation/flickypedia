@@ -240,22 +240,33 @@ def run_with(list_of_filenames: list[str]):
                         print(
                             f"Could not find info about the Flickr photo/user! {user_url}"
                         )
-                        continue
 
-                photo_url = f'https://www.flickr.com/photos/{creator["path_alias"] or creator["id"]}/{photo_id}/'
+                    new_sdc = {
+                        "claims": [
+                            create_flickr_photo_id_statement(photo_id=photo_id),
+                            create_source_data_for_photo(
+                                photo_id=photo_id,
+                                photo_url=original_photo["url"],
+                                original_url=None,
+                                retrieved_at=None,
+                            ),
+                        ]
+                    }
+                else:
+                    photo_url = f'https://www.flickr.com/photos/{creator["path_alias"] or creator["id"]}/{photo_id}/'
 
-                new_sdc = {
-                    "claims": [
-                        create_flickr_photo_id_statement(photo_id=photo_id),
-                        create_flickr_creator_statement(user=creator),
-                        create_source_data_for_photo(
-                            photo_id=photo_id,
-                            photo_url=photo_url,
-                            original_url=None,
-                            retrieved_at=None,
-                        ),
-                    ]
-                }
+                    new_sdc = {
+                        "claims": [
+                            create_flickr_photo_id_statement(photo_id=photo_id),
+                            create_flickr_creator_statement(user=creator),
+                            create_source_data_for_photo(
+                                photo_id=photo_id,
+                                photo_url=photo_url,
+                                original_url=None,
+                                retrieved_at=None,
+                            ),
+                        ]
+                    }
             else:
                 print(e)
                 continue
