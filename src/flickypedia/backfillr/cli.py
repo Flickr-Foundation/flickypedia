@@ -107,7 +107,6 @@ def run_with(list_of_filenames: list[str]):
                     "https://flickr.com/photos/",
                 )
             ):
-                prefix_len = len("https://www.flickr.com/photos/")
                 user_url = (
                     "https://www.flickr.com/photos/"
                     + original_photo["url"]
@@ -324,7 +323,8 @@ def update_multiple_files(n: int) -> None:
 
     i = 0
 
-    import json, random
+    import json
+    import random
 
     new_titles = []
 
