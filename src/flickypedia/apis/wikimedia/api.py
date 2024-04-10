@@ -780,34 +780,3 @@ class WikimediaApi:
         else:
             ii_elem = find_required_elem(page, path=".//ii")
             return ii_elem.attrib["url"]
-
-    def force_sdc_rerender(self, filename: str) -> None:
-        """
-        Force Wikimedia to re-render the SDC in the page.
-
-        We use the Lua-driven {{Information}} template in the Wikitext,
-        which is populated by structured data -- but the timing can
-        cause some confusing behaviour:
-
-        1.  We upload the initial photo.  This includes the {{Information}}
-            template, but it's empty because there's no SDC yet.
-        2.  We set some SDC on the photo.  This puts a job on a background
-            queue to re-render the {{Information}} template, but this can
-            take a while.
-        3.  The user clicks to see their new photo, but the Information table
-            on the page is empty because it hasn't been re-rendered with
-            the SDC yet.  What happened?!
-
-        This function does a no-op edit to force an immediate re-render
-        of the page, including the SDC-driven templates.
-        """
-        self._post(
-            data={
-                "action": "edit",
-                "site": "commonswiki",
-                "title": f"File:{filename}",
-                "nocreate": "true",
-                "summary": "Flickypedia edit (null edit; force re-render of {{Information}} template with new structured data)",
-                "appendtext": "\n<!-- Null edit to force re-render of {{Information}} template -->",
-            }
-        )
