@@ -1,5 +1,5 @@
 import datetime
-from typing import Literal, TypedDict
+import typing
 
 import pytest
 
@@ -7,9 +7,9 @@ from flickypedia.apis.structured_data.wikidata import to_wikidata_date_value
 from flickypedia.types.structured_data import DataValueTypes
 
 
-ToWikidateArgs = TypedDict(
+ToWikidateArgs = typing.TypedDict(
     "ToWikidateArgs",
-    {"d": datetime.datetime, "precision": Literal["day", "month", "year"]},
+    {"d": datetime.datetime, "precision": typing.Literal["day", "month", "year"]},
 )
 
 

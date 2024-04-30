@@ -27,12 +27,12 @@ These databases can come from two places:
 import contextlib
 import os
 import sqlite3
-from typing import TypedDict
+import typing
 
 from flask import current_app
 
 
-class DuplicateInfo(TypedDict):
+class DuplicateInfo(typing.TypedDict):
     id: str
     title: str
 

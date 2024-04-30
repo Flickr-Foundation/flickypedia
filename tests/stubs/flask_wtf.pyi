@@ -1,5 +1,5 @@
-from collections.abc import Generator
-from typing import Any
+from collections.abc import Iterator
+import typing
 
 from wtforms.fields import Field
 
@@ -7,6 +7,6 @@ class Form:
     def validate_on_submit(self) -> bool: ...
 
 class FlaskForm(Form):
-    data: dict[str, Any]
+    data: dict[str, typing.Any]
 
-    def __iter__(self) -> Generator[Field, None, None]: ...
+    def __iter__(self) -> Iterator[Field]: ...

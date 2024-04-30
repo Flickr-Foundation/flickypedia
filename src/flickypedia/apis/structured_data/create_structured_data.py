@@ -28,7 +28,7 @@ is supporting that function.
 """
 
 import datetime
-from typing import Literal
+import typing
 
 from flickr_photos_api import (
     DateTaken,
@@ -374,7 +374,7 @@ def create_date_taken_statement(date_taken: DateTaken) -> NewStatement:
     """
     flickr_granularity = date_taken["granularity"]
 
-    precision_lookup: dict[str, Literal["day", "month", "year"]] = {
+    precision_lookup: dict[str, typing.Literal["day", "month", "year"]] = {
         "second": "day",
         "month": "month",
         "year": "year",
@@ -442,7 +442,7 @@ def create_flickr_photo_id_statement(photo_id: str) -> NewStatement:
 def _create_sdc_claims_for_flickr_photo(
     photo: SinglePhoto,
     *,
-    mode: Literal["new_photo", "existing_photo"],
+    mode: typing.Literal["new_photo", "existing_photo"],
     retrieved_at: datetime.datetime | None = None,
 ) -> NewClaims:
     """

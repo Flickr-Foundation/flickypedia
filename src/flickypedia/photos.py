@@ -3,7 +3,7 @@ Some methods for working with collections of photos.
 """
 
 import datetime
-from typing import TypedDict
+import typing
 
 from flask import current_app
 from flickr_photos_api import SinglePhoto, Size
@@ -37,7 +37,7 @@ def size_at(sizes: list[Size], *, desired_size: str) -> Size:
         return sizes_by_label["Original"]
 
 
-class CategorisedPhotos(TypedDict):
+class CategorisedPhotos(typing.TypedDict):
     duplicates: dict[str, DuplicateInfo]
     disallowed_licenses: dict[str, str]
     restricted: set[str]
@@ -97,7 +97,7 @@ def categorise_photos(all_photos: list[SinglePhoto]) -> CategorisedPhotos:
     }
 
 
-class EnrichedPhoto(TypedDict):
+class EnrichedPhoto(typing.TypedDict):
     photo: SinglePhoto
     sdc: NewClaims
 

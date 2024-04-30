@@ -9,7 +9,7 @@ to rely on heuristics rather than explicit machine-readable data.
 """
 
 import collections
-from typing import TypedDict
+import typing
 
 import bs4
 from flickr_url_parser import (
@@ -41,7 +41,7 @@ def pick_best_url(urls: set[str | None]) -> str:
     return sorted(string_urls)[-1]
 
 
-class FindResult(TypedDict):
+class FindResult(typing.TypedDict):
     photo_id: str
     url: str | None
 

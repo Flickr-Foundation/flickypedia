@@ -1,6 +1,6 @@
 import datetime
 import re
-from typing import Any
+import typing
 
 import bs4
 from flask import Flask, render_template
@@ -23,7 +23,7 @@ from flickypedia.apis.structured_data import (
 from flickypedia.types.structured_data import NewStatement
 
 
-def prettify_html(html: str, find_kwargs: dict[str, Any] | None = None) -> str:
+def prettify_html(html: str, find_kwargs: dict[str, typing.Any] | None = None) -> str:
     soup = bs4.BeautifulSoup(html, features="html.parser")
 
     if find_kwargs:

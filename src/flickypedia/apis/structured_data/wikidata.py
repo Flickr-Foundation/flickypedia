@@ -1,7 +1,7 @@
 import datetime
 import functools
 import re
-from typing import Literal
+import typing
 
 from flask import current_app
 import httpx
@@ -131,7 +131,7 @@ def get_entity_label(entity_id: str) -> str | None:
 
 
 def to_wikidata_date_value(
-    d: datetime.datetime, *, precision: Literal["day", "month", "year"]
+    d: datetime.datetime, *, precision: typing.Literal["day", "month", "year"]
 ) -> DataValueTypes.Time:
     """
     Convert a Python native-datetime to the Wikidata data model.

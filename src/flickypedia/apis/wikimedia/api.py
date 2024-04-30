@@ -10,7 +10,7 @@ See https://api.wikimedia.org/wiki/Authentication
 
 import json
 import re
-from typing import Any
+import typing
 from xml.etree import ElementTree as ET
 
 import httpx
@@ -41,7 +41,7 @@ class WikimediaApi:
         params: dict[str, str] | None = None,
         data: dict[str, str] | None = None,
         timeout: int | None = None,
-    ) -> Any:
+    ) -> typing.Any:
         resp = self.client.request(
             method,
             url="https://commons.wikimedia.org/w/api.php",
@@ -68,10 +68,10 @@ class WikimediaApi:
 
         return resp.json()
 
-    def _get(self, params: dict[str, str]) -> Any:
+    def _get(self, params: dict[str, str]) -> typing.Any:
         return self._request(method="GET", params={**params, "format": "json"})
 
-    def _post(self, data: dict[str, str], timeout: int | None = None) -> Any:
+    def _post(self, data: dict[str, str], timeout: int | None = None) -> typing.Any:
         return self._request(
             method="POST",
             data={**data, "format": "json", "token": self.get_csrf_token()},

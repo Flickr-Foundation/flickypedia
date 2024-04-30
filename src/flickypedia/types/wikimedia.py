@@ -1,22 +1,22 @@
-from typing import Literal, TypedDict
+import typing
 
 
-class UserInfo(TypedDict):
+class UserInfo(typing.TypedDict):
     id: str
     name: str
 
 
-class ShortCaption(TypedDict):
+class ShortCaption(typing.TypedDict):
     language: str
     text: str
 
 
 class TitleValidationResult:
-    Ok = TypedDict("Ok", {"result": Literal["ok"]})
-    Failed = TypedDict(
+    Ok = typing.TypedDict("Ok", {"result": typing.Literal["ok"]})
+    Failed = typing.TypedDict(
         "Failed",
         {
-            "result": Literal["blacklisted", "duplicate", "invalid", "too_long"],
+            "result": typing.Literal["blacklisted", "duplicate", "invalid", "too_long"],
             "text": str,
         },
     )

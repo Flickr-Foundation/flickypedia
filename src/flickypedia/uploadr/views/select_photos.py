@@ -24,7 +24,7 @@ TODO:
 
 """
 
-from typing import cast
+import typing
 
 from flask import (
     abort,
@@ -132,7 +132,7 @@ def select_photos() -> ViewResponse:
     base_form = BaseSelectForm()
 
     if base_form.validate_on_submit():
-        cache_id = cast(str, base_form.cache_id.data)
+        cache_id = typing.cast(str, base_form.cache_id.data)
 
         photo_data = get_cached_photos_data(cache_id=cache_id)
 

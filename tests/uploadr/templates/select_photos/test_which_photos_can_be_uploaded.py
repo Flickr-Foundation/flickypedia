@@ -1,4 +1,4 @@
-from typing import TypedDict
+import typing
 
 import bs4
 from flask import Flask, render_template
@@ -16,7 +16,7 @@ EMPTY_DATA: CategorisedPhotos = {
 }
 
 
-ParagraphData = TypedDict("ParagraphData", {"class": str, "text": str})
+ParagraphData = typing.TypedDict("ParagraphData", {"class": str, "text": str})
 
 
 def get_paragraphs(html: str) -> list[ParagraphData]:

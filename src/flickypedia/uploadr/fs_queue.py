@@ -16,6 +16,8 @@ the filesystem.  See the comments in ``process_single_task()``.
 
 """
 
+# Check this isn't a ecurity gap!
+
 import abc
 import datetime
 import json
@@ -23,26 +25,26 @@ import logging
 import os
 import pathlib
 import time
-from typing import Generic, Literal, TypedDict, TypeVar
+import typing
 import uuid
 
 from flickypedia.types import validate_typeddict
 from flickypedia.utils import DatetimeDecoder, DatetimeEncoder
 
 
-In = TypeVar("In")
-Out = TypeVar("Out")
+In = typing.TypeVar("In")
+Out = typing.TypeVar("Out")
 
 
-State = Literal["waiting", "in_progress", "failed", "completed"]
+State = typing.Literal["waiting", "in_progress", "failed", "completed"]
 
 
-class TaskEvent(TypedDict):
+class TaskEvent(typing.TypedDict):
     time: datetime.datetime
     description: str
 
 
-class Task(TypedDict, Generic[In, Out]):
+class Task(typing.TypedDict, typing.Generic[In, Out]):
     id: str
     events: list[TaskEvent]
     state: State
@@ -50,7 +52,7 @@ class Task(TypedDict, Generic[In, Out]):
     task_output: Out
 
 
-class AbstractFilesystemTaskQueue(abc.ABC, Generic[In, Out]):
+class AbstractFilesystemTaskQueue(abc.ABC, typing.Generic[In, Out]):
     """
     A basic task queue based on the file system.
 

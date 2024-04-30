@@ -14,7 +14,7 @@ trying to replace Wikidata validation, just allow ourselves to
 write sensible validation logic.
 """
 
-from typing import Literal, NotRequired, TypedDict
+import typing
 
 
 # Definitions for the Wikidata entities that we create as part of
@@ -64,11 +64,11 @@ from typing import Literal, NotRequired, TypedDict
 #          language
 #
 class Value:
-    WikibaseEntityId = TypedDict(
+    WikibaseEntityId = typing.TypedDict(
         "WikibaseEntityId",
-        {"entity-type": Literal["item"], "id": str, "numeric-id": int},
+        {"entity-type": typing.Literal["item"], "id": str, "numeric-id": int},
     )
-    Time = TypedDict(
+    Time = typing.TypedDict(
         "Time",
         {
             "time": str,
@@ -79,37 +79,43 @@ class Value:
             "calendarmodel": str,
         },
     )
-    GlobeCoordinate = TypedDict(
+    GlobeCoordinate = typing.TypedDict(
         "GlobeCoordinate",
         {
             "latitude": float,
             "longitude": float,
             "precision": float,
             "globe": str,
-            "altitude": Literal[None],
+            "altitude": typing.Literal[None],
         },
     )
-    Quantity = TypedDict("Quantity", {"amount": str, "unit": str})
-    MonolingualText = TypedDict("MonolingualText", {"text": str, "language": str})
+    Quantity = typing.TypedDict("Quantity", {"amount": str, "unit": str})
+    MonolingualText = typing.TypedDict(
+        "MonolingualText", {"text": str, "language": str}
+    )
 
 
 class DataValueTypes:
-    WikibaseEntityId = TypedDict(
+    WikibaseEntityId = typing.TypedDict(
         "WikibaseEntityId",
-        {"type": Literal["wikibase-entityid"], "value": Value.WikibaseEntityId},
+        {"type": typing.Literal["wikibase-entityid"], "value": Value.WikibaseEntityId},
     )
-    String = TypedDict("String", {"type": Literal["string"], "value": str})
-    Time = TypedDict("Time", {"type": Literal["time"], "value": Value.Time})
-    GlobeCoordinate = TypedDict(
+    String = typing.TypedDict(
+        "String", {"type": typing.Literal["string"], "value": str}
+    )
+    Time = typing.TypedDict(
+        "Time", {"type": typing.Literal["time"], "value": Value.Time}
+    )
+    GlobeCoordinate = typing.TypedDict(
         "GlobeCoordinate",
-        {"type": Literal["globecoordinate"], "value": Value.GlobeCoordinate},
+        {"type": typing.Literal["globecoordinate"], "value": Value.GlobeCoordinate},
     )
-    Quantity = TypedDict(
-        "Quantity", {"type": Literal["quantity"], "value": Value.Quantity}
+    Quantity = typing.TypedDict(
+        "Quantity", {"type": typing.Literal["quantity"], "value": Value.Quantity}
     )
-    MonolingualText = TypedDict(
+    MonolingualText = typing.TypedDict(
         "MonolingualText",
-        {"type": Literal["monolingualtext"], "value": Value.MonolingualText},
+        {"type": typing.Literal["monolingualtext"], "value": Value.MonolingualText},
     )
 
 
@@ -129,11 +135,11 @@ DataValue = (
 #    -> snaktype: value / somevalue / novalue
 #    -> (datavalue) ->
 #
-class Snak(TypedDict):
+class Snak(typing.TypedDict):
     property: str
-    snaktype: Literal["value", "somevalue", "novalue"]
-    datavalue: NotRequired[DataValue]
-    hash: NotRequired[str]
+    snaktype: typing.Literal["value", "somevalue", "novalue"]
+    datavalue: typing.NotRequired[DataValue]
+    hash: typing.NotRequired[str]
 
 
 # -> references
@@ -147,11 +153,11 @@ class Snak(TypedDict):
 #       0..*
 #         -> snak
 #
-NewReference = TypedDict(
+NewReference = typing.TypedDict(
     "NewReference", {"snaks-order": list[str], "snaks": dict[str, list[Snak]]}
 )
 
-ExistingReference = TypedDict(
+ExistingReference = typing.TypedDict(
     "ExistingReference",
     {"hash": str, "snaks-order": list[str], "snaks": dict[str, list[Snak]]},
 )
@@ -171,28 +177,28 @@ ExistingReference = TypedDict(
 #
 Qualifiers = dict[str, list[Snak]]
 
-BaseStatement = TypedDict(
+BaseStatement = typing.TypedDict(
     "BaseStatement",
     {
-        "type": Literal["statement"],
+        "type": typing.Literal["statement"],
         "mainsnak": Snak,
-        "qualifiers-order": NotRequired[list[str]],
-        "qualifiers": NotRequired[Qualifiers],
+        "qualifiers-order": typing.NotRequired[list[str]],
+        "qualifiers": typing.NotRequired[Qualifiers],
     },
 )
 
 
 class NewStatement(BaseStatement):
-    references: NotRequired[list[NewReference]]
+    references: typing.NotRequired[list[NewReference]]
 
 
 class ExistingStatement(BaseStatement):
-    references: NotRequired[list[ExistingReference]]
+    references: typing.NotRequired[list[ExistingReference]]
     id: str
-    rank: Literal["deprecated", "normal", "preferred"]
+    rank: typing.Literal["deprecated", "normal", "preferred"]
 
 
-class NewClaims(TypedDict):
+class NewClaims(typing.TypedDict):
     claims: list[NewStatement]
 
 

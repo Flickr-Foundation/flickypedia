@@ -1,5 +1,5 @@
 import re
-from typing import Any, TypedDict
+import typing
 
 import bs4
 from flask import Flask, render_template
@@ -7,7 +7,7 @@ from flickr_photos_api import User as FlickrUser
 import pytest
 
 
-EMPTY_INFO: Any = {
+EMPTY_INFO: typing.Any = {
     "owner": {
         "username": "example",
         "realname": "example",
@@ -19,12 +19,12 @@ EMPTY_INFO: Any = {
 }
 
 
-class MetadataEntry(TypedDict):
+class MetadataEntry(typing.TypedDict):
     key: str
     value: str | None
 
 
-def get_metadata(photo: Any) -> list[MetadataEntry]:
+def get_metadata(photo: typing.Any) -> list[MetadataEntry]:
     html = render_template(
         "prepare_info/flickr_photo_info.html", photo={**EMPTY_INFO, **photo}
     )
@@ -90,7 +90,7 @@ def test_it_shows_the_title(app: Flask) -> None:
     assert {"key": "Title:", "value": "A photo of some autumn leaves"} in metadata
 
 
-class Description(TypedDict):
+class Description(typing.TypedDict):
     input: str
     expected_key: str
     expected_value: str
