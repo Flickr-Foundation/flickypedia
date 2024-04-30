@@ -1,4 +1,4 @@
-from typing import Any, TypedDict
+import typing
 
 import pytest
 from pydantic import ValidationError
@@ -6,7 +6,7 @@ from pydantic import ValidationError
 from flickypedia.types import validate_typeddict
 
 
-class Shape(TypedDict):
+class Shape(typing.TypedDict):
     color: str
     sides: int
 
@@ -21,7 +21,7 @@ class Shape(TypedDict):
         {"color": "red", "sides": 4, "angle": 36},
     ],
 )
-def test_validate_typeddict_flags_incorrect_data(data: Any) -> None:
+def test_validate_typeddict_flags_incorrect_data(data: typing.Any) -> None:
     with pytest.raises(ValidationError):
         validate_typeddict(data, model=Shape)
 

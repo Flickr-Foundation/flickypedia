@@ -4,10 +4,10 @@ as downloaded from https://dumps.wikimedia.org/other/wikibase/commonswiki/
 """
 
 import bz2
-from collections.abc import Generator
+from collections.abc import Iterator
 import json
 from pprint import pprint
-from typing import Literal, TypedDict
+import typing
 
 from pydantic import ValidationError
 
@@ -15,18 +15,18 @@ from flickypedia.types import Path, validate_typeddict
 from flickypedia.types.structured_data import ExistingClaims
 
 
-class MonolingualValue(TypedDict):
+class MonolingualValue(typing.TypedDict):
     language: str
     value: str
 
 
-SnapshotEntry = TypedDict(
+SnapshotEntry = typing.TypedDict(
     "SnapshotEntry",
     {
         "id": str,
         "pageid": int,
-        "type": Literal["mediainfo"],
-        "ns": Literal[6],
+        "type": typing.Literal["mediainfo"],
+        "ns": typing.Literal[6],
         "title": "str",
         "lastrevid": int,
         "modified": "str",
@@ -37,7 +37,7 @@ SnapshotEntry = TypedDict(
 )
 
 
-def parse_sdc_snapshot(path: Path) -> Generator[SnapshotEntry, None, None]:
+def parse_sdc_snapshot(path: Path) -> Iterator[SnapshotEntry]:
     """
     Given a snapshot of SDC from Wikimedia Commons, generate every entry.
     """

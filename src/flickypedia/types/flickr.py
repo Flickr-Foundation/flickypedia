@@ -1,5 +1,5 @@
 import datetime
-from typing import TypedDict
+import typing
 
 from flickr_photos_api import (
     SinglePhoto,
@@ -11,7 +11,7 @@ from flickr_photos_api import (
 )
 
 
-class RetrievedAtMixin(TypedDict):
+class RetrievedAtMixin(typing.TypedDict):
     retrieved_at: datetime.datetime
 
 

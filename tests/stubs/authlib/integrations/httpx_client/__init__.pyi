@@ -1,11 +1,11 @@
 from collections.abc import Callable
-from typing import Any, Literal, TypedDict
+import typing
 
 import httpx
 
 from authlib.oauth2.rfc6749.wrappers import OAuth2Token
 
-class RequestTokenResp(TypedDict):
+class RequestTokenResp(typing.TypedDict):
     oauth_token: str
 
 class OAuth1Client(httpx.Client):
@@ -13,7 +13,7 @@ class OAuth1Client(httpx.Client):
         self,
         client_id: str,
         client_secret: str,
-        signature_type: Literal["QUERY"] | None = None,
+        signature_type: typing.Literal["QUERY"] | None = None,
         token: str | None = None,
         token_secret: str | None = None,
     ) -> None: ...
@@ -21,8 +21,10 @@ class OAuth1Client(httpx.Client):
         self, url: str, params: dict[str, str]
     ) -> RequestTokenResp: ...
     def create_authorization_url(self, url: str, request_token: str) -> str: ...
-    def fetch_access_token(self, url: str, verifier: str | None = None) -> Any: ...
-    token: Any
+    def fetch_access_token(
+        self, url: str, verifier: str | None = None
+    ) -> typing.Any: ...
+    token: typing.Any
     def parse_authorization_response(self, url: str) -> None: ...
 
 class OAuth2Client(httpx.Client):
@@ -33,7 +35,7 @@ class OAuth2Client(httpx.Client):
         authorization_endpoint: str | None = None,
         token_endpoint: str | None = None,
         token: OAuth2Token | None = None,
-        update_token: Callable[..., Any] | None = None,
+        update_token: Callable[..., typing.Any] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None: ...
     token: OAuth2Token

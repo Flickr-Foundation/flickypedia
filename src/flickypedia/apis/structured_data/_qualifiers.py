@@ -35,7 +35,7 @@ the required JSON.
 """
 
 import datetime
-from typing import Literal, TypedDict
+import typing
 
 from flickypedia.types.structured_data import DataValue, Qualifiers
 from .wikidata import (
@@ -46,19 +46,19 @@ from .wikidata import (
 
 
 class QualifierValueTypes:
-    String = TypedDict(
-        "String", {"type": Literal["string"], "property": str, "value": str}
+    String = typing.TypedDict(
+        "String", {"type": typing.Literal["string"], "property": str, "value": str}
     )
-    Entity = TypedDict(
-        "Entity", {"type": Literal["entity"], "property": str, "entity_id": str}
+    Entity = typing.TypedDict(
+        "Entity", {"type": typing.Literal["entity"], "property": str, "entity_id": str}
     )
-    Date = TypedDict(
+    Date = typing.TypedDict(
         "Date",
         {
-            "type": Literal["date"],
+            "type": typing.Literal["date"],
             "property": str,
             "date": datetime.datetime,
-            "precision": Literal["day", "month", "year"],
+            "precision": typing.Literal["day", "month", "year"],
         },
     )
 

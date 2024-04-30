@@ -62,7 +62,7 @@ it should be accessing it via ``current_user``.
 import datetime
 import json
 import textwrap
-from typing import TypedDict
+import typing
 import uuid
 
 from authlib.integrations.httpx_client import OAuth1Client, OAuth2Client
@@ -96,7 +96,7 @@ login.login_view = "homepage"
 SESSION_ENCRYPTION_KEY = "oauth_key_wikimedia"
 
 
-class FlickrOAuthToken(TypedDict):
+class FlickrOAuthToken(typing.TypedDict):
     fullname: str | None
     oauth_token: str
     oauth_token_secret: str

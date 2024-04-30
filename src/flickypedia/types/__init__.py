@@ -1,6 +1,6 @@
 import functools
 import pathlib
-from typing import Any, Hashable, TypeVar
+import typing
 
 from pydantic import ConfigDict, TypeAdapter
 
@@ -8,7 +8,7 @@ from pydantic import ConfigDict, TypeAdapter
 Path = pathlib.Path | str
 
 
-T = TypeVar("T")
+T = typing.TypeVar("T")
 
 
 @functools.cache
@@ -26,7 +26,7 @@ def get_validator(model: type[T]) -> TypeAdapter[T]:
     return TypeAdapter(model)
 
 
-def validate_typeddict(t: Any, model: type[T]) -> T:
+def validate_typeddict(t: typing.Any, model: type[T]) -> T:
     """
     Check that some data matches a TypedDict.
 
@@ -41,7 +41,7 @@ def validate_typeddict(t: Any, model: type[T]) -> T:
     #     Argument 1 to "__call__" of "_lru_cache_wrapper"
     #     has incompatible type "type[T]"; expected "Hashable"
     #
-    assert isinstance(model, Hashable)
+    assert isinstance(model, typing.Hashable)
 
     validator = get_validator(model)
 

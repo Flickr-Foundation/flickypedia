@@ -15,7 +15,7 @@ This page gets two arguments as query parameters:
 
 import datetime
 import json
-from typing import cast, Any, TypedDict
+import typing
 
 from flask import abort, redirect, render_template, request, url_for
 from flask_wtf import FlaskForm, Form
@@ -165,7 +165,7 @@ def create_prepare_info_form(photos: list[EnrichedPhoto]) -> PrepareInfoFormBase
             # original_format is optional in the Flickr API, because
             # you might not get it if the owner has disabled downloads --
             # but it's always available for CC licensed photos.
-            original_format = cast(str, p["photo"]["original_format"])
+            original_format = typing.cast(str, p["photo"]["original_format"])
 
         setattr(
             CustomForm,
@@ -176,12 +176,12 @@ def create_prepare_info_form(photos: list[EnrichedPhoto]) -> PrepareInfoFormBase
     return CustomForm()
 
 
-class ShortCaption(TypedDict):
+class ShortCaption(typing.TypedDict):
     language: str
     text: str
 
 
-class PhotoForUpload(TypedDict):
+class PhotoForUpload(typing.TypedDict):
     id: str
     title: str
     short_caption: ShortCaption
@@ -196,7 +196,7 @@ class PhotoForUpload(TypedDict):
 
 
 def create_upload_requests(
-    photos: list[EnrichedPhoto], form_data: dict[str, Any], language: str
+    photos: list[EnrichedPhoto], form_data: dict[str, typing.Any], language: str
 ) -> list[UploadRequest]:
     upload_requests: list[UploadRequest] = []
 
@@ -254,7 +254,7 @@ def prepare_info() -> ViewResponse:
     # Do some basic consistency checks.  These assertions could fail
     # if somebody has mucked around with the URL query parameters,
     #  but in that case I'm okay to let it fail.
-    assert categorise_photos(selected_photos) == cast(
+    assert categorise_photos(selected_photos) == typing.cast(
         CategorisedPhotos,
         {
             "available": selected_photos,
@@ -302,7 +302,7 @@ def prepare_info() -> ViewResponse:
     )
 
 
-class TruncationResult(TypedDict):
+class TruncationResult(typing.TypedDict):
     text: str
     truncated: bool
 

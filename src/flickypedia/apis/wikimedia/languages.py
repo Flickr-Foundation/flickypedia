@@ -48,10 +48,10 @@ more to give us a way to loosely order language results.
 """
 
 import collections
-from typing import TypedDict
+import typing
 
 
-class LanguageMatch(TypedDict):
+class LanguageMatch(typing.TypedDict):
     id: str
     label: str
     match_text: str | None

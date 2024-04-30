@@ -2,7 +2,7 @@ import datetime
 import json
 import pathlib
 import re
-from typing import TypeVar
+import typing
 
 from authlib.oauth2.rfc6749.wrappers import OAuth2Token
 from cryptography.fernet import Fernet
@@ -19,7 +19,7 @@ from flickypedia.types import validate_typeddict, Path
 from flickypedia.utils import DatetimeDecoder, encrypt_string
 
 
-T = TypeVar("T")
+T = typing.TypeVar("T")
 
 
 def minify(text: str | bytes) -> str:

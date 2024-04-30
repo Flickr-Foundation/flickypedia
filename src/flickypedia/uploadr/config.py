@@ -1,9 +1,9 @@
 import os
 import pathlib
-from typing import Any
+import typing
 
 
-def create_config(data_directory: pathlib.Path) -> dict[str, Any]:
+def create_config(data_directory: pathlib.Path) -> dict[str, typing.Any]:
     """
     Create the config for Flickypedia.
 
@@ -68,7 +68,7 @@ def create_config(data_directory: pathlib.Path) -> dict[str, Any]:
     }
 
 
-def get_directories(config: dict[str, Any]) -> list[str]:
+def get_directories(config: dict[str, typing.Any]) -> list[str]:
     """
     A list of directories that need to be created on startup.
     """

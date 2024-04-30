@@ -1,4 +1,4 @@
-from typing import Literal, TypedDict
+import typing
 
 from flickypedia.apis.structured_data.wikidata import WikidataProperties
 from flickypedia.types.structured_data import (
@@ -14,34 +14,34 @@ from .comparisons import (
 )
 
 
-class DoNothing(TypedDict):
+class DoNothing(typing.TypedDict):
     property_id: str
-    action: Literal["do_nothing"]
+    action: typing.Literal["do_nothing"]
 
 
-class AddMissing(TypedDict):
+class AddMissing(typing.TypedDict):
     property_id: str
-    action: Literal["add_missing"]
+    action: typing.Literal["add_missing"]
     statement: NewStatement
 
 
-class AddQualifiers(TypedDict):
+class AddQualifiers(typing.TypedDict):
     property_id: str
-    action: Literal["add_qualifiers"]
+    action: typing.Literal["add_qualifiers"]
     statement_id: str
     statement: NewStatement
 
 
-class ReplaceStatement(TypedDict):
+class ReplaceStatement(typing.TypedDict):
     property_id: str
-    action: Literal["replace_statement"]
+    action: typing.Literal["replace_statement"]
     statement_id: str
     statement: NewStatement
 
 
-class Unknown(TypedDict):
+class Unknown(typing.TypedDict):
     property_id: str
-    action: Literal["unknown"]
+    action: typing.Literal["unknown"]
 
 
 Action = DoNothing | AddMissing | AddQualifiers | ReplaceStatement | Unknown
