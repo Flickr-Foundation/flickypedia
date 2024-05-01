@@ -305,6 +305,11 @@ def test_create_sdc_claims_for_flickr_photo_without_date_taken() -> None:
         "original_format": "jpg",
         "tags": [],
         "location": None,
+        "secret": "-1",
+        "server": "-1",
+        "farm": "-1",
+        "count_comments": 0,
+        "count_views": 0,
     }
 
     actual = create_sdc_claims_for_new_flickr_photo(
@@ -352,6 +357,11 @@ def test_create_sdc_claims_for_flickr_photo_with_date_taken() -> None:
         "original_format": "jpg",
         "tags": [],
         "location": None,
+        "secret": "-1",
+        "server": "-1",
+        "farm": "-1",
+        "count_comments": 0,
+        "count_views": 0,
     }
 
     actual = create_sdc_claims_for_new_flickr_photo(
@@ -395,6 +405,11 @@ def test_creates_sdc_for_photo_with_in_copyright_license() -> None:
         "original_format": "jpg",
         "tags": [],
         "location": None,
+        "secret": "-1",
+        "server": "-1",
+        "farm": "-1",
+        "count_comments": 0,
+        "count_views": 0,
     }
 
     actual = create_sdc_claims_for_existing_flickr_photo(photo)

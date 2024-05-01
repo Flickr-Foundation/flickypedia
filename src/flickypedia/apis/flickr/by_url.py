@@ -1,7 +1,7 @@
 import datetime
 
 from flask import current_app
-from flickr_photos_api import FlickrPhotosApi
+from flickr_photos_api import FlickrApi
 from flickr_url_parser import ParseResult
 
 from flickypedia.types.flickr import GetPhotosData
@@ -13,7 +13,7 @@ def get_photos_from_flickr(parsed_url: ParseResult) -> GetPhotosData:
     """
     retrieved_at = datetime.datetime.now()
 
-    api = FlickrPhotosApi(
+    api = FlickrApi(
         api_key=current_app.config["FLICKR_API_KEY"],
         user_agent=current_app.config["USER_AGENT"],
     )
@@ -38,7 +38,7 @@ def get_photos_from_flickr(parsed_url: ParseResult) -> GetPhotosData:
         return {**album_resp, "retrieved_at": retrieved_at}
 
     elif parsed_url["type"] == "user":
-        user_resp = api.get_public_photos_by_user(
+        user_resp = api.get_photos_in_user_photostream(
             user_url=parsed_url["user_url"], page=parsed_url["page"], per_page=100
         )
 

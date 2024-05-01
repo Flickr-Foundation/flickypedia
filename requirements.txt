@@ -42,14 +42,10 @@ flask-sqlalchemy==3.1.1
     # via -r requirements.in
 flask-wtf==1.2.1
     # via -r requirements.in
-flickr-photos-api==1.5.1
+flickr-photos-api==2.1.2
     # via -r requirements.in
-flickr-url-parser==1.8.1
-    # via
-    #   -r requirements.in
-    #   flickr-photos-api
-greenlet==3.0.2
-    # via sqlalchemy
+flickr-url-parser==1.8.3
+    # via flickr-photos-api
 gunicorn==21.2.0
     # via -r requirements.in
 h11==0.14.0
@@ -95,6 +91,8 @@ pydantic==2.5.1
     # via -r requirements.in
 pydantic-core==2.14.3
     # via pydantic
+silver-nitrate==1.1.0
+    # via flickr-photos-api
 sniffio==1.3.0
     # via
     #   anyio
@@ -103,6 +101,8 @@ soupsieve==2.5
     # via beautifulsoup4
 sqlalchemy==2.0.23
     # via flask-sqlalchemy
+tenacity==8.2.3
+    # via flickr-photos-api
 tqdm==4.66.1
     # via -r requirements.in
 typing-extensions==4.8.0

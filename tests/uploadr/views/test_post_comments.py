@@ -1,9 +1,9 @@
 from flask.testing import FlaskClient
-from flickr_photos_api import FlickrPhotosApi
+from flickr_photos_api import FlickrApi
 
 
 def test_post_comments_page(
-    logged_in_client: FlaskClient, flickr_api: FlickrPhotosApi, queue_dir: None
+    logged_in_client: FlaskClient, flickr_api: FlickrApi, queue_dir: None
 ) -> None:
     resp = logged_in_client.get(
         "/post_comments/7bb77a24-ae46-4196-8269-392cfa9e1df3?user=bot"
