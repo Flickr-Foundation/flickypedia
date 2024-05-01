@@ -1,4 +1,4 @@
-from collections.abc import Generator
+from collections.abc import Iterator
 import os
 import pathlib
 import shutil
@@ -6,7 +6,7 @@ import shutil
 from flask import Flask
 from flask.testing import FlaskClient
 from flask_login import FlaskLoginClient, current_user
-from flickr_photos_api import FlickrPhotosApi
+from flickr_photos_api import FlickrApi
 import httpx
 import pytest
 from pytest import FixtureRequest
@@ -42,7 +42,7 @@ def cassette_name(request: FixtureRequest) -> str:
 
 
 @pytest.fixture(scope="function")
-def vcr_cassette(cassette_name: str) -> Generator[None, None, None]:
+def vcr_cassette(cassette_name: str) -> Iterator[None]:
     """
     Creates a VCR cassette for use in tests.
 
@@ -58,7 +58,7 @@ def vcr_cassette(cassette_name: str) -> Generator[None, None, None]:
 
 
 @pytest.fixture(scope="function")
-def wikimedia_api(cassette_name: str) -> Generator[WikimediaApi, None, None]:
+def wikimedia_api(cassette_name: str) -> Iterator[WikimediaApi]:
     """
     Creates an instance of the WikimediaApi class for use in tests.
 
@@ -95,9 +95,7 @@ def wikimedia_api(cassette_name: str) -> Generator[WikimediaApi, None, None]:
 
 
 @pytest.fixture(scope="function")
-def flickr_api(
-    cassette_name: str, user_agent: str
-) -> Generator[FlickrPhotosApi, None, None]:
+def flickr_api(cassette_name: str, user_agent: str) -> Iterator[FlickrApi]:
     """
     Creates an instance of the FlickrApi class for use in tests.
 
@@ -109,14 +107,14 @@ def flickr_api(
         cassette_library_dir="tests/fixtures/cassettes",
         filter_query_parameters=["api_key"],
     ):
-        yield FlickrPhotosApi(
+        yield FlickrApi(
             api_key=os.environ.get("FLICKR_API_KEY", "<REDACTED>"),
             user_agent=user_agent,
         )
 
 
 @pytest.fixture()
-def app(user_agent: str, tmp_path: pathlib.Path) -> Generator[Flask, None, None]:
+def app(user_agent: str, tmp_path: pathlib.Path) -> Iterator[Flask]:
     """
     Creates an instance of the app for use in testing.
 
@@ -147,7 +145,7 @@ def app(user_agent: str, tmp_path: pathlib.Path) -> Generator[Flask, None, None]
 
 
 @pytest.fixture()
-def client(app: Flask) -> Generator[FlaskClient, None, None]:
+def client(app: Flask) -> Iterator[FlaskClient]:
     """
     Creates a client for use in testing.
 
@@ -158,7 +156,7 @@ def client(app: Flask) -> Generator[FlaskClient, None, None]:
 
 
 @pytest.fixture
-def logged_in_client(app: Flask) -> Generator[FlaskClient, None, None]:
+def logged_in_client(app: Flask) -> Iterator[FlaskClient]:
     """
     Creates a client for use in testing which is logged in.
 

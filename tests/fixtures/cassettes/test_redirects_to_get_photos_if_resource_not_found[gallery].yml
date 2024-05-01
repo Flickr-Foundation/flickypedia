@@ -13,40 +13,44 @@ interactions:
       user-agent:
       - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
     method: GET
-    uri: https://api.flickr.com/services/rest/?extras=license%2Cdate_upload%2Cdate_taken%2Cmedia%2Coriginal_format%2Cowner_name%2Curl_sq%2Curl_t%2Curl_s%2Curl_m%2Curl_o%2Ctags%2Cgeo%2Curl_q%2Curl_l%2Cdescription%2Csafety_level%2Crealname%2Cpath_alias&gallery_id=12345678901234567890&get_gallery_info=1&method=flickr.galleries.getPhotos&page=1&per_page=100
+    uri: https://api.flickr.com/services/rest/?extras=license%2Cdate_upload%2Cdate_taken%2Cmedia%2Coriginal_format%2Cowner_name%2Curl_sq%2Curl_t%2Curl_s%2Curl_m%2Curl_o%2Ctags%2Cgeo%2Curl_q%2Curl_l%2Cdescription%2Csafety_level%2Crealname%2Cpath_alias%2Ccount_comments%2Ccount_views&gallery_id=12345678901234567890&get_gallery_info=1&method=flickr.galleries.getPhotos&page=1&per_page=100
   response:
     content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"fail\">\n\t<err
       code=\"1\" msg=\"Invalid gallery ID\" />\n</rsp>\n"
     headers:
       Connection:
       - keep-alive
-      Content-Length:
-      - '117'
       Content-Type:
       - text/xml; charset=utf-8
       Date:
-      - Wed, 15 Nov 2023 18:27:14 GMT
+      - Wed, 01 May 2024 08:49:56 GMT
+      Transfer-Encoding:
+      - chunked
       Via:
-      - 1.1 3e4df971a572827d7b2a18db7147bb96.cloudfront.net (CloudFront)
+      - 1.1 40b76fea3127a1d583fbc11b2e091fc2.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - oByRrSU1vDs7rwLVy4telFI7jqLmZlL5tiFzzUe56KzU3ubN5o5gtg==
+      - v0Qsk24Jgu9U32n0Vk5oBlkP5UYkIKLw_3XiC26gmY2YrwnwEVSIVQ==
       X-Amz-Cf-Pop:
-      - EZE50-P1
+      - LHR5-P1
       X-Cache:
       - Miss from cloudfront
       content-encoding:
       - gzip
       server:
-      - Apache/2.4.58 (Ubuntu)
+      - openresty
       set-cookie:
-      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
-        expires=Fri, 15-Dec-2023 18:27:14 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Fri, 31-May-2024 08:49:56 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Fri, 31-May-2024 08:49:56 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       vary:
       - Accept-Encoding
-      x-frame-options:
-      - SAMEORIGIN
+      x-flickr-api-request:
+      - Self=1-66320234-66f05388496e45ba725e00de;Root=1-66320234-5727ce4e6192fb750944b8de
       x-robots-tag:
       - noindex
+      x-server:
+      - serverless-proxy-10.78.10.17
     http_version: HTTP/1.1
     status_code: 200
 version: 1

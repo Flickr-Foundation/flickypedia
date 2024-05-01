@@ -4,7 +4,7 @@ import pathlib
 import uuid
 
 from flask import current_app, Flask, request, send_file
-from flickr_photos_api import FlickrPhotosApi
+from flickr_photos_api import FlickrApi
 from jinja2 import StrictUndefined
 import sass
 
@@ -55,7 +55,7 @@ from flickypedia.utils import create_bookmarklet
 
 
 def buddy_icon(user_id: str) -> str:
-    api = FlickrPhotosApi(
+    api = FlickrApi(
         api_key=current_app.config["FLICKR_API_KEY"],
         user_agent=current_app.config["USER_AGENT"],
     )

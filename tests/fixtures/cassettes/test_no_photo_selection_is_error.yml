@@ -13,115 +13,7 @@ interactions:
       user-agent:
       - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
     method: GET
-    uri: https://api.flickr.com/services/rest/?method=flickr.urls.lookupUser&url=https%3A%2F%2Fwww.flickr.com%2Fphotos%2F199246608%40N02
-  response:
-    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<user
-      id=\"199246608@N02\">\n\t<username>cefarrjf87</username>\n</user>\n</rsp>\n"
-    headers:
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '129'
-      Content-Type:
-      - text/xml; charset=utf-8
-      Date:
-      - Sat, 18 Nov 2023 11:09:27 GMT
-      Via:
-      - 1.1 663e9700db88d7dfc36171ed7a7061bc.cloudfront.net (CloudFront)
-      X-Amz-Cf-Id:
-      - IVV042tR-FzwmoCuYjPekTYsxmm2rOVKRaSvsakxRph_zM-KCIKW0A==
-      X-Amz-Cf-Pop:
-      - EZE50-P1
-      X-Cache:
-      - Miss from cloudfront
-      content-encoding:
-      - gzip
-      server:
-      - Apache/2.4.58 (Ubuntu)
-      set-cookie:
-      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
-        expires=Mon, 18-Dec-2023 11:09:27 GMT; Max-Age=2592000; path=/; domain=.flickr.com
-      vary:
-      - Accept-Encoding
-      x-frame-options:
-      - SAMEORIGIN
-      x-robots-tag:
-      - noindex
-    http_version: HTTP/1.1
-    status_code: 200
-- request:
-    body: ''
-    headers:
-      accept:
-      - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
-      - keep-alive
-      cookie:
-      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D
-      host:
-      - api.flickr.com
-      user-agent:
-      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
-    method: GET
-    uri: https://api.flickr.com/services/rest/?method=flickr.people.getInfo&user_id=199246608%40N02
-  response:
-    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<person
-      id=\"199246608@N02\" nsid=\"199246608@N02\" ispro=\"0\" is_deleted=\"0\" iconserver=\"0\"
-      iconfarm=\"0\" path_alias=\"\" has_stats=\"0\" has_adfree=\"0\" has_free_standard_shipping=\"0\"
-      has_free_educational_resources=\"0\">\n\t<username>cefarrjf87</username>\n\t<realname>Alex
-      Chan</realname>\n\t<location />\n\t<description />\n\t<photosurl>https://www.flickr.com/photos/199246608@N02/</photosurl>\n\t<profileurl>https://www.flickr.com/people/199246608@N02/</profileurl>\n\t<mobileurl>https://m.flickr.com/photostream.gne?id=199226260</mobileurl>\n\t<photos>\n\t\t<firstdatetaken>2023-05-12
-      14:12:01</firstdatetaken>\n\t\t<firstdate>1696938538</firstdate>\n\t\t<count>26</count>\n\t</photos>\n</person>\n</rsp>\n"
-    headers:
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '386'
-      Content-Type:
-      - text/xml; charset=utf-8
-      Date:
-      - Sat, 18 Nov 2023 11:09:27 GMT
-      Via:
-      - 1.1 663e9700db88d7dfc36171ed7a7061bc.cloudfront.net (CloudFront)
-      X-Amz-Cf-Id:
-      - NQdvwmx86A14_MtUDAnzc8jsRGJ-dWwVExRWSyLTSUk9NdASY2aqJg==
-      X-Amz-Cf-Pop:
-      - EZE50-P1
-      X-Cache:
-      - Miss from cloudfront
-      content-encoding:
-      - gzip
-      server:
-      - Apache/2.4.58 (Ubuntu)
-      set-cookie:
-      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
-        expires=Mon, 18-Dec-2023 11:09:27 GMT; Max-Age=2592000; path=/; domain=.flickr.com
-      vary:
-      - Accept-Encoding
-      x-frame-options:
-      - SAMEORIGIN
-      x-robots-tag:
-      - noindex
-    http_version: HTTP/1.1
-    status_code: 200
-- request:
-    body: ''
-    headers:
-      accept:
-      - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
-      - keep-alive
-      cookie:
-      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D
-      host:
-      - api.flickr.com
-      user-agent:
-      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
-    method: GET
-    uri: https://api.flickr.com/services/rest/?extras=license%2Cdate_upload%2Cdate_taken%2Cmedia%2Coriginal_format%2Cowner_name%2Curl_sq%2Curl_t%2Curl_s%2Curl_m%2Curl_o%2Ctags%2Cgeo%2Curl_q%2Curl_l%2Cdescription%2Csafety_level%2Crealname&method=flickr.photosets.getPhotos&page=1&per_page=100&photoset_id=72177720311959907&user_id=199246608%40N02
+    uri: https://api.flickr.com/services/rest/?extras=license%2Cdate_upload%2Cdate_taken%2Cmedia%2Coriginal_format%2Cowner_name%2Curl_sq%2Curl_t%2Curl_s%2Curl_m%2Curl_o%2Ctags%2Cgeo%2Curl_q%2Curl_l%2Cdescription%2Csafety_level%2Crealname%2Cpath_alias%2Ccount_comments%2Ccount_views&method=flickr.photosets.getPhotos&page=1&per_page=100&photoset_id=72177720311959907&user_id=199246608%40N02
   response:
     content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<photoset
       id=\"72177720311959907\" primary=\"53253175319\" owner=\"199246608@N02\" ownername=\"cefarrjf87\"
@@ -130,233 +22,252 @@ interactions:
       farm=\"66\" title=\"IMG_5440\" isprimary=\"1\" ispublic=\"1\" isfriend=\"0\"
       isfamily=\"0\" license=\"4\" safety_level=\"0\" dateupload=\"1697116365\" datetaken=\"2023-10-11
       11:32:02\" datetakengranularity=\"0\" datetakenunknown=\"0\" ownername=\"cefarrjf87\"
-      realname=\"Alex Chan\" tags=\"\" originalsecret=\"2f310021b6\" originalformat=\"jpg\"
-      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
-      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53253175319_b4a4297abf_s.jpg\"
+      realname=\"Alex Chan\" count_views=\"18\" count_comments=\"0\" tags=\"\" originalsecret=\"2f310021b6\"
+      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
+      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53253175319_b4a4297abf_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53253175319_b4a4297abf_t.jpg\"
       height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53253175319_b4a4297abf_m.jpg\"
       height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53253175319_b4a4297abf.jpg\"
       height_m=\"375\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/53253175319_2f310021b6_o.jpg\"
       height_o=\"3024\" width_o=\"4032\" url_q=\"https://live.staticflickr.com/65535/53253175319_b4a4297abf_q.jpg\"
       height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/53253175319_b4a4297abf_b.jpg\"
-      height_l=\"768\" width_l=\"1024\">\n\t\t<description />\n\t</photo>\n\t<photo
+      height_l=\"768\" width_l=\"1024\" pathalias=\"\">\n\t\t<description />\n\t</photo>\n\t<photo
       id=\"53297882430\" secret=\"ee54e8012e\" server=\"65535\" farm=\"66\" title=\"IMG_5612\"
       isprimary=\"0\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"4\" safety_level=\"0\"
       dateupload=\"1698675402\" datetaken=\"2023-10-27 14:04:07\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" ownername=\"cefarrjf87\" realname=\"Alex Chan\" tags=\"\"
-      originalsecret=\"bd3615592f\" originalformat=\"jpg\" latitude=\"0\" longitude=\"0\"
-      accuracy=\"0\" context=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53297882430_ee54e8012e_s.jpg\"
+      datetakenunknown=\"0\" ownername=\"cefarrjf87\" realname=\"Alex Chan\" count_views=\"13\"
+      count_comments=\"0\" tags=\"\" originalsecret=\"bd3615592f\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53297882430_ee54e8012e_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53297882430_ee54e8012e_t.jpg\"
       height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53297882430_ee54e8012e_m.jpg\"
       height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53297882430_ee54e8012e.jpg\"
       height_m=\"375\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/53297882430_bd3615592f_o.jpg\"
       height_o=\"3024\" width_o=\"4032\" url_q=\"https://live.staticflickr.com/65535/53297882430_ee54e8012e_q.jpg\"
       height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/53297882430_ee54e8012e_b.jpg\"
-      height_l=\"768\" width_l=\"1024\">\n\t\t<description />\n\t</photo>\n\t<photo
+      height_l=\"768\" width_l=\"1024\" pathalias=\"\">\n\t\t<description />\n\t</photo>\n\t<photo
       id=\"53289855284\" secret=\"469fb43b6e\" server=\"65535\" farm=\"66\" title=\"P6050426\"
       isprimary=\"0\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"4\" safety_level=\"0\"
       dateupload=\"1698410693\" datetaken=\"2023-06-05 10:54:24\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" ownername=\"cefarrjf87\" realname=\"Alex Chan\" tags=\"\"
-      originalsecret=\"d383d87ff5\" originalformat=\"jpg\" latitude=\"0\" longitude=\"0\"
-      accuracy=\"0\" context=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53289855284_469fb43b6e_s.jpg\"
+      datetakenunknown=\"0\" ownername=\"cefarrjf87\" realname=\"Alex Chan\" count_views=\"16\"
+      count_comments=\"0\" tags=\"\" originalsecret=\"d383d87ff5\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53289855284_469fb43b6e_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53289855284_469fb43b6e_t.jpg\"
       height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53289855284_469fb43b6e_m.jpg\"
       height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53289855284_469fb43b6e.jpg\"
       height_m=\"375\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/53289855284_d383d87ff5_o.jpg\"
       height_o=\"3456\" width_o=\"4608\" url_q=\"https://live.staticflickr.com/65535/53289855284_469fb43b6e_q.jpg\"
       height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/53289855284_469fb43b6e_b.jpg\"
-      height_l=\"768\" width_l=\"1024\">\n\t\t<description>OLYMPUS DIGITAL CAMERA
-      \        </description>\n\t</photo>\n\t<photo id=\"53288601492\" secret=\"2f129641a9\"
-      server=\"65535\" farm=\"66\" title=\"P6050615\" isprimary=\"0\" ispublic=\"1\"
-      isfriend=\"0\" isfamily=\"0\" license=\"4\" safety_level=\"0\" dateupload=\"1698410693\"
-      datetaken=\"2023-06-05 12:37:08\" datetakengranularity=\"0\" datetakenunknown=\"0\"
-      ownername=\"cefarrjf87\" realname=\"Alex Chan\" tags=\"\" originalsecret=\"fea5d7a121\"
-      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
-      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53288601492_2f129641a9_s.jpg\"
+      height_l=\"768\" width_l=\"1024\" pathalias=\"\">\n\t\t<description>OLYMPUS
+      DIGITAL CAMERA         </description>\n\t</photo>\n\t<photo id=\"53288601492\"
+      secret=\"2f129641a9\" server=\"65535\" farm=\"66\" title=\"P6050615\" isprimary=\"0\"
+      ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"4\" safety_level=\"0\"
+      dateupload=\"1698410693\" datetaken=\"2023-06-05 12:37:08\" datetakengranularity=\"0\"
+      datetakenunknown=\"0\" ownername=\"cefarrjf87\" realname=\"Alex Chan\" count_views=\"8\"
+      count_comments=\"0\" tags=\"\" originalsecret=\"fea5d7a121\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53288601492_2f129641a9_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53288601492_2f129641a9_t.jpg\"
       height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53288601492_2f129641a9_m.jpg\"
       height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53288601492_2f129641a9.jpg\"
       height_m=\"375\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/53288601492_fea5d7a121_o.jpg\"
       height_o=\"3269\" width_o=\"4358\" url_q=\"https://live.staticflickr.com/65535/53288601492_2f129641a9_q.jpg\"
       height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/53288601492_2f129641a9_b.jpg\"
-      height_l=\"768\" width_l=\"1024\">\n\t\t<description>OLYMPUS DIGITAL CAMERA</description>\n\t</photo>\n\t<photo
-      id=\"53289942695\" secret=\"56270a7a0c\" server=\"65535\" farm=\"66\" title=\"IMG_4278\"
-      isprimary=\"0\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"4\" safety_level=\"0\"
-      dateupload=\"1698410400\" datetaken=\"2023-07-04 09:41:12\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" ownername=\"cefarrjf87\" realname=\"Alex Chan\" tags=\"\"
-      originalsecret=\"007c9de2ff\" originalformat=\"jpg\" latitude=\"0\" longitude=\"0\"
-      accuracy=\"0\" context=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53289942695_56270a7a0c_s.jpg\"
+      height_l=\"768\" width_l=\"1024\" pathalias=\"\">\n\t\t<description>OLYMPUS
+      DIGITAL CAMERA</description>\n\t</photo>\n\t<photo id=\"53289942695\" secret=\"56270a7a0c\"
+      server=\"65535\" farm=\"66\" title=\"IMG_4278\" isprimary=\"0\" ispublic=\"1\"
+      isfriend=\"0\" isfamily=\"0\" license=\"4\" safety_level=\"0\" dateupload=\"1698410400\"
+      datetaken=\"2023-07-04 09:41:12\" datetakengranularity=\"0\" datetakenunknown=\"0\"
+      ownername=\"cefarrjf87\" realname=\"Alex Chan\" count_views=\"6\" count_comments=\"0\"
+      tags=\"\" originalsecret=\"007c9de2ff\" originalformat=\"jpg\" latitude=\"0\"
+      longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\" media_status=\"ready\"
+      url_sq=\"https://live.staticflickr.com/65535/53289942695_56270a7a0c_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53289942695_56270a7a0c_t.jpg\"
       height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53289942695_56270a7a0c_m.jpg\"
       height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53289942695_56270a7a0c.jpg\"
       height_m=\"375\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/53289942695_007c9de2ff_o.jpg\"
       height_o=\"3024\" width_o=\"4032\" url_q=\"https://live.staticflickr.com/65535/53289942695_56270a7a0c_q.jpg\"
       height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/53289942695_56270a7a0c_b.jpg\"
-      height_l=\"768\" width_l=\"1024\">\n\t\t<description />\n\t</photo>\n\t<photo
+      height_l=\"768\" width_l=\"1024\" pathalias=\"\">\n\t\t<description />\n\t</photo>\n\t<photo
       id=\"53288590087\" secret=\"8b20ab0795\" server=\"65535\" farm=\"66\" title=\"IMG_5499\"
       isprimary=\"0\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"4\" safety_level=\"0\"
       dateupload=\"1698410400\" datetaken=\"2023-10-27 05:38:39\" datetakengranularity=\"0\"
-      datetakenunknown=\"1\" ownername=\"cefarrjf87\" realname=\"Alex Chan\" tags=\"\"
-      originalsecret=\"75a3191afa\" originalformat=\"jpg\" latitude=\"0\" longitude=\"0\"
-      accuracy=\"0\" context=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53288590087_8b20ab0795_s.jpg\"
+      datetakenunknown=\"1\" ownername=\"cefarrjf87\" realname=\"Alex Chan\" count_views=\"10\"
+      count_comments=\"0\" tags=\"\" originalsecret=\"75a3191afa\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53288590087_8b20ab0795_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53288590087_8b20ab0795_t.jpg\"
       height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53288590087_8b20ab0795_m.jpg\"
       height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53288590087_8b20ab0795.jpg\"
       height_m=\"375\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/53288590087_75a3191afa_o.jpg\"
       height_o=\"3024\" width_o=\"4032\" url_q=\"https://live.staticflickr.com/65535/53288590087_8b20ab0795_q.jpg\"
       height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/53288590087_8b20ab0795_b.jpg\"
-      height_l=\"768\" width_l=\"1024\">\n\t\t<description />\n\t</photo>\n\t<photo
+      height_l=\"768\" width_l=\"1024\" pathalias=\"\">\n\t\t<description />\n\t</photo>\n\t<photo
       id=\"53289132486\" secret=\"7a4a41230b\" server=\"65535\" farm=\"66\" title=\"IMG_5529\"
       isprimary=\"0\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"4\" safety_level=\"0\"
       dateupload=\"1698396795\" datetaken=\"2023-10-21 19:05:09\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" ownername=\"cefarrjf87\" realname=\"Alex Chan\" tags=\"\"
-      originalsecret=\"c59fde285e\" originalformat=\"jpg\" latitude=\"0\" longitude=\"0\"
-      accuracy=\"0\" context=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53289132486_7a4a41230b_s.jpg\"
+      datetakenunknown=\"0\" ownername=\"cefarrjf87\" realname=\"Alex Chan\" count_views=\"6\"
+      count_comments=\"0\" tags=\"\" originalsecret=\"c59fde285e\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53289132486_7a4a41230b_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53289132486_7a4a41230b_t.jpg\"
       height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53289132486_7a4a41230b_m.jpg\"
       height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53289132486_7a4a41230b.jpg\"
       height_m=\"375\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/53289132486_c59fde285e_o.jpg\"
       height_o=\"3024\" width_o=\"4032\" url_q=\"https://live.staticflickr.com/65535/53289132486_7a4a41230b_q.jpg\"
       height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/53289132486_7a4a41230b_b.jpg\"
-      height_l=\"768\" width_l=\"1024\">\n\t\t<description />\n\t</photo>\n\t<photo
+      height_l=\"768\" width_l=\"1024\" pathalias=\"\">\n\t\t<description />\n\t</photo>\n\t<photo
       id=\"53268016608\" secret=\"efcc4304ed\" server=\"65535\" farm=\"66\" title=\"IMG_4664\"
       isprimary=\"0\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"4\" safety_level=\"0\"
       dateupload=\"1697645772\" datetaken=\"2023-09-12 19:54:32\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" ownername=\"cefarrjf87\" realname=\"Alex Chan\" tags=\"\"
-      originalsecret=\"5b890124fd\" originalformat=\"jpg\" latitude=\"51.117108\"
-      longitude=\"-0.161308\" accuracy=\"16\" context=\"0\" place_id=\"\" woeid=\"2635933\"
-      geo_is_public=\"1\" geo_is_contact=\"0\" geo_is_friend=\"0\" geo_is_family=\"0\"
-      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53268016608_efcc4304ed_s.jpg\"
+      datetakenunknown=\"0\" ownername=\"cefarrjf87\" realname=\"Alex Chan\" count_views=\"13\"
+      count_comments=\"0\" tags=\"\" originalsecret=\"5b890124fd\" originalformat=\"jpg\"
+      latitude=\"51.117108\" longitude=\"-0.161308\" accuracy=\"16\" context=\"0\"
+      place_id=\"\" woeid=\"2635933\" geo_is_public=\"1\" geo_is_contact=\"0\" geo_is_friend=\"0\"
+      geo_is_family=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53268016608_efcc4304ed_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53268016608_efcc4304ed_t.jpg\"
       height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53268016608_efcc4304ed_m.jpg\"
       height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53268016608_efcc4304ed.jpg\"
       height_m=\"375\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/53268016608_5b890124fd_o.jpg\"
       height_o=\"3024\" width_o=\"4032\" url_q=\"https://live.staticflickr.com/65535/53268016608_efcc4304ed_q.jpg\"
       height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/53268016608_efcc4304ed_b.jpg\"
-      height_l=\"768\" width_l=\"1024\">\n\t\t<description />\n\t</photo>\n\t<photo
+      height_l=\"768\" width_l=\"1024\" pathalias=\"\">\n\t\t<description />\n\t</photo>\n\t<photo
       id=\"53268193920\" secret=\"8e603840d5\" server=\"65535\" farm=\"66\" title=\"IMG_5289\"
       isprimary=\"0\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"4\" safety_level=\"0\"
       dateupload=\"1697645622\" datetaken=\"2023-09-19 09:09:35\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" ownername=\"cefarrjf87\" realname=\"Alex Chan\" tags=\"\"
-      originalsecret=\"bc53c646c2\" originalformat=\"jpg\" latitude=\"0\" longitude=\"0\"
-      accuracy=\"0\" context=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53268193920_8e603840d5_s.jpg\"
+      datetakenunknown=\"0\" ownername=\"cefarrjf87\" realname=\"Alex Chan\" count_views=\"9\"
+      count_comments=\"0\" tags=\"\" originalsecret=\"bc53c646c2\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53268193920_8e603840d5_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53268193920_8e603840d5_t.jpg\"
       height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53268193920_8e603840d5_m.jpg\"
       height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53268193920_8e603840d5.jpg\"
       height_m=\"375\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/53268193920_bc53c646c2_o.jpg\"
       height_o=\"3024\" width_o=\"4032\" url_q=\"https://live.staticflickr.com/65535/53268193920_8e603840d5_q.jpg\"
       height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/53268193920_8e603840d5_b.jpg\"
-      height_l=\"768\" width_l=\"1024\">\n\t\t<description />\n\t</photo>\n\t<photo
+      height_l=\"768\" width_l=\"1024\" pathalias=\"\">\n\t\t<description />\n\t</photo>\n\t<photo
       id=\"53268037684\" secret=\"b1c920d47c\" server=\"65535\" farm=\"66\" title=\"IMG_5479\"
       isprimary=\"0\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"4\" safety_level=\"0\"
       dateupload=\"1697644438\" datetaken=\"2023-10-14 16:22:58\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" ownername=\"cefarrjf87\" realname=\"Alex Chan\" tags=\"\"
-      originalsecret=\"b54700b60e\" originalformat=\"jpg\" latitude=\"0\" longitude=\"0\"
-      accuracy=\"0\" context=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53268037684_b1c920d47c_s.jpg\"
+      datetakenunknown=\"0\" ownername=\"cefarrjf87\" realname=\"Alex Chan\" count_views=\"12\"
+      count_comments=\"0\" tags=\"\" originalsecret=\"b54700b60e\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53268037684_b1c920d47c_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53268037684_b1c920d47c_t.jpg\"
       height_t=\"100\" width_t=\"75\" url_s=\"https://live.staticflickr.com/65535/53268037684_b1c920d47c_m.jpg\"
       height_s=\"240\" width_s=\"180\" url_m=\"https://live.staticflickr.com/65535/53268037684_b1c920d47c.jpg\"
       height_m=\"500\" width_m=\"375\" url_o=\"https://live.staticflickr.com/65535/53268037684_b54700b60e_o.jpg\"
       height_o=\"3024\" width_o=\"4032\" url_q=\"https://live.staticflickr.com/65535/53268037684_b1c920d47c_q.jpg\"
       height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/53268037684_b1c920d47c_b.jpg\"
-      height_l=\"1024\" width_l=\"768\">\n\t\t<description />\n\t</photo>\n\t<photo
+      height_l=\"1024\" width_l=\"768\" pathalias=\"\">\n\t\t<description />\n\t</photo>\n\t<photo
       id=\"53255367525\" secret=\"e7571f7eb8\" server=\"65535\" farm=\"66\" title=\"IMG_5446\"
       isprimary=\"0\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"4\" safety_level=\"0\"
       dateupload=\"1697199518\" datetaken=\"2023-10-11 11:49:25\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" ownername=\"cefarrjf87\" realname=\"Alex Chan\" tags=\"\"
-      originalsecret=\"32bef03b8b\" originalformat=\"jpg\" latitude=\"0\" longitude=\"0\"
-      accuracy=\"0\" context=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53255367525_e7571f7eb8_s.jpg\"
+      datetakenunknown=\"0\" ownername=\"cefarrjf87\" realname=\"Alex Chan\" count_views=\"9\"
+      count_comments=\"0\" tags=\"\" originalsecret=\"32bef03b8b\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53255367525_e7571f7eb8_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53255367525_e7571f7eb8_t.jpg\"
       height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53255367525_e7571f7eb8_m.jpg\"
       height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53255367525_e7571f7eb8.jpg\"
       height_m=\"375\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/53255367525_32bef03b8b_o.jpg\"
       height_o=\"3024\" width_o=\"4032\" url_q=\"https://live.staticflickr.com/65535/53255367525_e7571f7eb8_q.jpg\"
       height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/53255367525_e7571f7eb8_b.jpg\"
-      height_l=\"768\" width_l=\"1024\">\n\t\t<description />\n\t</photo>\n\t<photo
+      height_l=\"768\" width_l=\"1024\" pathalias=\"\">\n\t\t<description />\n\t</photo>\n\t<photo
       id=\"53253120873\" secret=\"19ee565592\" server=\"65535\" farm=\"66\" title=\"P5120457\"
       isprimary=\"0\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"4\" safety_level=\"0\"
       dateupload=\"1697116697\" datetaken=\"2023-05-12 14:12:01\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" ownername=\"cefarrjf87\" realname=\"Alex Chan\" tags=\"\"
-      originalsecret=\"b864ec0fce\" originalformat=\"jpg\" latitude=\"0\" longitude=\"0\"
-      accuracy=\"0\" context=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53253120873_19ee565592_s.jpg\"
+      datetakenunknown=\"0\" ownername=\"cefarrjf87\" realname=\"Alex Chan\" count_views=\"14\"
+      count_comments=\"0\" tags=\"\" originalsecret=\"b864ec0fce\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53253120873_19ee565592_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53253120873_19ee565592_t.jpg\"
       height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53253120873_19ee565592_m.jpg\"
       height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53253120873_19ee565592.jpg\"
       height_m=\"375\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/53253120873_b864ec0fce_o.jpg\"
       height_o=\"3456\" width_o=\"4608\" url_q=\"https://live.staticflickr.com/65535/53253120873_19ee565592_q.jpg\"
       height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/53253120873_19ee565592_b.jpg\"
-      height_l=\"768\" width_l=\"1024\">\n\t\t<description>OLYMPUS DIGITAL CAMERA
-      \        </description>\n\t</photo>\n\t<photo id=\"53248015596\" secret=\"3a1aca7b35\"
-      server=\"65535\" farm=\"66\" title=\"IMG_6027\" isprimary=\"0\" ispublic=\"1\"
-      isfriend=\"0\" isfamily=\"0\" license=\"4\" safety_level=\"0\" dateupload=\"1696939706\"
-      datetaken=\"2023-10-10 05:08:21\" datetakengranularity=\"0\" datetakenunknown=\"1\"
-      ownername=\"cefarrjf87\" realname=\"Alex Chan\" tags=\"\" originalsecret=\"c03f8123cf\"
-      originalformat=\"jpg\" latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\"
-      media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53248015596_3a1aca7b35_s.jpg\"
+      height_l=\"768\" width_l=\"1024\" pathalias=\"\">\n\t\t<description>OLYMPUS
+      DIGITAL CAMERA         </description>\n\t</photo>\n\t<photo id=\"53248015596\"
+      secret=\"3a1aca7b35\" server=\"65535\" farm=\"66\" title=\"IMG_6027\" isprimary=\"0\"
+      ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"4\" safety_level=\"0\"
+      dateupload=\"1696939706\" datetaken=\"2023-10-10 05:08:21\" datetakengranularity=\"0\"
+      datetakenunknown=\"1\" ownername=\"cefarrjf87\" realname=\"Alex Chan\" count_views=\"13\"
+      count_comments=\"0\" tags=\"\" originalsecret=\"c03f8123cf\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53248015596_3a1aca7b35_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53248015596_3a1aca7b35_t.jpg\"
       height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53248015596_3a1aca7b35_m.jpg\"
       height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53248015596_3a1aca7b35.jpg\"
       height_m=\"375\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/53248015596_c03f8123cf_o.jpg\"
       height_o=\"3024\" width_o=\"4032\" url_q=\"https://live.staticflickr.com/65535/53248015596_3a1aca7b35_q.jpg\"
       height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/53248015596_3a1aca7b35_b.jpg\"
-      height_l=\"768\" width_l=\"1024\">\n\t\t<description />\n\t</photo>\n\t<photo
+      height_l=\"768\" width_l=\"1024\" pathalias=\"\">\n\t\t<description />\n\t</photo>\n\t<photo
       id=\"53248279408\" secret=\"1b1d3acb8e\" server=\"65535\" farm=\"66\" title=\"P9160753\"
       isprimary=\"0\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"4\" safety_level=\"0\"
       dateupload=\"1696938538\" datetaken=\"2023-09-16 11:12:07\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" ownername=\"cefarrjf87\" realname=\"Alex Chan\" tags=\"\"
-      originalsecret=\"c23cba9eb8\" originalformat=\"jpg\" latitude=\"0\" longitude=\"0\"
-      accuracy=\"0\" context=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53248279408_1b1d3acb8e_s.jpg\"
+      datetakenunknown=\"0\" ownername=\"cefarrjf87\" realname=\"Alex Chan\" count_views=\"11\"
+      count_comments=\"0\" tags=\"\" originalsecret=\"c23cba9eb8\" originalformat=\"jpg\"
+      latitude=\"0\" longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\"
+      media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53248279408_1b1d3acb8e_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53248279408_1b1d3acb8e_t.jpg\"
       height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53248279408_1b1d3acb8e_m.jpg\"
       height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53248279408_1b1d3acb8e.jpg\"
       height_m=\"375\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/53248279408_c23cba9eb8_o.jpg\"
       height_o=\"3456\" width_o=\"4608\" url_q=\"https://live.staticflickr.com/65535/53248279408_1b1d3acb8e_q.jpg\"
       height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/53248279408_1b1d3acb8e_b.jpg\"
-      height_l=\"768\" width_l=\"1024\">\n\t\t<description>OLYMPUS DIGITAL CAMERA</description>\n\t</photo>\n\t<photo
-      id=\"53301830817\" secret=\"00b2d600a1\" server=\"65535\" farm=\"66\" title=\"P9150176\"
-      isprimary=\"0\" ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" license=\"4\" safety_level=\"0\"
-      dateupload=\"1698853908\" datetaken=\"2023-09-15 09:45:53\" datetakengranularity=\"0\"
-      datetakenunknown=\"0\" ownername=\"cefarrjf87\" realname=\"Alex Chan\" tags=\"\"
-      originalsecret=\"03a411bc37\" originalformat=\"jpg\" latitude=\"0\" longitude=\"0\"
-      accuracy=\"0\" context=\"0\" media=\"photo\" media_status=\"ready\" url_sq=\"https://live.staticflickr.com/65535/53301830817_00b2d600a1_s.jpg\"
+      height_l=\"768\" width_l=\"1024\" pathalias=\"\">\n\t\t<description>OLYMPUS
+      DIGITAL CAMERA</description>\n\t</photo>\n\t<photo id=\"53301830817\" secret=\"00b2d600a1\"
+      server=\"65535\" farm=\"66\" title=\"P9150176\" isprimary=\"0\" ispublic=\"1\"
+      isfriend=\"0\" isfamily=\"0\" license=\"4\" safety_level=\"0\" dateupload=\"1698853908\"
+      datetaken=\"2023-09-15 09:45:53\" datetakengranularity=\"0\" datetakenunknown=\"0\"
+      ownername=\"cefarrjf87\" realname=\"Alex Chan\" count_views=\"8\" count_comments=\"0\"
+      tags=\"\" originalsecret=\"03a411bc37\" originalformat=\"jpg\" latitude=\"0\"
+      longitude=\"0\" accuracy=\"0\" context=\"0\" media=\"photo\" media_status=\"ready\"
+      url_sq=\"https://live.staticflickr.com/65535/53301830817_00b2d600a1_s.jpg\"
       height_sq=\"75\" width_sq=\"75\" url_t=\"https://live.staticflickr.com/65535/53301830817_00b2d600a1_t.jpg\"
       height_t=\"75\" width_t=\"100\" url_s=\"https://live.staticflickr.com/65535/53301830817_00b2d600a1_m.jpg\"
       height_s=\"180\" width_s=\"240\" url_m=\"https://live.staticflickr.com/65535/53301830817_00b2d600a1.jpg\"
       height_m=\"375\" width_m=\"500\" url_o=\"https://live.staticflickr.com/65535/53301830817_03a411bc37_o.jpg\"
       height_o=\"3456\" width_o=\"4608\" url_q=\"https://live.staticflickr.com/65535/53301830817_00b2d600a1_q.jpg\"
       height_q=\"150\" width_q=\"150\" url_l=\"https://live.staticflickr.com/65535/53301830817_00b2d600a1_b.jpg\"
-      height_l=\"768\" width_l=\"1024\">\n\t\t<description>OLYMPUS DIGITAL CAMERA
-      \        </description>\n\t</photo>\n</photoset>\n</rsp>\n"
+      height_l=\"768\" width_l=\"1024\" pathalias=\"\">\n\t\t<description>OLYMPUS
+      DIGITAL CAMERA         </description>\n\t</photo>\n</photoset>\n</rsp>\n"
     headers:
       Connection:
       - keep-alive
-      Content-Length:
-      - '2019'
       Content-Type:
       - text/xml; charset=utf-8
       Date:
-      - Sat, 18 Nov 2023 11:09:28 GMT
+      - Wed, 01 May 2024 08:40:45 GMT
+      Transfer-Encoding:
+      - chunked
       Via:
-      - 1.1 663e9700db88d7dfc36171ed7a7061bc.cloudfront.net (CloudFront)
+      - 1.1 37e34b9c40877c3dfcda3d91f889e98e.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - na8zzgNnli693-1XAj0_HDBHybeFfPNH7OldMf3p6tkJ9-CPneT3zw==
+      - KUASVAI9C56pJqXsTOk6up3H8bWpVLvxLKXvCMnvzNlmAcWmvi8NtQ==
       X-Amz-Cf-Pop:
-      - EZE50-P1
+      - LHR5-P1
       X-Cache:
       - Miss from cloudfront
       content-encoding:
       - gzip
       server:
-      - Apache/2.4.58 (Ubuntu)
+      - openresty
       set-cookie:
-      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
-        expires=Mon, 18-Dec-2023 11:09:28 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Fri, 31-May-2024 08:40:45 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Fri, 31-May-2024 08:40:45 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       vary:
       - Accept-Encoding
-      x-frame-options:
-      - SAMEORIGIN
+      x-flickr-api-request:
+      - Self=1-6632000d-477d588366df575b5f2ce164;Root=1-6632000d-424324c62bdbeaa9539dd1e5
       x-robots-tag:
       - noindex
+      x-server:
+      - serverless-proxy-10.78.10.17
     http_version: HTTP/1.1
     status_code: 200
 - request:
@@ -369,7 +280,7 @@ interactions:
       connection:
       - keep-alive
       cookie:
-      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
       host:
       - api.flickr.com
       user-agent:
@@ -395,89 +306,35 @@ interactions:
     headers:
       Connection:
       - keep-alive
-      Content-Length:
-      - '395'
       Content-Type:
       - text/xml; charset=utf-8
       Date:
-      - Sat, 18 Nov 2023 11:09:28 GMT
+      - Wed, 01 May 2024 08:40:46 GMT
+      Transfer-Encoding:
+      - chunked
       Via:
-      - 1.1 663e9700db88d7dfc36171ed7a7061bc.cloudfront.net (CloudFront)
+      - 1.1 37e34b9c40877c3dfcda3d91f889e98e.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - vFti0FURKL3gFd-TvRfRg_Q99MhZo6Maskdz-ZiafQL1s-tSE9J_Tg==
+      - -PzC1TtYeFH9wDDFtXQyxvW_xXphfHwfAx5ba-bOmasGI9B3qiSlvw==
       X-Amz-Cf-Pop:
-      - EZE50-P1
+      - LHR5-P1
       X-Cache:
       - Miss from cloudfront
       content-encoding:
       - gzip
       server:
-      - Apache/2.4.58 (Ubuntu)
+      - openresty
       set-cookie:
-      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
-        expires=Mon, 18-Dec-2023 11:09:28 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Fri, 31-May-2024 08:40:45 GMT; Max-Age=2592000; path=/; domain=.flickr.com
       vary:
       - Accept-Encoding
-      x-frame-options:
-      - SAMEORIGIN
+      x-flickr-api-request:
+      - Self=1-6632000d-19d3c1587321e63750f4ab7c;Root=1-6632000d-1cc4513d6908de8c104dd55a
       x-robots-tag:
       - noindex
-    http_version: HTTP/1.1
-    status_code: 200
-- request:
-    body: ''
-    headers:
-      accept:
-      - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
-      - keep-alive
-      cookie:
-      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D
-      host:
-      - api.flickr.com
-      user-agent:
-      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
-    method: GET
-    uri: https://api.flickr.com/services/rest/?method=flickr.photosets.getInfo&photoset_id=72177720311959907&user_id=199246608%40N02
-  response:
-    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<photoset
-      id=\"72177720311959907\" owner=\"199246608@N02\" username=\"cefarrjf87\" primary=\"53253175319\"
-      secret=\"b4a4297abf\" server=\"65535\" farm=\"66\" count_views=\"1\" count_comments=\"0\"
-      count_photos=\"15\" count_videos=\"0\" can_comment=\"0\" date_create=\"1697466303\"
-      date_update=\"1698854230\" photos=\"15\" visibility_can_see_set=\"1\" needs_interstitial=\"0\">\n\t<title>my
-      first album</title>\n\t<description />\n</photoset>\n</rsp>\n"
-    headers:
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '318'
-      Content-Type:
-      - text/xml; charset=utf-8
-      Date:
-      - Sat, 18 Nov 2023 11:09:28 GMT
-      Via:
-      - 1.1 663e9700db88d7dfc36171ed7a7061bc.cloudfront.net (CloudFront)
-      X-Amz-Cf-Id:
-      - v1JH7QwprIEp8i3eBZaz3Pppw9iW-IGNhbdC8xMV0VzrktmuaFAZYg==
-      X-Amz-Cf-Pop:
-      - EZE50-P1
-      X-Cache:
-      - Miss from cloudfront
-      content-encoding:
-      - gzip
-      server:
-      - Apache/2.4.58 (Ubuntu)
-      set-cookie:
-      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
-        expires=Mon, 18-Dec-2023 11:09:28 GMT; Max-Age=2592000; path=/; domain=.flickr.com
-      vary:
-      - Accept-Encoding
-      x-frame-options:
-      - SAMEORIGIN
-      x-robots-tag:
-      - noindex
+      x-server:
+      - serverless-proxy-10.78.10.17
     http_version: HTTP/1.1
     status_code: 200
 version: 1
