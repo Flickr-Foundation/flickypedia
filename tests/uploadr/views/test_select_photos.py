@@ -108,7 +108,7 @@ def test_shows_correct_description(
     assert description_elem.getText().strip() == description  # type: ignore
 
     # Check there's at least one photo in the list.
-    assert len(soup.find("ul", attrs={"class": "photoslist"}).find_all("li")) > 1  # type: ignore
+    assert len(soup.find("ul", attrs={"class": "photoslist"}).find_all("li")) >= 1  # type: ignore
 
 
 def test_gets_album_on_flickr(

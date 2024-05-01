@@ -240,7 +240,7 @@ class TestCreateLocationStatement:
             statement["mainsnak"]["property"] == "P1259" for statement in sdc["claims"]
         )
 
-    def test_includes_location_statement_if_photo_has_location_data(self) -> None:
+    def test_includes_location_statement_if_photo_has_location_data(self, flickr_api: FlickrApi) -> None:
         data = get_typed_fixture(
             path="flickr_api/single_photo-52994452213.json", model=SinglePhotoData
         )
