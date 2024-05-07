@@ -6,6 +6,7 @@ from authlib.integrations.httpx_client import OAuth2Client
 import click
 from flickr_photos_api import FlickrApi
 import httpx
+import keyring
 import termcolor
 
 from flickypedia.apis.wikimedia import get_filename_from_url, WikimediaApi
@@ -103,8 +104,6 @@ def update_single_file(url: str) -> None:
         raise click.UsageError(
             f"Expected a URL like https://commons.wikimedia.org/wiki/File:<filename>, got {url!r}"
         )
-
-    import keyring
 
     flickr_api = FlickrApi(
         api_key=keyring.get_password("flickr_api", "key"),
