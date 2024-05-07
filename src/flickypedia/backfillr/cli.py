@@ -206,4 +206,3 @@ def update_multiple_files(flickr_id_spreadsheet: str, n: int) -> None:
 
             with open("seen_filenames.txt", "a") as of:
                 of.write(filename + "\n")
-            break
