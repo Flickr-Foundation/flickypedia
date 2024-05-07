@@ -2,27 +2,20 @@ import csv
 import re
 
 import click
-import httpx
 import tqdm
 
-from flickypedia.backfillr.flickr_matcher import (
-    AmbiguousStructuredData,
-    find_flickr_photo_id_from_sdc,
-)
 from flickypedia.apis.snapshots import parse_sdc_snapshot
-from flickypedia.apis.wikimedia import WikimediaApi
+from .matcher import find_matched_photos
 
 
-@click.group(
-    help="Get information about Flickr photos on WMC",
-)
+@click.group(help="Get information about Flickr photos on WMC")
 def extractr() -> None:
     pass
 
 
 @extractr.command(help="Get a list of Flickr photos on Commons.")
 @click.argument("SNAPSHOT_PATH")
-def get_list_of_photos(snapshot_path: str) -> None:
+def get_photos_from_sdc(snapshot_path: str) -> None:
     # The name of the snapshot is something like:
     #
     #     commons-20231009-mediainfo.json.bz2
@@ -35,43 +28,18 @@ def get_list_of_photos(snapshot_path: str) -> None:
     else:
         csv_path = f"flickr_ids_from_sdc.{date_match.group(1)}.csv"
 
-    api = WikimediaApi(client=httpx.Client())
-
-    with open(csv_path, "w") as out_file:
+    # Note: this snapshot takes a long time to rebuild, so we open it in mode `x`.
+    # This means the CLI will refuse to overwrite an already-created spreadsheet.
+    with open(csv_path, "x") as out_file:
         writer = csv.DictWriter(
             out_file,
             fieldnames=["flickr_photo_id", "wikimedia_page_id", "wikimedia_page_title"],
         )
         writer.writeheader()
 
-        for entry in tqdm.tqdm(parse_sdc_snapshot(snapshot_path)):
-            try:
-                flickr_photo_id = find_flickr_photo_id_from_sdc(sdc=entry["statements"])
-            except AmbiguousStructuredData:
-                fresh_sdc = api.get_structured_data(
-                    filename=entry["title"].replace("File:", "")
-                )
+        entries = tqdm.tqdm(parse_sdc_snapshot(snapshot_path))
 
-                try:
-                    flickr_photo_id = find_flickr_photo_id_from_sdc(sdc=fresh_sdc)
-                except AmbiguousStructuredData as exc:
-                    print(
-                        f'Ambiguity in https://commons.wikimedia.org/?curid={entry["pageid"]}: {exc}'
-                    )
-                    continue
-            except Exception:
-                import json
-
-                print(json.dumps(entry["statements"]))
-                raise
-
-            if flickr_photo_id is not None:
-                writer.writerow(
-                    {
-                        "flickr_photo_id": flickr_photo_id,
-                        "wikimedia_page_id": entry["id"],
-                        "wikimedia_page_title": entry["title"],
-                    }
-                )
+        for m in find_matched_photos(entries):
+            writer.writerow(m)
 
     print(csv_path)
