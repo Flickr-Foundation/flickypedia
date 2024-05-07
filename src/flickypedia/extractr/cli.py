@@ -39,7 +39,7 @@ def get_photos_from_sdc(snapshot_path: str) -> None:
 
         entries = tqdm.tqdm(parse_sdc_snapshot(snapshot_path))
 
-        for m in find_matched_photos(entries):
+        for m in find_matched_photos(entries):  # type: ignore
             writer.writerow(m)
 
     print(csv_path)
