@@ -186,13 +186,6 @@ def update_multiple_files(flickr_id_spreadsheet: str, n: int) -> None:
         ),
     )
 
-#     try:
-#         seen_filenames = set(line.strip() for line in open("seen_filenames.txt"))
-#     except FileNotFoundError:
-#         seen_filenames = set()
-#
-#     updates = 0
-
     with concurrent.futures.ThreadPoolExecutor() as executor:
         futures = {
             executor.submit(backfillr.update_file, filename=filename): filename
