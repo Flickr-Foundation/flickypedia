@@ -1,4 +1,7 @@
+from collections.abc import Iterator
+import concurrent.futures
 import csv
+import itertools
 import json
 import os
 import sys
@@ -11,7 +14,10 @@ import keyring
 import termcolor
 
 from flickypedia.apis.wikimedia import get_filename_from_url, WikimediaApi
-from flickypedia.apis.structured_data import create_flickr_photo_id_statement, create_sdc_claims_for_existing_flickr_photo
+from flickypedia.apis.structured_data import (
+    create_flickr_photo_id_statement,
+    create_sdc_claims_for_existing_flickr_photo,
+)
 from flickypedia.types.structured_data import ExistingClaims
 from .actions import create_actions
 from .flickr_matcher import (
@@ -54,11 +60,13 @@ class Backfillr:
             return
 
         try:
-            single_photo = self.flickr_api.get_single_photo(photo_id=flickr_id["photo_id"])
+            single_photo = self.flickr_api.get_single_photo(
+                photo_id=flickr_id["photo_id"]
+            )
             new_sdc = create_sdc_claims_for_existing_flickr_photo(single_photo)
         except ResourceNotFound:
             new_sdc = {
-                'claims': [
+                "claims": [
                     create_flickr_photo_id_statement(photo_id=flickr_id["photo_id"])
                 ]
             }
@@ -68,11 +76,18 @@ class Backfillr:
         claims = []
         affected_properties = []
 
+        print("")
+        print(filename)
         for a in actions:
             if a["action"] == "unknown":
                 print(a["property_id"], "\t", termcolor.colored(a["action"], "red"))
                 with open("unknown.json", "a") as outfile:
-                    outfile.write(json.dumps({"filename": filename, "property_id": a["property_id"]}) + "\n")
+                    outfile.write(
+                        json.dumps(
+                            {"filename": filename, "property_id": a["property_id"]}
+                        )
+                        + "\n"
+                    )
             else:
                 print(a["property_id"], "\t", a["action"])
 
@@ -131,6 +146,28 @@ def update_single_file(url: str) -> None:
     backfillr.update_file(filename=filename)
 
 
+def get_filenames_to_process(csv_path: str) -> Iterator[str]:
+    """
+    Get a list of filenames that we should attempt to process.
+
+    This function keeps track of which filenames have already been checked,
+    to reduce duplicate work.
+    """
+    try:
+        seen_filenames = set(line.strip() for line in open("seen_filenames.txt"))
+    except FileNotFoundError:
+        seen_filenames = set()
+
+    with open(csv_path) as in_file:
+        for row in csv.DictReader(in_file):
+            filename = row["wikimedia_page_title"].replace("File:", "")
+
+            if filename in seen_filenames:
+                continue
+
+            yield filename
+
+
 @backfillr.command(help="Fix the SDC for multiple files")
 @click.argument("FLICKR_ID_SPREADSHEET")
 @click.argument("N")
@@ -149,28 +186,24 @@ def update_multiple_files(flickr_id_spreadsheet: str, n: int) -> None:
         ),
     )
 
-    try:
-        seen_filenames = set(line.strip() for line in open('seen_filenames.txt'))
-    except FileNotFoundError:
-        seen_filenames = set()
+#     try:
+#         seen_filenames = set(line.strip() for line in open("seen_filenames.txt"))
+#     except FileNotFoundError:
+#         seen_filenames = set()
+#
+#     updates = 0
 
-    updates = 0
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        futures = {
+            executor.submit(backfillr.update_file, filename=filename): filename
+            for filename in itertools.islice(
+                get_filenames_to_process(flickr_id_spreadsheet), int(n)
+            )
+        }
 
-    with open(flickr_id_spreadsheet) as in_file:
-        for row in csv.DictReader(in_file):
-            filename = row['wikimedia_page_title'].replace('File:', '')
+        for fut in concurrent.futures.as_completed(futures):
+            filename = futures[fut]
 
-            if filename in seen_filenames:
-                continue
-
-            print(filename)
-            backfillr.update_file(filename=filename)
-            print("")
-
-            with open('seen_filenames.txt', 'a') as of:
-                updates += 1
-                of.write(filename + '\n')
-
-            if updates >= int(n):
-                print(f"Completed {updates} updates, exiting")
-                break
+            with open("seen_filenames.txt", "a") as of:
+                of.write(filename + "\n")
+            break
