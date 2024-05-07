@@ -803,11 +803,9 @@ class WikimediaApi:
         """
         self._post(
             data={
-                "action": "edit",
+                "action": "purge",
                 "site": "commonswiki",
                 "title": f"File:{filename}",
-                "nocreate": "true",
-                "summary": "Flickypedia edit (null edit; force re-render of {{Information}} template with new structured data)",
-                "appendtext": "\n<!-- Null edit to force re-render of {{Information}} template -->",
+                "summary": "Flickypedia edit (purge to force re-render of {{Information}} template with new structured data)",
             }
         )
