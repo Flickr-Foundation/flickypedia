@@ -155,6 +155,24 @@ def find_flickr_photo_id_from_wikitext(
     return None
 
 
+def get_qualifiers(statement: ExistingStatement, *, property_id: str) -> list[Snak]:
+    """
+    A statement can have qualifiers:
+
+        statement: {
+            qualifiers: Qualifiers
+            ...
+        }
+
+    This function returns all the qualifiers for a property ID.
+    """
+    qualifiers = statement.get("qualifiers", {})
+
+    snak_list = qualifiers.get(property_id, [])
+
+    return snak_list
+
+
 def get_single_qualifier(
     statement: ExistingStatement, *, property_id: str
 ) -> Snak | None:
@@ -165,6 +183,8 @@ def get_single_qualifier(
             qualifiers: Qualifiers
             ...
         }
+
+    This function returns all the qualifiers for a property ID.
 
     In most cases, there's exactly one Snak per property ID, e.g.
 
@@ -181,19 +201,17 @@ def get_single_qualifier(
     If there are no Snaks (this property isn't used as a qualifier) or
     there are multiple Snaks for a property, it returns ``None``.
     """
-    qualifiers = statement.get("qualifiers", {})
+    qualifiers = get_qualifiers(statement, property_id=property_id)
 
-    snak_list = qualifiers.get(property_id, [])
-
-    if len(snak_list) == 0:
+    if len(qualifiers) == 0:
         return None
 
-    if len(snak_list) != 1:
+    if len(qualifiers) != 1:
         raise AmbiguousStructuredData(
             f"Unexpected multiple qualifiers in {statement['id']}"
         )
 
-    return snak_list[0]
+    return qualifiers[0]
 
 
 class AmbiguousStructuredData(Exception):
@@ -224,12 +242,12 @@ def find_flickr_urls_in_sdc(sdc: ExistingClaims) -> list[tuple[str, ParseResult]
 
         # Now look at the "URL" and "Published at" qualifiers.  Either of
         # them could contain a Flickr URL.
-        url = get_single_qualifier(statement, property_id=WikidataProperties.Url)
-        published_at = get_single_qualifier(
+        urls = get_qualifiers(statement, property_id=WikidataProperties.Url)
+        published_at = get_qualifiers(
             statement, property_id=WikidataProperties.DescribedAtUrl
         )
 
-        for u in (url, published_at):
+        for u in urls + published_at:
             if u is None:
                 continue
 

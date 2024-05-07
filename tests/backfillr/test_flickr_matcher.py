@@ -285,7 +285,7 @@ def test_ambiguous_qualifier_is_error() -> None:
         find_flickr_photo_id_from_sdc(sdc)
 
 
-def test_it_works() -> None:
+def test_it_handles_a_some_value_string() -> None:
     # M52096071 = Alexander Isak (training 2016, cropped 1).jpg
     # Retrieved 7 May 2024
     #
@@ -294,5 +294,16 @@ def test_it_works() -> None:
     # but it was breaking some code that expected there to be a datavalue
     # there instead.
     sdc = get_statement_fixture("M52096071_P7482.json")
+
+    assert find_flickr_photo_id_from_sdc(sdc) is None
+
+
+def test_handles_multiple_described_at_urls() -> None:
+    # M113422 = RMS Lusitania deck plans.jpg
+    # Retrieved 7 May 2024
+    #
+    # This has multiple instances of the P973 qualifier, but none of them
+    # are Flickr URLs so we don't actually care about them.
+    sdc = get_statement_fixture("M113422_P7482.json")
 
     assert find_flickr_photo_id_from_sdc(sdc) is None
