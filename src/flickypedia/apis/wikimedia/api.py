@@ -380,6 +380,7 @@ class WikimediaApi:
                 "summary": summary,
                 "tags": "BotSDC",
                 "maxlag": "2",
+                "bot": "1",
             }
         )
 
