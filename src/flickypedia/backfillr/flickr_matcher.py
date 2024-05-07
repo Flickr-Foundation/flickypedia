@@ -219,7 +219,7 @@ def find_flickr_urls_in_sdc(sdc: ExistingClaims) -> list[tuple[str, ParseResult]
 
         flickr = to_wikidata_entity_value(entity_id=WikidataEntities.Flickr)
 
-        if operator is not None and operator["datavalue"] != flickr:
+        if operator is not None and operator.get("datavalue") != flickr:
             continue
 
         # Now look at the "URL" and "Published at" qualifiers.  Either of

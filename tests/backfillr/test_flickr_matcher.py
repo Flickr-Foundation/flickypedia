@@ -283,3 +283,16 @@ def test_ambiguous_qualifier_is_error() -> None:
 
     with pytest.raises(AmbiguousStructuredData):
         find_flickr_photo_id_from_sdc(sdc)
+
+
+def test_it_works() -> None:
+    # M52096071 = Alexander Isak (training 2016, cropped 1).jpg
+    # Retrieved 7 May 2024
+    #
+    # The "source of file" field has an "Operator" qualifier which is
+    # just the string value "some value".  I'm fairly sure this is a bug,
+    # but it was breaking some code that expected there to be a datavalue
+    # there instead.
+    sdc = get_statement_fixture("M52096071_P7482.json")
+
+    assert find_flickr_photo_id_from_sdc(sdc) is None
