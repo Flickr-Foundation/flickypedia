@@ -53,6 +53,7 @@ cryptography==41.0.5
     # via
     #   -r requirements.txt
     #   authlib
+    #   secretstorage
 flake8==6.1.0
     # via -r dev_requirements.in
 flask==2.3.3
@@ -73,6 +74,10 @@ flickr-url-parser==1.8.3
     # via
     #   -r requirements.txt
     #   flickr-photos-api
+greenlet==3.0.3
+    # via
+    #   -r requirements.txt
+    #   sqlalchemy
 gunicorn==21.2.0
     # via -r requirements.txt
 h11==0.14.0
@@ -110,6 +115,11 @@ jaraco-classes==3.3.0
     # via
     #   -r requirements.txt
     #   keyring
+jeepney==0.8.0
+    # via
+    #   -r requirements.txt
+    #   keyring
+    #   secretstorage
 jinja2==3.1.2
     # via
     #   -r requirements.txt
@@ -178,6 +188,10 @@ pytest-cov==4.1.0
     # via -r dev_requirements.in
 pyyaml==6.0.1
     # via vcrpy
+secretstorage==3.3.3
+    # via
+    #   -r requirements.txt
+    #   keyring
 silver-nitrate==1.1.0
     # via
     #   -r requirements.txt
@@ -199,7 +213,7 @@ tenacity==8.2.3
     # via
     #   -r requirements.txt
     #   flickr-photos-api
-tqdm==4.66.1
+tqdm==4.66.4
     # via
     #   -r dev_requirements.in
     #   -r requirements.txt
