@@ -3,7 +3,6 @@ import typing
 from flickypedia.apis.structured_data.wikidata import WikidataProperties
 from flickypedia.types.structured_data import (
     ExistingClaims,
-    ExistingStatement,
     NewClaims,
     NewStatement,
 )
@@ -11,6 +10,7 @@ from .comparisons import (
     are_equivalent_qualifiers,
     are_equivalent_snaks,
     are_equivalent_statements,
+    has_subset_of_new_qualifiers,
 )
 
 
@@ -45,28 +45,6 @@ class Unknown(typing.TypedDict):
 
 
 Action = DoNothing | AddMissing | AddQualifiers | ReplaceStatement | Unknown
-
-
-def has_subset_of_new_qualifiers(
-    existing_statement: ExistingStatement, new_statement: NewStatement
-) -> bool:
-    for property_id, existing_qualifier_list in existing_statement.get(
-        "qualifiers", {}
-    ).items():
-        try:
-            new_qualifier_list = new_statement["qualifiers"][property_id]
-            assert len(new_qualifier_list) == 1
-            new_qualifier = new_qualifier_list[0]
-        except KeyError:
-            return False
-
-        if not any(
-            are_equivalent_snaks(existing_qualifier, new_qualifier)
-            for existing_qualifier in existing_qualifier_list
-        ):
-            return False
-
-    return True
 
 
 def create_actions(existing_sdc: ExistingClaims, new_sdc: NewClaims) -> list[Action]:

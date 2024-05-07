@@ -174,3 +174,33 @@ def are_equivalent_statements(
     )
 
     return qualifiers_match and main_snaks_match
+
+
+def has_subset_of_new_qualifiers(
+    existing_statement: ExistingStatement, new_statement: NewStatement
+) -> bool:
+    """
+    Returns True if the existing statement has all the qualifiers of the
+    new statement.
+
+    There are some cases where the file on Wikimedia Commons has more
+    qualifiers than we use; we don't care about their value and just want
+    to compare the values of the qualifiers we set.
+    """
+    existing_qualifiers = existing_statement.get("qualifiers", {})
+
+    for property_id, existing_qualifier_list in existing_qualifiers.items():
+        try:
+            new_qualifier_list = new_statement["qualifiers"][property_id]
+            assert len(new_qualifier_list) == 1
+            new_qualifier = new_qualifier_list[0]
+        except KeyError:
+            return False
+
+        if not any(
+            are_equivalent_snaks(existing_qualifier, new_qualifier)
+            for existing_qualifier in existing_qualifier_list
+        ):
+            return False
+
+    return True
