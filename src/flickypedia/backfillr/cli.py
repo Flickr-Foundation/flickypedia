@@ -43,7 +43,7 @@ class Backfillr:
         if find_result is not None:
             return find_result
 
-        wikitext = self.wikimedia_api.get_wikitext(filename)
+        wikitext = self.wikimedia_api.get_wikitext(filename=f"File:{filename}")
 
         find_result = find_flickr_photo_id_from_wikitext(
             wikitext, filename=f"File:{filename}"
