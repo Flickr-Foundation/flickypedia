@@ -657,3 +657,74 @@ def test_a_creator_is_replaced_if_numeric_id_in_alias() -> None:
             "statement": new_statement,
         }
     ]
+
+
+def test_it_does_nothing_for_mismatched_creator() -> None:
+    """
+    This is a regression test based on the following file:
+    https://commons.wikimedia.org/wiki/File:Neasden_Temple_-_Shree_Swaminarayan_Hindu_Mandir_-_Power_Plant.jpg
+
+    The existing P170 statement has a Wikidata entity, which we don't
+    know how to handle, so we should do nothing.
+    """
+    existing_sdc: ExistingClaims = {
+        "P170": [
+            {
+                "type": "statement",
+                "mainsnak": {
+                    "property": "P170",
+                    "snaktype": "value",
+                    "datavalue": {
+                        "type": "wikibase-entityid",
+                        "value": {
+                            "entity-type": "item",
+                            "id": "Q5006102",
+                            "numeric-id": 5006102,
+                        },
+                    },
+                    "hash": "f83b12bd22b4f4bec06e037dd57b559aa735fae7",
+                },
+                "id": "M227302$155FEB72-8819-4DCD-ACF6-AD5D5A1ED3A6",
+                "rank": "normal",
+            }
+        ],
+    }
+    new_sdc: NewClaims = {
+        "claims": [
+            {
+                "mainsnak": {"snaktype": "somevalue", "property": "P170"},
+                "qualifiers": {
+                    "P2093": [
+                        {
+                            "datavalue": {"value": "CGP Grey", "type": "string"},
+                            "property": "P2093",
+                            "snaktype": "value",
+                        }
+                    ],
+                    "P2699": [
+                        {
+                            "datavalue": {
+                                "value": "https://www.flickr.com/people/cgpgrey/",
+                                "type": "string",
+                            },
+                            "property": "P2699",
+                            "snaktype": "value",
+                        }
+                    ],
+                    "P3267": [
+                        {
+                            "datavalue": {"value": "52890443@N02", "type": "string"},
+                            "property": "P3267",
+                            "snaktype": "value",
+                        }
+                    ],
+                },
+                "qualifiers-order": ["P3267", "P2093", "P2699"],
+                "type": "statement",
+            }
+        ]
+    }
+
+    assert create_actions(existing_sdc, new_sdc) == [
+        {"action": "unknown", "property_id": "P170"}
+    ]

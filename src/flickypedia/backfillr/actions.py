@@ -138,6 +138,7 @@ def create_actions(existing_sdc: ExistingClaims, new_sdc: NewClaims) -> list[Act
             # fmt: off
             if (
                 property_id == WikidataProperties.Creator
+                and "qualifiers-order" in statement
                 and set(statement["qualifiers-order"]) == set(new_statement["qualifiers-order"])
                 and are_equivalent_snaks(statement["mainsnak"], new_statement["mainsnak"])
                 and are_equivalent_qualifiers(
