@@ -18,7 +18,7 @@ beautifulsoup4==4.12.2
     # via
     #   -r requirements.txt
     #   bs4
-black==23.10.0
+black==24.4.2
     # via -r dev_requirements.in
 blinker==1.7.0
     # via

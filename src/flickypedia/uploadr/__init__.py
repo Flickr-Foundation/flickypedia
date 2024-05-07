@@ -133,9 +133,9 @@ def create_app(
     app.jinja_env.filters["wikidata_date"] = render_wikidata_date
 
     app.jinja_env.filters["bot_comment_text"] = create_bot_comment_text
-    app.jinja_env.filters[
-        "default_user_comment_text"
-    ] = create_default_user_comment_text
+    app.jinja_env.filters["default_user_comment_text"] = (
+        create_default_user_comment_text
+    )
     app.jinja_env.filters["buddy_icon"] = buddy_icon
 
     # Compile the CSS.  If we're running in debug mode, rebuild it on
