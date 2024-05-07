@@ -213,7 +213,7 @@ tenacity==8.2.3
     # via
     #   -r requirements.txt
     #   flickr-photos-api
-tqdm==4.66.1
+tqdm==4.66.4
     # via
     #   -r dev_requirements.in
     #   -r requirements.txt
