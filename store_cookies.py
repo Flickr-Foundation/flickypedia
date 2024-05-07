@@ -1,6 +1,7 @@
 """
 Store some cookies for FlickypediaBackfillrBot to use.
 """
+
 import json
 
 import keyring
@@ -8,9 +9,9 @@ import pywikibot
 from pywikibot.comms.http import PywikibotCookieJar
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     site = pywikibot.Site("commons", "commons")
-    site.login(user='FlickypediaBackfillrBot')
+    site.login(user="FlickypediaBackfillrBot")
 
     cookie_jar = PywikibotCookieJar()
 

@@ -1,16 +1,17 @@
+import csv
 import json
 import os
 import sys
 
 from authlib.integrations.httpx_client import OAuth2Client
 import click
-from flickr_photos_api import FlickrApi
+from flickr_photos_api import FlickrApi, ResourceNotFound
 import httpx
 import keyring
 import termcolor
 
 from flickypedia.apis.wikimedia import get_filename_from_url, WikimediaApi
-from flickypedia.apis.structured_data import create_sdc_claims_for_existing_flickr_photo
+from flickypedia.apis.structured_data import create_flickr_photo_id_statement, create_sdc_claims_for_existing_flickr_photo
 from flickypedia.types.structured_data import ExistingClaims
 from .actions import create_actions
 from .flickr_matcher import (
@@ -31,7 +32,6 @@ class Backfillr:
         existing_sdc: ExistingClaims,
         filename: str,
     ) -> FindResult | None:
-
         find_result = find_flickr_photo_id_from_sdc(existing_sdc)
 
         if find_result is not None:
@@ -53,9 +53,16 @@ class Backfillr:
             print(f"Unable to find Flickr ID for {filename}", file=sys.stderr)
             return
 
-        single_photo = self.flickr_api.get_single_photo(photo_id=flickr_id["photo_id"])
+        try:
+            single_photo = self.flickr_api.get_single_photo(photo_id=flickr_id["photo_id"])
+            new_sdc = create_sdc_claims_for_existing_flickr_photo(single_photo)
+        except ResourceNotFound:
+            new_sdc = {
+                'claims': [
+                    create_flickr_photo_id_statement(photo_id=flickr_id["photo_id"])
+                ]
+            }
 
-        new_sdc = create_sdc_claims_for_existing_flickr_photo(single_photo)
         actions = create_actions(existing_sdc, new_sdc)
 
         claims = []
@@ -64,6 +71,8 @@ class Backfillr:
         for a in actions:
             if a["action"] == "unknown":
                 print(a["property_id"], "\t", termcolor.colored(a["action"], "red"))
+                with open("unknown.json", "a") as outfile:
+                    outfile.write(json.dumps({"filename": filename, "property_id": a["property_id"]}) + "\n")
             else:
                 print(a["property_id"], "\t", a["action"])
 
@@ -120,3 +129,48 @@ def update_single_file(url: str) -> None:
     )
 
     backfillr.update_file(filename=filename)
+
+
+@backfillr.command(help="Fix the SDC for multiple files")
+@click.argument("FLICKR_ID_SPREADSHEET")
+@click.argument("N")
+def update_multiple_files(flickr_id_spreadsheet: str, n: int) -> None:
+    flickr_api = FlickrApi(
+        api_key=keyring.get_password("flickr_api", "key"),
+        user_agent="Alex Chan's personal scripts <alex@alexwlchan.net>",
+    )
+
+    backfillr = Backfillr(
+        flickr_api=flickr_api,
+        wikimedia_api=WikimediaApi(
+            client=httpx.Client(
+                cookies=json.loads(keyring.get_password("flickypedia", "cookies"))
+            )
+        ),
+    )
+
+    try:
+        seen_filenames = set(line.strip() for line in open('seen_filenames.txt'))
+    except FileNotFoundError:
+        seen_filenames = set()
+
+    updates = 0
+
+    with open(flickr_id_spreadsheet) as in_file:
+        for row in csv.DictReader(in_file):
+            filename = row['wikimedia_page_title'].replace('File:', '')
+
+            if filename in seen_filenames:
+                continue
+
+            print(filename)
+            backfillr.update_file(filename=filename)
+            print("")
+
+            with open('seen_filenames.txt', 'a') as of:
+                updates += 1
+                of.write(filename + '\n')
+
+            if updates >= int(n):
+                print(f"Completed {updates} updates, exiting")
+                break
