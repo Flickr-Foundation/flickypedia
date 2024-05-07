@@ -115,6 +115,14 @@ jaraco-classes==3.3.0
     # via
     #   -r requirements.txt
     #   keyring
+jaraco-context==5.3.0
+    # via
+    #   -r requirements.txt
+    #   keyring
+jaraco-functools==4.0.1
+    # via
+    #   -r requirements.txt
+    #   keyring
 jeepney==0.8.0
     # via
     #   -r requirements.txt
@@ -124,7 +132,7 @@ jinja2==3.1.2
     # via
     #   -r requirements.txt
     #   flask
-keyring==24.3.0
+keyring==25.2.0
     # via -r requirements.txt
 libsass==0.22.0
     # via -r requirements.txt
@@ -141,6 +149,7 @@ more-itertools==10.1.0
     # via
     #   -r requirements.txt
     #   jaraco-classes
+    #   jaraco-functools
 multidict==6.0.4
     # via yarl
 mypy==1.6.1
