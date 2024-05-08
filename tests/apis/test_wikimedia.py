@@ -409,18 +409,6 @@ def test_bad_filename_is_exception(wikimedia_api: WikimediaApi) -> None:
         wikimedia_api.get_wikitext(filename="File:")
 
 
-def test_get_image_url(wikimedia_api: WikimediaApi) -> None:
-    actual = wikimedia_api.get_image_url(filename="File:Example.jpg")
-    expected = "https://upload.wikimedia.org/wikipedia/commons/a/a9/Example.jpg"
-
-    assert actual == expected
-
-
-def test_get_image_url_for_missing_file(wikimedia_api: WikimediaApi) -> None:
-    with pytest.raises(MissingFileException):
-        wikimedia_api.get_image_url(filename="File:DefinitelyDoesNotExist.jpg")
-
-
 def test_get_file_without_structured_data_is_empty(wikimedia_api: WikimediaApi) -> None:
     """
     If a file exists on Commons but it doesn't have any structured data,

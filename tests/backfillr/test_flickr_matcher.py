@@ -150,6 +150,34 @@ def test_find_flickr_photo_id_from_wikitext(
     )
 
 
+@pytest.mark.parametrize(
+    ["wikitext", "photo_id"],
+    [
+        # This covers the case where there are two links in the Source field and
+        # the first is the Flickr homepage, but the second isn't a link to
+        # a Flickr photo.
+        (
+            """
+    <tr>
+      <td class="fileinfo-paramfield" id="fileinfotpl_src" lang="en">Source</td>
+      <td>
+        <a href="https://www.flickr.com/">Flickr.com</a> /
+        <a href="https://en.wikipedia.org/wiki/Flickr">Flickr</a>
+      </td>
+    </tr>
+    """,
+            None,
+        )
+    ],
+)
+def test_find_flickr_photo_id_from_static_wikitext(
+    wikitext: str, photo_id: FindResult | None
+) -> None:
+    assert photo_id == find_flickr_photo_id_from_wikitext(
+        wikitext, filename="File:Example.jpg"
+    )
+
+
 def get_statement_fixture(filename: str) -> ExistingClaims:
     fixtures_dir = pathlib.Path("structured_data/existing")
 

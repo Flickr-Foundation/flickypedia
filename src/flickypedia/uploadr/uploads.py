@@ -2,6 +2,7 @@
 Manage the process of uploading photos to Wikimedia.
 """
 
+import functools
 import uuid
 
 from flask import current_app
@@ -172,6 +173,7 @@ def upload_single_photo(api: WikimediaApi, request: UploadRequest) -> Successful
     }
 
 
+@functools.cache
 def uploads_queue() -> PhotoUploadQueue:
     """
     Return an instance of the PhotoUploadQueue that's tied to the
