@@ -158,14 +158,14 @@ def create_copyright_status_statement(license_id: str) -> NewStatement:
         raise ValueError(f"Unable to map a copyright status for license {license_id!r}")
 
 
-def create_source_data_for_photo(
+def create_source_statement(
     photo_id: str,
     photo_url: str,
     original_url: str | None,
     retrieved_at: datetime.datetime | None,
 ) -> NewStatement:
     """
-    Create a structured data statement for a Flickr photo.
+    Create a structured data statement for the "source" statement.
     """
     qualifier_values: list[QualifierValues] = [
         {
@@ -472,7 +472,7 @@ def _create_sdc_claims_for_flickr_photo(
         if mode == "new_photo":  # pragma: no cover
             raise
 
-        source_statement = create_source_data_for_photo(
+        source_statement = create_source_statement(
             photo_id=photo["id"],
             photo_url=photo["url"],
             original_url=None,
@@ -481,7 +481,7 @@ def _create_sdc_claims_for_flickr_photo(
 
         statements.append(source_statement)
     else:
-        source_statement = create_source_data_for_photo(
+        source_statement = create_source_statement(
             photo_id=photo["id"],
             photo_url=photo["url"],
             original_url=original_size["source"],
