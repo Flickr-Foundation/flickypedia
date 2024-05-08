@@ -54,7 +54,7 @@ cryptography==42.0.7
     #   -r requirements.txt
     #   authlib
     #   secretstorage
-flake8==6.1.0
+flake8==7.0.0
     # via -r dev_requirements.in
 flask==2.3.3
     # via
@@ -185,7 +185,7 @@ pydantic-core==2.14.3
     # via
     #   -r requirements.txt
     #   pydantic
-pyflakes==3.1.0
+pyflakes==3.2.0
     # via flake8
 pyproject-hooks==1.0.0
     # via
