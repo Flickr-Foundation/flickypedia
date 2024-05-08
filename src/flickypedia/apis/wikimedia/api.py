@@ -742,45 +742,6 @@ class WikimediaApi:
 
         return text
 
-    def get_image_url(self, filename: str) -> str:
-        """
-        Get the URL for a full-sized photo on Wikimedia Commons.
-        """
-        assert filename.startswith("File:")
-
-        resp = self.client.request(
-            "GET",
-            url="https://commons.wikimedia.org/w/api.php",
-            params={
-                "action": "query",
-                "format": "xml",
-                "prop": "imageinfo",
-                "titles": filename,
-                "iiprop": "url",
-            },
-        )
-
-        xml = ET.fromstring(resp.text)
-
-        # The rough shape of the response is:
-        #
-        #     <?xml version="1.0"?>
-        #     <api>
-        #       <query>
-        #         <pages>
-        #           <page pageid="135569232" …>
-        #             <imageinfo>
-        #               <ii url="https://upload.wikimedia.org/…">
-        #
-        # We want the contents of that <ii> url attribute.
-        page = find_required_elem(xml, path=".//page")
-
-        if "missing" in page.attrib:
-            raise MissingFileException(filename)
-        else:
-            ii_elem = find_required_elem(page, path=".//ii")
-            return ii_elem.attrib["url"]
-
     def force_sdc_rerender(self, filename: str) -> None:
         """
         Force Wikimedia to re-render the SDC in the page.
