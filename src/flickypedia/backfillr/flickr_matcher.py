@@ -248,9 +248,6 @@ def find_flickr_urls_in_sdc(sdc: ExistingClaims) -> list[tuple[str, ParseResult]
         )
 
         for u in urls + published_at:
-            if u is None:
-                continue
-
             if u["datavalue"]["type"] != "string":
                 continue
 
