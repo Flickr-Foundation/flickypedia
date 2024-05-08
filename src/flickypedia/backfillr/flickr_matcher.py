@@ -208,7 +208,7 @@ def get_single_qualifier(
 
     if len(qualifiers) != 1:
         raise AmbiguousStructuredData(
-            f"Unexpected multiple qualifiers in {statement['id']}"
+            f"Unexpected multiple qualifiers for {property_id} in {statement['id']}"
         )
 
     return qualifiers[0]
