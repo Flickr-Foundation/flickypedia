@@ -190,6 +190,7 @@ BaseStatement = typing.TypedDict(
 
 class NewStatement(BaseStatement):
     references: typing.NotRequired[list[NewReference]]
+    id: typing.NotRequired[str]
 
 
 class ExistingStatement(BaseStatement):

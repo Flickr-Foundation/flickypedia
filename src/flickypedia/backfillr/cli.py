@@ -3,14 +3,12 @@ import concurrent.futures
 import csv
 import itertools
 import json
-import os
 import sys
 
-from authlib.integrations.httpx_client import OAuth2Client
 import click
 from flickr_photos_api import FlickrApi, ResourceNotFound
 import httpx
-import keyring
+from nitrate.passwords import get_required_password
 import termcolor
 
 from flickypedia.apis.wikimedia import get_filename_from_url, WikimediaApi
@@ -130,7 +128,7 @@ def update_single_file(url: str) -> None:
         )
 
     flickr_api = FlickrApi(
-        api_key=keyring.get_password("flickr_api", "key"),
+        api_key=get_required_password("flickr_api", "key"),
         user_agent="Alex Chan's personal scripts <alex@alexwlchan.net>",
     )
 
@@ -138,7 +136,7 @@ def update_single_file(url: str) -> None:
         flickr_api=flickr_api,
         wikimedia_api=WikimediaApi(
             client=httpx.Client(
-                cookies=json.loads(keyring.get_password("flickypedia", "cookies"))
+                cookies=json.loads(get_required_password("flickypedia", "cookies"))
             )
         ),
     )
@@ -173,7 +171,7 @@ def get_filenames_to_process(csv_path: str) -> Iterator[str]:
 @click.argument("N")
 def update_multiple_files(flickr_id_spreadsheet: str, n: int) -> None:
     flickr_api = FlickrApi(
-        api_key=keyring.get_password("flickr_api", "key"),
+        api_key=get_required_password("flickr_api", "key"),
         user_agent="Alex Chan's personal scripts <alex@alexwlchan.net>",
     )
 
@@ -181,7 +179,7 @@ def update_multiple_files(flickr_id_spreadsheet: str, n: int) -> None:
         flickr_api=flickr_api,
         wikimedia_api=WikimediaApi(
             client=httpx.Client(
-                cookies=json.loads(keyring.get_password("flickypedia", "cookies"))
+                cookies=json.loads(get_required_password("flickypedia", "cookies"))
             )
         ),
     )
