@@ -3,7 +3,6 @@ import json
 from xml.etree import ElementTree as ET
 
 from cryptography.fernet import Fernet
-import keyring
 import pytest
 
 from flickypedia.utils import (
@@ -12,9 +11,7 @@ from flickypedia.utils import (
     find_optional_text,
     find_required_elem,
     find_required_text,
-    get_required_password,
 )
-from utils import InMemoryKeyring
 
 
 def test_encryption_can_round_trip() -> None:
@@ -23,21 +20,6 @@ def test_encryption_can_round_trip() -> None:
     plaintext = "my deep dark secret"
     ciphertext = encrypt_string(key, plaintext)
     assert decrypt_string(key, ciphertext) == plaintext
-
-
-class TestGetRequiredPassword:
-    def test_gets_existing_password(self) -> None:
-        keyring.set_keyring(
-            InMemoryKeyring(passwords={("flickypedia", "api_key"): "12345"})
-        )
-
-        assert get_required_password("flickypedia", "api_key") == "12345"
-
-    def test_throws_if_password_does_not_exist(self) -> None:
-        keyring.set_keyring(InMemoryKeyring(passwords={}))
-
-        with pytest.raises(RuntimeError, match="Could not retrieve password"):
-            get_required_password("flickypedia", "api_key")
 
 
 XML = ET.fromstring(

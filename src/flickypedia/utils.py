@@ -40,18 +40,6 @@ def create_bookmarklet(filename: str) -> str:
     return urlquote(wrapped_js)
 
 
-def get_required_password(service_name: str, username: str) -> str:
-    """
-    Retrieve a password from the keychain, or throw if it's missing.
-    """
-    password = keyring.get_password(service_name, username)
-
-    if password is None:
-        raise RuntimeError(f"Could not retrieve password {(service_name, username)}")
-
-    return password
-
-
 def find_required_elem(elem: ET.Element, *, path: str) -> ET.Element:
     """
     Find the first subelement matching ``path``, or throw if absent.
