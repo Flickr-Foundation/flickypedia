@@ -77,6 +77,16 @@ class WikimediaApiBase(abc.ABC):
 
 
 class HttpxImplementation(WikimediaApiBase):
+    """
+    This is an auth-agnostic implementation of some Wikimedia API methods.
+
+    Callers are responsible for creating an ``httpx.Client`` instance which
+    is appropriately authenticated with the Wikimedia API.  This class is
+    designed to be used with any auth approach.
+
+    See https://api.wikimedia.org/wiki/Authentication
+    """
+
     def __init__(self, client: httpx.Client) -> None:
         self.client = client
 

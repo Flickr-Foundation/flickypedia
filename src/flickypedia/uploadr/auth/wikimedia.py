@@ -80,7 +80,7 @@ from flask_login import (
 from flask_sqlalchemy import SQLAlchemy
 import httpx
 
-from flickypedia.apis.wikimedia import WikimediaApi
+from flickypedia.apis import WikimediaApi
 from flickypedia.types import validate_typeddict
 from flickypedia.types.views import ViewResponse
 from flickypedia.utils import decrypt_string, encrypt_string

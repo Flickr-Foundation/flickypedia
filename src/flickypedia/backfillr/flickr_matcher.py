@@ -24,7 +24,7 @@ from flickypedia.apis.structured_data.wikidata import (
     WikidataProperties,
     to_wikidata_entity_value,
 )
-from flickypedia.apis.wikimedia import WikimediaApi
+from flickypedia.apis import WikimediaApi
 from flickypedia.types.structured_data import ExistingClaims, ExistingStatement, Snak
 
 

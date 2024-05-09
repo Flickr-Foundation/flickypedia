@@ -2,7 +2,7 @@ import pathlib
 
 import pytest
 
-from flickypedia.apis.wikimedia import WikimediaApi
+from flickypedia.apis import WikimediaApi
 from flickypedia.backfillr.flickr_matcher import (
     AmbiguousStructuredData,
     FindResult,
