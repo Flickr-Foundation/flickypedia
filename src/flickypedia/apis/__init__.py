@@ -1,6 +1,7 @@
-from .wikimedia import UnknownWikimediaApiException, WikimediaApi
+from .wikimedia import MissingFileException, UnknownWikimediaApiException, WikimediaApi
 
 __all__ = [
+    "MissingFileException",
     "UnknownWikimediaApiException",
     "WikimediaApi",
 ]

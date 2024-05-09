@@ -73,6 +73,8 @@ class WikimediaApiBase(abc.ABC):
 
         return resp["query"]["tokens"]["csrftoken"]  # type: ignore
 
+    # TODO: Add _get_xml here
+
 
 class HttpxImplementation(WikimediaApiBase):
     def __init__(self, client: httpx.Client) -> None:

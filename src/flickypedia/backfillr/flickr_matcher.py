@@ -312,7 +312,7 @@ def find_flickr_photo(
     if find_result is not None:
         return find_result
 
-    wikitext = wikimedia_api.get_wikitext(filename)
+    wikitext = wikimedia_api.get_wikitext(filename=filename)
 
     find_result = find_flickr_photo_id_from_wikitext(
         wikitext, filename=f"File:{filename}"
