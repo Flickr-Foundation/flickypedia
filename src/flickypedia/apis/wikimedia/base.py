@@ -1,6 +1,7 @@
 import abc
 import json
 import typing
+from xml.etree import ElementTree as ET
 
 import httpx
 
@@ -36,9 +37,17 @@ class WikimediaApiBase(abc.ABC):
         """
         GET an HTTP endpoint with the given parameters and return JSON.
         """
-        return json.loads(
-            self._request(method="GET", params={**params, "format": "json"})
-        )
+        resp = self._request(method="GET", params={**params, "format": "json"})
+
+        return json.loads(resp)
+
+    def _get_xml(self, *, params: dict[str, str]) -> ET.Element:
+        """
+        GET an HTTP endpoint with the given parameters and return JSON.
+        """
+        resp = self._request(method="GET", params={**params, "format": "xml"})
+
+        return ET.fromstring(resp)
 
     def _post_json(
         self, data: dict[str, str], timeout: int | None = None
@@ -49,13 +58,13 @@ class WikimediaApiBase(abc.ABC):
         This includes fetching the CSRF token, which is required for any
         POST call to the Wikimedia Commons API.
         """
-        return json.loads(
-            self._request(
-                method="POST",
-                data={**data, "format": "json", "token": self.get_csrf_token()},
-                timeout=timeout,
-            )
+        resp = self._request(
+            method="POST",
+            data={**data, "format": "json", "token": self.get_csrf_token()},
+            timeout=timeout,
         )
+
+        return json.loads(resp)
 
     def get_csrf_token(self) -> str:
         """

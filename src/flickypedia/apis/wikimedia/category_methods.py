@@ -3,7 +3,6 @@ Methods for dealing with categories on Wikimedia Commons.
 """
 
 import re
-from xml.etree import ElementTree as ET
 
 from .base import WikimediaApiBase
 
@@ -42,11 +41,9 @@ class CategoryMethods(WikimediaApiBase):
         # gives an opaque list of lists.
         #
         # See https://www.mediawiki.org/wiki/API:Opensearch
-        resp = self._request(
-            method="GET",
+        xml = self._get_xml(
             params={
                 "action": "opensearch",
-                "format": "xml",
                 "limit": "10",
                 "search": query,
                 # Here "14" is the namespace for categories; see
@@ -54,8 +51,6 @@ class CategoryMethods(WikimediaApiBase):
                 "namespace": "14",
             },
         )
-
-        xml = ET.fromstring(resp)
 
         # The XML response is of the form:
         #

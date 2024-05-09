@@ -3,7 +3,6 @@ Methods used for validating metadata in the upload form.
 """
 
 import typing
-from xml.etree import ElementTree as ET
 
 from .base import WikimediaApiBase
 from .exceptions import UnknownWikimediaApiException
@@ -125,11 +124,9 @@ class ValidatorMethods(WikimediaApiBase):
         # See https://en.wikipedia.org/wiki/Wikipedia:File_names
         #
         base_title, _ = title.replace("File:", "").rsplit(".", 1)
-        opensearch_resp = self._request(
-            method="GET",
+        xml = self._get_xml(
             params={
                 "action": "opensearch",
-                "format": "xml",
                 "limit": "10",
                 "search": base_title,
                 # Here "14" is the namespace for categories; see
@@ -137,8 +134,6 @@ class ValidatorMethods(WikimediaApiBase):
                 "namespace": "6",
             },
         )
-
-        xml = ET.fromstring(opensearch_resp)
 
         # The XML response is of the form:
         #

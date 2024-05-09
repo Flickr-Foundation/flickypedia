@@ -49,7 +49,6 @@ more to give us a way to loosely order language results.
 
 import collections
 import typing
-from xml.etree import ElementTree as ET
 
 from .base import WikimediaApiBase
 from ...utils import find_required_elem
@@ -93,16 +92,7 @@ class LanguageMethods(WikimediaApiBase):
         # the file caption.
         #
         # See https://www.mediawiki.org/wiki/API:Languagesearch
-        resp = self._request(
-            method="GET",
-            params={
-                "action": "languagesearch",
-                "format": "xml",
-                "search": query,
-            },
-        )
-
-        xml = ET.fromstring(resp)
+        xml = self._get_xml(params={"action": "languagesearch", "search": query})
 
         # The response is a block of XML of the form:
         #
