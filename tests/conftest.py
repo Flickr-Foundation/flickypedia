@@ -14,7 +14,7 @@ import vcr
 
 from flickypedia.uploadr import create_app
 from flickypedia.uploadr.auth import SESSION_ENCRYPTION_KEY
-from flickypedia.apis.wikimedia import WikimediaApi
+from flickypedia.apis import WikimediaApi
 from utils import store_user
 
 

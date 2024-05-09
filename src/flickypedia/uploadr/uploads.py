@@ -156,7 +156,7 @@ def upload_single_photo(api: WikimediaApi, request: UploadRequest) -> Successful
         data=request["sdc"],
         summary="Flickypedia edit (add structured data statements)",
     )
-    api.force_sdc_rerender(filename=request["title"])
+    api.purge_wikitext(filename=request["title"])
 
     wikimedia_page_title = f"File:{wikimedia_page_title}"
 

@@ -32,7 +32,7 @@ from wtforms import (
 from wtforms.validators import DataRequired, Length, ValidationError
 from wtforms.widgets import TextArea
 
-from flickypedia.apis.wikimedia.languages import top_n_languages, LanguageMatch
+from flickypedia.apis.wikimedia import top_n_languages, LanguageMatch
 from flickypedia.photos import (
     CategorisedPhotos,
     EnrichedPhoto,

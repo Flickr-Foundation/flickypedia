@@ -24,7 +24,7 @@ from flickypedia.apis.structured_data.wikidata import (
     WikidataProperties,
     to_wikidata_entity_value,
 )
-from flickypedia.apis.wikimedia import WikimediaApi
+from flickypedia.apis import WikimediaApi
 from flickypedia.types.structured_data import ExistingClaims, ExistingStatement, Snak
 
 
@@ -312,7 +312,7 @@ def find_flickr_photo(
     if find_result is not None:
         return find_result
 
-    wikitext = wikimedia_api.get_wikitext(filename)
+    wikitext = wikimedia_api.get_wikitext(filename=filename)
 
     find_result = find_flickr_photo_id_from_wikitext(
         wikitext, filename=f"File:{filename}"
