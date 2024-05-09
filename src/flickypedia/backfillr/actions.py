@@ -1,6 +1,6 @@
 import typing
 
-from flickypedia.apis.structured_data.wikidata import WikidataProperties
+from flickypedia.apis.structured_data.wikidata import WikidataProperties as WP
 from flickypedia.types.structured_data import (
     ExistingClaims,
     NewClaims,
@@ -58,10 +58,7 @@ def create_actions(existing_sdc: ExistingClaims, new_sdc: NewClaims) -> list[Act
         # existing SDC, then we just need to add it.
         #
         # What if license has changed?
-        if (
-            not existing_statements
-            and property_id != WikidataProperties.CopyrightLicense
-        ):
+        if not existing_statements and property_id != WP.CopyrightLicense:
             actions.append(
                 AddMissing(
                     property_id=property_id,
@@ -83,7 +80,7 @@ def create_actions(existing_sdc: ExistingClaims, new_sdc: NewClaims) -> list[Act
             #
             # This looks like a mistake introduced by another tool; in this
             # case we're happy to overwrite it.
-            if property_id == WikidataProperties.Creator:
+            if property_id == WP.Creator:
                 null_statement: NewStatement = {
                     "type": "statement",
                     "mainsnak": {
@@ -114,24 +111,32 @@ def create_actions(existing_sdc: ExistingClaims, new_sdc: NewClaims) -> list[Act
                     break
 
             # fmt: off
+            # There are some cases where the user property has been populated,
+            # but it uses the numeric form of the ID in the URL, rather than
+            # the pathalias.  For example, compare:
+            #
+            #     https://www.flickr.com/people/126377022@N07
+            #     https://www.flickr.com/people/internetarchivebookimages/
+            #
+            # Or maybe there's a "role" qualifier ("object has role: photographer").
+            #
+            # For now at least, we just care about the user ID being the same; other
+            # qualifiers being different are less important to us.
             if (
-                property_id == WikidataProperties.Creator
-                and "qualifiers-order" in statement
-                and set(statement["qualifiers-order"]) == set(new_statement["qualifiers-order"])
+                property_id == WP.Creator
+                and "qualifiers" in statement
+                and WP.FlickrUserId in statement["qualifiers"]
                 and are_equivalent_snaks(statement["mainsnak"], new_statement["mainsnak"])
                 and are_equivalent_qualifiers(
-                    existing_qualifiers={WikidataProperties.FlickrUserId: statement["qualifiers"][WikidataProperties.FlickrUserId]},
-                    new_qualifiers={WikidataProperties.FlickrUserId: new_statement["qualifiers"][WikidataProperties.FlickrUserId]},
+                    existing_qualifiers={
+                        WP.FlickrUserId: statement["qualifiers"][WP.FlickrUserId],
+                    },
+                    new_qualifiers={
+                        WP.FlickrUserId: new_statement["qualifiers"][WP.FlickrUserId],
+                    },
                 )
             ):
-                actions.append(
-                    ReplaceStatement(
-                        property_id=property_id,
-                        action="replace_statement",
-                        statement_id=statement["id"],
-                        statement=new_statement,
-                    )
-                )
+                actions.append(DoNothing(property_id=property_id, action="do_nothing"))
                 break
             # fmt: on
 
