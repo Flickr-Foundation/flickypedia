@@ -28,8 +28,9 @@ import time
 import typing
 import uuid
 
+from nitrate.json import DatetimeDecoder, DatetimeEncoder
+
 from flickypedia.types import validate_typeddict
-from flickypedia.utils import DatetimeDecoder, DatetimeEncoder
 
 
 In = typing.TypeVar("In")

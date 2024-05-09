@@ -19,9 +19,9 @@ import os
 import uuid
 
 from flask import current_app
+from nitrate.json import DatetimeDecoder, DatetimeEncoder
 
 from flickypedia.types.flickr import GetPhotosData
-from flickypedia.utils import DatetimeDecoder, DatetimeEncoder
 
 
 def get_cached_photos_data(cache_id: str) -> GetPhotosData:

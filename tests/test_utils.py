@@ -13,8 +13,6 @@ from flickypedia.utils import (
     find_required_elem,
     find_required_text,
     get_required_password,
-    DatetimeDecoder,
-    DatetimeEncoder,
 )
 from utils import InMemoryKeyring
 
@@ -25,18 +23,6 @@ def test_encryption_can_round_trip() -> None:
     plaintext = "my deep dark secret"
     ciphertext = encrypt_string(key, plaintext)
     assert decrypt_string(key, ciphertext) == plaintext
-
-
-def test_can_json_round_trip() -> None:
-    d = {
-        "label": "an interesting time",
-        "time": datetime.datetime(2001, 2, 3, 4, 5, 6),
-    }
-
-    json_string = json.dumps(d, cls=DatetimeEncoder)
-    parsed_json_string = json.loads(json_string, cls=DatetimeDecoder)
-
-    assert parsed_json_string == d
 
 
 class TestGetRequiredPassword:

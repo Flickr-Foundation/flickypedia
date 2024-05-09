@@ -9,6 +9,7 @@ from cryptography.fernet import Fernet
 from flask.testing import FlaskClient
 from flask_login import login_user
 import keyring
+from nitrate.json import DatetimeDecoder
 
 from flickypedia.uploadr.auth import (
     user_db,
@@ -16,7 +17,7 @@ from flickypedia.uploadr.auth import (
     SESSION_ENCRYPTION_KEY,
 )
 from flickypedia.types import validate_typeddict, Path
-from flickypedia.utils import DatetimeDecoder, encrypt_string
+from flickypedia.utils import encrypt_string
 
 
 T = typing.TypeVar("T")
