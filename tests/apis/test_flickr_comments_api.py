@@ -4,6 +4,7 @@ import json
 from authlib.integrations.httpx_client import OAuth1Client
 from flickr_photos_api import FlickrApiException, ResourceNotFound
 import keyring
+import keyring.errors
 import pytest
 import vcr
 
@@ -29,9 +30,12 @@ def flickr_comments_api(
         cassette_name,
         cassette_library_dir="tests/fixtures/cassettes",
     ):
-        stored_token = json.loads(
-            keyring.get_password("flickypedia.bot", "oauth_token") or "{}"
-        )
+        try:
+            token = keyring.get_password("flickypedia.bot", "oauth_token")
+        except keyring.errors.NoKeyringError:  # pragma: no cover
+            token = "{}"
+
+        stored_token = json.loads(token)
 
         client = OAuth1Client(
             client_id=keyring.get_password("flickypedia", "api_key") or "123",
