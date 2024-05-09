@@ -245,7 +245,7 @@ typing-extensions==4.8.0
     #   sqlalchemy
 vcrpy==5.1.0
     # via -r dev_requirements.in
-werkzeug==2.3.8
+werkzeug==3.0.3
     # via
     #   -r requirements.txt
     #   flask
