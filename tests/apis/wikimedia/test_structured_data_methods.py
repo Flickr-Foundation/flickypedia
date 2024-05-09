@@ -1,7 +1,11 @@
 import pytest
 
 from flickypedia.apis.structured_data import create_license_statement
-from flickypedia.apis import UnknownWikimediaApiException, WikimediaApi
+from flickypedia.apis import (
+    MissingFileException,
+    UnknownWikimediaApiException,
+    WikimediaApi,
+)
 
 
 class TestAddFileCaption:
@@ -117,3 +121,16 @@ class TestAddStructuredData:
                 data=[create_license_statement(license_id="cc-by-2.0")],  # type: ignore
                 summary="Flickypedia edit (add structured data statements)",
             )
+
+
+def test_get_file_without_structured_data_is_empty(wikimedia_api: WikimediaApi) -> None:
+    """
+    If a file exists on Commons but it doesn't have any structured data,
+    we should get an empty dict back.
+    """
+    assert wikimedia_api.get_structured_data(filename="Nyungw.jpg") == {}
+
+
+def test_get_structured_data_for_missing_file(wikimedia_api: WikimediaApi) -> None:
+    with pytest.raises(MissingFileException):
+        wikimedia_api.get_structured_data(filename="DefinitelyDoesNotExist.jpg")
