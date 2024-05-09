@@ -49,12 +49,70 @@ more to give us a way to loosely order language results.
 
 import collections
 import typing
+from xml.etree import ElementTree as ET
+
+from .base import WikimediaApiBase
+from ...utils import find_required_elem
 
 
 class LanguageMatch(typing.TypedDict):
     id: str
     label: str
     match_text: str | None
+
+
+class LanguageMethods(WikimediaApiBase):
+    def find_matching_languages(self, query: str) -> list[LanguageMatch]:
+        """
+        Return a list of languages that might match the query.
+
+        This can be used to build an autocomplete interface for languages,
+        e.g. if the user types "es" we can suggest languages that
+        include the text "es":
+
+            >>> find_matching_languages(query="es")
+            "español"
+            "Esperanto"
+            "español (formal)"
+            "slovenčina [esiruwaku]"
+            "slovenščina [esiruwenu]"
+
+        This API is aware of many labels for languages, so you can can
+        search by alternative names for the same language:
+
+            >>> find_matching_languages(query="spani")
+            "spanish / español"
+            "spanish (formal address) / español (formal)"
+            "spanishgbe (latin america) / español de América Latina"
+
+        """
+        assert len(query) > 0
+
+        # I found this API action by observing the network traffic in
+        # the Upload Wizard when you search for languages while editing
+        # the file caption.
+        #
+        # See https://www.mediawiki.org/wiki/API:Languagesearch
+        resp = self._request(
+            method="GET",
+            params={
+                "action": "languagesearch",
+                "format": "xml",
+                "search": query,
+            },
+        )
+
+        xml = ET.fromstring(resp)
+
+        # The response is a block of XML of the form:
+        #
+        #     <api>
+        #       <languagesearch gu="gujarati" gaa="ga" gcr="guianan creole" …/>
+        #     </api>
+        #
+        languagesearch = find_required_elem(xml, path=".//languagesearch")
+
+        return order_language_list(query=query, results=languagesearch.attrib)
 
 
 def order_language_list(query: str, results: dict[str, str]) -> list[LanguageMatch]:

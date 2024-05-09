@@ -7,7 +7,7 @@ from .exceptions import (
     DuplicatePhotoUploadException,
     MissingFileException,
 )
-from .languages import top_n_languages, LanguageMatch
+from .language_methods import top_n_languages, LanguageMatch
 from .url_parser import get_filename_from_url
 
 

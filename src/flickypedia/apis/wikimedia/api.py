@@ -9,10 +9,8 @@ See https://api.wikimedia.org/wiki/Authentication
 """
 
 import typing
-from xml.etree import ElementTree as ET
 
 from flickypedia.types.wikimedia import UserInfo
-from flickypedia.utils import find_required_elem
 from .exceptions import (
     UnknownWikimediaApiException,
     DuplicateFilenameUploadException,
@@ -20,15 +18,19 @@ from .exceptions import (
     MissingFileException,
 )
 from .base import HttpxImplementation
-from .languages import LanguageMatch, order_language_list
 
 from .category_methods import CategoryMethods
+from .language_methods import LanguageMethods
 from .structured_data_methods import StructuredDataMethods
 from .validator_methods import ValidatorMethods
 
 
 class WikimediaApi(
-    HttpxImplementation, CategoryMethods, StructuredDataMethods, ValidatorMethods
+    HttpxImplementation,
+    CategoryMethods,
+    LanguageMethods,
+    StructuredDataMethods,
+    ValidatorMethods,
 ):
     def _get(self, params: dict[str, str]) -> typing.Any:
         return self._get_json(params=params)
@@ -125,59 +127,6 @@ class WikimediaApi(
             raise RuntimeError(f"Unexpected result from upload API: {upload_resp!r}")
 
         return upload_resp["upload"]["filename"]  # type: ignore
-
-    def find_matching_languages(self, query: str) -> list[LanguageMatch]:
-        """
-        Return a list of languages that might match the query.
-
-        This can be used to build an autocomplete interface for languages,
-        e.g. if the user types "es" we can suggest languages that
-        include the text "es":
-
-            >>> find_matching_languages(query="es")
-            "español"
-            "Esperanto"
-            "español (formal)"
-            "slovenčina [esiruwaku]"
-            "slovenščina [esiruwenu]"
-
-        This API is aware of many labels for languages, so you can can
-        search by alternative names for the same language:
-
-            >>> find_matching_languages(query="spani")
-            "spanish / español"
-            "spanish (formal address) / español (formal)"
-            "spanishgbe (latin america) / español de América Latina"
-
-        """
-        assert len(query) > 0
-
-        # I found this API action by observing the network traffic in
-        # the Upload Wizard when you search for languages while editing
-        # the file caption.
-        #
-        # See https://www.mediawiki.org/wiki/API:Languagesearch
-        resp = self.client.request(
-            "GET",
-            url="https://commons.wikimedia.org/w/api.php",
-            params={
-                "action": "languagesearch",
-                "format": "xml",
-                "search": query,
-            },
-        )
-
-        xml = ET.fromstring(resp.text)
-
-        # The response is a block of XML of the form:
-        #
-        #     <api>
-        #       <languagesearch gu="gujarati" gaa="ga" gcr="guianan creole" …/>
-        #     </api>
-        #
-        languagesearch = find_required_elem(xml, path=".//languagesearch")
-
-        return order_language_list(query=query, results=languagesearch.attrib)
 
     def get_wikitext(self, filename: str) -> str:
         """

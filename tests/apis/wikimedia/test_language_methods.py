@@ -1,4 +1,4 @@
-from flickypedia.apis.wikimedia.languages import order_language_list
+from flickypedia.apis.wikimedia.language_methods import order_language_list
 
 
 def test_order_language_list() -> None:
