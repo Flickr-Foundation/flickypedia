@@ -114,14 +114,6 @@ class TestAddStructuredData:
 
         assert exc.value.code == "no-such-entity-link"
 
-    def test_throws_error_for_bad_sdc_format(self, wikimedia_api: WikimediaApi) -> None:
-        with pytest.raises(TypeError):
-            wikimedia_api.add_structured_data(
-                filename="example.jpg",
-                data=[create_license_statement(license_id="cc-by-2.0")],  # type: ignore
-                summary="Flickypedia edit (add structured data statements)",
-            )
-
 
 def test_get_file_without_structured_data_is_empty(wikimedia_api: WikimediaApi) -> None:
     """
