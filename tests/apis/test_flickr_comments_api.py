@@ -44,11 +44,11 @@ def flickr_comments_api(
             get_optional_password("flickypedia.bot", "oauth_token", default="{}")
         )
 
-        stored_token = json.loads(token)
-
         client = OAuth1Client(
             client_id=get_optional_password("flickypedia", "api_key", default="123"),
-            client_secret=get_optional_password("flickypedia", "api_secret", default="456"),
+            client_secret=get_optional_password(
+                "flickypedia", "api_secret", default="456"
+            ),
             signature_type="QUERY",
             token=stored_token.get("oauth_token"),
             token_secret=stored_token.get("oauth_token_secret"),
