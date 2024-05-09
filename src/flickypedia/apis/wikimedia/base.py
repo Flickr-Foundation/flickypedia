@@ -107,7 +107,7 @@ class HttpxImplementation(WikimediaApiBase):
                 raise InvalidAccessTokenException(error["info"])
             else:
                 raise UnknownWikimediaApiException(resp)
-        except KeyError:
+        except (json.JSONDecodeError, KeyError):
             pass
 
         return resp.text
