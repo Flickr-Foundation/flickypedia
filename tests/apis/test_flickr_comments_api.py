@@ -16,6 +16,16 @@ from flickypedia.apis.flickr import (
 )
 
 
+def get_optional_password(username: str, password: str, *, default: str) -> str:
+    """
+    Get a password from the system keychain, or a default if unavailable.
+    """
+    try:
+        return keyring.get_password(username, password)
+    except keyring.errors.NoKeyringError:  # pragma: no cover
+        return default
+
+
 @pytest.fixture(scope="function")
 def flickr_comments_api(
     cassette_name: str, user_agent: str
@@ -30,16 +40,15 @@ def flickr_comments_api(
         cassette_name,
         cassette_library_dir="tests/fixtures/cassettes",
     ):
-        try:
-            token = keyring.get_password("flickypedia.bot", "oauth_token")
-        except keyring.errors.NoKeyringError:  # pragma: no cover
-            token = "{}"
+        stored_token = json.loads(
+            get_optional_password("flickypedia.bot", "oauth_token", default="{}")
+        )
 
         stored_token = json.loads(token)
 
         client = OAuth1Client(
-            client_id=keyring.get_password("flickypedia", "api_key") or "123",
-            client_secret=keyring.get_password("flickypedia", "api_secret") or "456",
+            client_id=get_optional_password("flickypedia", "api_key", default="123"),
+            client_secret=get_optional_password("flickypedia", "api_secret", default="456"),
             signature_type="QUERY",
             token=stored_token.get("oauth_token"),
             token_secret=stored_token.get("oauth_token_secret"),
@@ -60,12 +69,12 @@ def test_throws_if_not_allowed_to_post_comment(
 
 def test_throws_if_invalid_oauth_signature(vcr_cassette: str) -> None:
     stored_token = json.loads(
-        keyring.get_password("flickypedia.bot", "oauth_token") or "{}"
+        get_optional_password("flickypedia.bot", "oauth_token", default="{}")
     )
 
     client = OAuth1Client(
-        client_id=keyring.get_password("flickypedia", "api_key") or "123",
-        client_secret=keyring.get_password("flickypedia", "api_secret") or "456",
+        client_id=get_optional_password("flickypedia", "api_key", default="123"),
+        client_secret=get_optional_password("flickypedia", "api_secret", default="456"),
         signature_type="QUERY",
         token=stored_token.get("oauth_token"),
         token_secret=None,
