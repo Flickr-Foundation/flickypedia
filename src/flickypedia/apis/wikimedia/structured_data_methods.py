@@ -156,22 +156,22 @@ class StructuredDataMethods(WikimediaApiBase):
         In Flickypedia, this expects to receive an object with
         a single key "claims", e.g.
 
-                {
-                  "claims": [
-                        {
-                          "mainsnak": {
-                                "snaktype": "value",
-                                "property": "P56",
-                                "datavalue": {
-                                  "value": "ExampleString",
-                                  "type": "string"
-                                }
-                          },
-                          "type": "statement",
-                          "rank": "normal"
-                        }
-                  ]
-                }
+            {
+              "claims": [
+                    {
+                      "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P56",
+                            "datavalue": {
+                              "value": "ExampleString",
+                              "type": "string"
+                            }
+                      },
+                      "type": "statement",
+                      "rank": "normal"
+                    }
+              ]
+            }
 
         See https://commons.wikimedia.org/wiki/Commons:Structured_data
         See https://www.wikidata.org/w/api.php?modules=wbeditentity&action=help
