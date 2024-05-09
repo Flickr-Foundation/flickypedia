@@ -53,5 +53,5 @@ class MissingFileException(WikimediaApiException):
     Thrown when somebody tries to look up a file that doesn't exist,
     """
 
-    def __init__(self, filename: str) -> None:
-        super().__init__(f"There is no such file on Wikimedia Commons ({filename})")
+    def __init__(self, identifier: str) -> None:
+        super().__init__(f"There is no such file on Wikimedia Commons ({identifier})")
