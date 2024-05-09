@@ -21,7 +21,8 @@ def get_optional_password(username: str, password: str, *, default: str) -> str:
     Get a password from the system keychain, or a default if unavailable.
     """
     try:
-        return keyring.get_password(username, password)
+        password = keyring.get_password(username, password)
+        return password or default
     except keyring.errors.NoKeyringError:  # pragma: no cover
         return default
 
