@@ -38,7 +38,7 @@ class IdentifierMethods(WikimediaApiBase):
     #     <page _idx="-1" ns="6" title="File:DefinitelyDoesNotExist.jpg" missing="" />
     #
 
-    def filename_to_id(self, *, filename: str) -> str:
+    def filename_to_pageid(self, *, filename: str) -> str:
         """
         Given a filename, look up the associated M-ID.
 
@@ -56,7 +56,7 @@ class IdentifierMethods(WikimediaApiBase):
         except KeyError:
             raise MissingFileException(filename)
 
-    def id_to_filename(self, *, pageid: str) -> str:
+    def pageid_to_filename(self, *, pageid: str) -> str:
         """
         Given a page ID, look up the associated filename.
 
