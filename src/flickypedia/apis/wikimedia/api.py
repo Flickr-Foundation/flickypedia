@@ -15,7 +15,7 @@ from xml.etree import ElementTree as ET
 
 from flickypedia.types import validate_typeddict
 from flickypedia.types.structured_data import ExistingClaims, NewClaims
-from flickypedia.types.wikimedia import UserInfo, ShortCaption, TitleValidation
+from flickypedia.types.wikimedia import UserInfo, TitleValidation
 from flickypedia.utils import find_required_elem
 from .exceptions import (
     WikimediaApiException,
@@ -24,11 +24,12 @@ from .exceptions import (
     DuplicatePhotoUploadException,
     MissingFileException,
 )
-from .base import HttpxImplementation, WikimediaApiBase
+from .base import HttpxImplementation
 from .languages import LanguageMatch, order_language_list
+from .structured_data_methods import StructuredDataMethods
 
 
-class WikimediaApi(HttpxImplementation, WikimediaApiBase):
+class WikimediaApi(HttpxImplementation, StructuredDataMethods):
     def _get(self, params: dict[str, str]) -> typing.Any:
         return self._get_json(params=params)
         return self._request(method="GET", params={**params, "format": "json"})
@@ -124,60 +125,6 @@ class WikimediaApi(HttpxImplementation, WikimediaApiBase):
             raise RuntimeError(f"Unexpected result from upload API: {upload_resp!r}")
 
         return upload_resp["upload"]["filename"]  # type: ignore
-
-    def add_file_caption(self, *, filename: str, caption: ShortCaption) -> str:
-        """
-        Add a file caption to an image on Wikimedia Commons.
-
-        Returns the M-ID of this file.
-
-        See https://commons.wikimedia.org/wiki/File_captions
-        See https://www.wikidata.org/w/api.php?modules=wbsetlabel&action=help
-
-        """
-        assert not filename.startswith("File:")
-
-        resp = self._post(
-            data={
-                "action": "wbsetlabel",
-                "site": "commonswiki",
-                "title": f"File:{filename}",
-                "language": caption["language"],
-                "value": caption["text"],
-                "summary": "Flickypedia edit (add caption)",
-            }
-        )
-
-        # A successful response from this API looks something like:
-        #
-        #     {
-        #       'entity': {
-        #         'id': 'M138765501',
-        #         'labels': {
-        #           'en': {
-        #             'language': 'en',
-        #             'value': '…'
-        #           }
-        #         },
-        #         'lastrevid': 811496641,
-        #         'type': 'mediainfo'
-        #       },
-        #       'success': 1
-        #     }
-        #
-        # Reading the MediaWiki API docs, it sounds like any non-zero integer
-        # here is fine, so we don't inspect this response too closely --
-        # we trust the file caption was set correctly.
-        #
-        # If we ever see a success=0 response here that doesn't include
-        # an error parameter, we can add a test for this branch.
-        #
-        # See https://www.mediawiki.org/wiki/Wikibase/API#Response
-        #
-        if resp["success"] != 0:
-            return resp["entity"]["id"]  # type: ignore
-        else:  # pragma: no cover
-            raise WikimediaApiException(f"Unexpected response: {resp}")
 
     def get_structured_data(self, *, filename: str) -> ExistingClaims:
         """
