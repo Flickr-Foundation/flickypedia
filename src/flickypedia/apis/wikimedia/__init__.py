@@ -12,6 +12,7 @@ from .url_parser import get_filename_from_url
 from .base import HttpxImplementation
 
 from .category_methods import CategoryMethods
+from .identifier_methods import IdentifierMethods
 from .language_methods import LanguageMethods
 from .structured_data_methods import StructuredDataMethods
 from .validator_methods import ValidatorMethods
@@ -23,6 +24,7 @@ from .user_methods import UserMethods
 class WikimediaApi(
     HttpxImplementation,
     CategoryMethods,
+    IdentifierMethods,
     LanguageMethods,
     StructuredDataMethods,
     ValidatorMethods,
