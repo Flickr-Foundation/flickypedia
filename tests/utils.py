@@ -8,15 +8,15 @@ from authlib.oauth2.rfc6749.wrappers import OAuth2Token
 from cryptography.fernet import Fernet
 from flask.testing import FlaskClient
 from flask_login import login_user
-import keyring
+from nitrate.json import DatetimeDecoder
+from nitrate.types import read_typed_json
 
 from flickypedia.uploadr.auth import (
     user_db,
     WikimediaUserSession,
     SESSION_ENCRYPTION_KEY,
 )
-from flickypedia.types import validate_typeddict, Path
-from flickypedia.utils import DatetimeDecoder, encrypt_string
+from flickypedia.utils import encrypt_string
 
 
 T = typing.TypeVar("T")
@@ -98,7 +98,7 @@ def store_user(
     return user
 
 
-def get_typed_fixture(path: Path, model: type[T]) -> T:
+def get_typed_fixture(path: pathlib.Path | str, model: type[T]) -> T:
     """
     Read a JSON fixture from the ``tests/fixtures`` directory.
 
@@ -107,32 +107,4 @@ def get_typed_fixture(path: Path, model: type[T]) -> T:
     """
     fixtures_dir = pathlib.Path("tests/fixtures")
 
-    with open(fixtures_dir / path) as f:
-        return validate_typeddict(json.load(f, cls=DatetimeDecoder), model)
-
-
-class InMemoryKeyring(keyring.backend.KeyringBackend):
-    """
-    A keyring implementation which stores passwords in a dictionary.
-
-    This is for testing only.
-    """
-
-    def __init__(self, passwords: dict[tuple[str, str], str]) -> None:
-        self.passwords = passwords
-
-    def priority(self) -> int:  # pragma: no cover
-        return 1
-
-    def set_password(self, service_name: str, username: str, password: str) -> None:
-        self.passwords[(service_name, username)] = password
-
-    def get_password(self, service_name: str, username: str) -> str | None:
-        return self.passwords.get((service_name, username))
-
-    # This function isn't currently used as part of the tests, but we
-    # need it to construct an instance of KeyringBackend.
-    def delete_password(
-        self, service_name: str, username: str
-    ) -> None:  # pragma: no cover
-        del self.passwords[(service_name, username)]
+    return read_typed_json(fixtures_dir / path, model=model, cls=DatetimeDecoder)

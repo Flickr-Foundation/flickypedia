@@ -2,9 +2,9 @@ import json
 
 from click.testing import CliRunner
 import keyring
+from nitrate.passwords import use_in_memory_keyring
 
 from flickypedia.cli import main as cli_main
-from utils import InMemoryKeyring
 
 
 def test_store_flickypedia_bot_token(vcr_cassette: None) -> None:
@@ -15,13 +15,11 @@ def test_store_flickypedia_bot_token(vcr_cassette: None) -> None:
     I inspected the VCR cassette for this test quite carefully,
     to ensure I wasn't leaking any real tokens.
     """
-    keyring.set_keyring(
-        InMemoryKeyring(
-            passwords={
-                ("flickypedia", "api_key"): "12345",
-                ("flickypedia", "api_secret"): "67890",
-            }
-        )
+    use_in_memory_keyring(
+        initial_passwords={
+            ("flickypedia", "api_key"): "12345",
+            ("flickypedia", "api_secret"): "67890",
+        }
     )
 
     runner = CliRunner()
@@ -49,13 +47,11 @@ def test_only_stores_a_token_for_flickypedia_bot(vcr_cassette: None) -> None:
     This test uses a hand-edited copy of the VCR cassette for
     ``test_store_flickypedia_bot_token()``.
     """
-    keyring.set_keyring(
-        InMemoryKeyring(
-            passwords={
-                ("flickypedia", "api_key"): "12345",
-                ("flickypedia", "api_secret"): "67890",
-            }
-        )
+    use_in_memory_keyring(
+        initial_passwords={
+            ("flickypedia", "api_key"): "12345",
+            ("flickypedia", "api_secret"): "67890",
+        }
     )
 
     runner = CliRunner()

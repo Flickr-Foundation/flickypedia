@@ -21,6 +21,7 @@ from flask import abort, redirect, render_template, request, url_for
 from flask_wtf import FlaskForm, Form
 from flask_login import current_user, login_required
 from flickr_photos_api import DateTaken, User as FlickrUser
+from nitrate.types import validate_type
 from wtforms import (
     BooleanField,
     FormField,
@@ -39,7 +40,6 @@ from flickypedia.photos import (
     enrich_photo,
     categorise_photos,
 )
-from flickypedia.types import validate_typeddict
 from flickypedia.types.structured_data import NewClaims
 from flickypedia.types.views import ViewResponse
 from flickypedia.types.uploads import UploadRequest
@@ -108,7 +108,7 @@ class PrepareInfoFormBase(FlaskForm):
         try:
             if isinstance(self.js_language.data, str):
                 data = json.loads(self.js_language.data)
-                return validate_typeddict(data, model=LanguageMatch)
+                return validate_type(data, model=LanguageMatch)
         except Exception:
             pass
 

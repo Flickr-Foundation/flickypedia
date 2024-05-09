@@ -4,9 +4,10 @@ Methods for reading and writing structured data.
 
 import json
 
+from nitrate.types import validate_type
+
 from .base import WikimediaApiBase
 from .exceptions import MissingFileException, WikimediaApiException
-from ...types import validate_typeddict
 from ...types.structured_data import ExistingClaims, NewClaims
 from ...types.wikimedia import ShortCaption
 
@@ -139,7 +140,7 @@ class StructuredDataMethods(WikimediaApiBase):
         if statements == []:
             return {}
         else:
-            return validate_typeddict(statements, model=ExistingClaims)
+            return validate_type(statements, model=ExistingClaims)
 
     def add_structured_data(
         self, *, filename: str, data: NewClaims, summary: str

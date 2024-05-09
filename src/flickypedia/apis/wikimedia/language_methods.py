@@ -50,8 +50,9 @@ more to give us a way to loosely order language results.
 import collections
 import typing
 
+from nitrate.xml import find_required_elem
+
 from .base import WikimediaApiBase
-from ...utils import find_required_elem
 
 
 class LanguageMatch(typing.TypedDict):

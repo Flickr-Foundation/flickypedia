@@ -1,11 +1,11 @@
 import bz2
 import pathlib
 
+from nitrate.types import validate_type
 from pydantic import ValidationError
 import pytest
 
 from flickypedia.apis.snapshots import parse_sdc_snapshot, SnapshotEntry
-from flickypedia.types import validate_typeddict
 
 
 def test_parse_sdc_snapshot() -> None:
@@ -49,7 +49,7 @@ class TestSnapshotEntryType:
             "type": "mediainfo",
         }
 
-        validate_typeddict(entry, model=SnapshotEntry)
+        validate_type(entry, model=SnapshotEntry)
 
     def test_handles_descriptions(self) -> None:
         entry = {
@@ -74,4 +74,4 @@ class TestSnapshotEntryType:
             "type": "mediainfo",
         }
 
-        validate_typeddict(entry, model=SnapshotEntry)
+        validate_type(entry, model=SnapshotEntry)
