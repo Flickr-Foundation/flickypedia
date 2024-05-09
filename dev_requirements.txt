@@ -228,7 +228,7 @@ tqdm==4.66.4
     # via
     #   -r dev_requirements.in
     #   -r requirements.txt
-types-beautifulsoup4==4.12.0.7
+types-beautifulsoup4==4.12.0.20240504
     # via -r dev_requirements.in
 types-html5lib==1.1.11.15
     # via types-beautifulsoup4
