@@ -6,12 +6,13 @@ as downloaded from https://dumps.wikimedia.org/other/wikibase/commonswiki/
 import bz2
 from collections.abc import Iterator
 import json
+import pathlib
 from pprint import pprint
 import typing
 
+from nitrate.types import validate_type
 from pydantic import ValidationError
 
-from flickypedia.types import Path, validate_typeddict
 from flickypedia.types.structured_data import ExistingClaims
 
 
@@ -37,7 +38,7 @@ SnapshotEntry = typing.TypedDict(
 )
 
 
-def parse_sdc_snapshot(path: Path) -> Iterator[SnapshotEntry]:
+def parse_sdc_snapshot(path: pathlib.Path | str) -> Iterator[SnapshotEntry]:
     """
     Given a snapshot of SDC from Wikimedia Commons, generate every entry.
     """
@@ -61,7 +62,7 @@ def parse_sdc_snapshot(path: Path) -> Iterator[SnapshotEntry]:
             data = json.loads(line.replace(b",\n", b""))
 
             try:
-                yield validate_typeddict(data, model=SnapshotEntry)
+                yield validate_type(data, model=SnapshotEntry)
 
             # This doesn't happen with current snapshots (20231124) so
             # it suggests our model is pretty complete, but we leave

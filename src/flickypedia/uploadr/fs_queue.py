@@ -29,8 +29,7 @@ import typing
 import uuid
 
 from nitrate.json import DatetimeDecoder, DatetimeEncoder
-
-from flickypedia.types import validate_typeddict
+from nitrate.types import validate_type
 
 
 In = typing.TypeVar("In")
@@ -200,7 +199,7 @@ class AbstractFilesystemTaskQueue(abc.ABC, typing.Generic[In, Out]):
             try:
                 with open(dirname / task_id) as in_file:
                     t = json.load(in_file, cls=DatetimeDecoder)
-                    return validate_typeddict(t, model=Task[In, Out])
+                    return validate_type(t, model=Task[In, Out])
             except FileNotFoundError:
                 pass
 

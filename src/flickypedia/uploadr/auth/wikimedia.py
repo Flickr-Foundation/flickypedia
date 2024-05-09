@@ -79,9 +79,9 @@ from flask_login import (
 )
 from flask_sqlalchemy import SQLAlchemy
 import httpx
+from nitrate.types import validate_type
 
 from flickypedia.apis import WikimediaApi
-from flickypedia.types import validate_typeddict
 from flickypedia.types.views import ViewResponse
 from flickypedia.utils import decrypt_string, encrypt_string
 
@@ -224,7 +224,7 @@ class WikimediaUserSession(UserMixin, user_db.Model):  # type: ignore
         """
         Store the credentials for a Flickr user authorising with the db.
         """
-        validate_typeddict(token, model=FlickrOAuthToken)
+        validate_type(token, model=FlickrOAuthToken)
 
         self.encrypted_flickr_token = encrypt_string(
             key=session[SESSION_ENCRYPTION_KEY], plaintext=json.dumps(token)
@@ -240,7 +240,7 @@ class WikimediaUserSession(UserMixin, user_db.Model):  # type: ignore
             ciphertext=self.encrypted_flickr_token,
         )
 
-        return validate_typeddict(json.loads(stored_token), model=FlickrOAuthToken)
+        return validate_type(json.loads(stored_token), model=FlickrOAuthToken)
 
     def flickr_oauth_client(self) -> OAuth1Client:
         """

@@ -1,8 +1,8 @@
 import json
 
+from nitrate.types import validate_type
 import pytest
 
-from flickypedia.types import validate_typeddict
 from flickypedia.types.structured_data import ExistingClaims, Snak
 
 
@@ -17,7 +17,7 @@ def test_snak_type_matches() -> None:
         },
     }
 
-    validate_typeddict(data, model=Snak)
+    validate_type(data, model=Snak)
 
 
 @pytest.mark.parametrize(
@@ -42,4 +42,4 @@ def test_existing_claims_match_type(filename: str) -> None:
     with open(f"tests/fixtures/structured_data/existing/{filename}") as infile:
         existing_statements = json.load(infile)
 
-    validate_typeddict(existing_statements, model=ExistingClaims)
+    validate_type(existing_statements, model=ExistingClaims)

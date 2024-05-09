@@ -9,13 +9,13 @@ from cryptography.fernet import Fernet
 from flask.testing import FlaskClient
 from flask_login import login_user
 from nitrate.json import DatetimeDecoder
+from nitrate.types import read_typed_json
 
 from flickypedia.uploadr.auth import (
     user_db,
     WikimediaUserSession,
     SESSION_ENCRYPTION_KEY,
 )
-from flickypedia.types import validate_typeddict, Path
 from flickypedia.utils import encrypt_string
 
 
@@ -98,7 +98,7 @@ def store_user(
     return user
 
 
-def get_typed_fixture(path: Path, model: type[T]) -> T:
+def get_typed_fixture(path: pathlib.Path | str, model: type[T]) -> T:
     """
     Read a JSON fixture from the ``tests/fixtures`` directory.
 
@@ -107,5 +107,4 @@ def get_typed_fixture(path: Path, model: type[T]) -> T:
     """
     fixtures_dir = pathlib.Path("tests/fixtures")
 
-    with open(fixtures_dir / path) as f:
-        return validate_typeddict(json.load(f, cls=DatetimeDecoder), model)
+    return read_typed_json(fixtures_dir / path, model=model, cls=DatetimeDecoder)
