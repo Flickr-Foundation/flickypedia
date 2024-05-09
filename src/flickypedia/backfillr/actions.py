@@ -2,6 +2,7 @@ import typing
 
 from flickypedia.apis.structured_data.wikidata import WikidataProperties as WP
 from flickypedia.types.structured_data import (
+    BaseStatement,
     ExistingClaims,
     NewClaims,
     NewStatement,
@@ -140,6 +141,41 @@ def create_actions(existing_sdc: ExistingClaims, new_sdc: NewClaims) -> list[Act
                 break
             # fmt: on
 
+            # fmt: off
+            # There are some cases where the creator is populated with the
+            # Flickr username, prefixed with "Flickr user $username".
+            #
+            # In this case, we can go ahead and replace the existing statement.
+            # fmt: on
+            if (
+                property_id == WP.Creator
+                and "qualifiers" in statement
+                and are_equivalent_snaks(
+                    statement["mainsnak"], new_statement["mainsnak"]
+                )
+                and statement["qualifiers-order"] == [WP.AuthorName]
+                and len(statement["qualifiers"][WP.AuthorName]) == 1
+            ):
+                old_author_name = get_author_name(statement)
+                new_author_name = get_author_name(new_statement)
+
+                if old_author_name in {
+                    f"flickr user {new_author_name}",
+                    f"Flickr User {new_author_name}",
+                    f"Flickr user {new_author_name}",
+                    new_author_name,
+                }:
+                    actions.append(
+                        ReplaceStatement(
+                            property_id=property_id,
+                            action="replace_statement",
+                            statement_id=statement["id"],
+                            statement=new_statement,
+                        )
+                    )
+                    break
+            # fmt: on
+
             # If the existing statement has the same mainsnak and a subset
             # of the qualifiers, then we need to update it.
             has_same_mainsnak = are_equivalent_snaks(
@@ -162,3 +198,12 @@ def create_actions(existing_sdc: ExistingClaims, new_sdc: NewClaims) -> list[Act
             actions.append(Unknown(property_id=property_id, action="unknown"))
 
     return actions
+
+
+def get_author_name(statement: BaseStatement) -> str:
+    """
+    Given a statement, get the string value from the Author Name qualifier.
+    """
+    value = statement["qualifiers"][WP.AuthorName][0]["datavalue"]["value"]
+    assert isinstance(value, str)
+    return value

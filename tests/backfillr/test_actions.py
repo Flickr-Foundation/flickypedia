@@ -1,3 +1,5 @@
+import pytest
+
 from flickypedia.backfillr.actions import create_actions
 from flickypedia.types.structured_data import (
     ExistingClaims,
@@ -552,7 +554,7 @@ def test_it_does_nothing_for_mismatched_creator() -> None:
     ]
 
 
-def test_it_ignores_extra_roles_in_creator_if_otherwise_equivalent():
+def test_it_ignores_extra_roles_in_creator_if_otherwise_equivalent() -> None:
     # Based on https://commons.wikimedia.org/wiki/File:Programme_(1919)_(14783412743).jpg
     # Retrieved 9 May 2024
     existing_sdc: ExistingClaims = {
@@ -660,5 +662,159 @@ def test_it_ignores_extra_roles_in_creator_if_otherwise_equivalent():
         {
             "property_id": "P170",
             "action": "do_nothing",
+        }
+    ]
+
+
+@pytest.mark.parametrize(
+    "author_name",
+    ["flickr user Bryce Edwards", "Flickr user Bryce Edwards", "Bryce Edwards"],
+)
+def test_it_replaces_an_author_name(author_name: str) -> None:
+    existing_claims: ExistingClaims = {
+        "P170": [
+            {
+                "type": "statement",
+                "mainsnak": {
+                    "property": "P170",
+                    "snaktype": "somevalue",
+                    "hash": "d3550e860f988c6675fff913440993f58f5c40c5",
+                },
+                "qualifiers-order": ["P2093"],
+                "qualifiers": {
+                    "P2093": [
+                        {
+                            "property": "P2093",
+                            "snaktype": "value",
+                            "datavalue": {
+                                "type": "string",
+                                "value": author_name,
+                            },
+                            "hash": "a193269ae888171ae46da83b8fb92dbbce2497c7",
+                        }
+                    ]
+                },
+                "id": "M1899107$D9951FC5-A183-43EF-85D6-6E8DFCD6DC34",
+                "rank": "normal",
+            }
+        ],
+    }
+
+    creator_statement: NewStatement = {
+        "mainsnak": {"snaktype": "somevalue", "property": "P170"},
+        "qualifiers": {
+            "P2093": [
+                {
+                    "datavalue": {"value": "Bryce Edwards", "type": "string"},
+                    "property": "P2093",
+                    "snaktype": "value",
+                }
+            ],
+            "P2699": [
+                {
+                    "datavalue": {
+                        "value": "https://www.flickr.com/people/bryceedwards/",
+                        "type": "string",
+                    },
+                    "property": "P2699",
+                    "snaktype": "value",
+                }
+            ],
+            "P3267": [
+                {
+                    "datavalue": {"value": "40286210@N00", "type": "string"},
+                    "property": "P3267",
+                    "snaktype": "value",
+                }
+            ],
+        },
+        "qualifiers-order": ["P3267", "P2093", "P2699"],
+        "type": "statement",
+    }
+
+    new_claims: NewClaims = {"claims": [creator_statement]}
+
+    assert create_actions(existing_claims, new_claims) == [
+        {
+            "property_id": "P170",
+            "action": "replace_statement",
+            "statement_id": "M1899107$D9951FC5-A183-43EF-85D6-6E8DFCD6DC34",
+            "statement": creator_statement,
+        }
+    ]
+
+
+@pytest.mark.parametrize(
+    "author_name",
+    ["flickr user Not Bryce Edwards", "fl user Bryce Edwards", "Bruce Edward"],
+)
+def test_it_skips_an_unrecognised_author_name(author_name: str) -> None:
+    existing_claims: ExistingClaims = {
+        "P170": [
+            {
+                "type": "statement",
+                "mainsnak": {
+                    "property": "P170",
+                    "snaktype": "somevalue",
+                    "hash": "d3550e860f988c6675fff913440993f58f5c40c5",
+                },
+                "qualifiers-order": ["P2093"],
+                "qualifiers": {
+                    "P2093": [
+                        {
+                            "property": "P2093",
+                            "snaktype": "value",
+                            "datavalue": {
+                                "type": "string",
+                                "value": author_name,
+                            },
+                            "hash": "a193269ae888171ae46da83b8fb92dbbce2497c7",
+                        }
+                    ]
+                },
+                "id": "M1899107$D9951FC5-A183-43EF-85D6-6E8DFCD6DC34",
+                "rank": "normal",
+            }
+        ],
+    }
+
+    creator_statement: NewStatement = {
+        "mainsnak": {"snaktype": "somevalue", "property": "P170"},
+        "qualifiers": {
+            "P2093": [
+                {
+                    "datavalue": {"value": "Bryce Edwards", "type": "string"},
+                    "property": "P2093",
+                    "snaktype": "value",
+                }
+            ],
+            "P2699": [
+                {
+                    "datavalue": {
+                        "value": "https://www.flickr.com/people/bryceedwards/",
+                        "type": "string",
+                    },
+                    "property": "P2699",
+                    "snaktype": "value",
+                }
+            ],
+            "P3267": [
+                {
+                    "datavalue": {"value": "40286210@N00", "type": "string"},
+                    "property": "P3267",
+                    "snaktype": "value",
+                }
+            ],
+        },
+        "qualifiers-order": ["P3267", "P2093", "P2699"],
+        "type": "statement",
+    }
+
+    new_claims: NewClaims = {"claims": [creator_statement]}
+
+    assert create_actions(existing_claims, new_claims) == [
+        {
+            "property_id": "P170",
+            "action": "unknown",
         }
     ]
