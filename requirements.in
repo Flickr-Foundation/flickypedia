@@ -19,4 +19,4 @@ tqdm
 #
 # We should be able to remove this when flask-login next releases.
 # See https://stackoverflow.com/q/77215107/1558022
-werkzeug<3
+werkzeug<4
