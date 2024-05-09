@@ -2,11 +2,25 @@
 Methods used for validating metadata in the upload form.
 """
 
+import typing
 from xml.etree import ElementTree as ET
 
 from .base import WikimediaApiBase
 from .exceptions import UnknownWikimediaApiException
-from ...types.wikimedia import TitleValidation
+
+
+class TitleValidationResult:
+    Ok = typing.TypedDict("Ok", {"result": typing.Literal["ok"]})
+    Failed = typing.TypedDict(
+        "Failed",
+        {
+            "result": typing.Literal["blacklisted", "duplicate", "invalid", "too_long"],
+            "text": str,
+        },
+    )
+
+
+TitleValidation = TitleValidationResult.Ok | TitleValidationResult.Failed
 
 
 class ValidatorMethods(WikimediaApiBase):
