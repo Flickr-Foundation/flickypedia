@@ -8,12 +8,9 @@ from flask import abort, current_app, redirect, request, session, url_for
 from flask_login import current_user, login_required
 import keyring
 from nitrate.passwords import get_required_password
+from nitrate.xml import find_required_elem, find_required_text
 
 from flickypedia.types.views import ViewResponse
-from flickypedia.utils import (
-    find_required_elem,
-    find_required_text,
-)
 
 
 def store_flickypedia_user_oauth_token() -> None:

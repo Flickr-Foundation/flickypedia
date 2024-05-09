@@ -7,8 +7,7 @@ import xml.etree.ElementTree as ET
 
 from flickr_photos_api import FlickrApiException, ResourceNotFound
 import httpx
-
-from flickypedia.utils import find_required_elem
+from nitrate.xml import find_required_elem
 
 
 class InsufficientPermissionsToComment(FlickrApiException):
