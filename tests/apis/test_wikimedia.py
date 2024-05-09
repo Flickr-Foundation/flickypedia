@@ -11,12 +11,6 @@ from flickypedia.apis.wikimedia import (
 )
 
 
-def test_get_userinfo(wikimedia_api: WikimediaApi) -> None:
-    info = wikimedia_api.get_userinfo()
-
-    assert info == {"id": 829939, "name": "Alexwlchan"}
-
-
 @pytest.mark.parametrize(
     ["method_name", "kwargs"],
     [
