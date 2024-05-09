@@ -8,8 +8,6 @@ designed to be used with any auth approach.
 See https://api.wikimedia.org/wiki/Authentication
 """
 
-import typing
-
 from .base import HttpxImplementation
 
 from .category_methods import CategoryMethods
