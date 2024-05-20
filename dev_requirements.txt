@@ -56,7 +56,7 @@ cryptography==42.0.7
     #   secretstorage
 flake8==7.0.0
     # via -r dev_requirements.in
-flask==2.3.3
+flask==3.0.3
     # via
     #   -r requirements.txt
     #   flask-login

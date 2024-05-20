@@ -31,7 +31,7 @@ cryptography==42.0.7
     #   -r requirements.in
     #   authlib
     #   secretstorage
-flask==2.3.3
+flask==3.0.3
     # via
     #   -r requirements.in
     #   flask-login
