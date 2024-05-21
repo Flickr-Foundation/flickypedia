@@ -32,7 +32,11 @@ def test_it_rejects_non_file_urls(url: str) -> None:
             "https://commons.m.wikimedia.org/wiki/File:%22Christmas_wishes%22_-_Christmas_card._Nellie_Murrell_Collection,_Australia_c._1900s.jpg",
             '"Christmas_wishes"_-_Christmas_card._Nellie_Murrell_Collection,_Australia_c._1900s.jpg',
         ),
+        (
+            "https://commons.wikimedia.org/?curid=106460733",
+            "View of Mount Lycabettus from Ardettus Hill in Athens on June 10, 2021.jpg",
+        ),
     ],
 )
-def test_it_gets_filename_from_url(url: str, filename: str) -> None:
+def test_it_gets_filename_from_url(vcr_cassette: str, url: str, filename: str) -> None:
     assert get_filename_from_url(url) == filename
