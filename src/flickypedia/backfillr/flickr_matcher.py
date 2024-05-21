@@ -173,47 +173,6 @@ def get_qualifiers(statement: ExistingStatement, *, property_id: str) -> list[Sn
     return snak_list
 
 
-def get_single_qualifier(
-    statement: ExistingStatement, *, property_id: str
-) -> Snak | None:
-    """
-    A statement can have qualifiers:
-
-        statement: {
-            qualifiers: Qualifiers
-            ...
-        }
-
-    This function returns all the qualifiers for a property ID.
-
-    In most cases, there's exactly one Snak per property ID, e.g.
-
-        statement: {
-            qualifiers: {
-                P123: [Snak],
-                P456: [Snak],
-            }
-        }
-
-    This function looks for exactly one Snak in a property, and returns
-    it if found.
-
-    If there are no Snaks (this property isn't used as a qualifier) or
-    there are multiple Snaks for a property, it returns ``None``.
-    """
-    qualifiers = get_qualifiers(statement, property_id=property_id)
-
-    if len(qualifiers) == 0:
-        return None
-
-    if len(qualifiers) != 1:
-        raise AmbiguousStructuredData(
-            f"Unexpected multiple qualifiers in {statement['id']}"
-        )
-
-    return qualifiers[0]
-
-
 class AmbiguousStructuredData(Exception):
     pass
 
@@ -231,13 +190,31 @@ def find_flickr_urls_in_sdc(sdc: ExistingClaims) -> list[tuple[str, ParseResult]
     for statement in sdc.get(WikidataProperties.SourceOfFile, []):
         # First check if the Operator is "Flickr".  If it's not, this
         # isn't a Flickr source and we can skip it.
-        operator = get_single_qualifier(
-            statement, property_id=WikidataProperties.Operator
-        )
+        #
+        # Note that some Flickr photos have two Operator values, in particular
+        # a lot of photos from the National Library of Finland have both
+        # Flickr and NLoF as their "operator".  As long as there's a Flickr URL,
+        # we can do something with that.
+        operators = [
+            op.get("datavalue")
+            for op in get_qualifiers(statement, property_id=WikidataProperties.Operator)
+        ]
 
         flickr = to_wikidata_entity_value(entity_id=WikidataEntities.Flickr)
+        nationalLibraryOfFinland = to_wikidata_entity_value(
+            entity_id=WikidataEntities.NationalLibraryOfFinland
+        )
 
-        if operator is not None and operator.get("datavalue") != flickr:
+        if len(operators) > 1 and operators != [flickr, nationalLibraryOfFinland]:
+            raise AmbiguousStructuredData(
+                f"Unexpected multiple qualifiers in {statement['id']}"
+            )
+
+        if (
+            operators
+            and operators != [flickr]
+            and operators != [flickr, nationalLibraryOfFinland]
+        ):
             continue
 
         # Now look at the "URL" and "Published at" qualifiers.  Either of

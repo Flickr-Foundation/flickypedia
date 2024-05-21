@@ -53,6 +53,7 @@ class WikidataEntities:
     FileAvailableOnInternet = "Q74228490"
     Flickr = "Q103204"
     GregorianCalendar = "Q1985727"
+    NationalLibraryOfFinland = "Q420747"
     PublicDomain = "Q19652"
     StatedByCopyrightHolderAtSourceWebsite = "Q61045577"
     UnitedStatesOfAmerica = "Q30"
