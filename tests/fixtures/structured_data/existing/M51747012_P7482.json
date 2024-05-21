@@ -1,0 +1,158 @@
+{
+  "P7482": [
+    {
+      "type": "statement",
+      "mainsnak": {
+        "property": "P7482",
+        "snaktype": "value",
+        "datavalue": {
+          "type": "wikibase-entityid",
+          "value": {
+            "entity-type": "item",
+            "id": "Q74228490",
+            "numeric-id": 74228490
+          }
+        },
+        "hash": "b82dd47222a210c6dc1f428b693c2fbf7b0e0d6e"
+      },
+      "qualifiers-order": [
+        "P137",
+        "P973",
+        "P123"
+      ],
+      "qualifiers": {
+        "P137": [
+          {
+            "property": "P137",
+            "snaktype": "value",
+            "datavalue": {
+              "type": "wikibase-entityid",
+              "value": {
+                "entity-type": "item",
+                "id": "Q103204",
+                "numeric-id": 103204
+              }
+            },
+            "hash": "3d8cd4c1ab91d3d9a14900210faaebf1a98b947b"
+          },
+          {
+            "property": "P137",
+            "snaktype": "value",
+            "datavalue": {
+              "type": "wikibase-entityid",
+              "value": {
+                "entity-type": "item",
+                "id": "Q420747",
+                "numeric-id": 420747
+              }
+            },
+            "hash": "07ea3d072002f2bddc7ea1fb974df27964f90b7b"
+          }
+        ],
+        "P973": [
+          {
+            "property": "P973",
+            "snaktype": "value",
+            "datavalue": {
+              "type": "string",
+              "value": "https://www.flickr.com/photos/finnishnationalgallery/16041507752/"
+            },
+            "hash": "aacdff00e2434ca6859f5a4791abee16f48c6303"
+          },
+          {
+            "property": "P973",
+            "snaktype": "value",
+            "datavalue": {
+              "type": "string",
+              "value": "https://www.finna.fi/Record/fng_simberg.HS_Familjeliv_1917_279"
+            },
+            "hash": "8afe255212d28f2f6f01495d00def7279b645ed6"
+          }
+        ],
+        "P123": [
+          {
+            "property": "P123",
+            "snaktype": "value",
+            "datavalue": {
+              "type": "wikibase-entityid",
+              "value": {
+                "entity-type": "item",
+                "id": "Q2983474",
+                "numeric-id": 2983474
+              }
+            },
+            "hash": "dcd079157d17bc98cb0d2afa9dc805eb01b4399c"
+          }
+        ]
+      },
+      "id": "M51747012$CD818BE5-6BB4-41D0-B1BC-53B5646BA2E3",
+      "rank": "normal"
+    },
+    {
+      "type": "statement",
+      "mainsnak": {
+        "property": "P7482",
+        "snaktype": "value",
+        "datavalue": {
+          "type": "wikibase-entityid",
+          "value": {
+            "entity-type": "item",
+            "id": "Q74228490",
+            "numeric-id": 74228490
+          }
+        },
+        "hash": "b82dd47222a210c6dc1f428b693c2fbf7b0e0d6e"
+      },
+      "qualifiers-order": [
+        "P973",
+        "P137",
+        "P123"
+      ],
+      "qualifiers": {
+        "P973": [
+          {
+            "property": "P973",
+            "snaktype": "value",
+            "datavalue": {
+              "type": "string",
+              "value": "https://www.finna.fi/Record/fng_simberg.HS_Familjeliv_1917_279"
+            },
+            "hash": "8afe255212d28f2f6f01495d00def7279b645ed6"
+          }
+        ],
+        "P137": [
+          {
+            "property": "P137",
+            "snaktype": "value",
+            "datavalue": {
+              "type": "wikibase-entityid",
+              "value": {
+                "entity-type": "item",
+                "id": "Q420747",
+                "numeric-id": 420747
+              }
+            },
+            "hash": "07ea3d072002f2bddc7ea1fb974df27964f90b7b"
+          }
+        ],
+        "P123": [
+          {
+            "property": "P123",
+            "snaktype": "value",
+            "datavalue": {
+              "type": "wikibase-entityid",
+              "value": {
+                "entity-type": "item",
+                "id": "Q2983474",
+                "numeric-id": 2983474
+              }
+            },
+            "hash": "dcd079157d17bc98cb0d2afa9dc805eb01b4399c"
+          }
+        ]
+      },
+      "id": "M51747012$5c580c7c-a389-45bb-9c29-e6d3294fadba",
+      "rank": "normal"
+    }
+  ]
+}

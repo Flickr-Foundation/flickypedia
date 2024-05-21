@@ -261,6 +261,20 @@ def get_statement_fixture(filename: str) -> ExistingClaims:
                 "url": "https://www.flickr.com/photos/claudiunh/5902112330/",
             },
         ),
+        #
+        # M51747012 = HS Familjeliv 1917 279, 1917 (16041507752).jpg
+        # Retrieved 21 May 2024
+        #
+        # This is an example of a photo from the National Library of Finland,
+        # which structures the Source of File field in an unusual way.
+        pytest.param(
+            "M51747012_P7482.json",
+            {
+                "photo_id": "16041507752",
+                "url": "https://www.flickr.com/photos/finnishnationalgallery/16041507752/",
+            },
+            id="finnishnationalgallery",
+        ),
     ],
 )
 def test_find_flickr_photo_id_from_sdc(
