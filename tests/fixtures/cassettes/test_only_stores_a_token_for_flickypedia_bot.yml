@@ -10,7 +10,7 @@ interactions:
       host:
       - www.flickr.com
     method: POST
-    uri: https://www.flickr.com/services/oauth/request_token?oauth_callback=oob
+    uri: https://www.flickr.com/services/oauth/request_token?oauth_callback=oob&oauth_version=1.0&oauth_signature_method=HMAC-SHA1&oauth_consumer_key=12345&oauth_version=1.0&oauth_signature_method=HMAC-SHA1&oauth_consumer_key=12345
   response:
     content: oauth_callback_confirmed=true&oauth_token=OAUTH_TOKEN_123&oauth_token_secret=OAUTH_TOKEN_SECRET_456
     headers:
@@ -30,7 +30,7 @@ interactions:
       host:
       - www.flickr.com
     method: POST
-    uri: https://www.flickr.com/services/oauth/access_token
+    uri: https://www.flickr.com/services/oauth/access_token?oauth_version=1.0&oauth_signature_method=HMAC-SHA1&oauth_consumer_key=12345&oauth_token=OAUTH_TOKEN_123&oauth_version=1.0&oauth_signature_method=HMAC-SHA1&oauth_consumer_key=12345&oauth_token=OAUTH_TOKEN_123
   response:
     content: fullname=Flickypedia%20Bot&oauth_token=FLICKYPEDIA_OAUTH_TOKEN_123&oauth_token_secret=FLICKYPEDIA_OAUTH_SECRET_456&user_nsid=199561775%40N05&username=flickypedia
     headers:
@@ -48,7 +48,7 @@ interactions:
       host:
       - www.flickr.com
     method: GET
-    uri: https://www.flickr.com/services/rest?method=flickr.test.login
+    uri: https://www.flickr.com/services/rest?method=flickr.test.login&oauth_version=1.0&oauth_signature_method=HMAC-SHA1&oauth_consumer_key=12345&oauth_token=FLICKYPEDIA_OAUTH_TOKEN_123&oauth_version=1.0&oauth_signature_method=HMAC-SHA1&oauth_consumer_key=12345&oauth_token=FLICKYPEDIA_OAUTH_TOKEN_123
   response:
     content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<user
       id=\"123456789@N05\" path_alias=\"example\">\n\t<username>example</username>\n</user>\n</rsp>\n"
