@@ -3,7 +3,6 @@ import json
 from click.testing import CliRunner
 import keyring
 from nitrate.passwords import use_in_memory_keyring
-import vcr
 
 from flickypedia.cli import main as cli_main
 
