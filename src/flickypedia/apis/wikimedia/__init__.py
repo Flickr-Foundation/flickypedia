@@ -7,7 +7,6 @@ from .exceptions import (
     MissingFileException,
 )
 from .language_methods import top_n_languages, LanguageMatch
-from .url_parser import get_filename_from_url
 
 from .base import HttpxImplementation
 
@@ -33,6 +32,9 @@ class WikimediaApi(
     UserMethods,
 ):
     pass
+
+
+from .url_parser import get_filename_from_url  # noqa: E402
 
 
 __all__ = [
