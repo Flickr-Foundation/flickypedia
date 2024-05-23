@@ -8,7 +8,7 @@ import vcr
 from flickypedia.cli import main as cli_main
 
 
-def test_store_flickypedia_bot_token(cassette_name: str) -> None:
+def test_store_flickypedia_bot_token(flickr_oauth_cassette: str) -> None:
     """
     This tests the steps of getting and saving a Flickr OAuth 1.0a token
     for the Flickypedia bot account.
@@ -23,21 +23,10 @@ def test_store_flickypedia_bot_token(cassette_name: str) -> None:
         }
     )
 
-    with vcr.use_cassette(
-        cassette_name,
-        cassette_library_dir="tests/fixtures/cassettes",
-        filter_query_parameters=[
-            "oauth_nonce",
-            "oauth_signature",
-            "oauth_signature_method",
-            "oauth_timestamp",
-            "oauth_verifier",
-        ],
-    ):
-        runner = CliRunner()
-        result = runner.invoke(
-            cli_main, ["uploadr", "store-flickypedia-bot-token"], input="429-793-767\n"
-        )
+    runner = CliRunner()
+    result = runner.invoke(
+        cli_main, ["uploadr", "store-flickypedia-bot-token"], input="429-793-767\n"
+    )
 
     assert result.exit_code == 0
 
@@ -51,7 +40,7 @@ def test_store_flickypedia_bot_token(cassette_name: str) -> None:
     }
 
 
-def test_only_stores_a_token_for_flickypedia_bot(cassette_name: str) -> None:
+def test_only_stores_a_token_for_flickypedia_bot(flickr_oauth_cassette: str) -> None:
     """
     This tests that we can only store a token for the Flickypedia bot user.
 
@@ -67,21 +56,10 @@ def test_only_stores_a_token_for_flickypedia_bot(cassette_name: str) -> None:
         }
     )
 
-    with vcr.use_cassette(
-        cassette_name,
-        cassette_library_dir="tests/fixtures/cassettes",
-        filter_query_parameters=[
-            "oauth_nonce",
-            "oauth_signature",
-            "oauth_signature_method",
-            "oauth_timestamp",
-            "oauth_verifier",
-        ],
-    ):
-        runner = CliRunner()
-        result = runner.invoke(
-            cli_main, ["uploadr", "store-flickypedia-bot-token"], input="429-793-767\n"
-        )
+    runner = CliRunner()
+    result = runner.invoke(
+        cli_main, ["uploadr", "store-flickypedia-bot-token"], input="429-793-767\n"
+    )
 
     assert result.exit_code == 1
 

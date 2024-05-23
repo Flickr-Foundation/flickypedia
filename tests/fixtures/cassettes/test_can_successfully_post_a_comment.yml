@@ -15,7 +15,7 @@ interactions:
       user-agent:
       - python-httpx/0.25.1
     method: POST
-    uri: https://api.flickr.com/services/rest/?method=flickr.photos.comments.addComment&photo_id=53373661077&comment_text=This%20is%20a%20comment%20posted%20by%20the%20Flickypedia%20unit%20tests
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.comments.addComment&photo_id=53373661077&comment_text=This+is+a+comment+posted+by+the+Flickypedia+unit+tests&oauth_version=1.0&oauth_signature_method=HMAC-SHA1&oauth_version=1.0&oauth_signature_method=HMAC-SHA1
   response:
     content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<comment
       id=\"199226260-53373661077-72157720318042413\" author=\"199561775@N05\" authorname=\"flickypedia\"
@@ -79,7 +79,7 @@ interactions:
       user-agent:
       - python-httpx/0.25.1
     method: POST
-    uri: https://api.flickr.com/services/rest/?method=flickr.photos.comments.addComment&photo_id=53373661077&comment_text=This%20is%20a%20comment%20posted%20by%20the%20Flickypedia%20unit%20tests
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.comments.addComment&photo_id=53373661077&comment_text=This+is+a+comment+posted+by+the+Flickypedia+unit+tests&oauth_version=1.0&oauth_signature_method=HMAC-SHA1&oauth_version=1.0&oauth_signature_method=HMAC-SHA1
   response:
     content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<comment
       id=\"199226260-53373661077-72157720318042413\" author=\"199561775@N05\" authorname=\"flickypedia\"

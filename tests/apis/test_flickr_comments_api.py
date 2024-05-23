@@ -39,6 +39,15 @@ def flickr_comments_api(
     with vcr.use_cassette(
         cassette_name,
         cassette_library_dir="tests/fixtures/cassettes",
+        filter_query_parameters=[
+            "oauth_consumer_key",
+            "oauth_nonce",
+            "oauth_signature",
+            "oauth_signature_method",
+            "oauth_timestamp",
+            "oauth_token",
+            "oauth_verifier",
+        ]
     ):
         stored_token = json.loads(
             get_optional_password("flickypedia.bot", "oauth_token", default="{}")

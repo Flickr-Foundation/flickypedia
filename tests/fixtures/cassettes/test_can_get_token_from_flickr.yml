@@ -15,7 +15,7 @@ interactions:
       user-agent:
       - python-httpx/0.25.1
     method: POST
-    uri: https://www.flickr.com/services/oauth/request_token?oauth_callback=http%3A%2F%2Flocalhost%2Fcallback%2Fflickr
+    uri: https://www.flickr.com/services/oauth/request_token?oauth_callback=http%3A%2F%2Flocalhost%2Fcallback%2Fflickr&oauth_version=1.0&oauth_signature_method=HMAC-SHA1&oauth_consumer_key=123&oauth_version=1.0&oauth_signature_method=HMAC-SHA1&oauth_consumer_key=123
   response:
     content: oauth_callback_confirmed=true&oauth_token=REQUEST_OAUTH_TOKEN_7e2&oauth_token_secret=REQUEST_OAUTH_TOKEN_SECRET_90c
     headers:
