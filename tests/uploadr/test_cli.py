@@ -7,7 +7,7 @@ from nitrate.passwords import use_in_memory_keyring
 from flickypedia.cli import main as cli_main
 
 
-def test_store_flickypedia_bot_token(vcr_cassette: None) -> None:
+def test_store_flickypedia_bot_token(flickr_oauth_cassette: str) -> None:
     """
     This tests the steps of getting and saving a Flickr OAuth 1.0a token
     for the Flickypedia bot account.
@@ -26,6 +26,7 @@ def test_store_flickypedia_bot_token(vcr_cassette: None) -> None:
     result = runner.invoke(
         cli_main, ["uploadr", "store-flickypedia-bot-token"], input="429-793-767\n"
     )
+
     assert result.exit_code == 0
 
     stored_token = keyring.get_password("flickypedia.bot", "oauth_token")
@@ -38,7 +39,7 @@ def test_store_flickypedia_bot_token(vcr_cassette: None) -> None:
     }
 
 
-def test_only_stores_a_token_for_flickypedia_bot(vcr_cassette: None) -> None:
+def test_only_stores_a_token_for_flickypedia_bot(flickr_oauth_cassette: str) -> None:
     """
     This tests that we can only store a token for the Flickypedia bot user.
 
@@ -58,6 +59,7 @@ def test_only_stores_a_token_for_flickypedia_bot(vcr_cassette: None) -> None:
     result = runner.invoke(
         cli_main, ["uploadr", "store-flickypedia-bot-token"], input="429-793-767\n"
     )
+
     assert result.exit_code == 1
 
     assert (

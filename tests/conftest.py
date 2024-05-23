@@ -113,6 +113,28 @@ def flickr_api(cassette_name: str, user_agent: str) -> Iterator[FlickrApi]:
         )
 
 
+@pytest.fixture(scope="function")
+def flickr_oauth_cassette(cassette_name: str) -> Iterator[str]:
+    """
+    Creates an instance of the FlickrApi class for use in tests.
+
+    This instance of the API will record its interactions as "cassettes"
+    using vcr.py, which can be replayed offline (e.g. in CI tests).
+    """
+    with vcr.use_cassette(
+        cassette_name,
+        cassette_library_dir="tests/fixtures/cassettes",
+        filter_query_parameters=[
+            "oauth_nonce",
+            "oauth_signature",
+            "oauth_signature_method",
+            "oauth_timestamp",
+            "oauth_verifier",
+        ],
+    ):
+        yield cassette_name
+
+
 @pytest.fixture()
 def app(user_agent: str, tmp_path: pathlib.Path) -> Iterator[Flask]:
     """

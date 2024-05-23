@@ -39,6 +39,16 @@ def flickr_comments_api(
     with vcr.use_cassette(
         cassette_name,
         cassette_library_dir="tests/fixtures/cassettes",
+        filter_query_parameters=[
+            "oauth_consumer_key",
+            "oauth_nonce",
+            "oauth_signature",
+            "oauth_signature_method",
+            "oauth_timestamp",
+            "oauth_token",
+            "oauth_verifier",
+            "oauth_version",
+        ],
     ):
         stored_token = json.loads(
             get_optional_password("flickypedia.bot", "oauth_token", default="{}")
@@ -67,7 +77,7 @@ def test_throws_if_not_allowed_to_post_comment(
         )
 
 
-def test_throws_if_invalid_oauth_signature(vcr_cassette: str) -> None:
+def test_throws_if_invalid_oauth_signature(cassette_name: str) -> None:
     stored_token = json.loads(
         get_optional_password("flickypedia.bot", "oauth_token", default="{}")
     )
@@ -82,11 +92,25 @@ def test_throws_if_invalid_oauth_signature(vcr_cassette: str) -> None:
 
     api = FlickrCommentsApi(client)
 
-    with pytest.raises(FlickrApiException):
-        api.post_comment(
-            photo_id="53374767803",
-            comment_text="This is a comment that uses bogus OAuth 1.0a credentials",
-        )
+    with vcr.use_cassette(
+        cassette_name,
+        cassette_library_dir="tests/fixtures/cassettes",
+        filter_query_parameters=[
+            "oauth_consumer_key",
+            "oauth_nonce",
+            "oauth_signature",
+            "oauth_signature_method",
+            "oauth_timestamp",
+            "oauth_token",
+            "oauth_verifier",
+            "oauth_version",
+        ],
+    ):
+        with pytest.raises(FlickrApiException):
+            api.post_comment(
+                photo_id="53374767803",
+                comment_text="This is a comment that uses bogus OAuth 1.0a credentials",
+            )
 
 
 def test_throws_if_photo_doesnt_exist(flickr_comments_api: FlickrCommentsApi) -> None:

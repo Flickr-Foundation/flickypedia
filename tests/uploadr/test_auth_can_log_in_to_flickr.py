@@ -14,7 +14,7 @@ def oauth_env_vars() -> None:
 def test_can_get_token_from_flickr(
     oauth_env_vars: None,
     logged_in_client: FlaskClient,
-    vcr_cassette: str,
+    flickr_oauth_cassette: str,
     user_agent: str,
 ) -> None:
     """
