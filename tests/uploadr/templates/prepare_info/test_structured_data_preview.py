@@ -18,7 +18,7 @@ from flickypedia.apis.structured_data import (
     create_license_statement,
     create_location_statement,
     create_posted_to_flickr_statement,
-    create_source_data_for_photo,
+    create_source_statement,
 )
 from flickypedia.types.structured_data import NewStatement
 
@@ -133,7 +133,7 @@ def test_shows_copyright_status(app: Flask, vcr_cassette: str) -> None:
 
 
 def test_shows_source_data(app: Flask, vcr_cassette: str) -> None:
-    source_claim = create_source_data_for_photo(
+    source_claim = create_source_statement(
         photo_id="53248015596",
         photo_url="https://www.flickr.com/photos/199246608@N02/53248015596/",
         original_url="https://live.staticflickr.com/65535/53248015596_c03f8123cf_o_d.jpg",

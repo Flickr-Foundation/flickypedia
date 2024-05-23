@@ -8,7 +8,7 @@ from .create_structured_data import (
     create_posted_to_flickr_statement,
     create_sdc_claims_for_existing_flickr_photo,
     create_sdc_claims_for_new_flickr_photo,
-    create_source_data_for_photo,
+    create_source_statement,
 )
 
 __all__ = [
@@ -21,5 +21,5 @@ __all__ = [
     "create_posted_to_flickr_statement",
     "create_sdc_claims_for_existing_flickr_photo",
     "create_sdc_claims_for_new_flickr_photo",
-    "create_source_data_for_photo",
+    "create_source_statement",
 ]

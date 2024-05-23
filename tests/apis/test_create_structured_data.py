@@ -20,7 +20,7 @@ from flickypedia.apis.structured_data import (
     create_posted_to_flickr_statement,
     create_sdc_claims_for_existing_flickr_photo,
     create_sdc_claims_for_new_flickr_photo,
-    create_source_data_for_photo,
+    create_source_statement,
 )
 from flickypedia.types.flickr import SinglePhotoData
 from flickypedia.types.structured_data import NewClaims, NewStatement
@@ -106,8 +106,8 @@ def test_create_copyright_status_statement(license_id: str, filename: str) -> No
     assert result == expected
 
 
-def test_create_source_data_for_photo() -> None:
-    result = create_source_data_for_photo(
+def test_create_source_statement() -> None:
+    result = create_source_statement(
         photo_id="53248015596",
         photo_url="https://www.flickr.com/photos/199246608@N02/53248015596/",
         original_url="https://live.staticflickr.com/65535/53248015596_c03f8123cf_o_d.jpg",
@@ -118,8 +118,8 @@ def test_create_source_data_for_photo() -> None:
     assert result == expected
 
 
-def test_create_source_data_without_retrieved_at() -> None:
-    result = create_source_data_for_photo(
+def test_create_source_statement_without_retrieved_at() -> None:
+    result = create_source_statement(
         photo_id="53248015596",
         photo_url="https://www.flickr.com/photos/199246608@N02/53248015596/",
         original_url="https://live.staticflickr.com/65535/53248015596_c03f8123cf_o_d.jpg",

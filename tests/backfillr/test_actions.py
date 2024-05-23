@@ -1,3 +1,5 @@
+import pytest
+
 from flickypedia.backfillr.actions import create_actions
 from flickypedia.types.structured_data import (
     ExistingClaims,
@@ -390,7 +392,12 @@ def test_a_null_creator_statement_is_replaced() -> None:
     ]
 
 
-def test_a_creator_is_replaced_if_numeric_id_in_alias() -> None:
+def test_it_does_nothing_if_creator_differs_only_in_url() -> None:
+    """
+    If the statements are the same, except the URL on WMC uses
+    the numeric ID and the URL on Flickr uses the pathalias, we
+    can leave the URL on WMC as-is.
+    """
     existing_statement: ExistingStatement = {
         "type": "statement",
         "mainsnak": {
@@ -471,9 +478,7 @@ def test_a_creator_is_replaced_if_numeric_id_in_alias() -> None:
     assert actions == [
         {
             "property_id": "P170",
-            "action": "replace_statement",
-            "statement_id": "M34597$10AA104E-CFBD-44C2-8D43-FF8C48FE428A",
-            "statement": new_statement,
+            "action": "do_nothing",
         }
     ]
 
@@ -546,4 +551,270 @@ def test_it_does_nothing_for_mismatched_creator() -> None:
 
     assert create_actions(existing_sdc, new_sdc) == [
         {"action": "unknown", "property_id": "P170"}
+    ]
+
+
+def test_it_ignores_extra_roles_in_creator_if_otherwise_equivalent() -> None:
+    # Based on https://commons.wikimedia.org/wiki/File:Programme_(1919)_(14783412743).jpg
+    # Retrieved 9 May 2024
+    existing_sdc: ExistingClaims = {
+        "P170": [
+            {
+                "type": "statement",
+                "mainsnak": {
+                    "property": "P170",
+                    "snaktype": "somevalue",
+                    "hash": "d3550e860f988c6675fff913440993f58f5c40c5",
+                },
+                "qualifiers-order": ["P3831", "P2093", "P3267", "P2699"],
+                "qualifiers": {
+                    "P3831": [
+                        {
+                            "property": "P3831",
+                            "snaktype": "value",
+                            "datavalue": {
+                                "type": "wikibase-entityid",
+                                "value": {
+                                    "entity-type": "item",
+                                    "id": "Q33231",
+                                    "numeric-id": 33231,
+                                },
+                            },
+                            "hash": "c5e04952fd00011abf931be1b701f93d9e6fa5d7",
+                        }
+                    ],
+                    "P2093": [
+                        {
+                            "property": "P2093",
+                            "snaktype": "value",
+                            "datavalue": {
+                                "type": "string",
+                                "value": "Internet Archive Book Images",
+                            },
+                            "hash": "407646c600d296f66b9b08acf1e09bd36814c83d",
+                        }
+                    ],
+                    "P3267": [
+                        {
+                            "property": "P3267",
+                            "snaktype": "value",
+                            "datavalue": {"type": "string", "value": "126377022@N07"},
+                            "hash": "19d030d2329f5e7b395a6e0a2df538053fa4ec11",
+                        }
+                    ],
+                    "P2699": [
+                        {
+                            "property": "P2699",
+                            "snaktype": "value",
+                            "datavalue": {
+                                "type": "string",
+                                "value": "https://www.flickr.com/people/126377022@N07",
+                            },
+                            "hash": "4d79b9f1f095fec5270b5c5ee9f549602270135d",
+                        }
+                    ],
+                },
+                "id": "M43417962$70B1AA68-B675-4EBA-8A1E-A3F5F1243944",
+                "rank": "normal",
+            }
+        ],
+    }
+    new_sdc: NewClaims = {
+        "claims": [
+            {
+                "mainsnak": {"snaktype": "somevalue", "property": "P170"},
+                "qualifiers": {
+                    "P2093": [
+                        {
+                            "datavalue": {
+                                "value": "Internet Archive Book Images",
+                                "type": "string",
+                            },
+                            "property": "P2093",
+                            "snaktype": "value",
+                        }
+                    ],
+                    "P2699": [
+                        {
+                            "datavalue": {
+                                "value": "https://www.flickr.com/people/internetarchivebookimages/",
+                                "type": "string",
+                            },
+                            "property": "P2699",
+                            "snaktype": "value",
+                        }
+                    ],
+                    "P3267": [
+                        {
+                            "datavalue": {"value": "126377022@N07", "type": "string"},
+                            "property": "P3267",
+                            "snaktype": "value",
+                        }
+                    ],
+                },
+                "qualifiers-order": ["P3267", "P2093", "P2699"],
+                "type": "statement",
+            },
+        ]
+    }
+
+    assert create_actions(existing_sdc, new_sdc) == [
+        {
+            "property_id": "P170",
+            "action": "do_nothing",
+        }
+    ]
+
+
+@pytest.mark.parametrize(
+    "author_name",
+    ["flickr user Bryce Edwards", "Flickr user Bryce Edwards", "Bryce Edwards"],
+)
+def test_it_replaces_an_author_name(author_name: str) -> None:
+    existing_claims: ExistingClaims = {
+        "P170": [
+            {
+                "type": "statement",
+                "mainsnak": {
+                    "property": "P170",
+                    "snaktype": "somevalue",
+                    "hash": "d3550e860f988c6675fff913440993f58f5c40c5",
+                },
+                "qualifiers-order": ["P2093"],
+                "qualifiers": {
+                    "P2093": [
+                        {
+                            "property": "P2093",
+                            "snaktype": "value",
+                            "datavalue": {
+                                "type": "string",
+                                "value": author_name,
+                            },
+                            "hash": "a193269ae888171ae46da83b8fb92dbbce2497c7",
+                        }
+                    ]
+                },
+                "id": "M1899107$D9951FC5-A183-43EF-85D6-6E8DFCD6DC34",
+                "rank": "normal",
+            }
+        ],
+    }
+
+    creator_statement: NewStatement = {
+        "mainsnak": {"snaktype": "somevalue", "property": "P170"},
+        "qualifiers": {
+            "P2093": [
+                {
+                    "datavalue": {"value": "Bryce Edwards", "type": "string"},
+                    "property": "P2093",
+                    "snaktype": "value",
+                }
+            ],
+            "P2699": [
+                {
+                    "datavalue": {
+                        "value": "https://www.flickr.com/people/bryceedwards/",
+                        "type": "string",
+                    },
+                    "property": "P2699",
+                    "snaktype": "value",
+                }
+            ],
+            "P3267": [
+                {
+                    "datavalue": {"value": "40286210@N00", "type": "string"},
+                    "property": "P3267",
+                    "snaktype": "value",
+                }
+            ],
+        },
+        "qualifiers-order": ["P3267", "P2093", "P2699"],
+        "type": "statement",
+    }
+
+    new_claims: NewClaims = {"claims": [creator_statement]}
+
+    assert create_actions(existing_claims, new_claims) == [
+        {
+            "property_id": "P170",
+            "action": "replace_statement",
+            "statement_id": "M1899107$D9951FC5-A183-43EF-85D6-6E8DFCD6DC34",
+            "statement": creator_statement,
+        }
+    ]
+
+
+@pytest.mark.parametrize(
+    "author_name",
+    ["flickr user Not Bryce Edwards", "fl user Bryce Edwards", "Bruce Edward"],
+)
+def test_it_skips_an_unrecognised_author_name(author_name: str) -> None:
+    existing_claims: ExistingClaims = {
+        "P170": [
+            {
+                "type": "statement",
+                "mainsnak": {
+                    "property": "P170",
+                    "snaktype": "somevalue",
+                    "hash": "d3550e860f988c6675fff913440993f58f5c40c5",
+                },
+                "qualifiers-order": ["P2093"],
+                "qualifiers": {
+                    "P2093": [
+                        {
+                            "property": "P2093",
+                            "snaktype": "value",
+                            "datavalue": {
+                                "type": "string",
+                                "value": author_name,
+                            },
+                            "hash": "a193269ae888171ae46da83b8fb92dbbce2497c7",
+                        }
+                    ]
+                },
+                "id": "M1899107$D9951FC5-A183-43EF-85D6-6E8DFCD6DC34",
+                "rank": "normal",
+            }
+        ],
+    }
+
+    creator_statement: NewStatement = {
+        "mainsnak": {"snaktype": "somevalue", "property": "P170"},
+        "qualifiers": {
+            "P2093": [
+                {
+                    "datavalue": {"value": "Bryce Edwards", "type": "string"},
+                    "property": "P2093",
+                    "snaktype": "value",
+                }
+            ],
+            "P2699": [
+                {
+                    "datavalue": {
+                        "value": "https://www.flickr.com/people/bryceedwards/",
+                        "type": "string",
+                    },
+                    "property": "P2699",
+                    "snaktype": "value",
+                }
+            ],
+            "P3267": [
+                {
+                    "datavalue": {"value": "40286210@N00", "type": "string"},
+                    "property": "P3267",
+                    "snaktype": "value",
+                }
+            ],
+        },
+        "qualifiers-order": ["P3267", "P2093", "P2699"],
+        "type": "statement",
+    }
+
+    new_claims: NewClaims = {"claims": [creator_statement]}
+
+    assert create_actions(existing_claims, new_claims) == [
+        {
+            "property_id": "P170",
+            "action": "unknown",
+        }
     ]
