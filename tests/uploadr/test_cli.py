@@ -8,7 +8,7 @@ import vcr
 from flickypedia.cli import main as cli_main
 
 
-def test_store_flickypedia_bot_token(vcr_cassette: None) -> None:
+def test_store_flickypedia_bot_token(cassette_name: str) -> None:
     """
     This tests the steps of getting and saving a Flickr OAuth 1.0a token
     for the Flickypedia bot account.
@@ -23,10 +23,22 @@ def test_store_flickypedia_bot_token(vcr_cassette: None) -> None:
         }
     )
 
-    runner = CliRunner()
-    result = runner.invoke(
-        cli_main, ["uploadr", "store-flickypedia-bot-token"], input="429-793-767\n"
-    )
+    with vcr.use_cassette(
+        cassette_name,
+        cassette_library_dir="tests/fixtures/cassettes",
+        filter_query_parameters=[
+            "oauth_nonce",
+            "oauth_signature",
+            "oauth_signature_method",
+            "oauth_timestamp",
+            "oauth_verifier",
+        ],
+    ):
+        runner = CliRunner()
+        result = runner.invoke(
+            cli_main, ["uploadr", "store-flickypedia-bot-token"], input="429-793-767\n"
+        )
+
     assert result.exit_code == 0
 
     stored_token = keyring.get_password("flickypedia.bot", "oauth_token")
