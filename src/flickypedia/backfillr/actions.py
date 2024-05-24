@@ -51,13 +51,13 @@ Action = DoNothing | AddMissing | AddQualifiers | ReplaceStatement | Unknown
 
 
 def create_actions(
-    existing_sdc: ExistingClaims, new_sdc: NewClaims, user: FlickrUser
+    existing_claims: ExistingClaims, new_claims: NewClaims, user: FlickrUser
 ) -> list[Action]:
     actions: list[Action] = []
 
-    for new_statement in new_sdc["claims"]:
+    for new_statement in new_claims["claims"]:
         property_id = new_statement["mainsnak"]["property"]
-        existing_statements = existing_sdc.get(property_id, [])
+        existing_statements = existing_claims.get(property_id, [])
 
         # If there are no statements with this property on the
         # existing SDC, then we just need to add it.
