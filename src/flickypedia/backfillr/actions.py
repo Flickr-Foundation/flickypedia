@@ -51,7 +51,7 @@ Action = DoNothing | AddMissing | AddQualifiers | ReplaceStatement | Unknown
 
 
 def create_actions(
-    existing_sdc: ExistingClaims, new_sdc: NewClaims, user: FlickrUser | None = None
+    existing_sdc: ExistingClaims, new_sdc: NewClaims, user: FlickrUser
 ) -> list[Action]:
     actions: list[Action] = []
 
@@ -105,7 +105,7 @@ def create_actions(
             #
             # We can replace this with a richer Creator statement, which will
             # include this pathalias but also other information.
-            if property_id == WP.Creator and user is not None:
+            if property_id == WP.Creator and user["path_alias"] is not None:
                 pathalias_statement = create_author_name_statement(
                     author_name=user["path_alias"]
                 )
