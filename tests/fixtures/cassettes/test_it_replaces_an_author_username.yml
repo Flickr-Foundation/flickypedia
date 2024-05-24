@@ -1,0 +1,71 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - api.flickr.com
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.people.getInfo&user_id=58433307%40N08
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA4VU227bMAx9Xr6C8IBiw9LYufSW2u4wtFiLtntp+xzQNh0LkSVDkuNmXz/KadOs
+        G7aHCNTx4SF1qCi+eK4lrMlYoVUSjEdRAKRyXQi1TILWlYenAVykg9jYBqxDlwR6FfC+4RStQBRJ
+        cHQ6m06n0cnXHxGTlf0TE7YxmtUDEHZRkCRHnMelRK6VJcP1WWY8m22REk2dBMcBNOiqBUqBNgly
+        rLlmoTsVQIV24ZthmEVYe5FhsaQkYFAVaAo+xHMjDCP83bOxKA29bf3GK/Tkha1E0/QHfmH3n6lo
+        c3RsC8qFIatbk1NfMB18iFvuWmFNadUuK5CSOpIbFYc7nDmGUPaca8+523F2OHOk3tZIb2mjbIX1
+        EJ5u43AHM8WJmn5qRSAxI5kE3+8f53DZZlKoIVzxoLLWLKsh3AmbaYbutCo0m6TL0hLP60sUzSM+
+        2KvOws/nqjW6ofCV+/otCSYnAYT+hAXZ3Iimb+7m4GM0PTuvQShH7AWPj0MwKGSHGzsEFCY3WLoh
+        eC8tHPCwzv0PFK5RQiWs02YzhBwN05tKO7002FQeqtjZCpAX4Sh3rSGWcZwNuWZnc8ejGcKSFJl9
+        KdMuM073bgJKzllqXUDJy0vYCcXoisjPFkrhu+tEXfdyzuCaOFEVYHUu+JJZz+qEq6A0glRhR4PB
+        DXRoASEXayHB31RUDrLWgdIdl3Z8x4oR3PAdWxMvXF9wkGm9stD4GdmKvepV682rYXvnt/DpUpDl
+        Th6q1pvL7lw/PG795vjq/mkXb4cFjwbZEg5879+Md1buwM+jONyfHA+yN9u2RqaVc42dh2HXdaNS
+        inxlRrmuwy0hfPuDhfEL5pO8gtGlkPQvCdKNpHcSb1msUevsPxJ/6eItaXcO7udDXApjXYGOHK5I
+        pZMoOj6MZofRGMZH89l4Hp3F4TvOb2npeHJ2ND45nUz2ib10rnkM6fRkdjqJw+2Ga7/4we9euH34
+        fMRPYjr4BaIfS6hBBQAA
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Fri, 24 May 2024 10:06:40 GMT
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 66f235889eac69c1788a87ae42468a12.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - KtZc6P1VOb0tcpzTItHbS2X4QfGRKkDohl7_elnowy-BgdQ2bjgqMA==
+      X-Amz-Cf-Pop:
+      - MAN51-P3
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - openresty
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Sun, 23-Jun-2024 10:06:40 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Sun, 23-Jun-2024 10:06:40 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-flickr-api-request:
+      - Self=1-665066b0-1bfcfcdc703216011df2d5ed;Root=1-665066b0-6191e4007a0fda5f52375f8f
+      x-robots-tag:
+      - noindex
+      x-server:
+      - serverless-proxy-10.78.32.246
+    status:
+      code: 200
+      message: OK
+version: 1

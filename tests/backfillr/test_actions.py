@@ -675,3 +675,42 @@ def test_it_replaces_an_author_pathalias(flickr_api: FlickrApi) -> None:
             "statement": new_statement,
         }
     ]
+
+
+def test_it_replaces_an_author_username(flickr_api: FlickrApi) -> None:
+    existing_statement: ExistingStatement = {
+        "type": "statement",
+        "mainsnak": {
+            "property": "P170",
+            "snaktype": "somevalue",
+            "hash": "d3550e860f988c6675fff913440993f58f5c40c5",
+        },
+        "qualifiers-order": ["P2093"],
+        "qualifiers": {
+            "P2093": [
+                {
+                    "property": "P2093",
+                    "snaktype": "value",
+                    "datavalue": {"type": "string", "value": "hugh llewelyn"},
+                    "hash": "7a19e6ee9185af6e36c62f0e6ecc3f9b61235605",
+                }
+            ]
+        },
+        "id": "M108100843$5AE438BE-0044-4A7F-908F-F1EA237EAAA2",
+        "rank": "normal",
+    }
+
+    existing_claims: ExistingClaims = {"P170": [existing_statement]}
+
+    user = flickr_api.get_user(user_id="58433307@N08")
+    new_statement = create_flickr_creator_statement(user)
+    new_claims: NewClaims = {"claims": [new_statement]}
+
+    assert create_actions(existing_claims, new_claims, user) == [
+        {
+            "property_id": "P170",
+            "action": "replace_statement",
+            "statement_id": existing_statement["id"],
+            "statement": new_statement,
+        }
+    ]

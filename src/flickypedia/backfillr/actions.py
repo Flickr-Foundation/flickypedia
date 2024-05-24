@@ -80,48 +80,41 @@ def create_actions(
                 actions.append(DoNothing(property_id=property_id, action="do_nothing"))
                 break
 
-            # I've noticed a number of files where the only statement for
-            # "Creator" is the single string "null".
-            #
-            # This looks like a mistake introduced by another tool; in this
-            # case we're happy to overwrite it.
-            if property_id == WP.Creator:
-                null_statement = create_author_name_statement(author_name="null")
-
-                if are_equivalent_statements(statement, null_statement):
-                    actions.append(
-                        ReplaceStatement(
-                            property_id=property_id,
-                            action="replace_statement",
-                            statement_id=statement["id"],
-                            statement=new_statement,
-                        )
-                    )
-                    break
-
-            # I've noticed a number of files where the only statement for
-            # "Creator" is the pathalias of the Flickr user, which has been
-            # mistakenly interpreted as their username.
-            #
-            # We can replace this with a richer Creator statement, which will
-            # include this pathalias but also other information.
-            if property_id == WP.Creator and user["path_alias"] is not None:
-                pathalias_statement = create_author_name_statement(
-                    author_name=user["path_alias"]
-                )
-
-                if are_equivalent_statements(statement, pathalias_statement):
-                    actions.append(
-                        ReplaceStatement(
-                            property_id=property_id,
-                            action="replace_statement",
-                            statement_id=statement["id"],
-                            statement=new_statement,
-                        )
-                    )
-                    break
-
             # fmt: off
+            # I've noticed a number of files where the only statement for
+            # "Creator" is an author name string with:
+            #
+            #     - "null"
+            #     - the Flickr user's pathalias
+            #     - the Flickr user's username
+            #
+            # In all three cases, we can safely go ahead and replace this statement
+            # with a richer creator statement.
+            if (
+                property_id == WP.Creator
+                and statement.get("qualifiers-order") == [WP.AuthorName]
+            ):
+                candidate_statements = [
+                    create_author_name_statement(author_name="null"),
+                    create_author_name_statement(author_name=user["path_alias"] or ""),
+                    create_author_name_statement(author_name=user["username"] or ""),
+                ]
+
+                if any(
+                    are_equivalent_statements(statement, c_statement)
+                    for c_statement in candidate_statements
+                ):
+                    actions.append(
+                        ReplaceStatement(
+                            property_id=property_id,
+                            action="replace_statement",
+                            statement_id=statement["id"],
+                            statement=new_statement,
+                        )
+                    )
+                    break
+            # fmt: on
+
             # There are some cases where the user property has been populated,
             # but it uses the numeric form of the ID in the URL, rather than
             # the pathalias.  For example, compare:
@@ -137,7 +130,9 @@ def create_actions(
                 property_id == WP.Creator
                 and "qualifiers" in statement
                 and WP.FlickrUserId in statement["qualifiers"]
-                and are_equivalent_snaks(statement["mainsnak"], new_statement["mainsnak"])
+                and are_equivalent_snaks(
+                    statement["mainsnak"], new_statement["mainsnak"]
+                )
                 and are_equivalent_qualifiers(
                     existing_qualifiers={
                         WP.FlickrUserId: statement["qualifiers"][WP.FlickrUserId],
