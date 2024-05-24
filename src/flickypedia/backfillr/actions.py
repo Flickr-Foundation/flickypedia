@@ -1,5 +1,7 @@
 import typing
 
+from flickr_photos_api import User as FlickrUser
+
 from flickypedia.apis.structured_data.wikidata import WikidataProperties as WP
 from flickypedia.types.structured_data import (
     BaseStatement,
@@ -48,7 +50,9 @@ class Unknown(typing.TypedDict):
 Action = DoNothing | AddMissing | AddQualifiers | ReplaceStatement | Unknown
 
 
-def create_actions(existing_sdc: ExistingClaims, new_sdc: NewClaims) -> list[Action]:
+def create_actions(
+    existing_sdc: ExistingClaims, new_sdc: NewClaims, user: FlickrUser | None = None
+) -> list[Action]:
     actions: list[Action] = []
 
     for new_statement in new_sdc["claims"]:
@@ -82,25 +86,31 @@ def create_actions(existing_sdc: ExistingClaims, new_sdc: NewClaims) -> list[Act
             # This looks like a mistake introduced by another tool; in this
             # case we're happy to overwrite it.
             if property_id == WP.Creator:
-                null_statement: NewStatement = {
-                    "type": "statement",
-                    "mainsnak": {
-                        "property": "P170",
-                        "snaktype": "somevalue",
-                    },
-                    "qualifiers-order": ["P2093"],
-                    "qualifiers": {
-                        "P2093": [
-                            {
-                                "property": "P2093",
-                                "snaktype": "value",
-                                "datavalue": {"type": "string", "value": "null"},
-                            }
-                        ]
-                    },
-                }
+                null_statement = create_author_name_statement(author_name="null")
 
                 if are_equivalent_statements(statement, null_statement):
+                    actions.append(
+                        ReplaceStatement(
+                            property_id=property_id,
+                            action="replace_statement",
+                            statement_id=statement["id"],
+                            statement=new_statement,
+                        )
+                    )
+                    break
+
+            # I've noticed a number of files where the only statement for
+            # "Creator" is the pathalias of the Flickr user, which has been
+            # mistakenly interpreted as their username.
+            #
+            # We can replace this with a richer Creator statement, which will
+            # include this pathalias but also other information.
+            if property_id == WP.Creator and user is not None:
+                pathalias_statement = create_author_name_statement(
+                    author_name=user["path_alias"]
+                )
+
+                if are_equivalent_statements(statement, pathalias_statement):
                     actions.append(
                         ReplaceStatement(
                             property_id=property_id,
@@ -207,3 +217,27 @@ def get_author_name(statement: BaseStatement) -> str:
     value = statement["qualifiers"][WP.AuthorName][0]["datavalue"]["value"]
     assert isinstance(value, str)
     return value
+
+
+def create_author_name_statement(*, author_name: str) -> NewStatement:
+    """
+    Create a P170 Creator statement which has a 'some value' which is
+    just the given author name.
+    """
+    return {
+        "type": "statement",
+        "mainsnak": {
+            "property": WP.Creator,
+            "snaktype": "somevalue",
+        },
+        "qualifiers-order": [WP.AuthorName],
+        "qualifiers": {
+            WP.AuthorName: [
+                {
+                    "property": WP.AuthorName,
+                    "snaktype": "value",
+                    "datavalue": {"type": "string", "value": author_name},
+                }
+            ]
+        },
+    }

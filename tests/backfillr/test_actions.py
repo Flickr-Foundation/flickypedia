@@ -1,3 +1,4 @@
+from flickr_photos_api import FlickrApi
 import pytest
 
 from flickypedia.backfillr.actions import create_actions
@@ -813,6 +814,78 @@ def test_it_skips_an_unrecognised_author_name(author_name: str) -> None:
     new_claims: NewClaims = {"claims": [creator_statement]}
 
     assert create_actions(existing_claims, new_claims) == [
+        {
+            "property_id": "P170",
+            "action": "unknown",
+        }
+    ]
+
+
+def test_it_replaces_an_author_pathalias(flickr_api: FlickrApi) -> None:
+    user = flickr_api.get_user(user_id="9751269@N07")
+
+    existing_claims: ExistingClaims = {
+        "P170": [
+            {
+                "type": "statement",
+                "mainsnak": {
+                    "property": "P170",
+                    "snaktype": "somevalue",
+                    "hash": "d3550e860f988c6675fff913440993f58f5c40c5",
+                },
+                "qualifiers-order": ["P2093"],
+                "qualifiers": {
+                    "P2093": [
+                        {
+                            "property": "P2093",
+                            "snaktype": "value",
+                            "datavalue": {"type": "string", "value": "dwhartwig"},
+                            "hash": "a0c63c1fe81dff8f300427326a19939afb65ad95",
+                        }
+                    ]
+                },
+                "id": "M108119123$1B7C1641-4F9A-4B73-B059-190083E2AC9F",
+                "rank": "normal",
+            }
+        ],
+    }
+    new_claims: NewClaims = {
+        "claims": [
+            {
+                "mainsnak": {"snaktype": "somevalue", "property": "P170"},
+                "qualifiers": {
+                    "P2093": [
+                        {
+                            "datavalue": {"value": "Daniel Hartwig", "type": "string"},
+                            "property": "P2093",
+                            "snaktype": "value",
+                        }
+                    ],
+                    "P2699": [
+                        {
+                            "datavalue": {
+                                "value": "https://www.flickr.com/people/dwhartwig/",
+                                "type": "string",
+                            },
+                            "property": "P2699",
+                            "snaktype": "value",
+                        }
+                    ],
+                    "P3267": [
+                        {
+                            "datavalue": {"value": "9751269@N07", "type": "string"},
+                            "property": "P3267",
+                            "snaktype": "value",
+                        }
+                    ],
+                },
+                "qualifiers-order": ["P3267", "P2093", "P2699"],
+                "type": "statement",
+            },
+        ]
+    }
+
+    assert create_actions(existing_claims, new_claims, user) != [
         {
             "property_id": "P170",
             "action": "unknown",
