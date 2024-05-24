@@ -31,16 +31,16 @@ def test_missing_statement_is_added() -> None:
         "type": "statement",
     }
 
-    existing_sdc: ExistingClaims = {}
-    new_sdc: NewClaims = {"claims": [statement]}
+    existing_claims: ExistingClaims = {}
+    new_claims: NewClaims = {"claims": [statement]}
 
-    assert create_actions(existing_sdc, new_sdc, user=null_user) == [
+    assert create_actions(existing_claims, new_claims, user=null_user) == [
         {"property_id": "P12120", "action": "add_missing", "statement": statement}
     ]
 
 
 def test_equivalent_statement_is_no_op() -> None:
-    existing_sdc: ExistingClaims = {
+    existing_claims: ExistingClaims = {
         "P170": [
             {
                 "id": "M138765382$505642FD-63FB-4397-8AC5-F48E59DE3142",
@@ -85,7 +85,7 @@ def test_equivalent_statement_is_no_op() -> None:
         ]
     }
 
-    new_sdc: NewClaims = {
+    new_claims: NewClaims = {
         "claims": [
             {
                 "mainsnak": {"property": "P170", "snaktype": "somevalue"},
@@ -121,13 +121,13 @@ def test_equivalent_statement_is_no_op() -> None:
         ]
     }
 
-    assert create_actions(existing_sdc, new_sdc, user=null_user) == [
+    assert create_actions(existing_claims, new_claims, user=null_user) == [
         {"property_id": "P170", "action": "do_nothing"}
     ]
 
 
 def test_adds_qualifiers_if_existing_are_subset_of_new() -> None:
-    existing_sdc: ExistingClaims = {
+    existing_claims: ExistingClaims = {
         "P7482": [
             {
                 "id": "M138765382$18DE2E71-EFFC-42CA-B466-83838347748E",
@@ -211,9 +211,9 @@ def test_adds_qualifiers_if_existing_are_subset_of_new() -> None:
         "type": "statement",
     }
 
-    new_sdc: NewClaims = {"claims": [statement]}
+    new_claims: NewClaims = {"claims": [statement]}
 
-    assert create_actions(existing_sdc, new_sdc, user=null_user) == [
+    assert create_actions(existing_claims, new_claims, user=null_user) == [
         {
             "property_id": "P7482",
             "action": "add_qualifiers",
@@ -224,7 +224,7 @@ def test_adds_qualifiers_if_existing_are_subset_of_new() -> None:
 
 
 def test_does_not_qualifiers_if_existing_are_disjoint_from_new() -> None:
-    existing_sdc: ExistingClaims = {
+    existing_claims: ExistingClaims = {
         "P7482": [
             {
                 "id": "M138765382$18DE2E71-EFFC-42CA-B466-83838347748E",
@@ -321,7 +321,7 @@ def test_does_not_qualifiers_if_existing_are_disjoint_from_new() -> None:
 
     new_claims: NewClaims = {"claims": [statement]}
 
-    assert create_actions(existing_sdc, new_claims, user=null_user) == [
+    assert create_actions(existing_claims, new_claims, user=null_user) == [
         {
             "property_id": "P7482",
             "action": "unknown",
