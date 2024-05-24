@@ -1,12 +1,24 @@
+from flickr_photos_api import FlickrApi, User as FlickrUser
 import pytest
 
 from flickypedia.backfillr.actions import create_actions
+from flickypedia.apis.structured_data import create_flickr_creator_statement
 from flickypedia.types.structured_data import (
     ExistingClaims,
     ExistingStatement,
     NewClaims,
     NewStatement,
 )
+
+
+null_user: FlickrUser = {
+    "id": "-1",
+    "path_alias": None,
+    "username": "example",
+    "realname": None,
+    "photos_url": "https://www.flickr.com/photos/-1",
+    "profile_url": "https://www.flickr.com/people/-1",
+}
 
 
 def test_missing_statement_is_added() -> None:
@@ -19,18 +31,16 @@ def test_missing_statement_is_added() -> None:
         "type": "statement",
     }
 
-    existing_sdc: ExistingClaims = {}
-    new_sdc: NewClaims = {"claims": [statement]}
+    existing_claims: ExistingClaims = {}
+    new_claims: NewClaims = {"claims": [statement]}
 
-    actions = create_actions(existing_sdc, new_sdc)
-
-    assert actions == [
+    assert create_actions(existing_claims, new_claims, user=null_user) == [
         {"property_id": "P12120", "action": "add_missing", "statement": statement}
     ]
 
 
 def test_equivalent_statement_is_no_op() -> None:
-    existing_sdc: ExistingClaims = {
+    existing_claims: ExistingClaims = {
         "P170": [
             {
                 "id": "M138765382$505642FD-63FB-4397-8AC5-F48E59DE3142",
@@ -75,7 +85,7 @@ def test_equivalent_statement_is_no_op() -> None:
         ]
     }
 
-    new_sdc: NewClaims = {
+    new_claims: NewClaims = {
         "claims": [
             {
                 "mainsnak": {"property": "P170", "snaktype": "somevalue"},
@@ -111,13 +121,13 @@ def test_equivalent_statement_is_no_op() -> None:
         ]
     }
 
-    actions = create_actions(existing_sdc, new_sdc)
-
-    assert actions == [{"property_id": "P170", "action": "do_nothing"}]
+    assert create_actions(existing_claims, new_claims, user=null_user) == [
+        {"property_id": "P170", "action": "do_nothing"}
+    ]
 
 
 def test_adds_qualifiers_if_existing_are_subset_of_new() -> None:
-    existing_sdc: ExistingClaims = {
+    existing_claims: ExistingClaims = {
         "P7482": [
             {
                 "id": "M138765382$18DE2E71-EFFC-42CA-B466-83838347748E",
@@ -201,11 +211,9 @@ def test_adds_qualifiers_if_existing_are_subset_of_new() -> None:
         "type": "statement",
     }
 
-    new_sdc: NewClaims = {"claims": [statement]}
+    new_claims: NewClaims = {"claims": [statement]}
 
-    actions = create_actions(existing_sdc, new_sdc)
-
-    assert actions == [
+    assert create_actions(existing_claims, new_claims, user=null_user) == [
         {
             "property_id": "P7482",
             "action": "add_qualifiers",
@@ -216,7 +224,7 @@ def test_adds_qualifiers_if_existing_are_subset_of_new() -> None:
 
 
 def test_does_not_qualifiers_if_existing_are_disjoint_from_new() -> None:
-    existing_sdc: ExistingClaims = {
+    existing_claims: ExistingClaims = {
         "P7482": [
             {
                 "id": "M138765382$18DE2E71-EFFC-42CA-B466-83838347748E",
@@ -311,11 +319,9 @@ def test_does_not_qualifiers_if_existing_are_disjoint_from_new() -> None:
         "type": "statement",
     }
 
-    new_sdc: NewClaims = {"claims": [statement]}
+    new_claims: NewClaims = {"claims": [statement]}
 
-    actions = create_actions(existing_sdc, new_sdc)
-
-    assert actions == [
+    assert create_actions(existing_claims, new_claims, user=null_user) == [
         {
             "property_id": "P7482",
             "action": "unknown",
@@ -323,7 +329,7 @@ def test_does_not_qualifiers_if_existing_are_disjoint_from_new() -> None:
     ]
 
 
-def test_a_null_creator_statement_is_replaced() -> None:
+def test_a_null_creator_statement_is_replaced(flickr_api: FlickrApi) -> None:
     existing_statement: ExistingStatement = {
         "type": "statement",
         "mainsnak": {
@@ -345,145 +351,82 @@ def test_a_null_creator_statement_is_replaced() -> None:
         "id": "M26828$E5B1DA53-7604-4B6F-B07A-21BC098CEEC9",
         "rank": "normal",
     }
-    statement: NewStatement = {
-        "mainsnak": {"snaktype": "somevalue", "property": "P170"},
-        "qualifiers": {
-            "P2093": [
-                {
-                    "datavalue": {"value": "StrangeInterlude", "type": "string"},
-                    "property": "P2093",
-                    "snaktype": "value",
-                }
-            ],
-            "P2699": [
-                {
-                    "datavalue": {
-                        "value": "https://www.flickr.com/people/strangeinterlude/",
-                        "type": "string",
-                    },
-                    "property": "P2699",
-                    "snaktype": "value",
-                }
-            ],
-            "P3267": [
-                {
-                    "datavalue": {"value": "44124472424@N01", "type": "string"},
-                    "property": "P3267",
-                    "snaktype": "value",
-                }
-            ],
-        },
-        "qualifiers-order": ["P3267", "P2093", "P2699"],
-        "type": "statement",
-    }
+    existing_claims: ExistingClaims = {"P170": [existing_statement]}
 
-    existing_sdc: ExistingClaims = {"P170": [existing_statement]}
-    new_sdc: NewClaims = {"claims": [statement]}
+    user = flickr_api.get_user(user_id="44124472424@N01")
+    new_statement = create_flickr_creator_statement(user)
+    new_claims: NewClaims = {"claims": [new_statement]}
 
-    actions = create_actions(existing_sdc, new_sdc)
-
-    assert actions == [
+    assert create_actions(existing_claims, new_claims, user) == [
         {
             "property_id": "P170",
             "action": "replace_statement",
-            "statement_id": "M26828$E5B1DA53-7604-4B6F-B07A-21BC098CEEC9",
-            "statement": statement,
+            "statement_id": existing_statement["id"],
+            "statement": new_statement,
         }
     ]
 
 
-def test_it_does_nothing_if_creator_differs_only_in_url() -> None:
+def test_it_does_nothing_if_creator_differs_only_in_url(flickr_api: FlickrApi) -> None:
     """
     If the statements are the same, except the URL on WMC uses
     the numeric ID and the URL on Flickr uses the pathalias, we
     can leave the URL on WMC as-is.
     """
-    existing_statement: ExistingStatement = {
-        "type": "statement",
-        "mainsnak": {
-            "property": "P170",
-            "snaktype": "somevalue",
-            "hash": "d3550e860f988c6675fff913440993f58f5c40c5",
-        },
-        "qualifiers-order": ["P3267", "P2093", "P2699"],
-        "qualifiers": {
-            "P3267": [
-                {
-                    "property": "P3267",
-                    "snaktype": "value",
-                    "datavalue": {"type": "string", "value": "84108876@N00"},
-                    "hash": "fa5d6acd35ca6e50077b15e3c224124df6e28595",
-                }
-            ],
-            "P2093": [
-                {
-                    "property": "P2093",
-                    "snaktype": "value",
-                    "datavalue": {"type": "string", "value": "Jason Pratt"},
-                    "hash": "5208955c9216bddf416e4c58ce5a13ce1ab8d3fb",
-                }
-            ],
-            "P2699": [
-                {
-                    "property": "P2699",
-                    "snaktype": "value",
-                    "datavalue": {
-                        "type": "string",
-                        "value": "https://www.flickr.com/people/84108876@N00",
-                    },
-                    "hash": "0a168876994e47b9028659a4d67e692138556291",
-                }
-            ],
-        },
-        "id": "M34597$10AA104E-CFBD-44C2-8D43-FF8C48FE428A",
-        "rank": "normal",
-    }
-    new_statement: NewStatement = {
-        "mainsnak": {"snaktype": "somevalue", "property": "P170"},
-        "qualifiers": {
-            "P2093": [
-                {
-                    "datavalue": {"value": "Jason Pratt", "type": "string"},
-                    "property": "P2093",
-                    "snaktype": "value",
-                }
-            ],
-            "P2699": [
-                {
-                    "datavalue": {
-                        "value": "https://www.flickr.com/people/jasonpratt/",
-                        "type": "string",
-                    },
-                    "property": "P2699",
-                    "snaktype": "value",
-                }
-            ],
-            "P3267": [
-                {
-                    "datavalue": {"value": "84108876@N00", "type": "string"},
-                    "property": "P3267",
-                    "snaktype": "value",
-                }
-            ],
-        },
-        "qualifiers-order": ["P3267", "P2093", "P2699"],
-        "type": "statement",
+    existing_claims: ExistingClaims = {
+        "P170": [
+            {
+                "type": "statement",
+                "mainsnak": {
+                    "property": "P170",
+                    "snaktype": "somevalue",
+                    "hash": "d3550e860f988c6675fff913440993f58f5c40c5",
+                },
+                "qualifiers-order": ["P3267", "P2093", "P2699"],
+                "qualifiers": {
+                    "P3267": [
+                        {
+                            "property": "P3267",
+                            "snaktype": "value",
+                            "datavalue": {"type": "string", "value": "84108876@N00"},
+                            "hash": "fa5d6acd35ca6e50077b15e3c224124df6e28595",
+                        }
+                    ],
+                    "P2093": [
+                        {
+                            "property": "P2093",
+                            "snaktype": "value",
+                            "datavalue": {"type": "string", "value": "Jason Pratt"},
+                            "hash": "5208955c9216bddf416e4c58ce5a13ce1ab8d3fb",
+                        }
+                    ],
+                    "P2699": [
+                        {
+                            "property": "P2699",
+                            "snaktype": "value",
+                            "datavalue": {
+                                "type": "string",
+                                "value": "https://www.flickr.com/people/84108876@N00",
+                            },
+                            "hash": "0a168876994e47b9028659a4d67e692138556291",
+                        }
+                    ],
+                },
+                "id": "M34597$10AA104E-CFBD-44C2-8D43-FF8C48FE428A",
+                "rank": "normal",
+            }
+        ]
     }
 
-    existing_sdc: ExistingClaims = {"P170": [existing_statement]}
-    new_sdc: NewClaims = {"claims": [new_statement]}
+    user = flickr_api.get_user(user_id="84108876@N00")
+    new_claims: NewClaims = {"claims": [create_flickr_creator_statement(user)]}
 
-    actions = create_actions(existing_sdc, new_sdc)
-
-    assert actions == [
-        {
-            "property_id": "P170",
-            "action": "do_nothing",
-        }
+    assert create_actions(existing_claims, new_claims, user) == [
+        {"property_id": "P170", "action": "do_nothing"}
     ]
 
 
-def test_it_does_nothing_for_mismatched_creator() -> None:
+def test_it_does_nothing_for_mismatched_creator(flickr_api: FlickrApi) -> None:
     """
     This is a regression test based on the following file:
     https://commons.wikimedia.org/wiki/File:Neasden_Temple_-_Shree_Swaminarayan_Hindu_Mandir_-_Power_Plant.jpg
@@ -491,7 +434,7 @@ def test_it_does_nothing_for_mismatched_creator() -> None:
     The existing P170 statement has a Wikidata entity, which we don't
     know how to handle, so we should do nothing.
     """
-    existing_sdc: ExistingClaims = {
+    existing_claims: ExistingClaims = {
         "P170": [
             {
                 "type": "statement",
@@ -513,51 +456,21 @@ def test_it_does_nothing_for_mismatched_creator() -> None:
             }
         ],
     }
-    new_sdc: NewClaims = {
-        "claims": [
-            {
-                "mainsnak": {"snaktype": "somevalue", "property": "P170"},
-                "qualifiers": {
-                    "P2093": [
-                        {
-                            "datavalue": {"value": "CGP Grey", "type": "string"},
-                            "property": "P2093",
-                            "snaktype": "value",
-                        }
-                    ],
-                    "P2699": [
-                        {
-                            "datavalue": {
-                                "value": "https://www.flickr.com/people/cgpgrey/",
-                                "type": "string",
-                            },
-                            "property": "P2699",
-                            "snaktype": "value",
-                        }
-                    ],
-                    "P3267": [
-                        {
-                            "datavalue": {"value": "52890443@N02", "type": "string"},
-                            "property": "P3267",
-                            "snaktype": "value",
-                        }
-                    ],
-                },
-                "qualifiers-order": ["P3267", "P2093", "P2699"],
-                "type": "statement",
-            }
-        ]
-    }
 
-    assert create_actions(existing_sdc, new_sdc) == [
+    user = flickr_api.get_user(user_id="52890443@N02")
+    new_claims: NewClaims = {"claims": [create_flickr_creator_statement(user)]}
+
+    assert create_actions(existing_claims, new_claims, user) == [
         {"action": "unknown", "property_id": "P170"}
     ]
 
 
-def test_it_ignores_extra_roles_in_creator_if_otherwise_equivalent() -> None:
+def test_it_ignores_extra_roles_in_creator_if_otherwise_equivalent(
+    flickr_api: FlickrApi,
+) -> None:
     # Based on https://commons.wikimedia.org/wiki/File:Programme_(1919)_(14783412743).jpg
     # Retrieved 9 May 2024
-    existing_sdc: ExistingClaims = {
+    existing_claims: ExistingClaims = {
         "P170": [
             {
                 "type": "statement",
@@ -619,127 +532,60 @@ def test_it_ignores_extra_roles_in_creator_if_otherwise_equivalent() -> None:
             }
         ],
     }
-    new_sdc: NewClaims = {
-        "claims": [
-            {
-                "mainsnak": {"snaktype": "somevalue", "property": "P170"},
-                "qualifiers": {
-                    "P2093": [
-                        {
-                            "datavalue": {
-                                "value": "Internet Archive Book Images",
-                                "type": "string",
-                            },
-                            "property": "P2093",
-                            "snaktype": "value",
-                        }
-                    ],
-                    "P2699": [
-                        {
-                            "datavalue": {
-                                "value": "https://www.flickr.com/people/internetarchivebookimages/",
-                                "type": "string",
-                            },
-                            "property": "P2699",
-                            "snaktype": "value",
-                        }
-                    ],
-                    "P3267": [
-                        {
-                            "datavalue": {"value": "126377022@N07", "type": "string"},
-                            "property": "P3267",
-                            "snaktype": "value",
-                        }
-                    ],
-                },
-                "qualifiers-order": ["P3267", "P2093", "P2699"],
-                "type": "statement",
-            },
-        ]
-    }
 
-    assert create_actions(existing_sdc, new_sdc) == [
-        {
-            "property_id": "P170",
-            "action": "do_nothing",
-        }
+    user = flickr_api.get_user(user_id="126377022@N07")
+    new_claims: NewClaims = {"claims": [create_flickr_creator_statement(user)]}
+
+    assert create_actions(existing_claims, new_claims, user) == [
+        {"property_id": "P170", "action": "do_nothing"}
     ]
 
 
 @pytest.mark.parametrize(
     "author_name",
-    ["flickr user Bryce Edwards", "Flickr user Bryce Edwards", "Bryce Edwards"],
+    [
+        pytest.param("flickr user Bryce Edwards", id="lowercase_prefix"),
+        pytest.param("Flickr user Bryce Edwards", id="uppercase_prefix"),
+        pytest.param("Bryce Edwards", id="no_prefix"),
+    ],
 )
-def test_it_replaces_an_author_name(author_name: str) -> None:
-    existing_claims: ExistingClaims = {
-        "P170": [
-            {
-                "type": "statement",
-                "mainsnak": {
-                    "property": "P170",
-                    "snaktype": "somevalue",
-                    "hash": "d3550e860f988c6675fff913440993f58f5c40c5",
-                },
-                "qualifiers-order": ["P2093"],
-                "qualifiers": {
-                    "P2093": [
-                        {
-                            "property": "P2093",
-                            "snaktype": "value",
-                            "datavalue": {
-                                "type": "string",
-                                "value": author_name,
-                            },
-                            "hash": "a193269ae888171ae46da83b8fb92dbbce2497c7",
-                        }
-                    ]
-                },
-                "id": "M1899107$D9951FC5-A183-43EF-85D6-6E8DFCD6DC34",
-                "rank": "normal",
-            }
-        ],
-    }
-
-    creator_statement: NewStatement = {
-        "mainsnak": {"snaktype": "somevalue", "property": "P170"},
+def test_it_replaces_an_author_name(flickr_api: FlickrApi, author_name: str) -> None:
+    existing_statement: ExistingStatement = {
+        "type": "statement",
+        "mainsnak": {
+            "property": "P170",
+            "snaktype": "somevalue",
+            "hash": "d3550e860f988c6675fff913440993f58f5c40c5",
+        },
+        "qualifiers-order": ["P2093"],
         "qualifiers": {
             "P2093": [
                 {
-                    "datavalue": {"value": "Bryce Edwards", "type": "string"},
                     "property": "P2093",
                     "snaktype": "value",
-                }
-            ],
-            "P2699": [
-                {
                     "datavalue": {
-                        "value": "https://www.flickr.com/people/bryceedwards/",
                         "type": "string",
+                        "value": author_name,
                     },
-                    "property": "P2699",
-                    "snaktype": "value",
+                    "hash": "a193269ae888171ae46da83b8fb92dbbce2497c7",
                 }
-            ],
-            "P3267": [
-                {
-                    "datavalue": {"value": "40286210@N00", "type": "string"},
-                    "property": "P3267",
-                    "snaktype": "value",
-                }
-            ],
+            ]
         },
-        "qualifiers-order": ["P3267", "P2093", "P2699"],
-        "type": "statement",
+        "id": "M1899107$D9951FC5-A183-43EF-85D6-6E8DFCD6DC34",
+        "rank": "normal",
     }
+    existing_claims: ExistingClaims = {"P170": [existing_statement]}
 
-    new_claims: NewClaims = {"claims": [creator_statement]}
+    user = flickr_api.get_user(user_id="40286210@N00")
+    new_statement = create_flickr_creator_statement(user)
+    new_claims: NewClaims = {"claims": [new_statement]}
 
-    assert create_actions(existing_claims, new_claims) == [
+    assert create_actions(existing_claims, new_claims, user) == [
         {
             "property_id": "P170",
             "action": "replace_statement",
-            "statement_id": "M1899107$D9951FC5-A183-43EF-85D6-6E8DFCD6DC34",
-            "statement": creator_statement,
+            "statement_id": existing_statement["id"],
+            "statement": new_statement,
         }
     ]
 
@@ -748,7 +594,9 @@ def test_it_replaces_an_author_name(author_name: str) -> None:
     "author_name",
     ["flickr user Not Bryce Edwards", "fl user Bryce Edwards", "Bruce Edward"],
 )
-def test_it_skips_an_unrecognised_author_name(author_name: str) -> None:
+def test_it_skips_an_unrecognised_author_name(
+    flickr_api: FlickrApi, author_name: str
+) -> None:
     existing_claims: ExistingClaims = {
         "P170": [
             {
@@ -778,43 +626,91 @@ def test_it_skips_an_unrecognised_author_name(author_name: str) -> None:
         ],
     }
 
-    creator_statement: NewStatement = {
-        "mainsnak": {"snaktype": "somevalue", "property": "P170"},
-        "qualifiers": {
-            "P2093": [
-                {
-                    "datavalue": {"value": "Bryce Edwards", "type": "string"},
-                    "property": "P2093",
-                    "snaktype": "value",
-                }
-            ],
-            "P2699": [
-                {
-                    "datavalue": {
-                        "value": "https://www.flickr.com/people/bryceedwards/",
-                        "type": "string",
-                    },
-                    "property": "P2699",
-                    "snaktype": "value",
-                }
-            ],
-            "P3267": [
-                {
-                    "datavalue": {"value": "40286210@N00", "type": "string"},
-                    "property": "P3267",
-                    "snaktype": "value",
-                }
-            ],
-        },
-        "qualifiers-order": ["P3267", "P2093", "P2699"],
-        "type": "statement",
-    }
+    user = flickr_api.get_user(user_id="40286210@N00")
+    new_statement = create_flickr_creator_statement(user)
+    new_claims: NewClaims = {"claims": [new_statement]}
 
-    new_claims: NewClaims = {"claims": [creator_statement]}
-
-    assert create_actions(existing_claims, new_claims) == [
+    assert create_actions(existing_claims, new_claims, user) == [
         {
             "property_id": "P170",
             "action": "unknown",
+        }
+    ]
+
+
+def test_it_replaces_an_author_pathalias(flickr_api: FlickrApi) -> None:
+    existing_statement: ExistingStatement = {
+        "type": "statement",
+        "mainsnak": {
+            "property": "P170",
+            "snaktype": "somevalue",
+            "hash": "d3550e860f988c6675fff913440993f58f5c40c5",
+        },
+        "qualifiers-order": ["P2093"],
+        "qualifiers": {
+            "P2093": [
+                {
+                    "property": "P2093",
+                    "snaktype": "value",
+                    "datavalue": {"type": "string", "value": "dwhartwig"},
+                    "hash": "a0c63c1fe81dff8f300427326a19939afb65ad95",
+                }
+            ]
+        },
+        "id": "M108119123$1B7C1641-4F9A-4B73-B059-190083E2AC9F",
+        "rank": "normal",
+    }
+
+    existing_claims: ExistingClaims = {"P170": [existing_statement]}
+
+    user = flickr_api.get_user(user_id="9751269@N07")
+    new_statement = create_flickr_creator_statement(user)
+    new_claims: NewClaims = {"claims": [new_statement]}
+
+    assert create_actions(existing_claims, new_claims, user) == [
+        {
+            "property_id": "P170",
+            "action": "replace_statement",
+            "statement_id": existing_statement["id"],
+            "statement": new_statement,
+        }
+    ]
+
+
+def test_it_replaces_an_author_username(flickr_api: FlickrApi) -> None:
+    existing_statement: ExistingStatement = {
+        "type": "statement",
+        "mainsnak": {
+            "property": "P170",
+            "snaktype": "somevalue",
+            "hash": "d3550e860f988c6675fff913440993f58f5c40c5",
+        },
+        "qualifiers-order": ["P2093"],
+        "qualifiers": {
+            "P2093": [
+                {
+                    "property": "P2093",
+                    "snaktype": "value",
+                    "datavalue": {"type": "string", "value": "hugh llewelyn"},
+                    "hash": "7a19e6ee9185af6e36c62f0e6ecc3f9b61235605",
+                }
+            ]
+        },
+        "id": "M108100843$5AE438BE-0044-4A7F-908F-F1EA237EAAA2",
+        "rank": "normal",
+    }
+
+    existing_claims: ExistingClaims = {"P170": [existing_statement]}
+
+    user = flickr_api.get_user(user_id="58433307@N08")
+    new_statement = create_flickr_creator_statement(user)
+    new_claims: NewClaims = {"claims": [new_statement]}
+
+    assert create_actions(existing_claims, new_claims, user) == [
+        {
+            "property_id": "P170",
+            "action": "replace_statement",
+            "statement_id": existing_statement["id"],
+            "statement": new_statement,
         }
     ]

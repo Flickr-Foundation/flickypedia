@@ -1,0 +1,68 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - api.flickr.com
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.people.getInfo&user_id=40286210%40N00
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA4VUwW7bMAw9N19B6NDLmsh22rRIbXcbtsMO7QoMw4BdAkWmYyGy5EnysvbrR9lp
+        2q3BdhPJ9x4faVn5za9Ww090XllTsHSWMEAjbaXMpmB9qKdXDG7KSe58Bz6IUDC7ZRR3RLEGVFWw
+        8yS7WmRp8vYuIbbxr3PKd84WjKrKryrUGJB4MZTWeHTUv2DzizGuhWvJCYNOhGYltBK+YGv3IBGr
+        nXCVZ9AIv4pmqEAiMRJV7RAPYQwiwlREWPlGdd0w0B49lLHqpQg0ttArh972TuIgWE5O8p5cGdFi
+        +T42ho9j55wf8oRxKPQxzCFPGG3HHuWH3iAt9QzucAffiUnecn4oEzSoFh+tQdBijbpg73q5jagz
+        +IZak/1gDQNb1x7pK7xJs2Vc9xNrFbd+L6SqleRP1OdywS7nDHgcrUIvneoGV59AtCBAowy9Qwci
+        wOcgNha+GjVcivBwBseswxQCCtmQLVAG7q1WQUmh4UvoK4V+Mrl9gO6QXWtLOE/6SzjV4VpA47Au
+        Tn/0Nlw3IXRLzne73UyrNbphYTPrNjPzOCLA0ULGo7FERBfNGltbre1uLJxuwvVxCerHRSzn/OXs
+        tIquscH63ukyevB7E7VWcutm0rZ8BPCXt4/n+2ykRQ1na6XxXyJoO42vRJ55pNLa9X9Ejjp5ph2m
+        IU8nea2cD5UIGMQWTZklSTpNLqbJApL5Mlsskyznf2H+oJVpOs8W9FMvzl8AB2lpexPKNLu8WuR8
+        DKj3fif0MPDxZYgnejPKyW9N+szpYgQAAA==
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Fri, 24 May 2024 09:42:37 GMT
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 55f3922719298ab498eeea0c325b9d12.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - h9mErt-iBwdvxI55FiJv-iNBMITJSEATzzLJ1seCdJLLUAfsZoXhUg==
+      X-Amz-Cf-Pop:
+      - MAN51-P3
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - openresty
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Sun, 23-Jun-2024 09:42:37 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Sun, 23-Jun-2024 09:42:37 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-flickr-api-request:
+      - Self=1-6650610d-60d98bcf6ea8510a22457e14;Root=1-6650610d-1e8fe89e79cdd9aa61de9506
+      x-robots-tag:
+      - noindex
+      x-server:
+      - serverless-proxy-10.78.16.171
+    status:
+      code: 200
+      message: OK
+version: 1

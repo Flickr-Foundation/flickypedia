@@ -1,5 +1,7 @@
 import typing
 
+from flickr_photos_api import User as FlickrUser
+
 from flickypedia.apis.structured_data.wikidata import WikidataProperties as WP
 from flickypedia.types.structured_data import (
     BaseStatement,
@@ -48,12 +50,14 @@ class Unknown(typing.TypedDict):
 Action = DoNothing | AddMissing | AddQualifiers | ReplaceStatement | Unknown
 
 
-def create_actions(existing_sdc: ExistingClaims, new_sdc: NewClaims) -> list[Action]:
+def create_actions(
+    existing_claims: ExistingClaims, new_claims: NewClaims, user: FlickrUser
+) -> list[Action]:
     actions: list[Action] = []
 
-    for new_statement in new_sdc["claims"]:
+    for new_statement in new_claims["claims"]:
         property_id = new_statement["mainsnak"]["property"]
-        existing_statements = existing_sdc.get(property_id, [])
+        existing_statements = existing_claims.get(property_id, [])
 
         # If there are no statements with this property on the
         # existing SDC, then we just need to add it.
@@ -76,31 +80,30 @@ def create_actions(existing_sdc: ExistingClaims, new_sdc: NewClaims) -> list[Act
                 actions.append(DoNothing(property_id=property_id, action="do_nothing"))
                 break
 
+            # fmt: off
             # I've noticed a number of files where the only statement for
-            # "Creator" is the single string "null".
+            # "Creator" is an author name string with:
             #
-            # This looks like a mistake introduced by another tool; in this
-            # case we're happy to overwrite it.
-            if property_id == WP.Creator:
-                null_statement: NewStatement = {
-                    "type": "statement",
-                    "mainsnak": {
-                        "property": "P170",
-                        "snaktype": "somevalue",
-                    },
-                    "qualifiers-order": ["P2093"],
-                    "qualifiers": {
-                        "P2093": [
-                            {
-                                "property": "P2093",
-                                "snaktype": "value",
-                                "datavalue": {"type": "string", "value": "null"},
-                            }
-                        ]
-                    },
-                }
+            #     - "null"
+            #     - the Flickr user's pathalias
+            #     - the Flickr user's username
+            #
+            # In all three cases, we can safely go ahead and replace this statement
+            # with a richer creator statement.
+            if (
+                property_id == WP.Creator
+                and statement.get("qualifiers-order") == [WP.AuthorName]
+            ):
+                candidate_statements = [
+                    create_author_name_statement(author_name="null"),
+                    create_author_name_statement(author_name=user["path_alias"] or ""),
+                    create_author_name_statement(author_name=user["username"] or ""),
+                ]
 
-                if are_equivalent_statements(statement, null_statement):
+                if any(
+                    are_equivalent_statements(statement, c_statement)
+                    for c_statement in candidate_statements
+                ):
                     actions.append(
                         ReplaceStatement(
                             property_id=property_id,
@@ -110,8 +113,8 @@ def create_actions(existing_sdc: ExistingClaims, new_sdc: NewClaims) -> list[Act
                         )
                     )
                     break
+            # fmt: on
 
-            # fmt: off
             # There are some cases where the user property has been populated,
             # but it uses the numeric form of the ID in the URL, rather than
             # the pathalias.  For example, compare:
@@ -127,7 +130,9 @@ def create_actions(existing_sdc: ExistingClaims, new_sdc: NewClaims) -> list[Act
                 property_id == WP.Creator
                 and "qualifiers" in statement
                 and WP.FlickrUserId in statement["qualifiers"]
-                and are_equivalent_snaks(statement["mainsnak"], new_statement["mainsnak"])
+                and are_equivalent_snaks(
+                    statement["mainsnak"], new_statement["mainsnak"]
+                )
                 and are_equivalent_qualifiers(
                     existing_qualifiers={
                         WP.FlickrUserId: statement["qualifiers"][WP.FlickrUserId],
@@ -207,3 +212,27 @@ def get_author_name(statement: BaseStatement) -> str:
     value = statement["qualifiers"][WP.AuthorName][0]["datavalue"]["value"]
     assert isinstance(value, str)
     return value
+
+
+def create_author_name_statement(*, author_name: str) -> NewStatement:
+    """
+    Create a P170 Creator statement which has a 'some value' which is
+    just the given author name.
+    """
+    return {
+        "type": "statement",
+        "mainsnak": {
+            "property": WP.Creator,
+            "snaktype": "somevalue",
+        },
+        "qualifiers-order": [WP.AuthorName],
+        "qualifiers": {
+            WP.AuthorName: [
+                {
+                    "property": WP.AuthorName,
+                    "snaktype": "value",
+                    "datavalue": {"type": "string", "value": author_name},
+                }
+            ]
+        },
+    }
