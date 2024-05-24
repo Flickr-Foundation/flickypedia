@@ -543,7 +543,11 @@ def test_it_ignores_extra_roles_in_creator_if_otherwise_equivalent(
 
 @pytest.mark.parametrize(
     "author_name",
-    ["flickr user Bryce Edwards", "Flickr user Bryce Edwards", "Bryce Edwards"],
+    [
+        pytest.param("flickr user Bryce Edwards", id="lowercase_prefix"),
+        pytest.param("Flickr user Bryce Edwards", id="uppercase_prefix"),
+        pytest.param("Bryce Edwards", id="no_prefix"),
+    ],
 )
 def test_it_replaces_an_author_name(flickr_api: FlickrApi, author_name: str) -> None:
     existing_statement: ExistingStatement = {
