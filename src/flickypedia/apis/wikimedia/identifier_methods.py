@@ -21,7 +21,6 @@ class Page(typing.TypedDict):
 
 
 class IdentifierMethods(WikimediaApiBase):
-
     # The format of the XML response is:
     #
     #     <?xml version="1.0"?>
