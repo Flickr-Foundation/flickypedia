@@ -1,13 +1,8 @@
 -r requirements.txt
 
-black
-bs4
-coverage
-flake8
 mypy
-pip-tools
-pytest
 pytest-cov
+ruff
 tqdm
 types-beautifulsoup4
 types-tqdm
