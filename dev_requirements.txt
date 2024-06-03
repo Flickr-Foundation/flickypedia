@@ -21,9 +21,7 @@ blinker==1.7.0
     #   -r requirements.txt
     #   flask
 bs4==0.0.2
-    # via
-    #   -r dev_requirements.in
-    #   -r requirements.txt
+    # via -r requirements.txt
 certifi==2023.7.22
     # via
     #   -r requirements.txt
@@ -39,9 +37,7 @@ click==8.1.7
     #   black
     #   flask
 coverage==7.5.3
-    # via
-    #   -r dev_requirements.in
-    #   pytest-cov
+    # via pytest-cov
 cryptography==42.0.7
     # via
     #   -r requirements.txt
@@ -168,9 +164,7 @@ pydantic-core==2.18.3
 pyflakes==3.2.0
     # via flake8
 pytest==8.2.1
-    # via
-    #   -r dev_requirements.in
-    #   pytest-cov
+    # via pytest-cov
 pytest-cov==5.0.0
     # via -r dev_requirements.in
 pyyaml==6.0.1
