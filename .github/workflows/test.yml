@@ -22,9 +22,7 @@ jobs:
         cache: pip
 
     - name: Install dependencies
-      run: |
-        pip install -e .
-        pip install -r dev_requirements.txt
+      run: pip install -r dev_requirements.txt
 
     - name: Run linting
       run: |
