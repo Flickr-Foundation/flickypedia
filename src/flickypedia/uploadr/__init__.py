@@ -55,7 +55,7 @@ from flickypedia.utils import create_bookmarklet
 
 
 def buddy_icon(user_id: str) -> str:
-    api = FlickrApi(
+    api = FlickrApi.with_api_key(
         api_key=current_app.config["FLICKR_API_KEY"],
         user_agent=current_app.config["USER_AGENT"],
     )

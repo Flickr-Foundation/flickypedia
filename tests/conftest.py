@@ -107,7 +107,7 @@ def flickr_api(cassette_name: str, user_agent: str) -> Iterator[FlickrApi]:
         cassette_library_dir="tests/fixtures/cassettes",
         filter_query_parameters=["api_key"],
     ):
-        yield FlickrApi(
+        yield FlickrApi.with_api_key(
             api_key=os.environ.get("FLICKR_API_KEY", "<REDACTED>"),
             user_agent=user_agent,
         )
