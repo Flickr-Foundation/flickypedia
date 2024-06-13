@@ -2,8 +2,8 @@ import json
 
 from flask import abort, jsonify, render_template, request, url_for
 from flask_login import current_user, login_required
+from flickr_photos_api import FlickrApi
 
-from flickypedia.apis.flickr import FlickrCommentsApi
 from flickypedia.types.views import ViewResponse
 from .upload_complete import get_completed_task
 
@@ -95,7 +95,7 @@ def post_user_comment_api() -> ViewResponse:
     assert output["state"] == "succeeded"
 
     client = current_user.flickr_oauth_client()
-    api = FlickrCommentsApi(client)
+    api = FlickrApi(client=client)
 
     try:
         comment_id = api.post_comment(photo_id=photo_id, comment_text=comment_text)
