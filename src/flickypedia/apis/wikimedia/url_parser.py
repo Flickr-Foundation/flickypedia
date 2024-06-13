@@ -14,7 +14,7 @@ def get_filename_from_url(url: str) -> str:
         'Cat.jpg'
 
     """
-    u = hyperlink.DecodedURL.from_text(url)
+    u = hyperlink.parse(url)
 
     if u.host not in {"commons.wikimedia.org", "commons.m.wikimedia.org"}:
         raise ValueError(f"Not a Commons URL: {url!r}")
