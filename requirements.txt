@@ -96,7 +96,7 @@ packaging==23.2
     # via gunicorn
 pycparser==2.21
     # via cffi
-pydantic==2.7.3
+pydantic==2.7.4
     # via -r requirements.in
 pydantic-core==2.18.4
     # via pydantic
