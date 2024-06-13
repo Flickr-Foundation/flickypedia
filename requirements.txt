@@ -38,10 +38,12 @@ flask-sqlalchemy==3.1.1
     # via -r requirements.in
 flask-wtf==1.2.1
     # via -r requirements.in
-flickr-photos-api==2.3.4
+flickr-photos-api==2.4.0
     # via -r requirements.in
 flickr-url-parser==1.8.3
     # via flickr-photos-api
+greenlet==3.0.3
+    # via sqlalchemy
 gunicorn==22.0.0
     # via -r requirements.in
 h11==0.14.0

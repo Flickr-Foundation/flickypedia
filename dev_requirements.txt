@@ -72,7 +72,7 @@ flask-wtf==1.2.1
     # via
     #   -r requirements.txt
     #   flickypedia
-flickr-photos-api==2.3.4
+flickr-photos-api==2.4.0
     # via
     #   -r requirements.txt
     #   flickypedia
@@ -81,6 +81,11 @@ flickr-url-parser==1.8.3
     #   -r requirements.txt
     #   flickr-photos-api
     #   flickypedia
+greenlet==3.0.3
+    # via
+    #   -r requirements.txt
+    #   flickypedia
+    #   sqlalchemy
 gunicorn==22.0.0
     # via
     #   -r requirements.txt
