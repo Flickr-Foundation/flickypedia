@@ -13,7 +13,7 @@ def get_photos_from_flickr(parsed_url: ParseResult) -> GetPhotosData:
     """
     retrieved_at = datetime.datetime.now()
 
-    api = FlickrApi(
+    api = FlickrApi.with_api_key(
         api_key=current_app.config["FLICKR_API_KEY"],
         user_agent=current_app.config["USER_AGENT"],
     )
