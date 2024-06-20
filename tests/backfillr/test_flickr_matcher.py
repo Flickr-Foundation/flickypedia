@@ -1,5 +1,3 @@
-import pathlib
-
 import pytest
 
 from flickypedia.apis import WikimediaApi
@@ -9,8 +7,7 @@ from flickypedia.backfillr.flickr_matcher import (
     find_flickr_photo_id_from_sdc,
     find_flickr_photo_id_from_wikitext,
 )
-from flickypedia.types.structured_data import ExistingClaims
-from utils import get_typed_fixture
+from utils import get_existing_claims_fixture
 
 
 @pytest.mark.parametrize(
@@ -178,12 +175,6 @@ def test_find_flickr_photo_id_from_static_wikitext(
     )
 
 
-def get_statement_fixture(filename: str) -> ExistingClaims:
-    fixtures_dir = pathlib.Path("structured_data/existing")
-
-    return get_typed_fixture(path=fixtures_dir / filename, model=ExistingClaims)
-
-
 @pytest.mark.parametrize(
     ["filename", "expected_flickr_photo_id"],
     [
@@ -280,7 +271,7 @@ def get_statement_fixture(filename: str) -> ExistingClaims:
 def test_find_flickr_photo_id_from_sdc(
     filename: str, expected_flickr_photo_id: FindResult | None
 ) -> None:
-    sdc = get_statement_fixture(filename)
+    sdc = get_existing_claims_fixture(filename)
 
     assert find_flickr_photo_id_from_sdc(sdc) == expected_flickr_photo_id
 
@@ -290,8 +281,8 @@ def test_empty_sdc_means_no_flickr_id() -> None:
 
 
 def test_ambiguous_sdc_is_error() -> None:
-    sdc_P7482 = get_statement_fixture("M27512034_P7482.json")
-    sdc_P12120 = get_statement_fixture("M138765382_P12120.json")
+    sdc_P7482 = get_existing_claims_fixture("M27512034_P7482.json")
+    sdc_P12120 = get_existing_claims_fixture("M138765382_P12120.json")
 
     sdc = {"P12120": sdc_P12120["P12120"], "P7482": sdc_P7482["P7482"]}
 
@@ -305,7 +296,7 @@ def test_ambiguous_flickr_url_is_error() -> None:
     #
     # The "source of file" field links to the Flickr user's profile rather
     # than the individual photo in the "URL" qualifier.
-    sdc = get_statement_fixture("M620184_P7482.json")
+    sdc = get_existing_claims_fixture("M620184_P7482.json")
 
     with pytest.raises(AmbiguousStructuredData):
         find_flickr_photo_id_from_sdc(sdc)
@@ -321,7 +312,7 @@ def test_ambiguous_qualifier_is_error() -> None:
     # I fixed the qualifiers in the Wikimedia data by splitting them
     # into two statements, but we need to make sure we don't crash
     # when this occurs.
-    sdc = get_statement_fixture("M15393706_P7482.json")
+    sdc = get_existing_claims_fixture("M15393706_P7482.json")
 
     with pytest.raises(AmbiguousStructuredData):
         find_flickr_photo_id_from_sdc(sdc)
@@ -335,7 +326,7 @@ def test_it_handles_a_some_value_string() -> None:
     # just the string value "some value".  I'm fairly sure this is a bug,
     # but it was breaking some code that expected there to be a datavalue
     # there instead.
-    sdc = get_statement_fixture("M52096071_P7482.json")
+    sdc = get_existing_claims_fixture("M52096071_P7482.json")
 
     assert find_flickr_photo_id_from_sdc(sdc) is None
 
@@ -346,6 +337,6 @@ def test_handles_multiple_described_at_urls() -> None:
     #
     # This has multiple instances of the P973 qualifier, but none of them
     # are Flickr URLs so we don't actually care about them.
-    sdc = get_statement_fixture("M113422_P7482.json")
+    sdc = get_existing_claims_fixture("M113422_P7482.json")
 
     assert find_flickr_photo_id_from_sdc(sdc) is None
