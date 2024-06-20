@@ -2,6 +2,7 @@ import typing
 
 from flickr_photos_api import User as FlickrUser
 
+from flickypedia.apis.wikidata import get_flickr_user_id
 from flickypedia.apis.structured_data.wikidata import WikidataProperties as WP
 from flickypedia.types.structured_data import (
     BaseStatement,
@@ -177,6 +178,32 @@ def create_actions(
                             statement_id=statement["id"],
                             statement=new_statement,
                         )
+                    )
+                    break
+            # fmt: on
+
+            # There are some cases where the existing Creator statement
+            # points to a Wikidata entity which points to this Flickr user.
+            #
+            # If that's the case, we don't need to do anything.
+            #
+            # Although Flickypedia will never create a statement that points
+            # to a Wikidata entity, we can ignore one that exists if it's
+            # consistent with the information we want to write.
+            #
+            # See https://github.com/Flickr-Foundation/flickypedia/issues/457
+            # fmt: off
+            if (
+                property_id == WP.Creator
+                and statement["mainsnak"].get("datavalue")
+                and statement["mainsnak"]["datavalue"]["type"] == "wikibase-entityid"
+            ):
+                assert statement["mainsnak"]["datavalue"]["type"] == "wikibase-entityid"
+                wikidata_entity_id = statement["mainsnak"]["datavalue"]["value"]["id"]
+
+                if get_flickr_user_id(entity_id=wikidata_entity_id) == user["id"]:
+                    actions.append(
+                        DoNothing(property_id=property_id, action="do_nothing")
                     )
                     break
             # fmt: on

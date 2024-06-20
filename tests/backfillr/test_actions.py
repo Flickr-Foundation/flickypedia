@@ -9,6 +9,7 @@ from flickypedia.types.structured_data import (
     NewClaims,
     NewStatement,
 )
+from utils import get_existing_claims_fixture
 
 
 null_user: FlickrUser = {
@@ -426,45 +427,6 @@ def test_it_does_nothing_if_creator_differs_only_in_url(flickr_api: FlickrApi) -
     ]
 
 
-def test_it_does_nothing_for_mismatched_creator(flickr_api: FlickrApi) -> None:
-    """
-    This is a regression test based on the following file:
-    https://commons.wikimedia.org/wiki/File:Neasden_Temple_-_Shree_Swaminarayan_Hindu_Mandir_-_Power_Plant.jpg
-
-    The existing P170 statement has a Wikidata entity, which we don't
-    know how to handle, so we should do nothing.
-    """
-    existing_claims: ExistingClaims = {
-        "P170": [
-            {
-                "type": "statement",
-                "mainsnak": {
-                    "property": "P170",
-                    "snaktype": "value",
-                    "datavalue": {
-                        "type": "wikibase-entityid",
-                        "value": {
-                            "entity-type": "item",
-                            "id": "Q5006102",
-                            "numeric-id": 5006102,
-                        },
-                    },
-                    "hash": "f83b12bd22b4f4bec06e037dd57b559aa735fae7",
-                },
-                "id": "M227302$155FEB72-8819-4DCD-ACF6-AD5D5A1ED3A6",
-                "rank": "normal",
-            }
-        ],
-    }
-
-    user = flickr_api.get_user(user_id="52890443@N02")
-    new_claims: NewClaims = {"claims": [create_flickr_creator_statement(user)]}
-
-    assert create_actions(existing_claims, new_claims, user) == [
-        {"action": "unknown", "property_id": "P170"}
-    ]
-
-
 def test_it_ignores_extra_roles_in_creator_if_otherwise_equivalent(
     flickr_api: FlickrApi,
 ) -> None:
@@ -713,4 +675,54 @@ def test_it_replaces_an_author_username(flickr_api: FlickrApi) -> None:
             "statement_id": existing_statement["id"],
             "statement": new_statement,
         }
+    ]
+
+
+def test_it_leaves_an_author_that_points_to_a_matching_wikidata_entity_as_is(
+    flickr_api: FlickrApi,
+) -> None:
+    # What's going on here:
+    #
+    #   * The original Flickr photo was taken by Alan Wilson (65001151@N03)
+    #   * The existing SDC points to a Wikidata entity Q33132025
+    #   * Wikidata entity Q33132025 has a Flickr User ID property 65001151@N03
+    #
+    # So the Wikidata entity is fine as-is -- we wouldn't write it in
+    # Flickypedia, but somebody else has added it and we don't need to
+    # flag it for manual inspection.
+    #
+    #
+    # https://commons.wikimedia.org/?curid=74351419
+    # Retrieved 20 June 2024
+    existing_claims = get_existing_claims_fixture("M74351419_P170.json")
+
+    user = flickr_api.get_user(user_id="65001151@N03")
+    new_statement = create_flickr_creator_statement(user)
+    new_claims: NewClaims = {"claims": [new_statement]}
+
+    assert create_actions(existing_claims, new_claims, user) == [
+        {"property_id": "P170", "action": "do_nothing"}
+    ]
+
+
+def test_it_flags_a_wikidata_entity_with_mismatched_flickr_user_id(
+    flickr_api: FlickrApi,
+) -> None:
+    # What's going on here:
+    #
+    #   * The Flickr photo was uploaded by a White House acc't (127744844@N06),
+    #     and the description identifies Andrea Hanks as the photographer
+    #   * The existing SDC points to a Wikidata entity Q99938311 "Andrea Hanks"
+    #   * Wikidata entity Q99938311 doesn't have a Flickr User ID
+    #
+    # https://commons.wikimedia.org/?curid=65531905
+    # Retrieved 20 June 2024
+    existing_claims = get_existing_claims_fixture("M65531905_P170.json")
+
+    user = flickr_api.get_user(user_id="127744844@N06")
+    new_statement = create_flickr_creator_statement(user)
+    new_claims: NewClaims = {"claims": [new_statement]}
+
+    assert create_actions(existing_claims, new_claims, user) == [
+        {"property_id": "P170", "action": "unknown"}
     ]
