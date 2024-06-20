@@ -1,0 +1,171 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - api.flickr.com
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.people.getInfo&user_id=65001151%40N03
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA4VVYY/bRBD93PyKwUgIRC62k16vdyQpJ66UqgXxgYqP0doe20vWu2Z3HV/49bxd
+        J7mjSCBFcmZ25s2bN7P2+s1jp+jA1kmjN0m+yBJiXZpK6maTDL6+ep3Qm+1sbV1Pzgu/Scw+gd0j
+        xWiS1SZ5dZ1leX6df/9LtkpIu3/7pOutAXpC0u0qVuwZeSglS6MdW9TfJKvXy5eTpxa22yQweuHb
+        nVBSuE0i/hjz2xvktMLtAhP4YAF4V4iq4U0Cp66ErdDBYy8tPKdoUdWWn8xgBIQYvHOt7PvY7Sk6
+        HnM1lMJDE6F2lp0ZbMmx4Hb2Yj2AshYdb38S456P/OnDOr34cG5ZqHh+r4Sm36WCUuv04kWEMhP6
+        9ldIYQtjzdC0c/pBdIWbU8C7RCDay47/MppJiYLVJnn382939DAUSuo5vcWoisGG9I/SFQauj0ZX
+        Ridk6toxJvZtlt1l6O6MswsTejtY03N6jj2fbZLlTUJpaLNiV1rZR573pGTNyuiGxEFG7tgT3w4O
+        w/Fz8q105KRniuN0JBx1RzKjpq++zFa33/Wt8eaqUKaZ7AW9p4Y1W6HUkeJpY0XfEmMZjiSkLa2o
+        PaJKgZYwLBqlUjS4IWZ4BHlDvXGehCfFoEE5OQChb2JRQpCKe9ZhlQl0/0Si9MfF7NMHKoTjag5w
+        gdkASxxYkdQ0iTJVM1ZVo6wYxb0/wYAWKoxoDxEHiYYDeIfhD93kRERvrHcLmr3Hqh4C2JNSHdXG
+        oqi6NDinUh4kbOR2EgSFPc4xaNtMNFyH6DkZBWiYmkcgz96dlQvKs2PclAaiR4UKJJ5GdOlwIkLK
+        4BEYOM+iA61G6jArAH/tW6H3LmiKuWFhv5nYWy4xZwhecGk6hkhYWEZ+FfTCJdpjYYOGkUYkEDUV
+        fc/CUm1NF/cuAIfnFwT696DKITIuibdDxHtYLbMMnUh74a3NeBKRHq7xmqGxlWWLuZ07bdjHEQB9
+        H4LRoA1cINSjp5pH6gzW1C1msx8lLrOCuJ3QKDq1G8RQxuyBMSfp8X7CNFEB9NE5Fp2rxSxc43X6
+        /DrgdsSVdYNV29b73t2l6TiOi1rJcm8XkCqdAtLTeytdnxwhI6RbU0vF/5XPplf8PP8pBQCdKf4n
+        //P6TxkX+mDyYl1jqX2FVr3Ys97mt6+WV9ntVX5N8b2B3zr9LOYfadt8lWfL7Da7zp8FRujSDNpv
+        lzcv89U6nQzUPimBr0g6fUbCP3xgtrO/AUXXx6iPBgAA
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Thu, 20 Jun 2024 14:32:24 GMT
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 7441f523d9aa7a75eb213f3a670e46ac.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - Rt2sWgB9bUmBuKivT0s1EX9C4spJbPFiAHzjDDMbYCzcsyQm-I19Ow==
+      X-Amz-Cf-Pop:
+      - LHR5-P1
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - openresty
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Sat, 20-Jul-2024 14:32:24 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Sat, 20-Jul-2024 14:32:24 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-flickr-api-request:
+      - Self=1-66743d78-2632593a3f8cd5733bf2bb6b;Root=1-66743d78-31ae3d6c7ec151754e6fdb3c
+      x-robots-tag:
+      - noindex
+      x-server:
+      - serverless-proxy-10.78.6.229
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - www.wikidata.org
+      user-agent:
+      - python-httpx/0.27.0
+    method: GET
+    uri: https://www.wikidata.org/w/rest.php/wikibase/v0/entities/items/Q33132025
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA+VYW2/bNhT+K4axhxYrG94vflrSbhhQrGiBDQPWFQVJUTYTWVYlOVka5L+PlOUm
+        6RG6DNWeBgSM9PHw8HznwkP5ZtlfN2G5WsY+bJfPlpV1oeqWq5tlqBN6Wtl68Xusul2dJkMHoLIF
+        kM3Qn3ssKcsj58OzGp7lYvinh9HeTTN2D5dJSbs/KOEE55G5YTw8F1kJH7Rzpu+mORmew0EoW9L1
+        0LoSQpCps5CX20IISnkLoR2EoCf9NYAKqKsIExCy/RTqNzCCNZowMKFrB1FodoD7hD3MiTiRJn4C
+        ayC2hx5dQ4PXBYQqCHVXANtA/RvIIMItI9wywlhE6LMIfXZuYSpdWBiBizWAKihVxQnoHGLQji3U
+        v42wGLYwWWsLY1dD0+qim8JQDYM1BUFT6hZ6bgdTq5kwr/Ewgg3ctJlg27TQUU0/AaGJA6FdQxoT
+        LFqYOZ2fgOoJbGLpBYQuIQTro4cELgO04xLm3GUFHXe5haftJbT2CpbbFZT6BOu0+wghGFJXH3qJ
+        0SKPvsijLfPowjDSu2erF4OoGUZ1b1ofppe3+XDtfBubPu7qu17ZbHb9bt3aZhPaRdnutot+Exa/
+        vTomd3mYTg1o7KQJSCpxyRJa7haujcN7IHVMIT22rwdS+4dS+2PDOQrRLHQng5PM8Wz8p92GTn6P
+        wyBh6zp+3IfjMTZSGJfnyWFp039FPx2FhkZh27X9dBEr28aDilhH27Y2O9VW0XbZMTfppettupCE
+        uh/8+4aR5erdzeEQfssYYRRT8Z3VlhrODOIlDogXRKASO4PKQLwoygJby3Np2TqXQ71rt7ZK7x/3
+        aasyhjbpfvc+zYcytKH2YXxv2l0T2v467zzsmLfP3bi3aLwtXcWL6JK1aLg2JXsvbZXclBaMAof3
+        3PvrPrHIZovl7W3S/oZOchGaOENV4iLLAnkVBBI+lEg6bwPjRphgZuFC5+Aik7nYqJERwXKKEi6N
+        odgJxH2gSHFqUCikRmXJuGDWCEv9LJTy/t/OiTGa4jwyMlOEaLqtSu0J4o4EpBgWCFPCEBaYGJUC
+        R4Weh5CZgQ8hWlDMRkaKiSlKWhTBWa4QJ5ShwDRFIcUMaWyZYN4WnrFZKOX9v51TKnfN7ijxKUqh
+        VLLwKlEK2CLONUZeY4M8MylpMaWuJDNR4nOESXKRbBw5MSrV5FFHtRKuoOl4oBgJHApkrSQIF9Jo
+        qoLTDs9z1GUDHrIKf/WhrW2FksSjOEmBMSGC/PD6c/oRrugUr4I6yQrMEGekREpRh7yUHpmQnOJU
+        mQ6Kcp6SygY85NX1bazXj6N0/0YxRkqxKUKydNIxmgKVG1PwKQWFYw4FbEpmpWSczxQoxebhs3hy
+        /+by9NilJtOQ6cIEplJZ+RQzKplHRIWAUpQsUz4IWswTLqrmKC1+7LmSqckTHZ+S01P9EiPG2cuc
+        gwqdCsMR/vHMvDhNhcXxv+66N8uN7fKnd86ElADSli44xoRkBjNRMJ76RFmaEhdaBUzZ8MHS9oe1
+        U92Nii9D7Xfbbbp7/hKKaB/njNf2wp7HrV28ionn4md7bd2+s4snGjOOBZdYP31+3qT0uX02ZYUm
+        X9rQx2141N43B9HV8vvk83RkUUTZrxivhr8/hu+r4GOXLtPLFSH5RluFurDtdleEfHPd9H2zOjm5
+        urp6nrMg2/B8165PkvLYX5+8Jelir2i+jNy+z8aP7vdYqcLroJlwklPrKTZclMp4b7BTlnLLveP0
+        f+h+/p+5f7KYh+qboZwNloZ/bihksqEIeaZ+wuoMkVOm0yF8ppCRZxqlq9uLZGi6ACgxU0MhdA5S
+        Wg69P3/zpGVVrC+GT54xxbLKQwj7Kmt4kT6L1rv2evWVAzz/fFmsj5bv22MQuxTFUe0QyW1O3yGU
+        +e3kgeoPB9UfQG949oXDl7d/A3MYZwZDFgAA
+    headers:
+      accept-ranges:
+      - bytes
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '0'
+      cache-control:
+      - no-cache
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Thu, 20 Jun 2024 14:32:26 GMT
+      etag:
+      - W/"1685388570"
+      last-modified:
+      - Fri, 22 Jul 2022 20:33:55 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw-api-ext.eqiad.main-794589c847-fnfqp
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - WMF-Last-Access=20-Jun-2024;Path=/;HttpOnly;secure;Expires=Mon, 22 Jul 2024
+        12:00:00 GMT
+      - WMF-Last-Access-Global=20-Jun-2024;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon,
+        22 Jul 2024 12:00:00 GMT
+      - GeoIP=GB:ENG:Camden:51.52:-0.16:v4; Path=/; secure; Domain=.wikidata.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;SameSite=Lax;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3066 miss, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+    status:
+      code: 200
+      message: OK
+version: 1

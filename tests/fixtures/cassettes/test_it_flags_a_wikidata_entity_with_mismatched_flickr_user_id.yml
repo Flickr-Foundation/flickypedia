@@ -1,0 +1,168 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - api.flickr.com
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.people.getInfo&user_id=127744844%40N06
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA4VVXW/aSBR9Lr/iyitVrQQ2tNDQ1NBlSZR9aLuRCNpHdG2P8SjjGWtm3IT++j1j
+        p5Bu2a0EyDP365x77sXpx8da0VdhnTR6EU3icURC56aQer+IWl+O5hF9XA5S6xpynv0iMvcRzg1C
+        jCZZIOjNxcV0Op9Of/8yfheRdmcupWusgWtE0u0KoYQXiEQxmRvthAWCRfRuNns7669KtjUukK5h
+        X+1YSXaLSMpm1FTGmxHbvJJfRUQVu13ABSuyocgu42IvFhEudcG2AJ/HRlrcwB68uSitOB3DIWTo
+        nHeukk3TcX/y7syiaHP26BCrnRXOtDYXXcHl4EXaAr7mWiy3G7oSDVtfC+3JlLQBLpEmRwc4W8Gq
+        c765XdFtoEKrnkqaHG3wU6YvuPybAUnvvdFDuloPabtZpcnRCk8va/HNaEGKM6EW0TU7D0B0h3t6
+        BUwvuW4+0Jo1F/w6Aq7SCcg4Gs8uxyD5PX4XVLve3M2ur+5Ot5BsGlESeBbC5VY2Haq7StBPDCAt
+        1Sy1x1cUlB3Iw+2PFrza0I4bZTJWdNtmSua0KkuW1gVDcNtqiZHoW+bO9XFIkIhyUzdWOrg0XZoR
+        55ACp9BKRygudIE8pbGEvgcQ23gT02fpwoSjXJh1wa7LZlDZ9jWfl4R80kvh4sGgkyjQOlAmQsaO
+        F8alLL8j/xXBV2jUawgXYIg6YwARbggm2rUqsB3SqhZW5qxp0zDo9FR7cF1Y3aMP2smjvZDOW5m1
+        oW3g88DWMuj/wF0bPdpubsjYPWv5rRspR451Hp5OIvW4DjENBn9pdaAQh1YDVi4hWegkxMXO19Kj
+        RExrKwrpSUFpcpVpVUGQubikM2OR9OrsLTdg9PK38dv3HxyFLaAEyOReYq+o36qYrh8xr0pcnk20
+        ZmsUfY7pT7mvHMBUSPFJZpbtIeixNnqPBXVp8nxaMbz9fLRWLSvvG3eZJA8PD3GJCbq3MZgmvUPy
+        0z9Mkj6ZQmxIZE0plfi/TMIA//lMp2Ckqk32i0z/jekUeyQHdC/SEivlC0yV53uhl5P5m9loPMGH
+        xmOsOz5p8i+fH8KWk+lkPLsIP88cu9S5abVfzi/m79Okf0bpp+bghZD0b4TwhHfFcvAP5Sd4c1oG
+        AAA=
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Thu, 20 Jun 2024 14:46:09 GMT
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 081e5088637a101207bef39b8d7f3d4c.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - jdbUsSDK9LW6M41yBiFmfU4Ok6kzbWP8LeN_FHG69WfpTSzVxKpFPg==
+      X-Amz-Cf-Pop:
+      - LHR5-P1
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - openresty
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Sat, 20-Jul-2024 14:46:09 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Sat, 20-Jul-2024 14:46:09 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-flickr-api-request:
+      - Self=1-667440b1-6487f9e4193b32b548d3dcfb;Root=1-667440b1-314077432b5332e755a7410b
+      x-robots-tag:
+      - noindex
+      x-server:
+      - serverless-proxy-10.78.45.237
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - www.wikidata.org
+      user-agent:
+      - python-httpx/0.27.0
+    method: GET
+    uri: https://www.wikidata.org/w/rest.php/wikibase/v0/entities/items/Q99938311
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA61XX3PbNgz/Kjrd3lY2/CuSfovt+PbY3raXdnugKCrW2ZZdSW6a5fzdB1By7NbK
+        Ndf4LmFIAATwA0AIeUq7x11IJ2nVhU36Ll27PKzbdPKUhhqot3XRBJf84epVC9yyuaRV3SWtCJe0
+        en1Ja79c0ry7pLn2wsgBrbS+qXZdta2jx72FTWiqlXN1m5TbbnvfuDKAhgASKRD+2VNaCqS6JLSd
+        K7b7uipC3YZnMyNS+29nUtHBoxA/CXW9DLDfpffrV5iL0dwtey93y5C4DcoH21TeVXU4BveIwyWD
+        lW5QsBtxt942XSAOo+Bdjb70iRwIyZm9Bpl7YLrm3v23qtauqQYkOfy6psHrhbsHkb/RapH8CczQ
+        JtsyGRQmrumqtkvABSbzfZ3Uj7DlKk92DjeZQB3N9gwGilKRHF3sjxh9DAecMqlwFXGVJu4Zrtwm
+        8Y84E4oM6eIqTntuo+eIra+Hul091wPmsD2y/CrGnD1zV+hw+/XFq7Fmn0srOQrFIkOY+3ZbO7wA
+        Ydli3dcvqirdgFhYXF1cuY4U0WPlP2L1/kfRnuI9KFyGXqEKGa6Fj2uIFJfEAz0jmbi3ca/PuD0F
+        47Bf9QqloHH1cUV3pOwpJq7uTKaIXBZXf85NIknGQ4h7ftoLcaaUnkkOl8GZvO6dsQ5v2LxfUdZ6
+        NGqtipQyyhg0Z00WSTwK5Sch685E5UlFHr20eXZiD5cj28VrHr0JXf+sYmLxEi38MkCLqqoVPPFj
+        niHR0KrcunIt9qAnOOALC5tQd7FrfRAsnXx+SqsC9H201gojGPtteqeNuFsoIu8WjMipzMjtTCiy
+        mC/mM2P5naRY4w00Q7gHr37j1nD+sgdTZRUa0P35X+CHMjTQlMJw3jXbXWi6R7QcLaJ5fCqdI8OX
+        4AH8z8FbEj8J4O9Xt94HvDAI9Gd4RNsaOhGG4aNKDwfQ/oGPYuEmU4xrQaShhkgqAEu2yIiV0k7n
+        i0xxM78KFn4NLJkyjGo+IGI0G4Mk1GxqxUwQaikFSAtODOSH3Mq5tIvFVN3O1FUgof23YxKCQ56H
+        HOkxQGo+k/JuxqHUbgFQNp8Rq6aUTG/51FpDhdHXqTcwfwU8dACTZUKOwSlzyrxjACcYCUmCkssV
+        9cQ6njEjqXdw7xpwogPfAwrfutDUbk1A4lVwXBxsyBIHG2Kc4g4+csdsUcpH86U4hwZvicwLTwpo
+        PvC6XEEYVUI6Sqmg4WcAn8bwgOK34tEKHjaHejkc3o3ZUIb+YKKrNuFVup960Un6OwTGEvyhf1E6
+        iT+fcCZqgq9aGAnTCaM4rK2hJ7tmsy0CzmTLrttNbm4eHh7eY92hD++3zf0NKK+6x5uPzBqloUQP
+        MfqvqGZMz1XSv+zH2mPSxVjSs9yaQvCSwDc4EOalJgXXlMDoVXqrvSx5dp1HSuNI9jZYEVGcNwdY
+        Ro320iLzKgRE5QFLgI8FEVo7IgrqMqlNoUvxK6Us6TVaDTPZ0Gx+HjYE+L3FfbN+nZ2zwjyrh9O0
+        /vjebzc3QyC1zkbrw2lmeMngQ6vzjEjOJclzZ4lnVhTGlUXpza9EklF6jS+r0VSajNmRcD6lS9cu
+        QShnSpV5yaTzOsiszGQOM71WOIfxoHQeBLwAiQWxg/89XvLYMHGNFsMZoZxQ/WKLYW9qMaPd0Rh9
+        nVhDJDV7qQcLedHnf8WMZQazeRh9DrFM325DC6UUZXEiw/EZrq4rbJZxmv7+CaSH/wFGS3U+0hAA
+        AA==
+    headers:
+      accept-ranges:
+      - bytes
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '0'
+      cache-control:
+      - no-cache
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Thu, 20 Jun 2024 14:46:09 GMT
+      etag:
+      - W/"2146118604"
+      last-modified:
+      - Mon, 06 May 2024 00:13:59 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw-api-ext.eqiad.main-794589c847-fzz75
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - WMF-Last-Access=20-Jun-2024;Path=/;HttpOnly;secure;Expires=Mon, 22 Jul 2024
+        12:00:00 GMT
+      - WMF-Last-Access-Global=20-Jun-2024;Path=/;Domain=.wikidata.org;HttpOnly;secure;Expires=Mon,
+        22 Jul 2024 12:00:00 GMT
+      - GeoIP=GB:ENG:Camden:51.52:-0.16:v4; Path=/; secure; Domain=.wikidata.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;SameSite=Lax;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3066 miss, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+    status:
+      code: 200
+      message: OK
+version: 1

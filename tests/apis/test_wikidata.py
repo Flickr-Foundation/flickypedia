@@ -3,6 +3,7 @@ import typing
 
 import pytest
 
+from flickypedia.apis.wikidata import get_flickr_user_id
 from flickypedia.apis.structured_data.wikidata import to_wikidata_date_value
 from flickypedia.types.structured_data import DataValueTypes
 
@@ -64,3 +65,12 @@ def test_to_wikidata_date_value(
     kwargs: ToWikidateArgs, expected: DataValueTypes.Time
 ) -> None:
     assert to_wikidata_date_value(**kwargs) == expected
+
+
+@pytest.mark.parametrize(
+    ["entity_id", "user_id"], [("Q33132025", "65001151@N03"), ("Q33132026", None)]
+)
+def test_get_flickr_user_id(
+    vcr_cassette: None, entity_id: str, user_id: str | None
+) -> None:
+    assert get_flickr_user_id(entity_id=entity_id) == user_id

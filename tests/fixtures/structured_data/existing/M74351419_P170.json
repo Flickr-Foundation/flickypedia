@@ -1,0 +1,22 @@
+{
+  "P170": [
+    {
+      "id": "M74351419$4657E626-AA10-48B8-A873-91B3A4554005",
+      "mainsnak": {
+        "datavalue": {
+          "type": "wikibase-entityid",
+          "value": {
+            "entity-type": "item",
+            "id": "Q33132025",
+            "numeric-id": 33132025
+          }
+        },
+        "hash": "3bb8610b7590b94755ab7d0113737a56039a9989",
+        "property": "P170",
+        "snaktype": "value"
+      },
+      "rank": "normal",
+      "type": "statement"
+    }
+  ]
+}
