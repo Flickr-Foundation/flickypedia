@@ -243,7 +243,10 @@ def test_shows_posted_statement(app: Flask, vcr_cassette: str) -> None:
 def test_shows_location_statement(
     app: Flask, vcr_cassette: str, location: LocationInfo, expected_value: str
 ) -> None:
-    actual = get_html(claims=[create_location_statement(location=location)])
+    location_statement = create_location_statement(location=location)
+    assert location_statement is not None
+
+    actual = get_html(claims=[location_statement])
 
     expected = prettify_html(
         f"""
