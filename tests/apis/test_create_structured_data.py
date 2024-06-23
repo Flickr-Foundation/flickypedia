@@ -257,6 +257,19 @@ class TestCreateLocationStatement:
 
         assert len(location_statements) == 1
 
+    def test_no_location_statement_if_no_location_data(self) -> None:
+        assert create_location_statement(location=None) is None
+
+    def test_no_location_statement_if_null_location_data(self) -> None:
+        """
+        Regression test for https://github.com/Flickr-Foundation/flickypedia/issues/461
+        """
+        # From https://www.flickr.com/photos/ed_webster/16125227798/
+        # Retrieved 23 June 2024
+        location: LocationInfo = {"accuracy": 16, "latitude": 0.0, "longitude": 0.0}
+
+        assert create_location_statement(location=location) is None
+
 
 def test_create_flickr_photo_id_statement() -> None:
     statement = create_flickr_photo_id_statement(photo_id="1234567")

@@ -242,7 +242,7 @@ def create_license_statement(license_id: str) -> NewStatement:
     }
 
 
-def create_location_statement(location: LocationInfo) -> NewStatement:
+def create_location_statement(location: LocationInfo | None) -> NewStatement | None:
     """
     Creates a structured data statement for the "coordinates of
     the point of view" statement.
@@ -253,6 +253,25 @@ def create_location_statement(location: LocationInfo) -> NewStatement:
 
     See https://flickrfoundation.slack.com/archives/C05AVC1JYL9/p1696947242703349
     """
+    if location is None:
+        return None
+
+    # Some Flickr photos have "null coordinates" -- location data which
+    # is obviously nonsensical.
+    #
+    # e.g. https://www.flickr.com/photos/ed_webster/16125227798/
+    #
+    #     <location latitude="0.000000" longitude="0.000000" accuracy="16" context="0">
+    #       <neighbourhood woeid="0"/>
+    #     </location>
+    #
+    # In this case we should just discard the information as useless, rather
+    # than write null coordinates into WMC.
+    #
+    # See https://github.com/Flickr-Foundation/flickypedia/issues/461
+    if location == {"accuracy": 16, "latitude": 0.0, "longitude": 0.0}:
+        return None
+
     # The accuracy parameter in the Flickr API response tells us
     # the precision of the location information (15 November 2023):
     #
@@ -504,8 +523,10 @@ def _create_sdc_claims_for_flickr_photo(
 
         statements.extend([license_statement, copyright_statement])
 
-    if photo["location"] is not None:
-        statements.append(create_location_statement(location=photo["location"]))
+    location_statement = create_location_statement(location=photo["location"])
+
+    if location_statement is not None:
+        statements.append(location_statement)
 
     if photo["date_taken"] is not None:
         statements.append(create_date_taken_statement(date_taken=photo["date_taken"]))
