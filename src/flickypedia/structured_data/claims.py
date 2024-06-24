@@ -3,7 +3,9 @@ import typing
 
 from flickr_photos_api import SinglePhoto
 
+from .flickr_users import FlickrUsers
 from .statements import (
+    create_bhl_page_id_statement,
     create_copyright_status_statement,
     create_date_taken_statement,
     create_flickr_creator_statement,
@@ -94,6 +96,15 @@ def _create_sdc_claims_for_flickr_photo(
     )
 
     statements.append(published_in_statement)
+
+    # Add the BHL Photo ID statement, but only if this is the BHL user.
+    if photo["owner"]["id"] == FlickrUsers.BioDivLibrary:
+        bhl_page_id_statement = create_bhl_page_id_statement(
+            photo_id=photo["id"], tags=photo["tags"]
+        )
+
+        if bhl_page_id_statement is not None:
+            statements.append(bhl_page_id_statement)
 
     return {"claims": statements}
 
