@@ -8,8 +8,8 @@ from nitrate.types import validate_type
 
 from .base import WikimediaApiBase
 from .exceptions import MissingFileException, WikimediaApiException
-from ...types.structured_data import ExistingClaims, NewClaims
 from ...types.wikimedia import ShortCaption
+from flickypedia.structured_data import ExistingClaims, NewClaims
 
 
 class StructuredDataMethods(WikimediaApiBase):

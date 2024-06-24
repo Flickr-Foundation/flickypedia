@@ -8,8 +8,8 @@ from flickypedia.backfillr.comparisons import (
     are_equivalent_statements,
     has_subset_of_new_qualifiers,
 )
-from flickypedia.types.structured_data import (
-    DataValueTypes,
+from flickypedia.structured_data import (
+    DataValue,
     ExistingStatement,
     NewStatement,
     Qualifiers,
@@ -151,7 +151,7 @@ class TestAreEquivalentSnaks:
         assert are_equivalent_snaks(existing_snak, new_snak)
 
     def test_snaks_for_different_properties_are_not_equivalent(self) -> None:
-        datavalue: DataValueTypes.String = {"type": "string", "value": "ABC"}
+        datavalue: DataValue = {"type": "string", "value": "ABC"}
 
         # fmt: off
         snak123: Snak = {"property": "P123", "datavalue": datavalue, "snaktype": "value"}
@@ -161,7 +161,7 @@ class TestAreEquivalentSnaks:
         assert not are_equivalent_snaks(snak123, snak456)
 
     def test_snaks_with_different_snaktypes_are_not_equivalent(self) -> None:
-        datavalue: DataValueTypes.String = {"type": "string", "value": "ABC"}
+        datavalue: DataValue = {"type": "string", "value": "ABC"}
 
         # fmt: off
         snak1: Snak = {"snaktype": "value", "property": "P1", "datavalue": datavalue}

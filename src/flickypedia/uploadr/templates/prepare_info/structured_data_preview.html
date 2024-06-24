@@ -58,7 +58,7 @@
 <dl class="structured_data_preview">
   {% for claim in structured_data.claims %}
   <dt>
-    {{ claim.mainsnak.property|wikidata_property_name }}:
+    {{ claim.mainsnak.property|wikidata_property_label }}:
   </dt>
   <dd class="snak-{{ claim.mainsnak.snaktype }}">
     {#

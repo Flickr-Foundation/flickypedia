@@ -11,16 +11,16 @@ from flickr_photos_api import (
 )
 import pytest
 
-from flickypedia.apis.structured_data import (
+from flickypedia.structured_data import NewStatement
+from flickypedia.structured_data.statements import (
     create_copyright_status_statement,
     create_date_taken_statement,
     create_flickr_creator_statement,
     create_license_statement,
     create_location_statement,
-    create_posted_to_flickr_statement,
+    create_published_in_statement,
     create_source_statement,
 )
-from flickypedia.types.structured_data import NewStatement
 
 
 def prettify_html(html: str, find_kwargs: dict[str, typing.Any] | None = None) -> str:
@@ -190,7 +190,7 @@ def test_shows_license_statement(app: Flask, vcr_cassette: str) -> None:
 
 
 def test_shows_posted_statement(app: Flask, vcr_cassette: str) -> None:
-    posted_date_claim = create_posted_to_flickr_statement(
+    posted_date_claim = create_published_in_statement(
         date_posted=datetime.datetime(2023, 10, 12)
     )
 

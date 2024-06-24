@@ -2,16 +2,14 @@ import re
 
 from flickr_url_parser import parse_flickr_url
 
-from flickypedia.apis.structured_data.wikidata import (
-    WikidataDatePrecision,
-    WikidataProperties,
-)
-from flickypedia.types.structured_data import (
+from flickypedia.structured_data import (
     ExistingStatement,
     NewStatement,
     Qualifiers,
     Snak,
     Value,
+    WikidataDatePrecision,
+    WikidataProperties,
 )
 
 

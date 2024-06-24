@@ -37,8 +37,8 @@ the required JSON.
 import datetime
 import typing
 
-from flickypedia.types.structured_data import DataValue, Qualifiers
-from .wikidata import (
+from .wikidata_datamodel import DataValue, Qualifiers
+from .wikidata_values import (
     to_wikidata_date_value,
     to_wikidata_entity_value,
     to_wikidata_string_value,

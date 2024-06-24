@@ -2,7 +2,7 @@
   <ul class="sdc_qualifiers plain_list">
     {% for q in claim["qualifiers-order"] %}
     <li>
-      {{ qualifiers[q][0].property | wikidata_property_name }}:
+      {{ qualifiers[q][0].property | wikidata_property_label }}:
       {% with datavalue = qualifiers[q][0].datavalue %}
         {% include "prepare_info/sdc_value.html" %}
       {% endwith %}
