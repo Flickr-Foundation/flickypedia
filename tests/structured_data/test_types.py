@@ -3,7 +3,7 @@ import json
 from nitrate.types import validate_type
 import pytest
 
-from flickypedia.types.structured_data import ExistingClaims, Snak
+from flickypedia.structured_data import ExistingClaims, Snak
 
 
 def test_snak_type_matches() -> None:

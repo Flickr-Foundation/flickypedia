@@ -1,11 +1,11 @@
 import pytest
 
-from flickypedia.apis.structured_data import create_license_statement
 from flickypedia.apis import (
     MissingFileException,
     UnknownWikimediaApiException,
     WikimediaApi,
 )
+from flickypedia.structured_data.statements import create_license_statement
 
 
 class TestAddFileCaption:

@@ -3,12 +3,12 @@ import typing
 from flickr_photos_api import User as FlickrUser
 
 from flickypedia.apis.wikidata import get_flickr_user_id
-from flickypedia.structured_data import WikidataProperties as WP
-from flickypedia.types.structured_data import (
-    BaseStatement,
+from flickypedia.structured_data import (
     ExistingClaims,
+    ExistingStatement,
     NewClaims,
     NewStatement,
+    WikidataProperties as WP,
 )
 from .comparisons import (
     are_equivalent_qualifiers,
@@ -232,7 +232,7 @@ def create_actions(
     return actions
 
 
-def get_author_name(statement: BaseStatement) -> str:
+def get_author_name(statement: NewStatement | ExistingStatement) -> str:
     """
     Given a statement, get the string value from the Author Name qualifier.
     """

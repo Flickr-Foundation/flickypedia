@@ -3,9 +3,9 @@ import datetime
 from flask import Flask
 from flickr_photos_api import SinglePhoto
 
-from flickypedia.apis.structured_data import create_sdc_claims_for_new_flickr_photo
 from flickypedia.apis import WikimediaApi
 from flickypedia.duplicates import find_duplicates
+from flickypedia.structured_data import create_sdc_claims_for_new_flickr_photo
 from flickypedia.uploadr.uploads import upload_single_photo
 
 

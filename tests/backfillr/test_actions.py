@@ -2,13 +2,13 @@ from flickr_photos_api import FlickrApi, User as FlickrUser
 import pytest
 
 from flickypedia.backfillr.actions import create_actions
-from flickypedia.apis.structured_data import create_flickr_creator_statement
-from flickypedia.types.structured_data import (
+from flickypedia.structured_data import (
     ExistingClaims,
     ExistingStatement,
     NewClaims,
     NewStatement,
 )
+from flickypedia.structured_data.statements import create_flickr_creator_statement
 from utils import get_existing_claims_fixture
 
 

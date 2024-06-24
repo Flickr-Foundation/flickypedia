@@ -13,7 +13,7 @@ import typing
 from nitrate.types import validate_type
 from pydantic import ValidationError
 
-from flickypedia.types.structured_data import ExistingClaims
+from flickypedia.structured_data import ExistingClaims
 
 
 class MonolingualValue(typing.TypedDict):

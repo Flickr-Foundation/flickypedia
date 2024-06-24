@@ -11,7 +11,7 @@ from flask_login import login_user
 from nitrate.json import DatetimeDecoder
 from nitrate.types import read_typed_json
 
-from flickypedia.types.structured_data import ExistingClaims
+from flickypedia.structured_data import ExistingClaims, NewClaims, NewStatement
 from flickypedia.uploadr.auth import (
     user_db,
     WikimediaUserSession,
@@ -118,3 +118,15 @@ def get_existing_claims_fixture(filename: str) -> ExistingClaims:
     fixtures_dir = pathlib.Path("structured_data/existing")
 
     return get_typed_fixture(path=fixtures_dir / filename, model=ExistingClaims)
+
+
+def get_claims_fixture(filename: str) -> NewClaims:
+    return get_typed_fixture(
+        path=pathlib.Path("structured_data") / filename, model=NewClaims
+    )
+
+
+def get_statement_fixture(filename: str) -> NewStatement:
+    return get_typed_fixture(
+        path=pathlib.Path("structured_data") / filename, model=NewStatement
+    )

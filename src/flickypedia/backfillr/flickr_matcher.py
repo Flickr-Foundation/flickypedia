@@ -19,13 +19,15 @@ from flickr_url_parser import (
     UnrecognisedUrl,
 )
 
-from flickypedia.apis.structured_data.wikidata import (
+from flickypedia.apis import WikimediaApi
+from flickypedia.structured_data import (
+    ExistingClaims,
+    ExistingStatement,
+    Snak,
     WikidataEntities,
+    WikidataProperties,
     to_wikidata_entity_value,
 )
-from flickypedia.apis import WikimediaApi
-from flickypedia.structured_data import WikidataProperties
-from flickypedia.types.structured_data import ExistingClaims, ExistingStatement, Snak
 
 
 def pick_best_url(urls: set[str | None]) -> str:

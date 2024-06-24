@@ -2,7 +2,7 @@ import typing
 
 from flickr_photos_api import SinglePhoto
 
-from flickypedia.types.structured_data import NewClaims
+from flickypedia.structured_data import NewClaims
 from flickypedia.types.wikimedia import ShortCaption
 
 

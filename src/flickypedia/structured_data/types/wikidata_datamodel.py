@@ -20,7 +20,7 @@ import typing
 # Definitions for the Wikidata entities that we create as part of
 # this library for new photos.
 #
-# Notable, these entities omit a couple of fields on the main entities,
+# Notably, these entities omit a couple of fields on the main entities,
 # in particular rank and ID.
 #
 # This is based on the table structured as described in

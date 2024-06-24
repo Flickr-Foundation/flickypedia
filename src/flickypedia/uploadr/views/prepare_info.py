@@ -40,7 +40,7 @@ from flickypedia.photos import (
     enrich_photo,
     categorise_photos,
 )
-from flickypedia.types.structured_data import NewClaims
+from flickypedia.structured_data import NewClaims
 from flickypedia.types.views import ViewResponse
 from flickypedia.types.uploads import UploadRequest
 from ..uploads import begin_upload
