@@ -21,10 +21,10 @@ from flickr_url_parser import (
 
 from flickypedia.apis.structured_data.wikidata import (
     WikidataEntities,
-    WikidataProperties,
     to_wikidata_entity_value,
 )
 from flickypedia.apis import WikimediaApi
+from flickypedia.structured_data import WikidataProperties
 from flickypedia.types.structured_data import ExistingClaims, ExistingStatement, Snak
 
 

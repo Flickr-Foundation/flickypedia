@@ -27,9 +27,9 @@ from flickypedia.apis.flickr import (
 )
 from flickypedia.apis.structured_data.wikidata import (
     get_entity_label,
-    get_property_name,
     render_wikidata_date,
 )
+from flickypedia.structured_data import get_wikidata_property_label
 from .views import (
     about,
     bookmarklet,
@@ -128,7 +128,7 @@ def create_app(
     app.jinja_env.filters["truncate_description"] = truncate_description
     app.jinja_env.filters["bookmarklet"] = create_bookmarklet
 
-    app.jinja_env.filters["wikidata_property_name"] = get_property_name
+    app.jinja_env.filters["wikidata_property_label"] = get_wikidata_property_label
     app.jinja_env.filters["wikidata_entity_label"] = get_entity_label
     app.jinja_env.filters["wikidata_date"] = render_wikidata_date
 

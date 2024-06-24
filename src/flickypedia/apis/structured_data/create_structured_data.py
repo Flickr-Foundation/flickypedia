@@ -39,12 +39,12 @@ from flickr_photos_api import (
 
 from flickypedia.types.structured_data import NewStatement, NewClaims
 from ._qualifiers import create_qualifiers as create_qualifiers, QualifierValues
+from flickypedia.structured_data import WikidataProperties
 from .wikidata import (
     to_wikidata_date_value,
     to_wikidata_entity_value,
     to_wikidata_string_value,
     WikidataEntities,
-    WikidataProperties,
 )
 
 

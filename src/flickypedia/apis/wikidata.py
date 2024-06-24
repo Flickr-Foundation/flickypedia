@@ -2,7 +2,7 @@ import functools
 
 import httpx
 
-from .structured_data.wikidata import WikidataProperties
+from flickypedia.structured_data import WikidataProperties
 
 
 @functools.lru_cache
@@ -10,8 +10,11 @@ def get_flickr_user_id(entity_id: str) -> str | None:
     """
     Look up the Flickr User ID for a Wikidata entity.
 
-    This may return None if this Wikidata entity isn't associated with
-    a Flickr user.
+    This may return None if:
+
+    -   this Wikidata entity isn't associated with a Flickr user
+    -   something goes wrong when calling the Wikidata API
+
     """
     resp = httpx.get(
         f"https://www.wikidata.org/w/rest.php/wikibase/v0/entities/items/{entity_id}"

@@ -3,7 +3,7 @@ import typing
 from flickr_photos_api import User as FlickrUser
 
 from flickypedia.apis.wikidata import get_flickr_user_id
-from flickypedia.apis.structured_data.wikidata import WikidataProperties as WP
+from flickypedia.structured_data import WikidataProperties as WP
 from flickypedia.types.structured_data import (
     BaseStatement,
     ExistingClaims,
