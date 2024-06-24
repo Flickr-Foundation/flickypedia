@@ -16,6 +16,7 @@ class WikidataProperties:
     DescribedAtUrl = "P973"
     DeterminationMethod = "P459"
     AuthorName = "P2093"
+    BhlPageId = "P687"
     CoordinatesOfThePointOfView = "P1259"
     FlickrPhotoId = "P12120"
     FlickrUserId = "P3267"

@@ -1,4 +1,14 @@
+"""
+Create a statement for BHL Page ID.
+
+Here BHL = Biodiversity Heritage Library
+https://www.flickr.com/photos/biodivlibrary/
+"""
+
 import re
+
+from ..types import NewStatement, to_wikidata_string_value
+from ..wikidata_properties import WikidataProperties
 
 
 def guess_bhl_page_id(*, photo_id: str, tags: list[str]) -> str | None:
@@ -36,4 +46,25 @@ def guess_bhl_page_id(*, photo_id: str, tags: list[str]) -> str | None:
         return candidate_page_ids.pop()
     else:
         print(f"Warning: ambiguous BHL page ID on {photo_id} ({candidate_page_ids})")
+        return None
+
+
+def create_bhl_page_id_statement(
+    *, photo_id: str, tags: list[str]
+) -> NewStatement | None:
+    """
+    Creates a BHL Photo ID statement for a Flickr photo.
+    """
+    bhl_page_id = guess_bhl_page_id(photo_id=photo_id, tags=tags)
+
+    if bhl_page_id is not None:
+        return {
+            "mainsnak": {
+                "datavalue": to_wikidata_string_value(value=bhl_page_id),
+                "property": WikidataProperties.BhlPageId,
+                "snaktype": "value",
+            },
+            "type": "statement",
+        }
+    else:
         return None
