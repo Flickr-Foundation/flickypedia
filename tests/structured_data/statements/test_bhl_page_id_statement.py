@@ -1,5 +1,9 @@
+import datetime
+
+from flickr_photos_api import FlickrApi
 import pytest
 
+from flickypedia.structured_data import create_sdc_claims_for_new_flickr_photo
 from flickypedia.structured_data.statements.bhl_page_id_statement import (
     create_bhl_page_id_statement,
     guess_bhl_page_id,
@@ -77,3 +81,57 @@ def test_does_not_create_bhl_page_id_statement_if_no_pageid() -> None:
     )
 
     assert statement is None
+
+
+class TestClaims:
+    def test_includes_statement_if_bhl_user(self, flickr_api: FlickrApi) -> None:
+        photo = flickr_api.get_single_photo(photo_id="7982377911")
+
+        statement = create_bhl_page_id_statement(
+            photo_id=photo["id"], tags=photo["tags"]
+        )
+        assert statement is not None
+
+        claims = create_sdc_claims_for_new_flickr_photo(
+            photo, retrieved_at=datetime.datetime.now()
+        )
+
+        assert statement in claims["claims"]
+
+    def test_omits_statement_if_not_bhl_user(self, flickr_api: FlickrApi) -> None:
+        photo = flickr_api.get_single_photo(photo_id="7982377911")
+
+        statement = create_bhl_page_id_statement(
+            photo_id=photo["id"], tags=photo["tags"]
+        )
+        assert statement is not None
+
+        photo["owner"]["id"] = "-1"
+
+        claims = create_sdc_claims_for_new_flickr_photo(
+            photo, retrieved_at=datetime.datetime.now()
+        )
+
+        assert statement not in claims["claims"]
+        assert not any(
+            statement["mainsnak"]["property"] == "P687"
+            for statement in claims["claims"]
+        )
+
+    def test_omits_statement_if_no_pageid_tag(self, flickr_api: FlickrApi) -> None:
+        photo = flickr_api.get_single_photo(photo_id="7982377911")
+        photo["tags"] = []
+
+        statement = create_bhl_page_id_statement(
+            photo_id=photo["id"], tags=photo["tags"]
+        )
+        assert statement is None
+
+        claims = create_sdc_claims_for_new_flickr_photo(
+            photo, retrieved_at=datetime.datetime.now()
+        )
+
+        assert not any(
+            statement["mainsnak"]["property"] == "P687"
+            for statement in claims["claims"]
+        )
