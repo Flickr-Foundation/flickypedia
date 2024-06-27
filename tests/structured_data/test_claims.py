@@ -1,8 +1,9 @@
 import datetime
 
-from flickr_photos_api import SinglePhoto
+from flickr_photos_api import FlickrApi, SinglePhoto
 
 from flickypedia.structured_data import (
+    WikidataProperties,
     create_sdc_claims_for_existing_flickr_photo,
     create_sdc_claims_for_new_flickr_photo,
 )
@@ -154,3 +155,29 @@ def test_creates_sdc_for_photo_with_in_copyright_license() -> None:
     expected = get_claims_fixture("photo_15602283025.json")
 
     assert actual == expected
+
+
+def test_omits_url_for_existing_photo(flickr_api: FlickrApi) -> None:
+    photo = flickr_api.get_single_photo(photo_id="383861611")
+
+    new_sdc = create_sdc_claims_for_new_flickr_photo(
+        photo, retrieved_at=datetime.datetime.now()
+    )
+    existing_sdc = create_sdc_claims_for_existing_flickr_photo(photo)
+
+    new_source_statement = next(
+        s
+        for s in new_sdc["claims"]
+        if s["mainsnak"]["property"] == WikidataProperties.SourceOfFile
+    )
+    existing_source_statement = next(
+        s
+        for s in existing_sdc["claims"]
+        if s["mainsnak"]["property"] == WikidataProperties.SourceOfFile
+    )
+
+    # Check we include the URL qualifier for new SDC…
+    assert WikidataProperties.Url in new_source_statement["qualifiers"]
+
+    # …but not for SDC on existing photos
+    assert WikidataProperties.Url not in existing_source_statement["qualifiers"]
