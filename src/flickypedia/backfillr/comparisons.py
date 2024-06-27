@@ -24,6 +24,23 @@ def are_equivalent_flickr_urls(url1: str, url2: str) -> bool:
     except Exception:
         return False
 
+    # Compare the two Flickr URLs, but we apply a slightly stricter check:
+    # we only want single photos to match if they point at the same
+    # *description* page, not the raw JPEG.
+    #
+    # So two variants of a photo page are equivalent, but a photo page and
+    # JPEG aren't equivalet.
+    #
+    # See the tests for examples.
+    if (
+        parsed_url_1["type"] == "single_photo"
+        and parsed_url_2["type"] == "single_photo"
+        and parsed_url_1["photo_id"] == parsed_url_2["photo_id"]
+        and (parsed_url_1["user_id"] or parsed_url_1["user_url"])
+        and (parsed_url_2["user_id"] or parsed_url_2["user_url"])
+    ):
+        return True
+
     return parsed_url_1 == parsed_url_2
 
 
