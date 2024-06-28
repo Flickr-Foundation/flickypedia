@@ -37,7 +37,7 @@ def _create_sdc_claims_for_flickr_photo(
         creator_statement,
     ]
 
-    # Note: the "Original" size is not guaranteed to be available
+    # Note 1: the "Original" size is not guaranteed to be available
     # for all Flickr photos (in particular those who've disabled
     # downloads).
     #
@@ -45,29 +45,31 @@ def _create_sdc_claims_for_flickr_photo(
     # photos, which will be any new uploads, but they may not be available
     # if we're looking at photos whose license have changed since they
     # were initial uploaded to Wikimedia Commons.
-    try:
-        original_size = [s for s in photo["sizes"] if s["label"] == "Original"][0]
-    except IndexError:
-        if mode == "new_photo":  # pragma: no cover
+    #
+    # Note 2: Flickr users can replace a photo after it's uploaded, and
+    # without comparing the two files we can't be sure the JPEG hasn't
+    # changed since it was copied to Wikimedia Commons.
+    #
+    # We only write the original URL for new photos; we can't be sure
+    # it's correct for existing photos.
+    original_url: str | None = None
+
+    if mode == "new_photo":
+        try:
+            original_size = [s for s in photo["sizes"] if s["label"] == "Original"][0]
+        except IndexError:
             raise
+        else:
+            original_url = original_size["source"]
 
-        source_statement = create_source_statement(
-            photo_id=photo["id"],
-            photo_url=photo["url"],
-            original_url=None,
-            retrieved_at=None,
-        )
+    source_statement = create_source_statement(
+        photo_id=photo["id"],
+        photo_url=photo["url"],
+        original_url=original_url,
+        retrieved_at=retrieved_at,
+    )
 
-        statements.append(source_statement)
-    else:
-        source_statement = create_source_statement(
-            photo_id=photo["id"],
-            photo_url=photo["url"],
-            original_url=original_size["source"],
-            retrieved_at=retrieved_at,
-        )
-
-        statements.append(source_statement)
+    statements.append(source_statement)
 
     # We only include the license statement for new uploads -- that field
     # is already pretty well-populated for existing photos, and licenses

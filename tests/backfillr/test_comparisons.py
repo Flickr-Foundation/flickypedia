@@ -528,11 +528,24 @@ def test_globe_coordinates_with_different_values_are_different() -> None:
     assert not are_equivalent_statements(existing_statement, new_statement)
 
 
-def test_non_flickr_urls_arent_equivalent() -> None:
-    assert not are_equivalent_flickr_urls(
-        url1="https://www.flickr.com/photos/29904699@N00/16100150",
-        url2="https://www.example.net/",
-    )
+class TestAreEquivalentFlickrUrls:
+    def test_photo_url_with_user_id_and_pathalias_are_equivalent(self) -> None:
+        assert are_equivalent_flickr_urls(
+            url1="https://www.flickr.com/photos/63603238@N00/383861611/",
+            url2="https://www.flickr.com/photos/tessawatson/383861611/",
+        )
+
+    def test_photo_url_and_jpeg_url_arent_equivalent(self) -> None:
+        assert not are_equivalent_flickr_urls(
+            url1="https://www.flickr.com/photos/63603238@N00/383861611/",
+            url2="https://live.staticflickr.com/126/383861611_b984a3c99f_c_d.jpg",
+        )
+
+    def test_non_flickr_urls_arent_equivalent(self) -> None:
+        assert not are_equivalent_flickr_urls(
+            url1="https://www.flickr.com/photos/29904699@N00/16100150",
+            url2="https://www.example.net/",
+        )
 
 
 class TestHasSubsetOfNewQualifiers:
