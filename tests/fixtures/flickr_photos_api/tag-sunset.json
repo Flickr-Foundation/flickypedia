@@ -18,7 +18,7 @@
         "latitude": -34.91257,
         "longitude": -56.19425
       },
-      "original_format": null,
+      "machine_tags": {}, "original_format": null,
       "owner": {
         "id": "61397695@N05",
         "path_alias": null,
@@ -117,7 +117,7 @@
         "latitude": 32.960981,
         "longitude": -117.269022
       },
-      "original_format": null,
+      "machine_tags": {}, "original_format": null,
       "owner": {
         "id": "45359289@N05",
         "path_alias": null,
@@ -267,7 +267,7 @@
         "latitude": 47.515113,
         "longitude": 9.73423
       },
-      "original_format": null,
+      "machine_tags": {}, "original_format": null,
       "owner": {
         "id": "138698875@N04",
         "path_alias": null,
@@ -376,7 +376,7 @@
         "latitude": 51.447949,
         "longitude": 20.47667
       },
-      "original_format": null,
+      "machine_tags": {}, "original_format": null,
       "owner": {
         "id": "152644485@N08",
         "path_alias": null,
@@ -495,7 +495,7 @@
         "latitude": 46.596058,
         "longitude": 12.265334
       },
-      "original_format": null,
+      "machine_tags": {}, "original_format": null,
       "owner": {
         "id": "135969277@N02",
         "path_alias": null,
@@ -596,7 +596,7 @@
         "latitude": 41.89088,
         "longitude": 12.49051
       },
-      "original_format": "jpg",
+      "machine_tags": {}, "original_format": "jpg",
       "owner": {
         "id": "35742910@N05",
         "path_alias": null,
@@ -701,7 +701,7 @@
         "latitude": 59.884458,
         "longitude": -149.729232
       },
-      "original_format": null,
+      "machine_tags": {}, "original_format": null,
       "owner": {
         "id": "55330552@N08",
         "path_alias": null,
@@ -808,7 +808,7 @@
         "latitude": 58.611463,
         "longitude": 5.61912
       },
-      "original_format": null,
+      "machine_tags": {}, "original_format": null,
       "owner": {
         "id": "28164079@N05",
         "path_alias": null,
@@ -907,7 +907,7 @@
         "latitude": 55.090599,
         "longitude": -8.320298
       },
-      "original_format": null,
+      "machine_tags": {}, "original_format": null,
       "owner": {
         "id": "22543235@N05",
         "path_alias": null,
@@ -1052,7 +1052,7 @@
         "latitude": 38.720819,
         "longitude": -9.148096
       },
-      "original_format": null,
+      "machine_tags": {}, "original_format": null,
       "owner": {
         "id": "31804708@N02",
         "path_alias": null,

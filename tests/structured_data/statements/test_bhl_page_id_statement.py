@@ -1,6 +1,6 @@
 import datetime
 
-from flickr_photos_api import FlickrApi
+from flickr_photos_api import FlickrApi, MachineTags
 import pytest
 
 from flickypedia.structured_data import create_sdc_claims_for_new_flickr_photo
@@ -11,57 +11,55 @@ from flickypedia.structured_data.statements.bhl_page_id_statement import (
 
 
 @pytest.mark.parametrize(
-    ["photo_id", "tags", "page_id"],
+    ["photo_id", "machine_tags", "page_id"],
     [
         (
             "51281775881",
-            ["periodicals", "physicalsciences", "bhl:page=33665645"],
+            {"bhl": {"page": ["33665645"]}},
             "33665645",
         ),
         (
             "51269075642",
-            [
-                "england",
-                "paleontology",
-                "bhl:page=61831901",
-            ],
+            {"bhl": {"page": ["61831901"]}},
             "61831901",
         ),
         (
             "49841872056",
-            ["salamanders", "earlyworks", "bhl:page=52948312"],
+            {"bhl": {"page": ["52948312"]}},
             "52948312",
         ),
         (
             "46016620675",
-            ["australia", "newsouthwales", "bhl:page=54052811"],
+            {"bhl": {"page": ["54052811"]}},
             "54052811",
         ),
         (
             "36561149543",
-            ["bhl:page=53071515", "butterflies", "insects"],
+            {"bhl": {"page": ["53071515"]}},
             "53071515",
         ),
         (
             "7982377911",
-            ["austria", "cryptogamia", "bhl:page=4321212"],
+            {"bhl": {"page": ["4321212"]}},
             "4321212",
         ),
-        ("5665412449", ["taxonomy:binomial=aegothelessavesi", "twitterpost"], None),
+        ("5665412449", {"taxonomy": {"binomial": ["aegothelessavesi"]}}, None),
         (
             "5984633427",
-            ["indonesia", "mammals", "bhl:page=34021551", "bhl:page=34551619"],
+            {"bhl": {"page": ["34021551", "34551619"]}},
             None,
         ),
     ],
 )
-def test_guess_bhl_page_id(photo_id: str, tags: list[str], page_id: str | None) -> None:
-    assert guess_bhl_page_id(photo_id=photo_id, tags=tags) == page_id
+def test_guess_bhl_page_id(
+    photo_id: str, machine_tags: MachineTags, page_id: str | None
+) -> None:
+    assert guess_bhl_page_id(photo_id=photo_id, machine_tags=machine_tags) == page_id
 
 
 def test_creates_bhl_page_id_statement() -> None:
     statement = create_bhl_page_id_statement(
-        photo_id="7982377911", tags=["austria", "cryptogamia", "bhl:page=4321212"]
+        photo_id="7982377911", machine_tags={"bhl": {"page": ["4321212"]}}
     )
 
     assert statement == {
@@ -77,7 +75,7 @@ def test_creates_bhl_page_id_statement() -> None:
 def test_does_not_create_bhl_page_id_statement_if_no_pageid() -> None:
     statement = create_bhl_page_id_statement(
         photo_id="5665412449",
-        tags=["taxonomy:binomial=aegothelessavesi", "twitterpost"],
+        machine_tags={"taxonomy": {"binomial": ["aegothelessavesi"]}},
     )
 
     assert statement is None
@@ -88,7 +86,7 @@ class TestClaims:
         photo = flickr_api.get_single_photo(photo_id="7982377911")
 
         statement = create_bhl_page_id_statement(
-            photo_id=photo["id"], tags=photo["tags"]
+            photo_id=photo["id"], machine_tags=photo["machine_tags"]
         )
         assert statement is not None
 
@@ -102,7 +100,7 @@ class TestClaims:
         photo = flickr_api.get_single_photo(photo_id="7982377911")
 
         statement = create_bhl_page_id_statement(
-            photo_id=photo["id"], tags=photo["tags"]
+            photo_id=photo["id"], machine_tags=photo["machine_tags"]
         )
         assert statement is not None
 
@@ -120,10 +118,10 @@ class TestClaims:
 
     def test_omits_statement_if_no_pageid_tag(self, flickr_api: FlickrApi) -> None:
         photo = flickr_api.get_single_photo(photo_id="7982377911")
-        photo["tags"] = []
+        photo["machine_tags"] = {}
 
         statement = create_bhl_page_id_statement(
-            photo_id=photo["id"], tags=photo["tags"]
+            photo_id=photo["id"], machine_tags=photo["machine_tags"]
         )
         assert statement is None
 

@@ -48,6 +48,7 @@ def test_upload_single_photo(app: Flask, wikimedia_api: WikimediaApi) -> None:
         "safety_level": "safe",
         "original_format": "jpg",
         "tags": [],
+        "machine_tags": {},
         "location": None,
         "secret": "-1",
         "server": "-1",

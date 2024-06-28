@@ -22,7 +22,7 @@
         "latitude": 20.647242,
         "longitude": 58.875732
       },
-      "original_format": null,
+      "machine_tags": {}, "original_format": null,
       "owner": {
         "id": "78978556@N06",
         "path_alias": "dunstanfdo",
@@ -120,7 +120,7 @@
         "url": null
       },
       "location": null,
-      "original_format": "jpg",
+      "machine_tags": {}, "original_format": "jpg",
       "owner": {
         "id": "34869895@N06",
         "path_alias": "dimaruss34",
@@ -211,7 +211,7 @@
         "latitude": 37.850272,
         "longitude": -119.660264
       },
-      "original_format": null,
+      "machine_tags": {}, "original_format": null,
       "owner": {
         "id": "9846013@N04",
         "path_alias": "justmybestphotos",
@@ -296,7 +296,7 @@
         "url": null
       },
       "location": null,
-      "original_format": "jpg",
+      "machine_tags": {}, "original_format": "jpg",
       "owner": {
         "id": "144999844@N06",
         "path_alias": null,
@@ -396,7 +396,7 @@
         "latitude": 49.175643,
         "longitude": -123.621597
       },
-      "original_format": "jpg",
+      "machine_tags": {}, "original_format": "jpg",
       "owner": {
         "id": "59238173@N07",
         "path_alias": null,
@@ -512,7 +512,7 @@
         "url": null
       },
       "location": null,
-      "original_format": null,
+      "machine_tags": {}, "original_format": null,
       "owner": {
         "id": "49910084@N03",
         "path_alias": "olhando_o_sol",
@@ -594,7 +594,7 @@
         "url": null
       },
       "location": null,
-      "original_format": null,
+      "machine_tags": {}, "original_format": null,
       "owner": {
         "id": "38382651@N04",
         "path_alias": null,
@@ -669,7 +669,7 @@
         "latitude": 36.087089,
         "longitude": -114.931159
       },
-      "original_format": null,
+      "machine_tags": {}, "original_format": null,
       "owner": {
         "id": "38382651@N04",
         "path_alias": null,
@@ -740,7 +740,7 @@
         "url": null
       },
       "location": null,
-      "original_format": null,
+      "machine_tags": {}, "original_format": null,
       "owner": {
         "id": "194968553@N08",
         "path_alias": "juvenalia_de_oliveira",
@@ -815,7 +815,7 @@
         "latitude": 42.825724,
         "longitude": 10.313072
       },
-      "original_format": "jpg",
+      "machine_tags": {}, "original_format": "jpg",
       "owner": {
         "id": "138018182@N02",
         "path_alias": "falcogr",
