@@ -5,13 +5,13 @@ Here BHL = Biodiversity Heritage Library
 https://www.flickr.com/photos/biodivlibrary/
 """
 
-import re
+from flickr_photos_api import MachineTags
 
 from ..types import NewStatement, to_wikidata_string_value
 from ..wikidata_properties import WikidataProperties
 
 
-def guess_bhl_page_id(*, photo_id: str, tags: list[str]) -> str | None:
+def guess_bhl_page_id(*, photo_id: str, machine_tags: MachineTags) -> str | None:
     """
     Given the metadata from the original Flickr photo, work out what
     the BHL Page ID for this photo is (if any).
@@ -24,18 +24,12 @@ def guess_bhl_page_id(*, photo_id: str, tags: list[str]) -> str | None:
     it to point to the original photo.  Sometimes these are ambiguous --
     we don't trust these links, so we don't look at them.
     """
-    candidate_page_ids = set()
-
     # Most BHL photos have a machine tag of the form:
     #
     #     bhl:page=33665643
     #
     # Look for any tags which match this pattern.
-    for t in tags:
-        m = re.match(r"^bhl:page=(?P<page_id>[0-9]+)$", t)
-
-        if m is not None:
-            candidate_page_ids.add(m.group("page_id"))
+    candidate_page_ids = set(machine_tags.get("bhl", {}).get("page", []))
 
     # In general we expect that this should be an unambiguous list --
     # however, we double check to be sure!
@@ -50,12 +44,12 @@ def guess_bhl_page_id(*, photo_id: str, tags: list[str]) -> str | None:
 
 
 def create_bhl_page_id_statement(
-    *, photo_id: str, tags: list[str]
+    *, photo_id: str, machine_tags: MachineTags
 ) -> NewStatement | None:
     """
     Creates a BHL Photo ID statement for a Flickr photo.
     """
-    bhl_page_id = guess_bhl_page_id(photo_id=photo_id, tags=tags)
+    bhl_page_id = guess_bhl_page_id(photo_id=photo_id, machine_tags=machine_tags)
 
     if bhl_page_id is not None:
         return {

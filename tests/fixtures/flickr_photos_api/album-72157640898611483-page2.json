@@ -14,9 +14,16 @@
   "photos": [
     {
       "id": "21834340709",
-      "date_posted": {"type": "datetime.datetime", "value": "2015-10-07T15:43:29+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2015-10-07T15:43:29+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2015-10-06T17:47:24"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2015-10-06T17:47:24"
+        }
       },
       "description": "NPS/Brad Sutton",
       "license": {
@@ -25,6 +32,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -102,9 +111,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/21834340709/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2015-10-07T15:43:28+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2015-10-07T15:43:28+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2015-10-06T17:47:09"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2015-10-06T17:47:09"
+        }
       },
       "description": "NPS/Brad Sutton",
       "id": "22031134421",
@@ -114,6 +130,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -191,9 +209,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/22031134421/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2015-10-07T15:43:27+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2015-10-07T15:43:27+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2015-10-06T17:45:54"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2015-10-06T17:45:54"
+        }
       },
       "description": "NPS/Brad Sutton",
       "id": "22031142221",
@@ -203,6 +228,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -280,9 +307,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/22031142221/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2016-12-07T21:01:08+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2016-12-07T21:01:08+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2015-09-17T09:06:44"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2015-09-17T09:06:44"
+        }
       },
       "description": "NPS/Hannah Schwalbe",
       "id": "31454495166",
@@ -292,6 +326,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -364,9 +400,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/31454495166/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2015-12-18T18:28:25+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2015-12-18T18:28:25+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2015-09-15T12:18:35"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2015-09-15T12:18:35"
+        }
       },
       "description": "[NPS/Hannah Schwalbe]",
       "id": "23535656970",
@@ -376,6 +419,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -451,9 +496,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/23535656970/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2015-10-02T19:25:57+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2015-10-02T19:25:57+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2015-09-11T09:28:13"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2015-09-11T09:28:13"
+        }
       },
       "description": "NPS/Brad Sutton",
       "id": "21903071801",
@@ -463,6 +515,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -537,9 +591,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/21903071801/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2015-05-12T22:05:47+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2015-05-12T22:05:47+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2015-05-09T13:58:49"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2015-05-09T13:58:49"
+        }
       },
       "description": "NPS/Brad Sutton",
       "id": "17388054719",
@@ -549,6 +610,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -623,9 +686,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/17388054719/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2015-05-12T22:05:46+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2015-05-12T22:05:46+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2015-05-09T13:58:02"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2015-05-09T13:58:02"
+        }
       },
       "description": "NPS/Brad Sutton\n\nAlt text: A cactus wren clings to the spiky outer layer of a Joshua tree and looks inquisitively at the trunk.",
       "id": "17548051726",
@@ -635,6 +705,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -709,9 +781,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/17548051726/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2015-04-28T19:50:57+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2015-04-28T19:50:57+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2015-03-31T11:16:55"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2015-03-31T11:16:55"
+        }
       },
       "description": "NPS/Kurt Moses",
       "id": "17116116200",
@@ -721,6 +800,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -795,9 +876,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/17116116200/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2015-04-28T19:50:55+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2015-04-28T19:50:55+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2015-03-31T09:09:30"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2015-03-31T09:09:30"
+        }
       },
       "description": "NPS/Kurt Moses",
       "id": "17116108720",
@@ -807,6 +895,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -881,9 +971,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/17116108720/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2015-04-06T19:12:48+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2015-04-06T19:12:48+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2015-03-23T00:12:45"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2015-03-23T00:12:45"
+        }
       },
       "description": "NPS/Lian Law",
       "id": "17056404742",
@@ -893,6 +990,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -967,9 +1066,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/17056404742/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2015-03-26T18:55:09+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2015-03-26T18:55:09+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2015-03-18T02:55:24"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2015-03-18T02:55:24"
+        }
       },
       "description": "NPS / Brad Sutton\n\nAlt text: A bird with a beige breast, striking dark throat, and bright white stripes on its face perches on a yucca plant.",
       "id": "16750828608",
@@ -979,6 +1085,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -1053,9 +1161,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/16750828608/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2015-03-26T18:55:11+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2015-03-26T18:55:11+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2015-03-18T02:02:38"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2015-03-18T02:02:38"
+        }
       },
       "description": "NPS/Brad Sutton",
       "id": "16937513751",
@@ -1065,6 +1180,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -1139,9 +1256,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/16937513751/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2015-03-16T22:42:44+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2015-03-16T22:42:44+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2015-03-10T05:08:57"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2015-03-10T05:08:57"
+        }
       },
       "description": "NPS/Brad Sutton",
       "id": "16215875144",
@@ -1151,6 +1275,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -1223,9 +1349,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/16215875144/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2015-03-16T22:42:45+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2015-03-16T22:42:45+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2015-03-10T05:08:57"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2015-03-10T05:08:57"
+        }
       },
       "description": "NPS/Brad Sutton",
       "id": "16215871384",
@@ -1235,6 +1368,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -1307,9 +1442,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/16215871384/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2015-03-16T22:42:45+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2015-03-16T22:42:45+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2015-03-10T04:49:36"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2015-03-10T04:49:36"
+        }
       },
       "description": "NPS/Brad Sutton",
       "id": "16838220775",
@@ -1319,6 +1461,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -1392,9 +1536,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/16838220775/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2015-02-19T20:16:29+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2015-02-19T20:16:29+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2015-02-18T14:39:59"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2015-02-18T14:39:59"
+        }
       },
       "description": "NPS/Brad Sutton",
       "id": "15963492823",
@@ -1404,6 +1555,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -1482,9 +1635,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/15963492823/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2015-01-17T23:24:24+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2015-01-17T23:24:24+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-12-31T07:47:26"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-12-31T07:47:26"
+        }
       },
       "description": "NPS/Brad Sutton",
       "id": "16278014916",
@@ -1494,6 +1654,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -1571,9 +1733,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/16278014916/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2015-03-26T18:55:15+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2015-03-26T18:55:15+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-12-07T13:54:14"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-12-07T13:54:14"
+        }
       },
       "description": "NPS/Brad Sutton",
       "id": "16750987760",
@@ -1583,6 +1752,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -1657,9 +1828,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/16750987760/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2017-10-25T17:06:46+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2017-10-25T17:06:46+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-11-04T11:34:47"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-11-04T11:34:47"
+        }
       },
       "description": "NPS / Robb Hannawacker\n\nAlt text: A beige cedar waxwing, with distinctive black mask, tall crest, and yellow tail tip, perches on a thorny branch.",
       "id": "37897470922",
@@ -1669,6 +1847,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -1742,9 +1922,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/37897470922/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-08-22T21:40:15+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-08-22T21:40:15+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-08-06T09:12:00"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-08-06T09:12:00"
+        }
       },
       "description": "NPS / Cathy Bell\n\nAlt text: A black-throated sparrow with black feathers on its throat and gray and white feathers on its body sits in a catclaw bush.",
       "id": "14979852526",
@@ -1754,6 +1941,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -1827,9 +2016,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/14979852526/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-11-08T00:54:41+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-11-08T00:54:41+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-06-26T14:05:15"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-06-26T14:05:15"
+        }
       },
       "description": "NPS/Brad Sutton",
       "id": "15116149633",
@@ -1839,6 +2035,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -1912,9 +2110,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/15116149633/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-11-08T00:54:41+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-11-08T00:54:41+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-06-26T14:04:32"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-06-26T14:04:32"
+        }
       },
       "description": "NPS/Brad Sutton",
       "id": "15115581524",
@@ -1924,6 +2129,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -1997,9 +2204,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/15115581524/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2015-08-20T19:39:10+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2015-08-20T19:39:10+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-05-12T09:59:08"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-05-12T09:59:08"
+        }
       },
       "description": "NPS/Brad Sutton",
       "id": "20117663704",
@@ -2009,6 +2223,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -2084,9 +2300,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/20117663704/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2015-09-10T18:43:13+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2015-09-10T18:43:13+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-05-12T09:55:19"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-05-12T09:55:19"
+        }
       },
       "description": "NPS/Brad Sutton",
       "id": "20678432374",
@@ -2096,6 +2319,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -2171,9 +2396,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/20678432374/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2015-09-10T18:43:14+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2015-09-10T18:43:14+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-05-12T08:51:34"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-05-12T08:51:34"
+        }
       },
       "description": "NPS/Brad Sutton",
       "id": "21113230218",
@@ -2183,6 +2415,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -2257,9 +2491,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/21113230218/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-05-20T20:04:03+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-05-20T20:04:03+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-05-01T14:08:27"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-05-01T14:08:27"
+        }
       },
       "description": "NPS/Andrew Eberly",
       "id": "14045509068",
@@ -2269,6 +2510,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -2343,9 +2586,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/14045509068/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-05-20T20:03:42+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-05-20T20:03:42+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-04-06T09:54:50"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-04-06T09:54:50"
+        }
       },
       "description": "NPS / Brad Sutton\n\nAlt text: A brown, furry, dead tarantula spider is skewered on a spine of a Mojave yucca plant.",
       "id": "14045718200",
@@ -2355,6 +2605,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -2429,9 +2681,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/14045718200/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2015-08-20T20:07:46+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2015-08-20T20:07:46+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-03-11T03:29:34"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-03-11T03:29:34"
+        }
       },
       "description": "NPS/Brad Sutton",
       "id": "20740872075",
@@ -2441,6 +2700,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -2514,9 +2775,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/20740872075/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2015-08-20T19:39:08+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2015-08-20T19:39:08+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-03-05T16:59:15"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-03-05T16:59:15"
+        }
       },
       "description": "NPS / Brad Sutton\n\nAlt text: A ladder-backed woodpecker (Picoides scalaris) with black and white striped feathers clings to the trunk of a Joshua tree.",
       "id": "20730957142",
@@ -2526,6 +2794,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -2601,9 +2871,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/20730957142/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2015-08-20T19:39:09+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2015-08-20T19:39:09+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-03-03T12:53:34"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-03-03T12:53:34"
+        }
       },
       "description": "NPS / Brad Sutton\n\nAlt text: A cactus wren (Campylorhynchus brunneicapillus) with brown and white spotted feathers clings to the spiky top of a teddybear cholla.",
       "id": "20740265425",
@@ -2613,6 +2890,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -2690,9 +2969,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/20740265425/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-03-05T00:01:19+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-03-05T00:01:19+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-03-03T12:52:12"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-03-03T12:52:12"
+        }
       },
       "description": "NPS Photo",
       "id": "12937904435",
@@ -2702,6 +2988,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -2781,9 +3069,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12937904435/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2015-08-20T19:39:09+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2015-08-20T19:39:09+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-03-03T12:48:45"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-03-03T12:48:45"
+        }
       },
       "description": "NPS/Brad Sutton",
       "id": "20730946272",
@@ -2793,6 +3088,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -2870,9 +3167,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/20730946272/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-03-05T00:01:18+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-03-05T00:01:18+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-03-03T12:44:35"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-03-03T12:44:35"
+        }
       },
       "description": "NPS Photo",
       "id": "12938027583",
@@ -2882,6 +3186,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -2961,9 +3267,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12938027583/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-03-05T00:01:17+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-03-05T00:01:17+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-03-03T12:39:53"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-03-03T12:39:53"
+        }
       },
       "description": "NPS Photo",
       "id": "12938042023",
@@ -2973,6 +3286,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -3052,9 +3367,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12938042023/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-03-05T00:01:16+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-03-05T00:01:16+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-03-03T12:39:43"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-03-03T12:39:43"
+        }
       },
       "description": "NPS Photo",
       "id": "12938364434",
@@ -3064,6 +3386,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -3143,9 +3467,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12938364434/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-03-05T00:01:15+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-03-05T00:01:15+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-03-03T12:35:25"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-03-03T12:35:25"
+        }
       },
       "description": "NPS Photo",
       "id": "12938376254",
@@ -3155,6 +3486,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -3234,9 +3567,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12938376254/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-03-05T00:01:14+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-03-05T00:01:14+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-03-03T12:34:52"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-03-03T12:34:52"
+        }
       },
       "description": "NPS Photo",
       "id": "12938385904",
@@ -3246,6 +3586,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -3325,9 +3667,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12938385904/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-03-05T00:01:13+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-03-05T00:01:13+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-03-03T12:34:51"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-03-03T12:34:51"
+        }
       },
       "description": "NPS Photo",
       "id": "12938396024",
@@ -3337,6 +3686,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -3416,9 +3767,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12938396024/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-03-05T00:01:13+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-03-05T00:01:13+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-03-03T12:30:29"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-03-03T12:30:29"
+        }
       },
       "description": "NPS Photo",
       "id": "12937993255",
@@ -3428,6 +3786,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -3507,9 +3867,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12937993255/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-03-05T00:01:12+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-03-05T00:01:12+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-03-03T12:30:18"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-03-03T12:30:18"
+        }
       },
       "description": "NPS Photo",
       "id": "12938005155",
@@ -3519,6 +3886,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -3598,9 +3967,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12938005155/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-03-05T00:01:11+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-03-05T00:01:11+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-03-03T11:12:04"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-03-03T11:12:04"
+        }
       },
       "description": "NPS Photo",
       "id": "12938423854",
@@ -3610,6 +3986,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -3684,9 +4062,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12938423854/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-03-05T00:01:11+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-03-05T00:01:11+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-03-03T11:11:43"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-03-03T11:11:43"
+        }
       },
       "description": "NPS Photo",
       "id": "12938133183",
@@ -3696,6 +4081,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -3770,9 +4157,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12938133183/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-03-05T00:01:11+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-03-05T00:01:11+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-02-28T15:31:53"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-02-28T15:31:53"
+        }
       },
       "description": "NPS Photo",
       "id": "12938044225",
@@ -3782,6 +4176,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -3856,9 +4252,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12938044225/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-03-05T00:01:10+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-03-05T00:01:10+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-02-28T15:31:50"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-02-28T15:31:50"
+        }
       },
       "description": "NPS Photo",
       "id": "12938158613",
@@ -3868,6 +4271,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -3942,9 +4347,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12938158613/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-03-05T00:01:09+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-03-05T00:01:09+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-02-28T15:31:23"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-02-28T15:31:23"
+        }
       },
       "description": "NPS Photo",
       "id": "12938163583",
@@ -3954,6 +4366,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -4027,9 +4441,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12938163583/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-03-05T00:01:08+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-03-05T00:01:08+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-02-26T16:12:44"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-02-26T16:12:44"
+        }
       },
       "description": "NPS Photo",
       "id": "12938471544",
@@ -4039,6 +4460,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -4113,9 +4536,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12938471544/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-03-05T00:01:08+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-03-05T00:01:08+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-02-26T16:11:49"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-02-26T16:11:49"
+        }
       },
       "description": "NPS Photo",
       "id": "12938064105",
@@ -4125,6 +4555,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -4199,9 +4631,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12938064105/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-03-05T00:01:07+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-03-05T00:01:07+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-02-26T16:10:59"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-02-26T16:10:59"
+        }
       },
       "description": "NPS Photo",
       "id": "12938068595",
@@ -4211,6 +4650,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -4285,9 +4726,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12938068595/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-02-14T20:27:02+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-02-14T20:27:02+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-02-13T16:51:04"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-02-13T16:51:04"
+        }
       },
       "description": "NPS/Brad Sutton",
       "id": "12526697173",
@@ -4297,6 +4745,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -4370,9 +4820,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12526697173/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-02-14T20:27:02+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-02-14T20:27:02+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-02-13T16:50:17"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-02-13T16:50:17"
+        }
       },
       "description": "NPS/Brad Sutton",
       "id": "12526584705",
@@ -4382,6 +4839,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -4455,9 +4914,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12526584705/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-02-14T20:27:01+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-02-14T20:27:01+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-02-13T16:49:50"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-02-13T16:49:50"
+        }
       },
       "description": "NPS/Brad Sutton",
       "id": "12526707753",
@@ -4467,6 +4933,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -4540,9 +5008,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12526707753/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2015-08-20T19:39:09+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2015-08-20T19:39:09+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-02-07T09:42:43"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-02-07T09:42:43"
+        }
       },
       "description": "NPS/Brad Sutton",
       "id": "20553519219",
@@ -4552,6 +5027,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -4627,9 +5104,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/20553519219/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2015-08-19T19:30:50+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2015-08-19T19:30:50+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-02-05T10:47:32"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-02-05T10:47:32"
+        }
       },
       "description": "NPS/Brad Sutton",
       "id": "20092404753",
@@ -4639,6 +5123,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -4715,9 +5201,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/20092404753/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-03-05T00:01:06+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-03-05T00:01:06+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-01-28T15:54:18"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-01-28T15:54:18"
+        }
       },
       "description": "NPS Photo",
       "id": "12938079055",
@@ -4727,6 +5220,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -4801,9 +5296,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12938079055/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-03-05T00:01:05+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-03-05T00:01:05+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-01-28T15:54:10"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-01-28T15:54:10"
+        }
       },
       "description": "NPS Photo",
       "id": "12938501944",
@@ -4813,6 +5315,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -4887,9 +5391,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12938501944/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-03-05T00:01:05+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-03-05T00:01:05+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-01-28T15:53:09"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-01-28T15:53:09"
+        }
       },
       "description": "NPS Photo",
       "id": "12938204193",
@@ -4899,6 +5410,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -4973,9 +5486,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12938204193/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2015-08-20T19:39:08+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2015-08-20T19:39:08+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-01-28T15:52:49"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-01-28T15:52:49"
+        }
       },
       "description": "NPS/Brad Sutton",
       "id": "20553531759",
@@ -4985,6 +5505,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -5060,9 +5582,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/20553531759/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-03-05T00:01:05+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-03-05T00:01:05+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-01-28T15:52:49"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-01-28T15:52:49"
+        }
       },
       "description": "NPS Photo",
       "id": "12938113005",
@@ -5072,6 +5601,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -5146,9 +5677,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12938113005/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2016-02-23T18:52:21+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2016-02-23T18:52:21+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-01-28T15:52:39"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-01-28T15:52:39"
+        }
       },
       "description": "NPS / Brad Sutton\n\nAlt text: A large roadrunner, with brown and beige streaked feathers, hints of green, and a prominent tail, stands on a rock.",
       "id": "25192500806",
@@ -5158,6 +5696,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -5232,9 +5772,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/25192500806/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2017-10-25T17:06:50+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2017-10-25T17:06:50+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-01-28T15:49:51"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-01-28T15:49:51"
+        }
       },
       "description": "NPS / Robb Hannawacker",
       "id": "37875503046",
@@ -5244,6 +5791,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -5317,9 +5866,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/37875503046/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-03-05T00:01:04+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-03-05T00:01:04+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-01-28T15:46:58"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-01-28T15:46:58"
+        }
       },
       "description": "NPS Photo",
       "id": "12938224753",
@@ -5329,6 +5885,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -5403,9 +5961,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12938224753/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2016-09-21T19:15:26+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2016-09-21T19:15:26+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-01-28T15:46:15"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-01-28T15:46:15"
+        }
       },
       "description": "NPS/Brad Sutton",
       "id": "29756622201",
@@ -5415,6 +5980,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -5488,9 +6055,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/29756622201/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-03-05T00:01:21+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-03-05T00:01:21+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-01-20T14:57:24"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-01-20T14:57:24"
+        }
       },
       "description": "NPS Photo",
       "id": "12937890555",
@@ -5500,6 +6074,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -5576,9 +6152,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12937890555/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2017-10-25T17:06:49+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2017-10-25T17:06:49+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-01-14T11:23:13"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-01-14T11:23:13"
+        }
       },
       "description": "NPS / Robb Hannawacker",
       "id": "37875507526",
@@ -5588,6 +6171,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -5661,9 +6246,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/37875507526/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2017-10-25T17:06:48+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2017-10-25T17:06:48+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-01-13T08:50:49"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-01-13T08:50:49"
+        }
       },
       "description": "NPS / Robb Hannawacker\n\nAlt text: A brown and red-hued house finch (Haemorhous mexicanus) is bathed in golden light as it sits atop a nest of twigs",
       "id": "26152839669",
@@ -5673,6 +6265,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -5746,9 +6340,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/26152839669/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2017-10-25T17:06:45+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2017-10-25T17:06:45+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-01-02T16:14:29"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-01-02T16:14:29"
+        }
       },
       "description": "NPS / Robb Hannawacker",
       "id": "37219062444",
@@ -5758,6 +6359,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -5832,9 +6435,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/37219062444/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2017-10-25T17:06:52+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2017-10-25T17:06:52+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-01-02T14:30:58"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-01-02T14:30:58"
+        }
       },
       "description": "NPS / Robb Hannawacker\n\nAlt text: A white-crowned sparrow (Zonotrichia leucophrys) with brown and gray coloration stands atop a branch.",
       "id": "37897406642",
@@ -5844,6 +6454,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -5917,9 +6529,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/37897406642/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2017-10-25T17:06:47+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2017-10-25T17:06:47+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-01-02T13:45:43"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-01-02T13:45:43"
+        }
       },
       "description": "NPS / Robb Hannawacker",
       "id": "37875523336",
@@ -5929,6 +6548,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -6002,9 +6623,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/37875523336/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2017-10-25T17:06:47+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2017-10-25T17:06:47+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-01-02T13:42:21"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-01-02T13:42:21"
+        }
       },
       "description": "NPS / Robb Hannawacker",
       "id": "24077445788",
@@ -6014,6 +6642,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -6087,9 +6717,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/24077445788/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2017-10-25T17:06:48+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2017-10-25T17:06:48+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2014-01-02T12:57:59"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2014-01-02T12:57:59"
+        }
       },
       "description": "NPS / Robb Hannawacker\n\nAlt text: A brown and gray mourning dove (Zenaida macroura) sits on a small branch.",
       "id": "37875513876",
@@ -6099,6 +6736,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -6172,9 +6811,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/37875513876/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2017-10-25T17:06:51+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2017-10-25T17:06:51+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2013-12-05T12:25:56"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2013-12-05T12:25:56"
+        }
       },
       "description": "NPS / Robb Hannawacker",
       "id": "37875488226",
@@ -6184,6 +6830,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -6257,9 +6905,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/37875488226/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2017-10-25T17:06:46+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2017-10-25T17:06:46+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2011-01-23T17:44:15"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2011-01-23T17:44:15"
+        }
       },
       "description": "NPS / Robb Hannawacker",
       "id": "24077447618",
@@ -6269,6 +6924,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -6342,9 +6999,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/24077447618/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-02-12T23:33:32+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-02-12T23:33:32+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2011-01-23T17:37:16"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2011-01-23T17:37:16"
+        }
       },
       "description": "NPS / Robb Hannawacker\n\nAlt text: Two California thrashers (Toxostoma redivivum) stand alertly on a bed of desert sand, grass, and fallen petals. ",
       "id": "12488732673",
@@ -6354,6 +7018,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -6427,9 +7093,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12488732673/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2017-10-25T17:06:52+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2017-10-25T17:06:52+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2011-01-23T17:35:39"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2011-01-23T17:35:39"
+        }
       },
       "description": "NPS / Robb Hannawacker",
       "id": "26152800689",
@@ -6439,6 +7112,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -6512,9 +7187,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/26152800689/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-02-12T23:33:35+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-02-12T23:33:35+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2011-01-23T17:35:39"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2011-01-23T17:35:39"
+        }
       },
       "description": "NPS / Robb Hannawacker\n\nAlt text: A scrub jay (Aphelocoma californica) sits atop the brown, dry branch of a plant.",
       "id": "12488572145",
@@ -6524,6 +7206,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -6597,9 +7281,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12488572145/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2017-10-25T17:06:51+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2017-10-25T17:06:51+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2010-12-06T17:05:02"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2010-12-06T17:05:02"
+        }
       },
       "description": "NPS / Robb Hannawacker\n\nAlt text: A blue and white scrub jay (Aphelocoma californica) clings to the top of a Joshua tree.",
       "id": "37928527071",
@@ -6609,6 +7300,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -6682,9 +7375,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/37928527071/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-02-12T23:33:36+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-02-12T23:33:36+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2010-10-24T15:18:48"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2010-10-24T15:18:48"
+        }
       },
       "description": "NPS / Robb Hannawacker\n\nAlt text: A dark-colored phainopepla (Phainopepla nitens) sits among the spindly dried branches of a tree with a rock formation in the background.",
       "id": "12488610755",
@@ -6694,6 +7394,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -6767,9 +7469,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12488610755/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-02-12T23:33:35+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-02-12T23:33:35+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2010-10-24T07:28:31"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2010-10-24T07:28:31"
+        }
       },
       "description": "NPS / Robb Hannawacker\n\nAlt text: A dark brown Cooper's hawk (Accipiter cooperii) sits atop the thin branches of a tree as it looks off into the distance.",
       "id": "12488613975",
@@ -6779,6 +7488,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -6853,9 +7564,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12488613975/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-02-12T23:33:33+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-02-12T23:33:33+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2010-10-24T06:56:29"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2010-10-24T06:56:29"
+        }
       },
       "description": "NPS / Robb Hannawacker\n\nAlt text: A cactus wren (Campylorhynchus brunneicapillus) sits atop the spky green branches of a Joshua tree.",
       "id": "12488590625",
@@ -6865,6 +7583,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -6938,9 +7658,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12488590625/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-03-05T00:01:20+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-03-05T00:01:20+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2010-05-10T18:03:11"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2010-05-10T18:03:11"
+        }
       },
       "description": "NPS/Stacy Manson",
       "id": "12938307524",
@@ -6950,6 +7677,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -7026,9 +7755,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12938307524/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-03-05T00:01:19+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-03-05T00:01:19+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2010-05-10T18:02:54"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2010-05-10T18:02:54"
+        }
       },
       "description": "NPS/Stacy Manson\n\nalt text: Two Great Horned Owls (Bubo virginianus) perched on a Joshua tree branch.",
       "id": "12938309124",
@@ -7038,6 +7774,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -7114,9 +7852,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12938309124/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-02-12T23:33:34+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-02-12T23:33:34+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2010-02-04T18:22:49"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2010-02-04T18:22:49"
+        }
       },
       "description": "NPS / Robb Hannawacker\n\nAlt text: A loggerhead shrike (Lanius ludovicianus) sits atop the spiky green branches of a Joshua tree against a blue sky.",
       "id": "12488581405",
@@ -7126,6 +7871,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -7200,9 +7947,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12488581405/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2017-10-25T16:41:57+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2017-10-25T16:41:57+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2008-12-07T16:23:45"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2008-12-07T16:23:45"
+        }
       },
       "description": "NPS / Robb Hannawacker\n\nAlt text: An empty nest made of twigs and leaves sits in the fragile branches of a small bush.",
       "id": "37218459734",
@@ -7212,6 +7966,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -7283,9 +8039,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/37218459734/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-02-12T23:33:34+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-02-12T23:33:34+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2008-03-29T14:46:53"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2008-03-29T14:46:53"
+        }
       },
       "description": "NPS / Robb Hannawacker\n\nAlt text: A raven (Covus corax) looks off into the distance from atop a spiky green flowering Joshua tree.",
       "id": "12488695243",
@@ -7295,6 +8058,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -7370,9 +8135,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12488695243/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2014-02-12T23:33:36+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2014-02-12T23:33:36+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2007-09-21T17:23:50"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2007-09-21T17:23:50"
+        }
       },
       "description": "NPS / Robb Hannawacker\n\nAlt text: Turkey vultures (Cathartes aura) fly above the California fan palms in the Oasis of Mara with mountains and cloudy skies in the background.",
       "id": "12488734983",
@@ -7382,6 +8154,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -7459,9 +8233,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/12488734983/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2020-11-05T05:44:35+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2020-11-05T05:44:35+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2020-09-15T08:40:21"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2020-09-15T08:40:21"
+        }
       },
       "description": "NPS / Emily Hassell\n\nAlt text: A turkey vulture (Cathartes aura) sits atop a rocky mountainside.",
       "id": "50568693166",
@@ -7471,6 +8252,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -7546,9 +8329,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/50568693166/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2020-11-05T05:44:35+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2020-11-05T05:44:35+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2020-09-15T08:40:47"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2020-09-15T08:40:47"
+        }
       },
       "description": "NPS / Emily Hassell\n\nAlt text: A turkey vulture (Cathartes aura) sits atop a rocky mountainside as it grooms itself.",
       "id": "50568824392",
@@ -7558,6 +8348,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -7633,9 +8425,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/50568824392/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2020-11-05T05:44:36+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2020-11-05T05:44:36+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2020-09-15T08:40:05"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2020-09-15T08:40:05"
+        }
       },
       "description": "NPS / Emily Hassell\n\nAlt text: A turkey vulture (Cathartes aura) spreads its wings as it soars high in the sky.",
       "id": "50568692636",
@@ -7645,6 +8444,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -7720,9 +8521,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/50568692636/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2020-11-05T05:44:36+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2020-11-05T05:44:36+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2020-09-15T08:40:05"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2020-09-15T08:40:05"
+        }
       },
       "description": "NPS / Emily Hassell\n\nAlt text: A turkey vulture (Cathartes aura) beats its wings as it soars high in the sky.",
       "id": "50568824042",
@@ -7732,6 +8540,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -7807,9 +8617,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/50568824042/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2020-11-05T05:44:38+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2020-11-05T05:44:38+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2020-09-15T08:39:25"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2020-09-15T08:39:25"
+        }
       },
       "description": "NPS / Emily Hassell\n\nAlt text: A turkey vulture (Cathartes aura) spreads its wings as it soars high in the sky.",
       "id": "50567941333",
@@ -7819,6 +8636,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -7894,9 +8713,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/50567941333/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2020-11-05T05:44:39+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2020-11-05T05:44:39+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2020-09-15T08:29:52"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2020-09-15T08:29:52"
+        }
       },
       "description": "NPS / Emily Hassell\n\nAlt text: A group of turkey vultures (Cathartes aura) sit atop a mountainside framed by California palm trees.",
       "id": "50567941068",
@@ -7906,6 +8732,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -7981,9 +8809,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/50567941068/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2020-11-05T05:44:39+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2020-11-05T05:44:39+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2020-09-15T08:39:44"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2020-09-15T08:39:44"
+        }
       },
       "description": "NPS / Emily Hassell\n\nAlt text: A far-away turkey vulture (Cathartes aura) flies behind bare tree branches.",
       "id": "50568692491",
@@ -7993,6 +8828,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -8068,9 +8905,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/50568692491/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2020-11-08T22:26:33+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2020-11-08T22:26:33+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2020-11-02T17:07:27"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2020-11-02T17:07:27"
+        }
       },
       "description": "NPS / Peri Sasnett\n\nAlt text: a small beige and olive green bird perches on a branch with green leaves, with a fan palm tree in the background.",
       "id": "50580537498",
@@ -8080,6 +8924,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -8141,14 +8987,23 @@
           "width": 3686
         }
       ],
-      "tags": [],
+      "tags": [
+
+      ],
       "title": "Ruby-crowned kinglet (Regulus calendula) at Cottonwood Springs",
       "url": "https://www.flickr.com/photos/joshuatreenp/50580537498/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2020-11-14T23:50:45+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2020-11-14T23:50:45+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2019-11-24T09:51:54"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2019-11-24T09:51:54"
+        }
       },
       "description": "NPS / Emily Hassell\n\nAlt text: A black-throated sparrow (Amphispiza bilineata) hops among cheatgrass on the desert floor.",
       "id": "50601992453",
@@ -8158,6 +9013,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -8233,9 +9090,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/50601992453/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2020-11-14T23:50:45+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2020-11-14T23:50:45+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2019-11-24T09:57:45"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2019-11-24T09:57:45"
+        }
       },
       "description": "NPS / Emily Hassell\n\nAlt text: A verdin (Auriparus flaviceps) sits in the branches of a creosote bush.",
       "id": "50602851462",
@@ -8245,6 +9109,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -8323,9 +9189,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/50602851462/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2020-11-14T23:50:46+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2020-11-14T23:50:46+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2019-11-24T09:50:10"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2019-11-24T09:50:10"
+        }
       },
       "description": "NPS / Emily Hassell\n\nAlt text: A black-throated sparrow (Amphispiza bilineata) looks for food on the desert soil.",
       "id": "50601992733",
@@ -8335,6 +9208,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -8410,9 +9285,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/50601992733/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2020-11-15T19:55:16+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2020-11-15T19:55:16+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2020-03-12T14:07:48"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2020-03-12T14:07:48"
+        }
       },
       "description": "NPS / Emily Hassell\n\nAlt text: A black raven (Corvus corax) flaps its wings against a blue sky.",
       "id": "50606566307",
@@ -8422,6 +9304,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -8495,9 +9379,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/50606566307/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2020-11-15T22:26:45+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2020-11-15T22:26:45+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2020-03-12T14:07:08"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2020-03-12T14:07:08"
+        }
       },
       "description": "NPS / Emily Hassell\n\nAlt text: A raven (Corvus corax) spreads its wings to land atop the golden fronds of a California fan palm (Washingtonia filifera).",
       "id": "50607016096",
@@ -8507,6 +9398,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
@@ -8584,9 +9477,16 @@
       "url": "https://www.flickr.com/photos/joshuatreenp/50607016096/"
     },
     {
-      "date_posted": {"type": "datetime.datetime", "value": "2020-11-15T22:26:46+00:00"},
+      "date_posted": {
+        "type": "datetime.datetime",
+        "value": "2020-11-15T22:26:46+00:00"
+      },
       "date_taken": {
-        "granularity": "second",        "value": {"type": "datetime.datetime", "value": "2020-03-12T14:07:02"}
+        "granularity": "second",
+        "value": {
+          "type": "datetime.datetime",
+          "value": "2020-03-12T14:07:02"
+        }
       },
       "description": "NPS / Emily Hassell\n\nAlt text: A cactus wren (Campylorhynchus brunneicapillus) sits atop a branch in the golden morning light.",
       "id": "50606271783",
@@ -8596,6 +9496,8 @@
         "url": "https://creativecommons.org/publicdomain/mark/1.0/"
       },
       "location": null,
+      "machine_tags": {
+      },
       "original_format": "jpg",
       "owner": {
         "id": "115357548@N08",
