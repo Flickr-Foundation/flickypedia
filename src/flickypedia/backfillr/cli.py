@@ -1,8 +1,14 @@
+import json
 import os
 
 import click
+from flickr_photos_api import FlickrApi
+import httpx
+import keyring
+import termcolor
 
-from flickypedia.apis.wikimedia import get_filename_from_url
+from flickypedia.apis.wikimedia import get_filename_from_url, WikimediaApi
+from .backfillr import Backfillr
 
 
 @click.group(
@@ -25,9 +31,6 @@ def store_cookies() -> None:
     This is a bit rough and there are deprecation warnings, but it's
     the only way I've found to get cookies that work with the bot=1 flag.
     """
-    import json
-
-    import keyring
     import pywikibot
     from pywikibot.comms.http import PywikibotCookieJar
 
@@ -55,4 +58,29 @@ def update_single_file(url: str) -> None:
             f"Expected a URL like https://commons.wikimedia.org/wiki/File:<filename>, got {url!r}"
         )
 
-    print(f"The filename is {filename!r}")
+    flickr_api = FlickrApi.with_api_key(
+        api_key=keyring.get_password("flickr_api", "key"),
+        user_agent="Alex Chan's personal scripts <alex@alexwlchan.net>",
+    )
+
+    backfillr = Backfillr(
+        flickr_api=flickr_api,
+        wikimedia_api=WikimediaApi(
+            client=httpx.Client(
+                cookies=json.loads(keyring.get_password("flickypedia", "cookies"))
+            )
+        ),
+    )
+
+
+
+    actions = backfillr.update_file(filename=filename)
+
+    print(filename)
+    for a in actions:
+        print(a['property_id'].ljust(8), end='')
+
+        if a['action'] == 'do_nothing':
+            print('do nothing')
+        else:
+            print(termcolor.colored(a['action'], 'red'))
