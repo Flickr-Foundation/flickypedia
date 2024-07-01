@@ -15,38 +15,38 @@ from flickypedia.structured_data.statements.bhl_page_id_statement import (
     [
         (
             "51281775881",
-            {"bhl": {"page": ["33665645"]}},
+            {"bhl:page": ["33665645"]},
             "33665645",
         ),
         (
             "51269075642",
-            {"bhl": {"page": ["61831901"]}},
+            {"bhl:page": ["61831901"]},
             "61831901",
         ),
         (
             "49841872056",
-            {"bhl": {"page": ["52948312"]}},
+            {"bhl:page": ["52948312"]},
             "52948312",
         ),
         (
             "46016620675",
-            {"bhl": {"page": ["54052811"]}},
+            {"bhl:page": ["54052811"]},
             "54052811",
         ),
         (
             "36561149543",
-            {"bhl": {"page": ["53071515"]}},
+            {"bhl:page": ["53071515"]},
             "53071515",
         ),
         (
             "7982377911",
-            {"bhl": {"page": ["4321212"]}},
+            {"bhl:page": ["4321212"]},
             "4321212",
         ),
-        ("5665412449", {"taxonomy": {"binomial": ["aegothelessavesi"]}}, None),
+        ("5665412449", {"taxonomy:binomial": ["aegothelessavesi"]}, None),
         (
             "5984633427",
-            {"bhl": {"page": ["34021551", "34551619"]}},
+            {"bhl:page": ["34021551", "34551619"]},
             None,
         ),
     ],
@@ -59,7 +59,7 @@ def test_guess_bhl_page_id(
 
 def test_creates_bhl_page_id_statement() -> None:
     statement = create_bhl_page_id_statement(
-        photo_id="7982377911", machine_tags={"bhl": {"page": ["4321212"]}}
+        photo_id="7982377911", machine_tags={"bhl:page": ["4321212"]}
     )
 
     assert statement == {
@@ -75,7 +75,7 @@ def test_creates_bhl_page_id_statement() -> None:
 def test_does_not_create_bhl_page_id_statement_if_no_pageid() -> None:
     statement = create_bhl_page_id_statement(
         photo_id="5665412449",
-        machine_tags={"taxonomy": {"binomial": ["aegothelessavesi"]}},
+        machine_tags={"taxonomy:binomial": ["aegothelessavesi"]},
     )
 
     assert statement is None
