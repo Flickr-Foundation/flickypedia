@@ -46,13 +46,14 @@ click==8.1.7
     #   -r requirements.txt
     #   flask
     #   flickypedia
-coverage==7.5.3
+coverage[toml]==7.5.3
     # via pytest-cov
 cryptography==42.0.8
     # via
     #   -r requirements.txt
     #   authlib
     #   flickypedia
+    #   secretstorage
 flask==3.0.3
     # via
     #   -r requirements.txt
@@ -72,7 +73,7 @@ flask-wtf==1.2.1
     # via
     #   -r requirements.txt
     #   flickypedia
-flickr-photos-api==2.5.1
+flickr-photos-api==2.5.2
     # via
     #   -r requirements.txt
     #   flickypedia
@@ -81,6 +82,11 @@ flickr-url-parser==1.9.0
     #   -r requirements.txt
     #   flickr-photos-api
     #   flickypedia
+greenlet==3.0.3
+    # via
+    #   -r requirements.txt
+    #   flickypedia
+    #   sqlalchemy
 gunicorn==22.0.0
     # via
     #   -r requirements.txt
@@ -137,6 +143,12 @@ jaraco-functools==4.0.1
     #   -r requirements.txt
     #   flickypedia
     #   keyring
+jeepney==0.8.0
+    # via
+    #   -r requirements.txt
+    #   flickypedia
+    #   keyring
+    #   secretstorage
 jinja2==3.1.2
     # via
     #   -r requirements.txt
@@ -200,6 +212,11 @@ pyyaml==6.0.1
     # via vcrpy
 ruff==0.5.0
     # via -r dev_requirements.in
+secretstorage==3.3.3
+    # via
+    #   -r requirements.txt
+    #   flickypedia
+    #   keyring
 silver-nitrate==1.1.0
     # via
     #   -r requirements.txt
