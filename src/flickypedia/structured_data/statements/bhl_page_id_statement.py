@@ -29,7 +29,10 @@ def guess_bhl_page_id(*, photo_id: str, machine_tags: MachineTags) -> str | None
     #     bhl:page=33665643
     #
     # Look for any tags which match this pattern.
-    candidate_page_ids = set(machine_tags.get("bhl", {}).get("page", []))
+    try:
+        candidate_page_ids = set(machine_tags["bhl:page"])
+    except KeyError:
+        candidate_page_ids = set()
 
     # In general we expect that this should be an unambiguous list --
     # however, we double check to be sure!
