@@ -49,15 +49,8 @@ def store_cookies() -> None:
 
 
 @backfillr.command(help="Fix the SDC for a single file.")
-@click.argument("URL")
-def update_single_file(url: str) -> None:
-    try:
-        filename = get_filename_from_url(url)
-    except ValueError:
-        raise click.UsageError(
-            f"Expected a URL like https://commons.wikimedia.org/wiki/File:<filename>, got {url!r}"
-        )
-
+@click.argument("URLS", nargs=-1)
+def update_files(urls: list[str]) -> None:
     flickr_api = FlickrApi.with_api_key(
         api_key=keyring.get_password("flickr_api", "key"),
         user_agent="Alex Chan's personal scripts <alex@alexwlchan.net>",
@@ -72,15 +65,25 @@ def update_single_file(url: str) -> None:
         ),
     )
 
+    for u in urls:
+        try:
+            filename = get_filename_from_url(u)
+        except ValueError:
+            raise click.UsageError(
+                f"Expected a URL like https://commons.wikimedia.org/wiki/File:<filename>, got {u!r}"
+            )
 
+        actions = backfillr.update_file(filename=filename)
 
-    actions = backfillr.update_file(filename=filename)
+        print(filename)
+        for a in actions:
+            print(a['property_id'].ljust(8), end='')
 
-    print(filename)
-    for a in actions:
-        print(a['property_id'].ljust(8), end='')
+            if a['action'] == 'do_nothing':
+                print('do nothing')
+            elif a['action'] == 'add_missing':
+                print(termcolor.colored(a['action'], 'green'))
+            else:
+                print(termcolor.colored(a['action'], 'red'))
 
-        if a['action'] == 'do_nothing':
-            print('do nothing')
-        else:
-            print(termcolor.colored(a['action'], 'red'))
+        print("")
