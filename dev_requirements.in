@@ -1,6 +1,8 @@
 -e file:.
 -r requirements.txt
 
+pywikibot
+
 mypy
 pytest-cov
 ruff
