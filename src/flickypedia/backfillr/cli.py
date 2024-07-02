@@ -1,5 +1,9 @@
+import csv
+import datetime
+import itertools
 import json
 import os
+import pathlib
 
 import click
 from flickr_photos_api import FlickrApi
@@ -9,6 +13,7 @@ import termcolor
 
 from flickypedia.apis.wikimedia import get_filename_from_url, WikimediaApi
 from .backfillr import Backfillr
+from .backfillr_queue import BackfillrQueue
 
 
 @click.group(
@@ -50,7 +55,7 @@ def store_cookies() -> None:
 
 @backfillr.command(help="Fix the SDC for a single file.")
 @click.argument("URLS", nargs=-1)
-def update_files(urls: list[str]) -> None:
+def update_single_file(urls: list[str]) -> None:
     flickr_api = FlickrApi.with_api_key(
         api_key=keyring.get_password("flickr_api", "key"),
         user_agent="Alex Chan's personal scripts <alex@alexwlchan.net>",
@@ -87,3 +92,64 @@ def update_files(urls: list[str]) -> None:
                 print(termcolor.colored(a['action'], 'red'))
 
         print("")
+
+
+def chunked_iterable(iterable, size):
+    it = iter(iterable)
+    while True:
+        chunk = tuple(itertools.islice(it, size))
+        if not chunk:
+            break
+        yield chunk
+
+
+@backfillr.command(help="Prepare the spool directory for a Backfillr run")
+@click.argument("FLICKR_ID_SPREADSHEET")
+@click.argument("BATCH_SIZE")
+def prepare_spool_directory(flickr_id_spreadsheet: str, batch_size: int) -> None:
+    now = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+
+    spool_directory = pathlib.Path(f'backfillr-{now}')
+    spool_directory.mkdir()
+    (spool_directory / ".gitignore").write_text("*")
+
+    queue = BackfillrQueue(backfillr=None, base_dir=spool_directory)
+
+    with open(flickr_id_spreadsheet) as in_file:
+        filenames = (
+            row['wikimedia_page_title'].replace('File:', '')
+            for row in csv.DictReader(in_file)
+        )
+
+        for batch in chunked_iterable(filenames, size=int(batch_size)):
+            this_batch = list(batch)
+
+            queue.start_task(
+                task_input=this_batch,
+                task_output={filename: [] for filename in this_batch}
+            )
+
+    print(spool_directory)
+
+
+@backfillr.command(help="Process a spool directory")
+@click.argument("SPOOL_DIRECTORY")
+def process_spool_directory(spool_directory: str) -> None:
+    spool_directory = pathlib.Path(spool_directory)
+
+    flickr_api = FlickrApi.with_api_key(
+        api_key=keyring.get_password("flickr_api", "key"),
+        user_agent="Alex Chan's personal scripts <alex@alexwlchan.net>",
+    )
+
+    backfillr = Backfillr(
+        flickr_api=flickr_api,
+        wikimedia_api=WikimediaApi(
+            client=httpx.Client(
+                cookies=json.loads(keyring.get_password("flickypedia", "cookies"))
+            )
+        ),
+    )
+
+    queue = BackfillrQueue(backfillr=backfillr, base_dir=spool_directory)
+    queue.process_tasks()

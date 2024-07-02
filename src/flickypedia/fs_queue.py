@@ -16,7 +16,7 @@ the filesystem.  See the comments in ``process_single_task()``.
 
 """
 
-# Check this isn't a ecurity gap!
+# Check this isn't a security gap!
 
 import abc
 import datetime
