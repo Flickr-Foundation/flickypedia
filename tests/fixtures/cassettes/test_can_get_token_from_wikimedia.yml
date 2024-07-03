@@ -1,6 +1,6 @@
 interactions:
 - request:
-    body: grant_type=authorization_code&token_endpoint=https%3A%2F%2Fmeta.wikimedia.org%2Fw%2Frest.php%2Foauth2%2Faccess_token&code=[AUTHORIZATION_CODE...def5]
+    body: grant_type=authorization_code&code=[AUTHORIZATION_CODE...def5]
     headers:
       accept:
       - application/json
