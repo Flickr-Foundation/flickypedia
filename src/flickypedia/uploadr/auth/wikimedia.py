@@ -417,7 +417,6 @@ def oauth2_callback_wikimedia() -> ViewResponse:
 
     try:
         token = token_client.fetch_token(
-            token_endpoint=config["token_url"],
             authorization_response=request.url,
             state=state,
         )
