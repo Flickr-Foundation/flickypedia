@@ -44,6 +44,7 @@ from .views import (
     post_user_comment_api,
     post_comments,
     prepare_info,
+    register_views,
     say_thanks,
     select_photos,
     truncate_description,
@@ -121,6 +122,8 @@ def create_app(
     app.add_url_rule(
         "/toolinfo.json", view_func=lambda: send_file("static/toolinfo.json")
     )
+
+    register_views(app)
 
     app.jinja_env.filters["html_unescape"] = html.unescape
     app.jinja_env.filters["size_at"] = size_at
