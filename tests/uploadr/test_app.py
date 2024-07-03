@@ -43,3 +43,11 @@ def test_gets_toolinfo_json(client: FlaskClient) -> None:
     json.loads(resp.data)
 
     resp.close()
+
+
+class TestErrorPages:
+    def test_404_page(self, client: FlaskClient) -> None:
+        resp = client.get("/404/")
+
+        assert resp.status_code == 404
+        assert b"<h1>404 Not Found</h1>" in resp.data

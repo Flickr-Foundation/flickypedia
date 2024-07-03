@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% set title = "404 Not Found" %}
+
+{% block content %}
+  {% include "components/header.html" %}
+
+  <h1>404 Not Found</h1>
+
+  <p>
+    We looked far and wide for that page, but we couldn’t find anything!
+  </p>
+  
+  <p>
+    If you were expecting to see something here, please email us at <a href="mailto:hello@flickr.org">hello@flickr.org</a>.
+  </p>
+  
+  <figure>
+    <a href="https://commons.wikimedia.org/wiki/File:Telescope-123.jpg">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Telescope-123.jpg/1280px-Telescope-123.jpg">
+    </a>
+    <figcaption>
+      Telescope in Big Hill, NSW.
+      Photograph by Ryan Wick.
+      From <a href="https://commons.wikimedia.org/wiki/File:Telescope-123.jpg">Wikimedia Commons</a>, used under CC&nbsp;BY&nbsp;2.0.
+    </figcaption>
+  </figure>
+{% endblock %}

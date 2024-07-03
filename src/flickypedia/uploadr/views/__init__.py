@@ -1,10 +1,11 @@
-from flask import render_template
+from flask import Flask, render_template
 
 from .api import (
     find_matching_categories_api,
     find_matching_languages_api,
     validate_title_api,
 )
+from . import errors
 from .get_photos import get_photos
 from .keep_going import keep_going
 from .post_comments import post_comments, post_bot_comment_api, post_user_comment_api
@@ -31,6 +32,10 @@ def faqs() -> str:
     return render_template("faqs.html", current_step=None)
 
 
+def register_views(app: Flask) -> None:
+    app.register_error_handler(404, errors.not_found)
+
+
 __all__ = [
     "about",
     "bookmarklet",
@@ -46,6 +51,7 @@ __all__ = [
     "post_user_comment_api",
     "post_comments",
     "prepare_info",
+    "register_views",
     "say_thanks",
     "select_photos",
     "truncate_description",
