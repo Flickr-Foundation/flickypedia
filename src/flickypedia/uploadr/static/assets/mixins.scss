@@ -2,7 +2,9 @@
   color: $color;
 
   &:hover {
-    background: rgba($color, $opacity);
+    text-decoration: underline;
+    text-decoration-thickness: 4px;
+    text-decoration-skip-ink: none;
   }
 }
 
@@ -31,6 +33,7 @@
 
   &:hover {
     background: darken($color, 15%);
+    text-decoration: none !important;
   }
 
   &:active {

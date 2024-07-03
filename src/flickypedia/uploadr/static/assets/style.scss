@@ -103,6 +103,10 @@ a {
   @include link_styles($blue, 0.3);
 }
 
+svg a, svg a:hover {
+  text-decoration: none;
+}
+
 input[type="url"],
 input[type="text"],
 select,
