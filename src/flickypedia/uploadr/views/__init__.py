@@ -33,6 +33,7 @@ def faqs() -> str:
 
 
 def register_views(app: Flask) -> None:
+    app.register_error_handler(401, errors.unauthorized)
     app.register_error_handler(404, errors.not_found)
 
 
