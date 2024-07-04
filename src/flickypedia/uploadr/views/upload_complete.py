@@ -3,7 +3,7 @@ from flask_login import login_required
 
 from flickypedia.types.uploads import UploadBatch, UploadBatchResults
 from flickypedia.types.views import ViewResponse
-from flickypedia.uploadr.fs_queue import Task
+from flickypedia.fs_queue import Task
 from flickypedia.uploadr.uploads import uploads_queue
 
 

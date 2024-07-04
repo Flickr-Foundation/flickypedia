@@ -5,7 +5,7 @@ import traceback
 
 import pytest
 
-from flickypedia.uploadr.fs_queue import AbstractFilesystemTaskQueue, Task
+from flickypedia.fs_queue import AbstractFilesystemTaskQueue, Task
 
 
 NumberTask = Task[list[int], int]
