@@ -13,6 +13,7 @@ import keyring
 from flickypedia.apis.wikimedia import WikimediaApi
 from flickypedia.apis.wikitext import create_wikitext
 from flickypedia.duplicates import record_file_created_by_flickypedia
+from flickypedia.fs_queue import AbstractFilesystemTaskQueue, Task
 from flickypedia.photos import size_at
 from flickypedia.types.uploads import (
     KeyringId,
@@ -21,7 +22,6 @@ from flickypedia.types.uploads import (
     UploadBatchResults,
     UploadRequest,
 )
-from flickypedia.uploadr.fs_queue import AbstractFilesystemTaskQueue, Task
 
 
 class PhotoUploadQueue(AbstractFilesystemTaskQueue[UploadBatch, UploadBatchResults]):
