@@ -30,3 +30,34 @@ class TestBackfillr:
     def test_raises_error_if_cannot_find_flickr_id(self, backfillr: Backfillr) -> None:
         with pytest.raises(ValueError, match="Unable to find Flickr ID"):
             backfillr.update_file(filename="Katscha February 2017 06.jpg")
+
+    def test_it_only_adds_flickr_photo_id_if_original_photo_deleted(
+        self, wikimedia_api: WikimediaApi, backfillr: Backfillr
+    ) -> None:
+        # This file on Wikimedia Commons links to a now-deleted Flickr photo.
+        # Retrieved 5 July 2024
+        filename = "Olonadé - A Cena Negra Brasileira (Teatro Cacilda Becker) (7).jpg"
+
+        before_claims = wikimedia_api.get_structured_data(filename=filename)
+        assert "P12120" not in before_claims
+
+        actions = backfillr.update_file(filename=filename)
+        assert len(actions) == 1
+        assert actions[0]
+        assert actions == [
+            {
+                "property_id": "P12120",
+                "action": "add_missing",
+                "statement": {
+                    "mainsnak": {
+                        "datavalue": {"value": "28952265972", "type": "string"},
+                        "property": "P12120",
+                        "snaktype": "value",
+                    },
+                    "type": "statement",
+                },
+            }
+        ]
+
+        after_claims = wikimedia_api.get_structured_data(filename=filename)
+        assert "P12120" in after_claims

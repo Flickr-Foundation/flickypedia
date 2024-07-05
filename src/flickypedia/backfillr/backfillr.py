@@ -1,6 +1,6 @@
 import sys
 
-from flickr_photos_api import FlickrApi, PhotoIsPrivate, ResourceNotFound
+from flickr_photos_api import FlickrApi, ResourceNotFound
 
 from flickypedia.apis.wikimedia import WikimediaApi
 from flickypedia.structured_data import (
@@ -53,19 +53,19 @@ class Backfillr:
             print(f"Unable to find Flickr ID for {filename}", file=sys.stderr)
             raise ValueError(f"Unable to find Flickr ID for {filename}")
 
-        # try:
-        single_photo = self.flickr_api.get_single_photo(
-            photo_id=flickr_id["photo_id"]
-        )
-        new_claims = create_sdc_claims_for_existing_flickr_photo(single_photo)
-        user = single_photo["owner"]
-        # except (PhotoIsPrivate, ResourceNotFound):
-        #     new_claims = {
-        #         "claims": [
-        #             create_flickr_photo_id_statement(photo_id=flickr_id["photo_id"])
-        #         ]
-        #     }
-        #     user = None
+        try:
+            single_photo = self.flickr_api.get_single_photo(
+                photo_id=flickr_id["photo_id"]
+            )
+            new_claims = create_sdc_claims_for_existing_flickr_photo(single_photo)
+            user = single_photo["owner"]
+        except ResourceNotFound:
+            new_claims = {
+                "claims": [
+                    create_flickr_photo_id_statement(photo_id=flickr_id["photo_id"])
+                ]
+            }
+            user = None
 
         actions = create_actions(existing_claims, new_claims, user)
 
