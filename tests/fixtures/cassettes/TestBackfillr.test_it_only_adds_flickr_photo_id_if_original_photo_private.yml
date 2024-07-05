@@ -1,0 +1,494 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.27.0
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=wbgetentities&format=json&sites=commonswiki&titles=File%3ANYCC2017+000bas+%2823894553008%29.jpg
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA62XS28jNwzHv8pi0EOLRjGpN32bl28ttkAvbbEHaaRJZuNXbWcXi0W+ezlO4hho
+        jI2THByHmqEk/kSRf38v8nI37Ia8Labfi99QAlgy0o3WOlzlIRXTw+BFseTX7EXBHvNcTIvZMM/T
+        3/+qawnoPgBADNsPP0vlSRujAPwvl5/XV8VFMQ/b3SZ/GWfzQF45TfqiWKzS0A+ZBwsJUgkEAf5P
+        kFPlptr9zX67b+txnUVOQxiW/YqHxjmONzpOHvN83P/dRZHyttsM692wWj6MbHdhlxcc5T7Cjxq8
+        LKb/fC8WPOF2GW7G0fH7YakvYX6bedL1ZrXOm903Hrr3uSiuw/aaTXIhqgCoyUsKOmqnpOGgkHLK
+        nvqQpEoKkT1S2IX7CXmRwz974t/Ew4ID745fXd4u8mboxBie1QjwEOkfe6O4O7D4OtwMjDmL+2n4
+        pbunh4dg/w/qpxbVzFZYCefbWuiKalES1sKV1FY1uco3mt02YclMiuVqswjz4u7TRfHROuPOZbb3
+        OTCTSbreZJ113/VZScRAOUbsIcUogZ95BO3sSWZhsbrlqKbFr3AJ42HcLofRvN7t1tPJ5OvXr5cj
+        mNH5crW5mtzDmfyBaJw+ovfvbdg/eSm0sq5r48AJdFIKrWdWVE2NompLY6Bykj+noBGcD419DtBc
+        tuhd6D1A1+vkTXQS2Q6dwtQp2yVLKWn/Amjm0j4xwzfwaA00UDWtgAaV0HZmBKGxQrpZIxtrW2Xx
+        eR4SDZ7LY+9z4GGROqc89hEkkew5f7rO2aCyBNspstFj56F/AQ9JZ6SQ087TG5hh68vSSxCVaziH
+        0GtB5YyvYDkj1A7KuvGncogXPjuHPB0xM53swVsdKbiso3E59YHIxY4HU1AUZYY+vYCZBnifHFKm
+        4Us506KskJhHTaIy6EWtqdVtWXvbyOd5IFp1Lo+9z9OdGmszRO980sGnHMn6yEVIS/LeZ6OMshaD
+        PMGjGBbcFCef1/mqOIp1MyyvXhp9xd3PN9AK/lNx9ChFRbIVVtWyddSW2JyoKOrs+6OObo/zHp3z
+        sutliB0l9IaUjkFFI60hzCi9hl6+vm2hNEj42LfurfdoXK6eGdmQEpYvi+A0bEU5a63QxJW5xJmt
+        21ONS6I9+/6MPgdqhpdQ2vWJC02SwQM3+95gDgiZrxNqHcDrDK+nZkCzYLLqkduj/R7kbAXUqLYU
+        pnJeaDnzgqAl4WXJrQQcUVmfqNbOnF2s2eXAzctkogYZAgRuahq0V8F3JLkSccvSne1Q9da9Idto
+        zDB0h3x7sN+DG5ZUKscZVylWSRqrGVeoquQCzkqXxaub1Se6nNPny8u9z4FcZHRJs9qQgY+os6nD
+        XksfLSku5bF3ETIkm19PzmnJV50OCvPRfg05rv3zUcNv7tU1qnuh+KOarI60oUq+S7rDEAmTShRY
+        WQNw7H0IOfasFH0k7eIbUgWUBH1IlL31g2DHsySnXhLM+NpTvx0PiNUuUTTZmBhjCLycVdn4nocN
+        V12J6ZRG2YuR7YMa6edDd7O57FaLyfp6tVttJ7zLm+Vwdb2bHP3GeqYRfbo7Phmx2qS84VAewe+3
+        /OmZQqtNWWnD4k61bvyFYEQJrhXYYNlyHVEknxMqd2NubG+7Lm85C/DuP5ff9+tUDgAA
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Fri, 05 Jul 2024 14:55:44 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw-api-ext.eqiad.main-6464cf4f7-tx9xz
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - WMF-Last-Access=05-Jul-2024;Path=/;HttpOnly;secure;Expires=Tue, 06 Aug 2024
+        12:00:00 GMT
+      - GeoIP=GB:ENG:Camden:51.52:-0.16:v4; Path=/; secure; Domain=.wikimedia.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;SameSite=Lax;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie,Authorization
+      x-cache:
+      - cp3066 miss, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - WMF-Last-Access=05-Jul-2024; NetworkProbeLimit=0.001; GeoIP=GB:ENG:Camden:51.52:-0.16:v4
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.27.0
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=wbgetentities&format=json&sites=commonswiki&titles=File%3ANYCC2017+000bas+%2823894553008%29.jpg
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA62XS28jNwzHv8pi0EOLRjGpN32bl28ttkAvbbEHaaRJZuNXbWcXi0W+ezlO4hho
+        jI2THByHmqEk/kSRf38v8nI37Ia8Labfi99QAlgy0o3WOlzlIRXTw+BFseTX7EXBHvNcTIvZMM/T
+        3/+qawnoPgBADNsPP0vlSRujAPwvl5/XV8VFMQ/b3SZ/GWfzQF45TfqiWKzS0A+ZBwsJUgkEAf5P
+        kFPlptr9zX67b+txnUVOQxiW/YqHxjmONzpOHvN83P/dRZHyttsM692wWj6MbHdhlxcc5T7Cjxq8
+        LKb/fC8WPOF2GW7G0fH7YakvYX6bedL1ZrXOm903Hrr3uSiuw/aaTXIhqgCoyUsKOmqnpOGgkHLK
+        nvqQpEoKkT1S2IX7CXmRwz974t/Ew4ID745fXd4u8mboxBie1QjwEOkfe6O4O7D4OtwMjDmL+2n4
+        pbunh4dg/w/qpxbVzFZYCefbWuiKalES1sKV1FY1uco3mt02YclMiuVqswjz4u7TRfHROuPOZbb3
+        OTCTSbreZJ113/VZScRAOUbsIcUogZ95BO3sSWZhsbrlqKbFr3AJ42HcLofRvN7t1tPJ5OvXr5cj
+        mNH5crW5mtzDmfyBaJw+ovfvbdg/eSm0sq5r48AJdFIKrWdWVE2NompLY6Bykj+noBGcD419DtBc
+        tuhd6D1A1+vkTXQS2Q6dwtQp2yVLKWn/Amjm0j4xwzfwaA00UDWtgAaV0HZmBKGxQrpZIxtrW2Xx
+        eR4SDZ7LY+9z4GGROqc89hEkkew5f7rO2aCyBNspstFj56F/AQ9JZ6SQ087TG5hh68vSSxCVaziH
+        0GtB5YyvYDkj1A7KuvGncogXPjuHPB0xM53swVsdKbiso3E59YHIxY4HU1AUZYY+vYCZBnifHFKm
+        4Us506KskJhHTaIy6EWtqdVtWXvbyOd5IFp1Lo+9z9OdGmszRO980sGnHMn6yEVIS/LeZ6OMshaD
+        PMGjGBbcFCef1/mqOIp1MyyvXhp9xd3PN9AK/lNx9ChFRbIVVtWyddSW2JyoKOrs+6OObo/zHp3z
+        sutliB0l9IaUjkFFI60hzCi9hl6+vm2hNEj42LfurfdoXK6eGdmQEpYvi+A0bEU5a63QxJW5xJmt
+        21ONS6I9+/6MPgdqhpdQ2vWJC02SwQM3+95gDgiZrxNqHcDrDK+nZkCzYLLqkduj/R7kbAXUqLYU
+        pnJeaDnzgqAl4WXJrQQcUVmfqNbOnF2s2eXAzctkogYZAgRuahq0V8F3JLkSccvSne1Q9da9Idto
+        zDB0h3x7sN+DG5ZUKscZVylWSRqrGVeoquQCzkqXxaub1Se6nNPny8u9z4FcZHRJs9qQgY+os6nD
+        XksfLSku5bF3ETIkm19PzmnJV50OCvPRfg05rv3zUcNv7tU1qnuh+KOarI60oUq+S7rDEAmTShRY
+        WQNw7H0IOfasFH0k7eIbUgWUBH1IlL31g2DHsySnXhLM+NpTvx0PiNUuUTTZmBhjCLycVdn4nocN
+        V12J6ZRG2YuR7YMa6edDd7O57FaLyfp6tVttJ7zLm+Vwdb2bHP3GeqYRfbo7Phmx2qS84VAewe+3
+        /OmZQqtNWWnD4k61bvyFYEQJrhXYYNlyHVEknxMqd2NubG+7Lm85C/DuP5ff9+tUDgAA
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Fri, 05 Jul 2024 14:55:44 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw-api-ext.eqiad.main-6464cf4f7-8pfkg
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - NetworkProbeLimit=0.001;Path=/;Secure;SameSite=Lax;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie,Authorization
+      x-cache:
+      - cp3066 miss, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - api.flickr.com
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&photo_id=23894553008
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAAw3LMQ7CMAwF0Jmc4ss7lDIxJOkVeoUIXLDUJpXtVhyf7O/F6betOFlNWk003u4E
+        rq/2lvpJdPhyfRKmHKLaDvPiiZYiK+VwiayKLjnRg7BZ9/O3eYMYdpWzOBOGXod+c/gD5Z9v1moA
+        AAA=
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Fri, 05 Jul 2024 14:55:44 GMT
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 5a98aec7da8cddc4fee7bc85f8beb31a.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - rTauiWlXcPE9EKN-C6H6jWun56K_JUHN65ISubRUyiuvL1ayXaAmjQ==
+      X-Amz-Cf-Pop:
+      - LHR5-P1
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - openresty
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Sun, 04-Aug-2024 14:55:44 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Sun, 04-Aug-2024 14:55:44 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-flickr-api-request:
+      - Self=1-66880970-69c3bcfd45bac128774df87b;Root=1-66880970-1647ab34031141db2c721e93
+      x-robots-tag:
+      - noindex
+      x-server:
+      - serverless-proxy-10.78.25.238
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - WMF-Last-Access=05-Jul-2024; NetworkProbeLimit=0.001; GeoIP=GB:ENG:Camden:51.52:-0.16:v4
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.27.0
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=query&format=json&meta=tokens&type=csrf
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA6tWSkosSc5Izs8tyEktSVWyUlLSUSosTS2qVLKqVirJz07NKwaxkouL0sA8oArt
+        mBil2tpaANqecJA7AAAA
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-encoding:
+      - gzip
+      content-length:
+      - '72'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Fri, 05 Jul 2024 14:55:44 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw-api-ext.eqiad.main-6464cf4f7-9mfw4
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - NetworkProbeLimit=0.001;Path=/;Secure;SameSite=Lax;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3066 miss, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    status:
+      code: 200
+      message: OK
+- request:
+    body: action=wbeditentity&site=commonswiki&title=File%3ANYCC2017+000bas+%2823894553008%29.jpg&data=%7B%22claims%22%3A+%5B%7B%22mainsnak%22%3A+%7B%22datavalue%22%3A+%7B%22value%22%3A+%2223894553008%22%2C+%22type%22%3A+%22string%22%7D%2C+%22property%22%3A+%22P12120%22%2C+%22snaktype%22%3A+%22value%22%7D%2C+%22type%22%3A+%22statement%22%7D%5D%7D&summary=Update+the+%5B%5BCommons%3AStructured+data%7Cstructured+data%5D%5D+based+on+metadata+from+Flickr&tags=BotSDC&maxlag=2&bot=1&format=json&token=%2B%5C
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '495'
+      content-type:
+      - application/x-www-form-urlencoded
+      cookie:
+      - WMF-Last-Access=05-Jul-2024; NetworkProbeLimit=0.001; GeoIP=GB:ENG:Camden:51.52:-0.16:v4
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.27.0
+    method: POST
+    uri: https://commons.wikimedia.org/w/api.php
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA62XS1MjNxCA/8tUbkFYrWc3t3n5lqrNObUHaSTBBGwT2+zW1hb/PT22MVQFZzFw
+        8KM1amn6U7/0s8rL7bj9UV39rLY/7nN1VS1yGsO4LKvqohoTD/wBSkpHVnkeuQsx3214+uNFlfJm
+        WI/323G1PIxstmGbF7zkJFdfjERVXf31s1rwgptluJ1Gp9/DVt/C3UPmRe/Xq/u8nt7ioHNR3YTN
+        DYvkQ9RBgiFUFEw0XisrCYFyykglJKWTBmCNFLZhvyBvcvyzN08cNhz57Xjq8mGR1+MgJvOcASkP
+        lv65Eyo25DD/+3g7xrDJYr8MT3p8fng09r+gfutBz10DjfDYt8I01IqaoBW+pr5pyTfYGVZbhyUz
+        qZar9SLcVY9fL6ovzlt/LrOdzpGZSsoXm002ZShZK4BAOUYoMsWoJD9DkMa7k8zCYvXAVl1Vv8tL
+        OR3Gw3KcxJvt9v5qNvv+/fvlBGZSvlytr2d7OLM/Aaw3L+j98xD2zvVGaHXbttZLL8ArJYyZO9F0
+        LYimr62VjVf8OQWN5PnQWOcIzWcH6ENBKYdiEtroFbAcBg1p0G5IjlIy+AZo9tI9M4MP8Oit7GTT
+        9UJ2oIVxcysIrBPKzzvVOddrB6/zUGDhXB47nSMPBzR4jVCiVESqsP8Mg3dBZyXdoMlFhAFleQMP
+        RWe4kDce6QPMoMe6RiVF4zv2IUAjqJ5zCNZzAuNl3XZ4yod447N9COkFMzuoItGZSMFnE63PqQQi
+        HwceTEFTVFmW9AZmRsrP8SFtOw7KuRF1A8Q8WhKNBRStod70dYuuU6/zAHD6XB47neeYmnKzjOgx
+        mYApR3IYOQkZRYiYrbbaOQjqBI9qXITrPPv7Pl9XL2xdj8vrt1rfoPbYyV7wV8PWgxINqV443are
+        U19DdyKj6LPjR7+IHo8I3qMaigpxoARoSZsYdLTKWYIMCo0s6v1lC5QFgqe6tZc+o3D5dm5VR1o4
+        DhbBbtiLet47YYgzcw1z1/anCpcCd3b8TDpHapa30MaXxIkmqYCSi32xkAPIzOEExgSJJsv3U7PS
+        KI1OP3F7kj+DnGskdbqvhW08CqPmKEj2JFDVXEqkJ6rbE9na27OTNascuaFKNhqpQpCBi5qRBnXA
+        gRRnIi5ZZnAD6OL8B7yNJg8Df/S3g/wZ3KCmWnv2uEZzl2SgmXOGampO4K2SmuvBvD1R5bw5v73c
+        6RzJRUaXDHcbKvARDS4NUIzC6EhzKo/FR5llcvn95LxRHOp07DCf5PeQ49x/N5Yxr/fdNeh9o/ir
+        nKxf9IY64ZDMACESJJ0ocGctJdteQsixcKeIkYyPH3AVqZU0R0fZSb8wdjpL8votxkzTnuvtdEDc
+        7RJFm62NMYbA2zmdLRYetpx1FaRTPcquGdkcupFyNw6368thtZjd36y2q82M3/J2OV7fbGecIshY
+        q6XEVwrR18eXJyNW65TXbMoT+N0rf30l0RpbN8Zyc6d7P90QrKil7wV0UPecRzSpE40KKF7l7Mq8
+        U3pGZ7AQOlscZjX4AsXLjMEVFTFqviXoxOXZn3L86v+RvK3b19yXmUYJ2SDXlzn3bGTIC2+c4usT
+        t3H0Wtw/TndQ3il/mxbEKckRX9qmy+fDMOQNxwY8/gvGJAxx1w4AAA==
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '4'
+      cache-control:
+      - private, max-age=0, s-maxage=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Fri, 05 Jul 2024 14:55:44 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw-api-ext.eqiad.main-6464cf4f7-xt97b
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - cpPosIndex=58723%401720191346%231da4f30d3e3a36ae16eb83a7b798a3c8; expires=Fri,
+        05-Jul-2024 14:55:56 GMT; Max-Age=10; path=/; secure; HttpOnly
+      - UseDC=master; expires=Fri, 05-Jul-2024 14:55:56 GMT; Max-Age=10; path=/; secure;
+        HttpOnly
+      - cpPosIndex=58724%401720191346%231da4f30d3e3a36ae16eb83a7b798a3c8; expires=Fri,
+        05-Jul-2024 14:55:56 GMT; Max-Age=10; path=/; secure; HttpOnly
+      - NetworkProbeLimit=0.001;Path=/;Secure;SameSite=Lax;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-cache:
+      - cp3066 miss, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - WMF-Last-Access=05-Jul-2024; NetworkProbeLimit=0.001; cpPosIndex=58724%401720191346%231da4f30d3e3a36ae16eb83a7b798a3c8;
+        UseDC=master; GeoIP=GB:ENG:Camden:51.52:-0.16:v4
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.27.0
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=wbgetentities&format=json&sites=commonswiki&titles=File%3ANYCC2017+000bas+%2823894553008%29.jpg
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA62XyW4jNxCGX2XQyCFBTIvFvXTr9ZZgBsglCeZANkm7x9oiyWMMBn73VEu2LCBW
+        xrJ98EJ2F8n6WMvf34u02A7bIW2K6ffiNxCcG9TCjqOVv0pDLKaHyYtiQa+Zi4IsZqmYFt0wS9Pf
+        /6xrwcF+4JwHv/nws5AOldaSc/fL5ZfVVXFRzPxmu05fx9UcCqMQOL8o5ss45CHRZCG4UIxbxvUf
+        oKZaT5X+i+y231bjPvMUBz8s8pKmxjWODzouHtJsPP/9RRHTpl8Pq+2wXDzMbLZ+m+bk5c7Dj4o7
+        UUz//l7MacHNwt+Ms+Pfh62++tltokVX6+UqrbffaGpvc1Fc+801DdH6ID0HhU6gV0FZKTRHB5hi
+        cph9FDJKALKIfuv3C9Imh392xL+xhw0HOh29uridp/XQs9E9o3Z4dp5+2g2K+wOLu+FmIMyJ7Zeh
+        l+6fHh6c/S+on1qQnamgYta1NVMV1qxEqJktsa1qtJVrFJmt/YKYFIvleu5nxf3ni+Kjsdqey2xn
+        c2AmorBZJ5VU7nOSAsBjCgEyjyEITs8ccGXNSWZ+vrwlr6bFr/ySj5dxuxjG4fV2u5pOJnd3d5cj
+        mNH4crm+muzhTD4BaKuO6P1z63dPXgqtrOtaWwpMsEIwpTrDqqYGVrWl1ryygn5OQUN+PjSyOUCz
+        yYCzPjvO+6yi08EKoLHvJcRemj4ajFG5F0DTl+aJGbyBR6t5w6umZbwByZTpNEPQhgnbNaIxppUG
+        nuchQMO5PHY2Bx4GsLfSQQ5cIIpM8dP31niZBDe9RBMc9I7nF/AQeEYIWWUdvoEZtK4sneCssg3F
+        EDjFsOwoBcsOQVle1o07FUO08dkx5PCIme5F5s6ogN4mFbRNMXtEG3qajF5iEInn+AJmivP3iSGp
+        G0rKTrGyAiQeNbJKg2O1wla1Ze1MI57nAWDkuTx2Nk85NdZmHpx1UXkXU0DjAhUhJdA5l7TU0hjw
+        4gSPYphTU5x8WaWr4sjX9bC4eqn3lZPWNbxl9Ksi70GwCkXLjKxFa7EtoTlRUeTZ+SOPssc6B9Y6
+        0WfhQ48RnEapgpdBC6MREgineBavb1sgNCA89q396D0al607LRqUzFCyMArDlpVda5hCqswldKZu
+        TzUuAebs/BltDtQ0bSGVzZEKTRTecWr2WUPywBOlEyjluVOJv56a5ooEk5GP3B7H70HOVBwb2ZZM
+        V9YxJTrHkLfInCiplXCLWNYnqrXVZxdrMjlwcyLqoLjwnntqaoorJ73rR+0XqGWp3vQgs7FviDYc
+        IwzsId4exu/BDUospaWIqySpJAVVRxWqKqmAk9KV1A+6+kSXs+p8ebmzOZALhC4qUhvC0xX1JvaQ
+        lXDBoKRSHrINPPFo0uvJWSUo1fGgMB/HryFHtX82avj1Xl2D3AvFH9VkeaQNZXR9VD34gBBlRE/K
+        mnPyPXufQial6AIqG94QKlwKrg6Bshv9wNnxLtHKlzgzvvbUb8cLIrWLGHTSOoTgPW1nZNIu07Sm
+        qisgntIoOzGyeVAjeTb0N+vLfjmfrK6X2+VmQqe8WQxX19vJ0TfWM43o8/3xzbDlOqY1ufIIfnfk
+        z88UWqXLSmkSd7K14xeCZiW3LYMGypbqiERxQqiAoFXO7sw7oyd0ymV0Rmfjkuhthmx5ct5kEVyQ
+        9JUgI7Vneyrwi/9H8jK1L0mXqUowXjnqLx1pNlRomVVG0OcTyTh8Lu/vx+U3t32fNpQGcP8vDkvu
+        /lUPAAA=
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Fri, 05 Jul 2024 14:55:46 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw-api-ext.eqiad.main-6464cf4f7-zcb4v
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - NetworkProbeLimit=0.001;Path=/;Secure;SameSite=Lax;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie,Authorization
+      x-cache:
+      - cp3066 miss, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    status:
+      code: 200
+      message: OK
+version: 1
