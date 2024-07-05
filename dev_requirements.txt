@@ -36,24 +36,26 @@ certifi==2023.7.22
     #   flickypedia
     #   httpcore
     #   httpx
+    #   requests
 cffi==1.16.0
     # via
     #   -r requirements.txt
     #   cryptography
     #   flickypedia
+charset-normalizer==3.3.2
+    # via requests
 click==8.1.7
     # via
     #   -r requirements.txt
     #   flask
     #   flickypedia
-coverage[toml]==7.5.3
+coverage==7.5.3
     # via pytest-cov
 cryptography==42.0.8
     # via
     #   -r requirements.txt
     #   authlib
     #   flickypedia
-    #   secretstorage
 flask==3.0.3
     # via
     #   -r requirements.txt
@@ -82,11 +84,6 @@ flickr-url-parser==1.9.0
     #   -r requirements.txt
     #   flickr-photos-api
     #   flickypedia
-greenlet==3.0.3
-    # via
-    #   -r requirements.txt
-    #   flickypedia
-    #   sqlalchemy
 gunicorn==22.0.0
     # via
     #   -r requirements.txt
@@ -119,6 +116,7 @@ idna==3.4
     #   flickypedia
     #   httpx
     #   hyperlink
+    #   requests
     #   yarl
 iniconfig==2.0.0
     # via pytest
@@ -143,12 +141,6 @@ jaraco-functools==4.0.1
     #   -r requirements.txt
     #   flickypedia
     #   keyring
-jeepney==0.8.0
-    # via
-    #   -r requirements.txt
-    #   flickypedia
-    #   keyring
-    #   secretstorage
 jinja2==3.1.2
     # via
     #   -r requirements.txt
@@ -178,6 +170,8 @@ more-itertools==10.1.0
     #   jaraco-functools
 multidict==6.0.5
     # via yarl
+mwparserfromhell==0.6.6
+    # via pywikibot
 mypy==1.10.1
     # via -r dev_requirements.in
 mypy-extensions==1.0.0
@@ -188,6 +182,7 @@ packaging==23.2
     #   flickypedia
     #   gunicorn
     #   pytest
+    #   pywikibot
 pluggy==1.5.0
     # via pytest
 pycparser==2.21
@@ -208,15 +203,14 @@ pytest==8.2.1
     # via pytest-cov
 pytest-cov==5.0.0
     # via -r dev_requirements.in
+pywikibot==9.2.0
+    # via -r dev_requirements.in
 pyyaml==6.0.1
     # via vcrpy
+requests==2.32.3
+    # via pywikibot
 ruff==0.5.0
     # via -r dev_requirements.in
-secretstorage==3.3.3
-    # via
-    #   -r requirements.txt
-    #   flickypedia
-    #   keyring
 silver-nitrate==1.1.0
     # via
     #   -r requirements.txt
@@ -266,6 +260,8 @@ typing-extensions==4.8.0
     #   pydantic
     #   pydantic-core
     #   sqlalchemy
+urllib3==2.2.2
+    # via requests
 vcrpy==6.0.1
     # via -r dev_requirements.in
 werkzeug==3.0.3
