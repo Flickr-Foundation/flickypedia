@@ -52,7 +52,7 @@ Action = DoNothing | AddMissing | AddQualifiers | ReplaceStatement | Unknown
 
 
 def create_actions(
-    existing_claims: ExistingClaims, new_claims: NewClaims, user: FlickrUser
+    existing_claims: ExistingClaims, new_claims: NewClaims, user: FlickrUser | None
 ) -> list[Action]:
     actions: list[Action] = []
 
@@ -94,6 +94,7 @@ def create_actions(
             if (
                 property_id == WP.Creator
                 and statement.get("qualifiers-order") == [WP.AuthorName]
+                and user is not None
             ):
                 candidate_statements = [
                     create_author_name_statement(author_name="null"),
@@ -197,6 +198,7 @@ def create_actions(
                 property_id == WP.Creator
                 and statement["mainsnak"].get("datavalue")
                 and statement["mainsnak"]["datavalue"]["type"] == "wikibase-entityid"
+                and user is not None
             ):
                 assert statement["mainsnak"]["datavalue"]["type"] == "wikibase-entityid"
                 wikidata_entity_id = statement["mainsnak"]["datavalue"]["value"]["id"]
