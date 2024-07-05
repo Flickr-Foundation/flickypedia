@@ -1,0 +1,76 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.27.0
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=query&list=logevents&letitle=File%3AMugeni%20Elijah.jpg&letype=delete&format=xml
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA6WSzU7DMBCEX2XlexvHjpMSJSkSPwdQe+qJqgeTmNRV7BjbKe3bYyOQqooDEsdZ
+        aWZ3v91qeVIDHIV1ctQ1SucYLZuKGwmv3Lf7dlRmEF7UCDXV+yTsuamGsRdHob1rKumFgqBlVyPK
+        2E3G0owh0K5GOQIv/RCcj3IQ5WrqhZbwMMgD388PpkdgeC+iEaMYEVXoTxYsTRktgvtsQqETsT0C
+        3vqvAX/05ISt0Urq0fJTbKWE81yZGhFMshnOZyTfYFLivMSLFwRhERVmrpERFrbbuyBH7cr7GBeC
+        wYqwnfMuidM6eBsn3cGH9HtIWZbmjBTZ7RrT3S5wMNxy5SBpqiQCuMIQOOAFxfRfGFKGC5Jn9G8Y
+        nm13jYDOMJnhYoOziICxSwTrEQIFJV28OTipWwEUwxPXE7dniO7ftkwuDp98/0ISPqX5BN3DHYtE
+        AgAA
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.xml
+      content-encoding:
+      - gzip
+      content-length:
+      - '345'
+      content-type:
+      - text/xml; charset=utf-8
+      date:
+      - Fri, 05 Jul 2024 14:36:37 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw-api-ext.eqiad.main-6464cf4f7-59hc9
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - WMF-Last-Access=05-Jul-2024;Path=/;HttpOnly;secure;Expires=Tue, 06 Aug 2024
+        12:00:00 GMT
+      - GeoIP=GB:ENG:Camden:51.52:-0.16:v4; Path=/; secure; Domain=.wikimedia.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;SameSite=Lax;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      vary:
+      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie,Authorization
+      x-cache:
+      - cp3066 miss, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    status:
+      code: 200
+      message: OK
+version: 1
