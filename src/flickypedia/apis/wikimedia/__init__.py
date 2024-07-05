@@ -12,6 +12,7 @@ from .base import HttpxImplementation
 
 from .category_methods import CategoryMethods
 from .identifier_methods import IdentifierMethods
+from .is_deleted_method import IsDeletedMethod
 from .language_methods import LanguageMethods
 from .structured_data_methods import StructuredDataMethods
 from .validator_methods import ValidatorMethods
@@ -24,6 +25,7 @@ class WikimediaApi(
     HttpxImplementation,
     CategoryMethods,
     IdentifierMethods,
+    IsDeletedMethod,
     LanguageMethods,
     StructuredDataMethods,
     ValidatorMethods,
