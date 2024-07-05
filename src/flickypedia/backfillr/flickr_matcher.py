@@ -19,7 +19,6 @@ from flickr_url_parser import (
     UnrecognisedUrl,
 )
 
-from flickypedia.apis import WikimediaApi
 from flickypedia.structured_data import (
     ExistingClaims,
     ExistingStatement,
@@ -288,22 +287,3 @@ def find_flickr_photo_id_from_sdc(sdc: ExistingClaims) -> FindResult | None:
         return {"photo_id": photo_id, "url": None}
     else:
         return {"photo_id": photo_id, "url": pick_best_url(candidates[photo_id])}
-
-
-def find_flickr_photo(
-    wikimedia_api: WikimediaApi,
-    existing_sdc: ExistingClaims,
-    filename: str,
-) -> FindResult | None:
-    find_result = find_flickr_photo_id_from_sdc(existing_sdc)
-
-    if find_result is not None:
-        return find_result
-
-    wikitext = wikimedia_api.get_wikitext(filename=filename)
-
-    find_result = find_flickr_photo_id_from_wikitext(
-        wikitext, filename=f"File:{filename}"
-    )
-
-    return find_result
