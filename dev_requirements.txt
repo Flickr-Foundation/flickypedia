@@ -76,7 +76,7 @@ flask-wtf==1.2.1
     # via
     #   -r requirements.txt
     #   flickypedia
-flickr-photos-api==2.6.0
+flickr-photos-api==2.6.1
     # via
     #   -r requirements.txt
     #   flickypedia
@@ -86,7 +86,10 @@ flickr-url-parser==1.9.0
     #   flickr-photos-api
     #   flickypedia
 greenlet==3.0.3
-    # via sqlalchemy
+    # via
+    #   -r requirements.txt
+    #   flickypedia
+    #   sqlalchemy
 gunicorn==22.0.0
     # via
     #   -r requirements.txt
@@ -146,6 +149,8 @@ jaraco-functools==4.0.1
     #   keyring
 jeepney==0.8.0
     # via
+    #   -r requirements.txt
+    #   flickypedia
     #   keyring
     #   secretstorage
 jinja2==3.1.2
@@ -219,7 +224,10 @@ requests==2.32.3
 ruff==0.5.1
     # via -r dev_requirements.in
 secretstorage==3.3.3
-    # via keyring
+    # via
+    #   -r requirements.txt
+    #   flickypedia
+    #   keyring
 silver-nitrate==1.1.0
     # via
     #   -r requirements.txt
