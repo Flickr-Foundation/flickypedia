@@ -155,16 +155,45 @@ def test_find_flickr_photo_id_from_wikitext(
         # a Flickr photo.
         (
             """
-    <tr>
-      <td class="fileinfo-paramfield" id="fileinfotpl_src" lang="en">Source</td>
-      <td>
-        <a href="https://www.flickr.com/">Flickr.com</a> /
-        <a href="https://en.wikipedia.org/wiki/Flickr">Flickr</a>
-      </td>
-    </tr>
-    """,
+            <tr>
+              <td class="fileinfo-paramfield" id="fileinfotpl_src" lang="en">Source</td>
+              <td>
+                <a href="https://www.flickr.com/">Flickr.com</a> /
+                <a href="https://en.wikipedia.org/wiki/Flickr">Flickr</a>
+              </td>
+            </tr>
+            """,
             None,
-        )
+        ),
+        # This covers the case where the first URL in the Source field is
+        # a link to the Wikipedia page for Flickr.
+        (
+            """
+            <tr>
+              <td id="fileinfotpl_src" class="fileinfo-paramfield" lang="en">Source</td>
+              <td>
+                 <a href="/wiki/Flickr" class="mw-redirect" title="Flickr">Flickr</a>:
+                 <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/25834786@N03/3598534263">polling station</a>
+              </td>
+            </tr>
+            """,
+            {
+                "photo_id": "3598534263",
+                "url": "https://www.flickr.com/photos/25834786@N03/3598534263",
+            },
+        ),
+        (
+            """
+            <tr>
+              <td id="fileinfotpl_src" class="fileinfo-paramfield" lang="en">Source</td>
+              <td>
+                 <a href="/wiki/Flickr" class="mw-redirect" title="Flickr">Flickr</a>:
+                 <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/25834786@N03">a link to a user</a>
+              </td>
+            </tr>
+            """,
+            None,
+        ),
     ],
 )
 def test_find_flickr_photo_id_from_static_wikitext(
