@@ -30,25 +30,33 @@ class BackfillrQueue(AbstractFilesystemTaskQueue[list[str], BackfillrBatchResult
         except IndexError:
             return None
 
-    def process_individual_task(self, task: Task[list[str], BackfillrBatchResult]) -> None:
-        task['state'] = 'in_progress'
+    def process_individual_task(
+        self, task: Task[list[str], BackfillrBatchResult]
+    ) -> None:
+        print(f'Working on {task["id"]}')
+        task["state"] = "in_progress"
 
         with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
             futures = {
                 executor.submit(self.backfillr.update_file, filename=filename): filename
-                for filename in task['task_input']
-                if not task['task_output'][filename]
+                for filename in task["task_input"]
+                if not task["task_output"][filename]
             }
 
-            for i, fut in enumerate(concurrent.futures.as_completed(futures)):
+            import tqdm
+
+            for i, fut in tqdm.tqdm(
+                enumerate(concurrent.futures.as_completed(futures)), total=len(futures)
+            ):
                 filename = futures[fut]
                 actions = fut.result()
 
-                task['task_output'][filename] = [
-                    {'property_id': a['property_id'], 'action': a['action']} for a in actions
+                task["task_output"][filename] = [
+                    {"property_id": a["property_id"], "action": a["action"]}
+                    for a in actions
                 ]
                 self.record_task_event(
-                    task, event=f'Successfully processed {filename!r}'
+                    task, event=f"Successfully processed {filename!r}"
                 )
 
-        task['state'] = 'completed'
+        task["state"] = "completed"

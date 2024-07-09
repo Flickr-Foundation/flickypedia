@@ -82,14 +82,14 @@ def update_single_file(urls: list[str]) -> None:
 
         print(filename)
         for a in actions:
-            print(a['property_id'].ljust(8), end='')
+            print(a["property_id"].ljust(8), end="")
 
-            if a['action'] == 'do_nothing':
-                print('do nothing')
-            elif a['action'] == 'add_missing':
-                print(termcolor.colored(a['action'], 'green'))
+            if a["action"] == "do_nothing":
+                print("do nothing")
+            elif a["action"] == "add_missing":
+                print(termcolor.colored(a["action"], "green"))
             else:
-                print(termcolor.colored(a['action'], 'red'))
+                print(termcolor.colored(a["action"], "red"))
 
         print("")
 
@@ -109,7 +109,7 @@ def chunked_iterable(iterable, size):
 def prepare_spool_directory(flickr_id_spreadsheet: str, batch_size: int) -> None:
     now = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 
-    spool_directory = pathlib.Path(f'backfillr-{now}')
+    spool_directory = pathlib.Path(f"backfillr-{now}")
     spool_directory.mkdir()
     (spool_directory / ".gitignore").write_text("*")
 
@@ -117,7 +117,7 @@ def prepare_spool_directory(flickr_id_spreadsheet: str, batch_size: int) -> None
 
     with open(flickr_id_spreadsheet) as in_file:
         filenames = (
-            row['wikimedia_page_title'].replace('File:', '')
+            row["wikimedia_page_title"].replace("File:", "")
             for row in csv.DictReader(in_file)
         )
 
@@ -126,7 +126,7 @@ def prepare_spool_directory(flickr_id_spreadsheet: str, batch_size: int) -> None
 
             queue.start_task(
                 task_input=this_batch,
-                task_output={filename: [] for filename in this_batch}
+                task_output={filename: [] for filename in this_batch},
             )
 
     print(spool_directory)
