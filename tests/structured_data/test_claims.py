@@ -168,16 +168,16 @@ def test_omits_url_for_existing_photo(flickr_api: FlickrApi) -> None:
     )
     existing_sdc = create_sdc_claims_for_existing_flickr_photo(photo)
 
-    new_source_statement = next(
+    new_source_statement = [
         s
         for s in new_sdc["claims"]
         if s["mainsnak"]["property"] == WikidataProperties.SourceOfFile
-    )
-    existing_source_statement = next(
+    ][0]
+    existing_source_statement = [
         s
         for s in existing_sdc["claims"]
         if s["mainsnak"]["property"] == WikidataProperties.SourceOfFile
-    )
+    ][0]
 
     # Check we include the URL qualifier for new SDC…
     assert WikidataProperties.Url in new_source_statement["qualifiers"]

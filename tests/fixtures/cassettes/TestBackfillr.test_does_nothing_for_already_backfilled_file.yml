@@ -1,0 +1,486 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.27.0
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=wbgetentities&format=json&sites=commonswiki&titles=File%3AMomma+Cat+in+the+living+room+11+%2848771463782%29.jpg
+  response:
+    body:
+      string: !!binary |
+        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
+        7Kn34F0fmu0HZJgtBoHd/QPn8+8wixEAAA==
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '2'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Fri, 05 Jul 2024 14:05:13 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw-api-ext.eqiad.main-6464cf4f7-qbvb8
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - WMF-Last-Access=05-Jul-2024;Path=/;HttpOnly;secure;Expires=Tue, 06 Aug 2024
+        12:00:00 GMT
+      - GeoIP=GB:ENG:Camden:51.52:-0.16:v4; Path=/; secure; Domain=.wikimedia.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;SameSite=Lax;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie,Authorization
+      x-cache:
+      - cp3066 miss, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - WMF-Last-Access=05-Jul-2024; NetworkProbeLimit=0.001; GeoIP=GB:ENG:Camden:51.52:-0.16:v4
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.27.0
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=wbgetentities&format=json&sites=commonswiki&titles=File%3AMomma+Cat+in+the+living+room+11+%2848771463782%29.jpg
+  response:
+    body:
+      string: !!binary |
+        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
+        7Kn34F0fmu0HZJgtBoHd/QPn8+8wixEAAA==
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Fri, 05 Jul 2024 14:05:14 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw-api-ext.eqiad.main-6464cf4f7-dh7l4
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - NetworkProbeLimit=0.001;Path=/;Secure;SameSite=Lax;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie,Authorization
+      x-cache:
+      - cp3066 miss, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - api.flickr.com
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&photo_id=48771463782
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA6VWXW/bNhR9jn/FnQYULdBEVuTPRHZXdCuwAt1LB+wxoCVKYkyRGklZ0b/fIWUn
+        WZcCgZcHh7y8vPfcr0NlHx4aSQdurNBqEyVX04i4ynUhVLWJOlderiL6sJ1kxrZkHXObSO8j7Nta
+        O02i2ESz1XKZzBbpcnUdkeW54VBaL1ezYr5eLNZeZuBgEy3m83QeUclMg80iooI53rVSs4LDTjJf
+        rKfrZTpPIxK2ZAdthOObCIikyLmyWM9gjZXcDXeSH7gMh0YDVkCPDe5UQjF5wlHm6/mumKa7/Oms
+        1Kbxgdy3VUQHwXu7idIU4BteCLaJQmiI8SLTveKGlA1hLmez+XKx/OWPKYLoEJRiDSB9wa+lb+6K
+        vuhaAQ5n8uUTqfMjUASYawQ05mU+XcC5lxxTE1HLXH3HpGCAdm/vK66lrgaP6SKrROnI/9xxiWB3
+        EiCSiBTv70qpe7/xehfZ6fiu6ExwbCk+9ySLvUefkzgkxa+ccJJvv+qmYfSJORKKXM1RrAOaB2XR
+        DSVJFo9q0C+4zY1oPZLtn7WwqDK9YU17+3en3e2jnSfRFdE3GOyZpWZATgxXzr75eZqubwmpJBSS
+        GqYGGjgz9j3tOof2KKTXtZYXxHo2kGTWUaOVq+ntx67qsLueJut3sP7ZCK4KKThk3qDTPTMF+oB+
+        H90cOKHPDO0Vov5pMjnByXXTSu44XJXcMEmAyGjQnaqsgz5TBdUMAJAN5wW6pL1fKXsMqtLALx48
+        SOjueI42grpttZAQ1hod5jEd1QtRqBGSg8k9xw2f5Fbke2h37TF4ZMv3H2B5JZjhAGG6nU8Oy/fH
+        pffougY59Ufw8FFafbwx2t2Zzta8wNGvvBQKcwiTwEAKsJ/5Z1IrHuqABeBwI3RhfbRONBzX/6r5
+        2BU9R0sjEb6YCuP8nuAAY9QFtD0qS7pzmDROaFePwd8q2OANoTDEH8AUBkuIB1+lEAU2rcbitOk1
+        /I/JYBLVt8gh7ofghR9kJLkMFaK+RqavJpdn/U3ejgS4G+grMwP9JiUCPbHAu0kWP+92NP9BWLET
+        6IYBbd92O1BaGFswXWjCwF6e9hohh7Dxs5p5irQIEV31HUU6tufgPN/Kl9PkMk0oSW+S9U0K+gxn
+        lWGqkwwkOtoLwk6FVh5ZFYPRtd7DSL5Jsl6ly6NjUKFjR8A5w4vQNKhRuIctK4qGO3DlCecY0Y8u
+        Ic6XLnWWVb7JVQFI/hkIGcF+B7Y7uWrRDI9+bQ0SCFohO0dUdjvN4sc15OhSZC2otFxjUjGMdlw9
+        QXassoFQsRgfMjD8dHa9vHz2ol0m6Wy9AOGzztUaZP3vZ2CU/uAhYODizyBhi5eF5bVQ/A6uPIBt
+        6cWgRla9AsHqeoXH8kwAoJDuBQBB/FoA14s5HqgzARQa76MTeH+/T8Lp5LUw0hme/zNRIN7/AoDw
+        lb7Txf9y/XIBXpv/ZbJKFpjLM0P3LVgw/nIT4uCUgvDfT0TWGTlOBhbkhhZDE9iuxbhG29q51t7E
+        cd/3VyWGfm+uMHtx0LDx09dK/GyM4iyGrfD5MBrPRn2/wJfldvIPZ67u8YgKAAA=
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Fri, 05 Jul 2024 14:05:14 GMT
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 063bfb014e66ef670fc62ff044660cf2.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - XP22r4WI6ALWhMUxRy6InZrahUb-rMly47D5_bnhlaIHA50oSbJNBg==
+      X-Amz-Cf-Pop:
+      - LHR5-P1
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - openresty
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Sun, 04-Aug-2024 14:05:14 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Sun, 04-Aug-2024 14:05:14 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-flickr-api-request:
+      - Self=1-6687fd9a-3cffe9524a4da00a3af95902;Root=1-6687fd9a-772e7362035246be0230d0fd
+      x-robots-tag:
+      - noindex
+      x-server:
+      - serverless-proxy-10.78.45.235
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.licenses.getInfo
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA6WUS0/DMBCEz/RXrHyCQ+KWN6gpQq3EBRACIc6usyRWEruynRT49WwfKbRKKGpv
+        yWH8zUoz07/5KHKo0DpldMR6YZcBamlipZOIlf49uGRwM+j0rZuA88JHzGSM/nMlUTt0g85B/Q0q
+        jhjptSgwYrd5Ds8qSb2DZ3RoK4wZlDaPGAO+qTpdqby3alx6cgP3C8RSlXo/cdecS4vCqwqlKQqj
+        XWhswmszfPzJj8MubyCcNxCCRzNCqyq3GyrQcRvtpJmmh2QarVQi35st/8Afb8XverFsu7i3FRm8
+        pMLiba4y3JkeONFm4KzJwN7Idt5FzXs0kGkz1SDN5NPOEg8WHcVYzlLsNuI7nU7Dd8prZkNKMF+m
+        mJdOJNiUW6rfok+vWnmM4YU6iA7uDHVWF6g9vBmb/YJQRWYMejBMTEWApanQpb7IG5pxVROeyjEZ
+        g5EphNIwwlhJahoV8XA47B79o4aT+QPxXM+/0BpOe9J0VG+1EuvMB7F2Slvd1zgFaX44/dUW0EZx
+        Gq1B5xszAPMM4wQAAA==
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Fri, 05 Jul 2024 14:05:14 GMT
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 063bfb014e66ef670fc62ff044660cf2.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - 3VB2iMBRMIkjey1SAonYMt8YjY1V4mb5Cz9oNjBtGAG8eH1NOWXW4Q==
+      X-Amz-Cf-Pop:
+      - LHR5-P1
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - openresty
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Sun, 04-Aug-2024 14:05:14 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-flickr-api-request:
+      - Self=1-6687fd9a-0a697cff3db52f3e580bc500;Root=1-6687fd9a-42efaf2771c81749435de02a
+      x-robots-tag:
+      - noindex
+      x-server:
+      - serverless-proxy-10.78.21.172
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&photo_id=48771463782
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA63WzY6bMBAA4HP3KSzfN4B/SRV2H6CtetgeekMGHHACOMGwtHn6OiQQtKoUtPHN
+        lmyTL+MZz+b1T1WCd9kYpesIBisfAlmnOlN1HsGu3T6HELy+PG0acwCmFW0E9R7auVEnaUAq6qTU
+        dqXdZseHRtV2xWWS6b4utcjsqXbDl2EHKEUiywi+HTvRSAh6lbVFBDmFoJAqL+zm89jorkllBIu2
+        PZivnleqd7k6f12l21Kl+2aV6spjlGLqkZDzgDDMQxSveUgyumZsHZvV7pBD0DX2a+Mxfd+vZvsP
+        hW618XZml0ttFX/nZ3kD0DNHD4JKZkpEcFgPgfcR8100uQQfSAG1/8JoGiYOUEc3qAWmX0VXJbVQ
+        5RSjwJ+BQubE07rxtPdj9FaJ8mZBZGZBvpsbV7nBmIUYgJFFXBNoGI+3DXHiJDq1G1C9FETON+wK
+        GsYjCBPkBNS7AfX3QT9sxeiqSUPnGoJsSX28GLixVEstgJ1z5hqdYTxGhxLuwhOf3IhOi0Xh7L4N
+        41HEQjcJlLoRpfdFwxM0K9XIAkZNyN0U68SNplyoAQGbxecymd5TzB7IIRFkjDGU+jIu3JiKpSbk
+        E/vDr1l0mUwmToPP51GIiKQ8QYzFezem/X3T7+dL64O/3R4in9taPb1EDD1QGyjfUtvV+TSJsSMU
+        XqD62ahc1eLWLWDiW8VkWgf483HapmuaZD5O0li7iZP+X5w2l/bV9umebdxfnv4BMhk4uOcLAAA=
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Fri, 05 Jul 2024 14:05:14 GMT
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 063bfb014e66ef670fc62ff044660cf2.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - C9_UsY-Usa57XpD1J2rZN_nw8QkYQ_Nt5plAeU_NySous5dVGsMV8A==
+      X-Amz-Cf-Pop:
+      - LHR5-P1
+      X-Cache:
+      - Miss from cloudfront
+      content-encoding:
+      - gzip
+      server:
+      - openresty
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Sun, 04-Aug-2024 14:05:14 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-flickr-api-request:
+      - Self=1-6687fd9a-513410e54cafd99f6fcd87b3;Root=1-6687fd9a-2780c7ef08cfaf96084433e5
+      x-robots-tag:
+      - noindex
+      x-server:
+      - serverless-proxy-10.78.10.89
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - WMF-Last-Access=05-Jul-2024; NetworkProbeLimit=0.001; GeoIP=GB:ENG:Camden:51.52:-0.16:v4
+      host:
+      - commons.wikimedia.org
+      user-agent:
+      - python-httpx/0.27.0
+    method: GET
+    uri: https://commons.wikimedia.org/w/api.php?action=wbgetentities&format=json&sites=commonswiki&titles=File%3AMomma+Cat+in+the+living+room+11+%2848771463782%29.jpg
+  response:
+    body:
+      string: !!binary |
+        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
+        7Kn34F0fmu0HZJgtBoHd/QPn8+8wixEAAA==
+    headers:
+      accept-ranges:
+      - bytes
+      age:
+      - '0'
+      cache-control:
+      - private, must-revalidate, max-age=0
+      content-disposition:
+      - inline; filename=api-result.json
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Fri, 05 Jul 2024 14:05:15 GMT
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - mw-api-ext.eqiad.main-6464cf4f7-ff5sg
+      server-timing:
+      - cache;desc="pass", host;desc="cp3066"
+      set-cookie:
+      - NetworkProbeLimit=0.001;Path=/;Secure;SameSite=Lax;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding,Treat-as-Untrusted,X-Forwarded-Proto,Cookie,Authorization
+      x-cache:
+      - cp3066 miss, cp3066 pass
+      x-cache-status:
+      - pass
+      x-client-ip:
+      - 81.131.37.170
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    status:
+      code: 200
+      message: OK
+version: 1
