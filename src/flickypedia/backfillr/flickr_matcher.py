@@ -141,6 +141,15 @@ def find_flickr_photo_id_from_wikitext(
             if photo_id is not None:
                 return {"photo_id": photo_id, "url": url}
 
+        # Another common pattern is people linking to the Wikipedia
+        # page for Flickr.
+        if len(anchor_tags) == 2 and urls[0] == "/wiki/Flickr":
+            url = urls[1]
+
+            photo_id = get_flickr_photo_id_from_url(url)
+            if photo_id is not None:
+                return {"photo_id": photo_id, "url": url}
+
     # Now look for any links which are explicitly labelled as
     # "Source: <URL>" in the Wikitext.  For example:
     #
