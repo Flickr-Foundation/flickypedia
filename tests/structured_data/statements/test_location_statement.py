@@ -66,12 +66,20 @@ def test_no_location_statement_if_no_location_data() -> None:
     assert create_location_statement(location=None) is None
 
 
-def test_no_location_statement_if_null_location_data() -> None:
+@pytest.mark.parametrize(
+    "location",
+    [
+        # From https://www.flickr.com/photos/ed_webster/16125227798/
+        # Retrieved 23 June 2024
+        {"accuracy": 16, "latitude": 0.0, "longitude": 0.0},
+        #
+        # From https://www.flickr.com/photos/27526357@N00/3689541075/
+        # Retrieved 10 July 2024
+        {"accuracy": 12, "latitude": 0.0, "longitude": 0.0},
+    ],
+)
+def test_no_location_statement_if_null_location_data(location: LocationInfo) -> None:
     """
     Regression test for https://github.com/Flickr-Foundation/flickypedia/issues/461
     """
-    # From https://www.flickr.com/photos/ed_webster/16125227798/
-    # Retrieved 23 June 2024
-    location: LocationInfo = {"accuracy": 16, "latitude": 0.0, "longitude": 0.0}
-
     assert create_location_statement(location=location) is None
