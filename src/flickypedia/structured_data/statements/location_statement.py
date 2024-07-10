@@ -31,7 +31,7 @@ def create_location_statement(location: LocationInfo | None) -> NewStatement | N
     # than write null coordinates into WMC.
     #
     # See https://github.com/Flickr-Foundation/flickypedia/issues/461
-    if location == {"accuracy": 16, "latitude": 0.0, "longitude": 0.0}:
+    if location["latitude"] == 0.0 and location["longitude"] == 0.0:
         return None
 
     # The accuracy parameter in the Flickr API response tells us
