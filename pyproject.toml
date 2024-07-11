@@ -47,23 +47,7 @@ exclude_also = [
 ]
 
 [tool.pytest.ini_options]
-filterwarnings = [
-  "error",
-
-  # This hides a deprecation warning in flask_login:
-  #
-  #     flask_login/utils.py:130: DeprecationWarning: 'werkzeug.urls.url_encode'
-  #     is deprecated and will be removed in Werkzeug 2.4.
-  #
-  #     Use 'urllib.parse.urlencode' instead.
-  #
-  # There's a fix for this in flask-login, but there's no new version yet:
-  # https://github.com/maxcountryman/flask-login/pull/746
-  #
-  # When we upgrade to a version of flask-login that includes
-  # this fix (>0.6.2), we can remove this filter.
-  "ignore::DeprecationWarning:flask_login*:",
-]
+filterwarnings = ["error"]
 
 [tool.mypy]
 mypy_path = "src"
