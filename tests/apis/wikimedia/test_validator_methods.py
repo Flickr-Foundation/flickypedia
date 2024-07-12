@@ -84,7 +84,11 @@ def test_validate_title_rejects_image_suffix(
 
 
 @pytest.mark.parametrize(
-    "title", ["This:is:a:title:with:colons", "This/is\\a/title\\with/slashes"]
+    "title",
+    [
+        pytest.param("This:is:a:title:with:colons", id="with_colons"),
+        pytest.param("This/is\\a/title\\with/slashes", id="with_slashes"),
+    ],
 )
 def test_validate_title_rejects_illegal_chars(
     wikimedia_api: WikimediaApi, title: str

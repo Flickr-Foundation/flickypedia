@@ -8,8 +8,9 @@ from flask.testing import FlaskClient
 from flask_login import FlaskLoginClient, current_user
 from flickr_photos_api import FlickrApi
 import httpx
+from nitrate.cassettes import cassette_name, vcr_cassette
 import pytest
-from pytest import FixtureRequest
+
 import vcr
 
 from flickypedia.uploadr import create_app
@@ -21,40 +22,6 @@ from utils import store_user
 @pytest.fixture
 def user_agent() -> str:
     return "Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)"
-
-
-@pytest.fixture(scope="function")
-def cassette_name(request: FixtureRequest) -> str:
-    """
-    Returns the name of a cassette for vcr.py.
-
-    The name can be made up of (up to) three parts:
-
-    -   the name of the test class
-    -   the name of the test function
-    -   the ID of the test case in @pytest.mark.parametrize
-
-    """
-    if request.cls is not None:
-        return f"{request.cls.__name__}.{request.node.name}.yml"
-    else:
-        return f"{request.node.name}.yml"
-
-
-@pytest.fixture(scope="function")
-def vcr_cassette(cassette_name: str) -> Iterator[None]:
-    """
-    Creates a VCR cassette for use in tests.
-
-    Anything using httpx in this test will record its HTTP interactions
-    as "cassettes" using vcr.py, which can be replayed offline
-    (e.g. in CI tests).
-    """
-    with vcr.use_cassette(
-        cassette_name,
-        cassette_library_dir="tests/fixtures/cassettes",
-    ):
-        yield
 
 
 @pytest.fixture(scope="function")
@@ -213,3 +180,16 @@ def queue_dir(app: Flask) -> None:
     )
 
     return None
+
+
+__all__ = [
+    "cassette_name",
+    "client",
+    "flickr_api",
+    "flickr_oauth_cassette",
+    "logged_in_client",
+    "queue_dir",
+    "user_agent",
+    "vcr_cassette",
+    "wikimedia_api",
+]

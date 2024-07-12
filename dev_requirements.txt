@@ -228,7 +228,7 @@ secretstorage==3.3.3
     #   -r requirements.txt
     #   flickypedia
     #   keyring
-silver-nitrate==1.1.0
+silver-nitrate==1.1.2
     # via
     #   -r requirements.txt
     #   flickr-photos-api
