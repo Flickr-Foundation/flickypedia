@@ -20,21 +20,25 @@ def test_it_rejects_non_file_urls(url: str) -> None:
 @pytest.mark.parametrize(
     ["url", "filename"],
     [
-        (
+        pytest.param(
             "https://commons.wikimedia.org/wiki/File:Portogallo_2007_(1677680909).jpg",
             "Portogallo_2007_(1677680909).jpg",
+            id="Portogallo",
         ),
-        (
+        pytest.param(
             "https://commons.wikimedia.org/wiki/File:%225_April_2017_-_The_Culture_defense_(34175959031).jpg",
             '"5_April_2017_-_The_Culture_defense_(34175959031).jpg',
+            id="The_Culture_defense",
         ),
-        (
+        pytest.param(
             "https://commons.m.wikimedia.org/wiki/File:%22Christmas_wishes%22_-_Christmas_card._Nellie_Murrell_Collection,_Australia_c._1900s.jpg",
             '"Christmas_wishes"_-_Christmas_card._Nellie_Murrell_Collection,_Australia_c._1900s.jpg',
+            id="Christmas_wishes",
         ),
-        (
+        pytest.param(
             "https://commons.wikimedia.org/?curid=106460733",
             "View of Mount Lycabettus from Ardettus Hill in Athens on June 10, 2021.jpg",
+            id="Mount Lycabettus",
         ),
     ],
 )
