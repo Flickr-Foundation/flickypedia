@@ -81,7 +81,7 @@ jeepney==0.8.0
     #   secretstorage
 jinja2==3.1.2
     # via flask
-keyring==25.2.1
+keyring==25.3.0
     # via -r requirements.in
 libsass==0.23.0
     # via -r requirements.in
