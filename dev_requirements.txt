@@ -90,7 +90,7 @@ greenlet==3.0.3
     #   -r requirements.txt
     #   flickypedia
     #   sqlalchemy
-gunicorn==22.0.0
+gunicorn==23.0.0
     # via
     #   -r requirements.txt
     #   flickypedia
