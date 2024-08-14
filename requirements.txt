@@ -39,7 +39,7 @@ flask-sqlalchemy==3.1.1
     # via -r requirements.in
 flask-wtf==1.2.1
     # via -r requirements.in
-flickr-photos-api==2.8.1
+flickr-photos-api==2.9.0
     # via -r requirements.in
 flickr-url-parser==1.9.0
     # via
