@@ -61,7 +61,7 @@ def buddy_icon(user_id: str) -> str:
         user_agent=current_app.config["USER_AGENT"],
     )
 
-    return api.get_buddy_icon_url(user_id=user_id)
+    return api.get_user(user_id=user_id)["buddy_icon_url"]
 
 
 def create_app(
