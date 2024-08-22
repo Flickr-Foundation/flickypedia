@@ -123,7 +123,7 @@ typing-extensions==4.8.0
     #   pydantic
     #   pydantic-core
     #   sqlalchemy
-werkzeug==3.0.3
+werkzeug==3.0.4
     # via
     #   -r requirements.in
     #   flask
