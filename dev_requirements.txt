@@ -80,7 +80,7 @@ flickr-photos-api==2.11.2
     # via
     #   -r requirements.txt
     #   flickypedia
-flickr-url-parser==1.9.0
+flickr-url-parser==1.10.0
     # via
     #   -r requirements.txt
     #   flickr-photos-api
