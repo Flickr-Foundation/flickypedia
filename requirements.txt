@@ -98,9 +98,9 @@ packaging==23.2
     # via gunicorn
 pycparser==2.21
     # via cffi
-pydantic==2.8.2
+pydantic==2.9.0
     # via -r requirements.in
-pydantic-core==2.20.1
+pydantic-core==2.23.2
     # via pydantic
 secretstorage==3.3.3
     # via keyring
@@ -123,6 +123,8 @@ typing-extensions==4.8.0
     #   pydantic
     #   pydantic-core
     #   sqlalchemy
+tzdata==2024.1
+    # via pydantic
 werkzeug==3.0.4
     # via
     #   -r requirements.in
