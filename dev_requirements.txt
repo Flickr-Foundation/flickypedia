@@ -278,8 +278,10 @@ typing-extensions==4.8.0
     #   pydantic-core
     #   sqlalchemy
 urllib3==2.2.2
-    # via requests
-vcrpy==6.0.1
+    # via
+    #   requests
+    #   vcrpy
+vcrpy==6.0.2
     # via -r dev_requirements.in
 werkzeug==3.0.4
     # via
