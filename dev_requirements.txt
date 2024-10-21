@@ -261,7 +261,7 @@ tqdm==4.66.5
     #   -r dev_requirements.in
     #   -r requirements.txt
     #   flickypedia
-types-beautifulsoup4==4.12.0.20240907
+types-beautifulsoup4==4.12.0.20241020
     # via -r dev_requirements.in
 types-html5lib==1.1.11.20240228
     # via types-beautifulsoup4
