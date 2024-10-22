@@ -267,7 +267,7 @@ types-html5lib==1.1.11.20240228
     # via types-beautifulsoup4
 types-tqdm==4.66.0.20240417
     # via -r dev_requirements.in
-types-wtforms==3.1.0.20240425
+types-wtforms==3.2.1.20241022
     # via -r dev_requirements.in
 typing-extensions==4.8.0
     # via
