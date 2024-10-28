@@ -283,7 +283,7 @@ urllib3==2.2.2
     #   vcrpy
 vcrpy==6.0.2
     # via -r dev_requirements.in
-werkzeug==3.0.4
+werkzeug==3.0.6
     # via
     #   -r requirements.txt
     #   flask
