@@ -76,7 +76,7 @@ flask-wtf==1.2.1
     # via
     #   -r requirements.txt
     #   flickypedia
-flickr-photos-api==2.11.2
+flickr-photos-api==2.12.0
     # via
     #   -r requirements.txt
     #   flickypedia
