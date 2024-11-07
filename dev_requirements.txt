@@ -256,7 +256,7 @@ tenacity==8.2.3
     #   flickypedia
 termcolor==2.5.0
     # via -r dev_requirements.in
-tqdm==4.66.6
+tqdm==4.67.0
     # via
     #   -r dev_requirements.in
     #   -r requirements.txt

@@ -116,7 +116,7 @@ sqlalchemy==2.0.23
     # via flask-sqlalchemy
 tenacity==8.2.3
     # via flickr-photos-api
-tqdm==4.66.6
+tqdm==4.67.0
     # via -r requirements.in
 typing-extensions==4.8.0
     # via
