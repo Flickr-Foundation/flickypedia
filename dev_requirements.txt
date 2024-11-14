@@ -21,7 +21,7 @@ beautifulsoup4==4.12.2
     #   -r requirements.txt
     #   bs4
     #   flickypedia
-blinker==1.7.0
+blinker==1.9.0
     # via
     #   -r requirements.txt
     #   flask
@@ -57,7 +57,7 @@ cryptography==43.0.3
     #   authlib
     #   flickypedia
     #   secretstorage
-flask==3.0.3
+flask==3.1.0
     # via
     #   -r requirements.txt
     #   flask-login
@@ -126,7 +126,7 @@ idna==3.4
     #   yarl
 iniconfig==2.0.0
     # via pytest
-itsdangerous==2.1.2
+itsdangerous==2.2.0
     # via
     #   -r requirements.txt
     #   flask
