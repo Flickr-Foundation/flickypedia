@@ -37,7 +37,7 @@ flask-login==0.6.3
     # via -r requirements.in
 flask-sqlalchemy==3.1.1
     # via -r requirements.in
-flask-wtf==1.2.1
+flask-wtf==1.2.2
     # via -r requirements.in
 flickr-photos-api==2.12.0
     # via -r requirements.in
