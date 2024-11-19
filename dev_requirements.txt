@@ -265,7 +265,9 @@ types-beautifulsoup4==4.12.0.20241020
     # via -r dev_requirements.in
 types-html5lib==1.1.11.20240228
     # via types-beautifulsoup4
-types-tqdm==4.66.0.20240417
+types-requests==2.32.0.20241016
+    # via types-tqdm
+types-tqdm==4.67.0.20241119
     # via -r dev_requirements.in
 types-wtforms==3.2.1.20241025
     # via -r dev_requirements.in
@@ -280,6 +282,7 @@ typing-extensions==4.8.0
 urllib3==2.2.2
     # via
     #   requests
+    #   types-requests
     #   vcrpy
 vcrpy==6.0.2
     # via -r dev_requirements.in
