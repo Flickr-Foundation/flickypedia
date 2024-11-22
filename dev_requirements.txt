@@ -202,11 +202,11 @@ pycparser==2.21
     #   -r requirements.txt
     #   cffi
     #   flickypedia
-pydantic==2.10.0
+pydantic==2.10.1
     # via
     #   -r requirements.txt
     #   flickypedia
-pydantic-core==2.27.0
+pydantic-core==2.27.1
     # via
     #   -r requirements.txt
     #   flickypedia
