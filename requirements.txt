@@ -98,9 +98,9 @@ packaging==23.2
     # via gunicorn
 pycparser==2.21
     # via cffi
-pydantic==2.10.0
+pydantic==2.10.1
     # via -r requirements.in
-pydantic-core==2.27.0
+pydantic-core==2.27.1
     # via pydantic
 secretstorage==3.3.3
     # via keyring
