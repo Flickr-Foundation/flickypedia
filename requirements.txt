@@ -53,7 +53,7 @@ h11==0.14.0
     # via httpcore
 httpcore==1.0.2
     # via httpx
-httpx==0.27.2
+httpx==0.28.0
     # via
     #   -r requirements.in
     #   flickr-photos-api
@@ -107,9 +107,7 @@ secretstorage==3.3.3
 silver-nitrate==1.1.2
     # via flickr-photos-api
 sniffio==1.3.0
-    # via
-    #   anyio
-    #   httpx
+    # via anyio
 soupsieve==2.5
     # via beautifulsoup4
 sqlalchemy==2.0.23
