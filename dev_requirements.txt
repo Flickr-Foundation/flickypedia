@@ -215,7 +215,7 @@ pytest==8.2.1
     # via pytest-cov
 pytest-cov==6.0.0
     # via -r dev_requirements.in
-pywikibot==9.5.0
+pywikibot==9.6.0
     # via -r dev_requirements.in
 pyyaml==6.0.1
     # via vcrpy
