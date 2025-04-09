@@ -8,6 +8,7 @@ pytest-cov
 ruff
 termcolor
 tqdm
+types-Authlib
 types-beautifulsoup4
 types-tqdm
 types-wtforms
