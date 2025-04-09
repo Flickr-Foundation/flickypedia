@@ -31,11 +31,11 @@ def find_matched_photos(entries: Iterator[SnapshotEntry]) -> Iterator[MatchedPho
                 }
         except AmbiguousStructuredData as exc:
             print(
-                f'Ambiguity in https://commons.wikimedia.org/?curid={entry["pageid"]}: {exc}',
+                f"Ambiguity in https://commons.wikimedia.org/?curid={entry['pageid']}: {exc}",
                 file=sys.stderr,
             )
         except Exception as exc:
             print(
-                f'Unable to find photo ID in https://commons.wikimedia.org/?curid={entry["pageid"]}: {exc}',
+                f"Unable to find photo ID in https://commons.wikimedia.org/?curid={entry['pageid']}: {exc}",
                 file=sys.stderr,
             )

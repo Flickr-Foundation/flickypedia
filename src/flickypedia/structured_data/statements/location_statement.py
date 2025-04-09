@@ -96,7 +96,7 @@ def create_location_statement(location: LocationInfo | None) -> NewStatement | N
             1: 0.1,
         }[location["accuracy"]]
     except KeyError:
-        raise ValueError(f'Unrecognised location accuracy: {location["accuracy"]}')
+        raise ValueError(f"Unrecognised location accuracy: {location['accuracy']}")
 
     return {
         "mainsnak": {

@@ -175,7 +175,7 @@ def test_creates_upload_task_for_successful_form_post(
 
     assert this_upload_request["caption"] == {
         "language": "en",
-        "text": "A photo with an " "appropriate-length caption",
+        "text": "A photo with an appropriate-length caption",
     }
 
     assert this_upload_request["photo"] == get_photos_data["photos"][0]
