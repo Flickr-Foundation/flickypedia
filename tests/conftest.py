@@ -49,6 +49,7 @@ def wikimedia_api(cassette_name: str) -> Iterator[WikimediaApi]:
         cassette_name,
         cassette_library_dir="tests/fixtures/cassettes",
         filter_headers=["authorization"],
+        decode_compressed_response=True,
     ):
         # Coverage note: depending on whether you have an API token or
         # not, only one of these branches were run.
@@ -73,6 +74,7 @@ def flickr_api(cassette_name: str, user_agent: str) -> Iterator[FlickrApi]:
         cassette_name,
         cassette_library_dir="tests/fixtures/cassettes",
         filter_query_parameters=["api_key"],
+        decode_compressed_response=True,
     ):
         yield FlickrApi.with_api_key(
             api_key=os.environ.get("FLICKR_API_KEY", "<REDACTED>"),
@@ -98,6 +100,7 @@ def flickr_oauth_cassette(cassette_name: str) -> Iterator[str]:
             "oauth_timestamp",
             "oauth_verifier",
         ],
+        decode_compressed_response=True,
     ):
         yield cassette_name
 
