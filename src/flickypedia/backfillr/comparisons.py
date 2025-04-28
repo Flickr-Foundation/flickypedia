@@ -53,7 +53,7 @@ def are_equivalent_times(time1: Value.Time, time2: Value.Time) -> bool:
     are equivalent.
     """
     for key in ("precision", "before", "after", "timezone", "calendarmodel"):
-        if time1[key] != time2[key]:  # type: ignore
+        if time1[key] != time2[key]:
             return False
 
     # e.g. +1896-01-01T00:00:00Z

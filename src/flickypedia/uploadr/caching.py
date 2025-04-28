@@ -19,7 +19,7 @@ import os
 import uuid
 
 from flask import current_app
-from nitrate.json import DatetimeDecoder, DatetimeEncoder
+from nitrate.json import NitrateDecoder, NitrateEncoder
 
 from flickypedia.types.flickr import GetPhotosData
 
@@ -31,7 +31,7 @@ def get_cached_photos_data(cache_id: str) -> GetPhotosData:
     cache_dir = current_app.config["FLICKR_API_RESPONSE_CACHE"]
 
     with open(os.path.join(cache_dir, cache_id + ".json")) as infile:
-        cached_data = json.load(infile, cls=DatetimeDecoder)
+        cached_data = json.load(infile, cls=NitrateDecoder)
 
     return cached_data["value"]  # type: ignore
 
@@ -53,7 +53,7 @@ def save_cached_photos_data(photos_data: GetPhotosData) -> str:
     }
 
     with open(os.path.join(cache_dir, response_id + ".json"), "w") as outfile:
-        outfile.write(json.dumps(out_data, cls=DatetimeEncoder))
+        outfile.write(json.dumps(out_data, cls=NitrateEncoder))
 
     return response_id
 

@@ -8,7 +8,7 @@ from authlib.oauth2.rfc6749.wrappers import OAuth2Token
 from cryptography.fernet import Fernet
 from flask.testing import FlaskClient
 from flask_login import login_user
-from nitrate.json import DatetimeDecoder
+from nitrate.json import NitrateDecoder
 from nitrate.types import read_typed_json
 
 from flickypedia.structured_data import ExistingClaims, NewClaims, NewStatement
@@ -108,7 +108,7 @@ def get_typed_fixture(path: pathlib.Path | str, model: type[T]) -> T:
     """
     fixtures_dir = pathlib.Path("tests/fixtures")
 
-    return read_typed_json(fixtures_dir / path, model=model, cls=DatetimeDecoder)
+    return read_typed_json(fixtures_dir / path, model=model, cls=NitrateDecoder)
 
 
 def get_existing_claims_fixture(filename: str) -> ExistingClaims:

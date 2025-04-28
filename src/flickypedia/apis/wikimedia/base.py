@@ -31,7 +31,7 @@ class WikimediaApiBase(abc.ABC):
         """
         Call an HTTP endpoint and return the text content of the response.
         """
-        return NotImplemented
+        raise NotImplementedError
 
     def _get_json(self, *, params: dict[str, str]) -> typing.Any:
         """

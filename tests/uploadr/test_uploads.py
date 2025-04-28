@@ -55,6 +55,7 @@ def test_upload_single_photo(app: Flask, wikimedia_api: WikimediaApi) -> None:
         "farm": "-1",
         "count_comments": 0,
         "count_views": 0,
+        "media": "photo",
     }
 
     upload_single_photo(

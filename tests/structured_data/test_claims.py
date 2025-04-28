@@ -50,6 +50,7 @@ def test_create_sdc_claims_for_flickr_photo_without_date_taken() -> None:
         "farm": "-1",
         "count_comments": 0,
         "count_views": 0,
+        "media": "photo",
     }
 
     actual = create_sdc_claims_for_new_flickr_photo(
@@ -103,6 +104,7 @@ def test_create_sdc_claims_for_flickr_photo_with_date_taken() -> None:
         "farm": "-1",
         "count_comments": 0,
         "count_views": 0,
+        "media": "photo",
     }
 
     actual = create_sdc_claims_for_new_flickr_photo(
@@ -136,7 +138,11 @@ def test_creates_sdc_for_photo_with_in_copyright_license() -> None:
                 "height": 839,
             }
         ],
-        "license": {"id": "in-copyright", "label": "All Rights Reserved", "url": None},
+        "license": {
+            "id": "all-rights-reserved",
+            "label": "All Rights Reserved",
+            "url": None,
+        },
         "date_posted": datetime.datetime.fromtimestamp(1414001923),
         "date_taken": {
             "value": datetime.datetime(2014, 7, 14, 7, 56, 51),
@@ -152,6 +158,7 @@ def test_creates_sdc_for_photo_with_in_copyright_license() -> None:
         "farm": "-1",
         "count_comments": 0,
         "count_views": 0,
+        "media": "photo",
     }
 
     actual = create_sdc_claims_for_existing_flickr_photo(photo)
