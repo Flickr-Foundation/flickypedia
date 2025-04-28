@@ -6,11 +6,11 @@ Methods for getting information about collections of photos in Flickr
 from xml.etree import ElementTree as ET
 
 from nitrate.xml import find_optional_text, find_required_elem, find_required_text
-from flickr_photos_api import FlickrApi
+from flickr_photos_api import FlickrApi, Size
 from flickr_photos_api.date_parsers import parse_date_taken, parse_timestamp
 from flickr_photos_api.exceptions import ResourceNotFound
 from flickr_photos_api.types import User, create_user, get_machine_tags
-from flickr_photos_api.utils import parse_location, parse_safety_level, parse_sizes
+from flickr_photos_api.utils import parse_location, parse_safety_level
 
 from flickypedia.types.flickr import (
     CollectionOfPhotos,
@@ -90,6 +90,53 @@ def _from_collection_photo(
         "url": url,
         "original_format": original_format,
     }
+
+
+def parse_sizes(photo_elem: ET.Element) -> list[Size]:
+    """
+    Get a list of sizes from a photo in a collection response.
+    """
+    # When you get a collection of photos (e.g. in an album)
+    # you can get some of the sizes on the <photo> element, e.g.
+    #
+    #     <
+    #       photo
+    #       url_t="https://live.staticflickr.com/2893/1234567890_t.jpg"
+    #       height_t="78"
+    #       width_t="100"
+    #       …
+    #     />
+    #
+    sizes: list[Size] = []
+
+    for suffix, label in [
+        ("sq", "Square"),
+        ("q", "Large Square"),
+        ("t", "Thumbnail"),
+        ("s", "Small"),
+        ("m", "Medium"),
+        ("l", "Large"),
+        ("o", "Original"),
+    ]:
+        try:
+            media = photo_elem.attrib["media"]
+
+            if media not in ("video", "photo"):  # pragma: no cover
+                raise ValueError(f"Unrecognised media: {media!r}")
+
+            sizes.append(
+                {
+                    "height": int(photo_elem.attrib[f"height_{suffix}"]),
+                    "width": int(photo_elem.attrib[f"width_{suffix}"]),
+                    "label": label,
+                    "media": media,  # type: ignore
+                    "source": photo_elem.attrib[f"url_{suffix}"],
+                }
+            )
+        except KeyError:
+            pass
+
+    return sizes
 
 
 extras = [
