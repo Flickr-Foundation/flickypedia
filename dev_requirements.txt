@@ -61,6 +61,7 @@ cryptography==44.0.2
     #   -r requirements.txt
     #   authlib
     #   flickypedia
+    #   types-authlib
 flask==3.1.0
     # via
     #   -r requirements.txt
@@ -256,6 +257,8 @@ tqdm==4.67.1
     #   -r dev_requirements.in
     #   -r requirements.txt
     #   flickypedia
+types-authlib==1.5.0.20250416
+    # via -r dev_requirements.in
 types-beautifulsoup4==4.12.0.20250204
     # via -r dev_requirements.in
 types-html5lib==1.1.11.20241018

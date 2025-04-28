@@ -110,7 +110,9 @@ def begin_upload(upload_requests: list[UploadRequest]) -> str:
     if not current_app.config["TESTING"]:
         current_user.refresh_token()
         keyring.set_password(
-            **keyring_id, password=current_user.token()["access_token"]
+            service_name=keyring_id["service_name"],
+            username=keyring_id["username"],
+            password=current_user.token()["access_token"],  # type: ignore
         )
 
     task_input: UploadBatch = {"keyring_id": keyring_id, "requests": upload_requests}

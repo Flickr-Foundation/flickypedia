@@ -1,3 +1,0 @@
-import typing
-
-class OAuth2Token(dict[str, typing.Any]): ...
