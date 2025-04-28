@@ -24,13 +24,17 @@ jobs:
     - name: Install dependencies
       run: pip install -r dev_requirements.txt
 
-    - name: Run linting
+    - name: Check formatting
       run: |
         ruff check .
         ruff format --check .
 
+    - name: Check docstrings
+      run: interrogate -vv
+
     - name: Check types
       run: mypy src tests
+
     - name: Run tests
       run: |
         coverage run -m pytest tests
