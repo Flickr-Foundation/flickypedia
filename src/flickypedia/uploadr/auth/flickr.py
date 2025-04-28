@@ -9,8 +9,7 @@ from flask_login import current_user, login_required
 import keyring
 from nitrate.passwords import get_required_password
 from nitrate.xml import find_required_elem, find_required_text
-
-from flickypedia.types.views import ViewResponse
+import werkzeug
 
 
 def store_flickypedia_user_oauth_token() -> None:
@@ -137,7 +136,7 @@ def get_flickypedia_bot_oauth_client() -> OAuth1Client:
 
 
 @login_required
-def oauth2_authorize_flickr() -> ViewResponse:
+def oauth2_authorize_flickr() -> werkzeug.Response:
     """
     Authorize the user with the Flickr APIs.
 
@@ -198,7 +197,7 @@ def oauth2_authorize_flickr() -> ViewResponse:
 
 
 @login_required
-def oauth2_callback_flickr() -> ViewResponse:
+def oauth2_callback_flickr() -> werkzeug.Response:
     """
     Handle an authorization callback from Flickr.
     """

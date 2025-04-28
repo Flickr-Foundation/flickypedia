@@ -2,14 +2,13 @@ from flask import flash, redirect, render_template, request, session, url_for
 from flask_login import login_required
 from flask_wtf import FlaskForm
 from flickr_url_parser import parse_flickr_url, NotAFlickrUrl, UnrecognisedUrl
+import werkzeug
 from wtforms import URLField, SubmitField
 from wtforms.validators import DataRequired
 
-from flickypedia.types.views import ViewResponse
-
 
 @login_required
-def get_photos() -> ViewResponse:
+def get_photos() -> str | werkzeug.Response:
     photo_url_form = FlickrPhotoURLForm()
 
     if photo_url_form.validate_on_submit():

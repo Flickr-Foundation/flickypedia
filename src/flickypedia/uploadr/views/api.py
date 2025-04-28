@@ -1,14 +1,13 @@
 import functools
 
-from flask import abort, jsonify, request
+from flask import abort, jsonify, request, Response
 from flask_login import current_user, login_required
 
 from flickypedia.apis.wikimedia import top_n_languages, LanguageMatch
-from flickypedia.types.views import ViewResponse
 
 
 @login_required
-def validate_title_api() -> ViewResponse:
+def validate_title_api() -> Response:
     """
     A basic API for title validation that can be called from JS on the page.
 
@@ -42,7 +41,7 @@ def find_matching_categories(query: str) -> list[str]:
 
 
 @login_required
-def find_matching_categories_api() -> ViewResponse:
+def find_matching_categories_api() -> Response:
     """
     A basic API for looking up matching categories that can be called
     from JS on the page.
@@ -70,7 +69,7 @@ def find_matching_languages(query: str) -> list[LanguageMatch]:
 
 
 @login_required
-def find_matching_languages_api() -> ViewResponse:
+def find_matching_languages_api() -> Response:
     """
     A basic API for looking up matching languages that can be called
     from JS on the page.

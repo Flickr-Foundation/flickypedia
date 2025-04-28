@@ -80,9 +80,9 @@ from flask_login import (
 from flask_sqlalchemy import SQLAlchemy
 import httpx
 from nitrate.types import validate_type
+import werkzeug
 
 from flickypedia.apis import WikimediaApi
-from flickypedia.types.views import ViewResponse
 from flickypedia.utils import decrypt_string, encrypt_string
 
 
@@ -315,7 +315,7 @@ def load_user(userid: str) -> WikimediaUserSession | None:
 
 
 @login_required
-def logout() -> ViewResponse:
+def logout() -> werkzeug.Response:
     """
     A route to log out the user.
     """
@@ -326,7 +326,7 @@ def logout() -> ViewResponse:
     return redirect(url_for("homepage"))
 
 
-def oauth2_authorize_wikimedia() -> ViewResponse:
+def oauth2_authorize_wikimedia() -> werkzeug.Response:
     """
     Authorize the user with the Wikimedia APIs.
 
@@ -355,7 +355,7 @@ def oauth2_authorize_wikimedia() -> ViewResponse:
     return redirect(uri)
 
 
-def oauth2_callback_wikimedia() -> ViewResponse:
+def oauth2_callback_wikimedia() -> werkzeug.Response:
     """
     Handle an authorization callback from Wikimedia.
     """

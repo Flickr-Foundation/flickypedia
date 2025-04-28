@@ -44,15 +44,16 @@ When the upload completes, we redirect the user to the next page.
 
 """
 
+import flask
 from flask import jsonify, redirect, render_template, url_for
 from flask_login import login_required
+import werkzeug
 
-from flickypedia.types.views import ViewResponse
 from ..uploads import uploads_queue
 
 
 @login_required
-def wait_for_upload(task_id: str) -> ViewResponse:
+def wait_for_upload(task_id: str) -> str | werkzeug.Response:
     q = uploads_queue()
     task = q.read_task(task_id)
 
@@ -68,7 +69,7 @@ def wait_for_upload(task_id: str) -> ViewResponse:
 
 
 @login_required
-def get_upload_status(task_id: str) -> ViewResponse:
+def get_upload_status(task_id: str) -> flask.Response:
     q = uploads_queue()
     task = q.read_task(task_id)
 

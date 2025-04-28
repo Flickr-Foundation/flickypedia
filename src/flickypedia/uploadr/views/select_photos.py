@@ -43,13 +43,13 @@ from flickr_url_parser import (
     UnrecognisedUrl,
 )
 from flask_wtf import FlaskForm
+import werkzeug
 from wtforms import BooleanField, HiddenField, SubmitField
 from wtforms.validators import DataRequired
 
 from flickypedia.apis.flickr import get_photos_from_flickr
 from flickypedia.photos import categorise_photos
 from flickypedia.types.flickr import FlickrPhoto
-from flickypedia.types.views import ViewResponse
 from .get_photos import FlickrPhotoURLForm
 from ..caching import (
     get_cached_photos_data,
@@ -115,7 +115,7 @@ def create_select_photos_form(photos: list[FlickrPhoto]) -> BaseSelectForm:
 
 
 @login_required
-def select_photos() -> ViewResponse:
+def select_photos() -> str | werkzeug.Response:
     try:
         flickr_url = request.args["flickr_url"]
         parsed_url = parse_flickr_url(flickr_url)
