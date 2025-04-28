@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 
 from ..types import (
     NewStatement,
@@ -14,7 +14,7 @@ def create_source_statement(
     photo_id: str,
     photo_url: str,
     original_url: str | None,
-    retrieved_at: datetime.datetime | None,
+    retrieved_at: datetime | None,
 ) -> NewStatement:
     """
     Create a structured data statement for the "source" statement.

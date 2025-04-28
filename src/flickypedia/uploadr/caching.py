@@ -13,7 +13,7 @@ the cached response later, to give Flickypedia users a consistent
 view of Flickr data.
 """
 
-import datetime
+from datetime import datetime, timezone
 import json
 import os
 import uuid
@@ -48,7 +48,7 @@ def save_cached_photos_data(photos_data: GetPhotosData) -> str:
     os.makedirs(cache_dir, exist_ok=True)
 
     out_data = {
-        "saved_at": datetime.datetime.now(),
+        "saved_at": datetime.now(tz=timezone.utc),
         "value": photos_data,
     }
 

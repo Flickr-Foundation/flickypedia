@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 import typing
 
 import pytest
@@ -8,7 +8,7 @@ from flickypedia.structured_data.types import DataValueTypes, to_wikidata_date_v
 
 ToWikidateArgs = typing.TypedDict(
     "ToWikidateArgs",
-    {"d": datetime.datetime, "precision": typing.Literal["day", "month", "year"]},
+    {"d": datetime, "precision": typing.Literal["day", "month", "year"]},
 )
 
 
@@ -16,7 +16,7 @@ ToWikidateArgs = typing.TypedDict(
     ["kwargs", "expected"],
     [
         (
-            {"d": datetime.datetime(2023, 10, 12, 1, 2, 3), "precision": "day"},
+            {"d": datetime(2023, 10, 12, 1, 2, 3), "precision": "day"},
             {
                 "value": {
                     "time": "+2023-10-12T00:00:00Z",
@@ -30,7 +30,7 @@ ToWikidateArgs = typing.TypedDict(
             },
         ),
         (
-            {"d": datetime.datetime(2023, 10, 12, 1, 2, 3), "precision": "month"},
+            {"d": datetime(2023, 10, 12, 1, 2, 3), "precision": "month"},
             {
                 "value": {
                     "time": "+2023-10-00T00:00:00Z",
@@ -44,7 +44,7 @@ ToWikidateArgs = typing.TypedDict(
             },
         ),
         (
-            {"d": datetime.datetime(2023, 10, 12, 1, 2, 3), "precision": "year"},
+            {"d": datetime(2023, 10, 12, 1, 2, 3), "precision": "year"},
             {
                 "value": {
                     "time": "+2023-00-00T00:00:00Z",

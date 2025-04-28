@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime, timezone
 
 from flask import current_app
 from flickr_photos_api import FlickrApi
@@ -11,7 +11,7 @@ def get_photos_from_flickr(parsed_url: ParseResult) -> GetPhotosData:
     """
     Get a collection of photos from Flickr.
     """
-    retrieved_at = datetime.datetime.now()
+    retrieved_at = datetime.now(tz=timezone.utc)
 
     api = FlickrApi.with_api_key(
         api_key=current_app.config["FLICKR_API_KEY"],

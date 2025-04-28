@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime, timezone
 import pathlib
 import textwrap
 
@@ -15,7 +15,10 @@ def tidy(s: str) -> str:
 
 
 def today() -> str:
-    return datetime.datetime.now().strftime("%Y-%m-%d")
+    """
+    Returns the current time as a YYYY-MM-DD string, e.g. 2025-04-28
+    """
+    return datetime.now(tz=timezone.utc).strftime("%Y-%m-%d")
 
 
 def test_create_wikitext_for_photo() -> None:

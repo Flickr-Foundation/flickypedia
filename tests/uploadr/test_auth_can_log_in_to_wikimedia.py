@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime, timezone
 
 from flask.testing import FlaskClient
 from flask_login import current_user
@@ -71,7 +71,7 @@ def test_can_get_token_from_wikimedia(
 
     # Now futz with the token -- set it to have just expired.  This should
     # force the OAuth client to refresh the token on the next request.
-    token["expires_at"] = int(datetime.datetime.now().timestamp()) - 1
+    token["expires_at"] = int(datetime.now(tz=timezone.utc).timestamp()) - 1
 
     # Construct an instance of the Wikimedia OAuth API, and check the token
     # is refreshed.  Check also that it's been stored.

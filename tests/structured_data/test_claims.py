@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime, timezone
 
 from flickr_photos_api import FlickrApi, SinglePhoto
 
@@ -38,7 +38,7 @@ def test_create_sdc_claims_for_flickr_photo_without_date_taken() -> None:
             "label": "CC BY 2.0",
             "url": "https://creativecommons.org/licenses/by/2.0/",
         },
-        "date_posted": datetime.datetime.fromtimestamp(1696939706),
+        "date_posted": datetime.fromtimestamp(1696939706),
         "date_taken": None,
         "safety_level": "safe",
         "original_format": "jpg",
@@ -54,7 +54,7 @@ def test_create_sdc_claims_for_flickr_photo_without_date_taken() -> None:
     }
 
     actual = create_sdc_claims_for_new_flickr_photo(
-        photo=photo, retrieved_at=datetime.datetime(2023, 11, 14, 16, 15, 0)
+        photo=photo, retrieved_at=datetime(2023, 11, 14, 16, 15, 0)
     )
     expected = get_claims_fixture("photo_53248015596.json")
 
@@ -89,9 +89,9 @@ def test_create_sdc_claims_for_flickr_photo_with_date_taken() -> None:
             "label": "CC BY 2.0",
             "url": "https://creativecommons.org/licenses/by/2.0/",
         },
-        "date_posted": datetime.datetime.fromtimestamp(1696421915),
+        "date_posted": datetime.fromtimestamp(1696421915),
         "date_taken": {
-            "value": datetime.datetime(2023, 10, 3, 5, 45, 0),
+            "value": datetime(2023, 10, 3, 5, 45, 0),
             "granularity": "second",
         },
         "safety_level": "safe",
@@ -108,7 +108,7 @@ def test_create_sdc_claims_for_flickr_photo_with_date_taken() -> None:
     }
 
     actual = create_sdc_claims_for_new_flickr_photo(
-        photo=photo, retrieved_at=datetime.datetime(2023, 11, 14, 16, 15, 0)
+        photo=photo, retrieved_at=datetime(2023, 11, 14, 16, 15, 0)
     )
     expected = get_claims_fixture("photo_53234140350.json")
 
@@ -143,9 +143,9 @@ def test_creates_sdc_for_photo_with_in_copyright_license() -> None:
             "label": "All Rights Reserved",
             "url": None,
         },
-        "date_posted": datetime.datetime.fromtimestamp(1414001923),
+        "date_posted": datetime.fromtimestamp(1414001923),
         "date_taken": {
-            "value": datetime.datetime(2014, 7, 14, 7, 56, 51),
+            "value": datetime(2014, 7, 14, 7, 56, 51),
             "granularity": "second",
         },
         "safety_level": "safe",
@@ -171,7 +171,7 @@ def test_omits_url_for_existing_photo(flickr_api: FlickrApi) -> None:
     photo = flickr_api.get_single_photo(photo_id="383861611")
 
     new_sdc = create_sdc_claims_for_new_flickr_photo(
-        photo, retrieved_at=datetime.datetime.now()
+        photo, retrieved_at=datetime.now(tz=timezone.utc)
     )
     existing_sdc = create_sdc_claims_for_existing_flickr_photo(photo)
 

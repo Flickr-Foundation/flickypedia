@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime, timezone
 import json
 import os
 
@@ -60,7 +60,7 @@ def store_user(token: OAuth2Token | None = None) -> WikimediaUserSession:
         userid="-4",
         name="FlickypediaTestingUser",
         encrypted_token=encrypt_string(key, plaintext=json.dumps(oauth2_token)),
-        first_login=datetime.datetime.now(),
+        first_login=datetime.now(tz=timezone.utc),
     )
     user_db.session.add(user)
     user_db.session.commit()
@@ -231,7 +231,7 @@ def test_token_is_saved_to_database_when_refreshed(
 
         # Modify the 'expires_at' time, so it's actually 1 second ago -- as far
         # as authlib is concerned, this token is now invalid.
-        token["expires_at"] = int(datetime.datetime.now().timestamp() - 1)
+        token["expires_at"] = int(datetime.now(tz=timezone.utc).timestamp() - 1)
 
         # Now save a user with this token to the database.
         user = store_user(token=token)
@@ -245,7 +245,7 @@ def test_token_is_saved_to_database_when_refreshed(
 
         # Check that the user's token no longer matches the one we saved earlier.
         assert user.token() != token
-        assert user.token()["expires_at"] > datetime.datetime.now().timestamp()  # type: ignore
+        assert user.token()["expires_at"] > datetime.now(tz=timezone.utc).timestamp()  # type: ignore
 
         refreshed_token = user.token()
 
@@ -291,7 +291,7 @@ class TestLoadUser:
                 "expires_in": 14400,
                 "access_token": "[ACCESS_TOKEN...sqfLY]",
                 "refresh_token": "[REFRESH_TOKEN...8f34f]",
-                "expires_at": datetime.datetime.now().timestamp() + 3600,
+                "expires_at": datetime.now(tz=timezone.utc).timestamp() + 3600,
             }
         )
 

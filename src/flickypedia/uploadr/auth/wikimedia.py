@@ -59,7 +59,7 @@ it should be accessing it via ``current_user``.
 
 """
 
-import datetime
+from datetime import datetime, timezone
 import json
 import textwrap
 import typing
@@ -450,7 +450,7 @@ def oauth2_callback_wikimedia() -> ViewResponse:
         userid=userinfo["id"],
         name=userinfo["name"],
         encrypted_token=encrypt_string(key, plaintext=json.dumps(token)),
-        first_login=datetime.datetime.now(),
+        first_login=datetime.now(tz=timezone.utc),
     )
     user_db.session.add(user)
     user_db.session.commit()
