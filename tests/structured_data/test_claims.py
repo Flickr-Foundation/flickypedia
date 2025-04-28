@@ -1,17 +1,18 @@
 from datetime import datetime, timezone
 
-from flickr_photos_api import FlickrApi, SinglePhoto
+from flickr_photos_api import FlickrApi
 
 from flickypedia.structured_data import (
     WikidataProperties,
     create_sdc_claims_for_existing_flickr_photo,
     create_sdc_claims_for_new_flickr_photo,
 )
+from flickypedia.types.flickr import FlickrPhoto
 from utils import get_claims_fixture
 
 
 def test_create_sdc_claims_for_flickr_photo_without_date_taken() -> None:
-    photo: SinglePhoto = {
+    photo: FlickrPhoto = {
         "id": "53248015596",
         "url": "https://www.flickr.com/photos/199246608@N02/53248015596/",
         "owner": {
@@ -45,12 +46,6 @@ def test_create_sdc_claims_for_flickr_photo_without_date_taken() -> None:
         "tags": [],
         "machine_tags": {},
         "location": None,
-        "secret": "-1",
-        "server": "-1",
-        "farm": "-1",
-        "count_comments": 0,
-        "count_views": 0,
-        "media": "photo",
     }
 
     actual = create_sdc_claims_for_new_flickr_photo(
@@ -62,7 +57,7 @@ def test_create_sdc_claims_for_flickr_photo_without_date_taken() -> None:
 
 
 def test_create_sdc_claims_for_flickr_photo_with_date_taken() -> None:
-    photo: SinglePhoto = {
+    photo: FlickrPhoto = {
         "id": "53234140350",
         "url": "https://www.flickr.com/photos/mdgovpics/53234140350/",
         "owner": {
@@ -99,12 +94,6 @@ def test_create_sdc_claims_for_flickr_photo_with_date_taken() -> None:
         "tags": [],
         "machine_tags": {},
         "location": None,
-        "secret": "-1",
-        "server": "-1",
-        "farm": "-1",
-        "count_comments": 0,
-        "count_views": 0,
-        "media": "photo",
     }
 
     actual = create_sdc_claims_for_new_flickr_photo(
@@ -116,7 +105,7 @@ def test_create_sdc_claims_for_flickr_photo_with_date_taken() -> None:
 
 
 def test_creates_sdc_for_photo_with_in_copyright_license() -> None:
-    photo: SinglePhoto = {
+    photo: FlickrPhoto = {
         "id": "15602283025",
         "url": "https://www.flickr.com/photos/golfking1/15602283025/",
         "owner": {
@@ -153,12 +142,6 @@ def test_creates_sdc_for_photo_with_in_copyright_license() -> None:
         "tags": [],
         "machine_tags": {},
         "location": None,
-        "secret": "-1",
-        "server": "-1",
-        "farm": "-1",
-        "count_comments": 0,
-        "count_views": 0,
-        "media": "photo",
     }
 
     actual = create_sdc_claims_for_existing_flickr_photo(photo)

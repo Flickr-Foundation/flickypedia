@@ -9,8 +9,6 @@
   },
   "photos": [
     {
-      "count_comments": 0,
-      "count_views": 133,
       "date_posted": {
         "type": "datetime.datetime",
         "value": "2023-06-22T21:37:29+00:00"
@@ -23,7 +21,6 @@
         }
       },
       "description": "Afar, Doho Lodge",
-      "farm": "66",
       "id": "52994452213",
       "license": {
         "id": "cc-by-2.0",
@@ -36,7 +33,6 @@
         "longitude": 40.083811
       },
       "machine_tags": {},
-      "media": "photo",
       "original_format": "jpg",
       "owner": {
         "id": "150102727@N06",
@@ -47,8 +43,6 @@
         "username": "Ninara31"
       },
       "safety_level": "safe",
-      "secret": "443d00faf8",
-      "server": "65535",
       "sizes": [
         {
           "height": 75,

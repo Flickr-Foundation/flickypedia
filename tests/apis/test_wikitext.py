@@ -2,10 +2,11 @@ from datetime import datetime, timezone
 import pathlib
 import textwrap
 
-from flickr_photos_api import LicenseId, SinglePhoto
+from flickr_photos_api import LicenseId
 import pytest
 
 from flickypedia.apis.wikitext import create_wikitext
+from flickypedia.types.flickr import FlickrPhoto
 from flickypedia.uploadr.config import create_config
 from utils import get_typed_fixture
 
@@ -22,7 +23,7 @@ def today() -> str:
 
 
 def test_create_wikitext_for_photo() -> None:
-    photo = get_typed_fixture("flickr_photos_api/32812033543.json", model=SinglePhoto)
+    photo = get_typed_fixture("flickr_photos_api/32812033543.json", model=FlickrPhoto)
     photo["license"]["id"] = "cc-by-2.0"
 
     actual = create_wikitext(photo, wikimedia_username="TestUser", new_categories=[])
@@ -53,7 +54,7 @@ def test_create_wikitext_for_photo() -> None:
 
 
 def test_adds_categories_to_wikitext() -> None:
-    photo = get_typed_fixture("flickr_photos_api/32812033543.json", model=SinglePhoto)
+    photo = get_typed_fixture("flickr_photos_api/32812033543.json", model=FlickrPhoto)
 
     actual = create_wikitext(
         photo,
@@ -91,7 +92,7 @@ def test_adds_categories_to_wikitext() -> None:
 
 
 def test_adds_location_to_wikitext() -> None:
-    photo = get_typed_fixture("flickr_photos_api/32812033543.json", model=SinglePhoto)
+    photo = get_typed_fixture("flickr_photos_api/32812033543.json", model=FlickrPhoto)
     photo["tags"] = []
     photo["location"] = {"latitude": 50.0, "longitude": 50.0, "accuracy": 16}
 
@@ -105,7 +106,7 @@ def test_adds_location_to_wikitext() -> None:
 
 
 def test_it_skips_tags_if_none_on_photo() -> None:
-    photo = get_typed_fixture("flickr_photos_api/32812033543.json", model=SinglePhoto)
+    photo = get_typed_fixture("flickr_photos_api/32812033543.json", model=FlickrPhoto)
     photo["tags"] = []
 
     wikitext = create_wikitext(
@@ -123,7 +124,7 @@ config = create_config(data_directory=pathlib.Path("data"))
 
 @pytest.mark.parametrize("license_id", config["ALLOWED_LICENSES"])
 def test_can_create_wikitext_for_all_allowed_licenses(license_id: LicenseId) -> None:
-    photo = get_typed_fixture("flickr_photos_api/32812033543.json", model=SinglePhoto)
+    photo = get_typed_fixture("flickr_photos_api/32812033543.json", model=FlickrPhoto)
     photo["license"]["id"] = license_id
 
     create_wikitext(photo, wikimedia_username="TestUser", new_categories=[])

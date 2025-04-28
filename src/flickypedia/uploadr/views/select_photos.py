@@ -36,7 +36,7 @@ from flask import (
     url_for,
 )
 from flask_login import login_required
-from flickr_photos_api import ResourceNotFound, SinglePhoto
+from flickr_photos_api import ResourceNotFound
 from flickr_url_parser import (
     parse_flickr_url,
     NotAFlickrUrl,
@@ -48,6 +48,7 @@ from wtforms.validators import DataRequired
 
 from flickypedia.apis.flickr import get_photos_from_flickr
 from flickypedia.photos import categorise_photos
+from flickypedia.types.flickr import FlickrPhoto
 from flickypedia.types.views import ViewResponse
 from .get_photos import FlickrPhotoURLForm
 from ..caching import (
@@ -71,7 +72,7 @@ class BaseSelectForm(FlaskForm):
         raise NotImplementedError
 
 
-def create_select_photos_form(photos: list[SinglePhoto]) -> BaseSelectForm:
+def create_select_photos_form(photos: list[FlickrPhoto]) -> BaseSelectForm:
     """
     Create a Flask form with a boolean field (checkbox) for each photo
     on the list.  This allows us to render a form like:

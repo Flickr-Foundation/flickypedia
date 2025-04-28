@@ -5,6 +5,14 @@ from flickr_photos_api import FlickrApi
 from flickr_url_parser import ParseResult
 
 from flickypedia.types.flickr import GetPhotosData
+from .collection_methods import (
+    get_photos_in_album,
+    get_photos_in_gallery,
+    get_photos_in_group_pool,
+    get_photos_in_user_photostream,
+    get_photos_with_tag,
+)
+from .single_photo_methods import get_single_photo
 
 
 def get_photos_from_flickr(parsed_url: ParseResult) -> GetPhotosData:
@@ -19,7 +27,7 @@ def get_photos_from_flickr(parsed_url: ParseResult) -> GetPhotosData:
     )
 
     if parsed_url["type"] == "single_photo":
-        photo = api.get_single_photo(photo_id=parsed_url["photo_id"])
+        photo = get_single_photo(api, photo_id=parsed_url["photo_id"])
 
         return {
             "photos": [photo],
@@ -28,7 +36,8 @@ def get_photos_from_flickr(parsed_url: ParseResult) -> GetPhotosData:
         }
 
     elif parsed_url["type"] == "album":
-        album_resp = api.get_photos_in_album(
+        album_resp = get_photos_in_album(
+            api,
             user_url=parsed_url["user_url"],
             album_id=parsed_url["album_id"],
             page=parsed_url["page"],
@@ -38,8 +47,8 @@ def get_photos_from_flickr(parsed_url: ParseResult) -> GetPhotosData:
         return {**album_resp, "retrieved_at": retrieved_at}
 
     elif parsed_url["type"] == "user":
-        user_resp = api.get_photos_in_user_photostream(
-            user_url=parsed_url["user_url"], page=parsed_url["page"], per_page=100
+        user_resp = get_photos_in_user_photostream(
+            api, user_url=parsed_url["user_url"], page=parsed_url["page"], per_page=100
         )
 
         return {
@@ -48,7 +57,8 @@ def get_photos_from_flickr(parsed_url: ParseResult) -> GetPhotosData:
             "retrieved_at": retrieved_at,
         }
     elif parsed_url["type"] == "gallery":
-        gallery_resp = api.get_photos_in_gallery(
+        gallery_resp = get_photos_in_gallery(
+            api,
             gallery_id=parsed_url["gallery_id"],
             page=parsed_url["page"],
             per_page=100,
@@ -56,14 +66,17 @@ def get_photos_from_flickr(parsed_url: ParseResult) -> GetPhotosData:
 
         return {**gallery_resp, "retrieved_at": retrieved_at}
     elif parsed_url["type"] == "group":
-        group_resp = api.get_photos_in_group_pool(
-            group_url=parsed_url["group_url"], page=parsed_url["page"], per_page=100
+        group_resp = get_photos_in_group_pool(
+            api,
+            group_url=parsed_url["group_url"],
+            page=parsed_url["page"],
+            per_page=100,
         )
 
         return {**group_resp, "retrieved_at": retrieved_at}
     elif parsed_url["type"] == "tag":
-        tag_resp = api.get_photos_with_tag(
-            tag=parsed_url["tag"], page=parsed_url["page"], per_page=100
+        tag_resp = get_photos_with_tag(
+            api, tag=parsed_url["tag"], page=parsed_url["page"], per_page=100
         )
 
         return {**tag_resp, "retrieved_at": retrieved_at}

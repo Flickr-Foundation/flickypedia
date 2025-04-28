@@ -1,8 +1,6 @@
 from datetime import datetime
 import typing
 
-from flickr_photos_api import SinglePhoto
-
 from .flickr_users import FlickrUsers
 from .statements import (
     create_bhl_page_id_statement,
@@ -16,10 +14,11 @@ from .statements import (
     create_source_statement,
 )
 from .types import NewClaims
+from flickypedia.types.flickr import FlickrPhoto
 
 
 def _create_sdc_claims_for_flickr_photo(
-    photo: SinglePhoto,
+    photo: FlickrPhoto,
     *,
     mode: typing.Literal["new_photo", "existing_photo"],
     retrieved_at: datetime | None = None,
@@ -112,7 +111,7 @@ def _create_sdc_claims_for_flickr_photo(
 
 
 def create_sdc_claims_for_new_flickr_photo(
-    photo: SinglePhoto, retrieved_at: datetime
+    photo: FlickrPhoto, retrieved_at: datetime
 ) -> NewClaims:
     """
     Create the SDC claims for a new upload to Wikimedia Commons.
@@ -122,7 +121,7 @@ def create_sdc_claims_for_new_flickr_photo(
     )
 
 
-def create_sdc_claims_for_existing_flickr_photo(photo: SinglePhoto) -> NewClaims:
+def create_sdc_claims_for_existing_flickr_photo(photo: FlickrPhoto) -> NewClaims:
     """
     Create the SDC claims for a photo which has already been uploaded to WMC.
 
