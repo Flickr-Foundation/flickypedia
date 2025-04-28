@@ -16,16 +16,14 @@ interactions:
     uri: https://api.flickr.com/services/rest/?method=flickr.people.getInfo&user_id=84108876%40N00
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAA4VTTY/TMBA9b3+F5QMCiTYJ7S7ZJcmCoBcOqNKWczSNJ42pY1u2Q1f8esZJaWEX
-        gZRD5s17b77k4v6xV+w7Oi+NLnm2SDlD3Rgh9b7kQ2jnOWf31axw3jIfIJTcHDjFliRGMylKnq+y
-        NM/f3rz/kpJa++eY9NYZcudM+lqgwoCkI7JsjPboqP6UpbAF14+BhdDVoCT4kn8DKmYdhMBZB76O
-        nRBMDmRc70DsseQEagFO0ASPVjpCKB/ZIFqHlzAG0WEk176T1o7TnthjGsXQQKCdgKodejO4BseC
-        1eyqGKhlDT1Wn2NbbBP7KpIzSgyHoJ4zzigxlJn8q40Mwe8Gt+9es82HIjkniBRkjz+MRqZgh6rk
-        a/CBSrMt4ezl1wf2Anr7jn0EDQJecWba1iOdaJ5e38Vb/NLX8STrh+31+tP2gtKWV5wlcSKBvnHS
-        xoYmwHYmGD84VXUhWH+XJMfjcdEq2RzcojF9MhGSy2GS4oRFUXRwppUK/2WBxip8YnFRkUdvdv+x
-        +EsXF9F5Durnqmil80FAwAAH1FV2m9/SnuZpxtKUtkVfkTzh/CGrsixdrpbLPH3zG3G0bsygQ5Xd
-        5Msimf6p9Gkd9FaS6bHEP3pG1ewn63v8Q3UDAAA=
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<person
+        id=\"84108876@N00\" nsid=\"84108876@N00\" ispro=\"1\" is_deleted=\"0\" iconserver=\"1\"
+        iconfarm=\"1\" path_alias=\"jasonpratt\" has_stats=\"0\" pro_badge=\"standard\"
+        expire=\"0\" has_adfree=\"0\" has_free_standard_shipping=\"0\" has_free_educational_resources=\"0\">\n\t<username>Jason
+        Pratt</username>\n\t<realname>Jason Pratt</realname>\n\t<location>Pittsburgh,
+        PA</location>\n\t<timezone label=\"Eastern Time (US &amp; Canada)\" offset=\"-05:00\"
+        timezone_id=\"EST5EDT\" timezone=\"14\" />\n\t<description />\n\t<photosurl>https://www.flickr.com/photos/jasonpratt/</photosurl>\n\t<profileurl>https://www.flickr.com/people/jasonpratt/</profileurl>\n\t<mobileurl>https://www.flickr.com/photos/jasonpratt/</mobileurl>\n\t<photos>\n\t\t<firstdatetaken>1989-05-01
+        00:00:00</firstdatetaken>\n\t\t<firstdate>1103433802</firstdate>\n\t\t<count>1683</count>\n\t</photos>\n</person>\n</rsp>\n"
     headers:
       Connection:
       - keep-alive

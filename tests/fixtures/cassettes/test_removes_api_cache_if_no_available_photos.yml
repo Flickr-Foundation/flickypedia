@@ -49,8 +49,6 @@ interactions:
       - EZE50-P1
       X-Cache:
       - Miss from cloudfront
-      content-encoding:
-      - gzip
       server:
       - Apache/2.4.58 (Ubuntu)
       set-cookie:
@@ -128,8 +126,6 @@ interactions:
       - EZE50-P1
       X-Cache:
       - Miss from cloudfront
-      content-encoding:
-      - gzip
       server:
       - Apache/2.4.58 (Ubuntu)
       set-cookie:
@@ -193,8 +189,6 @@ interactions:
       - EZE50-P1
       X-Cache:
       - Miss from cloudfront
-      content-encoding:
-      - gzip
       server:
       - Apache/2.4.58 (Ubuntu)
       set-cookie:

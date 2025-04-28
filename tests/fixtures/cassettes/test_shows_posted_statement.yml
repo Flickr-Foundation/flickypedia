@@ -63,8 +63,6 @@ interactions:
       - '0'
       cache-control:
       - no-cache
-      content-encoding:
-      - gzip
       content-type:
       - application/json
       date:

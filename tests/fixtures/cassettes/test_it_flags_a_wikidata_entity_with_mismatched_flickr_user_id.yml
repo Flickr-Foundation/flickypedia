@@ -16,23 +16,23 @@ interactions:
     uri: https://api.flickr.com/services/rest/?method=flickr.people.getInfo&user_id=127744844%40N06
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAA4VVXW/aSBR9Lr/iyitVrQQ2tNDQ1NBlSZR9aLuRCNpHdG2P8SjjGWtm3IT++j1j
-        p5Bu2a0EyDP365x77sXpx8da0VdhnTR6EU3icURC56aQer+IWl+O5hF9XA5S6xpynv0iMvcRzg1C
-        jCZZIOjNxcV0Op9Of/8yfheRdmcupWusgWtE0u0KoYQXiEQxmRvthAWCRfRuNns7669KtjUukK5h
-        X+1YSXaLSMpm1FTGmxHbvJJfRUQVu13ABSuyocgu42IvFhEudcG2AJ/HRlrcwB68uSitOB3DIWTo
-        nHeukk3TcX/y7syiaHP26BCrnRXOtDYXXcHl4EXaAr7mWiy3G7oSDVtfC+3JlLQBLpEmRwc4W8Gq
-        c765XdFtoEKrnkqaHG3wU6YvuPybAUnvvdFDuloPabtZpcnRCk8va/HNaEGKM6EW0TU7D0B0h3t6
-        BUwvuW4+0Jo1F/w6Aq7SCcg4Gs8uxyD5PX4XVLve3M2ur+5Ot5BsGlESeBbC5VY2Haq7StBPDCAt
-        1Sy1x1cUlB3Iw+2PFrza0I4bZTJWdNtmSua0KkuW1gVDcNtqiZHoW+bO9XFIkIhyUzdWOrg0XZoR
-        55ACp9BKRygudIE8pbGEvgcQ23gT02fpwoSjXJh1wa7LZlDZ9jWfl4R80kvh4sGgkyjQOlAmQsaO
-        F8alLL8j/xXBV2jUawgXYIg6YwARbggm2rUqsB3SqhZW5qxp0zDo9FR7cF1Y3aMP2smjvZDOW5m1
-        oW3g88DWMuj/wF0bPdpubsjYPWv5rRspR451Hp5OIvW4DjENBn9pdaAQh1YDVi4hWegkxMXO19Kj
-        RExrKwrpSUFpcpVpVUGQubikM2OR9OrsLTdg9PK38dv3HxyFLaAEyOReYq+o36qYrh8xr0pcnk20
-        ZmsUfY7pT7mvHMBUSPFJZpbtIeixNnqPBXVp8nxaMbz9fLRWLSvvG3eZJA8PD3GJCbq3MZgmvUPy
-        0z9Mkj6ZQmxIZE0plfi/TMIA//lMp2Ckqk32i0z/jekUeyQHdC/SEivlC0yV53uhl5P5m9loPMGH
-        xmOsOz5p8i+fH8KWk+lkPLsIP88cu9S5abVfzi/m79Okf0bpp+bghZD0b4TwhHfFcvAP5Sd4c1oG
-        AAA=
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<person
+        id=\"127744844@N06\" nsid=\"127744844@N06\" ispro=\"1\" is_deleted=\"0\" iconserver=\"65535\"
+        iconfarm=\"66\" path_alias=\"iip-photo-archive\" has_stats=\"0\" pro_badge=\"standard\"
+        expire=\"0\" has_adfree=\"0\" has_free_standard_shipping=\"0\" has_free_educational_resources=\"0\">\n\t<username>US
+        Department of State</username>\n\t<realname>GPA Photo Archive</realname>\n\t<location>Washington,
+        DC, USA</location>\n\t<timezone label=\"Eastern Time (US &amp; Canada)\" offset=\"-05:00\"
+        timezone_id=\"EST5EDT\" timezone=\"14\" />\n\t<description>The GPA Photo Archive
+        is maintained by the Bureau of Global Public Affairs of the United States
+        Department of State, and comprises public-access photos intended for use by
+        U.S. Missions overseas and other State Department entities.\n\nPhotos may
+        be used by staff of the Bureau of Global Public Affairs (GPA), U.S. embassies,
+        consulates, American Spaces, and other U.S. mission offices, and distributed
+        as warranted for use by non-USG organizations sanctioned by the embassy. \n\nOnly
+        non-commercial use is permitted. Credit line should read:  GPA Photo Archive
+        / photographer&#039;s name / original source. Example: GPA Photo Archive /
+        Carol M. Highsmith / Library of Congress</description>\n\t<photosurl>https://www.flickr.com/photos/iip-photo-archive/</photosurl>\n\t<profileurl>https://www.flickr.com/people/iip-photo-archive/</profileurl>\n\t<mobileurl>https://www.flickr.com/photos/iip-photo-archive/</mobileurl>\n\t<photos>\n\t\t<firstdatetaken>1825-01-01
+        00:00:00</firstdatetaken>\n\t\t<firstdate>1410574105</firstdate>\n\t\t<count>8789</count>\n\t</photos>\n</person>\n</rsp>\n"
     headers:
       Connection:
       - keep-alive
@@ -87,31 +87,21 @@ interactions:
     uri: https://www.wikidata.org/w/rest.php/wikibase/v0/entities/items/Q99938311
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAA61XX3PbNgz/Kjrd3lY2/CuSfovt+PbY3raXdnugKCrW2ZZdSW6a5fzdB1By7NbK
-        Ndf4LmFIAATwA0AIeUq7x11IJ2nVhU36Ll27PKzbdPKUhhqot3XRBJf84epVC9yyuaRV3SWtCJe0
-        en1Ja79c0ry7pLn2wsgBrbS+qXZdta2jx72FTWiqlXN1m5TbbnvfuDKAhgASKRD+2VNaCqS6JLSd
-        K7b7uipC3YZnMyNS+29nUtHBoxA/CXW9DLDfpffrV5iL0dwtey93y5C4DcoH21TeVXU4BveIwyWD
-        lW5QsBtxt942XSAOo+Bdjb70iRwIyZm9Bpl7YLrm3v23qtauqQYkOfy6psHrhbsHkb/RapH8CczQ
-        JtsyGRQmrumqtkvABSbzfZ3Uj7DlKk92DjeZQB3N9gwGilKRHF3sjxh9DAecMqlwFXGVJu4Zrtwm
-        8Y84E4oM6eIqTntuo+eIra+Hul091wPmsD2y/CrGnD1zV+hw+/XFq7Fmn0srOQrFIkOY+3ZbO7wA
-        Ydli3dcvqirdgFhYXF1cuY4U0WPlP2L1/kfRnuI9KFyGXqEKGa6Fj2uIFJfEAz0jmbi3ca/PuD0F
-        47Bf9QqloHH1cUV3pOwpJq7uTKaIXBZXf85NIknGQ4h7ftoLcaaUnkkOl8GZvO6dsQ5v2LxfUdZ6
-        NGqtipQyyhg0Z00WSTwK5Sch685E5UlFHr20eXZiD5cj28VrHr0JXf+sYmLxEi38MkCLqqoVPPFj
-        niHR0KrcunIt9qAnOOALC5tQd7FrfRAsnXx+SqsC9H201gojGPtteqeNuFsoIu8WjMipzMjtTCiy
-        mC/mM2P5naRY4w00Q7gHr37j1nD+sgdTZRUa0P35X+CHMjTQlMJw3jXbXWi6R7QcLaJ5fCqdI8OX
-        4AH8z8FbEj8J4O9Xt94HvDAI9Gd4RNsaOhGG4aNKDwfQ/oGPYuEmU4xrQaShhkgqAEu2yIiV0k7n
-        i0xxM78KFn4NLJkyjGo+IGI0G4Mk1GxqxUwQaikFSAtODOSH3Mq5tIvFVN3O1FUgof23YxKCQ56H
-        HOkxQGo+k/JuxqHUbgFQNp8Rq6aUTG/51FpDhdHXqTcwfwU8dACTZUKOwSlzyrxjACcYCUmCkssV
-        9cQ6njEjqXdw7xpwogPfAwrfutDUbk1A4lVwXBxsyBIHG2Kc4g4+csdsUcpH86U4hwZvicwLTwpo
-        PvC6XEEYVUI6Sqmg4WcAn8bwgOK34tEKHjaHejkc3o3ZUIb+YKKrNuFVup960Un6OwTGEvyhf1E6
-        iT+fcCZqgq9aGAnTCaM4rK2hJ7tmsy0CzmTLrttNbm4eHh7eY92hD++3zf0NKK+6x5uPzBqloUQP
-        MfqvqGZMz1XSv+zH2mPSxVjSs9yaQvCSwDc4EOalJgXXlMDoVXqrvSx5dp1HSuNI9jZYEVGcNwdY
-        Ro320iLzKgRE5QFLgI8FEVo7IgrqMqlNoUvxK6Us6TVaDTPZ0Gx+HjYE+L3FfbN+nZ2zwjyrh9O0
-        /vjebzc3QyC1zkbrw2lmeMngQ6vzjEjOJclzZ4lnVhTGlUXpza9EklF6jS+r0VSajNmRcD6lS9cu
-        QShnSpV5yaTzOsiszGQOM71WOIfxoHQeBLwAiQWxg/89XvLYMHGNFsMZoZxQ/WKLYW9qMaPd0Rh9
-        nVhDJDV7qQcLedHnf8WMZQazeRh9DrFM325DC6UUZXEiw/EZrq4rbJZxmv7+CaSH/wFGS3U+0hAA
-        AA==
+      string: '{"type":"item","labels":{"en":"Andrea Hanks","fr":"Andrea Hanks","it":"Andrea
+        Hanks","de":"Andrea Hanks","nl":"Andrea Hanks","sq":"Andrea Hanks","ca":"Andrea
+        Hanks","ast":"Andrea Hanks"},"descriptions":{"nl":"Amerikaans fotografe","es":"fot\u00f3grafa
+        estadounidense","ast":"fot\u00f3grafa estauxunidense","ca":"fot\u00f2grafa
+        estatunidenca","gl":"fot\u00f3grafa estadounidense","fr":"photographe am\u00e9ricaine","it":"fotografa
+        statunitense","pt":"fot\u00f3grafa norte-americana","en":"American photographer","eu":"argazkilari
+        estatubatuarra","dag":"United States of America artist \u014bun ny\u025b pa\u0263a","ro":"fotograf\u0103
+        american\u0103","ar":"\u0645\u0635\u0648\u0631\u0629 \u0623\u0645\u0631\u064a\u0643\u064a\u0629","da":"amerikansk
+        fotograf","cs":"americk\u00e1 fotografka","sv":"amerikansk fotograf","sq":"fotografe
+        amerikane","eo":"usona fotisto","nn":"amerikansk fotograf","fa":"\u0639\u06a9\u0627\u0633
+        \u0622\u0645\u0631\u06cc\u06a9\u0627\u06cc\u06cc","he":"\u05e6\u05dc\u05de\u05ea
+        \u05d0\u05de\u05e8\u05d9\u05e7\u05d0\u05d9\u05ea","uk":"\u0430\u043c\u0435\u0440\u0438\u043a\u0430\u043d\u0441\u044c\u043a\u0430
+        \u0444\u043e\u0442\u043e\u0433\u0440\u0430\u0444\u043a\u0430","bn":"\u09ae\u09be\u09b0\u09cd\u0995\u09bf\u09a8
+        \u0986\u09b2\u09cb\u0995\u099a\u09bf\u09a4\u09cd\u09b0 \u09b6\u09bf\u09b2\u09cd\u09aa\u09c0","et":"Ameerika
+        \u00dchendriikide fotograaf"},"aliases":{},"statements":{"P31":[{"id":"Q99938311$BE783EF5-4EF1-4B46-AC35-FDFDC892E409","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P31","data-type":"wikibase-item"},"value":{"type":"value","content":"Q5"}}],"P21":[{"id":"Q99938311$28651273-4808-4036-A6F6-9449BDF6528D","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P21","data-type":"wikibase-item"},"value":{"type":"value","content":"Q6581072"}}],"P106":[{"id":"Q99938311$35CB93C3-0900-40F2-8AC3-A4D49FFB5AC5","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P106","data-type":"wikibase-item"},"value":{"type":"value","content":"Q33231"}}],"P27":[{"id":"Q99938311$5DC44EC2-4BA0-46DC-95B0-BA2B99803879","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P27","data-type":"wikibase-item"},"value":{"type":"value","content":"Q30"}}],"P6634":[{"id":"Q99938311$fb01ca12-4e84-0936-b50c-9a261840ca34","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P6634","data-type":"external-id"},"value":{"type":"value","content":"andrea-hanks-8a52a623"}}],"P2002":[{"id":"Q99938311$55225dc9-4bdc-d0dc-48ad-10534a00030e","rank":"normal","qualifiers":[{"property":{"id":"P6552","data-type":"external-id"},"value":{"type":"value","content":"75449279"}},{"property":{"id":"P580","data-type":"time"},"value":{"type":"value","content":{"time":"+2009-09-00T00:00:00Z","precision":10,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}],"references":[],"property":{"id":"P2002","data-type":"external-id"},"value":{"type":"value","content":"andreahanks"}}],"P2003":[{"id":"Q99938311$6b98d32f-435e-1c47-d270-14bfc97c4f26","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P2003","data-type":"external-id"},"value":{"type":"value","content":"ahanksphoto"}}],"P856":[{"id":"Q99938311$d6c5ee2f-4c70-e865-377a-3d0a6478d7f3","rank":"normal","qualifiers":[{"property":{"id":"P407","data-type":"wikibase-item"},"value":{"type":"value","content":"Q1860"}}],"references":[],"property":{"id":"P856","data-type":"url"},"value":{"type":"value","content":"http://www.andreahanksphotography.com/"}}],"P7763":[{"id":"Q99938311$a7182f13-47b6-4224-bba9-c193d8afdfc8","rank":"normal","qualifiers":[{"property":{"id":"P1001","data-type":"wikibase-item"},"value":{"type":"value","content":"Q87048619"}}],"references":[{"hash":"b155fbf14ac7e46f64b64a7509b22e57be3d3243","parts":[{"property":{"id":"P813","data-type":"time"},"value":{"type":"value","content":{"time":"+2021-02-07T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}},{"property":{"id":"P887","data-type":"wikibase-item"},"value":{"type":"value","content":"Q87015571"}},{"property":{"id":"P3452","data-type":"wikibase-item"},"value":{"type":"value","content":"Q918"}}]}],"property":{"id":"P7763","data-type":"wikibase-item"},"value":{"type":"value","content":"Q73555012"}}]},"sitelinks":{},"id":"Q99938311"}'
     headers:
       accept-ranges:
       - bytes

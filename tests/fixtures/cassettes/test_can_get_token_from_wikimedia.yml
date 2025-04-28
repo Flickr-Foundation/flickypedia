@@ -29,8 +29,6 @@ interactions:
       - '0'
       cache-control:
       - private, max-age=0, s-maxage=0
-      content-encoding:
-      - gzip
       content-type:
       - application/json; charset=UTF-8
       date:
@@ -166,8 +164,6 @@ interactions:
       - '0'
       cache-control:
       - private, max-age=0, s-maxage=0
-      content-encoding:
-      - gzip
       content-type:
       - application/json; charset=UTF-8
       date:

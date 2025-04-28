@@ -16,14 +16,12 @@ interactions:
     uri: https://api.flickr.com/services/rest/?method=flickr.people.getInfo&user_id=44124472424%40N01
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAA4VSy27DIBA8J1+BuCdgy0mTyHZ67aWXfoBFzTpGwYAAN/38LnGatFEfEkjM7szs
-        Ltpy/z5o8gY+KGsqmi05JWBaK5U5VHSM3WJDyb6elz44EqKIFbVHitihxBqiZEWLIsuL4iEv8uLx
-        mWeUmPBjWAXnbUWxggqNBA0RUJ1ga00Aj11UdMVX2ynSCT9UdE2JE7FvhFYiVDREL8wBlIng9SiB
-        kl6EJjWGSbRKSMjOA1xhAolhpPCyCb1y7jzchX1OgxxbEfELhG48BDv6Fs6G9XxWjtibEQPUL1Px
-        p8/iJbumkCYhtF655EJY0rneRhtGr+s+Rhd2jJ1Op2WnVXv0y9YObCKw+5lYeckkafLxtlMa/jIC
-        6zT8aHTTotNgX/8x+rWjm/Q6GfY2KzvlQ5QiQhRHMHXOeb7gGR7C+S6dbcnuON9kdca3nG/wfiWe
-        rVs7mljn603JpidWvvwMLiCbNjC9cDfr+QctVTzHygIAAA==
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<person
+        id=\"44124472424@N01\" nsid=\"44124472424@N01\" ispro=\"0\" is_deleted=\"0\"
+        iconserver=\"5059\" iconfarm=\"6\" path_alias=\"strangeinterlude\" has_stats=\"0\"
+        has_adfree=\"0\" has_free_standard_shipping=\"0\" has_free_educational_resources=\"0\">\n\t<username>StrangeInterlude</username>\n\t<description
+        />\n\t<photosurl>https://www.flickr.com/photos/strangeinterlude/</photosurl>\n\t<profileurl>https://www.flickr.com/people/strangeinterlude/</profileurl>\n\t<mobileurl>https://www.flickr.com/photos/strangeinterlude/</mobileurl>\n\t<photos>\n\t\t<firstdatetaken>2002-01-01
+        00:00:09</firstdatetaken>\n\t\t<firstdate>1090089009</firstdate>\n\t\t<count>268</count>\n\t</photos>\n</person>\n</rsp>\n"
     headers:
       Connection:
       - keep-alive

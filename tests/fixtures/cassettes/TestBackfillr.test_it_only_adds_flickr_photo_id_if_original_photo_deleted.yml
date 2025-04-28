@@ -16,28 +16,9 @@ interactions:
     uri: https://commons.wikimedia.org/w/api.php?action=wbgetentities&format=json&sites=commonswiki&titles=File%3AOlonad%C3%A9+-+A+Cena+Negra+Brasileira+%28Teatro+Cacilda+Becker%29+%287%29.jpg
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAA62W32/bNhDH/xVD2EOLmfHxN+mnWbL91q4d+rSuDxR5TLTIlicpDbrA//soxXEC
-        NF6SpoABkdTxePfhV3e+yXDbV32FXTa/yd5JChYMtcNk586xCtn8bm2abZORmmbJvsZsnq2rGue/
-        183Whb+uANBOyGQxKXDrJu/xvHWTvHVdsqnS8M0ndH3bTArnqzqkV+gvsX07eaPfnv29O8+mWe26
-        vsWvw4nCcC6N0GyabZpQxQrTYsaAAaFAQH8CNed6zuDPtK//thuC2WCoXLWNTVoafDzIZfBdYj1k
-        uJ9mATvfVru+araHla53PW4Sh5HBB6lpNv98k22Su27rLofF4Xk46KurrzD53LXNDtv+W1oat0yz
-        C9ddpJkXggP6YCVQa1VUznoXowMWvOIleGmMxuDTjuB6d+svnXEc9NVmOOhXBlQRMCnnTwDz8Tcm
-        nF7/22yTCUyzEmPT3g5d7LEdR7sWfdWlBLM5pdPMuxq3wbWJJdbJ8UXf7+az2fX19dl1dVkNQZw1
-        7flsVMK32UdqjdRMZ/sj3DGi/f38SOw72L+sV1TkjOfEWlsQIXRB7FKtSKFtXhTMcrnK067WbRPY
-        bNu0G1dn+y/T7IMAw14KftxzJB8h8oBacgdGCkchxFIbV4JgwnjttI1DlKfJ3xIghwOrlGMy3V5t
-        sK08GRKligNwOGT98TB9QGoAWroOya2rZPY8bILanBlhCCsYI0LmQEyx5kSsFnxh6Bq4MY9jY1q+
-        lNqw5QjNKeacMWiUVUmnniqLVlqKKnBRysDRy9JyfAU0C8owdk/tMP8J2HLNk69ck2VhLRF6VRAj
-        8iUxC8XX6yLnck0fx6YYVS/lNu45gpNSAxc6Bq9VYM6A5ixKikl3iKKkQiQZCoQfByeTcLlR/A7c
-        3fwngFvRhZAFk8SaVVLZImfEaMlIvhBMM2agKE7oTYuXf6bjniO40rAQUnVnzDEKXgVPo2CmVJZ7
-        FsuoS0AI6hWK0yKlIOxRcXfzHwH3z5WrhxbU3nYHyvWY/RMZD2bHhHkwPghPXWlp4ME6mmKBlHt0
-        DstInTWlFbp8xScGnIE4fmDj7Ilkh7u0mj8nmcHsvsh6L2lI/U3HaFVANhQQ7nVM8hEJdKSpxWGI
-        J5IZu093aD+xrvxle+abzWx30fRNN2vLTXPVuhkzVjKmpNVslj24l7bang/B7x9eDGnaMLS+z3fc
-        x4i/fCd6tVzACtY5EanWEbHWmuTL1Sq1KiNYrtcg5PJx0VMN/6f5rtngoyrQcA8ucCkhlVmI1hiv
-        lJYxEaRcCLCWR2mi9CL9O8iepUPO1LOEONodYxCyTPWj9EaUXABosMg0uMi0DUYLi5wH6u2pDplq
-        XiJnhPrtfdLXI9cy9COwzxLVaHdfTKNTUWopLac6euYQmS/RQyqmoDi3Xhlg0p4K7A8XHdaT/GwS
-        cPJukNCp8JS1zwpvsDuGZwSNQ6HSQlNPaSkZBz88hEIjfJTSaecCfanosdnVOHuK6imxH+72DuVt
-        zN/LfsUYXS2tITmkMi/WdEEWC2FJQQVdrszapNePyH4/FMTuynvskuTo/j+DwdbPKwwAAA==
+      string: '{"entities":{"M51090819":{"pageid":51090819,"ns":6,"title":"File:Olonad\u00e9
+        - A Cena Negra Brasileira (Teatro Cacilda Becker) (7).jpg","lastrevid":483358472,"modified":"2020-10-07T06:37:20Z","type":"mediainfo","id":"M51090819","labels":{},"descriptions":{},"statements":{"P571":[{"mainsnak":{"snaktype":"value","property":"P571","hash":"c4430ecd9501996f6a9caffa02dc63b0c5887edc","datavalue":{"value":{"time":"+2016-08-10T00:00:00Z","timezone":0,"before":0,"after":0,"precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"},"type":"time"}},"type":"statement","id":"M51090819$FE14B23B-999C-447C-9D6E-C79BCC2935EB","rank":"normal"}],"P4082":[{"mainsnak":{"snaktype":"value","property":"P4082","hash":"f0f3de753a0854a10dfb78ab04248c7a79f0908c","datavalue":{"value":{"entity-type":"item","numeric-id":1630030,"id":"Q1630030"},"type":"wikibase-entityid"}},"type":"statement","id":"M51090819$419B2848-2C22-45B0-8CF3-4EA3A81F0388","rank":"normal"}],"P275":[{"mainsnak":{"snaktype":"value","property":"P275","hash":"a62aa88e8696cafc169e9591e6d34b5d3ec5b93e","datavalue":{"value":{"entity-type":"item","numeric-id":19068220,"id":"Q19068220"},"type":"wikibase-entityid"}},"type":"statement","id":"M51090819$B73068B7-DC99-47EC-84BD-8A63FFCB35F1","rank":"normal"}],"P6216":[{"mainsnak":{"snaktype":"value","property":"P6216","hash":"5570347fdc76d2a80732f51ea10ee4b144a084e0","datavalue":{"value":{"entity-type":"item","numeric-id":50423863,"id":"Q50423863"},"type":"wikibase-entityid"}},"type":"statement","id":"M51090819$E1A45C25-98E3-4AB2-8752-BA4272280CC8","rank":"normal"}],"P7482":[{"mainsnak":{"snaktype":"value","property":"P7482","hash":"b82dd47222a210c6dc1f428b693c2fbf7b0e0d6e","datavalue":{"value":{"entity-type":"item","numeric-id":74228490,"id":"Q74228490"},"type":"wikibase-entityid"}},"type":"statement","qualifiers":{"P137":[{"snaktype":"value","property":"P137","hash":"3d8cd4c1ab91d3d9a14900210faaebf1a98b947b","datavalue":{"value":{"entity-type":"item","numeric-id":103204,"id":"Q103204"},"type":"wikibase-entityid"}}],"P973":[{"snaktype":"value","property":"P973","hash":"fcc51decd7ff96de2a62a3c7f7524742f1b0cedf","datavalue":{"value":"https://www.flickr.com/photos/rbmoura/28952265972/","type":"string"}}]},"qualifiers-order":["P137","P973"],"id":"M51090819$6DA0E0FB-4696-4F77-BDEE-99842B7F045D","rank":"normal"}],"P170":[{"mainsnak":{"snaktype":"somevalue","property":"P170","hash":"d3550e860f988c6675fff913440993f58f5c40c5"},"type":"statement","qualifiers":{"P3267":[{"snaktype":"value","property":"P3267","hash":"45b863bc84b3400709e270af279d8749e33d1c9c","datavalue":{"value":"55696846@N04","type":"string"}}],"P2093":[{"snaktype":"value","property":"P2093","hash":"5fa6f57559317fc2aee2cbec010e06339c680259","datavalue":{"value":"Rafael
+        B. de Moura","type":"string"}}],"P2699":[{"snaktype":"value","property":"P2699","hash":"841fc6dc7471c11b5230c1b5246e84cf55a7aad1","datavalue":{"value":"https://www.flickr.com/people/55696846@N04","type":"string"}}]},"qualifiers-order":["P3267","P2093","P2699"],"id":"M51090819$E221ED98-B0B2-4F1A-AA49-C141DE8F821E","rank":"normal"}]}}},"success":1}'
     headers:
       accept-ranges:
       - bytes
@@ -106,28 +87,9 @@ interactions:
     uri: https://commons.wikimedia.org/w/api.php?action=wbgetentities&format=json&sites=commonswiki&titles=File%3AOlonad%C3%A9+-+A+Cena+Negra+Brasileira+%28Teatro+Cacilda+Becker%29+%287%29.jpg
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAA62W32/bNhDH/xVD2EOLmfHxN+mnWbL91q4d+rSuDxR5TLTIlicpDbrA//soxXEC
-        NF6SpoABkdTxePfhV3e+yXDbV32FXTa/yd5JChYMtcNk586xCtn8bm2abZORmmbJvsZsnq2rGue/
-        183Whb+uANBOyGQxKXDrJu/xvHWTvHVdsqnS8M0ndH3bTArnqzqkV+gvsX07eaPfnv29O8+mWe26
-        vsWvw4nCcC6N0GyabZpQxQrTYsaAAaFAQH8CNed6zuDPtK//thuC2WCoXLWNTVoafDzIZfBdYj1k
-        uJ9mATvfVru+araHla53PW4Sh5HBB6lpNv98k22Su27rLofF4Xk46KurrzD53LXNDtv+W1oat0yz
-        C9ddpJkXggP6YCVQa1VUznoXowMWvOIleGmMxuDTjuB6d+svnXEc9NVmOOhXBlQRMCnnTwDz8Tcm
-        nF7/22yTCUyzEmPT3g5d7LEdR7sWfdWlBLM5pdPMuxq3wbWJJdbJ8UXf7+az2fX19dl1dVkNQZw1
-        7flsVMK32UdqjdRMZ/sj3DGi/f38SOw72L+sV1TkjOfEWlsQIXRB7FKtSKFtXhTMcrnK067WbRPY
-        bNu0G1dn+y/T7IMAw14KftxzJB8h8oBacgdGCkchxFIbV4JgwnjttI1DlKfJ3xIghwOrlGMy3V5t
-        sK08GRKligNwOGT98TB9QGoAWroOya2rZPY8bILanBlhCCsYI0LmQEyx5kSsFnxh6Bq4MY9jY1q+
-        lNqw5QjNKeacMWiUVUmnniqLVlqKKnBRysDRy9JyfAU0C8owdk/tMP8J2HLNk69ck2VhLRF6VRAj
-        8iUxC8XX6yLnck0fx6YYVS/lNu45gpNSAxc6Bq9VYM6A5ixKikl3iKKkQiQZCoQfByeTcLlR/A7c
-        3fwngFvRhZAFk8SaVVLZImfEaMlIvhBMM2agKE7oTYuXf6bjniO40rAQUnVnzDEKXgVPo2CmVJZ7
-        FsuoS0AI6hWK0yKlIOxRcXfzHwH3z5WrhxbU3nYHyvWY/RMZD2bHhHkwPghPXWlp4ME6mmKBlHt0
-        DstInTWlFbp8xScGnIE4fmDj7Ilkh7u0mj8nmcHsvsh6L2lI/U3HaFVANhQQ7nVM8hEJdKSpxWGI
-        J5IZu093aD+xrvxle+abzWx30fRNN2vLTXPVuhkzVjKmpNVslj24l7bang/B7x9eDGnaMLS+z3fc
-        x4i/fCd6tVzACtY5EanWEbHWmuTL1Sq1KiNYrtcg5PJx0VMN/6f5rtngoyrQcA8ucCkhlVmI1hiv
-        lJYxEaRcCLCWR2mi9CL9O8iepUPO1LOEONodYxCyTPWj9EaUXABosMg0uMi0DUYLi5wH6u2pDplq
-        XiJnhPrtfdLXI9cy9COwzxLVaHdfTKNTUWopLac6euYQmS/RQyqmoDi3Xhlg0p4K7A8XHdaT/GwS
-        cPJukNCp8JS1zwpvsDuGZwSNQ6HSQlNPaSkZBz88hEIjfJTSaecCfanosdnVOHuK6imxH+72DuVt
-        zN/LfsUYXS2tITmkMi/WdEEWC2FJQQVdrszapNePyH4/FMTuynvskuTo/j+DwdbPKwwAAA==
+      string: '{"entities":{"M51090819":{"pageid":51090819,"ns":6,"title":"File:Olonad\u00e9
+        - A Cena Negra Brasileira (Teatro Cacilda Becker) (7).jpg","lastrevid":483358472,"modified":"2020-10-07T06:37:20Z","type":"mediainfo","id":"M51090819","labels":{},"descriptions":{},"statements":{"P571":[{"mainsnak":{"snaktype":"value","property":"P571","hash":"c4430ecd9501996f6a9caffa02dc63b0c5887edc","datavalue":{"value":{"time":"+2016-08-10T00:00:00Z","timezone":0,"before":0,"after":0,"precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"},"type":"time"}},"type":"statement","id":"M51090819$FE14B23B-999C-447C-9D6E-C79BCC2935EB","rank":"normal"}],"P4082":[{"mainsnak":{"snaktype":"value","property":"P4082","hash":"f0f3de753a0854a10dfb78ab04248c7a79f0908c","datavalue":{"value":{"entity-type":"item","numeric-id":1630030,"id":"Q1630030"},"type":"wikibase-entityid"}},"type":"statement","id":"M51090819$419B2848-2C22-45B0-8CF3-4EA3A81F0388","rank":"normal"}],"P275":[{"mainsnak":{"snaktype":"value","property":"P275","hash":"a62aa88e8696cafc169e9591e6d34b5d3ec5b93e","datavalue":{"value":{"entity-type":"item","numeric-id":19068220,"id":"Q19068220"},"type":"wikibase-entityid"}},"type":"statement","id":"M51090819$B73068B7-DC99-47EC-84BD-8A63FFCB35F1","rank":"normal"}],"P6216":[{"mainsnak":{"snaktype":"value","property":"P6216","hash":"5570347fdc76d2a80732f51ea10ee4b144a084e0","datavalue":{"value":{"entity-type":"item","numeric-id":50423863,"id":"Q50423863"},"type":"wikibase-entityid"}},"type":"statement","id":"M51090819$E1A45C25-98E3-4AB2-8752-BA4272280CC8","rank":"normal"}],"P7482":[{"mainsnak":{"snaktype":"value","property":"P7482","hash":"b82dd47222a210c6dc1f428b693c2fbf7b0e0d6e","datavalue":{"value":{"entity-type":"item","numeric-id":74228490,"id":"Q74228490"},"type":"wikibase-entityid"}},"type":"statement","qualifiers":{"P137":[{"snaktype":"value","property":"P137","hash":"3d8cd4c1ab91d3d9a14900210faaebf1a98b947b","datavalue":{"value":{"entity-type":"item","numeric-id":103204,"id":"Q103204"},"type":"wikibase-entityid"}}],"P973":[{"snaktype":"value","property":"P973","hash":"fcc51decd7ff96de2a62a3c7f7524742f1b0cedf","datavalue":{"value":"https://www.flickr.com/photos/rbmoura/28952265972/","type":"string"}}]},"qualifiers-order":["P137","P973"],"id":"M51090819$6DA0E0FB-4696-4F77-BDEE-99842B7F045D","rank":"normal"}],"P170":[{"mainsnak":{"snaktype":"somevalue","property":"P170","hash":"d3550e860f988c6675fff913440993f58f5c40c5"},"type":"statement","qualifiers":{"P3267":[{"snaktype":"value","property":"P3267","hash":"45b863bc84b3400709e270af279d8749e33d1c9c","datavalue":{"value":"55696846@N04","type":"string"}}],"P2093":[{"snaktype":"value","property":"P2093","hash":"5fa6f57559317fc2aee2cbec010e06339c680259","datavalue":{"value":"Rafael
+        B. de Moura","type":"string"}}],"P2699":[{"snaktype":"value","property":"P2699","hash":"841fc6dc7471c11b5230c1b5246e84cf55a7aad1","datavalue":{"value":"https://www.flickr.com/people/55696846@N04","type":"string"}}]},"qualifiers-order":["P3267","P2093","P2699"],"id":"M51090819$E221ED98-B0B2-4F1A-AA49-C141DE8F821E","rank":"normal"}]}}},"success":1}'
     headers:
       accept-ranges:
       - bytes
@@ -191,10 +153,8 @@ interactions:
     uri: https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&photo_id=28952265972
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAAyWMOw4CIRQAaznFyyuMFrpKsrobgW1s7LwCEVASlqd8Nh5fEtvJzIjpOwdYbMqe
-        osTj/oBg44OMj0+JtbjdgDApJlJ+Qy66SHTaB1RsJWxK0EzbMoQ5N//+okKw/lQqFz6MPeenfjzz
-        P4BIBRzVaGDj46KDN3C7bhG6tu/aX7EfB4c4P44AAAA=
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"fail\">\n\t<err
+        code=\"1\" msg=\"Photo &quot;28952265972&quot; not found (invalid ID)\" />\n</rsp>\n"
     headers:
       Connection:
       - keep-alive
@@ -251,9 +211,7 @@ interactions:
     uri: https://commons.wikimedia.org/w/api.php?action=query&format=json&meta=tokens&type=csrf
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAA6tWSkosSc5Izs8tyEktSVWyUlLSUSosTS2qVLKqVirJz07NKwaxkouL0sA8oArt
-        mBil2tpaANqecJA7AAAA
+      string: '{"batchcomplete":"","query":{"tokens":{"csrftoken":"+\\"}}}'
     headers:
       accept-ranges:
       - bytes
@@ -323,28 +281,8 @@ interactions:
     uri: https://commons.wikimedia.org/w/api.php
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAA62XTW/bOBCG/0oh7G2jeEgOPyantWT51kW76GmLHih+NEJtyys7DbpF/vuObMcJ
-        UHvrtAUMWJRnyJmHL2for0Vabbvtl+Lma7H9sk7FTbFMsfPdKvfFVdFFfvFaCyBwgvjFwrdpsWHr
-        h6sipk0YuvW261eHN5ut36YlzziOizfaiuLm/ddiydNtVv7T+HL8Piz02S/uEs+5Hvp1GsYY9i5X
-        xa3f3PIoICpIIZIGQWSy8RR8zh5kDEa1ELRzNsXAHtFv/X4+XuP4sO2W40K/SxCmBFcKeAdws/v8
-        zU7jz//2KzaBq6JNuR/2jz5v07B7Wg8pdBtOsLgR4qoIfpFW0Q/LPqYFT3y73a5vJpP7+/vr++5T
-        NwZx3Q8fJ3umk7eCnLbSFozmkPMuooen8ZHYN7B/mzcCK6mqkojqEtHWJc1MU9aWqrqWpHRTsdfg
-        Vwy2WPXD0i+Khw9XxRsEJ18KfudzJJ8hq5isVh6cRi8g5tY63wJKdMF6S3mM8jz5PYHysGDHObLp
-        6m6Zhi6UY6LCKAAFh6zfHobPSI1AW79J5X4qNrsMGwqqpENXylrKEnUFpavnqsRmqqZOzEE5dxqb
-        tPql1EaXIzRvpPfOJWfIsE6DMJRIk0gmKmx1VCnollT6CWgExkn5RO0w/gXYKqt4rsqWs5qoRNvU
-        pcNqVrqpUfN5XSk9F6exGSnMS7ntfI7gtLag0OYYrInSO7BKZi0S6y4lbAUiyxAT/Dg4zcJVzqhH
-        cI/jXwCuEVPUtdQluYZVNq1k6ayWZTVFaaV0UNdn9Gbx5cd053ME1zoZI/Iq0ksBwcQgMkrXGlJB
-        5jbbFhJE8xOKs8gpIB0V9zj+EXD/3PlFl7s07LuDUHaX/XcyHs2OCavoQsQgfEsiqkhecCzAuWfv
-        U5uFJ9cS2vYnjhgoCXg8YLvRd5Id95KsuiSZ0eypyIagReT+ZnMmE5McC4gKNrN8kEFnwS0uxXwm
-        mV332RzaT1504dNwHfrlZH3bb/vNZGiX/d3gJ9KRltJosnJSPNuXoVt9HIN/eL4xZT/EsfW9f+S+
-        i/jDN6I3syk0MK9K5FpX4tzaspo1Dbcqh7Kyc0A9Oy16YeH/NL/pl+mkCiw8gYtKa+AyC5mcC8ZY
-        nZmgUIhApLJ2WQfk20FxkQ6VNBcJcWd3jAF1y/WjDQ5bhQAWKEkLPktL0VmkpFQUgc51SK55TM6h
-        +eNP1teJbRn7EdBFotrZPRXT7E3WVmtSwuYgfUoytCkAF1MwSlEwDqSmc4H95bNPi1fV9auYXr0e
-        JXQuPEN0UXij3TE8hyKPhcqiFUGIVksFYfxCkxyGrLW33kfxUtGnfr1Ik+9RPSf2w94+otzH/K3s
-        GylFMyNXVsBlHudiWk6nSGUtUMwaN3f88xnZSyHhpcV+7/R0HW5N661gfYHBhGCItSZTckpEyiEH
-        QiGyPyu5Z5XgBJuLrqS15qsn36ioEXxJ0MAn3knk/Ot6is4qJfBE/g/j/wZeKH0e53MkDViDavzD
-        cBdC2vA5FA//ARSorjuKDAAA
+      string: '{"entity":{"type":"mediainfo","id":"M51090819","labels":{},"descriptions":{},"statements":{"P571":[{"mainsnak":{"snaktype":"value","property":"P571","hash":"c4430ecd9501996f6a9caffa02dc63b0c5887edc","datavalue":{"value":{"time":"+2016-08-10T00:00:00Z","timezone":0,"before":0,"after":0,"precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"},"type":"time"}},"type":"statement","id":"M51090819$FE14B23B-999C-447C-9D6E-C79BCC2935EB","rank":"normal"}],"P4082":[{"mainsnak":{"snaktype":"value","property":"P4082","hash":"f0f3de753a0854a10dfb78ab04248c7a79f0908c","datavalue":{"value":{"entity-type":"item","numeric-id":1630030,"id":"Q1630030"},"type":"wikibase-entityid"}},"type":"statement","id":"M51090819$419B2848-2C22-45B0-8CF3-4EA3A81F0388","rank":"normal"}],"P275":[{"mainsnak":{"snaktype":"value","property":"P275","hash":"a62aa88e8696cafc169e9591e6d34b5d3ec5b93e","datavalue":{"value":{"entity-type":"item","numeric-id":19068220,"id":"Q19068220"},"type":"wikibase-entityid"}},"type":"statement","id":"M51090819$B73068B7-DC99-47EC-84BD-8A63FFCB35F1","rank":"normal"}],"P6216":[{"mainsnak":{"snaktype":"value","property":"P6216","hash":"5570347fdc76d2a80732f51ea10ee4b144a084e0","datavalue":{"value":{"entity-type":"item","numeric-id":50423863,"id":"Q50423863"},"type":"wikibase-entityid"}},"type":"statement","id":"M51090819$E1A45C25-98E3-4AB2-8752-BA4272280CC8","rank":"normal"}],"P7482":[{"mainsnak":{"snaktype":"value","property":"P7482","hash":"b82dd47222a210c6dc1f428b693c2fbf7b0e0d6e","datavalue":{"value":{"entity-type":"item","numeric-id":74228490,"id":"Q74228490"},"type":"wikibase-entityid"}},"type":"statement","qualifiers":{"P137":[{"snaktype":"value","property":"P137","hash":"3d8cd4c1ab91d3d9a14900210faaebf1a98b947b","datavalue":{"value":{"entity-type":"item","numeric-id":103204,"id":"Q103204"},"type":"wikibase-entityid"}}],"P973":[{"snaktype":"value","property":"P973","hash":"fcc51decd7ff96de2a62a3c7f7524742f1b0cedf","datavalue":{"value":"https://www.flickr.com/photos/rbmoura/28952265972/","type":"string"}}]},"qualifiers-order":["P137","P973"],"id":"M51090819$6DA0E0FB-4696-4F77-BDEE-99842B7F045D","rank":"normal"}],"P170":[{"mainsnak":{"snaktype":"somevalue","property":"P170","hash":"d3550e860f988c6675fff913440993f58f5c40c5"},"type":"statement","qualifiers":{"P3267":[{"snaktype":"value","property":"P3267","hash":"45b863bc84b3400709e270af279d8749e33d1c9c","datavalue":{"value":"55696846@N04","type":"string"}}],"P2093":[{"snaktype":"value","property":"P2093","hash":"5fa6f57559317fc2aee2cbec010e06339c680259","datavalue":{"value":"Rafael
+        B. de Moura","type":"string"}}],"P2699":[{"snaktype":"value","property":"P2699","hash":"841fc6dc7471c11b5230c1b5246e84cf55a7aad1","datavalue":{"value":"https://www.flickr.com/people/55696846@N04","type":"string"}}]},"qualifiers-order":["P3267","P2093","P2699"],"id":"M51090819$E221ED98-B0B2-4F1A-AA49-C141DE8F821E","rank":"normal"}],"P12120":[{"mainsnak":{"snaktype":"value","property":"P12120","hash":"cb6ba719d8064e406979d2ee831d9fcfc9411fac","datavalue":{"value":"28952265972","type":"string"}},"type":"statement","id":"M51090819$FC5BCCB0-9E19-450E-9824-C1CCA4873314","rank":"normal"}]},"lastrevid":892607643},"success":1}'
     headers:
       accept-ranges:
       - bytes
@@ -417,30 +355,9 @@ interactions:
     uri: https://commons.wikimedia.org/w/api.php?action=wbgetentities&format=json&sites=commonswiki&titles=File%3AOlonad%C3%A9+-+A+Cena+Negra+Brasileira+%28Teatro+Cacilda+Becker%29+%287%29.jpg
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAA62X32/bNhDH/xVD2EOLmfGRPP7y0yzZfmvXDn1a1weKPxIttuXJToMuyP++k+I4
-        ARqvSVvAgETqSN59+OUdfVOkzb7ZN2lXTG+KN4qDA8td39j689TEYnrfNy42ZKTHBdmvUjEtls0q
-        TX9ftRsf/7oCSG7ERrNRlTZ+9Dadd35Udn5HNg29vvqQ/L5rR5UPzSrSpxQuU/d69Mq8Pvt7e16M
-        i5Xf7bv0uV/ROqHBaJTjYt3GJjeJOgsBAhkYBuoDxyn9FPxJ4/Zftr0z6xQb32xyS139HI9i6eeu
-        06qP8HZcxLQLXbPdN+3m0LPb+31aE4eBwTtleDH9eFOsabrdxl/2nf3zsNBnv7pKNOe2a7ep23+h
-        rmHIuLjwuwtqBUQJKUSngDuns/Yu+Jw9iBi0rCEoa02KgUZEv/d389Eax5d9s+4X+lUA1wws4/AB
-        YDr8hoDp87/thkxgXNQpt93dq8/71A1v2y6FZkcBFlPOx0Xwq7SJviOWaUUTX+z32+lkcn19fXbd
-        XDa9E2dtdz4ZlPBl8p47q4wwxe0R7uDR7UP7SOwr2L8sFxxLIUvmnKsYoqmYm+sFq4wrq0o4qRYl
-        jer8hsAWm7Zb+1Vx+2lcvEOw4qXghzFH8hmyjMko6cEq9Bxiro31NaBAG4w3LvdeniZ/R4AdFmwo
-        RjLdXK1T1wTWB8q1BJBwiPr9ofmIVA+09rvE7qYis+dhQ+5KYdEyUQnBUJXAbLWUDBczObN8CdLa
-        p7EJo15KrR9yhOa18N7aZLXTpNPAtUtOOZ50lFirKFNQtZPpB6A50FaIB2qH9k/AVhpJc5WGzSvn
-        GJpFxSyWc2ZnWi6XVSnVkj+NTQuuX8ptGHMEp5QBiSbHYHQU3oKRIiueSHcpYc0RSYaY4PvBKRKu
-        tFreg7tv/wRwCz5DVQnFnF2QymalYNYowcoZCiOEhao6oTeDLz+mw5gjuNqKGJFWEV5wCDoGnlHY
-        WjsZRK6zqSFB1D+gOIMUArqj4u7b3wPunyu/6ktQd1cduDRD9N+IuDc7BiyjDRED97XjUUbnOfkC
-        FHv2PtWZe2drh6b+gSMGUgAeD9jQ+kaw/V46I58TTG/2kGRDUDxSfTM5Ox2T6BOIDCaTfJBAZ04l
-        LsV8Ipih+uwO5SevmnDZnYV2PdletPt2N+nqdXvV+YmwTgmhlTNiUjzal67ZnPfO3z7eGNZ2sS99
-        H++5Dx5/+kr0ej6DBSxLhpTrGC6NYeV8saBSZVGUZgmo5k+Lnhv4P83v2nV6UgUGHsBFqRRQmoXs
-        rA1aG5WJIJeI4JzMymYVkG4HxbN0KIV+lhAHu6MPqGrKH3WwWEsEMOCSMOCzMC5agy5JGXlwpyok
-        5TwiZ1H/9pb09cS29PUI3LNENdg9JNPsdVZGKSe5yUH4lESoUwBKpqCldEFbEMqdcuwPn31ajcqz
-        UUyjN72ETrmnnXuWe73d0T2LPPeJyqDhgfNaCQmhf6BOFkNWyhvvI3+p6FO7XaXJt6ieEvthb+9R
-        3vn8tewXQvDF3FlWAqV5XPIZm83QsYojny/s0tLnE7IXXMBLk/3doIfrcK1rbzjpCzQmBO1IayIl
-        K3l0OeTgkPPsT0ruUSZ4gs2zrqSVoqsn3ajcgtMlQQGdeEv/JSpeVTO0RkqOT8R/28++uwoh7ejI
-        8dv/AIH9V/QrDQAA
+      string: '{"entities":{"M51090819":{"pageid":51090819,"ns":6,"title":"File:Olonad\u00e9
+        - A Cena Negra Brasileira (Teatro Cacilda Becker) (7).jpg","lastrevid":892607643,"modified":"2024-07-05T14:14:50Z","type":"mediainfo","id":"M51090819","labels":{},"descriptions":{},"statements":{"P571":[{"mainsnak":{"snaktype":"value","property":"P571","hash":"c4430ecd9501996f6a9caffa02dc63b0c5887edc","datavalue":{"value":{"time":"+2016-08-10T00:00:00Z","timezone":0,"before":0,"after":0,"precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"},"type":"time"}},"type":"statement","id":"M51090819$FE14B23B-999C-447C-9D6E-C79BCC2935EB","rank":"normal"}],"P4082":[{"mainsnak":{"snaktype":"value","property":"P4082","hash":"f0f3de753a0854a10dfb78ab04248c7a79f0908c","datavalue":{"value":{"entity-type":"item","numeric-id":1630030,"id":"Q1630030"},"type":"wikibase-entityid"}},"type":"statement","id":"M51090819$419B2848-2C22-45B0-8CF3-4EA3A81F0388","rank":"normal"}],"P275":[{"mainsnak":{"snaktype":"value","property":"P275","hash":"a62aa88e8696cafc169e9591e6d34b5d3ec5b93e","datavalue":{"value":{"entity-type":"item","numeric-id":19068220,"id":"Q19068220"},"type":"wikibase-entityid"}},"type":"statement","id":"M51090819$B73068B7-DC99-47EC-84BD-8A63FFCB35F1","rank":"normal"}],"P6216":[{"mainsnak":{"snaktype":"value","property":"P6216","hash":"5570347fdc76d2a80732f51ea10ee4b144a084e0","datavalue":{"value":{"entity-type":"item","numeric-id":50423863,"id":"Q50423863"},"type":"wikibase-entityid"}},"type":"statement","id":"M51090819$E1A45C25-98E3-4AB2-8752-BA4272280CC8","rank":"normal"}],"P7482":[{"mainsnak":{"snaktype":"value","property":"P7482","hash":"b82dd47222a210c6dc1f428b693c2fbf7b0e0d6e","datavalue":{"value":{"entity-type":"item","numeric-id":74228490,"id":"Q74228490"},"type":"wikibase-entityid"}},"type":"statement","qualifiers":{"P137":[{"snaktype":"value","property":"P137","hash":"3d8cd4c1ab91d3d9a14900210faaebf1a98b947b","datavalue":{"value":{"entity-type":"item","numeric-id":103204,"id":"Q103204"},"type":"wikibase-entityid"}}],"P973":[{"snaktype":"value","property":"P973","hash":"fcc51decd7ff96de2a62a3c7f7524742f1b0cedf","datavalue":{"value":"https://www.flickr.com/photos/rbmoura/28952265972/","type":"string"}}]},"qualifiers-order":["P137","P973"],"id":"M51090819$6DA0E0FB-4696-4F77-BDEE-99842B7F045D","rank":"normal"}],"P170":[{"mainsnak":{"snaktype":"somevalue","property":"P170","hash":"d3550e860f988c6675fff913440993f58f5c40c5"},"type":"statement","qualifiers":{"P3267":[{"snaktype":"value","property":"P3267","hash":"45b863bc84b3400709e270af279d8749e33d1c9c","datavalue":{"value":"55696846@N04","type":"string"}}],"P2093":[{"snaktype":"value","property":"P2093","hash":"5fa6f57559317fc2aee2cbec010e06339c680259","datavalue":{"value":"Rafael
+        B. de Moura","type":"string"}}],"P2699":[{"snaktype":"value","property":"P2699","hash":"841fc6dc7471c11b5230c1b5246e84cf55a7aad1","datavalue":{"value":"https://www.flickr.com/people/55696846@N04","type":"string"}}]},"qualifiers-order":["P3267","P2093","P2699"],"id":"M51090819$E221ED98-B0B2-4F1A-AA49-C141DE8F821E","rank":"normal"}],"P12120":[{"mainsnak":{"snaktype":"value","property":"P12120","hash":"cb6ba719d8064e406979d2ee831d9fcfc9411fac","datavalue":{"value":"28952265972","type":"string"}},"type":"statement","id":"M51090819$FC5BCCB0-9E19-450E-9824-C1CCA4873314","rank":"normal"}]}}},"success":1}'
     headers:
       accept-ranges:
       - bytes

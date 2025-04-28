@@ -16,18 +16,17 @@ interactions:
     uri: https://api.flickr.com/services/rest/?method=flickr.people.getInfo&user_id=40286210%40N00
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAA4VUwW7bMAw9N19B6NDLmsh22rRIbXcbtsMO7QoMw4BdAkWmYyGy5EnysvbrR9lp
-        2q3BdhPJ9x4faVn5za9Ww090XllTsHSWMEAjbaXMpmB9qKdXDG7KSe58Bz6IUDC7ZRR3RLEGVFWw
-        8yS7WmRp8vYuIbbxr3PKd84WjKrKryrUGJB4MZTWeHTUv2DzizGuhWvJCYNOhGYltBK+YGv3IBGr
-        nXCVZ9AIv4pmqEAiMRJV7RAPYQwiwlREWPlGdd0w0B49lLHqpQg0ttArh972TuIgWE5O8p5cGdFi
-        +T42ho9j55wf8oRxKPQxzCFPGG3HHuWH3iAt9QzucAffiUnecn4oEzSoFh+tQdBijbpg73q5jagz
-        +IZak/1gDQNb1x7pK7xJs2Vc9xNrFbd+L6SqleRP1OdywS7nDHgcrUIvneoGV59AtCBAowy9Qwci
-        wOcgNha+GjVcivBwBseswxQCCtmQLVAG7q1WQUmh4UvoK4V+Mrl9gO6QXWtLOE/6SzjV4VpA47Au
-        Tn/0Nlw3IXRLzne73UyrNbphYTPrNjPzOCLA0ULGo7FERBfNGltbre1uLJxuwvVxCerHRSzn/OXs
-        tIquscH63ukyevB7E7VWcutm0rZ8BPCXt4/n+2ykRQ1na6XxXyJoO42vRJ55pNLa9X9Ejjp5ph2m
-        IU8nea2cD5UIGMQWTZklSTpNLqbJApL5Mlsskyznf2H+oJVpOs8W9FMvzl8AB2lpexPKNLu8WuR8
-        DKj3fif0MPDxZYgnejPKyW9N+szpYgQAAA==
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<person
+        id=\"40286210@N00\" nsid=\"40286210@N00\" ispro=\"0\" is_deleted=\"0\" iconserver=\"35\"
+        iconfarm=\"1\" path_alias=\"bryceedwards\" has_stats=\"0\" has_adfree=\"0\"
+        has_free_standard_shipping=\"0\" has_free_educational_resources=\"0\">\n\t<username>Bryce
+        Edwards</username>\n\t<realname>Bryce Edwards</realname>\n\t<location>Dunedin,
+        New Zealand</location>\n\t<timezone label=\"Auckland, Wellington\" offset=\"+12:00\"
+        timezone_id=\"Pacific/Auckland\" timezone=\"73\" />\n\t<description>I am a
+        lecturer at Otago University, Dunedin, New Zealand - teaching in Political
+        Studies\n\nMy political blog is at: &lt;a href=&quot;http://www.liberation.org.nz&quot;
+        rel=&quot;noreferrer nofollow&quot;&gt;www.liberation.org.nz&lt;/a&gt;</description>\n\t<photosurl>https://www.flickr.com/photos/bryceedwards/</photosurl>\n\t<profileurl>https://www.flickr.com/people/bryceedwards/</profileurl>\n\t<mobileurl>https://www.flickr.com/photos/bryceedwards/</mobileurl>\n\t<photos>\n\t\t<firstdatetaken>2001-05-06
+        03:26:02</firstdatetaken>\n\t\t<firstdate>1132662164</firstdate>\n\t\t<count>12786</count>\n\t</photos>\n</person>\n</rsp>\n"
     headers:
       Connection:
       - keep-alive

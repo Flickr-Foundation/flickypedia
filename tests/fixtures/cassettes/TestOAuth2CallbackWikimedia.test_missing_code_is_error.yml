@@ -28,8 +28,6 @@ interactions:
       - '0'
       cache-control:
       - private,no-cache,s-maxage=0
-      content-encoding:
-      - gzip
       content-type:
       - application/json
       date:

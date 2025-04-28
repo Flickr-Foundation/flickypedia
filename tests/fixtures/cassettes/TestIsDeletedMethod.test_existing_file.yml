@@ -16,9 +16,7 @@ interactions:
     uri: https://commons.wikimedia.org/w/api.php?action=query&list=logevents&letitle=File%3AHerestraat%20Groningen.JPG&letype=delete&format=xml
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAA7Oxr8jNUShLLSrOzM+zVTLUM1Cyt7NJLMhUSEosSc5Izs8tyEktSbVVUrKzKSxN
-        Laq0s8nJT08tS80rKVbQt7PRhwrqA7XYAQDCjHfiTQAAAA==
+      string: <?xml version="1.0"?><api batchcomplete=""><query><logevents /></query></api>
     headers:
       accept-ranges:
       - bytes

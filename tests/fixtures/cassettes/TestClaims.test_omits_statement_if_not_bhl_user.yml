@@ -16,33 +16,52 @@ interactions:
     uri: https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&photo_id=7982377911
   response:
     body:
-      string: !!binary |
-        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
-        MlEPAAA=
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<photo
+        id=\"7982377911\" secret=\"7e49d9ae15\" server=\"8178\" farm=\"9\" dateuploaded=\"1347539868\"
+        isfavorite=\"0\" license=\"10\" safety_level=\"0\" rotation=\"0\" originalsecret=\"042e69b5e9\"
+        originalformat=\"jpg\" views=\"9291\" media=\"photo\">\n\t<owner nsid=\"61021753@N02\"
+        username=\"BioDivLibrary\" realname=\"Biodiversity Heritage Library\" location=\"\"
+        iconserver=\"5468\" iconfarm=\"6\" path_alias=\"biodivlibrary\">\n\t\t<gift
+        gift_eligible=\"1\" new_flow=\"1\">\n\t\t\t<eligible_durations />\n\t\t\t<eligible_durations
+        />\n\t\t\t<eligible_durations />\n\t\t</gift>\n\t</owner>\n\t<title>n83_w1150</title>\n\t<description>Prof.
+        Dr. Thome\u0301&#039;s Flora von Deutschland, O\u0308sterreich und der Schweiz,
+        in Wort und Bild, fu\u0308r Schule und Haus ; mit ... Tafeln ... von Walter
+        Mu\u0308ller..\nGera-Untermhaus :F.E. Ko\u0308hler,1886-1934..\n&lt;a href=&quot;http://biodiversitylibrary.org/page/4321212&quot;
+        rel=&quot;noreferrer nofollow&quot;&gt;biodiversitylibrary.org/page/4321212&lt;/a&gt;\n\nNearly
+        all #wine produced globally comes from cultivars of Vitis vinifera. See it
+        in #bhlib &lt;a href=&quot;http://biodiversitylibrary.org/page/4321212&quot;
+        rel=&quot;noreferrer nofollow&quot;&gt;biodiversitylibrary.org/page/4321212&lt;/a&gt;
+        &amp;amp; @eol &lt;a href=&quot;http://eol.org/pages/582304/overview&quot;
+        rel=&quot;noreferrer nofollow&quot;&gt;eol.org/pages/582304/overview&lt;/a&gt;</description>\n\t<visibility
+        ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" />\n\t<dates posted=\"1347539868\"
+        taken=\"2012-09-13 08:37:48\" takengranularity=\"0\" takenunknown=\"0\" lastupdate=\"1590606414\"
+        />\n\t<editability cancomment=\"0\" canaddmeta=\"0\" />\n\t<publiceditability
+        cancomment=\"1\" canaddmeta=\"1\" />\n\t<usage candownload=\"1\" canblog=\"0\"
+        canprint=\"0\" canshare=\"1\" />\n\t<comments>0</comments>\n\t<notes />\n\t<people
+        haspeople=\"0\" />\n\t<tags>\n\t\t<tag id=\"61001405-7982377911-2088\" author=\"61021753@N02\"
+        authorname=\"BioDivLibrary\" raw=\"Austria\" machine_tag=\"0\">austria</tag>\n\t\t<tag
+        id=\"61001405-7982377911-23038870\" author=\"61021753@N02\" authorname=\"BioDivLibrary\"
+        raw=\"Cryptogamia\" machine_tag=\"0\">cryptogamia</tag>\n\t\t<tag id=\"61001405-7982377911-1322408\"
+        author=\"61021753@N02\" authorname=\"BioDivLibrary\" raw=\"Floras\" machine_tag=\"0\">floras</tag>\n\t\t<tag
+        id=\"61001405-7982377911-1477\" author=\"61021753@N02\" authorname=\"BioDivLibrary\"
+        raw=\"Germany\" machine_tag=\"0\">germany</tag>\n\t\t<tag id=\"61001405-7982377911-349\"
+        author=\"61021753@N02\" authorname=\"BioDivLibrary\" raw=\"Plants\" machine_tag=\"0\">plants</tag>\n\t\t<tag
+        id=\"61001405-7982377911-2110\" author=\"61021753@N02\" authorname=\"BioDivLibrary\"
+        raw=\"Switzerland\" machine_tag=\"0\">switzerland</tag>\n\t\t<tag id=\"61001405-7982377911-84559693\"
+        author=\"61021753@N02\" authorname=\"BioDivLibrary\" raw=\"Mertz Library,
+        The New York Botanical Garden\" machine_tag=\"0\">mertzlibrarythenewyorkbotanicalgarden</tag>\n\t\t<tag
+        id=\"61001405-7982377911-97678508\" author=\"61021753@N02\" authorname=\"BioDivLibrary\"
+        raw=\"bhl:page=4321212\" machine_tag=\"1\">bhl:page=4321212</tag>\n\t\t<tag
+        id=\"61001405-7982377911-97678510\" author=\"61021753@N02\" authorname=\"BioDivLibrary\"
+        raw=\"dc:identifier=http://biodiversitylibrary.org/page/4321212\" machine_tag=\"1\">dc:identifier=httpbiodiversitylibraryorgpage4321212</tag>\n\t\t<tag
+        id=\"61001405-7982377911-29319759\" author=\"61021753@N02\" authorname=\"BioDivLibrary\"
+        raw=\"taxonomy:binomial=Vitis vinifera\" machine_tag=\"1\">taxonomy:binomial=vitisvinifera</tag>\n\t\t<tag
+        id=\"61001405-7982377911-28643\" author=\"66837092@N00\" authorname=\"CA Floristics\"
+        raw=\"Vitaceae\" machine_tag=\"0\">vitaceae</tag>\n\t\t<tag id=\"61001405-7982377911-8074851\"
+        author=\"61021753@N02\" authorname=\"BioDivLibrary\" raw=\"Twitter Post\"
+        machine_tag=\"0\">twitterpost</tag>\n\t\t<tag id=\"61001405-7982377911-55869728\"
+        author=\"187536392@N03\" authorname=\"@biodivher\" raw=\"Vitis vinifera L.\"
+        machine_tag=\"0\">vitisviniferal</tag>\n\t</tags>\n\t<urls>\n\t\t<url type=\"photopage\">https://www.flickr.com/photos/biodivlibrary/7982377911/</url>\n\t</urls>\n</photo>\n</rsp>\n"
     headers:
       Connection:
       - keep-alive
@@ -99,15 +118,21 @@ interactions:
     uri: https://api.flickr.com/services/rest/?method=flickr.photos.licenses.getInfo
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAA6WUS0/DMBCEz/RXrHyCQ+KWN6gpQq3EBRACIc6usyRWEruynRT49WwfKbRKKGpv
-        yWH8zUoz07/5KHKo0DpldMR6YZcBamlipZOIlf49uGRwM+j0rZuA88JHzGSM/nMlUTt0g85B/Q0q
-        jhjptSgwYrd5Ds8qSb2DZ3RoK4wZlDaPGAO+qTpdqby3alx6cgP3C8RSlXo/cdecS4vCqwqlKQqj
-        XWhswmszfPzJj8MubyCcNxCCRzNCqyq3GyrQcRvtpJmmh2QarVQi35st/8Afb8XverFsu7i3FRm8
-        pMLiba4y3JkeONFm4KzJwN7Idt5FzXs0kGkz1SDN5NPOEg8WHcVYzlLsNuI7nU7Dd8prZkNKMF+m
-        mJdOJNiUW6rfok+vWnmM4YU6iA7uDHVWF6g9vBmb/YJQRWYMejBMTEWApanQpb7IG5pxVROeyjEZ
-        g5EphNIwwlhJahoV8XA47B79o4aT+QPxXM+/0BpOe9J0VG+1EuvMB7F2Slvd1zgFaX44/dUW0EZx
-        Gq1B5xszAPMM4wQAAA==
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<licenses>\n\t<license
+        id=\"0\" name=\"All Rights Reserved\" url=\"\" />\n\t<license id=\"4\" name=\"Attribution
+        License\" url=\"https://creativecommons.org/licenses/by/2.0/\" />\n\t<license
+        id=\"6\" name=\"Attribution-NoDerivs License\" url=\"https://creativecommons.org/licenses/by-nd/2.0/\"
+        />\n\t<license id=\"3\" name=\"Attribution-NonCommercial-NoDerivs License\"
+        url=\"https://creativecommons.org/licenses/by-nc-nd/2.0/\" />\n\t<license
+        id=\"2\" name=\"Attribution-NonCommercial License\" url=\"https://creativecommons.org/licenses/by-nc/2.0/\"
+        />\n\t<license id=\"1\" name=\"Attribution-NonCommercial-ShareAlike License\"
+        url=\"https://creativecommons.org/licenses/by-nc-sa/2.0/\" />\n\t<license
+        id=\"5\" name=\"Attribution-ShareAlike License\" url=\"https://creativecommons.org/licenses/by-sa/2.0/\"
+        />\n\t<license id=\"7\" name=\"No known copyright restrictions\" url=\"https://www.flickr.com/commons/usage/\"
+        />\n\t<license id=\"8\" name=\"United States Government Work\" url=\"http://www.usa.gov/copyright.shtml\"
+        />\n\t<license id=\"9\" name=\"Public Domain Dedication (CC0)\" url=\"https://creativecommons.org/publicdomain/zero/1.0/\"
+        />\n\t<license id=\"10\" name=\"Public Domain Mark\" url=\"https://creativecommons.org/publicdomain/mark/1.0/\"
+        />\n</licenses>\n</rsp>\n"
     headers:
       Connection:
       - keep-alive
@@ -162,18 +187,37 @@ interactions:
     uri: https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&photo_id=7982377911
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAA63W25KbIBgH8OvuUzDcbxQ8oJ24+wC7nV5sL3rnoJJIg5KAxjZPX2IOMjs7Eyfh
-        TgbB/PL/OCxf/zYC7JnSXLYZRAsfAtaWsuLtOoN9t3pOIHh9eVoqvQW6o10G5QaatuYHpkFJ20JI
-        86YZZp63irfmjVOjkkMrJK3MrGbAt3EEELRgIoMfu54qBsHAq67OIIkgqBlf12bw8VnLXpUsg3XX
-        bfV3zxN8zxbHr/NyJXi5UYtSNl6CSOKRNMEBISlCOWFhWqWUoSjXiz/bNQS9Mt+6TDIMw8Iava1l
-        J7VXcGPdC14oqv5Zs3kj0NM7D4KGVZxmcBwBgfcZ807VmoFPJBSZf+FiGhsPo3auUDNMv+q+KVrK
-        xTWj2MoI+S48nStPdzujj4aKyYKieAoHhy4wjSuMnokBATa/+7yAsG+W6aXaxo6Hq611BWrngsJj
-        VV1AsbV8xo6HQYMr0HAb9MPsGH1z1QTYqrfIhcaVpZlrAfFxmZzTCRGZym3seDidgyvRYbYoseot
-        wmgSjR0Pi0pXovK2aDyCpq06tuJBPg4daApXGjFTA1Bs5YP8EFvn6dh1X0KUksQPKkajvHZlquea
-        sB+ajfq8ilAQmGQuu/ap6z5TSVZlwVBK0nzjyrS5bfr9fLr6BG/WQXRM5noS+cSkdp8pNRe7NKhC
-        vMoDZ6hghuqn4mve0um2gP3YPl0RMZv5fSZTxCxOi4iluXSVk/wqp+Xp+mru6Z65uL88/Qd2E1MH
-        5wsAAA==
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<sizes
+        canblog=\"0\" canprint=\"0\" candownload=\"1\">\n\t<size label=\"Square\"
+        width=\"75\" height=\"75\" source=\"https://live.staticflickr.com/8178/7982377911_7e49d9ae15_s.jpg\"
+        url=\"https://www.flickr.com/photos/biodivlibrary/7982377911/sizes/sq/\" media=\"photo\"
+        />\n\t<size label=\"Large Square\" width=\"150\" height=\"150\" source=\"https://live.staticflickr.com/8178/7982377911_7e49d9ae15_q.jpg\"
+        url=\"https://www.flickr.com/photos/biodivlibrary/7982377911/sizes/q/\" media=\"photo\"
+        />\n\t<size label=\"Thumbnail\" width=\"65\" height=\"100\" source=\"https://live.staticflickr.com/8178/7982377911_7e49d9ae15_t.jpg\"
+        url=\"https://www.flickr.com/photos/biodivlibrary/7982377911/sizes/t/\" media=\"photo\"
+        />\n\t<size label=\"Small\" width=\"156\" height=\"240\" source=\"https://live.staticflickr.com/8178/7982377911_7e49d9ae15_m.jpg\"
+        url=\"https://www.flickr.com/photos/biodivlibrary/7982377911/sizes/s/\" media=\"photo\"
+        />\n\t<size label=\"Small 320\" width=\"208\" height=\"320\" source=\"https://live.staticflickr.com/8178/7982377911_7e49d9ae15_n.jpg\"
+        url=\"https://www.flickr.com/photos/biodivlibrary/7982377911/sizes/n/\" media=\"photo\"
+        />\n\t<size label=\"Small 400\" width=\"260\" height=\"400\" source=\"https://live.staticflickr.com/8178/7982377911_7e49d9ae15_w.jpg\"
+        url=\"https://www.flickr.com/photos/biodivlibrary/7982377911/sizes/w/\" media=\"photo\"
+        />\n\t<size label=\"Medium\" width=\"326\" height=\"500\" source=\"https://live.staticflickr.com/8178/7982377911_7e49d9ae15.jpg\"
+        url=\"https://www.flickr.com/photos/biodivlibrary/7982377911/sizes/m/\" media=\"photo\"
+        />\n\t<size label=\"Medium 640\" width=\"417\" height=\"640\" source=\"https://live.staticflickr.com/8178/7982377911_7e49d9ae15_z.jpg\"
+        url=\"https://www.flickr.com/photos/biodivlibrary/7982377911/sizes/z/\" media=\"photo\"
+        />\n\t<size label=\"Medium 800\" width=\"521\" height=\"800\" source=\"https://live.staticflickr.com/8178/7982377911_7e49d9ae15_c.jpg\"
+        url=\"https://www.flickr.com/photos/biodivlibrary/7982377911/sizes/c/\" media=\"photo\"
+        />\n\t<size label=\"Large\" width=\"667\" height=\"1024\" source=\"https://live.staticflickr.com/8178/7982377911_7e49d9ae15_b.jpg\"
+        url=\"https://www.flickr.com/photos/biodivlibrary/7982377911/sizes/l/\" media=\"photo\"
+        />\n\t<size label=\"Large 1600\" width=\"1042\" height=\"1600\" source=\"https://live.staticflickr.com/8178/7982377911_aa7803dea5_h.jpg\"
+        url=\"https://www.flickr.com/photos/biodivlibrary/7982377911/sizes/h/\" media=\"photo\"
+        />\n\t<size label=\"Large 2048\" width=\"1334\" height=\"2048\" source=\"https://live.staticflickr.com/8178/7982377911_c7fcbe1979_k.jpg\"
+        url=\"https://www.flickr.com/photos/biodivlibrary/7982377911/sizes/k/\" media=\"photo\"
+        />\n\t<size label=\"X-Large 3K\" width=\"2000\" height=\"3072\" source=\"https://live.staticflickr.com/8178/7982377911_998293d42f_3k.jpg\"
+        url=\"https://www.flickr.com/photos/biodivlibrary/7982377911/sizes/3k/\" media=\"photo\"
+        />\n\t<size label=\"Original\" width=\"2068\" height=\"3176\" source=\"https://live.staticflickr.com/8178/7982377911_042e69b5e9_o.jpg\"
+        url=\"https://www.flickr.com/photos/biodivlibrary/7982377911/sizes/o/\" media=\"photo\"
+        />\n</sizes>\n</rsp>\n"
     headers:
       Connection:
       - keep-alive

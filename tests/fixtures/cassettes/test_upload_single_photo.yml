@@ -7953,8 +7953,6 @@ interactions:
       - '0'
       cache-control:
       - public, max-age=300
-      content-encoding:
-      - gzip
       content-type:
       - application/sparql-results+json;charset=utf-8
       date:
@@ -8101,8 +8099,6 @@ interactions:
       - private, max-age=0, s-maxage=0
       content-disposition:
       - inline; filename=api-result.json
-      content-encoding:
-      - gzip
       content-type:
       - application/json; charset=utf-8
       date:
@@ -8374,8 +8370,6 @@ interactions:
       - private, max-age=0, s-maxage=0
       content-disposition:
       - inline; filename=api-result.json
-      content-encoding:
-      - gzip
       content-type:
       - application/json; charset=utf-8
       date:
