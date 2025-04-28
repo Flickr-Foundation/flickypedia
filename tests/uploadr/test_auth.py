@@ -245,7 +245,7 @@ def test_token_is_saved_to_database_when_refreshed(
 
         # Check that the user's token no longer matches the one we saved earlier.
         assert user.token() != token
-        assert user.token()["expires_at"] > datetime.datetime.now().timestamp()
+        assert user.token()["expires_at"] > datetime.datetime.now().timestamp()  # type: ignore
 
         refreshed_token = user.token()
 
