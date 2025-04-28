@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 import re
 import typing
 
@@ -19,7 +19,7 @@ class WikidataDatePrecision:
 
 
 def to_wikidata_date_value(
-    d: datetime.datetime, *, precision: typing.Literal["day", "month", "year"]
+    d: datetime, *, precision: typing.Literal["day", "month", "year"]
 ) -> DataValueTypes.Time:
     """
     Convert a Python native-datetime to the Wikidata data model.
@@ -128,13 +128,13 @@ def render_wikidata_date(value: Value.Time) -> str:
     #
     # See https://www.wikidata.org/wiki/Help:Dates#Precision
     if value["precision"] == 11:
-        d = datetime.datetime.strptime(value["time"], "+%Y-%m-%dT00:00:00Z")
+        d = datetime.strptime(value["time"], "+%Y-%m-%dT00:00:00Z")
         return d.strftime("%-d %B %Y")
     elif value["precision"] == 10:
-        d = datetime.datetime.strptime(value["time"], "+%Y-%m-00T00:00:00Z")
+        d = datetime.strptime(value["time"], "+%Y-%m-00T00:00:00Z")
         return d.strftime("%B %Y")
     elif value["precision"] == 9:
-        d = datetime.datetime.strptime(value["time"], "+%Y-00-00T00:00:00Z")
+        d = datetime.strptime(value["time"], "+%Y-00-00T00:00:00Z")
         return d.strftime("%Y")
     else:  # pragma: no cover
         assert False

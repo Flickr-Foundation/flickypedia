@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 
 from ..types import (
     NewStatement,
@@ -10,7 +10,7 @@ from ..wikidata_entities import WikidataEntities
 from ..wikidata_properties import WikidataProperties
 
 
-def create_published_in_statement(date_posted: datetime.datetime) -> NewStatement:
+def create_published_in_statement(date_posted: datetime) -> NewStatement:
     """
     Create a "Published In" statement for the date a photo was posted
     to Flickr.

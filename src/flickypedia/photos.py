@@ -2,7 +2,7 @@
 Some methods for working with collections of photos.
 """
 
-import datetime
+from datetime import datetime
 import typing
 
 from flask import current_app
@@ -105,7 +105,7 @@ class EnrichedPhoto(typing.TypedDict):
 
 
 def enrich_photo(
-    photos: list[SinglePhoto], wikimedia_username: str, retrieved_at: datetime.datetime
+    photos: list[SinglePhoto], wikimedia_username: str, retrieved_at: datetime
 ) -> list[EnrichedPhoto]:
     """
     Create a list of photos which includes their structured data.

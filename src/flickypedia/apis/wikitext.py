@@ -12,7 +12,7 @@ need to put in much text ourself.
 
 """
 
-import datetime
+from datetime import datetime, timezone
 
 from flickr_photos_api import SinglePhoto
 
@@ -87,7 +87,7 @@ def create_wikitext(
         "}}"
     ) % (
         wikimedia_username,
-        datetime.datetime.now().strftime("%Y-%m-%d"),
+        datetime.now(tz=timezone.utc).strftime("%Y-%m-%d"),
         photo["owner"]["username"],
         photo["owner"]["profile_url"],
         photo["url"],

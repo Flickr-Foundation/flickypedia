@@ -13,7 +13,7 @@ This page gets two arguments as query parameters:
 
 """
 
-import datetime
+from datetime import datetime
 import json
 import typing
 
@@ -188,7 +188,7 @@ class PhotoForUpload(typing.TypedDict):
     categories: list[str]
     license_id: str
     date_taken: DateTaken
-    date_posted: datetime.datetime
+    date_posted: datetime
     original_url: str
     photo_url: str
     sdc: NewClaims

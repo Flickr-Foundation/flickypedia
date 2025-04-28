@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 
 from flask import Flask
 from flickr_photos_api import SinglePhoto
@@ -40,9 +40,9 @@ def test_upload_single_photo(app: Flask, wikimedia_api: WikimediaApi) -> None:
         ],
         "title": None,
         "description": None,
-        "date_posted": datetime.datetime.fromtimestamp(1701532872),
+        "date_posted": datetime.fromtimestamp(1701532872),
         "date_taken": {
-            "value": datetime.datetime(2021, 9, 22, 18, 3, 10),
+            "value": datetime(2021, 9, 22, 18, 3, 10),
             "granularity": "second",
         },
         "safety_level": "safe",
@@ -63,7 +63,7 @@ def test_upload_single_photo(app: Flask, wikimedia_api: WikimediaApi) -> None:
         request={
             "photo": photo,
             "sdc": create_sdc_claims_for_new_flickr_photo(
-                photo, retrieved_at=datetime.datetime(2023, 12, 2, 16, 2, 0)
+                photo, retrieved_at=datetime(2023, 12, 2, 16, 2, 0)
             ),
             "title": "Floor decoration at St Giles In The Fields.jpg",
             "caption": {

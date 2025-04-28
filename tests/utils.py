@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime, timezone
 import json
 import pathlib
 import re
@@ -89,7 +89,7 @@ def store_user(
         userid="-3",
         name="FlickypediaTestingUser",
         encrypted_token=encrypt_string(key, plaintext=json.dumps(oauth2_token)),
-        first_login=datetime.datetime.now(),
+        first_login=datetime.now(tz=timezone.utc),
     )
     user_db.session.add(user)
     user_db.session.commit()

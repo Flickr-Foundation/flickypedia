@@ -19,7 +19,7 @@ the filesystem.  See the comments in ``process_single_task()``.
 # Check this isn't a ecurity gap!
 
 import abc
-import datetime
+from datetime import datetime, timezone
 import json
 import logging
 import os
@@ -40,7 +40,7 @@ State = typing.Literal["waiting", "in_progress", "failed", "completed"]
 
 
 class TaskEvent(typing.TypedDict):
-    time: datetime.datetime
+    time: datetime
     description: str
 
 
@@ -222,7 +222,10 @@ class AbstractFilesystemTaskQueue(abc.ABC, typing.Generic[In, Out]):
             task={
                 "id": task_id,
                 "events": [
-                    {"time": datetime.datetime.now(), "description": "Task created"}
+                    {
+                        "time": datetime.now(tz=timezone.utc),
+                        "description": "Task created",
+                    }
                 ],
                 "state": "waiting",
                 "task_input": task_input,
@@ -243,7 +246,9 @@ class AbstractFilesystemTaskQueue(abc.ABC, typing.Generic[In, Out]):
         if state is not None:
             task["state"] = state
 
-        task["events"].append({"time": datetime.datetime.now(), "description": event})
+        task["events"].append(
+            {"time": datetime.now(tz=timezone.utc), "description": event}
+        )
 
         self.write_task(task)
 

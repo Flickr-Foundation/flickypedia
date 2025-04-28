@@ -34,7 +34,7 @@ the required JSON.
 
 """
 
-import datetime
+from datetime import datetime
 import typing
 
 from .wikidata_datamodel import DataValue, Qualifiers
@@ -57,7 +57,7 @@ class QualifierValueTypes:
         {
             "type": typing.Literal["date"],
             "property": str,
-            "date": datetime.datetime,
+            "date": datetime,
             "precision": typing.Literal["day", "month", "year"],
         },
     )

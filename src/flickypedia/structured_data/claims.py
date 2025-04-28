@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 import typing
 
 from flickr_photos_api import SinglePhoto
@@ -22,7 +22,7 @@ def _create_sdc_claims_for_flickr_photo(
     photo: SinglePhoto,
     *,
     mode: typing.Literal["new_photo", "existing_photo"],
-    retrieved_at: datetime.datetime | None = None,
+    retrieved_at: datetime | None = None,
 ) -> NewClaims:
     """
     Creates a complete structured data claim for a Flickr photo.
@@ -112,7 +112,7 @@ def _create_sdc_claims_for_flickr_photo(
 
 
 def create_sdc_claims_for_new_flickr_photo(
-    photo: SinglePhoto, retrieved_at: datetime.datetime
+    photo: SinglePhoto, retrieved_at: datetime
 ) -> NewClaims:
     """
     Create the SDC claims for a new upload to Wikimedia Commons.

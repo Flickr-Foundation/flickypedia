@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime, timezone
 
 from flickr_photos_api import FlickrApi, MachineTags
 import pytest
@@ -91,7 +91,7 @@ class TestClaims:
         assert statement is not None
 
         claims = create_sdc_claims_for_new_flickr_photo(
-            photo, retrieved_at=datetime.datetime.now()
+            photo, retrieved_at=datetime.now(tz=timezone.utc)
         )
 
         assert statement in claims["claims"]
@@ -107,7 +107,7 @@ class TestClaims:
         photo["owner"]["id"] = "-1"
 
         claims = create_sdc_claims_for_new_flickr_photo(
-            photo, retrieved_at=datetime.datetime.now()
+            photo, retrieved_at=datetime.now(tz=timezone.utc)
         )
 
         assert statement not in claims["claims"]
@@ -126,7 +126,7 @@ class TestClaims:
         assert statement is None
 
         claims = create_sdc_claims_for_new_flickr_photo(
-            photo, retrieved_at=datetime.datetime.now()
+            photo, retrieved_at=datetime.now(tz=timezone.utc)
         )
 
         assert not any(
