@@ -77,7 +77,7 @@ def are_equivalent_times(time1: Value.Time, time2: Value.Time) -> bool:
     # We only write day/month/year statements in our code, so we should
     # never get here in practice, but we include it defensively.
     else:  # pragma: no cover
-        raise ValueError(f'Unrecognised precision: {time1["precision"]}')
+        raise ValueError(f"Unrecognised precision: {time1['precision']}")
 
 
 def are_equivalent_snaks(existing_snak: Snak, new_snak: Snak) -> bool:
