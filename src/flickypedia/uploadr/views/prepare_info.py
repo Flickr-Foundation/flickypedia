@@ -22,6 +22,7 @@ from flask_wtf import FlaskForm, Form
 from flask_login import current_user, login_required
 from flickr_photos_api import DateTaken, User as FlickrUser
 from nitrate.types import validate_type
+import werkzeug
 from wtforms import (
     BooleanField,
     FormField,
@@ -41,7 +42,6 @@ from flickypedia.photos import (
     categorise_photos,
 )
 from flickypedia.structured_data import NewClaims
-from flickypedia.types.views import ViewResponse
 from flickypedia.types.uploads import UploadRequest
 from ..uploads import begin_upload
 from ..caching import get_cached_photos_data, remove_cached_photos_data
@@ -224,7 +224,7 @@ def create_upload_requests(
 
 
 @login_required
-def prepare_info() -> ViewResponse:
+def prepare_info() -> str | werkzeug.Response:
     try:
         selected_photo_ids = {
             photo_id

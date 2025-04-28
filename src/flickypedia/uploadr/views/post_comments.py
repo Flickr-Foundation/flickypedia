@@ -1,15 +1,16 @@
 import json
 
+import flask
 from flask import abort, jsonify, render_template, request, url_for
 from flask_login import current_user, login_required
 from flickr_photos_api import FlickrApi
+import werkzeug
 
-from flickypedia.types.views import ViewResponse
 from .upload_complete import get_completed_task
 
 
 @login_required
-def post_comments(task_id: str) -> ViewResponse:
+def post_comments(task_id: str) -> str | werkzeug.Response:
     try:
         user = request.args["user"]
     except KeyError:
@@ -42,7 +43,7 @@ def post_comments(task_id: str) -> ViewResponse:
 
 
 @login_required
-def post_bot_comment_api() -> ViewResponse:
+def post_bot_comment_api() -> flask.Response:
     from flickypedia.apis.flickr.comments import post_bot_comment
 
     assert request.method == "POST"
@@ -76,7 +77,7 @@ def post_bot_comment_api() -> ViewResponse:
 
 
 @login_required
-def post_user_comment_api() -> ViewResponse:
+def post_user_comment_api() -> flask.Response | werkzeug.Response:
     assert request.method == "POST"
 
     try:
