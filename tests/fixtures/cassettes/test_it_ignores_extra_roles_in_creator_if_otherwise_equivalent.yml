@@ -16,19 +16,16 @@ interactions:
     uri: https://api.flickr.com/services/rest/?method=flickr.people.getInfo&user_id=126377022%40N07
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAA4VUwW7bMAw9N19B+FC0QBo7dpIGre1uuxUYdto9kGXaFiKLniQ33d+PitOmK7YW
-        8EGi3nt8JGXlD8+9hie0TpEpouUiiQCNpFqZtohG39xsI3goZ7l1AzgvfBHRPuL9wBQyoGompZvs
-        9jZJ0y8/ktsIjPtHULnBEkMjUG5Xo0aPzORkSpJxaNlBEWXbdTpFGmH7IlpFMAjf7YRWwhWRMh6t
-        QS+s7NQTVkR71YsWXQSdcLvgjlGsyal2lahbLCIOmlrYmqt6HpTlSJqk681mkyQMDDRRNxY5ftqG
-        TZA6snauU8NwbMXbY6xHKTw3TOidRUejlXjMXM4u8pGrMaLH8vFkF75OfuEbG4bHo+M8foUxpUYn
-        rRqCYvmzQ3jPnIOAdbK8ktdX2TUYMjdcYaP8nJsJ1ah0mBZjatUqLzRoVVlhfwM1ZymnPDrgsoB8
-        hxbkqP1oGSysV42Q3oEyrwoN2X4B39UeWXYQPOwX0TkcMDT4SdUIoVkgJFfvwBNwLzAMh6/GHDrl
-        PFklDK+d7EiLEOXczOZJcionKo01F8emQrxFg8HRMFZaycVsdqn9vYDOYlNc/hrJ33feD+4ujk83
-        YEG2jacTzq1PIENMQGvZs6GGtKbDhLlsWW6axcRk+ViEaB6/HQFPZOjIkxutLl9SHg6HRcO29nYh
-        qY8nQPzfKxnnJ0jQCIJhYBo/UkQaNH6seBZhyZ6qTxQ/93jWeC2a3V7kjbLO18Lzz7ZHUy636fom
-        WfIHSXJ3/PL4HeYvWrlcJZssW6Xr7A3wKC1pNL5cZ+l2tdzk8bTl7Kd+8dMST29LWPGrU87+APtJ
-        HJOkBAAA
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<person
+        id=\"126377022@N07\" nsid=\"126377022@N07\" ispro=\"1\" is_deleted=\"0\" iconserver=\"3852\"
+        iconfarm=\"4\" path_alias=\"internetarchivebookimages\" has_stats=\"0\" pro_badge=\"standard\"
+        expire=\"2025666000\" has_adfree=\"0\" has_free_standard_shipping=\"0\" has_free_educational_resources=\"0\">\n\t<username>Internet
+        Archive Book Images</username>\n\t<description>The Internet Archive, a 501(c)(3)
+        non-profit, is building a digital library of Internet sites and other cultural
+        artifacts in digital form. Like a paper library, we provide free access to
+        researchers, historians, scholars, the print disabled, and the general public.\n\n&lt;a
+        href=&quot;https://archive.org/&quot; rel=&quot;noreferrer nofollow&quot;&gt;archive.org/&lt;/a&gt;</description>\n\t<photosurl>https://www.flickr.com/photos/internetarchivebookimages/</photosurl>\n\t<profileurl>https://www.flickr.com/people/internetarchivebookimages/</profileurl>\n\t<mobileurl>https://www.flickr.com/photos/internetarchivebookimages/</mobileurl>\n\t<photos>\n\t\t<firstdatetaken>1825-01-01
+        00:00:00</firstdatetaken>\n\t\t<firstdate>1406334253</firstdate>\n\t\t<count>5328416</count>\n\t</photos>\n</person>\n</rsp>\n"
     headers:
       Connection:
       - keep-alive

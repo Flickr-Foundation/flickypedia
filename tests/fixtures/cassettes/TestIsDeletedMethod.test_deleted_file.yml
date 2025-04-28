@@ -16,14 +16,13 @@ interactions:
     uri: https://commons.wikimedia.org/w/api.php?action=query&list=logevents&letitle=File%3AMugeni%20Elijah.jpg&letype=delete&format=xml
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAA6WSzU7DMBCEX2XlexvHjpMSJSkSPwdQe+qJqgeTmNRV7BjbKe3bYyOQqooDEsdZ
-        aWZ3v91qeVIDHIV1ctQ1SucYLZuKGwmv3Lf7dlRmEF7UCDXV+yTsuamGsRdHob1rKumFgqBlVyPK
-        2E3G0owh0K5GOQIv/RCcj3IQ5WrqhZbwMMgD388PpkdgeC+iEaMYEVXoTxYsTRktgvtsQqETsT0C
-        3vqvAX/05ISt0Urq0fJTbKWE81yZGhFMshnOZyTfYFLivMSLFwRhERVmrpERFrbbuyBH7cr7GBeC
-        wYqwnfMuidM6eBsn3cGH9HtIWZbmjBTZ7RrT3S5wMNxy5SBpqiQCuMIQOOAFxfRfGFKGC5Jn9G8Y
-        nm13jYDOMJnhYoOziICxSwTrEQIFJV28OTipWwEUwxPXE7dniO7ftkwuDp98/0ISPqX5BN3DHYtE
-        AgAA
+      string: <?xml version="1.0"?><api batchcomplete=""><query><logevents><item logid="355945145"
+        ns="6" title="File:Mugeni Elijah.jpg" pageid="0" logpage="128511537" type="delete"
+        action="delete" user="Minorax" timestamp="2024-06-26T02:06:08Z" comment="per
+        [[Commons:Deletion requests/Files found with 154165274@N03]]"><params /></item><item
+        logid="335508303" ns="6" title="File:Mugeni Elijah.jpg" pageid="0" logpage="115072643"
+        type="delete" action="delete" user="Krd" timestamp="2023-02-07T04:06:55Z"
+        comment="No permission since 30 January 2023"><params /></item></logevents></query></api>
     headers:
       accept-ranges:
       - bytes

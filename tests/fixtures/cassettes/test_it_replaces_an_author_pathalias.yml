@@ -16,16 +16,14 @@ interactions:
     uri: https://api.flickr.com/services/rest/?method=flickr.people.getInfo&user_id=9751269%40N07
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAA4VTwW7bMAw9N18h6DBswBLZaZ04qe0OWA87FQGSng3FomMtsiRI8lLs60fbnbOu
-        wHYTHx8fH0koe3hpFfkBzkujcxovIkpAV0ZIfcppF+p5SslDMcuct8QHHnJqzhRjiyVGEylyulkn
-        8XK1+fIUrSnR/h0kvXUGtSmRvhSgIABWYSNZGe3BYfecrpLkNhmhmrsWgRUlloem5Epyn1NxabgL
-        F3mipOG+7L0giiooXh65OEFOEdSCO4EzvFjpEMF8z+aidnAN+6BXGMilb6S1w7yv7CENoqt4wK1w
-        VTrwpnMVDA2L2U3WoW3NWygmVxmbMMw74GrIP3ItQZFvo/WMTQkkKTM2KPbBdKcmGP2ZPGuJ2yF7
-        nA58xiYK0oNs4afRQBQ/gsrpjleylhU5IE4+Pu/JB97ae/KVay74p3vEv3f4psTUtQc83DxKtxGO
-        +Fuo7C+12x/S3ePhiuYUz8D6IQX4yknbWxwB25hgfOdU0YRg/Zaxy+WyqJWszm5RmZaNBDYthWWv
-        UF/TCzhTSwX/UgBjFbxVuBahRGuO/1F47+FaMw2Bbm6yWjofBG468DPoIt6sNvMomccpiaLt7d12
-        uczYX5w3ZUUcJZs4Xt+lyR/EQboynQ7FOo1WUcbGAHu/bgO/Dxv/T//Cn1XMfgG4Q0DHiAMAAA==
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<person
+        id=\"9751269@N07\" nsid=\"9751269@N07\" ispro=\"1\" is_deleted=\"0\" iconserver=\"65535\"
+        iconfarm=\"66\" path_alias=\"dwhartwig\" has_stats=\"0\" pro_badge=\"standard\"
+        expire=\"0\" has_adfree=\"0\" has_free_standard_shipping=\"0\" has_free_educational_resources=\"0\">\n\t<username>dwhartwig</username>\n\t<realname>Daniel
+        Hartwig</realname>\n\t<location>Stoughton, United States</location>\n\t<timezone
+        label=\"Pacific Time (US &amp; Canada); Tijuana\" offset=\"-08:00\" timezone_id=\"PST8PDT\"
+        timezone=\"5\" />\n\t<description />\n\t<photosurl>https://www.flickr.com/photos/dwhartwig/</photosurl>\n\t<profileurl>https://www.flickr.com/people/dwhartwig/</profileurl>\n\t<mobileurl>https://www.flickr.com/photos/dwhartwig/</mobileurl>\n\t<photos>\n\t\t<firstdatetaken>1969-05-18
+        00:34:22</firstdatetaken>\n\t\t<firstdate>1059117485</firstdate>\n\t\t<count>78060</count>\n\t</photos>\n</person>\n</rsp>\n"
     headers:
       Connection:
       - keep-alive

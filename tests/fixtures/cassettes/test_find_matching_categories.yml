@@ -38,8 +38,6 @@ interactions:
       - private, must-revalidate, max-age=10800
       content-disposition:
       - inline; filename=api-result.xml
-      content-encoding:
-      - gzip
       content-type:
       - text/xml; charset=utf-8
       date:

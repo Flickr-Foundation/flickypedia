@@ -16,39 +16,8 @@ interactions:
     uri: https://commons.wikimedia.org/w/api.php?action=wbgetentities&sites=commonswiki&titles=File%3AKatscha%20February%202017%2006.jpg&format=json
   response:
     body:
-      string: !!binary |
-        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
+      string: '{"entities":{"M56717420":{"pageid":56717420,"ns":6,"title":"File:Katscha
+        February 2017 06.jpg","lastrevid":881356529,"modified":"2024-06-04T21:27:14Z","type":"mediainfo","id":"M56717420","labels":{},"descriptions":{},"statements":{"P6731":[{"mainsnak":{"snaktype":"value","property":"P6731","hash":"00effd845d313cc188e25302a8712c2d48647171","datavalue":{"value":{"entity-type":"item","numeric-id":63348049,"id":"Q63348049"},"type":"wikibase-entityid"}},"type":"statement","id":"M56717420$C0EBB2E9-6110-4705-8483-3ED64C74D61C","rank":"normal"},{"mainsnak":{"snaktype":"value","property":"P6731","hash":"caf86f67082da0e2d10079a79bedf327335b0459","datavalue":{"value":{"entity-type":"item","numeric-id":63348069,"id":"Q63348069"},"type":"wikibase-entityid"}},"type":"statement","id":"M56717420$B25C0BE9-4C69-4B1C-BC3C-08B4C0B3181B","rank":"normal"}],"P275":[{"mainsnak":{"snaktype":"value","property":"P275","hash":"ec6e754c5042e13b53376139e505ebd6708745a4","datavalue":{"value":{"entity-type":"item","numeric-id":18199165,"id":"Q18199165"},"type":"wikibase-entityid"}},"type":"statement","id":"M56717420$4F36B2E7-3B4E-4AE0-A623-A199BDCD37F3","rank":"normal"}],"P6216":[{"mainsnak":{"snaktype":"value","property":"P6216","hash":"5570347fdc76d2a80732f51ea10ee4b144a084e0","datavalue":{"value":{"entity-type":"item","numeric-id":50423863,"id":"Q50423863"},"type":"wikibase-entityid"}},"type":"statement","id":"M56717420$4E9B1B2B-AD7D-4126-A4CC-6AAA0CCDD4DD","rank":"normal"}],"P571":[{"mainsnak":{"snaktype":"value","property":"P571","hash":"633a8fa06f767338cb76ad90e453838cb6f1d529","datavalue":{"value":{"time":"+2017-02-11T00:00:00Z","timezone":0,"before":0,"after":0,"precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"},"type":"time"}},"type":"statement","id":"M56717420$79667C3C-1A8B-4B4E-98F7-8F8A52195D19","rank":"normal"}],"P4082":[{"mainsnak":{"snaktype":"value","property":"P4082","hash":"e63dcd859a4f408c1ed4645f00dd402d4a0b496c","datavalue":{"value":{"entity-type":"item","numeric-id":15143841,"id":"Q15143841"},"type":"wikibase-entityid"}},"type":"statement","id":"M56717420$E0ADE5D2-6EDB-43D3-82B0-F1A3E62CF03F","rank":"normal"}],"P7482":[{"mainsnak":{"snaktype":"value","property":"P7482","hash":"83568a288a8b8b4714a68e7239d8406833762864","datavalue":{"value":{"entity-type":"item","numeric-id":66458942,"id":"Q66458942"},"type":"wikibase-entityid"}},"type":"statement","id":"M56717420$F183B609-988D-402C-ABD1-64C4CC8856A6","rank":"normal"}],"P170":[{"mainsnak":{"snaktype":"somevalue","property":"P170","hash":"d3550e860f988c6675fff913440993f58f5c40c5"},"type":"statement","qualifiers":{"P2093":[{"snaktype":"value","property":"P2093","hash":"4f66b7f1264fbfe4b0e461077bf598a68d642270","datavalue":{"value":"ArildV","type":"string"}}],"P2699":[{"snaktype":"value","property":"P2699","hash":"07a8941ee68ffa116538cb39047334c3fa273c21","datavalue":{"value":"https://commons.wikimedia.org/wiki/user:ArildV","type":"string"}}],"P3831":[{"snaktype":"value","property":"P3831","hash":"c5e04952fd00011abf931be1b701f93d9e6fa5d7","datavalue":{"value":{"entity-type":"item","numeric-id":33231,"id":"Q33231"},"type":"wikibase-entityid"}}],"P4174":[{"snaktype":"value","property":"P4174","hash":"cf0dc53f564672c58c8f5469e0af0ba0ac64be13","datavalue":{"value":"ArildV","type":"string"}}]},"qualifiers-order":["P2093","P2699","P3831","P4174"],"id":"M56717420$85121FC7-9E4D-45A9-B65C-3D8EB38F732F","rank":"normal"}],"P9149":[{"mainsnak":{"snaktype":"value","property":"P9149","hash":"96ffeae24cd2636e57713c184fddc03dcff527fc","datavalue":{"value":{"latitude":58.588979,"longitude":16.179181,"altitude":null,"precision":1.0e-6,"globe":"http://www.wikidata.org/entity/Q2"},"type":"globecoordinate"}},"type":"statement","id":"M56717420$F5B57E9B-E5CF-4C2E-B9B7-7F7119A9A3D2","rank":"normal"}],"P6757":[{"mainsnak":{"snaktype":"value","property":"P6757","hash":"fc82c85141854f8cd3057d109278593ddab8b288","datavalue":{"value":{"amount":"+10","unit":"http://www.wikidata.org/entity/Q11574"},"type":"quantity"}},"type":"statement","id":"M56717420$875163FE-728D-45DF-B3F1-400382339E0B","rank":"normal"}],"P6790":[{"mainsnak":{"snaktype":"value","property":"P6790","hash":"8a4455665487de2af49f45eb1b75e157bcb959c3","datavalue":{"value":{"amount":"+8","unit":"1"},"type":"quantity"}},"type":"statement","id":"M56717420$CCFDAA77-14E2-42ED-8B17-DD41A9D28B29","rank":"normal"}],"P2151":[{"mainsnak":{"snaktype":"value","property":"P2151","hash":"e682c8fff338c3adf77624acbad5b389bcc888b2","datavalue":{"value":{"amount":"+50","unit":"http://www.wikidata.org/entity/Q174789"},"type":"quantity"}},"type":"statement","id":"M56717420$9A9DD056-20EC-4BB4-BF85-C34F714F41A3","rank":"normal"}],"P6789":[{"mainsnak":{"snaktype":"value","property":"P6789","hash":"1c94f4d4b36f41a354d2396ee9a6e8bbceadbfb5","datavalue":{"value":{"amount":"+100","unit":"1"},"type":"quantity"}},"type":"statement","id":"M56717420$9E3B430C-B54D-4997-AD57-169C1DB8540D","rank":"normal"}],"P1163":[{"mainsnak":{"snaktype":"value","property":"P1163","hash":"723d30b878d4a8deb968b0db429888e5353661a2","datavalue":{"value":"image/jpeg","type":"string"}},"type":"statement","id":"M56717420$49822AEF-5CCB-4779-8F50-44049597F92F","rank":"normal"}],"P31":[{"mainsnak":{"snaktype":"value","property":"P31","hash":"78817782cf2abc9d185934ba3b526591e12840f2","datavalue":{"value":{"entity-type":"item","numeric-id":125191,"id":"Q125191"},"type":"wikibase-entityid"}},"type":"statement","id":"M56717420$EDCEE9DA-25A7-411F-905A-2AE544C651EA","rank":"normal"}]}}},"success":1}'
     headers:
       accept-ranges:
       - bytes
@@ -117,240 +86,699 @@ interactions:
     uri: https://commons.wikimedia.org/w/api.php?action=parse&page=File%3AKatscha%20February%202017%2006.jpg&prop=text&format=json
   response:
     body:
-      string: !!binary |
-        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
-        nDwiulzYWV+O7tj/A8mYYYMhPgEA
+      string: '{"parse":{"title":"File:Katscha February 2017 06.jpg","pageid":56717420,"text":{"*":"<div
+        class=\"mw-content-ltr mw-parser-output\" lang=\"en\" dir=\"ltr\"><div class=\"mw-heading
+        mw-heading2\"><h2 id=\"Summary\">Summary</h2><span class=\"mw-editsection\"><span
+        class=\"mw-editsection-bracket\">[</span><a href=\"/w/index.php?title=File:Katscha_February_2017_06.jpg&amp;action=edit&amp;section=1\"
+        title=\"Edit section: Summary\"><span>edit</span></a><span class=\"mw-editsection-bracket\">]</span></span></div>\n<div
+        class=\"notheme hproduct commons-file-information-table\">\n<table class=\"fileinfotpl-type-information
+        vevent mw-content-ltr\" style=\"direction: ltr;\">\n\n<tbody><tr>\n<td id=\"fileinfotpl_desc\"
+        class=\"fileinfo-paramfield\" lang=\"en\">Description<span class=\"summary
+        fn\" style=\"display:none\">Katscha February 2017 06.jpg</span></td>\n<td
+        class=\"description\">\n<div class=\"description mw-content-ltr en\" dir=\"ltr\"
+        lang=\"en\"><span class=\"language en\" title=\"English\"><b>English&#58;
+        </b></span> Residential building \u201cKatscha\u201c in Norrk\u00f6ping, Sweden.
+        Built 2015. Architects:  Ingrid Reppen and <a href=\"https://en.wikipedia.org/wiki/Kai_Wartiainen\"
+        class=\"extiw\" title=\"en:Kai Wartiainen\">Kai Wartiainen</a>. <small>wrong
+        exif-information. 12mm and F/11</small></div>\n<div class=\"description mw-content-ltr
+        es\" dir=\"ltr\" lang=\"es\"><span class=\"language es\" title=\"Spanish\"><b>Espa\u00f1ol&#58;
+        </b></span> Edificio residencial \"Katscha\", construido en 2015 en <a href=\"https://es.wikipedia.org/wiki/Norrk%C3%B6ping\"
+        class=\"extiw\" title=\"es:Norrk\u00f6ping\">Norrk\u00f6ping</a>, Suecia.</div>\n<div
+        class=\"description mw-content-ltr uk\" dir=\"ltr\" lang=\"uk\"><span class=\"language
+        uk\" title=\"Ukrainian\"><b>\u0423\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0430&#58;
+        </b></span> \u0416\u0438\u0442\u043b\u043e\u0432\u0438\u0439 \u0431\u0443\u0434\u0438\u043d\u043e\u043a
+        \u00abKatscha\u00bb, \u043f\u043e\u0431\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u0439
+        \u0443 2015 \u0440\u043e\u0446\u0456, <a href=\"https://uk.wikipedia.org/wiki/%D0%9D%D0%BE%D1%80%D1%80%D1%87%D0%B5%D0%BF%D1%96%D0%BD%D0%B3\"
+        class=\"extiw\" title=\"uk:\u041d\u043e\u0440\u0440\u0447\u0435\u043f\u0456\u043d\u0433\">\u041d\u043e\u0440\u0440\u0447\u0435\u043f\u0456\u043d\u0433</a>,
+        \u0428\u0432\u0435\u0446\u0456\u044f.</div></td>\n</tr>\n\n<tr>\n<td id=\"fileinfotpl_date\"
+        class=\"fileinfo-paramfield\" lang=\"en\">Date</td>\n<td lang=\"en\">\n<time
+        class=\"dtstart\" datetime=\"2017-02-11 17:24:36\" lang=\"en\" dir=\"ltr\"
+        style=\"white-space:nowrap\">11 February 2017, 17:24:36</time></td>\n</tr>\n\n<tr>\n<td
+        id=\"fileinfotpl_src\" class=\"fileinfo-paramfield\" lang=\"en\">Source</td>\n<td>\n<span
+        class=\"int-own-work\" lang=\"en\">Own work</span></td>\n</tr>\n\n<tr>\n<td
+        id=\"fileinfotpl_aut\" class=\"fileinfo-paramfield\" lang=\"en\">Author</td>\n<td>\n<a
+        href=\"/wiki/User:ArildV\" title=\"User:ArildV\">ArildV</a></td>\n</tr>\n\n\n</tbody></table>\n</div><table
+        class=\"toccolours mw-content-ltr layouttemplate commons-file-information-table\"
+        style=\"width: 100%;\" dir=\"ltr\" lang=\"en\">\n<tbody><tr><th class=\"type
+        fileinfo-paramfield\">Object location</th><td style=\"border:none;\"><span
+        class=\"plainlinks\"><span class=\"plainlinksneverexpand\"><a class=\"external
+        text\" href=\"https://geohack.toolforge.org/geohack.php?pagename=File:Katscha_February_2017_06.jpg&amp;params=058.588979_N_0016.179181_E_globe:Earth_class:object_type:object__&amp;language=en\">58\u00b0&#160;35\u2032&#160;20.32\u2033&#160;N,
+        16\u00b0&#160;10\u2032&#160;45.05\u2033&#160;E</a></span></span>&#160;<a class=\"mw-kartographer-maplink
+        no-icon\" data-mw-kartographer=\"maplink\" data-style=\"osm-intl\" href=\"/wiki/Special:Map/13/58.588979/16.179181/en\"
+        data-zoom=\"13\" data-lat=\"58.588979\" data-lon=\"16.179181\" data-overlays=\"[&quot;_5b9c667c25aa7e7e3994dd4923df5a8c7cc16212&quot;]\"><span
+        typeof=\"mw:File\"><span title=\"Kartographer map based on OpenStreetMap.\"><img
+        alt=\"Kartographer map based on OpenStreetMap.\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Openstreetmap_logo.svg/20px-Openstreetmap_logo.svg.png\"
+        decoding=\"async\" width=\"20\" height=\"20\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Openstreetmap_logo.svg/30px-Openstreetmap_logo.svg.png
+        1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Openstreetmap_logo.svg/40px-Openstreetmap_logo.svg.png
+        2x\" data-file-width=\"256\" data-file-height=\"256\" /></span></span></a></td><td
+        style=\"border:none;\">View this and other nearby images on: <a class=\"external
+        text\" href=\"https://wikimap.toolforge.org/?wp=false&amp;cluster=false&amp;zoom=16&amp;lat=058.588979&amp;lon=0016.179181\">OpenStreetMap</a></td><td
+        style=\"border:none;\"><span typeof=\"mw:File\"><a href=\"/wiki/Commons:Geocoding\"
+        title=\"Commons:Geocoding\"><img alt=\"info\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/OOjs_UI_icon_help.svg/18px-OOjs_UI_icon_help.svg.png\"
+        decoding=\"async\" width=\"18\" height=\"18\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/OOjs_UI_icon_help.svg/27px-OOjs_UI_icon_help.svg.png
+        1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/OOjs_UI_icon_help.svg/36px-OOjs_UI_icon_help.svg.png
+        2x\" data-file-width=\"24\" data-file-height=\"24\" /></a></span><span class=\"geo\"
+        style=\"display:none\"> 58.588979;   16.179181</span></td></tr>\n</tbody></table>\n<div
+        class=\"mw-heading mw-heading2\"><h2 id=\"Assessment\"><span id=\"Assessment\"></span>Assessment</h2><span
+        class=\"mw-editsection\"><span class=\"mw-editsection-bracket\">[</span><a
+        href=\"/w/index.php?title=File:Katscha_February_2017_06.jpg&amp;action=edit&amp;section=2\"
+        title=\"Edit section: Assessment\"><span>edit</span></a><span class=\"mw-editsection-bracket\">]</span></span></div>\n<div
+        id=\"assessments\" dir=\"ltr\" lang=\"en\">\n<table cellspacing=\"0\" cellpadding=\"0\"
+        style=\"background:transparent;margin:0.5em auto; width:100%\">\n<tbody><tr>\n<td>\n<table
+        style=\"clear:both;margin:0em auto;width:100%; box-sizing: border-box; border:2px
+        solid #E5D4A1;background-color:#FAF5E6; direction:ltr;\"><tbody><tr><td>\n<table
+        style=\"background:transparent; width:100%;\">\n\n\n<tbody><tr>\n<td style=\"width:40px;text-align:center;\"
+        rowspan=\"2\">\n<p><span typeof=\"mw:File\"><span title=\"Featured picture\"><img
+        alt=\"Featured picture\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Cscr-featured.svg/40px-Cscr-featured.svg.png\"
+        decoding=\"async\" width=\"40\" height=\"38\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Cscr-featured.svg/60px-Cscr-featured.svg.png
+        1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Cscr-featured.svg/80px-Cscr-featured.svg.png
+        2x\" data-file-width=\"466\" data-file-height=\"443\" /></span></span>\n</p>\n</td>\n<td>\n</td>\n<td
+        style=\"width:30px;text-align:center;\" rowspan=\"2\">\n<p><span typeof=\"mw:File\"><span
+        title=\"Wikimedia Commons\"><img alt=\"Wikimedia Commons\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Commons-logo.svg/30px-Commons-logo.svg.png\"
+        decoding=\"async\" width=\"30\" height=\"40\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Commons-logo.svg/45px-Commons-logo.svg.png
+        1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Commons-logo.svg/60px-Commons-logo.svg.png
+        2x\" data-file-width=\"1024\" data-file-height=\"1376\" /></span></span>\n</p>\n</td></tr>\n<tr>\n<td>This
+        is a <b>featured picture</b> on Wikimedia Commons (<a href=\"/wiki/Commons:Featured_pictures\"
+        title=\"Commons:Featured pictures\">Featured pictures</a>) and is considered
+        one of the finest images. See its nomination <a href=\"/wiki/Commons:Featured_picture_candidates/File:Katscha_February_2017_06.jpg\"
+        title=\"Commons:Featured picture candidates/File:Katscha February 2017 06.jpg\">here</a>.<br
+        />\n<hr />\n<p>If you have an image of similar quality that can be published
+        under a <a href=\"/wiki/Commons:Licensing\" title=\"Commons:Licensing\">suitable
+        copyright license</a>, be sure to <a href=\"/wiki/Special:Upload\" title=\"Special:Upload\">upload</a>
+        it, <a href=\"/wiki/Commons:Copyright_tags\" title=\"Commons:Copyright tags\">tag</a>
+        it, and <a href=\"/wiki/Commons:Featured_picture_candidates\" title=\"Commons:Featured
+        picture candidates\">nominate it</a>.<br />\n</p>\n</td></tr></tbody></table>\n</td></tr></tbody></table>\n</td></tr></tbody></table>\n</div>\n<style
+        data-mw-deduplicate=\"TemplateStyles:r883774584\">.mw-parser-output .template-picture-of-the-day{box-sizing:border-box;clear:both;width:100%;margin:0.5em
+        auto;border:2px solid #e5d4a1;background-color:#faf5e6;border-spacing:8px}.mw-parser-output
+        .template-picture-of-the-day td{padding:0}.mw-parser-output .template-picture-of-the-day
+        .potd-icon{width:64px;text-align:center}.mw-parser-output .template-picture-of-the-day
+        .mw-collapsible-content,.mw-parser-output .template-picture-of-the-day .mw-collapsible-toggle{color:inherit!important}html.skin-theme-clientpref-night
+        .mw-parser-output .template-picture-of-the-day{border:1px solid var(--border-color-warning,#e5d4a1);background-color:var(--background-color-warning-subtle,#faf5e6)}@media(prefers-color-scheme:dark){html.skin-theme-clientpref-os
+        .mw-parser-output .template-picture-of-the-day{border:1px solid var(--border-color-warning,#e5d4a1);background-color:var(--background-color-warning-subtle,#faf5e6)}}</style>\n<p
+        class=\"mw-empty-elt\">\n</p>\n<table id=\"template-picture-of-the-day\" class=\"template-picture-of-the-day\"
+        dir=\"ltr\" role=\"presentation\">\n\n<tbody><tr>\n<td class=\"potd-icon\"><span
+        typeof=\"mw:File\"><span title=\"Picture of the day\"><img alt=\"Picture of
+        the day\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Potd-logo.svg/64px-Potd-logo.svg.png\"
+        decoding=\"async\" width=\"64\" height=\"64\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Potd-logo.svg/96px-Potd-logo.svg.png
+        1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Potd-logo.svg/128px-Potd-logo.svg.png
+        2x\" data-file-width=\"124\" data-file-height=\"124\" /></span></span>\n</td>\n<td><span
+        id=\"field-potd\" title=\"20240705\"></span><div lang=\"en\">This image was
+        selected as <b><a href=\"/wiki/Commons:Picture_of_the_day\" title=\"Commons:Picture
+        of the day\">picture of the day</a></b> on Wikimedia Commons for <a href=\"/wiki/Template:Potd/2024-07#5\"
+        title=\"Template:Potd/2024-07\">5 July 2024</a>. It was captioned as follows:</div><div
+        class=\"description mw-content-ltr en\" dir=\"ltr\" lang=\"en\"><span class=\"language
+        en\" title=\"English\"><b>English&#58; </b></span> Residential building \"Katscha\"
+        in <a href=\"https://en.wikipedia.org/wiki/Norrk%C3%B6ping\" class=\"extiw\"
+        title=\"en:Norrk\u00f6ping\">Norrk\u00f6ping</a>, Sweden. It was built in
+        2015.</div><div class=\"tpl-hidden mw-collapsible mw-collapsed\">\n<style
+        data-mw-deduplicate=\"TemplateStyles:r789581082\">.mw-parser-output .tpl-hidden{clear:both}.mw-parser-output
+        .tpl-hidden>.mw-collapsible-toggle{float:none}.mw-parser-output .tpl-hidden::before{display:none}html.client-js
+        .mw-parser-output .tpl-hidden-headertext{padding-left:18px}.mw-parser-output
+        .tpl-hidden.mw-made-collapsible>.mw-collapsible-toggle>.tpl-hidden-headertext{background-image:url(\"https://upload.wikimedia.org/wikipedia/commons/1/10/MediaWiki_Vector_skin_action_arrow.png\");background-position:left
+        50%;background-repeat:no-repeat}.mw-parser-output .mw-content-ltr .tpl-hidden.mw-made-collapsible.mw-collapsed>.mw-collapsible-toggle>.tpl-hidden-headertext{background-image:url(\"https://upload.wikimedia.org/wikipedia/commons/4/41/MediaWiki_Vector_skin_right_arrow.png\")}.mw-parser-output
+        .mw-content-rtl .tpl-hidden.mw-made-collapsible.mw-collapsed>.mw-collapsible-toggle>.tpl-hidden-headertext{background-image:url(\"https://upload.wikimedia.org/wikipedia/commons/1/1e/MediaWiki_Vector_skin_left_arrow.png\")}</style>\n<div
+        class=\"mw-collapsible-toggle\" style=\"font-weight:bold; background-color:transparent;
+        text-align:start; float:none;font-size:smaller;\"><span class=\"tpl-hidden-headertext\">Other
+        languages:</span></div>\n<div class=\"mw-collapsible-content\" style=\"font-weight:normal;
+        background:transparent; text-align:start;\">\n<div class=\"multilingual\"><div
+        class=\"description cs lang-cs\" lang=\"cs\" dir=\"ltr\" style=\"margin:.25em
+        0;line-height:normal;\"><span class=\"language langlabel-cs\" lang=\"cs\"
+        style=\"font-weight:bold;\"><bdi>\u010ce\u0161tina</bdi>&#x3a;&#32;</span>
+        Obytn\u00e1 budova \"Katscha\" v norsk\u00e9m m\u011bst\u011b <a href=\"https://cs.wikipedia.org/wiki/Norrk%C3%B6ping\"
+        class=\"extiw\" title=\"cs:Norrk\u00f6ping\">Norrk\u00f6ping</a> postaven\u00e1
+        v roce 2015.</div><div class=\"description de lang-de\" lang=\"de\" dir=\"ltr\"
+        style=\"margin:.25em 0;line-height:normal;\"><span class=\"language langlabel-de\"
+        lang=\"de\" style=\"font-weight:bold;\"><bdi>Deutsch</bdi>&#x3a;&#32;</span>
+        Die Wohnanlage \u201eKatscha\u201c in <a href=\"https://de.wikipedia.org/wiki/Norrk%C3%B6ping\"
+        class=\"extiw\" title=\"de:Norrk\u00f6ping\">Norrk\u00f6ping</a>, Schweden.</div><div
+        class=\"description en lang-en\" lang=\"en\" dir=\"ltr\" style=\"margin:.25em
+        0;line-height:normal;\"><span class=\"language langlabel-en\" lang=\"en\"
+        style=\"font-weight:bold;\"><bdi>English</bdi>&#x3a;&#32;</span> Residential
+        building \"Katscha\" in <a href=\"https://en.wikipedia.org/wiki/Norrk%C3%B6ping\"
+        class=\"extiw\" title=\"en:Norrk\u00f6ping\">Norrk\u00f6ping</a>, Sweden.
+        It was built in 2015.</div><div class=\"description es lang-es\" lang=\"es\"
+        dir=\"ltr\" style=\"margin:.25em 0;line-height:normal;\"><span class=\"language
+        langlabel-es\" lang=\"es\" style=\"font-weight:bold;\"><bdi>Espa\u00f1ol</bdi>&#x3a;&#32;</span>
+        Edificio residencial \"Katscha\", construido en 2015, en <a href=\"https://es.wikipedia.org/wiki/Norrk%C3%B6ping\"
+        class=\"extiw\" title=\"es:Norrk\u00f6ping\">Norrk\u00f6ping</a>, Suecia.</div><div
+        class=\"description eu lang-eu\" lang=\"eu\" dir=\"ltr\" style=\"margin:.25em
+        0;line-height:normal;\"><span class=\"language langlabel-eu\" lang=\"eu\"
+        style=\"font-weight:bold;\"><bdi>Euskara</bdi>&#x3a;&#32;</span> \"Katscha\"
+        etxebizitza eraikina, 2015ean eraikia, <a href=\"https://eu.wikipedia.org/wiki/Norrk%C3%B6ping\"
+        class=\"extiw\" title=\"eu:Norrk\u00f6ping\">Norrk\u00f6ping</a>, Suedia.</div><div
+        class=\"description fr lang-fr\" lang=\"fr\" dir=\"ltr\" style=\"margin:.25em
+        0;line-height:normal;\"><span class=\"language langlabel-fr\" lang=\"fr\"
+        style=\"font-weight:bold;\"><bdi>Fran\u00e7ais</bdi>&#x202f;&#x3a;&#32;</span>
+        Le \u00ab&#160;Katscha&#160;\u00bb, immeuble r\u00e9sidentiel construit en
+        2015 \u00e0 <a href=\"https://fr.wikipedia.org/wiki/Norrk%C3%B6ping\" class=\"extiw\"
+        title=\"fr:Norrk\u00f6ping\">Norrk\u00f6ping</a> (Su\u00e8de).</div><div class=\"description
+        it lang-it\" lang=\"it\" dir=\"ltr\" style=\"margin:.25em 0;line-height:normal;\"><span
+        class=\"language langlabel-it\" lang=\"it\" style=\"font-weight:bold;\"><bdi>Italiano</bdi>&#x3a;&#32;</span>
+        Edificio residenziale \"Katscha\", che si trova a <a href=\"https://it.wikipedia.org/wiki/Norrk%C3%B6ping\"
+        class=\"extiw\" title=\"it:Norrk\u00f6ping\">Norrk\u00f6ping</a>, in <a href=\"https://it.wikipedia.org/wiki/Svezia\"
+        class=\"extiw\" title=\"it:Svezia\">Svezia</a>. Costruito nel 2015, \u00e8
+        stato progettato dagli architetti Ingrid Reppen e Kai Wartiainen.</div><div
+        class=\"description hu lang-hu\" lang=\"hu\" dir=\"ltr\" style=\"margin:.25em
+        0;line-height:normal;\"><span class=\"language langlabel-hu\" lang=\"hu\"
+        style=\"font-weight:bold;\"><bdi>Magyar</bdi>&#x3a;&#32;</span> A 2015-ben
+        \u00e9p\u00fclt <i>Katscha</i> lak\u00f3\u00e9p\u00fclet (<a href=\"https://hu.wikipedia.org/wiki/Norrk%C3%B6ping\"
+        class=\"extiw\" title=\"hu:Norrk\u00f6ping\">Norrk\u00f6ping</a>, <a href=\"https://hu.wikipedia.org/wiki/Sv%C3%A9dorsz%C3%A1g\"
+        class=\"extiw\" title=\"hu:Sv\u00e9dorsz\u00e1g\">Sv\u00e9dorsz\u00e1g</a>)</div><div
+        class=\"description nl lang-nl\" lang=\"nl\" dir=\"ltr\" style=\"margin:.25em
+        0;line-height:normal;\"><span class=\"language langlabel-nl\" lang=\"nl\"
+        style=\"font-weight:bold;\"><bdi>Nederlands</bdi>&#x3a;&#32;</span> Wooncomplex
+        in de Zweedse stad <a href=\"https://nl.wikipedia.org/wiki/Norrk%C3%B6ping_(stad)\"
+        class=\"extiw\" title=\"nl:Norrk\u00f6ping (stad)\">Norrk\u00f6ping</a></div><div
+        class=\"description pt lang-pt\" lang=\"pt\" dir=\"ltr\" style=\"margin:.25em
+        0;line-height:normal;\"><span class=\"language langlabel-pt\" lang=\"pt\"
+        style=\"font-weight:bold;\"><bdi>Portugu\u00eas</bdi>&#x3a;&#32;</span> Edif\u00edcio
+        residencial \u201cKatscha\u201d, constru\u00eddo em 2015, em <a href=\"https://pt.wikipedia.org/wiki/Norrk%C3%B6ping\"
+        class=\"extiw\" title=\"pt:Norrk\u00f6ping\">Norrk\u00f6ping</a>, Su\u00e9cia.</div><div
+        class=\"description sl lang-sl\" lang=\"sl\" dir=\"ltr\" style=\"margin:.25em
+        0;line-height:normal;\"><span class=\"language langlabel-sl\" lang=\"sl\"
+        style=\"font-weight:bold;\"><bdi>Sloven\u0161\u010dina</bdi>&#x3a;&#32;</span>
+        Stanovanjska stavba  \u00bbKatscha\u00ab&#160;v <a href=\"https://en.wikipedia.org/wiki/Norrk%C3%B6ping\"
+        class=\"extiw\" title=\"en:Norrk\u00f6ping\">Norrk\u00f6pingu</a> na  \u0160vedskem.
+        Zgrajena je bila leta 2015.</div><div class=\"description mk lang-mk\" lang=\"mk\"
+        dir=\"ltr\" style=\"margin:.25em 0;line-height:normal;\"><span class=\"language
+        langlabel-mk\" lang=\"mk\" style=\"font-weight:bold;\"><bdi>\u041c\u0430\u043a\u0435\u0434\u043e\u043d\u0441\u043a\u0438</bdi>&#x3a;&#32;</span>
+        \u0421\u0442\u0430\u043d\u0431\u0435\u043d\u0430\u0442\u0430 \u0437\u0433\u0440\u0430\u0434\u0430
+        \u201e\u041a\u0430\u0447\u0430\u201c \u0432\u043e <a href=\"https://mk.wikipedia.org/wiki/%D0%9D%D0%BE%D1%80%D1%88%D0%B5%D0%BF%D0%B8%D0%BD%D0%B3\"
+        class=\"extiw\" title=\"mk:\u041d\u043e\u0440\u0448\u0435\u043f\u0438\u043d\u0433\">\u041d\u043e\u0440\u0448\u0435\u043f\u0438\u043d\u0433</a>,
+        \u0428\u0432\u0435\u0434\u0441\u043a\u0430, \u0438\u0437\u0433\u0440\u0430\u0434\u0435\u043d\u0430
+        \u0432\u043e 2015&#160;\u0433.</div><div class=\"description ru lang-ru\"
+        lang=\"ru\" dir=\"ltr\" style=\"margin:.25em 0;line-height:normal;\"><span
+        class=\"language langlabel-ru\" lang=\"ru\" style=\"font-weight:bold;\"><bdi>\u0420\u0443\u0441\u0441\u043a\u0438\u0439</bdi>&#x3a;&#32;</span>
+        \u0416\u0438\u043b\u043e\u0439 \u0434\u043e\u043c \u00abKatscha\u00bb \u043f\u043e
+        \u0441\u043e\u0432\u043c\u0435\u0441\u0442\u043d\u043e\u043c\u0443 \u043f\u0440\u043e\u0435\u043a\u0442\u0443
+        \u0418\u043d\u0433\u0440\u0438\u0434 \u0420\u0435\u043f\u043f\u0435\u043d
+        \u0438 \u0444\u0438\u043d\u0441\u043a\u043e\u0433\u043e \u0430\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u043e\u0440\u0430
+        <a href=\"https://en.wikipedia.org/wiki/Kai_Wartiainen\" class=\"extiw\" title=\"en:Kai
+        Wartiainen\">\u041a\u0430\u044f \u0412\u0430\u0440\u0442\u0438\u0430\u0439\u043d\u0435\u043d\u0430</a>.
+        <a href=\"https://ru.wikipedia.org/wiki/%D0%9D%D0%BE%D1%80%D1%80%D1%87%D1%91%D0%BF%D0%B8%D0%BD%D0%B3\"
+        class=\"extiw\" title=\"ru:\u041d\u043e\u0440\u0440\u0447\u0451\u043f\u0438\u043d\u0433\">\u041d\u043e\u0440\u0440\u0447\u0451\u043f\u0438\u043d\u0433</a>,
+        <a href=\"https://ru.wikipedia.org/wiki/%D0%AD%D1%81%D1%82%D0%B5%D1%80%D0%B3%D1%91%D1%82%D0%BB%D0%B0%D0%BD%D0%B4_(%D0%BB%D0%B5%D0%BD)\"
+        class=\"extiw\" title=\"ru:\u042d\u0441\u0442\u0435\u0440\u0433\u0451\u0442\u043b\u0430\u043d\u0434
+        (\u043b\u0435\u043d)\">\u042d\u0441\u0442\u0435\u0440\u0433\u0451\u0442\u043b\u0430\u043d\u0434</a>,
+        <a href=\"https://ru.wikipedia.org/wiki/%D0%A8%D0%B2%D0%B5%D1%86%D0%B8%D1%8F\"
+        class=\"extiw\" title=\"ru:\u0428\u0432\u0435\u0446\u0438\u044f\">\u0428\u0432\u0435\u0446\u0438\u044f</a></div><div
+        class=\"description uk lang-uk\" lang=\"uk\" dir=\"ltr\" style=\"margin:.25em
+        0;line-height:normal;\"><span class=\"language langlabel-uk\" lang=\"uk\"
+        style=\"font-weight:bold;\"><bdi>\u0423\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0430</bdi>&#x3a;&#32;</span>
+        \u0416\u0438\u0442\u043b\u043e\u0432\u0438\u0439 \u0431\u0443\u0434\u0438\u043d\u043e\u043a
+        \u00abKatscha\u00bb, \u043f\u043e\u0431\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u0439
+        \u0443 2015 \u0440\u043e\u0446\u0456, <a href=\"https://uk.wikipedia.org/wiki/%D0%9D%D0%BE%D1%80%D1%80%D1%87%D0%B5%D0%BF%D1%96%D0%BD%D0%B3\"
+        class=\"extiw\" title=\"uk:\u041d\u043e\u0440\u0440\u0447\u0435\u043f\u0456\u043d\u0433\">\u041d\u043e\u0440\u0440\u0447\u0435\u043f\u0456\u043d\u0433</a>,
+        \u0428\u0432\u0435\u0446\u0456\u044f.</div></div>\n</div></div>\n</td></tr></tbody></table>\n<p
+        class=\"mw-empty-elt\">\n</p>\n<table class=\"layouttemplate\" cellspacing=\"8\"
+        cellpadding=\"0\" style=\"width:100%; clear:both; margin:0.5em auto; background-color:
+        #f9f9f9; border: 2px solid #006b33; direction:ltr;\">\n<tbody><tr>\n<td><span
+        typeof=\"mw:File\"><span><img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Quality_images_logo.svg/64px-Quality_images_logo.svg.png\"
+        decoding=\"async\" width=\"64\" height=\"55\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Quality_images_logo.svg/96px-Quality_images_logo.svg.png
+        1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Quality_images_logo.svg/128px-Quality_images_logo.svg.png
+        2x\" data-file-width=\"164\" data-file-height=\"142\" /></span></span>\n</td>\n<td><div
+        lang=\"en\" dir=\"ltr\" class=\"description en\" style=\"display:inline;\"><div
+        class=\"tiInherit\" style=\"text-align:center;\">\n<p><b><a href=\"/wiki/Commons:Quality_images\"
+        title=\"Commons:Quality images\">Quality image</a></b>\n</p>\n</div>\nThis
+        image has been assessed using the <i><a href=\"/wiki/Commons:Image_guidelines\"
+        title=\"Commons:Image guidelines\">Quality image guidelines</a></i> and is
+        considered a <a href=\"/wiki/Commons:Quality_images\" title=\"Commons:Quality
+        images\">Quality image</a>.</div>\n<hr />\n<p><span style=\"font-size:small;line-height:1.4\"
+        class=\"plainlinks noprint\"><a class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/ar\"><bdi
+        class=\"language lang-ar\" lang=\"ar\">\u0627\u0644\u0639\u0631\u0628\u064a\u0629</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/arq\"><bdi
+        class=\"language lang-arq\" lang=\"arq\">\u062c\u0627\u0632\u0627\u064a\u0631\u064a\u0629</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/be\"><bdi
+        class=\"language lang-be\" lang=\"be\">\u0431\u0435\u043b\u0430\u0440\u0443\u0441\u043a\u0430\u044f</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/be-tarask\"><bdi
+        class=\"language lang-be-tarask\" lang=\"be-tarask\">\u0431\u0435\u043b\u0430\u0440\u0443\u0441\u043a\u0430\u044f
+        (\u0442\u0430\u0440\u0430\u0448\u043a\u0435\u0432\u0456\u0446\u0430)</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/bg\"><bdi
+        class=\"language lang-bg\" lang=\"bg\">\u0431\u044a\u043b\u0433\u0430\u0440\u0441\u043a\u0438</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/bn\"><bdi
+        class=\"language lang-bn\" lang=\"bn\">\u09ac\u09be\u0982\u09b2\u09be</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/ca\"><bdi
+        class=\"language lang-ca\" lang=\"ca\">catal\u00e0</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/cs\"><bdi
+        class=\"language lang-cs\" lang=\"cs\">\u010de\u0161tina</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/cy\"><bdi
+        class=\"language lang-cy\" lang=\"cy\">Cymraeg</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/de\"><bdi
+        class=\"language lang-de\" lang=\"de\">Deutsch</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/de-ch\"><bdi
+        class=\"language lang-de-ch\" lang=\"de-ch\">Schweizer Hochdeutsch</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/diq\"><bdi
+        class=\"language lang-diq\" lang=\"diq\">Zazaki</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/el\"><bdi
+        class=\"language lang-el\" lang=\"el\">\u0395\u03bb\u03bb\u03b7\u03bd\u03b9\u03ba\u03ac</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/en\"><bdi
+        class=\"language lang-en\" lang=\"en\">English</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/eo\"><bdi
+        class=\"language lang-eo\" lang=\"eo\">Esperanto</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/es\"><bdi
+        class=\"language lang-es\" lang=\"es\">espa\u00f1ol</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/et\"><bdi
+        class=\"language lang-et\" lang=\"et\">eesti</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/eu\"><bdi
+        class=\"language lang-eu\" lang=\"eu\">euskara</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/fa\"><bdi
+        class=\"language lang-fa\" lang=\"fa\">\u0641\u0627\u0631\u0633\u06cc</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/fi\"><bdi
+        class=\"language lang-fi\" lang=\"fi\">suomi</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/fr\"><bdi
+        class=\"language lang-fr\" lang=\"fr\">fran\u00e7ais</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/gl\"><bdi
+        class=\"language lang-gl\" lang=\"gl\">galego</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/he\"><bdi
+        class=\"language lang-he\" lang=\"he\">\u05e2\u05d1\u05e8\u05d9\u05ea</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/hi\"><bdi
+        class=\"language lang-hi\" lang=\"hi\">\u0939\u093f\u0928\u094d\u0926\u0940</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/hr\"><bdi
+        class=\"language lang-hr\" lang=\"hr\">hrvatski</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/hu\"><bdi
+        class=\"language lang-hu\" lang=\"hu\">magyar</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/hy\"><bdi
+        class=\"language lang-hy\" lang=\"hy\">\u0570\u0561\u0575\u0565\u0580\u0565\u0576</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/id\"><bdi
+        class=\"language lang-id\" lang=\"id\">Bahasa Indonesia</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/it\"><bdi
+        class=\"language lang-it\" lang=\"it\">italiano</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/ja\"><bdi
+        class=\"language lang-ja\" lang=\"ja\">\u65e5\u672c\u8a9e</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/jv\"><bdi
+        class=\"language lang-jv\" lang=\"jv\">Jawa</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/ka\"><bdi
+        class=\"language lang-ka\" lang=\"ka\">\u10e5\u10d0\u10e0\u10d7\u10e3\u10da\u10d8</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/ko\"><bdi
+        class=\"language lang-ko\" lang=\"ko\">\ud55c\uad6d\uc5b4</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/ku\"><bdi
+        class=\"language lang-ku\" lang=\"ku\">kurd\u00ee</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/lb\"><bdi
+        class=\"language lang-lb\" lang=\"lb\">L\u00ebtzebuergesch</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/lt\"><bdi
+        class=\"language lang-lt\" lang=\"lt\">lietuvi\u0173</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/mk\"><bdi
+        class=\"language lang-mk\" lang=\"mk\">\u043c\u0430\u043a\u0435\u0434\u043e\u043d\u0441\u043a\u0438</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/ml\"><bdi
+        class=\"language lang-ml\" lang=\"ml\">\u0d2e\u0d32\u0d2f\u0d3e\u0d33\u0d02</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/mr\"><bdi
+        class=\"language lang-mr\" lang=\"mr\">\u092e\u0930\u093e\u0920\u0940</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/ms\"><bdi
+        class=\"language lang-ms\" lang=\"ms\">Bahasa Melayu</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/nl\"><bdi
+        class=\"language lang-nl\" lang=\"nl\">Nederlands</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/pih\"><bdi
+        class=\"language lang-pih\" lang=\"pih\">Norfuk / Pitkern</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/pl\"><bdi
+        class=\"language lang-pl\" lang=\"pl\">polski</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/pt\"><bdi
+        class=\"language lang-pt\" lang=\"pt\">portugu\u00eas</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/pt-br\"><bdi
+        class=\"language lang-pt-br\" lang=\"pt-br\">portugu\u00eas do Brasil</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/rm\"><bdi
+        class=\"language lang-rm\" lang=\"rm\">rumantsch</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/ro\"><bdi
+        class=\"language lang-ro\" lang=\"ro\">rom\u00e2n\u0103</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/ru\"><bdi
+        class=\"language lang-ru\" lang=\"ru\">\u0440\u0443\u0441\u0441\u043a\u0438\u0439</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/scn\"><bdi
+        class=\"language lang-scn\" lang=\"scn\">sicilianu</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/sk\"><bdi
+        class=\"language lang-sk\" lang=\"sk\">sloven\u010dina</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/sl\"><bdi
+        class=\"language lang-sl\" lang=\"sl\">sloven\u0161\u010dina</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/sq\"><bdi
+        class=\"language lang-sq\" lang=\"sq\">shqip</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/sr\"><bdi
+        class=\"language lang-sr\" lang=\"sr\">\u0441\u0440\u043f\u0441\u043a\u0438
+        / srpski</bdi></a>&#160;<b>\u2219</b>&#32;<a class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/sv\"><bdi
+        class=\"language lang-sv\" lang=\"sv\">svenska</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/ta\"><bdi
+        class=\"language lang-ta\" lang=\"ta\">\u0ba4\u0bae\u0bbf\u0bb4\u0bcd</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/te\"><bdi
+        class=\"language lang-te\" lang=\"te\">\u0c24\u0c46\u0c32\u0c41\u0c17\u0c41</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/th\"><bdi
+        class=\"language lang-th\" lang=\"th\">\u0e44\u0e17\u0e22</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/tl\"><bdi
+        class=\"language lang-tl\" lang=\"tl\">Tagalog</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/tr\"><bdi
+        class=\"language lang-tr\" lang=\"tr\">T\u00fcrk\u00e7e</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/tok\"><bdi
+        class=\"language lang-tok\" lang=\"tok\">toki pona</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/uk\"><bdi
+        class=\"language lang-uk\" lang=\"uk\">\u0443\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0430</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/vec\"><bdi
+        class=\"language lang-vec\" lang=\"vec\">v\u00e8neto</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/vi\"><bdi
+        class=\"language lang-vi\" lang=\"vi\">Ti\u1ebfng Vi\u1ec7t</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/zh\"><bdi
+        class=\"language lang-zh\" lang=\"zh\">\u4e2d\u6587</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/zh-hans\"><bdi
+        class=\"language lang-zh-hans\" lang=\"zh-hans\">\u4e2d\u6587\uff08\u7b80\u4f53\uff09</bdi></a>&#160;<b>\u2219</b>&#32;<a
+        class=\"external text\" href=\"https://commons.wikimedia.org/wiki/Template:Quality_image/zh-hant\"><bdi
+        class=\"language lang-zh-hant\" lang=\"zh-hant\">\u4e2d\u6587\uff08\u7e41\u9ad4\uff09</bdi></a>&#160;<b>\u2219</b>&#32;<small
+        class=\"plainlinks\"><a class=\"external text\" href=\"https://commons.wikimedia.org/w/index.php?title=Template:Quality_image/lang&amp;action=edit\">+/\u2212</a></small></span>\n</p>\n</td></tr></tbody></table>\n<div
+        class=\"mw-heading mw-heading2\"><h2 id=\"Licensing\">Licensing</h2><span
+        class=\"mw-editsection\"><span class=\"mw-editsection-bracket\">[</span><a
+        href=\"/w/index.php?title=File:Katscha_February_2017_06.jpg&amp;action=edit&amp;section=3\"
+        title=\"Edit section: Licensing\"><span>edit</span></a><span class=\"mw-editsection-bracket\">]</span></span></div>\n<div
+        style=\"clear:both; margin:0.5em auto; background-color:var(--background-color-interactive,#eaecf0);
+        color:inherit; border:2px solid var(--border-color-subtle,#c8ccd1); padding:8px;
+        direction:ltr;\" class=\"licensetpl_wrapper\"><div class=\"center\" style=\"font-weight:bold;\"><div
+        lang=\"en\" dir=\"ltr\" class=\"description en\" style=\"display:inline;\">I,
+        the copyright holder of this work, hereby publish it under the following license:</div></div>\n<style
+        data-mw-deduplicate=\"TemplateStyles:r890281695\">.mw-parser-output .responsive-license-cc{clear:both;text-align:center;box-sizing:border-box;width:100%;justify-content:space-around;align-items:center;margin:0.5em
+        auto;color:var(--color-base,#202122);background-color:var(--background-color-neutral-subtle,#f9f9f9);border-width:2px;border-style:solid;border-top-color:var(--border-color-subtle,#e0e0e0);border-right-color:var(--border-color-subtle,#e0e0e0);border-bottom-color:var(--border-color-subtle,#e0e0e0);border-left-color:var(--border-color-subtle,#e0e0e0);border-spacing:8px;display:flex}.mw-parser-output
+        .responsive-license-cc div{margin:4px}.mw-parser-output .rlicense-text div{margin:0.5em
+        auto}@media screen and (max-width:640px){.mw-parser-output .responsive-license-cc{flex-flow:column}.mw-parser-output
+        .rlicense-text{order:1}}</style><div class=\"responsive-license-cc layouttemplate
+        licensetpl mw-content-ltr\" dir=\"ltr\" lang=\"en\"><div class=\"rlicense-icons\"><span
+        typeof=\"mw:File\"><span title=\"w:en:Creative Commons\"><img alt=\"w:en:Creative
+        Commons\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/CC_some_rights_reserved.svg/90px-CC_some_rights_reserved.svg.png\"
+        decoding=\"async\" width=\"90\" height=\"36\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/CC_some_rights_reserved.svg/135px-CC_some_rights_reserved.svg.png
+        1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/CC_some_rights_reserved.svg/180px-CC_some_rights_reserved.svg.png
+        2x\" data-file-width=\"744\" data-file-height=\"300\" /></span></span><br
+        />\n<span typeof=\"mw:File\"><span title=\"attribution\"><img alt=\"attribution\"
+        src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Cc-by_new_white.svg/24px-Cc-by_new_white.svg.png\"
+        decoding=\"async\" width=\"24\" height=\"24\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Cc-by_new_white.svg/36px-Cc-by_new_white.svg.png
+        1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Cc-by_new_white.svg/48px-Cc-by_new_white.svg.png
+        2x\" data-file-width=\"64\" data-file-height=\"64\" /></span></span> <span
+        typeof=\"mw:File\"><span title=\"share alike\"><img alt=\"share alike\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Cc-sa_white.svg/24px-Cc-sa_white.svg.png\"
+        decoding=\"async\" width=\"24\" height=\"24\" class=\"mw-file-element\" srcset=\"https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Cc-sa_white.svg/36px-Cc-sa_white.svg.png
+        1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Cc-sa_white.svg/48px-Cc-sa_white.svg.png
+        2x\" data-file-width=\"64\" data-file-height=\"64\" /></span></span></div><div
+        class=\"rlicense-text\"><div class=\"rlicense-declaration\">This file is licensed
+        under the <a href=\"https://en.wikipedia.org/wiki/en:Creative_Commons\" class=\"extiw\"
+        title=\"w:en:Creative Commons\">Creative Commons</a> <a href=\"//creativecommons.org/licenses/by-sa/4.0/deed.en\"
+        class=\"extiw\" title=\"creativecommons:by-sa/4.0/deed.en\">Attribution-Share
+        Alike 4.0 International</a> license.</div><div class=\"rlicense-desc\" style=\"text-align:start;\"
+        lang=\"en\">\n<dl><dd>You are free:\n<ul><li><b>to share</b> \u2013 to copy,
+        distribute and transmit the work</li>\n<li><b>to remix</b> \u2013 to adapt
+        the work</li></ul></dd>\n<dd>Under the following conditions:\n<ul><li><b>attribution</b>
+        \u2013 You must give appropriate credit, provide a link to the license, and
+        indicate if changes were made. You may do so in any reasonable manner, but
+        not in any way that suggests the licensor endorses you or your use.</li>\n<li><b>share
+        alike</b> \u2013 If you remix, transform, or build upon the material, you
+        must distribute your contributions under the <a rel=\"nofollow\" class=\"external
+        text\" href=\"https://creativecommons.org/share-your-work/licensing-considerations/compatible-licenses\">same
+        or compatible license</a> as the original.</li></ul></dd></dl></div><span
+        class=\"licensetpl_link\" style=\"display:none;\">https://creativecommons.org/licenses/by-sa/4.0</span><span
+        class=\"licensetpl_short\" style=\"display:none;\">CC BY-SA 4.0 </span><span
+        class=\"licensetpl_long\" style=\"display:none;\">Creative Commons Attribution-Share
+        Alike 4.0 </span><span class=\"licensetpl_link_req\" style=\"display:none;\">true</span><span
+        class=\"licensetpl_attr_req\" style=\"display:none;\">true</span></div></div></div>\n<style
+        data-mw-deduplicate=\"TemplateStyles:r353368010\">.mw-parser-output table.annotationboxforwikipedia{width:100%}.mw-parser-output
+        table.annotationboxforwikipedia.annotationbox-demo{display:table!important}.mw-parser-output
+        table.annotationboxforwikipedia th,.mw-parser-output table.annotationboxforwikipedia
+        td{padding:2px}.mw-parser-output table.annotationboxforwikipedia .fileinfo-paramfield{font-weight:bold;width:15%}</style>\n<table
+        class=\"toccolours vevent annotationboxforwikipedia\" lang=\"en\" dir=\"ltr\">\n<tbody><tr
+        style=\"vertical-align: top\"><td style=\"\" class=\"fileinfo-paramfield\">Annotations<div
+        style=\"display: none;\">InfoField</div></td><td style=\"\">This image is
+        annotated: <b><a class=\"external text\" href=\"https://commons.wikimedia.org/wiki/File:Katscha_February_2017_06.jpg\">View
+        the annotations at Commons</a></b></td>\n</tr>\n</tbody></table><div id=\"image_annotation_note_1\"
+        class=\"image_annotation\" style=\"display:none;\">\n<div class=\"image_annotation_view_x_1\"
+        id=\"image_annotation_view_x_1\">5019</div>\n<div class=\"image_annotation_view_y_1\"
+        id=\"image_annotation_view_y_1\">66</div>\n<div class=\"image_annotation_view_w_1\"
+        id=\"image_annotation_view_w_1\">861</div>\n<div class=\"image_annotation_view_h_1\"
+        id=\"image_annotation_view_h_1\">2193</div>\n<div class=\"image_annotation_full_width_1\"
+        id=\"image_annotation_full_width_1\">5887</div>\n<div class=\"image_annotation_full_height_1\"
+        id=\"image_annotation_full_height_1\">3930</div>\n<div class=\"image_annotation_content_1\"
+        id=\"image_annotation_content_1\">\n<p><a href=\"/wiki/Category:Strykj%C3%A4rnet\"
+        title=\"Category:Strykj\u00e4rnet\">Arbetets museum</a>\n</p>\n</div></div><h1
+        class=\"mw-slot-header\"><mediainfoslotheader /></h1><mediainfoview style=\"display:
+        none\"><mediainfoviewcaptions><div class=''wbmi-entityview-captionsPanel oo-ui-layout
+        oo-ui-panelLayout oo-ui-panelLayout-framed''><h3 class=''wbmi-entityview-captions-header''>Captions</h3><div
+        class=''wbmi-entityview-caption oo-ui-layout oo-ui-horizontalLayout''><label
+        class=''wbmi-language-label oo-ui-widget oo-ui-widget-enabled oo-ui-labelElement-label
+        oo-ui-labelElement oo-ui-labelWidget''>English</label><div lang=''en'' dir=''ltr''
+        class=''wbmi-caption-value wbmi-entityview-emptyCaption''>Add a one-line explanation
+        of what this file represents</div></div></div></mediainfoviewcaptions><mediainfoviewstatements><div
+        id=''P180'' data-property=''P180'' data-statements=''[]'' data-formatvalue=''[]''
+        class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P180
+        oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+        class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h3
+        class=''wbmi-statements-title''>Items portrayed in this file</h3><h4 class=''wbmi-entity-label''><bdi><a
+        target=\"_blank\" title=\"d:Special:EntityPage/P180\" href=\"https://www.wikidata.org/wiki/Special:EntityPage/P180\">depicts</a></bdi></h4></div></div></div><div
+        class=''wbmi-content-items-group''></div></div></div><div id=''P170'' data-property=''P170''
+        data-statements=''[{\"mainsnak\":{\"snaktype\":\"somevalue\",\"property\":\"P170\",\"hash\":\"d3550e860f988c6675fff913440993f58f5c40c5\"},\"type\":\"statement\",\"qualifiers\":{\"P2093\":[{\"snaktype\":\"value\",\"property\":\"P2093\",\"hash\":\"4f66b7f1264fbfe4b0e461077bf598a68d642270\",\"datavalue\":{\"value\":\"ArildV\",\"type\":\"string\"}}],\"P2699\":[{\"snaktype\":\"value\",\"property\":\"P2699\",\"hash\":\"07a8941ee68ffa116538cb39047334c3fa273c21\",\"datavalue\":{\"value\":\"https:\\/\\/commons.wikimedia.org\\/wiki\\/user:ArildV\",\"type\":\"string\"}}],\"P3831\":[{\"snaktype\":\"value\",\"property\":\"P3831\",\"hash\":\"c5e04952fd00011abf931be1b701f93d9e6fa5d7\",\"datavalue\":{\"value\":{\"entity-type\":\"item\",\"numeric-id\":33231,\"id\":\"Q33231\"},\"type\":\"wikibase-entityid\"}}],\"P4174\":[{\"snaktype\":\"value\",\"property\":\"P4174\",\"hash\":\"cf0dc53f564672c58c8f5469e0af0ba0ac64be13\",\"datavalue\":{\"value\":\"ArildV\",\"type\":\"string\"}}]},\"qualifiers-order\":[\"P2093\",\"P2699\",\"P3831\",\"P4174\"],\"id\":\"M56717420$85121FC7-9E4D-45A9-B65C-3D8EB38F732F\",\"rank\":\"normal\"}]''
+        data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":170,\\\"id\\\":\\\"P170\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+        target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P170\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P170\\\"&gt;creator&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"creator\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":2093,\\\"id\\\":\\\"P2093\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+        target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P2093\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P2093\\\"&gt;author
+        name string&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"author name string\"}}},\"{\\\"value\\\":\\\"ArildV\\\",\\\"type\\\":\\\"string\\\"}\":{\"text\\/html\":{\"en\":{\"P2093\":\"ArildV\",\"P4174\":\"&lt;a
+        target=\\\"_blank\\\" class=\\\"wb-external-id external\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:CentralAuth?target=ArildV\\\"
+        rel=\\\"nofollow\\\"&gt;ArildV&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"P2093\":\"ArildV\",\"P4174\":\"ArildV\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":2699,\\\"id\\\":\\\"P2699\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+        target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P2699\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P2699\\\"&gt;URL&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"URL\"}}},\"{\\\"value\\\":\\\"https:\\\\\\/\\\\\\/commons.wikimedia.org\\\\\\/wiki\\\\\\/user:ArildV\\\",\\\"type\\\":\\\"string\\\"}\":{\"text\\/html\":{\"en\":{\"P2699\":\"&lt;a
+        target=\\\"_blank\\\" rel=\\\"nofollow\\\" class=\\\"external free\\\" href=\\\"https:\\/\\/commons.wikimedia.org\\/wiki\\/user:ArildV\\\"&gt;https:\\/\\/commons.wikimedia.org\\/wiki\\/user:ArildV&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"P2699\":\"https:\\/\\/commons.wikimedia.org\\/wiki\\/user:ArildV\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":3831,\\\"id\\\":\\\"P3831\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+        target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P3831\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P3831\\\"&gt;object
+        has role&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"object has role\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"item\\\",\\\"numeric-id\\\":33231,\\\"id\\\":\\\"Q33231\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"P3831\":\"&lt;a
+        target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/Q33231\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/Q33231\\\"&gt;photographer&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"P3831\":\"photographer\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":4174,\\\"id\\\":\\\"P4174\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+        target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P4174\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P4174\\\"&gt;Wikimedia
+        username&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"Wikimedia username\"}}}}''
+        class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P170
+        oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+        class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+        class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P170\"
+        href=\"https://www.wikidata.org/wiki/Special:EntityPage/P170\">creator</a></bdi></h4></div></div></div><div
+        class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+        data-guid=''M56717420$85121FC7-9E4D-45A9-B65C-3D8EB38F732F'' class=''wbmi-item-container''><div
+        class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+        class=''wbmi-entity-label''><bdi>some value</bdi></h4></div></div></div><div
+        class=''wbmi-item-qualifiers''><div class=''wbmi-snaklist-container''><div
+        class=''wbmi-snaklist-content''><div class=''wbmi-snak''><div class=''wbmi-snak-value''><a
+        target=\"_blank\" title=\"d:Special:EntityPage/P2093\" href=\"https://www.wikidata.org/wiki/Special:EntityPage/P2093\">author
+        name string</a><span class=''wbmi-snak-value-separator''>: </span><span class=''wbmi-snak-value--value''>ArildV</span></div></div><div
+        class=''wbmi-snak''><div class=''wbmi-snak-value''><a target=\"_blank\" title=\"d:Special:EntityPage/P2699\"
+        href=\"https://www.wikidata.org/wiki/Special:EntityPage/P2699\">URL</a><span
+        class=''wbmi-snak-value-separator''>: </span><span class=''wbmi-snak-value--value''><a
+        target=\"_blank\" rel=\"nofollow\" class=\"external free\" href=\"https://commons.wikimedia.org/wiki/user:ArildV\">https://commons.wikimedia.org/wiki/user:ArildV</a></span></div></div><div
+        class=''wbmi-snak''><div class=''wbmi-snak-value''><a target=\"_blank\" title=\"d:Special:EntityPage/P3831\"
+        href=\"https://www.wikidata.org/wiki/Special:EntityPage/P3831\">object has
+        role</a><span class=''wbmi-snak-value-separator''>: </span><span class=''wbmi-snak-value--value''><a
+        target=\"_blank\" title=\"d:Special:EntityPage/Q33231\" href=\"https://www.wikidata.org/wiki/Special:EntityPage/Q33231\">photographer</a></span></div></div><div
+        class=''wbmi-snak''><div class=''wbmi-snak-value''><a target=\"_blank\" title=\"d:Special:EntityPage/P4174\"
+        href=\"https://www.wikidata.org/wiki/Special:EntityPage/P4174\">Wikimedia
+        username</a><span class=''wbmi-snak-value-separator''>: </span><span class=''wbmi-snak-value--value''><a
+        target=\"_blank\" class=\"wb-external-id external\" href=\"https://www.wikidata.org/wiki/Special:CentralAuth?target=ArildV\"
+        rel=\"nofollow\">ArildV</a></span></div></div></div></div></div></div></div></div></div></div><div
+        id=''P6216'' data-property=''P6216'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P6216\",\"hash\":\"5570347fdc76d2a80732f51ea10ee4b144a084e0\",\"datavalue\":{\"value\":{\"entity-type\":\"item\",\"numeric-id\":50423863,\"id\":\"Q50423863\"},\"type\":\"wikibase-entityid\"}},\"type\":\"statement\",\"id\":\"M56717420$4E9B1B2B-AD7D-4126-A4CC-6AAA0CCDD4DD\",\"rank\":\"normal\"}]''
+        data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":6216,\\\"id\\\":\\\"P6216\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+        target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P6216\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P6216\\\"&gt;copyright
+        status&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"copyright status\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"item\\\",\\\"numeric-id\\\":50423863,\\\"id\\\":\\\"Q50423863\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"P6216\":\"&lt;a
+        target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/Q50423863\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/Q50423863\\\"&gt;copyrighted&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"P6216\":\"copyrighted\"}}}}''
+        class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P6216
+        oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+        class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+        class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P6216\"
+        href=\"https://www.wikidata.org/wiki/Special:EntityPage/P6216\">copyright
+        status</a></bdi></h4></div></div></div><div class=''wbmi-content-items-group''><div
+        class=''wbmi-item wbmi-item-read''><div data-guid=''M56717420$4E9B1B2B-AD7D-4126-A4CC-6AAA0CCDD4DD''
+        class=''wbmi-item-container''><div class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div
+        class=''wbmi-entity-title''><h4 class=''wbmi-entity-label''><bdi><a target=\"_blank\"
+        title=\"d:Special:EntityPage/Q50423863\" href=\"https://www.wikidata.org/wiki/Special:EntityPage/Q50423863\">copyrighted</a></bdi></h4></div></div></div></div></div></div></div></div><div
+        id=''P275'' data-property=''P275'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P275\",\"hash\":\"ec6e754c5042e13b53376139e505ebd6708745a4\",\"datavalue\":{\"value\":{\"entity-type\":\"item\",\"numeric-id\":18199165,\"id\":\"Q18199165\"},\"type\":\"wikibase-entityid\"}},\"type\":\"statement\",\"id\":\"M56717420$4F36B2E7-3B4E-4AE0-A623-A199BDCD37F3\",\"rank\":\"normal\"}]''
+        data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":275,\\\"id\\\":\\\"P275\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+        target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P275\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P275\\\"&gt;copyright
+        license&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"copyright license\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"item\\\",\\\"numeric-id\\\":18199165,\\\"id\\\":\\\"Q18199165\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"P275\":\"&lt;a
+        target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/Q18199165\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/Q18199165\\\"&gt;Creative
+        Commons Attribution-ShareAlike 4.0 International&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"P275\":\"Creative
+        Commons Attribution-ShareAlike 4.0 International\"}}}}'' class=''wbmi-entityview-statementsGroup
+        wbmi-entityview-statementsGroup-P275 oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div
+        class=''wbmi-statements-widget''><div class=''wbmi-statement-header''><div
+        class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4 class=''wbmi-entity-label''><bdi><a
+        target=\"_blank\" title=\"d:Special:EntityPage/P275\" href=\"https://www.wikidata.org/wiki/Special:EntityPage/P275\">copyright
+        license</a></bdi></h4></div></div></div><div class=''wbmi-content-items-group''><div
+        class=''wbmi-item wbmi-item-read''><div data-guid=''M56717420$4F36B2E7-3B4E-4AE0-A623-A199BDCD37F3''
+        class=''wbmi-item-container''><div class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div
+        class=''wbmi-entity-title''><h4 class=''wbmi-entity-label''><bdi><a target=\"_blank\"
+        title=\"d:Special:EntityPage/Q18199165\" href=\"https://www.wikidata.org/wiki/Special:EntityPage/Q18199165\">Creative
+        Commons Attribution-ShareAlike 4.0 International</a></bdi></h4></div></div></div></div></div></div></div></div><div
+        id=''P6731'' data-property=''P6731'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P6731\",\"hash\":\"00effd845d313cc188e25302a8712c2d48647171\",\"datavalue\":{\"value\":{\"entity-type\":\"item\",\"numeric-id\":63348049,\"id\":\"Q63348049\"},\"type\":\"wikibase-entityid\"}},\"type\":\"statement\",\"id\":\"M56717420$C0EBB2E9-6110-4705-8483-3ED64C74D61C\",\"rank\":\"normal\"},{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P6731\",\"hash\":\"caf86f67082da0e2d10079a79bedf327335b0459\",\"datavalue\":{\"value\":{\"entity-type\":\"item\",\"numeric-id\":63348069,\"id\":\"Q63348069\"},\"type\":\"wikibase-entityid\"}},\"type\":\"statement\",\"id\":\"M56717420$B25C0BE9-4C69-4B1C-BC3C-08B4C0B3181B\",\"rank\":\"normal\"}]''
+        data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":6731,\\\"id\\\":\\\"P6731\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+        target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P6731\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P6731\\\"&gt;Commons
+        quality assessment&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"Commons
+        quality assessment\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"item\\\",\\\"numeric-id\\\":63348049,\\\"id\\\":\\\"Q63348049\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"P6731\":\"&lt;a
+        target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/Q63348049\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/Q63348049\\\"&gt;Wikimedia
+        Commons featured picture&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"P6731\":\"Wikimedia
+        Commons featured picture\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"item\\\",\\\"numeric-id\\\":63348069,\\\"id\\\":\\\"Q63348069\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"P6731\":\"&lt;a
+        target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/Q63348069\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/Q63348069\\\"&gt;Wikimedia
+        Commons quality image&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"P6731\":\"Wikimedia
+        Commons quality image\"}}}}'' class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P6731
+        oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+        class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+        class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P6731\"
+        href=\"https://www.wikidata.org/wiki/Special:EntityPage/P6731\">Commons quality
+        assessment</a></bdi></h4></div></div></div><div class=''wbmi-content-items-group''><div
+        class=''wbmi-item wbmi-item-read''><div data-guid=''M56717420$C0EBB2E9-6110-4705-8483-3ED64C74D61C''
+        class=''wbmi-item-container''><div class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div
+        class=''wbmi-entity-title''><h4 class=''wbmi-entity-label''><bdi><a target=\"_blank\"
+        title=\"d:Special:EntityPage/Q63348049\" href=\"https://www.wikidata.org/wiki/Special:EntityPage/Q63348049\">Wikimedia
+        Commons featured picture</a></bdi></h4></div></div></div></div></div><div
+        class=''wbmi-item wbmi-item-read''><div data-guid=''M56717420$B25C0BE9-4C69-4B1C-BC3C-08B4C0B3181B''
+        class=''wbmi-item-container''><div class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div
+        class=''wbmi-entity-title''><h4 class=''wbmi-entity-label''><bdi><a target=\"_blank\"
+        title=\"d:Special:EntityPage/Q63348069\" href=\"https://www.wikidata.org/wiki/Special:EntityPage/Q63348069\">Wikimedia
+        Commons quality image</a></bdi></h4></div></div></div></div></div></div></div></div><div
+        id=''P571'' data-property=''P571'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P571\",\"hash\":\"633a8fa06f767338cb76ad90e453838cb6f1d529\",\"datavalue\":{\"value\":{\"time\":\"+2017-02-11T00:00:00Z\",\"timezone\":0,\"before\":0,\"after\":0,\"precision\":11,\"calendarmodel\":\"http:\\/\\/www.wikidata.org\\/entity\\/Q1985727\"},\"type\":\"time\"}},\"type\":\"statement\",\"id\":\"M56717420$79667C3C-1A8B-4B4E-98F7-8F8A52195D19\",\"rank\":\"normal\"}]''
+        data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":571,\\\"id\\\":\\\"P571\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+        target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P571\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P571\\\"&gt;inception&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"inception\"}}},\"{\\\"value\\\":{\\\"time\\\":\\\"+2017-02-11T00:00:00Z\\\",\\\"timezone\\\":0,\\\"before\\\":0,\\\"after\\\":0,\\\"precision\\\":11,\\\"calendarmodel\\\":\\\"http:\\\\\\/\\\\\\/www.wikidata.org\\\\\\/entity\\\\\\/Q1985727\\\"},\\\"type\\\":\\\"time\\\"}\":{\"text\\/html\":{\"en\":{\"P571\":\"11
+        February 2017\"}},\"text\\/plain\":{\"en\":{\"P571\":\"11 February 2017\"}}}}''
+        class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P571
+        oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+        class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+        class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P571\"
+        href=\"https://www.wikidata.org/wiki/Special:EntityPage/P571\">inception</a></bdi></h4></div></div></div><div
+        class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+        data-guid=''M56717420$79667C3C-1A8B-4B4E-98F7-8F8A52195D19'' class=''wbmi-item-container''><div
+        class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+        class=''wbmi-entity-label''><bdi>11 February 2017</bdi></h4></div></div></div></div></div></div></div></div><div
+        id=''P4082'' data-property=''P4082'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P4082\",\"hash\":\"e63dcd859a4f408c1ed4645f00dd402d4a0b496c\",\"datavalue\":{\"value\":{\"entity-type\":\"item\",\"numeric-id\":15143841,\"id\":\"Q15143841\"},\"type\":\"wikibase-entityid\"}},\"type\":\"statement\",\"id\":\"M56717420$E0ADE5D2-6EDB-43D3-82B0-F1A3E62CF03F\",\"rank\":\"normal\"}]''
+        data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":4082,\\\"id\\\":\\\"P4082\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+        target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P4082\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P4082\\\"&gt;captured
+        with&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"captured with\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"item\\\",\\\"numeric-id\\\":15143841,\\\"id\\\":\\\"Q15143841\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"P4082\":\"&lt;a
+        target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/Q15143841\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/Q15143841\\\"&gt;Nikon
+        D610&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"P4082\":\"Nikon D610\"}}}}''
+        class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P4082
+        oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+        class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+        class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P4082\"
+        href=\"https://www.wikidata.org/wiki/Special:EntityPage/P4082\">captured with</a></bdi></h4></div></div></div><div
+        class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+        data-guid=''M56717420$E0ADE5D2-6EDB-43D3-82B0-F1A3E62CF03F'' class=''wbmi-item-container''><div
+        class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+        class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/Q15143841\"
+        href=\"https://www.wikidata.org/wiki/Special:EntityPage/Q15143841\">Nikon
+        D610</a></bdi></h4></div></div></div></div></div></div></div></div><div id=''P7482''
+        data-property=''P7482'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P7482\",\"hash\":\"83568a288a8b8b4714a68e7239d8406833762864\",\"datavalue\":{\"value\":{\"entity-type\":\"item\",\"numeric-id\":66458942,\"id\":\"Q66458942\"},\"type\":\"wikibase-entityid\"}},\"type\":\"statement\",\"id\":\"M56717420$F183B609-988D-402C-ABD1-64C4CC8856A6\",\"rank\":\"normal\"}]''
+        data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":7482,\\\"id\\\":\\\"P7482\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+        target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P7482\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P7482\\\"&gt;source
+        of file&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"source of file\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"item\\\",\\\"numeric-id\\\":66458942,\\\"id\\\":\\\"Q66458942\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"P7482\":\"&lt;a
+        target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/Q66458942\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/Q66458942\\\"&gt;original
+        creation by uploader&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"P7482\":\"original
+        creation by uploader\"}}}}'' class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P7482
+        oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+        class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+        class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P7482\"
+        href=\"https://www.wikidata.org/wiki/Special:EntityPage/P7482\">source of
+        file</a></bdi></h4></div></div></div><div class=''wbmi-content-items-group''><div
+        class=''wbmi-item wbmi-item-read''><div data-guid=''M56717420$F183B609-988D-402C-ABD1-64C4CC8856A6''
+        class=''wbmi-item-container''><div class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div
+        class=''wbmi-entity-title''><h4 class=''wbmi-entity-label''><bdi><a target=\"_blank\"
+        title=\"d:Special:EntityPage/Q66458942\" href=\"https://www.wikidata.org/wiki/Special:EntityPage/Q66458942\">original
+        creation by uploader</a></bdi></h4></div></div></div></div></div></div></div></div><div
+        id=''P9149'' data-property=''P9149'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P9149\",\"hash\":\"96ffeae24cd2636e57713c184fddc03dcff527fc\",\"datavalue\":{\"value\":{\"latitude\":58.588979,\"longitude\":16.179181,\"altitude\":null,\"precision\":1.0e-6,\"globe\":\"http:\\/\\/www.wikidata.org\\/entity\\/Q2\"},\"type\":\"globecoordinate\"}},\"type\":\"statement\",\"id\":\"M56717420$F5B57E9B-E5CF-4C2E-B9B7-7F7119A9A3D2\",\"rank\":\"normal\"}]''
+        data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":9149,\\\"id\\\":\\\"P9149\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+        target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P9149\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P9149\\\"&gt;coordinates
+        of depicted place&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"coordinates
+        of depicted place\"}}},\"{\\\"value\\\":{\\\"latitude\\\":58.588979,\\\"longitude\\\":16.179181,\\\"altitude\\\":null,\\\"precision\\\":1.0e-6,\\\"globe\\\":\\\"http:\\\\\\/\\\\\\/www.wikidata.org\\\\\\/entity\\\\\\/Q2\\\"},\\\"type\\\":\\\"globecoordinate\\\"}\":{\"text\\/html\":{\"en\":{\"P9149\":\"58\\u00b035&amp;apos;20.324&amp;quot;N,
+        16\\u00b010&amp;apos;45.052&amp;quot;E\"}},\"text\\/plain\":{\"en\":{\"P9149\":\"58\\u00b035&#039;20.324\\\"N,
+        16\\u00b010&#039;45.052\\\"E\"}}}}'' class=''wbmi-entityview-statementsGroup
+        wbmi-entityview-statementsGroup-P9149 oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div
+        class=''wbmi-statements-widget''><div class=''wbmi-statement-header''><div
+        class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4 class=''wbmi-entity-label''><bdi><a
+        target=\"_blank\" title=\"d:Special:EntityPage/P9149\" href=\"https://www.wikidata.org/wiki/Special:EntityPage/P9149\">coordinates
+        of depicted place</a></bdi></h4></div></div></div><div class=''wbmi-content-items-group''><div
+        class=''wbmi-item wbmi-item-read''><div data-guid=''M56717420$F5B57E9B-E5CF-4C2E-B9B7-7F7119A9A3D2''
+        class=''wbmi-item-container''><div class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div
+        class=''wbmi-entity-title''><h4 class=''wbmi-entity-label''><bdi>58\u00b035&apos;20.324&quot;N,
+        16\u00b010&apos;45.052&quot;E</bdi></h4></div></div></div></div></div></div></div></div><div
+        id=''P6757'' data-property=''P6757'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P6757\",\"hash\":\"fc82c85141854f8cd3057d109278593ddab8b288\",\"datavalue\":{\"value\":{\"amount\":\"+10\",\"unit\":\"http:\\/\\/www.wikidata.org\\/entity\\/Q11574\"},\"type\":\"quantity\"}},\"type\":\"statement\",\"id\":\"M56717420$875163FE-728D-45DF-B3F1-400382339E0B\",\"rank\":\"normal\"}]''
+        data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":6757,\\\"id\\\":\\\"P6757\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+        target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P6757\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P6757\\\"&gt;exposure
+        time&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"exposure time\"}}},\"{\\\"value\\\":{\\\"amount\\\":\\\"+10\\\",\\\"unit\\\":\\\"http:\\\\\\/\\\\\\/www.wikidata.org\\\\\\/entity\\\\\\/Q11574\\\"},\\\"type\\\":\\\"quantity\\\"}\":{\"text\\/html\":{\"en\":{\"P6757\":\"10
+        &lt;span class=\\\"wb-unit\\\"&gt;second&lt;\\/span&gt;\"}},\"text\\/plain\":{\"en\":{\"P6757\":\"10
+        second\"}}}}'' class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P6757
+        oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+        class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+        class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P6757\"
+        href=\"https://www.wikidata.org/wiki/Special:EntityPage/P6757\">exposure time</a></bdi></h4></div></div></div><div
+        class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+        data-guid=''M56717420$875163FE-728D-45DF-B3F1-400382339E0B'' class=''wbmi-item-container''><div
+        class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+        class=''wbmi-entity-label''><bdi>10 <span class=\"wb-unit\">second</span></bdi></h4></div></div></div></div></div></div></div></div><div
+        id=''P6790'' data-property=''P6790'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P6790\",\"hash\":\"8a4455665487de2af49f45eb1b75e157bcb959c3\",\"datavalue\":{\"value\":{\"amount\":\"+8\",\"unit\":\"1\"},\"type\":\"quantity\"}},\"type\":\"statement\",\"id\":\"M56717420$CCFDAA77-14E2-42ED-8B17-DD41A9D28B29\",\"rank\":\"normal\"}]''
+        data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":6790,\\\"id\\\":\\\"P6790\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+        target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P6790\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P6790\\\"&gt;f-number&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"f-number\"}}},\"{\\\"value\\\":{\\\"amount\\\":\\\"+8\\\",\\\"unit\\\":\\\"1\\\"},\\\"type\\\":\\\"quantity\\\"}\":{\"text\\/html\":{\"en\":{\"P6790\":\"8\"}},\"text\\/plain\":{\"en\":{\"P6790\":\"8\"}}}}''
+        class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P6790
+        oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+        class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+        class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P6790\"
+        href=\"https://www.wikidata.org/wiki/Special:EntityPage/P6790\">f-number</a></bdi></h4></div></div></div><div
+        class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+        data-guid=''M56717420$CCFDAA77-14E2-42ED-8B17-DD41A9D28B29'' class=''wbmi-item-container''><div
+        class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+        class=''wbmi-entity-label''><bdi>8</bdi></h4></div></div></div></div></div></div></div></div><div
+        id=''P2151'' data-property=''P2151'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P2151\",\"hash\":\"e682c8fff338c3adf77624acbad5b389bcc888b2\",\"datavalue\":{\"value\":{\"amount\":\"+50\",\"unit\":\"http:\\/\\/www.wikidata.org\\/entity\\/Q174789\"},\"type\":\"quantity\"}},\"type\":\"statement\",\"id\":\"M56717420$9A9DD056-20EC-4BB4-BF85-C34F714F41A3\",\"rank\":\"normal\"}]''
+        data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":2151,\\\"id\\\":\\\"P2151\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+        target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P2151\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P2151\\\"&gt;focal
+        length&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"focal length\"}}},\"{\\\"value\\\":{\\\"amount\\\":\\\"+50\\\",\\\"unit\\\":\\\"http:\\\\\\/\\\\\\/www.wikidata.org\\\\\\/entity\\\\\\/Q174789\\\"},\\\"type\\\":\\\"quantity\\\"}\":{\"text\\/html\":{\"en\":{\"P2151\":\"50
+        &lt;span class=\\\"wb-unit\\\"&gt;millimetre&lt;\\/span&gt;\"}},\"text\\/plain\":{\"en\":{\"P2151\":\"50
+        millimetre\"}}}}'' class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P2151
+        oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+        class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+        class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P2151\"
+        href=\"https://www.wikidata.org/wiki/Special:EntityPage/P2151\">focal length</a></bdi></h4></div></div></div><div
+        class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+        data-guid=''M56717420$9A9DD056-20EC-4BB4-BF85-C34F714F41A3'' class=''wbmi-item-container''><div
+        class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+        class=''wbmi-entity-label''><bdi>50 <span class=\"wb-unit\">millimetre</span></bdi></h4></div></div></div></div></div></div></div></div><div
+        id=''P6789'' data-property=''P6789'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P6789\",\"hash\":\"1c94f4d4b36f41a354d2396ee9a6e8bbceadbfb5\",\"datavalue\":{\"value\":{\"amount\":\"+100\",\"unit\":\"1\"},\"type\":\"quantity\"}},\"type\":\"statement\",\"id\":\"M56717420$9E3B430C-B54D-4997-AD57-169C1DB8540D\",\"rank\":\"normal\"}]''
+        data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":6789,\\\"id\\\":\\\"P6789\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+        target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P6789\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P6789\\\"&gt;ISO
+        speed&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"ISO speed\"}}},\"{\\\"value\\\":{\\\"amount\\\":\\\"+100\\\",\\\"unit\\\":\\\"1\\\"},\\\"type\\\":\\\"quantity\\\"}\":{\"text\\/html\":{\"en\":{\"P6789\":\"100\"}},\"text\\/plain\":{\"en\":{\"P6789\":\"100\"}}}}''
+        class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P6789
+        oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+        class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+        class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P6789\"
+        href=\"https://www.wikidata.org/wiki/Special:EntityPage/P6789\">ISO speed</a></bdi></h4></div></div></div><div
+        class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+        data-guid=''M56717420$9E3B430C-B54D-4997-AD57-169C1DB8540D'' class=''wbmi-item-container''><div
+        class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+        class=''wbmi-entity-label''><bdi>100</bdi></h4></div></div></div></div></div></div></div></div><div
+        id=''P1163'' data-property=''P1163'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P1163\",\"hash\":\"723d30b878d4a8deb968b0db429888e5353661a2\",\"datavalue\":{\"value\":\"image\\/jpeg\",\"type\":\"string\"}},\"type\":\"statement\",\"id\":\"M56717420$49822AEF-5CCB-4779-8F50-44049597F92F\",\"rank\":\"normal\"}]''
+        data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":1163,\\\"id\\\":\\\"P1163\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+        target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P1163\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P1163\\\"&gt;media
+        type&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"media type\"}}},\"{\\\"value\\\":\\\"image\\\\\\/jpeg\\\",\\\"type\\\":\\\"string\\\"}\":{\"text\\/html\":{\"en\":{\"P1163\":\"image\\/jpeg\"}},\"text\\/plain\":{\"en\":{\"P1163\":\"image\\/jpeg\"}}}}''
+        class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P1163
+        oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+        class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+        class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P1163\"
+        href=\"https://www.wikidata.org/wiki/Special:EntityPage/P1163\">media type</a></bdi></h4></div></div></div><div
+        class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+        data-guid=''M56717420$49822AEF-5CCB-4779-8F50-44049597F92F'' class=''wbmi-item-container''><div
+        class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+        class=''wbmi-entity-label''><bdi>image/jpeg</bdi></h4></div></div></div></div></div></div></div></div><div
+        id=''P31'' data-property=''P31'' data-statements=''[{\"mainsnak\":{\"snaktype\":\"value\",\"property\":\"P31\",\"hash\":\"78817782cf2abc9d185934ba3b526591e12840f2\",\"datavalue\":{\"value\":{\"entity-type\":\"item\",\"numeric-id\":125191,\"id\":\"Q125191\"},\"type\":\"wikibase-entityid\"}},\"type\":\"statement\",\"id\":\"M56717420$EDCEE9DA-25A7-411F-905A-2AE544C651EA\",\"rank\":\"normal\"}]''
+        data-formatvalue=''{\"{\\\"value\\\":{\\\"entity-type\\\":\\\"property\\\",\\\"numeric-id\\\":31,\\\"id\\\":\\\"P31\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"\":\"&lt;a
+        target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/P31\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/P31\\\"&gt;instance
+        of&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"\":\"instance of\"}}},\"{\\\"value\\\":{\\\"entity-type\\\":\\\"item\\\",\\\"numeric-id\\\":125191,\\\"id\\\":\\\"Q125191\\\"},\\\"type\\\":\\\"wikibase-entityid\\\"}\":{\"text\\/html\":{\"en\":{\"P31\":\"&lt;a
+        target=\\\"_blank\\\" title=\\\"d:Special:EntityPage\\/Q125191\\\" href=\\\"https:\\/\\/www.wikidata.org\\/wiki\\/Special:EntityPage\\/Q125191\\\"&gt;photograph&lt;\\/a&gt;\"}},\"text\\/plain\":{\"en\":{\"P31\":\"photograph\"}}}}''
+        class=''wbmi-entityview-statementsGroup wbmi-entityview-statementsGroup-P31
+        oo-ui-layout oo-ui-panelLayout oo-ui-panelLayout-framed''><div class=''wbmi-statements-widget''><div
+        class=''wbmi-statement-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+        class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/P31\"
+        href=\"https://www.wikidata.org/wiki/Special:EntityPage/P31\">instance of</a></bdi></h4></div></div></div><div
+        class=''wbmi-content-items-group''><div class=''wbmi-item wbmi-item-read''><div
+        data-guid=''M56717420$EDCEE9DA-25A7-411F-905A-2AE544C651EA'' class=''wbmi-item-container''><div
+        class=''wbmi-entity-header''><div class=''wbmi-entity-data''><div class=''wbmi-entity-title''><h4
+        class=''wbmi-entity-label''><bdi><a target=\"_blank\" title=\"d:Special:EntityPage/Q125191\"
+        href=\"https://www.wikidata.org/wiki/Special:EntityPage/Q125191\">photograph</a></bdi></h4></div></div></div></div></div></div></div></div></mediainfoviewstatements></mediainfoview>\n<!--
+        \nNewPP limit report\nParsed by mw\u2010api\u2010int.eqiad.main\u20106df65d5f96\u2010dt7fs\nCached
+        time: 20240705094950\nCache expiry: 2592000\nReduced expiry: false\nComplications:
+        []\nCPU time usage: 0.896 seconds\nReal time usage: 1.301 seconds\nPreprocessor
+        visited node count: 12082/1000000\nPost\u2010expand include size: 135839/2097152
+        bytes\nTemplate argument size: 28243/2097152 bytes\nHighest expansion depth:
+        26/100\nExpensive parser function count: 225/500\nUnstrip recursion depth:
+        0/20\nUnstrip post\u2010expand size: 4381/5000000 bytes\nLua time usage: 0.544/10.000
+        seconds\nLua memory usage: 3871780/52428800 bytes\nNumber of Wikibase entities
+        loaded: 0/400\n-->\n<!--\nTransclusion expansion time report (%,ms,calls,template)\n100.00%
+        1208.510      1 -total\n 49.42%  597.290      4 Template:Autotranslate\n 46.14%  557.581      1
+        Template:Picture_of_the_day\n 45.09%  544.929      1 Template:Picture_of_the_day/layout\n
+        38.27%  462.554      1 Template:Hidden\n 36.58%  442.106      1 Template:Picture_of_the_day/desc\n
+        35.44%  428.341      1 Template:Multilingual_description\n 26.33%  318.217      1
+        Template:Assessments\n 15.19%  183.607      3 Template:Top_icon\n 13.33%  161.062     28
+        Template:LangSwitch\n-->\n\n<!-- Saved in parser cache with key commonswiki:pcache:idhash:56717420-0!wb=3!wbMobile=0
+        and timestamp 20240705094950 and revision id 881356529. Rendering was triggered
+        because: unknown\n -->\n</div>"}}}'
     headers:
       accept-ranges:
       - bytes

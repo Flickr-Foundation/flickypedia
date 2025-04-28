@@ -16,21 +16,20 @@ interactions:
     uri: https://api.flickr.com/services/rest/?method=flickr.people.getInfo&user_id=58433307%40N08
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAA4VU227bMAx9Xr6C8IBiw9LYufSW2u4wtFiLtntp+xzQNh0LkSVDkuNmXz/KadOs
-        G7aHCNTx4SF1qCi+eK4lrMlYoVUSjEdRAKRyXQi1TILWlYenAVykg9jYBqxDlwR6FfC+4RStQBRJ
-        cHQ6m06n0cnXHxGTlf0TE7YxmtUDEHZRkCRHnMelRK6VJcP1WWY8m22REk2dBMcBNOiqBUqBNgly
-        rLlmoTsVQIV24ZthmEVYe5FhsaQkYFAVaAo+xHMjDCP83bOxKA29bf3GK/Tkha1E0/QHfmH3n6lo
-        c3RsC8qFIatbk1NfMB18iFvuWmFNadUuK5CSOpIbFYc7nDmGUPaca8+523F2OHOk3tZIb2mjbIX1
-        EJ5u43AHM8WJmn5qRSAxI5kE3+8f53DZZlKoIVzxoLLWLKsh3AmbaYbutCo0m6TL0hLP60sUzSM+
-        2KvOws/nqjW6ofCV+/otCSYnAYT+hAXZ3Iimb+7m4GM0PTuvQShH7AWPj0MwKGSHGzsEFCY3WLoh
-        eC8tHPCwzv0PFK5RQiWs02YzhBwN05tKO7002FQeqtjZCpAX4Sh3rSGWcZwNuWZnc8ejGcKSFJl9
-        KdMuM073bgJKzllqXUDJy0vYCcXoisjPFkrhu+tEXfdyzuCaOFEVYHUu+JJZz+qEq6A0glRhR4PB
-        DXRoASEXayHB31RUDrLWgdIdl3Z8x4oR3PAdWxMvXF9wkGm9stD4GdmKvepV682rYXvnt/DpUpDl
-        Th6q1pvL7lw/PG795vjq/mkXb4cFjwbZEg5879+Md1buwM+jONyfHA+yN9u2RqaVc42dh2HXdaNS
-        inxlRrmuwy0hfPuDhfEL5pO8gtGlkPQvCdKNpHcSb1msUevsPxJ/6eItaXcO7udDXApjXYGOHK5I
-        pZMoOj6MZofRGMZH89l4Hp3F4TvOb2npeHJ2ND45nUz2ib10rnkM6fRkdjqJw+2Ga7/4we9euH34
-        fMRPYjr4BaIfS6hBBQAA
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<person
+        id=\"58433307@N08\" nsid=\"58433307@N08\" ispro=\"1\" is_deleted=\"0\" iconserver=\"5144\"
+        iconfarm=\"6\" path_alias=\"camperdown\" has_stats=\"0\" pro_badge=\"standard\"
+        expire=\"0\" has_adfree=\"0\" has_free_standard_shipping=\"0\" has_free_educational_resources=\"0\">\n\t<username>hugh
+        llewelyn</username>\n\t<realname>Hugh Llewelyn</realname>\n\t<location>Keynsham,
+        UK</location>\n\t<timezone label=\"GMT: Dublin, Edinburgh, Lisbon, London\"
+        offset=\"+00:00\" timezone_id=\"Europe/London\" timezone=\"27\" />\n\t<description>I&#039;m
+        interested in railways, aircraft, ships &amp;amp; naval history, cars, photography,
+        church architecture, stamp collecting, general history, rugby, real ale, good
+        food, good wine, keeping fit, swimming, travel and socialising with friends.\n\nI
+        was a civil servant but now retired. I have had five books published with
+        my railway photographs (Diesel Shunters, HST&#039;s, EMU&#039;s, London Traction
+        and Bristol Traction).</description>\n\t<photosurl>https://www.flickr.com/photos/camperdown/</photosurl>\n\t<profileurl>https://www.flickr.com/people/camperdown/</profileurl>\n\t<mobileurl>https://www.flickr.com/photos/camperdown/</mobileurl>\n\t<photos>\n\t\t<firstdatetaken>2006-04-01
+        15:41:09</firstdatetaken>\n\t\t<firstdate>1295178229</firstdate>\n\t\t<count>37482</count>\n\t</photos>\n</person>\n</rsp>\n"
     headers:
       Connection:
       - keep-alive

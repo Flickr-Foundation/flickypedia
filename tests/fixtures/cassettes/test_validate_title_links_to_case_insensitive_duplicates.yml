@@ -123,8 +123,6 @@ interactions:
       - max-age=10800, s-maxage=10800, public
       content-disposition:
       - inline; filename=api-result.xml
-      content-encoding:
-      - gzip
       content-type:
       - text/xml; charset=utf-8
       date:

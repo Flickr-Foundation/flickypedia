@@ -16,33 +16,38 @@ interactions:
     uri: https://www.wikidata.org/w/rest.php/wikibase/v0/entities/items/Q33132025
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAA+VYW2/bNhT+K4axhxYrG94vflrSbhhQrGiBDQPWFQVJUTYTWVYlOVka5L+PlOUm
-        6RG6DNWeBgSM9PHw8HznwkP5ZtlfN2G5WsY+bJfPlpV1oeqWq5tlqBN6Wtl68Xusul2dJkMHoLIF
-        kM3Qn3ssKcsj58OzGp7lYvinh9HeTTN2D5dJSbs/KOEE55G5YTw8F1kJH7Rzpu+mORmew0EoW9L1
-        0LoSQpCps5CX20IISnkLoR2EoCf9NYAKqKsIExCy/RTqNzCCNZowMKFrB1FodoD7hD3MiTiRJn4C
-        ayC2hx5dQ4PXBYQqCHVXANtA/RvIIMItI9wywlhE6LMIfXZuYSpdWBiBizWAKihVxQnoHGLQji3U
-        v42wGLYwWWsLY1dD0+qim8JQDYM1BUFT6hZ6bgdTq5kwr/Ewgg3ctJlg27TQUU0/AaGJA6FdQxoT
-        LFqYOZ2fgOoJbGLpBYQuIQTro4cELgO04xLm3GUFHXe5haftJbT2CpbbFZT6BOu0+wghGFJXH3qJ
-        0SKPvsijLfPowjDSu2erF4OoGUZ1b1ofppe3+XDtfBubPu7qu17ZbHb9bt3aZhPaRdnutot+Exa/
-        vTomd3mYTg1o7KQJSCpxyRJa7haujcN7IHVMIT22rwdS+4dS+2PDOQrRLHQng5PM8Wz8p92GTn6P
-        wyBh6zp+3IfjMTZSGJfnyWFp039FPx2FhkZh27X9dBEr28aDilhH27Y2O9VW0XbZMTfppettupCE
-        uh/8+4aR5erdzeEQfssYYRRT8Z3VlhrODOIlDogXRKASO4PKQLwoygJby3Np2TqXQ71rt7ZK7x/3
-        aasyhjbpfvc+zYcytKH2YXxv2l0T2v467zzsmLfP3bi3aLwtXcWL6JK1aLg2JXsvbZXclBaMAof3
-        3PvrPrHIZovl7W3S/oZOchGaOENV4iLLAnkVBBI+lEg6bwPjRphgZuFC5+Aik7nYqJERwXKKEi6N
-        odgJxH2gSHFqUCikRmXJuGDWCEv9LJTy/t/OiTGa4jwyMlOEaLqtSu0J4o4EpBgWCFPCEBaYGJUC
-        R4Weh5CZgQ8hWlDMRkaKiSlKWhTBWa4QJ5ShwDRFIcUMaWyZYN4WnrFZKOX9v51TKnfN7ijxKUqh
-        VLLwKlEK2CLONUZeY4M8MylpMaWuJDNR4nOESXKRbBw5MSrV5FFHtRKuoOl4oBgJHApkrSQIF9Jo
-        qoLTDs9z1GUDHrIKf/WhrW2FksSjOEmBMSGC/PD6c/oRrugUr4I6yQrMEGekREpRh7yUHpmQnOJU
-        mQ6Kcp6SygY85NX1bazXj6N0/0YxRkqxKUKydNIxmgKVG1PwKQWFYw4FbEpmpWSczxQoxebhs3hy
-        /+by9NilJtOQ6cIEplJZ+RQzKplHRIWAUpQsUz4IWswTLqrmKC1+7LmSqckTHZ+S01P9EiPG2cuc
-        gwqdCsMR/vHMvDhNhcXxv+66N8uN7fKnd86ElADSli44xoRkBjNRMJ76RFmaEhdaBUzZ8MHS9oe1
-        U92Nii9D7Xfbbbp7/hKKaB/njNf2wp7HrV28ionn4md7bd2+s4snGjOOBZdYP31+3qT0uX02ZYUm
-        X9rQx2141N43B9HV8vvk83RkUUTZrxivhr8/hu+r4GOXLtPLFSH5RluFurDtdleEfHPd9H2zOjm5
-        urp6nrMg2/B8165PkvLYX5+8Jelir2i+jNy+z8aP7vdYqcLroJlwklPrKTZclMp4b7BTlnLLveP0
-        f+h+/p+5f7KYh+qboZwNloZ/bihksqEIeaZ+wuoMkVOm0yF8ppCRZxqlq9uLZGi6ACgxU0MhdA5S
-        Wg69P3/zpGVVrC+GT54xxbLKQwj7Kmt4kT6L1rv2evWVAzz/fFmsj5bv22MQuxTFUe0QyW1O3yGU
-        +e3kgeoPB9UfQG949oXDl7d/A3MYZwZDFgAA
+      string: '{"type":"item","labels":{"en":"Alan Wilson","es":"Alan Wilson","fr":"Alan
+        Wilson","ar":"\u0623\u0644\u0627\u0646 \u0648\u064a\u0644\u0633\u0648\u0646","ru":"\u0410\u043b\u0430\u043d
+        \u0423\u0438\u043b\u0441\u043e\u043d","ast":"Alan Wilson","af":"Alan Wilson","an":"Alan
+        Wilson","bar":"Alan Wilson","bm":"Alan Wilson","br":"Alan Wilson","ca":"Alan
+        Wilson","co":"Alan Wilson","cs":"Alan Wilson","cy":"Alan Wilson","da":"Alan
+        Wilson","de":"Alan Wilson","de-at":"Alan Wilson","de-ch":"Alan Wilson","en-ca":"Alan
+        Wilson","en-gb":"Alan Wilson","eo":"Alan Wilson","et":"Alan Wilson","eu":"Alan
+        Wilson","fi":"Alan Wilson","frc":"Alan Wilson","frp":"Alan Wilson","fur":"Alan
+        Wilson","ga":"Alan Wilson","gd":"Alan Wilson","gl":"Alan Wilson","gsw":"Alan
+        Wilson","hr":"Alan Wilson","hu":"Alan Wilson","ia":"Alan Wilson","id":"Alan
+        Wilson","ie":"Alan Wilson","io":"Alan Wilson","it":"Alan Wilson","jam":"Alan
+        Wilson","kab":"Alan Wilson","kg":"Alan Wilson","lb":"Alan Wilson","li":"Alan
+        Wilson","lij":"Alan Wilson","lt":"Alan Wilson","mg":"Alan Wilson","min":"Alan
+        Wilson","ms":"Alan Wilson","nap":"Alan Wilson","nb":"Alan Wilson","nds":"Alan
+        Wilson","nds-nl":"Alan Wilson","nl":"Alan Wilson","nn":"Alan Wilson","nrm":"Alan
+        Wilson","oc":"Alan Wilson","pap":"Alan Wilson","pcd":"Alan Wilson","pl":"Alan
+        Wilson","pms":"Alan Wilson","prg":"Alan Wilson","pt":"Alan Wilson","pt-br":"Alan
+        Wilson","rgn":"Alan Wilson","rm":"Alan Wilson","ro":"Alan Wilson","sc":"Alan
+        Wilson","scn":"Alan Wilson","sco":"Alan Wilson","sk":"Alan Wilson","sv":"Alan
+        Wilson","sw":"Alan Wilson","tr":"Alan Wilson","vec":"Alan Wilson","vi":"Alan
+        Wilson","vls":"Alan Wilson","vmf":"Alan Wilson","vo":"Alan Wilson","wa":"Alan
+        Wilson","wo":"Alan Wilson","zu":"Alan Wilson","sq":"Alan Wilson","sl":"Alan
+        Wilson","bn":"\u0985\u09cd\u09af\u09be\u09b2\u09be\u09a8 \u0989\u0987\u09b2\u09b8\u09a8"},"descriptions":{"en":"photographer
+        from the UK","nl":"fotograaf","es":"fot\u00f3grafo brit\u00e1nico","ast":"fot\u00f3grafu
+        brit\u00e1nicu","ca":"fot\u00f2graf brit\u00e0nic","gl":"fot\u00f3grafo brit\u00e1nico","fr":"photographe
+        britannique","it":"fotografo britannico","pt":"fot\u00f3grafo brit\u00e2nico","eu":"argazkilari
+        britainiarra"},"aliases":{},"statements":{"P31":[{"id":"Q33132025$a8a29439-4f0e-4d15-f0b9-fe1c5dfd0aa4","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P31","data-type":"wikibase-item"},"value":{"type":"value","content":"Q5"}}],"P21":[{"id":"Q33132025$581b9279-46fd-c7e5-5cef-6bcae34959e9","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P21","data-type":"wikibase-item"},"value":{"type":"value","content":"Q6581097"}}],"P106":[{"id":"Q33132025$0f9920b5-4ce2-7429-ed68-ff3453a95a2c","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P106","data-type":"wikibase-item"},"value":{"type":"value","content":"Q33231"}}],"P19":[{"id":"Q33132025$264468c1-4b1e-7305-0213-05019746f258","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P19","data-type":"wikibase-item"},"value":{"type":"value","content":"Q1185203"}}],"P735":[{"id":"Q33132025$85deba47-4123-e382-e20b-80a353cadc33","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P735","data-type":"wikibase-item"},"value":{"type":"value","content":"Q294833"}}],"P734":[{"id":"Q33132025$ef76dc77-4e0a-4480-c809-c39810022bf1","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P734","data-type":"wikibase-item"},"value":{"type":"value","content":"Q1645480"}}],"P3267":[{"id":"Q33132025$a2875bd2-4620-50ed-aa61-0d69827eb8b0","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P3267","data-type":"external-id"},"value":{"type":"value","content":"65001151@N03"}}],"P1472":[{"id":"Q33132025$d2b63d03-431f-772b-c66c-9e548b7f453f","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1472","data-type":"string"},"value":{"type":"value","content":"Alan
+        Wilson"}}],"P373":[{"id":"Q33132025$6fb6b322-4439-ec0a-5b3b-e09f3a663440","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P373","data-type":"string"},"value":{"type":"value","content":"Alan
+        Wilson (photographer)"}}],"P27":[{"id":"Q33132025$38d9e37a-4c03-263c-17ee-53fa37ce52df","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P27","data-type":"wikibase-item"},"value":{"type":"value","content":"Q145"}}],"P6379":[{"id":"Q33132025$0A1AA8D0-343D-4317-A594-0EB9CA827409","rank":"normal","qualifiers":[],"references":[{"hash":"fb6bec06afbeb335639035d34f25ff9f0d87e023","parts":[{"property":{"id":"P10253","data-type":"commonsMedia"},"value":{"type":"value","content":"Nakajima
+        Ki-43 Hayabusa (8034054608).jpg"}},{"property":{"id":"P813","data-type":"time"},"value":{"type":"value","content":{"time":"+2021-02-23T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}]},{"hash":"c077dc8e835b642ac20945f79cc90b7a24a4cb42","parts":[{"property":{"id":"P10253","data-type":"commonsMedia"},"value":{"type":"value","content":"Nakajima
+        Ki-43 Hayabusa (8034054608).jpg"}},{"property":{"id":"P813","data-type":"time"},"value":{"type":"value","content":{"time":"+2021-02-24T00:00:00Z","precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"}}}]}],"property":{"id":"P6379","data-type":"wikibase-item"},"value":{"type":"value","content":"Q190694"}}],"P1412":[{"id":"Q33132025$56B7F07B-1A38-44B7-96B8-644C98510075","rank":"normal","qualifiers":[],"references":[],"property":{"id":"P1412","data-type":"wikibase-item"},"value":{"type":"value","content":"Q1860"}}]},"sitelinks":{"commonswiki":{"title":"Category:Alan
+        Wilson (photographer)","badges":[],"url":"https://commons.wikimedia.org/wiki/Category:Alan_Wilson_(photographer)"}},"id":"Q33132025"}'
     headers:
       accept-ranges:
       - bytes

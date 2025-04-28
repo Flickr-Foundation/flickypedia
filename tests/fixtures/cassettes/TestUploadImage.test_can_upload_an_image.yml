@@ -117,8 +117,6 @@ interactions:
       - private, max-age=0, s-maxage=0
       content-disposition:
       - inline; filename=api-result.json
-      content-encoding:
-      - gzip
       content-type:
       - application/json; charset=utf-8
       date:

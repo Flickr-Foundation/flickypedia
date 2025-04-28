@@ -28,7 +28,7 @@ import time
 import typing
 import uuid
 
-from nitrate.json import DatetimeDecoder, DatetimeEncoder
+from nitrate.json import NitrateDecoder, NitrateEncoder
 from nitrate.types import validate_type
 
 
@@ -160,7 +160,7 @@ class AbstractFilesystemTaskQueue(abc.ABC, typing.Generic[In, Out]):
         # tmp file already exists -- this seems unlikely, but might
         # indicate another process is working on this file.
         with open(tmp_path, "x") as tmp_file:
-            tmp_file.write(json.dumps(task, cls=DatetimeEncoder))
+            tmp_file.write(json.dumps(task, cls=NitrateEncoder))
 
         # If the task is changing state, we need to make sure we remove
         # the task in the previous folder.
@@ -198,7 +198,7 @@ class AbstractFilesystemTaskQueue(abc.ABC, typing.Generic[In, Out]):
         ]:
             try:
                 with open(dirname / task_id) as in_file:
-                    t = json.load(in_file, cls=DatetimeDecoder)
+                    t = json.load(in_file, cls=NitrateDecoder)
                     return validate_type(t, model=Task[In, Out])
             except FileNotFoundError:
                 pass

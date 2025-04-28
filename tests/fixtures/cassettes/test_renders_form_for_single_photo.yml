@@ -26,8 +26,6 @@ interactions:
       - '0'
       cache-control:
       - public, max-age=300
-      content-encoding:
-      - gzip
       content-length:
       - '81'
       content-type:
@@ -372,8 +370,6 @@ interactions:
       - '0'
       cache-control:
       - no-cache
-      content-encoding:
-      - gzip
       content-type:
       - application/json
       date:
@@ -1416,8 +1412,6 @@ interactions:
       - '0'
       cache-control:
       - no-cache
-      content-encoding:
-      - gzip
       content-type:
       - application/json
       date:
@@ -1531,8 +1525,6 @@ interactions:
       - '0'
       cache-control:
       - no-cache
-      content-encoding:
-      - gzip
       content-type:
       - application/json
       date:
@@ -1634,8 +1626,6 @@ interactions:
       - '0'
       cache-control:
       - no-cache
-      content-encoding:
-      - gzip
       content-type:
       - application/json
       date:
@@ -1741,8 +1731,6 @@ interactions:
       - '2'
       cache-control:
       - no-cache
-      content-encoding:
-      - gzip
       content-type:
       - application/json
       date:
@@ -1819,8 +1807,6 @@ interactions:
       - '0'
       cache-control:
       - no-cache
-      content-encoding:
-      - gzip
       content-length:
       - '714'
       content-type:
@@ -9761,8 +9747,6 @@ interactions:
       - '14'
       cache-control:
       - public, max-age=300
-      content-encoding:
-      - gzip
       content-type:
       - application/sparql-results+json;charset=utf-8
       date:

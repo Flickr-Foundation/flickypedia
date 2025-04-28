@@ -184,8 +184,6 @@ interactions:
       - max-age=10800, s-maxage=10800, public
       content-disposition:
       - inline; filename=api-result.xml
-      content-encoding:
-      - gzip
       content-length:
       - '618'
       content-type:

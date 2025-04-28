@@ -16,49 +16,69 @@ interactions:
     uri: https://www.wikidata.org/w/rest.php/wikibase/v0/entities/items/Q33132026
   response:
     body:
-      string: !!binary |
-        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
+      string: '{"type":"item","labels":{"it":"Categoria:Vescovi di Feltre"},"descriptions":{"fr":"page
+        de cat\u00e9gorie de Wikim\u00e9dia","en":"Wikimedia category","nl":"Wikimedia-categorie","pt":"categoria
+        de um projeto da Wikimedia","de":"Wikimedia-Kategorie","it":"categoria di
+        un progetto Wikimedia","fa":"\u0631\u062f\u0647 \u0648\u06cc\u06a9\u06cc\u200c\u0645\u062f\u06cc\u0627","es":"categor\u00eda
+        de Wikimedia","el":"\u03ba\u03b1\u03c4\u03b7\u03b3\u03bf\u03c1\u03af\u03b1
+        \u03b5\u03b3\u03c7\u03b5\u03b9\u03c1\u03b7\u03bc\u03ac\u03c4\u03c9\u03bd Wikimedia","eo":"kategorio
+        en Vikimedio","zh":"\u7ef4\u57fa\u5a92\u4f53\u5206\u7c7b","bho":"\u0935\u093f\u0915\u093f\u092a\u0940\u0921\u093f\u092f\u093e:\u0936\u094d\u0930\u0947\u0923\u0940","af":"Wikimedia-kategorie","bjn":"tumbung
+        Wikimedia","ca":"categoria de Wikimedia","gu":"\u0ab5\u0abf\u0a95\u0abf\u0aaa\u0ac0\u0aa1\u0abf\u0aaf\u0abe
+        \u0ab6\u0acd\u0ab0\u0ac7\u0aa3\u0ac0","an":"categor\u00eda de Wikimedia","zh-hk":"\u7dad\u57fa\u5a92\u9ad4\u5206\u985e","cy":"tudalen
+        categori Wikimedia","ar":"\u062a\u0635\u0646\u064a\u0641 \u0648\u064a\u0643\u064a\u0645\u064a\u062f\u064a\u0627","pt-br":"categoria
+        de um projeto da Wikimedia","de-ch":"Wikimedia-Kategorie","fi":"Wikimedia-luokka","cs":"kategorie
+        na projektech Wikimedia","et":"Wikimedia kategooria","gl":"categor\u00eda
+        de Wikimedia","lb":"Wikimedia-Kategorie","nn":"Wikimedia-kategori","zh-tw":"\u7dad\u57fa\u5a92\u9ad4\u5206\u985e","nb":"Wikimedia-kategori","tr":"Vikimedya
+        kategorisi","bug":"kategori Wikimedia","lv":"Wikimedia projekta kategorija","zh-cn":"\u7ef4\u57fa\u5a92\u4f53\u5206\u7c7b","nap":"categur\u00eca
+        ''e nu pruggette Wikimedia","vi":"th\u1ec3 lo\u1ea1i Wikimedia","tg":"\u0433\u0443\u0440\u04ef\u04b3\u0438
+        \u0412\u0438\u043a\u0438\u043c\u0435\u0434\u0438\u0430","ro":"categorie \u00een
+        cadrul unui proiect Wikimedia","pl":"kategoria w projekcie Wikimedia","be":"\u043a\u0430\u0442\u044d\u0433\u043e\u0440\u044b\u044f
+        \u045e \u043f\u0440\u0430\u0435\u043a\u0446\u0435 \u0412\u0456\u043a\u0456\u043c\u0435\u0434\u044b\u044f","sco":"Wikimedia
+        category","bg":"\u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f \u043d\u0430
+        \u0423\u0438\u043a\u0438\u043c\u0435\u0434\u0438\u044f","ba":"\u0412\u0438\u043a\u0438\u043c\u0435\u0434\u0438\u0430
+        \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f\u04bb\u044b","yo":"\u1eb9\u0300ka
+        Wikimedia","ast":"categor\u00eda de Wikimedia","zh-sg":"\u7ef4\u57fa\u5a92\u4f53\u5206\u7c7b","fy":"Wikimedia-kategory","bn":"\u0989\u0987\u0995\u09bf\u09ae\u09bf\u09a1\u09bf\u09af\u09bc\u09be
+        \u09ac\u09bf\u09b7\u09af\u09bc\u09b6\u09cd\u09b0\u09c7\u09a3\u09c0","sl":"kategorija
+        Wikimedie","zh-my":"\u7ef4\u57fa\u5a92\u4f53\u5206\u7c7b","da":"Wikimedia-kategori","hi":"\u0935\u093f\u0915\u093f\u092e\u0940\u0921\u093f\u092f\u093e
+        \u0936\u094d\u0930\u0947\u0923\u0940","br":"pajenn rummata eus Wikimedia","bs":"kategorija
+        na Wikimediji","tg-latn":"gur\u00fchi Vikimedia","zh-mo":"\u7dad\u57fa\u5a92\u9ad4\u5206\u985e","ja":"\u30a6\u30a3\u30ad\u30e1\u30c7\u30a3\u30a2\u306e\u30ab\u30c6\u30b4\u30ea","he":"\u05d3\u05e3
+        \u05e7\u05d8\u05d2\u05d5\u05e8\u05d9\u05d4","hr":"kategorija na Wikimediji","bar":"Wikimedia-Kategorie","ace":"kawan
+        Wikim\u00e8dia","gsw":"Wikimedia-Kategorie","ckb":"\u067e\u06c6\u0644\u06cc
+        \u0648\u06cc\u06a9\u06cc\u0645\u06cc\u062f\u06cc\u0627","zh-hans":"\u7ef4\u57fa\u5a92\u4f53\u5206\u7c7b","ilo":"kategoria
+        ti Wikimedia","ko":"\uc704\ud0a4\ubbf8\ub514\uc5b4 \ubd84\ub958","sv":"Wikimedia-kategori","mk":"\u0412\u0438\u043a\u0438\u043c\u0435\u0434\u0438\u0438\u043d\u0430
+        \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0458\u0430","zh-hant":"\u7dad\u57fa\u5a92\u9ad4\u5206\u985e","sk":"kateg\u00f3ria
+        projektov Wikimedia","ky":"Wikimedia \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f\u0441\u044b","hy":"\u054e\u056b\u0584\u056b\u0574\u0565\u0564\u056b\u0561\u0575\u056b
+        \u0576\u0561\u056d\u0561\u0563\u056e\u056b \u056f\u0561\u057f\u0565\u0563\u0578\u0580\u056b\u0561","be-tarask":"\u043a\u0430\u0442\u044d\u0433\u043e\u0440\u044b\u044f
+        \u045e \u043f\u0440\u0430\u0435\u043a\u0446\u0435 \u0412\u0456\u043a\u0456\u043c\u044d\u0434\u044b\u044f","uk":"\u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0456\u044f
+        \u043f\u0440\u043e\u0454\u043a\u0442\u0443 \u0412\u0456\u043a\u0456\u043c\u0435\u0434\u0456\u0430","sr":"\u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0458\u0430
+        \u043d\u0430 \u0412\u0438\u043a\u0438\u043c\u0435\u0434\u0438\u0458\u0438","de-at":"Wikimedia-Kategorie","nds":"Wikimedia-Kategorie","yue":"\u7dad\u57fa\u5a92\u9ad4\u5206\u985e","se":"Wikimedia-kategoriija","ru":"\u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f
+        \u0432 \u043f\u0440\u043e\u0435\u043a\u0442\u0435 \u0412\u0438\u043a\u0438\u043c\u0435\u0434\u0438\u0430","la":"categoria
+        Vicimediorum","zea":"Wikimedia-categorie","su":"kategori Wikim\u00e9dia","hu":"Wikim\u00e9dia-kateg\u00f3ria","tg-cyrl":"\u0433\u0443\u0440\u04ef\u04b3
+        \u0434\u0430\u0440 \u043b\u043e\u0438\u04b3\u0430\u0438 \u0412\u0438\u043a\u0438\u043c\u0435\u0434\u0438\u0430","tt-cyrl":"\u0412\u0438\u043a\u0438\u043c\u0435\u0434\u0438\u0430
+        \u043f\u0440\u043e\u0435\u043a\u0442\u044b\u043d\u0434\u0430\u0433\u044b \u0442\u04e9\u0440\u043a\u0435\u043c","gv":"Wikimedia:Ronnaghys","ia":"categoria
+        Wikimedia","en-ca":"Wikimedia category","gn":"Vikim\u00e9dia \u00f1emohenda","scn":"catigur\u00eca
+        di nu pruggettu Wikimedia","ka":"\u10d5\u10d8\u10d9\u10d8\u10de\u10d4\u10d3\u10d8\u10d0:\u10d9\u10d0\u10e2\u10d4\u10d2\u10dd\u10e0\u10d8\u10d6\u10d0\u10ea\u10d8\u10d0","eu":"Wikimediako
+        kategoria","ms":"kategori Wikimedia","id":"kategori Wikimedia","th":"\u0e2b\u0e19\u0e49\u0e32\u0e2b\u0e21\u0e27\u0e14\u0e2b\u0e21\u0e39\u0e48\u0e27\u0e34\u0e01\u0e34\u0e21\u0e35\u0e40\u0e14\u0e35\u0e22","pam":"Kategoriya
+        ning Wikimedia","sh":"Wikimedia:Kategorija","ml":"\u0d35\u0d3f\u0d15\u0d4d\u0d15\u0d3f\u0d2e\u0d40\u0d21\u0d3f\u0d2f
+        \u0d35\u0d7c\u0d17\u0d4d\u0d17\u0d02","ku":"W\u00eek\u00eemediya:Kategor\u00ee","my":"Wikimedia:\u1000\u100f\u1039\u100d\u1001\u103d\u1032\u1001\u103c\u1004\u103a\u1038","ps":"\u062f
+        \u0648\u064a\u06a9\u064a\u0645\u06d0\u0689\u064a\u0627 \u0648\u06d0\u0634\u0646\u064a\u0632\u0647","rmy":"Vikipidiya:Shopni","min":"kategori
+        Wikimedia","kw":"Wikimedia:Klassys","sw":"jamii ya Wikimedia","stq":"Wikimedia-Kategorie","nds-nl":"Wikimedia-kategorie","ta":"\u0bb5\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0bae\u0bc0\u0b9f\u0bbf\u0baf\u0baa\u0bcd
+        \u0baa\u0b95\u0bc1\u0baa\u0bcd\u0baa\u0bc1","tl":"kategorya ng Wikimedia","li":"Wikimedia-categorie","sq":"kategori
+        e Wikimedias","ne":"\u0935\u093f\u0915\u093f\u092e\u093f\u0921\u093f\u092f\u093e
+        \u0936\u094d\u0930\u0947\u0923\u0940","jv":"kategori Wikimedia","hsb":"kategorija
+        w projektach Wikimedije","ga":"Vicim\u00e9id catag\u00f3ir","map-bms":"kategori
+        Wikimedia","sd":"\u0632\u0645\u0631\u0648:\u0648\u06aa\u064a\u067e\u064a\u068a\u064a\u0627
+        \u0632\u0645\u0631\u0627 \u0628\u0646\u062f\u064a","arz":"\u062a\u0635\u0646\u064a\u0641
+        \u0628\u062a\u0627\u0639 \u0648\u064a\u0643\u064a\u0645\u064a\u062f\u064a\u0627","tt":"\u0412\u0438\u043a\u0438\u043c\u0435\u0434\u0438\u0430
+        \u043f\u0440\u043e\u0435\u043a\u0442\u044b\u043d\u0434\u0430\u0433\u044b \u0442\u04e9\u0440\u043a\u0435\u043c","en-gb":"Wikimedia
+        category","tt-latn":"Wikimedia proyekt\u0131nda\u011f\u0131 t\u00f6rkem","fo":"Wikimedia-b\u00f3lkur","si":"\u0dc0\u0dd2\u0d9a\u0dd2\u0db8\u0dd3\u0da9\u0dd2\u0dba\u0dcf
+        \u0db4\u0dca\u200d\u0dbb\u0db7\u0dda\u0daf \u0db4\u0dd2\u0da7\u0dd4\u0dc0","mn":"\u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f\u0434
+        \u0410\u043d\u0433\u0438\u043b\u0430\u043b","dty":"\u0935\u093f\u0915\u093f\u092e\u093f\u0921\u093f\u092f\u093e
+        \u0936\u094d\u0930\u0947\u0923\u0940","mr":"\u0935\u093f\u0915\u093f\u092a\u0940\u0921\u093f\u092f\u093e
+        \u0935\u0930\u094d\u0917","ur":"\u0648\u06cc\u06a9\u06cc\u0645\u06cc\u0688\u06cc\u0627
+        \u0632\u0645\u0631\u06c1","as":"\u09f1\u09bf\u0995\u09bf\u09ae\u09bf\u09a1\u09bf\u09af\u09bc\u09be
+        \u09b6\u09cd\u09f0\u09c7\u09a3\u09c0"},"aliases":{},"statements":{"P31":[{"id":"Q33132026$7885701B-C830-41F2-89F1-0164CB5F84EE","rank":"normal","qualifiers":[],"references":[{"hash":"d5847b9b6032aa8b13dae3c2dfd9ed5d114d21b3","parts":[{"property":{"id":"P143","data-type":"wikibase-item"},"value":{"type":"value","content":"Q11920"}}]}],"property":{"id":"P31","data-type":"wikibase-item"},"value":{"type":"value","content":"Q4167836"}}]},"sitelinks":{"itwiki":{"title":"Categoria:Vescovi
+        di Feltre","badges":[],"url":"https://it.wikipedia.org/wiki/Categoria:Vescovi_di_Feltre"}},"id":"Q33132026"}'
     headers:
       accept-ranges:
       - bytes

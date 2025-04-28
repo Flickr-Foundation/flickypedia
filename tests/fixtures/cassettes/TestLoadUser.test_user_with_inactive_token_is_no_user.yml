@@ -29,8 +29,6 @@ interactions:
       - '1'
       cache-control:
       - private,no-cache,s-maxage=0
-      content-encoding:
-      - gzip
       content-length:
       - '121'
       content-type:

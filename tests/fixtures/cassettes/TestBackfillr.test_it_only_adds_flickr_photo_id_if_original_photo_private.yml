@@ -16,29 +16,8 @@ interactions:
     uri: https://commons.wikimedia.org/w/api.php?action=wbgetentities&format=json&sites=commonswiki&titles=File%3ANYCC2017+000bas+%2823894553008%29.jpg
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAA62XS28jNwzHv8pi0EOLRjGpN32bl28ttkAvbbEHaaRJZuNXbWcXi0W+ezlO4hho
-        jI2THByHmqEk/kSRf38v8nI37Ia8Labfi99QAlgy0o3WOlzlIRXTw+BFseTX7EXBHvNcTIvZMM/T
-        3/+qawnoPgBADNsPP0vlSRujAPwvl5/XV8VFMQ/b3SZ/GWfzQF45TfqiWKzS0A+ZBwsJUgkEAf5P
-        kFPlptr9zX67b+txnUVOQxiW/YqHxjmONzpOHvN83P/dRZHyttsM692wWj6MbHdhlxcc5T7Cjxq8
-        LKb/fC8WPOF2GW7G0fH7YakvYX6bedL1ZrXOm903Hrr3uSiuw/aaTXIhqgCoyUsKOmqnpOGgkHLK
-        nvqQpEoKkT1S2IX7CXmRwz974t/Ew4ID745fXd4u8mboxBie1QjwEOkfe6O4O7D4OtwMjDmL+2n4
-        pbunh4dg/w/qpxbVzFZYCefbWuiKalES1sKV1FY1uco3mt02YclMiuVqswjz4u7TRfHROuPOZbb3
-        OTCTSbreZJ113/VZScRAOUbsIcUogZ95BO3sSWZhsbrlqKbFr3AJ42HcLofRvN7t1tPJ5OvXr5cj
-        mNH5crW5mtzDmfyBaJw+ovfvbdg/eSm0sq5r48AJdFIKrWdWVE2NompLY6Bykj+noBGcD419DtBc
-        tuhd6D1A1+vkTXQS2Q6dwtQp2yVLKWn/Amjm0j4xwzfwaA00UDWtgAaV0HZmBKGxQrpZIxtrW2Xx
-        eR4SDZ7LY+9z4GGROqc89hEkkew5f7rO2aCyBNspstFj56F/AQ9JZ6SQ087TG5hh68vSSxCVaziH
-        0GtB5YyvYDkj1A7KuvGncogXPjuHPB0xM53swVsdKbiso3E59YHIxY4HU1AUZYY+vYCZBnifHFKm
-        4Us506KskJhHTaIy6EWtqdVtWXvbyOd5IFp1Lo+9z9OdGmszRO980sGnHMn6yEVIS/LeZ6OMshaD
-        PMGjGBbcFCef1/mqOIp1MyyvXhp9xd3PN9AK/lNx9ChFRbIVVtWyddSW2JyoKOrs+6OObo/zHp3z
-        sutliB0l9IaUjkFFI60hzCi9hl6+vm2hNEj42LfurfdoXK6eGdmQEpYvi+A0bEU5a63QxJW5xJmt
-        21ONS6I9+/6MPgdqhpdQ2vWJC02SwQM3+95gDgiZrxNqHcDrDK+nZkCzYLLqkduj/R7kbAXUqLYU
-        pnJeaDnzgqAl4WXJrQQcUVmfqNbOnF2s2eXAzctkogYZAgRuahq0V8F3JLkSccvSne1Q9da9Idto
-        zDB0h3x7sN+DG5ZUKscZVylWSRqrGVeoquQCzkqXxaub1Se6nNPny8u9z4FcZHRJs9qQgY+os6nD
-        XksfLSku5bF3ETIkm19PzmnJV50OCvPRfg05rv3zUcNv7tU1qnuh+KOarI60oUq+S7rDEAmTShRY
-        WQNw7H0IOfasFH0k7eIbUgWUBH1IlL31g2DHsySnXhLM+NpTvx0PiNUuUTTZmBhjCLycVdn4nocN
-        V12J6ZRG2YuR7YMa6edDd7O57FaLyfp6tVttJ7zLm+Vwdb2bHP3GeqYRfbo7Phmx2qS84VAewe+3
-        /OmZQqtNWWnD4k61bvyFYEQJrhXYYNlyHVEknxMqd2NubG+7Lm85C/DuP5ff9+tUDgAA
+      string: '{"entities":{"M120069527":{"pageid":120069527,"ns":6,"title":"File:NYCC2017
+        000bas (23894553008).jpg","lastrevid":809837494,"modified":"2023-10-08T02:37:47Z","type":"mediainfo","id":"M120069527","labels":{},"descriptions":{},"statements":{"P4082":[{"mainsnak":{"snaktype":"value","property":"P4082","hash":"97ab3a0149829a4b4732509819ede89fad23d311","datavalue":{"value":{"entity-type":"item","numeric-id":64100,"id":"Q64100"},"type":"wikibase-entityid"}},"type":"statement","id":"M120069527$E13F6B1B-78EC-4B9C-A91C-7A9EBC97B8D4","rank":"normal"}],"P6757":[{"mainsnak":{"snaktype":"value","property":"P6757","hash":"2d27f5e4e4fcfe3211a9ebb1f0dbb207f5810476","datavalue":{"value":{"amount":"+0.02","unit":"http://www.wikidata.org/entity/Q11574"},"type":"quantity"}},"type":"statement","id":"M120069527$ACCC5707-1722-44F6-BDC1-BEA550B720B7","rank":"normal"}],"P6790":[{"mainsnak":{"snaktype":"value","property":"P6790","hash":"7e6187af800cf4d85b7217afac31dc36cd69dd48","datavalue":{"value":{"amount":"+5.6","unit":"1"},"type":"quantity"}},"type":"statement","id":"M120069527$E50D0BDE-0D13-46F5-9156-27FD2D66E361","rank":"normal"}],"P2151":[{"mainsnak":{"snaktype":"value","property":"P2151","hash":"619c7381fb02992fbb1cc76a3e206c396b81c80f","datavalue":{"value":{"amount":"+29","unit":"http://www.wikidata.org/entity/Q174789"},"type":"quantity"}},"type":"statement","id":"M120069527$1E8AA820-B7D2-4184-9AFC-4AF91470ACD8","rank":"normal"}],"P6789":[{"mainsnak":{"snaktype":"value","property":"P6789","hash":"65c2f0864b9a7e4b57edfa997bc864da39b2e0fd","datavalue":{"value":{"amount":"+400","unit":"1"},"type":"quantity"}},"type":"statement","id":"M120069527$35D574F4-AB19-41C9-B518-C49E4EAC86D2","rank":"normal"}],"P1163":[{"mainsnak":{"snaktype":"value","property":"P1163","hash":"723d30b878d4a8deb968b0db429888e5353661a2","datavalue":{"value":"image/jpeg","type":"string"}},"type":"statement","id":"M120069527$B8378D0E-8D0B-4112-B92E-63C2E79EA1D7","rank":"normal"}],"P31":[{"mainsnak":{"snaktype":"value","property":"P31","hash":"78817782cf2abc9d185934ba3b526591e12840f2","datavalue":{"value":{"entity-type":"item","numeric-id":125191,"id":"Q125191"},"type":"wikibase-entityid"}},"type":"statement","id":"M120069527$7CF52D93-6470-400E-AFE6-49570A1F6CE4","rank":"normal"}],"P6216":[{"mainsnak":{"snaktype":"value","property":"P6216","hash":"5570347fdc76d2a80732f51ea10ee4b144a084e0","datavalue":{"value":{"entity-type":"item","numeric-id":50423863,"id":"Q50423863"},"type":"wikibase-entityid"}},"type":"statement","id":"M120069527$6B09D3EA-5B78-42F8-90E9-82A7210799AC","rank":"normal"}],"P275":[{"mainsnak":{"snaktype":"value","property":"P275","hash":"82d5b402aa0a79040483a8c9264bd484c6c13f67","datavalue":{"value":{"entity-type":"item","numeric-id":19125117,"id":"Q19125117"},"type":"wikibase-entityid"}},"type":"statement","id":"M120069527$1A9A3793-B39C-41BF-B5BA-B7C203747FC1","rank":"normal"}],"P7482":[{"mainsnak":{"snaktype":"value","property":"P7482","hash":"b82dd47222a210c6dc1f428b693c2fbf7b0e0d6e","datavalue":{"value":{"entity-type":"item","numeric-id":74228490,"id":"Q74228490"},"type":"wikibase-entityid"}},"type":"statement","qualifiers":{"P137":[{"snaktype":"value","property":"P137","hash":"3d8cd4c1ab91d3d9a14900210faaebf1a98b947b","datavalue":{"value":{"entity-type":"item","numeric-id":103204,"id":"Q103204"},"type":"wikibase-entityid"}}],"P973":[{"snaktype":"value","property":"P973","hash":"6bf7b2d299b5e55bbbaa32063e58fd29585921df","datavalue":{"value":"https://www.flickr.com/photos/basknight/23894553008","type":"string"}}]},"qualifiers-order":["P137","P973"],"id":"M120069527$745AB45E-03E7-4B95-A07E-1D1AED3E3928","rank":"normal"}]}}},"success":1}'
     headers:
       accept-ranges:
       - bytes
@@ -107,29 +86,8 @@ interactions:
     uri: https://commons.wikimedia.org/w/api.php?action=wbgetentities&format=json&sites=commonswiki&titles=File%3ANYCC2017+000bas+%2823894553008%29.jpg
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAA62XS28jNwzHv8pi0EOLRjGpN32bl28ttkAvbbEHaaRJZuNXbWcXi0W+ezlO4hho
-        jI2THByHmqEk/kSRf38v8nI37Ia8Labfi99QAlgy0o3WOlzlIRXTw+BFseTX7EXBHvNcTIvZMM/T
-        3/+qawnoPgBADNsPP0vlSRujAPwvl5/XV8VFMQ/b3SZ/GWfzQF45TfqiWKzS0A+ZBwsJUgkEAf5P
-        kFPlptr9zX67b+txnUVOQxiW/YqHxjmONzpOHvN83P/dRZHyttsM692wWj6MbHdhlxcc5T7Cjxq8
-        LKb/fC8WPOF2GW7G0fH7YakvYX6bedL1ZrXOm903Hrr3uSiuw/aaTXIhqgCoyUsKOmqnpOGgkHLK
-        nvqQpEoKkT1S2IX7CXmRwz974t/Ew4ID745fXd4u8mboxBie1QjwEOkfe6O4O7D4OtwMjDmL+2n4
-        pbunh4dg/w/qpxbVzFZYCefbWuiKalES1sKV1FY1uco3mt02YclMiuVqswjz4u7TRfHROuPOZbb3
-        OTCTSbreZJ113/VZScRAOUbsIcUogZ95BO3sSWZhsbrlqKbFr3AJ42HcLofRvN7t1tPJ5OvXr5cj
-        mNH5crW5mtzDmfyBaJw+ovfvbdg/eSm0sq5r48AJdFIKrWdWVE2NompLY6Bykj+noBGcD419DtBc
-        tuhd6D1A1+vkTXQS2Q6dwtQp2yVLKWn/Amjm0j4xwzfwaA00UDWtgAaV0HZmBKGxQrpZIxtrW2Xx
-        eR4SDZ7LY+9z4GGROqc89hEkkew5f7rO2aCyBNspstFj56F/AQ9JZ6SQ087TG5hh68vSSxCVaziH
-        0GtB5YyvYDkj1A7KuvGncogXPjuHPB0xM53swVsdKbiso3E59YHIxY4HU1AUZYY+vYCZBnifHFKm
-        4Us506KskJhHTaIy6EWtqdVtWXvbyOd5IFp1Lo+9z9OdGmszRO980sGnHMn6yEVIS/LeZ6OMshaD
-        PMGjGBbcFCef1/mqOIp1MyyvXhp9xd3PN9AK/lNx9ChFRbIVVtWyddSW2JyoKOrs+6OObo/zHp3z
-        sutliB0l9IaUjkFFI60hzCi9hl6+vm2hNEj42LfurfdoXK6eGdmQEpYvi+A0bEU5a63QxJW5xJmt
-        21ONS6I9+/6MPgdqhpdQ2vWJC02SwQM3+95gDgiZrxNqHcDrDK+nZkCzYLLqkduj/R7kbAXUqLYU
-        pnJeaDnzgqAl4WXJrQQcUVmfqNbOnF2s2eXAzctkogYZAgRuahq0V8F3JLkSccvSne1Q9da9Idto
-        zDB0h3x7sN+DG5ZUKscZVylWSRqrGVeoquQCzkqXxaub1Se6nNPny8u9z4FcZHRJs9qQgY+os6nD
-        XksfLSku5bF3ETIkm19PzmnJV50OCvPRfg05rv3zUcNv7tU1qnuh+KOarI60oUq+S7rDEAmTShRY
-        WQNw7H0IOfasFH0k7eIbUgWUBH1IlL31g2DHsySnXhLM+NpTvx0PiNUuUTTZmBhjCLycVdn4nocN
-        V12J6ZRG2YuR7YMa6edDd7O57FaLyfp6tVttJ7zLm+Vwdb2bHP3GeqYRfbo7Phmx2qS84VAewe+3
-        /OmZQqtNWWnD4k61bvyFYEQJrhXYYNlyHVEknxMqd2NubG+7Lm85C/DuP5ff9+tUDgAA
+      string: '{"entities":{"M120069527":{"pageid":120069527,"ns":6,"title":"File:NYCC2017
+        000bas (23894553008).jpg","lastrevid":809837494,"modified":"2023-10-08T02:37:47Z","type":"mediainfo","id":"M120069527","labels":{},"descriptions":{},"statements":{"P4082":[{"mainsnak":{"snaktype":"value","property":"P4082","hash":"97ab3a0149829a4b4732509819ede89fad23d311","datavalue":{"value":{"entity-type":"item","numeric-id":64100,"id":"Q64100"},"type":"wikibase-entityid"}},"type":"statement","id":"M120069527$E13F6B1B-78EC-4B9C-A91C-7A9EBC97B8D4","rank":"normal"}],"P6757":[{"mainsnak":{"snaktype":"value","property":"P6757","hash":"2d27f5e4e4fcfe3211a9ebb1f0dbb207f5810476","datavalue":{"value":{"amount":"+0.02","unit":"http://www.wikidata.org/entity/Q11574"},"type":"quantity"}},"type":"statement","id":"M120069527$ACCC5707-1722-44F6-BDC1-BEA550B720B7","rank":"normal"}],"P6790":[{"mainsnak":{"snaktype":"value","property":"P6790","hash":"7e6187af800cf4d85b7217afac31dc36cd69dd48","datavalue":{"value":{"amount":"+5.6","unit":"1"},"type":"quantity"}},"type":"statement","id":"M120069527$E50D0BDE-0D13-46F5-9156-27FD2D66E361","rank":"normal"}],"P2151":[{"mainsnak":{"snaktype":"value","property":"P2151","hash":"619c7381fb02992fbb1cc76a3e206c396b81c80f","datavalue":{"value":{"amount":"+29","unit":"http://www.wikidata.org/entity/Q174789"},"type":"quantity"}},"type":"statement","id":"M120069527$1E8AA820-B7D2-4184-9AFC-4AF91470ACD8","rank":"normal"}],"P6789":[{"mainsnak":{"snaktype":"value","property":"P6789","hash":"65c2f0864b9a7e4b57edfa997bc864da39b2e0fd","datavalue":{"value":{"amount":"+400","unit":"1"},"type":"quantity"}},"type":"statement","id":"M120069527$35D574F4-AB19-41C9-B518-C49E4EAC86D2","rank":"normal"}],"P1163":[{"mainsnak":{"snaktype":"value","property":"P1163","hash":"723d30b878d4a8deb968b0db429888e5353661a2","datavalue":{"value":"image/jpeg","type":"string"}},"type":"statement","id":"M120069527$B8378D0E-8D0B-4112-B92E-63C2E79EA1D7","rank":"normal"}],"P31":[{"mainsnak":{"snaktype":"value","property":"P31","hash":"78817782cf2abc9d185934ba3b526591e12840f2","datavalue":{"value":{"entity-type":"item","numeric-id":125191,"id":"Q125191"},"type":"wikibase-entityid"}},"type":"statement","id":"M120069527$7CF52D93-6470-400E-AFE6-49570A1F6CE4","rank":"normal"}],"P6216":[{"mainsnak":{"snaktype":"value","property":"P6216","hash":"5570347fdc76d2a80732f51ea10ee4b144a084e0","datavalue":{"value":{"entity-type":"item","numeric-id":50423863,"id":"Q50423863"},"type":"wikibase-entityid"}},"type":"statement","id":"M120069527$6B09D3EA-5B78-42F8-90E9-82A7210799AC","rank":"normal"}],"P275":[{"mainsnak":{"snaktype":"value","property":"P275","hash":"82d5b402aa0a79040483a8c9264bd484c6c13f67","datavalue":{"value":{"entity-type":"item","numeric-id":19125117,"id":"Q19125117"},"type":"wikibase-entityid"}},"type":"statement","id":"M120069527$1A9A3793-B39C-41BF-B5BA-B7C203747FC1","rank":"normal"}],"P7482":[{"mainsnak":{"snaktype":"value","property":"P7482","hash":"b82dd47222a210c6dc1f428b693c2fbf7b0e0d6e","datavalue":{"value":{"entity-type":"item","numeric-id":74228490,"id":"Q74228490"},"type":"wikibase-entityid"}},"type":"statement","qualifiers":{"P137":[{"snaktype":"value","property":"P137","hash":"3d8cd4c1ab91d3d9a14900210faaebf1a98b947b","datavalue":{"value":{"entity-type":"item","numeric-id":103204,"id":"Q103204"},"type":"wikibase-entityid"}}],"P973":[{"snaktype":"value","property":"P973","hash":"6bf7b2d299b5e55bbbaa32063e58fd29585921df","datavalue":{"value":"https://www.flickr.com/photos/basknight/23894553008","type":"string"}}]},"qualifiers-order":["P137","P973"],"id":"M120069527$745AB45E-03E7-4B95-A07E-1D1AED3E3928","rank":"normal"}]}}},"success":1}'
     headers:
       accept-ranges:
       - bytes
@@ -193,10 +151,8 @@ interactions:
     uri: https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&photo_id=23894553008
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAAw3LMQ7CMAwF0Jmc4ss7lDIxJOkVeoUIXLDUJpXtVhyf7O/F6betOFlNWk003u4E
-        rq/2lvpJdPhyfRKmHKLaDvPiiZYiK+VwiayKLjnRg7BZ9/O3eYMYdpWzOBOGXod+c/gD5Z9v1moA
-        AAA=
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"fail\">\n\t<err
+        code=\"2\" msg=\"Photo is private\" />\n</rsp>\n"
     headers:
       Connection:
       - keep-alive
@@ -253,9 +209,7 @@ interactions:
     uri: https://commons.wikimedia.org/w/api.php?action=query&format=json&meta=tokens&type=csrf
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAA6tWSkosSc5Izs8tyEktSVWyUlLSUSosTS2qVLKqVirJz07NKwaxkouL0sA8oArt
-        mBil2tpaANqecJA7AAAA
+      string: '{"batchcomplete":"","query":{"tokens":{"csrftoken":"+\\"}}}'
     headers:
       accept-ranges:
       - bytes
@@ -325,29 +279,7 @@ interactions:
     uri: https://commons.wikimedia.org/w/api.php
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAA62XS1MjNxCA/8tUbkFYrWc3t3n5lqrNObUHaSTBBGwT2+zW1hb/PT22MVQFZzFw
-        8KM1amn6U7/0s8rL7bj9UV39rLY/7nN1VS1yGsO4LKvqohoTD/wBSkpHVnkeuQsx3214+uNFlfJm
-        WI/323G1PIxstmGbF7zkJFdfjERVXf31s1rwgptluJ1Gp9/DVt/C3UPmRe/Xq/u8nt7ioHNR3YTN
-        DYvkQ9RBgiFUFEw0XisrCYFyykglJKWTBmCNFLZhvyBvcvyzN08cNhz57Xjq8mGR1+MgJvOcASkP
-        lv65Eyo25DD/+3g7xrDJYr8MT3p8fng09r+gfutBz10DjfDYt8I01IqaoBW+pr5pyTfYGVZbhyUz
-        qZar9SLcVY9fL6ovzlt/LrOdzpGZSsoXm002ZShZK4BAOUYoMsWoJD9DkMa7k8zCYvXAVl1Vv8tL
-        OR3Gw3KcxJvt9v5qNvv+/fvlBGZSvlytr2d7OLM/Aaw3L+j98xD2zvVGaHXbttZLL8ArJYyZO9F0
-        LYimr62VjVf8OQWN5PnQWOcIzWcH6ENBKYdiEtroFbAcBg1p0G5IjlIy+AZo9tI9M4MP8Oit7GTT
-        9UJ2oIVxcysIrBPKzzvVOddrB6/zUGDhXB47nSMPBzR4jVCiVESqsP8Mg3dBZyXdoMlFhAFleQMP
-        RWe4kDce6QPMoMe6RiVF4zv2IUAjqJ5zCNZzAuNl3XZ4yod447N9COkFMzuoItGZSMFnE63PqQQi
-        HwceTEFTVFmW9AZmRsrP8SFtOw7KuRF1A8Q8WhKNBRStod70dYuuU6/zAHD6XB47neeYmnKzjOgx
-        mYApR3IYOQkZRYiYrbbaOQjqBI9qXITrPPv7Pl9XL2xdj8vrt1rfoPbYyV7wV8PWgxINqV443are
-        U19DdyKj6LPjR7+IHo8I3qMaigpxoARoSZsYdLTKWYIMCo0s6v1lC5QFgqe6tZc+o3D5dm5VR1o4
-        DhbBbtiLet47YYgzcw1z1/anCpcCd3b8TDpHapa30MaXxIkmqYCSi32xkAPIzOEExgSJJsv3U7PS
-        KI1OP3F7kj+DnGskdbqvhW08CqPmKEj2JFDVXEqkJ6rbE9na27OTNascuaFKNhqpQpCBi5qRBnXA
-        gRRnIi5ZZnAD6OL8B7yNJg8Df/S3g/wZ3KCmWnv2uEZzl2SgmXOGampO4K2SmuvBvD1R5bw5v73c
-        6RzJRUaXDHcbKvARDS4NUIzC6EhzKo/FR5llcvn95LxRHOp07DCf5PeQ49x/N5Yxr/fdNeh9o/ir
-        nKxf9IY64ZDMACESJJ0ocGctJdteQsixcKeIkYyPH3AVqZU0R0fZSb8wdjpL8votxkzTnuvtdEDc
-        7RJFm62NMYbA2zmdLRYetpx1FaRTPcquGdkcupFyNw6368thtZjd36y2q82M3/J2OV7fbGecIshY
-        q6XEVwrR18eXJyNW65TXbMoT+N0rf30l0RpbN8Zyc6d7P90QrKil7wV0UPecRzSpE40KKF7l7Mq8
-        U3pGZ7AQOlscZjX4AsXLjMEVFTFqviXoxOXZn3L86v+RvK3b19yXmUYJ2SDXlzn3bGTIC2+c4usT
-        t3H0Wtw/TndQ3il/mxbEKckRX9qmy+fDMOQNxwY8/gvGJAxx1w4AAA==
+      string: '{"entity":{"type":"mediainfo","id":"M120069527","labels":{},"descriptions":{},"statements":{"P4082":[{"mainsnak":{"snaktype":"value","property":"P4082","hash":"97ab3a0149829a4b4732509819ede89fad23d311","datavalue":{"value":{"entity-type":"item","numeric-id":64100,"id":"Q64100"},"type":"wikibase-entityid"}},"type":"statement","id":"M120069527$E13F6B1B-78EC-4B9C-A91C-7A9EBC97B8D4","rank":"normal"}],"P6757":[{"mainsnak":{"snaktype":"value","property":"P6757","hash":"2d27f5e4e4fcfe3211a9ebb1f0dbb207f5810476","datavalue":{"value":{"amount":"+0.02","unit":"http://www.wikidata.org/entity/Q11574"},"type":"quantity"}},"type":"statement","id":"M120069527$ACCC5707-1722-44F6-BDC1-BEA550B720B7","rank":"normal"}],"P6790":[{"mainsnak":{"snaktype":"value","property":"P6790","hash":"7e6187af800cf4d85b7217afac31dc36cd69dd48","datavalue":{"value":{"amount":"+5.6","unit":"1"},"type":"quantity"}},"type":"statement","id":"M120069527$E50D0BDE-0D13-46F5-9156-27FD2D66E361","rank":"normal"}],"P2151":[{"mainsnak":{"snaktype":"value","property":"P2151","hash":"619c7381fb02992fbb1cc76a3e206c396b81c80f","datavalue":{"value":{"amount":"+29","unit":"http://www.wikidata.org/entity/Q174789"},"type":"quantity"}},"type":"statement","id":"M120069527$1E8AA820-B7D2-4184-9AFC-4AF91470ACD8","rank":"normal"}],"P6789":[{"mainsnak":{"snaktype":"value","property":"P6789","hash":"65c2f0864b9a7e4b57edfa997bc864da39b2e0fd","datavalue":{"value":{"amount":"+400","unit":"1"},"type":"quantity"}},"type":"statement","id":"M120069527$35D574F4-AB19-41C9-B518-C49E4EAC86D2","rank":"normal"}],"P1163":[{"mainsnak":{"snaktype":"value","property":"P1163","hash":"723d30b878d4a8deb968b0db429888e5353661a2","datavalue":{"value":"image/jpeg","type":"string"}},"type":"statement","id":"M120069527$B8378D0E-8D0B-4112-B92E-63C2E79EA1D7","rank":"normal"}],"P31":[{"mainsnak":{"snaktype":"value","property":"P31","hash":"78817782cf2abc9d185934ba3b526591e12840f2","datavalue":{"value":{"entity-type":"item","numeric-id":125191,"id":"Q125191"},"type":"wikibase-entityid"}},"type":"statement","id":"M120069527$7CF52D93-6470-400E-AFE6-49570A1F6CE4","rank":"normal"}],"P6216":[{"mainsnak":{"snaktype":"value","property":"P6216","hash":"5570347fdc76d2a80732f51ea10ee4b144a084e0","datavalue":{"value":{"entity-type":"item","numeric-id":50423863,"id":"Q50423863"},"type":"wikibase-entityid"}},"type":"statement","id":"M120069527$6B09D3EA-5B78-42F8-90E9-82A7210799AC","rank":"normal"}],"P275":[{"mainsnak":{"snaktype":"value","property":"P275","hash":"82d5b402aa0a79040483a8c9264bd484c6c13f67","datavalue":{"value":{"entity-type":"item","numeric-id":19125117,"id":"Q19125117"},"type":"wikibase-entityid"}},"type":"statement","id":"M120069527$1A9A3793-B39C-41BF-B5BA-B7C203747FC1","rank":"normal"}],"P7482":[{"mainsnak":{"snaktype":"value","property":"P7482","hash":"b82dd47222a210c6dc1f428b693c2fbf7b0e0d6e","datavalue":{"value":{"entity-type":"item","numeric-id":74228490,"id":"Q74228490"},"type":"wikibase-entityid"}},"type":"statement","qualifiers":{"P137":[{"snaktype":"value","property":"P137","hash":"3d8cd4c1ab91d3d9a14900210faaebf1a98b947b","datavalue":{"value":{"entity-type":"item","numeric-id":103204,"id":"Q103204"},"type":"wikibase-entityid"}}],"P973":[{"snaktype":"value","property":"P973","hash":"6bf7b2d299b5e55bbbaa32063e58fd29585921df","datavalue":{"value":"https://www.flickr.com/photos/basknight/23894553008","type":"string"}}]},"qualifiers-order":["P137","P973"],"id":"M120069527$745AB45E-03E7-4B95-A07E-1D1AED3E3928","rank":"normal"}],"P12120":[{"mainsnak":{"snaktype":"value","property":"P12120","hash":"648f9865f68e2c7f1f70e8a6f2b8b3b203d5357e","datavalue":{"value":"23894553008","type":"string"}},"type":"statement","id":"M120069527$A3AFC4B2-0B86-4F20-9497-7462E138AA91","rank":"normal"}]},"lastrevid":892649100},"success":1}'
     headers:
       accept-ranges:
       - bytes
@@ -420,31 +352,8 @@ interactions:
     uri: https://commons.wikimedia.org/w/api.php?action=wbgetentities&format=json&sites=commonswiki&titles=File%3ANYCC2017+000bas+%2823894553008%29.jpg
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAA62XyW4jNxCGX2XQyCFBTIvFvXTr9ZZgBsglCeZANkm7x9oiyWMMBn73VEu2LCBW
-        xrJ98EJ2F8n6WMvf34u02A7bIW2K6ffiNxCcG9TCjqOVv0pDLKaHyYtiQa+Zi4IsZqmYFt0wS9Pf
-        /6xrwcF+4JwHv/nws5AOldaSc/fL5ZfVVXFRzPxmu05fx9UcCqMQOL8o5ss45CHRZCG4UIxbxvUf
-        oKZaT5X+i+y231bjPvMUBz8s8pKmxjWODzouHtJsPP/9RRHTpl8Pq+2wXDzMbLZ+m+bk5c7Dj4o7
-        UUz//l7MacHNwt+Ms+Pfh62++tltokVX6+UqrbffaGpvc1Fc+801DdH6ID0HhU6gV0FZKTRHB5hi
-        cph9FDJKALKIfuv3C9Imh392xL+xhw0HOh29uridp/XQs9E9o3Z4dp5+2g2K+wOLu+FmIMyJ7Zeh
-        l+6fHh6c/S+on1qQnamgYta1NVMV1qxEqJktsa1qtJVrFJmt/YKYFIvleu5nxf3ni+Kjsdqey2xn
-        c2AmorBZJ5VU7nOSAsBjCgEyjyEITs8ccGXNSWZ+vrwlr6bFr/ySj5dxuxjG4fV2u5pOJnd3d5cj
-        mNH4crm+muzhTD4BaKuO6P1z63dPXgqtrOtaWwpMsEIwpTrDqqYGVrWl1ryygn5OQUN+PjSyOUCz
-        yYCzPjvO+6yi08EKoLHvJcRemj4ajFG5F0DTl+aJGbyBR6t5w6umZbwByZTpNEPQhgnbNaIxppUG
-        nuchQMO5PHY2Bx4GsLfSQQ5cIIpM8dP31niZBDe9RBMc9I7nF/AQeEYIWWUdvoEZtK4sneCssg3F
-        EDjFsOwoBcsOQVle1o07FUO08dkx5PCIme5F5s6ogN4mFbRNMXtEG3qajF5iEInn+AJmivP3iSGp
-        G0rKTrGyAiQeNbJKg2O1wla1Ze1MI57nAWDkuTx2Nk85NdZmHpx1UXkXU0DjAhUhJdA5l7TU0hjw
-        4gSPYphTU5x8WaWr4sjX9bC4eqn3lZPWNbxl9Ksi70GwCkXLjKxFa7EtoTlRUeTZ+SOPssc6B9Y6
-        0WfhQ48RnEapgpdBC6MREgineBavb1sgNCA89q396D0al607LRqUzFCyMArDlpVda5hCqswldKZu
-        TzUuAebs/BltDtQ0bSGVzZEKTRTecWr2WUPywBOlEyjluVOJv56a5ooEk5GP3B7H70HOVBwb2ZZM
-        V9YxJTrHkLfInCiplXCLWNYnqrXVZxdrMjlwcyLqoLjwnntqaoorJ73rR+0XqGWp3vQgs7FviDYc
-        IwzsId4exu/BDUospaWIqySpJAVVRxWqKqmAk9KV1A+6+kSXs+p8ebmzOZALhC4qUhvC0xX1JvaQ
-        lXDBoKRSHrINPPFo0uvJWSUo1fGgMB/HryFHtX82avj1Xl2D3AvFH9VkeaQNZXR9VD34gBBlRE/K
-        mnPyPXufQial6AIqG94QKlwKrg6Bshv9wNnxLtHKlzgzvvbUb8cLIrWLGHTSOoTgPW1nZNIu07Sm
-        qisgntIoOzGyeVAjeTb0N+vLfjmfrK6X2+VmQqe8WQxX19vJ0TfWM43o8/3xzbDlOqY1ufIIfnfk
-        z88UWqXLSmkSd7K14xeCZiW3LYMGypbqiERxQqiAoFXO7sw7oyd0ymV0Rmfjkuhthmx5ct5kEVyQ
-        9JUgI7Vneyrwi/9H8jK1L0mXqUowXjnqLx1pNlRomVVG0OcTyTh8Lu/vx+U3t32fNpQGcP8vDkvu
-        /lUPAAA=
+      string: '{"entities":{"M120069527":{"pageid":120069527,"ns":6,"title":"File:NYCC2017
+        000bas (23894553008).jpg","lastrevid":892649100,"modified":"2024-07-05T14:55:45Z","type":"mediainfo","id":"M120069527","labels":{},"descriptions":{},"statements":{"P4082":[{"mainsnak":{"snaktype":"value","property":"P4082","hash":"97ab3a0149829a4b4732509819ede89fad23d311","datavalue":{"value":{"entity-type":"item","numeric-id":64100,"id":"Q64100"},"type":"wikibase-entityid"}},"type":"statement","id":"M120069527$E13F6B1B-78EC-4B9C-A91C-7A9EBC97B8D4","rank":"normal"}],"P6757":[{"mainsnak":{"snaktype":"value","property":"P6757","hash":"2d27f5e4e4fcfe3211a9ebb1f0dbb207f5810476","datavalue":{"value":{"amount":"+0.02","unit":"http://www.wikidata.org/entity/Q11574"},"type":"quantity"}},"type":"statement","id":"M120069527$ACCC5707-1722-44F6-BDC1-BEA550B720B7","rank":"normal"}],"P6790":[{"mainsnak":{"snaktype":"value","property":"P6790","hash":"7e6187af800cf4d85b7217afac31dc36cd69dd48","datavalue":{"value":{"amount":"+5.6","unit":"1"},"type":"quantity"}},"type":"statement","id":"M120069527$E50D0BDE-0D13-46F5-9156-27FD2D66E361","rank":"normal"}],"P2151":[{"mainsnak":{"snaktype":"value","property":"P2151","hash":"619c7381fb02992fbb1cc76a3e206c396b81c80f","datavalue":{"value":{"amount":"+29","unit":"http://www.wikidata.org/entity/Q174789"},"type":"quantity"}},"type":"statement","id":"M120069527$1E8AA820-B7D2-4184-9AFC-4AF91470ACD8","rank":"normal"}],"P6789":[{"mainsnak":{"snaktype":"value","property":"P6789","hash":"65c2f0864b9a7e4b57edfa997bc864da39b2e0fd","datavalue":{"value":{"amount":"+400","unit":"1"},"type":"quantity"}},"type":"statement","id":"M120069527$35D574F4-AB19-41C9-B518-C49E4EAC86D2","rank":"normal"}],"P1163":[{"mainsnak":{"snaktype":"value","property":"P1163","hash":"723d30b878d4a8deb968b0db429888e5353661a2","datavalue":{"value":"image/jpeg","type":"string"}},"type":"statement","id":"M120069527$B8378D0E-8D0B-4112-B92E-63C2E79EA1D7","rank":"normal"}],"P31":[{"mainsnak":{"snaktype":"value","property":"P31","hash":"78817782cf2abc9d185934ba3b526591e12840f2","datavalue":{"value":{"entity-type":"item","numeric-id":125191,"id":"Q125191"},"type":"wikibase-entityid"}},"type":"statement","id":"M120069527$7CF52D93-6470-400E-AFE6-49570A1F6CE4","rank":"normal"}],"P6216":[{"mainsnak":{"snaktype":"value","property":"P6216","hash":"5570347fdc76d2a80732f51ea10ee4b144a084e0","datavalue":{"value":{"entity-type":"item","numeric-id":50423863,"id":"Q50423863"},"type":"wikibase-entityid"}},"type":"statement","id":"M120069527$6B09D3EA-5B78-42F8-90E9-82A7210799AC","rank":"normal"}],"P275":[{"mainsnak":{"snaktype":"value","property":"P275","hash":"82d5b402aa0a79040483a8c9264bd484c6c13f67","datavalue":{"value":{"entity-type":"item","numeric-id":19125117,"id":"Q19125117"},"type":"wikibase-entityid"}},"type":"statement","id":"M120069527$1A9A3793-B39C-41BF-B5BA-B7C203747FC1","rank":"normal"}],"P7482":[{"mainsnak":{"snaktype":"value","property":"P7482","hash":"b82dd47222a210c6dc1f428b693c2fbf7b0e0d6e","datavalue":{"value":{"entity-type":"item","numeric-id":74228490,"id":"Q74228490"},"type":"wikibase-entityid"}},"type":"statement","qualifiers":{"P137":[{"snaktype":"value","property":"P137","hash":"3d8cd4c1ab91d3d9a14900210faaebf1a98b947b","datavalue":{"value":{"entity-type":"item","numeric-id":103204,"id":"Q103204"},"type":"wikibase-entityid"}}],"P973":[{"snaktype":"value","property":"P973","hash":"6bf7b2d299b5e55bbbaa32063e58fd29585921df","datavalue":{"value":"https://www.flickr.com/photos/basknight/23894553008","type":"string"}}]},"qualifiers-order":["P137","P973"],"id":"M120069527$745AB45E-03E7-4B95-A07E-1D1AED3E3928","rank":"normal"}],"P12120":[{"mainsnak":{"snaktype":"value","property":"P12120","hash":"648f9865f68e2c7f1f70e8a6f2b8b3b203d5357e","datavalue":{"value":"23894553008","type":"string"}},"type":"statement","id":"M120069527$A3AFC4B2-0B86-4F20-9497-7462E138AA91","rank":"normal"}]}}},"success":1}'
     headers:
       accept-ranges:
       - bytes

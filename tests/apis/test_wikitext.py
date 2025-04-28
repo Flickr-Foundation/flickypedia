@@ -2,7 +2,7 @@ import datetime
 import pathlib
 import textwrap
 
-from flickr_photos_api import SinglePhoto
+from flickr_photos_api import LicenseId, SinglePhoto
 import pytest
 
 from flickypedia.apis.wikitext import create_wikitext
@@ -119,7 +119,7 @@ config = create_config(data_directory=pathlib.Path("data"))
 
 
 @pytest.mark.parametrize("license_id", config["ALLOWED_LICENSES"])
-def test_can_create_wikitext_for_all_allowed_licenses(license_id: str) -> None:
+def test_can_create_wikitext_for_all_allowed_licenses(license_id: LicenseId) -> None:
     photo = get_typed_fixture("flickr_photos_api/32812033543.json", model=SinglePhoto)
     photo["license"]["id"] = license_id
 

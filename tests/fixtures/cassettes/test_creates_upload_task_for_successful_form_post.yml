@@ -7953,8 +7953,6 @@ interactions:
       - '1'
       cache-control:
       - public, max-age=300
-      content-encoding:
-      - gzip
       content-type:
       - application/sparql-results+json;charset=utf-8
       date:

@@ -16,20 +16,27 @@ interactions:
     uri: https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&photo_id=383861611
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAA51VTW/bMAw9t79C0D31V+M4hZPuNGCXXbp7oNiyrUaWDEmOl3+/JzlJt7XD2l4C
-        ipT4HslHp3z82Uty5MYKrTY0uYsp4arStVDtho6uWRSUPG5vS2MHYh1zG6oPFOeh004TUW9oVmRF
-        nuRJQonlleG4sl8X9yyr1uvG+wzSI3WaU9Iw08OkpGaOj4PUrOZIkSSreL3M8zilRNiGHbURjm8o
-        yEhRcWVh3yMVa7g77SQ/chmCRoNRII4D3rRCMfkWiUus0ab3NTwPLSVHwSfriWUrSnpeC7ahoSzU
-        d1PqSXFDlPUl5lkeZ2lWfPkeA2hESYr14OSe+4k5qxWocCZnJzjr6kwL5VQa9OcWrNBLf752YWCu
-        2zEpGGg4bi07ZwP+TdmKxhH/s+MSle0lcqNzik+7RurJH/y9m/IS3tWjCbiWRJ+NlJFH9PVHoQHe
-        csJJvv3BrYMoyBPntSVftSFPjpmqK6M5jos1t5URg6cQGJRHYcVeSOFOGOsw7jHMUANmbARX6Cza
-        6QfeC3kKh/DMi8OSQVv3tzgcO3BMO43j1SJOF3FBkvuHNH9IkTTEWsPUKBnkM+cLzlEdFKqZ9cSs
-        GwePACbLLMnitCiyMzA04NiZcMWwBn3PFeSCdziyuu65g0guPOeK/vUIlN56NFrWch+pQckvQOgI
-        znupsXIz1GDEC67tmJlnH7pzZmW3cRldbfiV9l0LVwauB8lJx+xsvVB2rLVBXTDC9i7jIi/yeHHd
-        4kWSxCusKhtdpyHaP7U/e1+rn0GP1isDm8SqTii+A4LH3QY3VMLa/wBnqyRdLj+D/M1/r/hraBH8
-        78FO4qXfzo8XjZ77tXiNfQ68BzzNlplX8MfR8UXGCr7R88tqhqYHDn7s5WjkPH4YxJ0GKCN88QZo
-        km475wb7EEXTNN01UPbB3EFgUbhho98+UNFVLVEZIVXAmHOX83Vv4C9je/sL5xV0f2EGAAA=
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<photo
+        id=\"383861611\" secret=\"b984a3c99f\" server=\"126\" farm=\"1\" dateuploaded=\"1170956602\"
+        isfavorite=\"0\" license=\"4\" safety_level=\"0\" rotation=\"0\" originalsecret=\"b984a3c99f\"
+        originalformat=\"jpg\" views=\"1237\" media=\"photo\">\n\t<owner nsid=\"63603238@N00\"
+        username=\"tjmwatson\" realname=\"\" location=\"\" iconserver=\"78\" iconfarm=\"1\"
+        path_alias=\"tessawatson\">\n\t\t<gift gift_eligible=\"1\" new_flow=\"1\">\n\t\t\t<eligible_durations
+        />\n\t\t\t<eligible_durations />\n\t\t\t<eligible_durations />\n\t\t</gift>\n\t</owner>\n\t<title>Testing
+        Seeds For Starch</title>\n\t<description />\n\t<visibility ispublic=\"1\"
+        isfriend=\"0\" isfamily=\"0\" />\n\t<dates posted=\"1170956602\" taken=\"2007-02-08
+        14:26:21\" takengranularity=\"0\" takenunknown=\"0\" lastupdate=\"1531302883\"
+        />\n\t<editability cancomment=\"0\" canaddmeta=\"0\" />\n\t<publiceditability
+        cancomment=\"1\" canaddmeta=\"0\" />\n\t<usage candownload=\"1\" canblog=\"0\"
+        canprint=\"0\" canshare=\"1\" />\n\t<comments>0</comments>\n\t<notes />\n\t<people
+        haspeople=\"0\" />\n\t<tags>\n\t\t<tag id=\"5086860-383861611-11076\" author=\"63603238@N00\"
+        authorname=\"tjmwatson\" raw=\"seeds\" machine_tag=\"0\">seeds</tag>\n\t\t<tag
+        id=\"5086860-383861611-371255\" author=\"63603238@N00\" authorname=\"tjmwatson\"
+        raw=\"Iodine\" machine_tag=\"0\">iodine</tag>\n\t\t<tag id=\"5086860-383861611-10578\"
+        author=\"63603238@N00\" authorname=\"tjmwatson\" raw=\"testing\" machine_tag=\"0\">testing</tag>\n\t\t<tag
+        id=\"5086860-383861611-235321\" author=\"63603238@N00\" authorname=\"tjmwatson\"
+        raw=\"starch\" machine_tag=\"0\">starch</tag>\n\t</tags>\n\t<urls>\n\t\t<url
+        type=\"photopage\">https://www.flickr.com/photos/tessawatson/383861611/</url>\n\t</urls>\n</photo>\n</rsp>\n"
     headers:
       Connection:
       - keep-alive
@@ -86,15 +93,21 @@ interactions:
     uri: https://api.flickr.com/services/rest/?method=flickr.photos.licenses.getInfo
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAA6WUS0/DMBCEz/RXrHyCQ+KWN6gpQq3EBRACIc6usyRWEruynRT49WwfKbRKKGpv
-        yWH8zUoz07/5KHKo0DpldMR6YZcBamlipZOIlf49uGRwM+j0rZuA88JHzGSM/nMlUTt0g85B/Q0q
-        jhjptSgwYrd5Ds8qSb2DZ3RoK4wZlDaPGAO+qTpdqby3alx6cgP3C8RSlXo/cdecS4vCqwqlKQqj
-        XWhswmszfPzJj8MubyCcNxCCRzNCqyq3GyrQcRvtpJmmh2QarVQi35st/8Afb8XverFsu7i3FRm8
-        pMLiba4y3JkeONFm4KzJwN7Idt5FzXs0kGkz1SDN5NPOEg8WHcVYzlLsNuI7nU7Dd8prZkNKMF+m
-        mJdOJNiUW6rfok+vWnmM4YU6iA7uDHVWF6g9vBmb/YJQRWYMejBMTEWApanQpb7IG5pxVROeyjEZ
-        g5EphNIwwlhJahoV8XA47B79o4aT+QPxXM+/0BpOe9J0VG+1EuvMB7F2Slvd1zgFaX44/dUW0EZx
-        Gq1B5xszAPMM4wQAAA==
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<licenses>\n\t<license
+        id=\"0\" name=\"All Rights Reserved\" url=\"\" />\n\t<license id=\"4\" name=\"Attribution
+        License\" url=\"https://creativecommons.org/licenses/by/2.0/\" />\n\t<license
+        id=\"6\" name=\"Attribution-NoDerivs License\" url=\"https://creativecommons.org/licenses/by-nd/2.0/\"
+        />\n\t<license id=\"3\" name=\"Attribution-NonCommercial-NoDerivs License\"
+        url=\"https://creativecommons.org/licenses/by-nc-nd/2.0/\" />\n\t<license
+        id=\"2\" name=\"Attribution-NonCommercial License\" url=\"https://creativecommons.org/licenses/by-nc/2.0/\"
+        />\n\t<license id=\"1\" name=\"Attribution-NonCommercial-ShareAlike License\"
+        url=\"https://creativecommons.org/licenses/by-nc-sa/2.0/\" />\n\t<license
+        id=\"5\" name=\"Attribution-ShareAlike License\" url=\"https://creativecommons.org/licenses/by-sa/2.0/\"
+        />\n\t<license id=\"7\" name=\"No known copyright restrictions\" url=\"https://www.flickr.com/commons/usage/\"
+        />\n\t<license id=\"8\" name=\"United States Government Work\" url=\"http://www.usa.gov/copyright.shtml\"
+        />\n\t<license id=\"9\" name=\"Public Domain Dedication (CC0)\" url=\"https://creativecommons.org/publicdomain/zero/1.0/\"
+        />\n\t<license id=\"10\" name=\"Public Domain Mark\" url=\"https://creativecommons.org/publicdomain/mark/1.0/\"
+        />\n</licenses>\n</rsp>\n"
     headers:
       Connection:
       - keep-alive
@@ -149,16 +162,31 @@ interactions:
     uri: https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&photo_id=383861611
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAA63W3U7DIBQA4Gt9CsK9xf6sdmbdXkDjhd4bSlmLUuiAWrOnl+KqdTFZk3J3SDi0
-        X8+hsNl9Nhx8UKWZFDkMg1sIqCCyZKLKYWf2NxkEu+31RukWaINNDuU7tGPNjlQDgkXBpZ1p02zc
-        KibsjO9BKXvBJS7tqjbhymUAjgvKc/h86LCiEPSsNHUO71YQ1JRVtU0eYi07RWgOa2NafY8QZx80
-        GJ7OyJ4z8q4CIhsURimKszhLwzQMX4t1luCYrNf7Vx28tRUEnbJPGpfo+z6Y5La1NFIjQ7XGPTZa
-        it+lkLMhfUAQNLRkOIduOgTo3PGAVUXBmSZc2Q8wctxgoefgxTOD81J3TSEw4z+VCW8nFg+lMV4o
-        5nJlnhvMfxlRMi1JtrwkjReHnukAcWRf+bRZXDy2l4MtbC/hxSLmWpKhpU4WF4+WeBgstPReLP1l
-        y6P9MXTND2T1B7J8o3hhNHMZIB3a6FQTF481STzslaMXzHE2Jps0mItHTOqhwYgXDLmMcUfL5D8c
-        JZMzMrWn8sKdUniB8MuQJ8UqJvDkTImGphqLsk6X73rpxSL/s2y+bwP2xoPsFWh7/QXrJvVHMQkA
-        AA==
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<sizes
+        canblog=\"0\" canprint=\"0\" candownload=\"1\">\n\t<size label=\"Square\"
+        width=\"75\" height=\"75\" source=\"https://live.staticflickr.com/126/383861611_b984a3c99f_s.jpg\"
+        url=\"https://www.flickr.com/photos/tessawatson/383861611/sizes/sq/\" media=\"photo\"
+        />\n\t<size label=\"Large Square\" width=\"150\" height=\"150\" source=\"https://live.staticflickr.com/126/383861611_b984a3c99f_q.jpg\"
+        url=\"https://www.flickr.com/photos/tessawatson/383861611/sizes/q/\" media=\"photo\"
+        />\n\t<size label=\"Thumbnail\" width=\"100\" height=\"75\" source=\"https://live.staticflickr.com/126/383861611_b984a3c99f_t.jpg\"
+        url=\"https://www.flickr.com/photos/tessawatson/383861611/sizes/t/\" media=\"photo\"
+        />\n\t<size label=\"Small\" width=\"240\" height=\"180\" source=\"https://live.staticflickr.com/126/383861611_b984a3c99f_m.jpg\"
+        url=\"https://www.flickr.com/photos/tessawatson/383861611/sizes/s/\" media=\"photo\"
+        />\n\t<size label=\"Small 320\" width=\"320\" height=\"240\" source=\"https://live.staticflickr.com/126/383861611_b984a3c99f_n.jpg\"
+        url=\"https://www.flickr.com/photos/tessawatson/383861611/sizes/n/\" media=\"photo\"
+        />\n\t<size label=\"Small 400\" width=\"400\" height=\"300\" source=\"https://live.staticflickr.com/126/383861611_b984a3c99f_w.jpg\"
+        url=\"https://www.flickr.com/photos/tessawatson/383861611/sizes/w/\" media=\"photo\"
+        />\n\t<size label=\"Medium\" width=\"500\" height=\"375\" source=\"https://live.staticflickr.com/126/383861611_b984a3c99f.jpg\"
+        url=\"https://www.flickr.com/photos/tessawatson/383861611/sizes/m/\" media=\"photo\"
+        />\n\t<size label=\"Medium 640\" width=\"640\" height=\"480\" source=\"https://live.staticflickr.com/126/383861611_b984a3c99f_z.jpg\"
+        url=\"https://www.flickr.com/photos/tessawatson/383861611/sizes/z/\" media=\"photo\"
+        />\n\t<size label=\"Medium 800\" width=\"800\" height=\"600\" source=\"https://live.staticflickr.com/126/383861611_b984a3c99f_c.jpg\"
+        url=\"https://www.flickr.com/photos/tessawatson/383861611/sizes/c/\" media=\"photo\"
+        />\n\t<size label=\"Large\" width=\"1024\" height=\"768\" source=\"https://live.staticflickr.com/126/383861611_b984a3c99f_b.jpg\"
+        url=\"https://www.flickr.com/photos/tessawatson/383861611/sizes/l/\" media=\"photo\"
+        />\n\t<size label=\"Original\" width=\"1280\" height=\"960\" source=\"https://live.staticflickr.com/126/383861611_b984a3c99f_o.jpg\"
+        url=\"https://www.flickr.com/photos/tessawatson/383861611/sizes/o/\" media=\"photo\"
+        />\n</sizes>\n</rsp>\n"
     headers:
       Connection:
       - keep-alive
