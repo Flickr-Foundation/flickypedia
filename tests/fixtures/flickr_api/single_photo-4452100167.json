@@ -9,8 +9,6 @@
   },
   "photos": [
     {
-      "count_comments": 0,
-      "count_views": 2344,
       "date_posted": {
         "type": "datetime.datetime",
         "value": "2010-03-22T01:16:27+00:00"
@@ -23,7 +21,6 @@
         }
       },
       "description": "These textures are posted with the Attribution Creative Commons license.\n<b>Credit must be given if used.</b>\n\nCopy this Credit Line:\n\nTexture by &lt;a href=&quot;http://www.flickr.com/photos/joxxsx/sets/72157603809451557&quot;&gt;August Norman&lt;/a&gt;\n\nAppears as:\n\nTexture by <a href=\"http://www.flickr.com/photos/joxxsx/sets/72157603809451557\">August Norman</a>",
-      "farm": "3",
       "id": "4452100167",
       "license": {
         "id": "cc-by-sa-2.0",
@@ -32,7 +29,6 @@
       },
       "location": null,
       "machine_tags": {},
-      "media": "photo",
       "original_format": "jpg",
       "owner": {
         "id": "9276674@N07",
@@ -43,8 +39,6 @@
         "username": "August Norman"
       },
       "safety_level": "safe",
-      "secret": "bdaafeb18d",
-      "server": "2677",
       "sizes": [
         {
           "height": 75,
