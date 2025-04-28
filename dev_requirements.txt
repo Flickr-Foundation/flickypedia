@@ -12,6 +12,8 @@ anyio==4.9.0
     #   -r requirements.txt
     #   flickypedia
     #   httpx
+attrs==25.3.0
+    # via interrogate
 authlib==1.5.2
     # via
     #   -r requirements.txt
@@ -49,6 +51,9 @@ click==8.1.8
     #   -r requirements.txt
     #   flask
     #   flickypedia
+    #   interrogate
+colorama==0.4.6
+    # via interrogate
 coverage==7.8.0
     # via pytest-cov
 cryptography==44.0.2
@@ -120,6 +125,8 @@ idna==3.10
     #   yarl
 iniconfig==2.1.0
     # via pytest
+interrogate==1.7.0
+    # via -r dev_requirements.in
 itsdangerous==2.2.0
     # via
     #   -r requirements.txt
@@ -187,6 +194,8 @@ pluggy==1.5.0
     # via pytest
 propcache==0.3.1
     # via yarl
+py==1.11.0
+    # via interrogate
 pycparser==2.22
     # via
     #   -r requirements.txt
@@ -233,6 +242,8 @@ sqlalchemy==2.0.40
     #   -r requirements.txt
     #   flask-sqlalchemy
     #   flickypedia
+tabulate==0.9.0
+    # via interrogate
 tenacity==9.1.2
     # via
     #   -r requirements.txt

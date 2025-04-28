@@ -3,6 +3,7 @@
 
 pywikibot
 
+interrogate
 mypy
 pytest-cov
 ruff
