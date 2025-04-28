@@ -6,13 +6,14 @@ from datetime import datetime
 import typing
 
 from flask import current_app
-from flickr_photos_api import SinglePhoto, Size
+from flickr_photos_api import Size
 
 from flickypedia.duplicates import find_duplicates, DuplicateInfo
 from flickypedia.structured_data import (
     NewClaims,
     create_sdc_claims_for_new_flickr_photo,
 )
+from flickypedia.types.flickr import FlickrPhoto
 
 
 def size_at(sizes: list[Size], *, desired_size: str) -> Size:
@@ -43,10 +44,10 @@ class CategorisedPhotos(typing.TypedDict):
     duplicates: dict[str, DuplicateInfo]
     disallowed_licenses: dict[str, str]
     restricted: set[str]
-    available: list[SinglePhoto]
+    available: list[FlickrPhoto]
 
 
-def categorise_photos(all_photos: list[SinglePhoto]) -> CategorisedPhotos:
+def categorise_photos(all_photos: list[FlickrPhoto]) -> CategorisedPhotos:
     """
     Given a list of photos from the Flickr API, split them into
     three lists:
@@ -100,12 +101,12 @@ def categorise_photos(all_photos: list[SinglePhoto]) -> CategorisedPhotos:
 
 
 class EnrichedPhoto(typing.TypedDict):
-    photo: SinglePhoto
+    photo: FlickrPhoto
     sdc: NewClaims
 
 
 def enrich_photo(
-    photos: list[SinglePhoto], wikimedia_username: str, retrieved_at: datetime
+    photos: list[FlickrPhoto], wikimedia_username: str, retrieved_at: datetime
 ) -> list[EnrichedPhoto]:
     """
     Create a list of photos which includes their structured data.

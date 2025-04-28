@@ -12,6 +12,7 @@ from .collection_methods import (
     get_photos_in_user_photostream,
     get_photos_with_tag,
 )
+from .single_photo_methods import get_single_photo
 
 
 def get_photos_from_flickr(parsed_url: ParseResult) -> GetPhotosData:
@@ -26,7 +27,7 @@ def get_photos_from_flickr(parsed_url: ParseResult) -> GetPhotosData:
     )
 
     if parsed_url["type"] == "single_photo":
-        photo = api.get_single_photo(photo_id=parsed_url["photo_id"])
+        photo = get_single_photo(api, photo_id=parsed_url["photo_id"])
 
         return {
             "photos": [photo],

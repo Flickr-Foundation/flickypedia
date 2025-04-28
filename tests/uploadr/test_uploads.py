@@ -1,11 +1,11 @@
 from datetime import datetime
 
 from flask import Flask
-from flickr_photos_api import SinglePhoto
 
 from flickypedia.apis import WikimediaApi
 from flickypedia.duplicates import find_duplicates
 from flickypedia.structured_data import create_sdc_claims_for_new_flickr_photo
+from flickypedia.types.flickr import FlickrPhoto
 from flickypedia.uploadr.uploads import upload_single_photo
 
 
@@ -13,7 +13,7 @@ def test_upload_single_photo(app: Flask, wikimedia_api: WikimediaApi) -> None:
     before_duplicates = find_duplicates(flickr_photo_ids=["53370809793"])
     assert before_duplicates == {}
 
-    photo: SinglePhoto = {
+    photo: FlickrPhoto = {
         "id": "53370809793",
         "url": "https://www.flickr.com/photos/199246608@N02/53370809793",
         "owner": {
@@ -50,12 +50,6 @@ def test_upload_single_photo(app: Flask, wikimedia_api: WikimediaApi) -> None:
         "tags": [],
         "machine_tags": {},
         "location": None,
-        "secret": "-1",
-        "server": "-1",
-        "farm": "-1",
-        "count_comments": 0,
-        "count_views": 0,
-        "media": "photo",
     }
 
     upload_single_photo(

@@ -1,8 +1,7 @@
 import typing
 
-from flickr_photos_api import SinglePhoto
-
 from flickypedia.structured_data import NewClaims
+from flickypedia.types.flickr import FlickrPhoto
 from flickypedia.types.wikimedia import ShortCaption
 
 
@@ -10,7 +9,7 @@ from flickypedia.types.wikimedia import ShortCaption
 
 
 class UploadRequest(typing.TypedDict):
-    photo: SinglePhoto
+    photo: FlickrPhoto
     sdc: NewClaims
     title: str
     caption: ShortCaption

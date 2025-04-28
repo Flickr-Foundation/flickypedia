@@ -2,13 +2,72 @@ from datetime import datetime
 import typing
 
 from flickr_photos_api import (
-    SinglePhoto,
-    CollectionOfPhotos,
-    PhotosInAlbum,
-    PhotosInGallery,
-    PhotosInGroup,
+    DateTaken,
+    License,
+    LocationInfo,
+    MachineTags,
+    SafetyLevel,
+    Size,
     User,
 )
+
+
+class FlickrPhoto(typing.TypedDict):
+    """
+    All the information we need about a photo in Flickypedia.
+    """
+
+    id: str
+    title: str | None
+    description: str | None
+    owner: User
+    date_taken: DateTaken | None
+    date_posted: datetime
+    location: LocationInfo | None
+    license: License
+    sizes: list[Size]
+    tags: list[str]
+    machine_tags: MachineTags
+    safety_level: SafetyLevel
+    url: str
+    original_format: str | None
+
+
+class CollectionOfPhotos(typing.TypedDict):
+    photos: list[FlickrPhoto]
+
+    # Note: there are no parameters named like this in the Flickr API;
+    # these names were chosen to match parameters that do exist like
+    # `count_views` or `count_comments`.
+    count_pages: int
+    count_photos: int
+
+
+class AlbumInfo(typing.TypedDict):
+    owner: User
+    title: str
+
+
+class PhotosInAlbum(CollectionOfPhotos):
+    album: AlbumInfo
+
+
+class GalleryInfo(typing.TypedDict):
+    owner_name: str
+    title: str
+
+
+class PhotosInGallery(CollectionOfPhotos):
+    gallery: GalleryInfo
+
+
+class GroupInfo(typing.TypedDict):
+    id: str
+    name: str
+
+
+class PhotosInGroup(CollectionOfPhotos):
+    group: GroupInfo
 
 
 class RetrievedAtMixin(typing.TypedDict):
@@ -16,7 +75,7 @@ class RetrievedAtMixin(typing.TypedDict):
 
 
 class SinglePhotoData(RetrievedAtMixin):
-    photos: list[SinglePhoto]
+    photos: list[FlickrPhoto]
     owner: User
 
 

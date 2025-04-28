@@ -14,7 +14,7 @@ need to put in much text ourself.
 
 from datetime import datetime, timezone
 
-from flickr_photos_api import SinglePhoto
+from flickypedia.types.flickr import FlickrPhoto
 
 
 # This maps our license IDs into the names of Wikimedia templates.
@@ -32,7 +32,7 @@ LICENSE_TEMPLATE_MAPPING = {
 
 
 def create_wikitext(
-    photo: SinglePhoto, wikimedia_username: str, new_categories: list[str]
+    photo: FlickrPhoto, wikimedia_username: str, new_categories: list[str]
 ) -> str:
     """
     Creates the Wikitext for a Flickr photo being uploaded to Wiki Commons.

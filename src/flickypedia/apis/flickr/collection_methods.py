@@ -3,40 +3,32 @@ Methods for getting information about collections of photos in Flickr
 (albums, galleries, groups, and so on).
 """
 
-import typing
 from xml.etree import ElementTree as ET
 
 from nitrate.xml import find_optional_text, find_required_elem, find_required_text
-
 from flickr_photos_api import FlickrApi
 from flickr_photos_api.date_parsers import parse_date_taken, parse_timestamp
 from flickr_photos_api.exceptions import ResourceNotFound
-from flickr_photos_api.types import (
+from flickr_photos_api.types import User, create_user, get_machine_tags
+from flickr_photos_api.utils import parse_location, parse_safety_level, parse_sizes
+
+from flickypedia.types.flickr import (
     CollectionOfPhotos,
+    FlickrPhoto,
     GroupInfo,
-    MediaType,
     PhotosInAlbum,
     PhotosInGallery,
     PhotosInGroup,
-    SinglePhoto,
-    User,
-    create_user,
-    get_machine_tags,
 )
-from flickr_photos_api.utils import parse_location, parse_safety_level, parse_sizes
 
 
 def _from_collection_photo(
     api: FlickrApi, photo_elem: ET.Element, owner: User | None
-) -> SinglePhoto:
+) -> FlickrPhoto:
     """
     Given a <photo> element from a collection response, extract all the photo info.
     """
     photo_id = photo_elem.attrib["id"]
-
-    secret = photo_elem.attrib["secret"]
-    server = photo_elem.attrib["server"]
-    farm = photo_elem.attrib["farm"]
 
     original_format = photo_elem.attrib.get("originalformat")
 
@@ -77,38 +69,26 @@ def _from_collection_photo(
     else:
         location = None
 
-    count_comments = int(photo_elem.attrib["count_comments"])
-    count_views = int(photo_elem.attrib["count_views"])
-
     assert owner["photos_url"].endswith("/")
     url = owner["photos_url"] + photo_id + "/"
 
     sizes = parse_sizes(photo_elem)
 
-    assert photo_elem.attrib["media"] in {"photo", "video"}
-    media_type = typing.cast(MediaType, photo_elem.attrib["media"])
-
     return {
         "id": photo_id,
-        "media": media_type,
-        "secret": secret,
-        "server": server,
-        "farm": farm,
-        "original_format": original_format,
-        "owner": owner,
-        "safety_level": safety_level,
-        "license": license,
         "title": title,
         "description": description,
+        "owner": owner,
+        "date_taken": date_taken,
+        "date_posted": date_posted,
+        "location": location,
+        "license": license,
+        "sizes": sizes,
         "tags": tags,
         "machine_tags": get_machine_tags(tags),
-        "date_posted": date_posted,
-        "date_taken": date_taken,
-        "location": location,
-        "count_comments": count_comments,
-        "count_views": count_views,
+        "safety_level": safety_level,
         "url": url,
-        "sizes": sizes,
+        "original_format": original_format,
     }
 
 
