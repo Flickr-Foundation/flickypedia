@@ -20,7 +20,7 @@ import typing
 from flask import abort, redirect, render_template, request, url_for
 from flask_wtf import FlaskForm, Form
 from flask_login import current_user, login_required
-from flickr_photos_api import DateTaken, User as FlickrUser
+from flickr_api.models import DateTaken, User as FlickrUser
 from nitrate.types import validate_type
 import werkzeug
 from wtforms import (

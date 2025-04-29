@@ -36,7 +36,7 @@ from flask import (
     url_for,
 )
 from flask_login import login_required
-from flickr_photos_api import ResourceNotFound
+from flickr_api import ResourceNotFound
 from flickr_url_parser import (
     parse_flickr_url,
     NotAFlickrUrl,

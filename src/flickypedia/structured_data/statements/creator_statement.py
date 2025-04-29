@@ -1,4 +1,4 @@
-from flickr_photos_api import User as FlickrUser
+from flickr_api.models import User as FlickrUser
 
 from ..types import NewStatement, QualifierValues, create_qualifiers
 from ..wikidata_properties import WikidataProperties

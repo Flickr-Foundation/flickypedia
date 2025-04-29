@@ -3,7 +3,7 @@ import json
 import flask
 from flask import abort, jsonify, render_template, request, url_for
 from flask_login import current_user, login_required
-from flickr_photos_api import FlickrApi
+from flickr_api import FlickrApi
 import werkzeug
 
 from .upload_complete import get_completed_task

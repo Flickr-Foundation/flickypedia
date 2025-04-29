@@ -1,5 +1,5 @@
 from flask.testing import FlaskClient
-from flickr_photos_api import FlickrApi
+from flickr_api import FlickrApi
 
 
 def test_post_comments_page(

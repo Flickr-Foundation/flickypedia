@@ -1,7 +1,7 @@
 from datetime import datetime
 import typing
 
-from flickr_photos_api import (
+from flickr_api.models import (
     DateTaken,
     License,
     LocationInfo,

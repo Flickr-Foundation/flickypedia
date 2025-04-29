@@ -2,7 +2,7 @@ from datetime import datetime, timezone
 import pathlib
 import textwrap
 
-from flickr_photos_api import LicenseId
+from flickr_api.models import LicenseId
 import pytest
 
 from flickypedia.apis.wikitext import create_wikitext

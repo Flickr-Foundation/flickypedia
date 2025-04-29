@@ -1,4 +1,4 @@
-from flickr_photos_api import FlickrApi
+from flickr_api import FlickrApi
 
 from flickypedia.types.flickr import FlickrPhoto
 

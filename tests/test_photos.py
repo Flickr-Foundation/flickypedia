@@ -1,4 +1,4 @@
-from flickr_photos_api import Size
+from flickr_api.models import Size
 
 from flickypedia.photos import size_at
 

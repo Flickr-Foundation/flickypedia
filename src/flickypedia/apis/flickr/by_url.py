@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 
 from flask import current_app
-from flickr_photos_api import FlickrApi
+from flickr_api import FlickrApi
 from flickr_url_parser import ParseResult
 
 from flickypedia.types.flickr import GetPhotosData

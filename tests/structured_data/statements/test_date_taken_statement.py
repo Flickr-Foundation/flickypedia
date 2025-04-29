@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 
-from flickr_photos_api import TakenGranularity
+from flickr_api.models import TakenGranularity
 import pytest
 
 from flickypedia.structured_data.statements import create_date_taken_statement

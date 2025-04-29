@@ -1,6 +1,6 @@
 import textwrap
 
-from flickr_photos_api import FlickrApi
+from flickr_api import FlickrApi
 
 
 def create_bot_comment_text(

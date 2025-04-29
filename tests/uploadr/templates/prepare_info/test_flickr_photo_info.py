@@ -3,7 +3,7 @@ import typing
 
 import bs4
 from flask import Flask, render_template
-from flickr_photos_api import User as FlickrUser
+from flickr_api.models import User as FlickrUser
 import pytest
 
 

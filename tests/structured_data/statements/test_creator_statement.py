@@ -1,4 +1,4 @@
-from flickr_photos_api import User as FlickrUser
+from flickr_api.models import User as FlickrUser
 import pytest
 
 from flickypedia.structured_data.statements import create_flickr_creator_statement

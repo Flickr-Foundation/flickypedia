@@ -4,7 +4,7 @@ import pathlib
 import uuid
 
 from flask import current_app, Flask, request, send_file
-from flickr_photos_api import FlickrApi
+from flickr_api import FlickrApi
 from jinja2 import StrictUndefined
 import sass
 

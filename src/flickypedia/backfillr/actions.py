@@ -1,6 +1,6 @@
 import typing
 
-from flickr_photos_api import User as FlickrUser
+from flickr_api.models import User as FlickrUser
 
 from flickypedia.apis.wikidata import get_flickr_user_id
 from flickypedia.structured_data import (
