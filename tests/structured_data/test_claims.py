@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 
-from flickr_photos_api import FlickrApi
+from flickr_api import FlickrApi
 
 from flickypedia.structured_data import (
     WikidataProperties,

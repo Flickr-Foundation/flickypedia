@@ -1,6 +1,7 @@
 from datetime import datetime, timezone
 
-from flickr_photos_api import FlickrApi, MachineTags
+from flickr_api import FlickrApi
+from flickr_api.models import MachineTags
 import pytest
 
 from flickypedia.structured_data import create_sdc_claims_for_new_flickr_photo

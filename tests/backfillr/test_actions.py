@@ -1,4 +1,5 @@
-from flickr_photos_api import FlickrApi, User as FlickrUser
+from flickr_api import FlickrApi
+from flickr_api.models import User as FlickrUser
 import pytest
 
 from flickypedia.backfillr.actions import create_actions

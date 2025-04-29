@@ -1,4 +1,4 @@
-from flickr_photos_api import LocationInfo
+from flickr_api.models import LocationInfo
 import pytest
 
 from flickypedia.structured_data import create_sdc_claims_for_new_flickr_photo

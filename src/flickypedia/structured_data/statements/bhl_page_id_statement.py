@@ -5,7 +5,7 @@ Here BHL = Biodiversity Heritage Library
 https://www.flickr.com/photos/biodivlibrary/
 """
 
-from flickr_photos_api import MachineTags
+from flickr_api.models import MachineTags
 
 from ..types import NewStatement, to_wikidata_string_value
 from ..wikidata_properties import WikidataProperties

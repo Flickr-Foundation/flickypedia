@@ -1,8 +1,8 @@
 import bs4
 from flask import Flask, render_template
-from flickr_photos_api import AlbumInfo
 import pytest
 
+from flickypedia.types.flickr import AlbumInfo
 from utils import minify
 
 

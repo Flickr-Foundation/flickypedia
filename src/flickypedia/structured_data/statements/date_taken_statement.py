@@ -1,6 +1,6 @@
 import typing
 
-from flickr_photos_api import DateTaken
+from flickr_api.models import DateTaken
 
 from ..types import (
     NewStatement,

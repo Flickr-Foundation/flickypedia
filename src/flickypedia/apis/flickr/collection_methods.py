@@ -6,11 +6,16 @@ Methods for getting information about collections of photos in Flickr
 from xml.etree import ElementTree as ET
 
 from nitrate.xml import find_optional_text, find_required_elem, find_required_text
-from flickr_photos_api import FlickrApi, Size
-from flickr_photos_api.date_parsers import parse_date_taken, parse_timestamp
-from flickr_photos_api.exceptions import ResourceNotFound
-from flickr_photos_api.types import User, create_user, get_machine_tags
-from flickr_photos_api.utils import parse_location, parse_safety_level
+from flickr_api import FlickrApi, ResourceNotFound
+from flickr_api.models import Size, User
+from flickr_api.parsers import (
+    create_user,
+    parse_date_taken,
+    parse_location,
+    parse_machine_tags,
+    parse_safety_level,
+    parse_timestamp,
+)
 
 from flickypedia.types.flickr import (
     CollectionOfPhotos,
@@ -85,7 +90,7 @@ def _from_collection_photo(
         "license": license,
         "sizes": sizes,
         "tags": tags,
-        "machine_tags": get_machine_tags(tags),
+        "machine_tags": parse_machine_tags(tags),
         "safety_level": safety_level,
         "url": url,
         "original_format": original_format,

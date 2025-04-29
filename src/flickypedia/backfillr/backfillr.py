@@ -1,6 +1,6 @@
 import sys
 
-from flickr_photos_api import FlickrApi, PhotoIsPrivate, ResourceNotFound
+from flickr_api import FlickrApi, PhotoIsPrivate, ResourceNotFound
 
 from flickypedia.apis.wikimedia import WikimediaApi
 from flickypedia.structured_data import (

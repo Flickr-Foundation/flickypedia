@@ -1,4 +1,4 @@
-from flickr_photos_api import LocationInfo
+from flickr_api.models import LocationInfo
 
 from ..types import NewStatement
 from ..wikidata_properties import WikidataProperties

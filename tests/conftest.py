@@ -6,7 +6,7 @@ import shutil
 from flask import Flask
 from flask.testing import FlaskClient
 from flask_login import FlaskLoginClient, current_user
-from flickr_photos_api import FlickrApi
+from flickr_api import FlickrApi
 import httpx
 from nitrate.cassettes import cassette_name, vcr_cassette
 import pytest

@@ -6,7 +6,7 @@ from datetime import datetime
 import typing
 
 from flask import current_app
-from flickr_photos_api import Size
+from flickr_api.models import Size
 
 from flickypedia.duplicates import find_duplicates, DuplicateInfo
 from flickypedia.structured_data import (
