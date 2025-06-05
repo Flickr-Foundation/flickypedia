@@ -51,6 +51,18 @@ def run_background_worker() -> None:
         q.process_tasks()
 
 
+@main.command(help="Run a single task in the queue")
+def run_single_queue_task() -> None:
+    from flickypedia.uploadr import create_app
+    from flickypedia.uploadr.uploads import uploads_queue
+
+    app = create_app()
+
+    with app.app_context():
+        q = uploads_queue()
+        q.process_single_task()
+
+
 main.add_command(backfillr_cli)
 main.add_command(extractr_cli)
 main.add_command(uploadr_cli)
