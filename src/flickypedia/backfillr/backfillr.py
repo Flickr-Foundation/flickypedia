@@ -2,6 +2,7 @@ import sys
 
 from flickr_api import FlickrApi, PhotoIsPrivate, ResourceNotFound
 
+from flickypedia.apis.flickr import get_single_photo
 from flickypedia.apis.wikimedia import WikimediaApi
 from flickypedia.structured_data import (
     ExistingClaims,
@@ -54,8 +55,8 @@ class Backfillr:
             raise ValueError(f"Unable to find Flickr ID for {filename}")
 
         try:
-            single_photo = self.flickr_api.get_single_photo(
-                photo_id=flickr_id["photo_id"]
+            single_photo = get_single_photo(
+                self.flickr_api, photo_id=flickr_id["photo_id"]
             )
             new_claims = create_sdc_claims_for_existing_flickr_photo(single_photo)
             user = single_photo["owner"]

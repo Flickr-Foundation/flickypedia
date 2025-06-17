@@ -4,6 +4,7 @@ from flickr_api import FlickrApi
 from flickr_api.models import MachineTags
 import pytest
 
+from flickypedia.apis.flickr import get_single_photo
 from flickypedia.structured_data import create_sdc_claims_for_new_flickr_photo
 from flickypedia.structured_data.statements.bhl_page_id_statement import (
     create_bhl_page_id_statement,
@@ -88,7 +89,7 @@ class TestClaims:
         If this photo is owned by the Biodiversity Heritage Library,
         the SDC includes a PageID statement.
         """
-        photo = flickr_api.get_single_photo(photo_id="7982377911")
+        photo = get_single_photo(flickr_api, photo_id="7982377911")
 
         statement = create_bhl_page_id_statement(
             photo_id=photo["id"], machine_tags=photo["machine_tags"]
@@ -106,7 +107,7 @@ class TestClaims:
         If this photo is not owned by the Biodiversity Heritage Library,
         the SDC does not include a PageID statement.
         """
-        photo = flickr_api.get_single_photo(photo_id="7982377911")
+        photo = get_single_photo(flickr_api, photo_id="7982377911")
 
         statement = create_bhl_page_id_statement(
             photo_id=photo["id"], machine_tags=photo["machine_tags"]
@@ -130,7 +131,7 @@ class TestClaims:
         If this photo is owned by the Biodiversity Heritage Library
         but there's no pageid in the machine tags, there's no PageID statement.
         """
-        photo = flickr_api.get_single_photo(photo_id="7982377911")
+        photo = get_single_photo(flickr_api, photo_id="7982377911")
         photo["machine_tags"] = {}
 
         statement = create_bhl_page_id_statement(

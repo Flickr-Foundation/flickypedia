@@ -5,37 +5,28 @@
 annotated-types==0.7.0
     # via
     #   -r requirements.txt
-    #   flickypedia
     #   pydantic
 anyio==4.9.0
     # via
     #   -r requirements.txt
-    #   flickypedia
     #   httpx
 attrs==25.3.0
     # via interrogate
 authlib==1.5.2
-    # via
-    #   -r requirements.txt
-    #   flickypedia
+    # via -r requirements.txt
 beautifulsoup4==4.13.4
     # via
     #   -r requirements.txt
     #   bs4
-    #   flickypedia
 blinker==1.9.0
     # via
     #   -r requirements.txt
     #   flask
-    #   flickypedia
 bs4==0.0.2
-    # via
-    #   -r requirements.txt
-    #   flickypedia
+    # via -r requirements.txt
 certifi==2025.4.26
     # via
     #   -r requirements.txt
-    #   flickypedia
     #   httpcore
     #   httpx
     #   requests
@@ -43,14 +34,12 @@ cffi==1.17.1
     # via
     #   -r requirements.txt
     #   cryptography
-    #   flickypedia
 charset-normalizer==3.4.1
     # via requests
 click==8.1.8
     # via
     #   -r requirements.txt
     #   flask
-    #   flickypedia
     #   interrogate
 colorama==0.4.6
     # via interrogate
@@ -60,7 +49,6 @@ cryptography==44.0.2
     # via
     #   -r requirements.txt
     #   authlib
-    #   flickypedia
     #   types-authlib
 flask==3.1.0
     # via
@@ -68,58 +56,43 @@ flask==3.1.0
     #   flask-login
     #   flask-sqlalchemy
     #   flask-wtf
-    #   flickypedia
 flask-login==0.6.3
-    # via
-    #   -r requirements.txt
-    #   flickypedia
+    # via -r requirements.txt
 flask-sqlalchemy==3.1.1
-    # via
-    #   -r requirements.txt
-    #   flickypedia
+    # via -r requirements.txt
 flask-wtf==1.2.2
+    # via -r requirements.txt
+flickr-photos-api==3.9
     # via
+    #   -r dev_requirements.in
     #   -r requirements.txt
-    #   flickypedia
-flickr-photos-api==3.0
-    # via
-    #   -r requirements.txt
-    #   flickypedia
 flickr-url-parser==1.11.0
     # via
     #   -r requirements.txt
     #   flickr-photos-api
-    #   flickypedia
 gunicorn==23.0.0
-    # via
-    #   -r requirements.txt
-    #   flickypedia
+    # via -r requirements.txt
 h11==0.16.0
     # via
     #   -r requirements.txt
-    #   flickypedia
     #   httpcore
 httpcore==1.0.9
     # via
     #   -r requirements.txt
-    #   flickypedia
     #   httpx
 httpx==0.28.1
     # via
     #   -r requirements.txt
     #   flickr-photos-api
     #   flickr-url-parser
-    #   flickypedia
 hyperlink==21.0.0
     # via
     #   -r requirements.txt
     #   flickr-url-parser
-    #   flickypedia
 idna==3.10
     # via
     #   -r requirements.txt
     #   anyio
-    #   flickypedia
     #   httpx
     #   hyperlink
     #   requests
@@ -133,39 +106,29 @@ itsdangerous==2.2.0
     #   -r requirements.txt
     #   flask
     #   flask-wtf
-    #   flickypedia
 jaraco-classes==3.4.0
     # via
     #   -r requirements.txt
-    #   flickypedia
     #   keyring
 jaraco-context==6.0.1
     # via
     #   -r requirements.txt
-    #   flickypedia
     #   keyring
 jaraco-functools==4.1.0
     # via
     #   -r requirements.txt
-    #   flickypedia
     #   keyring
 jinja2==3.1.6
     # via
     #   -r requirements.txt
     #   flask
-    #   flickypedia
 keyring==25.6.0
-    # via
-    #   -r requirements.txt
-    #   flickypedia
+    # via -r requirements.txt
 libsass==0.23.0
-    # via
-    #   -r requirements.txt
-    #   flickypedia
+    # via -r requirements.txt
 markupsafe==3.0.2
     # via
     #   -r requirements.txt
-    #   flickypedia
     #   jinja2
     #   types-wtforms
     #   werkzeug
@@ -173,7 +136,6 @@ markupsafe==3.0.2
 more-itertools==10.7.0
     # via
     #   -r requirements.txt
-    #   flickypedia
     #   jaraco-classes
     #   jaraco-functools
 multidict==6.4.3
@@ -187,7 +149,6 @@ mypy-extensions==1.1.0
 packaging==25.0
     # via
     #   -r requirements.txt
-    #   flickypedia
     #   gunicorn
     #   pytest
     #   pywikibot
@@ -201,20 +162,21 @@ pycparser==2.22
     # via
     #   -r requirements.txt
     #   cffi
-    #   flickypedia
 pydantic==2.11.3
-    # via
-    #   -r requirements.txt
-    #   flickypedia
+    # via -r requirements.txt
 pydantic-core==2.33.1
     # via
     #   -r requirements.txt
-    #   flickypedia
     #   pydantic
 pytest==8.3.5
-    # via pytest-cov
+    # via
+    #   pytest-cov
+    #   pytest-vcr
+    #   silver-nitrate
 pytest-cov==6.1.1
     # via -r dev_requirements.in
+pytest-vcr==1.0.2
+    # via silver-nitrate
 pywikibot==10.0.0
     # via -r dev_requirements.in
 pyyaml==6.0.2
@@ -227,36 +189,30 @@ silver-nitrate==1.6.2
     # via
     #   -r requirements.txt
     #   flickr-photos-api
-    #   flickypedia
 sniffio==1.3.1
     # via
     #   -r requirements.txt
     #   anyio
-    #   flickypedia
 soupsieve==2.7
     # via
     #   -r requirements.txt
     #   beautifulsoup4
-    #   flickypedia
 sqlalchemy==2.0.40
     # via
     #   -r requirements.txt
     #   flask-sqlalchemy
-    #   flickypedia
 tabulate==0.9.0
     # via interrogate
 tenacity==9.1.2
     # via
     #   -r requirements.txt
     #   flickr-photos-api
-    #   flickypedia
 termcolor==3.0.1
     # via -r dev_requirements.in
 tqdm==4.67.1
     # via
     #   -r dev_requirements.in
     #   -r requirements.txt
-    #   flickypedia
 types-authlib==1.5.0.20250416
     # via -r dev_requirements.in
 types-beautifulsoup4==4.12.0.20250204
@@ -272,9 +228,7 @@ types-wtforms==3.2.1.20250401
 typing-extensions==4.13.2
     # via
     #   -r requirements.txt
-    #   anyio
     #   beautifulsoup4
-    #   flickypedia
     #   mypy
     #   pydantic
     #   pydantic-core
@@ -283,7 +237,6 @@ typing-extensions==4.13.2
 typing-inspection==0.4.0
     # via
     #   -r requirements.txt
-    #   flickypedia
     #   pydantic
 urllib3==2.4.0
     # via
@@ -291,19 +244,17 @@ urllib3==2.4.0
     #   types-requests
     #   vcrpy
 vcrpy==7.0.0
-    # via -r dev_requirements.in
+    # via pytest-vcr
 werkzeug==3.1.3
     # via
     #   -r requirements.txt
     #   flask
     #   flask-login
-    #   flickypedia
 wrapt==1.17.2
     # via vcrpy
 wtforms==3.2.1
     # via
     #   -r requirements.txt
     #   flask-wtf
-    #   flickypedia
 yarl==1.20.0
     # via vcrpy

@@ -6,7 +6,7 @@ import bs4
 from flask import Flask, render_template
 from flickr_api.models import (
     DateTaken,
-    LocationInfo,
+    NumericLocation,
     User as FlickrUser,
 )
 import pytest
@@ -241,9 +241,9 @@ def test_shows_posted_statement(app: Flask, vcr_cassette: str) -> None:
     ],
 )
 def test_shows_location_statement(
-    app: Flask, vcr_cassette: str, location: LocationInfo, expected_value: str
+    app: Flask, vcr_cassette: str, location: NumericLocation, expected_value: str
 ) -> None:
-    location_statement = create_location_statement(location=location)
+    location_statement = create_location_statement(location)
     assert location_statement is not None
 
     actual = get_html(claims=[location_statement])
