@@ -3,6 +3,7 @@
 
 pywikibot
 
+flickr-photos-api[fixtures]>=3.9
 interrogate
 mypy
 pytest-cov
@@ -13,4 +14,3 @@ types-Authlib
 types-beautifulsoup4
 types-tqdm
 types-wtforms
-vcrpy

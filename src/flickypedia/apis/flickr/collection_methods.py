@@ -11,8 +11,8 @@ from flickr_api.models import Size, User
 from flickr_api.parsers import (
     create_user,
     parse_date_taken,
-    parse_location,
     parse_machine_tags,
+    parse_numeric_location,
     parse_safety_level,
     parse_timestamp,
 )
@@ -70,7 +70,7 @@ def _from_collection_photo(
     # <photo> element to determine if there's actually location
     # information here, or if we're getting the defaults.
     if photo_elem.attrib.get("geo_is_public") == "1":
-        location = parse_location(photo_elem)
+        location = parse_numeric_location(photo_elem)
     else:
         location = None
 

@@ -38,12 +38,10 @@ flask-sqlalchemy==3.1.1
     # via -r requirements.in
 flask-wtf==1.2.2
     # via -r requirements.in
-flickr-photos-api==3.0
+flickr-photos-api==3.9
     # via -r requirements.in
 flickr-url-parser==1.11.0
-    # via
-    #   -r requirements.in
-    #   flickr-photos-api
+    # via flickr-photos-api
 gunicorn==23.0.0
     # via -r requirements.in
 h11==0.16.0
@@ -109,7 +107,6 @@ tqdm==4.67.1
     # via -r requirements.in
 typing-extensions==4.13.2
     # via
-    #   anyio
     #   beautifulsoup4
     #   pydantic
     #   pydantic-core

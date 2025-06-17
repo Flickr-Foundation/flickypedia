@@ -1,4 +1,4 @@
-from flickr_api.models import LocationInfo
+from flickr_api.models import NumericLocation
 import pytest
 
 from flickypedia.structured_data import create_sdc_claims_for_new_flickr_photo
@@ -23,8 +23,8 @@ def test_unrecognised_location_accuracy_is_error() -> None:
         ),
     ],
 )
-def test_create_location_statement(location: LocationInfo, filename: str) -> None:
-    actual = create_location_statement(location=location)
+def test_create_location_statement(location: NumericLocation, filename: str) -> None:
+    actual = create_location_statement(location)
     expected = get_statement_fixture(filename)
 
     assert actual == expected
@@ -78,8 +78,8 @@ def test_no_location_statement_if_no_location_data() -> None:
         {"accuracy": 12, "latitude": 0.0, "longitude": 0.0},
     ],
 )
-def test_no_location_statement_if_null_location_data(location: LocationInfo) -> None:
+def test_no_location_statement_if_null_location_data(location: NumericLocation) -> None:
     """
     Regression test for https://github.com/Flickr-Foundation/flickypedia/issues/461
     """
-    assert create_location_statement(location=location) is None
+    assert create_location_statement(location) is None

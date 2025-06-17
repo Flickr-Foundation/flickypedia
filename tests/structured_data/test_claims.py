@@ -2,6 +2,7 @@ from datetime import datetime, timezone
 
 from flickr_api import FlickrApi
 
+from flickypedia.apis.flickr import get_single_photo
 from flickypedia.structured_data import (
     WikidataProperties,
     create_sdc_claims_for_existing_flickr_photo,
@@ -130,7 +131,7 @@ def test_creates_sdc_for_photo_with_in_copyright_license() -> None:
         "license": {
             "id": "all-rights-reserved",
             "label": "All Rights Reserved",
-            "url": None,
+            "url": "https://www.flickrhelp.com/hc/en-us/articles/10710266545556-Using-Flickr-images-shared-by-other-members",
         },
         "date_posted": datetime.fromtimestamp(1414001923),
         "date_taken": {
@@ -151,7 +152,7 @@ def test_creates_sdc_for_photo_with_in_copyright_license() -> None:
 
 
 def test_omits_url_for_existing_photo(flickr_api: FlickrApi) -> None:
-    photo = flickr_api.get_single_photo(photo_id="383861611")
+    photo = get_single_photo(flickr_api, photo_id="383861611")
 
     new_sdc = create_sdc_claims_for_new_flickr_photo(
         photo, retrieved_at=datetime.now(tz=timezone.utc)

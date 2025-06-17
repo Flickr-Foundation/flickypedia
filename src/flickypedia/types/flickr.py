@@ -4,8 +4,8 @@ import typing
 from flickr_api.models import (
     DateTaken,
     License,
-    LocationInfo,
     MachineTags,
+    NumericLocation,
     SafetyLevel,
     Size,
     User,
@@ -23,7 +23,7 @@ class FlickrPhoto(typing.TypedDict):
     owner: User
     date_taken: DateTaken | None
     date_posted: datetime
-    location: LocationInfo | None
+    location: NumericLocation | None
     license: License
     sizes: list[Size]
     tags: list[str]

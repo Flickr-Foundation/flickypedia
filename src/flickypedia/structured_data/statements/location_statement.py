@@ -1,10 +1,10 @@
-from flickr_api.models import LocationInfo
+from flickr_api.models import NumericLocation
 
 from ..types import NewStatement
 from ..wikidata_properties import WikidataProperties
 
 
-def create_location_statement(location: LocationInfo | None) -> NewStatement | None:
+def create_location_statement(location: NumericLocation | None) -> NewStatement | None:
     """
     Creates a structured data statement for the "coordinates of
     the point of view" statement.
