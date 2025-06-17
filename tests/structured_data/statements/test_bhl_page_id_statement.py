@@ -84,6 +84,10 @@ def test_does_not_create_bhl_page_id_statement_if_no_pageid() -> None:
 
 class TestClaims:
     def test_includes_statement_if_bhl_user(self, flickr_api: FlickrApi) -> None:
+        """
+        If this photo is owned by the Biodiversity Heritage Library,
+        the SDC includes a PageID statement.
+        """
         photo = flickr_api.get_single_photo(photo_id="7982377911")
 
         statement = create_bhl_page_id_statement(
@@ -98,6 +102,10 @@ class TestClaims:
         assert statement in claims["claims"]
 
     def test_omits_statement_if_not_bhl_user(self, flickr_api: FlickrApi) -> None:
+        """
+        If this photo is not owned by the Biodiversity Heritage Library,
+        the SDC does not include a PageID statement.
+        """
         photo = flickr_api.get_single_photo(photo_id="7982377911")
 
         statement = create_bhl_page_id_statement(
@@ -118,6 +126,10 @@ class TestClaims:
         )
 
     def test_omits_statement_if_no_pageid_tag(self, flickr_api: FlickrApi) -> None:
+        """
+        If this photo is owned by the Biodiversity Heritage Library
+        but there's no pageid in the machine tags, there's no PageID statement.
+        """
         photo = flickr_api.get_single_photo(photo_id="7982377911")
         photo["machine_tags"] = {}
 
