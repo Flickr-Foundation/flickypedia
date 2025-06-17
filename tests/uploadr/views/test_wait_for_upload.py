@@ -21,7 +21,7 @@ def test_wait_for_upload_waits_if_in_progress(
     resp = logged_in_client.get("/wait_for_upload/e358876e-f3d6-439b-85fa-1ed1e46338ec")
 
     assert resp.status_code == 200
-    assert b"1 of 1" in resp.data
+    assert "1 of 1" in resp.text
 
 
 def test_wait_for_upload_api(logged_in_client: FlaskClient, queue_dir: None) -> None:

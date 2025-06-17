@@ -48,7 +48,7 @@ def test_duplicate_single_photo_on_flickr_is_not_allowed(
     )
 
     assert resp.status_code == 200
-    assert b"Your work is done!" in resp.data
+    assert "Your work is done!" in resp.text
 
 
 def test_single_photo_with_bad_license_is_not_allowed(
@@ -59,7 +59,7 @@ def test_single_photo_with_bad_license_is_not_allowed(
     )
 
     assert resp.status_code == 200
-    assert "This photo can’t be used" in resp.data.decode("utf8")
+    assert "This photo can’t be used" in resp.text
 
 
 @pytest.mark.parametrize(
@@ -119,7 +119,7 @@ def test_gets_album_on_flickr(
     )
 
     assert resp.status_code == 200
-    assert b"by Al Jazeera English" not in resp.data
+    assert "by Al Jazeera English" not in resp.text
 
 
 @pytest.mark.parametrize(
@@ -190,7 +190,7 @@ def test_no_photo_selection_is_error(
     resp = logged_in_client.post(f"/select_photos?flickr_url={flickr_url}")
 
     assert resp.status_code == 200
-    assert b"You need to select at least one photo!" in resp.data
+    assert "You need to select at least one photo!" in resp.text
 
 
 def test_selecting_photo_redirects_you_to_prepare_info(
@@ -253,7 +253,7 @@ def test_you_cant_select_a_restricted_image(
 
     resp = logged_in_client.get(f"/select_photos?flickr_url={flickr_url}")
 
-    assert "This photo can’t be used" in resp.data.decode("utf8")
+    assert "This photo can’t be used" in resp.text
 
 
 def test_removes_api_cache_if_no_available_photos(
