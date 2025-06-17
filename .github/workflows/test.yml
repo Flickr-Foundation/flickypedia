@@ -11,6 +11,20 @@ on:
 
 jobs:
   test:
+    strategy:
+      # We don't want to run too many Python versions because we
+      # pay for private GitHub Actions builds.
+      #
+      # We currently run:
+      #
+      #   - 3.12: that's what's deployed on Sontag
+      #   - 3.13: latest version of Python
+      #
+      matrix:
+        python-version:
+          - "3.12"
+          - "3.13"
+    
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -18,7 +32,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: 3.12
+        python-version: ${{ matrix.python-version }}
         cache: pip
 
     - name: Install dependencies
