@@ -6,7 +6,7 @@ import shutil
 from flask import Flask
 from flask.testing import FlaskClient
 from flask_login import FlaskLoginClient, current_user
-from flickr_api import FlickrApi
+from flickr_api.fixtures import flickr_api
 import httpx
 from nitrate.cassettes import cassette_name, vcr_cassette
 import pytest
@@ -17,6 +17,19 @@ from flickypedia.uploadr import create_app
 from flickypedia.uploadr.auth import SESSION_ENCRYPTION_KEY
 from flickypedia.apis import WikimediaApi
 from utils import store_user
+
+
+__all__ = [
+    "cassette_name",
+    "flickr_api",
+    "flickr_oauth_cassette",
+    "wikimedia_api",
+    "vcr_cassette",
+    "app",
+    "client",
+    "logged_in_client",
+    "queue_dir",
+]
 
 
 @pytest.fixture
@@ -60,26 +73,6 @@ def wikimedia_api(cassette_name: str) -> Iterator[WikimediaApi]:
             client = httpx.Client()
 
         yield WikimediaApi(client=client)
-
-
-@pytest.fixture(scope="function")
-def flickr_api(cassette_name: str, user_agent: str) -> Iterator[FlickrApi]:
-    """
-    Creates an instance of the FlickrApi class for use in tests.
-
-    This instance of the API will record its interactions as "cassettes"
-    using vcr.py, which can be replayed offline (e.g. in CI tests).
-    """
-    with vcr.use_cassette(
-        cassette_name,
-        cassette_library_dir="tests/fixtures/cassettes",
-        filter_query_parameters=["api_key"],
-        decode_compressed_response=True,
-    ):
-        yield FlickrApi.with_api_key(
-            api_key=os.environ.get("FLICKR_API_KEY", "<REDACTED>"),
-            user_agent=user_agent,
-        )
 
 
 @pytest.fixture(scope="function")
@@ -183,16 +176,3 @@ def queue_dir(app: Flask) -> None:
     )
 
     return None
-
-
-__all__ = [
-    "cassette_name",
-    "client",
-    "flickr_api",
-    "flickr_oauth_cassette",
-    "logged_in_client",
-    "queue_dir",
-    "user_agent",
-    "vcr_cassette",
-    "wikimedia_api",
-]
