@@ -11,7 +11,7 @@ def test_renders_basic_page(logged_in_client: FlaskClient) -> None:
     resp = logged_in_client.get("/get_photos")
 
     assert resp.status_code == 200
-    assert b"Put your Flickr URL here" in resp.data
+    assert "Put your Flickr URL here" in resp.text
 
 
 def test_rejects_a_non_flickr_url(logged_in_client: FlaskClient) -> None:
@@ -21,9 +21,9 @@ def test_rejects_a_non_flickr_url(logged_in_client: FlaskClient) -> None:
 
     assert resp.status_code == 200
 
-    assert b"Put your Flickr URL here" in resp.data
-    assert "That URL doesn’t live on Flickr.com" in resp.data.decode("utf8")
-    assert b'value="https://example.net"' in resp.data
+    assert "Put your Flickr URL here" in resp.text
+    assert "That URL doesn’t live on Flickr.com" in resp.text
+    assert 'value="https://example.net"' in resp.text
 
 
 def test_rejects_a_non_photo_flickr_url(logged_in_client: FlaskClient) -> None:
@@ -33,9 +33,9 @@ def test_rejects_a_non_photo_flickr_url(logged_in_client: FlaskClient) -> None:
 
     assert resp.status_code == 200
 
-    assert b"Put your Flickr URL here" in resp.data
-    assert b"There are no photos to show at that URL" in resp.data
-    assert b'value="https://flickr.com/help"' in resp.data
+    assert "Put your Flickr URL here" in resp.text
+    assert "There are no photos to show at that URL" in resp.text
+    assert 'value="https://flickr.com/help"' in resp.text
 
 
 def test_redirects_if_photo_url(logged_in_client: FlaskClient) -> None:
@@ -80,6 +80,6 @@ def test_preserves_photo_if_csrf_bad(tmp_path: pathlib.Path) -> None:
 
     assert resp.status_code == 200
     assert (
-        b'value="https://www.flickr.com/photos/aljazeeraenglish/albums/72157626164453131/"'
-        in resp.data
+        'value="https://www.flickr.com/photos/aljazeeraenglish/albums/72157626164453131/"'
+        in resp.text
     )

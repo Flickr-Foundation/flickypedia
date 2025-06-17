@@ -10,7 +10,7 @@ def test_post_comments_page(
     )
 
     assert resp.status_code == 200
-    assert "We’ll post on your behalf as Flickypedia Bot" in resp.data.decode("utf8")
+    assert "We’ll post on your behalf as Flickypedia Bot" in resp.text
 
 
 def test_no_user_arg_is_error(logged_in_client: FlaskClient) -> None:

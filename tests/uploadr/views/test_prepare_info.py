@@ -50,9 +50,9 @@ def test_renders_form_for_single_photo(
     )
 
     assert resp.status_code == 200
-    assert b"Puppy Kisses" in resp.data
+    assert "Puppy Kisses" in resp.text
 
-    assert b"1 of 1" in resp.data
+    assert "1 of 1" in resp.text
 
     assert "please choose your language:" in minify(resp.data)
     assert "please add a title and short caption" in minify(resp.data)
@@ -72,12 +72,12 @@ def test_renders_form_for_multiple_photo(
     )
 
     assert resp.status_code == 200
-    assert b"ICANN78-AtLarge EURALO Plenary-100" in resp.data
-    assert b"ICANN78-AtLarge EURALO Plenary-110" in resp.data
+    assert "ICANN78-AtLarge EURALO Plenary-100" in resp.text
+    assert "ICANN78-AtLarge EURALO Plenary-110" in resp.text
 
     # Test that we get the "X of Y" counter overlaid on the preview images
-    assert b"1 of 2" in resp.data
-    assert b"2 of 2" in resp.data
+    assert "1 of 2" in resp.text
+    assert "2 of 2" in resp.text
 
     assert "please choose your language:" in minify(resp.data)
     assert "please add titles and captions for each photo" in minify(resp.data)
@@ -98,7 +98,7 @@ def test_blocks_uploads_with_an_invalid_title(
     )
 
     assert resp.status_code == 200
-    assert b"Please choose a title which is less than 240 bytes" in resp.data
+    assert "Please choose a title which is less than 240 bytes" in resp.text
 
 
 def test_blocks_uploads_with_a_too_long_caption(
@@ -325,13 +325,13 @@ def test_escapes_html_in_description(logged_in_client: FlaskClient) -> None:
     )
 
     assert (
-        b"These textures are posted with the Attribution Creative Commons license.\n"
-        b"&lt;b&gt;Credit must be given if used.&lt;/b&gt;\n\n"
-        b"Copy this Credit Line:"
-    ) in resp.data
+        "These textures are posted with the Attribution Creative Commons license.\n"
+        "&lt;b&gt;Credit must be given if used.&lt;/b&gt;\n\n"
+        "Copy this Credit Line:"
+    ) in resp.text
 
     assert (
-        b"These textures are posted with the Attribution Creative Commons license.\n"
-        b"<b>Credit must be given if used.</b>\n\n"
-        b"Copy this Credit Line:"
-    ) not in resp.data
+        "These textures are posted with the Attribution Creative Commons license.\n"
+        "<b>Credit must be given if used.</b>\n\n"
+        "Copy this Credit Line:"
+    ) not in resp.text
