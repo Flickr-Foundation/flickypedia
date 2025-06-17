@@ -47,7 +47,14 @@ exclude_also = [
 ]
 
 [tool.pytest.ini_options]
-filterwarnings = ["error"]
+filterwarnings = [
+  "error",
+  #
+  # We're getting a warning in Python 3.13 about unclosed SQLite databases.
+  # Ideally we should just close them, but I haven't worked out how to
+  # do that so just suppressing the warning for now.
+  "ignore:unclosed database in <sqlite3.Connection:ResourceWarning",
+]
 
 [tool.mypy]
 mypy_path = "src"
