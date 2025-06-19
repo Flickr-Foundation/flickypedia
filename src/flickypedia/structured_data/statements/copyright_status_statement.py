@@ -12,7 +12,7 @@ def create_copyright_status_statement(license_id: str) -> NewStatement:
     """
     Create a structured data statement for a copyright status.
     """
-    if license_id in {"cc-by-2.0", "cc-by-sa-2.0"}:
+    if license_id in {"cc-by-2.0", "cc-by-sa-2.0", "cc-by-4.0", "cc-by-sa-4.0"}:
         return {
             "mainsnak": {
                 "snaktype": "value",
