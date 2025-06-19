@@ -2,6 +2,7 @@
 *.egg-info
 *.pyc
 .coverage
+*.pid
 
 *.sqlite
 
@@ -9,9 +10,8 @@
 *.json.bz2
 flickr_ids_from_sdc.*
 
-# Files used by Celery
+# Files used by the queue
 data
-*.exchange
 
 flickr_api_cache
 
