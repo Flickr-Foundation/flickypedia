@@ -78,4 +78,10 @@ $ coverage run -m pytest tests
 $ coverage report
 ```
 
+To deploy a new version of the app, run the restart script on Sontag (our Mac mini server) or in a local checkout:
+
+```console
+$ bash scripts/restart_prod.sh
+```
+
 
