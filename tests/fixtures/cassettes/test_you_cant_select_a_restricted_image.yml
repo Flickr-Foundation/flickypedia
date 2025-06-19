@@ -171,64 +171,45 @@ interactions:
 - request:
     body: ''
     headers:
-      accept:
-      - '*/*'
-      accept-encoding:
-      - gzip, deflate
       connection:
-      - keep-alive
-      cookie:
-      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
+      - Close
       host:
       - api.flickr.com
       user-agent:
-      - Flickypedia/dev (https://commons.wikimedia.org/wiki/Commons:Flickypedia; hello@flickr.org)
+      - flickr-photos-api <hello@flickr.org>
     method: GET
     uri: https://api.flickr.com/services/rest/?method=flickr.photos.licenses.getInfo
   response:
-    content: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<licenses>\n\t<license
-      id=\"0\" name=\"All Rights Reserved\" url=\"\" />\n\t<license id=\"4\" name=\"Attribution
-      License\" url=\"https://creativecommons.org/licenses/by/2.0/\" />\n\t<license
-      id=\"6\" name=\"Attribution-NoDerivs License\" url=\"https://creativecommons.org/licenses/by-nd/2.0/\"
-      />\n\t<license id=\"3\" name=\"Attribution-NonCommercial-NoDerivs License\"
-      url=\"https://creativecommons.org/licenses/by-nc-nd/2.0/\" />\n\t<license id=\"2\"
-      name=\"Attribution-NonCommercial License\" url=\"https://creativecommons.org/licenses/by-nc/2.0/\"
-      />\n\t<license id=\"1\" name=\"Attribution-NonCommercial-ShareAlike License\"
-      url=\"https://creativecommons.org/licenses/by-nc-sa/2.0/\" />\n\t<license id=\"5\"
-      name=\"Attribution-ShareAlike License\" url=\"https://creativecommons.org/licenses/by-sa/2.0/\"
-      />\n\t<license id=\"7\" name=\"No known copyright restrictions\" url=\"https://www.flickr.com/commons/usage/\"
-      />\n\t<license id=\"8\" name=\"United States Government Work\" url=\"http://www.usa.gov/copyright.shtml\"
-      />\n\t<license id=\"9\" name=\"Public Domain Dedication (CC0)\" url=\"https://creativecommons.org/publicdomain/zero/1.0/\"
-      />\n\t<license id=\"10\" name=\"Public Domain Mark\" url=\"https://creativecommons.org/publicdomain/mark/1.0/\"
-      />\n</licenses>\n</rsp>\n"
+    body:
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<licenses>\n\t<license
+        id=\"0\" name=\"All Rights Reserved\" url=\"https://www.flickrhelp.com/hc/en-us/articles/10710266545556-Using-Flickr-images-shared-by-other-members\"
+        />\n\t<license id=\"4\" name=\"CC BY 2.0\" url=\"https://creativecommons.org/licenses/by/2.0/\"
+        />\n\t<license id=\"6\" name=\"CC BY-ND 2.0\" url=\"https://creativecommons.org/licenses/by-nd/2.0/\"
+        />\n\t<license id=\"3\" name=\"CC BY-NC-ND 2.0\" url=\"https://creativecommons.org/licenses/by-nc-nd/2.0/\"
+        />\n\t<license id=\"2\" name=\"CC BY-NC 2.0\" url=\"https://creativecommons.org/licenses/by-nc/2.0/\"
+        />\n\t<license id=\"1\" name=\"CC BY-NC-SA 2.0\" url=\"https://creativecommons.org/licenses/by-nc-sa/2.0/\"
+        />\n\t<license id=\"5\" name=\"CC BY-SA 2.0\" url=\"https://creativecommons.org/licenses/by-sa/2.0/\"
+        />\n\t<license id=\"7\" name=\"No known copyright restrictions\" url=\"https://www.flickr.com/commons/usage/\"
+        />\n\t<license id=\"8\" name=\"United States Government Work\" url=\"https://www.usa.gov/government-copyright\"
+        />\n\t<license id=\"9\" name=\"Public Domain Dedication (CC0)\" url=\"https://creativecommons.org/publicdomain/zero/1.0/\"
+        />\n\t<license id=\"10\" name=\"Public Domain Mark\" url=\"https://creativecommons.org/publicdomain/mark/1.0/\"
+        />\n\t<license id=\"11\" name=\"CC BY 4.0\" url=\"https://creativecommons.org/licenses/by/4.0/\"
+        />\n\t<license id=\"12\" name=\"CC BY-SA 4.0\" url=\"https://creativecommons.org/licenses/by-sa/4.0/\"
+        />\n\t<license id=\"13\" name=\"CC BY-ND 4.0\" url=\"https://creativecommons.org/licenses/by-nd/4.0/\"
+        />\n\t<license id=\"14\" name=\"CC BY-NC 4.0\" url=\"https://creativecommons.org/licenses/by-nc/4.0/\"
+        />\n\t<license id=\"15\" name=\"CC BY-NC-SA 4.0\" url=\"https://creativecommons.org/licenses/by-nc-sa/4.0/\"
+        />\n\t<license id=\"16\" name=\"CC BY-NC-ND 4.0\" url=\"https://creativecommons.org/licenses/by-nc-nd/4.0/\"
+        />\n</licenses>\n</rsp>\n"
     headers:
       Connection:
-      - keep-alive
-      Content-Length:
-      - '395'
+      - close
       Content-Type:
       - text/xml; charset=utf-8
       Date:
-      - Mon, 30 Oct 2023 16:46:58 GMT
-      Via:
-      - 1.1 56ac4d409ea3c91f84bc0c30648a1434.cloudfront.net (CloudFront)
-      X-Amz-Cf-Id:
-      - RCeb5AAQMmnzfwW2lGhKf45IO0mBEKfYC1clWBo0O4-Udl-Yt10l9g==
-      X-Amz-Cf-Pop:
-      - LHR50-P8
-      X-Cache:
-      - Miss from cloudfront
-      server:
-      - Apache/2.4.57 (Ubuntu)
-      set-cookie:
-      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
-        expires=Wed, 29-Nov-2023 16:46:58 GMT; Max-Age=2592000; path=/; domain=.flickr.com
-      vary:
-      - Accept-Encoding
-      x-frame-options:
-      - SAMEORIGIN
-      x-robots-tag:
-      - noindex
-    http_version: HTTP/1.1
-    status_code: 200
+      - Thu, 19 Jun 2025 07:01:48 GMT
+      content-length:
+      - '1815'
+    status:
+      code: 200
+      message: OK
 version: 1

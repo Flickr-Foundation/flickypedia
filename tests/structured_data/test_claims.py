@@ -1,6 +1,7 @@
 from datetime import datetime, timezone
 
 from flickr_api import FlickrApi
+import pytest
 
 from flickypedia.apis.flickr import get_single_photo
 from flickypedia.structured_data import (
@@ -149,6 +150,27 @@ def test_creates_sdc_for_photo_with_in_copyright_license() -> None:
     expected = get_claims_fixture("photo_15602283025.json")
 
     assert actual == expected
+
+
+@pytest.mark.parametrize(
+    "photo_id, license_id",
+    [
+        ("43686615590", "cc-by-4.0"),
+        ("53167940017", "cc-by-sa-4.0"),
+    ],
+)
+def test_create_sdc_for_cc_by_4_photo(
+    flickr_api: FlickrApi, photo_id: str, license_id: str
+) -> None:
+    """
+    Create structured data claims for a photo with a CC 4 license.
+    """
+    photo = get_single_photo(flickr_api, photo_id=photo_id)
+    assert photo["license"]["id"] == license_id
+
+    create_sdc_claims_for_new_flickr_photo(
+        photo, retrieved_at=datetime.now(tz=timezone.utc)
+    )
 
 
 def test_omits_url_for_existing_photo(flickr_api: FlickrApi) -> None:

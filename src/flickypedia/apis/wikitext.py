@@ -23,6 +23,10 @@ LICENSE_TEMPLATE_MAPPING = {
     "cc-by-2.0": "Cc-by-2.0",
     # https://commons.wikimedia.org/wiki/Template:Cc-by-sa-2.0
     "cc-by-sa-2.0": "Cc-by-sa-2.0",
+    # https://commons.wikimedia.org/wiki/Template:Cc-by-2.0
+    "cc-by-4.0": "Cc-by-4.0",
+    # https://commons.wikimedia.org/wiki/Template:Cc-by-sa-4.0
+    "cc-by-sa-4.0": "Cc-by-sa-4.0",
     # https://en.wikipedia.org/wiki/Template:CC0
     "cc0-1.0": "CC0",
     "pdm": "CC0",

@@ -1,0 +1,298 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - Close
+      host:
+      - api.flickr.com
+      user-agent:
+      - flickr-photos-api <hello@flickr.org>
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&photo_id=53167940017
+  response:
+    body:
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<photo
+        id=\"53167940017\" secret=\"85f29b3a3b\" server=\"65535\" farm=\"66\" dateuploaded=\"1694013811\"
+        isfavorite=\"0\" license=\"12\" safety_level=\"0\" rotation=\"0\" originalsecret=\"4f3173632a\"
+        originalformat=\"jpg\" views=\"6140\" media=\"photo\">\n\t<owner nsid=\"194424926@N05\"
+        username=\"PattayaPatrol\" realname=\"Pattaya Patrol\" location=\"Pattaya\"
+        iconserver=\"65535\" iconfarm=\"66\" path_alias=\"pattayapatrol\">\n\t\t<gift
+        gift_eligible=\"1\" new_flow=\"1\">\n\t\t\t<eligible_durations />\n\t\t\t<eligible_durations
+        />\n\t\t\t<eligible_durations />\n\t\t</gift>\n\t</owner>\n\t<title>DSC_2817:
+        a black cat standing on top of a bed</title>\n\t<description>This photo features
+        a black cat standing on a table, surrounded by various objects. The cat is
+        positioned near the center of the scene, with its body facing the left side
+        of the image. The table is covered with a yellow cloth, and the cat appears
+        to be walking across it.\nIn the background, there is a bicycle on the right
+        side of the image. Additionally, there are two suitcases, one located near
+        the top right corner and the other closer to the bottom right corner. A backpack
+        can also be seen on the right side of the image, placed above the suitcase.</description>\n\t<visibility
+        ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" />\n\t<dates posted=\"1694013811\"
+        taken=\"2023-09-05 10:44:03\" takengranularity=\"0\" takenunknown=\"0\" lastupdate=\"1750304175\"
+        />\n\t<editability cancomment=\"0\" canaddmeta=\"0\" />\n\t<publiceditability
+        cancomment=\"1\" canaddmeta=\"0\" />\n\t<usage candownload=\"1\" canblog=\"0\"
+        canprint=\"0\" canshare=\"1\" />\n\t<comments>2</comments>\n\t<notes />\n\t<people
+        haspeople=\"0\" />\n\t<tags>\n\t\t<tag id=\"194419586-53167940017-39874929\"
+        author=\"194424926@N05\" authorname=\"PattayaPatrol\" raw=\"na kluea\" machine_tag=\"0\">nakluea</tag>\n\t\t<tag
+        id=\"194419586-53167940017-246330390\" author=\"194424926@N05\" authorname=\"PattayaPatrol\"
+        raw=\"bang lamung district\" machine_tag=\"0\">banglamungdistrict</tag>\n\t\t<tag
+        id=\"194419586-53167940017-39874931\" author=\"194424926@N05\" authorname=\"PattayaPatrol\"
+        raw=\"changwat chon buri\" machine_tag=\"0\">changwatchonburi</tag>\n\t\t<tag
+        id=\"194419586-53167940017-1773\" author=\"194424926@N05\" authorname=\"PattayaPatrol\"
+        raw=\"thailand\" machine_tag=\"0\">thailand</tag>\n\t\t<tag id=\"194419586-53167940017-8551007\"
+        author=\"194424926@N05\" authorname=\"PattayaPatrol\" raw=\"nikon corporation\"
+        machine_tag=\"0\">nikoncorporation</tag>\n\t\t<tag id=\"194419586-53167940017-522152303\"
+        author=\"194424926@N05\" authorname=\"PattayaPatrol\" raw=\"nikon z fc\" machine_tag=\"0\">nikonzfc</tag>\n\t\t<tag
+        id=\"194419586-53167940017-171504\" author=\"194424926@N05\" authorname=\"PattayaPatrol\"
+        raw=\"f/5.0\" machine_tag=\"0\">f50</tag>\n\t\t<tag id=\"194419586-53167940017-8073778\"
+        author=\"194424926@N05\" authorname=\"PattayaPatrol\" raw=\"iso 280\" machine_tag=\"0\">iso280</tag>\n\t\t<tag
+        id=\"194419586-53167940017-803615\" author=\"194424926@N05\" authorname=\"PattayaPatrol\"
+        raw=\"49 mm\" machine_tag=\"0\">49mm</tag>\n\t\t<tag id=\"194419586-53167940017-2994\"
+        author=\"194424926@N05\" authorname=\"PattayaPatrol\" raw=\"nikon\" machine_tag=\"0\">nikon</tag>\n\t\t<tag
+        id=\"194419586-53167940017-491330642\" author=\"194424926@N05\" authorname=\"PattayaPatrol\"
+        raw=\"nikkor z dx 16-50mm f/3.5-6.3 vr\" machine_tag=\"0\">nikkorzdx1650mmf3563vr</tag>\n\t\t<tag
+        id=\"194419586-53167940017-9775584\" author=\"194424926@N05\" authorname=\"PattayaPatrol\"
+        raw=\"llava\" machine_tag=\"0\">llava</tag>\n\t\t<tag id=\"194419586-53167940017-956\"
+        author=\"194424926@N05\" authorname=\"PattayaPatrol\" raw=\"bicycle\" machine_tag=\"0\">bicycle</tag>\n\t\t<tag
+        id=\"194419586-53167940017-472\" author=\"194424926@N05\" authorname=\"PattayaPatrol\"
+        raw=\"black\" machine_tag=\"0\">black</tag>\n\t\t<tag id=\"194419586-53167940017-141\"
+        author=\"194424926@N05\" authorname=\"PattayaPatrol\" raw=\"blue\" machine_tag=\"0\">blue</tag>\n\t\t<tag
+        id=\"194419586-53167940017-369\" author=\"194424926@N05\" authorname=\"PattayaPatrol\"
+        raw=\"brown\" machine_tag=\"0\">brown</tag>\n\t\t<tag id=\"194419586-53167940017-586\"
+        author=\"194424926@N05\" authorname=\"PattayaPatrol\" raw=\"green\" machine_tag=\"0\">green</tag>\n\t\t<tag
+        id=\"194419586-53167940017-23535\" author=\"194424926@N05\" authorname=\"PattayaPatrol\"
+        raw=\"junkyard\" machine_tag=\"0\">junkyard</tag>\n\t\t<tag id=\"194419586-53167940017-340\"
+        author=\"194424926@N05\" authorname=\"PattayaPatrol\" raw=\"orange\" machine_tag=\"0\">orange</tag>\n\t\t<tag
+        id=\"194419586-53167940017-136\" author=\"194424926@N05\" authorname=\"PattayaPatrol\"
+        raw=\"pink\" machine_tag=\"0\">pink</tag>\n\t\t<tag id=\"194419586-53167940017-7770\"
+        author=\"194424926@N05\" authorname=\"PattayaPatrol\" raw=\"rusty\" machine_tag=\"0\">rusty</tag>\n\t\t<tag
+        id=\"194419586-53167940017-36434\" author=\"194424926@N05\" authorname=\"PattayaPatrol\"
+        raw=\"suitcase\" machine_tag=\"0\">suitcase</tag>\n\t\t<tag id=\"194419586-53167940017-1072\"
+        author=\"194424926@N05\" authorname=\"PattayaPatrol\" raw=\"wall\" machine_tag=\"0\">wall</tag>\n\t\t<tag
+        id=\"194419586-53167940017-395\" author=\"194424926@N05\" authorname=\"PattayaPatrol\"
+        raw=\"white\" machine_tag=\"0\">white</tag>\n\t\t<tag id=\"194419586-53167940017-987\"
+        author=\"194424926@N05\" authorname=\"PattayaPatrol\" raw=\"yellow\" machine_tag=\"0\">yellow</tag>\n\t\t<tag
+        id=\"194419586-53167940017-19508\" author=\"194424926@N05\" authorname=\"PattayaPatrol\"
+        raw=\"faceless\" machine_tag=\"0\">faceless</tag>\n\t\t<tag id=\"194419586-53167940017-2351582\"
+        author=\"194424926@N05\" authorname=\"PattayaPatrol\" raw=\"cool grey\" machine_tag=\"0\">coolgrey</tag>\n\t\t<tag
+        id=\"194419586-53167940017-86567330\" author=\"194424926@N05\" authorname=\"PattayaPatrol\"
+        raw=\"pinkish grey\" machine_tag=\"0\">pinkishgrey</tag>\n\t\t<tag id=\"194419586-53167940017-7497927\"
+        author=\"194424926@N05\" authorname=\"PattayaPatrol\" raw=\"reddish grey\"
+        machine_tag=\"0\">reddishgrey</tag>\n\t\t<tag id=\"194419586-53167940017-703182\"
+        author=\"194424926@N05\" authorname=\"PattayaPatrol\" raw=\"grey blue\" machine_tag=\"0\">greyblue</tag>\n\t\t<tag
+        id=\"194419586-53167940017-1449081\" author=\"194424926@N05\" authorname=\"PattayaPatrol\"
+        raw=\"dark grey\" machine_tag=\"0\">darkgrey</tag>\n\t</tags>\n\t<location
+        latitude=\"12.973908\" longitude=\"100.907111\" accuracy=\"16\" context=\"0\">\n\t\t<locality>Na
+        Kluea</locality>\n\t\t<county>Bang Lamung</county>\n\t\t<region>Changwat Chon
+        Buri</region>\n\t\t<country>Thailand</country>\n\t\t<neighbourhood />\n\t</location>\n\t<geoperms
+        ispublic=\"1\" iscontact=\"0\" isfriend=\"0\" isfamily=\"0\" />\n\t<urls>\n\t\t<url
+        type=\"photopage\">https://www.flickr.com/photos/pattayapatrol/53167940017/</url>\n\t</urls>\n</photo>\n</rsp>\n"
+    headers:
+      Connection:
+      - close
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Thu, 19 Jun 2025 09:58:58 GMT
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 063bfb014e66ef670fc62ff044660cf2.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - Ss5_JX7AABhTkIE4VZrc4-DdFNvhcFSH6eooSKgeeHbFdmbqHhnKrg==
+      X-Amz-Cf-Pop:
+      - LHR5-P1
+      X-Cache:
+      - Miss from cloudfront
+      content-length:
+      - '6331'
+      server:
+      - openresty
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Sat, 19-Jul-2025 09:58:58 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Sat, 19-Jul-2025 09:58:58 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-flickr-api-request:
+      - Root=1-6853df62-49c5cdf201c23e1704f473d0
+      x-robots-tag:
+      - noindex
+      x-server:
+      - serverless-proxy-10.78.15.36
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - Close
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - flickr-photos-api <hello@flickr.org>
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.licenses.getInfo
+  response:
+    body:
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<licenses>\n\t<license
+        id=\"0\" name=\"All Rights Reserved\" url=\"https://www.flickrhelp.com/hc/en-us/articles/10710266545556-Using-Flickr-images-shared-by-other-members\"
+        />\n\t<license id=\"4\" name=\"CC BY 2.0\" url=\"https://creativecommons.org/licenses/by/2.0/\"
+        />\n\t<license id=\"6\" name=\"CC BY-ND 2.0\" url=\"https://creativecommons.org/licenses/by-nd/2.0/\"
+        />\n\t<license id=\"3\" name=\"CC BY-NC-ND 2.0\" url=\"https://creativecommons.org/licenses/by-nc-nd/2.0/\"
+        />\n\t<license id=\"2\" name=\"CC BY-NC 2.0\" url=\"https://creativecommons.org/licenses/by-nc/2.0/\"
+        />\n\t<license id=\"1\" name=\"CC BY-NC-SA 2.0\" url=\"https://creativecommons.org/licenses/by-nc-sa/2.0/\"
+        />\n\t<license id=\"5\" name=\"CC BY-SA 2.0\" url=\"https://creativecommons.org/licenses/by-sa/2.0/\"
+        />\n\t<license id=\"7\" name=\"No known copyright restrictions\" url=\"https://www.flickr.com/commons/usage/\"
+        />\n\t<license id=\"8\" name=\"United States Government Work\" url=\"https://www.usa.gov/government-copyright\"
+        />\n\t<license id=\"9\" name=\"Public Domain Dedication (CC0)\" url=\"https://creativecommons.org/publicdomain/zero/1.0/\"
+        />\n\t<license id=\"10\" name=\"Public Domain Mark\" url=\"https://creativecommons.org/publicdomain/mark/1.0/\"
+        />\n\t<license id=\"11\" name=\"CC BY 4.0\" url=\"https://creativecommons.org/licenses/by/4.0/\"
+        />\n\t<license id=\"12\" name=\"CC BY-SA 4.0\" url=\"https://creativecommons.org/licenses/by-sa/4.0/\"
+        />\n\t<license id=\"13\" name=\"CC BY-ND 4.0\" url=\"https://creativecommons.org/licenses/by-nd/4.0/\"
+        />\n\t<license id=\"14\" name=\"CC BY-NC 4.0\" url=\"https://creativecommons.org/licenses/by-nc/4.0/\"
+        />\n\t<license id=\"15\" name=\"CC BY-NC-SA 4.0\" url=\"https://creativecommons.org/licenses/by-nc-sa/4.0/\"
+        />\n\t<license id=\"16\" name=\"CC BY-NC-ND 4.0\" url=\"https://creativecommons.org/licenses/by-nc-nd/4.0/\"
+        />\n</licenses>\n</rsp>\n"
+    headers:
+      Connection:
+      - close
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Thu, 19 Jun 2025 09:58:59 GMT
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 37e34b9c40877c3dfcda3d91f889e98e.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - lBTWuVysOBjPvvTw1dmS-ySDwaIL9cCuUa1hyawYAqpl4FQGKkNKFg==
+      X-Amz-Cf-Pop:
+      - LHR5-P1
+      X-Cache:
+      - Miss from cloudfront
+      content-length:
+      - '1815'
+      server:
+      - openresty
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Sat, 19-Jul-2025 09:58:59 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-flickr-api-request:
+      - Root=1-6853df63-3f68b40b00014d3b1a6708d7
+      x-robots-tag:
+      - noindex
+      x-server:
+      - serverless-proxy-10.78.42.56
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - Close
+      cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D
+      host:
+      - api.flickr.com
+      user-agent:
+      - flickr-photos-api <hello@flickr.org>
+    method: GET
+    uri: https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&photo_id=53167940017
+  response:
+    body:
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n<sizes
+        canblog=\"0\" canprint=\"0\" candownload=\"1\">\n\t<size label=\"Square\"
+        width=\"75\" height=\"75\" source=\"https://live.staticflickr.com/65535/53167940017_85f29b3a3b_s.jpg\"
+        url=\"https://www.flickr.com/photos/pattayapatrol/53167940017/sizes/sq/\"
+        media=\"photo\" />\n\t<size label=\"Large Square\" width=\"150\" height=\"150\"
+        source=\"https://live.staticflickr.com/65535/53167940017_85f29b3a3b_q.jpg\"
+        url=\"https://www.flickr.com/photos/pattayapatrol/53167940017/sizes/q/\" media=\"photo\"
+        />\n\t<size label=\"Thumbnail\" width=\"100\" height=\"67\" source=\"https://live.staticflickr.com/65535/53167940017_85f29b3a3b_t.jpg\"
+        url=\"https://www.flickr.com/photos/pattayapatrol/53167940017/sizes/t/\" media=\"photo\"
+        />\n\t<size label=\"Small\" width=\"240\" height=\"160\" source=\"https://live.staticflickr.com/65535/53167940017_85f29b3a3b_m.jpg\"
+        url=\"https://www.flickr.com/photos/pattayapatrol/53167940017/sizes/s/\" media=\"photo\"
+        />\n\t<size label=\"Small 320\" width=\"320\" height=\"213\" source=\"https://live.staticflickr.com/65535/53167940017_85f29b3a3b_n.jpg\"
+        url=\"https://www.flickr.com/photos/pattayapatrol/53167940017/sizes/n/\" media=\"photo\"
+        />\n\t<size label=\"Small 400\" width=\"400\" height=\"267\" source=\"https://live.staticflickr.com/65535/53167940017_85f29b3a3b_w.jpg\"
+        url=\"https://www.flickr.com/photos/pattayapatrol/53167940017/sizes/w/\" media=\"photo\"
+        />\n\t<size label=\"Medium\" width=\"500\" height=\"333\" source=\"https://live.staticflickr.com/65535/53167940017_85f29b3a3b.jpg\"
+        url=\"https://www.flickr.com/photos/pattayapatrol/53167940017/sizes/m/\" media=\"photo\"
+        />\n\t<size label=\"Medium 640\" width=\"640\" height=\"427\" source=\"https://live.staticflickr.com/65535/53167940017_85f29b3a3b_z.jpg\"
+        url=\"https://www.flickr.com/photos/pattayapatrol/53167940017/sizes/z/\" media=\"photo\"
+        />\n\t<size label=\"Medium 800\" width=\"800\" height=\"533\" source=\"https://live.staticflickr.com/65535/53167940017_85f29b3a3b_c.jpg\"
+        url=\"https://www.flickr.com/photos/pattayapatrol/53167940017/sizes/c/\" media=\"photo\"
+        />\n\t<size label=\"Large\" width=\"1024\" height=\"683\" source=\"https://live.staticflickr.com/65535/53167940017_85f29b3a3b_b.jpg\"
+        url=\"https://www.flickr.com/photos/pattayapatrol/53167940017/sizes/l/\" media=\"photo\"
+        />\n\t<size label=\"Large 1600\" width=\"1600\" height=\"1067\" source=\"https://live.staticflickr.com/65535/53167940017_32f80d19f5_h.jpg\"
+        url=\"https://www.flickr.com/photos/pattayapatrol/53167940017/sizes/h/\" media=\"photo\"
+        />\n\t<size label=\"Large 2048\" width=\"2048\" height=\"1365\" source=\"https://live.staticflickr.com/65535/53167940017_490eca8442_k.jpg\"
+        url=\"https://www.flickr.com/photos/pattayapatrol/53167940017/sizes/k/\" media=\"photo\"
+        />\n\t<size label=\"X-Large 3K\" width=\"3072\" height=\"2048\" source=\"https://live.staticflickr.com/65535/53167940017_a66c4ebe84_3k.jpg\"
+        url=\"https://www.flickr.com/photos/pattayapatrol/53167940017/sizes/3k/\"
+        media=\"photo\" />\n\t<size label=\"X-Large 4K\" width=\"4096\" height=\"2731\"
+        source=\"https://live.staticflickr.com/65535/53167940017_0a55dc3065_4k.jpg\"
+        url=\"https://www.flickr.com/photos/pattayapatrol/53167940017/sizes/4k/\"
+        media=\"photo\" />\n\t<size label=\"X-Large 5K\" width=\"5120\" height=\"3413\"
+        source=\"https://live.staticflickr.com/65535/53167940017_118f45e278_5k.jpg\"
+        url=\"https://www.flickr.com/photos/pattayapatrol/53167940017/sizes/5k/\"
+        media=\"photo\" />\n\t<size label=\"Original\" width=\"5568\" height=\"3712\"
+        source=\"https://live.staticflickr.com/65535/53167940017_4f3173632a_o.jpg\"
+        url=\"https://www.flickr.com/photos/pattayapatrol/53167940017/sizes/o/\" media=\"photo\"
+        />\n</sizes>\n</rsp>\n"
+    headers:
+      Connection:
+      - close
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Thu, 19 Jun 2025 09:58:59 GMT
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 6637d17b3d1e6049c28f8f48b8c57cc6.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - Fqun6aUE0_oF9XQsFww3RXpl2hXAzqEXa-ZfckqTedsRZNJLjECTiw==
+      X-Amz-Cf-Pop:
+      - LHR5-P1
+      X-Cache:
+      - Miss from cloudfront
+      content-length:
+      - '3523'
+      server:
+      - openresty
+      set-cookie:
+      - ccc=%7B%22needsConsent%22%3Atrue%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A1%7D%7D%7D;
+        expires=Sat, 19-Jul-2025 09:58:59 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      vary:
+      - Accept-Encoding
+      x-flickr-api-request:
+      - Root=1-6853df63-02af26c518a08e007749155a
+      x-robots-tag:
+      - noindex
+      x-server:
+      - serverless-proxy-10.78.12.147
+    status:
+      code: 200
+      message: OK
+version: 1
