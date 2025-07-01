@@ -2,12 +2,16 @@ import json
 
 from click.testing import CliRunner
 import keyring
-from nitrate.passwords import use_in_memory_keyring
+from keyring.backend import KeyringBackend
+
+from nitrate.mock_keyring import *  # noqa: F403
 
 from flickypedia.cli import main as cli_main
 
 
-def test_store_flickypedia_bot_token(flickr_oauth_cassette: str) -> None:
+def test_store_flickypedia_bot_token(
+    mock_keyring: KeyringBackend, flickr_oauth_cassette: str
+) -> None:
     """
     This tests the steps of getting and saving a Flickr OAuth 1.0a token
     for the Flickypedia bot account.
@@ -15,12 +19,8 @@ def test_store_flickypedia_bot_token(flickr_oauth_cassette: str) -> None:
     I inspected the VCR cassette for this test quite carefully,
     to ensure I wasn't leaking any real tokens.
     """
-    use_in_memory_keyring(
-        initial_passwords={
-            ("flickypedia", "api_key"): "12345",
-            ("flickypedia", "api_secret"): "67890",
-        }
-    )
+    mock_keyring.set_password("flickypedia", "api_key", "12345")
+    mock_keyring.set_password("flickypedia", "api_secret", "67890")
 
     runner = CliRunner()
     result = runner.invoke(
@@ -39,7 +39,9 @@ def test_store_flickypedia_bot_token(flickr_oauth_cassette: str) -> None:
     }
 
 
-def test_only_stores_a_token_for_flickypedia_bot(flickr_oauth_cassette: str) -> None:
+def test_only_stores_a_token_for_flickypedia_bot(
+    mock_keyring: KeyringBackend, flickr_oauth_cassette: str
+) -> None:
     """
     This tests that we can only store a token for the Flickypedia bot user.
 
@@ -48,12 +50,8 @@ def test_only_stores_a_token_for_flickypedia_bot(flickr_oauth_cassette: str) -> 
     This test uses a hand-edited copy of the VCR cassette for
     ``test_store_flickypedia_bot_token()``.
     """
-    use_in_memory_keyring(
-        initial_passwords={
-            ("flickypedia", "api_key"): "12345",
-            ("flickypedia", "api_secret"): "67890",
-        }
-    )
+    mock_keyring.set_password("flickypedia", "api_key", "12345")
+    mock_keyring.set_password("flickypedia", "api_secret", "67890")
 
     runner = CliRunner()
     result = runner.invoke(
