@@ -13,16 +13,13 @@ maintainers = [
   {name = "Alex Chan", email="alex@flickr.org"},
 ]
 requires-python = ">=3.12"
-dynamic = ["dependencies", "version"]
+dynamic = ["version"]
 
 [project.urls]
 "Homepage" = "https://github.com/Flickr-Foundation/flickypedia"
 
 [project.scripts]
 flickypedia = "flickypedia.cli:main"
-
-[tool.setuptools.dynamic]
-dependencies = {file = ["requirements.txt"]}
 
 [tool.setuptools.packages.find]
 where = ["src"]

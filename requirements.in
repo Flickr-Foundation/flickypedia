@@ -11,7 +11,7 @@ gunicorn
 httpx
 keyring
 libsass
-pydantic
+silver-nitrate[json,types,xml]>=1.8.1
 tqdm
 
 # This pin is because of an ImportError in flask-login caused by
