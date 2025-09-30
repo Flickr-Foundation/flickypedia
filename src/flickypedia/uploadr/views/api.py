@@ -23,15 +23,17 @@ def validate_title_api() -> Response:
         abort(400)
 
     api = current_user.wikimedia_api()
-    
+
     try:
         result = api.validate_title(title)
     except Exception as exc:
         # Log the problematic title for debugging
-        current_app.logger.error(f"Title validation failed for title: '{title}' - {exc}")
+        current_app.logger.error(
+            f"Title validation failed for title: '{title}' - {exc}"
+        )
         # Re-raise the exception so the behavior is unchanged
         raise
-    
+
     return jsonify(result)
 
 
