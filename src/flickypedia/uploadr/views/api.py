@@ -1,6 +1,6 @@
 import functools
 
-from flask import abort, jsonify, request, Response
+from flask import abort, current_app, jsonify, request, Response
 from flask_login import current_user, login_required
 
 from flickypedia.apis.wikimedia import top_n_languages, LanguageMatch
@@ -23,8 +23,15 @@ def validate_title_api() -> Response:
         abort(400)
 
     api = current_user.wikimedia_api()
-    result = api.validate_title(title)
-
+    
+    try:
+        result = api.validate_title(title)
+    except Exception as exc:
+        # Log the problematic title for debugging
+        current_app.logger.error(f"Title validation failed for title: '{title}' - {exc}")
+        # Re-raise the exception so the behavior is unchanged
+        raise
+    
     return jsonify(result)
 
 
