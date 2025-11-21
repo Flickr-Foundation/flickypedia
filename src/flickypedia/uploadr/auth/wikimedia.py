@@ -416,9 +416,17 @@ def oauth2_callback_wikimedia() -> werkzeug.Response:
     )
 
     try:
+        # We manually specify the User-Agemt here because Wikipedia started
+        # blocking requests from clients that do not specify a UA, and Authlib
+        # has a bug where it doesn't automatically supply one in all cases
+        # * https://phabricator.wikimedia.org/T400119
+        # * https://github.com/authlib/authlib/issues/704
         token = token_client.fetch_token(
             authorization_response=request.url,
             state=state,
+            headers={
+                "User-Agent": current_app.config["USER_AGENT"],
+            },
         )
     except Exception as exc:
         current_app.logger.error(
