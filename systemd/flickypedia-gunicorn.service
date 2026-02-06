@@ -8,7 +8,7 @@ Group=flickrfoundation
 WorkingDirectory=/home/flickrfoundation/repos/flickypedia
 Environment="PATH=/home/flickrfoundation/repos/flickypedia/.venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 Environment="PYTHONPATH=/home/flickrfoundation/repos/flickypedia/src"
-ExecStart=/home/flickrfoundation/repos/flickypedia/.venv/bin/gunicorn "flickypedia.uploadr:create_app()" --workers 4 --bind "0.0.0.0:8006" --access-logfile access.log --log-file app.log --pid commons.pid
+ExecStart=/home/flickrfoundation/repos/flickypedia/.venv/bin/gunicorn "flickypedia.uploadr:create_app()" --workers 4 --bind "0.0.0.0:8006" --access-logfile access.log --log-file app.log --pid flickypedia.pid
 ExecReload=/bin/kill -s HUP $MAINPID
 KillMode=mixed
 TimeoutStopSec=5
