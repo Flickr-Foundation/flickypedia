@@ -1,6 +1,7 @@
 import os
 import pathlib
 import typing
+import keyring
 
 
 def create_config(data_directory: pathlib.Path) -> dict[str, typing.Any]:
@@ -10,6 +11,28 @@ def create_config(data_directory: pathlib.Path) -> dict[str, typing.Any]:
     Flickypedia writes a number of temporary files as part of its work.
     The ``data_directory`` is their root.
     """
+
+    # This application uses a mix of keyring and environment variables for
+    # secrets, sometimes for the same secrets. The tests require the ability to
+    # override the secrets in the environment variables to function. In order
+    # to avoid changes across the codebase while moving this to run under
+    # systemd we fall back on loading the environment variables from the
+    # keyring here, allowing this to be started without systemd needing to
+    # execute the keychain to populate them as environment variables.
+    ENVIRON_KEYRING_MAP = {
+        "FLICKR_CLIENT_ID": "api_key",
+        "FLICKR_CLIENT_SECRET": "api_secret",
+        "FLICKR_API_KEY": "flickr_api_key",
+        "WIKIMEDIA_CLIENT_ID": "wikimedia_client_id",
+        "WIKIMEDIA_CLIENT_SECRET": "wikimedia_client_secret",
+    }
+    for ev, kv in ENVIRON_KEYRING_MAP.items():
+        if ev not in os.environ:
+            password = keyring.get_password("flickypedia", kv)
+            if password is None:
+                raise RuntimeError(f"Could not retrieve password {ev} from the environment, or from keyring (flickypedia, {kv})")
+            os.environ[ev] = password
+
     # Implementation note: although these URLs are currently hard-coded,
     # there is a beta cluster we might use in the future.  It's currently
     # broken, so we're not adding support for it yet, but we could if

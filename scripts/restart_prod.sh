@@ -7,27 +7,6 @@ set -o nounset
 
 source "$(dirname "$0")/functions.sh"
 
-
-
-# 0. If we're not running on Sontag, SSH into Sontag and run the sript there.
-if [[ "$(hostname)" != "sontag.local" ]]
-then
-  print_info "Not on Sontag, so running script over SSH/Tailscale"
-  
-  bash "$(dirname "$0")/ensure_tailscale_running.sh"
-  
-  SONTAG_IP_ADDRESS="$(/Applications/Tailscale.app/Contents/MacOS/Tailscale ip --4 sontag)"
-  print_info "Detected Sontag IP address as $SONTAG_IP_ADDRESS"
-  
-  print_info "Running SSH command on Sontag"
-  print_info "---"
-  
-  ssh "sontag@$SONTAG_IP_ADDRESS" "cd ~/repos/flickypedia && bash scripts/restart_prod.sh"
-  exit 0
-fi
-
-
-
 # 1. Pull the latest version of the code from GitHub
 #
 # We only pull changes if we're on main; if we're on a different branch,
@@ -65,7 +44,6 @@ pip install --quiet -r requirements.txt
 #
 print_info "Restarting the app with the latest changes"
 kill -HUP $(cat flickypedia.pid)
-
 
 
 
