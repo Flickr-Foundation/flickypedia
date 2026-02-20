@@ -271,7 +271,7 @@ class WikimediaUserSession(UserMixin, user_db.Model):  # type: ignore
         # their OAuth tokens in the server-side database, and the encryption
         # key in their session cookie.
         user_db.session.query(WikimediaUserSession).filter(
-            WikimediaUserSession.id == current_user.id
+            WikimediaUserSession.id == self.id
         ).delete()
         user_db.session.commit()
 
