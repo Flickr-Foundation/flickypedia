@@ -102,7 +102,7 @@ class AbstractFilesystemTaskQueue(abc.ABC, typing.Generic[In, Out]):
         return self.base_dir / "queue.log"
 
     def configure_logger(self) -> None:
-        self.logger.setLevel(level=logging.DEBUG)
+        self.logger.setLevel(level=logging.INFO)
 
         pid = os.getpid()
 
