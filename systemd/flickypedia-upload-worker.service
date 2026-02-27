@@ -1,0 +1,13 @@
+[Unit]
+Description=Flickypedia Upload Worker
+After=network.target
+
+[Service]
+User=flickrfoundation
+Group=flickrfoundation
+WorkingDirectory=/home/flickrfoundation/repos/flickypedia
+Environment="TMPDIR=/home/flickrfoundation/repos/flickypedia/data/tmp"
+ExecStart=/home/flickrfoundation/repos/flickypedia/.venv/bin/flickypedia run-background-worker
+PrivateTmp=true
+Restart=always
+RestartSec=5
