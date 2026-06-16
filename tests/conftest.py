@@ -98,6 +98,21 @@ def flickr_oauth_cassette(cassette_name: str) -> Iterator[str]:
         yield cassette_name
 
 
+@pytest.fixture(autouse=True)
+def flickypedia_test_secrets() -> None:
+    """
+    create_config() loads OAuth secrets from the keyring when env vars are unset.
+
+    CI and local test runs have no keyring backend, so provide dummy values here.
+    Tests can still override these by setting env vars before create_app() runs.
+    """
+    os.environ.setdefault("FLICKR_CLIENT_ID", "123")
+    os.environ.setdefault("FLICKR_CLIENT_SECRET", "456")
+    os.environ.setdefault("FLICKR_API_KEY", "test-flickr-api-key")
+    os.environ.setdefault("WIKIMEDIA_CLIENT_ID", "test-wikimedia-client-id")
+    os.environ.setdefault("WIKIMEDIA_CLIENT_SECRET", "test-wikimedia-client-secret")
+
+
 @pytest.fixture()
 def app(user_agent: str, tmp_path: pathlib.Path) -> Iterator[Flask]:
     """

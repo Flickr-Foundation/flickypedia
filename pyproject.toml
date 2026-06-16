@@ -54,7 +54,7 @@ filterwarnings = [
 ]
 
 [tool.mypy]
-mypy_path = "src"
+mypy_path = "src:tests/stubs"
 strict = true
 
 [tool.interrogate]

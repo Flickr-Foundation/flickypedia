@@ -1,5 +1,4 @@
 from datetime import datetime, timezone
-import pathlib
 import textwrap
 
 from flickr_api.models import LicenseId
@@ -7,7 +6,7 @@ import pytest
 
 from flickypedia.apis.wikitext import create_wikitext
 from flickypedia.types.flickr import FlickrPhoto
-from flickypedia.uploadr.config import create_config
+from flickypedia.uploadr.config import ALLOWED_LICENSES
 from utils import get_typed_fixture
 
 
@@ -119,10 +118,7 @@ def test_it_skips_tags_if_none_on_photo() -> None:
     assert "{{Information\n|description=\n}}" in wikitext
 
 
-config = create_config(data_directory=pathlib.Path("data"))
-
-
-@pytest.mark.parametrize("license_id", config["ALLOWED_LICENSES"])
+@pytest.mark.parametrize("license_id", ALLOWED_LICENSES)
 def test_can_create_wikitext_for_all_allowed_licenses(license_id: LicenseId) -> None:
     photo = get_typed_fixture("flickr_photos_api/32812033543.json", model=FlickrPhoto)
     photo["license"]["id"] = license_id
