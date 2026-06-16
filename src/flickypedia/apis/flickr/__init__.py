@@ -1,3 +1,7 @@
+from .patches import apply_flickr_api_patches
+
+apply_flickr_api_patches()
+
 from .by_url import get_photos_from_flickr
 from .comments import (
     create_bot_comment_text,
