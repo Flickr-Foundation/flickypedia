@@ -4,6 +4,19 @@ import typing
 import keyring
 
 
+ALLOWED_LICENSES = frozenset(
+    {
+        "cc-by-2.0",
+        "cc-by-sa-2.0",
+        "cc-by-4.0",
+        "cc-by-sa-4.0",
+        "usgov",
+        "cc0-1.0",
+        "pdm",
+    }
+)
+
+
 def create_config(data_directory: pathlib.Path) -> dict[str, typing.Any]:
     """
     Create the config for Flickypedia.
@@ -30,7 +43,9 @@ def create_config(data_directory: pathlib.Path) -> dict[str, typing.Any]:
         if ev not in os.environ:
             password = keyring.get_password("flickypedia", kv)
             if password is None:
-                raise RuntimeError(f"Could not retrieve password {ev} from the environment, or from keyring (flickypedia, {kv})")
+                raise RuntimeError(
+                    f"Could not retrieve password {ev} from the environment, or from keyring (flickypedia, {kv})"
+                )
             os.environ[ev] = password
 
     # Implementation note: although these URLs are currently hard-coded,
@@ -81,15 +96,7 @@ def create_config(data_directory: pathlib.Path) -> dict[str, typing.Any]:
         },
         #
         # The IDs of licenses that we can upload to Flickypedia.
-        "ALLOWED_LICENSES": {
-            "cc-by-2.0",
-            "cc-by-sa-2.0",
-            "cc-by-4.0",
-            "cc-by-sa-4.0",
-            "usgov",
-            "cc0-1.0",
-            "pdm",
-        },
+        "ALLOWED_LICENSES": ALLOWED_LICENSES,
         #
         # The number of photos to show on a single page
         "PHOTOS_PER_PAGE": 100,

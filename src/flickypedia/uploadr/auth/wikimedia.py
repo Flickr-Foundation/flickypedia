@@ -311,7 +311,7 @@ def load_user(userid: str) -> WikimediaUserSession | None:
         user.delete()
         return None
     else:
-        return user
+        return typing.cast(WikimediaUserSession, user)
 
 
 @login_required
