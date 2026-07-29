@@ -6,7 +6,7 @@ flask
 flask-login
 flask-wtf
 Flask-SQLAlchemy
-flickr-photos-api>=3.11
+flickr-photos-api>=3.13.0
 gunicorn
 httpx
 keyring
