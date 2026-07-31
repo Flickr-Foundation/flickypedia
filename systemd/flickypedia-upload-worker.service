@@ -7,7 +7,12 @@ User=flickrfoundation
 Group=flickrfoundation
 WorkingDirectory=/home/flickrfoundation/repos/flickypedia
 Environment="TMPDIR=/home/flickrfoundation/repos/flickypedia/data/tmp"
+Environment="PATH=/home/flickrfoundation/repos/flickypedia/.venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+Environment="PYTHONPATH=/home/flickrfoundation/repos/flickypedia/src"
 ExecStart=/home/flickrfoundation/repos/flickypedia/.venv/bin/flickypedia run-background-worker
 PrivateTmp=true
 Restart=always
 RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
